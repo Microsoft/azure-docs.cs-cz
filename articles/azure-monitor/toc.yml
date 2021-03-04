@@ -416,7 +416,7 @@
                 - name: Odeslání do Event Hubs
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: Odeslání do protokolů
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: Odeslání do Application Insights
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: Historie verzí
@@ -993,7 +993,7 @@
         - name: Nejčastější dotazy k všeobecné dostupnosti
           href: vm/vminsights-ga-release-faq.md
         - name: Nejčastější dotazy
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: Konfigurace pracovního prostoru
           href: vm/vminsights-configure-workspace.md
         - name: Instalace agentů
@@ -1045,7 +1045,7 @@
         - name: Přehled
           href: containers/container-insights-overview.md
         - name: Nejčastější dotazy
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: Povolení monitorování
           items:
             - name: Povolení přehledu monitorování

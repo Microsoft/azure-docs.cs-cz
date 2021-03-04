@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 43dd047738538b0dcc76904e951eccea3a327c19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050235"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -140,7 +140,8 @@ Chcete-li při použití macOS nebo Linux místně sestavit a spustit Visual Stu
 
 * Chcete-li použít operaci [vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md) , která spouští JavaScript, nainstalujte [Node.js verze 10. x. x, 11. x. x nebo 12. x. x](https://nodejs.org/en/download/releases/).
 
-  > [!TIP] Pro Windows Stáhněte verzi MSI. Pokud místo toho použijete verzi ZIP, je nutné ručně nastavit Node.js k dispozici pomocí proměnné prostředí PATH pro váš operační systém.
+  > [!TIP] 
+  > Pro Windows Stáhněte verzi MSI. Pokud místo toho použijete verzi ZIP, je nutné ručně nastavit Node.js k dispozici pomocí proměnné prostředí PATH pro váš operační systém.
 
 * Chcete-li místně spustit triggery a akce založené na webhookech, jako je například [vestavěný Trigger Webhooku protokolu HTTP](../connectors/connectors-native-webhook.md), v Visual Studio Code musíte [nastavit přesměrování pro adresu URL zpětného volání](#webhook-setup).
 

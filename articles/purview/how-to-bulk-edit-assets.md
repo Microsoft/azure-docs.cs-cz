@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693760"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049474"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Jak hromadně upravovat prostředky a označovat pojem glosáře
 
@@ -65,13 +65,13 @@ Tento článek popisuje, jak označit více pojmů glosáře na seznam vybranýc
 
 7. Výše uvedený postup opakujte pro klasifikace, vlastníky a odborníky.
 
-    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Snímek obrazovky s podmínkami odebrání":::
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Snímek obrazovky s klasifikací a kontakty.":::
 
 8. Po dokončení zavřete okno hromadných úprav tak, že vyberete **Zavřít** nebo **Odebrat vše a zavřít**. Při zavření nedojde k odebrání vybraných assetů, zatímco možnost Odebrat vše a zavřít odstraní všechny vybrané prostředky.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Snímek obrazovky zavřít":::
 
    > [!Important]
-   > Doporučený počet prostředků pro hromadnou úpravu je 15. Výběr více než 25 může způsobit problémy s výkonem.
+   > Doporučený počet prostředků pro hromadnou úpravu je 25. Výběr více než 25 může způsobit problémy s výkonem.
    > **Vybrané pole zobrazení** bude viditelné pouze v případě, že je vybrán alespoň jeden prostředek.
 
 

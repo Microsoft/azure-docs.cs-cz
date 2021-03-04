@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 8c69f477f363654b8bd707949f0a5b4c46a4e8df
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561100"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050337"
 ---
 # <a name="view-azure-reservations"></a>Zobrazení rezervací Azure
 
@@ -47,8 +47,15 @@ Pokud chcete správu rezervací umožnit ostatním, máte dvě možnosti:
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Jak správci fakturace zobrazují nebo spravují rezervace
 
-1. Přejděte na **Cost Management + Billing** a na levé straně stránky vyberte **Transakce rezervací**.
-2. Pokud máte požadovaná oprávnění k fakturaci, můžete zobrazit a spravovat rezervace. Pokud se vám žádné rezervace nezobrazují, zkontrolujte, že jste přihlášení pomocí tenanta Azure AD, ve kterém byly rezervace vytvořeny.
+Pokud máte přístup k rezervacím nebo objednávkám rezervací s přístupem k Azure RBAC, může se při přechodu na rezervace zobrazit jenom podmnožina transakcí rezervace nebo žádná. Pomocí následujících kroků můžete zobrazit a spravovat všechny rezervace a transakce rezervací.
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte na **cost management + fakturace**.
+    - Pokud jste správce služby EA, vyberte v levé nabídce položku **obory fakturace** a potom v seznamu rozsahů fakturace vyberte jednu.
+    - Pokud jste vlastníkem fakturačního profilu, který je zákazníkem Microsoftu, vyberte v levé nabídce možnost **profily fakturace**. V seznamu profilů fakturace vyberte jednu.
+1. V nabídce vlevo vyberte **transakce rezervací**. Zobrazí se seznam transakcí rezervace.
+1. Banner v horní části stránky čtení *nyní může spravovat rezervace správci fakturace. Kliknutím sem můžete spravovat rezervace.* Vyberte banner.
+1. Zobrazí se úplný seznam rezervací pro registraci EA nebo profil pro fakturaci.
+1. Pokud chcete převzít vlastnictví rezervace, vyberte ji. Pak na stránce nastavení oprávnění vyberte **udělit přístup**. Máte přístup vlastníka k rezervaci a k objednávce rezervace.
 
 ## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Zobrazení rezervace a informací o využití na webu Azure Portal
 

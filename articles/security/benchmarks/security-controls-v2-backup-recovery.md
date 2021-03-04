@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724417"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051544"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Řízení zabezpečení v2: zálohování a obnovení
 
 Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb.
 
-Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: zálohování a obnovení.](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: zálohování a obnovení.](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: zajištění pravidelného automatizovaného zálohování
 
@@ -66,7 +66,7 @@ Pomocí řízení přístupu na základě role Azure v Azure Backup, Azure Key V
 
 - [Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Postup zálohování klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup zálohování klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy před útoky](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můž
 
 - [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Odpovědnost:** Zákazník
 

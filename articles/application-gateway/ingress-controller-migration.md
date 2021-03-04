@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 4b5cb9abe53cdb29cbc1b4c9711fb8efcf0348d6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e83834fd5f8ca95826118c952f7884a494c7abbb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744697"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050830"
 ---
 # <a name="migrate-from-agic-helm-to-agic-add-on"></a>Migrace z AGIC Helm na AGIC doplněk 
 
@@ -46,7 +46,7 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 
 Případně můžete přejít na svůj cluster AKS na portálu pomocí tohoto [odkazu](https://portal.azure.com/?feature.aksagic=true) a povolit doplněk AGIC na kartě síť v clusteru. Vyberte existující Application Gateway z rozevírací nabídky, když zvolíte, na které Application Gateway se má doplněk zaměřit. 
 
-![Portál pro Application Gateway adaptéru příchozího přenosu dat](./media/tutorial-ingress-controller-add-on-existing/portal_ingress_controller_addon.png)
+![Portál pro Application Gateway adaptéru příchozího přenosu dat](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
 ## <a name="next-steps"></a>Další kroky
 - [**Řešení potíží s Application Gatewaym řadičem**](ingress-controller-troubleshoot.md)příchozího přenosu: Průvodce odstraňováním potíží pro AGIC 

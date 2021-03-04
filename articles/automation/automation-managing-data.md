@@ -3,14 +3,14 @@ title: Zabezpečení dat Azure Automation
 description: Tento článek vám pomůže zjistit, jak Azure Automation chrání vaše osobní údaje a zabezpečuje vaše data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581115"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050813"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -41,7 +41,7 @@ Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linu
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-Když prostředek odstraníte z Azure Automation, uchová se po několik dní pro účely auditování před trvalým odebráním. Během této doby nemůžete tento prostředek zobrazit ani použít. Tyto zásady platí taky pro prostředky, které patří k odstraněnému účtu Automation.
+Když prostředek odstraníte z Azure Automation, uchová se po několik dní pro účely auditování před trvalým odebráním. Během této doby nemůžete tento prostředek zobrazit ani použít. Tyto zásady platí taky pro prostředky, které patří k odstraněnému účtu Automation. Zásady uchovávání informací platí pro všechny uživatele a aktuálně se nedají přizpůsobit. Pokud ale potřebujete zachovat data po delší dobu, můžete [data Azure Automation úlohy přeposílat do Azure monitor protokolů](automation-manage-send-joblogs-log-analytics.md).
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
@@ -54,9 +54,9 @@ Následující tabulka shrnuje zásady uchovávání informací pro různé pros
 | Moduly |Modul se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který obsahuje daný modul. |
 | Konfigurace uzlů/soubory MOF |Stará konfigurace uzlu je trvale odebrána 30 dní po vygenerování nové konfigurace uzlu. |
 | Sestavy uzlů |Po vygenerování nové sestavy pro tento uzel je sestava uzlu trvale odebrána 90 dní. |
-| Runbooky |Sada Runbook je trvale odebrána 30 dní poté, co uživatel odstraní prostředek, nebo 30 dní poté, co uživatel odstraní účet, který obsahuje daný prostředek. |
+| Runbooky |Sada Runbook je trvale odebrána 30 dní poté, co uživatel odstraní prostředek, nebo 30 dní poté, co uživatel odstraní účet, který obsahuje prostředek<sup>1</sup>. |
 
-Zásady uchovávání informací platí pro všechny uživatele a aktuálně se nedají přizpůsobit. Pokud ale potřebujete zachovat data po delší dobu, můžete [data Azure Automation úlohy přeposílat do Azure monitor protokolů](automation-manage-send-joblogs-log-analytics.md).
+<sup>1</sup> Sada Runbook se dá obnovit v rámci 30denní okna tím, že pomůžete incident podpory Azure s podporou Microsoft Azure. Přejít na [web podpory Azure](/support/options) a vyberte **Odeslat žádost o podporu**.
 
 ## <a name="data-backup"></a>Zálohování dat
 

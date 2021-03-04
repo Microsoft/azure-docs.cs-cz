@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687069"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050898"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -29,7 +29,7 @@ V případě omezení tenanta můžou organizace určovat seznam tenantů, ke kt
 
 Tento článek se zaměřuje na omezení tenanta pro Microsoft 365, ale funkce chrání všechny aplikace, které odesílají uživatele do služby Azure AD pro jednotné přihlašování. Pokud používáte aplikace SaaS s jiným klientem Azure AD z tenanta používaného vaší Microsoft 365, ujistěte se, že jsou všichni povinní klienti povoleni (například ve scénářích spolupráce B2B). Další informace o cloudových aplikacích SaaS najdete na [webu Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-Kromě toho funkce omezení tenanta teď podporuje [blokování použití všech zákaznických aplikací Microsoftu](#blocking-consumer-applications) (MSA aplikací), jako jsou OneDrive, Hotmail a Xbox.com.  K tomuto `login.live.com` koncovému bodu se používá samostatná hlavička a na konci dokumentu se podrobně podrobná.
+Kromě toho funkce omezení tenanta teď podporuje [blokování použití všech zákaznických aplikací Microsoftu](#blocking-consumer-applications-public-preview) (MSA aplikací), jako jsou OneDrive, Hotmail a Xbox.com.  K tomuto `login.live.com` koncovému bodu se používá samostatná hlavička a na konci dokumentu se podrobně podrobná.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

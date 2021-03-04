@@ -4,17 +4,17 @@ description: Pomocí funkcí služby Azure Cost Management a fakturace můžete 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051089"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050527"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Co je Azure Cost Management a fakturace?
 
@@ -33,6 +33,8 @@ S produkty a službami Azure platíte jenom za to, co využijete. S tím, jak vy
 
 Další informace o tom, jak organizace mohou využít správu nákladů, najdete v článku, který se věnuje [osvědčeným postupům pro Azure Cost Management](./costs/cost-mgt-best-practices.md).
 
+![Diagram procesu optimalizace Cost Management a fakturace](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>Principy fakturace v Azure
 
 Funkce fakturace v Azure slouží ke kontrole fakturovaných nákladů a ke správě přístupu k fakturačním údajům. Ve velkých organizacích se o fakturační úlohy obvykle starají zásobovací a finanční týmy.
@@ -48,32 +50,6 @@ Web Azure Portal aktuálně podporuje následující typy fakturačních účtů
 - **Smlouva Enterprise:** Fakturační účet pro smlouvu Enterprise se vytvoří, když vaše organizace uzavře smlouvu Enterprise (EA) na používání Azure.
 
 - **Smlouva se zákazníkem Microsoftu:** Fakturační účet pro smlouvu se zákazníkem Microsoftu se vytvoří tehdy, když vaše organizace uzavře smlouvu se zákazníkem Microsoftu prostřednictvím zástupce Microsoftu. Fakturační účet pro smlouvu se zákazníkem Microsoftu můžou mít i někteří zákazníci ve vybraných oblastech, kteří si prostřednictvím webu Azure zaregistrují účet s průběžnými platbami nebo upgradují svůj [bezplatný účet Azure](./manage/create-free-services.md).
-
-### <a name="scopes-for-billing-accounts"></a>Rozsahy pro fakturační účty
-Obor je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a spravujete fakturaci. Právě tady spravujete fakturační údaje, platby a faktury a provádíte všeobecnou správu účtu.
-
-#### <a name="microsoft-online-services-program"></a>Program MOSP (Microsoft Online Services Program)
-
-|Rozsah  |Definice  |
-|---------|---------|
-|Fakturační účet     | Představuje jednoho vlastníka (správce účtu) pro jedno nebo více předplatných Azure. Správce účtu má oprávnění provádět různé úkony spojené s fakturací, jako je vytváření předplatných, zobrazení faktur nebo změna fakturace pro předplatná.  |
-|Předplatné     |  Představuje seskupení prostředků Azure. Faktura se vygeneruje v oboru předplatného. Má vlastní způsoby platby, pomocí kterých se hradí příslušné faktury.|
-
-#### <a name="enterprise-agreement"></a>Smlouva Enterprise
-
-|Rozsah  |Definice  |
-|---------|---------|
-|Fakturační účet    | Představuje registraci smlouvy Enterprise. Faktura se vygeneruje v oboru fakturačního účtu. Je strukturovaná na základě oddělení a registračních účtů.  |
-|Oddělení     |  Volitelné seskupení registračních účtů.      |
-|Registrační účet     |  Představuje vlastníka jednoho účtu. Předplatná Azure se vytvářejí v rámci oboru registračního účtu.  |
-
-#### <a name="microsoft-customer-agreement"></a>Smlouva se zákazníkem Microsoftu
-
-|Rozsah  |Úlohy  |
-|---------|---------|
-|Fakturační účet     |   Představuje zákaznickou smlouvu na více produktů a služeb Microsoftu. Fakturační účet je strukturovaný pomocí fakturačních profilů a oddílů faktury.   |
-|Fakturační profil     |  Představuje fakturu a související způsoby platby. V tomto rozsahu se generují faktury. Fakturační profil může obsahovat více oddílů faktury.      |
-|Oddíl faktury     |   Představuje skupinu nákladů na faktuře. K oboru oddílu faktury jsou přidružená předplatná a další nákupy.    |
 
 ## <a name="understand-azure-cost-management"></a>Principy správy nákladů v Azure
 

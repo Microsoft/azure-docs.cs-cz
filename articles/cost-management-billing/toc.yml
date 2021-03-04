@@ -438,14 +438,6 @@
           href: manage/review-subscription-billing.md
         - name: Kontrola využití prostředků
           href: manage/review-service-usage-api.md
-    - name: Ukázky .NET
-      items:
-        - name: Vzorový kód pro rozhraní API pro faktury
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Vzorový kód pro rozhraní API služby Usage
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: Vzorový kód pro rozhraní API služby RateCard
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Cloudyn
   items:
     - name: Přehled

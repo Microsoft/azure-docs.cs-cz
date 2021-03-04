@@ -3,60 +3,84 @@ title: Synchronizovat obsah z cloudové složky
 description: Naučte se, jak nasadit aplikaci pro Azure App Service přes synchronizaci obsahu z cloudové složky, včetně OneDrivu nebo Dropboxu.
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/25/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bfee320c7a8b4cbe8439c376350d1234b393bfb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150290"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051213"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizovat obsah z cloudové složky do Azure App Service
 V tomto článku se dozvíte, jak synchronizovat obsah pro [Azure App Service](./overview.md) z Dropboxu a OneDrivu. 
 
-Nasazení synchronizace obsahu na vyžádání využívá [modul nasazení App Service Kudu](https://github.com/projectkudu/kudu/wiki). Můžete pracovat s kódem a obsahem vaší aplikace v určené složce cloudu a pak je synchronizovat s App Service pomocí kliknutí na tlačítko. Synchronizace obsahu používá server sestavení Kudu. 
+S přístupem k synchronizaci obsahu je vaše práce s kódem a obsahem vaší aplikace v určené složce cloudu, aby se zajistilo, že je ve stavu připraveno k nasazení, a pak se synchronizace s App Service po kliknutí na tlačítko. 
+
+**OneDrive pro firmy** se v tuto chvíli nepodporuje kvůli základním rozdílům v rozhraních API.
+
+> [!NOTE]
+> Stránka **centra pro vývoj (Classic)** v Azure Portal, což je staré prostředí pro nasazení, bude zastaralá v březnu 2021. Tato změna nebude mít vliv na žádná existující nastavení nasazení v aplikaci a můžete pokračovat ve správě nasazení aplikace na stránce **centra nasazení** .
 
 ## <a name="enable-content-sync-deployment"></a>Povolit nasazení synchronizace obsahu
 
-Pokud chcete povolit synchronizaci obsahu, přejděte na stránku aplikace App Service v [Azure Portal](https://portal.azure.com).
+1. V [Azure Portal](https://portal.azure.com)přejděte na stránku pro správu vaší aplikace App Service.
 
-V levé nabídce klikněte na **nasazení centra nasazení**  >  **OneDrive** nebo **Dropbox**  >  **autorizovat**. Postupujte podle výzev k autorizaci. 
+1. V nabídce vlevo klikněte na nastavení **centra nasazení**  >  . 
 
-![Ukazuje, jak autorizovat OneDrive nebo Dropbox v centru nasazení v Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
+1. Ve **zdroji** vyberte **OneDrive** nebo **Dropbox**.
 
-K OneDrivu nebo Dropboxu se stačí autorizovat jenom jednou. Pokud jste již autorizováni, stačí kliknout na tlačítko **pokračovat**. Autorizovaný účet OneDrive nebo Dropbox můžete změnit kliknutím na **změnit účet**.
+1. Klikněte na **autorizovat** a postupujte podle výzev k autorizaci. 
 
-![Ukazuje, jak změnit autorizovaný účet OneDrivu nebo Dropboxu v centru nasazení v Azure Portal.](media/app-service-deploy-content-sync/continue.png)
+    ![Ukazuje, jak autorizovat OneDrive nebo Dropbox v centru nasazení v Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
 
-Na stránce **Konfigurace** vyberte složku, kterou chcete synchronizovat. Tato složka se vytvoří pod následující určenou cestou k obsahu na OneDrivu nebo Dropboxu. 
+    Pro váš účet Azure se jenom dá autorizovat jenom pro OneDrive nebo Dropbox. Pokud chcete autorizovat jiný účet OneDrive nebo Dropbox pro aplikaci, klikněte na **změnit účet**.
+
+1. V části **Složka** vyberte složku, kterou chcete synchronizovat. Tato složka se vytvoří pod následující určenou cestou k obsahu na OneDrivu nebo Dropboxu. 
    
-* **OneDrive**: `Apps\Azure Web Apps`
-* **Dropbox**: `Apps\Azure`
-
-Po dokončení klikněte na **pokračovat**.
-
-Na stránce **Souhrn** ověřte své možnosti a klikněte na **Dokončit**.
+    * **OneDrive**: `Apps\Azure Web Apps`
+    * **Dropbox**: `Apps\Azure`
+    
+1. Klikněte na **Uložit**.
 
 ## <a name="synchronize-content"></a>Synchronizovat obsah
 
-Pokud chcete synchronizovat obsah ve složce cloudu pomocí App Service, vraťte se na stránku **centra nasazení** a klikněte na **synchronizovat**.
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-![Ukazuje, jak synchronizovat složku v cloudu s App Service.](media/app-service-deploy-content-sync/synchronize.png)
+1. V [Azure Portal](https://portal.azure.com)přejděte na stránku pro správu vaší aplikace App Service.
+
+1. V nabídce vlevo klikněte na **centrum nasazení**  >  **znovu nasadit/synchronizovat**. 
+
+    ![Ukazuje, jak synchronizovat složku v cloudu s App Service.](media/app-service-deploy-content-sync/synchronize.png)
    
-   > [!NOTE]
-   > **OneDrive pro firmy** se v tuto chvíli nepodporuje kvůli základním rozdílům v rozhraních API. 
-   > 
-   > 
+1. Kliknutím na **OK** potvrďte synchronizaci.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+Spusťte synchronizaci spuštěním následujícího příkazu a nahrazením \<group-name> a \<app-name> :
+
+```azurecli-interactive
+az webapp deployment source sync –-resource-group <group-name> –-name <app-name>
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Spusťte synchronizaci spuštěním následujícího příkazu a nahrazením \<group-name> a \<app-name> :
+
+```azurepowershell-interactive
+Invoke-AzureRmResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action sync -ApiVersion 2019-08-01 -Force –Verbose
+```
+
+-----
 
 ## <a name="disable-content-sync-deployment"></a>Zakázat nasazení synchronizace obsahu
 
-Pokud chcete zakázat synchronizaci obsahu, přejděte na stránku aplikace App Service v [Azure Portal](https://portal.azure.com).
+1. V [Azure Portal](https://portal.azure.com)přejděte na stránku pro správu vaší aplikace App Service.
 
-V nabídce vlevo klikněte na **centrum nasazení**  >  **Odpojit**.
+1. V nabídce vlevo klikněte na nastavení **centrum nasazení**  >    >  **Odpojit**. 
 
-![Ukazuje, jak odpojit svou cloudovou složku s vaší aplikací App Service v Azure Portal.](media/app-service-deploy-content-sync/disable.png)
+    ![Ukazuje, jak odpojit svou cloudovou složku s vaší aplikací App Service v Azure Portal.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

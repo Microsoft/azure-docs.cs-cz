@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854610"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051374"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -151,7 +151,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Machine Learning           | Ano                | Ano                | -                  |
 | Azure Machine Learning Studio (klasický) | Ano         | Verze Preview, RSA 2048-bit | -               |
 | Content Moderator                | Ano                | Ano                | -                  |
-| Tvář                             | Ano                | Ano                | -                  |
+| Rozpoznávání tváře                             | Ano                | Ano                | -                  |
 | Language Understanding           | Ano                | Ano                | -                  |
 | Personalizace                     | Ano                | Ano                | -                  |
 | QnA Maker                        | Ano                | Ano                | -                  |
@@ -175,7 +175,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtuální počítače                 | Ano                | Ano                | -                  |
+| Virtual Machines                 | Ano                | Ano                | -                  |
 | Sada škálování virtuálních počítačů        | Ano                | Ano                | -                  |
 | SAP HANA                         | Ano                | Ano                | -                  |
 | App Service                      | Ano                | Ano\*\*            | -                  |
@@ -199,8 +199,8 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Databricks                 | Ano                | Ano                | -                  |
 | Azure Database Migration Service | Ano                | NENÍ K DISPOZICI\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Ano                | -                  | Ano                |
-| Azure Repos                      | Ano                | -                  | Ano                |
+| Azure DevOps Services            | Ano                | -                  | -                  |
+| Azure Repos                      | Ano                | -                  | -                  |
 | **Identita**                     |                    |                    |                    |
 | Azure Active Directory           | Ano                | -                  | -                  |
 | Azure Active Directory Domain Services | Ano          | Ano                | -                  |

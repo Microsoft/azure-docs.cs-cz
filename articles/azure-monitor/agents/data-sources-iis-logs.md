@@ -1,17 +1,16 @@
 ---
 title: Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
 description: Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor.  Tento článek popisuje, jak nakonfigurovat kolekci protokolů služby IIS a podrobnosti o záznamech, které vytvoří v Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732050"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050728"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
 Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které může shromažďovat agent Log Analytics a které jsou uložené v [protokolech Azure monitor](../data-platform.md).
@@ -26,7 +25,7 @@ Azure Monitor shromažďuje záznamy ze souborů protokolu vytvořených službo
 
 Azure Monitor podporuje pouze soubory protokolů služby IIS uložené ve formátu W3C a nepodporuje vlastní pole ani rozšířené protokolování služby IIS. Protokoly ve formátu NCSA ani v nativním formátu služby IIS neshromažďuje.
 
-Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky Upřesnit nastavení](../agents/agent-data-sources.md#configuring-data-sources) pro agenta Log Analytics.  Není vyžadována žádná konfigurace kromě výběru možnosti **shromažďovat soubory protokolů IIS ve formátu W3C**.
+Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky konfigurace agenta](../agents/agent-data-sources.md#configuring-data-sources) pro agenta Log Analytics.  Není vyžadována žádná konfigurace kromě výběru možnosti **shromažďovat soubory protokolů IIS ve formátu W3C**.
 
 
 ## <a name="data-collection"></a>Shromažďování dat

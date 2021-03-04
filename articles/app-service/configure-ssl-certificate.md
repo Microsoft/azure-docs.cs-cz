@@ -3,15 +3,15 @@ title: Přidání a Správa certifikátů TLS/SSL
 description: Vytvořte si bezplatný certifikát, importujte certifikát App Service, importujte certifikát Key Vault nebo si kupte certifikát App Service v Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711701"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051340"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -26,7 +26,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 
 |Možnost|Popis|
 |-|-|
-| Vytvoření bezplatného App Service spravovaného certifikátu (Preview) | Privátní certifikát, který se dá snadno použít, pokud potřebujete zabezpečit svoji `www` [vlastní doménu](app-service-web-tutorial-custom-domain.md) nebo jakoukoli doménu, která není v App Service. |
+| Vytvoření bezplatného App Service spravovaného certifikátu (Preview) | Soukromý certifikát, který je zdarma a který je snadno použitelný, pokud potřebujete zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) v App Service. |
 | Koupit certifikát App Service | Privátní certifikát, který spravuje Azure. Kombinuje jednoduchost automatizované správy certifikátů a flexibility možností obnovení a exportu. |
 | Importovat certifikát z Key Vault | Užitečné v případě, že ke správě [certifikátů PKCS12](https://wikipedia.org/wiki/PKCS_12)používáte [Azure Key Vault](../key-vault/index.yml) . Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
@@ -34,19 +34,17 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postup při použití tohoto průvodce:
-
 - [Vytvořte aplikaci App Service](./index.yml).
-- Jenom bezplatný certifikát: namapujte subdoménu (například `www.contoso.com` ) na App Service se [záznamem CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
+- U privátního certifikátu se ujistěte, že splňuje všechny [požadavky od App Service](#private-certificate-requirements).
+- **Jenom bezplatný certifikát**:
+    - Namapujte doménu, pro kterou chcete vyApp Service certifikát. Informace najdete v tématu [kurz: Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md).
+    - V případě kořenové domény (jako je contoso.com) se ujistěte, že vaše aplikace nemá nakonfigurovaná žádná [omezení IP adres](app-service-ip-restrictions.md) . Vytvoření certifikátu i jeho pravidelné obnovení pro kořenovou doménu závisí na vaší aplikaci, která je dostupná z Internetu.
 
 ## <a name="private-certificate-requirements"></a>Požadavky na privátní certifikát
 
-> [!NOTE]
-> Azure **Web Apps nepodporuje AES256** a všechny soubory PFX by měly být zašifrované pomocí TripleDES.
+[Bezplatný App Service spravovaný certifikát](#create-a-free-managed-certificate-preview) a [certifikát App Service](#import-an-app-service-certificate) již splňují požadavky App Service. Pokud se rozhodnete odeslat nebo importovat privátní certifikát do App Service, musí váš certifikát splňovat následující požadavky:
 
-[Bezplatný App Service spravovaný certifikát](#create-a-free-certificate-preview) nebo [certifikát App Service](#import-an-app-service-certificate) již splňuje požadavky App Service. Pokud se rozhodnete odeslat nebo importovat privátní certifikát do App Service, musí váš certifikát splňovat následující požadavky:
-
-* Exportováno jako [soubor PFX chráněný heslem](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
+* Exportováno jako [soubor PFX chráněný heslem](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)zašifrovaný pomocí algoritmu Triple DES.
 * Obsahuje privátní klíč dlouhý alespoň 2 048 bitů
 * Obsahuje v řetězu certifikátů všechny zprostředkující certifikáty
 
@@ -60,21 +58,21 @@ K zabezpečení vlastní domény ve vazbě TLS má certifikát další požadavk
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Vytvoření bezplatného certifikátu (Preview)
+## <a name="create-a-free-managed-certificate-preview"></a>Vytvoření bezplatného spravovaného certifikátu (Preview)
+
+> [!NOTE]
+> Před vytvořením bezplatného spravovaného certifikátu ověřte, že jste [splnili požadavky](#prerequisites) na aplikaci.
 
 Bezplatný App Service spravovaný certifikát představuje řešení pro zabezpečení vlastního názvu DNS v App Service. Jedná se o plně funkční certifikát TLS/SSL, který se spravuje App Service a automaticky se obnoví. Bezplatný certifikát přináší následující omezení:
 
 - Nepodporuje certifikáty se zástupnými znaky.
-- Nepodporuje holé domény.
 - Nelze exportovat.
-- Není podporován v App Service Environment (pomocného mechanismu)
-- Nepodporuje záznamy. Automatické obnovování například nefunguje se záznamy.
+- Není podporován v App Service Environment (pomocného mechanismu).
+- Není podporován u kořenových domén, které jsou integrovány s Traffic Manager.
 
 > [!NOTE]
 > Bezplatný certifikát vystaví DigiCert. U některých domén nejvyšší úrovně musíte explicitně dovolit DigiCert jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue digicert.com` .
 > 
-
-Chcete-li vytvořit bezplatný App Service spravovaný certifikát:
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
@@ -82,7 +80,7 @@ V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**  >  **certi
 
 ![Vytvoření bezplatného certifikátu v App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
-Všechny neholé domény, které jsou správně namapované na vaši aplikaci s použitím záznamu CNAME, se zobrazí v dialogovém okně. Vyberte vlastní doménu, pro kterou chcete vytvořit bezplatný certifikát, a vyberte **vytvořit**. Pro každou podporovanou vlastní doménu můžete vytvořit jenom jeden certifikát.
+Vyberte vlastní doménu, pro kterou chcete vytvořit bezplatný certifikát, a vyberte **vytvořit**. Pro každou podporovanou vlastní doménu můžete vytvořit jenom jeden certifikát.
 
 Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátního klíče** .
 

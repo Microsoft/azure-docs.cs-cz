@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705088"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051612"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,10 +31,28 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
+- [Doporučení od AWS se uvolní pro obecnou dostupnost (GA).](#recommendations-from-aws-will-be-released-for-general-availability-ga)
 - [Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure.](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - [Vyřazení 11 výstrah v programu Azure Defender jako vyřazení](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Doporučení od AWS se uvolní pro obecnou dostupnost (GA).
+
+**Odhadované datum změny:** Duben 2021
+
+Azure Security Center chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
+
+Doporučení přicházející z centra zabezpečení AWS byla ve verzi Preview, protože cloudové konektory byly zavedeny. Doporučení označená jako ve **verzi Preview** nejsou zahrnutá do výpočtů vašeho zabezpečeného skóre, ale je potřeba je pořád opravit, kdykoli to bude možné, takže až skončí období Preview, přispěje k vašemu skóre.
+
+V této změně se dvě sady doporučení AWS přesunou na GA:
+
+- [PCI DSS ovládací prvky centra zabezpečení](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Řízení srovnávacích standardů AWS Foundation centra zabezpečení](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+Pokud jsou to GA a posouzení se spouští na vašich AWSch prostředcích, výsledky budou mít vliv na vaše kombinované zabezpečené skóre pro všechny vaše hybridní a hybridní cloudové prostředky. 
+
 
 
 ### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure. 
@@ -53,7 +71,7 @@ Pokud jste přistupovali k informacím o těchto dvou doporučeních v kategorii
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému. 
 
-**Odhadované datum změny:** Únor 2021
+**Odhadované datum změny:** Březen 2021
 
 Následující dvě doporučení se naplánují jako zastaralá v únoru 2021:
 
@@ -69,7 +87,7 @@ Další informace o těchto doporučeních najdete na [referenční stránce dop
 
 **Odhadované datum změny:** Q2 2021
 
-Doporučení **citlivá data v databázích SQL by měla být klasifikována** v části použít bezpečnostní ovládací prvek zabezpečení **klasifikace dat** , bude nahrazena novou verzí, která je lépe zarovnána s strategií klasifikace dat společnosti Microsoft. V důsledku toho se změní i ID doporučení (aktuálně se b0df6f56-862d-4730-8597-38c0fd4ebd59).
+Doporučení **citlivá data v databázích SQL by měla být klasifikována** v části použít bezpečnostní ovládací prvek zabezpečení **klasifikace dat** , bude nahrazena novou verzí, která je lépe zarovnána s strategií klasifikace dat společnosti Microsoft. V důsledku toho se změní i ID doporučení (aktuálně se jedná o b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
 
 ### <a name="deprecation-of-11-azure-defender-alerts"></a>Vyřazení 11 výstrah v programu Azure Defender jako vyřazení

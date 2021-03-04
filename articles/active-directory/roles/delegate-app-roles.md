@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071256"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051187"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -77,7 +77,7 @@ Azure AD obsahuje sadu předdefinovaných rolí správce pro udělení přístup
 - Správce aplikace: uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací s výjimkou Microsoft Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 - Správce cloudové aplikace: uživatelé v této roli mají stejná oprávnění jako role správce aplikace, kromě možnosti spravovat proxy aplikace. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
-Další informace a zobrazení popisu těchto rolí najdete v tématu [dostupné role](permissions-reference.md#available-roles).
+Další informace a zobrazení popisu těchto rolí najdete v tématu [předdefinované role Azure AD](permissions-reference.md).
 
 Postupujte podle pokynů v tématu [přiřazení rolí uživatelům pomocí průvodce Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) , abyste přiřadili role správce aplikace nebo správce cloudové aplikace.
 

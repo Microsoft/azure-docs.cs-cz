@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 02/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699245"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050388"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -113,9 +113,11 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 [Azure Policy](../../governance/policy/index.yml):
 
 - Vytvoření a úprava definic zásad v rámci delegovaných předplatných
+- Nasazení definic zásad a přiřazení zásad napříč více klienty
 - Přiřazení definic zásad definovaných uživatelem v rámci delegovaných předplatných
 - Zákazníci uvidí zásady vytvořené poskytovatelem služeb společně se všemi zásadami, které sami vytvořily.
 - Může [napravit deployIfNotExists nebo upravit přiřazení v rámci spravovaného tenanta](../how-to/deploy-policy-remediation.md) .
+- Všimněte si, že zobrazení podrobností o dodržování předpisů u nekompatibilních prostředků v klientech zákazníka není aktuálně podporováno.
 
 [Graf prostředků Azure](../../governance/resource-graph/index.yml):
 

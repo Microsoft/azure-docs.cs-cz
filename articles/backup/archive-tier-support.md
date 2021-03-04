@@ -3,12 +3,12 @@ title: Podpora archivní úrovně (Preview)
 description: Další informace o podpoře vrstev archivů pro Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: cd9cfc5722dc644dd257738be797f162ac6dc995
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30a7915332d1d7ecab87b0db1ddc6dacc0fa69c9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744957"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050604"
 ---
 # <a name="archive-tier-support-preview"></a>Podpora archivní úrovně (Preview)
 
@@ -35,6 +35,9 @@ Podporovaní klienti:
 
 - Tato funkce je k dispozici v prostředí PowerShell.
 
+>[!NOTE]
+>Podpora archivní vrstvy pro virtuální počítače Azure a SQL Server ve virtuálních počítačích Azure je ve verzi Public Preview s omezeným zápisem. Pokud se chcete zaregistrovat ke službě Archive support, použijte tento [odkaz](https://aka.ms/ArchivePreviewInterestForm).
+
 ## <a name="get-started-with-powershell"></a>Začínáme s PowerShellem
 
 1. Stáhněte si [nejnovější modul PowerShellu](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (Preview).
@@ -43,12 +46,30 @@ Podporovaní klienti:
 
    `Set-AzContext -Subscription "SubscriptionName"`
 
+1. Získat trezor:
+
+    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+
+1. Získat seznam zálohovaných položek:
+
+    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+
+1. Získat zálohovanou položku
+
+    - Pro virtuální počítače Azure:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
+
+    - Pro SQL Server ve virtuálních počítačích Azure:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>Kontrolovat archivní body obnovení
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
 Zobrazí se seznam všech bodů obnovení přidružených ke konkrétní zálohované položce, které jsou připraveny k přesunu do archivu.
@@ -56,7 +77,7 @@ Zobrazí se seznam všech bodů obnovení přidružených ke konkrétní záloho
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Zjistit, proč nelze přesunout bod obnovení do archivu
 
 ```azurepowershell
-$rp.RecoveryPointMoveReadinessInfo["ArchivedRP"]
+$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
 Kde `$rp[0]` je bod obnovení, pro který chcete zjistit, proč nelze archivovat.
@@ -79,13 +100,13 @@ Takže Azure Backup se zavedla s doporučovanou sadou bodů obnovení, které by
 >Úspora nákladů závisí na nejrůznějších důvodech a nemusí být stejná pro všechny dvě instance.
 
 ```azurepowershell
-$recommendedRPs = SGet-AzRecoveryServicesRecommendedArchivableRPGroup -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID 
+$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
 ```
 
 ### <a name="move-to-archive"></a>Přesunout do archivu
 
 ```azurepowershell
-Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $RecoveryPoint[10] -SourceTier VaultStandard -DestinationTier VaultArchive 
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
 
 Tento příkaz přesune archivní bod obnovení do archivní. Vrátí úlohu, kterou lze použít ke sledování operace přesunutí z portálu i pomocí prostředí PowerShell.
@@ -95,7 +116,7 @@ Tento příkaz přesune archivní bod obnovení do archivní. Vrátí úlohu, kt
 Tento příkaz vrátí všechny archivované body obnovení.
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
 ```
 
 ### <a name="restore-with-powershell"></a>Obnovení pomocí PowerShellu
@@ -122,7 +143,7 @@ Chcete-li obnovit SQL Server, postupujte podle [těchto kroků](backup-azure-sql
 Chcete-li zobrazit úlohy přesunutí a obnovení, použijte následující rutinu prostředí PowerShell:
 
 ```azurepowershell
-Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
 
 ## <a name="use-the-portal"></a>Použití portálu

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bbcfe4935843a00bc5274273e79f4ffc72dc25ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895286"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051051"
 ---
 # <a name="add-controls-to-a-map"></a>Přidání ovládacích prvků do mapy
 
@@ -58,11 +58,11 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="add-compass-control"></a>Přidat ovládací prvek kompas
 
-Ovládací prvek kompas přidá tlačítko pro otočení mapy. Následující ukázka kódu vytvoří instanci třídy [ovládacího prvku kompas](/javascript/api/azure-maps-control/atlas.control.compasscontrol) a přidá ji do levého dolního rohu mapy.
+Ovládací prvek kompas přidá tlačítko pro otočení mapy. Následující ukázka kódu vytvoří instanci třídy [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) a přidá ji do levého dolního rohu mapy.
 
 ```javascript
 //Construct a compass control and add it to the map.
-map.controls.add(new atlas.control.Compass(), {
+map.controls.add(new atlas.control.CompassControl(), {
     position: 'bottom-left'
 });
 ```

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c2daed4a8df89ed176749900dc75eb231c00af87
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049266"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
@@ -28,7 +28,7 @@ Přehled informací o Azure Key Vault najdete v tématu [co je Azure Key Vault?]
 
 Přehled informací o šifrování na straně klienta pro Azure Storage najdete v tématu [šifrování na straně klienta a Azure Key Vault Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -90,6 +90,12 @@ Přidat AppSettings do App.Config.
 
 Přidejte následující `using` direktivy a nezapomeňte přidat odkaz na System.Configuration do projektu.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
@@ -101,10 +107,17 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Přidejte metodu pro získání tokenu do konzolové aplikace.
 
 Následující metodu používá Key Vault třídy, které se musí ověřit pro přístup k trezoru klíčů.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -121,10 +134,17 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Přístup k Azure Storage a Key Vault v programu
 
 V metodě Main () přidejte následující kód.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -141,6 +161,7 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+---
 
 > [!NOTE]
 > Modely Key Vault objektů
@@ -156,6 +177,12 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ## <a name="encrypt-blob-and-upload"></a>Šifrování a nahrání objektů BLOB
 
 Přidejte následující kód k zašifrování objektu BLOB a nahrajte ho do svého účtu úložiště Azure. Použitá metoda **ResolveKeyAsync** vrací IKey.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -175,9 +202,11 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+---
 
 > [!NOTE]
 > Pokud se podíváte na konstruktor BlobEncryptionPolicy, uvidíte, že může přijmout klíč nebo překladač. Mějte na paměti, že teď nemůžete použít překladač pro šifrování, protože v současné době nepodporuje výchozí klíč.
+
 
 ## <a name="decrypt-blob-and-download"></a>Dešifrovat objekt BLOB a stáhnout
 
@@ -186,6 +215,12 @@ Dešifrování je ve skutečnosti vhodné při použití tříd překladače. ID
 Privátní klíč klíče RSA zůstává v Key Vault, takže pokud k tomu dojde, zašifrované klíče z metadat objektů blob, které obsahují CEK, se odešlou Key Vault k dešifrování.
 
 K dešifrování objektu blob, který jste právě Nahráli, přidejte následující.
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -196,6 +231,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+---
 
 > [!NOTE]
 > Existuje několik dalších druhů překladačů, které usnadňují správu klíčů, mezi které patří: AggregateKeyResolver a CachingKeyResolver.
@@ -226,13 +262,18 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 V konzolové aplikaci můžete použít stejné volání jako předtím k načtení tohoto tajného klíče jako SymmetricKey.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+V současné době pracujeme na vytváření fragmentů kódu, které reflektují verze 12. x Azure Storage klientských knihoven. Další informace najdete v tématu [oznamujeme Azure Storage klientské knihovny V12](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-
-Hotovo. Užijte si ji!
+---
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586265"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049232"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -23,7 +23,7 @@ Tento článek používá [Azure Portal](https://portal.azure.com) a Azure CLI p
 >
 >
 
-|Typ|Platforma|Umístění|Description|
+|Typ|Platforma|Umístění|Popis|
 |-|-|-|-|
 | Protokolování aplikací | Windows, Linux | App Service objekty blob systému souborů nebo Azure Storage | Protokoluje zprávy vygenerované kódem vaší aplikace. Zprávy mohou být generovány webovým rozhraním, které si zvolíte, nebo z kódu vaší aplikace přímo pomocí standardního vzoru protokolování vašeho jazyka. Každé zprávě je přiřazena jedna z následujících kategorií: **kritická**, **Chyba**, **Upozornění**, **informace**, **ladění** a **trasování**. Pokud povolíte protokolování aplikací, můžete vybrat, jak chcete, aby protokolování bylo, nastavením úrovně závažnosti.|
 | Protokolování webového serveru| Windows | App Service nebo objekty blob Azure Storage systému souborů| Nezpracovaná data požadavku HTTP ve [formátu W3C Extended](/windows/desktop/Http/w3c-logging). Každá zpráva protokolu obsahuje data, jako je například metoda HTTP, identifikátor URI prostředku, IP adresa klienta, port klienta, uživatelský agent, kód odpovědi atd. |
@@ -108,15 +108,15 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Ve výchozím nastavení používá ASP.NET Core poskytovatele protokolování [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging/).
+- Ve výchozím nastavení používá ASP.NET Core poskytovatele protokolování [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging/). Informace o protokolování služby WebJobs SDK najdete v tématu [Začínáme s Azure WEBJOBS SDK](/azure/app-service/webjobs-sdk-get-started#enable-console-logging) .
 
 ## <a name="stream-logs"></a>Protokoly datových proudů
 
@@ -138,12 +138,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -166,7 +166,7 @@ Pro aplikace Linux/kontejner obsahuje soubor ZIP protokoly výstupu konzoly host
 
 V případě aplikací pro Windows soubor ZIP obsahuje obsah adresáře *D:\Home\LogFiles* v systému souborů App Service. Má následující strukturu:
 
-| Typ protokolu | Adresář | Description |
+| Typ protokolu | Adresář | Popis |
 |-|-|-|
 | **Protokoly aplikací** |*/LogFiles/Application/* | Obsahuje jeden nebo více textových souborů. Formát zpráv protokolu závisí na poskytovateli protokolování, který používáte. |
 | **Trasování chybných žádostí** | */LogFiles/W3SVC#########/* | Obsahuje soubory XML a soubor XSL. Formátované soubory XML můžete zobrazit v prohlížeči. |
@@ -185,17 +185,17 @@ S novou [integrací Azure monitor](https://aka.ms/appsvcblog-azmon)můžete [vyt
 
 Následující tabulka uvádí podporované typy a popisy protokolů: 
 
-| Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Description |
+| Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Popis |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & Tomcat | Yes | Yes | Yes | Standardní výstup a standardní chyba |
-| AppServiceHTTPLogs | Yes | Yes | Yes | Yes | Protokoly webového serveru |
-| AppServiceEnvironmentPlatformLogs | Yes | Není k dispozici | Ano | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
-| AppServiceAuditLogs | Yes | Yes | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | Yes | Yes | TBA | TBA | Změny souborů provedené v obsahu webu; **dostupné jenom pro úroveň Premium a vyšší** |
+| AppServiceConsoleLogs | Java SE & Tomcat | Ano | Ano | Ano | Standardní výstup a standardní chyba |
+| AppServiceHTTPLogs | Ano | Ano | Ano | Ano | Protokoly webového serveru |
+| AppServiceEnvironmentPlatformLogs | Ano | Není k dispozici | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
+| AppServiceAuditLogs | Ano | Ano | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | Ano | Ano | TBA | TBA | Změny souborů provedené v obsahu webu; **dostupné jenom pro úroveň Premium a vyšší** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Protokoly aplikací |
-| AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | Žádosti z pravidel IP adres |
-| AppServicePlatformLogs  | TBA | Yes | Yes | Yes | Protokoly operací kontejneru |
-| AppServiceAntivirusScanAuditLogs | Yes | Yes | Yes | Yes | [Protokoly kontroly](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) antivirového programu pomocí programu Microsoft Defender; **dostupné jenom pro úroveň Premium** | 
+| AppServiceIPSecAuditLogs  | Ano | Ano | Ano | Ano | Žádosti z pravidel IP adres |
+| AppServicePlatformLogs  | TBA | Ano | Ano | Ano | Protokoly operací kontejneru |
+| AppServiceAntivirusScanAuditLogs | Ano | Ano | Ano | Ano | [Protokoly kontroly](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) antivirového programu pomocí programu Microsoft Defender; **dostupné jenom pro úroveň Premium** | 
 
 <sup>1</sup> pro aplikace Java se do nastavení aplikace přidejte $website _AZMON_PREVIEW_ENABLED a nastavte ji na 1 nebo true.
 

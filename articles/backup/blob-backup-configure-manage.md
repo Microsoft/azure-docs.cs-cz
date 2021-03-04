@@ -3,12 +3,12 @@ title: Konfigurace operačního zálohování pro objekty blob Azure
 description: Přečtěte si, jak nakonfigurovat a spravovat provozní zálohu pro objekty blob Azure (ve verzi Preview).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7fe302de0e93575e7bb62f7c5cdefd7acc0720c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0dc490842389ba9286799aef5d37c1cf7c1ba64e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744908"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051068"
 ---
 # <a name="configure-operational-backup-for-azure-blobs-in-preview"></a>Konfigurace operačního zálohování pro objekty blob Azure (ve verzi Preview)
 
@@ -170,4 +170,4 @@ Další informace najdete v tématu [Přehled služby Backup Center (Preview)](b
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovení objektů blob Azure](blob-backup-support-matrix.md)
+- [Obnovení objektů blob Azure](blob-restore.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: aa44a27fa5bf6b7b4ea649e1a9b9a69ef8cd78d3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422446"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049317"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -63,7 +63,7 @@ V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Za
 
 Existují dva způsoby [vyhledávání v indexu pomocí REST API](/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
-Pro POST i GET musíte zadat *název služby* , *název indexu* a *verzi rozhraní API* v adrese URL požadavku. 
+Pro POST i GET musíte zadat *název služby*, *název indexu* a *verzi rozhraní API* v adrese URL požadavku. 
 
 U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
 
@@ -75,12 +75,14 @@ Formát pro POST je stejný, ale `api-version` v parametrech řetězce dotazu.
 
 ## <a name="pulling-data-into-an-index"></a>Přetáhnutí dat do indexu
 
-Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do vašeho indexu. V Azure Kognitivní hledání je tato schopnost implementovaná prostřednictvím *indexerů* , které jsou aktuálně dostupné pro tyto platformy:
+Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do vašeho indexu. V Azure Kognitivní hledání je tato schopnost implementovaná prostřednictvím *indexerů*, které jsou aktuálně dostupné pro tyto platformy:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, spravovaná instance SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SharePoint Online (Preview)](search-howto-index-sharepoint-online.md)
++ [Azure Data Lake Storage Gen2 (Preview)](search-howto-index-azure-data-lake-storage.md)
 
 Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu.
 

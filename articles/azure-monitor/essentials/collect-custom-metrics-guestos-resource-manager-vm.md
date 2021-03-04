@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.subservice: metrics
-ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731710"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049011"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro virtuální počítač s Windows
 Údaje o výkonu z hostovaného operačního systému virtuálních počítačů Azure se neshromažďují automaticky jako jiné [metriky platforem](./monitor-azure-resource.md#monitoring-data). Nainstalujte rozšíření Azure Monitor [Diagnostics](../agents/diagnostics-extension-overview.md) , které shromáždí metriky operačního systému hosta do databáze metrik, takže se dá použít se všemi funkcemi Azure monitor metrik, včetně výstrah v reálném čase, vytváření grafů, směrování a přístupu z REST API. Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do databáze metrik pomocí šablony Správce prostředků. 

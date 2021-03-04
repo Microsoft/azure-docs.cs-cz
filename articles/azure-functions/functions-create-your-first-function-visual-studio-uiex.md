@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb3ba4ad49cc78b6082d347521cd87be5409cd34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748541"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050116"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
 
@@ -27,9 +27,10 @@ Po dokončení tohoto rychlého startu dojde k malým nákladům na několik cen
 
 ![Instalace sady Visual Studio pomocí úlohy vývoj pro Azure](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
+<br/>
 <details>
-<summary>Místo toho použít Azure Functions projekt</summary>
-Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jednotlivých funkcí, které lze nasadit a spravovat společně. "> Azure Functions projekt</abbr> pomocí sady Visual Studio 2017 je třeba nejprve nainstalovat [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
+<summary><strong>Místo toho použít Azure Functions projekt</strong></summary>
+Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jednotlivých funkcí, které lze nasadit a spravovat společně.">Azure Functions projekt</abbr> pomocí sady Visual Studio 2017 je třeba nejprve nainstalovat [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
 </details>
 
 ## <a name="2-create-a-function-app-project"></a>2. vytvoření projektu Function App
@@ -42,13 +43,13 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
 1. Pro **Vytvoření nového Azure Functions nastavení aplikace** zadejte následující informace:
 
-    + Když vyberete **<abbr title=" tuto hodnotu, vytvoří se projekt funkce, který používá modul runtime verze 3. x Azure Functions, který podporuje .NET Core 3. x. Azure Functions 1. x podporuje .NET Framework. Další informace najdete v tématu [Přehled verzí modulu runtime Azure Functions](functions-versions.md). "> Azure Functions V3 (.NET Core) </abbr>** z rozevíracího seznamu Functions runtime
+    + Když vyberete **<abbr title=" tuto hodnotu, vytvoří se projekt funkce, který používá modul runtime verze 3. x Azure Functions, který podporuje .NET Core 3. x. Azure Functions 1. x podporuje .NET Framework. "> Azure Functions V3 (.NET Core) </abbr>** z rozevíracího seznamu Functions runtime. (Další informace najdete v tématu [Přehled verzí modulu runtime Azure Functions](functions-versions.md).)
     
     + Výběrem **<abbr title=" této hodnoty se vytvoří funkce aktivovaná požadavkem http. "> Aktivační procedura </abbr> http** jako šablona funkce
     
-    + Vyberte **<abbr = ", protože funkce Azure vyžaduje účet úložiště, jedna je přiřazená nebo vytvořená při publikování projektu do Azure. Aktivační událost protokolu HTTP nepoužívá připojovací řetězec Azure Storage účtu; všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu Azure Storage. >emulátor </abbr> úložiště** z rozevíracího seznamu účtu úložiště.
+    + Vyberte **<abbr title=" , protože funkce Azure vyžaduje účet úložiště, při publikování projektu do Azure se přiřadí nebo vytvoří. Aktivační událost protokolu HTTP nepoužívá připojovací řetězec Azure Storage účtu; všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu Azure Storage. "> Emulátor </abbr> úložiště** z rozevíracího seznamu účtu úložiště
         
-    + Vyberte možnost **anonymní** z <abbr title="Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizaci najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys) a [vazby HTTP a Webhooku](functions-bindings-http-webhook.md).">Úroveň autorizace</abbr> rozevírací
+    + Vyberte možnost **anonymní** z <abbr title="Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí.">Úroveň autorizace</abbr> rozevírací. (Další informace o klíčích a autorizaci najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys) a [vazby HTTP a Webhooku](functions-bindings-http-webhook.md).)
 
     + Vyberte **Vytvořit**.
         
@@ -77,8 +78,9 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
 1. Pokud chcete zastavit ladění, stiskněte <kbd>SHIFT</kbd> + <kbd>F5</kbd> v aplikaci Visual Studio.
 
+<br/>
 <details>
-<summary>Řešení potíží</summary>
+<summary><strong>Řešení potíží</strong></summary>
  Možná budete muset povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP. Při místním spuštění funkce se nikdy neuplatní úrovně autorizace.
 </details>
 
@@ -102,7 +104,7 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
     
     + **Vybrat** existující <abbr title="Logický kontejner pro související prostředky Azure, které můžete spravovat jako jednotku.">skupina prostředků</abbr> v rozevíracím seznamu nebo vyberte možnost **nové** a vytvořte novou skupinu prostředků.
     
-    + **Výběr** <abbr title="Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](consumption-plan.md), platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady.">Využití</abbr> v rozevíracím seznamu typ přehrávání
+    + **Výběr** <abbr title="Když publikujete projekt do aplikace Function App, která běží v plánu spotřeby, platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady.">Využití</abbr> v rozevíracím seznamu typ přehrávání. (Další informace najdete v tématu [plán spotřeby](consumption-plan.md).)
     
     + **Vyberte**  <abbr title="Zeměpisná reference na konkrétní datacentrum Azure, ve kterém jsou prostředky přiděleny. Seznam oblastí, které jsou k dispozici, najdete v části [oblasti](https://azure.microsoft.com/regions/) .">location</abbr> z rozevíracího seznamu.
     
@@ -116,8 +118,9 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Dokončit vytvoření profilu":::
 
+    <br/>
     <details>
-    <summary>Co toto nastavení dělá?</summary>
+    <summary><strong>Co toto nastavení dělá?</strong></summary>
     Při použití rutiny **Run ze souboru balíčku** je aplikace Function App nasazena pomocí nástroje [zip Deploy](functions-deployment-technologies.md#zip-deploy) s povoleným režimem [spuštění z balíčku](run-functions-from-deployment-package.md) . Toto je doporučená metoda nasazení pro váš projekt Functions, protože má za následek lepší výkon.    
     </details>   
 
@@ -127,14 +130,14 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
 1. Na stránce Publikovat zkontrolujte kořenovou adresu URL aplikace Function App.
 
-1. Na kartě publikovat vyberte v **<abbr title=" Průzkumníku cloudu možnost spravovat, abyste mohli zobrazit obsah webu, spustit a zastavit aplikaci Function App a přejít přímo na prostředky aplikace Function App v Azure a v Azure Portal. "> Průzkumník cloudu</>**.
+1. Na kartě publikovat vyberte v **<abbr title=" Průzkumníku cloudu možnost spravovat, abyste mohli zobrazit obsah webu, spustit a zastavit aplikaci Function App a přejít přímo na prostředky aplikace Function App v Azure a v Azure Portal. "> </abbr>Průzkumník cloudu**
     
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Zpráva o úspěšném publikování":::
     
 
 ## <a name="6-test-your-function-in-azure"></a>6. otestujte funkci v Azure
 
-1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services** a vyberte svou novou aplikaci Function App.
+1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné, rozbalte **App Services** a vyberte svou novou aplikaci Function App.
 
 1. Klikněte pravým tlačítkem na aplikaci Function App a vyberte **otevřít v prohlížeči**. Tím se otevře kořen vaší aplikace Function App ve výchozím webovém prohlížeči a zobrazí se stránka, která indikuje, že je spuštěná vaše aplikace Function App. 
 
@@ -154,7 +157,7 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
 Odstraňte aplikaci funkcí a její prostředky, abyste se vyhnuli dalším nákladům.
 
-1. V Průzkumníku cloudu rozbalte své předplatné > **App Services**, klikněte pravým tlačítkem myši na svou aplikaci Function App a vyberte **otevřít na portálu**. 
+1. V Průzkumníku cloudu rozbalte své předplatné, rozbalte **App Services**, klikněte pravým tlačítkem myši na svou aplikaci Function App a vyberte **otevřít na portálu**. 
 
 1. Na stránce Function App vyberte kartu **Přehled** a potom vyberte odkaz v části **Skupina prostředků**.
 
