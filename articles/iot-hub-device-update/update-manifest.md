@@ -1,17 +1,17 @@
 ---
 title: Aktualizace zařízení pro IoT Hub manifest aktualizace | Microsoft Docs
 description: Informace o tom, jak se během aktualizace odesílají do zařízení vlastnosti ze služby aktualizace zařízení
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ea438a4a8db8dce9cf2acb0b5b3ff4e250c3cf39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: bbd39f7752a1a482350a7231a0bb5a3710591b1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662514"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030677"
 ---
 # <a name="device-update-for-iot-hub-update-manifest"></a>Aktualizace zařízení pro IoT Hub manifest aktualizace
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762923"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031697"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -238,10 +238,10 @@ Mějte na paměti, že musíte mít přiřazenou roli **přispěvatele** Azure R
 
 Následující tabulka shrnuje, které hodnoty se mají použít pro ID zásad a ID pravidel v souboru JSON v jednotlivých scénářích.
 
-| Při vytváření souboru JSON pro tento účet... | Pro tuto hodnotu nastavte ID zásad a ID... |
-|-|-|
-| Cílový účet | Hodnota řetězce je *výchozí*. Azure Storage pro vás vytvoří ID zásad a ID pravidel. |
-| Zdrojový účet | Hodnoty ID zásad a identifikátorů pravidel vrácených při stažení zásad definovaných v cílovém účtu jako soubor JSON. |
+| Při vytváření souboru JSON pro tento účet... | Nastavit ID zásad na tuto hodnotu | Nastavte ID pravidel na tuto hodnotu. |
+|-|-|-|
+| Cílový účet | Hodnota řetězce je *výchozí*. Azure Storage vytvoří hodnotu ID zásad za vás. | Prázdný řetězec. Azure Storage vytvoří hodnoty ID pravidla za vás. |
+| Zdrojový účet | Hodnota ID zásad vracené při stažení zásady definované v cílovém účtu jako soubor JSON. | Hodnoty identifikátorů pravidel vrácených při stažení zásad definovaných v cílovém účtu jako soubor JSON. |
 
 Následující příklad definuje zásadu replikace v cílovém účtu s jedním pravidlem, které odpovídá předponě *b* , a nastavuje minimální dobu vytváření objektů blob, které se mají replikovat. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -253,7 +253,7 @@ Následující příklad definuje zásadu replikace v cílovém účtu s jedním
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ Následující příklad definuje zásadu replikace v cílovém účtu s jedním
 
 Při konfiguraci replikace objektů na cílovém účtu se souborem JSON v Azure Portal postupujte takto:
 
-1. Vytvořte místní soubor JSON, který definuje zásadu replikace v cílovém účtu. Nastavte pole **policyId** na **výchozí** hodnotu, aby Azure Storage definovat ID zásad.
+1. Vytvořte místní soubor JSON, který definuje zásadu replikace v cílovém účtu. Nastavte pole **policyId** na *výchozí* hodnotu, aby Azure Storage definovat ID zásad.
 
     Snadný způsob, jak vytvořit soubor JSON, který definuje zásadu replikace, je nejdříve vytvořit zásadu pro replikaci testů mezi dvěma účty úložiště v Azure Portal. Pak můžete stáhnout pravidla replikace a podle potřeby upravit soubor JSON.
 

@@ -1,17 +1,17 @@
 ---
 title: Import nové aktualizace | Microsoft Docs
 description: Průvodce How-To pro import nové aktualizace do IoT Hub aktualizace zařízení pro IoT Hub.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662517"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030728"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub.
@@ -53,7 +53,7 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Tady jsou některé příklady hodnot výše uvedených parametrů pro rychlé odkazy. Úplnou dokumentaci najdete v úplném schématu importu manifestu níže.
+    Tady jsou některé příklady hodnot výše uvedených parametrů pro rychlé odkazy. Další podrobnosti můžete zobrazit také v úplném [schématu importu manifestu](import-schema.md) .
 
     | Parametr | Popis |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
     | installedCriteria | <ul><li>Zadejte hodnotu SWVersion pro `microsoft/swupdate:1` typ aktualizace.</li><li>Zadejte doporučenou hodnotu pro `microsoft/apt:1` typ aktualizace.
     | updateFilePath (celkem) | Cesta k souborům aktualizací v počítači
 
-    Schéma manifestu úplného importu
-
-    | Název | Typ | Popis | Omezení |
-    | --------- | --------- | --------- | --------- |
-    | UpdateID naformátovat | `UpdateId` předmětů | Aktualizujte identitu. |
-    | Typ aktualizace | řetězec | Typ aktualizace: <ul><li>Určete `microsoft/apt:1` , kdy se má při provádění aktualizace na základě balíčku použít Agent pro reference.</li><li>Určete `microsoft/swupdate:1` , kdy se provádí aktualizace na základě bitové kopie pomocí referenčního agenta.</li><li>Určete `microsoft/simulator:1` , kdy se má používat simulátor ukázkového agenta.</li><li>Při vývoji vlastního agenta zadejte vlastní typ.</li></ul> | <ul><li>Formátovat `{provider}/{type}:{typeVersion}`</li><li>Maximálně 32 znaků celkem</li></ul> |
-    | InstalledCriteria | řetězec | Řetězec, který je interpretován agentem k určení, jestli se aktualizace úspěšně použila:  <ul><li>Zadejte **hodnotu** SWVersion pro typ aktualizace `microsoft/swupdate:1` .</li><li>Zadejte `{name}-{version}` pro typ aktualizace `microsoft/apt:1` , ze kterého se získá název a verze ze souboru apt.</li><li>Zadejte hodnotu hash souboru aktualizace pro typ aktualizace `microsoft/simulator:1` .</li><li>Při vývoji vlastního agenta zadejte vlastní řetězec.</li></ul> | Maximálně 64 znaků |
-    | Kompatibilita | Pole `CompatibilityInfo` objektů | Informace o kompatibilitě zařízení kompatibilního s touto aktualizací. | Maximálně 10 položek |
-    | CreatedDateTime | Datum a čas | Datum a čas, kdy byla aktualizace vytvořena. | Formát data a času s oddělovači ISO 8601, v UTC |
-    | ManifestVersion | řetězec | Importovat verzi schématu manifestu. Zadejte `2.0` , který bude kompatibilní s `urn:azureiot:AzureDeviceUpdateCore:1` rozhraním a rozhraním `urn:azureiot:AzureDeviceUpdateCore:4` .</li></ul> | Musí být `2.0` |
-    | Soubory | Pole `File` objektů | Aktualizovat soubory datové části | Maximálně 5 souborů |
-
-Poznámka: všechna pole jsou povinná.
 
 ## <a name="review-generated-import-manifest"></a>Zkontrolovat vygenerovaný manifest importu
 

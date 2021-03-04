@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030745"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -102,7 +102,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    Pokud se proměnná [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) vrátí s hodnotou "on", binární protokolování je na vašem serveru povolené.
    
-   Pokud `log_bin` se vrátí s hodnotou "off", 
+    Pokud `log_bin` se vrátí s hodnotou off a na zdrojovém serveru běží místně nebo na virtuálních počítačích, kde můžete získat přístup ke konfiguračnímu souboru (My. CNF), můžete postupovat podle následujících kroků:
    1. Na zdrojovém serveru Najděte konfigurační soubor MySQL (My. CNF). Příklad:/etc/my.CNF
    2. Otevřete konfigurační soubor pro jeho úpravu a vyhledejte oddíl **MySQL** v souboru.
    3.  V části MySQL přidejte následující řádek.

@@ -1,17 +1,16 @@
 ---
 title: Standardní sloupce v Azure Monitor záznamy protokolu | Microsoft Docs
 description: Popisuje sloupce, které jsou v protokolech Azure Monitor společné pro více datových typů.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704119"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030762"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardní sloupce v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../logs/data-platform-logs.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu sloupců. Mnoho datových typů bude mít standardní sloupce, které jsou společné pro různé typy. Tento článek popisuje tyto sloupce a poskytuje příklady, jak je můžete použít v dotazech.

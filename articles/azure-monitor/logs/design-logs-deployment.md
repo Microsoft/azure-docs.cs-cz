@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717396"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030830"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -87,9 +87,9 @@ Uživatelé mají dvě možnosti pro přístup k datům:
 
     > [!NOTE]
     > Protokoly jsou k dispozici pro dotazy kontextu prostředků pouze v případě, že byly správně přidruženy k příslušnému prostředku. V současné době mají tato omezení následující zdroje:
-    > - Počítače mimo Azure
+    > - Počítače mimo Azure podporované pro kontext prostředků přes [Azure ARC pro servery](../../azure-arc/servers/index.yml)
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights – podporováno pro kontext prostředku pouze při použití [prostředku Application Insights založeného na pracovních prostorech](../app/create-workspace-resource.md)
     >
     > Spuštěním dotazu a kontrolou záznamů, které vás zajímají, můžete otestovat, jestli jsou protokoly správně přidružené ke svým prostředkům. Pokud je ve vlastnosti [_ResourceId](./log-standard-columns.md#_resourceid) správné ID prostředku, data jsou k dispozici pro dotazy orientované na prostředky.
 

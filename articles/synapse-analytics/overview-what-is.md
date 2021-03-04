@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917089"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031612"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Co je Azure Synapse Analytics?
 
@@ -64,13 +64,13 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 * Jemně odstupňované řízení přístupu k datům a kódu
 * Jeden řídicí panel pro monitorování prostředků, využití a uživatelů napříč SQL a Spark
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>Jednotné prostředí
 
-**Synapse Studio** je nativní prostředí pro web, které spojuje všechno společně s datovými inženýry a umožňuje jim v jednom umístění provádět všechny úlohy, které potřebují k sestavení kompletního řešení.
+**Synapse Studio** je uživatelské prostředí, které spojuje všechno dohromady s datovými inženýry. Umožňuje jim provádět všechny úlohy, které potřebují k vytvoření kompletního analytického řešení.
 
-* Vytvářejte komplexní analytické řešení na jednom místě: ingestování, prozkoumávání, příprava, orchestrace, vizualizace
-* Špičková produktivita pro datové techniky napisující kód SQL nebo Spark: vytváření, ladění a optimalizace výkonu
-* Integrace s procesy podnikového CI/CD
+* Engingeer úlohy klíčových dat na jednom místě: ingestování, prozkoumávání, příprava, orchestrace, vizualizace
+* Špičková produktivita pro psaní kódu SQL nebo Spark: vytváření, ladění a optimalizace výkonu
+* Integrace s procesem Enterprise CI/CD
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>Zapojení týmu synapse Engineering
 

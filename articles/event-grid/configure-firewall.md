@@ -2,13 +2,13 @@
 title: Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény
 description: Tento článek popisuje, jak nakonfigurovat nastavení brány firewall pro Event Grid témata nebo domény.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324157"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031833"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény 
 Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno). Další informace o funkcích zabezpečení sítě podporovaných nástrojem Event Grid najdete v tématu [zabezpečení sítě pro Event Grid](network-security.md).
@@ -34,19 +34,6 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 V této části se dozvíte, jak pomocí příkazů rozhraní příkazového řádku Azure vytvářet témata s pravidly příchozích IP adres. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
-
-### <a name="prerequisites"></a>Požadavky
-Aktualizujte rozšíření Azure Event Grid pro rozhraní příkazového řádku spuštěním následujícího příkazu: 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-Pokud rozšíření není nainstalované, nainstalujte ho spuštěním následujícího příkazu: 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>Povolit nebo zakázat přístup k veřejné síti
 Ve výchozím nastavení je přístup k veřejné síti povolený pro témata a domény. Můžete ho taky povolit explicitně nebo zakázat. Můžete omezit provoz konfigurací pravidel brány firewall pro příchozí IP adresy. 

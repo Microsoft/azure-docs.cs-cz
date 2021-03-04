@@ -4,12 +4,12 @@ description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583880"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031357"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
 
@@ -21,7 +21,7 @@ V podokně metriky se zobrazuje výchozí sada čítačů výkonu.
 
 ![Čítače výkonu hlášené v Application Insights](./media/performance-counters/performance-counters.png)
 
-Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďování pro webové aplikace ASP.NET/ASP.NET Core, jsou:
+Aktuální výchozí čítače, které mají být shromažďovány pro webové aplikace v ASP.NET, jsou:
 - % \\ Času procesoru procesu
 - % \\ Času procesoru procesu – normalizace
 - \\Bajty dostupné paměti
@@ -31,6 +31,14 @@ Aktuální výchozí čítače, které jsou nakonfigurované pro shromažďován
 - \\Nesdílené bajty procesu
 - \\Vstupně-výstupní operace procesu – bajty/s
 - Žádosti aplikací ASP.NET \\ ve frontě aplikací
+- Procesor (_Total) \\ % času procesoru
+
+Aktuální výchozí čítače, které jsou nakonfigurované pro ASP.NET Core webových aplikací, jsou:
+- % \\ Času procesoru procesu
+- % \\ Času procesoru procesu – normalizace
+- \\Bajty dostupné paměti
+- \\Nesdílené bajty procesu
+- \\Vstupně-výstupní operace procesu – bajty/s
 - Procesor (_Total) \\ % času procesoru
 
 ## <a name="add-counters"></a>Přidání čítačů

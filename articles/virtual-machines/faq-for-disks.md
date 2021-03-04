@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d516bcb224f7a7b5943214f28cffb7da3ea0871f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499318"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031595"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS a spravovaných a nespravovaných disků Premium
 
@@ -50,7 +50,7 @@ Ano.
 
 **Můžu k vytvoření spravovaného disku v jiné oblasti použít soubor VHD v účtu služby Azure Storage?**
 
-Ne.
+No.
 
 **Existují nějaká omezení škálování pro zákazníky, kteří používají spravované disky?**
 
@@ -58,7 +58,7 @@ Managed Disks eliminuje limity spojené s účty úložiště. Maximální limit
 
 **Je možné virtuální počítače ve skupině dostupnosti sestávat z kombinace spravovaných a nespravovaných disků?**
 
-Ne. Virtuální počítače ve skupině dostupnosti musí používat buď všechny spravované disky, nebo všechny nespravované disky. Když vytvoříte skupinu dostupnosti, můžete zvolit, který typ disků chcete použít.
+No. Virtuální počítače ve skupině dostupnosti musí používat buď všechny spravované disky, nebo všechny nespravované disky. Když vytvoříte skupinu dostupnosti, můžete zvolit, který typ disků chcete použít.
 
 **Je Managed Disks výchozí možnost v Azure Portal?**
 
@@ -98,7 +98,7 @@ Ano, podporují se nespravované i spravované disky. Pro nové úlohy doporuču
 
 **Můžu na stejném virtuálním počítači vyhledat nespravované a spravované disky?**
 
-Ne.
+No.
 
 **Když vytvořím disk 128 GB a pak se velikost zvýší na 130 gibibajtech (GiB), bude se mi účtovat další velikost disku (256 GiB)?**
 
@@ -110,15 +110,15 @@ Služba Azure Managed Disks aktuálně podporuje jenom místně redundantní dis
 
 **Můžu své spravované disky zmenšit nebo klidnějších?**
 
-Ne. Tato funkce se momentálně nepodporuje.
+No. Tato funkce se momentálně nepodporuje.
 
 **Můžu na svém disku přerušit zapůjčení?**
 
-Ne. Tato operace se momentálně nepodporuje, protože je k dispozici zapůjčení, aby se zabránilo nechtěnému odstranění při použití disku.
+No. Tato operace se momentálně nepodporuje, protože je k dispozici zapůjčení, aby se zabránilo nechtěnému odstranění při použití disku.
 
 **Můžu změnit vlastnost název počítače, když se pro zřízení virtuálního počítače použije specializovaná (nevytvořená pomocí nástroje pro přípravu systému nebo zobecněný) disk s operačním systémem?**
 
-Ne. Nemůžete aktualizovat vlastnost název počítače. Nový virtuální počítač dědí z nadřazeného virtuálního počítače, který se použil k vytvoření disku operačního systému. 
+No. Nemůžete aktualizovat vlastnost název počítače. Nový virtuální počítač dědí z nadřazeného virtuálního počítače, který se použil k vytvoření disku operačního systému. 
 
 **Kde najdu ukázkové Azure Resource Manager šablony pro vytváření virtuálních počítačů se spravovanými disky?**
 * [Seznam šablon pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/)
@@ -195,7 +195,7 @@ Ano.
 
 **Můžu povolit akcelerátor zápisu na disku, na kterém jsou taky povolené sdílené disky?**
 
-Ne.
+No.
 
 **Můžu povolit ukládání hostitelů do mezipaměti pro disk, na kterém je povolený sdílený disk?**
 
@@ -245,11 +245,11 @@ Vytvořte spravovaný disk s vlastností [CreateOption](/rest/api/compute/disks/
 
 **Můžu k virtuálnímu počítači připojit disk, když je ve stavu nahrávání?**
 
-Ne.
+No.
 
 **Můžu pořídit snímek spravovaných disku ve stavu nahrávání?**
 
-Ne.
+No.
 
 ## <a name="standard-ssd-disks"></a>SSD úrovně Standard disky
 
@@ -288,11 +288,11 @@ Nejsou vyžadovány žádné změny.
 
 **Je automatizovaná migrace stávající sady škálování virtuálních počítačů z nespravovaných disků na Managed Disks podporovaná?**
 
-Ne. Novou sadu škálování můžete vytvořit pomocí Managed Disks pomocí image ze své staré sady škálování s nespravovanými disky.
+No. Novou sadu škálování můžete vytvořit pomocí Managed Disks pomocí image ze své staré sady škálování s nespravovanými disky.
 
 **Můžu před migrací na Managed Disks vytvořit spravovaný disk z snímku objektu blob stránky?**
 
-Ne. Snímek objektu blob stránky můžete exportovat jako objekt blob stránky a pak vytvořit spravovaný disk z exportovaného objektu blob stránky.
+No. Snímek objektu blob stránky můžete exportovat jako objekt blob stránky a pak vytvořit spravovaný disk z exportovaného objektu blob stránky.
 
 **Můžu převzít služby při selhání místních počítačů chráněných Azure Site Recovery k virtuálnímu počítači s Managed Disks?**
 
@@ -300,11 +300,11 @@ Ano, můžete se rozhodnout pro převzetí služeb při selhání virtuálního 
 
 **Je nějaký dopad migrace na virtuální počítače Azure chráněné Azure Site Recovery přes Azure do Azure – replikace?**
 
-Ne. K dispozici je Azure Site Recovery ochrany Azure do Azure pro virtuální počítače s Managed Disks.
+No. K dispozici je Azure Site Recovery ochrany Azure do Azure pro virtuální počítače s Managed Disks.
 
 **Můžu migrovat virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
-Yes
+Ano
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks a Šifrování služby Storage
 
@@ -322,11 +322,11 @@ Spravované klíče platformy jsou spravované Microsoftem. Můžete také použ
 
 **Můžu zakázat šifrování na straně serveru pro moje spravované disky?**
 
-Ne.
+No.
 
 **Je šifrování na straně serveru dostupné jenom v konkrétních oblastech?**
 
-Ne. Šifrování na straně serveru s klíči spravovanými platformou a zákazníkem jsou k dispozici ve všech oblastech, kde je Managed Disks k dispozici. 
+No. Šifrování na straně serveru s klíči spravovanými platformou a zákazníkem jsou k dispozici ve všech oblastech, kde je Managed Disks k dispozici. 
 
 **Podporuje Azure Site Recovery šifrování na straně serveru s klíčem spravovaným zákazníkem pro místní prostředí do Azure a pro scénáře zotavení po havárii z Azure do Azure?**
 
@@ -342,11 +342,11 @@ Ano. Všechny spravované snímky a obrázky se zašifrují automaticky.
 
 **Můžu převést virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
-Yes
+Ano
 
 **Bude exportovaný virtuální pevný disk ze spravovaného disku nebo snímku taky zašifrovaný?**
 
-Ne. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
+No. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Disky úrovně Premium: spravované a nespravované
 
@@ -356,7 +356,7 @@ Ano.
 
 **Můžu připojit datové disky Premium i Standard k řadě velikostí, která nepodporuje SSD úrovně Premium disky, jako je D, Dv2, G nebo F Series?**
 
-Ne. K virtuálním počítačům, které nepoužívají řadu velikostí, která podporuje SSD úrovně Premium disky, můžete připojit pouze standardní datové disky.
+No. K virtuálním počítačům, které nepoužívají řadu velikostí, která podporuje SSD úrovně Premium disky, můžete připojit pouze standardní datové disky.
 
 **Když vytvořím datový disk Premium z existujícího virtuálního pevného disku, který byl 80 GB, kolik to bude mít za cenu?**
 
@@ -382,11 +382,9 @@ K použití OŘEZÁVÁNÍ na discích Azure na discích úrovně Premium nebo St
 
 **Které oblasti podporují možnosti shlukování pro platnou velikost disku SSD úrovně Premium?**
 
-Funkce shlukování se v současné době podporují ve všech oblastech veřejného cloudu Azure. Podpora pro cloudy v svrchovaném období už brzy probíhá. 
+Pro všechny oblasti ve veřejném cloudu Azure se aktuálně podporují shlukování na základě kreditu. v současnosti se nepodporují cloudy svrchovan.
 
-**Jaké oblasti jsou 4/8/16 GiB spravované velikosti disků (P1/P2/P3, E1/E2/E3), které jsou podporovány v?**
-
-Tyto nové velikosti disků jsou aktuálně podporované ve všech oblastech ve veřejném cloudu Azure. Podpora pro cloudy v svrchovaném období už brzy probíhá. 
+Shlukování na vyžádání je dostupné jenom v Středozápadní USA.
 
 **Jsou velikosti disků P1/P2/P3 podporované pro nespravované disky nebo objekty blob stránky?**
 
@@ -473,15 +471,15 @@ Vlastnost je nutné nastavit `DiskAccessId` na instanci objektu pro přístup k 
 
 **Můžu propojit více virtuálních sítí se stejným objektem pro přístup k disku?**
 
-Ne. V současné době můžete objekt pro přístup k disku propojit jenom s jednou virtuální sítí.
+No. V současné době můžete objekt pro přístup k disku propojit jenom s jednou virtuální sítí.
 
 **Můžu propojit virtuální síť s objektem pro přístup k disku v jiném předplatném?**
 
-Ne. V současné době můžete propojit objekt pro přístup k disku k virtuální síti ve stejném předplatném.
+No. V současné době můžete propojit objekt pro přístup k disku k virtuální síti ve stejném předplatném.
 
 **Můžu propojit virtuální síť s objektem pro přístup k disku v jiném předplatném?**
 
-Ne. V současné době můžete propojit objekt pro přístup k disku k virtuální síti ve stejném předplatném.
+No. V současné době můžete propojit objekt pro přístup k disku k virtuální síti ve stejném předplatném.
 
 **Kolik exportů a importů používajících stejný objekt pro přístup k disku může probíhat ve stejnou dobu?**
 
@@ -493,7 +491,7 @@ Ano.
 
 **Můžu pomocí identifikátoru URI SAS disku nebo snímku stáhnout základní virtuální pevný disk virtuálního počítače, který není ve stejné podsíti jako podsíť privátního koncového bodu, který není přidružený k disku?**
 
-Ne.
+No.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
 

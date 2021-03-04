@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679225"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030626"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Aktualizace zařízení pro poradce při potížích s IoT Hub
 
@@ -46,7 +46,7 @@ _Aktualizace stavu dodržování předpisů pro zařízení může trvat až 5 m
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>Otázka: stav nasazení mého zařízení zobrazuje nekompatibilní, co mám dělat?
 _Po připojení zařízení k IoT Hub mohlo dojít ke změně vlastností výrobce a modelu cílového zařízení, což způsobí, že se zařízení nyní považuje za nekompatibilní s obsahem aktualizace aktuálního nasazení._
 
-_Podívejte se na [rozhraní adu Core](./device-update-plug-and-play) , kde zjistíte, co výrobce a model zařízení hlásí do služby aktualizace zařízení, a ujistěte se, že odpovídá výrobci a modelu, který jste zadali v [manifestu import](./import-concepts.md) nasazeného obsahu aktualizace. Tyto vlastnosti pro dané zařízení můžete změnit pomocí [konfiguračního souboru aktualizace zařízení](./device-update-cofiguration-file.md)._
+_Podívejte se na [rozhraní adu Core](./device-update-plug-and-play.md) , kde zjistíte, co výrobce a model zařízení hlásí do služby aktualizace zařízení, a ujistěte se, že odpovídá výrobci a modelu, který jste zadali v [manifestu import](./import-concepts.md) nasazeného obsahu aktualizace. Tyto vlastnosti pro dané zařízení můžete změnit pomocí [konfiguračního souboru aktualizace zařízení](./device-update-configuration-file.md)._
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>Otázka: zobrazuje se moje nasazení ve fázi "aktivní", ale žádná z mých zařízení neprobíhá s aktualizací. Co bych měl/a dělat?
 _Zajistěte, aby v budoucnu nebylo nastaveno počáteční datum nasazení. Když vytvoříte nové nasazení, datum zahájení nasazení bude ve výchozím nastavení nastavené na další den jako ochrana, pokud ho explicitně nezměníte. Můžete buď počkat na doručení počátečního data nasazení, nebo zrušit probíhající nasazení a vytvořit nové nasazení s požadovaným počátečním datem._

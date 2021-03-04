@@ -40,6 +40,8 @@
       href: connected-cache-disconnected-device-update.md
     - name: Konfigurace připojené mezipaměti Microsoftu pro aktualizace zařízení pro IoT Hub
       href: connected-cache-configure.md
+    - name: Schéma související s importem a další informace
+      href: import-schema.md
 - name: Návody
   items:
     - name: Vytvoření účtu aktualizace zařízení

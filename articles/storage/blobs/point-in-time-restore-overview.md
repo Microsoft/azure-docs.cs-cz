@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980506"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031629"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Obnovení bodu v čase pro objekty blob bloku
 
 Obnovení k bodu v čase poskytuje ochranu proti náhodnému odstranění nebo poškození tím, že umožňuje obnovit data objektů blob bloku do dřívějšího stavu. Obnovení k určitému bodu v čase je užitečné ve scénářích, kdy uživatel nebo aplikace nechtěně odstraní data nebo kde chyba aplikace poškozuje data. Obnovení k určitému bodu v čase umožňuje také scénáře testování, které před spuštěním dalších testů vyžadují vrácení sady dat do známého stavu.
 
-Obnovení k bodu v čase se podporuje jenom pro účty úložiště pro obecné účely verze 2. Pomocí obnovení k bodu v čase lze obnovit pouze data z horké a studené úrovně přístupu.
+Obnovení k bodu v čase je podporováno pro účty úložiště pro obecné účely v2 pouze v úrovni Standard. Pomocí obnovení k bodu v čase lze obnovit pouze data z horké a studené úrovně přístupu.
 
 Informace o tom, jak povolit obnovení k určitému bodu v čase pro účet úložiště, najdete v tématu [provedení obnovení k určitému bodu v čase u dat objektů blob bloku](point-in-time-restore-manage.md).
 

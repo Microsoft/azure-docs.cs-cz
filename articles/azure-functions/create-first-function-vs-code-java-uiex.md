@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci Java a pak publikovat místní projekt 
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 38ed05d8bf9f7714b9cd58449f565cf94cb481e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748371"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031714"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce Java v Azure pomocí Visual Studio Code
 
@@ -140,7 +140,7 @@ Vaše první nasazení kódu zahrnuje vytvoření prostředku funkce ve vašem p
 
     + **Vyberte předplatné**: zvolte předplatné, které chcete použít. Toto se nezobrazí, pokud máte jenom jedno předplatné.
 
-    + **Výběr aplikace funkcí v Azure:** Zvolte `- Create new Function App`.
+    + **Výběr aplikace funkcí v Azure:** Zvolte `Create new Function App`.
 
     + **Zadejte globálně jedinečný název aplikace Function App**: v cestě URL zadejte název, který je v rámci Azure jedinečný. Název, který zadáte, je ověřený k zajištění globální jedinečnosti.
 

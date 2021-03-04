@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241603"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030609"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Přečtěte si, jak řešit problémy s modulem runtime U-SQL kvůli změnám za běhu
 
@@ -55,7 +55,7 @@ Existují dva možné problémy s verzí modulu runtime, se kterými se můžete
 
 ## <a name="known-issues"></a>Známé problémy
 
-* Odkazování na Newtonsoft.Jsverze souboru 12.0.3 nebo vyšší ve skriptu USQL způsobí následující selhání kompilace:
+1. Odkazování na Newtonsoft.Jsverze souboru 12.0.3 nebo vyšší ve skriptu USQL způsobí následující selhání kompilace:
 
     *"Je nám líto, ale úlohy běžící v účtu Data Lake Analytics pravděpodobně poběží pomaleji nebo se nedaří dokončit. Neočekávaný problém nám brání v automatickém obnovení této funkce na váš Azure Data Lake Analytics účet. Byly kontaktovány Azure Data Lake technici k prošetření. "*  
 
@@ -65,6 +65,10 @@ Existují dva možné problémy s verzí modulu runtime, se kterými se můžete
     `...`
 
     **Řešení**: použijte Newtonsoft.Jsv souboru File v 12.0.2 nebo Lower.
+2. Zákazníci můžou na svém úložišti vidět dočasné soubory a složky. Ty se vytvářejí jako součást normálního provádění úlohy, ale obvykle se odstraňují předtím, než je uvidí zákazníci. Za určitých okolností, které jsou vzácné a náhodné, můžou zůstat po určitou dobu viditelné. Jsou nakonec odstraněny a nikdy se nepočítají jako součást úložiště uživatelů ani negenerují žádné formy poplatků. V závislosti na logice úloh zákazníků může dojít k problémům. Například pokud úloha vytvoří výčet všech souborů ve složce a pak porovná seznamy souborů, může selhat kvůli neočekávaným dočasným souborům. Podobně platí, že pokud úloha pro příjem dat vytvoří z dané složky všechny soubory pro další zpracování, může také vytvořit výčet dočasných souborů.  
+
+    **Řešení**: v modulu runtime je zjištěna oprava, kde dočasné soubory budou uloženy v dočasné složce na úrovni účtu, než je aktuální výstupní složka. Dočasné soubory budou zapsány do této nové dočasné složky a budou odstraněny na konci provádění úlohy.  
+    Vzhledem k tomu, že tato oprava zpracovává zákaznická data, je velmi důležité, abyste tuto opravu dobře ověřili v rámci protokolu MSFT předtím, než se uvolní. Očekává se, že tato oprava bude k dispozici jako beta verze za běhu v polovině roku 2021 a jako výchozí modul runtime v druhé polovině roku 2021. 
 
 
 ## <a name="see-also"></a>Viz také

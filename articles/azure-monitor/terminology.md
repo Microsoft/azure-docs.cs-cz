@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor aktualizace terminologie | Microsoft Docs
 description: Popisuje nedávné změny v terminologii provedené v Azure Monitoring Services.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fea85a85db1e555adea63f5b65b09a9285d714da
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586956"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031969"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.

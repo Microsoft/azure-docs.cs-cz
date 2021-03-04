@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 76ec99e5f892438aaa637b15bb7382843d90f334
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031646"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce Pythonu v Azure z příkazového řádku
 
@@ -62,7 +62,7 @@ Ověřte požadavky, které závisí na tom, jestli pro vytváření prostředk�
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ V terminálu nebo příkazovém okně spusťte příkaz `func --version` a ověřte, zda Azure Functions Core Tools mají verzi 3. x.
++ V terminálu nebo příkazovém okně spusťte příkaz `func --version` a ověřte, zda se <abbr title="Sada nástrojů příkazového řádku pro práci s Azure Functions v místním počítači.">Azure Functions Core Tools</abbr> jsou verze 3. x.
 
 + Spusťte `(Get-Module -ListAvailable Az).Version` a ověřte verze 5,0 nebo novější. 
 
@@ -292,7 +292,7 @@ Než budete moct nasadit kód funkce do Azure, musíte vytvořit <abbr title="Lo
 
     ---
 
-    Nahraďte `<STORAGE_NAME>` názvem, který je pro vás vhodný. <abbr title="Název musí být jedinečný ve všech účtech úložiště využívaných všemi zákazníky Azure globálně. Například můžete použít kombinaci svého osobního nebo firemního jména, názvu aplikace a číselného identifikátoru, jako v contosobizappstorage20">jedinečné v Azure Storage</abbr>. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` Určuje účet pro obecné účely, který je [podporován funkcemi](storage-considerations.md#storage-account-requirements).
+    Nahraďte `<STORAGE_NAME>` názvem, který je pro vás vhodný. <abbr title="Název musí být jedinečný ve všech účtech úložiště využívaných všemi zákazníky Azure globálně. Například můžete použít kombinaci svého osobního nebo firemního jména, názvu aplikace a číselného identifikátoru, jako v contosobizappstorage20.">jedinečné v Azure Storage</abbr>. Názvy musí obsahovat tři až 24 znaků a jenom malá písmena. `Standard_LRS` Určuje účet pro obecné účely, který je [podporován funkcemi](storage-considerations.md#storage-account-requirements).
     
     Účet úložiště pro tento rychlý Start vychází jenom z několika centů (USD).
 

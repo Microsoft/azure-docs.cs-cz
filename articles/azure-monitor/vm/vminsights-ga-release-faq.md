@@ -1,17 +1,16 @@
 ---
 title: Nejčastější dotazy k virtuálnímu počítači Insights (GA) | Microsoft Docs
 description: Cloud Insights je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci mezi nimi. Tento článek obsahuje odpovědi na běžné dotazy týkající se verze GA.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710749"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031860"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>Nejčastější dotazy k VIRTUÁLNÍm počítačům jsou všeobecně dostupné (GA)
 V této obecné dostupnosti se Nejčastější dotazy týkají změn, které byly provedeny ve čtvrtletí 2019 a Q1 2020, jak jsme připraveni na GA.
@@ -20,13 +19,13 @@ V této obecné dostupnosti se Nejčastější dotazy týkají změn, které byl
 Vydali jsme novou verzi sady VM Insights v lednu 2020 před naší oznámením GA. Zákazníci, kteří si můžou povolit službu VM Insights, teď obdrží verzi GA, ale stávající zákazníci, kteří používají verzi služby VM Insights ze 4. čtvrtletí 2019 a starší, budou vyzváni k upgradu. Tato Nejčastější dotazy nabízí pokyny k provedení upgradu se škálováním v případě, že máte rozsáhlá nasazení napříč několika pracovními prostory.
 
 
-S tímto upgradem se Azure Monitor pro virtuální počítače údaje o výkonu ukládají do stejné tabulky *InsightsMetrics* jako služby [Container Insights](../containers/container-insights-overview.md), což usnadňuje dotazování těchto dvou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
+S tímto upgradem se data o výkonu pro virtuální počítače v nástroji Insights ukládají do stejné tabulky *InsightsMetrics* jako služby [Container Insights](../containers/container-insights-overview.md), což usnadňuje dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
 
 Naše zobrazení výkonu teď používají uložená data v tabulce *InsightsMetrics* .  Pokud jste ještě neupgradovali na použití nejnovějšího řešení VMInsights v pracovním prostoru, grafy už nebudou zobrazovat informace.  Upgrade můžete provést **na stránce Začínáme** , jak je popsáno níže.
 
 
 ## <a name="what-is-changing"></a>Co se mění?
-Vydali jsme nové řešení s názvem VMInsights, které obsahuje další možnosti shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics. 
+Vydali jsme nové řešení s názvem VMInsights, které obsahuje více možností shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics. 
 
 V minulosti jsme povolili řešení ServiceMap v pracovním prostoru a nastavili čítače výkonu v pracovním prostoru Log Analytics k odeslání dat do tabulky *perf* . Toto nové řešení odesílá data do tabulky s názvem *InsightsMetrics* , která je také používána službou Container Insights. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky *perf* .
 
@@ -58,7 +57,7 @@ Pokud jste vytvořili [výstrahy protokolu](../alerts/alerts-unified-log.md) , k
 
 Tyto nejčastější dotazy a naši dokumentaci budeme aktualizovat tak, aby obsahovaly ukázková pravidla upozornění pro prohledávání protokolů pro sady dat, které shromažďujeme.
 
-## <a name="how-will-this-affect-my-bill"></a>Jak to bude mít na vyúčtování vliv?
+## <a name="how-will-this-change-affect-my-bill"></a>Jak bude tato změna mít na vyúčtování vliv?
 
 Fakturace se pořád vychází z dat, která se ingestují a uchovávají v pracovním prostoru Log Analytics.
 
@@ -84,13 +83,13 @@ Datové sady nebudou duplikovány, pokud použijete obě řešení. Obě nabídk
 
 Ne, tato dvě řešení sdílejí sady dat mapy, které ukládáme `VMComputer` (dřív ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection` a `VMBoundPort` . V případě, že máte obě řešení ve vašem pracovním prostoru, nebudeme vám nic účtovat.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Když odeberem řešení Service Map nebo VMInsights, odeberou se moje data?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Když odeberem řešení Service Map nebo VMInsights, odebere se moje data?
 
 Ne, tato dvě řešení sdílejí sady dat mapy, které ukládáme `VMComputer` (dřív ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection` a `VMBoundPort` . Pokud odeberete jedno z těchto řešení, tyto sady dat si všimněte, že je stále k dispozici řešení, které používá data a zůstane v pracovním prostoru Log Analytics. Z pracovního prostoru musíte odebrat obě řešení, aby se z něho odstranila data.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Funkce Health je ve verzi Public Preview omezená.
 
-Od zákazníků jsme dostali spoustu skvělé zpětné vazby o sadě funkcí stavu virtuálních počítačů. Tato funkce má spoustu zájmu a setkalo se na jejich potenciál, aby podporovaly monitorovací pracovní postupy. Plánujeme udělat řadu změn pro přidání funkcí a vyřešení zpětné vazby, kterou jsme dostali. 
+Od zákazníků jsme dostali spoustu skvělé zpětné vazby o sadě funkcí stavu virtuálních počítačů. Tato funkce má asignificant zájmu a setkalo se na její potenciál, aby podporovaly monitorovací pracovní postupy. Plánujeme udělat řadu změn pro přidání funkcí a vyřešení zpětné vazby, kterou jsme dostali. 
 
 Abychom minimalizovali dopad těchto změn na nové zákazníky, přesunuli jsme tuto funkci do **omezené verze Public Preview**. Tato aktualizace se stala v říjnu 2019.
 
@@ -108,7 +107,7 @@ Jako stávající zákazník můžete dál používat funkci stavu na virtuáln�
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Nyní používám stav virtuálního počítače v jednom prostředí a chce ho nasadit na nový
 
-Pokud jste stávající zákazník, který používá funkci Health a chcete ho použít k novému uvedení, kontaktujte nás na stránce vminsights@microsoft.com s žádostí o pokyny.
+Pokud jste stávající zákazník, který používá funkci stavu a chcete ho použít k novému uvedení, kontaktujte nás na stránce vminsights@microsoft.com s žádostí o pokyny.
 
 ## <a name="next-steps"></a>Další kroky
 

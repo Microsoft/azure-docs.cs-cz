@@ -5,13 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.subservice: alerts
-ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7d65d7c65dabde3834458a36b50216878f7cf8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717974"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031289"
 ---
 # <a name="optimizing-log-alert-queries"></a>Optimalizace dotazů na výstrahy protokolu
 Tento článek popisuje, jak zapsat a převést dotazy na [výstrahy protokolu](./alerts-unified-log.md) , abyste dosáhli optimálního výkonu. Optimalizované dotazy omezují latenci a zatížení výstrah, které se často spouštějí.
