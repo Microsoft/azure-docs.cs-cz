@@ -1,17 +1,16 @@
 ---
 title: Ukázky šablon Správce prostředků pro službu Container Insights
 description: Ukázky Azure Resource Manager šablon pro nasazení a configureContainer přehledy.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68bad5b4bfcef4f0f633bce7e3e352486aed3fdf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723329"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039185"
 ---
 # <a name="resource-manager-template-samples-for-container-insights"></a>Ukázky šablon Správce prostředků pro službu Container Insights
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci agenta Log Analytics pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.

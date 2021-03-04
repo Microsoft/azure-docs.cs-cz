@@ -413,7 +413,7 @@
         - name: Co je Flexibilní server?
           href: flexible-server/overview.md
         - name: Podporované verze
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: Výpočetní výkon a úložiště
           href: flexible-server/concepts-compute-storage.md
     - name: Rychlé starty

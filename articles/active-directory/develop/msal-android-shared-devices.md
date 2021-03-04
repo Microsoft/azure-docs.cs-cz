@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754893"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038573"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
 
@@ -34,7 +34,7 @@ Režim sdíleného zařízení taky poskytuje zpětnou správu v rámci identity
 Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
 - Vývojáři napsané aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují), přidají `"shared_device_mode_supported": true` do konfigurace aplikace a napíší kód, který bude zpracovávat věci, jako je třeba přihlášení ke sdílenému zařízení.
-- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator-permissions) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory**  >  **role a správci**  >  **správce cloudového zařízení**.
+- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory**  >  **role a správci**  >  **správce cloudového zařízení**.
 
  Tento článek se zaměřuje především na to, co by si vývojáři měli představit.
 

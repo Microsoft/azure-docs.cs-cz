@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861994"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040188"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Instalace a spuštění kontejnerů Docker pro LUIS
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požadavky:
 
-|Povinné|Účel|
+|Vyžadováno|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows** musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.|
@@ -281,7 +281,7 @@ Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 |`staging`|boolean|Vrátí dotaz z výsledků přípravného prostředí, pokud je nastavena hodnota true. |
 |`log`|boolean|Protokoluje dotazy, které se dají použít později pro [aktivní učení](luis-how-to-review-endpoint-utterances.md). Platí výchozí hodnota.|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>Dotazování aplikace LUIS
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Chcete-li provést dotazy do prostředí _ *fázování**, nahraďte `production` v trase `staging` :
+Chcete-li provést dotazy do **přípravného** prostředí, nahraďte `production` v trase `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 Název verze má maximálně 10 znaků a obsahuje pouze znaky, které jsou povoleny v adrese URL.
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Import protokolů koncového bodu pro aktivní učení
 
@@ -346,7 +346,7 @@ Následující umístění ukazuje strukturu vnořených adresářů pro soubory
 /output/luis/{INSTANCE_ID}/
 ```
 
-Na portálu LUIS vyberte svou aplikaci a pak vyberte _ *importovat protokoly koncových bodů**, aby se tyto protokoly nahrály.
+Na portálu LUIS vyberte svoji aplikaci a pak vyberte **importovat protokoly koncových bodů** , aby se tyto protokoly nahrály.
 
 ![Importovat soubory protokolu kontejneru pro aktivní učení](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
@@ -374,7 +374,7 @@ Kontejner LUIS odesílá informace o fakturaci do Azure pomocí prostředku _Cog
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](luis-container-configuration.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejnerů Language Understanding (LUIS). Souhrn:
 

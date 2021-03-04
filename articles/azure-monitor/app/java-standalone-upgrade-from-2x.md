@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704425"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040239"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade z Application Insights Java 2. x SDK
 
@@ -219,11 +219,24 @@ Pro některé aplikace můžete znovu preferovat agregované zobrazení ve U/X, 
 
 V předchozích verzích sady 2. x SDK byl název operace z telemetrie požadavků také nastaven v telemetrie závislostí.
 Application Insights Java 3,0 již neplní název operace v telemetrie závislostí.
-Pokud chcete zobrazit název operace pro požadavek, který je nadřazeným prvkem telemetrie závislostí, můžete zapsat dotaz Kusto (protokoly) pro připojení z tabulky závislostí do tabulky požadavků.
+Pokud chcete zobrazit název operace pro požadavek, který je nadřazeným prvkem telemetrie závislostí, můžete zapsat dotaz Kusto (protokoly) pro připojení z tabulky závislostí do tabulky požadavků, např.
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2. Přidání přihlašování k sadě SDK pro sady x
 
-Agent 3,0 [automaticky shromáždí protokolování](./java-standalone-config#auto-collected-logging) bez nutnosti konfigurovat žádné připojovací objekty pro protokolování.
+Agent 3,0 [automaticky shromáždí protokolování](./java-standalone-config.md#auto-collected-logging) bez nutnosti konfigurovat žádné připojovací objekty pro protokolování.
 Pokud používáte 2. připojení sady SDK pro přihlašování k sadě SDK, je možné je odebrat, protože ho agent 3,0 přesto potlačí.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK jaře Boot Starter

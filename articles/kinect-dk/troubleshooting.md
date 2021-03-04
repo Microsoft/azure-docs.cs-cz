@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587277"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038816"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
@@ -98,7 +98,7 @@ Protokolování K4ABT.dll sady SDK pro sledování textu je podobné s tím rozd
 
 ## <a name="azure-kinect-viewer-fails-to-open"></a>Nepodařilo se otevřít Azure Kinect Viewer
 
-- Nejdřív ověřte, že se vaše zařízení zobrazuje ve Windows Device Manager.
+- Nejdřív ověřte, že se vaše zařízení zobrazuje ve Windows Správce zařízení.
 
     ![Kamery Azure Kinect ve Správci zařízení ve Windows](./media/resources/viewer-fails.png)
 
@@ -113,9 +113,9 @@ Protokolování K4ABT.dll sady SDK pro sledování textu je podobné s tím rozd
 
 ## <a name="cannot-find-microphone"></a>Nejde najít mikrofon.
 
-- Nejprve si nejdříve zajistěte, aby se v Device Manager vyčíslení pole mikrofonu.
+- Nejprve si nejdříve zajistěte, aby se v Správce zařízení vyčíslení pole mikrofonu.
 - Pokud je zařízení ve výčtu a funguje jinak v systému Windows, může to být tím, že po aktualizaci firmwaru Windows přiřadí jiné ID kontejneru k hloubce kamery.
-- Můžete ji zkusit resetovat tak, že přejdete na Device Manager, kliknete pravým tlačítkem na "Azure Kinect Microphone Array" a vyberte odinstalovat zařízení. Až to bude hotové, odpojte a znovu připojte senzor.
+- Můžete ji zkusit resetovat tak, že přejdete na Správce zařízení, kliknete pravým tlačítkem na "Azure Kinect Microphone Array" a vyberte odinstalovat zařízení. Až to bude hotové, odpojte a znovu připojte senzor.
 
     ![Pole Kinect pro mikrofon Azure](./media/resources/mic-not-found.png)
 
@@ -148,7 +148,7 @@ Pro Azure Kinect DK v **systému Windows** jsou technologie Intel, **Texas Instr
 
 Téma hostitelských řadičů USB získá ještě složitější, když má počítač nainstalovaný víc než jeden hostitelský řadič. Pokud jsou řadiče hostitele smíšené, může uživatel zaznamenat problémy, když některé porty fungují správně a jiné nefungují vůbec. V závislosti na tom, jak jsou porty kabelové, se můžou zobrazit všechny klientské porty s problémy s Azure Kinect.
 
-**Windows:** Chcete-li zjistit, jaký hostitelský řadič máte otevřený Device Manager
+**Windows:** Chcete-li zjistit, jaký hostitelský řadič máte otevřený Správce zařízení
 
 1. Zobrazení – > zařízení podle typu 
 2. S připojenými fotoaparáty k Azure Kinect a vybranými kamerami – >Azure Kinect 4K
@@ -174,6 +174,10 @@ Modul pro hloubku Azure Kinect v systému Linux používá OpenGL. OpenGL vyžad
 2. Vypněte systém, odpojte monitor a zapněte systém. Automatické přihlašování vynutí vytvoření relace x-serveru.
 2. Připojení přes SSH a nastavení proměnné pro zobrazení ENV `export DISPLAY=:0`
 3. Spusťte aplikaci Azure Kinect.
+
+Nástroj [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) se dá použít k okamžitému uzamknutí obrazovky po automatickém přihlášení. Do spouštěcí aplikace nebo do systémové služby přidejte následující příkaz:
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>Chybějící dokumentace jazyka C#
 

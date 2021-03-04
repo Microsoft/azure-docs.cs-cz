@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693088"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039243"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Publikování poznámkových bloků do galerie poznámkových bloků Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB integrovaných notebooků Jupyter jsou přímo integrovány do vašich Azure Cosmos DBch účtů v Azure Portal. Pomocí těchto poznámkových bloků můžete data analyzovat a vizualizovat z Azure Portal. Integrované poznámkové bloky pro Azure Cosmos DB jsou teď dostupné ve [29 oblastech](#supported-regions). Pokud chcete používat poznámkové bloky, [vytvořte nový účet Cosmos](#create-a-new-cosmos-account) nebo [Povolte poznámkové bloky v existujícím účtu](#enable-notebooks-in-an-existing-cosmos-account) v některé z těchto oblastí.
+Azure Cosmos DB integrovaných notebooků Jupyter jsou přímo integrovány do vašich Azure Cosmos DBch účtů v Azure Portal. Pomocí těchto poznámkových bloků můžete data analyzovat a vizualizovat z Azure Portal. Integrované poznámkové bloky pro Azure Cosmos DB jsou aktuálně k dispozici v [mnoha oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all). Pokud chcete používat poznámkové bloky, [vytvořte nový účet Cosmos](create-cosmosdb-resources-portal.md) nebo [Povolte poznámkové bloky v existujícím účtu](enable-notebooks.md) v některé z těchto oblastí.
 
 Prostředí poznámkového bloku v Azure Portal obsahuje některé ukázky publikované Azure Cosmos DB týmu. Má také veřejnou galerii, kde můžete publikovat a sdílet vlastní poznámkové bloky. Po publikování poznámkového bloku do galerie je k dispozici všem uživatelům Azure Cosmos DB, aby je mohli zobrazit a používat. V tomto článku se dozvíte, jak používat poznámkové bloky z veřejné galerie a jak svůj Poznámkový blok publikovat do galerie.
 
@@ -53,7 +53,7 @@ K publikování poznámkového bloku použijte následující postup:
 
    Možnost **publikovat do galerie** můžete najít také tak, že vyberete **...** tlačítko vedle názvu poznámkového bloku:
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Vyberte Poznámkový blok, který chcete publikovat do galerie.":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Další přístup k výběru poznámkového bloku pro publikování do galerie.":::
 
 1. Vyplňte formulář **publikovat do galerie** s následujícími podrobnostmi:
 
@@ -61,11 +61,10 @@ K publikování poznámkového bloku použijte následující postup:
    * **Popis:**  Krátký popis toho, co váš Poznámkový blok dělá.
    * **Značky:** Značky jsou volitelné a používají se k filtrování výsledků při hledání pomocí klíčového slova.
    * **Titulní obrázek:** Obrázek, který se používá na titulní stránce při publikování poznámkového bloku Můžete vybrat jednu z následujících možností:
-
-     * **Vlastní image** – obrázek můžete nahrát z počítače. Vyberte soubor obrázku s poměrem stran 256x144.
-     * **Adresa URL** – poskytněte veřejně PŘÍSTUPNOU adresu URL, kde se obrázek nachází.
-     * **Pořídit snímek obrazovky** – snímek obrazovky otevřeného poznámkového bloku se automaticky povede a nahraje do verze Preview.
-     * **Použijte první zobrazený** výstup první buňky, která má výstup zobrazení. Buňky, které zobrazují pouze Markdownu/text, se nepočítají jako výstup zobrazení.
+   * **Vlastní image** – obrázek můžete nahrát z počítače. Vyberte soubor obrázku s poměrem stran 256x144.
+   * **Adresa URL** – poskytněte veřejně PŘÍSTUPNOU adresu URL, kde se obrázek nachází.
+   * **Pořídit snímek obrazovky** – snímek obrazovky otevřeného poznámkového bloku se automaticky povede a nahraje do verze Preview.
+   * **Použijte první zobrazený** výstup první buňky, která má výstup zobrazení. Buňky, které zobrazují pouze Markdownu/text, se nepočítají jako výstup zobrazení.
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="Vyplňte formulář publikovat do galerie.":::
 

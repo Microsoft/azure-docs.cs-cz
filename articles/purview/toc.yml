@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Správa šablon termínů
             href: how-to-manage-term-templates.md
-          - name: Prostředky hromadné úpravy pro přiřazení termínů glosáře
-            href: how-to-bulk-edit-assets.md
       - name: Hromadné úpravy
         items:
           - name: Hromadné úpravy prostředků k označení poznámek a kontaktů

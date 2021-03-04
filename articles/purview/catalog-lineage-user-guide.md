@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cd4bba1bacbdb21a6bff4fcc5d3c1f3b2166ec35
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694066"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039971"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Uživatelská příručka ke službě Azure dosah Data Catalog line
 
@@ -31,7 +31,7 @@ Nástroje pro integraci dat a ETL můžou do služby Azure dosah v době spušt�
 
 | Systém zpracování dat | Podporovaný obor |
 | ---------------------- | ------------|
-| Azure Data Factory | [Aktivita kopírování](how-to-link-azure-data-factory.md#data-factory-copy-data-support) <br> [Aktivita toku dat](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Aktivita provádění balíčku SSIS](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [Aktivita kopírování](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [Aktivita toku dat](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Aktivita provádění balíčku SSIS](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
 | Azure Data Share | [Sdílet snímek](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>Systémy úložiště dat

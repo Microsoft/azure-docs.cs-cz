@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039797"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
@@ -42,7 +42,7 @@ Postup při použití tohoto průvodce:
 - [Přidání privátního certifikátu do aplikace](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Nejjednodušší způsob, jak přidat privátní certifikát, je [vytvořit bezplatný App Service spravovaný certifikát](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview).
+> Nejjednodušší způsob, jak přidat privátní certifikát, je [vytvořit bezplatný App Service spravovaný certifikát](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Preview).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ Pokud vaše aplikace nemá žádný certifikát pro vybranou vlastní doménu, m
 - **Import App Service Certificate** – Sledujte pracovní postup při [importu certifikátu App Service](configure-ssl-certificate.md#import-an-app-service-certificate)a pak vyberte tuto možnost.
 
 > [!NOTE]
-> Můžete také [vytvořit bezplatný certifikát](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview) nebo [importovat certifikát Key Vault](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ale musíte to udělat samostatně a pak se vrátit k dialogovému OKNU **vazby TLS/SSL** .
+> Můžete také [vytvořit bezplatný certifikát](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (Preview) nebo [importovat certifikát Key Vault](configure-ssl-certificate.md#import-a-certificate-from-key-vault), ale musíte to udělat samostatně a pak se vrátit k dialogovému OKNU **vazby TLS/SSL** .
 
 ### <a name="create-binding"></a>Vytvořit vazbu
 

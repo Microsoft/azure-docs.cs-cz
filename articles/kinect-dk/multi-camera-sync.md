@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specifikace, hardware, DK, možnosti, Hloubka, barva, RGB, IMU, pole, Hloubka, více, synchronizace
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039950"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchronizace více zařízení Azure s Kinect DK
 
@@ -36,6 +36,9 @@ Existuje mnoho důvodů, proč použít více zařízení Azure Kinect DK, včet
 ## <a name="plan-your-multi-device-configuration"></a>Plánování konfigurace pro více zařízení
 
 Než začnete, ujistěte se, že jste zkontrolovali [specifikace hardwaru Azure Kinect DK](hardware-specification.md) a [hloubkovou kameru Azure Kinect DK](depth-camera.md).
+
+> [!NOTE]  
+> Odstraňte vnější plastové pokrytí a vystavte synchronizaci konektorů a odinstalujte zásuvky.
 
 ### <a name="select-a-device-configuration"></a>Vyberte konfiguraci zařízení.
 
@@ -63,6 +66,9 @@ Zdroj aktivační události musí doručovat signál do hlavního zařízení **
 ![Konfigurace kabelů pro vnější signál triggeru](./media/resources/camera-trigger-signal.jpg)
 
 Další informace o tom, jak pracovat s externím vybavením, najdete v tématu [použití služby Azure Kinect Recorder s externími synchronizovanými zařízeními](record-external-synchronized-units.md) .
+
+> [!NOTE]  
+> Sync je VSync pro kameru RGB. Časová razítka pro všechna zařízení jsou nastavena na hodnotu nula a napočítána. Společnost Microsoft nenakonfigurovala minimální a maximální šířku synchronizačního impulsu a doporučuje mimicking Pulse vygenerované synchronizací z Azure Kinect DK.
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>Plánování nastavení kamery a konfigurace softwaru
 

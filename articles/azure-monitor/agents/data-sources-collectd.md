@@ -1,17 +1,16 @@
 ---
 title: Shromažďovat data shromážděná v Azure Monitor | Microsoft Docs
 description: Shromažďováno je open source démon pro Linux, který pravidelně shromažďuje data z aplikací a informací na úrovni systému.  Tento článek poskytuje informace o shromažďování dat z Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 6848b4e0463be803fb4f41797d933386cb575a0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: daeb587349d885b3e6820b8da2951c3790eb1ac6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732101"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039576"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
 [Shromažďováno](https://collectd.org/) je open source démon pro Linux, který pravidelně shromažďuje metriky výkonu z aplikací a informací na úrovni systému. Příklady aplikací zahrnují prostředí Java Virtual Machine (JVM), MySQL server a Nginx. Tento článek poskytuje informace o shromažďování údajů o výkonu ze sběru Azure Monitor.

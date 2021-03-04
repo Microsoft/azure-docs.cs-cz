@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c56e7318e24b802ae9ad605a0c9ae5f88397ec8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680608"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039780"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure PowerShell
 
@@ -70,7 +70,7 @@ ID RouteServerSubnet vypadá takto:
 Vytvoření směrovacího serveru pomocí tohoto příkazu:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
 ```
 
 Umístění musí odpovídat umístění vaší virtuální sítě. HostedSubnet je ID RouteServerSubnet, které jste získali v předchozí části.
@@ -80,7 +80,7 @@ Umístění musí odpovídat umístění vaší virtuální sítě. HostedSubnet
 K navázání partnerského vztahu protokolu BGP ze serveru směrování do síťové virtuální zařízení použijte následující příkaz:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_asn” -RouteServerName "myRouteServer -ResourceGroupName ”RouteServerRG”
+Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 "nva_ip" je IP adresa virtuální sítě přiřazená k síťové virtuální zařízení. "nva_asn" je číslo autonomního systému (ASN), které je konfigurováno v síťové virtuální zařízení. ASN může být jakékoli 16bitové číslo jiné než v rozsahu 65515-65520. Tato škála čísla ASN je vyhrazena společností Microsoft.
@@ -88,7 +88,7 @@ Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_a
 K nastavení partnerského vztahu s různými síťové virtuální zařízení nebo jinou instancí stejného síťové virtuální zařízení pro redundanci použijte tento příkaz:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn “nva2_asn” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Dokončete konfiguraci na síťové virtuální zařízení
@@ -96,7 +96,7 @@ Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn �
 K dokončení konfigurace síťové virtuální zařízení a povolení relací protokolu BGP budete potřebovat IP adresu a ASN serveru tras Azure. Tyto informace můžete získat pomocí tohoto příkazu:
 
 ```azurepowershell-interactive 
-Get-AzRouteServer -RouterName “myRouteServer” -ResourceGroupName “RouteServerRG”
+Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 Výstup obsahuje následující informace:
@@ -113,13 +113,13 @@ Pokud máte bránu ExpressRoute a bránu Azure VPN ve stejné virtuální síti 
 1. Pokud chcete povolit výměnu tras mezi serverem tras Azure a branami, použijte tento příkaz:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” -AllowBranchToBranchTraffic 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
 ```
 
 2. Pokud chcete zakázat výměnu tras mezi serverem tras Azure a branami, použijte tento příkaz:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -137,13 +137,13 @@ Pokud už nepotřebujete Server tras Azure, pomocí těchto příkazů odeberte 
 1. Pomocí tohoto příkazu odeberte vytvoření partnerského vztahu protokolu BGP mezi serverem Azure Route Server a síťové virtuální zařízení:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Odeberte server služby Azure Route pomocí tohoto příkazu:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="next-steps"></a>Další kroky

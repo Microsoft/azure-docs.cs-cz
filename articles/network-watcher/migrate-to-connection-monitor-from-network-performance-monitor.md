@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698684"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038709"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
 
@@ -41,7 +41,7 @@ Migrace pomáhá získat následující výsledky:
 ## <a name="prerequisites"></a>Požadavky
 
 * Ujistěte se, že ve vašem předplatném a oblasti pracovního prostoru Log Analytics je povolená možnost Network Watcher. 
-* V případě, že se používá virtuální počítač Azure patřící do jiné oblasti nebo předplatného než Log Analytics pracovní prostor, ujistěte se, že pro toto předplatné a oblast jsou povolené Network Watcher.   
+* V případě, že se virtuální počítač Azure patřící do jiné oblasti nebo předplatného, než je Log Analytics pracovního prostoru, používá jako koncový bod, ujistěte se, že pro toto předplatné a oblast jsou povolené Network Watcher.   
 * Virtuální počítače Azure s nainstalovanými agenty Log Analytics musí být povolené s rozšířením Network Watcher.
 
 ## <a name="migrate-the-tests"></a>Migrace testů

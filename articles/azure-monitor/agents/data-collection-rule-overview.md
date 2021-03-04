@@ -1,17 +1,16 @@
 ---
 title: Pravidla shromažďování dat v Azure Monitor (Preview)
 description: Přehled pravidel shromažďování dat (chcete odeslat obecnou) v Azure Monitor včetně jejich obsahu a struktury a způsobu jejich vytváření a práce s nimi.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 0bae058804bdb1f199c39497c59e89bda8087424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039610"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -40,7 +39,7 @@ Následující diagram znázorňuje komponenty pravidla shromažďování dat a 
 ### <a name="data-source-types"></a>Typy zdroje dat
 Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlastností, které musí být zadány pro každý zdroj dat. Typy zdrojů dat, které jsou aktuálně k dispozici, jsou uvedeny v následující tabulce.
 
-| Typ zdroje dat | Description | 
+| Typ zdroje dat | Popis | 
 |:---|:---|
 | přípona | Zdroj dat založený na rozšíření virtuálních počítačů |
 | Čítače výkonu | Čítače výkonu pro systémy Windows i Linux |

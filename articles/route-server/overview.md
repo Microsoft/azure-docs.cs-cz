@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 98527ea5227fcdc2c35dbe3579657368e30fcdaa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680610"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039831"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Co je Azure Route Server (Preview)? 
 
@@ -49,5 +49,5 @@ Nejčastější dotazy týkající se Azure Route serveru najdete v tématu [Nej
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si, jak nakonfigurovat server směrování Azure.](quickstart-configure-route-server-portal.md)
+- [Informace o tom, jak nakonfigurovat server směrování Azure](quickstart-configure-route-server-powershell.md)
 - [Přečtěte si, jak Azure Route server funguje se službou Azure ExpressRoute a Azure VPN.](expressroute-vpn-support.md)

@@ -1,17 +1,16 @@
 ---
 title: Řešení potíží s rozšířením virtuálního počítače Azure Log Analytics
 description: Popište příznaky, příčiny a řešení nejběžnějších problémů s rozšířením Log Analytics virtuálního počítače pro virtuální počítače Azure s Windows a Linux.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: c499633931bd44fed5372f1f05521980f0b61a85
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 33bdff8d516929e7f615f3a7f8bd77463eea0c64
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609295"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040137"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Řešení potíží s rozšířením Log Analytics pro virtuální počítače ve službě Azure Monitor
 Tento článek poskytuje nápovědu k řešení chyb, ke kterým může docházet s rozšířením virtuálního počítače s Log Analytics pro virtuální počítače s Windows a Linux běžící v Microsoft Azure a navrhuje možná řešení pro jejich řešení.

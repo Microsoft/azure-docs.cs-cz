@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor pro stávající zákazníky Operations Manager
 description: Doprovodné materiály pro stávající uživatele Operations Manager k převodu monitorování určitých úloh do Azure Monitor jako součást přechodu do cloudu.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728956"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039372"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor pro stávající zákazníky Operations Manager
 Tento článek poskytuje pokyny pro zákazníky, kteří aktuálně používají [System Center Operations Manager](/system-center/scom/welcome) a plánují přechod [Azure monitor](overview.md) při migraci obchodních aplikací a dalších prostředků do Azure. Předpokládá, že váš konečný cíl je úplným přechodem do cloudu a nahrazuje co nejvíce Operations Manager funkcím Azure Monitor, aniž by to ohrozilo vaše podnikání a provozní požadavky. 

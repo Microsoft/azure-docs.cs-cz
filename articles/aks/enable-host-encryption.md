@@ -3,13 +3,13 @@ title: Povolení šifrování založeného na hostiteli ve službě Azure Kubern
 description: Naučte se konfigurovat šifrování založené na hostiteli v clusteru AKS (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071846"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039729"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -26,6 +26,13 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 ### <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že máte `aks-preview` nainstalovanou verzi rozhraní příkazového řádku CLI verze 0.4.73 nebo novější.
+- Ujistěte se, že je `EnableEncryptionAtHostPreview` v části `Microsoft.ContainerService` povoleno příznak funkce.
+
+Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Pomocí e-mailu **encryptionAtHost@microsoft.com** s ID předplatných získáte funkci povolenou pro vaše předplatná. 
+
+> [!IMPORTANT]
+> Abyste **encryptionAtHost@microsoft.com** získali funkci pro výpočetní prostředky, musíte poslat e-mail s ID předplatného. Nemůžete ho povolit pro výpočetní prostředky.
+
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
