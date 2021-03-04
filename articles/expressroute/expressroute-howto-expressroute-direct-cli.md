@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011301"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099875"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
@@ -21,12 +21,21 @@ ExpressRoute Direct vám umožní přímo se připojit k globální síti Micros
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, pošlete E-mail na adresu <ExpressRouteDirect@microsoft.com> s vaším ID předplatného, včetně následujících podrobností:
+Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Než začnete používat ExpressRoute Direct, musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, udělejte to prosím pomocí Azure PowerShell:
+1.  Přihlaste se k Azure a vyberte předplatné, které chcete zaregistrovat.
 
-* Scénáře, které se chystáte provést s **přímým přístupem ExpressRoute**
-* Předvolby umístění – v části [partneři a umístění partnerských vztahů](expressroute-locations-providers.md) najdete úplný seznam všech umístění.
-* Časová osa implementace
-* Jakékoli další dotazy
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+Po zaregistrování ověřte, zda je poskytovatel prostředků **Microsoft. Network** zaregistrován ve vašem předplatném. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 

@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014566"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100725"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Kontrola ohrožení zabezpečení imagí s využitím Azure Defenderu pro registry kontejnerů
 
@@ -21,8 +21,6 @@ Tato stránka vysvětluje použití integrovaného skeneru ohrožení zabezpeče
 Pokud je povolený nástroj **Azure Defender pro registry kontejnerů**, všechny image, které odešlete do registru, se okamžitě zkontrolují. Kromě toho se kontroluje i všechny image vyhledané během posledních 30 dnů. 
 
 Když skener ohlásí chyby zabezpečení pro Security Center, Security Center jako doporučení prezentuje závěry a související informace. Kromě toho jsou zde uvedené informace související s informacemi, jako jsou například nápravné kroky, relevantní CVEs, CVSS skóre a další. Zjištěná ohrožení zabezpečení můžete zobrazit pro jedno nebo více předplatných nebo pro konkrétní registr.
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifikace ohrožení zabezpečení v obrázcích ve službě Azure Container Registry 

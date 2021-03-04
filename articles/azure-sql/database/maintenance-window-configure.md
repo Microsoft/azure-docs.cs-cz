@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048589"
+ms.locfileid: "102101235"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurovat časový interval pro správu a údržbu (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ Výchozí časové období údržby *systému* je 17:00 8:00 denně (místní č
 
 Možnost změny v jiném časovém intervalu pro správu a údržbu není k dispozici pro každou úroveň služby nebo v každé oblasti. Podrobnosti o dostupnosti najdete v tématu [dostupnost okna údržby](maintenance-window.md#availability).
 
+> [!Important]
+> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátkého převzetí služeb při selhání, které se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Abyste minimalizovali dopad převzetí služeb při selhání, měli byste tuto operaci provést mimo špičku hodin.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurovat časové období údržby během vytváření databáze 
 

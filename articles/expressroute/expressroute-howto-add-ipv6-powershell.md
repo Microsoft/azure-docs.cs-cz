@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 20b8e354d0c8e2e04cf22d1b8014f5b8e33a860c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038862"
+ms.locfileid: "102100045"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Přidání podpory protokolu IPv6 pro privátní partnerské vztahy pomocí Azure PowerShell (Preview)
 
@@ -175,7 +175,7 @@ I když je podpora protokolu IPv6 dostupná pro připojení k nasazením v oblas
 * Připojení k nasazením v Azure prostřednictvím neaz ExpressRoute Gateway SKU
 * Připojení k nasazením v oblastech mimo AZ
 * Připojení Global Reach mezi okruhy ExpressRoute
-* Použití ExpressRoute s vWAN
+* Použití ExpressRoute s virtuální sítí WAN
 
 ## <a name="next-steps"></a>Další kroky
 

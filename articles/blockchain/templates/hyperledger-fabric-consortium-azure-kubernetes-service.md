@@ -1,15 +1,16 @@
 ---
 title: Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 description: Jak nasadit a nakonfigurovat síť konsorcia prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897254"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101099"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
 
@@ -31,34 +32,6 @@ Možnost | Model služby | Běžný případ použití
 Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 [Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo ochranu osobních údajů smluv a transakcí.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS a PaaS | Azure blockchain Workbench Preview je kolekce služeb a schopností Azure, které vám pomůžou vytvářet a nasazovat aplikace blockchain pro sdílení obchodních procesů a dat s jinými organizacemi. Pomocí Azure blockchain Workbench můžete vytvořit prototypy řešení blockchain nebo zkoušku konceptu pro aplikaci blockchain. Azure blockchain Workbench se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Architektura konsorcia infrastruktury pro hlavní kniha
-
-Chcete-li vytvořit síť prostředků infrastruktury hlavní knihy v Azure, je nutné nasadit službu řazení a organizaci s partnerskými uzly. Pomocí šablony řešení hlavní kniha prostředků infrastruktury v Azure Kubernetes můžete vytvářet uzly objednávek nebo partnerské uzly. Je nutné nasadit šablonu pro každý uzel, který chcete vytvořit.
-
-Základní komponenty, které jsou vytvořeny jako součást nasazení šablony, jsou:
-
-- **Uzly**: uzel, který je zodpovědný za řazení transakce v hlavní knize. Společně s ostatními uzly tvoří seřazené uzly službu řazení pro síť prostředků infrastruktury hlavní knihy.
-
-- **Partnerské uzly**: uzel, který primárně hostuje hlavní knihy a inteligentní kontrakty, které jsou základními prvky sítě.
-
-- **CA infrastruktury Fabric**: certifikační autorita (CA) pro prostředky infrastruktury hlavní knihy. Certifikační autorita prostředků infrastruktury umožňuje inicializovat a spustit proces serveru, který je hostitelem certifikační autority. Umožňuje správu identit a certifikátů. Každý cluster AKS nasazený jako součást šablony bude mít ve výchozím nastavení certifikační autoritu infrastruktury pod.
-
-- **CouchDB nebo LevelDB**: databáze státních stavů pro rovnocenné uzly. LevelDB je výchozí databáze stavu vložená v partnerském uzlu. Ukládá chaincode data jako jednoduché páry klíč/hodnota a podporuje pouze dotazy na klíč, rozsah klíčů a složené klíče. CouchDB je volitelná alternativní databáze stavu, která podporuje formátované dotazy, když jsou datové hodnoty chaincode modelované jako JSON.
-
-Šablona v nasazení roztočí různé prostředky Azure v rámci vašeho předplatného. Nasazené prostředky Azure jsou:
-
-- **Cluster AKS**: cluster služby Azure Kubernetes, který je nakonfigurovaný podle vstupních parametrů poskytovaných zákazníkem. Cluster AKS má různé lusky nakonfigurované pro spouštění síťových komponent prostředků infrastruktury hlavní knihy. Vytvořené lusky jsou:
-
-  - **Fabric Tools**: nástroje, které jsou zodpovědné za konfiguraci komponent technologie Fabric v hlavní knize.
-  - **Lusky/protějšky**: uzly sítě prostředků infrastruktury hlavní knihy.
-  - **Proxy**: proxy server ngnix pod tím, přes který mohou klientské aplikace komunikovat s clusterem AKS.
-  - **CA infrastruktury Fabric**: na pod, kde je SPUŠTĚNÁ certifikační autorita infrastruktury.
-- **PostgreSQL**: instance databáze, která udržuje identity certifikační autority infrastruktury.
-
-- **Trezor klíčů**: Instance služby Azure Key Vault nasazená za účelem uložení přihlašovacích údajů certifikační autority prostředků infrastruktury a kořenových certifikátů poskytovaných zákazníkem. Trezor se používá v případě opakování nasazení šablony pro zpracování mechanismu šablony.
-- **Managed disk**: instance služby Azure Managed disks, která poskytuje trvalé úložiště pro hlavní knihu a databázi světového stavu partnerského uzlu.
-- **Veřejná IP adresa**: koncový bod clusteru AKS byl nasazen pro komunikaci s clusterem.
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>Nasazení pořadí a partnerské organizace
 
@@ -85,10 +58,10 @@ Pokud chcete začít s nasazením síťových komponent infrastruktury pro hlavn
     - **Název organizace**: zadejte název organizace prostředků infrastruktury hlavní knihy, která je vyžadována pro různé operace roviny dat. Název organizace musí být pro každé nasazení jedinečný.
     - **Součást sítě prostředků infrastruktury**: vyberte buď **řazení služby** nebo **partnerské uzly**, na základě součásti sítě blockchain, kterou chcete nastavit.
     - **Počet uzlů**: následující dva typy uzlů:
-        - **Služba objednávání**: Vyberte počet uzlů pro zajištění odolnosti proti chybám v síti. Počet uzlů podporovaného pořadí je 3, 5 a 7.
-        - **Partnerské uzly**: na základě vašeho požadavku můžete vybrat 1 až 10 uzlů.
-    - **Databáze stavu partnerského uzlu na světě**: Vyberte mezi LevelDB a CouchDB. Toto pole se zobrazí, pokud v rozevíracím seznamu **součást sítě prostředků infrastruktury** vyberete možnost **rovnocenné uzly** .
-    - **Uživatelské jméno certifikační autority infrastruktury**: zadejte uživatelské jméno, které se používá pro ověřování certifikační autority infrastruktury.
+        - **Služba řazení**: uzly zodpovědné za řazení transakce v hlavní knize. Vyberte počet uzlů pro zajištění odolnosti proti chybám v síti. Počet uzlů podporovaného pořadí je 3, 5 a 7.
+        - **Partnerské uzly**: uzly, které hostují hlavní knihy a inteligentní kontrakty. Na základě vašeho požadavku můžete vybrat 1 až 10 uzlů.
+    - **Databáze stavů partnerského uzlu na světě**: databáze světového stavu pro partnerské uzly. LevelDB je výchozí databáze stavu vložená v partnerském uzlu. Ukládá chaincode data jako jednoduché páry klíč/hodnota a podporuje pouze dotazy na klíč, rozsah klíčů a složené klíče. CouchDB je volitelná alternativní databáze stavu, která podporuje formátované dotazy, když jsou datové hodnoty chaincode modelované jako JSON. Toto pole se zobrazí, pokud v rozevíracím seznamu **součást sítě prostředků infrastruktury** vyberete možnost **rovnocenné uzly** .
+    - **Uživatelské jméno certifikační autority infrastruktury**: certifikační autorita infrastruktury umožňuje inicializovat a spustit proces serveru, který je hostitelem certifikační autority. Umožňuje správu identit a certifikátů. Každý cluster AKS nasazený jako součást šablony bude mít ve výchozím nastavení certifikační autoritu infrastruktury pod. Zadejte uživatelské jméno, které se používá pro ověřování certifikační autority infrastruktury.
     - **Heslo certifikační autority prostředků infrastruktury**: zadejte heslo pro ověřování certifikační autority infrastruktury.
     - **Potvrzení hesla**: potvrďte heslo certifikační autority infrastruktury.
     - **Certifikáty**: Pokud chcete k inicializaci certifikační autority prostředků infrastruktury použít vlastní kořenové certifikáty, pak zvolte možnost **nahrát kořenový certifikát pro Fabric** . V opačném případě certifikační autorita infrastruktury ve výchozím nastavení vytvoří certifikáty podepsané svým držitelem.
@@ -96,11 +69,21 @@ Pokud chcete začít s nasazením síťových komponent infrastruktury pro hlavn
     - **Privátní klíč kořenového certifikátu**: Nahrajte privátní klíč kořenového certifikátu. Pokud máte certifikát. pem s kombinovaným veřejným a soukromým klíčem, nahrajte ho také sem.
 
 
-6. Výběrem karty **Nastavení clusteru AKS** definujte konfiguraci clusteru služby Azure Kubernetes, která je základní infrastrukturou, na které budou nastavené síťové komponenty prostředků infrastruktury hlavní knihy.
+6. Vyberte kartu **Nastavení clusteru AKS** a definujte konfiguraci clusteru služby Azure Kubernetes. Cluster AKS má různé lusky nakonfigurované pro spouštění síťových komponent prostředků infrastruktury hlavní knihy. Nasazené prostředky Azure jsou:
+
+    - **Fabric Tools**: nástroje, které jsou zodpovědné za konfiguraci komponent technologie Fabric v hlavní knize.
+    - **Lusky/protějšky**: uzly sítě prostředků infrastruktury hlavní knihy.
+    - **Proxy**: proxy server ngnix pod tím, přes který mohou klientské aplikace komunikovat s clusterem AKS.
+    - **CA infrastruktury Fabric**: na pod, kde je SPUŠTĚNÁ certifikační autorita infrastruktury.
+    - **PostgreSQL**: instance databáze, která udržuje identity certifikační autority infrastruktury.
+    - **Trezor klíčů**: Instance služby Azure Key Vault nasazená za účelem uložení přihlašovacích údajů certifikační autority prostředků infrastruktury a kořenových certifikátů poskytovaných zákazníkem. Trezor se používá v případě opakování nasazení šablony pro zpracování mechanismu šablony.
+    - **Managed disk**: instance služby Azure Managed disks, která poskytuje trvalé úložiště pro hlavní knihu a databázi světového stavu partnerského uzlu.
+    - **Veřejná IP adresa**: koncový bod clusteru AKS byl nasazen pro komunikaci s clusterem.
+
+    Zadejte následující podrobnosti: 
 
     ![Snímek obrazovky, který zobrazuje kartu Nastavení clusteru A kB S.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Zadejte následující podrobnosti:
     - **Název clusteru Kubernetes**: v případě potřeby změňte název clusteru AKS. Toto pole je předem vyplněné na základě zadané předpony prostředku.
     - **Verze Kubernetes**: vyberte verzi Kubernetes, která bude nasazena v clusteru. V závislosti na oblasti, kterou jste vybrali na kartě **základy** , se můžou dostupné podporované verze změnit.
     - **Předpona DNS**: Zadejte předponu názvu DNS (Domain Name System) pro cluster AKS. Pomocí DNS se připojíte k rozhraní Kubernetes API při správě kontejnerů po vytvoření clusteru.
@@ -294,7 +277,7 @@ Z klienta partnerské organizace spusťte příkaz pro nastavení partnerských 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Příklad:
+`<anchorPeersList>` je čárkou oddělený seznam partnerských uzlů, které se mají nastavit jako kotvicí partner. Například:
 
   - Nastavte `<anchorPeersList>` , jako `"peer1"` kdybyste chtěli nastavit jenom uzel peer1 jako ukotvení partnerského uzlu.
   - Nastavte `<anchorPeersList>` , jak `"peer1" "peer3"` chcete jako kotvové partnery nastavit uzly peer1 i peer3.
@@ -334,7 +317,7 @@ Spusťte následující příkaz, který nainstaluje chaincode v partnerské org
 ```
 Příkaz nainstaluje chaincode do všech partnerských uzlů sady rovnocenných organizací v sadě s `ORGNAME` proměnnou prostředí. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte tento příkaz samostatně pro každou organizaci partnera.  
 
-Postupujte následovně:  
+Postupujte takto:  
 
 1.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg1` a spusťte `./azhlf chaincode install` příkaz.  
 2.  Nastavte `ORGNAME` a `USER_IDENTITY` v závislosti na `peerOrg2` a spusťte `./azhlf chaincode install` příkaz.  
@@ -351,7 +334,7 @@ Předejte název funkce vytváření instance a seznam argumentů oddělených m
 
 Konfigurační soubor JSON kolekce můžete také předat pomocí `--collections-config` příznaku. Nebo nastavte přechodné argumenty pomocí `-t` příznaku při vytváření instance chaincode používané pro privátní transakce.
 
-Příklad:
+Například:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>

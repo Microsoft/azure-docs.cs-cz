@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/02/2021
-ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 0a9a4b2de03c62640bb1c643d3ff3da4139d42a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692806"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101201"
 ---
 # <a name="maintenance-window-preview"></a>Časové období údržby (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,29 +32,31 @@ Azure provádí plánované aktualizace údržby pro prostředky spravované ins
 
 Časové období údržby se dá nakonfigurovat pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku nebo Azure API. Dá se nakonfigurovat při vytváření nebo pro existující databáze SQL a spravované instance SQL.
 
+> [!Important]
+> Konfigurace časového období údržby je dlouhodobě spuštěná asynchronní operace, podobně jako změna úrovně služby prostředku SQL Azure. Prostředek je k dispozici během operace s výjimkou krátkého převzetí služeb při selhání, které se na konci operace stane, a obvykle trvá až 8 sekund i v případě přerušených dlouhotrvajících transakcí. Abyste minimalizovali dopad převzetí služeb při selhání, měli byste tuto operaci provést mimo špičku hodin.
+
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Získání větší předvídatelnosti s časovým obdobím údržby
 
 Ve výchozím nastavení se všechny databáze SQL Azure a databáze spravované instance aktualizují jenom během 17:00 na místní čas, aby se předešlo výpadkům v pracovní době. Místní čas je určený [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , která je hostitelem prostředku. Aktualizace údržby můžete dále upravit na čas, který je pro vaši databázi vhodný, a to výběrem ze dvou dalších slotů časového období údržby:
-
-* **Výchozí** okno, 17:00 8:00 místní čas v pondělí – neděle 
+ 
 * Okno pracovního dne, 10PM se na 6:00 místní čas pondělí – čtvrtek
 * Víkendové okno, 10PM se na 6:00 místního času v pátek – neděle
 
-Po provedení výběru časového období údržby budou všechny plánované aktualizace údržby provedeny pouze v okně podle vašeho výběru.   
+Po provedení výběru časového období údržby a dokončení konfigurace služby budou všechny plánované aktualizace údržby provedeny pouze během zvoleného okna.   
 
 > [!Note]
 > Kromě plánovaných aktualizací údržby můžou ve výjimečných případech neplánované události údržby způsobit nedostupnost. 
 
 ### <a name="cost-and-eligibility"></a>Náklady a nárok
 
-Výběr časového období údržby je zdarma pro následující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/)předplatného: průběžné platby, poskytovatel Cloud Solution Provider (CSP), Microsoft Enterprise nebo Microsoft Customer Agreement.
+Konfigurace a používání okna údržby je zdarma pro všechny opravňující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/): průběžné platby, zprostředkovatel Cloud Solution Provider (CSP), Microsoft Enterprise nebo Microsoft Customer Agreement.
 
 > [!Note]
 > Nabídka Azure je typ předplatného Azure, které máte. Například předplatné s [tarify](https://azure.microsoft.com/offers/ms-azr-0003p/)průběžných plateb, [systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)a [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) jsou všechny nabídky Azure. Každá nabídka nebo plán má různé výrazy a výhody. Vaše nabídka nebo plán se zobrazí v přehledu předplatného. Další informace o přepnutí předplatného na jinou nabídku najdete v tématu [Změna předplatného Azure na jinou nabídku](/azure/cost-management-billing/manage/switch-azure-offer).
 
 ## <a name="advance-notifications"></a>Oznámení předem
 
-Oznámení o údržbě je možné nakonfigurovat tak, aby zákazníkům upozornila na nadcházející plánované události údržby 24 hodin předem, v době údržby a po dokončení časového období údržby. Další informace najdete v tématu [oznámení o předem](advance-notifications.md).
+Oznámení o údržbě je možné nakonfigurovat tak, aby vás upozornila na nadcházející plánované události údržby za vás Azure SQL Database 24 hodin předem, v době údržby a po dokončení časového období údržby. Další informace najdete v tématu [oznámení o předem](advance-notifications.md).
 
 ## <a name="availability"></a>Dostupnost
 
@@ -62,6 +64,7 @@ Oznámení o údržbě je možné nakonfigurovat tak, aby zákazníkům upozorni
 
 Výběr časového období údržby, které je jiné než výchozí, je k dispozici na všech slo **s výjimkou**:
 * Hyperškálování 
+* Fondy instancí
 * Starší verze COMPUTE GEN4 – vCore
 * Basic, S0 a S1 
 * DC, Fsv2, M-Series
@@ -93,7 +96,7 @@ Pokud chcete získat maximální výhody z časových období údržby, ujistět
 
 * V Azure SQL Database můžou být všechna připojení pomocí zásad připojení k proxy serveru ovlivněná zvoleným časovým obdobím údržby i oknem údržby uzlu brány. Připojení klientů pomocí doporučených zásad připojení přesměrování se ale neprojeví při převzetí služeb při selhání v rámci údržby uzlu brány. 
 
-* Ve spravované instanci Azure SQL se uzly brány nacházejí [v rámci virtuálního clusteru](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) a mají stejné časové období údržby jako spravovaná instance, takže použití zásad připojení proxy nezveřejňuje připojení k dalšímu časovému intervalu pro správu a údržbu.
+* Ve spravované instanci Azure SQL se uzly brány hostují [ve virtuálním clusteru](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) a mají stejné časové období údržby jako spravovaná instance, ale při použití zásady přesměrování připojení se pořád doporučuje minimalizovat počet přerušení během události údržby.
 
 Další informace o zásadách připojení klienta v Azure SQL Database najdete v tématu [zásady připojení Azure SQL Database](../database/connectivity-architecture.md#connection-policy). 
 

@@ -3,12 +3,12 @@ title: Přístup k komunitním prostředkům pomocí centra zálohování
 description: Použití služby Backup Center k přístupu k ukázkovým šablonám, skriptům a požadavkům na funkce
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ee377ed393aa4afe1f41d243230686020f5825aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23892c11df26bd3799ca247ef31a7d4c1b6e8bf5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745065"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100028"
 ---
 # <a name="access-community-resources-using-backup-center"></a>Přístup k komunitním prostředkům pomocí centra zálohování
 
@@ -26,7 +26,7 @@ K dispozici jsou některé prostředky, které jsou dostupné prostřednictvím 
 
 - **Požadavky na funkce**: můžete přejít na požadavky na funkce UserVoice a soubor.
 
-- **Ukázky pro automatizované nasazení**: pomocí centrum komunity můžete zjistit šablony ukázkových Azure Resource Manager (ARM) a zásady Azure, které můžete využít mimo pole. Můžete také najít ukázkové skripty PowerShellu, příkazy rozhraní příkazového řádku a skripty MSDB.
+- **Ukázky pro automatizované nasazení**: pomocí centrum komunity můžete zjistit šablony ukázkových Azure Resource Manager (ARM) a zásady Azure, které můžete využít mimo pole. Můžete také najít ukázkové skripty PowerShellu, příkazy rozhraní příkazového řádku a zálohovací skripty databáze Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 

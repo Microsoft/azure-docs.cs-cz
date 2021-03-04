@@ -1,21 +1,37 @@
 ---
 title: Automatické nasazení agentů pro Azure Security Center | Microsoft Docs
-description: Tento článek popisuje, jak nastavit Automatické zřizování agenta Log Analytics a dalších agentů používaných v Azure Security Center.
-services: security-center
+description: Tento článek popisuje, jak nastavit Automatické zřizování agenta Log Analytics a dalších agentů a rozšíření používaných nástrojem Azure Security Center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729857"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099416"
 ---
-# <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
+# <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurace automatického zřizování pro agenty a rozšíření z Azure Security Center
+
+Security Center shromažďuje data z vašich prostředků pomocí příslušného agenta nebo rozšíření pro daný prostředek a typu kolekce dat, kterou jste povolili. Použijte níže uvedené precedures a ujistěte se, že váš prostředek má nezbytný Tento článek popisuje, jak nastavit Automatické zřizování agenta Log Analytics a dalších agentů a rozšíření používaných nástrojem Azure Security Center
+
+## <a name="prerequisites"></a>Požadavky
+Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+
+## <a name="availability"></a>Dostupnost
+
+| Aspekt                  | Podrobnosti                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Stav vydaných verzí:          | **Funkce**: Automatické zřizování je všeobecně dostupné (GA).<br>**Agenti a rozšíření**: Agent Log Analytics pro virtuální počítače Azure je v cloudu, protože je ve verzi Preview, doplněk zásad pro KUBERNETES je GA.                |
+| Stanov                | Free                                                                                                                                                                                                                         |
+| Podporovaná umístění: | ![Ano](./media/icons/yes-icon.png) Počítače Azure<br>![Ne](./media/icons/no-icon.png) Počítače ARC Azure<br>![Ne](./media/icons/no-icon.png) Uzly Kubernetes<br>![Ne](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Cloud                 | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
+
+## <a name="how-does-security-center-collect-data"></a>Jak Security Center shromažďovat data?
 
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. 
 
@@ -29,20 +45,6 @@ Data se shromažďují pomocí:
 > [!TIP]
 > Jak Security Center vzrostly, byly také vypěstovány typy prostředků, které lze monitorovat. Počet rozšíření se také zvětšil. Automatické zřizování se rozšířilo na podporu dalších typů prostředků, a to díky využití možností Azure Policy.
 
-:::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Stránka nastavení automatického zřizování Security Center":::
-
-
-## <a name="availability"></a>Dostupnost
-
-| Aspekt                  | Podrobnosti                                                                                                                                                                                                                      |
-|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Stav vydaných verzí:          | **Funkce**: Automatické zřizování je všeobecně dostupné (GA).<br>**Agenti a rozšíření**: Agent Log Analytics pro virtuální počítače Azure je v cloudu, protože je ve verzi Preview, doplněk zásad pro KUBERNETES je GA.                |
-| Stanov                | Free                                                                                                                                                                                                                         |
-| Podporovaná umístění: | ![Ano](./media/icons/yes-icon.png) Počítače Azure<br>![Ne](./media/icons/no-icon.png) Počítače ARC Azure<br>![Ne](./media/icons/no-icon.png) Uzly Kubernetes<br>![Ne](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Cloud                 | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
-|                         |                                                                                                                                                                                                                              |
-
-
 ## <a name="why-use-auto-provisioning"></a>Proč používat Automatické zřizování?
 Všechna agenty a rozšíření popsaná na této stránce *lze* nainstalovat ručně (viz [ruční instalace agenta Log Analytics](#manual-agent)). **Automatické zřizování** ale snižuje režijní náklady tím, že na stávající a nové počítače nainstaluje všechny požadované agenty a rozšíření, aby se zajistilo rychlejší pokrytí zabezpečení pro všechny podporované prostředky. 
 
@@ -54,14 +56,19 @@ Nastavení automatického zřizování Security Center mají přepínač pro ka�
 > [!TIP]
 > Přečtěte si další informace o Azure Policy efektů včetně nasazení, pokud neexistují v seznámení s [Azure Policymi efekty](../governance/policy/concepts/effects.md).
 
-## <a name="enable-auto-provisioning-of-the-log-analytics-agent"></a>Povolit automatické zřizování agenta Log Analytics <a name="auto-provision-mma"></a>
+
+## <a name="enable-auto-provisioning-of-the-log-analytics-agent-and-extensions"></a>Povolit automatické zřizování agenta a rozšíření Log Analytics <a name="auto-provision-mma"></a>
+
 Pokud je pro agenta Log Analytics zapnuté Automatické zřizování, Security Center nasadí agenta na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Seznam podporovaných platforem najdete [v tématu podporované platformy v Azure Security Center](security-center-os-coverage.md).
 
 Povolení automatického zřizování agenta Log Analytics:
 
 1. V nabídce Security Center vyberte **cenové & nastavení**.
 1. Vyberte příslušné předplatné.
-1. Na stránce **Automatické zřizování** nastavte stav agenta na **zapnuto**.
+1. Na stránce **Automatické zřizování** nastavte stav agenta Log Analytics **na zapnuto**.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Povolení automatického zřizování agenta Log Analytics":::
+
 1. V podokně možnosti konfigurace Definujte pracovní prostor, který se má použít.
 
     :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="Možnosti konfigurace pro Automatické zřizování Log Analyticsch agentů k virtuálním počítačům" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
@@ -104,6 +111,22 @@ Povolení automatického zřizování agenta Log Analytics:
 
 1. V podokně Konfigurace vyberte **použít** .
 
+1. Povolení automatického zřizování jiného rozšíření než agenta Log Analytics: 
+
+    1. Pokud povolujete Automatické zřizování pro agenta závislostí společnosti Microsoft, zajistěte, aby byl agent Log Analytics nastaven na automatické nasazení.
+    1. Pro příslušné rozšíření přepněte stav na **zapnuto** .
+
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Přepnutím povolíte automatické zřizování pro doplněk zásad K8s.":::
+
+    1. Vyberte **Uložit**. Zásada Azure je přiřazena a je vytvořen úkol nápravy.
+
+        |Linka  |Zásady  |
+        |---------|---------|
+        |Doplněk zásad pro Kubernetes|[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Microsoft Dependency Agent (Preview) (virtuální počítače s Windows)|[Nasazení agenta závislostí pro virtuální počítače s Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
+        |Microsoft Dependency Agent (Preview) (virtuální počítače se systémem Linux)|[Nasazení agenta závislostí pro virtuální počítače se systémem Linux](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |||
+
 1. Vyberte **Uložit**. Pokud je potřeba zřídit pracovní prostor, může instalace agenta trvat až 25 minut.
 
 1. Zobrazí se dotaz, jestli chcete překonfigurovat monitorované virtuální počítače, které byly dřív připojené k výchozímu pracovnímu prostoru:
@@ -115,28 +138,6 @@ Povolení automatického zřizování agenta Log Analytics:
 
    > [!NOTE]
    > Pokud vyberete **Ano**, neodstraňujte pracovní prostory vytvořené pomocí Security Center, dokud se všechny virtuální počítače znovu nepřipojí k novému cílovému pracovnímu prostoru. Tato operace se nezdařila, pokud je pracovní prostor odstraněn příliš brzy.
-
-
-## <a name="enable-auto-provisioning-of-extensions"></a>Povolení automatického zřizování rozšíření
-
-Povolení automatického zřizování jiného rozšíření než agenta Log Analytics: 
-
-1. V nabídce Security Center v Azure Portal vyberte **cenové & nastavení**.
-1. Vyberte příslušné předplatné.
-1. Vyberte **Automatické zřizování**.
-1. Pokud povolujete Automatické zřizování pro agenta závislostí společnosti Microsoft, zajistěte, aby byl agent Log Analytics nastaven na automatické nasazení. 
-1. Pro příslušné rozšíření přepněte stav na **zapnuto** .
-
-    :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Přepnutím povolíte automatické zřizování pro doplněk zásad K8s.":::
-
-1. Vyberte **Uložit**. Zásada Azure je přiřazena a je vytvořen úkol nápravy.
-
-    |Linka  |Zásady  |
-    |---------|---------|
-    |Doplněk zásad pro Kubernetes|[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
-    |Microsoft Dependency Agent (Preview) (virtuální počítače s Windows)|[Nasazení agenta závislostí pro virtuální počítače s Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-    |Microsoft Dependency Agent (Preview) (virtuální počítače se systémem Linux)|[Nasazení agenta závislostí pro virtuální počítače se systémem Linux](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
-
 
 
 ## <a name="windows-security-event-options-for-the-log-analytics-agent"></a>Možnosti událostí zabezpečení systému Windows pro agenta Log Analytics <a name="data-collection-tier"></a> 
@@ -274,25 +275,11 @@ Vypnutí automatického zřizování agenta:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
--   Informace o tom, jak identifikovat Automatické zřizování problémů, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
-
+-   Informace o tom, jak identifikovat problémy s instalací automatického zřizování, najdete v tématu [monitorování stavů agenta](security-center-troubleshooting-guide.md#mon-agent).
 -  Informace o tom, jak identifikovat požadavky na síť agenta monitorování, najdete v tématu [řešení potíží s požadavky na síť agenta](security-center-troubleshooting-guide.md#mon-network-req)
 -   Pokud chcete identifikovat problémy ručního připojování, přečtěte si téma řešení potíží s [připojováním Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
-
-- Identifikace problémů nemonitorovaných virtuálních počítačů a počítačů:
-
-    VIRTUÁLNÍ počítač nebo počítač není monitorovaný Security Center, pokud počítač nepoužívá rozšíření agenta Log Analytics. Počítač může mít již nainstalovaný místní agent, například agenta OMS Direct nebo Agent System Center Operations Manager. Počítače s těmito agenty jsou označeny jako nemonitorované, protože tito agenti nejsou v Security Center plně podporovaná. Pokud chcete naplno využívat všechny funkce služby Security Center, potřebujete rozšíření agenta Log Analytics.
-
-    Další informace o důvodech, Security Center nelze úspěšně monitorovat virtuální počítače a počítače inicializované pro Automatické zřizování, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
-
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek ukazuje, jak funguje shromažďování dat a Automatické zřizování v Security Center. Další informace o Security Center najdete na následujících stránkách:
-
-- [Azure Security Center – nejčastější dotazy](faq-general.md) – Přečtěte si nejčastější dotazy o použití této služby.
-- [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-
-Tento článek popisuje, jak nainstalovat agenta Log Analytics a nastavit pracovní prostor Log Analytics, do kterého se mají ukládat shromážděná data. Pro povolení shromažďování dat jsou vyžadovány obě operace. Pokud se data ukládají v Log Analytics, ať už používáte nový nebo existující pracovní prostor, můžou se za úložiště dat účtovat další poplatky. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
-
+Tato stránka vysvětluje, jak povolit Automatické zřizování pro agenta Log Analytics a další rozšíření Security Center. Popisuje také, jak definovat Log Analytics pracovní prostor, do kterého se mají ukládat shromážděná data. Pro povolení shromažďování dat jsou vyžadovány obě operace. Pokud se data ukládají v Log Analytics, ať už používáte nový nebo existující pracovní prostor, můžou se za úložiště dat účtovat další poplatky. Podrobnosti o cenách v měně zvolené a podle vaší oblasti najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).

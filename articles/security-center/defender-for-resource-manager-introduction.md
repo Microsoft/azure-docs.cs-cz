@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590471"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100657"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Seznámení s Azure Defenderem pro Správce prostředků
 
@@ -27,8 +27,8 @@ Azure Defender pro Správce prostředků automaticky monitoruje operace správy 
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Stanov|**Azure Defender pro správce prostředků** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Stanov|**Azure Defender pro správce prostředků** se účtuje tak, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Jaké jsou výhody Azure Defenderu pro Správce prostředků?
@@ -75,4 +75,4 @@ V tomto článku jste se dozvěděli o Azure Defenderu pro Správce prostředků
 - Výstrahy zabezpečení mohou být generovány Security Center nebo obdrženy Security Center z různých produktů zabezpečení. Pokud chcete všechny tyto výstrahy exportovat do Azure Sentinel, jakýchkoli SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md).
 
 - > [!div class="nextstepaction"]
-    > [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+    > [Povolení Azure Defenderu](enable-azure-defender.md)

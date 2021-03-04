@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100623"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -29,9 +29,9 @@ Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozi
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
-|Stanov|**Azure Defender pro Kubernetes** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
+|Stanov|**Azure Defender pro Kubernetes** se fakturuje, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .|
 |Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Jaké jsou výhody Azure Defenderu pro Kubernetes?
@@ -79,7 +79,7 @@ Pokud již máte v clusterech spuštěný agent Azure Monitor for Containers, m�
 V tomto článku jste se dozvěděli o ochraně Security Center Kubernetes, včetně Azure Defenderu pro Kubernetes. 
 
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+> [Povolení Azure Defenderu](enable-azure-defender.md)
 
 Související materiály najdete v následujících článcích: 
 

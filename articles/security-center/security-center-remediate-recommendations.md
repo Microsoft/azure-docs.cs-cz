@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6222491d35317e549a3d21f29395b9c25813ea9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807986"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100351"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Zpracování doporučení ve službě Azure Security Center
 
@@ -82,4 +82,4 @@ Operace opravy používá volání rozhraní API pro nasazení šablony nebo opr
 V tomto dokumentu jste si ukázali, jak opravit doporučení v Security Center. Další informace o Security Center najdete na následujících stránkách:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
+* [Co jsou zásady zabezpečení, iniciativy a doporučení?](security-policy-concept.md)

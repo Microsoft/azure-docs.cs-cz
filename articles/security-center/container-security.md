@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007805"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101337"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejnerů ve službě Security Center
 
@@ -42,7 +42,7 @@ Naučíte se, jak Security Center pomáhá s těmito základními aspekty zabezp
 
 Na následujícím snímku obrazovky vidíte stránku inventáře prostředků a různé typy prostředků kontejneru chráněné Security Center.
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Prostředky související s kontejnerem na stránce inventáře prostředků Security Center" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="Prostředky související s kontejnerem na stránce inventáře prostředků Security Center" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>Správa ohrožení zabezpečení – kontrola imagí kontejnerů
 
@@ -92,7 +92,7 @@ Podrobnosti o relevantních doporučeních Security Center, která se můžou zo
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes
 
-Pro sadu doporučení pro ochranu úloh Kubernetes kontejnerů nainstalujte  **doplněk Azure Policy pro Kubernetes**. Tento doplněk můžete také automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování rozšíření](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
+Pro sadu doporučení pro ochranu úloh Kubernetes kontejnerů nainstalujte  **doplněk Azure Policy pro Kubernetes**. Tento doplněk můžete také automaticky nasadit, jak je vysvětleno v tématu [Povolení automatického zřizování Log Analytics agenta a rozšíření](security-center-enable-data-collection.md#auto-provision-mma). Pokud je Automatické zřizování pro doplněk nastavené na zapnuto, rozšíření je ve výchozím nastavení povolené ve všech stávajících i budoucích clusterech (které splňují požadavky na instalaci doplňku).
 
 Jak je vysvětleno na [tomto Azure Policy stránce pro Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), doplněk rozšiřuje Webhook open-source [gatekeeper V3](https://github.com/open-policy-agent/gatekeeper)   Admission Controller pro [Open Policy agent](https://www.openpolicyagent.org/). Řadiče pro přijímání Kubernetes jsou moduly plug-in, které vynutily používání clusterů. Doplněk se registruje jako Webhook pro Kubernetes Admission Control a umožňuje použít v centralizovaném, konzistentním způsobem vynucování a ochranu vašich clusterů v rámci škálování. 
 

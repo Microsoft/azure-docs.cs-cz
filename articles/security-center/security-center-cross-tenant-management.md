@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922904"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099484"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Správa mezi klienty v Security Center
 
@@ -51,8 +51,4 @@ Zobrazení a akce jsou v podstatě stejné. Tady je několik příkladů:
 - **Spravujte pokročilé funkce ochrany cloudu a další informace**: Spravujte různé služby ochrany před internetovými útoky, jako je například [přístup k virtuálnímu počítači JIT (just-in-time)](security-center-just-in-time.md), [adaptivní posílení sítě](security-center-adaptive-network-hardening.md), [Adaptivní řízení aplikací](security-center-adaptive-application.md)a další.
  
 ## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
-
-* [Posílit stav zabezpečení pomocí Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Nejčastější](faq-general.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.
-* [Přečtěte si o Azure Lighthouse v podnikových scénářích](../lighthouse/concepts/enterprise.md) – Zjistěte, jak může Azure Lighthouse zjednodušit správu mezi klienty v rámci podniku, který používá víc TENANTŮ Azure AD.
+Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Pokud chcete zjistit, jak může Azure Lighthouse zjednodušit správu mezi klienty v rámci podniku, který používá víc tenantů Azure AD, přečtěte si článek [Azure Lighthouse v podnikových scénářích](../lighthouse/concepts/enterprise.md).

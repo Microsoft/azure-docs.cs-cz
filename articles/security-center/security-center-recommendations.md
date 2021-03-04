@@ -1,57 +1,22 @@
 ---
 title: Doporučení zabezpečení v Azure Security Center
 description: Tento dokument vás seznámí s tím, jak vám doporučení Azure Security Center pomůžou chránit prostředky Azure a zůstat v souladu se zásadami zabezpečení.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526490"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100334"
 ---
-# <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
+# <a name="review-your-security-recommendations"></a>Kontrola doporučení zabezpečení
 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
-
-
-## <a name="what-are-security-recommendations"></a>Co jsou doporučení zabezpečení?
-
-Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení k nápravě těchto chyb zabezpečení.
-
-Doporučení jsou akce, které můžete provést při zabezpečení a posílení prostředků. 
-
-Každé doporučení vám poskytne:
-
-- Stručný popis problému
-- Kroky k nápravě, které je potřeba provést, aby bylo možné implementovat doporučení.
-- Ovlivněné prostředky
-
-## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Jak Microsoft rozhodne, co potřebuje k zabezpečení a posílení zabezpečení?
-
-Doporučení pro Security Center jsou založená na testu zabezpečení Azure. Téměř každé doporučení má základní zásadu, která je odvozena z požadavku ve srovnávacím testu.
-
-Srovnávací test zabezpečení Azure je Microsoftem vytvořená sada pokynů pro zabezpečení a osvědčené postupy na základě běžných architektur dodržování předpisů, které jsou specifické pro Azure. Toto široce uznávané sestavování srovnávacích testů v ovládacích prvcích z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se soustředí na zabezpečení zaměřené na Cloud. Přečtěte si další informace o [srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md).
-
-Při prohlížení podrobností doporučení je často užitečné, abyste mohli zobrazit základní zásady. Pro každé doporučení podporované zásadou použijte odkaz **Zobrazit definici zásad** ze stránky s podrobnostmi doporučení a přejít přímo na položku Azure Policy pro příslušné zásady:
-
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Odkaz na stránku Azure Policy pro konkrétní zásadu podporující doporučení":::
-
-Pomocí tohoto odkazu můžete zobrazit definici zásady a zkontrolovat logiku hodnocení. 
-
-Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpečení](recommendations-reference.md), přečtěte si také odkazy na stránky definice zásad:
-
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Přístup na stránku Azure Policy pro konkrétní zásadu přímo z referenční stránky Azure Security Center doporučení":::
 
 ## <a name="monitor-recommendations"></a>Doporučení pro monitorování <a name="monitor-recommendations"></a>
 

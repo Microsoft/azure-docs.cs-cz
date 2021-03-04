@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047549"
+ms.locfileid: "102101473"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -172,7 +172,8 @@ Pro soukromý koncový bod, který jste vytvořili, by teď měly být nakonfigu
 * privatelink-ODS-o statistice provozu-Azure-com
 * privatelink-agentsvc-Azure-Automation-NET
 
-Každá z těchto zón mapuje konkrétní koncové body Azure Monitor na soukromé IP adresy z fondu IP adres privátního koncového bodu.
+> [!NOTE]
+> Každá z těchto zón mapuje konkrétní koncové body Azure Monitor na soukromé IP adresy z fondu IP adres. Adresy IP uvedené na následujících obrázcích jsou pouze příklady. Místo toho by měla vaše konfigurace zobrazovat soukromé IP adresy z vaší vlastní sítě.
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor – Azure-com
 Tato zóna pokrývá globální koncové body, které používá Azure Monitor, což znamená, že tyto koncové body slouží k zvažování všech prostředků, nikoli konkrétního. Tato zóna by měla mít namapované koncové body pro:
@@ -218,7 +219,7 @@ Nastavení v dolní části této stránky řídí přístup z veřejných sít�
 
 ### <a name="exceptions"></a>Výjimky
 Omezení přístupu, jak je vysvětleno výše, se nevztahuje na Azure Resource Manager a má proto tato omezení:
-* Přístup k datům – při blokování nebo povolování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se u Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Patří mezi ně například Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
+* Přístup k datům – při blokování nebo povolování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se u Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Příklady jsou Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
 * Správa pracovního prostoru – změny nastavení pracovního prostoru a konfigurace (včetně zapnutí nebo vypnutí těchto nastavení přístupu) se spravují pomocí Azure Resource Manager. Omezte přístup ke správě pracovních prostorů pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](../roles-permissions-security.md).
 
 > [!NOTE]
@@ -248,17 +249,17 @@ Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo obory priv
 > [!NOTE]
 > V prostředích, které není na portálu, se musí také spouštět na virtuální síti propojené s privátní sítí, která obsahuje monitorovaná zatížení.
 
-K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Zde najdete [dokumentaci](../../app-service/networking/private-endpoint.md) , jak to udělat App Services.
+K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Podívejte se například na téma [použití privátních koncových bodů pro webovou aplikaci Azure](../../app-service/networking/private-endpoint.md).
 
 Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se však spravují pomocí Azure Resource Manager. Proto byste měli omezit přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](../roles-permissions-security.md).
 
 > [!NOTE]
 > Aby bylo možné plně zabezpečit Application Insights na základě pracovních prostorů, musíte uzamknout přístup k prostředkům Application Insights a také k příslušnému pracovnímu prostoru Log Analytics.
 >
-> Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje poskytnutí vlastního účtu úložiště pro podporu privátního odkazu. Zde najdete [dokumentaci](../app/profiler-bring-your-own-storage.md) , jak to provést.
+> Diagnostika na úrovni kódu (Profiler/ladicí program) vyžaduje [poskytnutí vlastního účtu úložiště](../app/profiler-bring-your-own-storage.md) pro podporu privátního odkazu.
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Zpracování libovolné povahy privátních odkazů
-Jak je vysvětleno v tématu [Plánování nastavení privátního propojení](#planning-your-private-link-setup), nastavení privátního propojení i pro jeden prostředek má vliv na všechny prostředky Azure monitor v těchto sítích a v dalších sítích, které sdílejí stejné DNS. To může mít za náročný proces připojování. Vezměte v úvahu následující možnosti:
+Jak je vysvětleno v tématu [Plánování nastavení privátního propojení](#planning-your-private-link-setup), nastavení privátního propojení i pro jeden prostředek má vliv na všechny prostředky Azure monitor v těchto sítích a v dalších sítích, které sdílejí stejné DNS. Toto chování může být náročný proces připojování. Vezměte v úvahu následující možnosti:
 
 * Vše v rámci – nejjednodušší a nejbezpečnější přístup je přidání všech Application Insights komponent do AMPLS. U součástí, ke kterým chcete i nadále přistupovat z jiných sítí, ponechte příznaky "" možnost "nastavit veřejný internetový přístup pro ingestování/dotaz" nastavené na Ano (výchozí).
 * Izolace sítí – Pokud jste (nebo je můžete v souladu s) pomocí paprsku virtuální sítě, postupujte podle pokynů v [síťové topologii centra – paprsky v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Pak nastavte samostatné nastavení privátního propojení v příslušném paprsku virtuální sítě. Nezapomeňte také oddělit zóny DNS, protože sdílení zón DNS s jinými sítěmi paprsků způsobí [přepsání DNS](#the-issue-of-dns-overrides).

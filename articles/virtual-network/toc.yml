@@ -25,10 +25,8 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Připojení virtuálních sítí
       href: tutorial-connect-virtual-networks-portal.md
-    - name: Vytvoření brány NAT
-      href: quickstart-create-nat-gateway-portal.md
     - name: Vytvoření a ověření brány NAT
-      href: tutorial-create-validate-nat-gateway-portal.md
+      href: tutorial-create-nat-gateway-portal.md
 - name: ukázky
   items:
     - name: Azure CLI

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1ba030ea42d3e865021aa52c651cd72eead9f1a1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544812"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100266"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -117,7 +117,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |[Microsoft Defender pro koncový bod](harden-docker-hosts.md) (1)|✔|-|
 |[Připojit účet AWS](quickstart-onboard-aws.md) (1)|-|-|
 |[Připojit účet GCP](quickstart-onboard-gcp.md) (1)|-|-|
-|[Průběžný export](continuous-export.md)|✔|✔ (2)|
+|[Průběžný export](continuous-export.md)|✔|✔|
 |[Automatizace pracovního postupu](workflow-automation.md)|✔|✔|
 |[Pravidla výjimky pro doporučení](exempt-resource.md)|-|-|
 |[Pravidla potlačení výstrah](alerts-suppression-rules.md)|✔|✔|

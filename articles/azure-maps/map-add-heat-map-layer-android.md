@@ -3,17 +3,18 @@ title: Přidat vrstvu Heat mapy do map pro Android | Mapy Microsoft Azure
 description: Přečtěte si, jak vytvořit Heat mapu. Podívejte se, jak pomocí sady Azure MapsAndroid SDK přidat vrstvu Heat mapy do mapy. Přečtěte si, jak přizpůsobit vrstvy Heat mapy.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100181"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Přidat vrstvu Heat mapy (Android SDK)
 
@@ -34,7 +35,7 @@ Můžete použít Heat mapy v mnoha různých scénářích, mezi které patří
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) . Bloky kódu v tomto článku lze vložit do `onReady` obslužné rutiny události Maps.
 
@@ -43,6 +44,8 @@ Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokument
 Chcete-li vykreslit zdroj dat bodů jako Heat mapu, předejte zdroj dat do instance `HeatMapLayer` třídy a přidejte jej do mapy.
 
 Následující ukázka kódu načte z minulého týdne zemětřeseníový informační kanál pro střední hodnotu a vykresluje je jako Heat mapa. Každý datový bod se vykreslí s poloměrem 10 pixelů na všech úrovních přiblížení. Aby bylo zajištěno lepší uživatelské prostředí, je Heat mapa pod vrstvou popisku, aby popisky zůstaly jasně viditelné. Data v této ukázce se nacházejí v [programu sadě USGS zemětřesení nebezpečí](https://earthquake.usgs.gov/). Tato ukázka načte data ze služby data ze sítě JSON z webu pomocí bloku kódu nástroje pro import dat, který je k dispozici v dokumentu [vytvořit zdroj dat](create-data-source-android-sdk.md) .
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 Následující snímek obrazovky ukazuje mapu načítající Heat mapu pomocí výše uvedeného kódu.
 
 ![Mapování pomocí vrstvy Heat mapy s nedávnými zemětřesení](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ Předchozí příklad upravil Heat mapu nastavením možnosti poloměr a krytí.
 - `visible`: Skryje nebo zobrazí vrstvu.
 
 Toto je příklad Heat mapy, kde se výraz liniové interpolace používá k vytvoření plynule barevného přechodu barvy. `mag`Vlastnost definovaná v datech se používá s exponenciální interpolací pro nastavení váhy nebo relevance jednotlivých datových bodů.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 Následující snímek obrazovky ukazuje výše uvedenou vlastní vrstvu Heat mapy pomocí stejných dat z předchozího příkladu Heat mapy.
 
 ![Mapování s vlastní vrstvou Heat mapy z posledních zemětřesení](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě
 Použijte `zoom` výraz pro horizontální navýšení kapacity poloměru pro každou úroveň přiblížení, takže každý datový bod pokrývá stejnou fyzickou oblast mapy. Tento výraz vytvoří vrstvu Heat mapy, která vypadá spolehlivě a je konzistentní. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení.
 
 Škálování poloměru tak, aby dvojnásobek každé úrovně přiblížení vytvoří Heat mapu, která vypadá konzistentně na všech úrovních přiblížení. Chcete-li použít toto škálování, použijte `zoom` se `exponential interpolation` výrazem základní 2 s poloměrem, který je nastavený pro minimální úroveň přiblížení, a s poloměrem na škálované poloměr pro maximální úroveň přiblížení, jak je `2 * Math.pow(2, minZoom - maxZoom)` znázorněno v následující ukázce. Přiblížením mapy zjistíte, jak se Heat mapa škáluje s úrovní přiblížení.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 Následující video ukazuje mapu s výše uvedeným kódem, který škáluje poloměr v době, kdy se mapa přiblíží, aby se vytvořilo konzistentní vykreslování Heat mapy napříč úrovněmi přiblížení.
 

@@ -7,31 +7,43 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393305"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100810"
 ---
-# <a name="introduction-to-azure-defender-for-app-service"></a>Seznámení s Azure Defenderem pro App Service
+# <a name="protect-your-web-apps-and-apis"></a>Ochrana webových aplikací a rozhraní API
+
+## <a name="prerequisites"></a>Požadavky
+
+Security Center je nativně integrovaná s App Service a odstraňuje nutnost nasazení a registraci – integrace je transparentní.
+
+K ochraně Azure App Service plánu pomocí Azure Defenderu pro App Service budete potřebovat:
+
+- Podporovaný plán App Service přidružený k vyhrazeným počítačům. Podporované plány jsou uvedeny v [dostupnosti](#availability).
+
+- Ve vašem předplatném je povolený Azure Defender, jak je popsáno v tématu [rychlý Start: povolení Azure Defenderu](enable-azure-defender.md)
+
+    > [!TIP]
+    > Volitelně můžete v Azure Defenderu povolit jednotlivé plány (například Azure Defender pro App Service).
+
+## <a name="availability"></a>Dostupnost
+
+| Aspekt                       | Podrobnosti                                                                                                                                                                                        |
+|------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Stav vydaných verzí:               | Obecná dostupnost (GA)                                                                                                                                                                      |
+| Stanov                     | [Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .<br>Fakturace se provádí na základě celkových výpočetních instancí ve všech plánech.       |
+| Podporované plány App Service: | [Všechny plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/) jsou podporovány s výjimkou [Azure Functions v plánu spotřeby](../azure-functions/functions-scale.md). |
+| Cloud                      | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                     |
+|                              |                                                                                                                                                                                                |
+
+## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Jaké jsou výhody Azure Defenderu pro App Service?
 
 Azure App Service je plně spravovaná platforma pro vytváření a hostování webových aplikací a rozhraní API. Vzhledem k tomu, že je platforma plně spravovaná, nemusíte se starat o infrastrukturu. Poskytuje správu, monitorování a Operational Insights pro splnění požadavků na výkon, zabezpečení a dodržování předpisů na podnikové úrovni. Další informace najdete v tématu [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
 **Azure Defender pro App Service** využívá škálování cloudu k identifikaci útoků cílících na aplikace běžící přes App Service. Útočníci hledají webové aplikace a využívají slabých míst. Před směrováním do konkrétních prostředí požadavky na aplikace běžící v Azure procházejí několika branami, kde jsou zkontrolovány a protokolovány. Tato data se pak používají k identifikaci zneužití a útočníků a k získání nových vzorů, které se použijí později.
-
-
-## <a name="availability"></a>Dostupnost
-
-| Aspekt                       | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Stav vydaných verzí:               | Obecná dostupnost (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Stanov                     | [Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .<br>Fakturace se provádí na základě celkových výpočetních instancí ve všech plánech.|
-| Podporované plány App Service: | Všechny plány App Service jsou podporovány (s jednou výjimkou naleznete níže). [Přečtěte si další informace o App Servicech plánech](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>Azure Functions pro plán spotřeby se nepodporuje. [Přečtěte si další informace o možnostech hostování Azure Functions](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
-| Cloud                      | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                                                                                                                                                                                                                                                                                                                                                 |
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Jaké jsou výhody Azure Defenderu pro App Service?
 
 Když povolíte Azure Defender pro App Service, okamžitě získáte výhody z následujících služeb, které nabízí tento plán Azure Defenderu:
 
@@ -77,19 +89,6 @@ Přečtěte si další informace o dangling DNS a hrozbě převzetí subdomény,
 > [!NOTE]
 > Pokud vaše vlastní doména neodkazuje přímo na prostředek App Service nebo pokud program Defender nemonitoroval provoz na váš web, protože byla povolena ochrana DNS dangling (protože nebudou k dispozici protokoly pro identifikaci vlastní domény), program Defender nemusí aktivovat výstrahy dangling DNS.
 
-## <a name="how-to-protect-your-azure-app-service-web-apps-and-apis"></a>Jak chránit vaše Azure App Service webové aplikace a rozhraní API
-
-Ochrana Azure App Serviceho plánu pomocí Azure Defenderu pro App Service:
-
-1. Ujistěte se, že máte podporovaný plán App Service, který je spojený s vyhrazenými počítači. Podporované plány jsou uvedené výše v [dostupnosti](#availability).
-
-2. Povolte v předplatném **Azure Defender** , jak je popsáno v tématu [ceny Azure Security Center](security-center-pricing.md).
-
-    Volitelně můžete v Azure Defenderu povolit jednotlivé plány (například Azure Defender pro App Service).
-
-    Security Center je nativně integrovaná s App Service a odstraňuje nutnost nasazení a registraci – integrace je transparentní.
-
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se dozvěděli o Azure Defenderu pro App Service. 
@@ -100,4 +99,4 @@ Související materiály najdete v následujících článcích:
 - Seznam upozornění na App Service Azure Defenderu najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureappserv).
 - Další informace o plánech App Service najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+> [Povolení Azure Defenderu](enable-azure-defender.md)

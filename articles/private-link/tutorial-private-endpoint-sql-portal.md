@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dfbd1f4077caa2fd80a00e3cf950735363a0a971
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099892"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure Portal
 
@@ -26,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření serveru SQL Azure a privátního koncového bodu.
 > * Otestujte připojení k privátnímu koncovému bodu SQL serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -52,7 +53,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     | Skupina prostředků   | Vybrat **CreateSQLEndpointTutorial-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region           | Vyberte **východní USA** |
+    | Oblast           | Vyberte **východní USA** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -92,7 +93,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
 
 V této části vytvoříte virtuální počítač, který se použije k otestování privátního koncového bodu.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -103,7 +104,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Skupina prostředků | Vybrat **CreateSQLEndpointTutorial** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Region | Vyberte **východní USA** |
+    | Oblast | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -134,7 +135,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 V této části vytvoříte SQL Server v Azure. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků**  >  **Databases**  >  **SQL Database**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků**  >    >  **SQL Database**.
 
 1. Na kartě **základy** pro **Vytvoření databáze SQL** zadejte nebo vyberte tyto informace:
 
@@ -176,7 +177,7 @@ V této části vytvoříte SQL Server v Azure.
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **CreateSQLEndpointTutorial**. |
     | Umístění | Vyberte **USA – východ**. |
-    | Name | Zadejte **myPrivateSQLendpoint**. |
+    | Název | Zadejte **myPrivateSQLendpoint**. |
     | Cílový dílčí prostředek | Vyberte **SQLServer**. |
     | **Sítě** |  |
     | Virtuální síť | Vyberte **myVNet**. |
@@ -259,6 +260,8 @@ V tomto kurzu jste vytvořili:
 * Azure SQL Server s privátním koncovým bodem.
 
 Virtuální počítač jste použili k zabezpečenému otestování připojení k SQL serveru v rámci privátního koncového bodu.
+
+V dalším kroku se může také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , která připojuje webovou aplikaci mimo virtuální síť k privátnímu koncovému bodu databáze.
 
 Naučte se vytvořit službu privátního propojení:
 > [!div class="nextstepaction"]

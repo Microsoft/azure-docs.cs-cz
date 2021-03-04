@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132728"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100708"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Úvod do Azure Defenderu pro registry kontejnerů
 
@@ -76,7 +76,7 @@ Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v 
 Ano. Výsledky jsou k dispozici v [rozhraní REST API pro dílčí posouzení](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Jaké typy registru jsou prohledávány? Jaké typy se účtují?
-Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](defender-for-container-registries-usage.md#availability).
+Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](#availability).
 
 Pokud ke svému předplatnému Azure připojíte nepodporované Registry, nebudou se kontrolovat a nebudou se vám účtovat.
 

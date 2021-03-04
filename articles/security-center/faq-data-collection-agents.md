@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705126"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100521"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -33,7 +33,7 @@ No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfi
 
 - **Azure Defender on** – Security Center umožňuje řešení zabezpečení ve výchozím pracovním prostoru.
 
-Další informace o cenách najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
+Podrobnosti o cenách v měně zvolené a podle vaší oblasti najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Cenová úroveň Log Analytics pracovních prostorů vytvořených pomocí Security Center nemá vliv na Security Centerou fakturaci.

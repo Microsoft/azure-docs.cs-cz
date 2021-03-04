@@ -3,12 +3,12 @@ title: Přehled centra zálohování
 description: Tento článek poskytuje přehled služby Backup Center pro Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725369"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099994"
 ---
 # <a name="overview-of-backup-center"></a>Přehled centra zálohování
 
@@ -27,7 +27,7 @@ Mezi klíčové výhody služby Backup Center patří:
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud chcete začít používat centrum zálohování, vyhledejte **Centrum zálohování** v Azure Portal a přejděte na řídicí panel **služby Backup Center (Preview)** .
+Pokud chcete začít používat centrum zálohování, vyhledejte **Centrum zálohování** v Azure Portal a přejděte na řídicí panel **služby Backup Center** .
 
 ![Hledání ve službě Backup Center](./media/backup-center-overview/backup-center-search.png)
 
@@ -37,7 +37,7 @@ První zobrazená obrazovka je **Přehled**. Obsahuje dvě dlaždice – **úloh
 
 V dlaždici **úlohy** získáte souhrnné zobrazení všech úloh týkajících se zálohování a obnovení, které byly aktivovány v rámci služby zálohování za posledních 24 hodin. Můžete si prohlédnout informace o počtu úloh, které se dokončily, nezdařily a probíhají. Výběrem kteréhokoli z čísel v této dlaždici můžete zobrazit další informace o úlohách pro určitý typ zdroje dat, typ operace a stav.
 
-Na dlaždici **zálohování instancí** získáte souhrnné zobrazení všech instancí zálohování napříč vaší zálohou. Můžete například zobrazit počet instancí zálohy, které jsou ve stavu tichého odstranění v porovnání s počtem instancí, které jsou pro ochranu stále nakonfigurovány. Výběr kterékoli z čísel v této dlaždici vám umožní zobrazit další informace o instancích zálohy pro určitý typ zdroje dat a stav ochrany.
+Na dlaždici **zálohování instancí** získáte souhrnné zobrazení všech instancí zálohování napříč vaší zálohou. Můžete například zobrazit počet instancí zálohy, které jsou ve stavu tichého odstranění v porovnání s počtem instancí, které jsou pro ochranu stále nakonfigurovány. Výběr kterékoli z čísel v této dlaždici vám umožní zobrazit další informace o instancích zálohy pro určitý typ zdroje dat a stav ochrany. Můžete také zobrazit všechny instance zálohování, jejichž podkladový zdroj dat nebyl nalezen (zdroj dat může být odstraněn nebo nemáte přístup ke zdroji dat).
 
 Podívejte se na následující video a pochopte možnosti centra zálohování:
 

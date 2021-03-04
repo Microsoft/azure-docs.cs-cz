@@ -3,19 +3,19 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100929"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
 Azure Application Insights zobrazuje data o vaší aplikaci v *prostředku* Microsoft Azure. Vytvoření nového prostředku je proto součástí [nastavení Application Insights k monitorování nové aplikace][start]. Po vytvoření nového prostředku můžete získat jeho klíč instrumentace a použít ho ke konfiguraci sady Application Insights SDK. Klíč instrumentace propojuje vaši telemetrii s prostředkem.
 
 > [!IMPORTANT]
-> Klasický Application Insights se už nepoužívá. Postupujte prosím podle těchto [pokynů, jak upgradovat na Application Insights na základě pracovního prostoru](convert-classic-resource.md).
+> [Klasický Application Insights se už nepoužívá](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/). Postupujte prosím podle těchto [pokynů, jak upgradovat na Application Insights na základě pracovního prostoru](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Přihlášení k Microsoft Azure
 

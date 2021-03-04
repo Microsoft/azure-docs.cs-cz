@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574486"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100402"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení k zabezpečení – Referenční příručka
 
@@ -57,5 +57,5 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 
 Další informace o doporučeních najdete v následujících tématech:
 
-- [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)
-- [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
+- [Co jsou zásady zabezpečení, iniciativy a doporučení?](security-policy-concept.md)
+- [Kontrola doporučení zabezpečení](security-center-recommendations.md)

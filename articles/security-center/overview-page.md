@@ -3,44 +3,42 @@ title: Hlavní řídicí panel nebo stránka přehled Azure Security Center
 description: Přečtěte si o funkcích Security Center stránce Přehled
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 03/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 899fddf08a817126ce775733da38ffd10ab3ab23
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 768d69b626a870910d6734e1a1ddc29871f96afb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952110"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099773"
 ---
 # <a name="azure-security-centers-overview-page"></a>Stránka s přehledem Azure Security Center
 
 Když otevřete Azure Security Center, na první stránce se zobrazí stránka přehled. 
 
+Tento interaktivní řídicí panel poskytuje jednotný pohled na stav zabezpečení vašich hybridních cloudových úloh. Kromě toho zobrazuje výstrahy zabezpečení, informace o pokrytí a další.
+
+Chcete-li získat podrobnější informace, můžete vybrat libovolný prvek na stránce.
+
 :::image type="content" source="media/overview-page/overview.png" alt-text="Stránka s přehledem služby Security Center":::
-
-Vyhodnoťte a zhodnoťte zabezpečení vašich úloh a identifikujte a zmírnit rizika pomocí stránky s přehledem Security Center.
-
-Přehled nabízí jednotný pohled na stav zabezpečení vašich hybridních cloudových úloh. Kromě toho zobrazuje výstrahy zabezpečení, informace o pokrytí a další.
-
 
 ## <a name="features-of-the-overview-page"></a>Funkce stránky přehled
 
-:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Stránka s přehledem služby Security Center":::
+:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Horní panel stránky s přehledem Security Center":::
 
 **Horní panel nabídek** nabízí:
 - **Předplatné** – výběrem tohoto tlačítka můžete zobrazit a filtrovat seznam předplatných. Security Center upraví displej tak, aby odrážel stav zabezpečení vybraných předplatných.
 - **Co je nového** – otevře se zpráva k [vydání verze](release-notes.md) , abyste mohli průběžně udržovat nové funkce, opravy chyb a zastaralé funkce.
-- **Čísla vysoké úrovně** připojených cloudových účtů, aby se zobrazil kontext informací v hlavních dlaždicích níže. A také počet aktivních doporučení a upozornění.
-    Přečtěte si další informace o připojení [účtů AWS](quickstart-onboard-aws.md) a vašich [projektů GCP](quickstart-onboard-gcp.md).
+- **Čísla vysoké úrovně** připojených cloudových účtů, aby se zobrazil kontext informací v hlavních dlaždicích níže. A také počet vyhodnocených prostředků, aktivních doporučení a výstrah zabezpečení. Vyberte vyhodnocené číslo prostředků pro přístup k [inventáři assetů](asset-inventory.md). Přečtěte si další informace o připojení [účtů AWS](quickstart-onboard-aws.md) a vašich [projektů GCP](quickstart-onboard-gcp.md).
 
 
 Ve středu stránky jsou **čtyři střední dlaždice**, pro které se pro další podrobnosti odkazuje na vyhrazený řídicí panel:
 - Řešení **Secure skore** – Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika. [Další informace](secure-score-security-controls.md).
-- **Dodržování předpisů** – Security Center poskytuje přehledy o vašich stav dodržování předpisů na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. [Další informace](security-center-compliance-dashboard.md).
-- **Azure Defender** – to je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní a chráněnou službu Azure a hybridní úlohy. Tato dlaždice znázorňuje pokrytí vašich připojených prostředků (pro aktuálně vybraná předplatná) a nedávné výstrahy, barevně kódované podle závažnosti. [Další informace](azure-defender.md).
-- **Inventář** – na této dlaždici se zobrazuje počet nemonitorovaných virtuálních počítačů a jednoduché barometery prostředků monitorovaných Security Center. [Další informace](asset-inventory.md).
+- **Dodržování legislativních předpisů** – Security Center poskytuje přehledy o dodržování předpisů, které se stav na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. [Další informace](security-center-compliance-dashboard.md).
+- **Azure Defender** – to je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní ochranu vašich Azure a hybridních úloh. Tato dlaždice znázorňuje pokrytí vašich připojených prostředků (pro aktuálně vybraná předplatná) a nedávné výstrahy, barevně kódované podle závažnosti. [Další informace](azure-defender.md).
+- **Správce brány firewall** – na této dlaždici se zobrazuje stav Center a sítí od [správce Azure firewall](../firewall-manager/overview.md). 
 
 
 Podokno **Přehled** nabízí vlastní položky pro vaše prostředí, mezi které patří:
@@ -54,4 +52,4 @@ Podokno **Přehled** nabízí vlastní položky pro vaše prostředí, mezi kter
 Tato stránka představila stránku Přehled Security Center. Související informace najdete v těchto tématech:
 
 - [Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.](asset-inventory.md)
-- [Bezpečné skóre v Azure Security Center](secure-score-security-controls.md)
+- [Skóre zabezpečení ve službě Azure Security Center](secure-score-security-controls.md)

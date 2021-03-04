@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 327103df21dd34347439a833d7ac4b8a21dc66b4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727086"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099841"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -277,7 +277,7 @@ Pokud uživatel nemá oprávnění k zobrazení Security Center dat, uvidí teď
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner s informující uživatele, který může požádat o oprávnění na úrovni tenanta.":::
 
-Další informace najdete v [žádosti o oprávnění na úrovni tenanta, pokud to není dostačující](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) .
+Další informace najdete v [žádosti o oprávnění na úrovni tenanta, pokud to není dostačující](tenant-wide-permissions-management.md#request-tenant-wide-permissions-when-yours-are-insufficient).
 
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 doporučení verze Preview pro zvýšení pokrytí srovnávacího testu zabezpečení Azure
@@ -339,7 +339,7 @@ Při definování průběžného exportu nastavte četnost exportu:
 - **Streamování** – posouzení se pošle v reálném čase, když se aktualizuje stav prostředku (Pokud nedojde k žádným aktualizacím, nebudou se posílat žádná data).
 - **Snímky** – snímek aktuálního stavu všech vyhodnocení dodržování předpisů v legislativě se pošle každý týden (Tato funkce je ve verzi Preview pro týdenní snímky zabezpečených výsledků a dat dodržování předpisů v legislativě).
 
-Další informace o plných schopnostech této funkce při [průběžném exportu Security Center dat](continuous-export.md)
+Přečtěte si další informace o všech možnostech této funkce při [nepřetržitém exportu Security Center dat](continuous-export.md).
 
 ## <a name="december-2020"></a>Prosinec 2020
 
@@ -393,7 +393,7 @@ Přečtěte si další informace o [Azure Defenderu pro SQL](defender-for-sql-in
 
 Uživatel s rolí Azure Active Directory **globálního správce** může mít odpovědnost v rámci tenanta, ale nemá oprávnění Azure zobrazovat informace o celé organizaci v Azure Security Center. 
 
-Pokud chcete přiřadit oprávnění na úrovni tenanta, postupujte podle pokynů v tématu [udělení oprávnění pro všechny klienty](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself).
+Pokud chcete přiřadit oprávnění na úrovni tenanta, postupujte podle pokynů v tématu [udělení oprávnění pro všechny klienty](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself).
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>Dva nové plány Azure Defenderu: Azure Defender pro DNS a Azure Defender pro Správce prostředků (ve verzi Preview)

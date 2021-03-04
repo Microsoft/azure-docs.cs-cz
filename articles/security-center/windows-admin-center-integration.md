@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511980"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101303"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Ochrana prostředků centra pro správu Windows pomocí Security Center
 
@@ -21,7 +21,7 @@ Centrum pro správu systému Windows je nástroj pro správu serverů Windows. P
 
 > [!NOTE]
 > Aby bylo možné povolit integraci centra pro správu systému Windows, musí mít vaše předplatné Azure a přidružený Log Analytics pracovní prostor povolený program Azure Defender.
-> Pokud jste ho předtím nepoužívali v předplatném a pracovním prostoru, je Azure Defender zdarma na prvních 30 dnů. Další informace najdete [na stránce s informacemi o cenách](security-center-pricing.md).
+> Pokud jste ho předtím nepoužívali v předplatném a pracovním prostoru, je Azure Defender zdarma na prvních 30 dnů. Podrobnosti o cenách v měně zvolené a podle vaší oblasti najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 >
 
 Po úspěšné registraci serveru z centra pro správu Windows do Azure Security Center můžete:

@@ -3,12 +3,12 @@ title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b971aa70411212e96c39e6bf824fa9e28bd8a1f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052360"
+ms.locfileid: "102101014"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů ve službě Azure Monitor
 
@@ -291,8 +291,7 @@ Díky Site24x7 Azure Monitoring budete moci:
 * Monitorujte kompletní Microsoft Ecosphere včetně SQL, Exchange, Active Directory, Office 365, IIS a aplikací Hyper-V.
 * Bezproblémová integrace se službami třetích stran, jako jsou Microsoft teams, PagerDuty, Zapier a další.
 
-[Nepřetržitá dokumentace k webu](https://www.site24x7.com/)
-
+[Dokumentace k Site24X7](https://www.site24x7.com/azure/?utm_source=microsoft-partner-page&utm_medium=webpage&utm_campaign=ms-partner)
 
 ## <a name="solarwinds"></a>SolarWinds
 

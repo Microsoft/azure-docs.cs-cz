@@ -6,6 +6,8 @@
       href: overview.md
 - name: Rychlé starty
   items:
+    - name: Konfigurace serveru Směrování – portál
+      href: quickstart-configure-route-server-portal.md
     - name: Konfigurace serveru Směrování – PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: Konfigurace serveru tras – CLI

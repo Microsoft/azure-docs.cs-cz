@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742598"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101371"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -143,7 +143,7 @@ Nástroj pro vyrovnávání zatížení mezi oblastmi směruje provoz na přísl
 
 * V tuto chvíli nejde nakonfigurovat sondu stavu. Výchozí sonda stavu automaticky shromažďuje informace o dostupnosti pro místní Nástroj pro vyrovnávání zatížení každých 20 sekund. 
 
-* Integrace se službou Azure Kubernetes Service (AKS) je momentálně nedostupná. Ke ztrátě připojení dojde při nasazení nástroje pro vyrovnávání zatížení mezi oblastmi pomocí veřejného nástroje pro vyrovnávání zatížení (AKS).
+* Integrace se službou Azure Kubernetes Service (AKS) je momentálně nedostupná. Ke ztrátě připojení dojde při nasazení nástroje pro vyrovnávání zatížení mezi oblastmi s nástrojem Load Balancer úrovně Standard s nasazeným clusterem AKS v back-endu.
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
 Nástroj pro vyrovnávání zatížení mezi oblastmi sdílí [smlouvu SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) standardního nástroje pro vyrovnávání zatížení.

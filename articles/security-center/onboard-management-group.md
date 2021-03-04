@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 9db276425d510316c41126f8e942a1e2a362ea35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796070"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101286"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Povolit Security Center u všech předplatných ve skupině pro správu
 
@@ -60,7 +60,7 @@ Existují různé způsoby, jak upravit definici Azure Policy:
     Poskytnutá definice definuje *jedno* z následujících nastavení ceny jako vyhovující. To znamená, že předplatné nastavené na úroveň Standard nebo Free je kompatibilní.
 
     > [!TIP]
-    > Když je plán Azure Defenderu povolený, je popsaný jako v nastavení standardní. Když je zakázaný, je to zadarmo. [Přečtěte si další informace o plánech Azure Defenderu](security-center-pricing.md).
+    > Když je plán Azure Defenderu povolený, popíše se v definici zásady, která je v nastavení standardní. Když je zakázaný, je to zadarmo. Další informace o rozdílech mezi těmito plány najdete v tématu [Security Center bezplatné vs Azure Defender](security-center-pricing.md). 
 
     ```
     "existenceCondition": {
@@ -98,4 +98,4 @@ Existují různé způsoby, jak upravit definici Azure Policy:
 Teď, když jste připojili celou skupinu pro správu, můžete povolit rozšířenou ochranu Azure Defenderu. 
 
 > [!div class="nextstepaction"]
-> [Povolení Azure Defenderu](security-center-pricing.md#enable-azure-defender)
+> [Povolení Azure Defenderu](enable-azure-defender.md)

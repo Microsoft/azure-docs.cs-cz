@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Defender pro SQL
-description: Naučte se používat volitelné plánování Azure Defenderu pro SQL Azure Security Center.
+title: Jak nastavit Azure Defender pro SQL
+description: Informace o tom, jak povolit naplánování volitelného plánu SQL pro Azure Defender pro Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100572"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Povolit Azure Defender pro SQL servery na počítačích 
 
 Tento plán v programu Azure Defender detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
@@ -31,20 +31,19 @@ Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, pote
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
-|Stanov|**Azure Defender pro servery SQL na počítačích** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
+|Stanov|**Azure Defender pro servery SQL na počítačích** se účtuje, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .|
 |Chráněné verze SQL:|Azure SQL Server (všechny verze, na které se vztahuje podpora Microsoftu)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Nastavení Azure Defenderu pro servery SQL na počítačích
 
 Postup povolení tohoto plánu:
 
-* Zřídí agenta Log Analytics na hostiteli SQL serveru. To umožňuje připojení k Azure.
+[Krok 1. Zřízení agenta Log Analytics na hostiteli SQL serveru:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Povolte na stránce Security Center ceny a nastavení volitelného plánu.
+[Krok 2. Povolte na stránce Security Center ceny a nastavení volitelného plánu:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-Obě tyto parametry jsou popsány níže.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Krok 1. Zřízení agenta Log Analytics na hostiteli SQL serveru:
 
@@ -81,31 +80,6 @@ Obě tyto parametry jsou popsány níže.
 1. Volitelně můžete nakonfigurovat e-mailová oznámení pro výstrahy zabezpečení. 
     Můžete nastavit seznam příjemců, na které se dostanete e-mailové oznámení, když se generují Security Center výstrahy. E-mail obsahuje přímý odkaz na výstrahu v Azure Security Center se všemi souvisejícími podrobnostmi. Další informace najdete v tématu [Nastavení e-mailových oznámení pro výstrahy zabezpečení](security-center-provide-security-contact-details.md).
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>Prozkoumejte sestavy posouzení ohrožení zabezpečení
-
-Služba posouzení ohrožení zabezpečení prohledává vaše databáze jednou týdně. Kontroly jsou spouštěny ve stejném dni v týdnu, kdy jste službu povolili.
-
-Řídicí panel posouzení ohrožení zabezpečení poskytuje přehled výsledků hodnocení napříč všemi vašimi databázemi a souhrnem zdravých a poškozených databází a celkový souhrn neúspěšných kontrol v závislosti na rozdělení rizika.
-
-Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Security Center.
-
-1. Z bočního panelu Security Center otevřete stránku **doporučení** a vyberte **ohrožení zabezpečení na serverech SQL na počítačích, které by měly být opraveny (Preview)**. Další informace najdete v tématu [Security Center doporučení](security-center-recommendations.md). 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení (Preview)":::
-
-    Zobrazí se podrobné zobrazení tohoto doporučení.
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Podrobné zobrazení doporučení":::
-
-1. Další podrobnosti najdete v podrobnostech:
-
-    * Chcete-li zobrazit přehled naskenovaných prostředků (databáze) a seznam kontrol kontroly zabezpečení, které byly testovány, vyberte server, který vás zajímá.
-
-    * Přehled chyb, které jsou seskupeny podle konkrétní databáze SQL, získáte tak, že vyberete databázi, která je zajímavá.
-
-    V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem**, postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Výstrahy Azure Defenderu pro SQL
 Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené na [stránce s odkazem výstrahy](alerts-reference.md#alerts-sql-db-and-warehouse).

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 20241ad316da1c5d713617f3f371d02e2a4e6cc9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e49d8bcc55036b21f53720aab17be02edb114d4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570830"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100249"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -81,7 +81,7 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Description | Postup řešení |
+| Stav monitorování | Popis | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
@@ -105,10 +105,10 @@ V následující tabulce najdete přehled prostředků potřebných pro komunika
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Ano |
+| *.oms.opinsights.azure.com | 443 | Ano |
+| *.blob.core.windows.net | 443 | Ano |
+| *.azure-automation.net | 443 | Ano |
 
 Pokud narazíte na problémy s registrací agenta, přečtěte si článek [Řešení potíží s registrací v Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
@@ -141,7 +141,6 @@ Některé problémy je možné identifikovat pomocí pokynů uvedených v tomto 
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center konfigurovat zásady zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Principy výstrah zabezpečení ve službě Azure Security Center](./security-center-alerts-overview.md)
 * [Kurz: Reakce na incidenty zabezpečení](tutorial-security-incident.md)

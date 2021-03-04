@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b80ceffe22c797d46b82ec33a47c726d68bf4cdb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729912"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099824"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Předdefinované definice Azure Policy pro Azure Security Center
 
@@ -44,13 +44,4 @@ Další informace o předdefinovaných zásadách sledovaných nástrojem Securi
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Azure Policy definice zásad zabezpečení v Security Center. Další informace najdete v následujících článcích.
-
-- Projděte si předdefinované možnosti v [úložišti služby Azure Policy na GitHubu](https://github.com/Azure/azure-policy).
-- Projděte si [strukturu definic Azure Policy](../governance/policy/concepts/definition-structure.md).
-- Projděte si [Vysvětlení efektů zásad](../governance/policy/concepts/effects.md).
-- [Průvodce plánováním a provozem Azure Security Center](./security-center-planning-and-operations-guide.md): Naučte se plánovat a pochopit hlediska návrhu v Azure Security Center.
-- [Sledování stavu zabezpečení v Azure Security Center](./security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
-- [Správa a zpracování výstrah zabezpečení v Azure Security Center](./security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-- [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-integration.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-- [Azure Policy](../governance/policy/overview.md): Naučte se auditovat a řídit prostředky Azure.
+V tomto článku jste se dozvěděli o Azure Policy definice zásad zabezpečení v Security Center. Další informace o iniciativách, zásadách a způsobu jejich vztahu k doporučením Security Center najdete v tématu [co jsou zásady zabezpečení, iniciativy a doporučení?](security-policy-concept.md).

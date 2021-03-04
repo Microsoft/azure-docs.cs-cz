@@ -3,17 +3,18 @@ title: Přidání ovládacích prvků do mapy pro Android | Mapy Microsoft Azure
 description: Postup přidání ovládacího prvku Lupa, ovládacího prvku sklonu, otočení ovládacího prvku a výběru stylu na mapu v Microsoft Azure Maps Android SDK.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 02/19/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8224192ed0d13af2ff6ac60aac5aa928589ff01a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054661"
+ms.locfileid: "102100215"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>Přidání ovládacích prvků do mapy (Android SDK)
 
@@ -23,9 +24,23 @@ V tomto článku se dozvíte, jak přidat ovládací prvky uživatelského rozhr
 
 Ovládací prvek přiblížení přidá tlačítka pro přiblížení a oddálení mapy. Následující ukázka kódu vytvoří instanci `ZoomControl` třídy a přidá ji do mapy.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
+//Construct a zoom control and add it to the map.
 map.controls.add(new ZoomControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a zoom control and add it to the map.
+map.controls.add(ZoomControl())
+```
+
+::: zone-end
 
 Níže uvedený snímek obrazovky je ovládací prvek přiblížení nahraný na mapě.
 
@@ -35,10 +50,23 @@ Níže uvedený snímek obrazovky je ovládací prvek přiblížení nahraný na
 
 Ovládací prvek sklonu přidá tlačítka pro naklonění sklonu k mapě vzhledem k horizontu. Následující ukázka kódu vytvoří instanci `PitchControl` třídy a přidá ji do mapy.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a pitch control and add it to the map.
 map.controls.add(new PitchControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a pitch control and add it to the map.
+map.controls.add(PitchControl())
+```
+
+::: zone-end
 
 Níže uvedený snímek obrazovky je ovládací prvek sklonu, který je načten na mapě.
 
@@ -48,10 +76,23 @@ Níže uvedený snímek obrazovky je ovládací prvek sklonu, který je načten 
 
 Ovládací prvek kompas přidá tlačítko pro otočení mapy. Následující ukázka kódu vytvoří instanci `CompassControl` třídy a přidá ji do mapy.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a compass control and add it to the map.
 map.controls.add(new CompassControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a compass control and add it to the map.
+map.controls.add(CompassControl())
+```
+
+::: zone-end
 
 Snímek obrazovky níže je ovládací prvek kompasu načtený na mapě.
 
@@ -61,10 +102,23 @@ Snímek obrazovky níže je ovládací prvek kompasu načtený na mapě.
 
 Řízení přenosů přidává tlačítko pro přepínání viditelnosti dat přenosů na mapě. Následující ukázka kódu vytvoří instanci `TrafficControl` třídy a přidá ji do mapy.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Construct a traffic control and add it to the map.
 map.controls.add(new TrafficControl());
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Construct a traffic control and add it to the map.
+map.controls.add(TrafficControl())
+```
+
+::: zone-end
 
 Níže uvedený snímek obrazovky je ovládací prvek přenosu dat načtený na mapě.
 
@@ -73,6 +127,8 @@ Níže uvedený snímek obrazovky je ovládací prvek přenosu dat načtený na 
 ## <a name="a-map-with-all-controls"></a>Mapa se všemi ovládacími prvky
 
 Do pole lze vložit více ovládacích prvků a přidat je do mapy všechny najednou a umístit ve stejné oblasti mapy pro zjednodušení vývoje. Následující postup přidá na mapu standardní navigační ovládací prvky pomocí tohoto přístupu.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 map.controls.add(
@@ -84,6 +140,23 @@ map.controls.add(
     }
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.controls.add(
+    arrayOf<Control>(
+        ZoomControl(),
+        CompassControl(),
+        PitchControl(),
+        TrafficControl()
+    )
+)
+```
+
+::: zone-end
 
 Níže uvedený snímek obrazovky ukazuje všechny ovládací prvky načtené na mapě. Všimněte si, že pořadí, v jakém jsou přidány na mapu, je pořadí, ve kterém se budou zobrazovat.
 
