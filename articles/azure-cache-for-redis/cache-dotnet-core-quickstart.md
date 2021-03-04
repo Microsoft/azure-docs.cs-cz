@@ -8,16 +8,20 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 525ad6df1bb94a1fb917e41495d7f8aafa1e79ae
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004292"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121418"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Rychlý Start: použití mezipaměti Azure pro Redis v .NET Core
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Pomocí klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) jste specificky v konzolové aplikaci .NET Core použili kód C#.
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start k .NET Core](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet-core) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 

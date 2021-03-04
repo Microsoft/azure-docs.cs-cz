@@ -2,18 +2,18 @@
 title: Nasazení grafů Helm pomocí GitOps v clusteru Kubernetes s povoleným ARC
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Použití GitOps s Helm pro konfiguraci clusteru s povoleným obloukem Azure
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 0176d614a6bf44e2bf20cc7935521a6387a3b574
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687276"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121401"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Nasazení grafů Helm pomocí GitOps u clusteru Kubernetes s povoleným obloukem
 
@@ -136,4 +136,4 @@ kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řízení konfigurace clusteru pomocí Azure Policy](./use-azure-policy.md)
+Použijte konfiguraci clusteru ve velkém měřítku pomocí [Azure Policy](./use-azure-policy.md).

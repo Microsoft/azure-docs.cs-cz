@@ -9,14 +9,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: f97b1560e062d1849f726baff8cd66d8e75f8b7f
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: e9acbb8206985fbc9edebba8d4183ca1a97736f7
+  ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101647842"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102121656"
 landingContent:
-- title: Připojení clusterů Kubernetes k Azure s využitím služby Azure Arc
+- title: Informace o protokolu Kubernetes s podporou Azure Arc
   linkLists:
   - linkListType: overview
     links:
@@ -30,6 +30,8 @@ landingContent:
       url: conceptual-agent-architecture.md
     - text: Konfigurace a GitOps
       url: conceptual-configurations.md
+    - text: Pracovní postup CI/CD pomocí GitOps
+      url: conceptual-gitops-ci-cd.md
     - text: Nejčastější dotazy
       url: faq.md
 - title: Začínáme
@@ -44,6 +46,8 @@ landingContent:
     links:
     - text: Nasazení konfigurací s využitím GitOps
       url: tutorial-use-gitops-connected-cluster.md
+    - text: Implementace CI/CD pomocí GitOps
+      url: tutorial-gitops-ci-cd.md
 - title: Konfigurace, řízení a monitorování clusterů
   linkLists:
   - linkListType: how-to-guide

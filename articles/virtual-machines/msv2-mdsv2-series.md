@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 04d6daac6644bd8d29479ac527bbdd8a5bdbd116
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 986b02ee1127bc929ce34518226424ba06d24b89
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679325"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101541"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Střední paměť Msv2 a Mdsv2-Series (Preview)
 
@@ -48,13 +48,13 @@ Další informace o virtuálních počítačích 2. generace najdete v tématu [
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) | 
 |---|---|---|---|---|---|---|---|
-| Standard_M32dms_v2 | 32 | 875 | 0 | 32 |  20000/500 | 8 | 8000 | 
-| Standard_M64ds_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M64dms_v2 | 64 | 1 792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M128ds_v2 | 128 | 2 048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M128dms_v2 | 128 | 3892 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M192ids_v2 | 192 | 2 048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M192idms_v2 | 192 | 4 096 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M32ms_v2 | 32 | 875 | 0 | 32 |  20000/500 | 8 | 8000 | 
+| Standard_M64s_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M64ms_v2 | 64 | 1 792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M128s_v2 | 128 | 2 048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M128ms_v2 | 128 | 3892 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M192is_v2 | 192 | 2 048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M192ims_v2 | 192 | 4 096 | 0 | 64 | 80000/2000 | 8 | 30000 | 
 
 ## <a name="mdsv2-medium-memory-with-disk"></a>Mdsv2 střední paměť s použitím disku  
 

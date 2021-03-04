@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: b55a706aa25b21620226690c172c996fe10a84fa
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203506"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121095"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Rust
 
 V tomto článku se dozvíte, jak používat [programovací jazyk Rust](https://www.rust-lang.org/) pro interakci s [Azure cache pro Redis](./cache-overview.md). Ukáže příklady běžně používaných datových struktur Redis, jako je například [String](https://redis.io/topics/data-types-intro#redis-strings), [hash](https://redis.io/topics/data-types-intro#redis-hashes), [list](https://redis.io/topics/data-types-intro#redis-lists) atd. použití knihovny [Redis-RS](https://github.com/mitsuhiko/redis-rs) pro Redis. Tento klient zpřístupňuje rozhraní API vysoké úrovně i nízké úrovně a oba tyto styly jsou v akci, a to s použitím ukázkového kódu prezentovaného v tomto článku.
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Rust](https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart/) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -268,7 +272,7 @@ Aplikace přijímá připojení a přihlašovací údaje ve formě proměnných 
     set REDIS_PASSWORD=<Primary Access Key>
     ```
 
-1. V okně terminálu přejděte do správné složky. Příklad:
+1. V okně terminálu přejděte do správné složky. Například:
 
     ```shell
     cd "C:\git-samples\azure-redis-cache-rust-quickstart"

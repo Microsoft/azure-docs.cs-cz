@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400009"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120738"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -80,7 +80,7 @@ Následující příklad ukazuje prvek cesty uživatele s technickými profily a
 
 Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Pokud nějaký krok selhává, transakce se nezdařila. Tyto kroky orchestrace odkazují na stavební bloky i zprostředkovatele deklarací identity povolené v souboru zásad. Libovolný krok orchestrace zodpovědný za zobrazení nebo vykreslení uživatelského prostředí má také odkaz na odpovídající identifikátor definice obsahu.
 
-Kroky orchestrace můžou být podmíněně spouštěny na základě předběžných podmínek definovaných v prvku kroku Orchestration. Například můžete provést krok orchestrace pouze v případě, že existují konkrétní deklarace identity nebo pokud je deklarace identity shodná nebo není zadanou hodnotou.
+Kroky orchestrace můžou být podmíněně spouštěny na základě předběžných podmínek definovaných v prvku kroku Orchestration. Například můžete provést krok orchestrace pouze v případě, že existuje konkrétní deklarace identity nebo pokud je deklarace identity shodná nebo není zadanou hodnotou.
 
 K určení seřazeného seznamu kroků orchestrace se jako součást zásady Přidá element **OrchestrationSteps** . Tento prvek je povinný.
 
@@ -189,9 +189,12 @@ Předběžné podmínky mohou kontrolovat více předběžných podmínek. Násl
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>Claimsproviderselection.
+## <a name="identity-provider-selection"></a>Výběr zprostředkovatele identity
 
-Krok orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp` může obsahovat seznam zprostředkovatelů deklarací identity, se kterými se uživatel může přihlásit. Pořadí prvků uvnitř `ClaimsProviderSelections` prvků určuje pořadí zprostředkovatelů identity prezentovaných uživateli.
+Výběr zprostředkovatele identity umožňuje uživatelům vybrat akci ze seznamu možností. Výběr zprostředkovatele identity se skládá z páru dvou kroků orchestrace: 
+
+1. **Tlačítka** – spustí se typu `ClaimsProviderSelection` , nebo `CombinedSignInAndSignUp` obsahuje seznam možností, ze kterých si uživatel může vybrat. Pořadí možností uvnitř `ClaimsProviderSelections` elementu řídí pořadí tlačítek prezentovaných uživateli.
+2. **Akce** – následuje typ `ClaimsExchange` . ClaimsExchange obsahuje seznam akcí. Akce je odkaz na technický profil, jako je například [OAuth2](oauth2-technical-profile.md), [OpenID Connect](openid-connect-technical-profile.md), [transformovat deklarace](claims-transformation-technical-profile.md)nebo s [vlastním uplatněním](self-asserted-technical-profile.md). V případě, že uživatel klikne na jedno z tlačítek, je provedena odpovídající akce.
 
 Element **ClaimsProviderSelections** obsahuje následující element:
 
@@ -242,7 +245,7 @@ V následujícím kroku orchestrace se uživatel může přihlásit přes Facebo
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

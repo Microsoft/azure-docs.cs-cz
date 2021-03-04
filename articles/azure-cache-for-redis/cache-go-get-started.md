@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165123"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121333"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Rychlý Start: použití mezipaměti Azure pro Redis s nástrojem přejít
 
 V tomto článku se naučíte, jak vytvořit REST API v nástroji, které budou ukládat a načítat informace o uživatelích s datovou strukturou [hash](https://redis.io/topics/data-types-intro#redis-hashes) v [Azure cache pro Redis](./cache-overview.md). 
+
+## <a name="skip-to-the-code-on-github"></a>Přeskočit na kód na GitHubu
+
+Pokud chcete přeskočit přímo na kód, Projděte si [rychlý Start](https://github.com/Azure-Samples/azure-redis-cache-go-quickstart/) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -132,7 +136,7 @@ Aplikace přijímá připojení a přihlašovací údaje ve formě proměnných 
     set REDIS_PASSWORD=<Primary Access Key>
     ```
 
-1. V okně terminálu přejděte do správné složky. Příklad:
+1. V okně terminálu přejděte do správné složky. Například:
 
     ```shell
     cd "C:\git-samples\azure-redis-cache-go-quickstart"
@@ -172,7 +176,7 @@ Server HTTP se spustí na portu `8080` .
     }
     ```
 
-1. Pokud se pokusíte načíst uživatele, který neexistuje, dostanete HTTP `404` . Příklad:
+1. Pokud se pokusíte načíst uživatele, který neexistuje, dostanete HTTP `404` . Například:
 
     ```bash
     curl -i localhost:8080/users/100

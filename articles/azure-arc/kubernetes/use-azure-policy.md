@@ -2,22 +2,20 @@
 title: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 05a6665a985ef8b229ee58082dc9b2c10cdcece3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652143"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121452"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
-
-## <a name="overview"></a>Přehled
 
 Azure Policy můžete použít k aplikování konfigurací ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` typu prostředku) na škále u clusterů Azure s podporou Kubernetes ( `Microsoft.Kubernetes/connectedclusters` ).
 
@@ -69,4 +67,4 @@ U existujících clusterů budete muset ručně spustit úlohu nápravy. Tato ú
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení Azure Monitor pro kontejnery s povolenými clustery Kubernetes s obloukem](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)
+[Nastavte Azure monitor pro kontejnery s povolenými clustery Kubernetes Azure ARC](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md).

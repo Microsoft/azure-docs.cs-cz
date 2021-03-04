@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a70b8be6c034f002f0e387b5d3b4ba5deafa1a5e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096033"
+ms.locfileid: "102120500"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -555,7 +555,7 @@ Odkaz na element **UseTechnicalProfileForSessionManagement** na [technický prof
 
 ## <a name="enabled-for-user-journeys"></a>Povoleno pro cesty uživatelů
 
-[ClaimsProviderSelections](userjourneys.md#claimsproviderselection) v cestě uživatele definuje seznam možností výběru zprostředkovatele deklarací a jejich pořadí. Pomocí filtrovaného prvku **EnabledForUserJourneys** , který je k dispozici pro uživatele. Element **EnabledForUserJourneys** obsahuje jednu z následujících hodnot:
+[ClaimsProviderSelections](userjourneys.md#identity-provider-selection) v cestě uživatele definuje seznam možností výběru zprostředkovatele deklarací a jejich pořadí. Pomocí filtrovaného prvku **EnabledForUserJourneys** , který je k dispozici pro uživatele. Element **EnabledForUserJourneys** obsahuje jednu z následujících hodnot:
 
 - **Vždy** spusťte technický profil.
 - **Nikdy**, přeskočte technický profil.

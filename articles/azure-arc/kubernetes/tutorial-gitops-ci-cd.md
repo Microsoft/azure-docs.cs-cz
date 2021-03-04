@@ -5,14 +5,14 @@ author: tcare
 ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
-ms.date: 3/2/2021
+ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: ac67c2b0baf923421e8699de587e0e6dbbb97e24
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055424"
+ms.locfileid: "102121605"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
 
@@ -316,7 +316,7 @@ Vaše nasazení je nyní dokončeno. Tím se ukončí pracovní postup CI/CD.
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte všechny prostředky pomocí následujících kroků:
 
-1. Připojení ARC GitOps
+1. Odstraňte připojení konfigurace GitOps ARC Azure:
    ```azurecli
    az k8sconfiguration delete \
    --name cluster-config \
@@ -324,9 +324,11 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte všechny prostředky
    --resource-group myResourceGroup \
    --cluster-type connectedClusters
    ```
-2. `dev` hosting
+
+2. Odebrat `dev` obor názvů:
    * `kubectl delete namespace dev`
-3. `stage` hosting
+
+3. Odebrat `stage` obor názvů:
    * `kubectl delete namespace stage`
 
 ## <a name="next-steps"></a>Další kroky

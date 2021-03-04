@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d978410cae2b2de1a2f6711de82ae71a1da168c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744693"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120126"
 ---
 # <a name="co-sell-requirements"></a>Požadavky na společný prodej
 
@@ -24,7 +24,7 @@ V této tabulce jsou uvedené všechny možné stavy spoluprodeji:
 | ------------ | ------------- |
 | Není připravený společný prodej | Nebyly splněny minimální [požadavky na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) . |
 | Připravený společný prodej | Splnění všech [požadavků na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) bylo dosaženo. |
-| Azure IP – společný prodej motivovaní | Kromě [těchto dalších požadavků](#requirements-for-IP-Co-sell-incentivized-status)se splnily požadavky na společný prodej. |
+| Azure IP – společný prodej motivovaní | Kromě [těchto dalších požadavků](#requirements-for-ip-co-sell-incentivized-status)se splnily požadavky na společný prodej. |
 | Aplikace pro výrobce ISV Connect Premium  | Tento stav platí pro nabídky Dynamics 365 a Power Apps a označuje, že byly splněny všechny [požadavky pro tento stav](#requirements-for-biz-apps-isv-connect-premium-incentive-status) . |
 |||
 

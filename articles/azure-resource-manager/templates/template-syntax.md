@@ -2,13 +2,13 @@
 title: Struktura a syntaxe šablon
 description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager (šablony ARM) pomocí deklarativní syntaxe JSON.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722700"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120412"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Vysvětlení struktury a syntaxe šablon ARM
 
@@ -46,62 +46,6 @@ V nejjednodušší struktuře má šablona následující prvky:
 
 Každý prvek má vlastnosti, které lze nastavit. V tomto článku jsou podrobněji popsány části šablony.
 
-## <a name="data-types"></a>Typy dat
-
-V rámci šablony ARM můžete použít tyto typy dat:
-
-* řetězec
-* SecureString
-* int
-* bool
-* object
-* secureObject
-* array
-
-Následující šablona zobrazuje formát datových typů. Každý typ má výchozí hodnotu ve správném formátu.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-Zabezpečený řetězec používá stejný formát jako řetězec a zabezpečený objekt používá stejný formát jako objekt. Když nastavíte parametr na zabezpečený řetězec nebo zabezpečený objekt, hodnota parametru se neuloží do historie nasazení a nezaprotokoluje se. Nicméně pokud nastavíte tuto zabezpečenou hodnotu na vlastnost, která neočekává zabezpečenou hodnotu, hodnota není chráněná. Například pokud nastavíte zabezpečený řetězec na značku, tato hodnota je uložena jako prostý text. Používejte zabezpečené řetězce pro hesla a tajné kódy.
-
-Pro celá čísla předaná jako vložené parametry může být rozsah hodnot omezen sadou SDK nebo nástrojem příkazového řádku, který používáte pro nasazení. Například při použití prostředí PowerShell k nasazení šablony mohou být typy celého čísla v rozsahu od-2147483648 do 2147483647. Chcete-li se tomuto omezení vyhnout, zadejte v [souboru parametrů](parameter-files.md)velké celočíselné hodnoty. Typy prostředků použijí vlastní omezení pro celočíselné vlastnosti.
-
-Při zadávání logických a celočíselných hodnot v šabloně se hodnota neobklopuje pomocí uvozovek. Počáteční a koncové hodnoty řetězce s dvojitými uvozovkami ( `"string value"` ).
-
-Objekty začínají levou závorkou ( `{` ) a končí pravou závorkou ( `}` ). Pole začínají levou hranatou závorkou ( `[` ) a končí pravou hranatou závorkou ( `]` ).
-
 ## <a name="parameters"></a>Parametry
 
 V `parameters` části šablony určíte, které hodnoty můžete zadat při nasazování prostředků. V šabloně můžete zadat jen 256 parametrů. Počet parametrů můžete snížit pomocí objektů, které obsahují více vlastností.
@@ -128,7 +72,7 @@ Následují dostupné vlastnosti pro parametr:
 | Název elementu | Povinné | Popis |
 |:--- |:--- |:--- |
 | název parametru |Ano |Název parametru Musí být platný identifikátor JavaScriptu. |
-| typ |Ano |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** a **Array**. Podívejte se na [datové typy](#data-types). |
+| typ |Ano |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** a **Array**. Podívejte [se na datové typy v šablonách ARM](data-types.md). |
 | Hodnot |Ne |Výchozí hodnota parametru, pokud není k dispozici žádná hodnota pro parametr. |
 | allowedValues |Ne |Pole povolených hodnot pro parametr, aby bylo zajištěno, že je zadána pravá hodnota. |
 | minValue |Ne |Minimální hodnota pro parametry typu int je tato hodnota včetně. |
@@ -141,7 +85,7 @@ Příklady použití parametrů najdete [v tématu parametry v šablonách ARM](
 
 ## <a name="variables"></a>Proměnné
 
-V `variables` části můžete vytvořit hodnoty, které lze použít v celé šabloně. Nemusíte definovat proměnné, ale často zjednodušují vaši šablonu tím, že snižují složité výrazy. Formát každé proměnné odpovídá jednomu z [datových typů](#data-types).
+V `variables` části můžete vytvořit hodnoty, které lze použít v celé šabloně. Nemusíte definovat proměnné, ale často zjednodušují vaši šablonu tím, že snižují složité výrazy. Formát každé proměnné odpovídá jednomu z [datových typů](data-types.md).
 
 Následující příklad ukazuje dostupné možnosti pro definování proměnné:
 

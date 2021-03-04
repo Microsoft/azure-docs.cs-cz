@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688548"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120211"
 ---
 # <a name="user-profile-attributes"></a>Atributy profilu uživatele
 
@@ -101,9 +101,9 @@ K těmto typům identit se dá přidružit účet zákazníka, který může bý
 - **Místní** identita – uživatelské jméno a heslo jsou uložené lokálně v adresáři Azure AD B2C. Na tyto identity často odkazujeme jako na místní účty.
 - **Federované** identity – označované taky jako *sociální* nebo *podnikové* účty, je identita uživatele spravovaná pomocí federovaného poskytovatele identity, jako je Facebook, Microsoft, ADFS nebo Salesforce.
 
-Uživatel s účtem zákazníka se může přihlásit s více identitami. Například uživatelské jméno, e-mail, ID zaměstnance, ID státní správy a další. Jeden účet může mít více identit, místní i sociální, se stejným heslem.
+Uživatel s účtem zákazníka se může přihlásit s více identitami. Například uživatelské jméno, e-mail, ID zaměstnance, ID státní správy a další. Jeden účet může mít více identit, místní i sociální, se stejným heslem. 
 
-V rozhraní Microsoft Graph API se místní i federované identity ukládají do `identities` atributu uživatele, který je typu [objectIdentity] [Graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
+V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity](/graph/api/resources/objectidentity). `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit. Atribut identity může obsahovat až deset objektů [objectIdentity](/graph/api/resources/objectidentity) . Každý objekt obsahuje následující vlastnosti:
 
 | Název   | Typ |Popis|
 |:---------------|:--------|:----------|

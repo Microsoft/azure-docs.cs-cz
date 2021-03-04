@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c84966f7b4dc1740235fe6414da2ba832a1334fd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660365"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119905"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Nastavení toku přihlášení v Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Zásady přihlašování umožňují uživatelům:
 * Uživatelé se můžou přihlásit pomocí Azure AD B2C místního účtu.
 * Registrace nebo přihlášení pomocí účtu sociální sítě
 * Resetování hesla
-* Uživatelé se nemohou přihlásit k místnímu účtu Azure AD B2C – pro vytvoření účtu může správce použít [MS Graph API](microsoft-graph-operations.md).
+* Uživatelé se nemohou zaregistrovat k Azure AD B2C místní účet. K vytvoření účtu může správce použít [Azure Portal](manage-users-portal.md#create-a-consumer-user)nebo [MS Graph API](microsoft-graph-operations.md).
 
 ![Tok úprav profilu](./media/add-sign-in-policy/sign-in-user-flow.png)
 
@@ -75,26 +75,34 @@ Technický profil **SelfAsserted-LocalAccountSignin-email** je [samostatně](sel
 1. Do elementu přidejte následující zprostředkovatele deklarací `ClaimsProviders` :
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Local Account</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-          <Metadata>
-            <Item Key="setting.showSignupLink">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+    <!--
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Local Account</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+            <Metadata>
+              <Item Key="setting.showSignupLink">false</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!--
+    </ClaimsProviders> -->
     ```
 
 1. V rámci `<BuildingBlocks>` elementu přidejte následující [ContentDefinition](contentdefinitions.md) , které odkazují na verzi 1.2.0, nebo na novější identifikátor URI dat:
 
     ```XML
-    <ContentDefinitions>
-     <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
+    <!-- 
+    <BuildingBlocks> 
+      <ContentDefinitions>-->
+        <ContentDefinition Id="api.localaccountsignup">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        </ContentDefinition>
+      <!--
+      </ContentDefinitions>
+    </BuildingBlocks> -->
     ```
 
 ## <a name="update-and-test-your-policy"></a>Aktualizace a testování zásad
@@ -103,7 +111,7 @@ Technický profil **SelfAsserted-LocalAccountSignin-email** je [samostatně](sel
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
-1. Vyberte **Odeslat vlastní zásadu** a pak nahrajte dva soubory zásad, které jste změnili.
+1. Vyberte **nahrát vlastní zásadu** a pak nahrajte soubor zásad, který jste změnili, *TrustFrameworkExtensions.xml*.
 1. Vyberte zásadu přihlášení, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se přihlásit pomocí účtu, který jste vytvořili (pomocí programu MS Graph API), bez odkazu na registraci.
 

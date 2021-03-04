@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121996"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Známé problémy – datové služby s podporou ARC Azure (Preview)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101693035"
 
 ## <a name="february-2021"></a>Únor 2021
 
-
 - Režim připojeného clusteru je zakázán.
-- PostgreSQL s povoleným rozšířením Azure ARC vrátí nepřesnou chybovou zprávu, pokud se nemůže obnovit k relativnímu bodu v čase, který určíte. Pokud jste například zadali bod v čase k obnovení, který je starší než vaše zálohy, obnovení se nepovede a zobrazí se chybová zpráva, například: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` . Pokud k tomu dojde, restartujte příkaz po určení bodu v čase, který je v rozsahu kalendářních dat, pro které máte zálohy. Chcete-li zjistit tento rozsah, vypište zálohy a podívejte se na data, ve kterých byly provedeny.
-- Při úplném obnovení je vyžadováno ID zálohy. Pokud neindikujete ID zálohy, použije se ve výchozím nastavení poslední záloha. Tato verze v této verzi nefunguje.
 
 ## <a name="introduced-prior-to-february-2021"></a>Zavedeno před únorem 2021
 

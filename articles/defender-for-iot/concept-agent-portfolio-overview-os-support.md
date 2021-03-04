@@ -1,5 +1,5 @@
 ---
-title: Přehled portfolia agenta a podpora operačního systému (Preview)
+title: Přehled portfolia agenta a podpora operačního systému
 description: Azure Defender pro IoT poskytuje velké portfolio agentů na základě typu zařízení.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810142"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120143"
 ---
-# <a name="agent-portfolio-overview-and-os-support-preview"></a>Přehled portfolia agenta a podpora operačního systému (Preview)
+# <a name="agent-portfolio-overview-and-os-support"></a>Přehled portfolia agenta a podpora operačního systému 
 
 Azure Defender pro IoT poskytuje velké portfolio agentů na základě typu zařízení. 
 
@@ -38,4 +38,4 @@ Agent Azure Defender pro IoT Micro je integrovaný jako součást součásti Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o nástroji [Standalone Micro Agent (Preview)](concept-standalone-micro-agent-overview.md).
+Přečtěte si další informace o nástroji [Standalone Micro agent ](concept-standalone-micro-agent-overview.md).

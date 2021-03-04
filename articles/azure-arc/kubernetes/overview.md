@@ -2,19 +2,19 @@
 title: Přehled povolených Kubernetesů Azure ARC
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: 42a04bb349b2acbd68c7088bc0348deda1ee09e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652264"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121588"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Co je Kubernetes s podporou Azure Arc?
 
@@ -66,4 +66,6 @@ Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)
+Naučte se připojit cluster ke službě Azure ARC.
+> [!div class="nextstepaction"]
+> [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)

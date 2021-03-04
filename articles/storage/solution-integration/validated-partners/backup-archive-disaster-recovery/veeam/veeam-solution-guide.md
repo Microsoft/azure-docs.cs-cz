@@ -3,18 +3,18 @@ title: Zálohování dat do Azure pomocí Veeam
 titleSuffix: Azure Blob Storage Docs
 description: Webová stránka poskytuje přehled o faktorech, které je potřeba vzít v úvahu, a postup pro využití Azure jako cíle úložiště a umístění pro obnovení pro zálohování a obnovení Veeam.
 keywords: Veeam, zálohování do cloudu, zálohování, zálohování do Azure, zotavení po havárii, Kontinuita podnikových aplikací
-author: Karl Rautenstrauch
+author: karauten
 ms.author: karauten
 ms.date: 11/11/2020
 ms.topic: article
 ms.service: Storage
 ms.subservice: Blob Storage
-ms.openlocfilehash: 9f07703d23c3be6e842a54ba4bb0d46467ccb71d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b7bc20d80887df5a5ad235c87238b0239abadc0a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745008"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101575"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Zálohování do Azure pomocí Veeam
 

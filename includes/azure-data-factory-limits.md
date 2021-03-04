@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681096"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109395"
 ---
 Azure Data Factory je víceklientské služba, která má následující výchozí omezení, aby se zajistilo, že předplatná zákazníka budou chráněná před jednotlivými úlohami. Pokud chcete zvýšit limity až do maximálního počtu pro vaše předplatné, obraťte se na podporu.
 
@@ -56,9 +56,9 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 
 | Skupina oblastí | Oblasti |
 | -------- | ------ |
-| Skupina oblastí 1 | Střed USA, Východní USA, východní USA 2, Severní Evropa, Západní Evropa, Západní USA západní USA 2 |
-| Skupina oblastí 2 | Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Střed Indie, Japonsko – východ, USA – Northcentral, střed USA, jihovýchodní Asie, Středozápadní USA |
-| Skupina oblastí 3 | Kanada – střed, Východní Asie, Francie – střed, Korea – střed, Velká Británie – jih |
+| Skupina oblastí 1 | Střed USA, Východní USA, Východní USA 2, Severní Evropa, Západní Evropa, Západní USA, Západní USA 2 |
+| Skupina oblastí 2 | Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Střed Indie, Japonsko – východ, Střed USA – sever, Střed USA – jih, jihovýchodní Asie, Středozápadní USA |
+| Skupina oblastí 3 | Další oblasti |
 
 <sup>3</sup> kanály, datové sady a propojené objekty služby reprezentují logické seskupení vašich úloh. Omezení pro tyto objekty se nevztahují na množství dat, která můžete přesunout a zpracovat pomocí Azure Data Factory. Data Factory je navržená tak, aby zpracovávala petabajty data.
 

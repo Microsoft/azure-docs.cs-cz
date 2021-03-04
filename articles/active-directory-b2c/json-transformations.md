@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119871"
 ---
 # <a name="json-claims-transformations"></a>Transformace deklarací JSON
 
@@ -58,7 +58,7 @@ Následující příklad generuje řetězec JSON na základě hodnoty deklarace 
 Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou SendGrid (poskytovatel e-mailu třetí strany). Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
 
 - Vstupní deklarace identity:
-  - **e-mail**a přizpůsobení typu deklarace transformace **. 0. na. 0. e-mail**: someone@example.com
+  - **e-mail** a přizpůsobení typu deklarace transformace **. 0. na. 0. e-mail**: someone@example.com
   - **jednorázové heslo**, typ deklarace transformace **personalizations.0.dynamic_template_data. jednorázové heslo** "346349"
 - Vstupní parametr:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
@@ -117,8 +117,8 @@ Následující transformace deklarací identity vypíše deklaraci identity řet
 - Vstupní deklarace identity:
   - **e-mail**, typ deklarace transformace  **customerEntity. email**: " john.s@contoso.com "
   - **objectID**, transformovat typ deklarace identity **customerEntity. userObjectId** "01234567-89AB-CDEF-0123-456789ABCDEF"
-  - **objectID**, transformovat typ deklarace identity **customerEntity. FirstName** "Jan"
-  - **objectID**, transformovat typ deklarace identity **customerEntity. LastName** "Smith"
+  - **zadaný** argument, transformace typu **customerEntity. FirstName** "Jan"
+  - **příjmení**, typ deklarace transformace **customerEntity. LastName** "Smith"
 - Vstupní parametr:
   - **customerEntity.role.Name**: "správce"
   - **customerEntity.role.ID** 1
@@ -225,7 +225,7 @@ V následujícím příkladu transformace deklarací extrahuje následující de
     - **jsonSourceValueName**: hodnota
 - Deklarace výstupů:
   - **e-mail**: " someone@example.com "
-  - **Zobrazovaný**název: "někdo"
+  - **Zobrazovaný** název: "někdo"
   - **membershipNum**: 6353399
   - **aktivní**: true
   - **DatumNarození**: 1980-09-23T00:00:00Z

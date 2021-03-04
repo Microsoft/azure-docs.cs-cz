@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44a084266a083b2cc7c0609e4bfedb10a018585d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107411"
+ms.locfileid: "102119820"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurace možností zprostředkovatele identity SAML pomocí Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Můžete také zahrnout deklarace identity, které nevrací poskytovatel identit
 Výstupní element deklarace identity obsahuje následující atributy:
 
 - **ClaimTypeReferenceId** je odkaz na typ deklarace identity. 
-- **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}` , kde `NAME` je přidána vlastnost do události.
-- **DefaultValue** je předdefinovaná hodnota, která se má zaznamenat, jako je třeba název události. Deklarace identity, která se používá v cestě uživatele, například název zprostředkovatele identity. Pokud je deklarace identity prázdná, použije se výchozí hodnota. Například `identityProvider` deklaraci identity nastavuje federace Technical Profiles, jako je Facebook. Pokud je deklarace identity prázdná, indikuje to, že se uživatel přihlašuje pomocí místního účtu. Proto je výchozí hodnota nastavená na *Local (místní*). [Překladače deklarací identity](claim-resolver-overview.md) můžete také zaznamenat pomocí kontextové hodnoty, jako je například ID aplikace nebo IP adresa uživatele.
+- **PartnerClaimType** je název vlastnosti, která se zobrazí jako kontrolní výraz SAML. 
+- **DefaultValue** je předdefinovaná výchozí hodnota. Pokud je deklarace identity prázdná, použije se výchozí hodnota. [Překladače deklarací identity](claim-resolver-overview.md) můžete použít také s kontextovou hodnotou, jako je ID korelace, nebo IP adresa uživatele.
 
 ### <a name="subject-name"></a>Název předmětu
 

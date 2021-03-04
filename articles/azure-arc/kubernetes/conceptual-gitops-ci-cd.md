@@ -2,30 +2,31 @@
 title: Pracovní postup CI/CD pomocí GitOps – Kubernetes s podporou ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/26/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: tcare
 ms.author: tcare
 description: Tento článek obsahuje koncepční přehled pracovního postupu CI/CD pomocí GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers, CI, CD, Azure DevOps
-ms.openlocfilehash: 044275db0977a20474aa1451324486ad1750a7f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054673"
+ms.locfileid: "102121775"
 ---
-# <a name="overview"></a>Přehled
+# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>Pracovní postup CI/CD pomocí GitOps – Kubernetes s podporou ARC Azure
 
 Moderní nasazení Kubernetes se zapokojují v několika aplikacích, clusterech a prostředích. Pomocí GitOps můžete snadněji spravovat tato složitá nastavení a sledovat požadovaný stav prostředí Kubernetes deklarativně pomocí Gitu. Pomocí běžných nástrojů Git ke sledování stavu clusteru můžete zvýšit zodpovědnost, usnadnit vyšetřování chyb a povolit automatizaci správu prostředí.
 
-Tento článek obsahuje koncepční přehled o tom, jak zajistit, aby se GitOpsa realita v celém životním cyklu aplikace pomocí Azure ARC, Azure Repos a Azure Pipelines. Projděte si ucelený příklad jedné změny v aplikaci od vývojáře až po GitOps prostředí Kubernetes.
+Tento koncepční přehled vysvětluje GitOps jako realitu v úplném životním cyklu aplikace pomocí Azure ARC, Azure Repos a Azure Pipelines. Přejděte [na příklad](#example-workflow) jedné aplikace, který se změní na GitOps prostředí Kubernetes řízená.
 
 ## <a name="architecture"></a>Architektura
 
 Vezměte v úvahu aplikaci nasazenou do jednoho nebo více prostředí Kubernetes.
 
 ![Architektura CI/CD GitOps](./media/gitops-arch.png)
+
 ### <a name="application-repo"></a>Úložiště aplikace
 Úložiště aplikace obsahuje kód aplikace, na kterém vývojáři pracují během své vnitřní smyčky. Šablony nasazení aplikace v tomto úložišti v obecném tvaru, jako je například Helm nebo Kustomize, jsou v tomto úložišti aktivní. Hodnoty specifické pro prostředí nejsou uloženy. Změny tohoto úložiště vyvolávají kanál PR nebo CI, který spouští proces nasazení.
 ### <a name="container-registry"></a>Container Registry
@@ -39,9 +40,9 @@ Tok je služba, která běží v jednotlivých clusterech a zodpovídá za údr�
 ### <a name="cd-pipeline"></a>Kanál CD
 Kanál CD se automaticky aktivuje úspěšně sestaveními CI. Používá dříve publikované šablony, nahrazuje hodnoty prostředí a otevře úložiště žádosti o přijetí změn do úložiště GitOps, aby pomohlo požádat o změnu v požadovaném stavu jednoho nebo více clusterů Kubernetes. Správci clusteru kontrolují změnu stavu PR a schvalují sloučení úložiště GitOps. Kanál pak čeká na dokončení žádosti o přijetí změn, což umožňuje, aby tok vybral změnu stavu.
 ### <a name="gitops-repo"></a>Úložiště GitOps
-Úložiště GitOps představuje aktuální požadovaný stav všech prostředí v clusterech. Všechny změny tohoto úložiště vybírají služba toků v každém clusteru a nasazené. PR jsou vytvořeny se změnami požadovaného stavu, zkontrolováno a sloučeno. Tyto PR obsahují změny obou šablon nasazení a výsledných vygenerovaných manifestů Kubernetes. Vygenerované manifesty nízké úrovně zabraňují jakýmkoli překvapenímám za náhradou šablony tím, že umožňují pečlivou kontrolu změn obvykle nezpracovaných na úrovni šablon.
+Úložiště GitOps představuje aktuální požadovaný stav všech prostředí v clusterech. Všechny změny tohoto úložiště vybírají služba toků v každém clusteru a nasazené. PR jsou vytvořeny se změnami požadovaného stavu, zkontrolováno a sloučeno. Tyto PR obsahují změny obou šablon nasazení a výsledných vygenerovaných manifestů Kubernetes. Vygenerované manifesty nízké úrovně umožňují důkladnější kontrolu změn, které jsou obvykle nepřehledné na úrovni šablon.
 ### <a name="kubernetes-clusters"></a>Clustery Kubernetes
-Jeden nebo více clusterů Kubernetes s podporou ARC Azure slouží k různým prostředím, které aplikace potřebuje. Jeden cluster může například sloužit jako vývoj a prostředí pro kontrolu a odpovědi prostřednictvím různých oborů názvů. Druhý cluster může poskytovat snadnější oddělení prostředí a přesnější kontrolu.
+Aspoň jeden cluster Kubernetes s podporou Azure ARC poskytuje různá prostředí, která aplikace potřebuje. Jeden cluster může například sloužit jako vývoj a prostředí pro kontrolu a odpovědi prostřednictvím různých oborů názvů. Druhý cluster může poskytovat snadnější oddělení prostředí a přesnější kontrolu.
 ## <a name="example-workflow"></a>Ukázkový pracovní postup
 Jako vývojář aplikace, Alice:
 * Zapisuje kód aplikace.
@@ -60,7 +61,7 @@ Předpokládejme, že Alice chce provést změnu aplikace, která změní image 
     * Tato změna je bezpečná pro nasazení do clusteru a artefakty se uloží do spuštění kanálu CI.
 4. Změna Alice slučuje a aktivuje kanál CD.
     * Kanál CD vybírá artefakty uložené v průběhu spuštění kanálu náležícího do modulu CI.
-    * Kanál CD dosadí šablony s hodnotami konkrétního prostředí a ve fázích změny v existujícím stavu clusteru v úložišti GitOps.
+    * Kanál CD nahradí šablony hodnotami specifickými pro dané prostředí a fázemi všech změn oproti existujícímu stavu clusteru v úložišti GitOps.
     * Kanál CD vytvoří žádost o přijetí změn do úložiště GitOps s požadovanými změnami stavu clusteru.
 5. Tým od Alice kontroluje a schvaluje jeho žádost o přijetí změn.
     * Změna je sloučena do cílové větve odpovídající prostředí.
@@ -73,4 +74,4 @@ Předpokládejme, že Alice chce provést změnu aplikace, která změní image 
 8.  Jakmile všechna prostředí obdrží úspěšná nasazení, kanál se dokončí.
 
 ## <a name="next-steps"></a>Další kroky
-[Konfigurace a GitOps s povoleným Kubernetes ARC Azure](./conceptual-configurations.md)
+Další informace o vytváření připojení mezi clusterem a úložištěm Git jako [prostředku konfigurace s povoleným Kubernetesm Azure ARC](./conceptual-configurations.md)

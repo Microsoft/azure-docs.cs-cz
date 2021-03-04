@@ -328,6 +328,8 @@
       items:
         - name: Porovnávání formátu JSON s bicep
           href: compare-template-syntax.md
+    - name: Typy dat
+      href: data-types.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
     - name: Šablony pro konzistenci cloudu

@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95563645"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109183"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
 > [!IMPORTANT]
-> 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
+> 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, rozhraní API pro rozpoznávání tváře, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií, QnA maker a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
 > 2. Ověřování AAD se musí vždycky používat společně s názvem vlastní subdomény vašeho prostředku Azure. [Regionální koncové body](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) nepodporují ověřování AAD.
 
 V předchozích částech jsme vám ukázali, jak ověřit službu Azure Cognitive Services pomocí klíče předplatného s jednou službou nebo více službami. I když tyto klíče poskytují rychlou a jednoduchou cestu k zahájení vývoje, jsou v složitějších scénářích, které vyžadují řízení přístupu na základě role v Azure (Azure RBAC). Pojďme se podívat na to, co je potřeba k ověřování pomocí Azure Active Directory (AAD).

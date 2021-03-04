@@ -2,18 +2,18 @@
 title: Program ověřování Kubernetes s povoleným ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Popisuje program ověření ARC pro Kubernetes distribuce.
 keywords: Kubernetes, oblouk, Azure, K8s, ověřování
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689211"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121367"
 ---
 # <a name="azure-arc-validation-program"></a>Ověřovací program ARC Azure
 
@@ -61,6 +61,6 @@ Testy shody se spouštějí jako součást ověřování Kubernetes s povoleným
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./connect-cluster.md)
-* [Vytvoření konfigurací na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md)
-* [Použití Azure Policy k aplikování konfigurací ve velkém měřítku](./use-azure-policy.md)
+Naučte se připojit cluster ke službě Azure ARC.
+> [!div class="nextstepaction"]
+> [Připojit cluster ke službě Azure ARC](./quickstart-connect-cluster.md)

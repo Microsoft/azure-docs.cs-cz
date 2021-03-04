@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 807c9961926b6f1c74f5ed1242e4272e87a98c43
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120364"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování dat ve službě Azure Cosmos DB s využitím nastavení diagnostiky v Azure
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -246,7 +246,7 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    ```Kusto
    AzureDiagnostics
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-   | where todouble(sizeKb_d) > 800000
+   | where todouble(sizeKb_d) > 8000000
    ```
 
 1. Jak získat latenci při replikaci p99 nebo P50 pro operace, poplatek za požadavek nebo délku odpovědi?

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686678"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121945"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -36,7 +36,7 @@ Mezi další aktualizace patří:
 - PostgreSQL Azure Data Studio s rozšířením Azure ARC s povoleným škálováním: 
    - Na stránce Přehled se teď zobrazuje stav vydaných skupin serverů na uzel.
    - K dispozici jsou teď nové stránky vlastností, které zobrazí další podrobnosti o skupině serverů.
-   - Konfigurace parametrů stroje Postgres ze stránky **parametrů uzlu** =
+   - Konfigurace parametrů stroje Postgres ze stránky **parametrů uzlu**
 
 Problémy spojené s touto verzí najdete v tématu [známé problémy – datové služby s podporou ARC Azure (Preview)](known-issues.md) .
 

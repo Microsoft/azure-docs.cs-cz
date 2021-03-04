@@ -2,20 +2,20 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o Kubernetes s podporou služby Arc
+    - name: Informace o protokolu Kubernetes s podporou Azure Arc
       href: overview.md
     - name: Ověřovací program ARC Azure
       href: validation-program.md
+- name: Rychlé starty
+  items:
+    - name: Připojit cluster ke službě Azure ARC
+      href: quickstart-connect-cluster.md
 - name: Kurzy
   items:
     - name: Nasazení konfigurací s využitím GitOps
       href: tutorial-use-gitops-connected-cluster.md
     - name: Implementace CI/CD pomocí GitOps
       href: tutorial-gitops-ci-cd.md
-- name: Rychlé starty
-  items:
-    - name: Připojit cluster ke službě Azure ARC
-      href: quickstart-connect-cluster.md
 - name: Koncepty
   items:
     - name: Architektura agenta

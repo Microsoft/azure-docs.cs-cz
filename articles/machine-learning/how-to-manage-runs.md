@@ -9,15 +9,15 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 12/04/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb877b208e6c9599347e2b45e140545e5815e695
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691497"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120806"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -113,6 +113,10 @@ Budete potřebovat následující položky:
     
         Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+
+    Příklad školení modelu v Návrháři Azure Machine Learning najdete v tématu [kurz: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md).
+
     ---
 
 * Monitoruje stav spuštění.
@@ -195,8 +199,7 @@ Popis spuštění lze přidat ke spuštění a poskytnout tak více kontextu a i
 
 Přejděte na stránku s **podrobnostmi o spuštění** pro svůj běh a výběrem ikony upravit nebo tužka přidejte, upravte nebo odstraňte popisy pro vaši práci. Chcete-li zachovat změny v seznamu spuštění, uložte změny do stávajícího vlastního zobrazení nebo do nového vlastního zobrazení. Pro popisy spuštění se podporuje formát Markdownu, který umožňuje vkládání a hloubkové propojování obrázků, jak vidíte níže.
 
-:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Snímek obrazovky: vytvoření popisu spuštění"::: 
-    
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Snímek obrazovky: vytvoření popisu spuštění"::: 
 
 ## <a name="tag-and-find-runs"></a>Označení a hledání spuštění
 

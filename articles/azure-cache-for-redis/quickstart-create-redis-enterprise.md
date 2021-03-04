@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 37496b9358ec72c79f8d26e32a92485f001e0e9d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8dbde1f74c700e772823d61b3e35a464f9bbc17e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031663"
+ms.locfileid: "102120959"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Rychlý Start: vytvoření mezipaměti Redis Enterprise (Preview)
 
@@ -49,13 +49,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
 
 1. Vyberte **Další: sítě** a přeskočit.
 
-   > [!NOTE] 
-   > Možnost privátního odkazu je zastaralá a nemusí být k dispozici okamžitě ve vaší oblasti.
-   >
-
-1. Vyberte **Další: Upřesnit** a nastavte **zásady clusteringu** na **Enterprise**.
-   
-   Můžete ponechat výchozí nastavení nebo je podle potřeby změnit. Když zapnete **Povolení přístupu přes protokol TLS**, musíte k přístupu k nové mezipaměti z aplikace použít protokol TLS.
+1. Vyberte **Další: Upřesnit** a nastavte **zásady clusteringu** na **Enterprise**. Povolit **přístup bez TLS jenom** v případě, že se chystáte připojit k nové mezipaměti bez použití protokolu TLS. To však nedoporučujeme.
 
    :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Karta Upřesnit na podnikové úrovni":::
 

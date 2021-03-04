@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733804"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120942"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Kurz: Začínáme s Always Encrypted s využitím zabezpečených enclaves v Azure SQL Database
 
@@ -71,40 +71,45 @@ Informace o tom, jak stáhnout SSMS, najdete v tématu [stažení SQL Server Man
 Požadovaná minimální verze SSMS je 18,8.
 
 
-## <a name="step-1-create-a-server-and-a-dc-series-database"></a>Krok 1: vytvoření serveru a databáze DC-Series
+## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>Krok 1: vytvoření a konfigurace serveru a databáze DC-Series
 
- V tomto kroku vytvoříte nový Azure SQL Database logický Server a novou databázi pomocí konfigurace hardwaru DC-Series. Always Encrypted se zabezpečeným enclaves v Azure SQL Database používá Intel SGX enclaves, které jsou podporované v konfiguraci hardwaru DC-Series. Další informace najdete v tématu [DC-Series](service-tiers-vcore.md#dc-series).
+V tomto kroku vytvoříte nový Azure SQL Database logický Server a novou databázi pomocí generování hardwaru DC-Series, které vyžaduje Always Encrypted s zabezpečeným enclaves. Další informace najdete v tématu [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Otevřete konzolu PowerShellu a přihlaste se k Azure. V případě potřeby [přepněte na předplatné](/powershell/azure/manage-subscriptions-azureps) , které používáte pro tento kurz.
+1. Otevřete konzolu PowerShellu a naimportujte požadovanou verzi AZ.
+
+  ```PowerShell
+  Import-Module "Az" -MinimumVersion "4.5.0"
+  ```
+  
+2. Přihlaste se k Azure. V případě potřeby [přepněte na předplatné](/powershell/azure/manage-subscriptions-azureps) , které používáte pro tento kurz.
 
   ```PowerShell
   Connect-AzAccount
-  $subscriptionId = <your subscription ID>
-  Set-AzContext -Subscription $serverSubscriptionId
+  $subscriptionId = "<your subscription ID>"
+  Set-AzContext -Subscription $subscriptionId
   ```
 
-2. Vytvořte skupinu prostředků, která bude obsahovat váš databázový server. 
-
-  ```powershell
-  $serverResourceGroupName = "<server resource group name>"
-  $serverLocation = "<Azure region that supports DC-series in SQL Database>"
-  New-AzResourceGroup -Name $serverResourceGroupName -Location $serverLocation 
-  ```
+3. Vytvoříte novou skupinu prostředků. 
 
   > [!IMPORTANT]
-  > Musíte vytvořit skupinu prostředků v oblasti, která podporuje hardwarovou konfiguraci DC-Series. Seznam aktuálně podporovaných oblastí najdete v tématu [dostupnost DC-Series](service-tiers-vcore.md#dc-series-1).
-
-3. Vytvořte databázový server. Po zobrazení výzvy zadejte jméno správce serveru a heslo.
+  > Je potřeba vytvořit skupinu prostředků v oblasti (umístění), která podporuje generování hardwaru DC-Series a Microsoft Azure ověření identity. Seznam oblastí, které podporují DC-Series, najdete v tématu [dostupnost řadiče domény](service-tiers-vcore.md#dc-series-1). [Toto](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation) je místní dostupnost Microsoft Azure ověření identity.
 
   ```powershell
-  $serverName = "<server name>" 
-  New-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -Location $serverLocation
+  $resourceGroupName = "<your new resource group name>"
+  $location = "<Azure region supporting DC-series and Microsoft Azure Attestation>"
+  New-AzResourceGroup -Name $resourceGroupName -Location $location
   ```
 
-4. Vytvoření pravidla brány firewall serveru, které umožňuje přístup z určeného rozsahu IP adres
+4. Vytvořte logický Server Azure SQL. Po zobrazení výzvy zadejte jméno správce serveru a heslo. Nezapomeňte si pamatovat jméno správce a heslo – budete ho potřebovat později, abyste se mohli připojit k serveru.
+
+  ```powershell
+  $serverName = "<your server name>" 
+  New-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -Location $location 
+  ```
+
+5. Vytvořte pravidlo brány firewall serveru, které umožňuje přístup ze zadaného rozsahu IP adres.
   
   ```powershell
-  # The ip address range that you want to allow to access your server
   $startIp = "<start of IP range>"
   $endIp = "<end of IP range>"
   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
@@ -112,21 +117,11 @@ Požadovaná minimální verze SSMS je 18,8.
     -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
   ```
 
-5. Přiřaďte k serveru identitu spravovaného systému. Budete ho potřebovat později, abyste vašemu serveru udělili přístup k Microsoft Azure ověření identity.
-
-  ```powershell
-  Set-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -AssignIdentity 
-  ```
-
-6. Načtěte ID objektu identity přiřazené k vašemu serveru. Uložte výsledné ID objektu. ID budete potřebovat v pozdější části.
-
-  > [!NOTE]
-  > Může trvat několik sekund, než se nově přiřazená identita spravovaného systému rozšíří do Azure Active Directory. Pokud uvedený skript vrátí prázdný výsledek, zkuste to znovu.
+6. Přiřaďte k serveru identitu spravovaného systému. 
 
   ```PowerShell
-  $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
+  $server = Set-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -AssignIdentity
   $serverObjectId = $server.Identity.PrincipalId
-  $serverObjectId
   ```
 
 7. Vytvořte databázi DC-Series.
@@ -136,12 +131,26 @@ Požadovaná minimální verze SSMS je 18,8.
   $edition = "GeneralPurpose"
   $vCore = 2
   $generation = "DC"
-  New-AzSqlDatabase -ResourceGroupName $serverResourceGroupName -ServerName $serverName -DatabaseName $databaseName -Edition $edition -Vcore $vCore -ComputeGeneration $generation
+  New-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition $edition `
+    -Vcore $vCore `
+    -ComputeGeneration $generation
   ```
 
-## <a name="step-2-configure-an-attestation-provider"></a>Krok 2: Konfigurace poskytovatele ověření identity
+8. Načtěte a uložte informace o vašem serveru a databázi. Tyto informace budete potřebovat spolu s názvem správce a heslem z kroku 4 v této části v dalších částech.
 
-V tomto kroku vytvoříte a nakonfigurujete poskytovatele ověření identity v Microsoft Azure ověření identity. To je potřeba k ověření zabezpečeného enklávyu na databázovém serveru.
+  ```powershell
+  Write-Host 
+  Write-Host "Fully qualified server name: $($server.FullyQualifiedDomainName)" 
+  Write-Host "Server Object Id: $serverObjectId"
+  Write-Host "Database name: $databaseName"
+  ```
+  
+## <a name="step-2-configure-an-attestation-provider"></a>Krok 2: Konfigurace poskytovatele ověření identity 
+
+V tomto kroku vytvoříte a nakonfigurujete poskytovatele ověření identity v Microsoft Azure ověření identity. To je potřeba k ověření, že zabezpečené enklávy vaše databáze používá.
 
 1. Zkopírujte níže zásadu ověření identity a zásadu uložte v textovém souboru (txt). Informace o následujících zásadách najdete v tématu [Vytvoření a konfigurace poskytovatele ověření identity](always-encrypted-enclaves-configure-attestation.md#create-and-configure-an-attestation-provider).
 
@@ -157,60 +166,60 @@ V tomto kroku vytvoříte a nakonfigurujete poskytovatele ověření identity v 
   };
   ```
 
-2. Importujte požadované verze nástroje `Az.Accounts` a `Az.Attestation` .  
+2. Importujte požadovanou verzi nástroje `Az.Attestation` .  
 
   ```powershell
-  Import-Module "Az.Accounts" -MinimumVersion "1.9.2"
   Import-Module "Az.Attestation" -MinimumVersion "0.1.8"
   ```
-
-3. Vytvořte skupinu prostředků pro poskytovatele ověřování identity.
-
-  ```powershell
-  $attestationLocation = $serverLocation
-  $attestationResourceGroupName = "<attestation provider resource group name>"
-  New-AzResourceGroup -Name $attestationResourceGroupName -Location $location  
-  ```
-
-4. Vytvořte poskytovatele ověření identity. 
+  
+3. Vytvořte poskytovatele ověření identity. 
 
   ```powershell
-  $attestationProviderName = "<attestation provider name>" 
-  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Location $attestationLocation
+  $attestationProviderName = "<your attestation provider name>" 
+  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
   ```
 
-5. Nakonfigurujte zásady ověřování identity.
+4. Nakonfigurujte zásady ověřování identity.
   
   ```powershell
-  $policyFile = "<the pathname of the file from step 1 in this section"
+  $policyFile = "<the pathname of the file from step 1 in this section>"
   $teeType = "SgxEnclave"
   $policyFormat = "Text"
   $policy=Get-Content -path $policyFile -Raw
-  Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Tee $teeType -Policy $policy -PolicyFormat  $policyFormat
+  Set-AzAttestationPolicy -Name $attestationProviderName `
+    -ResourceGroupName $resourceGroupName `
+    -Tee $teeType `
+    -Policy $policy `
+    -PolicyFormat  $policyFormat
   ```
 
-6. Udělte vašemu poskytovateli ověřování přístup k logickému serveru Azure SQL. V tomto kroku používáme ID objektu identity spravované služby, který jste k serveru přiřadili dřív.
+5. Udělte vašemu poskytovateli ověřování přístup k logickému serveru Azure SQL. V tomto kroku použijete ID objektu identity spravované služby, který jste k serveru přiřadili dřív.
 
   ```powershell
-  New-AzRoleAssignment -ObjectId $serverObjectId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName  
+  New-AzRoleAssignment -ObjectId $serverObjectId `
+    -RoleDefinitionName "Attestation Reader" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName  
   ```
 
-7. Načtěte adresu URL ověření identity.
+6. Načtěte adresu URL ověření identity, která odkazuje na zásadu ověření identity, kterou jste nakonfigurovali pro enklávy SGX. Uložte adresu URL, jak ji budete potřebovat později.
 
   ```powershell
-  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
+  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName 
   $attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-  Write-Host "Your attestation URL is: " $attestationUrl 
+  Write-Host
+  Write-Host "Your attestation URL is: $attestationUrl"
   ```
-
-8.  Uložte výslednou adresu URL ověření, která odkazuje na zásadu ověření identity, kterou jste nakonfigurovali pro enklávy SGX. Budete ho potřebovat později. Adresa URL ověření identity by měla vypadat takto: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
+  
+  Adresa URL ověření identity by měla vypadat takto: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
 
 ## <a name="step-3-populate-your-database"></a>Krok 3: naplnění databáze
 
 V tomto kroku vytvoříte tabulku a naplníte ji daty, která budete později šifrovat a dotazovat.
 
 1. Otevřete SSMS a připojte se k databázi **ContosoHR** na logickém serveru Azure SQL, který jste vytvořili, **aniž by** v připojení k databázi Always Encrypted povoleno.
-    1. V dialogovém okně **připojit k serveru** zadejte název vašeho serveru (například *myserver123.Database.Windows.NET*) a zadejte uživatelské jméno a heslo, které jste nakonfigurovali dříve.
+    1. V dialogovém okně **připojit k serveru** zadejte plně kvalifikovaný název serveru (například *myserver123.Database.Windows.NET*) a zadejte uživatelské jméno správce a heslo, které jste zadali při vytváření serveru.
     2. Klikněte na **možnosti >>** a vyberte kartu **Vlastnosti připojení** . Ujistěte se, že jste vybrali databázi **ContosoHR** (nikoli výchozí hlavní databázi). 
     3. Vyberte kartu **Always Encrypted** .
     4. Ujistěte **se, že není zaškrtnuté** políčko **Povolit Always Encrypted (šifrování sloupce)** .
@@ -292,7 +301,7 @@ V tomto kroku zašifrujete data uložená ve sloupcích **SSN** a **platy** uvni
 
 1. Otevřete novou instanci SSMS a připojte se k databázi **pomocí** Always Encrypted povolenou pro připojení k databázi.
     1. Spustí novou instanci SSMS.
-    2. V dialogovém okně **připojit k serveru** zadejte název serveru, vyberte metodu ověřování a zadejte své přihlašovací údaje.
+    2. V dialogovém okně **připojit k serveru** zadejte plně kvalifikovaný název serveru (například *myserver123.Database.Windows.NET*) a zadejte uživatelské jméno správce a heslo, které jste zadali při vytváření serveru.
     3. Klikněte na **možnosti >>** a vyberte kartu **Vlastnosti připojení** . Ujistěte se, že jste vybrali databázi **ContosoHR** (nikoli výchozí hlavní databázi). 
     4. Vyberte kartu **Always Encrypted** .
     5. Ujistěte se, že je zaškrtnuté políčko **povolit Always Encrypted (šifrování sloupce)** .

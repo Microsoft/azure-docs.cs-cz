@@ -2,18 +2,18 @@
 title: Upgrade agentů Kubernetes s povoleným ARC Azure
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Upgrady agenta řízení pro Kubernetes s povoleným rozšířením Azure ARC
 keywords: Kubernetes, oblouk, Azure, K8s, kontejnery, agent, upgrade
-ms.openlocfilehash: 3a5355269db4ccfc91612f661b464556b22c1d35
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662266"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121911"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Upgrade agentů Kubernetes s povoleným ARC Azure
 
@@ -84,6 +84,6 @@ Jedna podverze agentů Azure ARC s povoleným Kubernetes je vydaná přibližně
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Připojit cluster ke službě Azure ARC](./connect-cluster.md)
-* [Vytvoření konfigurací na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md)
-* [Použití Azure Policy k aplikování konfigurací ve velkém měřítku](./use-azure-policy.md)
+* Projděte si náš rychlý Start, který [připojí cluster Kubernetes ke službě Azure ARC](./connect-cluster.md).
+* Už máte připojený cluster Kubernetes ke clusteru Azure ARC? [Vytvořte konfigurace na clusteru Kubernetes s povoleným obloukem](./use-gitops-connected-cluster.md).
+* Naučte se [používat Azure Policy k aplikování konfigurací se škálováním](./use-azure-policy.md).

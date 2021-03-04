@@ -1,20 +1,8 @@
 ---
-title: zahrnout soubor
-description: zahrnout soubor
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.topic: include
-ms.date: 02/01/2021
-ms.author: spelluru
-ms.custom: include file
-ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427315"
+title: Popis zahrnutého souboru: zahrnout souborové služby: Event-Centre Author: spelluru MS. Service: Event-Centers MS. téma: include MS. Date: 02/01/2021 MS. Author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-hub"
+
 ---
+
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="common-limits-for-all-tiers"></a>Společná omezení pro všechny úrovně
@@ -24,7 +12,6 @@ Následující omezení jsou společná napříč všemi úrovněmi.
 | --- |  --- | --- |
 | Počet Event Hubs oborů názvů na předplatné |- |100 |
 | Počet Center událostí na obor názvů | Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10 |
-| Počet oddílů na centrum událostí |- |32 |
 | Velikost názvu centra událostí |- | 256 znaků |
 | Velikost názvu skupiny uživatelů |- | 256 znaků |
 | Počet neepochach přijímačů na skupinu uživatelů |- |5 |
@@ -39,11 +26,17 @@ V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrov
 
 | Omezení | Poznámky | Basic | Standard |
 |---|---|--|---|
-| Maximální velikost události Event Hubs| &nbsp; | 256 kB | 1 MB |
+| Maximální velikost publikace Event Hubs| &nbsp; | 256 kB | 1 MB |
 | Počet skupin uživatelů na centrum událostí | &nbsp; |1 |20 |
 | Počet připojení AMQP na obor názvů | Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5 000|
 | Maximální doba uchování dat události | &nbsp; |1 den |1-7 dní |
 | Maximální počet jednotek propustnosti |Překročení tohoto limitu způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
+| Počet oddílů na centrum událostí | |32 | 32 | 
+
+> [!NOTE]
+>
+> Události můžete publikovat jednotlivě nebo v dávce. 
+> Limit publikace (podle SKU) platí bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších, než je maximální prahová hodnota, bude odmítnuto.
 
 ### <a name="dedicated-tier-vs-standard-tier"></a>Vyhrazená úroveň vs. úroveň Standard
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
