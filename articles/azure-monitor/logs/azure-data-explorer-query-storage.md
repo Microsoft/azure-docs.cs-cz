@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5a26e5d045be78772ee5dc940fcfecd3cfde9dc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f24947eba71588d8b97afafea35f9a0bcab33c86
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711004"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Dotazování exportovaných dat z Azure Monitor pomocí Azure Průzkumník dat (Preview)
 Export dat z Azure Monitor do účtu úložiště Azure umožňuje snížit náklady a možnost znovu přidělit protokoly různým oblastem. Použijte Azure Průzkumník dat k dotazování na data, která byla exportována z vašich Log Analytics pracovních prostorů. Po nakonfigurování budou podporované tabulky, které se odesílají z vašich pracovních prostorů do účtu služby Azure Storage, k dispozici jako zdroj dat pro Azure Průzkumník dat.
@@ -30,9 +30,9 @@ Průběh procesu je následující:
 ## <a name="send-data-to-azure-storage"></a>Odesílání dat do služby Azure Storage
 Protokoly Azure Monitor lze exportovat do Azure Storage účtu pomocí kterékoli z následujících možností.
 
-- Pokud chcete exportovat všechna data z vašeho pracovního prostoru Log Analytics do účtu služby Azure Storage nebo centra událostí, použijte funkci exportu dat Log Analytics pracovního prostoru Azure Monitor protokolů. Viz [Log Analytics exportu dat v pracovním prostoru v Azure monitor (Preview)](../platform/logs-data-export.md)
-- Plánovaný export z dotazu protokolu pomocí aplikace logiky To se podobá funkci exportu dat, ale umožňuje odeslat filtrovaná nebo agregovaná data do služby Azure Storage. Tato metoda je sice v souladu s [omezeními dotazů protokolu](../service-limits.md#log-analytics-workspaces)  , viz [data archivu z pracovního prostoru Log Analytics do úložiště Azure pomocí aplikace logiky](../platform/logs-export-logic-app.md).
-- Jednorázové export pomocí aplikace logiky [Logic Apps a automatické automatizaci najdete v tématu konektory protokolů Azure monitor](../platform/logicapp-flow-connector.md).
+- Pokud chcete exportovat všechna data z vašeho pracovního prostoru Log Analytics do účtu služby Azure Storage nebo centra událostí, použijte funkci exportu dat Log Analytics pracovního prostoru Azure Monitor protokolů. Viz [Log Analytics exportu dat v pracovním prostoru v Azure monitor (Preview)](./logs-data-export.md)
+- Plánovaný export z dotazu protokolu pomocí aplikace logiky To se podobá funkci exportu dat, ale umožňuje odeslat filtrovaná nebo agregovaná data do služby Azure Storage. Tato metoda je sice v souladu s [omezeními dotazů protokolu](../service-limits.md#log-analytics-workspaces)  , viz [data archivu z pracovního prostoru Log Analytics do úložiště Azure pomocí aplikace logiky](./logs-export-logic-app.md).
+- Jednorázové export pomocí aplikace logiky [Logic Apps a automatické automatizaci najdete v tématu konektory protokolů Azure monitor](./logicapp-flow-connector.md).
 - Jednou při exportu do místního počítače pomocí skriptu PowerShellu. Viz [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 > [!TIP]

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693522"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -102,7 +102,10 @@ Rozšířením popisků citlivosti MIP do Azure dosah můžou organizace zjišť
 
 **Chcete-li zvětšit popisky citlivosti na dosah:**
 
-V Microsoft 365 přejděte na stránku **Information Protection** . V části **rozšiřování popisků na prostředky v Azure dosah** vyberte tlačítko **zapnout** a potom v potvrzovacím dialogovém okně, které se zobrazí, vyberte **Ano** .
+Následující kroky umožňují, aby byly popisky citlivosti k dispozici pro použití v Azure dosah, kde můžete použít popisky citlivosti na prostředky, jako jsou sloupce SQL, soubory v Azure Blob Storage a další.
+
+1. V Microsoft 365 přejděte na stránku **Information Protection** . 
+1. V části **rozšiřování popisků na prostředky v Azure dosah** vyberte tlačítko **zapnout** a potom v potvrzovacím dialogovém okně, které se zobrazí, vyberte **Ano** .
 
 Například:
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 12/10/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 75d241840ecfc8520989342d9def8186de922c0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691854"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -53,16 +53,13 @@ Vytvoření prostředků potřebných ke spuštění kanálu ML:
 
 * Nastavte úložiště dat, které se používá pro přístup k datům potřebným v postupu kanálu.
 
-* Nakonfigurujte `Dataset` objekt tak, aby odkazoval na trvalá data, která se nachází v nebo jsou přístupná v úložišti dat. Nakonfigurujte `PipelineData` objekt pro dočasná data předaná mezi kroky kanálu. 
-
-    > [!TIP]
-    > Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídě Public Preview  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) .  Tato třída je [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit.
+* Nakonfigurujte `Dataset` objekt tak, aby odkazoval na trvalá data, která se nachází v nebo jsou přístupná v úložišti dat. Nakonfigurujte `OutputFileDatasetConfig` objekt pro dočasná data předaná mezi kroky kanálu. 
 
 * Nastavte [výpočetní cíle](concept-azure-machine-learning-architecture.md#compute-targets) , na kterých se budou spouštět vaše kroky kanálu.
 
 ### <a name="set-up-a-datastore"></a>Nastavení úložiště dat
 
-Úložiště dat uchovává data pro kanál k přístupu. Každý pracovní prostor má výchozí úložiště dat. Můžete zaregistrovat další úložiště dat. 
+Úložiště dat uchovává data pro kanál k přístupu. Každý pracovní prostor má výchozí úložiště dat. Můžete zaregistrovat více úložišť dat. 
 
 Při vytváření pracovního prostoru jsou [soubory Azure](../storage/files/storage-files-introduction.md) a [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) připojené k pracovnímu prostoru. Pro připojení k úložišti objektů BLOB v Azure je zaregistrované výchozí úložiště dat. Další informace najdete v tématu [rozhodování, kdy používat soubory Azure, objekty blob Azure nebo disky Azure](../storage/common/storage-introduction.md). 
 
@@ -80,10 +77,9 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 Postup obecně spotřebovává data a vytváří výstupní data. Krok může vytvářet data, jako je model, adresář s modelem a závislými soubory nebo dočasná data. Tato data jsou pak k dispozici pro další kroky později v kanálu. Další informace o připojení kanálu k vašim datům najdete v článcích [o tom, jak získat přístup k datům](how-to-access-data.md) a [jak registrovat datové sady](how-to-create-register-datasets.md). 
 
-### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>Konfigurace dat s `Dataset` `PipelineData` objekty a
+### <a name="configure-data-with-dataset-and-outputfiledatasetconfig-objects"></a>Konfigurace dat s `Dataset` `OutputFileDatasetConfig` objekty a
 
 Upřednostňovaným způsobem, jak poskytnout data kanálu, je objekt [DataSet](/python/api/azureml-core/azureml.core.dataset.Dataset) . `Dataset`Objekt odkazuje na data, která jsou v nebo jsou přístupná z úložiště dat nebo na webové adrese URL. `Dataset`Třída je abstraktní, takže vytvoříte instanci buď a `FileDataset` (odkazující na jeden nebo více souborů), nebo `TabularDataset` vytvořenou z jednoho nebo více souborů s oddělenými sloupci dat.
-
 
 Vytvoříte `Dataset` pomocí metod, jako je [from_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) nebo [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
@@ -93,20 +89,21 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) . `output_data1` je vytvářen jako výstup kroku a slouží jako vstup jednoho nebo více budoucích kroků. `PipelineData` zavádí datovou závislost mezi kroky a vytvoří implicitní pořadí spouštění v kanálu. Tento objekt bude použit později při vytváření kroků kanálu.
+Mezilehlé údaje (nebo výstup kroku) jsou reprezentovány objektem [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . `output_data1` je vyráběn jako výstup kroku. Tato data lze volitelně zaregistrovat jako datovou sadu voláním `register_on_complete` . Pokud vytvoříte `OutputFileDatasetConfig` v jednom kroku a použijete ho jako vstup do jiného kroku, tato závislost dat mezi kroky vytvoří implicitní pořadí spouštění v kanálu.
+
+`OutputFileDatasetConfig` objekty vracejí adresář a ve výchozím nastavení zapisuje výstup do výchozího úložiště dat pracovního prostoru.
 
 ```python
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
-output_data1 = PipelineData(
-    "output_data1",
-    datastore=def_blob_store,
-    output_name="output_data1")
+output_data1 = OutputFileDatasetConfig(destination = (datastore, 'outputdataset/{run-id}'))
+output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_data')
 
 ```
 
-> [!TIP]
-> Zachování mezilehlých dat mezi jednotlivými kroky kanálu je také možné u třídy Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` třídu, najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+> [!IMPORTANT]
+> Dočasná data uložená pomocí `OutputFileDatasetConfig` se v Azure automaticky neodstraní.
+> Na konci spuštění kanálu byste měli buď programově odstranit mezilehlé údaje, použít úložiště dat se zkrácenými zásadami pro uchovávání dat, nebo pravidelně provádět vyčištění ručně.
 
 > [!TIP]
 > Nahrávejte pouze soubory související s danou úlohou. Jakékoli změny v souborech v adresáři dat se zobrazí jako důvod pro opětovné spuštění kroku při příštím spuštění kanálu i v případě, že je parametr znovu použit. 
@@ -121,7 +118,7 @@ V Azure Machine Learning pojem __výpočetní__ prostředí (neboli __cíl výpo
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning COMPUTE
 
-Pro spuštění kroků můžete vytvořit Azure Machine Learning Compute. Kód pro jiné výpočetní cíle je velmi podobný, s mírně odlišnými parametry v závislosti na typu. 
+Pro spuštění kroků můžete vytvořit Azure Machine Learning Compute. Kód pro jiné výpočetní cíle je podobný, s mírně odlišnými parametry v závislosti na typu. 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -177,7 +174,7 @@ else:
         pin_sdk_version=False)
 ```
 
-Výše uvedený kód ukazuje dvě možnosti pro zpracování závislostí. Jak je uvedeno v `USE_CURATED_ENV = True` , je Konfigurace založená na spravovaném prostředí. Prebakedá prostředí jsou "" s běžnými nezávislými knihovnami a můžou být výrazně rychlejší pro uvedení do online režimu. Ve spravovaném prostředí jsou předem připravené image Docker v [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner). Další informace najdete v tématu [Azure Machine Learning v nich uspořádaná prostředí](resource-curated-environments.md).
+Výše uvedený kód ukazuje dvě možnosti pro zpracování závislostí. Jak je uvedeno v `USE_CURATED_ENV = True` , je Konfigurace založená na spravovaném prostředí. Prebakedá prostředí jsou "" s běžnými nezávislými knihovnami a dají se rychleji převést do online režimu. Ve spravovaném prostředí jsou předem připravené image Docker v [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner). Další informace najdete v tématu [Azure Machine Learning v nich uspořádaná prostředí](resource-curated-environments.md).
 
 Cesta, která se bere v případě, že se změní, `USE_CURATED_ENV` se `False` zobrazí jako způsob explicitního nastavení závislostí. V takovém scénáři se vytvoří nová vlastní image Docker, která se zaregistruje v Azure Container Registry v rámci vaší skupiny prostředků (viz [Úvod do registrů kontejnerů privátního Docker v Azure](../container-registry/container-registry-intro.md)). Sestavení a registrace tohoto obrázku může trvat několik minut.
 
@@ -197,8 +194,6 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
-    inputs=[ds_input],
-    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -207,9 +202,7 @@ data_prep_step = PythonScriptStep(
 
 Výše uvedený kód ukazuje typický krok počátečního kanálu. Kód pro přípravu dat je v podadresáři (v tomto příkladu `"prepare.py"` v adresáři `"./dataprep.src"` ). V rámci procesu vytváření kanálu je tento adresář zip a nahrán do `compute_target` a krok spustí skript zadaný jako hodnota pro `script_name` .
 
-`arguments`Hodnoty, `inputs` a `outputs` určují vstupy a výstupy kroku. V předchozím příkladu je základní data `my_dataset` datovou sadou. Odpovídající data budou stažena do výpočetního prostředku, protože tento kód určuje jako `as_download()` . Skript `prepare.py` provádí jakékoli úlohy transformace dat, které jsou vhodné pro úlohy, a výstupy dat do `output_data1` typu `PipelineData` . Další informace najdete v tématu [přesun dat do a mezi kroky kanálu ml (Python)](how-to-move-data-in-out-of-pipelines.md). 
-
-Krok se spustí na počítači definovaném `compute_target` pomocí konfigurace `aml_run_config` . 
+`arguments`Hodnoty určují vstupy a výstupy kroku. V předchozím příkladu je základní data `my_dataset` datovou sadou. Odpovídající data budou stažena do výpočetního prostředku, protože tento kód určuje jako `as_download()` . Skript `prepare.py` provádí jakékoli úlohy transformace dat, které jsou vhodné pro úlohy, a výstupy dat do `output_data1` typu `OutputFileDatasetConfig` . Další informace najdete v tématu [přesun dat do a mezi kroky kanálu ml (Python)](how-to-move-data-in-out-of-pipelines.md). Krok se spustí na počítači definovaném `compute_target` pomocí konfigurace `aml_run_config` . 
 
 Použití předchozích výsledků ( `allow_reuse` ) je klíč při použití kanálů v prostředí pro spolupráci, protože odstranění zbytečných opakovaných spuštění nabízí flexibilitu. Opakované použití je výchozí chování, když script_name, vstupy a parametry kroku zůstanou stejné. Pokud je povoleno opakované použití, výsledky z předchozího spuštění se okamžitě odešlou na další krok. Pokud `allow_reuse` je nastavená na `False` , nový běh se pro tento krok vždy vygeneruje během provádění kanálu.
 
@@ -219,9 +212,8 @@ Je možné vytvořit kanál s jediným krokem, ale téměř vždy se rozhodnete 
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = PipelineData(name = "training_results", 
-                                datastore=def_blob_store,
-                                output_name="training_results")
+training_results = OutputFileDatasetConfig(name = "training_results",
+    destination = def_blob_store)
 
     
 train_step = PythonScriptStep(
@@ -234,11 +226,9 @@ train_step = PythonScriptStep(
 )
 ```
 
-Výše uvedený kód je velmi podobný tomu pro krok přípravy dat. Školicí kód je v adresáři, který je oddělený od kódu pro přípravu dat. `PipelineData`Výstupem kroku Příprava dat `output_data1` se používá jako _vstup_ do kroku školení. Vytvoří se nový `PipelineData` objekt, `training_results` který bude obsahovat výsledky pro následné porovnání nebo krok nasazení. 
+Výše uvedený kód je podobný kódu v kroku Příprava dat. Školicí kód je v adresáři, který je oddělený od kódu pro přípravu dat. `OutputFileDatasetConfig`Výstupem kroku Příprava dat `output_data1` se používá jako _vstup_ do kroku školení. Vytvoří se nový `OutputFileDatasetConfig` objekt, `training_results` který bude obsahovat výsledky pro následné porovnání nebo krok nasazení. 
 
-
-> [!TIP]
-> Pro vylepšené prostředí a možnost zapsat dočasná data zpátky do úložiště dat na konci běhu kanálu použijte třídu Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklady kódu naleznete v tématu Jak [vytvořit dva kroky kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb) a [jak zapisovat data zpět do úložiště dat při dokončení spuštění](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
+Další příklady kódu najdete v tématu Jak [vytvořit dva kroky kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb) a [jak zapisovat data zpátky do úložiště dat při dokončení běhu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb).
 
 Po definování kroků sestavíte kanál pomocí některých nebo všech těchto kroků.
 
@@ -255,26 +245,12 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
-### <a name="how-python-environments-work-with-pipeline-parameters"></a>Jak prostředí Python pracují s parametry kanálu
-
-Jak bylo popsáno dříve v [části Konfigurace prostředí školicího běhu](#configure-the-training-runs-environment), závislosti stavu prostředí a knihovny Python jsou určeny pomocí `Environment` objektu. Obecně můžete zadat existující `Environment` odkazem na jeho název a volitelně na verzi:
-
-```python
-aml_run_config = RunConfiguration()
-aml_run_config.environment.name = 'MyEnvironment'
-aml_run_config.environment.version = '1.0'
-```
-
-Pokud se ale rozhodnete použít `PipelineParameter` objekty k dynamickému nastavení proměnných za běhu pro kroky vašeho kanálu, nemůžete použít tuto techniku pro odkazování na existující `Environment` . Místo toho, pokud chcete použít `PipelineParameter` objekty, je nutné nastavit `environment` pole `RunConfiguration` `Environment` objektu na objekt. Je vaše zodpovědnost za to, že je nutné zajistit, aby `Environment` se jeho závislosti na externích balíčcích Python správně nastavily.
-
 ### <a name="use-a-dataset"></a>Použití datové sady 
 
-Datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL lze použít jako vstup do libovolného kroku kanálu. Můžete napsat výstup do [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py)nebo pokud chcete zapisovat data do konkrétního úložiště dat [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)použijte. 
+Datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL lze použít jako vstup do libovolného kroku kanálu. Můžete napsat výstup do [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py)nebo pokud chcete zapisovat data do konkrétního úložiště dat [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)použijte. 
 
 > [!IMPORTANT]
-> Zápis výstupních dat zpět do úložiště dat pomocí PipelineData se podporuje jenom pro úložiště Azure Blob a Azure File Share. 
->
-> Pokud chcete zapsat výstupní data zpátky do objektu blob Azure, sdílená složka Azure, ADLS dataúložiště 1. generace (ADLS Gen 2), použijte třídu Public Preview, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) .
+> Zápis výstupních dat zpět do úložiště dat pomocí `OutputFileDatasetConfig` je podporovaný jenom pro úložiště Azure Blob, sdílenou složku Azure, adls pro dataúložiště pro obecné 1 a obecné 2. 
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -345,7 +321,7 @@ Při prvním spuštění kanálu Azure Machine Learning:
 * Stáhne snímek projektu do cílového výpočetní služby z úložiště objektů BLOB přidruženého k pracovnímu prostoru.
 * Vytvoří Image Docker odpovídající jednotlivým krokům v kanálu.
 * Stáhne image Docker pro každý krok do cílového výpočetního prostředí z registru kontejneru.
-* Nakonfiguruje přístup `Dataset` k `PipelineData` objektům a. V případě `as_mount()` režimu přístupu se k zajištění virtuálního přístupu používá POjistka. Pokud se připojení nepodporuje nebo pokud uživatel zadal přístup jako `as_download()` , data se zkopírují do cíle výpočtů.
+* Nakonfiguruje přístup `Dataset` k `OutputFileDatasetConfig` objektům a. V případě `as_mount()` režimu přístupu se k zajištění virtuálního přístupu používá POjistka. Pokud se připojení nepodporuje nebo pokud uživatel zadal přístup jako `as_upload()` , data se zkopírují do cíle výpočtů.
 
 * Spustí krok na výpočetním cíli zadaném v definici kroku. 
 * Vytvoří artefakty, jako jsou protokoly, stdout a stderr, metriky a výstup určený krokem. Tyto artefakty se pak nahrají a uchovávají ve výchozím úložišti dat uživatele.
@@ -355,6 +331,31 @@ Při prvním spuštění kanálu Azure Machine Learning:
 Další informace najdete v referenčních informacích ke [třídě experimentu](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) .
 
 ## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>Použití parametrů kanálu pro argumenty, které se mění v čase odvození
+
+V některých případech se argumenty jednotlivých kroků v rámci kanálu vztahují na období vývoje a školení: věci, jako jsou kurzy školení a potenciál, nebo cesty k datům nebo konfiguračním souborům. Když se model nasadí, ale budete chtít dynamicky předat argumenty, na kterých jste Inferencing (to znamená dotaz, na který jste model sestavili tak, aby odpovídal!). Tyto typy parametrů kanálu by měly být zadány. Chcete-li to provést v Pythonu, použijte `azureml.pipeline.core.PipelineParameter` třídu, jak je znázorněno v následujícím fragmentu kódu:
+
+```python
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="pipeline_arg", default_value="default_val")
+train_step = PythonScriptStep(script_name="train.py",
+                            arguments=["--param1", pipeline_param],
+                            target=compute_target,
+                            source_directory=project_folder)
+```
+
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Jak prostředí Python pracují s parametry kanálu
+
+Jak bylo popsáno dříve v [části Konfigurace prostředí výukového běhu](#configure-the-training-runs-environment), stavu prostředí a závislostí knihovny Pythonu, jsou určeny pomocí `Environment` objektu. Obecně můžete zadat existující `Environment` odkazem na jeho název a volitelně na verzi:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Pokud se ale rozhodnete použít `PipelineParameter` objekty k dynamickému nastavení proměnných za běhu pro kroky vašeho kanálu, nemůžete použít tuto techniku pro odkazování na existující `Environment` . Místo toho, pokud chcete použít `PipelineParameter` objekty, je nutné nastavit `environment` pole `RunConfiguration` `Environment` objektu na objekt. Je vaše zodpovědnost za to, že je nutné zajistit, aby `Environment` se jeho závislosti na externích balíčcích Python správně nastavily.
+
 
 ## <a name="view-results-of-a-pipeline"></a>Zobrazení výsledků kanálu
 

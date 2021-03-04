@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1ee0ba89ef56d819fdc7553959a8a37fdbd6f7fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730617"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell
 
-Tento článek popisuje, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí Azure PowerShell. Tento článek se týká Azure Stackch PROCESORů Edge pro, Azure Stack Edge pro R a Azure Stack hraničních zařízení R.
+Tento článek popisuje, jak vytvořit a spravovat virtuální počítač (VM) na Azure Stack hraničním zařízení pomocí Azure PowerShell. Tyto informace se vztahují na Azure Stack Edge pro s GRAFICKÝm procesorem (jednotkou grafického zpracování), Azure Stack Edge pro R a zařízeními Azure Stack Edge Mini R.
 
 ## <a name="vm-deployment-workflow"></a>Pracovní postup nasazení virtuálních počítačů
 
-Postup nasazení vypadá následovně:
+Pracovní postup nasazení se zobrazí v následujícím diagramu:
 
 ![Diagram pracovního postupu nasazení virtuálních počítačů](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
@@ -30,24 +30,24 @@ Postup nasazení vypadá následovně:
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 
-## <a name="query-for-built-in-subscription-on-the-device"></a>Dotaz na integrované předplatné na zařízení
+## <a name="query-for-a-built-in-subscription-on-the-device"></a>Dotaz na integrované předplatné na zařízení
 
-Pro Azure Resource Manager se podporuje jenom jedno pevné předplatné, které je uživatelsky viditelné. Toto předplatné je jedinečné pro každé zařízení a název předplatného nebo ID předplatného se nedá změnit.
+Pro Azure Resource Manager se podporuje jenom jedno pevné předplatné, které je uživatelsky viditelné. Toto předplatné je jedinečné pro každé zařízení a nelze změnit název předplatného a ID předplatného.
 
-Toto předplatné obsahuje všechny prostředky, které jsou vytvořené pro vytváření virtuálních počítačů. 
+Předplatné obsahuje všechny prostředky, které jsou nutné k vytvoření virtuálního počítače. 
 
 > [!IMPORTANT]
-> Toto předplatné se vytvoří, když povolíte virtuální počítače z Azure Portal a místně funguje na vašem zařízení.
+> Předplatné se vytvoří, když povolíte virtuální počítače z Azure Portal a místně funguje na vašem zařízení.
 
-Toto předplatné se používá k nasazení virtuálních počítačů.
+Předplatné se používá k nasazení virtuálních počítačů.
 
-1.  Pokud chcete zobrazit seznam tohoto předplatného, zadejte:
+1.  Chcete-li zobrazit seznam odběrů, spusťte následující příkaz:
 
     ```powershell
     Get-AzureRmSubscription
     ```
     
-    Zde je ukázkový výstup:
+    Tady je příklad výstupu:
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,16 +59,16 @@ Toto předplatné se používá k nasazení virtuálních počítačů.
     PS C:\windows\system32>
     ```
         
-1. Získá seznam registrovaných poskytovatelů prostředků spuštěných v zařízení. Tento seznam obvykle zahrnuje výpočetní výkon, síť a úložiště.
+1. Získejte seznam registrovaných zprostředkovatelů prostředků, které jsou v zařízení spuštěné. Seznam obvykle zahrnuje výpočetní prostředky, síť a úložiště.
 
     ```powershell
     Get-AzureRMResourceProvider
     ```
 
     > [!NOTE]
-    > Poskytovatelé prostředků jsou předregistrováni a nelze je upravit ani změnit.
+    > Poskytovatelé prostředků jsou předem zaregistrované a nedají se upravit ani změnit.
     
-    Zde je ukázkový výstup:
+    Tady je příklad výstupu:
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -109,7 +109,7 @@ Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-Zde je ukázkový výstup:
+Tady je příklad výstupu:
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte nový účet úložiště pomocí skupiny prostředků vytvořené v předchozím kroku. Toto je místní účet úložiště, který slouží k nahrání image virtuálního disku pro virtuální počítač.
+Vytvořte nový účet úložiště pomocí skupiny prostředků, kterou jste vytvořili v předchozím kroku. Toto je místní účet úložiště, který slouží k nahrání image virtuálního disku pro virtuální počítač.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> Pomocí Azure Resource Manager můžete vytvářet jenom místní účty úložiště, jako je třeba místně redundantní úložiště (Standard nebo Premium). Informace o vytváření vrstvených účtů úložiště najdete v tématu [kurz: přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Pomocí Azure Resource Manager můžete vytvářet jenom místní účty úložiště, jako je třeba místně redundantní úložiště (Standard nebo Premium). Informace o vytváření vrstvených účtů úložiště najdete v tématu [kurz: přenos dat prostřednictvím účtů úložiště s Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
-Zde je ukázkový výstup:
+Tady je příklad výstupu:
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-Pokud chcete získat klíč účtu úložiště, spusťte `Get-AzureRmStorageAccountKey` příkaz. Zde je ukázkový výstup tohoto příkazu:
+Pokud chcete získat klíč účtu úložiště, spusťte `Get-AzureRmStorageAccountKey` příkaz. Tady je příklad výstupu:
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -177,19 +177,19 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Přidání identifikátoru URI objektu blob do souboru hostitele
 
-Do souboru hostitelů jste už přidali identifikátor URI objektu BLOB pro klienta, kterého používáte pro připojení k Azure Blob Storage v části [Úprava souboru hostitele pro překlad názvů koncových bodů](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Tato položka se použila k přidání identifikátoru URI objektu BLOB:
+Identifikátor URI objektu BLOB jste už přidali do souboru hostitelů pro klienta, který používáte pro připojení k Azure Blob Storage v části "krok 5: Úprava souboru hostitele pro překlad názvů koncových bodů" [nasazení virtuálních počítačů na zařízení Azure Stack Edge přes Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Tato položka se použila k přidání identifikátoru URI objektu BLOB:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> ..\<dnsdomain\>
 
 ## <a name="install-certificates"></a>Instalace certifikátů
 
-Pokud používáte *protokol HTTPS*, musíte na svém zařízení nainstalovat vhodné certifikáty. V takovém případě nainstalujte certifikát koncového bodu objektu BLOB. Další informace najdete v tématu Vytvoření a nahrání certifikátů v části [použití certifikátů pomocí zařízení s grafickým procesorem Azure Stack Edge pro](azure-stack-edge-gpu-manage-certificates.md).
+Pokud používáte protokol HTTPS, musíte na zařízení nainstalovat příslušné certifikáty. Sem nainstalujete certifikát koncového bodu objektu BLOB. Další informace najdete v tématu [použití certifikátů s Azure Stack Edge pro se zařízením GPU](azure-stack-edge-gpu-manage-certificates.md).
 
 ## <a name="upload-a-vhd"></a>Nahrání virtuálního pevného disku
 
-Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů blob stránky v místním účtu úložiště, který jste vytvořili v předchozích krocích. Pomocí nástroje, jako je [AzCopy](../storage/common/storage-use-azcopy-v10.md) , můžete nahrát virtuální pevný disk do účtu úložiště. 
+Zkopírujte všechny bitové kopie disků, které se mají použít, do objektů blob stránky v místním účtu úložiště, který jste vytvořili dříve. K nahrání virtuálního pevného disku (VHD) do účtu úložiště můžete použít nástroj, například [AzCopy](../storage/common/storage-use-azcopy-v10.md) . 
 
-<!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
+<!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you're using with your Azure Stack Edge Pro device.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -198,9 +198,9 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 > [!NOTE]
 > Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For more information, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's some example output that uses AzCopy 7.3. For more information about this command, see [Upload VHD file to storage account by using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -240,14 +240,14 @@ $StorageAccountSAS = New-AzureStorageAccountSASToken -Service Blob,File,Queue,Ta
 C:\AzCopy.exe  cp "$VHDPath\$VHDFile" "$endPoint$ContainerName$StorageAccountSAS"
 ```
 
-## <a name="create-managed-disks-from-the-vhd"></a>Vytvoření spravovaných disků z VHD
+## <a name="create-a-managed-disk-from-the-vhd"></a>Vytvoření spravovaného disku z VHD
 
-Z nahraného virtuálního pevného disku vytvořte spravovaný disk.
+Pokud chcete vytvořit spravovaný disk z nahraného virtuálního pevného disku, spusťte následující příkaz:
 
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-Zde je ukázkový výstup: 
+Tady je příklad výstupu: 
 
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Zde je ukázkový výstup. Další informace o této rutině najdete na webu [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
+Tady je příklad výstupu. Další informace o této rutině najdete v článku [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -282,7 +282,7 @@ Tags               : {}
 
 ## <a name="create-a-vm-image-from-the-image-managed-disk"></a>Vytvoření image virtuálního počítače z disku spravovaného imagí
 
-Pomocí následujícího příkazu vytvořte image virtuálního počítače ze spravovaného disku. Nahraďte hodnoty v rámci \< \> zvolených názvů.
+Pokud chcete vytvořit image virtuálního počítače ze spravovaného disku, spusťte následující příkaz. Nahraďte *\<Disk name>* , *\<OS type>* a *\<Disk size>* skutečnými hodnotami.
 
 ```powershell
 $imageConfig = New-AzureRmImageConfig -Location DBELocal
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Zde je ukázkový výstup. Další informace o této rutině najdete na webu [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
+Tady je příklad výstupu. Další informace o této rutině najdete v článku [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -312,9 +312,9 @@ Location             : dbelocal
 Tags                 : {}
 ```
 
-## <a name="create-vm-with-previously-created-resources"></a>Vytvoření virtuálního počítače s dříve vytvořenými prostředky
+## <a name="create-your-vm-with-previously-created-resources"></a>Vytvoření virtuálního počítače s dříve vytvořenými prostředky
 
-Před vytvořením a nasazením virtuálního počítače musíte vytvořit jednu virtuální síť a přidružit ji k virtuálnímu síťovému rozhraní.
+Než vytvoříte a nasadíte virtuální počítač, musíte vytvořit jednu virtuální síť a k ní přidružit rozhraní virtuální sítě.
 
 > [!IMPORTANT]
 > Platí následující pravidla:
@@ -324,7 +324,9 @@ Před vytvořením a nasazením virtuálního počítače musíte vytvořit jedn
 
 ### <a name="query-the-automatically-created-virtual-network"></a>Dotaz na automaticky vytvořenou virtuální síť
 
-Pokud povolíte výpočetní prostředky z místního uživatelského rozhraní vašeho zařízení, `ASEVNET` ve skupině prostředků se automaticky vytvoří virtuální síť s názvem `ASERG` . K dotazování existující virtuální sítě použijte následující příkaz:
+Pokud povolíte výpočetní prostředky z místního uživatelského rozhraní vašeho zařízení, `ASEVNET` ve skupině prostředků se automaticky vytvoří virtuální síť s názvem `ASERG` . 
+
+K dotazování existující virtuální sítě použijte následující příkaz:
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -337,14 +339,14 @@ $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Nam
 
 ### <a name="create-a-virtual-network-interface-card"></a>Vytvoření virtuální síťové karty
 
-Tady je příkaz k vytvoření virtuální síťové karty pomocí ID podsítě virtuální sítě:
+Pokud chcete vytvořit síťovou kartu virtuálního síťového rozhraní pomocí ID podsítě virtuální sítě, spusťte následující příkaz:
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
 $Nic = New-AzureRmNetworkInterface -Name <Nic name> -ResourceGroupName <Resource group name> -Location DBELocal -IpConfiguration $ipConfig
 ```
 
-Tady je ukázkový výstup těchto příkazů:
+Tady je příklad výstupu:
 
 ```powershell
 PS C:\Users\Administrator> $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name my-ase-subnet -AddressPrefix "5.5.0.0/16"
@@ -421,9 +423,11 @@ Image virtuálního počítače teď můžete použít k vytvoření virtuální
 ```powershell
 $pass = ConvertTo-SecureString "<Password>" -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential("<Enter username>", $pass)
+```
 
-You will use this username, password to login to the VM, once it is created and powered up.
+Po vytvoření a zapnutí virtuálního počítače se k němu přihlásíte pomocí následujícího uživatelského jména a hesla.
 
+```powershell
 $VirtualMachine = New-AzureRmVMConfig -VMName <VM name> -VMSize "Standard_D1_v2"
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -<OS type> -ComputerName <Your computer Name> -Credential $cred
@@ -441,19 +445,19 @@ $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -Id $image
 New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $VirtualMachine -Verbose
 ```
 
-## <a name="connect-to-a-vm"></a>Připojení k virtuálnímu počítači
+## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-Postup pro připojení se může lišit v závislosti na tom, jestli jste vytvořili virtuální počítač se systémem Windows nebo Linux.
+Pokyny pro připojení se můžou lišit v závislosti na tom, jestli jste vytvořili virtuální počítač s Windows nebo Linux.
 
-### <a name="connect-to-linux-vm"></a>Připojení k virtuálnímu počítači se systémem Linux
+### <a name="connect-to-a-linux-vm"></a>Připojení k virtuálnímu počítači s Linuxem
 
-Pomocí těchto kroků se připojte k virtuálnímu počítači se systémem Linux.
+Pokud se chcete připojit k virtuálnímu počítači se systémem Linux, udělejte toto:
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-### <a name="connect-to-windows-vm"></a>Připojení k virtuálnímu počítači s Windows
+### <a name="connect-to-a-windows-vm"></a>Připojení k virtuálnímu počítači s Windows
 
-Pomocí těchto kroků se připojte k virtuálnímu počítači s Windows.
+Pokud se chcete připojit k virtuálnímu počítači s Windows, udělejte toto:
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
@@ -475,16 +479,16 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
+The public IP in this instance is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
 ## <a name="manage-the-vm"></a>Správa virtuálního počítače
 
 Následující části popisují některé běžné operace, které můžete vytvořit na zařízení Azure Stack Edge pro.
 
-### <a name="list-vms-running-on-the-device"></a>Výpis virtuálních počítačů spuštěných v zařízení
+### <a name="list-vms-that-are-running-on-the-device"></a>Výpis virtuálních počítačů, které běží na zařízení
 
-Pokud chcete vrátit seznam všech virtuálních počítačů, které běží na vašem zařízení Azure Stack Edge, spusťte tento příkaz:
+Pokud chcete vrátit seznam všech virtuálních počítačů, které jsou v zařízení Azure Stack Edge spuštěné, spusťte tento příkaz:
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -492,27 +496,26 @@ Pokud chcete vrátit seznam všech virtuálních počítačů, které běží na
 
 ### <a name="turn-on-the-vm"></a>Zapnout virtuální počítač
 
-Spuštěním následující rutiny zapněte virtuální počítač, který běží na vašem zařízení:
-
+Pokud chcete zapnout virtuální počítač, který běží na vašem zařízení, spusťte následující rutinu:
 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-Další informace o této rutině získáte v nabídce [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Další informace o této rutině najdete v tématu [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>Pozastavit nebo vypnout virtuální počítač
 
-Spuštěním následující rutiny zastavte nebo vypněte virtuální počítač, který běží na vašem zařízení:
+Pokud chcete zastavit nebo vypnout virtuální počítač, který běží na vašem zařízení, spusťte následující rutinu:
 
 
 ```powershell
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
-Další informace o této rutině najdete na webu [rutiny Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Další informace o této rutině najdete v tématu [rutina Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Přidat datový disk
 
-Pokud se požadavky na váš virtuální počítač zvyšují, možná budete muset přidat datový disk.
+Pokud se požadavky na váš virtuální počítač zvyšují, možná budete muset přidat datový disk. Provedete to pomocí následujícího příkazu:
 
 ```powershell
 Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty 
@@ -522,13 +525,13 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 
 ### <a name="delete-the-vm"></a>Odstranění virtuálního počítače
 
-Spuštěním následující rutiny odeberte virtuální počítač z vašeho zařízení:
+Pokud chcete virtuální počítač ze zařízení odebrat, spusťte následující rutinu:
 
 ```powershell
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Další informace o této rutině najdete v [rutině Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Další informace o této rutině najdete v tématu [rutina Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ## <a name="next-steps"></a>Další kroky
 

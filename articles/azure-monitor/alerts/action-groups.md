@@ -3,15 +3,15 @@ title: Vytváření a správa skupin akcí na webu Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 02/25/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8905c3e4dfa1053646ede5c0b62149844e21ee7d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701157"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. 
@@ -118,6 +118,8 @@ Omezení pro datové části sady Runbook najdete v části [omezení služby p�
 Ve skupině akcí můžete mít omezený počet akcí sady Runbook. 
 
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
+Zapněte nabízená oznámení do [mobilní aplikace Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/) tím, že zadáte e-mailovou adresu, kterou používáte jako ID účtu při konfiguraci mobilní aplikace Azure.
+
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
 ### <a name="email"></a>E-mail
@@ -139,11 +141,11 @@ Pokud nepřijímáte oznámení v *primárním e-mailu*, můžete zkusit provés
 2. Klikněte na všichni uživatelé (v levém podokně), zobrazí se seznam uživatelů (v pravém podokně).
 3. Vyberte uživatele, u kterého chcete zkontrolovat *primární e-mailové* informace.
 
-  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Příklad kontroly profilu uživatele."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Příklad kontroly profilu uživatele." border="true":::
 
 4. V profilu uživatele v části kontaktní informace pokud je karta E-mail prázdná, klikněte na tlačítko *Upravit* v horní části a v horní části přidejte svůj *primární e-mail* a tlačítko *Uložit* .
 
-  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Příklad přidání primárního e-mailu"border="true":::
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Příklad přidání primárního e-mailu" border="true":::
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
 
@@ -153,7 +155,7 @@ Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-
 Ve skupině akcí můžete mít omezený počet akcí funkce.
 
 ### <a name="itsm"></a>ITSM
-Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](../platform/itsmc-overview.md).
+Akce ITSM vyžaduje připojení ITSM. Naučte se vytvořit [připojení ITSM](./itsmc-overview.md).
 
 Ve skupině akcí můžete mít omezený počet ITSM akcí. 
 
@@ -191,7 +193,7 @@ Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory 
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
     
 # This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+$myAzureADApplicationObjectId = "<the Object ID of your Azure AD Application>"
     
 # This is the Action Groups Azure AD AppId
 $actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
@@ -334,7 +336,7 @@ Podívejte se prosím na [IP adresy skupin akcí](../app/ip-addresses.md) pro zd
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](./alerts-sms-behavior.md).  
 * Získejte [informace o schématu Webhooku upozornění protokolu aktivit](./activity-log-alerts-webhook.md).  
-* Přečtěte si další informace o [konektoru ITSM](../platform/itsmc-overview.md).
+* Přečtěte si další informace o [konektoru ITSM](./itsmc-overview.md).
 * Přečtěte si další informace o [omezování četnosti](./alerts-rate-limiting.md) výstrah.
-* Získejte [Přehled výstrah protokolu aktivit](../platform/alerts-overview.md)a Naučte se přijímat výstrahy.  
+* Získejte [Přehled výstrah protokolu aktivit](./alerts-overview.md)a Naučte se přijímat výstrahy.  
 * Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md).

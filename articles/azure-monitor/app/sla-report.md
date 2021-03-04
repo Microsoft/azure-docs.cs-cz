@@ -3,12 +3,12 @@ title: Nevýpadky, smlouva SLA a výpadek sešitu – Application Insights
 description: Vypočítejte a ohlaste smlouvu SLA pro webový test prostřednictvím jediného podokna ve skleněných prostředcích pro Application Insights a předplatných Azure.
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714047"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Sešit výpadků, smlouvy SLA a výpadků
 
@@ -51,13 +51,13 @@ Karta výpadky **a výpadků** obsahuje informace o celkovém počtu výpadků a
 
 ## <a name="edit-the-report"></a>Úprava sestavy
 
-Sestavu můžete upravit stejným způsobem jako kterýkoli jiný [Azure monitor sešit](../platform/workbooks-overview.md). Dotazy nebo vizualizace můžete přizpůsobit podle potřeb vašeho týmu.
+Sestavu můžete upravit stejným způsobem jako kterýkoli jiný [Azure monitor sešit](../visualize/workbooks-overview.md). Dotazy nebo vizualizace můžete přizpůsobit podle potřeb vašeho týmu.
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" GIF pro výběr tlačítka upravit pro změnu vizualizace na výsečový graf." lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Dotazy mohou být všechny spouštěny v [Log Analytics](../log-query/log-analytics-overview.md) a použity v jiných sestavách nebo řídicích panelech. Odeberte omezení parametru a znovu použijte základní dotaz.
+Dotazy mohou být všechny spouštěny v [Log Analytics](../logs/log-analytics-overview.md) a použity v jiných sestavách nebo řídicích panelech. Odeberte omezení parametru a znovu použijte základní dotaz.
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" Formát dotazu protokolu GIF." lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ Sestavu můžete sdílet s vašimi týmy, pracovat nebo připnuté na řídicí 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Log Analytics tipů pro optimalizaci dotazů](../log-query/query-optimization.md)
-- Naučte se, jak [v sešitech vytvořit graf](../platform/workbooks-chart-visualizations.md).
+- [Log Analytics tipů pro optimalizaci dotazů](../logs/query-optimization.md)
+- Naučte se, jak [v sešitech vytvořit graf](../visualize/workbooks-chart-visualizations.md).
 - Naučte se monitorovat web pomocí [testů dostupnosti](monitor-web-app-availability.md).

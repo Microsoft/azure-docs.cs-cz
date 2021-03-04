@@ -3,20 +3,20 @@ title: Monitorování a správa zálohování s využitím centra zálohování
 description: Tento článek vysvětluje, jak monitorovat a provozovat zálohy ve velkém měřítku pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893774"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719538"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Monitorování a provozování záloh pomocí centra zálohování (Preview)
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Monitorování a správa zálohování s využitím centra zálohování
 
 Jako správce zálohování můžete pomocí služby Backup Center monitorovat vaše úlohy a inventář záloh na každodenní bázi. Pomocí služby Backup Center můžete také provádět běžné operace, jako je třeba reakce na požadavky na zálohování na vyžádání, obnovení záloh, vytváření zásad zálohování atd.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure, SQL v zálohování virtuálních počítačů Azure, SAP HANA v zálohování virtuálních počítačů Azure, zálohování souborů Azure a zálohování serveru Azure Database for PostgreSQL.
+* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure, SQL v zálohování virtuálních počítačů Azure, SAP HANA v zálohování virtuálních počítačů Azure, zálohování souborů Azure, zálohování objektů blob Azure, zálohování Azure Managed Disks zálohování a Azure Database for PostgreSQL serveru.
 * Podrobný seznam podporovaných a nepodporovaných scénářů najdete v tématu věnovaném [matrici podpory](backup-center-support-matrix.md) .
 
 ## <a name="backup-instances"></a>Instance zálohování

@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687324"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
 Vítejte v dokumentaci k platformě Microsoft Identity Platform. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Rychlý Start: získání přístupového tokenu a volání rozhraní Microsoft Graph API z aplikace pracovní plochy](quickstart-v2-nodejs-desktop.md)
+- [Kurz: přihlášení uživatelů a volání rozhraní API pro Microsoft Graph v pracovní desktopové aplikaci](tutorial-v2-nodejs-desktop.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Node.js pomocí identity aplikace](quickstart-v2-nodejs-console.md)
+- [Kurz: volání rozhraní API Microsoft Graph v konzolové aplikaci Node.js](tutorial-v2-nodejs-console.md)
+- [Kurz: přihlášení uživatelů v Node.js Web App & Express](tutorial-v2-nodejs-webapp-msal.md)
+- [Podpora ověřování bez hesla s FIDO2 klíči v aplikacích, které vyvíjíte](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Co je nového pro ověřování?](reference-breaking-changes.md)
+- [Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit](msal-net-aad-b2c-considerations.md)
+- [Microsoft Identity Platform Code Samples (koncový bod verze 2.0)](sample-v2-code.md)
+- [Videa k platformě Microsoft Identity Platform](identity-videos.md)
+- [Rychlý start: Nastavení tenanta](quickstart-create-new-tenant.md)
+- [Rychlý Start: registrace aplikace s platformou Microsoft identity](quickstart-register-app.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>Leden 2021
 
@@ -66,17 +87,3 @@ Vítejte v dokumentaci k platformě Microsoft Identity Platform. V tomto článk
 - [Tokeny přístupu Microsoft Identity Platform](access-tokens.md)
 - [Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>Listopad 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Jak používat rozhraní API pro průběžné vyhodnocení s povoleným hodnocením ve vašich aplikacích](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Tokeny přístupu Microsoft Identity Platform](access-tokens.md)
-- [Možnosti konfigurace aplikace (MSAL)](msal-client-application-configuration.md)
-- [Postupy: poskytnutí volitelných deklarací identity vaší aplikaci](active-directory-optional-claims.md)
-- [Publikování aplikace v galerii aplikací Azure AD](v2-howto-app-gallery-listing.md)
-- [Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md)

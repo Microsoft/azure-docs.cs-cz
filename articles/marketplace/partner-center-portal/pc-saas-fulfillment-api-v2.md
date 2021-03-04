@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 0d7259972693b9ca12e0801007cbd3c0af45ca1c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712347"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Marketplace
 
@@ -580,7 +580,7 @@ Pokud je akce připravena k úspěšnému dokončení na straně komerčního tr
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Adresa URL pro získání stavu operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
+|  `Operation-Location`        |  Adresa URL pro získání stavu operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
 Kód: 400 Chybný požadavek: selhání ověřování.
 
@@ -645,7 +645,7 @@ Pokud je akce připravena k úspěšnému dokončení na straně komerčního tr
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
+|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
 
 Kód: 400 Chybný požadavek: selhání ověřování.
 
@@ -710,7 +710,7 @@ Partner taky obdrží oznámení Webhooku, když se akce úspěšně dokončí n
 
 |  Parametr         | Hodnota             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
+|  `Operation-Location`        |  Připojte se k prostředku, abyste získali stav operace.  Například, `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
 Kód: 400 Chybný požadavek.  Odstranění není v `allowedCustomerOperations` seznamu pro toto předplatné SaaS.
 
@@ -964,7 +964,7 @@ Tok nákupu se dá aktivovat z Azure Portal nebo Microsoft AppSourcech lokalit v
 
 Akce *změnit plán*, *změnit množství* a *zrušit odběr* jsou testovány na straně vydavatele.  Na straně Microsoftu se může *zrušit odběr* z Azure Portal i z centra pro správu (portál, ve kterém se spravují nákupy Microsoft AppSource).  *Změna množství a plánu* se dá aktivovat jenom z centra pro správu.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčního tržiště v partnerském centru](../support.md) .
 
@@ -972,4 +972,4 @@ Možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčníh
 
 Další možnosti pro SaaS nabídky na komerčním webu Marketplace najdete v tématu [rozhraní API služby měření v komerčním tržišti](marketplace-metering-service-apis.md) .
 
-Přečtěte si a používejte [sadu SDK SaaS](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) založenou na rozhraních API popsaných v tomto dokumentu.
+Zkontrolujte a používejte [klienty pro různé programovací jazyky a ukázky](https://github.com/microsoft/commercial-marketplace-samples).

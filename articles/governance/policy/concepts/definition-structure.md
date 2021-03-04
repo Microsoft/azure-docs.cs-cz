@@ -1,19 +1,18 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 10/22/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493307"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699415"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
-Azure Policy stanoví konvence pro prostředky. Definice zásad popisují [podmínky](#conditions) dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. Podmínka porovnává [pole](#fields) vlastností prostředku nebo [hodnotu](#value) s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí [aliasů](#aliases). Pokud je pole vlastnosti prostředku pole, lze použít speciální [alias pole](#understanding-the--alias) , který umožňuje vybrat hodnoty ze všech členů pole a použít podmínku na každou z nich.
-Přečtěte si další informace o [podmínkách](#conditions).
+Azure Policy stanoví konvence pro prostředky. Definice zásad popisují [podmínky](#conditions) dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. Podmínka porovnává [pole](#fields) vlastností prostředku nebo [hodnotu](#value) s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí [aliasů](#aliases). Pokud je pole vlastnosti prostředku pole, lze použít speciální [alias pole](#understanding-the--alias) , který umožňuje vybrat hodnoty ze všech členů pole a použít podmínku na každou z nich. Přečtěte si další informace o [podmínkách](#conditions).
 
 Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby prostředky měly konkrétní značku. Přiřazení zásad se dědí prostřednictvím podřízených prostředků. Pokud se pro skupinu prostředků použije přiřazení zásady, vztahuje se na všechny prostředky v této skupině prostředků.
 
@@ -118,7 +117,7 @@ V současné době jsou podporovány následující režimy poskytovatele prost�
 
 ## <a name="metadata"></a>Metadata
 
-Volitelná `metadata` vlastnost ukládá informace o definici zásady. Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užitečné pro jejich organizaci v `metadata` . Existují však některé _běžné_ vlastnosti, které používá Azure Policy a v integrovaných modulech.
+Volitelná `metadata` vlastnost ukládá informace o definici zásady. Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užitečné pro jejich organizaci v `metadata` . Existují však některé _běžné_ vlastnosti, které používá Azure Policy a v integrovaných modulech. Každá `metadata` vlastnost má limit 1024 znaků.
 
 ### <a name="common-metadata-properties"></a>Vlastnosti běžných metadat
 
@@ -189,7 +188,7 @@ Tento příklad odkazuje na parametr **allowedLocations** , který byl prokázá
 
 ### <a name="strongtype"></a>strongType
 
-V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například `Microsoft.Network/virtualNetworks/subnets`.
+V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například, `Microsoft.Network/virtualNetworks/subnets`.
 
 Některé _typy prostředků_ , které nejsou vraceny **Get-AzResourceProvider** , jsou podporovány. Tyto typy jsou:
 
@@ -286,15 +285,13 @@ Podmínka vyhodnocuje, zda hodnota splňuje určitá kritéria. Podporované pod
 
 Pro **méně**, **lessOrEquals**, **větší** a **greaterOrEquals**, pokud typ vlastnosti neodpovídá typu podmínky, je vyvolána chyba. Porovnávání řetězců je provedeno pomocí `InvariantCultureIgnoreCase` .
 
-Při použití podmínek **Like** a **notLike** zadáte v hodnotě zástupný znak `*` .
-Hodnota by neměla mít více než jeden zástupný znak `*` .
+Při použití podmínek **Like** a **notLike** zadáte v hodnotě zástupný znak `*` . Hodnota by neměla mít více než jeden zástupný znak `*` .
 
 Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly číslici, `?` pro písmeno, `.` aby odpovídaly jakémukoli znaku a jakémukoliv jinému znaku, aby odpovídaly tomuto skutečnému znaku. Zatímco **Match** a **notMatch** rozlišují velká a malá písmena, všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**.
 
 ### <a name="fields"></a>Pole
 
-Podmínky, které vyhodnocují, zda hodnoty vlastností v datové části požadavku prostředku splňují určitá kritéria, mohou být vytvořeny pomocí výrazu **pole** .
-Podporují se následující pole:
+Podmínky, které vyhodnocují, zda hodnoty vlastností v datové části požadavku prostředku splňují určitá kritéria, mohou být vytvořeny pomocí výrazu **pole** . Podporují se následující pole:
 
 - `name`
 - `fullName`
@@ -324,8 +321,7 @@ Podporují se následující pole:
 > `tags.<tagName>`, `tags[tagName]` a `tags[tag.with.dots]` jsou stále přijatelné způsoby deklarace pole značek. Preferované výrazy jsou však uvedeny výše.
 
 > [!NOTE]
-> V výrazech **pole** odkazujících na **\[ \* \] alias** jsou jednotlivé prvky v poli vyhodnocovány individuálně pomocí logických prvků **a** mezi prvky.
-> Další informace naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+> V výrazech **pole** odkazujících na **\[ \* \] alias** jsou jednotlivé prvky v poli vyhodnocovány individuálně pomocí logických prvků **a** mezi prvky. Další informace naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Použití značek s parametry
 
@@ -472,6 +468,7 @@ Výrazy **Count pole** mohou v rámci jedné definice **policyRule** vytvořit v
 Další informace o tom, jak pracovat s vlastnostmi pole v Azure Policy, včetně podrobného vysvětlení toho, jak je výraz **počtu polí** vyhodnocován, naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="value-count"></a>Počet hodnot
+
 Spočítá, kolik členů pole splní podmínku. Pole může být literální pole nebo [odkaz na parametr array](#using-a-parameter-value). Struktura výrazů **počtu hodnot** je:
 
 ```json
@@ -496,7 +493,7 @@ S **počtem hodnot** se používají tyto vlastnosti:
 
 Vynutila se následující omezení:
 - V jedné definici **policyRule** lze použít až 10 výrazů **počtu hodnot** .
-- Každý výraz **počtu hodnot** může provádět až 100 iterací. Toto číslo zahrnuje počet iterací provedených všemi nadřazenými výrazy **počtu hodnot** .
+- Každý výraz **počet hodnot** může provádět až 100 iterací. Toto číslo zahrnuje počet iterací provedených všemi nadřazenými výrazy **počtu hodnot** .
 
 #### <a name="the-current-function"></a>Aktuální funkce
 
@@ -505,15 +502,15 @@ Vynutila se následující omezení:
 **Využití počtu hodnot**
 
 - `current(<index name defined in count.name>)`. Příklad: `current('arrayMember')`.
-- `current()`. Povoleno pouze v případě, že výraz **Count hodnoty** není podřízeným prvkem jiného výrazu **Count** . Vrací stejnou hodnotu jako výše.
+- `current()`. Povoleno pouze v případě, že výraz **Count hodnoty** není podřízeným objektem jiného výrazu **Count** . Vrací stejnou hodnotu jako výše.
 
 Pokud hodnota vrácená voláním je objekt, jsou podporovány přístupové objekty vlastností. Příklad: `current('objectArrayMember').property`.
 
 **Využití počtu polí**
 
-- `current(<the array alias defined in count.field>)`. Například `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current(<the array alias defined in count.field>)`. Například, `current('Microsoft.Test/resource/enumeratedArray[*]')`.
 - `current()`. Povoleno pouze v případě, že výraz **počtu polí** není podřízeným prvkem jiného výrazu **Count** . Vrací stejnou hodnotu jako výše.
-- `current(<alias of a property of the array member>)`. Například `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+- `current(<alias of a property of the array member>)`. Například, `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
 
 #### <a name="field-count-examples"></a>Příklady počtu polí
 
@@ -679,7 +676,7 @@ Příklad 3: Ověřte, zda název prostředku odpovídá jakémukoli z daných v
 }
 ```
 
-Příklad 4: Ověřte, jestli žádná z prefixů adres virtuální sítě není v seznamu schválených předpon.
+Příklad 4: Ověřte, jestli žádná z předpon adres virtuální sítě není v seznamu schválených předpon.
 
 ```json
 {
@@ -769,7 +766,7 @@ Azure Policy podporuje následující typy účinku:
 - **Deny**: vygeneruje událost v protokolu aktivit a neuspěje požadavek.
 - **DeployIfNotExists**: nasadí související prostředek, pokud ještě neexistuje.
 - **Zakázáno**: nevyhodnotí prostředky pro dodržování předpisů pro pravidlo zásad.
-- **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku
+- **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku nebo předplatného
 - **EnforceOPAConstraint** (zastaralé): konfiguruje Open Controller agent admissioning Controller s gatekeeper v3 pro samoobslužně spravované clustery Kubernetes v Azure.
 - **EnforceRegoPolicy** (zastaralé): konfiguruje správce otevřeného agenta zásad přístupu s gatekeeper v2 ve službě Azure Kubernetes.
 
@@ -822,18 +819,18 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
   ```
 
 - `ipRangeContains(range, targetRange)`
-    - **Range**: [required] řetězec-řetězec určující rozsah IP adres.
-    - **targetRange**: [povinný] řetězec – řetězec určující rozsah IP adres.
+  - **Range**: [required] řetězec-řetězec určující rozsah IP adres.
+  - **targetRange**: [povinný] řetězec – řetězec určující rozsah IP adres.
 
-    Vrátí, zda daný rozsah IP adres obsahuje cílový rozsah IP adres. Prázdné rozsahy nebo kombinování mezi rodinami IP adres není povoleno a vede k selhání vyhodnocení.
+  Vrátí, zda daný rozsah IP adres obsahuje cílový rozsah IP adres. Prázdné rozsahy nebo kombinování mezi rodinami IP adres není povoleno a vede k selhání vyhodnocení.
 
-    Podporované formáty:
-    - Jedna IP adresa (příklady: `10.0.0.0` , `2001:0DB8::3:FFFE` )
-    - Rozsah CIDR (příklady: `10.0.0.0/24` , `2001:0DB8::/110` )
-    - Rozsah definovaný počátečními a koncovými IP adresami (příklady: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+  Podporované formáty:
+  - Jedna IP adresa (příklady: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+  - Rozsah CIDR (příklady: `10.0.0.0/24` , `2001:0DB8::/110` )
+  - Rozsah definovaný počátečními a koncovými IP adresami (příklady: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
 - `current(indexName)`
-    - Speciální funkce, která se dá použít jenom ve [výrazech Count](#count).
+  - Speciální funkce, která se dá použít jenom ve [výrazech Count](#count).
 
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 
@@ -904,14 +901,14 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-**\[\*\]** Alias představuje kolekci hodnot vybraných z prvků vlastnosti prostředku pole. Příklad:
+**\[\*\]** Alias představuje kolekci hodnot vybraných z prvků vlastnosti prostředku pole. Například:
 
 | Alias | Vybrané hodnoty |
 |:---|:---|

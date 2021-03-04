@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Konfigurace zachytávání paketů'
 description: Přečtěte si o funkcích zachytávání paketů, které můžete použít v bránách VPN, abyste mohli zúžit příčinu problému.
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733802"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726610"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurace zachytávání paketů pro brány VPN
 
@@ -27,6 +27,7 @@ V závislosti na vašich potřebách můžete spustit zachytávání paketů VPN
 Při izolaci potíží s vysokým objemem dat je užitečné použít filtr s pěti řazenými kolekcemi členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST).
 
 Následující příklady JSON a schématu JSON poskytují vysvětlení jednotlivých vlastností. Tady jsou některá omezení, která je potřeba vzít v úvahu při spuštění zachycení paketů:
+
 - V níže uvedeném schématu je filtr pole, ale v současné době lze použít pouze jeden filtr.
 - Nemůžete současně spustit více zachycení paketů v rámci brány.
 - V jednom připojení nemůžete současně spustit více zachycení paketů. Můžete spustit více zachycení paketů v různých připojeních současně.
@@ -317,7 +318,13 @@ Následující příklady JSON a schématu JSON poskytují vysvětlení jednotli
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>Nastavení zachycení paketů pomocí prostředí PowerShell
+## <a name="packet-capture---portal"></a>Zachycení paketů – portál
+
+Zachytávání paketů můžete nastavit v Azure Portal.
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="Snímek obrazovky s zachytáváním paketů na portálu" lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>Zachycení paketů – PowerShell
 
 Následující příklady znázorňují příkazy prostředí PowerShell, které spouští a zakazují zachytávání paketů. Další informace o možnostech parametrů naleznete v tématu [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 

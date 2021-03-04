@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749883"
 ---
 Profily pro klienty Azure VPN (Windows 10) můžete nasadit pomocí Microsoft Intune. Tento článek vám pomůže vytvořit profil Intune s využitím vlastních nastavení.
 
@@ -30,7 +30,7 @@ V následujících krocích použijeme ukázkový kód XML pro vlastní profil O
 * Automatické připojení ZAPNUTo
 * Bylo povoleno zjišťování důvěryhodných sítí.
 
-Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) .
+Další podporované možnosti najdete v článku [CSP pro podpora vpnv2](/windows/client-management/mdm/vpnv2-csp) .
 
 1. Stáhněte si profil sítě VPN z Azure Portal a extrahujte soubor *azurevpnconfig.xml* z balíčku.
 1. Zkopírujte a vložte text uvedený níže do nového souboru textového editoru.
@@ -82,4 +82,4 @@ V této části vytvoříte profil Microsoft Intune s vlastním nastavením.
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Vytvořit profil":::
-1. Váš vlastní profil se teď vytvoří. Microsoft Intune postup nasazení tohoto profilu najdete v tématu [přiřazení profilů uživatelů a zařízení](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+1. Váš vlastní profil se teď vytvoří. Microsoft Intune postup nasazení tohoto profilu najdete v tématu [přiřazení profilů uživatelů a zařízení](/mem/intune/configuration/device-profile-assign).

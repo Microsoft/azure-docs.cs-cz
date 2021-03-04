@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: Koncepty
   items:
+    - name: Konfigurace
+      href: configuration.md
+      displayName: Routing
     - name: Podpora rozhraní API s využitím Azure Functions
       href: apis.md
     - name: Trasy
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: Konfigurace front-endových architektur a knihoven
       href: front-end-frameworks.md
+    - name: Resetovat tokeny nasazení
+      href: deployment-token-management.md
 - name: Kurzy
   items:
     - name: Publikování z generátoru statických webů

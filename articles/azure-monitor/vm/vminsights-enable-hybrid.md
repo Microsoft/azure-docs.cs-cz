@@ -1,28 +1,28 @@
 ---
 title: Povolení Azure Monitor pro hybridní prostředí
-description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro hybridní cloudové prostředí, které obsahuje jeden nebo víc virtuálních počítačů.
+description: Tento článek popisuje, jak povolit přehledy pro hybridní cloudové prostředí, které obsahuje jeden nebo víc virtuálních počítačů.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d56b1ed7b4923b054ad6864b713fc2a26d95f7e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612226"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731268"
 ---
-# <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Povolit Azure Monitor pro virtuální počítače pro hybridní virtuální počítač
-Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač mimo Azure, včetně místních a dalších cloudových prostředí.
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Povolit pro hybridní virtuální počítač přehledy virtuálních počítačů
+Tento článek popisuje, jak povolit přehledy virtuálních počítačů pro virtuální počítač mimo Azure, včetně místních a dalších cloudových prostředí.
 
 > [!IMPORTANT]
-> Doporučenou metodou povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit Azure monitor pro virtuální počítače pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
+> Doporučeným způsobem povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit pro službu VM Insights pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](../insights/vminsights-configure-workspace.md).
-- V části [podporované operační systémy](../insights/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
+- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
+- V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
 
 ## <a name="overview"></a>Přehled
@@ -31,13 +31,13 @@ Virtuální počítače mimo Azure vyžadují stejného agenta Log Analytics age
 Podrobnosti o nasazení Log Analytics agenta najdete v tématu [připojení počítačů s Windows k Azure monitor](../agents/agent-windows.md) nebo [připojení počítačů se systémem Linux k Azure monitor](../agents/agent-linux.md) . Podrobnosti o agentovi závislostí jsou uvedeny v tomto článku. 
 
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
-Požadavky na bránu firewall pro agenta Log Analytics jsou k dispozici v článku [Přehled agenta Log Analytics](../agents/log-analytics-agent.md#network-requirements). Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/agents/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
+Požadavky na bránu firewall pro agenta Log Analytics jsou k dispozici v článku [Přehled agenta Log Analytics](../agents/log-analytics-agent.md#network-requirements). Agent závislosti mapy virtuálních počítačů neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/agents/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
 
 
 ## <a name="dependency-agent"></a>Agent závislostí
 
 >[!NOTE]
->Následující informace popsané v této části se vztahují také na [řešení Service map](../insights/service-map.md).  
+>Následující informace popsané v této části se vztahují také na [řešení Service map](./service-map.md).  
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
@@ -177,8 +177,8 @@ Zkontrolujte soubor C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače.
+Teď, když je monitorování pro vaše virtuální počítače povolené, jsou tyto informace k dispozici pro analýzu pomocí služby VM Insights.
 
-- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
+- Pokud si chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení mapy virtuálních počítačů](vminsights-maps.md).
 
 - Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

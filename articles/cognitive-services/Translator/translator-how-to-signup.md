@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712925"
 ---
 # <a name="create-a-translator-resource"></a>Vytvoření prostředku překladatele
 
@@ -57,7 +57,7 @@ Ke službě Translator můžete přistupovat prostřednictvím dvou různých ty
 
 1. **Skupina prostředků:** Skupina prostředků Azure, kterou si zvolíte, slouží jako virtuální kontejner pro nový prostředek. Můžete vytvořit novou skupinu prostředků nebo přidat prostředek do již existující skupiny prostředků, která sdílí stejný životní cyklus, oprávnění a zásady.
 
-1. **Oblast prostředků** Pokud vaše firma nebo aplikace nevyžaduje konkrétní oblast, vyberte možnost **globální** . Translator je neoblastní služba – neexistují žádné závislosti na konkrétní oblasti Azure. *Podívejte* se [na oblasti a zóny dostupnosti v Azure](/azure/availability-zones/az-overview).
+1. **Oblast prostředků** Pokud vaše firma nebo aplikace nevyžaduje konkrétní oblast, vyberte možnost **globální** . Translator je neoblastní služba – neexistují žádné závislosti na konkrétní oblasti Azure. *Podívejte* se [na oblasti a zóny dostupnosti v Azure](../../availability-zones/az-overview.md).
 
 1. **Název:** Zadejte název, který jste zvolili pro váš prostředek. Název, který zvolíte, musí být jedinečný v rámci Azure.
 

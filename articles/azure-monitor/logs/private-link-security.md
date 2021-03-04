@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 55a3cd6b02b9eeb774a084552c086acbfb9966cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9431aac203b831a0ffe22b835acf4677061780c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707725"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -157,9 +157,53 @@ Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový
  
    e.    Vyberte **Vytvořit**. 
 
-    ![Snímek obrazovky s výběrem vytvořit privátní pro endpoint2 u](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
+    ![Snímek obrazovky s podrobnostmi o výběru privátního koncového bodu](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
 Nyní jste vytvořili nový privátní koncový bod, který je připojen k tomuto AMPLS.
+
+## <a name="review-and-validate-your-private-link-setup"></a>Kontrola a ověření nastavení privátního odkazu
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>Kontrola nastavení DNS koncového bodu
+Pro soukromý koncový bod, který jste vytvořili, by teď měly být nakonfigurované čtyři zóny DNS:
+
+[![Snímek obrazovky zóny DNS privátního koncového bodu.](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+
+* privatelink-monitor – Azure-com
+* privatelink-OMS-o statistice provozu-Azure-com
+* privatelink-ODS-o statistice provozu-Azure-com
+* privatelink-agentsvc-Azure-Automation-NET
+
+Každá z těchto zón mapuje konkrétní koncové body Azure Monitor na soukromé IP adresy z fondu IP adres privátního koncového bodu.
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor – Azure-com
+Tato zóna pokrývá globální koncové body, které používá Azure Monitor, což znamená, že tyto koncové body slouží k zvažování všech prostředků, nikoli konkrétního. Tato zóna by měla mít namapované koncové body pro:
+* `in.ai` – (Application Insights koncový bod ingestování, zobrazí se globální a místní položka.
+* `api` -Application Insights a Log Analytics koncový bod rozhraní API
+* `live` -Application Insights aktivní koncový bod metriky
+* `profiler` -Application Insights koncový bod profileru
+* `snapshot`-Application Insights snímky obrazovky koncového bodu [ ![ privátní DNS sledování zóny – Azure-com.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-OMS-o statistice provozu-Azure-com
+Tato zóna pokrývá mapování specifického pracovního prostoru na koncové body OMS. Měla by se zobrazit položka pro každý pracovní prostor propojený s AMPLS připojeným k tomuto privátnímu koncovému bodu.
+[![Snímek obrazovky s Privátní DNSovou zónou OMS – o statistice provozu-Azure-com.](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ODS-o statistice provozu-Azure-com
+Tato zóna pokrývá mapování specifického pracovního prostoru do koncových bodů ODS – koncový bod příjmu Log Analytics. Měla by se zobrazit položka pro každý pracovní prostor propojený s AMPLS připojeným k tomuto privátnímu koncovému bodu.
+[![Snímek obrazovky s Privátní DNSovou zónou ODS – o statistice provozu-Azure-com](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-Azure-Automation-NET
+Tato zóna pokrývá mapování specifického pracovního prostoru do koncových bodů služby Agent Automation. Měla by se zobrazit položka pro každý pracovní prostor propojený s AMPLS připojeným k tomuto privátnímu koncovému bodu.
+[![Snímek obrazovky Privátní DNS agenta zóny svc-Azure-Automation-NET.](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>Ověřování, které komunikujete prostřednictvím privátního odkazu
+* Pokud chcete ověřit, že se vaše požadavky odesílají prostřednictvím privátního koncového bodu a privátních koncových bodů mapovaných přes IP adresu, můžete je zkontrolovat pomocí sledování sítě pro nástroje nebo dokonce i v prohlížeči. Například při pokusu o dotazování pracovního prostoru nebo aplikace se ujistěte, že je žádost odeslána privátní IP adresa mapovaná na koncový bod rozhraní API, v tomto příkladu je to *172.17.0.9*.
+
+    Poznámka: některé prohlížeče můžou používat další nastavení DNS (viz [nastavení DNS v prohlížeči](#browser-dns-settings)). Ujistěte se, že platí nastavení DNS.
+
+* Abyste se ujistili, že váš pracovní prostor nebo komponenta nedostává požadavky z veřejných sítí (nepřipojených prostřednictvím AMPLS), nastavte veřejnou ingestování prostředků a příznaky dotazů na *ne* , jak je vysvětleno v tématu [Správa přístupu mimo rozsahy privátních odkazů](#manage-access-from-outside-of-private-links-scopes).
+
+* Z klienta v chráněné síti použijte `nslookup` některý z koncových bodů uvedených v zónách DNS. Měl by ho přeložit váš server DNS na mapované privátní IP adresy místo veřejných IP adres, které se používají ve výchozím nastavení.
+
 
 ## <a name="configure-log-analytics"></a>Konfigurace služby Log Analytics
 
@@ -170,7 +214,7 @@ Přejděte na Azure Portal. V nabídce prostředku Log Analytics pracovního pro
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Připojené Azure Monitor obory privátního propojení
 Na této obrazovce se zobrazí všechny rozsahy připojené k pracovnímu prostoru. Připojení k oborům (AMPLSs) umožňuje přístup k tomuto pracovnímu prostoru ze sítě z virtuální sítě připojené ke každému AMPLS. Vytvoření připojení prostřednictvím tohoto umístění má stejný účinek jako nastavení v oboru, stejně jako v souvislosti s [připojením Azure Monitorch prostředků](#connect-azure-monitor-resources). Chcete-li přidat nové připojení, vyberte možnost **Přidat** a vyberte Azure monitor obor privátních odkazů. Pokud ho chcete připojit, vyberte **použít** . Všimněte si, že se pracovní prostor může připojit k 5 AMPLS objektům, jak je uvedeno v [omezeních a omezeních](#restrictions-and-limitations). 
 
-### <a name="access-from-outside-of-private-links-scopes"></a>Přístup mimo rozsahy privátních odkazů
+### <a name="manage-access-from-outside-of-private-links-scopes"></a>Správa přístupu mimo rozsahy privátních odkazů
 Nastavení v dolní části této stránky řídí přístup z veřejných sítí, což znamená sítě nepřipojené přes výše uvedené obory. Nastavení **povoluje přístup k veřejné síti pro** ingestování **bez** blokování přijímání protokolů z počítačů mimo připojené obory. Nastavení **povoluje přístup k veřejné síti pro dotazy** **bez** dotazů na bloky přicházející z počítačů mimo rozsah. Který zahrnuje dotazy spouštěné prostřednictvím sešitů, řídicích panelů, prostředí klienta založeného na rozhraní API, přehledy Azure Portal a dalších možností. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
 ### <a name="exceptions"></a>Výjimky
@@ -207,7 +251,7 @@ Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo obory priv
 
 K privátnímu odkazu budete muset přidat prostředky hostující monitorovaná zatížení. Zde najdete [dokumentaci](../../app-service/networking/private-endpoint.md) , jak to udělat App Services.
 
-Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se spravují pomocí Azure Resource Manager. Místo toho omezte přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](../roles-permissions-security.md).
+Přístup tímto způsobem se omezuje jenom na data v prostředku Application Insights. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se však spravují pomocí Azure Resource Manager. Proto byste měli omezit přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](../roles-permissions-security.md).
 
 > [!NOTE]
 > Aby bylo možné plně zabezpečit Application Insights na základě pracovních prostorů, musíte uzamknout přístup k prostředkům Application Insights a také k příslušnému pracovnímu prostoru Log Analytics.
@@ -218,14 +262,14 @@ Přístup tímto způsobem se omezuje jenom na data v prostředku Application In
 Jak je vysvětleno v tématu [Plánování nastavení privátního propojení](#planning-your-private-link-setup), nastavení privátního propojení i pro jeden prostředek má vliv na všechny prostředky Azure monitor v těchto sítích a v dalších sítích, které sdílejí stejné DNS. To může mít za náročný proces připojování. Vezměte v úvahu následující možnosti:
 
 * Vše v rámci – nejjednodušší a nejbezpečnější přístup je přidání všech Application Insights komponent do AMPLS. U součástí, ke kterým chcete i nadále přistupovat z jiných sítí, ponechte příznaky "" možnost "nastavit veřejný internetový přístup pro ingestování/dotaz" nastavené na Ano (výchozí).
-* Izolace sítí – Pokud jste (nebo je můžete v souladu s) pomocí paprsku virtuální sítě, postupujte podle pokynů v [síťové topologii centra – paprsky v Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Pak nastavte samostatné nastavení privátního propojení v příslušném paprsku virtuální sítě. Nezapomeňte také oddělit zóny DNS, protože sdílení zón DNS s jinými sítěmi paprsků způsobí [přepsání DNS](#the-issue-of-dns-overrides).
+* Izolace sítí – Pokud jste (nebo je můžete v souladu s) pomocí paprsku virtuální sítě, postupujte podle pokynů v [síťové topologii centra – paprsky v Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Pak nastavte samostatné nastavení privátního propojení v příslušném paprsku virtuální sítě. Nezapomeňte také oddělit zóny DNS, protože sdílení zón DNS s jinými sítěmi paprsků způsobí [přepsání DNS](#the-issue-of-dns-overrides).
 * Použití vlastních zón DNS pro konkrétní aplikace – toto řešení umožňuje přístup k výběru Application Insights komponent prostřednictvím privátního propojení a udržování všech ostatních přenosů přes veřejné trasy.
-    - Nastavte si [vlastní privátní ZÓNU DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)a dejte jí jedinečný název, třeba Internal.monitor.Azure.com.
+    - Nastavte si [vlastní privátní ZÓNU DNS](../../private-link/private-endpoint-dns.md)a dejte jí jedinečný název, třeba Internal.monitor.Azure.com.
     - Vytvořte AMPLS a soukromý koncový bod **a vyberte** neautomatickou integraci s PRIVÁTNÍm DNS.
-    - Přejít na privátní koncový bod – > konfiguraci DNS a zkontrolovat navrhované mapování plně kvalifikovaných názvů domény podobným tomuto: ![ snímek obrazovky navrhované konfigurace zóny DNS](./media/private-link-security/private-endpoint-fqdns.png)
+    - Přejít na soukromý koncový bod – > konfiguraci DNS a zkontrolovat navrhované mapování plně kvalifikovaných názvů domén.
     - Zvolte Přidání konfigurace a výběr zóny internal.monitor.azure.com, kterou jste právě vytvořili.
     - Přidat záznamy pro výše ![ nakonfigurované zóny DNS z výše uvedeného snímku obrazovky](./media/private-link-security/private-endpoint-global-dns-zone.png)
-    - Přejít na komponentu Application Insights a zkopírovat její [připojovací řetězec](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string).
+    - Přejít na komponentu Application Insights a zkopírovat její [připojovací řetězec](../app/sdk-connection-string.md).
     - Aplikace nebo skripty, které chtějí volat tuto komponentu přes privátní odkaz, by měly používat připojovací řetězec s EndpointSuffix = Internal. monitor. Azure. com.
 * Mapování koncových bodů prostřednictvím souborů hostitelů místo DNS – k přístupu privátního odkazu jenom z konkrétního počítače nebo virtuálního počítače v síti:
     - Nastavte AMPLS a privátní koncový bod **a vyberte** neautomatickou integraci s PRIVÁTNÍm DNS. 
@@ -280,7 +324,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do skupiny zabezpečení sítě přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty** a **AzureFrontDoor. front-endu** .
 
 ### <a name="querying-data"></a>Dotazování na data
-[ `externaldata` Operátor](https://docs.microsoft.com/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) se nepodporuje prostřednictvím privátního propojení, protože čte data z účtů úložiště, ale nezaručuje, že se úložiště bude získávat soukromě.
+[ `externaldata` Operátor](/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) se nepodporuje prostřednictvím privátního propojení, protože čte data z účtů úložiště, ale nezaručuje, že se úložiště bude získávat soukromě.
 
 ### <a name="programmatic-access"></a>Programový přístup
 

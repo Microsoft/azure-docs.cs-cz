@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: d72e3ffc8698d9f3a2df170bd87f2969475ca9ed
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580686"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721255"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
 
@@ -114,7 +114,7 @@ Když ukládáte informace o událostech a datech modulu runtime v [protokolech 
 
    1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-   Příklad:
+   Například:
 
    ![Vyberte Log Analytics pracovní prostor a data pro protokolování](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -142,9 +142,6 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
    Tady je příklad, který ukazuje všechna spuštění pro konkrétní aplikaci logiky:
 
    ![Zobrazení běhu a stavu aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
-
-   > [!NOTE]
-   > Možnost opětovného **odeslání** na této stránce není momentálně k dispozici.
 
    V případě akcí, ve kterých jste [nastavili sledované vlastnosti](#extend-data), můžete tyto vlastnosti zobrazit také tak, že ve sloupci **sledované vlastnosti** vyberete **zobrazení** . Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
 
@@ -181,7 +178,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 * [Streamování protokolů platformy Azure do Azure Event Hubs](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/visualize/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/visualize/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

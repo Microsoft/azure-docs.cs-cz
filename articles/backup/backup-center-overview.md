@@ -3,14 +3,14 @@ title: Přehled centra zálohování
 description: Tento článek poskytuje přehled služby Backup Center pro Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 93f9e5dc064d264e0cc111d8ddb093639307c55b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725369"
 ---
-# <a name="overview-of-backup-center-preview"></a>Přehled služby Backup Center (Preview)
+# <a name="overview-of-backup-center"></a>Přehled centra zálohování
 
 Centrum zálohování nabízí v Azure **jednotně sjednocené prostředí pro správu** , které umožňuje podnikům řídit, monitorovat, provozovat a analyzovat zálohy ve velkém měřítku. V takovém případě je konzistentní s nativním prostředím pro správu Azure.
 
@@ -18,11 +18,11 @@ Mezi klíčové výhody služby Backup Center patří:
 
 * **Samostatné podokno pro správu zálohování** – centrum zálohování je navržené tak, aby fungovalo dobře v rozsáhlém a distribuovaném prostředí Azure. Pomocí služby Backup Center můžete efektivně spravovat zálohy zahrnující různé typy úloh, trezory, odběry, oblasti a klienty [Azure Lighthouse](../lighthouse/overview.md) .
 * Správa zaměřená na **zdroje dat** – centrum zálohování poskytuje zobrazení a filtry, které jsou soustředěné do zdrojů dat, které zálohujete (například virtuální počítače a databáze). Vlastník prostředku nebo správci zálohování tak můžou monitorovat a provozovat zálohy položek, aniž by se museli soustředit na to, na který trezor se položka zálohuje. Klíčovou funkcí tohoto návrhu je schopnost filtrovat zobrazení podle vlastností specifických pro zdroj dat, jako je například předplatné zdroje dat, skupina prostředků zdroje dat a značky DataSource. Pokud například vaše organizace postupuje při přiřazování různých značek k virtuálním počítačům patřícím do různých oddělení, můžete pomocí centra zálohování filtrovat informace o zálohování na základě značek zálohovaných podkladových virtuálních počítačů, aniž byste se museli soustředit na značku trezoru.
-* **Prostředí s připojením** – služba Backup Center poskytuje nativní integraci do stávajících služeb Azure, které umožňují správu ve velkém měřítku. Centrum zálohování například používá [Azure Policy](../governance/policy/overview.md) prostředí, které vám pomůžou s tím, jak se budou vaše zálohy řídit. Také využívá [sešity Azure](../azure-monitor/visualize/workbooks-overview.md) a [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) , které vám pomůžou zobrazit podrobné sestavy o zálohování. Takže nemusíte se učit žádné nové principy používání různých funkcí, které centrum zálohování nabízí.
+* **Prostředí s připojením** – služba Backup Center poskytuje nativní integraci do stávajících služeb Azure, které umožňují správu ve velkém měřítku. Centrum zálohování například používá [Azure Policy](../governance/policy/overview.md) prostředí, které vám pomůžou s tím, jak se budou vaše zálohy řídit. Také využívá [sešity Azure](../azure-monitor/visualize/workbooks-overview.md) a [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) , které vám pomůžou zobrazit podrobné sestavy o zálohování. Takže nemusíte se učit žádné nové principy používání různých funkcí, které centrum zálohování nabízí. Můžete také zjistit komunitní prostředky ze služby Backup Center.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure, SQL v zálohování virtuálních počítačů Azure, SAP HANA v zálohování virtuálních počítačů Azure, zálohování souborů Azure a zálohování serveru Azure Database for PostgreSQL.
+* Centrum zálohování se v současné době podporuje pro zálohování virtuálních počítačů Azure, SQL v zálohování virtuálních počítačů Azure, SAP HANA v zálohování virtuálních počítačů Azure, zálohování souborů Azure, zálohování objektů blob Azure, zálohování Azure Managed Disks a Azure Database for PostgreSQL zálohování serveru.
 * Podrobný seznam podporovaných a nepodporovaných scénářů najdete v tématu věnovaném [matrici podpory](backup-center-support-matrix.md) .
 
 ## <a name="get-started"></a>Začínáme

@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716516"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
@@ -20,9 +20,9 @@ ms.locfileid: "100383598"
 
 ## <a name="overview"></a>Přehled
 
-Nepřetržitá integrace je postup testování každé změny provedené v základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testováním, které se provádí během nepřetržité integrace a vkládání změn do pracovního nebo produkčního systému.
+Nepřetržitá integrace je postup testování každé změny provedené v základu kódu automaticky a co nejdříve. Po testování v rámci kontinuální integrace dochází k průběžnému doručování, kdy se změny nasdílí do přípravného nebo produkčního systému.
 
-V Azure Data Factory průběžná integrace a doručování (CI/CD) znamená přesun Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného. Azure Data Factory využívá [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k uložení konfigurace různých entit ADF (kanálů, datových sad, toků dat atd.). Existují dva navrhované metody, jak propagovat datovou továrnu na jiné prostředí:
+Ve službě Azure Data Factory kontinuální integrace a průběžné doručování (CI/CD) představují přesun kanálů Data Factory z jednoho prostředí (vývojového, testovacího, produkčního) do jiného. Azure Data Factory využívá [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k uložení konfigurace různých entit ADF (kanálů, datových sad, toků dat atd.). Existují dva navrhované metody, jak propagovat datovou továrnu na jiné prostředí:
 
 -    Automatizované nasazení pomocí Data Factory integrace s [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)
 -    Ručně nahrajte šablonu Správce prostředků pomocí integrace Data Factory UX s Azure Resource Manager.
@@ -199,7 +199,7 @@ Tým Data Factory poskytl [ukázkový skript před a po nasazení](#script) , kt
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Použití vlastních parametrů s šablonou Resource Manageru
 
-Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete přepsat výchozí parametry šablony Správce prostředků šablony Správce prostředků vygenerované publikováním nebo exportem šablony. V těchto scénářích možná budete chtít přepsat výchozí šablonu Parametrizace:
+Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete přepsat výchozí parametry šablony Správce prostředků šablony Správce prostředků vygenerované publikováním nebo exportem šablony. V těchto scénářích možná budete chtít přepsat výchozí konfiguraci parametrů Správce prostředků:
 
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
@@ -210,11 +210,14 @@ Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete př
     * Refaktorujte logiku toku dat, aby se snížily parametry, například parametry kanálu mají stejnou hodnotu, můžete místo toho použít pouze globální parametry.
     * Rozdělit jednu datovou továrnu do více toků dat.
 
-Pokud chcete přepsat výchozí šablonu Parametrizace, klikněte na Centrum správy a v části Správa zdrojového kódu vyberte **šablonu Parametrizace** . Výběrem **Upravit šablonu** otevřete Editor kódu šablony Parametrizace. 
+Pokud chcete přepsat výchozí konfiguraci parametrů Správce prostředků, v části Správa zdrojového kódu klikněte na centrum pro **správu** a vyberte **šablonu ARM** . V části **Konfigurace parametru ARM** klikněte na **Upravit** ikona v možnosti upravit konfiguraci parametru a otevřete tak editor konfiguračního kódu parametrů správce prostředků.
 
 ![Správa vlastních parametrů](media/author-management-hub/management-hub-custom-parameters.png)
 
-Vytvořením vlastní šablony Parametrizace se vytvoří soubor s názvem **arm-template-parameters-definition.js** v kořenové složce vaší větve Git. Je nutné použít tento přesný název souboru.
+> [!NOTE]
+> **Konfigurace parametru ARM** je povolená jenom v režimu Git. V současné době je tato možnost zakázaná v režimu "živý režim" nebo "Data Factory".
+
+Vytvořením vlastní konfigurace Správce prostředkůho parametru se vytvoří soubor s názvem **arm-template-parameters-definition.js** v kořenové složce vaší větve Git. Je nutné použít tento přesný název souboru.
 
 ![Soubor vlastních parametrů](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ Při publikování z větve pro spolupráci Data Factory načte tento soubor a p
 Při exportu šablony Správce prostředků Data Factory přečte tento soubor z jakékoli větve, na které aktuálně pracujete, nikoli z větve pro spolupráci. Můžete vytvořit nebo upravit soubor z privátní větve, kde můžete testovat své změny výběrem možnosti **Exportovat šablonu ARM** v uživatelském rozhraní. Pak můžete soubor sloučit do větve pro spolupráci.
 
 > [!NOTE]
-> Vlastní šablona Parametrizace nemění limit parametru šablony ARM 256. Umožňuje zvolit a snížit počet parametrizovaných vlastností.
+> Vlastní konfigurace parametrů Správce prostředků nemění limit parametru šablony ARM 256. Umožňuje zvolit a snížit počet parametrizovaných vlastností.
 
 ### <a name="custom-parameter-syntax"></a>Vlastní syntaxe parametru
 
@@ -244,7 +247,7 @@ Níže jsou uvedeny některé pokyny, které je třeba provést při vytvářen�
  
 ### <a name="sample-parameterization-template"></a>Ukázková šablona Parametrizace
 
-Tady je příklad toho, co může šablona Parametrizace vypadat jako:
+Tady je příklad toho, jak může konfigurace parametrů Správce prostředků vypadat takto:
 
 ```json
 {

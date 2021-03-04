@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703401"
 ---
 # <a name="precise-answering"></a>Přesné zodpovězení dotazů
 
@@ -32,7 +32,7 @@ Služba také vrátí skóre spolehlivosti přesnou odpověď jako **skóre** , 
 
 ## <a name="publishing-a-qna-maker-bot"></a>Publikování robota QnA Maker
 
-Když publikujete robota, ve výchozím nastavení se ve vaší aplikaci zobrazí přesné možnosti Answer, kde uvidíte krátkou odpověď spolu s pasáží odpovědí. Informace o tom, jak v odpovědi použít přesnou odpověď (s názvem AnswerSpan), najdete v referenčních informacích k rozhraní API pro [vygenerování odpovědi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) . Uživatel má flexibilitu zvolit další prostředí tím, že aktualizuje šablonu prostřednictvím služby robot App Service. 
+Když publikujete robota, ve výchozím nastavení se ve vaší aplikaci zobrazí přesné možnosti Answer, kde uvidíte krátkou odpověď spolu s pasáží odpovědí. Informace o tom, jak v odpovědi použít přesnou odpověď (s názvem AnswerSpan), najdete v referenčních informacích k rozhraní API pro [vygenerování odpovědi](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) . Uživatel má flexibilitu zvolit další prostředí tím, že aktualizuje šablonu prostřednictvím služby robot App Service. 
 
 ## <a name="language-support"></a>Podpora jazyků
 

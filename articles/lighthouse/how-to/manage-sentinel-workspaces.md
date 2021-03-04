@@ -1,14 +1,14 @@
 ---
 title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424098"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702517"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -80,9 +80,9 @@ Vytvářejte a neukládejte Log Analytics dotazy pro detekci hrozeb centrálně 
 
 Službu Automation můžete použít ke správě několika pracovních prostorů služby Azure Sentinel a ke konfiguraci [loveckých dotazů](../../sentinel/hunting.md), playbooky a sešitů. Další informace najdete v tématu [Správa mezi jednotlivými pracovními prostory pomocí automatizace](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
-## <a name="manage-security-of-office-365-environments"></a>Správa zabezpečení prostředí Office 365
+## <a name="monitor-security-of-office-365-environments"></a>Monitorování zabezpečení prostředí Office 365
 
-Pomocí Azure Lighthouse ve spojení se službou Azure Sentinel můžete spravovat zabezpečení prostředí Office 365 napříč klienty. Nejdřív je nutné, aby [byly ve spravovaném tenantovi zapnuté datové konektory Office 365](../../sentinel/connect-office-365.md) , aby se informace o aktivitách uživatelů a správců v Exchange a SharePointu (včetně OneDrivu) mohly ingestovat do pracovního prostoru Sentinel Azure v rámci spravovaného tenanta. Zahrnuje to i podrobnosti o akcích, jako jsou soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny a operace poštovních schránek, a informace o uživatelích, kteří akce provedli. [Výstrahy ochrany před únikem informací office 365](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) jsou také podporovány v rámci integrovaného konektoru sady Office 365.
+Pomocí Azure Lighthouse ve spojení se službou Azure Sentinel můžete monitorovat zabezpečení prostředí Office 365 napříč klienty. Nejdřív je nutné, aby [byly ve spravovaném tenantovi zapnuté datové konektory Office 365](../../sentinel/connect-office-365.md) , aby se informace o aktivitách uživatelů a správců v Exchange a SharePointu (včetně OneDrivu) mohly ingestovat do pracovního prostoru Sentinel Azure v rámci spravovaného tenanta. Zahrnuje to i podrobnosti o akcích, jako jsou soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny a operace poštovních schránek, a informace o uživatelích, kteří akce provedli. [Výstrahy ochrany před únikem informací office 365](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) jsou také podporovány v rámci integrovaného konektoru sady Office 365.
 
 [Konektor Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md) můžete povolit pro streamování výstrah a Cloud Discovery přihlášení do Azure Sentinel. To vám umožní získat přehled o cloudových aplikacích, získávat sofistikované analýzy, které identifikují a bojovat proti týká kybernetických hrozeb a řídí, jak se data cestují. Protokoly aktivit pro MCAS se dají [spotřebovat pomocí formátu CEF (Common Event Format)](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 

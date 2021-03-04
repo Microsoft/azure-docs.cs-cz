@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurace synchronizace hodnot hash hesel
       href: tutorial-configure-password-hash-sync.md
-    - name: Vytvoření sady replik (Preview)
+    - name: Vytvoření sady replik
       href: tutorial-create-replica-set.md
     - name: Vytvoření přizpůsobené spravované domény
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: Obvyklé scénáře nasazení
       href: scenarios.md
-    - name: Sady replik (Preview)
+    - name: Sady replik
       href: concepts-replica-sets.md
     - name: Doménové struktury a vztahy důvěryhodnosti
       items:

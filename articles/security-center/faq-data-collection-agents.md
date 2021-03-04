@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595772"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705126"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -29,9 +29,9 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
-- **Azure Defender off** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Pokud je Azure Defender vypnutý, nebude se vám účtovat.
+- **Azure Defender off** – Security Center ve výchozím pracovním prostoru povolí řešení "SecurityCenterFree". Pokud je Azure Defender vypnutý, nebude se vám účtovat.
 
-- **Azure Defender on** – Security Center povoluje řešení zabezpečení ve výchozím pracovním prostoru.
+- **Azure Defender on** – Security Center umožňuje řešení zabezpečení ve výchozím pracovním prostoru.
 
 Další informace o cenách najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -146,7 +146,7 @@ Pokud je agent Log Analytics nainstalovaný přímo na virtuálním počítači 
 
 Nainstalovaný Agent bude pokračovat v hlášení do již nakonfigurovaných pracovních prostorů a kromě toho bude hlásit do pracovního prostoru nakonfigurovaného v Security Center (u počítačů s Windows je podporováno více domovských stránek).
 
-Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve výchozím nastavení není Security Center), bude nutné do něj nainstalovat řešení "Security/" SecurityCenterFree ", aby bylo možné Security Center zahájit zpracování událostí z virtuálních počítačů a počítačů, které do daného pracovního prostoru hlásí.
+Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve výchozím nastavení není Security Center), budete muset do něj nainstalovat řešení "Security" nebo "SecurityCenterFree", aby bylo možné Security Center zahájit zpracování událostí z virtuálních počítačů a počítačů, které do daného pracovního prostoru hlásí.
 
 Pro počítače se systémem Linux zatím není podporována podpora více domovských stránek agenta, takže pokud je zjištěna existující instalace agenta, Automatické zřizování nebude provedeno a konfigurace počítače nebude změněna.
 
@@ -207,7 +207,7 @@ Po dokončení migrace Security Center nemůžou shromažďovat data zabezpečen
 
 Ručně nainstalujte rozšíření agenta Log Analytics, aby Security Center mohl shromažďovat data zabezpečení z vašich virtuálních počítačů a poskytovat doporučení a výstrahy. Pokyny k instalaci najdete v tématu [instalace agenta pro virtuální počítač s Windows](../virtual-machines/extensions/oms-windows.md) nebo [instalace agenta pro virtuální počítač Linux](../virtual-machines/extensions/oms-linux.md) .
 
-Agenta můžete připojit k jakémukoli existujícímu vlastnímu pracovnímu prostoru nebo Security Center vytvořenému pracovnímu prostoru. Pokud vlastní pracovní prostor nemá povolená řešení Security nebo SecurityCenterFree, budete muset použít řešení. Pokud ho chcete použít, vyberte vlastní pracovní prostor nebo předplatné a pomocí stránky **zásady zabezpečení – cenová** úroveň použijte cenovou úroveň.
+Agenta můžete připojit k jakémukoli existujícímu vlastnímu pracovnímu prostoru nebo Security Center vytvořenému pracovnímu prostoru. Pokud vlastní pracovní prostor nemá povolená řešení zabezpečení nebo SecurityCenterFree, budete muset použít řešení. Pokud ho chcete použít, vyberte vlastní pracovní prostor nebo předplatné a pomocí stránky **zásady zabezpečení – cenová** úroveň použijte cenovou úroveň.
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Povolit nebo zakázat Azure Defender":::
 

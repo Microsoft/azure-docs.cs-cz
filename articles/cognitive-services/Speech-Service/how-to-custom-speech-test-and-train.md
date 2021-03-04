@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 2e6f79643493457a587f907f2649c7ab50b963f4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634732"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710494"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -46,9 +46,9 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
-| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1-20 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | No | Není k dispozici | Yes | 1-200 MB souvisejícího textu |
+| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | – |
+| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1-20 hodin zvukového přenosu |
+| [Související text](#related-text-data-for-training) | Ne | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
 
 Při učení nového modelu začněte s [souvisejícím textem](#related-text-data-for-training). Tato data budou již vylepšit rozpoznávání speciálních pojmů a frází. Školení s textem je mnohem rychlejší než školení na zvuk (minuty vs. dny).
 
@@ -64,6 +64,8 @@ Soubory by měly být seskupené podle typu do datové sady a nahrané jako soub
 > V případech, kdy změníte základní model používaný pro školení a máte zvuk v datové sadě školení, *vždy* ověřte, zda nový vybraný základní model [podporuje školení se zvukovými daty](language-support.md#speech-to-text). Pokud dřív použitý základní model nepodporoval školení se zvukovými daty a datová sada pro školení obsahuje zvuk, může se výrazně zvýšit doba školení s novým základním modelem a může se stát, **že budete moct** snadno přejít z několika hodin na několik dní. To platí hlavně v **případě, že** vaše předplatné služby Speech není v [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
 >
 > Pokud se setkáte s problémem popsaným v předchozím odstavci, můžete rychle zkrátit dobu školení tím, že snížíte velikost zvuku v datové sadě nebo zcela odeberete a necháte jenom text. Tato možnost se důrazně doporučuje, pokud vaše předplatné služby Speech **není v** [oblasti s vyhrazeným hardwarem](custom-speech-overview.md#set-up-your-azure-account) pro školení.
+>
+> V oblastech s vyhrazeným hardwarem pro školení bude služba řeči používat až 20 hodin zvukového školení. V jiných oblastech bude používat jenom až 8 hodin zvuku.
 
 ## <a name="upload-data"></a>Nahrání dat
 
@@ -101,7 +103,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 
 Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
-| Aktivita | Description | SoX – příkaz |
+| Aktivita | Popis | SoX – příkaz |
 |----------|-------------|-------------|
 | Kontrolovat zvukový formát | Pomocí tohoto příkazu ověřte<br>formát zvukového souboru. | `sox --i <filename>` |
 | Převod zvukového formátu | Tento příkaz slouží k převodu<br>zvukový soubor do jednoho kanálu, 16bitová, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -127,9 +129,9 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 > [!NOTE]
 > Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Můžete provést test pouze z *jedné* datové sady, nezapomeňte ji zachovat v rámci příslušné velikosti souboru. Kromě toho každý školicí soubor nemůže být delší než 60 sekund, jinak dojde k chybě.
 
-Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 20 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
+Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slově na 1 až 20 hodin zvukového přenosu. Nicméně, a to až 30 minut, může pomoci zlepšit výsledky rozpoznávání. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-Příklad:
+Například:
 
 <!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
 

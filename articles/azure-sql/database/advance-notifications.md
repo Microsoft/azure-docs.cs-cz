@@ -1,6 +1,6 @@
 ---
 title: Oznámení o plánované údržbě v předstihu (Preview)
-description: Získejte oznámení před plánovanou údržbou pro Azure SQL Database nebo Azure SQL Managed instance.
+description: Získejte oznámení před plánovanou údržbou pro Azure SQL Database.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662655"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690885"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Oznámení o plánované údržbě v předběžné verzi (Preview)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Oznámení s předstihem (Preview) jsou k dispozici pro databáze nakonfigurované pro časové [období údržby (Preview)](maintenance-window.md). Předběžná oznámení umožňují zákazníkům konfigurovat oznámení až na 24 hodin předem v každé plánované události.
 
 Oznámení můžou být nakonfigurovaná, abyste mohli získat text, e-maily, nabízená oznámení Azure a hlasové zprávy, když se plánovaná údržba spustí za dalších 24 hodin. Další oznámení se odesílají při zahájení údržby a při skončení údržby.
 
+> [!Note]
+> I když je pro spravované instance Azure SQL k dispozici okno údržby, nejsou pro spravované instance Azure SQL aktuálně k dispozici žádná oznámení.
 
 ## <a name="create-an-advance-notification"></a>Vytvořit předběžné oznámení
 
-Pro databáze SQL Azure a spravované instance s nakonfigurovaným časovým intervalem pro správu a údržbu jsou k dispozici předběžné oznámení. 
+Pro databáze SQL Azure s nakonfigurovaným časovým intervalem pro správu a údržbu jsou k dispozici předběžné oznámení. 
 
 Pokud chcete povolit oznámení, proveďte následující kroky.  
 

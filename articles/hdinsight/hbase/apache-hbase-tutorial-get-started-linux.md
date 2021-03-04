@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705666"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -133,7 +133,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
 
 HBase obsahuje několik metod načítání dat do tabulek.  Další informace naleznete v tématu [Hromadné načítání](https://hbase.apache.org/book.html#arch.bulk.load).
 
-Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt`.  Obsah datového souboru je:
+Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt`.  Obsah datového souboru je:
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 

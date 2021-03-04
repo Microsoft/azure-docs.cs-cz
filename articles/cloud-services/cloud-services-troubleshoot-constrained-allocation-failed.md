@@ -1,30 +1,24 @@
 ---
-title: Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby do Azure | Microsoft Docs
-description: Tento článek ukazuje, jak vyřešit výjimku ConstrainedAllocationFailed při nasazení cloudové služby do Azure.
+title: Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure | Microsoft Docs
+description: Tento článek popisuje, jak vyřešit výjimku ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure.
 services: cloud-services
 author: mibufo
 ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: de344bbcd89158676bacf2a8aa1743d282700b9d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/22/2021
+ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520961"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738275"
 ---
-# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-to-azure"></a>Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby do Azure
+# <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Řešení potíží s ConstrainedAllocationFailed při nasazení cloudové služby (Classic) do Azure
 
-V tomto článku vyřešíte selhání přidělení, kde se Azure Cloud Services nemůže nasadit z důvodu omezení.
+V tomto článku vyřešíte selhání přidělení, kde nejde nasadit Azure Cloud Services (Classic) kvůli omezením přidělení.
 
-Microsoft Azure přiděluje:
-
-- Upgrade instancí Cloud Services
-
-- Přidání nových instancí webové role nebo role pracovního procesu
-
-- Nasazení instancí do cloudové služby
+Když nasadíte instance do cloudové služby (Classic) nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přidělí výpočetní prostředky.
 
 Během těchto operací může občas docházet k chybám, i když jste dosáhli limitu předplatného Azure.
 
@@ -33,9 +27,11 @@ Během těchto operací může občas docházet k chybám, i když jste dosáhli
 
 ## <a name="symptom"></a>Příznak
 
-V Azure Portal přejděte na svou cloudovou službu a na bočním panelu vyberte *protokoly operací (klasické)* a zobrazte si protokoly.
+V Azure Portal přejděte do vaší cloudové služby (Classic) a na bočním panelu vyberte *protokol operací (Classic)* a zobrazte si protokoly.
 
-Při kontrole protokolů vaší cloudové služby se zobrazí následující výjimka:
+![Image zobrazuje okno protokol operací (Classic).](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-allocation-logs.png)
+
+Při kontrole protokolů vaší cloudové služby (Classic) se zobrazí následující výjimka:
 
 |Typ výjimky  |Chybová zpráva  |
 |---------|---------|
@@ -43,99 +39,42 @@ Při kontrole protokolů vaší cloudové služby se zobrazí následující vý
 
 ## <a name="cause"></a>Příčina
 
-Došlo k potížím s kapacitou v oblasti nebo clusteru, na který nasazujete. K tomu dojde, pokud SKU prostředků, které jste vybrali, není pro zadané umístění k dispozici.
+Při nasazení první instance do cloudové služby (v přípravné nebo produkční) se tato cloudová služba připnula ke clusteru.
 
-> [!NOTE]
-> Když je první uzel cloudové služby nasazený, *připnuté* do fondu zdrojů. Fond zdrojů může být samostatný cluster nebo skupina clusterů.
->
-> V průběhu času se prostředky v tomto fondu zdrojů můžou plně využívat. Pokud cloudová služba vytvoří požadavek na přidělení dalších prostředků v případě, že nejsou k dispozici dostatečné prostředky v připnutém fondu zdrojů, bude mít tato žádost [chybnou alokaci](cloud-services-allocation-failures.md).
+V průběhu času se prostředky v tomto clusteru můžou plně využívat. Pokud cloudová služba (Classic) vytvoří požadavek na přidělení pro další prostředky, pokud jsou v připojeném clusteru k dispozici nedostatečné prostředky, výsledkem bude selhání přidělení. Další informace najdete v tématu [běžné problémy při přidělování](cloud-services-allocation-failures.md#common-issues).
 
 ## <a name="solution"></a>Řešení
 
-V tomto scénáři byste měli vybrat jinou oblast nebo SKU, do které chcete nasadit cloudovou službu. Než nasadíte nebo upgradujete cloudovou službu, můžete určit, které skladové jednotky jsou k dispozici v oblasti nebo zóně dostupnosti. Použijte níže uvedené procesy [Azure CLI](#list-skus-in-region-using-azure-cli), [PowerShell](#list-skus-in-region-using-powershell)nebo [REST API](#list-skus-in-region-using-rest-api) .
+Existující cloudové služby jsou *připnuté* na cluster. Všechna další nasazení cloudové služby (Classic) se spustí ve stejném clusteru.
 
-### <a name="list-skus-in-region-using-azure-cli"></a>Výpis SKU v oblasti pomocí Azure CLI
+Pokud v tomto scénáři dojde k chybě přidělení, doporučuje se provést akci znovu nasadit do nové cloudové služby (Classic) (a aktualizovat *záznam CNAME*).
 
-Můžete použít příkaz [AZ VM list-SKU](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) .
+> [!TIP]
+> Toto řešení je pravděpodobně nejúspěšnější, protože poskytuje platformě možnost výběru ze všech clusterů v dané oblasti.
 
-- Pomocí `--location` parametru můžete filtrovat výstup do umístění, které používáte.
-- Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
-- Další informace najdete v tématu věnovaném [chybě vyřešit chybu pro SKU, který není k dispozici](../azure-resource-manager/templates/error-sku-not-available.md#solution-2---azure-cli) .
+> [!NOTE]
+> Toto řešení by mělo mít žádný výpadek.
 
-    **Příklad:**
+1. Nasaďte zatížení do nové cloudové služby (Classic).
+    - Další pokyny najdete v tématu [Vytvoření a nasazení průvodce cloudovou službou (Classic)](cloud-services-how-to-create-deploy-portal.md) .
 
-    ```azurecli
-    az vm list-skus --location southcentralus --size Standard_F --output table
-    ```
+    > [!WARNING]
+    > Pokud nechcete přijít o IP adresu přidruženou k tomuto slotu nasazení, můžete použít [Řešení 3 – zachovat IP adresu](cloud-services-allocation-failures.md#solutions).
 
-    **Příklady výsledků:** ![ Výstup Azure CLI s spuštěním příkazu AZ VM list-SKU--Location southcentralus--Size Standard_F--Output Table, který zobrazuje dostupné SKU.](./media/cloud-services-troubleshoot-constrained-allocation-failed/cloud-services-troubleshoot-constrained-allocation-failed-1.png)
+1. Aktualizujte záznam *CNAME* nebo *a* , aby odkazoval na provoz do nové cloudové služby (Classic).
+    - Další pokyny najdete v průvodci [konfigurací vlastního názvu domény pro cloudovou službu Azure (Classic)](cloud-services-custom-domain-name-portal.md#understand-cname-and-a-records) .
 
-#### <a name="list-skus-in-region-using-powershell"></a>Výpis SKU v oblasti pomocí PowerShellu
+1. Po skončení provozu na starý Web můžete odstranit starou cloudovou službu (Classic).
+    - Další pokyny najdete v průvodci [odstraňováním nasazení a cloudové služby (Classic)](cloud-services-how-to-manage-portal.md#delete-deployments-and-a-cloud-service) .
+    - Pokud chcete zobrazit síťový provoz ve vaší cloudové službě (Classic), přečtěte si téma [Úvod do monitorování cloudové služby (Classic)](cloud-services-how-to-monitor.md).
 
-Můžete použít příkaz [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) .
-
-- Filtrovat výsledky podle umístění.
-- Pro tento příkaz musíte mít nejnovější verzi PowerShellu.
-- Další informace najdete v tématu věnovaném [chybě vyřešit chybu pro SKU, který není k dispozici](../azure-resource-manager/templates/error-sku-not-available.md#solution-1---powershell) .
-
-**Příklad:**
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
-```
-
-**Některé další užitečné příkazy:**
-
-Vyfiltrujte umístění, která obsahují velikost (Standard_DS14_v2):
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-```
-
-Vyfiltrujte všechna umístění, která obsahují velikost (V3):
-
-```azurepowershell
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
-
-#### <a name="list-skus-in-region-using-rest-api"></a>Výpis SKU v oblasti pomocí REST API
-
-Můžete použít operaci [seznam SKU prostředku](https://docs.microsoft.com/rest/api/compute/resourceskus/list) . Vrátí dostupné SKU a oblasti v následujícím formátu:
-
-```json
-{
-  "value": [
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A0",
-      "tier": "Standard",
-      "size": "A0",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    {
-      "resourceType": "virtualMachines",
-      "name": "Standard_A1",
-      "tier": "Standard",
-      "size": "A1",
-      "locations": [
-        "eastus"
-      ],
-      "restrictions": []
-    },
-    <Rest_of_your_file_is_located_here...>
-  ]
-}
-    
-```
+Viz [řešení potíží se selháním přidělení cloudové služby (Classic) | Microsoft Docs](cloud-services-allocation-failures.md#common-issues) pro další nápravný postup.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další řešení pro selhání přidělení a lepší pochopení způsobu jejich vygenerování:
+Pro další řešení selhání přidělení a informace na pozadí:
 
 > [!div class="nextstepaction"]
-> [Selhání přidělení (cloudové služby)](cloud-services-allocation-failures.md)
+> [Selhání přidělení – cloudová služba (klasická)](cloud-services-allocation-failures.md)
 
 Pokud váš problém s Azure není v tomto článku vyřešen, navštivte fóra Azure na [webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo odeslat na [ @AzureSupport Twitter](https://twitter.com/AzureSupport). Můžete také odeslat žádost o podporu Azure. Pokud chcete odeslat žádost o podporu, vyberte na stránce [podpory Azure](https://azure.microsoft.com/support/options/) možnost *získat podporu*.

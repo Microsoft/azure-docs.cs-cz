@@ -3,20 +3,20 @@ title: Povolení doplňku pro monitorování AKS pomocí Azure Policy
 description: Popisuje, jak povolit doplněk pro monitorování AKS pomocí vlastních zásad Azure.
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713894"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Povolení doplňku pro monitorování AKS pomocí Azure Policy
 Tento článek popisuje, jak povolit doplněk pro monitorování AKS pomocí vlastních zásad Azure. Vlastní zásadu pro monitorování doplňku lze přiřadit buď v rámci předplatného, nebo v oboru skupiny prostředků. Pokud je prostředí Azure Log Analytics Workspace a cluster AKS v různých předplatných, musí mít spravovaná identita používaná přiřazením zásad oprávnění požadovaná role u předplatných nebo nejméně u prostředku pracovního prostoru Log Analytics. Podobně platí, že pokud je zásada vymezená na skupinu prostředků, měla by mít spravovaná identita požadovaná oprávnění role v pracovním prostoru Log Analytics, pokud pracovní prostor není ve vybraném oboru skupiny prostředků.
 
 Monitorovací doplněk vyžaduje následující role na spravované identitě, kterou používá Azure Policy:
 
- - [Azure-Kubernetes-Service-Přispěvatel – role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [Log-Analytics – Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [Azure-Kubernetes-Service-Přispěvatel – role](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [Log-Analytics – Přispěvatel](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Vytvoření a přiřazení definice zásady pomocí Azure Portal
 
@@ -79,6 +79,5 @@ Monitorovací doplněk vyžaduje následující role na spravované identitě, k
 
 - Přečtěte si další informace o [Azure Policy](../../governance/policy/overview.md).
 - Přečtěte si, jak [funguje řešení potíží se zabezpečením](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works).
-- Přečtěte si další informace o [Azure monitor pro kontejnery](../insights/container-insights-overview.md).
-- Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
+- Přečtěte si další informace o službě [Container Insights](./container-insights-overview.md).
+- Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).

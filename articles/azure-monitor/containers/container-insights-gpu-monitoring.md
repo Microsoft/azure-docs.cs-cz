@@ -1,33 +1,33 @@
 ---
-title: Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s použitím uzlů NVIDIA a GPU s povoleným grafickým procesorem AMD pomocí Azure Monitor pro kontejnery.
+title: Konfigurace monitorování GPU pomocí kontejneru Insights | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat monitorování clusterů Kubernetes s využitím uzlů NVIDIA a AMD GPU s podporou kontejneru Insights.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 11a9de0872fd3e7589332322b3f8fb855d2c88ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612341"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731863"
 ---
-# <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurace monitorování GPU pomocí Azure Monitor pro kontejnery
+# <a name="configure-gpu-monitoring-with-container-insights"></a>Konfigurace monitorování GPU pomocí kontejneru Insights
 
-Počínaje agentem verze *ciprod03022019* služba Azure monitor for Containers Integrated Agents teď podporuje monitorování využití GPU (grafické procesory) na uzlech clusteru Kubernetes s grafickým procesorem a monitorování lusků/kontejnerů požadujících a používání prostředků GPU.
+Počínaje agentem verze *ciprod03022019* podporuje integrovaný agent služby Container Insights monitorovat využití GPU (grafické procesory) na uzlech clusteru Kubernetes s grafickým procesorem a monitorovat lusky/kontejnery požadující a používání prostředků GPU.
 
 ## <a name="supported-gpu-vendors"></a>Podporovaní dodavatelé GPU
 
-Azure Monitor for Containers podporuje monitorování clusterů GPU od následujících dodavatelů GPU:
+Container Insights podporuje monitorování clusterů GPU od následujících dodavatelů GPU:
 
 - [GRAF](https://developer.nvidia.com/kubernetes-gpu)
 
 - [AMD](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Azure Monitor for Containers automaticky spouští monitorování využití GPU na uzlech a GPU, který požaduje lusky a zatížení, shromažďováním následujících metrik v intervalech 60sec a jejich ukládání do tabulky **InsightMetrics** .
+Služba Container Insights automaticky spouští monitorování využití GPU na uzlech a GPU, který požaduje lusky a zatížení, díky shromažďování následujících metrik v intervalech 60sec a jejich ukládání do tabulky **InsightMetrics** .
 
 >[!NOTE]
->Po zřízení clusteru s uzly GPU zajistěte, aby byl pro spuštění úloh GPU nainstalovaný [ovladač GPU](../../aks/gpu-cluster.md) , jak to vyžaduje AKS. Azure Monitor pro kontejnery shromažďují metriky GPU prostřednictvím ovladače GPU, které běží v uzlu. 
+>Po zřízení clusteru s uzly GPU zajistěte, aby byl pro spuštění úloh GPU nainstalovaný [ovladač GPU](../../aks/gpu-cluster.md) , jak to vyžaduje AKS. Služby Container Insights shromažďují metriky GPU prostřednictvím ovladače GPU, které běží v uzlu. 
 
-|Název metriky |Dimenze metriky (značky) |Description |
+|Název metriky |Dimenze metriky (značky) |Popis |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, ContainerName, gpuId, gpuModel, gpuVendor|Procento času v průběhu minulého ukázkového období (60 sekund), během kterého byl procesor GPU zaneprázdněný nebo aktivně zpracováván pro kontejner. Cyklus cel je číslo mezi 1 a 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, ContainerName |Každý kontejner může určovat omezení jako jeden nebo více GPU. Není možné vyžádat ani omezit zlomek GPU. |
@@ -39,7 +39,7 @@ Azure Monitor for Containers automaticky spouští monitorování využití GPU 
 
 ## <a name="gpu-performance-charts"></a>Grafy výkonu GPU 
 
-Azure Monitor for containers obsahuje předem nakonfigurované grafy pro metriky uvedené dříve v tabulce jako sešit GPU pro každý cluster. Popis sešitů dostupných pro Azure Monitor kontejnerů najdete [v tématu sešity v Azure monitor for Containers](../insights/container-insights-reports.md) .
+Služba Container Insights obsahuje předem nakonfigurované grafy pro metriky uvedené dříve v tabulce jako sešit GPU pro každý cluster. Popis sešitů dostupných pro službu Container Insights najdete [v tématu sešity ve službě Container Insights](../insights/container-insights-reports.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

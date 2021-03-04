@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725318"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Použití Azure CDN s SAS
 
@@ -32,14 +32,14 @@ Pomocí SAS můžete definovat různé parametry přístupu k objektu blob, jako
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Nastavení Azure CDN pro práci s SAS úložiště
 Pro použití SAS s Azure CDN se doporučuje použít následující tři možnosti. U všech možností se předpokládá, že jste už vytvořili pracovní SAS (viz požadavky). 
  
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Začněte tím, že vytvoříte účet úložiště a potom pro svůj Asset vygenerujete SAS. Můžete vygenerovat dva typy uložených přístupových podpisů: SAS služby nebo SAS účtu. Další informace najdete v tématu [typy podpisů sdíleného přístupu](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures).
 
 Po vygenerování tokenu SAS můžete k souboru BLOB Storage získat přístup připojením `?sv=<SAS token>` k adrese URL. Tato adresa URL má následující formát: 
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
-Příklad:
+Například:
  ```
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
@@ -60,7 +60,7 @@ Tato možnost je nejjednodušší a používá jediný token SAS, který se pře
    
    Výsledná adresa URL koncového bodu CDN má následující formát: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
-   Příklad:   
+   Například:   
    ```
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -77,10 +77,10 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium ze profilů Verizon** .
 
    ![Modul pravidel CDN – tlačítko](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Následující vzorové pravidlo přepsání adresy URL používá vzor regulárního výrazu se zachytávající skupinou a koncovým bodem s názvem *sasstoragedemo* :
+   Následující vzorové pravidlo přepsání adresy URL používá vzor regulárního výrazu se zachytávající skupinou a koncovým bodem s názvem *sasstoragedemo*:
    
    Zdroj:   
-   `(container1\/.*)`
+   `(container1/.*)`
 
 
    Cíl:   
@@ -92,7 +92,7 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium ze profilů Verizon** .
 
 2. Jakmile se nové pravidlo stane aktivním, může kdokoli získat přístup k souborům v zadaném kontejneru na koncovém bodu CDN bez ohledu na to, jestli v adrese URL používá token SAS. Tady je formát: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   Příklad:   
+   Například:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -107,7 +107,7 @@ Pokud chcete použít Azure CDN ověřování pomocí tokenu zabezpečení, mus�
    Adresa URL koncového bodu tokenu zabezpečení má následující formát:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   Příklad:   
+   Například:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -116,10 +116,10 @@ Pokud chcete použít Azure CDN ověřování pomocí tokenu zabezpečení, mus�
  
 2. Pomocí [modulu pravidel](./cdn-verizon-premium-rules-engine.md) vytvořte pravidlo pro přepsání adresy URL, které povolí přístup k tokenům SAS všem objektům blob v kontejneru. Rozšiřování nových pravidel trvá až 4 hodiny.
 
-   Následující vzorové pravidlo přepsání adresy URL používá vzor regulárního výrazu se zachytávající skupinou a koncovým bodem s názvem *sasstoragedemo* :
+   Následující vzorové pravidlo přepsání adresy URL používá vzor regulárního výrazu se zachytávající skupinou a koncovým bodem s názvem *sasstoragedemo*:
    
    Zdroj:   
-   `(container1\/.*)`
+   `(container1/.*)`
    
    Cíl:   
    ```
@@ -138,7 +138,7 @@ Vzhledem k tomu, že parametry SAS nejsou Azure CDN k dispozici, Azure CDN nemoh
 | --- | --- |
 | Spustit | Čas, kdy Azure CDN může začít přistupovat k souboru objektu BLOB. Pokud chcete, aby byl Asset k dispozici okamžitě, vyberte čas od času naklonění (když se hodinový signál dorazí v různou dobu pro různé komponenty). |
 | End | Čas, po jehož uplynutí Azure CDN nemůže získat přístup k souboru objektu BLOB. Soubory dříve uložených v mezipaměti v Azure CDN jsou stále přístupné. Chcete-li řídit čas vypršení platnosti souboru, buď nastavte vhodný čas vypršení platnosti v Azure CDN tokenu zabezpečení, nebo vyprázdnte Asset. |
-| Povolené IP adresy | Nepovinný parametr. Pokud používáte **Azure CDN z Verizon** , můžete tento parametr nastavit na rozsahy definované v [Azure CDN z rozsahů IP adres serveru Verizon Edge](./cdn-pop-list-api.md). Pokud používáte **Azure CDN z Akamai** , nemůžete nastavit parametr rozsahy IP adres, protože IP adresy nejsou statické.|
+| Povolené IP adresy | Nepovinný parametr. Pokud používáte **Azure CDN z Verizon**, můžete tento parametr nastavit na rozsahy definované v [Azure CDN z rozsahů IP adres serveru Verizon Edge](./cdn-pop-list-api.md). Pokud používáte **Azure CDN z Akamai**, nemůžete nastavit parametr rozsahy IP adres, protože IP adresy nejsou statické.|
 | Povolené protokoly | Protokol povolený pro žádost vytvořenou s podpisem SAS účtu. Doporučuje se nastavení HTTPS.|
 
 ## <a name="next-steps"></a>Další kroky

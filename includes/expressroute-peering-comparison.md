@@ -4,18 +4,18 @@ ms.date: 12/13/2019
 ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
-ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7aee201b0419b65c7ea8ddcb6f2d42ffaff4711e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75436989"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751058"
 ---
 |  | **Soukromý partnerský vztah** | **Partnerský vztah Microsoftu** |  **Veřejný partnerský vztah** (zastaralý pro nové okruhy) |
 | --- | --- | --- | --- |
 | **Max. # předpon podporovaných na partnerský vztah** |4000 standardně 10 000 s ExpressRoute Premium |200 |200 |
 | **Podporované rozsahy IP adres** |Veškerá platná IP adresa v síti WAN. |Veřejné IP adresy, které vlastníte vy nebo váš poskytovatel připojení. |Veřejné IP adresy, které vlastníte vy nebo váš poskytovatel připojení. |
 | **Jako požadavky na číslo** |Soukromé a veřejné jako čísla. Pokud se rozhodnete použít jeden, musíte vlastnit veřejné jako číslo. |Soukromé a veřejné jako čísla. Je však nutné prokázat vlastnictví veřejných IP adres. |Soukromé a veřejné jako čísla. Je však nutné prokázat vlastnictví veřejných IP adres. |
-| **Podporované protokoly IP**| IPv4 |  IPv4, IPv6 | IPv4 |
+| **Podporované protokoly IP**| IPv4, IPv6 (Preview) |  IPv4, IPv6 | IPv4 |
 | **IP adresy rozhraní směrování** |RFC1918 a veřejné IP adresy |Veřejné IP adresy, které jste zaregistrovali v registrech směrování. |Veřejné IP adresy, které jste zaregistrovali v registrech směrování. |
-| **Podpora algoritmu hash MD5** |Yes |Yes |Yes |
+| **Podpora algoritmu hash MD5** |Ano |Ano |Ano |

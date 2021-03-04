@@ -1,15 +1,15 @@
 ---
 title: Průběžná integrace s využitím Azure Pipelines
 description: Naučte se průběžně sestavovat, testovat a nasazovat šablony Azure Resource Manager (šablony ARM).
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560895"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722792"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon ARM pomocí Azure Pipelines
 
@@ -83,8 +83,8 @@ Složka _CreateWebApp_ je složka, ve které je šablona uložena. `pwd`Příkaz
 
 Místo vytváření šablon můžete stáhnout šablony a uložit je do složky _CreateWebApp_ .
 
-* Hlavní Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* Odkazovaná Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* Hlavní Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Odkazovaná Šablona: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Název složky i názvy souborů se používají tak, jak jsou v kanálu. Pokud tyto názvy změníte, je nutné aktualizovat názvy používané v kanálu.
 
@@ -106,7 +106,7 @@ _azuredeploy.jsv_ byla přidána do místního úložiště. V dalším kroku na
     Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Main** je hlavní větev.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu použijete hlavní větev přímo.
 
 1. Přejděte do úložiště GitHub z prohlížeče. Adresa URL je `https://github.com/[YourAccountName]/[YourGitHubRepository]` . V rámci této složky se zobrazí složka _CreateWebApp_ a dva soubory.
-1. Vyberte _linkedStorageAccount.js_ pro otevření šablony.
+1. Vyberte _azuredeploy.js_ pro otevření šablony.
 1. Vyberte tlačítko **nezpracované** . Adresa URL začíná `https://raw.githubusercontent.com` .
 1. Zkopírujte adresu URL. Tuto hodnotu musíte zadat při konfiguraci kanálu později v tomto kurzu.
 
@@ -174,10 +174,10 @@ Vytvoření kanálu s krokem pro nasazení šablony:
     * **Akce**: vyberte akci **vytvořit nebo aktualizovat skupinu prostředků** 2 akce-1. Pokud je zadaný název nové skupiny prostředků, vytvořte skupinu prostředků. odst. Nasaďte zadanou šablonu.
     * **Skupina prostředků**: zadejte nový název skupiny prostředků. Například **AzureRmPipeline-RG**.
     * **Umístění**: vyberte umístění pro skupinu prostředků, například **střed USA**.
-    * **Umístění šablony**: vyberte **propojený artefakt**, což znamená, že úloha hledá soubor šablony přímo z připojeného úložiště.
-    * **Šablona**: zadejte _CreateWebApp/azuredeploy.jsna_. Pokud jste změnili název složky a název souboru, musíte tuto hodnotu změnit.
-    * **Parametry šablony**: nechte toto pole prázdné. Hodnoty parametrů budete zadávat v **parametrech přepsání šablony**.
-    * **Přepsat parametry šablony**: zadejte `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` . Nahraďte název projektu a adresu URL propojené šablony. Adresa URL propojené šablony je to, co jste napsali na konci [vytváření úložiště GitHubu](#create-a-github-repository). Začíná na `https://raw.githubusercontent.com` .
+    * **Umístění šablony**: vyberte **adresu URL souboru**, což znamená, že úloha vyhledá soubor šablony pomocí adresy URL. Vzhledem k tomu, že se v hlavní šabloně používá _RelativePath_ a _RelativePath_ se podporuje jenom u nasazení na základě identifikátorů URI, musíte místo toho použít adresu URL.
+    * **Odkaz na šablonu**: zadejte adresu URL, kterou jste dostali na konci oddílu [Příprava úložiště GitHub](#prepare-a-github-repository) . Začíná na `https://raw.githubusercontent.com` .
+    * **Odkaz na parametry šablony**: ponechte toto pole prázdné. Hodnoty parametrů budete zadávat v **parametrech přepsání šablony**.
+    * **Přepsat parametry šablony**: zadejte `-projectName [EnterAProjectName]` .
     * **Režim nasazení**: vyberte **přírůstkové**.
     * **Název nasazení**: zadejte **DeployPipelineTemplate**. Než uvidíte **název nasazení**, vyberte **Upřesnit** .
 

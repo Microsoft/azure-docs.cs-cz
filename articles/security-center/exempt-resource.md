@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756757"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709372"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Vyloučení prostředků a doporučení ze zabezpečeného skóre 
 
@@ -35,7 +35,7 @@ V takových případech můžete vytvořit výjimku pro doporučení pro:
 |Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.|
 |Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="define-an-exemption"></a>Definovat výjimku
@@ -110,9 +110,9 @@ Jak je vysvětleno dříve na této stránce, pravidla výjimek představují v�
 
 Abychom si udrželi přehled o tom, jak uživatelé tuto schopnost využívají, vytvořili jsme šablonu Azure Resource Manager (ARM), která nasadí PlayBook aplikaci logiky a všechna potřebná připojení rozhraní API, která vás upozorní, když se vytvoří výjimka.
 
-- Další informace o PlayBook najdete v tomto příspěvku na [blogu technické komunity](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) .
+- Další informace o PlayBook najdete v příspěvku na blogu pro technickou komunitu, [jak sledovat výjimky prostředků v Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - Šablonu ARM najdete v [úložišti Azure Security Center GitHubu](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption) .
-- Kliknutím [sem](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) můžete nasadit všechny nezbytné součásti. 
+- K nasazení všech potřebných součástí [použijte tento automatizovaný proces](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) .
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Hledání doporučení s výjimkami pomocí Azure Resource graphu

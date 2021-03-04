@@ -3,22 +3,21 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: c8486d7e5656a7770aec4a50739d3a9160e123e3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719793"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
+
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
 
 V tomto příkladu vytvoříme adaptér, který převezme data z Application Insights, přejmenuje a zpracuje některá pole a pošle je do Power BI.
 
 > [!WARNING]
 > K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](./export-power-bi.md). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
-> 
-> 
 
 ![Blokový diagram pro export prostřednictvím SA do PBI](./media/export-stream-analytics/020.png)
 
@@ -38,6 +37,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
     ![V úložišti otevřete nastavení, klíče a proveďte kopii primárního přístupového klíče.](./media/export-stream-analytics/045.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžný export do služby Azure Storage
+
 [Průběžný export](export-telemetry.md) přesouvá data z Application Insights do služby Azure Storage.
 
 1. V Azure Portal vyhledejte prostředek Application Insights, který jste vytvořili pro vaši aplikaci.
@@ -55,18 +55,19 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
     ![Výběr typů událostí](./media/export-stream-analytics/080.png)
 
-1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../essentials/metrics-charts.md) a jednotlivé události. 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](./diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../essentials/metrics-charts.md) a jednotlivé události.
    
     Data budou také exportována do vašeho úložiště. 
 2. Zkontrolujte exportovaná data. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník** a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
    
     ![Snímek obrazovky ukazující, jak nastavit typy událostí, které chcete zobrazit.](./media/export-stream-analytics/04-data.png)
    
-    Poznamenejte si běžnou část názvu cesty, která je odvozena z názvu aplikace a klíče instrumentace. 
+    Poznamenejte si běžnou část názvu cesty, která je odvozena z názvu aplikace a klíče instrumentace.
 
 Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes používá Stream Analytics k přesměrování dat do Power BI.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
+
 Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
 
 ![Snímek obrazovky, který zobrazuje hlavní stránku pro vytváření Stream Analyticsch úloh v Azure Portal.](./media/export-stream-analytics/SA001.png)
@@ -104,9 +105,9 @@ V tomto příkladu:
 
 > [!NOTE]
 > Zkontrolujte úložiště, abyste se ujistili, že jste získali správnou cestu.
-> 
 
 ## <a name="add-new-output"></a>Přidat nový výstup
+
 Nyní vyberte úlohu > **výstupy**  >  **Přidat**.
 
 ![Snímek obrazovky, který zobrazuje výběr úlohy Stream Analytics pro přidání nového výstupu.](./media/export-stream-analytics/SA006.png)
@@ -117,11 +118,13 @@ Nyní vyberte úlohu > **výstupy**  >  **Přidat**.
 Zadejte svůj **pracovní nebo školní účet** pro autorizaci Stream Analytics k přístupu k prostředkům Power BI. Potom dozásobí název výstupu a pro cílovou Power BI datovou sadu a tabulku.
 
 ## <a name="set-the-query"></a>Nastavení dotazu
+
 Dotaz řídí převod ze vstupu na výstup.
 
-Pomocí funkce test zkontrolujte, zda se zobrazí správný výstup. Poskytněte IT ukázková data, která jste trvali na stránce vstupy. 
+Pomocí funkce test zkontrolujte, zda se zobrazí správný výstup. Poskytněte IT ukázková data, která jste trvali na stránce vstupy.
 
 ### <a name="query-to-display-counts-of-events"></a>Dotaz na zobrazení počtu událostí
+
 Vložit tento dotaz:
 
 ```SQL
@@ -154,7 +157,7 @@ OUTER APPLY GetElements(A.context.custom.metrics) as flat
 GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
 ```
 
-* Tento dotaz přejde do telemetrie metrik a získá čas události a hodnotu metriky. Hodnoty metriky jsou uvnitř pole, takže pro extrakci řádků používáme vzor VNĚJŠÍho prvku APPLy. "myMetric" je název metriky v tomto případě. 
+* Tento dotaz přejde do telemetrie metrik a získá čas události a hodnotu metriky. Hodnoty metriky jsou uvnitř pole, takže pro extrakci řádků používáme vzor VNĚJŠÍho prvku APPLy. "myMetric" je název metriky v tomto případě.
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Dotaz na zahrnutí hodnot vlastností dimenze
 
@@ -178,17 +181,18 @@ FROM flat
 * Tento dotaz zahrnuje hodnoty vlastností dimenze bez závislosti na konkrétní dimenzi v pevně daném indexu v poli dimenzí.
 
 ## <a name="run-the-job"></a>Spuštění úlohy
-Můžete vybrat datum v minulosti, od kterého se má úloha spustit. 
+
+Můžete vybrat datum v minulosti, od kterého se má úloha spustit.
 
 ![Vyberte úlohu a klikněte na dotaz. Níže uvedený příklad vložte.](./media/export-stream-analytics/SA008.png)
 
 Počkejte, dokud nebude úloha spuštěna.
 
 ## <a name="see-results-in-power-bi"></a>Zobrazit výsledky v Power BI
+
 > [!WARNING]
 > K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](./export-power-bi.md). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
-> 
-> 
+
 
 Otevřete Power BI u svého pracovního nebo školního účtu a vyberte datovou sadu a tabulku, kterou jste definovali jako výstup úlohy Stream Analytics.
 
@@ -199,17 +203,10 @@ Nyní můžete tuto datovou sadu použít v sestavách a řídicích panelech v 
 ![Snímek obrazovky ukazuje příklad sestavy vytvořený z datové sady v Power BI.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Žádná data?
+
 * Ověřte, že jste správně [nastavili formát data](#set-path-prefix-pattern) na rrrr-mm-dd (s pomlčkami).
-
-## <a name="video"></a>Video
-Noam Robert Zeev ukazuje, jak zpracovávat exportovaná data pomocí Stream Analytics.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
 
 ## <a name="next-steps"></a>Další kroky
 * [Průběžný export](export-telemetry.md)
 * [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 * [Application Insights](./app-insights-overview.md)
-

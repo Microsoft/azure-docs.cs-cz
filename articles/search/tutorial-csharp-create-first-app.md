@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791674"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695120"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
 
@@ -49,9 +49,11 @@ Pouze jedno volání vyhledá index a vrátí výsledky.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se používá existující hostovaný ukázkový index, abyste se mohli soustředit na vytvoření stránky pro hledání, která bude shromažďovat řetězec dotazu pro požadavek a vrátí výsledky. Index obsahuje fiktivní data o hotelu. Jakmile budete mít základní stránku, můžete ji v dalších lekcích rozšířit tak, aby zahrnovala stránkování, omezující vlastnosti a prostředí typu před zahájením.
+V tomto kurzu se používá seznam hotelů-Sample-index, který můžete rychle vytvořit na vlastní vyhledávací službě. Projděte si [rychlý Start pro import dat](search-get-started-portal.md). Index obsahuje fiktivní data o hotelu, která jsou k dispozici jako vestavěný zdroj dat v každé vyhledávací službě.
 
-Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
+První lekce v tomto kurzu vytvoří základní stránku struktury dotazů a hledání, kterou budete rozšiřovat v dalších lekcích, aby zahrnovaly stránkování, omezující vlastnosti a prostředí typu před zahájením.
+
+Hotovou verzi kódu najdete v následujícím projektu:
 
 * [1. Basic – vyhledávání – stránka (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
@@ -59,7 +61,9 @@ Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Document
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vzhledem k tomu, že používáte veřejný index vyhledávání, který je hostovaný Microsoftem, nepotřebujete pro tento kurz službu vyhledávání ani účet Azure.
+* [Vytvoří](search-create-service-portal.md) nebo [najde existující vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+
+* Pomocí pokynů v rychlém startu vytvořte seznam hotelů – vzorový index [: vytvořte vyhledávací index](search-get-started-portal.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Pokud chcete tento projekt vytvořit úplně od začátku, a tak posílit koncep
 
 V této ukázce používáte veřejně dostupná data hotelu. Tato data jsou libovolná kolekce 50 názvů a popisů fiktivního hotelu vytvořená výhradně pro účely poskytování ukázkových dat. Pro přístup k těmto datům zadejte název a klíč rozhraní API.
 
-1. Otevřete **appsettings.js** a nahraďte výchozí řádky následujícím názvem a klíčem. Zde uvedený klíč rozhraní API není příkladem klíče, je to *přesně* klíč, který potřebujete pro přístup k datům hotelu. Váš soubor by teď měl vypadat nějak takto.
+1. Otevřete **appsettings.js** a nahraďte výchozí řádky adresou URL vyhledávací služby (ve formátu `https://<service-name>.search.windows.net` ) a [klíčovým rozhraním API pro správce nebo dotazování](search-security-api-keys.md) služby vyhledávání. Vzhledem k tomu, že nepotřebujete vytvářet ani aktualizovat index, můžete pro tento kurz použít klíč dotazu.
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

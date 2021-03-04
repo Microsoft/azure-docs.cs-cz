@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fac823cc43ed4606db3e7f86bc5c1e36ee50fadb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730299"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -53,7 +53,7 @@ Můžete odeslat informační kanál příspěvku v rozlišeních do 4K a s obno
 > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování, když provádíte více událostí po dlouhou dobu a už jste investovali do místních kodérů. Podívejte se na podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/) .
 >
 
-Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Podívejte se na příklad kódu .NET pro vytvoření předávací průchozí události v [živé události se systémem DVR](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/4a436376e77bad57d6cbfdc02d7df6c615334574/Live/LiveEventWithDVR/Program.cs#L214).
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
@@ -154,7 +154,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání
 
 * Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).
-* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití režimu individuální. Například `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *váš přístupový token*: platný řetězec GUID, který jste nastavili při použití režimu individuální. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *název streamu*: označuje název streamu pro konkrétní připojení. Hodnota názvu datového proudu je obvykle přidána živým kodérem, který používáte. Živý kodér můžete nakonfigurovat tak, aby k popisu připojení používal libovolný název, například: "video1_audio1", "video2_audio1", "Stream".
 
 #### <a name="non-vanity-url"></a>Jiná než individuální adresa URL

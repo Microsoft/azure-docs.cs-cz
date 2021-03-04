@@ -8,16 +8,16 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705105"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
-[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části jak to funguje](./storage-files-active-directory-overview.md#how-it-works) , abyste si vybrali správnou doménovou službu pro ověřování. Instalace se liší v závislosti na zvolené doménové službě. Tento článek se zaměřuje na povolení a konfiguraci služby Azure služba AD DS pro ověřování pomocí sdílených složek Azure.
+[Soubory Azure](storage-files-introduction.md)   podporuje ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím dvou typů doménových služeb: místní Active Directory Domain Services (služba AD DS) a Azure Active Directory Domain Services (Azure služba AD DS). Důrazně doporučujeme, abyste si v [části jak to funguje](./storage-files-active-directory-overview.md#how-it-works) , abyste si vybrali správnou doménovou službu pro ověřování. Nastavení se liší v závislosti na zvolené doménové službě. Tento článek se zaměřuje na povolení a konfiguraci služby Azure služba AD DS pro ověřování pomocí sdílených složek Azure.
 
 Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přečíst si náš [Průvodce plánováním](storage-files-planning.md) , abyste si přečetli následující řadu článků.
 

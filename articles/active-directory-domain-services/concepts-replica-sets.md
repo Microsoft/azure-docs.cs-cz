@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689058"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Klíčové pojmy a funkce pro Azure Active Directory Domain Services sady repliky (Preview)
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Klíčové pojmy a funkce pro Azure Active Directory Domain Services sady replik
 
 Při vytváření spravované domény Azure Active Directory Domain Services (Azure služba AD DS) můžete definovat jedinečný obor názvů. Tento obor názvů je název domény, třeba *aaddscontoso.com*, a dva řadiče domény (DCS) se pak nasadí do vybrané oblasti Azure. Toto nasazení řadičů domény se označuje jako sada replik.
 
 Spravovanou doménu můžete rozšířit tak, aby měla více než jednu sadu replik na jeden tenant služby Azure AD. Sady replik se dají přidat do všech partnerských virtuálních sítí v libovolné oblasti Azure, která podporuje Azure služba AD DS. Další sady replik v různých oblastech Azure poskytují geografickou obnovu po havárii pro starší aplikace, pokud oblast Azure přejde do režimu offline.
-
-Sady replik jsou momentálně ve verzi Preview.
 
 > [!NOTE]
 > Sady replik neumožňují nasadit více jedinečných spravovaných domén v jednom tenantovi Azure. Každá sada replik obsahuje stejná data.
@@ -56,15 +54,11 @@ Následující příklad ukazuje spravovanou doménu se třemi sadami replik pro
 
 Výchozí SKU pro spravovanou doménu je SKU *podniku* , které podporuje několik sad replik. Pokud chcete vytvořit další sady replik, pokud jste změnili na *standardní* SKU, [upgradujte spravovanou doménu](change-sku.md) na *Enterprise* nebo *Premium*.
 
-Maximální počet sad replik podporovaných během verze Preview je čtyři, včetně první repliky vytvořené při vytváření spravované domény.
+Maximální podporovaný počet sad replik je čtyři, včetně první repliky vytvořené při vytváření spravované domény.
 
 Faktura za každou sadu replik je založena na skladové jednotce konfigurace domény. Pokud máte například spravovanou doménu, která používá skladovou položku *Enterprise* a máte tři sady replik, vaše předplatné se účtuje za hodinu pro každou ze tří sad replik.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Můžu v této verzi Preview použít spravovanou doménu v produkčním prostředí?
-
-Sady replik jsou funkcí veřejné verze Preview v Azure AD Domain Services. Můžete použít produkční spravovanou doménu, ale uvědomte si prosím o rozdílech podpory, které existují pro funkce stále ve verzi Preview. Další informace o [verzi Preview najdete v Azure Active Directory verze Preview smlouvy SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Můžu v předplatném vytvořit sadu replik odlišnou od mé spravované domény?
 
@@ -72,7 +66,7 @@ No. Sady replik musí být ve stejném předplatném jako spravovaná doména.
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Kolik sad replik můžu vytvořit?
 
-Verze Preview je omezená na maximálně čtyři sady replik – počáteční sada replik pro spravovanou doménu a tři další sady replik.
+Můžete vytvořit maximálně čtyři sady replik – počáteční sada replik pro spravovanou doménu a tři další sady replik.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Jak se budou informace o uživatelích a skupinách synchronizovat se sadami replik?
 

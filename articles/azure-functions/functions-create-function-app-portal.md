@@ -4,19 +4,18 @@ description: Naučíte se postup vytvoření první funkce Azure Function pro pr
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980932"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732173"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
 Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž by bylo nutné nejprve vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto článku se naučíte, jak pomocí Azure Functions vytvořit funkci triggeru HTTP "Hello World" v Azure Portal.
 
->[!NOTE]
->Úpravy v portálu se podporují jenom pro funkce skriptů JavaScript, PowerShell, TypeScript a C#.<br><br>Pro knihovny tříd jazyka C#, Java a Python můžete vytvořit aplikaci Function App na portálu, ale musíte také vytvořit funkce místně a pak je publikovat do Azure. 
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
 Místo toho doporučujeme [vyvíjet funkce místně](functions-develop-local.md) a publikovat je do aplikace Function App v Azure.  
 Pomocí jednoho z následujících odkazů můžete začít se zvoleným místním vývojovým prostředím a jazykem:

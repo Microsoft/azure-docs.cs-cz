@@ -7,12 +7,12 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6897a863a0fd399d3c963d876404680026682dd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735416"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Kurzy, které používají služby Azure s Azure Data Lake Storage Gen2
 
@@ -22,6 +22,7 @@ Tento článek obsahuje odkazy na kurzy, které ukazují, jak používat různé
 
 | Služba Azure | Podrobný průvodce | 
 |---------------|-------------------|
+| Azure Synapse Analytics | [Začínáme s Azure synapse Analytics](../../synapse-analytics/get-started.md) |
 | Azure Data Factory | [Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 | Azure Databricks | [Použití se službou Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) |
 | Azure Databricks | [Extrakce, transformace a načtení dat pomocí Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
@@ -29,7 +30,6 @@ Tento článek obsahuje odkazy na kurzy, které ukazují, jak používat různé
 | Azure Event Grid | [Implementace vzoru Data Lake Capture pro aktualizaci rozdílové tabulky datacihly](data-lake-storage-events.md) |
 | Azure Machine Learning | [Přístup k datům ve službě Azure Storage](../../machine-learning/how-to-access-data.md) |
 | Azure Data Box | [Pomocí Azure Data Box migrujte data z místního úložiště HDFS do Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
-| Azure Synapse Analytics | [Začínáme s Azure synapse Analytics](../../synapse-analytics/get-started.md) |
 | HDInsight | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [Extrakce, transformace a načtení dat pomocí Apache Hive ve službě Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [Analyzovat data v Data Lake Storage Gen2 pomocí Power BI](/power-query/connectors/datalakestorage) |

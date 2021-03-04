@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687817"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -46,13 +46,7 @@ Uživatelé typu Host, kteří vidí chybu "hlavička je příliš dlouhá", moh
 
 ## <a name="sign-in-endpoints"></a>Koncové body přihlášení
 
-Uživatelé typu Host Google se teď můžou přihlašovat k aplikacím pro více tenantů nebo Microsoftu pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Následují příklady běžných koncových bodů:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí přihlašovacích údajů Google.
+Uživatelé typu Host Google se teď můžou přihlašovat k aplikacím pro více tenantů nebo Microsoftu pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí přihlašovacích údajů Google.
 
 Uživatelé typu Host Google můžou také používat koncové body aplikací, které obsahují informace o vašem tenantovi, například:
 

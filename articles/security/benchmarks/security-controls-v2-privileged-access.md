@@ -4,19 +4,21 @@ description: Privilegovaný přístup k Azure Security test v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720575"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
 Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure. To zahrnuje řadu ovládacích prvků pro ochranu modelu správy, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku.
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: privilegovaný přístup.](../../governance/policy/samples/azure-security-benchmark#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Ochrana a omezení vysoce privilegovaných uživatelů
 
@@ -30,7 +32,7 @@ Omezte počet vysoce privilegovaných uživatelských účtů a chraňte tyto ú
 
 - Správce privilegovaných rolí: uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure AD i v Azure AD Privileged Identity Management (PIM). Tato role navíc umožňuje správu všech aspektů PIM a administrativních jednotek.
 
-Poznámka: Pokud používáte vlastní role s přiřazenými konkrétními privilegovanými oprávněními, můžete mít i jiné kritické role, které je potřeba řídit. A můžete také chtít použít podobné ovládací prvky pro účet správce důležitých obchodních prostředků.  
+Poznámka: Pokud používáte vlastní role s přiřazenými konkrétními privilegovanými oprávněními, můžete mít i jiné kritické role, které je potřeba řídit. A můžete také chtít použít podobné ovládací prvky pro účet správce důležitých obchodních prostředků.
 
 S využitím služby Azure AD Privileged Identity Management (PIM) můžete povolit privilegovaný přístup podle potřeby (JIT) k prostředkům Azure a Azure AD. JIT uděluje dočasná oprávnění k provádění privilegovaných úloh, pouze když je uživatelé potřebují. PIM může také generovat upozornění zabezpečení v případě podezřelých nebo nebezpečných aktivit ve vaší organizaci Azure AD.
 
@@ -155,11 +157,11 @@ Pomocí funkcí správy opravňujících ke službě Azure AD můžete automatiz
 |--|--|--|--|
 | PA – 6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých rolí, jako jsou správci, vývojáři a provozovatelé důležitých služeb. Pro úlohy správy Používejte vysoce zabezpečené uživatelské pracovní stanice nebo Azure bastionu. K nasazení zabezpečené a spravované uživatelské pracovní stanice pro úlohy správy použijte Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
+Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých rolí, jako je správce, vývojář a kritický operátor služby. Pro úlohy správy Používejte vysoce zabezpečené uživatelské pracovní stanice nebo Azure bastionu. K nasazení zabezpečené a spravované uživatelské pracovní stanice pro úlohy správy použijte Azure Active Directory, Microsoft Defender Advanced Threat Protection (ATP) nebo Microsoft Intune. Zabezpečená pracovní stanice se dají centrálně spravovat tak, aby vynutila zabezpečenou konfiguraci, včetně silného ověřování, standardních hodnot softwaru a hardwaru a omezeného logického a síťového přístupu. 
 
-- [Pochopení pracovních stanic s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Pochopení pracovních stanic s privilegovaným přístupem](/security/compass/privileged-access-deployment)
 
-- [Nasazení pracovní stanice s privilegovaným přístupem](/security/compass/privileged-access-deployment)
+- [Nasazení pracovní stanice s privilegovaným přístupem](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Odpovědnost:** Zákazník
 
@@ -178,7 +180,8 @@ Zabezpečené, izolované pracovní stanice jsou kriticky důležité pro zabezp
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Řízení přístupu na základě role Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, objektům služby skupin a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell a Azure Portal. Oprávnění, která přiřadíte k prostředkům prostřednictvím Azure RBAC, by měla být vždy omezená na to, co role vyžadují. Omezená oprávnění přidávají přístup k funkcím PIM (just in time) Azure AD Privileged Identity Management (PIM) a tato oprávnění by se měla pravidelně kontrolovat.
-Využijte k přidělování oprávnění předdefinované role a vlastní role vytvářejte pouze v případě potřeby. 
+
+Pomocí integrovaných rolí můžete přidělit oprávnění a v případě potřeby vytvářet pouze vlastní role.
 
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 
@@ -192,9 +195,9 @@ Využijte k přidělování oprávnění předdefinované role a vlastní role v
 
 - [Zabezpečení aplikací a DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Správa identit a klíčů](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

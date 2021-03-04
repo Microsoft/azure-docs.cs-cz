@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5506d2da0ccf09de7db7aff744984ae93c59fd32
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c375c3dc9f4c5fdb20270797eb55b3a20a6e214
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698276"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -89,17 +89,17 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 
 ### <a name="error"></a>Chyba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Global. Error | Tomcat. Global. Error | Počet | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| System. CPU. Usage | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém (zastaralé a nedoporučuje se ho používat). Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
 >| Process. CPU. Usage | Procento využití procesoru aplikací | Procento | Poslední využití CPU pro proces prostředí Java Virtual Machine (zastaralé a nedoporučuje se ho používat). Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
->| AppCpuUsage | Využití CPU aplikací (Preview) | Procento | Poslední využití CPU procesu JVM proti procesoru přidělenému této aplikaci, hodnota typu Double v rozsahu [0,0, 1,0]. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
+>| AppCpuUsage | Využití CPU pro aplikaci | Procento | Poslední využití CPU procesu JVM proti procesoru přidělenému této aplikaci, hodnota typu Double v rozsahu [0,0, 1,0]. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
 >| JVM. Memory. potvrzený | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
 >| JVM. Memory .Ed – použito | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
 >| JVM. Memory. max | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
@@ -113,7 +113,7 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 ### <a name="performance-net"></a>Výkon (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|------|-----------------------------|------|---------|
 >| Využití procesoru       | využití procesoru      | Procento      | Procento využití procesoru procesu vzhledem ke všem prostředkům systémového procesoru [0-100]. |
 >| Pracovní sada     | pracovní sada    | Megabajty    | Množství pracovní sady používané procesem. |
@@ -139,7 +139,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 
 ### <a name="request"></a>Žádost
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Global. odesláno | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
 >| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
@@ -149,7 +149,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 ### <a name="request-net"></a>Požadavek (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|------|-----------------------------|------|---------|
 >| Počet žádostí za sekundu | požadavky – za sekundu | Počet | Frekvence požadavků. |
 >| Celkový počet požadavků | celkem – požadavky | Počet | Celkový počet požadavků |
@@ -160,7 +160,7 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
 >| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
 >| Tomcat. Sessions. Alive. max | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s ukončenou platností |

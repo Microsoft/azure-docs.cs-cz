@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492293"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692398"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
-
 
 Tento článek poskytuje kód pro import, transformaci a přesouvání dat mezi kroky v Azure Machine Learningovém kanálu. Přehled toho, jak data fungují v Azure Machine Learning, najdete v tématu [přístup k datům ve službě Azure Storage](how-to-access-data.md). Výhody a strukturu Azure Machine Learningch kanálů najdete v tématu [co jsou Azure Machine Learning kanály?](concept-ml-pipelines.md).
 
@@ -29,7 +28,7 @@ Tento článek vám ukáže, jak:
 - Rozdělit `Dataset` data na podmnožiny, jako jsou například školení a podmnožiny ověřování
 - Vytvoření `OutputFileDatasetConfig` objektů pro přenos dat do dalšího kroku kanálu
 - Použití `OutputFileDatasetConfig` objektů jako vstupu do postupu kanálu
-- Vytvořit nové objekty, které chcete `Dataset` `OutputFileDatasetConfig` zachovat
+- Vytváření nových `Dataset` objektů z `OutputFileDatasetConfig` vámi wisƒh k zachování
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,10 +63,12 @@ Existuje mnoho způsobů, jak vytvářet a registrovat `Dataset` objekty. Tabulk
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 Další možnosti vytváření datových sad s různými možnostmi a z různých zdrojů, jejich registrace a kontrola v uživatelském rozhraní Azure Machine Learning, porozumět způsobu, jakým velikost dat komunikuje s výpočetní kapacitou a jejich verze, najdete v tématu [vytvoření Azure Machine Learning datových sad](how-to-create-register-datasets.md). 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 Jakmile krok počátečního kanálu zapíše do cesty nějaká data `OutputFileDatasetConfig` a bude se jednat o výstup tohoto počátečního kroku, dá se použít jako vstup do pozdějšího kroku. 
 
-V následujícím kódu 
+V následujícím kódu: 
 
 * `step1_output_data` označuje, že výstup PythonScriptStep se `step1` zapisuje do úložiště dat adls Gen 2 `my_adlsgen2` v režimu přístupu upload. Přečtěte si další informace o tom, jak [nastavit oprávnění role](how-to-access-data.md#azure-data-lake-storage-generation-2) , aby bylo možné zapisovat data zpátky do úložiště adls Gen 2. 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>Odstranit `OutputFileDatasetConfig` obsah, pokud už není potřeba
+
+Azure neodstraní automaticky dočasná data zapsaná pomocí `OutputFileDatasetConfig` . Abyste se vyhnuli poplatkům za úložiště pro velké objemy nepotřebných dat, měli byste buď:
+
+* Programové odstranění zprostředkujících dat na konci spuštění kanálu, pokud už není potřeba
+* Použití BLOB Storage s krátkodobou zásadou úložiště pro mezilehlá data (viz [optimalizace nákladů díky automatizaci úrovní přístupu Azure Blob Storage](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Pravidelná kontrola a odstraňování již nepotřebných dat
+
+Další informace najdete v tématu [plánování a Správa nákladů pro Azure Machine Learning](concept-plan-manage-cost.md).
 
 ## <a name="next-steps"></a>Další kroky
 

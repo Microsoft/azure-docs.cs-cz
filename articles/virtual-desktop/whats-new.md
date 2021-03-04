@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737490"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -39,6 +39,26 @@ V těchto článcích najdete informace o aktualizacích pro naše klienty pro v
 ## <a name="fslogix-updates"></a>FSLogix aktualizace
 
 Zajímá se o nejnovějších aktualizacích pro FSLogix? Podívejte se, [co je nového na FSLogix](/fslogix/whats-new).
+
+## <a name="february-2021"></a>Únor 2021
+
+Tady je postup, který se změnil v únoru 2021.
+
+### <a name="portal-experience"></a>Prostředí portálu
+
+Vylepšili jsme Azure Portal prostředí následujícími způsoby:
+
+- Režim hromadného vyprázdnění na hostitelích na kartě mřížka hostitele relace. 
+- Připojení aplikace MSIX je teď dostupné ve verzi Public Preview.
+- Informace o přehledu pevného fondu hostitelů pro tmavý režim
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>Úložiště metadat EU teď ve verzi Public Preview
+
+Nyní hostuje veřejnou verzi Preview Evropy (EU) jako možnost úložiště pro metadata služby ve virtuálním počítači Windows. Zákazníci si můžou při vytváření objektů služby vybrat mezi západkou nebo Severní Evropa. Objekty služby a metadata pro fondy hostitelů budou uloženy v geograficky Azure přidružené k jednotlivým oblastem. Pokud se chcete dozvědět víc, přečtěte si [náš Blogový příspěvek, který oznamuje verzi Public Preview](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Týmy na aktualizace modulu plug-in virtuálních klientů Windows
+
+Vylepšili jsme kvalitu volání videa v modulu plug-in virtuálních klientů Windows tím, že vyřešíte nejčastěji nahlášené problémy, například když se obrazovka náhle rozbije nebo když se video a zvuk desynchronizují. Tato vylepšení by měla zvýšit výkon u zobrazení s jedním videem pomocí aktivního přepínání mluvčího. Také jsme vyřešili problém, kdy v týmech nejsou k dispozici hardwarová zařízení se speciálními znaky.
 
 ## <a name="january-2021"></a>Leden 2021
 

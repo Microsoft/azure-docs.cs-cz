@@ -10,8 +10,6 @@
   items:
     - name: Technické možnosti zabezpečení
       href: technical-capabilities.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: security-controls.md
 - name: Platforma a infrastruktura Azure
   items:
     - name: Zabezpečení infrastruktury

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709168"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Řešení potíží s Azure Monitor pro virtuální počítače s Windows (Preview)
 
@@ -42,7 +42,7 @@ Pokud se vaše data nezobrazují správně, ověřte svou konfiguraci, oprávně
     - Přístup pro čtení do skupin prostředků předplatného, které obsahují hostitele relace virtuálních klientů Windows 
     - Přístup pro čtení k pracovnímu prostoru Log Analytics
 
-- Je možné, že budete muset v bráně firewall serveru otevřít odchozí porty, aby bylo možné Azure Monitor odesílat data na portál, viz téma [Odchozí porty](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+- Je možné, že budete muset v bráně firewall serveru otevřít odchozí porty, aby bylo možné Azure Monitor odesílat data na portál, viz téma [Odchozí porty](../azure-monitor/app/ip-addresses.md). 
 
 - Nezobrazuje se data z nedávné aktivity? Možná budete chtít počkat na 15 minut a aktualizovat informační kanál. Azure Monitor je doba latence 15 minut pro naplnění dat protokolu. Další informace najdete v tématu [čas příjmu dat protokolu v Azure monitor](../azure-monitor/logs/data-ingestion-time.md).
 
@@ -62,8 +62,8 @@ Přečtěte si další informace o datových termínech v [glosáři Azure monit
 
 Pokud chcete monitorovat další čítače výkonu nebo události, můžete jim povolit, aby se odesílaly do vašeho pracovního prostoru Log Analytics a mohli je monitorovat v diagnostice hostitele: prohlížeč hostitele. 
 
-- Postup přidání čítačů výkonu najdete v tématu [Konfigurace čítačů výkonu](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters) .
-- Chcete-li přidat události systému Windows, přečtěte si téma [Konfigurace protokolů událostí systému Windows](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+- Postup přidání čítačů výkonu najdete v tématu [Konfigurace čítačů výkonu](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters) .
+- Chcete-li přidat události systému Windows, přečtěte si téma [Konfigurace protokolů událostí systému Windows](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
 
 Nemůžete najít datový bod, který by mohl pomáhat diagnostikovat problém? Pošlete nám svůj názor!
 

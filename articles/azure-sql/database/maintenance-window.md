@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679292"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692806"
 ---
 # <a name="maintenance-window-preview"></a>Časové období údržby (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Další informace o událostech údržby najdete v tématu [plánování událos
 
 Azure provádí plánované aktualizace údržby pro prostředky spravované instance Azure SQL Database a SQL pravidelně, které často zahrnují aktualizace základního hardwaru, softwaru, včetně základního operačního systému (OS) a stroje SQL. Během aktualizace údržby jsou prostředky plně dostupné a přístupné, ale některé z aktualizací údržby vyžadují převzetí služeb při selhání, protože Azure při použití aktualizací údržby (osm sekund v průměru) převezme instance v režimu offline.  K plánovaným aktualizacím údržby dochází po každých 35 dní v průměru, což znamená, že zákazník může očekávat přibližně jednu plánovanou událost údržby za měsíc na Azure SQL Database nebo spravovanou instanci SQL a jenom v případě, že jsou sloty časového období údržby vybrané zákazníkem.   
 
-Časový interval pro správu a údržbu je určený pro obchodní úlohy, které jsou citlivé na potenciální přerušení připojení, které může vést k plánovaným událostem údržby během výchozího okna.  
+Časový interval pro správu a údržbu je určený pro obchodní úlohy, které nejsou odolné proti problémům s přerušovaným připojením, které můžou vést k plánovaným událostem údržby.
 
 Časové období údržby se dá nakonfigurovat pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku nebo Azure API. Dá se nakonfigurovat při vytváření nebo pro existující databáze SQL a spravované instance SQL.
 
@@ -37,15 +37,15 @@ Azure provádí plánované aktualizace údržby pro prostředky spravované ins
 Ve výchozím nastavení se všechny databáze SQL Azure a databáze spravované instance aktualizují jenom během 17:00 na místní čas, aby se předešlo výpadkům v pracovní době. Místní čas je určený [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , která je hostitelem prostředku. Aktualizace údržby můžete dále upravit na čas, který je pro vaši databázi vhodný, a to výběrem ze dvou dalších slotů časového období údržby:
 
 * **Výchozí** okno, 17:00 8:00 místní čas v pondělí – neděle 
-* Okno pracovního dne, 10PM se na 6:00 místní čas pondělí – čtvrtek: **vyžaduje výslovný souhlas se zákazníkem** 
-* Víkendové okno, 10PM do 6:00 místního času v pátek – neděle: **vyžaduje výslovný souhlas se zákazníkem** .  
+* Okno pracovního dne, 10PM se na 6:00 místní čas pondělí – čtvrtek
+* Víkendové okno, 10PM se na 6:00 místního času v pátek – neděle
 
 Po provedení výběru časového období údržby budou všechny plánované aktualizace údržby provedeny pouze v okně podle vašeho výběru.   
 
 > [!Note]
 > Kromě plánovaných aktualizací údržby můžou ve výjimečných případech neplánované události údržby způsobit nedostupnost. 
 
-### <a name="cost"></a>Náklady
+### <a name="cost-and-eligibility"></a>Náklady a nárok
 
 Výběr časového období údržby je zdarma pro následující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/)předplatného: průběžné platby, poskytovatel Cloud Solution Provider (CSP), Microsoft Enterprise nebo Microsoft Customer Agreement.
 

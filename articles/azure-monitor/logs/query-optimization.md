@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612053"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722955"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, existují případy, kdy můžete výrazně zvýšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -322,7 +322,7 @@ Všechny protokoly v protokolu Azure Monitor jsou rozdělené podle sloupce **Ti
 
 Dotaz s časovým rozsahem více než 15 dní je považován za dotaz, který spotřebovává nadměrné prostředky. Dotaz s časovým rozsahem více než 90 dní je považován za urážlivý dotaz a může být omezen.
 
-Časový rozsah lze nastavit pomocí voliče časového rozsahu na obrazovce Log Analytics, jak je popsáno v tématu [rozsah dotazu protokolu a časový rozsah v Azure Monitor Log Analytics](../log-query/scope.md#time-range). Toto je doporučená metoda, protože vybraný časový rozsah je předán do back-endu pomocí metadat dotazu. 
+Časový rozsah lze nastavit pomocí voliče časového rozsahu na obrazovce Log Analytics, jak je popsáno v tématu [rozsah dotazu protokolu a časový rozsah v Azure Monitor Log Analytics](./scope.md#time-range). Toto je doporučená metoda, protože vybraný časový rozsah je předán do back-endu pomocí metadat dotazu. 
 
 Alternativním způsobem je explicitní zahrnutí podmínky [WHERE](/azure/kusto/query/whereoperator) na **TimeGenerated** v dotazu. Tuto metodu byste měli použít, protože zajišťuje, že časové rozpětí je vyřešeno, a to i v případě, že je dotaz použit z jiného rozhraní.
 Měli byste se ujistit, že všechny části dotazu mají **TimeGenerated** filtry. Když dotaz obsahuje poddotazy načítající data z různých tabulek nebo stejné tabulky, každá z nich musí zahrnovat vlastní podmínku [WHERE](/azure/kusto/query/whereoperator) .
@@ -342,7 +342,7 @@ Perf
 ) on Computer
 ```
 
-Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Příklad:
+Běžným případem, kdy dojde k takové chybě, je použití [arg_max ()](/azure/kusto/query/arg-max-aggfunction) k vyhledání nejaktuálnějšího výskytu. Například:
 
 ```Kusto
 Perf

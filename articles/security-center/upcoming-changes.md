@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705088"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -31,9 +31,25 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 
 ## <a name="planned-changes"></a>Plánované změny
 
+- [Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure.](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - [Vyřazení 11 výstrah v programu Azure Defender jako vyřazení](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure. 
+
+**Odhadované datum změny:** Březen 2021
+
+Security Center předá data pro téměř všechna doporučení zabezpečení, aby je Azure Advisor, která zase zapisuje do [protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md).
+
+V případě dvou doporučení se data zapisují současně přímo do protokolu aktivit Azure. Tato změna Security Center zastaví zápis dat těchto starších doporučení zabezpečení přímo do protokolu aktivit. Místo toho vyexportujeme data, abychom Azure Advisori jako u všech dalších doporučení. 
+
+Existují dvě starší verze doporučení:
+- Na vašich počítačích by se měly vyřešit problémy stavu aplikace Endpoint Protection.
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+
+Pokud jste přistupovali k informacím o těchto dvou doporučeních v kategorii "doporučení typu TaskDiscovery" protokolu aktivit, nebude už k dispozici.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému. 
 

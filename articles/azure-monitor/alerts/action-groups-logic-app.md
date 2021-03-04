@@ -4,14 +4,14 @@ description: Naučte se vytvořit akci aplikace logiky, která bude zpracovávat
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/19/2021
 ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: adef1f729cbecd08b2cf99231423287bdc4c6ae0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701174"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak nastavit a aktivovat aplikaci logiky pro vytvo
 
 ## <a name="overview"></a>Přehled
 
-Když se aktivuje výstraha Azure Monitor, zavolá [skupinu akcí](../platform/action-groups.md). Skupiny akcí umožňují aktivovat jednu nebo více akcí, aby bylo možné upozornit ostatní na výstrahu a zároveň ji opravit.
+Když se aktivuje výstraha Azure Monitor, zavolá [skupinu akcí](./action-groups.md). Skupiny akcí umožňují aktivovat jednu nebo více akcí, aby bylo možné upozornit ostatní na výstrahu a zároveň ji opravit.
 
 Obecný proces:
 
@@ -35,29 +35,15 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Vytvoření upozornění protokolu aktivit: Správa
 
-1.  V Azure Portal v levém horním rohu vyberte **vytvořit prostředek** .
+1. [Vytvoření aplikace logiky](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  Vyhledejte a vyberte **Aplikace logiky** a pak vyberte **vytvořit**.
+2.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
 
-3.  Zadejte **název** aplikace logiky, vyberte **skupinu prostředků** a tak dále.
+1. V dialogu pro, **kdy se přijme požadavek HTTP**, vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-    ![Vytvoření aplikace logiky](media/action-groups-logic-app/create-logic-app-dialog.png "Vytvoření aplikace logiky")
+    ![Snímek obrazovky, který zobrazuje dialogové okno žádosti o vytvoření schématu opion, když se vygenerovala možnost použít ukázkovou datovou část se schématem H T T ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  Vyberte **vytvořit** a vytvořte aplikaci logiky. Automaticky otevíraná zpráva znamená, že se vytvoří aplikace logiky. Výběrem **Spustit prostředek** otevřete **Návrháře Logic Apps**.
-
-5.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
-
-    ![Triggery aplikace logiky](media/action-groups-logic-app/logic-app-triggers.png "Triggery aplikace logiky")
-
-6.  Výběrem **Upravit** změňte aktivační událost požadavku HTTP.
-
-    ![Aktivační události požadavku HTTP](media/action-groups-logic-app/http-request-trigger-shape.png "Aktivační události požadavku HTTP")
-
-7.  Vyberte **K vygenerování schématu použijte ukázkovou datovou část**.
-
-    ![Použít ukázkovou datovou část](media/action-groups-logic-app/use-sample-payload-button.png "Použít ukázkovou datovou část")
-
-8.  Zkopírujte a vložte následující datovou část ukázkového souboru do dialogového okna:
+3.  Zkopírujte a vložte následující datovou část ukázkového souboru do dialogového okna:
 
     ```json
         {
@@ -128,7 +114,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 14. V horní části **návrháře Logic Apps** vyberte **Uložit** a uložte svoji aplikaci logiky.
 
-15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](../platform/action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
+15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](./action-groups.md) k jeho vytvoření. Nezapomeňte uložit změny.
 
     ![Aktualizace skupiny akcí](media/action-groups-logic-app/update-action-group.png "Aktualizace skupiny akcí")
 
@@ -138,8 +124,8 @@ Když výstraha příště vyvolá vaši skupinu akcí, vaše aplikace logiky se
 
 Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoření výstrahy je podobný jako při [vytváření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative), ale s několika změnami:
 
-- Kroky 1 až 7 jsou stejné.
-- Pro krok 8 použijte následující vzorovou datovou část pro aktivační událost požadavku HTTP:
+- Kroky 1 až 3 jsou stejné.
+- V kroku 4 použijte následující vzorovou datovou část pro aktivační událost požadavku HTTP:
 
     ```json
     {
@@ -183,8 +169,8 @@ Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoř
     }
     ```
 
--  Kroky 9 a 10 jsou stejné.
--  Pro kroky 11 až 14 použijte následující postup:
+-  Kroky 5 a 6 jsou stejné.
+-  V krocích 7 až 11 použijte následující postup:
 
    1. Vyberte **+** **Nový krok** a pak zvolte **Přidat podmínku**. Nastavte následující podmínky, aby se aplikace logiky vykonává pouze v případě, že vstupní data odpovídají hodnotám uvedeným níže.  Při zadávání hodnoty verze do textového pole vložte uvozovky kolem ("0.1.1"), abyste se ujistili, že se vyhodnotí jako řetězec, nikoli číselný typ.  Systém nezobrazuje uvozovky, pokud se vrátíte na stránku, ale podkladový kód stále udržuje typ řetězce.   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +212,8 @@ Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoř
 
 Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative), ale s několika změnami:
 
-- Kroky 1 až 7 jsou stejné.
-- Pro krok 8 použijte následující vzorovou datovou část pro aktivační událost požadavku HTTP:
+- Kroky 1 až 3 jsou stejné.
+- V kroku 4 použijte následující vzorovou datovou část pro aktivační událost požadavku HTTP:
 
     ```json
     {
@@ -271,8 +257,8 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
     }
     ```
 
-- Kroky 9 a 10 jsou stejné.
-- Pro kroky 11 až 14 použijte následující postup:
+- Kroky 5 a 6 jsou stejné.
+- V krocích 7 až 11 použijte následující postup:
 
   1. Vyberte **+** **Nový krok** a pak zvolte **Přidat podmínku**. Nastavte následující podmínky, aby se aplikace logiky vykonává pouze v případě, že vstupní data odpovídají následujícím hodnotám. Při zadávání hodnoty verze do textového pole vložte uvozovky kolem ("2,0"), abyste se ujistili, že se vyhodnotí jako řetězec, nikoli číselný typ.  Systém nezobrazuje uvozovky, pokud se vrátíte na stránku, ale podkladový kód stále udržuje typ řetězce. 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +280,6 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
 Logic Apps má řadu různých konektorů, které umožňují aktivovat akce v široké škále aplikací a databází. Časová rezerva, SQL Server, Oracle, Salesforce, jsou jenom příklady. Další informace o konektorech najdete v tématu [konektory Logic](../../connectors/apis-list.md)Apps.  
 
 ## <a name="next-steps"></a>Další kroky
-* Získejte [Přehled výstrah protokolu aktivit Azure](../platform/alerts-overview.md) a Naučte se přijímat výstrahy.  
+* Získejte [Přehled výstrah protokolu aktivit Azure](./alerts-overview.md) a Naučte se přijímat výstrahy.  
 * Naučte se [konfigurovat výstrahy, když se publikuje oznámení Azure Service Health](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Přečtěte si další informace o [skupinách akcí](../platform/action-groups.md).
-
+* Přečtěte si další informace o [skupinách akcí](./action-groups.md).

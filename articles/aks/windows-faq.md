@@ -5,12 +5,12 @@ description: Na nejčastějších dotazech se můžete podívat, když ve služb
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739572"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Nejčastější dotazy týkající se fondů uzlů Windows serveru v AKS
 
@@ -54,6 +54,8 @@ Chcete-li získat nejnovější opravy pro uzly systému Windows, můžete buď 
 
 Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
 
+V uzlech systému Windows v clusterech AKS je také povoleno [přímé vrácení serveru (DSR)][dsr] ve výchozím nastavení, pokud je povolená možnost Calico.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>Zachovává se podpora zdrojové IP adresy klienta?
 
 V současné době [zachování IP adresy zdrojového klienta][client-source-ip] není u uzlů Windows podporováno.
@@ -91,7 +93,7 @@ Název musí být delší než 6 (šest) znaků. Toto je aktuální omezení AKS
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Jsou všechny funkce podporované uzly Windows?
 
-Zásady sítě a kubenet se v tuto chvíli nepodporují s uzly Windows.
+Kubenet se v tuto chvíli nepodporuje u uzlů Windows.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Můžu spustit řadiče příchozího přenosu dat v uzlech Windows?
 
@@ -197,3 +199,4 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

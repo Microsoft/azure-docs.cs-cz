@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718178"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
@@ -80,7 +80,7 @@ Následující parametry používá úloha nabízení konfigurace aplikace:
 
 - **Předplatné Azure**: rozevírací seznam obsahující dostupná připojení služby Azure. Pokud chcete aktualizovat a aktualizovat seznam dostupných připojení služby Azure, klikněte na tlačítko **Aktualizovat předplatné Azure** napravo od textového pole.
 - **Název konfigurace aplikace**: rozevírací seznam, který načte vaše dostupná úložiště konfigurace pod vybraným předplatným. Pokud chcete aktualizovat a aktualizovat seznam dostupných úložišť konfigurací, stiskněte tlačítko **aktualizovat název konfigurace aplikace** napravo od textového pole.
-- **Cesta ke konfiguračnímu souboru**: cesta ke konfiguračnímu souboru. Můžete procházet artefaktem sestavení a vybrat konfigurační soubor. ( `...` tlačítko napravo od textového pole).
+- **Cesta ke konfiguračnímu souboru**: cesta ke konfiguračnímu souboru. Můžete procházet artefaktem sestavení a vybrat konfigurační soubor. ( `...` tlačítko napravo od textového pole). Podporované formáty souborů jsou: YAML, JSON, Properties.
 - **Oddělovač**: oddělovač, který se používá k sloučení souborů. JSON a. yml.
 - **Hloubka**: Hloubka, na kterou budou soubory. JSON a. yml shrnuté.
 - **Prefix**: řetězec, který je připojený k začátku každého klíče, který se odeslal do úložiště konfigurace aplikace.

@@ -7,15 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: e790486758d6a5e3181df01f85e1213cca3fa12d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701004"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
-Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](../learn/tutorial-logs-dashboards.md).   
+Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](../visualize/tutorial-logs-dashboards.md).   
 
 V tomto kurzu se naučíte:
 
@@ -31,7 +31,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="create-alerts"></a>Vytváření upozornění
 Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla mohou v pravidelných intervalech automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů.  Můžete vytvářet upozornění na základě konkrétních metrik výkonu, vytvoření určitých událostí, chybějící události nebo počtu událostí vytvořených v konkrétním časovém intervalu.  Upozornění můžete například použít, když chcete oznámit, že průměrné využití procesoru překročilo určitou prahovou hodnotu, že byla zjištěna chybějící aktualizace nebo ke generování události, protože bylo zjištěno, že neběží určitá služba Windows nebo linuxový démon (proces).  Pokud výsledky prohledávání protokolu odpovídají určitým kritériím, vytvoří se upozornění. Pravidlo pak může automaticky spustit jednu nebo více akcí. Může vás třeba upozornit nebo volat jiný proces. 
 
-V následujícím příkladu vytvoříte pravidlo upozornění na naměřenou hodnotu, které vychází z dotazu na *využití procesoru virtuálních počítačů Azure* uloženého v [kurzu o vizualizaci dat](../learn/tutorial-logs-dashboards.md).  Upozornění se vytvoří pro každý virtuální počítač, který překročí prahovou hodnotu 90 %.  
+V následujícím příkladu vytvoříte pravidlo upozornění na naměřenou hodnotu, které vychází z dotazu na *využití procesoru virtuálních počítačů Azure* uloženého v [kurzu o vizualizaci dat](../visualize/tutorial-logs-dashboards.md).  Upozornění se vytvoří pro každý virtuální počítač, který překročí prahovou hodnotu 90 %.  
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V levém podokně vyberte **Upozornění** a potom nahoře na stránce klikněte na **Nové pravidlo upozornění** a vytvořte nové upozornění.<br><br> ![Vytvoření nového pravidla upozornění](./media/tutorial-response/alert-rule-02.png)<br>
@@ -69,4 +69,4 @@ V tomto kurzu jste zjistili, jak můžou pravidla upozornění proaktivně ident
 Na tomto odkazu najdete předem připravené ukázky skriptů pro Log Analytics.  
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů pro Log Analytics](../samples/powershell-samples.md)
+> [Ukázky skriptů pro Log Analytics](../powershell-samples.md)

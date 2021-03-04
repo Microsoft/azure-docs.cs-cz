@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725352"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -26,6 +26,7 @@ Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná ř
 - **SQL Server ve virtuálních počítačích Azure**  -   [Zálohování SQL Server databází běžících na virtuálních počítačích Azure](backup-azure-sql-database.md)
 - **SAP HANA databáze na virtuálních počítačích Azure**  -  [Zálohování SAP HANA databází běžících na virtuálních počítačích Azure](backup-azure-sap-hana-database.md)
 - **Servery Azure Database for PostgreSQL (Preview)**  -   [Zálohování databází Azure PostgreSQL a uchovávání záloh po dobu až 10 let](backup-azure-database-postgresql.md)
+- **Objekty blob Azure (Preview)**  -  [Přehled operačního zálohování pro objekty blob Azure (ve verzi Preview)](blob-backup-overview.md)
 
 ![Přehled Azure Backup](./media/backup-overview/azure-backup-overview.png)
 
@@ -38,7 +39,7 @@ Azure Backup přináší tyto klíčové výhody:
 - **Snadné škálování** – Azure Backup využívá základní výkon a neomezené škálování cloudu Azure pro zajištění vysoké dostupnosti bez režie údržby a monitorování.
 - **Získání neomezeného přenosu dat**: Azure Backup neomezuje množství příchozích a odchozích dat, která přenášíte, nebo poplatky za přenesená data.
   - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
-  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Přečtěte si další informace](backup-azure-backup-import-export.md).
+  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**: Azure Backup poskytuje řešení pro zabezpečení dat [při přenosu](backup-azure-security-feature.md) a [v klidovém](backup-azure-security-feature-cloud.md)provozu.
 - **Centralizované monitorování a Správa**: Azure Backup poskytují [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez jakékoli další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav [pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 - **Získání záloh konzistentních vzhledem** k aplikacím: záloha konzistentní vzhledem k aplikacím znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikacemi, které zajistí, že se pro obnovení dat nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.

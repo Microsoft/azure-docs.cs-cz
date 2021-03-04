@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739207"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway požadavky na systém
 
@@ -32,7 +32,7 @@ Základní hostitelský systém pro Data Box Gateway je schopný vyhradit násle
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Virtuální procesory (jádra)   | Minimálně 4 |
-| Memory (Paměť)  | Minimálně 8 GB|
+| Memory (Paměť)  | Minimální 8 GB. Důrazně doporučujeme aspoň 16 GB. |
 | Dostupnost|Jeden uzel|
 | Disky| Disk operačního systému: 250 GB <br> Datový disk: minimálně 2 TB, dynamicky zřizovaný, musí být zálohován pomocí disků SSD|
 | Síťová rozhraní|1 nebo více rozhraní virtuální sítě|

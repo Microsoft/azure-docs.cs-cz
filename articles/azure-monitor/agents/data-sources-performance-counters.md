@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711548"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu od agentů Log Analytics v častých intervalech pro analýzu téměř v reálném čase (NRT) společně s agregací údajů o výkonu pro dlouhodobé analýzy a generování sestav.
 
 > [!IMPORTANT]
-> Tento článek popisuje shromažďování údajů o výkonu pomocí [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
+> Tento článek popisuje shromažďování údajů o výkonu pomocí [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
 
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
@@ -28,7 +28,7 @@ Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Description |
+| Název instance | Popis |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -77,7 +77,7 @@ Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být d
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Description |
+| Parametry | Popis |
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
@@ -205,7 +205,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |
@@ -224,5 +224,5 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromážděte čítače výkonu z aplikací pro Linux](data-sources-linux-applications.md) , včetně MySQL a serveru http Apache.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
-* Exportujte shromážděná data do [Power BI](../platform/powerbi.md) pro další vizualizace a analýzu.
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
+* Exportujte shromážděná data do [Power BI](../visualize/powerbi.md) pro další vizualizace a analýzu.

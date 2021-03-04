@@ -14,30 +14,30 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691157"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Vytvoření FCI se souborovou sdílenou složkou Premium (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzetí služeb při selhání (FCI) s SQL Server v Azure Virtual Machines (VM) pomocí [sdílené složky Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md).
+Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzetí služeb při selhání (FCI) s SQL Server v Azure Virtual Machines (VM) pomocí [sdílené složky Premium](../../../storage/files/storage-how-to-create-file-share.md).
 
 Soubory úrovně Premium jsou Prostory úložiště s přímým přístupem (SSD) se záložními sdílenými složkami, které jsou plně podporované pro použití s instancemi clusteru s podporou převzetí služeb při selhání pro SQL Server 2012 nebo novější v systému Windows Server 2012 nebo novějším. Prémiové sdílené složky poskytují větší flexibilitu, což vám umožní změnit velikost sdílené složky a škálovat ji bez výpadků.
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
 - Předplatné Azure.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - [Dva nebo více připravených virtuálních počítačů Windows Azure](failover-cluster-instance-prepare-vm.md) v [sadě dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) nebo různých [zónách dostupnosti](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
-- [Prémiová sdílená složka](../../../storage/files/storage-how-to-create-premium-fileshare.md) , která se má použít jako clusterovaná jednotka, na základě kvóty úložiště vaší databáze pro datové soubory.
+- [Prémiová sdílená složka](../../../storage/files/storage-how-to-create-file-share.md) , která se má použít jako clusterovaná jednotka, na základě kvóty úložiště vaší databáze pro datové soubory.
 - Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 
 ## <a name="mount-premium-file-share"></a>Připojit prémiovou sdílenou složku
@@ -222,6 +222,6 @@ Pokud soubory úrovně Premium pro vás nejsou odpovídajícím řešením úlo�
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md). 
 
-Další informace najdete tady: 
+Další informace naleznete v tématu: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -1,17 +1,17 @@
 ---
-title: Vytvoření clusteru AKS na portálu
+title: 'Rychlý Start: nasazení clusteru AKS pomocí Azure Portal'
 titleSuffix: Azure Kubernetes Service
 description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a monitorovat výkon ve službě Azure Kubernetes Service (AKS) pomocí Azure Portal.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 7f59924b2a50f29e01d46e12389e5ca52769225d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 443c9e0cebe2a45386b63b3a0bc4a813d243e49e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578701"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714557"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -47,7 +47,7 @@ Cluster AKS vytvoříte takto:
 
 4. Na stránce **fondy uzlů** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování**.
     > [!CAUTION]
-    > Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud se [dostanete k tomuto](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) problému, navštivte prosím tento článek, abyste se mohli zmírnit.
+    > Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud k tomu dojde, navštivte prosím [řešení běžných potíží se službou Azure Kubernetes](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) , které vám umožní zmírnit.
 
 5. Na kartě **Authentication** (Ověřování) nakonfigurujte následující možnosti:
     - Vytvořte nový instanční objekt tak, že v poli **Service Principal** (Instanční objekt) ponecháte možnost **(new) default service principal** ((nové) výchozí instanční objekt). Můžete také zvolit *Configure service principal* (Nakonfigurovat instanční objekt) a použít existující instanční objekt. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
@@ -78,7 +78,7 @@ Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujt
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][kubectl-get], který vrátí seznam uzlů clusteru.
+Pokud chcete ověřit připojení ke clusteru, použijte příkaz, `kubectl get` který vrátí seznam uzlů clusteru.
 
 ```console
 kubectl get nodes
@@ -93,7 +93,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest obsahuje dvě [Kubernetes nasazení][kubernetes-deployment] – jeden pro ukázkové aplikace v Pythonu pro Azure a druhý pro instanci Redis. Vytvoří se také dvě [služby Kubernetes Services][kubernetes-service] – interní služba pro instanci Redis a externí služba pro přístup k aplikaci hlasování Azure z Internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest obsahuje dvě Kubernetes nasazení – jeden pro ukázkové aplikace v Pythonu pro Azure a druhý pro instanci Redis. Vytvoří se také dvě služby Kubernetes Services – interní služba pro instanci Redis a externí služba pro přístup k aplikaci hlasování Azure z Internetu.
 
 V Cloud Shell pomocí editoru vytvořte soubor s názvem `azure-vote.yaml` , například `code azure-vote.yaml` `nano azure-vote.yaml` nebo `vi azure-vote.yaml` . Pak zkopírujte následující definici YAML:
 
@@ -185,7 +185,7 @@ spec:
     app: azure-vote-front
 ```
 
-Nasaďte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
+Nasaďte aplikaci pomocí `kubectl apply` příkazu a zadejte název vašeho MANIFESTU YAML:
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -204,7 +204,7 @@ service "azure-vote-front" created
 
 Když je aplikace spuštěná, služba Kubernetes zpřístupňuje front-end aplikace na internetu. Dokončení tohoto procesu může trvat několik minut.
 
-Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
+Chcete-li sledovat průběh, použijte `kubectl get service` příkaz s `--watch` argumentem.
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -267,7 +267,7 @@ V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem v
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci.
 
-Další informace o službě AKS a podrobné vysvětlení kompletního příkladu od kódu až po nasazení najdete v kurzu clusteru Kubernetes.
+Pokud chcete získat další informace o AKS, Projděte si kompletní příklad, včetně sestavování aplikace, nasazení z Azure Container Registry, aktualizaci spuštěné aplikace a škálování a upgrade clusteru, a pokračujte do kurzu clusteru Kubernetes.
 
 > [!div class="nextstepaction"]
 > [Kurz AKS][aks-tutorial]
@@ -288,6 +288,3 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: ../dev-spaces/index.yml
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services

@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: b4a5dcbd6bc0a6468e8ac8cc7edc8589ea380b28
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: aefad6670e937fcb7994688c8c6e846c3cab94e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750578"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,28 +70,22 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
-Pokud máte nastavenou spravovanou identitu, najdete informace v tématu [použití spravovaných identit](../managed-identity.md). můžete se také ověřit pomocí spravované identity.
-```python
-const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
-var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
-```
-
 ## <a name="create-an-identity"></a>Vytvoření identity
 
 Komunikační služby Azure udržují zjednodušený adresář identit. Použijte `create_user` metodu k vytvoření nové položky v adresáři s jedinečným objektem `Id` . Uložte si získanou identitu s mapováním na uživatele vaší aplikace. Například uložením do databáze aplikačního serveru. Identita se vyžaduje později pro vydávání přístupových tokenů.
 
 ```python
 identity = client.create_user()
-print("\nCreated an identity with ID: " + identity.identifier + ":")
+print("\nCreated an identity with ID: " + identity.identifier)
 ```
 
 ## <a name="issue-access-tokens"></a>Vystavení přístupových tokenů
 
-Použijte `get_token` metodu pro vydání přístupového tokenu pro již existující identitu komunikačních služeb. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md). Nová instance parametru `CommunicationUserIdentifier` se dá sestavit na základě řetězcové reprezentace identity komunikační služby Azure.
+Použijte `issue_token` metodu pro vydání přístupového tokenu pro již existující identitu komunikačních služeb. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md). Nová instance parametru `communicationUser` se dá sestavit na základě řetězcové reprezentace identity komunikační služby Azure.
 
 ```python
 # Issue an access token with the "voip" scope for an identity
-token_result = client.get_token(identity, ["voip"])
+token_result = client.issue_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
@@ -99,21 +93,36 @@ print(token_result.token)
 
 Přístupové tokeny jsou krátkodobé přihlašovací údaje, které je potřeba znovu vydat. V takovém případě může dojít k přerušení činnosti uživatelů vaší aplikace. `expires_on`Vlastnost Response označuje dobu života přístupového tokenu.
 
-## <a name="refresh-access-tokens"></a>Obnovení přístupových tokenů
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Vytvoření identity a vydání přístupového tokenu v rámci stejné žádosti
 
-K aktualizaci přístupového tokenu použijte `CommunicationUserIdentifier` objekt, který se má znovu vystavit:
+Použijte `create_user_with_token` metodu k vytvoření identity komunikačních služeb a vydání přístupového tokenu pro něj. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md).
 
 ```python
+# Issue an identity and an access token with the "voip" scope for the new identity
+identity_token_result = client.create_user_with_token(["voip"])
+identity = identity_token_result[0].identifier
+token = identity_token_result[1].token
+expires_on = identity_token_result[1].expires_on.strftime('%d/%m/%y %I:%M %S %p')
+print("\nCreated an identity with ID: " + identity)
+print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
+print(token)
+```
+
+## <a name="refresh-access-tokens"></a>Obnovení přístupových tokenů
+
+K aktualizaci přístupového tokenu použijte `CommunicationUser` objekt, který se má znovu vystavit:
+
+```python  
 # Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = CommunicationUserIdentifier(existingIdentity)
-token_result = client.get_token( identity, ["voip"])
+identity = CommunicationUser(existingIdentity)
+token_result = client.issue_token( identity, ["voip"])
 ```
 
 ## <a name="revoke-access-tokens"></a>Odvolat přístupové tokeny
 
 V některých případech je možné explicitně odvolat přístupové tokeny. Například když uživatel aplikace změní heslo, které používá k ověření vaší služby. Metoda `revoke_tokens` zruší platnost všech aktivních přístupových tokenů, které byly vystaveny identitě.
 
-```python
+```python  
 client.revoke_tokens(identity)
 print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
 ```
@@ -129,8 +138,8 @@ print("\nDeleted the identity with ID: " + identity.identifier)
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-V příkazovém řádku konzoly přejděte do adresáře obsahujícího soubor *Issue-Access-token.py* a `python` Spusťte aplikaci spuštěním následujícího příkazu.
+V příkazovém řádku konzoly přejděte do adresáře obsahujícího soubor *Issue-Access-Tokens.py* a `python` Spusťte aplikaci spuštěním následujícího příkazu.
 
 ```console
-python ./issue-access-token.py
+python ./issue-access-tokens.py
 ```

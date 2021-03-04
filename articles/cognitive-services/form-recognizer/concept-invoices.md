@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736742"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
 
@@ -41,7 +41,7 @@ Budete potřebovat předplatné Azure ([můžete ho vytvořit zdarma](https://az
 
 ### <a name="input-requirements"></a>Požadavky na vstup 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>Operace analyzovat fakturu
 
@@ -74,14 +74,14 @@ Výstup JSON má 3 části:
 
 Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uvedená pole extrahovaná z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](./media/sample-invoice.jpg)).  
 
-|Název| Typ | Description | Text | Hodnota (standardní výstup) |
+|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | řetězec | Fakturovaná zákazník | Společnost Microsoft Corp |  |
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
 | PurchaseOrder | řetězec | Referenční číslo nákupní objednávky | PO-3333 | |  |
 | InvoiceId | řetězec | ID pro tuto konkrétní fakturu (často se jedná o číslo faktury) | INV-100 | |  |
-| InvoiceDate | date | Datum vydání faktury | 11/15/2019 | 
-| DueDate | date | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Datum vydání faktury | 11/15/2019 | 2019-11-15 |
+| DueDate | date | Datum platby za tuto fakturu je splatnost. | 12/15/2019 | 2019-12-15 |
 | Dodavatel | řetězec | Dodavatel, který vytvořil tuto fakturu | SPOLEČNOST CONTOSO LTD. | |
 | VendorAddress | řetězec | Poštovní adresa dodavatele | 123 456th St. New York, NY, 10001 | |
 | VendorAddressRecipient | řetězec | Název přidružený k VendorAddress | Ústředí společnosti Contoso | |

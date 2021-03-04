@@ -7,23 +7,30 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
-author: CaitlinV39
-ms.date: 02/03/2021
-ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+author: zxue
+ms.date: 02/24/2021
+ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712771"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v Azure API pro FHIR
 
 V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhraní Azure API pro FHIR a prohlédnout si některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/essentials/diagnostic-settings.md) v Azure Portal. 
 
+## <a name="view-and-download-fhir-metrics-data"></a>Zobrazení a stažení dat metrik FHIR
+
+Metriky můžete zobrazit v části monitorování | Metriky z portálu. Metriky zahrnují počet požadavků, průměrnou latenci, počet chyb, velikost dat, použité ru, počet požadavků, které překročily kapacitu, a dostupnost (v%). Níže uvedený snímek obrazovky ukazuje ru, který se používá pro ukázkové prostředí s velmi malým počtem aktivit za posledních 7 dnů. Data si můžete stáhnout ve formátu JSON.
+
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Rozhraní Azure API pro metriky FHIR z portálu" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+
 ## <a name="enable-audit-logs"></a>Povolit protokoly auditu
 1. Pokud chcete povolit protokolování diagnostiky v Azure API pro FHIR, vyberte rozhraní Azure API pro službu FHIR v Azure Portal 
-2. Přejít na nastavení diagnostiky **nastavení diagnostiky**  
- ![](media/diagnostic-logging/diagnostic-settings-screen.png) 
+2. Přejít na **nastavení diagnostiky** 
+
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Přidejte nastavení diagnostiky Azure FHIR." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. Vybrat **+ Přidat nastavení diagnostiky**
 
@@ -35,7 +42,7 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v rozhran�
     2. **Streamování do centra událostí** pro ingestování prostřednictvím služby třetí strany nebo vlastního analytického řešení. Než budete moct nakonfigurovat tento krok, budete muset vytvořit obor názvů centra událostí a zásady centra událostí.
     3. **Streamování do** pracovního prostoru Log Analytics v Azure monitor. Než budete moct vybrat tuto možnost, budete muset vytvořit pracovní prostor analýzy protokolů.
 
-6. Vyberte **AuditLogs** a/nebo **AllMetrics**. Metriky zahrnují název služby, dostupnost, velikost dat, celkovou latenci, celkový počet požadavků, chyby a časové razítko.
+6. Vyberte **AuditLogs** a/nebo **AllMetrics**. Metriky zahrnují název služby, dostupnost, velikost dat, celkovou latenci, celkový počet požadavků, chyby a časové razítko. Další podrobnosti najdete v článku [podporované metriky](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices). 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Nastavení diagnostiky Azure FHIR. Vyberte AuditLogs a/nebo AllMetrics." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

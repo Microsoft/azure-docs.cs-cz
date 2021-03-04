@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739827"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
@@ -131,6 +131,7 @@ Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 - Odchozí tok z back-endu virtuálního počítače do front-endu interního Load Balancer se nezdaří.
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
 - Předávání fragmentů IP adres není u pravidel vyrovnávání zatížení podporováno. Pro pravidla vyrovnávání zatížení se nepodporují fragmentace paketů UDP a TCP. Pravidla pro vyrovnávání zatížení portů HA lze použít k přeposílání stávajících fragmentů IP adres. Další informace najdete v tématu [Přehled portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).
+- Na jednu skupinu dostupnosti můžete mít jenom 1 veřejné Load Balancer a 1 interní Load Balancer
 
 ## <a name="next-steps"></a>Další kroky
 

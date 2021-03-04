@@ -2,13 +2,14 @@
 title: Registr redundantního registru pro vysokou dostupnost
 description: Seznamte se s povolením redundance zóny v Azure Container Registry. Vytvořte registr kontejnerů nebo replikaci v zóně dostupnosti Azure. Redundance zóny je funkcí úrovně Premium Service.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738102"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Povolit redundanci zóny v Azure Container Registry pro odolnost a vysokou dostupnost
 
@@ -20,7 +21,7 @@ Redundance zóny je **ukázkovou** funkcí úrovně služby registru kontejneru 
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* V současné době jsou podporovány v následujících oblastech: Východní USA, Východní USA 2 a Západní USA 2.
+* V současné době jsou podporovány v následujících oblastech: Východní USA, Východní USA 2, Západní USA 2, Severní Evropa, Západní Evropa, Japonsko – východ.
 * Převody oblastí na zóny dostupnosti se aktuálně nepodporují. Pokud chcete povolit podporu zóny dostupnosti v oblasti, je nutné, aby se registr vytvořil v požadované oblasti, kde je povolená podpora zóny dostupnosti, nebo musí být replikovaná oblast přidána s povolenou podporou zóny dostupnosti.
 * Redundanci zóny nelze v oblasti zakázat.
 * [ACR úlohy](container-registry-tasks-overview.md) zatím nepodporují zóny dostupnosti.

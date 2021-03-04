@@ -4,12 +4,12 @@ description: Výstrahy protokolu aktivit Vytvářejte pomocí Azure Portal, šab
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612922"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704459"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -26,7 +26,9 @@ Při vytváření pravidel výstrah zajistěte následující:
 
 - Předplatné v oboru se neliší od předplatného, ve kterém se výstraha vytvořila.
 - Tato kritéria musí být kategorie události úroveň, stav, volající, skupina prostředků, ID prostředku nebo typ prostředku, na kterém je výstraha nakonfigurovaná.
-- Ve formátu JSON konfigurace výstrahy není k dispozici žádný stav anyOf nebo vnořené podmínky. V podstatě je povolená jenom jedna podmínka "allOf" bez dalších podmínek "allOf" nebo "anyOf".
+- Je povolena pouze jedna podmínka "allOf".
+- ' AnyOf ' lze použít k povolení více podmínek více než více polí (například v případě, že se pole "stav" nebo "dílčí stav" rovnají určité hodnotě). Všimněte si, že použití ' AnyOf ' je aktuálně omezené na vytvoření pravidla výstrahy pomocí nasazení šablony ARM.
+- ' ContainsAny ' lze použít k povolení více hodnot stejného pole (například pokud "operace" se rovná "Delete" nebo "Modify"). Všimněte si, že použití ' ContainsAny ' je aktuálně omezené na vytvoření pravidla výstrahy pomocí nasazení šablony ARM.
 - Když je kategorie "administrativa", musíte zadat alespoň jedno z výše uvedených kritérií v upozornění. Nemůžete vytvořit výstrahu, která se aktivuje při každém vytvoření události v protokolech aktivit.
 - Pro události v kategorii výstrahy protokolu aktivit nelze vytvořit výstrahy.
 
@@ -92,7 +94,7 @@ Použijte následující postup.
     - **Popis**: popis nového pravidla výstrahy.
     - **Uložit upozornění do skupiny prostředků**: vyberte skupinu prostředků, do které chcete toto nové pravidlo Uložit.
 
-5. V části **Skupina akcí** v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](../platform/action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte **+ Nová skupina**.
+5. V části **Skupina akcí** v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](./action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte **+ Nová skupina**.
 
 6. Chcete-li po vytvoření pravidla povolit, vyberte možnost **Ano** pro **pravidlo Povolit při vytváření** .
 7. Vyberte **Vytvořit pravidlo upozornění**.
@@ -219,7 +221,7 @@ Následující pole jsou možnosti, které můžete použít v šabloně Azure R
 9. Dílčí stav: obvykle stavový kód HTTP odpovídajícího volání REST, ale může také zahrnovat další řetězce popisující dílčí stav.   Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (Stavový kód http: 500), nedostupná služba (Stavový kód http: 503), časový limit brány (kód stavu http: 504).
 10. ResourceType: typ prostředku, který byl ovlivněn událostí. Například: Microsoft. Resources/Deployments
 
-Příklad:
+Například:
 
 ```json
 "condition": {
@@ -287,6 +289,5 @@ Prostředky pravidla upozornění protokolu aktivit je možné odebrat pomocí p
 
 - Přečtěte si o [schématu Webhooku pro protokoly aktivit](./activity-log-alerts-webhook.md).
 - Přečtěte si [Přehled protokolů aktivit](./activity-log-alerts.md).
-- Přečtěte si další informace o [skupinách akcí](../platform/action-groups.md).  
+- Přečtěte si další informace o [skupinách akcí](./action-groups.md).  
 - Přečtěte si o [oznámeních o stavu služby](../../service-health/service-notifications.md).
-

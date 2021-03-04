@@ -7,20 +7,20 @@ ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742139"
 ---
-# <a name="device-model-repository"></a>Úložiště modelů zařízení
+# <a name="device-models-repository"></a>Úložiště modelů zařízení
 
 Úložiště modelů zařízení (DMR) umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT technologie Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 Zařízení DMR definuje vzor pro ukládání rozhraní DTDL ve struktuře složek na základě identifikátoru vlákna (DTMI) zařízení. Rozhraní ve službě DMR můžete vyhledat tak, že převedete DTMI na relativní cestu. Například `dtmi:com:example:Thermostat;1` DTMI překládá na `/dtmi/com/example/thermostat-1.json` .
 
-## <a name="public-device-model-repository"></a>Úložiště modelů veřejných zařízení
+## <a name="public-device-models-repository"></a>Úložiště modelů veřejných zařízení
 
 Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakteristikami:
 
@@ -28,7 +28,7 @@ Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakterist
 - Neměnnosti.  Po publikování se rozhraní nedá aktualizovat.
 - Technologie Hyper-Scale. Společnost Microsoft poskytuje požadovanou infrastrukturu pro vytvoření zabezpečeného a škálovatelného koncového bodu, kde můžete publikovat a využívat modely zařízení.
 
-## <a name="custom-device-model-repository"></a>Vlastní úložiště modelů zařízení
+## <a name="custom-device-models-repository"></a>Úložiště vlastních modelů zařízení
 
 Použijte stejný vzor protokolu DMR k vytvoření vlastního protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Můžete načítat modely zařízení z vlastního zařízení DMR stejným způsobem jako z veřejného ovladače DMR změnou základní adresy URL používané pro přístup ke službě DMR.
 
@@ -39,7 +39,7 @@ Použijte stejný vzor protokolu DMR k vytvoření vlastního protokolu DMR na j
 
 Modely veřejných zařízení uložené v úložišti modelů jsou k dispozici všem uživatelům, kteří mají ve svých aplikacích využívat a integrovat. Modely veřejných zařízení umožňují otevřenému systému pro sestavovatele zařízení a vývojářům řešení sdílet a znovu používat svoje modely zařízení technologie Plug and Play IoT.
 
-V části [publikování modelu](#publish-a-model) najdete pokyny k publikování modelu v úložišti modelu, aby bylo možné ho zveřejnit.
+Pokyny k publikování modelu v úložišti modelů pro zajištění jeho veřejné služby najdete v části [publikování modelu](#publish-a-model) .
 
 Uživatelé můžou procházet, vyhledávat a zobrazovat veřejná rozhraní z oficiálního [úložiště GitHub](https://github.com/Azure/iot-plugandplay-models).
 

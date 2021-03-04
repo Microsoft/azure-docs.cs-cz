@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
-ms.openlocfilehash: 47134712bb953d9194bd943e228bae681877dcaa
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098878"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741884"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Nastavit počátek služby Azure front – Standard/Premium (Preview)
 
@@ -62,14 +62,14 @@ Než budete moct vytvořit Azure front-end úrovně Standard/Premium, musíte m�
 
 1. Vyberte **Přidat** a vytvořte nový počátek. Počátek by měl být v seznamu počátek se skupinou.
   
-    :::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Snímek obrazovky s přidáním zdrojové stránky":::
+    :::image type="content" source="../media/how-to-create-origin/origin-list-view.png" alt-text="Snímek obrazovky s počátkem v zobrazení seznamu":::
 
 1. Výběrem **Přidat** přidejte skupinu původ do aktuálního koncového bodu. Původní skupina by se měla zobrazit na panelu skupiny původní.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete odstranit skupinu původní, pokud ji už nepotřebujete, klikněte na **...** a pak v rozevíracím seznamu vyberte **Odstranit** .
 
-:::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Snímek obrazovky s postupem, jak odstranit skupinu původních souborů":::
+:::image type="content" source="../media/how-to-create-origin/delete-origin-group.png" alt-text="Snímek obrazovky s postupem, jak odstranit skupinu původních souborů":::
 
 Pokud ho chcete odstranit, pokud ho už nepotřebujete, klikněte na **...** a pak v rozevíracím seznamu vyberte **Odstranit** . 
 

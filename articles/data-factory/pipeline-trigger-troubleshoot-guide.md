@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705989"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Řešení potíží s orchestrací kanálu a triggery v Azure Data Factory
 
@@ -78,13 +78,32 @@ Azure Data Factory vyhodnocuje výsledek všech aktivit na úrovni listu. Výsle
 1. Implementujte kontroly na úrovni aktivity podle následujících pokynů, [jak zpracovat selhání a chyby kanálu](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 1. Pomocí Azure Logic Apps můžete sledovat kanály v pravidelných intervalech po [dotazech podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory).
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Monitorování selhání kanálu v pravidelných intervalech
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Jak monitorovat selhání kanálu v pravidelných intervalech
 
 Možná budete muset monitorovat neúspěšné Data Factory kanály v intervalech, 5 minut. Pomocí koncového bodu se můžete dotazovat a filtrovat spouštění kanálů z datové továrny. 
 
-Nastavte aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty do našeho systému lístků.
+**Řešení** Můžete nastavit aplikaci logiky Azure pro dotazování všech neúspěšných kanálů každých 5 minut, jak je popsáno v tématu [dotazování podle továrny](/rest/api/datafactory/pipelineruns/querybyfactory). Potom můžete hlásit incidenty vašemu systému lístků.
 
 Další informace najdete v [části odesílání oznámení z Data Factory, část 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Zvýšení úrovně paralelismu nevede k vyšší propustnosti.
+
+**Příčina** 
+
+Stupeň paralelismu v *foreach* má ve skutečnosti maximální stupeň paralelismu. Nemůžeme zaručit konkrétní počet spuštění současně, ale tento parametr zaručuje, že nikdy Nepřekračujeme nastavenou hodnotu. Měli byste vidět toto omezení, aby bylo možné ho využít při řízení souběžného přístupu ke zdrojům a jímka.
+
+Známá fakta o příkazu *foreach*
+ * Foreach má vlastnost s názvem počet dávek (n), kde výchozí hodnota je 20 a maximální hodnota je 50.
+ * Počet dávek, n, se používá ke konstrukci n front. Později se podíváme na podrobné informace o tom, jak jsou tyto fronty vytvořené.
+ * Každá fronta běží sekvenčně, ale můžete mít paralelně spuštěné několik front.
+ * Fronty jsou předem vytvořeny. To znamená, že během běhu nedojde k žádnému novému vyrovnávání front.
+ * V každém okamžiku máte na jednu frontu více zpracovávaných položek. To znamená, že se v daném okamžiku zpracovává maximálně n položek.
+ * Celková doba zpracování příkazu foreach je stejná jako doba zpracování nejdelší fronty. To znamená, že aktivita foreach závisí na způsobu konstrukce front.
+ 
+**Řešení**
+
+ * Nepoužívejte aktivitu *SetVariable* uvnitř *každého* spouštěného paralelního prostředí.
+ * Vezměte v úvahu způsob, jakým jsou fronty vytvářeny. Zákazník může vylepšit výkon foreach nastavením více *foreachs* , kde každý foreach bude mít položky s podobným časem zpracování. Tím zajistíte, že dlouhotrvající běhy se zpracovávají paralelně, a ne postupně.
 
 ## <a name="next-steps"></a>Další kroky
 

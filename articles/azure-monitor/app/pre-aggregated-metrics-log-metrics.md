@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717821"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
@@ -48,8 +48,10 @@ Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování p�
 | .NET Core a .NET Framework | Podporováno (V 2.13.1 +)| Podporováno prostřednictvím [TrackMetric](api-custom-events-metrics.md#trackmetric)| Podporováno (V 2.7.2 +) prostřednictvím [Getmetric](get-metric.md) |
 | Java                         | Nepodporuje se       | Podporováno prostřednictvím [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nepodporuje se                           |
 | Node.js                      | Nepodporuje se       | Podporováno prostřednictvím  [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nepodporuje se                           |
-| Python                       | Nepodporuje se       | Podporováno                                 | Podporováno prostřednictvím [OpenCensus. stats](opencensus-python.md#metrics) |  
+| Python                       | Nepodporuje se       | Podporováno                                 | Částečně podporováno přes [OpenCensus. stats](opencensus-python.md#metrics) |  
 
+> [!NOTE]
+>  Implementace metriky pro Python používá OpenCensus. stat se liší od getmetric. Podrobnosti najdete v [dokumentaci k Pythonu o metrikách](./opencensus-python.md#metrics).
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Předem agregovaná tabulka metrik podporuje bez kódování
 

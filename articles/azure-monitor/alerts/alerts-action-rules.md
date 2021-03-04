@@ -4,12 +4,12 @@ description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak 
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718144"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -103,9 +103,9 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Name
+* Název
 * Skupina prostředků, ve které je uložená
-* Description
+* Popis
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -209,7 +209,7 @@ Společnost Contoso chce potlačit oznámení pro všechny výstrahy protokolu v
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scénář 3: Skupina akcí definovaná ve skupině prostředků
 
-Společnost Contoso definovala [výstrahu metriky na úrovni předplatného](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Ale chce definovat akce, které se spustí konkrétně pro výstrahy vygenerované ze skupiny prostředků **ContosoRG**.
+Společnost Contoso definovala [výstrahu metriky na úrovni předplatného](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Ale chce definovat akce, které se spustí konkrétně pro výstrahy vygenerované ze skupiny prostředků **ContosoRG**.
 
 **Řešení:** Vytvořit pravidlo akce s:
 * Scope = **ContosoRG**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Výstrahy protokolu vytvořené pomocí možnosti [počet výsledků](../platform/alerts-unified-log.md) generují jednu instanci výstrahy pomocí celého výsledku hledání (který může být rozložen mezi několik počítačů). Pokud v tomto scénáři pravidlo akce používá filtr **kontext výstrahy (datové části)** , funguje v instanci výstrahy, pokud existuje shoda. Pokud ve scénáři 2 popsaném v části výsledky hledání pro vygenerovanou výstrahu protokolu existuje jak **počítač-01** , tak i **počítač-02**, potlačí se celé oznámení. Pro **počítač-2** není vygenerováno žádné oznámení.
+Výstrahy protokolu vytvořené pomocí možnosti [počet výsledků](./alerts-unified-log.md) generují jednu instanci výstrahy pomocí celého výsledku hledání (který může být rozložen mezi několik počítačů). Pokud v tomto scénáři pravidlo akce používá filtr **kontext výstrahy (datové části)** , funguje v instanci výstrahy, pokud existuje shoda. Pokud ve scénáři 2 popsaném v části výsledky hledání pro vygenerovanou výstrahu protokolu existuje jak **počítač-01** , tak i **počítač-02**, potlačí se celé oznámení. Pro **počítač-2** není vygenerováno žádné oznámení.
 
 ![Diagram zobrazuje pravidla akcí a výstrahy protokolu s zvýrazněnou jedinou instancí výstrahy.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte výstrahy protokolu s možností [měření metriky](../platform/alerts-unified-log.md) . Jednotlivé instance výstrah jsou vygenerovány touto možností na základě pole definované skupiny. Ve scénáři 2 pak jsou pro **počítač-01** a **počítač-02** vygenerovány samostatné instance výstrah. V důsledku pravidla akce popsaného ve scénáři je potlačeno pouze oznámení pro **počítač-01** . Oznámení pro **počítač-02** se nadále aktivuje jako normální.
+Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte výstrahy protokolu s možností [měření metriky](./alerts-unified-log.md) . Jednotlivé instance výstrah jsou vygenerovány touto možností na základě pole definované skupiny. Ve scénáři 2 pak jsou pro **počítač-01** a **počítač-02** vygenerovány samostatné instance výstrah. V důsledku pravidla akce popsaného ve scénáři je potlačeno pouze oznámení pro **počítač-01** . Oznámení pro **počítač-02** se nadále aktivuje jako normální.
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ Po definování cílového prostředku pro pravidlo výstrahy se můžete podív
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Můžu zobrazit výstrahy, které byly potlačeny pravidlem akce?
 
-Na [stránce seznam výstrah](../platform/alerts-managing-alert-instances.md)můžete zvolit další sloupec s názvem **potlačení stavu**. Pokud bylo oznámení pro instanci výstrahy potlačeno, bude tento stav zobrazen v seznamu.
+Na [stránce seznam výstrah](./alerts-managing-alert-instances.md)můžete zvolit další sloupec s názvem **potlačení stavu**. Pokud bylo oznámení pro instanci výstrahy potlačeno, bude tento stav zobrazen v seznamu.
 
 ![Potlačené instance výstrah](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Pokaždé, když s
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o výstrahách v Azure](../platform/alerts-overview.md)
+- [Další informace o výstrahách v Azure](./alerts-overview.md)

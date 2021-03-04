@@ -3,12 +3,12 @@ title: Přidání rozšíření sady škálování virtuálního počítače na 
 description: Tady je postup, jak přidat rozšíření sady škálování virtuálního počítače Service Fabric typ uzlu spravovaného clusteru.
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: 64df4b82795f382e176d66dc61470296447b9e29
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a47908b511f79c18482e9d21e623f1cb4dc70ed1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737762"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Přidání rozšíření sady škálování virtuálního počítače na Service Fabric typ uzlu spravovaného clusteru (Preview)
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/23/2021
-ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691140"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Ruční převzetí služeb při selhání iniciované uživatelem ve službě SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -151,6 +151,7 @@ Krátkodobá ztráta připojení z klienta během převzetí služeb při selhá
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
 > - Převzetí služeb při selhání nebude povoleno, dokud nebude první úplné zálohování nové databáze dokončeno automatizovanými zálohovacími systémy.
+> - Převzetí služeb při selhání nebude povoleno, pokud existuje obnovení databáze.
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o testování připravenosti na Cloud s využitím [testování připravenosti cloudu pro zajištění odolnosti při selhání pomocí překódování videa spravované instance SQL](https://youtu.be/FACWYLgYDL8) .

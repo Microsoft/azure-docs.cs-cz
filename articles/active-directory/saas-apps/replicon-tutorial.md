@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dada52dcf66db2f0d0e40f3dbf6d1a16560c2754
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8915d780e79fa219428c54bad5458ab5966df6c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515023"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688497"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Kurz: integrace Replicon s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Replicon s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -91,9 +91,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Podpisový algoritmus](common/signing-algorithm.png)
 
-    1. Jako **možnost podepisování**vyberte **podepsat kontrolní výraz SAML** .
+    1. Jako **možnost podepisování** vyberte **podepsat kontrolní výraz SAML** .
 
-    1. Jako **podpisový algoritmus**vyberte **SHA-256** .
+    1. Jako **podpisový algoritmus** vyberte **SHA-256** .
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -109,7 +109,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Chcete-li zobrazit dialogové okno **EnableSAML Authentication2** , přidejte následující adresu URL za klíč vaší společnosti: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Následuje příklad schématu pro úplnou adresu URL: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Následuje příklad schématu pro úplnou adresu URL: `https://na2.replicon.com/<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. Kliknutím na **+** rozbalte část **v20Configuration** .
 
@@ -123,7 +123,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -135,13 +135,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Replicon.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Replicon**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -157,7 +157,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
 1. V okně webového prohlížeče se přihlaste k webu Replicon společnosti jako správce.
 
-2. Přejít na ** \> uživatele pro správu**.
+2. Přejít na **\> uživatele pro správu**.
 
     ![Uživatelé](./media/replicon-tutorial/ic777806.png "Uživatelé")
 
@@ -174,13 +174,13 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
     > [!NOTE]
     > Přihlašovací jméno musí odpovídat e-mailové adrese uživatele ve službě Azure AD.
 
-    b. Jako **typ ověřování**vyberte **jednotné přihlašování**.
+    b. Jako **typ ověřování** vyberte **jednotné přihlašování**.
 
     c. Nastavte ID ověřování na stejnou hodnotu jako přihlašovací jméno (e-mailová adresa Azure AD uživatele).
 
     d. Do textového pole **oddělení** zadejte oddělení uživatele.
 
-    e. Jako **typ zaměstnance**vyberte **správce**.
+    e. Jako **typ zaměstnance** vyberte **správce**.
 
     f. Klikněte na **Uložit profil uživatele**.
 
@@ -191,7 +191,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Replicon.
 
 Když na přístupovém panelu vyberete dlaždici Replicon, měli byste se automaticky přihlásit k Replicon, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

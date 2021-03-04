@@ -1,28 +1,28 @@
 ---
-title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
-description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
+title: Jak spravovat agenta pro Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby s kontejnerem Log Analytics agentem používaným službou Container Insights.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713792"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
+# <a name="how-to-manage-the-container-insights-agent"></a>Jak spravovat agenta pro Container Insights
 
-Azure Monitor for Containers používá kontejnerové verze Log Analytics agenta pro Linux. Po počátečním nasazení jsou k dispozici rutinní nebo volitelné úkoly, které může být nutné provést během jejího životního cyklu. Tento článek podrobně popisuje, jak ručně upgradovat agenta a zakázat shromažďování proměnných prostředí z konkrétního kontejneru. 
+V kontejneru Insights se používá kontejnerové verze Log Analytics agenta pro Linux. Po počátečním nasazení jsou k dispozici rutinní nebo volitelné úkoly, které může být nutné provést během jejího životního cyklu. Tento článek podrobně popisuje, jak ručně upgradovat agenta a zakázat shromažďování proměnných prostředí z konkrétního kontejneru. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Postup upgradu agenta Azure Monitor for Containers
+## <a name="how-to-upgrade-the-container-insights-agent"></a>Postup upgradu agenta Container Insights
 
-Azure Monitor for Containers používá kontejnerové verze Log Analytics agenta pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a v Azure Red Hat OpenShift verze 3. x. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) a Azure Red Hat OpenShift verze 4. x není Agent spravovaný a vy budete muset agenta upgradovat ručně.
+V kontejneru Insights se používá kontejnerové verze Log Analytics agenta pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a v Azure Red Hat OpenShift verze 3. x. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) a Azure Red Hat OpenShift verze 4. x není Agent spravovaný a vy budete muset agenta upgradovat ručně.
 
 Pokud se upgrade agenta pro cluster hostovaný v AKS nebo Azure Red Hat OpenShift verze 3. x nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
 ### <a name="upgrade-agent-on-aks-cluster"></a>Upgrade agenta v clusteru AKS
 
-Proces upgradu agenta v clusterech AKS se skládá ze dvou přímých kroků. Prvním krokem je zakázat monitorování pomocí Azure Monitor pro kontejnery pomocí Azure CLI. Postupujte podle kroků popsaných v článku [zakázání monitorování](container-insights-optout.md?#azure-cli) . Použití rozhraní příkazového řádku Azure umožňuje odebrat agenta z uzlů v clusteru, aniž by to mělo dopad na řešení a odpovídající data uložená v pracovním prostoru. 
+Proces upgradu agenta v clusterech AKS se skládá ze dvou přímých kroků. Prvním krokem je zakázat monitorování pomocí služby Container Insights pomocí Azure CLI. Postupujte podle kroků popsaných v článku [zakázání monitorování](container-insights-optout.md?#azure-cli) . Použití rozhraní příkazového řádku Azure umožňuje odebrat agenta z uzlů v clusteru, aniž by to mělo dopad na řešení a odpovídající data uložená v pracovním prostoru. 
 
 >[!NOTE]
 >Při provádění této aktivity údržby nejsou uzly v clusteru shromážděnými daty a zobrazení výkonu nezobrazuje data mezi časem odebrání agenta a instalací nové verze. 
@@ -97,7 +97,7 @@ Podrobné informace o použití instančního objektu s tímto příkazem najdet
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru
 
-Azure Monitor for Containers shromažďuje proměnné prostředí z kontejnerů spuštěných v poli pod a prezentuje je v podokně vlastností vybraného kontejneru v zobrazení **kontejnerů** . Toto chování můžete řídit tak, že zakážete shromažďování pro konkrétní kontejner během nasazování clusteru Kubernetes nebo po nastavení proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici z verze agenta – ciprod11292018 a vyšší.  
+Container Insights shromažďuje proměnné prostředí z kontejnerů spuštěných v poli pod a prezentuje je v podokně vlastností vybraného kontejneru v zobrazení **kontejnerů** . Toto chování můžete řídit tak, že zakážete shromažďování pro konkrétní kontejner během nasazování clusteru Kubernetes nebo po nastavení proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici z verze agenta – ciprod11292018 a vyšší.  
 
 Chcete-li zakázat shromažďování proměnných prostředí v novém nebo existujícím kontejneru, nastavte proměnnou **AZMON_COLLECT_ENV** s hodnotou **false** v konfiguračním souboru YAML nasazení Kubernetes. 
 
@@ -114,7 +114,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 Tím se otevře výchozí textový editor. Po nastavení proměnné uložte soubor v editoru.
 
-Chcete-li ověřit vliv změny konfigurace, vyberte kontejner v zobrazení **kontejnery** v části Azure monitor for Containers a na panelu vlastností rozbalte položku **proměnné prostředí**.  V části by se měla zobrazit pouze dříve vytvořená proměnná- **AZMON_COLLECT_ENV = false**. Pro všechny ostatní kontejnery by oddíl proměnných prostředí měl vypsat všechny zjištěné proměnné prostředí.
+Chcete-li ověřit vliv změny konfigurace, vyberte kontejner v zobrazení **kontejnery** v části Container Insights a na panelu vlastností rozbalte položku **proměnné prostředí**.  V části by se měla zobrazit pouze dříve vytvořená proměnná- **AZMON_COLLECT_ENV = false**. Pro všechny ostatní kontejnery by oddíl proměnných prostředí měl vypsat všechny zjištěné proměnné prostředí.
 
 Chcete-li znovu povolit zjišťování proměnných prostředí, použijte stejný proces dříve a změňte hodnotu z **false** na **true** a pak znovu spusťte `kubectl` příkaz pro aktualizaci kontejneru.  
 

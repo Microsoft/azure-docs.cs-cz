@@ -4,12 +4,12 @@ description: Naučte se používat replikaci podregistru v clusterech HDInsight 
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733053"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Jak používat replikaci Apache Hive v clusterech Azure HDInsight
 
@@ -17,9 +17,9 @@ V souvislosti s databázemi a sklady je replikace proces duplikace entit z jedno
 
 Replikace podregistru se vyvinula v letech s novějšími verzemi, které poskytují lepší funkčnost a jsou rychlejší a méně náročná na prostředky. V tomto článku probereme replikaci podregistru (Replv2), která je podporovaná v typech clusterů HDInsight 3,6 a HDInsight 4,0.
 
-## <a name="advantages-of-replv2"></a>Výhody Replv2
+## <a name="advantages-of-replv2"></a>Výhody replv2
 
-[ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) v podregistru nebo (Replv2) má následující výhody oproti první verzi replikace podregistru, která použila [Import a export](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)podregistru:
+[ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (označovaný také jako Replv2) pro podregistr má následující výhody oproti první verzi replikace podregistru, která použila [Import a export](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)podregistru:
 
 - Přírůstková replikace založená na událostech
 - Replikace k bodu v čase  

@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491786"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718926"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
@@ -23,7 +23,7 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 * Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) .
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
 * [Vytvoření a nastavení IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [Registrace zařízení IoT Edge](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Registrace zařízení IoT Edge](../../iot-edge/how-to-register-device.md)
 * [Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian](../../iot-edge/how-to-install-iot-edge.md)
 * [Vytvoření účtu Azure Media Services](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ Podle kroků v tomto článku získáte přihlašovací údaje pro přístup k r
 Pokud chcete spustit video Analytics v modulu IoT Edge, vytvořte místní uživatelský účet s co nejmenším možným oprávněním. Například spusťte na počítači se systémem Linux následující příkazy:
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>Udělení oprávnění pro úložiště zařízení
@@ -72,15 +72,15 @@ Teď, když jste vytvořili místní uživatelský účet,
 * K uložení konfiguračních dat aplikace budete potřebovat místní složku. Vytvořte složku a udělte jí oprávnění k zápisu účtu LocalUser do této složky pomocí následujících příkazů:
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * Budete také potřebovat složku pro [záznam videí do místního souboru](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources). Pomocí následujících příkazů vytvořte místní složku pro stejné:
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Nasadit modul Edge pro video Analytics v provozu

@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713333"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -46,13 +46,6 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 | Chybová zpráva      | <span style="font-weight:normal">Zadaná operace SAP HANA není podporovaná.</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Možné příčiny**    | Azure Backup pro SAP HANA nepodporuje přírůstkové zálohování a akce prováděné na SAP HANA nativních klientech (Studio/řídicí panel/DBA). |
-| **Doporučená akce** | Další informace najdete [tady](./sap-hana-backup-support-matrix.md#scenario-support). |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| Chybová zpráva      | <span style="font-weight:normal">Tato databáze SAP HANA nepodporuje požadovaný typ zálohování.</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Možné příčiny**    | Azure Backup nepodporuje přírůstkové zálohování a zálohování pomocí snímků. |
 | **Doporučená akce** | Další informace najdete [tady](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -116,7 +109,7 @@ Tento scénář může zahrnovat dva možné případy. Přečtěte si, jak zál
 
     - Rozšíření již na virtuálním počítači existuje, ale není viditelné pro žádné služby.
     - Spusťte skript před registrací
-    - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+    - Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
     - Již existující databáze zálohovaných (z odstraněného virtuálního počítače) by se pak měly úspěšně zálohovat.
 
 2. Nově vytvořený virtuální počítač má jednu z těchto akcí:
@@ -164,7 +157,7 @@ Upgrady z SDC na MDC, které nezpůsobují změnu SID, mohou být zpracovány n�
 - [Zastavení ochrany s uchováním dat](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) pro starou databázi SDC
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spustit [skript před registrací](https://aka.ms/scriptforpermsonhana)
-- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
 - Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít v souladu se zásadami zachována stará zálohovaná data.
 - Konfigurace zálohování pro tyto databáze
@@ -177,7 +170,7 @@ Upgrady z SDC na MDC, které způsobují změnu SID, mohou být zpracovány nás
 - **Zastavení ochrany s uchováním dat** pro starou databázi SDC
 - Proveďte upgrade. Po dokončení se systém HANA teď MDC se systémovou databází a databáze tenanta.
 - Znovu spusťte [skript před registrací](https://aka.ms/scriptforpermsonhana) se správnými podrobnostmi (nový identifikátor SID a MDC). Kvůli změně v identifikátoru SID může při úspěšném spuštění skriptu dorazit k problémům. Pokud čelíte problémům, kontaktujte podporu Azure Backup.
-- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (**Backup**  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
+- Znovu zaregistrujte rozšíření pro stejný počítač v Azure Portal (  ->  **Podrobnosti o zobrazení** zálohy – > vyberte příslušný virtuální počítač Azure – > znovu zaregistrovat).
 - Vyberte možnost znovu **zjistit databáze** pro stejný virtuální počítač. Tato akce by měla zobrazit nové databáze v kroku 3 jako SYSTEMDB a databázi tenanta, ne SDC
 - Starší databáze SDC bude i nadále existovat v trezoru a budou mít stará zálohovaná data uchovávaná podle zásad.
 - Konfigurace zálohování pro tyto databáze

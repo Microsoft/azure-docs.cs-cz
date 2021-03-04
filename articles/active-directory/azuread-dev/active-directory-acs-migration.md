@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687392"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -113,7 +113,7 @@ Od listopadu 2017 jsou všechny součásti Access Control plně podporované a f
 Tady je plán pro zastaralé Access Control komponenty:
 
 - **Listopadu 2017**: prostředí pro správu Azure AD na portálu Azure Classic [je vyřazené](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je Správa oboru názvů pro Access Control k dispozici na nové vyhrazené adrese URL: `https://manage.windowsazure.com?restoreClassic=true` . Pomocí této adresy URl můžete zobrazit existující obory názvů, povolit a zakázat obory názvů a odstranit obory názvů, pokud se rozhodnete.
-- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://\<namespace\>.accesscontrol.windows.net` . Všechny ostatní komponenty Access Control nadále pracují normálně.
+- **2. dubna 2018**: portál Azure Classic je zcela vyřazený, což znamená Access Control Správa oboru názvů už není dostupná prostřednictvím žádné adresy URL. V tuto chvíli nemůžete zakázat nebo povolit, odstranit ani vyčíslit Access Control obory názvů. Portál pro správu Access Control ale bude plně funkční a umístěný v `https://<namespace>.accesscontrol.windows.net` . Všechny ostatní komponenty Access Control nadále pracují normálně.
 - **7. listopadu 2018**: všechny součásti Access Control jsou trvale vypnuté. Patří sem portál pro správu Access Control, služba pro správu, služba tokenů zabezpečení a modul pravidel transformace tokenů. V tomto okamžiku selžou všechny požadavky odeslané na Access Control (umístěné na adrese \<namespace\> . AccessControl.Windows.NET). Před tímto časem byste měli všechny stávající aplikace a služby migrovat do jiných technologií.
 
 > [!NOTE]
@@ -148,7 +148,7 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Příznak | Pokyny |
+| Funkce | Pokyny |
 | ------- | -------- |
 | Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](/SharePoint/security-for-sharepoint-server/authentication-overview) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704119"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardní sloupce v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../logs/data-platform-logs.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu sloupců. Mnoho datových typů bude mít standardní sloupce, které jsou společné pro různé typy. Tento článek popisuje tyto sloupce a poskytuje příklady, jak je můžete použít v dotazech.
@@ -20,6 +20,10 @@ Aplikace založené na pracovních prostorech v Application Insights ukládají 
 
 > [!NOTE]
 > Některé standardní sloupce se nebudou zobrazovat v zobrazení schématu nebo IntelliSense v Log Analytics a nebudou se zobrazovat ve výsledcích dotazu, pokud explicitně neurčíte sloupec ve výstupu.
+> 
+
+## <a name="tenantid"></a>TenantId
+Sloupec **TenantId** obsahuje ID pracovního prostoru Log Analytics pracovního prostoru.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated a časové razítko
 Sloupce **TimeGenerated** (Log Analytics pracovní prostor) a **časové razítko** (Application Insights aplikace) obsahují datum a čas vytvoření záznamu zdrojem dat. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](../logs/data-ingestion-time.md) .
@@ -49,6 +53,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 Sloupec **\_ TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](../logs/data-ingestion-time.md) .
+
+> [!NOTE]
+> Sloupec **\_ TimeReceived** se vypočítá pokaždé, když se použije. Tento proces je náročný na prostředky. Upřesněte jejich použití pro filtrování velkého počtu záznamů. Současné použití této funkce může vést ke zvýšení doby trvání provádění dotazu.
+
 
 Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. To zahrnuje dobu od agenta do cloudu a celkovou dobu, po kterou bude záznam pro dotazy protokolu dostupný.
 
@@ -238,6 +246,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](../log-query/log-query-overview.md).
-- Získejte lekci k [zápisu dotazů protokolu](../log-query/get-started-queries.md).
+- Přečtěte si další informace o tom, jak [se ukládají data protokolu Azure monitor](./log-query-overview.md).
+- Získejte lekci k [zápisu dotazů protokolu](./get-started-queries.md).
 - Získejte lekci o [spojování tabulek v protokolových dotazech](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).

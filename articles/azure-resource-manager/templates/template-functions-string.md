@@ -2,13 +2,13 @@
 title: Template Functions – String
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) pro práci s řetězci.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731115"
 ---
 # <a name="string-functions-for-arm-templates"></a>Řetězcové funkce pro šablony ARM
 
@@ -37,9 +37,9 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci v �
 * [přímo](#skip)
 * [rozdělení](#split)
 * [startsWith](#startswith)
-* [řetezce](#string)
+* [řetězec](#string)
 * [podřetězec](#substring)
-* [take](#take)
+* [nezbytná](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [sklon](#trim)
@@ -306,6 +306,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec nebo zkombinuje více polí a vrátí zřetězené pole.
 
+Pro zjednodušení zřetězení řetězců podporuje bicep syntaxi [řetězcové interpolace](https://en.wikipedia.org/wiki/String_interpolation#) .
+
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Povinné | Typ | Popis |
@@ -351,6 +353,14 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+nebo
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -1530,7 +1540,7 @@ Následující příklad používá funkci newGuid k vytvoření jedinečného n
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -1938,7 +1948,7 @@ Převede zadanou hodnotu na řetězec.
 
 | Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano | Libovolný |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
+| valueToConvert |Ano | Všechny |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2468,7 +2478,7 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```

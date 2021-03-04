@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391452"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686678"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
+V tomto článku se zvýrazňují možnosti, funkce a vylepšení, které byly nedávno vydány nebo vylepšeny pro datové služby s podporou ARC Azure. 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="new-capabilities-and-features"></a>Nové funkce a funkce
+
+Azure Data CLI ( `azdata` ) číslo verze: 20.3.1. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) . Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+Mezi další aktualizace patří:
+
+- SQL Managed Instance s podporou služby Azure Arc
+   - Vysoká dostupnost se skupinami dostupnosti Always On
+
+- PostgreSQL Azure Data Studio s rozšířením Azure ARC s povoleným škálováním: 
+   - Na stránce Přehled se teď zobrazuje stav vydaných skupin serverů na uzel.
+   - K dispozici jsou teď nové stránky vlastností, které zobrazí další podrobnosti o skupině serverů.
+   - Konfigurace parametrů stroje Postgres ze stránky **parametrů uzlu** =
+
+Problémy spojené s touto verzí najdete v tématu [známé problémy – datové služby s podporou ARC Azure (Preview)](known-issues.md) .
 
 ## <a name="january-2021"></a>Leden 2021
 
 ### <a name="new-capabilities-and-features"></a>Nové funkce a funkce
 
 Azure Data CLI ( `azdata` ) číslo verze: 20.3.0. Stáhnout v [https://aka.ms/azdata](https://aka.ms/azdata) . Můžete nainstalovat `azdata` z [instalačního rozhraní Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
-
 
 Mezi další aktualizace patří:
 - Lokalizovaný portál dostupný pro 17 nových jazyků

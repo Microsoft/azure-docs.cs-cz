@@ -4,12 +4,12 @@ ms.service: databox
 ms.author: alkohli
 ms.topic: include
 ms.date: 02/05/2021
-ms.openlocfilehash: b06b91e972fd07543cf02105360cb0400ef6b0f1
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ad981264a99bd48e27f745a789ebe857b7f17d80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749983"
 ---
 K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta modulu runtime. Tady je seznam možných odpovědí:
 
@@ -20,7 +20,7 @@ K řešení chyb souvisejících s výpočty použijte IoT Edge odezvy agenta mo
 * 406 – IoT Edge zařízení je offline nebo neodesílá zprávy o stavu.
 * 500 – při IoT Edge modulu runtime došlo k chybě.
 
-Další informace najdete v tématu [Agent IoT Edge](/azure/iot-edge/iot-edge-runtime?view=iotedge-2018-06&preserve-view=true#iot-edge-agent).
+Další informace najdete v tématu [Agent IoT Edge](../articles/iot-edge/iot-edge-runtime.md?preserve-view=true&view=iotedge-2018-06#iot-edge-agent).
 
 Následující chyba se týká služby IoT Edge v Azure Stack Edge pro<!--/ Data Box Gateway--> device.
 

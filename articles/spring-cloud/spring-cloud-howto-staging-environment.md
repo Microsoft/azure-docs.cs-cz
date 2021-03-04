@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574722"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738748"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak nastavit pracovní nasazení pomocí modelu nasa
 ## <a name="prerequisites"></a>Požadavky
 
 * Instance Azure jaře cloudu na **cenové úrovni** *Standard* .
-* [Cloudové rozšíření](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) Azure CLI Azure pro jaře
+* [Cloudové rozšíření](/cli/azure/azure-cli-extensions-overview) Azure CLI Azure pro jaře
 
 V tomto článku se používá aplikace vytvořená z inicializátoru pružiny. Pokud chcete pro tento příklad použít jinou aplikaci, budete muset provést jednoduchou změnu v rámci veřejné části aplikace, aby se vaše pracovní nasazení lišilo od výroby.
 

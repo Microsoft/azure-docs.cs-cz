@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016962"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686457"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -46,8 +46,6 @@ Službu Azure AD Connect Health můžete nakonfigurovat tak, aby odesílala e-ma
 > Pokud dojde k problémům se zpracováním požadavků na synchronizaci v naší back-end službě, tato služba pošle e-mailovou zprávu s podrobnostmi o této chybě do kontaktní e-mailové adresy (ES) pro správu vašeho tenanta. Slyšeli jsme od zákazníků zpětnou vazbu, že v některých případech je objem těchto zpráv zakazují velký, takže měníme způsob, jakým tyto zprávy posíláme. 
 >
 > Místo odeslání zprávy pro každou chybu synchronizace pokaždé, když dojde k chybě, pošleme denní přehled všech chyb, které služba back-end vrátila. To zákazníkům umožňuje efektivně zpracovávat tyto chyby a snižuje počet duplicitních chybových zpráv.
->
-> Tuto změnu plánujeme, aby se implementovala 15. ledna 2020.
 
 ## <a name="delete-a-server-or-service-instance"></a>Odstranění instance serveru nebo služby
 

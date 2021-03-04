@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 518baa47fd16d69bf935cd3253f5bebeb413b513
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680607"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695239"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure CLI 
 
@@ -33,7 +33,23 @@ Tento článek vám pomůže s použitím rozhraní příkazového řádku Azure
 
 ###  <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte své předplatné. 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)] 
+Pokud chcete zahájit konfiguraci, přihlaste se ke svému účtu Azure. Pokud použijete Cloud Shell "vyzkoušet ho", jste přihlášeni automaticky. Následující příklady vám pomůžou s připojením:
+
+```azurecli-interactive
+az login
+```
+
+Zkontrolujte předplatná pro příslušný účet.
+
+```azurecli-interactive
+az account list
+```
+
+Vyberte předplatné, pro které chcete vytvořit okruh ExpressRoute.
+
+```azurecli-interactive
+az account set --subscription "<subscription ID>"
+```
 
 ### <a name="create-a-resource-group-and-virtual-network"></a>Vytvoření skupiny prostředků a virtuální sítě 
 

@@ -5,43 +5,66 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3704d1a418baeec18c3303b8203a0185790cbcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720816"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Instalace balíčku Remote Renderingu pro Unity
 
 Vzdálené vykreslování Azure používá balíček Unity k zapouzdření integrace do Unity.
-
-## <a name="manage-the-remote-rendering-packages-in-unity"></a>Správa balíčků vzdáleného vykreslování v Unity
-
-Balíčky Unity jsou kontejnery, které se dají spravovat přes [Správce balíčků](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)Unity.
 Tento balíček obsahuje celé rozhraní C# API a také všechny binární soubory modulů plug-in, které jsou nutné pro použití vzdáleného vykreslování Azure s Unity.
 Následující schéma pojmenování v Unity pro balíčky se nazývá **com. Microsoft. Azure. Remote-rendering**.
 
-Balíček není součástí [úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering)a není dostupný z vnitřního registru balíčku Unity. Chcete-li jej přidat do projektu, je nutné ručně upravit `manifest.md` soubor projektu a přidat následující:
+Pro instalaci balíčku Unity můžete vybrat jednu z následujících možností.
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "Azure Mixed Reality Services",
-      "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-      "scopes": ["com.microsoft.azure"]
-    }
-   ],
-  "dependencies": {
-    "com.microsoft.azure.remote-rendering": "0.1.31",
-    ...existing dependencies...
-  }
-}
-```
+## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Nainstalovat balíček vzdáleného vykreslování pomocí nástroje funkce Mixed reality
 
-Po přidání můžete použít Správce balíčků Unity, abyste měli jistotu, že máte nejnovější verzi.
-Podrobné pokyny jsou uvedené v tomto [kurzu: zobrazení vzdálených modelů](../../tutorials/unity/view-remote-models/view-remote-models.md).
+[Nástroj funkce Mixed reality](https://aka.ms/MRFeatureToolDocs) ([stažení](https://aka.ms/mrfeaturetool)) je nástroj, který slouží k integraci balíčků funkcí hybridní reality do projektů Unity. Balíček není součástí [úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering)a není dostupný z vnitřního registru balíčku Unity.
+
+Chcete-li přidat balíček do projektu, který potřebujete:
+1. [Stažení nástroje funkce Mixed reality](https://aka.ms/mrfeaturetool)
+1. Postupujte podle [podrobných pokynů](https://aka.ms/MRFeatureToolDocs) k používání tohoto nástroje.
+1. Na stránce **zjišťování funkcí** zaškrtněte políčko pro balíček **Microsoft Azure vzdáleného vykreslování** a vyberte verzi balíčku, který chcete přidat do projektu.
+
+![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)
+
+Pokud chcete aktualizovat místní balíček, stačí vybrat novější verzi z nástroje funkce Mixed reality a nainstalovat ji. Aktualizace balíčku občas může vést k chybám konzoly. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
+
+## <a name="install-remote-rendering-package-manually"></a>Nainstalovat balíček vzdáleného vykreslování ručně
+
+Chcete-li nainstalovat balíček vzdáleného vykreslování ručně, je nutné provést následující kroky:
+
+1. Stáhněte balíček z informačního kanálu NPM Packages Mixed reality na adrese `https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry` .
+    * Můžete buď použít [npm](https://www.npmjs.com/get-npm) , a spuštěním následujícího příkazu Stáhnout balíček do aktuální složky.
+      ```
+      npm pack com.microsoft.azure.remote-rendering --registry https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry
+      ```
+
+    * Případně můžete použít PowerShellový skript `Scripts/DownloadUnityPackages.ps1` z [úložiště GitHub Azure-Remote-rendering](https://github.com/Azure/azure-remote-rendering).
+        * Upravit obsah `Scripts/unity_sample_dependencies.json` pro
+          ```json
+          {
+            "packages": [
+              {
+                "name": "com.microsoft.azure.remote-rendering", 
+                "version": "latest", 
+                "registry": "https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry"
+              }
+            ]
+          }
+          ```
+
+        * Spuštěním následujícího příkazu v PowerShellu Stáhněte balíček do zadaného cílového adresáře.
+          ```
+          DownloadUnityPackages.ps1 -DownloadDestDir <destination directory>
+          ```
+
+1. [Nainstalujte stažený balíček](https://docs.unity3d.com/Manual/upm-ui-tarball.html) pomocí Správce balíčků Unity.
+
+Pokud chcete aktualizovat místní balíček, stačí znovu spustit příslušný příkaz, který jste použili, a znovu naimportovat balíček. Aktualizace balíčku občas může vést k chybám konzoly. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
 
 ## <a name="unity-render-pipelines"></a>Kanály vykreslování Unity
 

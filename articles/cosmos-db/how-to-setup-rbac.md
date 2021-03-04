@@ -4,14 +4,14 @@ description: Zjistěte, jak nakonfigurovat řízení přístupu na základě rol
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/02/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690902"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurace řízení přístupu na základě role pomocí Azure Active Directory pro účet Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ Při vytváření definice role je potřeba zadat:
     - `/` (na úrovni účtu),
     - `/dbs/<database-name>` (na úrovni databáze),
     - `/dbs/<database-name>/colls/<container-name>` (na úrovni kontejneru).
+
+> [!NOTE]
+> Níže popsané operace jsou v tuto chvíli dostupné v:
+> - Azure PowerShell: [AZ. CosmosDB verze 2.0.1-Preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: [přípona cosmosdb-Preview verze 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
@@ -279,6 +284,11 @@ Jakmile vytvoříte definice rolí, můžete je přidružit k identitám AAD. P�
 > [!NOTE]
 > Pokud chcete vytvořit přiřazení role pro instanční objekt, ujistěte se, že používáte jeho **ID objektu** , jak je uvedeno v části **podnikové aplikace** okna **Azure Active Directoryového** portálu.
 
+> [!NOTE]
+> Níže popsané operace jsou v tuto chvíli dostupné v:
+> - Azure PowerShell: [AZ. CosmosDB verze 2.0.1-Preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: [přípona cosmosdb-Preview verze 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
 Přiřazení role k identitě:
@@ -354,6 +364,12 @@ Tyto další informace se toků v kategorii protokolu **DataPlaneRequests** a sk
 
 - `aadPrincipalId_g` zobrazuje hlavní ID identity AAD, která se použila k ověření žádosti.
 - `aadAppliedRoleAssignmentId_g` zobrazuje [přiřazení role](#role-assignments) , které bylo dodrženo při autorizaci žádosti.
+
+## <a name="limits"></a>Omezení
+
+- Můžete vytvořit až 100 definic rolí a přiřazení rolí 2 000 na účet Azure Cosmos DB.
+- Řešení skupiny Azure AD se v současné době nepodporuje u identit, které patří do více než 200 skupin.
+- Token Azure AD se v současnosti předává jako hlavička s každou jednotlivou žádostí odeslanou službě Azure Cosmos DB, čímž se zvyšuje celková velikost datové části.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

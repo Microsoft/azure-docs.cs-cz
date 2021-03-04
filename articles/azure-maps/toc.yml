@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: Přidání vrstvy symbolů
               href: map-add-pin.md
-            - name: Přidání místního okna
-              href: map-add-popup.md
             - name: Přidání vrstvy bublin
               href: map-add-bubble-layer.md
+            - name: Přidání místního okna
+              href: map-add-popup.md
             - name: Přidání značek HTML
               href: map-add-custom-html.md
             - name: Přidání řádkové vrstvy
@@ -250,14 +250,14 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Přidání vrstvy bublin
           href: map-add-bubble-layer-android.md
-        - name: Přidání tvarů
+        - name: Zobrazení informací o funkci
+          href: display-feature-information-android.md
+        - name: Přidání řádkové vrstvy
+          href: android-map-add-line-layer.md
+        - name: Přidání mnohoúhelníkové vrstvy
           href: how-to-add-shapes-to-android-map.md
         - name: Přidání vrstvy heat mapy
           href: map-add-heat-map-layer-android.md
-        - name: Přidání řádkové vrstvy
-          href: android-map-add-line-layer.md
-        - name: Zobrazení informací o funkci
-          href: display-feature-information-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat

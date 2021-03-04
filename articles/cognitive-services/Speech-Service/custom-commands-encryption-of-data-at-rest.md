@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021894"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716580"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Šifrování vlastních příkazů pro neaktivní uložená data
 
 Vlastní příkazy automaticky šifrují vaše data při trvalém ukládání do cloudu. Šifrování služby pro vlastní příkazy chrání vaše data a usnadňuje splnění závazků týkajících se zabezpečení a dodržování předpisů v organizaci.
 
 > [!NOTE]
-> Služba Custom Commands (vlastní příkazy) automaticky nepovoluje šifrování pro prostředky LUIS přidružené k vaší aplikaci. V případě potřeby musíte povolit šifrování prostředku LUIS z [tohoto místa](./../LUIS/luis-encryption-of-data-at-rest.md).
+> Služba Custom Commands (vlastní příkazy) automaticky nepovoluje šifrování pro prostředky LUIS přidružené k vaší aplikaci. V případě potřeby musíte povolit šifrování prostředku LUIS z [tohoto místa](../luis/encrypt-data-at-rest.md).
 
 ## <a name="about-cognitive-services-encryption"></a>O šifrování Cognitive Services
 Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou zabezpečená ve výchozím nastavení, a abyste mohli využívat šifrování, nemusíte upravovat kód ani aplikace.

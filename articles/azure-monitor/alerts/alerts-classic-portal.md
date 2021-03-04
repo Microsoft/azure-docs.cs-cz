@@ -4,21 +4,21 @@ description: Naučte se, jak pomocí Azure Portal, CLI nebo PowerShellu vytvář
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.openlocfilehash: 015a84ab6f81875407f460c4a45423f3f5e22b7f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714370"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 
 > [!WARNING]
-> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../platform/alerts-overview.md). Klasické výstrahy jsou [vyřazené](../platform/monitoring-classic-retirement.md) pro uživatele veřejného cloudu, ale i v omezeném počtu použití pro prostředky, které ještě nepodporují nové výstrahy.
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazené](./monitoring-classic-retirement.md) pro uživatele veřejného cloudu, i když jsou omezeného využití do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 >
 
-Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat oznámení, když jedna z vašich metrik překračuje prahovou hodnotu. Klasické výstrahy metriky jsou starší funkce, které umožňují upozorňování jenom na nedimenzionální metriky. Existují nové funkce s názvem výstrahy metriky, které mají vylepšené funkce pro klasické výstrahy metrik. Další informace o nových funkcích výstrah metrik najdete v článku [Přehled výstrah metrik](../platform/alerts-metric-overview.md). V tomto článku popíšeme, jak pomocí Azure Portal, Azure CLI a PowerShellu vytvářet, zobrazovat a spravovat pravidla metriky s klasickými výstrahami.
+Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat oznámení, když jedna z vašich metrik překračuje prahovou hodnotu. Klasické výstrahy metriky jsou starší funkce, které umožňují upozorňování jenom na nedimenzionální metriky. Existují nové funkce s názvem výstrahy metriky, které mají vylepšené funkce pro klasické výstrahy metrik. Další informace o nových funkcích výstrah metrik najdete v článku [Přehled výstrah metrik](./alerts-metric-overview.md). V tomto článku popíšeme, jak pomocí Azure Portal, Azure CLI a PowerShellu vytvářet, zobrazovat a spravovat pravidla metriky s klasickými výstrahami.
 
 ## <a name="with-azure-portal"></a>S Azure Portal
 
@@ -134,6 +134,5 @@ V této části se dozvíte, jak pomocí příkazů PowerShellu vytvářet, zobr
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvořte klasické upozornění na metriku pomocí šablony Správce prostředků](../platform/alerts-enable-template.md).
-- [Máte klasické upozornění na metriku, které není systémem Azure pomocí Webhooku](../platform/alerts-webhooks.md).
-
+- [Vytvořte klasické upozornění na metriku pomocí šablony Správce prostředků](./alerts-enable-template.md).
+- [Máte klasické upozornění na metriku, které není systémem Azure pomocí Webhooku](./alerts-webhooks.md).

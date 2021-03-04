@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693828"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -151,7 +151,7 @@ Povolení šifrování na NVMe discích:
 
 Šifrování na discích s NVMe bude zachováno v následujících situacích:
 - Restartování virtuálního počítače
-- VMSS obnovení obrazu
+- Obrázek sady škálování virtuálního počítače – obnovení
 - Prohození operačního systému
 
 NVMe disky budou neinicializované v následujících scénářích:
@@ -260,9 +260,8 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Kontejnery Windows serveru, které vytvářejí dynamické svazky pro každý kontejner.
 - Dočasné disky s operačním systémem.
 - Šifrování sdílených/distribuovaných systémů souborů (ale ne omezené na) DFS, GFS, DRDB a CephFS.
-- Přesunutí šifrovaných virtuálních počítačů do jiného předplatného nebo oblasti.
+- Přesunutí šifrovaného virtuálního počítače do jiného předplatného nebo oblasti.
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).

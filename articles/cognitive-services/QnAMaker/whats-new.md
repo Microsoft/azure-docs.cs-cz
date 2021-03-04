@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 85a5493e1d1c06a68aa9f4b64cd0f3d55c4f5f63
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: afef6b0b868455d806b085a2e1f15f497e8c6799
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580883"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706720"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -64,11 +64,11 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="october-2019"></a>Říjen 2019
 
-* [Explicitně se nastavuje jazyk](./index.yml) pro všechny znalostní báze ve službě QnA maker.
+* Explicitně se nastavuje jazyk pro všechny znalostní báze ve službě QnA Maker.
 
 ### <a name="september-2019"></a>Září 2019
 
-* Import a export ve [formátu souboru XLS](./index.yml)
+* Import a export ve formátu souboru XLS.
 
 ### <a name="june-2019"></a>Červen 2019
 

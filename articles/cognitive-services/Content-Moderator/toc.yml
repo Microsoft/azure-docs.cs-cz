@@ -116,14 +116,8 @@
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Ceny a omezení
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
-    - name: Znalostní báze
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: Podpora jazyků
       href: language-support.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Plány Azure do budoucna

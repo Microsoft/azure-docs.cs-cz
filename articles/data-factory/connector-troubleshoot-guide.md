@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s konektory Azure Data Factory
+title: Řešení potíží s konektory služby Azure Data Factory
 description: Naučte se řešit potíže s konektorem v Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366921"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727817"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory Azure Data Factory
+# <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -28,7 +28,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: problém s operací BLOB Storage.
 
-- **Doporučení**: Pokud chcete zjistit podrobnosti o chybě, přečtěte si téma [kódy chyb BLOB Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes). Chcete-li získat další pomoc, obraťte se na tým Blob Storage.
+- **Doporučení**: Pokud chcete zjistit podrobnosti o chybě, přečtěte si téma [kódy chyb BLOB Storage](/rest/api/storageservices/blob-service-error-codes). Chcete-li získat další pomoc, obraťte se na tým Blob Storage.
 
 
 ### <a name="invalid-property-during-copy-activity"></a>Neplatná vlastnost během aktivity kopírování
@@ -164,7 +164,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
   | Příčina analýzy                                               | Doporučení                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Pokud Azure Data Lake Storage Gen2 vyvolá chybu oznamující selhání některé operace.| Podívejte se na podrobnou chybovou zprávu vyvolanou Azure Data Lake Storage Gen2. Pokud se jedná o přechodnou chybu, zkuste operaci zopakovat. Pokud chcete získat další pomoc, obraťte se na podporu Azure Storage podpory a zadejte ID žádosti v chybové zprávě. |
-  | Pokud chybová zpráva obsahuje řetězec "zakázáno", instanční objekt nebo spravovaná identita pravděpodobně nemají dostatečná oprávnění pro přístup k Azure Data Lake Storage Gen2. | Pokud chcete tuto chybu vyřešit, přečtěte si téma [kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication). |
+  | Pokud chybová zpráva obsahuje řetězec "zakázáno", instanční objekt nebo spravovaná identita pravděpodobně nemají dostatečná oprávnění pro přístup k Azure Data Lake Storage Gen2. | Pokud chcete tuto chybu vyřešit, přečtěte si téma [kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory](./connector-azure-data-lake-storage.md#service-principal-authentication). |
   | Pokud chybová zpráva obsahuje řetězec "Nenalezeno", je vrácena chyba Azure Data Lake Storage Gen2. | Chyba může být způsobena přechodným selháním. Pokud není, zkuste operaci zopakovat. Pokud se problém nevyřeší, obraťte se na podporu Azure Storage a zadejte ID žádosti z chybové zprávy. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Požadavek na Azure Data Lake Storage Gen2 účtu způsobil chybu časového limitu.
@@ -204,7 +204,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: problém s operací úložiště Azure Files.
 
-- **Doporučení**: informace o chybě najdete v nápovědě k [souborům Azure](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes). Pokud chcete získat další pomoc, obraťte se na tým souborů Azure.
+- **Doporučení**: informace o chybě najdete v nápovědě k [souborům Azure](/rest/api/storageservices/file-service-error-codes). Pokud chcete získat další pomoc, obraťte se na tým souborů Azure.
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure synapse Analytics, Azure SQL Database a SQL Server
@@ -216,12 +216,12 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
     | Příčina analýzy                                               | Doporučení                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | V případě Azure SQL, pokud chybová zpráva obsahuje řetězec "SqlErrorNumber = 47073", znamená to, že přístup k veřejné síti byl odepřen v nastavení připojení. | V bráně Azure SQL firewall nastavte možnost **Odepřít přístup k veřejné síti** na *ne*. Další informace najdete v tématu [nastavení připojení Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
-    | V případě Azure SQL, pokud chybová zpráva obsahuje kód chyby SQL, například "SqlErrorNumber = [ErrorCode]", přečtěte si příručku k odstraňování potíží se službou Azure SQL. | Doporučení najdete v tématu [řešení potíží s připojením a dalších chyb pomocí Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
-    | Zkontrolujte, jestli je na seznamu povolených bran firewall port 1433. | Další informace najdete v tématu [porty používané v SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
-    | Pokud chybová zpráva obsahuje řetězec "SqlException", SQL Database Chyba indikuje, že některé konkrétní operace selhaly. | Další informace najdete v kódu chyby SQL v [databázovém stroji](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Pokud chcete získat další pomoc, obraťte se na podporu Azure SQL. |
-    | Pokud se jedná o přechodný problém (například o nestabilním síťovém připojení), přidejte do zásady aktivity opakovat, aby se zmírnil. | Další informace najdete v tématu [kanály a aktivity v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
-    | Pokud chybová zpráva obsahuje řetězec "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se o připojení k Azure SQL Database. příčinou této chyby je obvykle problém Azure SQL Database brány firewall. | V konfiguraci brány firewall Azure SQL Server povolte možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** . Další informace najdete v článku [pravidla brány firewall pro Azure SQL Database a Azure synapse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    | V případě Azure SQL, pokud chybová zpráva obsahuje řetězec "SqlErrorNumber = 47073", znamená to, že přístup k veřejné síti byl odepřen v nastavení připojení. | V bráně Azure SQL firewall nastavte možnost **Odepřít přístup k veřejné síti** na *ne*. Další informace najdete v tématu [nastavení připojení Azure SQL](../azure-sql/database/connectivity-settings.md#deny-public-network-access). |
+    | V případě Azure SQL, pokud chybová zpráva obsahuje kód chyby SQL, například "SqlErrorNumber = [ErrorCode]", přečtěte si příručku k odstraňování potíží se službou Azure SQL. | Doporučení najdete v tématu [řešení potíží s připojením a dalších chyb pomocí Azure SQL Database a spravované instance Azure SQL](../azure-sql/database/troubleshoot-common-errors-issues.md). |
+    | Zkontrolujte, jestli je na seznamu povolených bran firewall port 1433. | Další informace najdete v tématu [porty používané v SQL Server](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Pokud chybová zpráva obsahuje řetězec "SqlException", SQL Database Chyba indikuje, že některé konkrétní operace selhaly. | Další informace najdete v kódu chyby SQL v [databázovém stroji](/sql/relational-databases/errors-events/database-engine-events-and-errors). Pokud chcete získat další pomoc, obraťte se na podporu Azure SQL. |
+    | Pokud se jedná o přechodný problém (například o nestabilním síťovém připojení), přidejte do zásady aktivity opakovat, aby se zmírnil. | Další informace najdete v tématu [kanály a aktivity v Azure Data Factory](./concepts-pipelines-activities.md#activity-policy). |
+    | Pokud chybová zpráva obsahuje řetězec "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se o připojení k Azure SQL Database. příčinou této chyby je obvykle problém Azure SQL Database brány firewall. | V konfiguraci brány firewall Azure SQL Server povolte možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** . Další informace najdete v článku [pravidla brány firewall pro Azure SQL Database a Azure synapse](../azure-sql/database/firewall-configure.md). |
     
 ### <a name="error-code-sqloperationfailed"></a>Kód chyby: SqlOperationFailed
 
@@ -231,9 +231,9 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
     | Příčina analýzy                                               | Doporučení                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Pokud chybová zpráva obsahuje řetězec "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace se nezdařila. | Pokud není chyba SQL jasné, zkuste změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Další informace najdete v [dokumentaci](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Další informace o řešení problémů s SQL najdete v kódu chyby SQL v [databázovém stroji](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Pokud chcete získat další pomoc, obraťte se na podporu Azure SQL. |
+    | Pokud chybová zpráva obsahuje řetězec "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace se nezdařila. | Pokud není chyba SQL jasné, zkuste změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Další informace najdete v [dokumentaci](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Další informace o řešení problémů s SQL najdete v kódu chyby SQL v [databázovém stroji](/sql/relational-databases/errors-events/database-engine-events-and-errors). Pokud chcete získat další pomoc, obraťte se na podporu Azure SQL. |
     | Pokud chybová zpráva obsahuje řetězec "PdwManagedToNativeInteropException", je obvykle způsobena neshodou mezi velikostí zdroje a sloupce jímky. | Ověřte velikost zdroje i sloupce jímky. Pokud chcete získat další pomoc, obraťte se na podporu Azure SQL. |
-    | Pokud chybová zpráva obsahuje řetězec "InvalidOperationException", je obvykle způsobena neplatnými vstupními daty. | Chcete-li zjistit, na kterém řádku došlo k problému, povolte u aktivity kopírování funkci odolnost proti chybám, která může přesměrovat problematické řádky do úložiště pro další šetření. Další informace najdete v tématu odolnost [proti chybám aktivity kopírování v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance). |
+    | Pokud chybová zpráva obsahuje řetězec "InvalidOperationException", je obvykle způsobena neplatnými vstupními daty. | Chcete-li zjistit, na kterém řádku došlo k problému, povolte u aktivity kopírování funkci odolnost proti chybám, která může přesměrovat problematické řádky do úložiště pro další šetření. Další informace najdete v tématu odolnost [proti chybám aktivity kopírování v Azure Data Factory](./copy-activity-fault-tolerance.md). |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>Kód chyby: SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: hromadné kopírování SQL se nezdařilo, protože obdržela neplatnou délku sloupce z klienta programu pro program hromadného kopírování (BCP).
 
-- **Doporučení**: Chcete-li zjistit, na který řádek došlo k problému, povolte u aktivity kopírování funkci odolnost proti chybám. To může přesměrovat problematické řádky do úložiště pro další šetření. Další informace najdete v tématu odolnost [proti chybám aktivity kopírování v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
+- **Doporučení**: Chcete-li zjistit, na který řádek došlo k problému, povolte u aktivity kopírování funkci odolnost proti chybám. To může přesměrovat problematické řádky do úložiště pro další šetření. Další informace najdete v tématu odolnost [proti chybám aktivity kopírování v Azure Data Factory](./copy-activity-fault-tolerance.md).
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>Kód chyby: SqlConnectionIsClosed
@@ -470,7 +470,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Zpráva**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Příčina**: Pokud chybová zpráva obsahuje řetězec "SQLSTATE = 51002 SQLCODE =-805", postupujte podle popisu v části [kopírování dat z DB2 pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
+- **Příčina**: Pokud chybová zpráva obsahuje řetězec "SQLSTATE = 51002 SQLCODE =-805", postupujte podle popisu v části [kopírování dat z DB2 pomocí Azure Data Factory](./connector-db2.md#linked-service-properties).
 
 - **Doporučení**: zkuste nastavit "NULLID" ve `packageCollection`  Vlastnosti.
 
@@ -647,7 +647,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: formát Parquet není v Azure Data Factory podporován.
 
-- **Doporučení**: Překontrolujte zdrojová data tak, že [v Azure Data Factory přesunete podporované formáty souborů a kompresní kodeky pomocí aktivity kopírování](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Doporučení**: Překontrolujte zdrojová data tak, že [v Azure Data Factory přesunete podporované formáty souborů a kompresní kodeky pomocí aktivity kopírování](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Kód chyby: ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: data nejde převést na typ, který je zadaný v mapování. Source.
 
-- **Doporučení**: poklikejte na zdrojová data nebo zadejte správný datový typ pro tento sloupec v mapování sloupce aktivita kopírování. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky pomocí aktivity kopírování v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Doporučení**: poklikejte na zdrojová data nebo zadejte správný datový typ pro tento sloupec v mapování sloupce aktivita kopírování. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky pomocí aktivity kopírování v Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Kód chyby: ParquetDataCountNotMatchColumnCount
@@ -831,7 +831,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
     Pokud je obsah privátního klíče z vašeho trezoru klíčů, může soubor originálního klíče fungovat, když ho nahrajete přímo do propojené služby SFTP.
 
-    Další informace najdete v tématu [kopírování dat z a na server SFTP pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication). Obsah privátního klíče je kódovaný jako obsah privátního klíče SSH kódovaný v kódování Base64.
+    Další informace najdete v tématu [kopírování dat z a na server SFTP pomocí Azure Data Factory](./connector-sftp.md#using-ssh-public-key-authentication). Obsah privátního klíče je kódovaný jako obsah privátního klíče SSH kódovaný v kódování Base64.
 
     Zakódovat *celý* soubor se soukromým klíčem pomocí kódování Base64 a uložit kódovaný řetězec do trezoru klíčů. Původní soubor privátního klíče je ten, který může pracovat na propojené službě SFTP, pokud vyberete **Odeslat** ze souboru.
 
@@ -902,7 +902,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
     Pokud chcete zvýšit propustnost, obraťte se na správce SFTP, aby zvýšil limit počtu souběžných připojení, nebo můžete provést jednu z následujících akcí:
 
     * Pokud používáte prostředí IR v místním prostředí, přidejte do seznamu povolených počítačů místní počítač s INFRAČERVENým hostováním.
-    * Pokud používáte Azure IR, přidejte [Azure Integration runtime IP adresy](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses). Pokud nechcete do seznamu povolených serverů SFTP přidat rozsah IP adres, použijte místo toho místní prostředí IR.
+    * Pokud používáte Azure IR, přidejte [Azure Integration runtime IP adresy](./azure-integration-runtime-ip-addresses.md). Pokud nechcete do seznamu povolených serverů SFTP přidat rozsah IP adres, použijte místo toho místní prostředí IR.
 
 ## <a name="sharepoint-online-list"></a>Seznam SharePointu Online
 
@@ -961,7 +961,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: Modul IR pro místní hostování nemůže najít běhový modul Java. Pro čtení konkrétního zdroje je vyžadován běhový modul Java.
 
-- **Doporučení**: Projděte si prostředí Integration runtime, přečtěte si téma [použití Integration runtime](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)v místním prostředí.
+- **Doporučení**: Projděte si prostředí Integration runtime, přečtěte si téma [použití Integration runtime](./format-parquet.md#using-self-hosted-integration-runtime)v místním prostředí.
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>Kód chyby: WildcardPathSinkNotSupported

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735042"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
@@ -24,7 +24,7 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 **Roboti**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje POI související možnosti pro virtuální asistenta pomocí Azure Maps s Azure Bot Service a robotovou architekturou. |
 | [Umístění BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Řídicí panel pro výběr zdrojového umístění pro Microsoft bot Framework, který využívá služby Bing Maps. |
@@ -35,7 +35,7 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps webové sady SDK.
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Modul animace Azure Maps](https://github.com/Azure-Samples/azure-maps-animations) | Bohatá knihovna animací pro použití s Azure Maps Web SDK |
 | [Azure Maps přenést data do modulu Řízení zobrazení](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvek, který usnadňuje načtení dat na mapě do zobrazení. |
@@ -55,7 +55,7 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 
 **ukázky**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Ukázky kódu Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps v aplikacích založených na webu. |
 | [Ukázky cloudového kódu Azure Maps gov](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps prostřednictvím Azure Government cloudu. |
@@ -68,15 +68,15 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 **Moduly plug-in pro mapové ovládací prvky třetích stran**
 <a name="third-part-map-control-plugins"></a>
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
-| [Modul plug-in Azure Maps cesium](https://github.com/azure-samples/azure-maps-cesium) | Modul plug-in [CESIUM js](https://cesium.com/cesiumjs/) , který usnadňuje integraci Azure Mapsch služeb, jako jsou [vrstvy dlaždic](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) a [služby geografického kódování](https://docs.microsoft.com/rest/api/maps/search). |
-| [Azure Maps modul plug-in pro leták](https://github.com/azure-samples/azure-maps-leaflet) | Modul plug-in pro [letáky](https://leafletjs.com/) JavaScriptu, který usnadňuje překrytí vrstev dlaždic ze [služeb Azure Maps dlaždice](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
- | [Modul plug-in Azure Maps OpenLayers](https://github.com/azure-samples/azure-maps-openlayers) | Modul plug-in [OpenLayers](https://www.openlayers.org/) JavaScriptu, který usnadňuje překrytí vrstev dlaždic ze [služeb Azure Maps dlaždice](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
+| [Modul plug-in Azure Maps cesium](https://github.com/azure-samples/azure-maps-cesium) | Modul plug-in [CESIUM js](https://cesium.com/cesiumjs/) , který usnadňuje integraci Azure Mapsch služeb, jako jsou [vrstvy dlaždic](/rest/api/maps/renderv2/getmaptilepreview) a [služby geografického kódování](/rest/api/maps/search). |
+| [Azure Maps modul plug-in pro leták](https://github.com/azure-samples/azure-maps-leaflet) | Modul plug-in pro [letáky](https://leafletjs.com/) JavaScriptu, který usnadňuje překrytí vrstev dlaždic ze [služeb Azure Maps dlaždice](/rest/api/maps/renderv2/getmaptilepreview). |
+ | [Modul plug-in Azure Maps OpenLayers](https://github.com/azure-samples/azure-maps-openlayers) | Modul plug-in [OpenLayers](https://www.openlayers.org/) JavaScriptu, který usnadňuje překrytí vrstev dlaždic ze [služeb Azure Maps dlaždice](/rest/api/maps/renderv2/getmaptilepreview). |
 
 **Nástroje a prostředky**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Zdroj pro veškerou dokumentaci Azure Location Based Services. |
 | [Nástroje Azure Maps Creator (Preview)](https://github.com/Azure-Samples/AzureMapsCreator) | Nástroje Pythonu pro nástroje Azure Maps Creator (Preview). |

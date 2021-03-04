@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731761"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -121,34 +121,34 @@ Iniciativa bude platit pro každý virtuální počítač při jeho vytvoření.
 ![Náprava v iniciativě](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
-[Azure monitor pro virtuální počítače](vm/vminsights-overview.md) je primárním nástrojem v Azure monitor pro monitorování virtuálních počítačů. Povolení Azure Monitor pro virtuální počítače nainstaluje agenta Log Analytics i agenta závislostí. Místo toho, abyste tyto úlohy prováděli ručně, použijte Azure Policy, abyste zajistili, že se každý virtuální počítač nakonfiguroval při jeho vytváření.
+## <a name="vm-insights"></a>Přehledy virtuálních počítačů
+Virtual Machine [Insights](vm/vminsights-overview.md) je hlavním nástrojem v Azure monitor pro monitorování virtuálních počítačů. Povolením nástroje VM Insights nainstalujete agenta Log Analytics i agenta závislostí. Místo toho, abyste tyto úlohy prováděli ručně, použijte Azure Policy, abyste zajistili, že se každý virtuální počítač nakonfiguroval při jeho vytváření.
 
 > [!NOTE]
-> Azure Monitor pro virtuální počítače obsahuje funkci nazvanou **Azure monitor pro virtuální počítače pokrytí zásad** , která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Tuto funkci můžete použít místo toho, aby fungovala přímo s Azure Policy pro virtuální počítače Azure a pro hybridní virtuální počítače připojené pomocí ARC Azure. V případě Azure Virtual Machine Scale Sets je potřeba přiřazení vytvořit pomocí Azure Policy.
+> Funkce VM Insights zahrnuje funkci s názvem **pokrytí zásad virtuálních počítačů** , která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Tuto funkci můžete použít místo toho, aby fungovala přímo s Azure Policy pro virtuální počítače Azure a pro hybridní virtuální počítače připojené pomocí ARC Azure. V případě Azure Virtual Machine Scale Sets je potřeba přiřazení vytvořit pomocí Azure Policy.
  
 
-Azure Monitor pro virtuální počítače obsahuje následující integrované iniciativy, které instalují oba agenty, aby umožňovaly úplné monitorování. 
+Přehledy virtuálních počítačů zahrnují následující integrované iniciativy, které instalují oba agenty, aby umožňovaly úplné monitorování. 
 
-|Název |Description |
+|Název |Popis |
 |:---|:---|
-|Povolit Azure Monitor pro virtuální počítače | Nainstaluje agenta Log Analytics a agenta závislostí na virtuální počítače Azure a hybridní virtuální počítače připojené pomocí ARC Azure. |
+|Povolit přehledy virtuálních počítačů | Nainstaluje agenta Log Analytics a agenta závislostí na virtuální počítače Azure a hybridní virtuální počítače připojené pomocí ARC Azure. |
 |Povolit Azure Monitor pro Virtual Machine Scale Sets | Nainstaluje agenta Log Analytics a agenta závislostí do sady škálování virtuálních počítačů Azure. |
 
 
 ### <a name="virtual-machines"></a>Virtuální počítače
-Místo vytváření úloh pro tyto iniciativy pomocí rozhraní Azure Policy Azure Monitor pro virtuální počítače obsahuje funkci, která vám umožní zkontrolovat počet virtuálních počítačů v jednotlivých oborech, abyste zjistili, jestli se iniciativa používala. Pak můžete nakonfigurovat pracovní prostor a vytvořit všechna požadovaná přiřazení pomocí tohoto rozhraní.
+Místo vytváření úloh pro tyto iniciativy pomocí rozhraní Azure Policy obsahuje virtuální počítač přehled funkcí, které vám umožní zkontrolovat počet virtuálních počítačů v jednotlivých oborech, abyste zjistili, jestli je iniciativa použitá. Pak můžete nakonfigurovat pracovní prostor a vytvořit všechna požadovaná přiřazení pomocí tohoto rozhraní.
 
-Podrobnosti o tomto procesu najdete v tématu [povolení Azure monitor pro virtuální počítače pomocí Azure Policy](./vm/vminsights-enable-policy.md).
+Podrobnosti o tomto procesu najdete v tématu [Povolení přehledů virtuálních počítačů pomocí Azure Policy](./vm/vminsights-enable-policy.md).
 
-![Zásady Azure Monitor pro virtuální počítače](media/deploy-scale/vminsights-policy.png)
+![Zásada pro VM Insights](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 Pokud chcete použít Azure Policy k povolení monitorování pro virtuální počítače, přiAzure Monitor řaďte iniciativu služby **Virtual Machine Scale Sets** do skupiny pro správu Azure, předplatného nebo skupiny prostředků v závislosti na rozsahu vašich prostředků, které se mají monitorovat. [Skupina pro správu](../governance/management-groups/overview.md) je zvláště užitečná pro zásady oboru, zejména pokud má vaše organizace víc předplatných.
 
 ![Snímek stránky přiřadit iniciativu v Azure Portal. Definice iniciativy je nastavená tak, aby umožňovala Azure Monitor pro Virtual Machine Scale Sets.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Vyberte pracovní prostor, do kterého se budou data odesílat. Tento pracovní prostor musí mít nainstalované řešení *VMInsights* , jak je popsáno v tématu [Konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](vm/vminsights-configure-workspace.md).
+Vyberte pracovní prostor, do kterého se budou data odesílat. Tento pracovní prostor musí mít nainstalované řešení *VMInsights* , jak je popsáno v tématu [Konfigurace log Analyticsho pracovního prostoru pro službu VM Insights](vm/vminsights-configure-workspace.md).
 
 ![Výběr pracovního prostoru](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,13 +157,13 @@ Pokud máte existující sadu škálování virtuálních počítačů, ke kter�
 ![Úloha nápravy](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
-Můžete mít scénáře, kdy chcete nainstalovat agenta Log Analytics, ale ne agenta závislostí. Neexistuje žádná integrovaná iniciativa pouze pro agenta, ale můžete vytvořit vlastní, a to na základě integrovaných definic zásad, které poskytuje Azure Monitor pro virtuální počítače.
+Můžete mít scénáře, kdy chcete nainstalovat agenta Log Analytics, ale ne agenta závislostí. Neexistuje žádná integrovaná iniciativa pouze pro agenta, ale můžete vytvořit vlastní, a to na základě integrovaných definic zásad poskytovaných službou VM Insights.
 
 > [!NOTE]
 > Neexistuje žádný důvod k tomu, aby bylo možné nasadit agenta závislostí sami, protože vyžaduje, aby agent Log Analytics doručovat data do Azure Monitor.
 
 
-|Název |Description |
+|Název |Popis |
 |-----|------------|
 |Audit – nasazení agenta Log Analytics – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |
 |Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741850"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -79,7 +79,7 @@ Přední dvířka Azure je globálně distribuovaná služba pro více tenantů.
 
 ### <a name="is-http-https-redirection-supported"></a>Je podporováno přesměrování HTTP->HTTPS?
 
-Yes. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
+Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou pravidla směrování zpracovaná?
 
@@ -97,9 +97,9 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
     > [!WARNING]
     > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
--    Proveďte operaci GET na front-dveřích s verzí rozhraní API `2020-01-01` nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku **X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je v poli `frontdoorID` . Hodnotu můžete najít také `Front Door ID` v části Přehled na stránce portálu front dveří. 
+- Vyhledejte `Front Door ID` hodnotu v části Přehled na stránce portálu front dveří. Pak můžete filtrovat příchozí záhlaví **X-Azure-FDID** odesílané předními dveřmi do back-endu s touto hodnotou, abyste zajistili, že bude povolená jenom vaše vlastní specifická instance front-dveří (protože rozsahy IP adres výše jsou sdílené s jinými instancemi front-endu jiných zákazníků).
 
-- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID.
+- Na webovém serveru back-end použijte filtrování pravidel pro omezení provozu na základě výsledné hodnoty hlavičky X-Azure-FDID. Všimněte si, že některé služby, jako Azure App Service, poskytují tuto funkci [filtrování na základě hlaviček](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview) bez nutnosti změnit aplikaci nebo hostitele.
 
   Tady je příklad pro [Microsoft Internetová informační služba (IIS)](https://www.iis.net/):
 

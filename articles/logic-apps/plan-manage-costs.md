@@ -6,16 +6,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
-ms.openlocfilehash: 58e12862cf00b500bced105d67fede8599c2a257
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99180451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709627"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Plánování a Správa nákladů na Azure Logic Apps
 
-Tento článek vám pomůže plánovat a spravovat náklady na Azure Logic Apps. Před vytvořením nebo přidáním prostředků pomocí této služby můžete odhadnout náklady pomocí cenové kalkulačky Azure. Po zahájení používání prostředků Logic Apps můžete nastavit rozpočty a monitorovat náklady pomocí [Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Pro identifikaci oblastí, kde můžete chtít pracovat, můžete také zkontrolovat předpokládané náklady a monitorovat trendy útraty.
+Tento článek vám pomůže plánovat a spravovat náklady na Azure Logic Apps. Před vytvořením nebo přidáním prostředků pomocí této služby můžete odhadnout náklady pomocí cenové kalkulačky Azure. Po zahájení používání prostředků Logic Apps můžete nastavit rozpočty a monitorovat náklady pomocí [Azure cost management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Pro identifikaci oblastí, kde můžete chtít pracovat, můžete také zkontrolovat předpokládané náklady a monitorovat trendy útraty.
 
 Mějte na paměti, že náklady na Logic Apps jsou jenom částmi měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak odhadnout a spravovat náklady na Logic Apps, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně všech služeb třetích stran. Až budete obeznámeni se správou nákladů na Logic Apps, můžete použít podobné metody pro správu nákladů na všechny služby Azure používané ve vašem předplatném.
 
@@ -23,9 +23,9 @@ Mějte na paměti, že náklady na Logic Apps jsou jenom částmi měsíčních 
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 
-[Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) podporuje většinu typů účtů Azure. Pokud chcete zobrazit všechny podporované typy účtů, přečtěte si téma [principy cost management dat](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
+[Azure cost management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) podporuje většinu typů účtů Azure. Pokud chcete zobrazit všechny podporované typy účtů, přečtěte si téma [principy cost management dat](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
-Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](https://docs.microsoft.com/azure/cost-management/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, add them here -->
 
@@ -101,9 +101,9 @@ Než začnete vytvářet prostředky s Azure Logic Apps, Odhadněte náklady pom
 
 ## <a name="create-budgets-and-alerts"></a>Vytvoření rozpočtů a upozornění
 
-Aby vám pomohla aktivně spravovat náklady pro svůj účet nebo předplatné Azure, můžete vytvářet [rozpočty](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a [výstrahy](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) pomocí služby [Azure cost management a fakturace](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a možností.  Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů.
+Aby vám pomohla aktivně spravovat náklady pro svůj účet nebo předplatné Azure, můžete vytvářet [rozpočty](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a [výstrahy](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) pomocí služby [Azure cost management a fakturace](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) a možností.  Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů.
 
-Na základě útraty, které jsou v porovnání s rozpočtovými a nákladové prahové hodnoty, výstrahy automaticky informují účastníky o anomáliích útraty a rizikech Pokud chcete sledovat více členitosti, můžete také vytvořit rozpočty, které používají filtry pro konkrétní prostředky nebo služby v Azure. Filtry vám pomůžou zajistit, že nechtěně nevytváříte nové prostředky, které vám povedou peníze. Další informace o možnostech filtru najdete v tématu [Možnosti skupiny a filtru](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Na základě útraty, které jsou v porovnání s rozpočtovými a nákladové prahové hodnoty, výstrahy automaticky informují účastníky o anomáliích útraty a rizikech Pokud chcete sledovat více členitosti, můžete také vytvořit rozpočty, které používají filtry pro konkrétní prostředky nebo služby v Azure. Filtry vám pomůžou zajistit, že nechtěně nevytváříte nové prostředky, které vám povedou peníze. Další informace o možnostech filtru najdete v tématu [Možnosti skupiny a filtru](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 <a name="monitor-costs"></a>
 
@@ -115,7 +115,7 @@ Po zahájení práce s náklady na prostředky, které se v Azure vytvářejí n
 
 * [Monitorování spuštění aplikace logiky a využití úložiště](#monitor-billing-metrics) pomocí Azure monitor
 
-* Spuštění [analýzy nákladů](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) pomocí [Azure cost management a fakturace](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* Spuštění [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) pomocí [Azure cost management a fakturace](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <a name="monitor-billing-metrics"></a>
 
@@ -170,7 +170,7 @@ Pomocí Azure Monitor můžete zobrazit tyto metriky pro konkrétní aplikaci lo
 
 ### <a name="run-cost-analysis-by-using-azure-cost-management-and-billing"></a>Spuštění analýzy nákladů pomocí Azure Cost Management a fakturace
 
-Pokud chcete zkontrolovat náklady na službu Logic Apps v závislosti na konkrétním oboru, například v rámci předplatného Azure, můžete využít možnosti [analýzy nákladů](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) v [Azure cost management a fakturaci](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+Pokud chcete zkontrolovat náklady na službu Logic Apps v závislosti na konkrétním oboru, například v rámci předplatného Azure, můžete využít možnosti [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) v [Azure cost management a fakturaci](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 1. V Azure Portal otevřete požadovaný obor, například předplatné Azure. V nabídce vlevo v části **cost management** vyberte **Analýza nákladů**.
 
@@ -197,7 +197,7 @@ Pokud chcete zkontrolovat náklady na službu Logic Apps v závislosti na konkr�
 
 ### <a name="export-cost-data"></a>Export dat nákladů
 
-Pokud potřebujete provést další analýzu dat pro náklady, můžete [exportovat nákladovou data](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) do účtu úložiště. Finanční tým může například analyzovat tato data pomocí aplikace Excel nebo Power BI. Náklady můžete exportovat na denní, týdenní nebo měsíční plán a nastavit vlastní rozsah kalendářních dat. Export nákladových dat je doporučený způsob, jak načíst datové sady nákladů.
+Pokud potřebujete provést další analýzu dat pro náklady, můžete [exportovat nákladovou data](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) do účtu úložiště. Finanční tým může například analyzovat tato data pomocí aplikace Excel nebo Power BI. Náklady můžete exportovat na denní, týdenní nebo měsíční plán a nastavit vlastní rozsah kalendářních dat. Export nákladových dat je doporučený způsob, jak načíst datové sady nákladů.
 
 ## <a name="other-ways-to-manage-and-reduce-costs"></a>Další způsoby správy a snížení nákladů
 
@@ -228,9 +228,7 @@ Pokud chcete snížit náklady na Logic AP a související prostředky, zkuste t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Optimalizace investic do cloudu se službou Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Správa nákladů pomocí analýzy nákladů](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Jak zabránit neočekávaným nákladům](https://docs.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* Pořídit kurz učení s asistencí [cost management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-
-
+* [Optimalizace investic do cloudu se službou Azure Cost Management](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Správa nákladů pomocí analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Jak zabránit neočekávaným nákladům](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* Pořídit kurz učení s asistencí [cost management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

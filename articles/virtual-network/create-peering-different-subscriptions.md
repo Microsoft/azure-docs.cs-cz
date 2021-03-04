@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694950"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků, různých předplatných a klientů Azure Active Directory
 
@@ -55,7 +55,7 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
     - **Předplatné**: vyberte předplatné A.
     - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte *myResourceGroupA* .
     - **Umístění**: *východní USA*
-4. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Pokud se zobrazí ve výsledcích hledání, vyberte **myVnetA** . 
+4. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Pokud se zobrazí ve výsledcích hledání, vyberte **myVnetA** .
 5. V seznamu svislých možností na levé straně vyberte **řízení přístupu (IAM)** .
 6. V části **řízení přístupu myVnetA (IAM)** vyberte **+ Přidat přiřazení role**.
 7. V poli **role** vyberte **Přispěvatel sítě** .
@@ -99,7 +99,7 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>Vytvoření partnerského vztahu – Azure CLI
 
-V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech následujících skriptech s uživatelskými jmény, která používáte pro Usera a UserB. 
+V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech následujících skriptech s uživatelskými jmény, která používáte pro Usera a UserB.
 
 Následující skripty:
 
@@ -165,7 +165,7 @@ Místo instalace rozhraní příkazového řádku a jeho závislostí můžete p
 
 8. Odhlaste se ze služby UserA z Azure a přihlaste se k Azure jako UserB.
 9. Vytvořte partnerský vztah z myVnetB do myVnetA. Zkopírujte obsah skriptu v kroku 6 do textového editoru v počítači. Nahraďte `<SubscriptionB-Id>` ID předplatného a změňte vše jako na B a všechny BS na. Po provedení změn zkopírujte upravený skript, vložte jej do relace CLI a stiskněte klávesu `Enter` .
-10. Zobrazte stav partnerského vztahu pro myVnetB. Zkopírujte obsah skriptu v kroku 7 do textového editoru v počítači. Změňte hodnotu na B pro název skupiny prostředků a virtuální sítě, zkopírujte skript, vložte upravený skript do relace CLI a potom stiskněte klávesu `Enter` . Stav partnerského vztahu je **připojen**. Stav partnerského vztahu myVnetA se změní na **připojeno** po vytvoření partnerského vztahu z MyVnetB do myVnetA. UserA se můžete přihlásit zpátky do Azure a dokončit krok 7 a ověřit stav partnerského vztahu pro myVnetA. 
+10. Zobrazte stav partnerského vztahu pro myVnetB. Zkopírujte obsah skriptu v kroku 7 do textového editoru v počítači. Změňte hodnotu na B pro název skupiny prostředků a virtuální sítě, zkopírujte skript, vložte upravený skript do relace CLI a potom stiskněte klávesu `Enter` . Stav partnerského vztahu je **připojen**. Stav partnerského vztahu myVnetA se změní na **připojeno** po vytvoření partnerského vztahu z MyVnetB do myVnetA. UserA se můžete přihlásit zpátky do Azure a dokončit krok 7 a ověřit stav partnerského vztahu pro myVnetA.
 
     > [!NOTE]
     > Partnerský vztah není navázán, dokud stav partnerského vztahu není **připojen** k oběma virtuálním sítím.
@@ -181,7 +181,7 @@ Všechny prostředky Azure, které vytvoříte v obou virtuálních sítích, te
 
 V tomto kurzu se pro každé předplatné používá jiný účet. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočit kroky pro odhlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení role uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech následujících skriptech s uživatelskými jmény, která používáte pro Usera a UserB.
 
-1. Potvrďte, že máte Azure PowerShell verze 1.0.0 nebo novější. Můžete to provést spuštěním služby doporučujeme `Get-Module -Name Az` nainstalovat nejnovější verzi [modulu PowerShell AZ Module](/powershell/azure/install-az-ps). Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+1. Potvrďte, že máte Azure PowerShell verze 1.0.0 nebo novější. Můžete to provést spuštěním služby doporučujeme `Get-Module -Name Az` nainstalovat nejnovější verzi [modulu PowerShell AZ Module](/powershell/azure/install-az-ps). Pokud s Azure PowerShellem začínáte, podívejte se na [Přehled Azure PowerShellu](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Spusťte relaci PowerShellu.
 3. V PowerShellu se přihlaste k Azure jako UserA zadáním `Connect-AzAccount` příkazu. Účet, se kterým se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#permissions).
 4. Vytvořte skupinu prostředků a virtuální síť A. Zkopírujte následující skript do textového editoru na svém počítači. Nahraďte `<SubscriptionA-Id>` ID předplatného. Pokud své ID předplatného neznáte, zadejte `Get-AzSubscription` příkaz, který chcete zobrazit. Hodnota **ID** ve vráceném výstupu je vaše ID vašeho předplatného. Skript spustíte tak, že zkopírujete upravený skript, vložíte ho do PowerShellu a pak stisknete `Enter` .
@@ -276,7 +276,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
    }
    ```
 
-3. Přihlaste se k Azure jako UserA a nasaďte šablonu pomocí [portálu](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShellu](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)nebo rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Zadejte název souboru, do kterého jste uložili ukázkový text JSON v kroku 2.
+3. Přihlaste se k Azure jako UserA a nasaďte šablonu pomocí [portálu](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShellu](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)nebo rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Zadejte název souboru, do kterého jste uložili ukázkový text JSON v kroku 2.
 4. Zkopírujte vzorový kód JSON z kroku 2 do souboru ve vašem počítači a udělejte změny v řádcích, které začínají na:
    - **název**: změňte *myVnetA/myVnetAToMyVnetB* na *myVnetB/myVnetBToMyVnetA*.
    - **ID**: NAHRAĎte `<subscription ID>` ID předplatného UserB a změňte *myVnetB* na *myVnetA*.
@@ -296,7 +296,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
 5. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 6. Proveďte kroky 2-4 pro myResourceGroupB.
 
-### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Rozhraní příkazového řádku Azure
 
 1. Přihlaste se k Azure jako UserA a spusťte následující příkaz:
 
@@ -311,7 +311,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>Prostředí
 
 1. Přihlaste se k Azure jako UserA a spusťte následující příkaz:
 

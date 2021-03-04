@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524511"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703367"
 ---
 # <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
 
@@ -60,7 +60,7 @@ Zvažte opětovné zaznamenávání všech projevy s nízkými výslovnostmi neb
 
 > [!NOTE]
 > Je nutné, aby při použití vlastního hlasu neuronové bylo nutné zaregistrovat hlasový talentů na kartě **Voice talentů** . Při přípravě skriptu pro nahrávání nezapomeňte přidat níže uvedenou větu, abyste získali talentů potvrzení využití jejich hlasových dat k vytvoření hlasového modelu TTS a vygenerovali syntetické rozpoznávání řeči. "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
-Tato věta se použije k ověření, jestli se nahrávky v datových sadách pro školení provádějí stejnou osobou, která uděluje souhlas. [Přečtěte si další informace o tom, jak se budou zpracovávat vaše data, a jak se talentů ověřování hlasu](https://aka.ms/CNV-data-privacy). 
+Tato věta se použije k ověření, jestli se nahrávky v datových sadách pro školení provádějí stejnou osobou, která uděluje souhlas. [Přečtěte si další informace o tom, jak se budou zpracovávat vaše data, a jak se talentů ověřování hlasu](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="build-your-custom-voice-model"></a>Sestavení vlastního hlasového modelu
 
@@ -87,7 +87,7 @@ Po ověření datové sady ji můžete použít k sestavení vlastního hlasové
 5. V dalším kroku vyberte **metodu školení** . 
 
     > [!NOTE]
-    > Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](https://aka.ms/gating-overview) a [použijete přístup tady](https://aka.ms/customneural). 
+    > Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijete přístup tady](https://aka.ms/customneural). 
     
     Na této stránce můžete také vybrat nahrávání skriptu pro testování. Testovací skript musí být soubor txt, který je menší než 1 MB. Podporovaný formát kódování zahrnuje ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE nebo UTF-16-. Každý odstavec utterance bude mít za následek samostatný zvuk. Pokud chcete zkombinovat všechny věty do jednoho zvukového zařízení, udělejte je v jednom odstavci. 
 
@@ -126,7 +126,7 @@ Každé školení bude automaticky generovat ukázkové zvukové soubory 100, kt
 
 3.  Na stránce s podrobnostmi o modelu můžete najít ukázkové zvukové soubory na kartě **testování** . 
 
-Kvalita hlasu závisí na několika faktorech, včetně velikosti školicích dat, kvality záznamu, přesnosti souboru přepisu, jak dobře zaznamenaného hlasu v školicích datech odpovídá osobnosti navrženého hlasu pro zamýšlený případ použití a další. [Zde najdete další informace o možnostech a omezeních naší technologie a o osvědčených postupech pro zlepšení kvality modelu](https://aka.ms/CNV-limits). 
+Kvalita hlasu závisí na několika faktorech, včetně velikosti školicích dat, kvality záznamu, přesnosti souboru přepisu, jak dobře zaznamenaného hlasu v školicích datech odpovídá osobnosti navrženého hlasu pro zamýšlený případ použití a další. [Zde najdete další informace o možnostech a omezeních naší technologie a o osvědčených postupech pro zlepšení kvality modelu](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Vytvoření a použití vlastního koncového bodu hlasu
 

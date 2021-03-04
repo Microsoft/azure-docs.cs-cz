@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 48c7323a630f5c79c7ecb16e26c9ec79ec2014a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0c97d128837e77325e68ae28161a98938510ff8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723278"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Rozšíření diagnostika](../agents/diagnostics-extension-overview.md) Azure monitor (označované jako "wad" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly ze hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)
+[Rozšíření diagnostika](../agents/diagnostics-extension-overview.md) Azure monitor (označované jako "wad" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly ze hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows (Classic) do databáze metriky Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
 
@@ -34,7 +34,7 @@ Proces, který je popsaný v tomto článku, funguje jenom na klasických virtu�
 
 - Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
-- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](../platform/metrics-custom-overview.md#supported-regions).
+- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Vytvoření klasického virtuálního počítače a účtu úložiště
 
@@ -203,4 +203,4 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastních metrikách](../platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).

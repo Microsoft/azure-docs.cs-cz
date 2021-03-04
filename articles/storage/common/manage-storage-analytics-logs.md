@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701701"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Povolit a spravovat protokoly Analýza úložiště Azure (klasické)
 
-[Analýza úložiště Azure](storage-analytics.md) poskytuje protokoly pro objekty blob, fronty a tabulky. Ke konfiguraci protokolů pro svůj účet můžete použít [Azure Portal](https://portal.azure.com) . V tomto článku se dozvíte, jak povolit a spravovat protokoly. Informace o tom, jak povolit metriky, najdete v tématu [povolení a Správa metrik analýza úložiště Azure (Classic)](storage-monitor-storage-account.md).  Existují náklady spojené s zkoumáním a ukládáním dat monitorování v Azure Portal. Další informace najdete v tématu [Analýza úložiště](storage-analytics.md).
+[Analýza úložiště Azure](storage-analytics.md) poskytuje protokoly pro objekty blob, fronty a tabulky. Ke konfiguraci protokolů pro svůj účet můžete použít [Azure Portal](https://portal.azure.com) . V tomto článku se dozvíte, jak povolit a spravovat protokoly. Informace o tom, jak povolit metriky, najdete v tématu [povolení a Správa metrik analýza úložiště Azure (Classic)]().  Existují náklady spojené s zkoumáním a ukládáním dat monitorování v Azure Portal. Další informace najdete v tématu [Analýza úložiště](storage-analytics.md).
 
 > [!NOTE]
 > Místo protokolů Analýza úložiště doporučujeme používat protokoly Azure Storage v Azure Monitor. Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Tato verze Preview umožňuje protokoly objektů BLOB (včetně Azure Data Lake Storage Gen2), souborů, front a tabulek. Další informace najdete v následujících článcích:
@@ -191,7 +191,7 @@ Data protokolu se ve vašem účtu můžou shromažďovat v čase, což může z
 
    * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště. 
 
-6. K zobrazení aktuálních zásad uchovávání protokolů použijte [příkaz Get-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) . Následující příklad vytiskne do konzoly dobu uchování pro služby BLOB a Queue Storage.
+6. K zobrazení aktuálních zásad uchovávání protokolů použijte [příkaz Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) . Následující příklad vytiskne do konzoly dobu uchování pro služby BLOB a Queue Storage.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ Data protokolu se ve vašem účtu můžou shromažďovat v čase, což může z
    > [!div class="mx-imgBorder"]
    > ![Zásady uchovávání informací ve výstupu PowerShellu](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. Dobu uchovávání můžete změnit pomocí [set-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) . Následující příklad změní dobu uchování na 4 dny.  
+7. Dobu uchovávání můžete změnit pomocí [set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) . Následující příklad změní dobu uchování na 4 dny.  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ Po stažení dat protokolu můžete zobrazit položky protokolu v souborech. Tyt
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o Analýza úložiště najdete v tématu [Analýza úložiště](storage-analytics.md) analýza úložiště.
-* [Nakonfigurujte metriky analýza úložiště](storage-monitor-storage-account.md).
 * Další informace o použití jazyka .NET ke konfiguraci protokolování úložiště najdete v tématu [Reference k klientské knihovně pro úložiště](/previous-versions/azure/dn261237(v=azure.100)). 
 * Obecné informace o konfiguraci protokolování úložiště pomocí REST API najdete v tématu [povolení a konfigurace analýza úložiště](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
 * Přečtěte si další informace o formátu protokolů Analýza úložiště. Viz [Formát protokolu analýza úložiště](/rest/api/storageservices/storage-analytics-log-format).

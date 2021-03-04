@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987788"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703677"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -105,7 +105,7 @@ Zálohy (protokol a non-log) ve SAP HANA virtuálních počítačů Azure poskyt
 
 Komponenta Backint systému HANA poskytuje "trubky" (kanál pro čtení z a kanál pro zápis do), připojené k podkladovým diskům, kde jsou umístěny soubory databáze, které jsou následně čteny službou Azure Backup a přepravovány do služby Azure Recovery Services trezor. Služba Azure Backup také provádí kontrolní součet k ověřování datových proudů, kromě kontrol nativního ověření backint. Tato ověření budou mít jistotu, že data obsažená ve službě Azure Recovery Services trezor jsou skutečně spolehlivá a obnovitelná.
 
-Vzhledem k tomu, že se streamy primárně týkají disků, potřebujete pochopit výkon disku a vyhodnocovat tak výkon zálohování a obnovení. V [tomto článku](https://docs.microsoft.com/azure/virtual-machines/disks-performance) najdete podrobné informace o propustnosti a výkonu disku ve virtuálních počítačích Azure. Tyto podmínky se vztahují také na výkon zálohování a obnovení.
+Vzhledem k tomu, že se streamy primárně týkají disků, potřebujete pochopit výkon disku a vyhodnocovat tak výkon zálohování a obnovení. V [tomto článku](../virtual-machines/disks-performance.md) najdete podrobné informace o propustnosti a výkonu disku ve virtuálních počítačích Azure. Tyto podmínky se vztahují také na výkon zálohování a obnovení.
 
 **Služba Azure Backup se pokusí dosáhnout až ~ 420 MB/s pro zálohování bez protokolu (například úplné, rozdílové a přírůstkové) a až 100 MB/s pro zálohování protokolů pro Hana**. Jak je uvedeno výše, nejsou zaručeny rychlosti a závisí na následujících faktorech:
 
@@ -267,8 +267,8 @@ Nastavení zásad určete následujícím způsobem:
    ![Zásady rozdílového zálohování](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Přírůstkové zálohy jsou nyní k dispozici ve verzi Public Preview. Můžete zvolit buď rozdílovou, nebo přírůstkovou, jako denní zálohu, ale ne obojí.
-   >
+   >Můžete zvolit buď rozdílovou, nebo přírůstkovou, jako denní zálohu, ale ne obojí.
+
 7. V části **zásady přírůstkového zálohování** vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
     * Ve většině případů můžete aktivovat jednu přírůstkovou zálohu za den.
     * Přírůstkové zálohování lze uchovávat maximálně po dobu 180 dnů. Pokud potřebujete delší dobu uchovávání, musíte použít úplné zálohování.

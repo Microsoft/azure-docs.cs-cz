@@ -1,22 +1,21 @@
 ---
 title: Nejčastější dotazy týkající se cenové služby Azure Network Performance Monitor | Microsoft Docs
 description: Nejčastější dotazy – Azure Network Performance Monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56163d3267a69099cbf6a18266168e9198ea04c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832874"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717430"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Cenové změny pro Azure Network Performance Monitor
 
 > [!IMPORTANT]
-> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Nastavili jsme vaše názory a nedávno jsme zavedli [nové cenové prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) pro různé služby monitorování v rámci Azure. Tento článek zachycuje cenové změny týkající se Azure [Network Performance Monitor](../../networking/network-monitoring-overview.md) (npm) ve snadno čitelném formátu otázek a odpovědí.
 

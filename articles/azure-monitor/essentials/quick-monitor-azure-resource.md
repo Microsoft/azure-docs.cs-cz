@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: cab41c025f9f3e5b03f042a2bf5686cb08dbd0a9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62afc0ab4e65da53adb35510503051d39e0edc4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734226"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.
@@ -67,7 +67,7 @@ Metriky jsou číselné hodnoty, které popisují určitý aspekt prostředku v 
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste si prohlíželi protokol aktivit a metriky pro prostředek Azure, které se automaticky shromažďují pomocí Azure Monitor. Pokračujte dalším rychlým startem, který vám ukáže, jak shromažďovat protokol aktivit do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md).
+V tomto rychlém startu jste si prohlíželi protokol aktivit a metriky pro prostředek Azure, které se automaticky shromažďují pomocí Azure Monitor. Pokračujte dalším rychlým startem, který vám ukáže, jak shromažďovat protokol aktivit do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md).
 
 > [!div class="nextstepaction"]
-> [Odeslání protokolu aktivit Azure do pracovního prostoru Log Analytics](../learn/quick-collect-activity-log-portal.md)
+> [Odeslání protokolu aktivit Azure do pracovního prostoru Log Analytics](./quick-collect-activity-log-portal.md)

@@ -1,5 +1,5 @@
 ---
-title: Přehled Azure DDoS Protection Standard
+title: Přehled služby Azure DDoS Protection úrovně Standard
 description: Zjistěte, jak služba Azure DDoS Protection úrovně Standard v kombinaci s osvědčenými postupy návrhu aplikací poskytuje ochranu před útoky DDoS.
 services: virtual-network
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703112"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
+# <a name="azure-ddos-protection-standard-overview"></a>Přehled Azure DDoS Protection Standard
 
 Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 
@@ -54,7 +54,7 @@ Další informace o cenách Azure DDoS Protection Standard najdete v tématu [Az
 
 ## <a name="reference-architectures"></a>Referenční architektury
 
-DDoS Protection Standard je určený pro [služby, které jsou nasazené ve virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services). Pro ostatní služby platí výchozí služba DDoS Protection Basic. Další informace o podporovaných architekturách najdete v tématu [DDoS Protection referenčních architektur](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
+DDoS Protection Standard je určený pro [služby, které jsou nasazené ve virtuální síti](../virtual-network/virtual-network-for-azure-services.md). Pro ostatní služby platí výchozí služba DDoS Protection Basic. Další informace o podporovaných architekturách najdete v tématu [DDoS Protection referenčních architektur](./ddos-protection-reference-architectures.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: 540ca293afdd7514793b8eec390b4751885859df
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710974"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
@@ -44,7 +44,7 @@ Následující kroky shrnují postup konfigurace Configuration Manager integrace
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udělení Configuration Manager s oprávněním Log Analytics
 
-V následujícím postupu udělíte roli *Přispěvatel* v pracovním prostoru Log Analytics k aplikacím a instančnímu objektu služby AD, který jste vytvořili dříve pro Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](../learn/quick-create-workspace.md) než budete pokračovat. To umožňuje Configuration Manager ověřovat a připojovat se k pracovnímu prostoru Log Analytics.  
+V následujícím postupu udělíte roli *Přispěvatel* v pracovním prostoru Log Analytics k aplikacím a instančnímu objektu služby AD, který jste vytvořili dříve pro Configuration Manager. Pokud ještě nemáte pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru v Azure monitor](./quick-create-workspace.md) než budete pokračovat. To umožňuje Configuration Manager ověřovat a připojovat se k pracovnímu prostoru Log Analytics.  
 
 > [!NOTE]
 > Pro Configuration Manager je nutné zadat oprávnění v pracovním prostoru Log Analytics. V opačném případě se zobrazí chybová zpráva, když použijete Průvodce konfigurací v nástroji Configuration Manager.
@@ -148,9 +148,8 @@ Po importu kolekcí můžete zjistit, kolik počítačů s členstvím v kolekci
 
 ![Snímek obrazovky s rozšířenými nastaveními skupiny počítačů pro S C C M ukazující možnost importu vybraných členství kolekce Configuration Manager.](./media/collect-sccm/sccm-computer-groups02.png)
 
-Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](../log-query/log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
+Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](./log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí [prohledávání protokolu](../log-query/log-query-overview.md) můžete zobrazit podrobné informace o datech Configuration Manager.
-
+Pomocí [prohledávání protokolu](./log-query-overview.md) můžete zobrazit podrobné informace o datech Configuration Manager.

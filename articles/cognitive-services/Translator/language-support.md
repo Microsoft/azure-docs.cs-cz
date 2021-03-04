@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738136"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
-Použijte překladatele k překladu do a z libovolného z 70 a textových jazyků pro překlad textu. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí v případě, že je k dispozici systém neuronové.
+Pomocí překladatele můžete překládat do a z kteréhokoli z jazyků a dialektů pro překlad textu 90. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí v případě, že je k dispozici systém neuronové.
 
 Překladatele můžete také použít ve spojení s vlastním překladatelem k vytváření neuronové překladových systémů, které rozumí terminologii používané ve vašem podniku a průmyslu, a pomocí služby Microsoft Speech Service k přidání překladu řeči do aplikace.
 
@@ -37,8 +37,12 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Jazyk | Kód jazyka |
 |:-|:-:|
 | Afrikánština | `af` |
+| Albánština | `sq` |
+| Amharšina | `am` |
 | Arabština | `ar` |
+| Arménština | `hy` |
 | Ásámština | `as` |
+| Ázerbájdžánština | `az` |
 | Bengálština | `bn` |
 | Bosenština (latinka) | `bs` |
 | Bulharština | `bg` |
@@ -74,11 +78,13 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Japonština | `ja` |
 | Kannadština | `kn` |
 | Kazaština | `kk` |
+| Khmerština | `km` |
 | Klingon | `tlh-Latn` |
 | Klingon (plqaD) | `tlh-Piqd` |
 | Korejština | `ko` |
 | Kurdština (střed) | `ku` |
 | Kurdština (Severní) | `kmr` |
+| Laoský | `lo` |
 | Lotyština | `lv` |
 | Litevština | `lt` |
 | Malgašština | `mg` |
@@ -87,6 +93,8 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Maltština | `mt` |
 | Maorština | `mi` |
 | Maráthština | `mr` |
+| Myanmar | `my` |
+| Nepálština | `ne` |
 | Norština | `nb` |
 | Udijština | `or` |
 | Paštština | `ps` |
@@ -110,6 +118,7 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 | Tamilština | `ta` |
 | Telugština | `te` |
 | Thajština | `th` |
+| Tigriňňa | `ti` |
 | Tongánština | `to` |
 | Turečtina | `tr` |
 | Ukrajinština | `uk` |
@@ -130,6 +139,7 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 | Jazyk | Kód jazyka |
 |:-|:-:|
 | Afrikánština | `af` |
+| Albánština | `sq` |
 | Arabština | `ar` |
 | Bulharština | `bg` |
 | Katalánština | `ca` |
@@ -152,6 +162,7 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 | Maďarština | `hu` |
 | Islandština | `is` |
 | Indonéština | `id` |
+| Inuktitutština | `iu` |
 | Irština | `ga` |
 | Italština | `it` |
 | Japonština | `ja` |

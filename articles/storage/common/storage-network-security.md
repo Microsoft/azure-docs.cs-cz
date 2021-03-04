@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 17a2d04fd6519dfdaf3c97c4ef56e87e162c9e9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591564"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714744"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -417,7 +417,7 @@ Nainstalujte modul **AZ. Storage** Preview.
 Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.0.1-preview -AllowClobber -AllowPrerelease -Force 
 ```
 
-Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) .
+Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) .
 
 #### <a name="grant-access"></a>Udělení přístupu
 
@@ -559,17 +559,17 @@ Prostředky některých služeb, **Pokud jsou zaregistrované ve vašem předpla
 
 | Služba                  | Název poskytovatele prostředků     | Povolené operace                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Přečtěte si další informace](../../backup/backup-overview.md). |
-| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Přečtěte si další informace](../../databox/data-box-overview.md). |
-| Azure DevTest Labs       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Přečtěte si další informace](../../devtest-labs/devtest-lab-overview.md). |
+| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Další informace](../../backup/backup-overview.md). |
+| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](../../databox/data-box-overview.md). |
+| Azure DevTest Labs       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Další informace](../../devtest-labs/devtest-lab-overview.md). |
 | Azure Event Grid         | Microsoft. EventGrid        | Povolte publikování událostí Blob Storage a umožněte Event Grid publikování do front úložiště. Přečtěte si informace o [událostech služby Blob Storage](../../event-grid/overview.md#event-sources) a [publikování do front](../../event-grid/event-handlers.md). |
 | Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](../../event-hubs/event-hubs-capture-overview.md) |
 | Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Přečtěte si další informace](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
-| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Přečtěte si další informace](../../import-export/storage-import-export-service.md).  |
-| Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Přečtěte si další informace](../../azure-monitor/roles-permissions-security.md). |
-| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Přečtěte si další informace](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
-| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Přečtěte si další informace](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
+| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). |
+| Export pro import do Azure      | Microsoft. ImportExport     | Umožňuje importovat data Azure Storage nebo exportovat data z Azure Storage pomocí služby Azure Storage import/export. [Další informace](../../import-export/storage-import-export-service.md).  |
+| Azure Monitor            | Microsoft. Insights         | Povoluje zápis dat monitorování do zabezpečeného účtu úložiště, včetně protokolů prostředků, Azure Active Directory protokolů pro přihlášení a auditu a protokolů Microsoft Intune. [Další informace](../../azure-monitor/roles-permissions-security.md). |
+| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu, včetně služeb Network Watcher a Analýza provozu. [Další informace](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
+| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
 <a id="trusted-access-system-assigned-managed-identity"></a>
 
@@ -583,7 +583,7 @@ V následující tabulce jsou uvedeny služby, které mohou mít přístup k dat
 
 | Služba                        | Název poskytovatele prostředků                 | Účel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
-| Azure API Management           | Microsoft.ApiManagement/service        | Umožňuje službě API Management přístup k účtům úložiště za bránou firewall pomocí zásad. [Přečtěte si další informace](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
+| Azure API Management           | Microsoft.ApiManagement/service        | Umožňuje službě API Management přístup k účtům úložiště za bránou firewall pomocí zásad. [Další informace](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. Search/searchServices        | Umožňuje službám Kognitivní hledání získat přístup k účtům úložiště pro indexování, zpracování a dotazování. |
 | Azure Cognitive Services       | Microsoft. CognitiveService/účty    | Povolí Cognitive Services k přístupu k účtům úložiště. |
 | Úlohy Azure Container Registry | Microsoft. ContainerRegistry/Registry | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
@@ -591,16 +591,16 @@ V následující tabulce jsou uvedeny služby, které mohou mít přístup k dat
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
 | Azure DevTest Labs             | Microsoft. DevTestLab/Labs              | Umožňuje přístup k účtům úložiště prostřednictvím DevTest Labs. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Umožňuje zapsat data z služby IoT Hub do úložiště objektů BLOB. [Další informace](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
-| Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Přečtěte si další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Přečtěte si další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
+| Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
 | Azure Media Services           | Microsoft. Media/MediaServices          | Umožňuje přístup k účtům úložiště prostřednictvím Media Services. |
 | Azure Migrate                  | Microsoft. migruje/migrateprojects      | Umožňuje přístup k účtům úložiště prostřednictvím Azure Migrate. |
 | Azure Purview                  | Microsoft. dosah/účty             | Povoluje dosah přístup k účtům úložiště. |
 | Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Umožňuje přístup k účtům úložiště prostřednictvím vzdáleného vykreslování. |
 | Azure Site Recovery            | Microsoft. RecoveryServices/trezory      | Umožňuje přístup k účtům úložiště prostřednictvím Site Recovery. |
 | Azure SQL Database             | Microsoft.Sql                          | Povoluje [zápis](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) dat auditu do účtů úložiště za bránou firewall. |
-| Azure Synapse Analytics        | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Přečtěte si další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Přečtěte si další informace](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních databází SQL pomocí příkazu COPY nebo základny (ve vyhrazeném fondu) nebo `openrowset` funkce a externích tabulek ve fondu bez serveru. [Další informace](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. [Další informace](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. synapse/pracovní prostory           | Umožňuje přístup k datům v Azure Storage z Azure synapse Analytics. |
 
 ## <a name="grant-access-to-storage-analytics"></a>Udělení přístupu k analýze úložiště

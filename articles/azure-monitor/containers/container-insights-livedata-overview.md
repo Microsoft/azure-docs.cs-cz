@@ -1,26 +1,26 @@
 ---
-title: Zobrazit živá data (Preview) s Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje zobrazení Kubernetes protokolů, událostí a metrik v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
+title: Zobrazení živých dat (Preview) se službou Container Insights | Microsoft Docs
+description: Tento článek popisuje zobrazení Kubernetes protokolů, událostí a metrik v reálném čase bez použití kubectl ve službě Container Insights.
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609502"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711225"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
 
-Azure Monitor for Containers zahrnuje funkci živá data (Preview), která je pokročilou diagnostickou, která umožňuje přímý přístup k vašim protokolům kontejnerů AKS (Azure Kubernetes Service), událostem a metrikám pod. Zpřístupňuje přímý přístup k `kubectl logs -c` `kubectl get` událostem a `kubectl top pods` . V podokně konzoly se zobrazují protokoly, události a metriky vygenerované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
+Služba Container Insights zahrnuje funkci živá data (Preview), která je pokročilou diagnostickou, která umožňuje přímý přístup k protokolům kontejnerů AKS (Azure Kubernetes Service) (stdout/stderr), událostem a pod metrikám. Zpřístupňuje přímý přístup k `kubectl logs -c` `kubectl get` událostem a `kubectl top pods` . V podokně konzoly se zobrazují protokoly, události a metriky vygenerované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
 
 Tento článek poskytuje podrobný přehled a pomůže vám pochopit, jak tuto funkci používat.
 
 Nápovědu k nastavení funkce živá data (Preview) najdete v naší [příručce k instalaci](container-insights-livedata-setup.md). Tato funkce přímo přistupuje k rozhraní Kubernetes API. Další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
 ## <a name="view-deployment-live-logs-preview"></a>Zobrazit živé protokoly nasazení (Preview)
-Následující postup slouží k zobrazení živých protokolů pro nasazení, která jsou součástí AKS clusterů, které nejsou monitorovány Azure Monitor for Containers. Pokud váš cluster používá Azure Monitor pro kontejnery, použijte následující postup k zobrazení živých dat pro uzly, řadiče, kontejnery a nasazení.
+Pomocí následujícího postupu můžete zobrazit živé protokoly pro nasazení, která jsou součástí AKS clusterů, které nejsou monitorovány pomocí služby Container Insights. Pokud váš cluster používá službu Container Insights, použijte následující postup k zobrazení živých dat pro uzly, řadiče, kontejnery a nasazení.
 
 1. V Azure Portal přejděte do skupiny prostředků clusteru AKS a vyberte svůj prostředek AKS.
 
@@ -104,7 +104,7 @@ Po úspěšném ověření se pod mřížkou dat výkonu zobrazí podokno konzol
 ## <a name="using-live-data-views"></a>Používání zobrazení dynamických dat
 Následující části popisují funkčnost, kterou můžete použít v různých zobrazeních dynamických dat.
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 Funkce Live data (Preview) zahrnuje funkce hledání. V poli **hledání** můžete výsledky filtrovat zadáním klíčového slova nebo termínu. všechny vyhovující výsledky jsou zvýrazněny, aby umožňovaly rychlou kontrolu. Při prohlížení událostí můžete kromě toho omezit výsledky pomocí **filtru** , který se nachází na pravé straně panelu hledání. V závislosti na tom, jaký prostředek jste vybrali, zobrazuje funkce pilla seznam pod, oborem názvů nebo clusteru, ze kterého se má vybrat.
 
 ![Příklad filtru podokna konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)

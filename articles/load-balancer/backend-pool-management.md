@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 65a00cd898ef63dd3194e48ad6dd3fb73a211d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709865"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
@@ -255,8 +255,16 @@ Ve scénářích s předem vyplněnými back-end fondy použijte IP a virtuáln�
 
 Veškerá správa back-end fondu se provádí přímo na objektu back-end fondu, který je zvýrazněný v níže uvedených příkladech.
 
-  >[!IMPORTANT] 
-  >Tato funkce je aktuálně ve verzi Preview. Aktuální limity této funkce najdete v [části omezení](#limitations) .
+### <a name="limitations"></a>Omezení
+Back-end fond konfigurovaný podle IP adresy má následující omezení:
+  * Dá se použít jenom pro standardní nástroje pro vyrovnávání zatížení.
+  * Limit 100 IP adres ve fondu back-endu
+  * Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
+  * Load Balancer s back-end fondem založeným na IP adrese nemůže fungovat jako služba privátního propojení.
+  * Tato funkce se v současnosti v Azure Portal nepodporuje.
+  * Tato funkce aktuálně nepodporuje kontejnery ACI.
+  * Nástroje pro vyrovnávání zatížení nebo služby, které jsou front-end vyrovnávání zatížení, nelze umístit do back-endového fondu služby Load Balancer.
+  * Příchozí pravidla překladu adres (NAT) nejde zadat podle IP adresy.
 
 ### <a name="powershell"></a>PowerShell
 Vytvořit nový back-end fond:
@@ -517,17 +525,6 @@ Text požadavku JSON:
   }
 }
 ```
-
-## <a name="limitations"></a>Omezení
-Back-end fond konfigurovaný podle IP adresy má následující omezení:
-  * Jenom standardní nástroj pro vyrovnávání zatížení
-  * Limit 100 IP adres ve fondu back-endu
-  * Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
-  * Load Balancer s back-end fondem založeným na IP adrese nemůže fungovat jako služba privátního propojení.
-  * Tato funkce se v současnosti v Azure Portal nepodporuje.
-  * Tato funkce aktuálně nepodporuje kontejnery ACI.
-  * Nástroje pro vyrovnávání zatížení nebo služby, které jsou front-end vyrovnávání zatížení, nelze umístit do back-endového fondu služby Load Balancer.
-  * Příchozí pravidla překladu adres (NAT) nejde zadat podle IP adresy.
   
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste se dozvěděli o Azure Load Balancer správě fondu back-endu a o tom, jak nakonfigurovat back-end fond podle IP adresy a virtuální sítě.

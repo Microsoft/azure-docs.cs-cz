@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1cd90bc1906140e6e559c1557234458035e54042
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722360"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat pro vytvoření vlastního hlasu
 
@@ -27,9 +27,9 @@ Než budete moct naučit vlastní hlasový model pro převod textu na řeč, bud
 > Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Při přípravě skriptu nahrávání se ujistěte, že jste zahrnuli níže uvedenou větu. 
 
 > "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
-Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](https://aka.ms/CNV-data-privacy) .
+Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) .
 
-> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](https://aka.ms/gating-overview) a [použijete přístup tady](https://aka.ms/customneural). 
+> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijete přístup tady](https://aka.ms/customneural). 
 
 ## <a name="data-types"></a>Typy dat
 

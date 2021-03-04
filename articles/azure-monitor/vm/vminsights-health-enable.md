@@ -1,24 +1,24 @@
 ---
-title: Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
-description: Popisuje, jak ve svém předplatném povolit Azure Monitor pro virtuální počítače stav hosta a jak připojit virtuální počítače.
+title: Povolit stav hosta virtuálního počítače Insights (Preview)
+description: Popisuje, jak ve svém předplatném povolit stav hosta služby VM Insights a jak připojit virtuální počítače.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733716"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Povolit stav hosta Azure Monitor pro virtuální počítače (Preview)
-Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
+# <a name="enable-vm-insights-guest-health-preview"></a>Povolit stav hosta virtuálního počítače Insights (Preview)
+Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak povolit tuto funkci ve vašem předplatném a jak povolit monitorování hostů pro každý virtuální počítač.
 
 ## <a name="current-limitations"></a>Aktuální omezení
-Azure Monitor pro virtuální počítače stav hosta má ve verzi Public Preview tato omezení:
+Stav hosta virtuálních počítačů Insights má ve verzi Public Preview tato omezení:
 
 - V tuto chvíli se podporují jenom virtuální počítače Azure. Azure Arc pro servery se v současné době nepodporuje.
 
@@ -36,19 +36,25 @@ Virtuální počítač se musí nacházet v jedné z následujících oblastí:
 - Austrálie – střed
 - Austrálie – východ
 - Austrálie – jihovýchod
+- Střední Kanada
 - Indie – střed
 - USA – střed
 - Východní Asie
 - East US
 - USA – východ 2
 - Východní USA 2 EUAP
+- Francie – střed
 - Německo – středozápad
 - Japonsko – východ
+- Jižní Korea – střed
 - USA – středosever
 - Severní Evropa
 - Středojižní USA
+- Jižní Afrika – sever
 - Southeast Asia
+- Švýcarsko – sever
 - Spojené království – jih
+- Spojené království – západ
 - USA – středozápad
 - West Europe
 - USA – západ
@@ -57,24 +63,36 @@ Virtuální počítač se musí nacházet v jedné z následujících oblastí:
 
 Log Analytics pracovní prostor se musí nacházet v jedné z následujících oblastí:
 
-- Střední USA
+- Austrálie – střed
+- Austrálie – východ
+- Austrálie – jihovýchod
+- Střední Kanada
+- Kanada – Indie
+- USA – střed
+- Východní Asie
 - East US
 - USA – východ 2
 - Východní USA 2 EUAP
+- Francie – střed
+- Japonsko – východ
+- USA – středosever
 - Severní Evropa
-- Jihovýchodní Asie
+- Středojižní USA
+- Southeast Asia
+- Švýcarsko – sever
 - Spojené království – jih
 - Oblast Západní Evropa
+- USA – západ
 - Západní USA 2
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Aby bylo možné Azure Monitor pro virtuální počítače, musí být virtuální počítač připojen.
+- Virtuální počítač musí být připojen k virtuálnímu počítači Insights.
 - Uživatel, který spouští kroky připojování, musí mít minimální přístup na úrovni přispěvatele k předplatnému, kde se nachází pravidlo pro virtuální počítače a shromažďování dat.
 - Požadovaná poskytovatelé prostředků Azure musí být zaregistrovaná, jak je popsáno v následující části.
 
 ## <a name="register-required-azure-resource-providers"></a>Registrace požadovaných poskytovatelů prostředků Azure
-Aby bylo možné povolit Azure Monitor pro virtuální počítače stav hosta, zaregistrují se u vašeho předplatného následující poskytovatelé prostředků Azure. 
+Následující poskytovatelé prostředků Azure si zaregistrují pro vaše předplatné, aby povolili stav hosta pro virtuální počítače. 
 
 - Microsoft. monitor zátěže byl
 - Microsoft. Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Povolení virtuálního počítače pomocí webu Azure Portal
 Když pro virtuální počítač povolíte stav hosta na webu Azure Portal, veškerá požadovaná konfigurace se provede za vás. To zahrnuje vytvoření pravidla vyžadovat shromažďování dat, instalaci rozšíření stavu hosta na virtuálním počítači a vytvoření přidružení s pravidlem shromažďování dat.
 
-V zobrazení **Začínáme** v Azure monitor pro virtuální počítače klikněte na odkaz vedle zprávy o upgradu pro virtuální počítač a potom klikněte na tlačítko **upgradovat** . Můžete také vybrat více virtuálních počítačů a upgradovat je společně.
+V zobrazení **Začínáme** v části VM Insights klikněte na odkaz vedle zprávy o upgradu pro virtuální počítač a pak klikněte na tlačítko **upgradovat** . Můžete také vybrat více virtuálních počítačů a upgradovat je společně.
 
 ![Povolit funkci stavu na virtuálním počítači](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ K povolení virtuálních počítačů pomocí Azure Resource Manager se vyžadu
 > [!NOTE]
 > Pokud povolíte virtuální počítač pomocí Azure Portal, vytvoří se pro vás pravidlo shromažďování dat popsané tady. V takovém případě tento krok nemusíte provádět.
 
-Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta je uložená v [pravidlech shromažďování dat (DCR)](../agents/data-collection-rule-overview.md). Každý virtuální počítač s rozšířením stavu hosta bude potřebovat přidružení s tímto pravidlem.
+Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights je uložená v [pravidlech shromažďování dat (DCR)](../agents/data-collection-rule-overview.md). Každý virtuální počítač s rozšířením stavu hosta bude potřebovat přidružení s tímto pravidlem.
 
 > [!NOTE]
-> Můžete vytvořit další pravidla shromažďování dat pro úpravu výchozí konfigurace monitorování, jak je popsáno v tématu [Configure monitoring in Azure monitor pro virtuální počítače Host Health (Preview)](vminsights-health-configure.md).
+> Můžete vytvořit další pravidla shromažďování dat pro úpravu výchozí konfigurace monitorování, jak je popsáno v tématu [Konfigurace monitorování ve stavu hosta VM Insights (Preview)](vminsights-health-configure.md).
 
 Šablona vyžaduje hodnoty pro následující parametry:
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přizpůsobení monitorování povolených pomocí Azure Monitor pro virtuální počítače](vminsights-health-configure.md)
+- [Přizpůsobení monitorování povolených službou VM Insights](vminsights-health-configure.md)

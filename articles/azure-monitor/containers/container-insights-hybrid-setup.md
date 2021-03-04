@@ -1,22 +1,22 @@
 ---
-title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
+title: Konfigurace hybridních clusterů Kubernetes s využitím Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat službu Container Insights, která bude monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610283"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711242"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
+# <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Konfigurace hybridních clusterů Kubernetes s využitím kontejnerů Insights
 
-Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro Azure Kubernetes Service (AKS) a [AKS Engine v Azure](https://github.com/Azure/aks-engine), což je samoobslužný cluster Kubernetes hostovaný v Azure. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure a dosáhnout podobných možností monitorování.
+Služba Container Insights poskytuje bohatou monitorovací prostředí pro Kubernetes službu Azure (AKS) a [AKS Engine v Azure](https://github.com/Azure/aks-engine), což je samoobslužný cluster Kubernetes hostovaný v Azure. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure a dosáhnout podobných možností monitorování.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Následující konfigurace jsou oficiálně podporované Azure Monitor for Containers. Pokud máte jinou verzi Kubernetes a verze operačního systému, pošlete prosím e-mail na askcoin@microsoft.com .
+Následující konfigurace jsou oficiálně podporovány pomocí kontejneru Insights. Pokud máte jinou verzi Kubernetes a verze operačního systému, pošlete prosím e-mail na askcoin@microsoft.com .
 
 - Environment
 
@@ -36,19 +36,19 @@ Následující konfigurace jsou oficiálně podporované Azure Monitor for Conta
 
 Než začnete, ujistěte se, že máte následující:
 
-- [Pracovní prostor služby Log Analytics](../platform/design-logs-deployment.md).
+- [Pracovní prostor služby Log Analytics](../logs/design-logs-deployment.md).
 
-    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../samples/resource-manager-workspace.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
+    Služba Container Insights podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../logs/resource-manager-workspace.md), prostřednictvím [PowerShellu](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../logs/quick-create-workspace.md).
 
     >[!NOTE]
     >Možnost monitorování více clusterů se stejným názvem clusteru do stejného Log Analytics pracovní prostor není podporována. Názvy clusterů musí být jedinečné.
     >
 
-- Jste členem **role přispěvatel Log Analytics** , abyste povolili monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa přístupu k pracovním prostorům a datům protokolu](../platform/manage-access.md).
+- Jste členem **role přispěvatel Log Analytics** , abyste povolili monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa přístupu k pracovním prostorům a datům protokolu](../logs/manage-access.md).
 
-- Chcete-li zobrazit data monitorování, je nutné mít v pracovním prostoru Log Analytics [*Log Analytics roli Čtenář*](../platform/manage-access.md#manage-access-using-azure-permissions) , nakonfigurovanou pomocí Azure monitor for Containers.
+- Chcete-li zobrazit data monitorování, musíte mít roli [*čtenář Log Analytics*](../logs/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics, která je nakonfigurována pomocí kontejneru Insights.
 
-- [Helm klientovi](https://helm.sh/docs/using_helm/) , aby se připojil diagram Azure monitor for Containers pro zadaný cluster Kubernetes.
+- [Helm Client](https://helm.sh/docs/using_helm/) , který zaregistruje graf služby Container Insights pro zadaný cluster Kubernetes.
 
 - Následující informace o konfiguraci proxy serveru a brány firewall jsou vyžadovány pro kontejnerové verze Log Analytics agenta pro Linux pro komunikaci s Azure Monitor:
 
@@ -67,11 +67,11 @@ Než začnete, ujistěte se, že máte následující:
 
 ## <a name="enable-monitoring"></a>Povolení monitorování
 
-Povolení Azure Monitor pro kontejnery pro cluster Hybrid Kubernetes se skládá z následujících kroků v uvedeném pořadí.
+Povolení služby Container Insights pro cluster Hybrid Kubernetes se skládá z následujících kroků v uvedeném pořadí.
 
 1. Nakonfigurujte svůj pracovní prostor Log Analytics pomocí řešení Container Insights.   
 
-2. Povolte Azure Monitor pro kontejnery HELM s Log Analytics pracovním prostorem.
+2. Povolte graf HELM Insights Container Insights s pracovním prostorem Log Analytics.
 
 Další informace o řešeních monitorování v Azure Monitor najdete [tady](../../azure-monitor/insights/solutions.md).
 
@@ -252,7 +252,7 @@ Abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního
 
 ## <a name="install-the-helm-chart"></a>Instalace grafu HELM
 
-V této části nainstalujete agenta s kontejnery pro Azure Monitor pro kontejnery. Než budete pokračovat, je nutné určit ID pracovního prostoru požadované pro `omsagent.secret.wsid` parametr a primární klíč vyžadovaný pro `omsagent.secret.key` parametr. Tyto informace můžete identifikovat provedením následujících kroků a následným spuštěním příkazů pro instalaci agenta pomocí grafu HELM.
+V této části nainstalujete agenta s kontejnery pro službu Container Insights. Než budete pokračovat, je nutné určit ID pracovního prostoru požadované pro `omsagent.secret.wsid` parametr a primární klíč vyžadovaný pro `omsagent.secret.key` parametr. Tyto informace můžete identifikovat provedením následujících kroků a následným spuštěním příkazů pro instalaci agenta pomocí grafu HELM.
 
 1. Pro identifikaci ID pracovního prostoru spusťte následující příkaz:
 
@@ -325,14 +325,14 @@ Podporované definice rozhraní API pro cluster centra Azure Stack najdete v tom
 
 V případě sestavování pomocí grafu verze 1.0.0 se nastavení shromažďování dat agenta řídí z ConfigMap. [Tady](container-insights-agent-config.md)najdete informace o nastavení shromažďování dat agenta v dokumentaci.
 
-Po úspěšném nasazení grafu můžete zkontrolovat data pro svůj cluster Hybrid Kubernetes ve službě Azure Monitor for Containers z Azure Portal.  
+Po úspěšném nasazení grafu můžete zkontrolovat data pro svůj cluster hybridního Kubernetes ve službě Container Insights z Azure Portal.  
 
 >[!NOTE]
 >Latence příjmu je od agenta pět do deseti minut od agenta k potvrzení v pracovním prostoru Azure Log Analytics. Stav clusteru zobrazí hodnotu **žádná data** nebo **neznámé** , dokud nejsou v Azure monitor k dispozici všechna požadovaná data monitorování.
 
 ## <a name="configure-proxy-endpoint"></a>Konfigurace koncového bodu proxy serveru
 
-Počínaje grafem verze 2.7.1 bude graf podporovat zadání koncového bodu proxy s `omsagent.proxy` parametrem grafu. To umožňuje komunikaci pomocí proxy server. Komunikace mezi Azure Monitor pro agenta kontejnerů a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
+Počínaje grafem verze 2.7.1 bude graf podporovat zadání koncového bodu proxy s `omsagent.proxy` parametrem grafu. To umožňuje komunikaci pomocí proxy server. Komunikace mezi agentem služby Container Insights a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
 
 Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -356,7 +356,7 @@ Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabez
 Pokud dojde k chybě při pokusu o povolení monitorování pro cluster hybridního Kubernetes, zkopírujte skript PowerShellu [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) a uložte ho do složky ve vašem počítači. Tento skript je k dispozici, aby bylo možné zjistit a opravit zjištěné problémy. Problémy, které je navrženo pro detekci a pokus o opravu, jsou následující:
 
 - Zadaný pracovní prostor Log Analytics je platný.
-- Pracovní prostor Log Analytics je nakonfigurovaný pomocí řešení Azure Monitor for Containers. V takovém případě nakonfigurujte pracovní prostor.
+- Pracovní prostor Log Analytics je nakonfigurovaný pomocí řešení Container Insights. V takovém případě nakonfigurujte pracovní prostor.
 - OmsAgent REPLICASET lusky jsou spuštěné.
 - OmsAgent daemonset lusky jsou spuštěné.
 - Služba Health OmsAgent je spuštěná.
@@ -372,4 +372,4 @@ Chcete-li provést příkaz s Azure PowerShell, použijte ve složce obsahujíc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků hybridního clusteru Kubernetes a spuštěných úloh se naučíte [používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků hybridního clusteru Kubernetes a spuštěných úloh se naučíte [používat službu](container-insights-analyze.md) Container Insights.

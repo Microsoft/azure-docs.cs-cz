@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691497"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -38,7 +38,7 @@ Tento článek ukazuje příklady následujících úloh:
 
 Budete potřebovat následující položky:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -112,17 +112,7 @@ Budete potřebovat následující položky:
         > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
         Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Pokud chcete spustit odeslání kanálu v návrháři, použijte následující postup:
-    
-    1. Nastavte pro svůj kanál výchozí výpočetní cíl.
-    
-    1. V horní části plátna kanálu vyberte **Spustit** .
-    
-    1. Vyberte experiment pro seskupení spuštění kanálu.
-    
+
     ---
 
 * Monitoruje stav spuštění.
@@ -183,24 +173,128 @@ Budete potřebovat následující položky:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Pro zobrazení počtu aktivních běhů experimentu v studiu.
+    Zobrazení vašich běhů v studiu: 
     
-    1. Přejděte do části **experimenty** .
+    1. Přejděte na kartu **experimenty** .
     
-    1. Vyberte experiment.
+    1. Výběrem **všech experimentů** zobrazíte všechna spuštění v experimentu nebo výběrem **všech běhů** zobrazíte všechna spuštění odeslaná v pracovním prostoru.
     
-        Na stránce experiment můžete zobrazit počet aktivních cílových výpočtů a dobu trvání každého spuštění. 
+        Na stránce **všechny běhy** můžete filtrovat seznam spuštění podle značek, experimentů, cíle výpočtů a dalších pro lepší uspořádání a rozsah práce.  
     
-    1. Proveďte úpravy experimentu tak, že vyberete běhy pro porovnání, přidávání grafů nebo aplikování filtrů. Tyto změny si můžete uložit jako **vlastní zobrazení** , abyste se mohli snadno vrátit k práci. Uživatelé s oprávněními v pracovním prostoru mohou upravit nebo zobrazit vlastní zobrazení. Také můžete vlastní zobrazení sdílet s ostatními zkopírováním a vložením adresy URL v prohlížeči.  
+    1. Proveďte úpravy stránky tak, že vyberete možnost spustit pro porovnání, přidávání grafů nebo použití filtrů. Tyto změny si můžete uložit jako **vlastní zobrazení** , abyste se mohli snadno vrátit k práci. Uživatelé s oprávněními v pracovním prostoru mohou upravit nebo zobrazit vlastní zobrazení. Můžete také sdílet vlastní zobrazení se členy týmu pro lepší spolupráci, a to tak, že vyberete **zobrazení sdílení**.   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Snímek obrazovky: Vytvoření vlastního zobrazení":::
     
-    1. Vyberte konkrétní číslo spuštění.
-    
-    1. Na kartě **protokoly** můžete najít diagnostické a chybové protokoly pro spuštění kanálu.
+    1. Chcete-li zobrazit protokoly spuštění, vyberte konkrétní spuštění a na kartě **výstupy + protokoly** můžete najít diagnostické a chybové protokoly pro svůj běh.
     
     ---
+
+## <a name="run-description"></a>Popis běhu 
+
+Popis spuštění lze přidat ke spuštění a poskytnout tak více kontextu a informace ke spuštění. Můžete také vyhledat tyto popisy ze seznamu spuštění a přidat popis spuštění jako sloupec v seznamu spuštění. 
+
+Přejděte na stránku s **podrobnostmi o spuštění** pro svůj běh a výběrem ikony upravit nebo tužka přidejte, upravte nebo odstraňte popisy pro vaši práci. Chcete-li zachovat změny v seznamu spuštění, uložte změny do stávajícího vlastního zobrazení nebo do nového vlastního zobrazení. Pro popisy spuštění se podporuje formát Markdownu, který umožňuje vkládání a hloubkové propojování obrázků, jak vidíte níže.
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Snímek obrazovky: vytvoření popisu spuštění"::: 
     
+
+## <a name="tag-and-find-runs"></a>Označení a hledání spuštění
+
+V Azure Machine Learning můžete použít vlastnosti a značky, které vám pomůžou organizovat a dotazovat vaše běhy na důležité informace.
+
+* Přidat vlastnosti a značky
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    Chcete-li přidat hledaná metadata k vašim běhům, použijte [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metodu. Například následující kód přidá `"author"` vlastnost do běhu:
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme už přidali `"azureml-user"` jako `"author"` hodnotu vlastnosti v předchozím kódu:
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    Na rozdíl od vlastností jsou značky proměnlivé. K přidání prohledávatelných a smysluplných informací pro uživatele experimentu použijte [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) metodu.
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    Můžete také přidat jednoduché řetězcové značky. Když se tyto značky objeví ve slovníku značek jako klíče, mají hodnotu `None` .
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > Pomocí rozhraní příkazového řádku můžete přidat nebo aktualizovat pouze značky.
+    
+    Chcete-li přidat nebo aktualizovat značku, použijte následující příkaz:
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    Z studia můžete přidat, upravit nebo odstranit značky run. Přejděte na stránku s **podrobnostmi o spuštění** pro svůj běh a výběrem ikony upravit nebo tužka přidejte, upravte nebo odstraňte značky pro vaše běhy. Tyto značky můžete na stránce se seznamem spuštění vyhledávat i filtrovat.
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Snímek obrazovky: Přidání, úprava nebo odstranění značek run":::
+    
+    ---
+
+* Vlastnosti a značky dotazu
+
+    Dotazování můžete spustit v experimentu a vrátit seznam spuštění, který odpovídá specifickým vlastnostem a značkám.
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Rozhraní příkazového řádku Azure podporuje dotazy [JMESPath](http://jmespath.org) , které lze použít k filtrování spuštění na základě vlastností a značek. Pokud chcete použít dotaz JMESPath s rozhraním příkazového řádku Azure CLI, zadejte ho s `--query` parametrem. Následující příklady znázorňují některé dotazy pomocí vlastností a značek:
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Další informace o dotazování na výsledky rozhraní příkazového řádku Azure najdete v tématu [dotazování výstupu příkazu Azure CLI](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    1. Přejděte do seznamu  **všechny běhy** .
+    
+    1. Pomocí panelu hledání můžete filtrovat metadata spuštění, jako jsou značky, popisy, názvy experimentů a jméno odesílatele. Filtr značek lze také použít k filtrování značek. 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>Zrušení nebo selhání spuštění
 
 Pokud si všimnete omylem nebo pokud dokončení běhu trvá příliš dlouho, můžete spustit operaci.
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>Označení a hledání spuštění
-
-V Azure Machine Learning můžete použít vlastnosti a značky, které vám pomůžou organizovat a dotazovat vaše běhy na důležité informace.
-
-* Přidat vlastnosti a značky
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    Chcete-li přidat hledaná metadata k vašim běhům, použijte [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metodu. Například následující kód přidá `"author"` vlastnost do běhu:
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme už přidali `"azureml-user"` jako `"author"` hodnotu vlastnosti v předchozím kódu:
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    Na rozdíl od vlastností jsou značky proměnlivé. K přidání prohledávatelných a smysluplných informací pro uživatele experimentu použijte [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) metodu.
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    Můžete také přidat jednoduché řetězcové značky. Když se tyto značky objeví ve slovníku značek jako klíče, mají hodnotu `None` .
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > Pomocí rozhraní příkazového řádku můžete přidat nebo aktualizovat pouze značky.
-    
-    Chcete-li přidat nebo aktualizovat značku, použijte následující příkaz:
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Můžete zobrazit vlastnosti a značky v nástroji Studio, ale nemůžete je upravovat.
-    
-    ---
-
-* Vlastnosti a značky dotazu
-
-    Dotazování můžete spustit v experimentu a vrátit seznam spuštění, který odpovídá specifickým vlastnostem a značkám.
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Rozhraní příkazového řádku Azure podporuje dotazy [JMESPath](http://jmespath.org) , které lze použít k filtrování spuštění na základě vlastností a značek. Pokud chcete použít dotaz JMESPath s rozhraním příkazového řádku Azure CLI, zadejte ho s `--query` parametrem. Následující příklady znázorňují některé dotazy pomocí vlastností a značek:
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Další informace o dotazování na výsledky rozhraní příkazového řádku Azure najdete v tématu [dotazování výstupu příkazu Azure CLI](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    1. Přejděte do části **kanály** .
-    
-    1. Pomocí panelu hledání můžete filtrovat kanály pomocí značek, popisů, názvů experimentů a jména odesílatele.
-    
-    ---
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
 

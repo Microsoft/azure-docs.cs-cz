@@ -1,19 +1,19 @@
 ---
 title: Monitorování nasazeného clusteru AKS (Azure Kubernetes Service) | Microsoft Docs
-description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, které jsou už ve vašem předplatném nasazené.
+description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Service (AKS) se službou Container Insights, která je už ve vašem předplatném nasazená.
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717668"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
-Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](../../aks/index.yml) , které už jsou v předplatném nasazené.
+Tento článek popisuje, jak nastavit službu Container Insights pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](../../aks/index.yml) , která už je ve vašem předplatném nasazená.
 
 Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí jedné z podporovaných metod:
 
@@ -113,13 +113,13 @@ Pokud chcete povolit monitorování clusteru AKS v Azure Portal z Azure Monitor,
 
 4. V seznamu nemonitorovaných clusterů Najděte kontejner v seznamu a klikněte na **Povolit**.
 
-5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .
+5. Pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k kontejneru přehledy** .
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.
 
     ![Povolit monitorování AKS Container Insights](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, do kterého je kontejner AKS nasazený.
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../logs/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, do kterého je kontejner AKS nasazený.
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
@@ -137,13 +137,13 @@ Pokud chcete monitorování povolit přímo z jednoho z clusterů AKS v Azure Po
 
 5. Na stránce Přehled služby Kubernetes vyberte **monitorování – přehledy**.
 
-6. Pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .
+6. Pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k kontejneru přehledy** .
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.
 
     ![Povolit monitorování stavu kontejneru AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, do kterého je kontejner AKS nasazený.
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../logs/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, do kterého je kontejner AKS nasazený.
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit provozní data clusteru.
 
@@ -158,7 +158,7 @@ Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro 
 >Šablona musí být nasazená ve stejné skupině prostředků jako cluster.
 >
 
-Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní příkazového řádku, je třeba vytvořit pracovní prostor Log Analytics. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manager](../samples/resource-manager-workspace.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
+Aby bylo možné povolit monitorování pomocí Azure PowerShell nebo rozhraní příkazového řádku, je třeba vytvořit pracovní prostor Log Analytics. Pokud chcete vytvořit pracovní prostor, můžete ho nastavit prostřednictvím [Azure Resource Manager](../logs/resource-manager-workspace.md), prostřednictvím [PowerShellu](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../logs/quick-create-workspace.md).
 
 Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, přečtěte si téma:
 
@@ -380,4 +380,4 @@ Po několika minutách se příkaz dokončí a vrátí informace o řešení ve 
 
 * Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
-* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků clusteru AKS a spuštěných úloh se naučíte [používat službu](container-insights-analyze.md) Container Insights.

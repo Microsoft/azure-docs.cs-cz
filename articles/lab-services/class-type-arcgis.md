@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740099"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Nastavení testovacího prostředí pro ArcMap\ArcGIS Desktop
 
@@ -24,7 +24,7 @@ Po získání předplatného Azure můžete vytvořit nový účet testovacího 
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Povolte nastavení účtu testovacího prostředí, jak je popsáno v následující tabulce.  Další informace o tom, jak povolit Azure Marketplace image, najdete v tématu [určení Azure Marketplace imagí dostupných pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images).
+Povolte nastavení účtu testovacího prostředí, jak je popsáno v následující tabulce.  Další informace o tom, jak povolit Azure Marketplace image, najdete v tématu [určení Azure Marketplace imagí dostupných pro tvůrce testovacích prostředí](./specify-marketplace-images.md).
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Povolte nastavení účtu testovacího prostředí, jak je popsáno v následuj�
 
 Jeden typ licencování, který ArcGIS Desktop nabízí, je [Souběžné použití licencí](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm).  To vyžaduje, abyste na licenční server nainstalovali ArcGIS License Manager.  Správce licencí sleduje počet kopií softwaru, které lze spustit současně.  Další informace o tom, jak nastavit správce licencí na serveru, najdete v [Průvodci pro správce licencí](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm).
 
-Licenční server se obvykle nachází v místní síti nebo je hostovaný na virtuálním počítači Azure v rámci virtuální sítě Azure.  Po nastavení licenčního serveru budete muset vytvořit partnerský vztah k [virtuální síti](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network) s vaším [účtem testovacího prostředí](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account).  Před vytvořením testovacího prostředí je potřeba vytvořit partnerský vztah k síti, aby vaše virtuální počítače v testovacím prostředí měly přístup k licenčnímu serveru a naopak.
+Licenční server se obvykle nachází v místní síti nebo je hostovaný na virtuálním počítači Azure v rámci virtuální sítě Azure.  Po nastavení licenčního serveru budete muset vytvořit partnerský vztah k [virtuální síti](./how-to-connect-peer-virtual-network.md) s vaším [účtem testovacího prostředí](./tutorial-setup-lab-account.md).  Před vytvořením testovacího prostředí je potřeba vytvořit partnerský vztah k síti, aby vaše virtuální počítače v testovacím prostředí měly přístup k licenčnímu serveru a naopak.
 
 Další informace najdete v tématu [Nastavení licenčního serveru jako sdíleného prostředku](how-to-create-a-lab-with-shared-resource.md).
 

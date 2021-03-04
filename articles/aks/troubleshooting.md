@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 7dfb9e34daeb92d57a61c570055695867c4a8107
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5a0e907ef27f125a9903b3d9e6079e3c8a288a97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714523"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -248,7 +248,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení `GID` a `UID` . Příklad:
+* Použijte `chown` v initContainers k nastavení `GID` a `UID` . Například:
 
 ```yaml
 initContainers:
@@ -407,13 +407,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Příklad:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Příklad:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -452,5 +452,5 @@ AKS vychází z možností, jak se potýkají aktivní popisky ve fondu uzlů, a
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
+[view-master-logs]: ./view-control-plane-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md

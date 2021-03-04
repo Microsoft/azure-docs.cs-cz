@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711412"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
 
@@ -68,7 +68,7 @@ Aby se minimalizovala přerušovaná Chyba připojení k síti, implementovali j
  
 ## <a name="application-insights-cdn-outage"></a>Výpadek sítě CDN Application Insights
 
-Pokud se pokusíte o přístup ke koncovému bodu CDN přímo z prohlížeče ( https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) za předpokladu, že vaše organizace tuto doménu nezablokovala), můžete potvrdit, že dojde k výpadku Application Insights sítě CDN.
+Můžete potvrdit, jestli Application Insights výpadek CDN tím, že se pokusíte získat přístup ke koncovému bodu CDN přímo z prohlížeče (například https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js nebo https://js.monitor.azure.com/scripts/b/ai.2.min.js) z jiného místa než koncoví uživatelé, pravděpodobně z vašeho vlastního vývojového počítače (za předpokladu, že vaše organizace tuto doménu nezablokovala).
 
 Pokud ověříte, že dojde k výpadku, můžete [vytvořit novou lístek podpory](https://azure.microsoft.com/support/create-ticket/) nebo se pokusit změnit adresu URL použitou ke stažení sady SDK.
 
@@ -106,7 +106,7 @@ Pokud jsou v rámci skriptu sady SDK hlášeny výjimky (například ai.2.min.js
 
 Chcete-li zjistit chybnou konfiguraci, změňte konfiguraci předanou do fragmentu (Pokud ještě není), aby obsahovala pouze klíč instrumentace jako řetězcovou hodnotu.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ Pokud se ještě nedaří inicializovat, zkuste povolit ```enableDebug``` nastav
 > [!WARNING]
 > Toto je nastavení jenom pro vývojáře a nikdy by nemělo být povolené v plném provozním prostředí, protože ztratíte telemetrii.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />

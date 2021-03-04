@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517820"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690528"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřadit brány z provozu na starší hardware v některých oblastech.  
 
-Zákazníkům se v rámci oznámení o stavu služeb předem oznámí jakákoli změna bran dostupných v jednotlivých oblastech. Zákazníci můžou [použít Azure Portal k nastavení upozornění protokolu aktivit](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal).
+Zákazníkům se v rámci oznámení o stavu služeb předem oznámí jakákoli změna bran dostupných v jednotlivých oblastech. Zákazníci můžou [použít Azure Portal k nastavení upozornění protokolu aktivit](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](connectivity-architecture.md#gateway-ip-addresses) .
 

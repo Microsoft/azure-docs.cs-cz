@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735501"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou webovou aplikaci založenou na službě IIS
 
@@ -58,18 +58,18 @@ V příkladech v tomto článku používáme virtuální počítače VMware se s
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
-Scénář | Do sekundární lokality | Do Azure
+Scenario | Do sekundární lokality | Do Azure
 --- | --- | ---
-Hyper-V | Yes | Yes
-VMware | Yes | Yes
-Fyzický server | No | Yes
+Hyper-V | Ano | Ano
+VMware | Ano | Ano
+Fyzický server | Ne | Ano
 Azure|Není k dispozici|Ano
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
 Pokud chcete začít replikovat všechny virtuální počítače webové farmy služby IIS do Azure, postupujte podle pokynů v části [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. IP adresu nastavíte tak, že přejdete na **výpočty a nastavení sítě**  >  **cílová IP**adresa.
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. IP adresu nastavíte tak, že přejdete na **výpočty a nastavení sítě**  >  **cílová IP** adresa.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit cílovou IP adresu v podokně Site Recovery výpočty a síť](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -122,10 +122,10 @@ Každá lokalita se skládá z informací o vazbě. Informace o vazbě zahrnují
 
 ![Snímek obrazovky, který zobrazuje nastavení vazby TLS/SSL](./media/site-recovery-iis/sslbinding.png)
 
-Pokud jste přidružili IP adresu k lokalitě, aktualizujte všechny vazby webu novou IP adresou. Chcete-li změnit vazby webu, přidejte [skript aktualizace webové vrstvy služby IIS](https://aka.ms/asr-web-tier-update-runbook-classic) za skupinu 3 v plánu obnovení.
+Pokud jste přidružili IP adresu k lokalitě, aktualizujte všechny vazby webu novou IP adresou. Chcete-li změnit vazby webu, přidejte [skript aktualizace webové vrstvy služby IIS](/samples/browse/?redirectedfrom=TechNet-Gallery) za skupinu 3 v plánu obnovení.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Aktualizace IP adresy nástroje pro vyrovnávání zatížení
-Pokud máte virtuální počítač s ARR, abyste aktualizovali IP adresu, přidejte po skupině 4 [skript pro převzetí služeb při selhání se službou IIS ARR](https://aka.ms/asr-iis-arrtier-failover-script-classic) .
+Pokud máte virtuální počítač s ARR, abyste aktualizovali IP adresu, přidejte po skupině 4 [skript pro převzetí služeb při selhání se službou IIS ARR](/samples/browse/?redirectedfrom=TechNet-Gallery) .
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>Vazba certifikátu TLS/SSL pro připojení HTTPS
 Web může mít přidružený certifikát TLS/SSL, který pomáhá zajistit zabezpečenou komunikaci mezi webovým serverem a prohlížečem uživatele. Pokud má web připojení HTTPS a má přidruženou vazbu serveru HTTPS k IP adrese serveru IIS s vazbou certifikátu TLS/SSL, je nutné přidat novou vazbu webu pro certifikát s IP adresou po převzetí služeb při selhání virtuálního počítače IIS.

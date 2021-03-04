@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: ab280bbab71926a6ffb70605fdbf463164469623
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742122"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
+
+> [!IMPORTANT]
+> Scénář migrace "Oracle to Azure Database for PostgreSQL" (aktuálně ve verzi Preview) už nebude k dispozici po 1.2021. května. Budeme dál poskytovat podporu prostřednictvím alternativních nástrojů (například Ora2pg) a poskytněte nejlepší možnosti migrace pro Oracle pro PostgreSQL migrace. Osvědčené postupy pro migraci najdete v tématu Průvodce migrací pro Oracle do Azure Database for PostgreSQL] ( https://aka.ms/OracletoPGguide) . 
 
 Pomocí Azure Database Migration Service můžete migrovat databáze z databází Oracle hostovaných místně nebo na virtuálních počítačích a [Azure Database for PostgreSQL](../postgresql/index.yml) s minimálními výpadky. Jinými slovy, můžete dokončit migraci s minimálními prostoji do aplikace. V tomto kurzu migrujete ukázkovou databázi **HR** z místní nebo instance virtuálního počítače Oracle 11g na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 
@@ -186,7 +189,7 @@ Můžete spustit ora2pg pro export všech databázových objektů do souborů. S
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Příklad:
+Například:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -239,7 +242,7 @@ Jak začít:
 
     Pokud název schématu ve zdroji Oracle odpovídá hodnotě v Azure Database for PostgreSQL, Azure Database Migration Service *vytvoří schéma tabulky pomocí stejného případu jako v cíli*.
 
-    Příklad:
+    Například:
 
     | Zdrojové schéma Oracle | Cílová databáze PostgreSQL. schéma | DMS vytvořil schéma. Table. Column. |
     | ------------- | ------------- | ------------- |

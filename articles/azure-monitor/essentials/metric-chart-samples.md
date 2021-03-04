@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700741"
 ---
 # <a name="metric-chart-examples"></a>Příklady grafu metriky 
 
-Platforma Azure nabízí [více než tisíc metrik](../platform/metrics-supported.md), z nichž mnoho má rozměry. Pomocí [filtrů dimenzí](./metrics-charts.md), použití [rozdělení](./metrics-charts.md), řízení typu grafu a úpravy nastavení grafu můžete vytvářet výkonné diagnostické pohledy a řídicí panely, které poskytují přehled o stavu vaší infrastruktury a aplikací. Tento článek ukazuje několik příkladů grafů, které můžete vytvořit pomocí [Průzkumník metrik](./metrics-charts.md) a vysvětluje kroky nezbytné ke konfiguraci každého z těchto grafů.
+Platforma Azure nabízí [více než tisíc metrik](./metrics-supported.md), z nichž mnoho má rozměry. Pomocí [filtrů dimenzí](./metrics-charts.md), použití [rozdělení](./metrics-charts.md), řízení typu grafu a úpravy nastavení grafu můžete vytvářet výkonné diagnostické pohledy a řídicí panely, které poskytují přehled o stavu vaší infrastruktury a aplikací. Tento článek ukazuje několik příkladů grafů, které můžete vytvořit pomocí [Průzkumník metrik](./metrics-charts.md) a vysvětluje kroky nezbytné ke konfiguraci každého z těchto grafů.
 
 Chcete sdílet skvělé grafy jako příklady na celém světě? Přispívat na tuto stránku na GitHubu a sdílejte příklady vlastních grafů.
 
@@ -54,4 +54,3 @@ V okně pro výběr metriky vyberte svůj účet úložiště a metriku **transa
 
 * Další informace o Azure Monitor [sešitech](../visualize/workbooks-overview.md)
 * Další informace o [Průzkumníkovi metrik](metrics-charts.md)
-

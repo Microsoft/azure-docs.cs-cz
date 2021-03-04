@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712194"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -40,7 +40,7 @@ Přečtěte si další informace o [serverech s podporou ARC Azure](../azure-arc
 
 **Nasazení ARC Azure:**
 
-- Pro jeden počítač postupujte podle pokynů v části [rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
+- Pro jeden počítač postupujte podle pokynů v části [rychlý Start: připojení hybridních počítačů k serverům s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 - Postup připojení více počítačů se škálováním na servery s povoleným obloukem najdete v tématu [připojení hybridních počítačů k Azure ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md) .
 
 > [!TIP]

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 743fe146042c7b52394cc4ee8ced49a0f540e79c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844280"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721119"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Jak vytvořit překryv pomocí Media Encoder Standard
 
@@ -20,7 +20,7 @@ ms.locfileid: "94844280"
 Media Encoder Standard umožňuje překrytí obrázku, zvukového souboru nebo jiného videa na jiné video. Vstup musí určovat přesně jeden soubor. Můžete určit soubor obrázku ve formátu JPG, PNG, GIF nebo BMP nebo zvukový soubor (například WAV, MP3, WMA nebo M4A) nebo videosoubor.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Shromážděte informace o účtu, které potřebujete ke konfiguraci *appsettings.js* v souboru v ukázce. Pokud si nejste jisti, jak to provést, přečtěte si téma [rychlý Start: registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). V *appsettings.js* souboru jsou očekávány následující hodnoty.
 
@@ -53,4 +53,4 @@ Stáhněte si [ukázku Media-Services-překryv](https://github.com/Azure-Samples
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rozříznout video při kódování pomocí Media Services-.NET](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

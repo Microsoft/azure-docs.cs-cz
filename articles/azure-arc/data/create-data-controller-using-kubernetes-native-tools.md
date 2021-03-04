@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686389"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Vytvoření řadiče dat ARC Azure pomocí nástrojů pro Kubernetes
 
@@ -175,16 +175,27 @@ Podle potřeby upravte následující:
 **DOPORUČUJE SE ZKONTROLOVAT A PŘÍPADNĚ ZMĚNIT VÝCHOZÍ NASTAVENÍ.**
 - **úložiště... className**: třída úložiště, která se má použít pro data a soubory protokolu řadiče dat.  Pokud si nejste jistí dostupné třídy úložiště v clusteru Kubernetes, můžete spustit následující příkaz: `kubectl get storageclass` .  Ve výchozím nastavení `default` předpokládáme, že existuje třída úložiště, která existuje a je pojmenována, že existuje `default` třída úložiště, která _je_ výchozím nastavením.  Poznámka: Existují dvě nastavení className, která se mají nastavit na požadovanou třídu úložiště – jedna pro data a druhá pro protokoly.
 - **ServiceType**: `NodePort` Pokud nepoužíváte Nástroj pro vyrovnávání zatížení, změňte typ služby na.  Poznámka: Existují dvě nastavení serviceType, která je potřeba změnit.
+- Na platformě Azure Red Hat OpenShift nebo Red Hat OpenShift Container Platform musíte před vytvořením kontroleru dat použít omezení kontextu zabezpečení. Postupujte podle pokynů v tématu [použití omezení kontextu zabezpečení pro datové služby s podporou ARC Azure na OpenShift](how-to-apply-security-context-constraint.md).
+- **Zabezpečení** V případě kontejnerové platformy Azure Red Hat OpenShift nebo Red Hat OpenShift nahraďte `security:` Nastavení následujícími hodnotami v souboru YAML řadiče dat. 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **VOLITELNÉ**
 - **název**: výchozí název řadiče dat je `arc` , ale pokud chcete, můžete ho změnit.
 - **DisplayName**: nastavte tuto hodnotu na stejnou hodnotu jako atribut Name v horní části souboru.
 - **registr**: výchozí hodnota je Microsoft Container Registry.  Pokud nasazujete image z Microsoft Container Registry a [přesunete je do soukromého registru kontejnerů](offline-deployment.md), zadejte do tohoto pole IP adresu nebo název DNS vašeho registru.
 - **dockerRegistry**: image pro vyžádání obsahu, která se má použít k vyžádání imagí z privátního registru kontejnerů, pokud je to potřeba.
-- **úložiště**: výchozí úložiště v Microsoft Container Registry je `arcdata` .  Pokud používáte privátní registr kontejnerů, zadejte cestu ke složce nebo úložišti obsahujícím image datových služeb s povolenou službou Azure Arr.
+- **úložiště**: výchozí úložiště v Microsoft Container Registry je `arcdata` .  Pokud používáte privátní registr kontejnerů, zadejte cestu do složky nebo úložiště obsahujícího image kontejneru s povolenými datovými službami Azure ARC.
 - **imageTag**: aktuální značka nejnovější verze je v šabloně nastavena jako výchozí, ale pokud chcete použít starší verzi, můžete ji změnit.
 
-Příklad dokončeného souboru YAML s datovým kontrolérem:
+Následující příklad ukazuje dokončený soubor YAML (data Controller). Aktualizujte příklad vašeho prostředí na základě vašich požadavků a informací uvedených výše.
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always

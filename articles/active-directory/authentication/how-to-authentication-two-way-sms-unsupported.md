@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689024"
 ---
 # <a name="two-way-sms-unsupported"></a>Dvoucestné nepodporované SMS
 
@@ -27,7 +27,7 @@ E-mailová oznámení a oznámení o Azure Portal Service Health (informační z
 ## <a name="required-actions"></a>Požadované akce
 
 1. Povolte mobilní aplikaci pro uživatele, pokud jste to ještě neudělali. Další informace najdete v tématu [Povolení ověřování mobilních aplikací pomocí MFA serveru](howto-mfaserver-deploy-mobileapp.md).
-1. Informování koncových uživatelů o aktivaci mobilní aplikace na [portálu User Portal](howto-mfaserver-deploy-userportal.md) pro MFA Server [Microsoft Authenticator aplikace](https://www.microsoft.com/account/authenticator) je doporučenou možností ověření, protože je bezpečnější než dvoucestné SMS. Další informace najdete v tématu čas, [jak zavěsit na přenosech telefonů pro ověřování](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
+1. Informování koncových uživatelů o aktivaci mobilní aplikace na [portálu User Portal](howto-mfaserver-deploy-userportal.md) pro MFA Server [Microsoft Authenticator aplikace](https://www.microsoft.com/en-us/account/authenticator) je doporučenou možností ověření, protože je bezpečnější než dvoucestné SMS. Další informace najdete v tématu čas, [jak zavěsit na přenosech telefonů pro ověřování](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
 1. Změňte nastavení uživatele z obousměrné textové zprávy na mobilní aplikace jako výchozí metodu.
 
 ## <a name="faq"></a>Časté otázky

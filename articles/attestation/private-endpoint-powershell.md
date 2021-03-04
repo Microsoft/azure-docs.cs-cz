@@ -7,18 +7,21 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5c2b88ad7bef5fb8f7ba576e5f7b416f7458378c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732305"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure PowerShell
 
 Začínáme s privátním koncovým bodem Azure pomocí privátního koncového bodu pro zabezpečené připojení k ověření identity Azure.
 
 V tomto rychlém startu vytvoříte privátní koncový bod pro Azure Attestation a nasadíte virtuální počítač pro otestování privátního připojení.  
+
+> [!NOTE]
+> Aktuální implementace obsahuje jenom možnost automatického schvalování. Aby bylo možné pokračovat v vytváření privátního koncového bodu, musí být odběr uveden bíle. Před pokračováním v níže uvedených krocích prosím obraťte se na tým služby nebo odešlete žádost o podporu Azure na [stránku podpory Azure](https://azure.microsoft.com/support/options/) .
 
 ## <a name="prerequisites"></a>Požadavky
 

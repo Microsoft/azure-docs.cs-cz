@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724944"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -37,7 +37,7 @@ Pokud Azure Batch službu nepoužíváte, přečtěte si následující články
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
 > [!IMPORTANT]
-> Při vytváření nového fondu Azure Batch musí být použit ' VirtualMachineConfiguration ' a ne ' CloudServiceConfiguration '. Další podrobnosti najdete v tématu [pokyny k migraci fondu Azure Batch](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration). 
+> Při vytváření nového fondu Azure Batch musí být použit ' VirtualMachineConfiguration ' a ne ' CloudServiceConfiguration '. Další podrobnosti najdete v tématu [pokyny k migraci fondu Azure Batch](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md). 
 
 ## <a name="azure-batch-linked-service"></a>Propojená služba Azure Batch
 
@@ -102,16 +102,16 @@ V následující tabulce jsou popsány názvy a popisy vlastností, které jsou 
 
 | Vlastnost              | Popis                              | Vyžadováno |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Název aktivity v kanálu     | Yes      |
-| description           | Text popisující, co aktivita dělá.  | No       |
-| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Yes      |
-| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Yes      |
-| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Yes      |
+| name                  | Název aktivity v kanálu     | Ano      |
+| description           | Text popisující, co aktivita dělá.  | Ne       |
+| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
+| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Ano      |
+| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Ano      |
 | resourceLinkedService | Azure Storage propojených služeb k účtu úložiště, ve kterém je vlastní aplikace uložená. | Bez &#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všech jejích závislostí<br/><br/>Pokud máte závislosti uložené v podsložkách – to znamená, že v hierarchické struktuře složek pod *FolderPath* – struktura složek se v současnosti při kopírování souborů do Azure Batch nesloučí. To znamená, že všechny soubory se zkopírují do jediné složky bez podsložek. Chcete-li toto chování obejít, zvažte komprimaci souborů, kopírování komprimovaného souboru a jeho rozzipovává pomocí vlastního kódu v požadovaném umístění. | Bez &#42;       |
-| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | No       |
-| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | No       |
-| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | No |
+| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | Ne       |
+| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | Ne       |
+| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | Ne |
 
 &#42; vlastnosti `resourceLinkedService` a `folderPath` musí být buď zadány, nebo musí být obě vynechány.
 
@@ -301,7 +301,7 @@ Activity Error section:
 Pokud chcete využívat obsah stdout.txt v rámci navazujících aktivit, můžete získat cestu k souboru stdout.txt ve výrazu " \@ Activity (' MyCustomActivity '). Output. Outputs [0]".
 
 > [!IMPORTANT]
-> - activity.json, linkedServices.json a datasets.json, se ukládají do složky runtime dávkové úlohy. V tomto příkladu jsou uloženy v cestě activity.json, linkedServices.json a datasets.json `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` . V případě potřeby je potřeba je vyčistit samostatně.
+> - activity.json, linkedServices.json a datasets.json, se ukládají do složky runtime dávkové úlohy. V tomto příkladu jsou uloženy v cestě activity.json, linkedServices.json a datasets.json `https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` . V případě potřeby je potřeba je vyčistit samostatně.
 > - U propojených služeb, které používají Self-Hosted Integration Runtime, jsou citlivé informace, jako jsou klíče nebo hesla, šifrované Integration Runtime Self-Hosted, aby bylo zajištěno, že přihlašovací údaje zůstanou v prostředí privátní sítě definované zákazníkem. Některá citlivá pole by mohla chybět, když na ni odkazuje vlastní kód aplikace tímto způsobem. V případě potřeby použijte v extendedProperties místo použití odkazu na propojenou službu SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Předání výstupů jiné aktivitě
@@ -310,7 +310,7 @@ Můžete odesílat vlastní hodnoty z kódu v rámci vlastní aktivity zpátky d
 
 ## <a name="retrieve-securestring-outputs"></a>Načtení výstupů SecureString
 
-Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Příklad:
+Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Například:
 
 ```json
 "extendedProperties": {

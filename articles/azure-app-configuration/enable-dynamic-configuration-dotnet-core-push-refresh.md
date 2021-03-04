@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701514"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace pomocí aktualizace Push v aplikaci .NET Core
 
@@ -27,7 +27,7 @@ Klientská knihovna .NET Core konfigurace aplikace podporuje aktualizaci konfigu
 
 1. Model cyklického dotazování: Jedná se o výchozí chování, které používá cyklické dotazování k detekci změn v konfiguraci. Jakmile hodnota nastavení v mezipaměti vyprší, další volání `TryRefreshAsync` nebo `RefreshAsync` pošle požadavek serveru, aby zkontroloval, jestli se konfigurace změnila, a v případě potřeby načte aktualizovanou konfiguraci.
 
-1. Model nabízených oznámení: používá [události konfigurace aplikace](./concept-app-configuration-event.md) k detekci změn v konfiguraci. Jakmile je konfigurace aplikace nastavená tak, aby odesílala události změny hodnot klíčů Azure Event Grid, může aplikace tyto události použít k optimalizaci celkového počtu požadavků nutných k aktualizaci konfigurace. Aplikace se můžou zvolit, aby se k nim přihlásili buď přímo z Event Grid, nebo když některou z [podporovaných obslužných rutin událostí](https://docs.microsoft.com/azure/event-grid/event-handlers) , jako je Webhook, funkce Azure nebo Service Bus téma.
+1. Model nabízených oznámení: používá [události konfigurace aplikace](./concept-app-configuration-event.md) k detekci změn v konfiguraci. Jakmile je konfigurace aplikace nastavená tak, aby odesílala události změny hodnot klíčů Azure Event Grid, může aplikace tyto události použít k optimalizaci celkového počtu požadavků nutných k aktualizaci konfigurace. Aplikace se můžou zvolit, aby se k nim přihlásili buď přímo z Event Grid, nebo když některou z [podporovaných obslužných rutin událostí](../event-grid/event-handlers.md) , jako je Webhook, funkce Azure nebo Service Bus téma.
 
 Aplikace se můžou rozhodnout k přihlášení k odběru těchto událostí buď přímo z Event Grid, nebo prostřednictvím webového zavěšení, nebo předáním událostí do Azure Service Bus. Sada Azure Service Bus SDK poskytuje rozhraní API k registraci obslužné rutiny zpráv, která tento proces zjednodušuje pro aplikace, které nemají koncový bod HTTP, nebo nechtějí dotazovat se na průběžné změny v mřížce událostí.
 
@@ -50,7 +50,7 @@ K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>Nastavení Azure Service Busho tématu a předplatného
 
-V tomto kurzu se používá Service Bus Integration pro Event Grid ke zjednodušení detekce změn konfigurace pro aplikace, u kterých nechcete provádět dotazování konfigurace aplikace nepřetržitě. Sada Azure Service Bus SDK poskytuje rozhraní API k registraci obslužné rutiny zpráv, kterou je možné použít k aktualizaci konfigurace při zjištění změn v konfiguraci aplikace. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a předplatné](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal) pro vytvoření oboru názvů služby Service Bus, tématu a předplatného.
+V tomto kurzu se používá Service Bus Integration pro Event Grid ke zjednodušení detekce změn konfigurace pro aplikace, u kterých nechcete provádět dotazování konfigurace aplikace nepřetržitě. Sada Azure Service Bus SDK poskytuje rozhraní API k registraci obslužné rutiny zpráv, kterou je možné použít k aktualizaci konfigurace při zjištění změn v konfiguraci aplikace. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a předplatné](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) pro vytvoření oboru názvů služby Service Bus, tématu a předplatného.
 
 Po vytvoření prostředků přidejte následující proměnné prostředí. Budou použity k registraci obslužné rutiny události pro změny konfigurace v kódu aplikace.
 
@@ -81,7 +81,7 @@ Po vytvoření prostředků přidejte následující proměnné prostředí. Bud
     ![Odběry událostí konfigurace aplikace](./media/event-subscription-view.png)
 
 > [!NOTE]
-> Při přihlášení k odběru změn konfigurace je možné použít jeden nebo více filtrů ke snížení počtu událostí odeslaných do aplikace. Ty můžete nakonfigurovat buď jako [Event Grid filtry předplatného](https://docs.microsoft.com/azure/event-grid/event-filtering) , nebo [Service Bus filtry předplatného](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters). Například filtr předplatného se dá použít jenom k přihlášení k odběru událostí pro změny v klíči, který začíná specifickým řetězcem.
+> Při přihlášení k odběru změn konfigurace je možné použít jeden nebo více filtrů ke snížení počtu událostí odeslaných do aplikace. Ty můžete nakonfigurovat buď jako [Event Grid filtry předplatného](../event-grid/event-filtering.md) , nebo [Service Bus filtry předplatného](../service-bus-messaging/topic-filters.md). Například filtr předplatného se dá použít jenom k přihlášení k odběru událostí pro změny v klíči, který začíná specifickým řetězcem.
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Registrovat obslužnou rutinu události pro opětovné načtení dat z konfigurace aplikace
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-Metoda [SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) slouží k nastavení hodnoty v mezipaměti pro klíčové hodnoty zaregistrované pro obnovení jako nečisté. Tím se zajistí, že se další volání `RefreshAsync` nebo `TryRefreshAsync` znovu ověří hodnoty v mezipaměti s konfigurací aplikace a v případě potřeby je aktualizuje.
+Metoda [SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) slouží k nastavení hodnoty v mezipaměti pro klíčové hodnoty zaregistrované pro obnovení jako nečisté. Tím se zajistí, že se další volání `RefreshAsync` nebo `TryRefreshAsync` znovu ověří hodnoty v mezipaměti s konfigurací aplikace a v případě potřeby je aktualizuje.
 
 Náhodné zpoždění je přidáno před tím, než je hodnota uložená v mezipaměti označena jako nečistá, aby se snížilo potenciální omezení pro případ, že se aktualizuje více instancí současně. Výchozí maximální zpoždění před hodnotou, která je uložena v mezipaměti, je označena jako nečistá hodnota 30 sekund, ale lze ji přepsat předáním volitelného `TimeSpan` parametru `SetDirty` metodě.
 

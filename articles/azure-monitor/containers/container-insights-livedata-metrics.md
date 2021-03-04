@@ -1,19 +1,19 @@
 ---
-title: Zobrazení metrik v reálném čase pomocí Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje zobrazení metrik v reálném čase bez použití kubectl s Azure Monitor for Containers.
+title: Zobrazení metrik v reálném čase s využitím kontejneru Insights | Microsoft Docs
+description: Tento článek popisuje zobrazení metrik v reálném čase bez použití kubectl se službou Container Insights.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731846"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Jak zobrazit metriky v reálném čase
 
-Funkce Azure Monitor for Containers Live data (Preview) umožňuje vizualizovat metriky o stavu uzlu a pod v clusteru v reálném čase. Emuluje přímý přístup k `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` příkazům, a pro volání, analýzu a vizualizaci dat v grafech výkonu, které jsou součástí tohoto přehledu.
+Funkce Container Insights Live data (Preview) umožňuje vizualizovat metriky o stavu uzlu a pod v clusteru v reálném čase. Emuluje přímý přístup k `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` příkazům, a pro volání, analýzu a vizualizaci dat v grafech výkonu, které jsou součástí tohoto přehledu.
 
 Tento článek poskytuje podrobný přehled a pomůže vám pochopit, jak tuto funkci používat.
 
@@ -26,7 +26,7 @@ Nápovědu k nastavení nebo řešení potíží s funkcí živá data (Preview)
 
 Funkce Live data (Preview) přímo přistupuje k rozhraní Kubernetes API a další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Tato funkce provádí operaci cyklického dotazování proti koncovým bodům metriky (včetně `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` a `/api/v1/pods` ), což je ve výchozím nastavení každých pět sekund. Tato data se uloží do mezipaměti v prohlížeči a naplní se čtyřmi grafy výkonu, které jsou součástí Azure Monitor pro kontejnery na kartě **cluster** , a to výběrem možnosti **Přejít na aktivní (Preview)**. Každé následné dotazování je rozdělené do více než pět minut okna vizualizace.
+Tato funkce provádí operaci cyklického dotazování proti koncovým bodům metriky (včetně `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` a `/api/v1/pods` ), což je ve výchozím nastavení každých pět sekund. Tato data se uloží do mezipaměti v prohlížeči a naplní se čtyřmi grafy výkonu zahrnutými ve službě Container Insights na kartě **cluster** výběrem možnosti **Přejít na aktivní (Preview)**. Každé následné dotazování je rozdělené do více než pět minut okna vizualizace.
 
 ![Možnost přejít do živého zobrazení v clusteru](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6f487467b08332eea4ee19a7fb8836d843bd254f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4bbc1565cec2c356e916f813a6a334648d82754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582657"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726729"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Základní hodnoty zabezpečení Azure pro virtuální síť WAN
 
@@ -384,7 +384,7 @@ Zabezpečení Azure Virtual WAN se poskytuje prostřednictvím Azure Firewall.
 
 - [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure Security Center upozornění a export doporučení](../security-center/continuous-export.md)
 

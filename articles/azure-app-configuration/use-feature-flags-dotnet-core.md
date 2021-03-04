@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380232"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726423"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-Použijete-li v příznacích funkce filtry, je nutné zahrnout obor názvů [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) a přidat volání [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) určující název typu filtru, který chcete použít jako obecný typ metody. Další informace o používání filtrů funkcí k dynamickému povolení a zakázání funkcí najdete v tématu [Povolení připraveného zavedení funkcí pro cílové cílové skupiny](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core).
+Použijete-li v příznacích funkce filtry, je nutné zahrnout obor názvů [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) a přidat volání [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) určující název typu filtru, který chcete použít jako obecný typ metody. Další informace o používání filtrů funkcí k dynamickému povolení a zakázání funkcí najdete v tématu [Povolení připraveného zavedení funkcí pro cílové cílové skupiny](./howto-targetingfilter-aspnet-core.md).
 
 Následující příklad ukazuje, jak použít vestavěný filtr funkcí nazvaný `PercentageFilter` :
 
@@ -211,14 +211,14 @@ Podle konvence se `FeatureManagement` oddíl tohoto dokumentu JSON používá pr
 
 * `FeatureA` je *zapnuto*.
 * `FeatureB` je *vypnutý*.
-* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `FeatureC` který má být *zapnut*. Návod, jak používat filtry funkcí, najdete v tématu [použití filtrů funkcí k zapnutí příznaků podmíněné funkce](/azure/azure-app-configuration/howto-feature-filters-aspnet-core).
+* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `FeatureC` který má být *zapnut*. Návod, jak používat filtry funkcí, najdete v tématu [použití filtrů funkcí k zapnutí příznaků podmíněné funkce](./howto-feature-filters-aspnet-core.md).
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Použití injektáže závislosti pro přístup k IFeatureManager 
 
-U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
+U některých operací, jako je například ruční kontrola hodnot příznaku funkce, je třeba získat instanci [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti. V následujícím příkladu `IFeatureManager` je do podpisu konstruktoru pro řadič přidán argument typu. Modul runtime automaticky vyřeší odkaz a poskytuje rozhraní při volání konstruktoru. Pokud používáte šablonu aplikace, ve které kontroler již obsahuje jeden nebo více argumentů vkládání závislostí v konstruktoru, například `ILogger` , můžete přidat `IFeatureManager` jako další argument:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     
@@ -285,7 +285,7 @@ public static class MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Běžným vzorem správy funkcí je zjištění, zda je příznak funkce nastaven na hodnotu *zapnuto* a pokud ano, spusťte oddíl kódu. Příklad:
+Běžným vzorem správy funkcí je zjištění, zda je příznak funkce nastaven na hodnotu *zapnuto* a pokud ano, spusťte oddíl kódu. Například:
 
 ```csharp
 IFeatureManager featureManager;

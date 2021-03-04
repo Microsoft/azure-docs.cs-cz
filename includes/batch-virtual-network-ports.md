@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750146"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
 * Virtuální síť musí být ve stejném předplatném a stejné oblasti jako účet Batch, který použijete k vytvoření fondu.
-
-* Fond využívající virtuální síť může mít maximálně 4 096 uzlů.
 
 * Podsíť zadaná pro fond musí obsahovat dostatek nepřiřazených IP adres pro všechny virtuální počítače, na které fond cílí, jejichž počet je součtem vlastností `targetDedicatedNodes` a `targetLowPriorityNodes` fondu. Pokud podsíť nemá dostatek nepřiřazených IP adres, fond částečně přidělí výpočetní uzly a dojde k chybě změny velikosti.
 
@@ -67,23 +65,29 @@ Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě virtuální 
 
 Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze v případě, že potřebujete povolit vzdálený přístup k výpočetním uzlům z externích zdrojů. Pokud potřebujete zajistit podporu úkolů s více instancemi a některými moduly runtime MPI, možná bude potřeba v Linuxu povolit pravidla pro port 22. Výpočetní uzly ve fondu budou použitelné i bez povolení provozu na těchto portech.
 
+> [!WARNING]
+> IP adresy služby Batch se můžou v průběhu času měnit. Proto důrazně doporučujeme, abyste `BatchNodeManagement` pro pravidla NSG, která jsou uvedena v následujících tabulkách, používali značku služby (nebo místní varianta). Vyhněte se naplnění pravidel NSG s konkrétními IP adresami služby Batch.
+
 **Příchozí pravidla zabezpečení**
 
 | Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | [Značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) `BatchNodeManagement` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
+| – | `BatchNodeManagement`[značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) (při použití regionální varianty ve stejné oblasti jako účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
 | Zdrojové IP adresy uživatelů pro vzdálený přístup k výpočetním uzlům nebo podsíti výpočetních uzlů pro úlohy Linuxu s více instancemi, pokud je to potřeba | – | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
-
-> [!WARNING]
-> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje používat `BatchNodeManagement` pro pravidla NSG (neboli regionální variantu) značku služby. Vyhněte se naplnění pravidel NSG s konkrétními IP adresami služby Batch.
 
 **Odchozí pravidla zabezpečení**
 
 | Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
 | Všechny | * | [Značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
+| Všechny | * | [Značka služby](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
+
+`BatchNodeManagement`Pro kontaktování služby Batch z výpočetních uzlů, jako jsou úlohy Správce úloh, se vyžaduje odchozí připojení.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
+
+> [!WARNING]
+> Fondy konfigurace cloudové služby jsou zastaralé. Místo toho prosím použijte fondy konfigurací virtuálních počítačů.
 
 **Podporované virtuální sítě** – Pouze virtuální sítě Classic
 

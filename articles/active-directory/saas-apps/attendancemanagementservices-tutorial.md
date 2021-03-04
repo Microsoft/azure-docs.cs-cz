@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457601"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Azure Active Directory integrace se službami pro správu docházky
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služeb 
 
 1. V jiném okně prohlížeče se přihlaste k vašemu firemnímu webu služby pro správu docházky jako správce.
 
-1. V **části Správa zabezpečení**klikněte na **ověřování SAML** .
+1. V **části Správa zabezpečení** klikněte na **ověřování SAML** .
 
     ![Snímek obrazovky ukazuje ověřování SAML vybrané na stránce, která používá jiné znaky než latinku.](./media/attendancemanagementservices-tutorial/user1.png)
 
@@ -150,7 +150,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služeb 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -174,7 +174,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup ke službám pro správu docházky.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **služby pro správu docházky**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **služby pro správu docházky**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -204,7 +204,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službám pro správu docház
 
 1. Přihlaste se ke svému firemnímu webu služby pro správu docházky jako správce.
 
-1. V **části Správa zabezpečení**klikněte na **Správa uživatelů** .
+1. V **části Správa zabezpečení** klikněte na **Správa uživatelů** .
 
     ![Snímek obrazovky se zobrazí Správa uživatelů vybraná na stránce, která používá jiné znaky než latinku.](./media/attendancemanagementservices-tutorial/user5.png)
 
@@ -216,7 +216,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službám pro správu docház
 
     ![Snímek obrazovky se zobrazí okno, kde můžete provádět popsané úkoly.](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. Do textového pole **OBCiD** zadejte e-maily uživatele, jako je například `BrittaSimon\@contoso.com` .
+    a. Do textového pole **OBCiD** zadejte e-maily uživatele, jako je například `BrittaSimon@contoso.com` .
 
     b. Do textového pole **heslo** zadejte heslo uživatele.
 
@@ -228,7 +228,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici služby pro správu docházky na přístupovém panelu byste měli být automaticky přihlášeni ke službám pro správu docházky, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

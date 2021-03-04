@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610792"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723057"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Log Analytics ve službě Azure Monitor
 
@@ -51,6 +51,7 @@ Aby se účet úložiště mohl úspěšně připojit k privátnímu propojení,
 * Povolí Azure Monitor přístup k účtu úložiště. Pokud se rozhodnete, že chcete přístup k účtu úložiště vybrat jenom sítě, měli byste vybrat výjimku: "" udělit přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu ".
 ![Obrázek důvěryhodné služby MS účtu úložiště](./media/private-storage/storage-trust.png)
 * Pokud váš pracovní prostor zpracovává provoz z jiných sítí, měli byste nakonfigurovat účet úložiště tak, aby povoloval příchozí provoz pocházející z příslušných sítí nebo Internetu.
+* Koordinovat verzi TLS mezi agenty a účtem úložiště – doporučujeme odesílat data Log Analytics pomocí TLS 1,2 nebo vyšší. Projděte si [pokyny pro konkrétní platformu](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12)a v případě potřeby [Nakonfigurujte agenty na používání protokolu TLS 1,2](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12). Pokud z nějakého důvodu není možné, nakonfigurujte účet úložiště tak, aby přijímal protokol TLS 1,0.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>Použití účtu úložiště spravovaného zákazníkem pro šifrování dat CMK
 Azure Storage šifruje všechna neaktivní neaktivní data v účtu úložiště. Ve výchozím nastavení používá k šifrování dat klíče spravované Microsoftem (MMK). Azure Storage ale taky umožňuje použít k šifrování dat úložiště CMK z trezoru klíčů Azure. Můžete buď importovat vlastní klíče do Azure Key Vault, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů.

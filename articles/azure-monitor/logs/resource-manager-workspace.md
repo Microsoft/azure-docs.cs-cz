@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f57ff130fcf61ae8f831cda33c9510b37a5880e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a908709e49bed1e07a5fdfecd165c45f8792987c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627358"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725590"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro Log Analytics pracovní prostory v Azure Monitor
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytváření a konfiguraci Log Analytics pracovních prostorů v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -824,6 +824,6 @@ Následující ukázka přidá kolekci [protokolů služby IIS](../agents/data-s
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte další ukázkové šablony pro Azure monitor](../samples/resource-manager-samples.md).
-* [Přečtěte si další informace o log Analyticsch pracovních prostorech](../learn/quick-create-workspace.md).
+* [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
+* [Přečtěte si další informace o log Analyticsch pracovních prostorech](./quick-create-workspace.md).
 * [Přečtěte si další informace o zdrojích dat agenta](../agents/agent-data-sources.md).

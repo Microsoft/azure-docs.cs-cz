@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369416"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711939"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -24,7 +24,7 @@ Pomocí Site Recovery můžete:
 
 Nasazení aplikací SAP NetWeaver můžete chránit pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek popisuje osvědčené postupy pro ochranu nasazení SAP NetWeaver v Azure při replikaci do jiného datového centra Azure pomocí Site Recovery. Článek popisuje podporované scénáře a konfigurace a postup testování převzetí služeb při selhání (přechody k zotavení po havárii) a skutečné převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
@@ -119,7 +119,7 @@ Pokud chcete zahájit replikaci všech virtuálních počítačů aplikace SAP d
 
 ## <a name="networking-configuration"></a>Konfigurace sítě
 
-Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. Pokud chcete nastavit IP adresu, přečtěte **Compute and Network settings**si  >  **síťové rozhraní karta**výpočty a nastavení sítě.
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. Pokud chcete nastavit IP adresu, přečtěte si  >  **síťové rozhraní karta** výpočty a nastavení sítě.
 
 ![Snímek obrazovky, který ukazuje, jak nastavit privátní IP adresu v podokně Site Recovery síťového rozhraní](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -153,7 +153,7 @@ Nejčastěji používané Site Recovery skripty můžete nasadit do svého účt
 1. Vyberte **Testovací převzetí služeb při selhání**.
 1. Pokud chcete spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
 1. Když je sekundární prostředí nahoru, proveďte ověření.
-1. Po dokončení ověřování vyčistěte prostředí převzetí služeb při selhání výběrem možnosti **vyčistit testovací převzetí služeb**při selhání.
+1. Po dokončení ověřování vyčistěte prostředí převzetí služeb při selhání výběrem možnosti **vyčistit testovací převzetí služeb** při selhání.
 
 Další informace najdete v tématu [testování převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -167,5 +167,5 @@ Další informace najdete v tématu [testování převzetí služeb při selhán
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery. Přečtěte si dokument white paper o podpoře ke stažení v dokumentu [SAP NetWeaver: vytvoření řešení zotavení po havárii pomocí Site Recovery](https://aka.ms/asr_sap). Dokument white paper obsahuje doporučení pro různé architektury SAP. Můžete si prohlédnout podporované aplikace a typy virtuálních počítačů pro SAP v Azure. K dispozici jsou také možnosti plánu pro testování řešení zotavení po havárii.
+* Přečtěte si další informace o vytváření řešení pro zotavení po havárii pro nasazení SAP NetWeaver pomocí Site Recovery. Přečtěte si dokument white paper o podpoře ke stažení v dokumentu [SAP NetWeaver: vytvoření řešení zotavení po havárii pomocí Site Recovery](/samples/browse/?redirectedfrom=TechNet-Gallery). Dokument white paper obsahuje doporučení pro různé architektury SAP. Můžete si prohlédnout podporované aplikace a typy virtuálních počítačů pro SAP v Azure. K dispozici jsou také možnosti plánu pro testování řešení zotavení po havárii.
 * Přečtěte si další informace o [replikaci dalších úloh](site-recovery-workload.md) pomocí Site Recovery.

@@ -1,14 +1,14 @@
 ---
 title: Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3 | Microsoft Docs
-description: Tento článek popisuje, jak můžete zastavit monitorování clusteru Azure Red Hat OpenShift pomocí Azure Monitor for Containers.
+description: Tento článek popisuje, jak můžete zastavit monitorování clusteru Azure Red Hat OpenShift pomocí služby Container Insights.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613031"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731812"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3
 
@@ -21,7 +21,7 @@ ms.locfileid: "100613031"
 > Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](../../openshift/tutorial-create-cluster.md).
 > Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:aro-feedback@microsoft.com).
 
-Po povolení monitorování clusteru Azure Red Hat OpenShift verze 3. x můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak toho dosáhnout pomocí Azure Resource Manager šabloně.  
+Po povolení monitorování clusteru Azure Red Hat OpenShift verze 3. x můžete zastavit monitorování clusteru pomocí služby Container Insights, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak toho dosáhnout pomocí Azure Resource Manager šabloně.  
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -137,4 +137,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).
+Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../logs/delete-workspace.md).

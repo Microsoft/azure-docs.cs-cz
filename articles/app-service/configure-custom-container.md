@@ -2,14 +2,14 @@
 title: Konfigurace vlastního kontejneru
 description: Přečtěte si, jak nakonfigurovat vlastní kontejner v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007632"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704867"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro službu Azure App Service
 
@@ -111,7 +111,7 @@ V PowerShellu:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-Když je vaše aplikace spuštěná, nastavení App Service aplikace se vloží do procesu automaticky jako proměnné prostředí. 
+Když je vaše aplikace spuštěná, nastavení App Service aplikace se vloží do procesu automaticky jako proměnné prostředí. Můžete ověřit proměnné prostředí kontejneru s adresou URL `https://<app-name>.scm.azurewebsites.net/Env)` .
 
 ::: zone pivot="container-windows"
 V případě kontejnerů založených na službě IIS nebo .NET Framework (4,0 nebo vyšší) jsou vloženy do `System.ConfigurationManager` nastavení aplikace .NET a připojovací řetězce automaticky pomocí App Service. Pro všechny ostatní jazyky nebo rozhraní jsou k dispozici jako proměnné prostředí pro proces s jedním z následujících odpovídajících předpon:
@@ -292,44 +292,55 @@ Skupinové účty spravované služby (účty gMSA) se v současnosti nepodporuj
 
 ## <a name="enable-ssh"></a>Povolit SSH
 
-SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vlastní kontejner podporovat SSH, musíte ho přidat do samotného souboru dockerfileu.
+SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vlastní kontejner podporovat SSH, musíte ho přidat do samotné image Docker.
 
 > [!TIP]
-> Všechny integrované kontejnery Linux přidaly instrukce SSH do úložišť imagí. Pomocí následujících pokynů můžete v [ úložištiNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) zjistit, jak je tato funkce povolená.
+> Všechny integrované kontejnery pro Linux v App Service přidali do úložišť imagí pokyny SSH. Pomocí následujících pokynů můžete v [ úložištiNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) zjistit, jak je tato funkce povolená. Konfigurace v Node.js vestavěných bitových kopiích je mírně odlišná, ale je stejná jako v zásadě.
 
-- Použijte instrukci [Run](https://docs.docker.com/engine/reference/builder/#run) k instalaci serveru SSH a nastavte heslo pro kořenový účet na `"Docker!"` . Například pro Image založenou na systému [Alpine Linux](https://hub.docker.com/_/alpine)budete potřebovat následující příkazy:
+- Přidejte [soubor sshd_config](https://man.openbsd.org/sshd_config) do úložiště, podobně jako v následujícím příkladu.
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    Tato konfigurace neumožňuje externí připojení ke kontejneru. SSH je k dispozici pouze prostřednictvím `https://<app-name>.scm.azurewebsites.net` a ověřeno s přihlašovacími údaji pro publikování.
-
-- Přidejte [Tento soubor sshd_config](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) do úložiště imagí a pomocí instrukce [copy](https://docs.docker.com/engine/reference/builder/#copy) zkopírujte soubor do adresáře */etc/ssh/* . Další informace o *sshd_config* souborů najdete v [dokumentaci k OpenBSD](https://man.openbsd.org/sshd_config).
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > Soubor *sshd_config* musí obsahovat následující položky:
+    > Tento soubor nakonfiguruje OpenSSH a musí zahrnovat následující položky:
+    > - `Port` musí být nastavené na 2222.
     > - `Ciphers` musí obsahovat alespoň jednu položku v tomto seznamu: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs` musí obsahovat alespoň jednu položku v tomto seznamu: `hmac-sha1,hmac-sha1-96`.
 
-- K otevření portu 2222 v kontejneru použijte instrukci [vystavení](https://docs.docker.com/engine/reference/builder/#expose) . I když je známé heslo ke kořenovému adresáři, není port 2222 přístupný z Internetu. Je přístupná pouze kontejnery v rámci mostu sítě privátní virtuální sítě.
+- Do souboru Dockerfile přidejte následující příkazy:
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    Tato konfigurace neumožňuje externí připojení ke kontejneru. Port 2222 kontejneru je přístupný pouze v rámci mostu privátní virtuální sítě a není přístupný pro útočníka v Internetu.
 
 - V spouštěcím skriptu pro svůj kontejner spusťte server SSH.
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    Příklad najdete v tématu Jak výchozí [ kontejnerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SPUSTÍ Server SSH.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
@@ -353,7 +364,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 V souboru *Docker-Compose. yml* namapujte `volumes` možnost na `${WEBAPP_STORAGE_HOME}` . 
 
-`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Příklad:
+`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Například:
 
 ```yaml
 wordpress:

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734124"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
-Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se naplní počítači pomocí dotazu, který definujete, nebo importováním skupin z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
+Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](./log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se naplní počítači pomocí dotazu, který definujete, nebo importováním skupin z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -135,5 +135,4 @@ V pracovním prostoru Log Analytics se vytvoří záznam pro každé členství 
 | `TimeGenerated` |Datum a čas, kdy byla skupina počítačů vytvořena nebo aktualizována. |
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
-
+* Přečtěte si o [dotazech protokolů](./log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

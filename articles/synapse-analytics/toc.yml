@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Odeslání definic úloh Sparku
           href: ./spark/apache-spark-job-definitions.md
+        - name: Připojit a monitorovat metriky na úrovni aplikace Azure synapse Spark
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Monitorování Apache Spark metrik na úrovni aplikace pomocí Prometheus a Grafana
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: Koncepty
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: Notebooks
           href: ./spark/apache-spark-notebook-concept.md
+        - name: Správa balíčků
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: Monitorovací nástroje
           href: monitoring/how-to-monitor-spark-applications.md
     - name: Návody
       items:
         - name: Práce se službou Delta Lake
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Správa knihoven
+        - name: Spravovat balíčky
           items:
-            - name: Přidání a správa knihoven
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: Řešení chyb při instalaci knihovny
+            - name: Spravovat balíčky Pythonu
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Správa balíčků Scala
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Řešení chyb při instalaci balíčku Pythonu
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Použití poznámkových bloků a nástrojů IDE
           items:

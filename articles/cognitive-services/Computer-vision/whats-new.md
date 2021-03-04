@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390398"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738221"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
@@ -50,8 +50,8 @@ Nová verze [kontejneru prostorových analýz](spatial-analysis-container.md) by
 * **Průlomová změna**: událost *personZoneEvent* byla přejmenována na *personZoneEnterExitEvent*. Tato událost je vyvolána operací *personcrossingpolygon* , když uživatel zadá nebo ukončí zónu a poskytne směrové informace s očíslovanou stranou zóny, která byla překročena.
 * Adresa URL videa se dá v všech operacích zadat jako "soukromý parametr/zakódováno". Zmatení je nyní volitelné a bude fungovat pouze v případě `KEY` , že a `IV` jsou zadány jako proměnné prostředí.
 * Ve výchozím nastavení je kalibrace povolena pro všechny operace. Nastavte `do_calibration: false` ho tak, aby se zakázal.
-* Přidala se podpora pro automatickou rekalibraci (ve výchozím nastavení je zakázaná) prostřednictvím parametru. Podrobnosti najdete v `enable_recalibration` tématu věnovaném [operacím prostorové analýzy](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
-* Parametry kalibrace kamery na `DETECTOR_NODE_CONFIG` . Podrobnosti najdete v tématu věnovaném [operacím prostorové analýzy](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
+* Přidala se podpora pro automatickou rekalibraci (ve výchozím nastavení je zakázaná) prostřednictvím parametru. Podrobnosti najdete v `enable_recalibration` tématu věnovaném [operacím prostorové analýzy](./spatial-analysis-operations.md) .
+* Parametry kalibrace kamery na `DETECTOR_NODE_CONFIG` . Podrobnosti najdete v tématu věnovaném [operacím prostorové analýzy](./spatial-analysis-operations.md) .
 
 
 ## <a name="october-2020"></a>Říjen 2020

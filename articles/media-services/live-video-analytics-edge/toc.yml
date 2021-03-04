@@ -51,6 +51,9 @@
         - name: S využitím OVMS přes rozšíření HTTP
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: S OV DL načtení proudu ImageList přes rozšíření gRPC
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
         - name: Použití Custom Vision
           href: custom-vision-tutorial.md
         - name: Použití prostorové analýzy
@@ -90,6 +93,8 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: Nasazení do zařízení IoT Edge
       href: deploy-iot-edge-device.md
+    - name: Nasazení na IoT Edge pro Linux ve Windows
+      href: deploy-iot-edge-linux-on-windows.md
     - name: Monitorování a protokolování
       href: monitoring-logging.md
     - name: Přehrávání záznamu

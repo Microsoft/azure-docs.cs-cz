@@ -1,24 +1,24 @@
 ---
-title: Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače
-description: Výkon je funkce Azure Monitor pro virtuální počítače, která automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak ho používat v různých scénářích.
+title: Postup vytvoření grafu výkonu pomocí přehledů VM
+description: Výkon je funkce přehledů virtuálních počítačů, která automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak ho používat v různých scénářích.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c69ea3da71063d7e20ebf31ae2eb3df9a51e2c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725437"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače
+# <a name="how-to-chart-performance-with-vm-insights"></a>Postup vytvoření grafu výkonu pomocí přehledů VM
 
-Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které cílí na několik klíčových ukazatelů výkonu (KPI), které vám pomůžou určit, jak dobře je virtuální počítač prováděn. Grafy ukazují využití prostředků v časovém intervalu, takže můžete identifikovat kritická místa, anomálie nebo přepnout na jednotlivé počítače a zobrazit tak využití prostředků na základě vybrané metriky. I když existuje mnoho prvků, které je potřeba vzít v úvahu při práci s výkonem, Azure Monitor pro virtuální počítače sleduje klíčové ukazatele výkonu operačního systému související s procesorem, pamětí, síťovým adaptérem a využitím disku. Výkon doplňuje funkci monitorování stavu a pomáhá vystavovat problémy, které naznačují možné selhání součásti systému, podporují optimalizaci a optimalizaci, aby dosáhly efektivity, nebo podporovala plánování kapacity.  
+Funkce VM Insights zahrnuje sadu diagramů výkonu, které cílí na několik klíčových ukazatelů výkonu (KPI), které vám pomůžou určit, jak dobře je virtuální počítač prováděn. Grafy ukazují využití prostředků v časovém intervalu, takže můžete identifikovat kritická místa, anomálie nebo přepnout na jednotlivé počítače a zobrazit tak využití prostředků na základě vybrané metriky. I když existuje mnoho prvků, které je potřeba vzít v úvahu při obchodování s výkonem, monitorování virtuálních počítačů sleduje klíčové ukazatele výkonu operačního systému související s procesorem, pamětí, síťovým adaptérem a využitím disku. Výkon doplňuje funkci monitorování stavu a pomáhá vystavovat problémy, které naznačují možné selhání součásti systému, podporují optimalizaci a optimalizaci, aby dosáhly efektivity, nebo podporovala plánování kapacity.  
 
 ## <a name="limitations"></a>Omezení
-Níže jsou uvedena omezení pro shromažďování výkonu pomocí Azure Monitor pro virtuální počítače.
+Níže jsou uvedená omezení shromažďování výkonu s využitím Cloud Insights.
 
 - **Dostupná paměť** není dostupná pro virtuální počítače se systémem Red Hat Linux (RHEL) 6. Tato metrika se počítá z **MemAvailable** , která byla představena v [jádru verze 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html).
 - Metriky jsou k dispozici pouze pro datové disky na virtuálních počítačích se systémem Linux pomocí systému souborů XFS nebo řady EXT systému souborů (EXT2, EXT3, EXT4).
@@ -33,7 +33,7 @@ V Azure Monitor funkce Performance poskytuje zobrazení všech monitorovaných v
 
 ![Zobrazení seznamu v horní části výkonu virtuálního počítače Insights](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Pokud máte více než jeden Log Analytics pracovní prostor, na kartě **horních N grafů** vyberte pracovní prostor povolený pomocí řešení v selektoru **pracovního prostoru** v horní části stránky. Selektor **skupin** bude vracet předplatná, skupiny prostředků, [skupiny počítačů](../platform/computer-groups.md)a sady škálování virtuálních počítačů, které souvisejí s vybraným pracovním prostorem, který můžete použít k dalšímu filtrování výsledků prezentovaných v grafech na této stránce a na dalších stránkách. Váš výběr se vztahuje pouze na funkci výkonu a neprovádí se nad stavem ani mapováním.  
+Pokud máte více než jeden Log Analytics pracovní prostor, na kartě **horních N grafů** vyberte pracovní prostor povolený pomocí řešení v selektoru **pracovního prostoru** v horní části stránky. Selektor **skupin** bude vracet předplatná, skupiny prostředků, [skupiny počítačů](../logs/computer-groups.md)a sady škálování virtuálních počítačů, které souvisejí s vybraným pracovním prostorem, který můžete použít k dalšímu filtrování výsledků prezentovaných v grafech na této stránce a na dalších stránkách. Váš výběr se vztahuje pouze na funkci výkonu a neprovádí se nad stavem ani mapováním.  
 
 Ve výchozím nastavení jsou grafy zobrazeny v posledních 24 hodinách. Pomocí selektoru **TimeRange** se můžete dotazovat na historické časové rozsahy až na 30 dní, abyste viděli, jak v minulosti vypadal výkon.
 
@@ -45,7 +45,7 @@ Pět grafů využití kapacity se zobrazuje na stránce:
 * Počet odeslaných bajtů – zobrazuje horních pět počítačů s nejvyšším průměrem odeslaných bajtů. 
 * Počet přijatých bajtů – zobrazuje pět nejlepších počítačů s nejvyšším průměrem přijatých bajtů. 
 
-Kliknutím na ikonu připnutí v pravém horním rohu kteréhokoli z pěti grafů se vybraný graf připnout na poslední prohlížený řídicí panel Azure.  Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro virtuální počítače a načte správný rozsah a zobrazení.  
+Kliknutím na ikonu připnutí v pravém horním rohu kteréhokoli z pěti grafů se vybraný graf připnout na poslední prohlížený řídicí panel Azure.  Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na službu VM Insights a načte správný rozsah a zobrazení.  
 
 Kliknutím na ikonu umístěnou nalevo od ikony připnutí v některém z pěti grafů se otevře **seznam horních N seznamů** .  Tady vidíte využití prostředků pro tuto metriku výkonu podle jednotlivých virtuálních počítačů v zobrazení seznamu a tento počítač má nejvyšší trend.  
 
@@ -104,7 +104,7 @@ K dispozici jsou následující grafy využití kapacity:
 * Míra odeslaných bajtů – výchozí hodnota zobrazuje průměrné odeslané bajty 
 * Frekvence přijímání bajtů – výchozí hodnota zobrazuje průměrné přijaté bajty
 
-Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si můžete vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro virtuální počítače a načte podrobné zobrazení výkonu pro virtuální počítač.  
+Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si můžete vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na službu VM Insights a načte podrobné zobrazení výkonu pro virtuální počítač.  
 
 ![Výkon virtuálního počítače přímo ze zobrazení virtuálního počítače](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
@@ -117,7 +117,7 @@ Pokud chcete získat přístup přímo ze sady škálování virtuálních poč�
 
 Tato stránka načte Azure Monitor zobrazení výkonu, která je vymezená na vybranou sadu škálování. Díky tomu můžete v sadě škálování v rámci sady monitorovaných metrik zobrazit agregované instance N, zobrazit agregovaný výkon v rámci sady škálování a zobrazit trendy pro vybrané metriky v rámci jednotlivých instancí N sady škálování. Výběrem instance ze zobrazení seznamu můžete načíst mapu, nebo přejít do podrobného zobrazení výkonu této instance.
 
-Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si můžete vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro virtuální počítače a načte podrobné zobrazení výkonu pro virtuální počítač.  
+Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si můžete vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na službu VM Insights a načte podrobné zobrazení výkonu pro virtuální počítač.  
 
 ![Výkon virtuálního počítače přímo ze zobrazení sady škálování virtuálních počítačů](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
@@ -128,6 +128,6 @@ Kliknutím na ikonu připnutí v pravém horním rohu libovolného grafu si mů�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se používat [sešity](vminsights-workbooks.md) , které jsou součástí Azure monitor pro virtuální počítače k dalšímu analýze výkonu a metrik sítě.  
+- Naučte se používat [sešity](vminsights-workbooks.md) , které jsou součástí virtuálních počítačů Insights k dalšímu analýze výkonu a metrik sítě.  
 
-- Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy Azure monitor pro virtuální počítače](vminsights-maps.md).
+- Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy virtuálních počítačů](vminsights-maps.md).

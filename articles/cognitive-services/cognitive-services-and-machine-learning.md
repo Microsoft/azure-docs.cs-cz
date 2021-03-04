@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710460"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -97,7 +97,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[Rozpoznávání tváře](./Face/Overview.md)|x|x||
 |[Rozpoznávání formulářů](./form-recognizer/overview.md)||x||
 |[Asistivní čtečka](./immersive-reader/overview.md)|x|||
-|[Rozpoznávání rukopisu](./Ink-recognizer/overview.md)|x|x||
+|[Rozpoznávání rukopisu](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizace](./personalizer/what-is-personalizer.md)|znak|znak|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
@@ -127,7 +127,7 @@ Cognitive Services, které poskytují exportované modely pro jiné nástroje pr
 
 |Služba rozpoznávání|Informace o modelu|
 |--|--|
-|[Custom Vision](./custom-vision-service/overview.md)|[Export](./Custom-Vision-Service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
+|[Custom Vision](./custom-vision-service/overview.md)|[Export](./custom-vision-service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
 
 ## <a name="learn-more"></a>Další informace
 

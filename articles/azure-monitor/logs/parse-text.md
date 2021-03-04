@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 29393126f94d77dbced0ef896616b945443184fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733937"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analyzovat textová data v protokolech Azure Monitor
 Některá data protokolu shromážděná pomocí Azure Monitor budou obsahovat více informací v jedné vlastnosti. Analýza těchto dat na více vlastností usnadňuje jejich použití v dotazech. Běžným příkladem je [vlastní protokol](../agents/data-sources-custom-logs.md) , který shromažďuje celou položku protokolu s více hodnotami do jedné vlastnosti. Vytvořením samostatných vlastností pro různé hodnoty můžete vyhledávat a agregovat na každé z nich.
@@ -188,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Přečtěte si o [dotazech protokolů](./log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

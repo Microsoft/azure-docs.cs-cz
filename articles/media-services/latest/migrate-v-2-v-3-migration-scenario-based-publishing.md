@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721085"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře balení a doručení
 
@@ -55,7 +55,7 @@ Konkrétní kroky najdete v tématu věnovaném publikování konceptů, výukov
 - [Vytvoření lokátoru streamování a adres URL](create-streaming-locator-build-url.md)
 - [Stažení výsledků úlohy](download-results-howto.md)
 - [Signály popisné zvukové stopy](signal-descriptive-audio-howto.md)
-- [Kompletní nastavení Azure Media Playeru](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Kompletní nastavení Azure Media Playeru](../azure-media-player/azure-media-player-full-setup.md)
 - [Jak používat Video.js Player s Azure Media Services](how-to-video-js-player.md)
 - [Jak používat Shaka Player s Azure Media Services](how-to-shaka-player.md)
 

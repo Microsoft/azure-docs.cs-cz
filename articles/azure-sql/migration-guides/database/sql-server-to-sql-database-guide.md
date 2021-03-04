@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a2ab63febbb4439e50ef0f7bcc0f9797dc50c62c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690936"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Průvodce migrací: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -157,8 +157,8 @@ Pokud chcete urychlit migraci na Azure SQL Database, měli byste zvážit násle
 |  | Spory prostředků | Doporučení |
 |--|--|--|
 | **Zdroj (obvykle místní)** |Hlavním kritickým bodem během migrace ve zdroji jsou vstupně-výstupní operace s daty a latence v DATOVÉm souboru, který je potřeba monitorovat pečlivě.  |Na základě latence vstupně-výstupních operací a datových souborů a v závislosti na tom, jestli se jedná o virtuální počítač nebo fyzický server, budete muset zapojit Správce úložiště a prozkoumat možnosti, jak zmírnit kritické body. |
-|**Cíl (Azure SQL Database)**|Největší faktor omezení je míra generování protokolu a latence v souboru protokolu. V případě Azure SQL Database můžete získat maximálně 96 MB/s rychlost generování protokolu. | Pokud chcete zrychlit migraci, naplánujte cílovou databázi SQL tak, aby Pro důležité obchodní informace Gen5 8 Vcore, aby se získala maximální rychlost generování protokolu 96 MB/s, a taky pro soubor protokolu zajistěte nízkou latenci. Úroveň služby pro [škálování](https://docs.microsoft.com/azure/azure-sql/database/service-tier-hyperscale) na úrovni služeb poskytuje rychlost protokolu 100 MB/s (bez ohledu na zvolenou úroveň služby). |
-|**Síť** |Požadovaná šířka pásma sítě je rovna maximální rychlosti ingestování protokolu 96 MB/s (768 MB/s). |V závislosti na připojení k síti z místního datového centra k Azure se podívejte na šířku pásma vaší sítě (obvykle [Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction#bandwidth-options)), která bude vyhovovat maximální rychlosti ingestování protokolů. |
+|**Cíl (Azure SQL Database)**|Největší faktor omezení je míra generování protokolu a latence v souboru protokolu. V případě Azure SQL Database můžete získat maximálně 96 MB/s rychlost generování protokolu. | Pokud chcete zrychlit migraci, naplánujte cílovou databázi SQL tak, aby Pro důležité obchodní informace Gen5 8 Vcore, aby se získala maximální rychlost generování protokolu 96 MB/s, a taky pro soubor protokolu zajistěte nízkou latenci. Úroveň služby pro [škálování](../../database/service-tier-hyperscale.md) na úrovni služeb poskytuje rychlost protokolu 100 MB/s (bez ohledu na zvolenou úroveň služby). |
+|**Síť** |Požadovaná šířka pásma sítě je rovna maximální rychlosti ingestování protokolu 96 MB/s (768 MB/s). |V závislosti na připojení k síti z místního datového centra k Azure se podívejte na šířku pásma vaší sítě (obvykle [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)), která bude vyhovovat maximální rychlosti ingestování protokolů. |
 |**Virtuální počítač použitý pro Data Migration Assistant (DMA)** |CPU je primárním kritickým bodem pro virtuální počítač, na kterém běží DMA. |Věci, které je potřeba zvážit při urychlení migrace dat pomocí </br>– Virtuální počítače náročné na výpočetní výkon Azure </br>-Použít aspoň F8s_v2 (8 Vcore) virtuální počítač pro provoz DMA </br>– Ujistěte se, že je virtuální počítač spuštěný ve stejné oblasti Azure jako cíl. |
 |**Azure Database Migration Service (DMS)** |Spory výpočetních prostředků a databázové objekty, které je potřeba pro DMS |Použijte vCore úrovně Premium 4. DMS automaticky postará o databázové objekty, jako jsou cizí klíče, triggery, omezení a neclusterované indexy, a nepotřebuje žádný ruční zásah.  |
 

@@ -1,22 +1,22 @@
 ---
-title: Náklady na monitorování pro Azure Monitor kontejnerů | Microsoft Docs
-description: Tento článek popisuje náklady na monitorování metriky & inventáře shromažďovaných pomocí Azure Monitor pro kontejnery, které zákazníkům pomůžou spravovat jejich využití a přidružené náklady.
+title: Náklady na monitorování pro kontejnerové přehledy | Microsoft Docs
+description: Tento článek popisuje náklady na monitorování metriky & inventáře shromažďovaných službou Container Insights, aby zákazníkům pomohla spravovat jejich využití a přidružené náklady.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612364"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728905"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Vysvětlení nákladů na monitorování služby Azure Monitor pro kontejnery
+# <a name="understand-monitoring-costs-for-container-insights"></a>Porozumění nákladům na monitorování pro službu Container Insights
 
-Tento článek poskytuje cenové poradenství pro Azure Monitor kontejnerů, které vám pomůžou pochopit následující informace:
+Tento článek poskytuje cenové poradenství pro službu Container Insights, které vám pomůžou pochopit následující informace:
 
 * Jak odhadnout náklady předem před tím, než povolíte tento přehled
 
-* Jak změřit náklady po Azure Monitor pro kontejnery byly povoleny pro jeden nebo více kontejnerů
+* Jak měřit náklady po povolení služby Container Insights pro jeden nebo více kontejnerů
 
 * Jak řídit shromažďování dat a snížit náklady
 
@@ -27,7 +27,7 @@ Cenový model Azure Monitor je primárně založený na množství dat přijatý
 >[!NOTE]
 >Všechny velikosti a ceny jsou pouze pro vzorové odhady. Nejnovější ceny na základě Azure Monitor Log Analytics cenového modelu a oblasti Azure najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/monitor/) Azure monitor.
 
-Následuje souhrn typů dat shromažďovaných z clusteru Kubernetes s Azure Monitor pro kontejnery, které mají vliv na náklady a které je možné přizpůsobit na základě vašeho využití:
+Následuje souhrn typů dat shromažďovaných z clusteru Kubernetes s využitím služby Container Insights, které mají vliv na náklady a které je možné přizpůsobit na základě vašeho využití:
 
 - Stdout, stderr – protokoly kontejneru z každého monitorovaného kontejneru v každém Kubernetes oboru názvů v clusteru
 
@@ -37,11 +37,11 @@ Následuje souhrn typů dat shromažďovaných z clusteru Kubernetes s Azure Mon
 
 - Aktivní likvidace metrik Prometheus
 
-- [Shromažďování protokolů diagnostiky](../../aks/view-master-logs.md) protokolů hlavního uzlu Kubernetes v clusteru AKS pro analýzu dat protokolu generovaných hlavními komponentami, jako jsou *Kube-apiserver* a *Kube-Controller-Manager*.
+- [Shromažďování protokolů diagnostiky](../../aks/view-control-plane-logs.md) protokolů hlavního uzlu Kubernetes v clusteru AKS pro analýzu dat protokolu generovaných hlavními komponentami, jako jsou *Kube-apiserver* a *Kube-Controller-Manager*.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Co se shromažďuje z clusterů Kubernetes
 
-Azure Monitor for containers obsahuje předdefinovanou sadu metrik a shromážděných položek inventáře, které jsou v pracovním prostoru Log Analytics zapsané jako data protokolu. Všechny níže uvedené metriky se ve výchozím nastavení shromažďují každou minutu.
+Container Insights obsahuje předdefinovanou sadu metrik a shromážděných položek inventáře, které se zapisují jako data protokolu v pracovním prostoru Log Analytics. Všechny níže uvedené metriky se ve výchozím nastavení shromažďují každou minutu.
 
 ### <a name="node-metrics-collected"></a>Shromážděné metriky uzlů
 
@@ -194,10 +194,10 @@ Pokud využíváte [Prometheus metriky](container-insights-prometheus-integratio
 
 - Ujistěte se, že je frekvence vyřazení nastavena optimálně (výchozí hodnota je 60 sekund). I když můžete tuto frekvenci prodloužit na 15 sekund, musíte zajistit, aby metriky, které vydáváte, byly v této frekvenci publikované. V opačném případě bude k dispozici mnoho duplicitních metrik a jejich odeslání do vašeho Log Analytics pracovního prostoru v intervalech přidávání do příjmu dat a nákladů na uchovávání, ale mají nižší hodnotu. 
 
-- Azure Monitor for Containers podporuje seznam vyloučení & seznamů zahrnutí podle názvu metriky. Pokud například obdržíte metriky **kubedns** ve vašem clusteru, může to být stovky, které se ve výchozím nastavení vyřadí, ale máte největší pravděpodobně zájem jenom o určitou podmnožinu. Potvrďte, že jste zadali seznam metrik, které se mají vyřadit, nebo vyloučit jiné, kromě několika málo, než se uloží na svazek pro příjem dat. Je snadné povolit vyřazení a nepoužívat spoustu těchto metrik, které budou do faktury Log Analytics přidávat jenom další poplatky.
+- Služba Container Insights podporuje seznamy vyloučení & zahrnutí podle názvu metriky. Pokud například obdržíte metriky **kubedns** ve vašem clusteru, může to být stovky, které se ve výchozím nastavení vyřadí, ale máte největší pravděpodobně zájem jenom o určitou podmnožinu. Potvrďte, že jste zadali seznam metrik, které se mají vyřadit, nebo vyloučit jiné, kromě několika málo, než se uloží na svazek pro příjem dat. Je snadné povolit vyřazení a nepoužívat spoustu těchto metrik, které budou do faktury Log Analytics přidávat jenom další poplatky.
 
 - Při vynechání poznámek pod, nezapomeňte filtrovat podle oboru názvů tak, abyste vyloučili vynechání metriky pod obory názvů, které nepoužíváte (například obor názvů pro **vývoj a testování** ).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak porozumět tomu, jaké náklady budou pravděpodobně založeny na nedávných vzorcích použití z dat shromážděných pomocí Azure Monitor pro kontejnery, najdete v tématu [Správa využití a odhad nákladů](../platform/manage-cost-storage.md).
+Další informace o tom, jak zjistit, jaké náklady budou pravděpodobně založeny na nedávných vzorcích využití z dat shromážděných pomocí služby Container Insights, najdete v tématu [Správa využití a odhad nákladů](../logs/manage-cost-storage.md).

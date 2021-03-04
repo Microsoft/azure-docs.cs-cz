@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 8e2217c04f5c39ad93185273d537324f4b56e456
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f6c43f943bb12e8230772f2d195589ecc4543030
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705309"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming
 
@@ -32,7 +32,7 @@ Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Strea
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Popis
 SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
 * Zdroj Smooth Streaminging Kit pro portování v C++ 
@@ -46,7 +46,7 @@ SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. 
   * programovací rozhraní pro interakci s hardwarovými A/V dekodéry (dekódování, vykreslování)
 * Rozhraní Digital Rights Management (DRM) 
   * programovací rozhraní pro zpracování DRM přes vrstvu abstrakce DRM (DAL)
-  * Microsoft PlayReady porting kit se dodává samostatně, ale integruje se přes toto rozhraní. Další podrobnosti o licencování zařízení Microsoft PlayReady získáte kliknutím [sem](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+  * Microsoft PlayReady porting kit se dodává samostatně, ale integruje se přes toto rozhraní. [Další podrobnosti najdete v článku licencování zařízení Microsoft PlayReady](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Ukázky implementace 
   * Ukázka implementace PAL pro Linux
   * Ukázková implementace vrstvy HAL pro GStreamer
@@ -148,6 +148,7 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 * Digitální technologie Shenzhen Skyworth co., Ltd
 * Iština Changhong elektrických co., Ltd.
 * Skardin průmyslová Corp.
+* Nebe CP Ltd
 * Nebeská Deutschlanda Fernsehen GmbH & co. KG
 * GLOBÁLNÍ SAS SMARDTV
 * SoftAtHome

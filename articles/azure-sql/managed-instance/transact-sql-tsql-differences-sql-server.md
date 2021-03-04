@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378617"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691191"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Následující možnosti nelze upravit:
 - `SINGLE_USER`
 - `WITNESS`
 
-Některé `ALTER DATABASE` příkazy (například [Nastavení zahrnutí](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) můžou být v přechodném případě neúspěšné, například během automatické zálohy databáze nebo hned po vytvoření databáze. V tomto případě `ALTER DATABASE` by se měl opakovat příkaz. Další informace o souvisejících chybových zprávách najdete v [části poznámky](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Některé `ALTER DATABASE` příkazy (například [Nastavení zahrnutí](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)) můžou být v přechodném případě neúspěšné, například během automatické zálohy databáze nebo hned po vytvoření databáze. V tomto případě `ALTER DATABASE` by se měl opakovat příkaz. Další informace o souvisejících chybových zprávách najdete v [části poznámky](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2).
 
 Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -395,12 +395,12 @@ Další informace najdete v tématu [tabulky](/sql/relational-databases/blob/fil
 Propojené servery ve spravované instanci SQL podporují omezený počet cílů:
 
 - Podporované cíle jsou spravované instance SQL, SQL Database, Azure synapse bez SQL [serveru](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) a vyhrazené fondy a SQL Server instance. 
-- Distribuované transakce s možností zápisu jsou možné jenom mezi spravovanými instancemi. Další informace najdete v tématu [distribuované transakce](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Služba MS DTC ale není podporovaná.
+- Distribuované transakce s možností zápisu jsou možné jenom mezi spravovanými instancemi. Další informace najdete v tématu [distribuované transakce](../database/elastic-transactions-overview.md). Služba MS DTC ale není podporovaná.
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import souborů CSV z Azure Blob Storage použití `BULK INSERT` nebo `OPENROWSET` jako alternativu pro import souborů nebo načtěte soubory pomocí [serveru SQL bez serveru v Azure synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Operace: 
 
-- Transakce zápisu [mezi instancemi](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) se podporují jenom pro spravované instance.
+- Transakce zápisu [mezi instancemi](../database/elastic-transactions-overview.md) se podporují jenom pro spravované instance.
 - `sp_dropserver` se podporuje pro vyřazení odkazovaného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`Funkci lze použít ke spouštění dotazů pouze u instancí SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`Funkci lze použít ke spouštění dotazů pouze u instancí SQL Server. Můžou být spravované, místní nebo virtuální počítače. Pouze `SQLNCLI` hodnoty, `SQLNCLI11` a `SQLOLEDB` jsou podporovány jako zprostředkovatel. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).

@@ -3,12 +3,12 @@ title: Použití Průzkumníka Azure Service Bus k provádění operací s daty 
 description: Tento článek poskytuje informace o tom, jak používat Azure Service Bus Průzkumník na portálu pro přístup k datům Azure Service Bus.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092213"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738952"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Použití Průzkumníka Service Bus k provádění operací s daty v Service Bus (Preview)
 
@@ -25,7 +25,7 @@ Průzkumník Azure Service Bus rozšiřuje funkce portálu nad rámec operací s
 > [!NOTE]
 > V tomto článku se zvýrazní funkčnost Azure Service Bus Exploreru, která se nachází na Azure Portal.
 >
-> Nástroj Azure Service Bus Explorer není ***ne** _ nástroj OSS vlastněný komunitou [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
+> Nástroj Azure Service Bus Explorer ***není ve vlastnictví*** komunity OSS [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -37,18 +37,18 @@ Chcete-li použít nástroj Service Bus Explorer, budete muset provést následu
     - [Rychlý Start – vytvoření front](service-bus-quickstart-portal.md)
     - [Rychlý Start – vytvoření témat](service-bus-quickstart-topics-subscriptions-portal.md)
 - Ujistěte se, že jste členem jedné z těchto rolí v oboru názvů: 
-    - [Service Bus vlastník dat](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
-    - [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor) 
-    - [Vlastník](/azure/role-based-access-control/built-in-roles#owner)
+    - [Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Vlastník](../role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Použití Průzkumníka Service Bus
 
 Chcete-li použít Průzkumníka Azure Service Bus, je nutné přejít na obor názvů Service Bus, na kterém chcete provádět operace odeslání, prohlížení a příjmu.
 
-Pokud chcete provádět operace s frontou, vyberte v navigační nabídce *příkaz "Queue"**. Pokud chcete provádět operace s tématem (a souvisejícími předplatnými), vyberte **témata**. 
+Pokud chcete provádět operace s frontou, vyberte v navigační nabídce **možnost fronty** . Pokud chcete provádět operace s tématem (a souvisejícími předplatnými), vyberte **témata**. 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Výběr entity":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="Výběr entity":::
 
 Po výběru možnosti **fronty** nebo **témata** vyberte konkrétní frontu nebo téma.
 
@@ -58,11 +58,11 @@ V levé navigační nabídce vyberte **Service Bus Explorer (Preview).**
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Odeslání zprávy do fronty nebo tématu
 
-Chcete-li odeslat zprávu do **fronty** nebo **tématu**, klikněte na kartu **_Odeslat_* _ v Průzkumníkovi Service Bus.
+Pokud chcete odeslat zprávu do **fronty** nebo **tématu**, klikněte na kartu **_Odeslat_** v Průzkumníkovi Service Bus.
 
 Vytvoření zprávy sem – 
 
-1. Vyberte *typ obsahu* _ * tak, aby byl buď text/prostý "," Application/XML "nebo" Application/JSON ".
+1. Vyberte **typ obsahu** , který se bude nacházet buď jako "text/prostý", "Application/XML" nebo "Application/JSON".
 2. Přidejte **obsah** zprávy. Zajistěte, aby odpovídaly dříve nastavenému **typu obsahu** .
 3. Nastavení **rozšířených vlastností** (volitelné) – patří mezi ně ID korelace, ID zprávy, popisek, ReplyTo, doba TTL (Time to Live) a plánovaná doba zařazení do fronty (pro naplánované zprávy).
 4. Nastavení **vlastních vlastností** – může to být jakákoli vlastnost uživatele nastavená na klíč slovníku.
@@ -86,23 +86,23 @@ Po úspěšném dokončení operace odeslání se
 Funkce Receive v Průzkumníkovi Service Bus umožňuje příjem jedné zprávy současně. Operace Receive se provádí pomocí režimu **ReceiveAndDelete** .
 
 > [!IMPORTANT]
-> Počítejte s tím, že operace Receive prováděná průzkumníkem Service Bus je **_destruktivní příjem_* _, tj. zpráva se odebere z fronty, když se zobrazí v nástroji Service Bus Explorer.
+> Počítejte s tím, že operace Receive prováděná průzkumníkem Service Bus je ***destruktivní příjem***, tj. zpráva je odebrána z fronty, když se zobrazí v nástroji Service Bus Explorer.
 >
-> Pokud chcete procházet zprávy bez jejich odebrání z fronty, zvažte použití funkce _*_prohlížení_*_ .
+> Pokud chcete procházet zprávy bez jejich odebrání z fronty, zvažte použití funkce ***prohlížení*** .
 >
 
 Příjem zprávy z fronty (nebo z podfronty nedoručených zpráv) 
 
-1. V Průzkumníkovi Service Bus klikněte na kartu _*_přijmout_*_ .
-2. Zkontrolujte metriky a zjistěte, jestli neexistují *neaktivní zprávy** nebo **zprávy nedoručených zpráv** .
+1. V Průzkumníkovi Service Bus klikněte na kartu ***přijmout*** .
+2. Podívejte se na metriky a zjistěte, jestli neexistují **aktivní zprávy** nebo **zprávy nedoručených zpráv** .
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Vyberte mezi *_frontou_*"*" nebo podfrontou _*_nedoručených zpráv_*_ .
+3. Vyberte mezi podfrontou ***Queue** _ nebo _ *_nedoručených zpráv_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. Klikněte na tlačítko _*_přijmout_*_ a pak na _*_Ano_*_ a potvrďte operaci přijmout a odstranit.
+4. Kliknutím na tlačítko ***přijmout** _ následovaným znakem _ *_Ano_** potvrďte operaci přijmout a odstranit.
 
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí podrobnosti zprávy, jak je uvedeno níže. Můžete vybrat zprávu z mřížky a zobrazit její podrobnosti.
@@ -114,19 +114,19 @@ Po úspěšném dokončení operace Receive se v mřížce zobrazí podrobnosti 
 
 Pomocí funkce prohlížení můžete pomocí Průzkumníka Service Bus zobrazit prvních 32 zpráv ve frontě nebo ve frontě nedoručených zpráv.
 
-1. Chcete-li prohlížet zprávy ve frontě, klikněte na kartu _*_Náhled_*_ v Průzkumníkovi Service Bus.
+1. Chcete-li prohlížet zprávy ve frontě, klikněte na kartu ***Náhled*** v Průzkumníkovi Service Bus.
 
     :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-2. Zkontrolujte metriky a zjistěte, jestli nejsou k dispozici žádné _ *aktivní zprávy** nebo **zprávy nedoručených zpráv** .
+2. Podívejte se na metriky a zjistěte, jestli k prohlížení neexistují **aktivní zprávy** nebo **zprávy nedoručených zpráv** .
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Pak vyberte mezi *_frontou_*"*" nebo podfrontou _*_nedoručených zpráv_*_ .
+3. Pak vyberte mezi **frontou * Queue** _ nebo _ *_nedoručených zpráv_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. Klikněte na tlačítko _*_Náhled_*_ . 
+4. Klikněte na tlačítko ***Náhled*** . 
 
 Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je uvedeno níže. Chcete-li zobrazit podrobnosti konkrétní zprávy, vyberte ji z mřížky. 
 
@@ -134,28 +134,28 @@ Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je
 
 > [!NOTE]
 >
-> Vzhledem k tomu, že Náhled není destruktivní operace, zpráva _ *nebude* odebrána z fronty.
+> Vzhledem k tomu, že Náhled není destruktivní operace, zpráva **nebude** odebrána z fronty.
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>Příjem zprávy z předplatného
 
-Stejně jako u fronty může být operace **_Receive_* _ provedena v rámci předplatného (nebo jeho nedoručených zpráv). Vzhledem k tomu, že předplatné bydlí v rámci kontextu tématu, je operace přijetí provedena přechodem do Průzkumníka Service Bus pro dané téma.
+Stejně jako u fronty se operace Receive dá provést na základě předplatného (nebo jeho nedoručené ***zprávy*** ). Vzhledem k tomu, že předplatné bydlí v rámci kontextu tématu, je operace přijetí provedena přechodem do Průzkumníka Service Bus pro dané téma.
 
 > [!IMPORTANT]
-> Počítejte s tím, že operace Receive prováděná průzkumníkem Service Bus je _*_destruktivní příjem_*_, tj. zpráva je odebrána z fronty, když se zobrazí v nástroji Service Bus Explorer.
+> Počítejte s tím, že operace Receive prováděná průzkumníkem Service Bus je ***destruktivní příjem***, tj. zpráva je odebrána z fronty, když se zobrazí v nástroji Service Bus Explorer.
 >
-> Pokud chcete procházet zprávy bez jejich odebrání z fronty, zvažte použití funkce _*_prohlížení_*_ .
+> Pokud chcete procházet zprávy bez jejich odebrání z fronty, zvažte použití funkce ***prohlížení*** .
 >
 
-1. Klikněte na kartu _*_přijmout_*_ a vyberte konkrétní _*_předplatné_*_ z rozevíracího selektoru.
+1. Klikněte na kartu ***přijmout** _ a vyberte konkrétní *_předplatné_* _ * z rozevíracího selektoru.
 
     :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. Vyberte si z _*_předplatného_*_ nebo z dílčí entity _*_nedoručených zpráv_*_ .
+2. Vyberte mezi ***předplatným** _ nebo _ *_nedoručených_* × subentity.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. Klikněte na tlačítko _*_přijmout_*_ a pak na _*_Ano_*_ a potvrďte operaci přijmout a odstranit.
+3. Kliknutím na tlačítko ***přijmout** _ následovaným znakem _ *_Ano_** potvrďte operaci přijmout a odstranit.
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí přijatá zpráva, jak je uvedeno níže. Chcete-li zobrazit podrobnosti zprávy, klikněte na zprávu.
 
@@ -163,17 +163,17 @@ Po úspěšném dokončení operace Receive se v mřížce zobrazí přijatá zp
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Prohlížení zprávy z předplatného
 
-Chcete-li jednoduše procházet zprávy v rámci předplatného nebo její podentita s nedoručenými zprávami, můžete také využít funkci _*_prohlížení_*_ v rámci předplatného.
+Chcete-li jednoduše procházet zprávy v rámci předplatného nebo její podentita s nedoručenými zprávami, můžete také využít funkci ***prohlížení*** v rámci předplatného.
 
-1. Klikněte na kartu _*_Náhled_*_ a v rozevíracím selektoru vyberte konkrétní _*_předplatné_*_ .
+1. Klikněte na kartu ***Náhled** _ a vyberte konkrétní *_předplatné_* _ * z rozevíracího selektoru.
 
     :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. Vyberte si mezi _*_předplatným_*_ nebo podentitou _*_nedoručených zpráv_*_ .
+2. Vyberte mezi podentitou ***předplatné** _ nebo _ *_nedoručené_**.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. Klikněte na tlačítko _*_Náhled_*_ .
+3. Klikněte na tlačítko ***Náhled*** .
 
 Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je uvedeno níže. Chcete-li zobrazit podrobnosti konkrétní zprávy, vyberte ji z mřížky. 
 
@@ -181,7 +181,7 @@ Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je
 
 > [!NOTE]
 >
-> Vzhledem k tomu, že Náhled není destruktivní operace, zpráva _ *nebude* odebrána z fronty.
+> Vzhledem k tomu, že Náhled není destruktivní operace, zpráva **nebude** odebrána z fronty.
 >
 
 ## <a name="next-steps"></a>Další kroky

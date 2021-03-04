@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714999"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Připojení dat z programu Microsoft Defender k identitě (dříve Rozšířená ochrana před internetovými útoky Azure)
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656067"
 > Microsoft Defender pro data Connector ve službě Azure Sentinel je momentálně ve verzi Public Preview.
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pomocí jediného kliknutí můžete streamovat protokoly z [Microsoft Defenderu pro identitu](/azure-advanced-threat-protection/what-is-atp) do Azure Sentinel.
+Tento článek popisuje, jak streamovat výstrahy zabezpečení z [Microsoft Defenderu na identitu](/azure-advanced-threat-protection/what-is-atp) do Azure Sentinel. 
+
+Pro přeposílání upozornění na stav kromě výstrah zabezpečení Integrujte program Microsoft Defender pro identitu se serverem syslog. Další informace najdete v dokumentaci k [Microsoft Defenderu pro identitu](/defender-for-identity/setting-syslog). 
 
 ## <a name="prerequisites"></a>Požadavky
 

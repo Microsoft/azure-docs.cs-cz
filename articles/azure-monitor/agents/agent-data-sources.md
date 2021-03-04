@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2947f1c484f013c2d0bef9899b849f7ea761d89e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609219"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720014"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics zdrojů dat agenta v Azure Monitor
-Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí agenta [Log Analytics](../platform/log-analytics-agent.md) , jsou definovaná zdroji dat, které nakonfigurujete v [pracovním prostoru Log Analytics](../platform/data-platform-logs.md).   Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
+Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí agenta [Log Analytics](./log-analytics-agent.md) , jsou definovaná zdroji dat, které nakonfigurujete v [pracovním prostoru Log Analytics](../logs/data-platform-logs.md).   Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
 
 > [!IMPORTANT]
-> Tento článek se zabývá zdroji dat pro [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
+> Tento článek se zabývá zdroji dat pro [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
 
@@ -51,7 +51,7 @@ Všechny konfigurace se doručí všem agentům připojeným k tomuto pracovním
 ## <a name="data-collection"></a>Shromažďování dat
 Konfigurace zdrojů dat se doručují agentům, které jsou přímo připojené k Azure Monitor během několika minut.  Zadaná data jsou shromažďována z agenta a dodávána přímo do Azure Monitor v intervalech specifických pro jednotlivé zdroje dat.  Prohlédněte si dokumentaci pro každý zdroj dat pro tyto konkrétní.
 
-U agentů System Center Operations Manager v připojené skupině pro správu se konfigurace zdrojů dat přeloží do sad Management Pack a ve výchozím nastavení se doručí do skupiny pro správu každých 5 minut.  Agent stáhne Management Pack jako jiný a shromáždí zadaná data. V závislosti na zdroji dat budou data odeslána na management server, která přepošle data do Azure Monitor, nebo agent odešle data do Azure Monitor bez průchodu management server. Podrobnosti najdete [v tématu podrobnosti o shromažďování dat pro řešení monitorování v Azure](../monitor-reference.md) .  Můžete si přečíst informace o připojení Operations Manager a Azure Monitor a o úpravách četnosti, kterou konfigurace doručí při [konfiguraci integrace s System Center Operations Manager](../platform/om-agents.md).
+U agentů System Center Operations Manager v připojené skupině pro správu se konfigurace zdrojů dat přeloží do sad Management Pack a ve výchozím nastavení se doručí do skupiny pro správu každých 5 minut.  Agent stáhne Management Pack jako jiný a shromáždí zadaná data. V závislosti na zdroji dat budou data odeslána na management server, která přepošle data do Azure Monitor, nebo agent odešle data do Azure Monitor bez průchodu management server. Podrobnosti najdete [v tématu podrobnosti o shromažďování dat pro řešení monitorování v Azure](../monitor-reference.md) .  Můžete si přečíst informace o připojení Operations Manager a Azure Monitor a o úpravách četnosti, kterou konfigurace doručí při [konfiguraci integrace s System Center Operations Manager](./om-agents.md).
 
 Pokud se Agent nemůže připojit k Azure Monitor nebo Operations Manager, bude pokračovat ve shromažďování dat, která budou doručována při navázání připojení.  Data mohou být ztracena v případě, že množství dat dosáhne maximální velikosti mezipaměti pro klienta nebo pokud Agent není schopen navázat připojení během 24 hodin.
 
@@ -60,5 +60,5 @@ Všechna data protokolu shromážděná pomocí Azure Monitor jsou ukládána v 
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [řešeních monitorování](../insights/solutions.md) , která přidávají funkce pro Azure monitor a také shromažďovat data do pracovního prostoru.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení monitorování.  
-* Nakonfigurujte [výstrahy](../platform/alerts-overview.md) pro proaktivní upozorňování na důležitá data shromážděná ze zdrojů dat a řešení monitorování.
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení monitorování.  
+* Nakonfigurujte [výstrahy](../alerts/alerts-overview.md) pro proaktivní upozorňování na důležitá data shromážděná ze zdrojů dat a řešení monitorování.

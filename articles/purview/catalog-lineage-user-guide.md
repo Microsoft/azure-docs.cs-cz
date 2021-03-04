@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: a319dbce2502f35272cf9b70da2022f581d64275
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553090"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694066"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Uživatelská příručka ke službě Azure dosah Data Catalog line
 
@@ -74,39 +74,47 @@ Azure dosah podporuje pro datové sady a procesy řádkovou vyrovnávání úrov
 
    :::image type="content" source="./media/catalog-lineage-user-guide/view-columns-from-lineage.png" alt-text="Snímek obrazovky ukazující, jak vybrat sloupce zobrazení na stránce s řádky" border="true":::
 
-## <a name="column-level-lineage"></a>Čára na úrovni sloupce
+## <a name="dataset-column-lineage"></a>Vydaná čára sloupce datové sady
 
-Azure dosah pro datové sady podporuje čáry na úrovni sloupců. Chcete-li zobrazit čáru na úrovni sloupce, přejděte na **kartu pro** aktuální Asset v katalogu a postupujte podle následujících kroků:
+Chcete-li zobrazit pro datovou čáru na úrovni sloupce, přejděte na **kartu pro** aktuální Asset v katalogu a postupujte podle následujících kroků:
 
 1. Až budete na kartě zarážka, zaškrtněte v levém podokně políčko vedle každého sloupce, který chcete zobrazit v datovém řádku.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png" alt-text="Snímek obrazovky ukazující, jak vybrat sloupce, které se mají zobrazit na stránce pro vybírání řádků" lightbox="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png":::
 
-1. Najeďte myší na vybraný sloupec v levém podokně nebo v datové sadě plátna čáry, abyste viděli mapování sloupce. Všechny instance sloupců jsou zvýrazněné.
+2. Najeďte myší na vybraný sloupec v levém podokně nebo v datové sadě plátna čáry, abyste viděli mapování sloupce. Všechny instance sloupců jsou zvýrazněné.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png" alt-text="Snímek obrazovky ukazující, jak umístit ukazatel myši na název sloupce a zvýraznit tok sloupce v cestě k datové čáře" lightbox="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png":::
 
-1. Pokud je počet sloupců větší, než se dá zobrazit v levém podokně, použijte možnost Filtr a vyberte konkrétní sloupec podle názvu. Alternativně můžete pomocí myši procházet seznam.
+3. Pokud je počet sloupců větší, než se dá zobrazit v levém podokně, použijte možnost Filtr a vyberte konkrétní sloupec podle názvu. Alternativně můžete pomocí myši procházet seznam.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-columns-by-name.png" alt-text="Snímek obrazovky znázorňující, jak filtrovat sloupce podle názvu sloupce na stránce s řádky" lightbox="./media/catalog-lineage-user-guide/filter-columns-by-name.png":::
 
-1. Pokud plátno na čáře obsahuje více uzlů a hran, použijte filtr k výběru datové assety nebo procesu procesů podle názvu. Alternativně můžete použít myš k posouvání kolem okna se zářádkem.
+4. Pokud plátno na čáře obsahuje více uzlů a hran, použijte filtr k výběru datové assety nebo procesu procesů podle názvu. Alternativně můžete použít myš k posouvání kolem okna se zářádkem.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-assets-by-name.png" alt-text="Snímek obrazovky znázorňující uzly datových assetů podle názvu na stránce s řádky" lightbox="./media/catalog-lineage-user-guide/filter-assets-by-name.png":::
 
-1. Pomocí přepínače v levém podokně zvýrazněte seznam datových sad na plátně pro čárové účely. Pokud přepínač vypnete, zobrazí se všechny materiály, které obsahují alespoň jeden z vybraných sloupců. Pokud přepínač zapnete, zobrazí se pouze datové sady, které obsahují všechny sloupce.
+5. Pomocí přepínače v levém podokně zvýrazněte seznam datových sad na plátně pro čárové účely. Pokud přepínač vypnete, zobrazí se všechny materiály, které obsahují alespoň jeden z vybraných sloupců. Pokud přepínač zapnete, zobrazí se pouze datové sady, které obsahují všechny sloupce.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png" alt-text="Snímek obrazovky, který ukazuje, jak pomocí přepínače filtrovat seznam uzlů na stránce o počtu řádků." lightbox="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png":::
 
+## <a name="process-column-lineage"></a>Zpracovat řádek sloupce
+Proces dat může mít jednu nebo více vstupních datových sad a vytvoří jeden nebo více výstupů. V dosah je pro uzly procesu k dispozici čára na úrovni sloupce. 
+1. Přepínejte mezi vstupními a výstupními datovými sadami z rozevírací nabídky na panelu sloupce.
+2. Vyberte sloupce z jedné nebo více tabulek, chcete-li zobrazit tok mezi vstupní datovou sadou a odpovídající výstupní datovou sadou.
+
+   :::image type="content" source="./media/catalog-lineage-user-guide/process-column-lineage.png" alt-text="Snímek obrazovky zobrazující sloupce typu řádku procesu" lightbox="./media/catalog-lineage-user-guide/process-column-lineage.png":::
+
+## <a name="browse-assets-in-lineage"></a>Procházet assety na řádku
 1. Vyberte možnost **Přepnout na prostředek** u libovolného assetu a zobrazte odpovídající metadata ze zobrazení řádků. V tomto případě je to účinný způsob, jak procházet jiný Asset v katalogu ze zobrazení na základě řádků.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="Snímek obrazovky s postupem, jak vybrat možnost přepnout na prostředek v datovém assetu na řádku" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-1. Plátno pro řadu by mohlo být složité pro oblíbené datové sady. Aby nedocházelo k zbytečnému využívání, výchozí zobrazení zobrazí jenom pět úrovní počtu řádků pro daný prostředek. Zbytek vydaných řádků lze rozšířit kliknutím na bubliny na plátně čáry. Příjemci dat také mohou skrýt prostředky na plátně, které neodpovídají žádnému zájmu. Chcete-li dál snížit přehlednost, vypněte na horním okraji plátna **více řádků** . Tato akce skryje všechny bubliny na plátně pro čárové aplikace.
+2. Plátno pro řadu by mohlo být složité pro oblíbené datové sady. Aby nedocházelo k zbytečnému využívání, výchozí zobrazení zobrazí jenom pět úrovní počtu řádků pro daný prostředek. Zbytek vydaných řádků lze rozšířit kliknutím na bubliny na plátně čáry. Příjemci dat také mohou skrýt prostředky na plátně, které neodpovídají žádnému zájmu. Chcete-li dál snížit přehlednost, vypněte na horním okraji plátna **více řádků** . Tato akce skryje všechny bubliny na plátně pro čárové aplikace.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="Snímek obrazovky ukazující, jak přepnout více řádků" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 
-1. Pomocí inteligentních tlačítek na plátně čáry získáte optimální pohled na daný řádek. Automatické rozložení, přiblížení, přiblížení a přiblížení, celá obrazovka a navigační mapa jsou k dispozici pro moderní prostředí v katalogu.
+3. Pomocí inteligentních tlačítek na plátně čáry získáte optimální pohled na daný řádek. Automatické rozložení, přiblížení, přiblížení a přiblížení, celá obrazovka a navigační mapa jsou k dispozici pro moderní prostředí v katalogu.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png" alt-text="Snímek obrazovky znázorňující, jak vybrat inteligentní tlačítka pro čáru" lightbox="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png":::
 

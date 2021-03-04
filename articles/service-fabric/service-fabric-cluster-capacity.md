@@ -4,12 +4,12 @@ description: Typy uzlů, odolnost, spolehlivost a další věci, které je potř
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790694"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714931"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -39,21 +39,21 @@ Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci d
 
 Počet počátečních uzlů závisí na účelu clusteru a aplikacích a službách, které jsou v něm spuštěné. Zvažte následující otázky:
 
-* *Má **vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové?** _
+* ***Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové?***
 
     Typické aplikace obsahují front-endové službu brány, která přijímá vstup od klienta, a jednu nebo více back-endové služby, které komunikují s front-end službami, s oddělenými sítěmi mezi front-end a back-end službami. Tyto případy obvykle vyžadují tři typy uzlů: jeden typ primárního uzlu a dva neprimární typy uzlů (jeden pro front-end službu).
 
-_ ***Služby, které tvoří vaši aplikaci, mají různé požadavky na infrastrukturu, jako je například větší paměť RAM nebo vyšší cykly procesoru?** _
+* ***Mají služby, které tvoří vaši aplikaci, různé potřeby infrastruktury, jako je například větší nebo vyšší cykly procesoru?***
 
-    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
+    Front-end služba může být často spuštěná na menších virtuálních počítačích (velikosti virtuálních počítačů jako D2), které mají porty otevřené na internetu.  Výpočetní služby náročné na výpočetní výkon můžou být potřeba spustit na větších virtuálních počítačích (s velikostmi virtuálních počítačů, jako je D4, D6, D15), které nejsou přístupné z Internetu. Definování různých typů uzlů pro tyto služby vám umožní zefektivnit a zabezpečit používání základních Service Fabric virtuálních počítačů a umožňuje jim jejich horizontální navýšení kapacity. Další informace o odhadu množství prostředků, které budete potřebovat, najdete v tématu [plánování kapacity pro Service Fabric aplikace](service-fabric-capacity-planning.md) .
 
-_ ***Bude nutné, aby vaše aplikační služby měly horizontální navýšení kapacity nad rámec 100 uzlů?** _
+* ***Bude nutné, aby vaše aplikační služby měly horizontální navýšení kapacity nad rámec 100 uzlů?***
 
-    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
+    Jeden typ uzlu nemůže spolehlivě škálovat nad rámec 100 uzlů na sadu škálování virtuálního počítače pro Service Fabric aplikace. Spuštění více než 100 uzlů vyžaduje další služby Virtual Machine Scale Sets (a tudíž další typy uzlů).
 
-_ ***Bude váš cluster rozložen mezi zóny dostupnosti?** _
+* ***Bude váš cluster rozložen mezi Zóny dostupnosti?***
 
-    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric podporuje clustery, které jsou rozloženy mezi [zóny dostupnosti](../availability-zones/az-overview.md) , nasazením typů uzlů, které jsou připnuté na konkrétní zóny, a zajišťuje tak vysokou dostupnost vašich aplikací. Zóny dostupnosti vyžadovat další plánování typu uzlu a minimální požadavky. Podrobnosti najdete v tématu [doporučená topologie pro typ primárního uzlu Service Fabricch clusterů, které jsou rozloženy mezi zóny dostupnosti](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 Při určování počtu a vlastností typů uzlů pro počáteční vytvoření clusteru mějte na paměti, že po nasazení clusteru můžete kdykoli přidat, upravit nebo odebrat (neprimární) typy uzlů. [Typy primárních uzlů je také možné upravovat](service-fabric-scale-up-primary-node-type.md) ve spuštěných clusterech (i když tyto operace vyžadují skvělé řešení plánování a opatrnosti v produkčních prostředích).
 
@@ -61,7 +61,7 @@ Dalším aspektem vlastností typu uzlu je úroveň odolnosti, která určuje op
 
 ## <a name="durability-characteristics-of-the-cluster"></a>Charakteristiky odolnosti clusteru
 
-Úroveň _durability * Určuje oprávnění, která vaše Service Fabric virtuální počítače mají s podkladovou infrastrukturou Azure. Toto oprávnění umožňuje Service Fabric pozastavit požadavky infrastruktury na úrovni virtuálního počítače (třeba restartování, obnovení obrazu nebo migrace), které mají vliv na požadavky kvora pro Service Fabric systémových služeb a stavové služby.
+*Úroveň trvanlivosti* Určuje oprávnění, která Service Fabric virtuální počítače s podkladovou infrastrukturou Azure. Toto oprávnění umožňuje Service Fabric pozastavit požadavky infrastruktury na úrovni virtuálního počítače (třeba restartování, obnovení obrazu nebo migrace), které mají vliv na požadavky kvora pro Service Fabric systémových služeb a stavové služby.
 
 > [!IMPORTANT]
 > Úroveň odolnosti je nastavena na typ uzlu. Pokud není zadaný žádný, použije se *bronzová* vrstva, ale neposkytne automatické upgrady operačního systému. Pro úlohy v produkčním prostředí se doporučuje *stříbrná* nebo *zlatá* trvanlivost.
@@ -73,6 +73,9 @@ Následující tabulka uvádí Service Fabric vrstev odolnosti, jejich požadavk
 | Gold             | 5                              | Velikosti celého uzlu vyhrazené pro jednoho zákazníka (například L32s úrovně, GS5, G5, DS15_v2 D15_v2) | Může se zpozdit až po schválení clusterem Service Fabric. | Může být pozastaveno po dobu 2 hodin na upgradované doméně, aby se mohly další časy zotavit z předchozích chyb. |
 | Silver           | 5                              | Virtuální počítače s jedním jádrem nebo novějším s minimálně 50 GB místní jednotky SSD                      | Může se zpozdit až po schválení clusterem Service Fabric. | Nelze zpozdit na jakékoli významné časové období.                                                    |
 | Bronzová          | 1                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
+
+> [!NOTE]
+> Výše zmíněný minimální počet virtuálních počítačů je nezbytným požadavkem pro každou úroveň trvanlivosti. Provádíme ověřování na místě, které zabrání vytvoření nebo úpravě stávajících scalesets virtuálních počítačů, které tyto požadavky nesplňují.
 
 > [!WARNING]
 > V případě bronzové odolnosti není k dispozici automatický upgrade pro image operačního systému. I když se [aplikace Orchestration](service-fabric-patch-orchestration-application.md) (určená jenom pro clustery, které nejsou hostované na Azure) *nedoporučují* pro stříbrné nebo vyšší úrovně odolnosti, jedná se o jedinou možnost pro automatizaci aktualizací Windows s ohledem na Service Fabric upgradovacích domén.

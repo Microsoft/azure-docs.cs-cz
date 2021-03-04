@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719776"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
@@ -33,7 +33,7 @@ Omezování je obzvláště důležité v takovém případě, jako je vzorková
 V souhrnu `GetMetric()` je doporučený přístup, protože se používá před agregací, shromažďuje hodnoty ze všech volání stop () a odesílá souhrn nebo agregaci jednou za minutu. To může významně snížit náklady a režii na výkon tím, že posílá méně datových bodů a stále shromažďuje všechny relevantní informace.
 
 > [!NOTE]
-> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](./micrometer-java.md) nebo `TrackMetric()` . V případě Pythonu můžete k posílání vlastních metrik používat [OpenCensus. stat](./opencensus-python.md#metrics) . Pro JavaScript a Node.js, které byste pořád používali `TrackMetric()` , ale mějte na paměti upozornění, která byla popsaných v předchozí části.
+> Pouze sady SDK .NET a .NET Core mají metodu getmetric (). Pokud používáte Java, můžete použít [metriky mikroměřiče](./micrometer-java.md) nebo `TrackMetric()` . Pro JavaScript a Node.js, které byste pořád používali `TrackMetric()` , ale mějte na paměti upozornění, která byla popsaných v předchozí části. V případě Pythonu můžete pomocí [OpenCensus. stat](./opencensus-python.md#metrics) odesílat vlastní metriky, ale implementace metrik se liší.
 
 ## <a name="getting-started-with-getmetric"></a>Začínáme se službou getmetric
 
@@ -69,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -89,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -101,6 +101,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ```
 
 Tato jediná položka telemetrie představuje agregaci 41 různých měření metriky. Vzhledem k tomu, že jsme přeposlali stejnou hodnotu znovu a znovu, máme *směrodatnou odchylku (stDev)* 0 se stejnými hodnotami *maxima (max)* a *minimum (min)* . Vlastnost *Value* představuje součet všech hodnot, které byly agregovány.
+
+> [!NOTE]
+> Getmetric nepodporuje sledování poslední hodnoty (tj. měřidla) nebo sledování histogramů/distribucí.
 
 Pokud prověříme náš Application Insights prostředek v prostředí log (Analytics), bude tato samostatná položka telemetrie vypadat takto:
 
@@ -283,7 +286,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` .
+* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu nebudou volání `TrackValue()` sledována.
 * `valuesPerDimensionLimit` podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
 * `restrictToUInt32Values` Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
 

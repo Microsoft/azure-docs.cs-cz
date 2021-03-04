@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964163"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740371"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat ze služeb Azure SQL Database a Azure Synapse Analytics
 
@@ -82,7 +82,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -224,7 +224,7 @@ Pro konfiguraci požadavků můžete postupovat podle podrobných [ukázek](http
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="open-invitation"></a>Otevřít pozvánku
 
@@ -275,7 +275,7 @@ Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následuj
 ### <a name="trigger-a-snapshot"></a>Aktivace snímku
 Tyto kroky platí pouze pro sdílení na základě snímků.
 
-1. Snímek můžete aktivovat výběrem karty **Podrobnosti** a **snímku triggeru**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. U zdrojů SQL se podporuje jenom úplný snímek.
+1. Snímek můžete aktivovat výběrem karty **Podrobnosti** a **snímku triggeru**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. U zdrojů SQL se podporuje jenom úplný snímek. Při provádění snímku se další snímky nespustí až do dokončení předchozího.
 
    ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
 
@@ -309,7 +309,7 @@ Když sdílíte data ze zdroje SQL, používá se následující mapování SQL 
 | ntext |Řetězec, znak [] |
 | numerické |Decimal |
 | nvarchar |Řetězec, znak [] |
-| real |Jeden |
+| real |Jednoduché |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

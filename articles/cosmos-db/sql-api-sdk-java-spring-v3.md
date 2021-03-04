@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/18/2020
+ms.date: 02/28/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692721"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,58 +57,41 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 > * [Jarní Gremliny dat pomocí Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
-## <a name="start-here"></a>Začněte tady
+## <a name="get-started-fast"></a>Začínáme rychle
 
-# <a name="explore"></a>[Zkoumání](#tab/explore)
+  Využijte [průvodce počátečním startem pružiny](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db), abyste mohli začít pracovat s jarními daty Azure Cosmos DB. Přístup k jaře Boot Starter je doporučeným způsobem, jak začít s používáním konektoru jarních dat Azure Cosmos DB.
 
-<img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
-
-#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Tyto karty obsahují základní vzorky jarních dat Azure Cosmos DB.
-
-# <a name="pomxml"></a>[pom.xml](#tab/pom)
-
-### <a name="configure-dependencies"></a>Konfigurace závislostí
+  Alternativně můžete přidat Azure Cosmos DB závislost k `pom.xml` souboru, jak je znázorněno níže:
 
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-spring-data-cosmos</artifactId>
-      <version>latest</version>
+      <version>latest-version</version>
   </dependency>
   ```
 
-# <a name="connect"></a>[Připojit](#tab/connect)
+## <a name="helpful-content"></a>Užitečný obsah
 
-### <a name="connect"></a>Připojit
-
-Zadejte Azure Cosmos DB účet a podrobnosti kontejneru. Jarní data Azure Cosmos DB automaticky vytvoří klienta a připojí se ke kontejneru.
-
-[aplikace. vlastnosti](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
-```
-cosmos.uri=${ACCOUNT_HOST}
-cosmos.key=${ACCOUNT_KEY}
-cosmos.secondaryKey=${SECONDARY_ACCOUNT_KEY}
-
-dynamic.collection.name=spel-property-collection
-# Populate query metrics
-cosmos.queryMetricsEnabled=true
-```
-
-# <a name="doc-ops"></a>[Operace dokumentu doc](#tab/docs)
-
-### <a name="document-operations"></a>Operace dokumentů
-
----
-
-## <a name="resources"></a>Zdroje a prostředky
-
-* **Přispívání do sady SDK** : [jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
-
-* **Kurz** : [Azure Cosmos DB kurz pro jarní data na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
+| Content | Odkaz |
+|---|---|
+|**Stažení sady SDK**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
+|**Dokumentace k rozhraní API** | [Referenční dokumentace k rozhraní Java API](/java/api/com.azure.spring.data.cosmos) |
+|**Přispívání do sady SDK** | [Azure SDK pro centrální úložiště Java na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
+|**Začínáme** | [Rychlý Start: Vytvoření aplikace Azure Cosmos DBch pružinových dat pro správu Azure Cosmos DB dat rozhraní SQL API](./create-sql-api-spring-data.md) <br> [Úložiště GitHub s kódem pro rychlý Start](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
+|**Ukázky základních kódů** | [Azure Cosmos DB: jarní data Azure Cosmos DB příklady pro rozhraní SQL API](sql-api-spring-data-sdk-samples.md) <br> [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
+| **Tipy pro zvýšení výkonu**| [Tipy ke zvýšení výkonu pro Java SDK v4 (platí pro pružinová data)](performance-tips-java-sdk-v4-sql.md)| 
+| **Řešení potíží** | [Řešení potíží s Java SDK v4 (platí pro pružinová data)](troubleshoot-java-sdk-v4-sql.md) | 
+| **Azure Cosmos DB semináře a cvičení** |[Domovská stránka inCosmos DBch Workshops](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="additional-notes"></a>Další poznámky
+
+* Jarní data Azure Cosmos DB podporují jazyky Java JDK 8 a Java JDK 11.
+* Jarní data 2,3 se momentálně podporují, v současné době se nepodporují jarní data 2,4.
+
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

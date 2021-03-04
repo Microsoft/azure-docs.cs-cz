@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737337"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro agenty v Azure Monitor
-Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](../platform/log-analytics-agent.md) a [rozšíření diagnostiky](../platform/diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
+Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](./log-analytics-agent.md) a [rozšíření diagnostiky](./diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ Následující ukázka nainstaluje agenta Log Analytics na virtuálním počíta
 Ukázky v této části instalují diagnostické rozšíření na virtuální počítače s Windows a Linux v Azure a konfigurují ho pro shromažďování dat.
 
 ### <a name="windows"></a>Windows
-Následující příklad povolí a nakonfiguruje diagnostické rozšíření na virtuálním počítači s Windows Azure. Podrobnosti o konfiguraci najdete v tématu [schéma rozšíření pro diagnostiku systému Windows](../platform/diagnostics-extension-schema-windows.md).
+Následující příklad povolí a nakonfiguruje diagnostické rozšíření na virtuálním počítači s Windows Azure. Podrobnosti o konfiguraci najdete v tématu [schéma rozšíření pro diagnostiku systému Windows](./diagnostics-extension-schema-windows.md).
 
 #### <a name="template-file"></a>Soubor šablony
 
@@ -807,6 +807,6 @@ Následující příklad povolí a nakonfiguruje diagnostické rozšíření na 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte další ukázkové šablony pro Azure monitor](../samples/resource-manager-samples.md).
-* [Přečtěte si další informace o agentovi Log Analytics](../platform/log-analytics-agent.md).
-* [Přečtěte si další informace o diagnostickém rozšíření](../platform/diagnostics-extension-overview.md).
+* [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
+* [Přečtěte si další informace o agentovi Log Analytics](./log-analytics-agent.md).
+* [Přečtěte si další informace o diagnostickém rozšíření](./diagnostics-extension-overview.md).

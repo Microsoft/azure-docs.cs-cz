@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694134"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection
 Tento článek popisuje, jak vytvořit pracovní prostor s povolenou službou data exfiltrace Protection a jak spravovat schválené klienty Azure AD pro tento pracovní prostor.
@@ -50,7 +50,7 @@ Můžete vytvořit spravované privátní koncové body pro připojení k prost�
 >Prostředky v klientech jiných než tenant pracovního prostoru musí blokovat pravidla brány firewall, aby se k nim fondy SQL připojovaly. Prostředky v rámci spravované virtuální sítě pracovního prostoru, jako jsou například Clustery Spark, se mohou připojit prostřednictvím spravovaných privátních odkazů na prostředky chráněné bránou firewall.
 
 ## <a name="known-limitations"></a>Známá omezení
-Uživatelé můžou poskytnout konfigurační soubor prostředí pro instalaci balíčků Pythonu z veřejných úložišť, jako je PyPI. V pracovních prostorech chráněných daty exfiltrace jsou připojení k odchozím úložištím blokovaná. V důsledku toho není podporována knihovna Pythonu, která je nainstalována z veřejných úložišť, jako je PyPI. 
+Uživatelé můžou poskytnout konfigurační soubor prostředí pro instalaci balíčků Pythonu z veřejných úložišť, jako je PyPI. V pracovních prostorech chráněných daty exfiltrace jsou připojení k odchozím úložištím blokovaná. V důsledku toho není podporována knihovna Pythonu, která je nainstalována z veřejných úložišť, jako je PyPI. Alternativně mohou uživatelé vytvořit privátní kanál v rámci svého primárního Azure Data Lake Storage účtu a odkazovat tak, že v rámci jejich konfiguračního souboru prostředí conda. 
   
 ## <a name="next-steps"></a>Další kroky
 

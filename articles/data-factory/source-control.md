@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/26/2021
+ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392438"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719372"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -67,7 +67,7 @@ Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** roze
 
 ### <a name="configuration-method-3-management-hub"></a>Konfigurační Metoda 3: Centrum správy
 
-V uživatelském prostředí ADF se můžete dostat do centra správy. V části **Správa zdrojového kódu** vyberte **Konfigurace Gitu** . Pokud nemáte připojené žádné úložiště, klikněte na **nastavit úložiště kódu**.
+V uživatelském prostředí ADF se můžete dostat do centra správy. V části **Správa zdrojového kódu** vyberte **Konfigurace Gitu** . Pokud nemáte připojené žádné úložiště, klikněte na **Konfigurovat**.
 
 ![Konfigurace nastavení úložiště kódu z centra pro správu](media/author-visually/configure-repo-3.png)
 

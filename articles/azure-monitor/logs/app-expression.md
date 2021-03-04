@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: cbfc9c8a32eb5345cfc69f51f40e0634e05bd978
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4789594cef0f7e900582dd9aad231b81547d3b3e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728412"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
 
@@ -73,6 +73,5 @@ union
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete odkazovat na pracovní prostor Log Analytics, podívejte se do [výrazu pracovní prostor](../logs/workspace-expression.md) .
-- Přečtěte si informace o tom, jak jsou uložená [data Azure monitor](../log-query/log-query-overview.md) .
+- Přečtěte si informace o tom, jak jsou uložená [data Azure monitor](./log-query-overview.md) .
 - Přístup k celé dokumentaci pro [dotazovací jazyk Kusto](/azure/kusto/query/).
-

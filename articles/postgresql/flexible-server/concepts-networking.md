@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732798"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Přehled sítí – Azure Database for PostgreSQL – flexibilní Server
 
@@ -62,6 +62,8 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 
    Váš PostgreSQL flexibilní Server musí být v podsíti, která je **delegovaná** jenom pro PostgreSQL flexibilní použití serveru. Toto delegování znamená, že tuto podsíť můžou používat jenom Azure Database for PostgreSQL flexibilní servery. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure. Podsíť můžete delegovat přiřazením její vlastnosti delegování jako Microsoft. DBforPostgreSQL/flexibleServers.
 
+   Přidejte `Microsoft.Storage` do koncového bodu služby pro podsíť delegovanou na flexibilní servery. 
+
 * **Skupiny zabezpečení sítě (NSG)** Pravidla zabezpečení ve skupinách zabezpečení sítě umožňují filtrovat typ síťového provozu, který může přecházet do podsítí a síťových rozhraní virtuální sítě. Další informace najdete v článku [Přehled skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) .
 
 
@@ -83,7 +85,7 @@ Mezi charakteristiky metody veřejného přístupu patří:
 * Flexibilní Server není v jedné z vašich virtuálních sítí Azure.
 * Síťový provoz do a ze serveru nepřekračuje privátní síť. Provoz používá obecné internetové cesty.
 
-### <a name="firewall-rules"></a>Pravidla firewallu
+### <a name="firewall-rules"></a>Pravidla brány firewall
 Udělení oprávnění k IP adrese se nazývá pravidlo brány firewall. Pokud se pokus o připojení dostane z IP adresy, kterou jste nepovolili, zobrazí se v původním klientovi chyba.
 
 Naučte se, jak vytvořit flexibilní Server s veřejným přístupem (povolenými IP adresami) v [Azure Portal](how-to-manage-firewall-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-firewall-cli.md).

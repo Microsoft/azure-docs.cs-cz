@@ -3,14 +3,15 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104803"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702874"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
+
 
 Azure Policy můžou auditovat nastavení v počítači, a to pro počítače běžící v Azure i v [počítačích připojených k Arc](../../../azure-arc/servers/overview.md). Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
@@ -20,13 +21,15 @@ Azure Policy můžou auditovat nastavení v počítači, a to pro počítače b�
 
 V současné době většina Azure Policy definice zásad konfigurace hostů jenom auditovat nastavení v rámci počítače. Neaplikují konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
 
+[K dispozici je návod k videu tohoto dokumentu](https://youtu.be/Y6ryD3gTHOs).
+
 ## <a name="enable-guest-configuration"></a>Povolit konfiguraci hosta
 
 Pokud chcete auditovat stav počítačů ve vašem prostředí, včetně počítačů v Azure a připojených počítačů ARC, Projděte si následující podrobnosti.
 
 ## <a name="resource-provider"></a>Poskytovatel prostředků
 
-Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele prostředků. Poskytovatel prostředků je zaregistrován automaticky, pokud je přiřazení zásady konfigurace hostů provedeno prostřednictvím portálu. Můžete provést ruční registraci prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo rozhraní příkazového [řádku Azure](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
+Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele prostředků. Pokud se přiřazení zásady konfigurace hosta provádí prostřednictvím portálu nebo pokud je předplatné zaregistrované v Azure Security Center, poskytovatel prostředků se zaregistruje automaticky. Můžete provést ruční registraci prostřednictvím [portálu](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)nebo rozhraní příkazového [řádku Azure](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Nasazení požadavků pro virtuální počítače Azure
 
@@ -62,13 +65,13 @@ Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší ve
 
 |Publisher|Název|Verze|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 – 18,04|
-|Credativ|Debian|8 a novější|
-|Microsoft|Windows Server|2012 a novější|
+|Canonical|Ubuntu Server|14,04 – 20,04|
+|Credativ|Debian|8 - 10|
+|Microsoft|Windows Server|2012 – 2019|
 |Microsoft|Klient Windows|Windows 10|
-|OpenLogic|CentOS|7,3 a novější|
-|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
-|SUSE|SLES|12. SP3 – SP5|
+|OpenLogic|CentOS|7,3 – 8|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 8|
+|SUSE|SLES|12 SP3 – SP5, 15|
 
 Definice zásad konfigurace hosta podporuje vlastní image virtuálních počítačů, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
@@ -114,9 +117,26 @@ Definice zásad konfigurace hostů používají efekt **AuditIfNotExists** . Po 
 Definice zásad **AuditIfNotExists** nevrátí výsledky dodržování předpisů, dokud nebudou všechny požadavky splněny v počítači. Požadavky jsou popsané v části [požadavky na nasazení pro virtuální počítače Azure](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
-> V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a intiaitives jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále. Informace najdete v blogovém příspěvku: [důležitá změna vydaná pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316) .
+> V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a iniciativy jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále. Informace najdete v blogovém příspěvku: [důležitá změna vydaná pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316) .
 
-Azure Policy používá vlastnost **complianceStatus** zprostředkovatele prostředků konfigurace hosta k hlášení dodržování předpisů v uzlu **dodržování předpisů** . Další informace najdete v tématu [získání dat o dodržování předpisů](../how-to/get-compliance-data.md).
+### <a name="what-is-a-guest-assignment"></a>Co je přiřazení hostů?
+
+Pokud je přiřazena Azure Policy, pokud je v kategorii "konfigurace hosta", existují metadata, která jsou obsažena v popisu přiřazení hostů.
+Přiřazení hostů si můžete představit jako propojení mezi počítačem a scénářem Azure Policy.
+Následující fragment kódu například přidruží konfiguraci standardních hodnot Windows Azure s minimální verzí `1.0.0` na všechny počítače v oboru zásad. Ve výchozím nastavení bude přiřazení hostů provádět jenom audit počítače.
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+Přiřazení hostů se vytváří automaticky pro jednotlivé počítače pomocí služby konfigurace hosta. Typ prostředku je `Microsoft.GuestConfiguration/guestConfigurationAssignments`.
+Azure Policy používá vlastnost **complianceStatus** prostředku přiřazení hosta k hlášení stavu dodržování předpisů. Další informace najdete v tématu [získání dat o dodržování předpisů](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
 
@@ -201,6 +221,12 @@ Ukázky integrovaných zásad konfigurace hosta jsou k dispozici v následujíc�
 - [Předdefinované definice zásad – konfigurace hostů](../samples/built-in-policies.md#guest-configuration)
 - [Integrované iniciativy – konfigurace hostů](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples – úložiště GitHub](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>Přehled videí
+
+Následující přehled Azure Policy konfigurace hostů je ze ITOps rozhovory 2021.
+
+[Řízení standardních hodnot v prostředích hybridních serverů pomocí Azure Policy konfigurace hostů](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8493b75f0d9e0f947996df431d63bfba9abdc9e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9f4f5f82423f0ecb4e810eab2d675e95b8b66763
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717158"
 ---
 # <a name="workbook-time-parameters"></a>Parametry času sešitu
 
@@ -78,5 +78,5 @@ requests
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](../platform/workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
-* [Řízení](../platform/workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
+* [Začínáme](./workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Řízení](./workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.

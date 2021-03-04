@@ -7,13 +7,14 @@ ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673130"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694678"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -108,6 +109,8 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
 |RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md).
+|RedHat | RHEL | RHEL-SAP-APLIKACE | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.1.2021012201) | Tyto image jsou RHEL pro Image aplikací SAP. Mají oprávnění získat přístup k úložištím aplikací SAP a základním úložištím RHEL.
+|RedHat | RHEL | RHEL-SAP-HA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.1.2021010602) | Tyto image jsou RHEL pro SAP s imagí pro vysokou dostupnost a službu Update Services. Mají oprávnění k přístupu k úložištím řešení a aplikací SAP a k úložištím s vysokou dostupností a také k úložištím RHEL E4S. Účtování zahrnuje základní výpočetní poplatek na úrovni Premium RHEL Premium, SAP Premium a vysoká dostupnost.
 
 ## <a name="rhel-extended-support-add-ons"></a>Doplňky RHEL Extended Support Doplňky
 

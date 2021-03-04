@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření instance služby Azure API Management pomocí rozhraní příkazového řádku (Preview)
+title: Rychlý Start – vytvoření instance služby Azure API Management pomocí rozhraní příkazového řádku
 description: Pomocí Azure CLI vytvořte novou instanci služby Azure API Management.
 author: dlepow
 ms.service: api-management
@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688072"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Rychlý Start: vytvoření nové instance služby Azure API Management pomocí rozhraní příkazového řádku Azure (Preview)
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Rychlý Start: vytvoření nové instance služby Azure API Management pomocí rozhraní příkazového řádku Azure
 
 Azure API Management (APIM) pomáhá organizacím při publikování rozhraní API pro externí, partnerské a interní vývojáře, aby tak uvolnila potenciál jejich dat a služeb. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. APIM umožňuje vytvářet a spravovat moderní brány rozhraní API pro stávající služby back-end hostované kdekoli. Další informace najdete v tématu [Přehled](api-management-key-concepts.md).
 
-Tento rychlý Start popisuje kroky pro vytvoření nové instance API Management pomocí příkazů [AZ APIM](/cli/azure/apim) v rozhraní příkazového řádku Azure CLI. Příkazy ve `az apim` skupině příkazů jsou momentálně ve verzi Preview a v budoucí verzi je můžete změnit nebo odebrat.
+Tento rychlý Start popisuje kroky pro vytvoření nové instance API Management pomocí příkazů [AZ APIM](/cli/azure/apim) v rozhraní příkazového řádku Azure CLI.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

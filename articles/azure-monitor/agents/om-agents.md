@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: f9418b9a4bac9c458c530b246f7400ac067f5623
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718127"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -40,8 +40,8 @@ Než začnete, přečtěte si následující požadavky.
 * Azure Monitor podporuje jenom System Center Operations Manager 2016 nebo novější, Operations Manager 2012 SP1 UR6 nebo novější a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Integrace System Center Operations Manager 2016 s cloudem pro státní správu USA vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 2 nebo novější. System Center Operations Manager 2012 R2 vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 3 nebo novější.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že agenti mají minimální aktualizaci, jinak komunikace s agentem Windows se nemusí zdařit a generovat chyby v protokolu událostí Operations Manager.
-* Pracovní prostor služby Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](../platform/design-logs-deployment.md).
-* Pomocí účtu, který je členem [role přispěvatel Log Analytics](../platform/manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
+* Pracovní prostor služby Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](../logs/design-logs-deployment.md).
+* Pomocí účtu, který je členem [role přispěvatel Log Analytics](../logs/manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
 
 * Podporované oblasti: System Center Operations Manager pro připojení k pracovnímu prostoru Log Analytics podporuje jenom následující oblasti Azure:
     - USA – středozápad
@@ -72,15 +72,15 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
 |**Agenta**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Ano|  
+|\*.oms.opinsights.azure.com| 443|Ano|  
+|\*.blob.core.windows.net| 443|Ano|  
+|\*.azure-automation.net| 443|Ano|  
 |**Server pro správu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Ano|  
+|\*.ods.opinsights.azure.com| 443| Ano|  
+|*.azure-automation.net | 443| Ano|  
 |**Operations Manager konzolu pro Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -95,7 +95,7 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 ### <a name="tls-12-protocol"></a>Protokol TLS 1,2
 
-Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se. Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../platform/data-security.md#sending-data-securely-using-tls-12).
+Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje** se. Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Připojení Operations Manager k Azure Monitor
 
@@ -345,4 +345,3 @@ Pokud plánujete znovu připojit skupinu pro správu k pracovnímu prostoru Log 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete přidat funkce a shromažďovat data, přečtěte si téma [přidání Azure monitor řešení z galerie řešení](../insights/solutions.md).
-

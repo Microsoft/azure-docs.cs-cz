@@ -1,26 +1,23 @@
 ---
-title: Použití vzdálené plochy pro virtuální počítač se systémem Linux v Azure
+title: Použití xrdp se systémem Linux
 description: Přečtěte si, jak nainstalovat a nakonfigurovat vzdálenou plochu (xrdp) pro připojení k virtuálnímu počítači se systémem Linux v Azure pomocí grafických nástrojů.
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695171"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Instalace a konfigurace xrdp pro použití vzdálené plochy s VIRTUÁLNÍm počítačem se systémem Linux
+
 Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](http://xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
 
 
@@ -32,6 +29,7 @@ Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS 
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalace desktopového prostředí na VIRTUÁLNÍm počítači se systémem Linux
+
 Většina virtuálních počítačů se systémem Linux v Azure nemá ve výchozím nastavení nainstalované desktopové prostředí. Virtuální počítače se systémem Linux se běžně spravují pomocí připojení SSH, nikoli desktopové prostředí. V systému Linux jsou k dispozici různé desktopové prostředí, které si můžete vybrat. V závislosti na vaší volbě desktopového prostředí může aplikace využívat jednu až 2 GB místa na disku a instalaci a konfiguraci všech požadovaných balíčků trvá 5 až 10 minut.
 
 Následující příklad nainstaluje zjednodušené desktopové prostředí [Xfce4](https://www.xfce.org/) na virtuální počítač s Ubuntu 18,04 LTS. Příkazy pro ostatní distribuce se mírně liší (použijte `yum` k instalaci na Red Hat Enterprise Linux a ke konfiguraci vhodných `selinux` pravidel nebo použijte `zypper` k instalaci na SUSE).
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Připojení virtuálního počítače se systémem Linux pomocí klienta vzdálené plochy
-Otevřete místního klienta vzdálené plochy a připojte se k IP adrese nebo názvu DNS virtuálního počítače se systémem Linux. Zadejte uživatelské jméno a heslo pro uživatelský účet na svém VIRTUÁLNÍm počítači následujícím způsobem:
 
-![Připojení k xrdp pomocí klienta vzdálené plochy](./media/use-remote-desktop/remote-desktop-client.png)
+Otevřete místního klienta vzdálené plochy a připojte se k IP adrese nebo názvu DNS virtuálního počítače se systémem Linux. 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="Snímek obrazovky klienta vzdálené plochy":::
+
+Zadejte uživatelské jméno a heslo pro uživatelský účet na svém VIRTUÁLNÍm počítači následujícím způsobem:
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Snímek obrazovky s přihlašovací obrazovkou xrdp":::
 
 Po ověření se desktop Xfce desktopové prostředí načte a bude vypadat podobně jako v následujícím příkladu:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953695"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705394"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Změny v terminologii a entitě mezi Media Services V2 a V3
 
@@ -42,28 +42,28 @@ Projděte si zásady vytváření názvů, které se vztahují k prostředkům M
 ## <a name="entity-changes"></a>Změny entit
 | **V2 – entita**<!-- row --> | **V3 – entita** | **Pokyny** | **Dostupné pro v3** | **Aktualizováno uživatelem V3** |
 |--|--|--|--|--|
-| `AccessPolicy`<!-- row --> | <!-- empty --> |  Entita `AccessPolicies` v v3 neexistuje. | No | No |
-| `Asset`<!-- row --> | `Asset` | <!-- empty --> | Yes | Yes |
-| `AssetDeliveryPolicy`<!-- row --> | `StreamingPolicy` | <!-- empty --> | Yes | No |
-| `AssetFile`<!-- row --> | <!-- empty --> |Entita `AssetFiles` v v3 neexistuje. I když soubory (objekty blob úložiště), které nahráváte, jsou stále považovány za soubory.<br/><br/> Místo toho použijte rozhraní API Azure Storage k vytvoření výčtu objektů BLOB v kontejneru. Existují dva způsoby, jak použít transformaci na soubory s úlohou:<br/><br/>Soubory, které jsou už nahrané do úložiště: identifikátor URI by zahrnoval ID assetu pro úlohy, které se mají provést u prostředků v rámci účtu úložiště.<br/><br/>Soubory, které se mají nahrát během procesu transformace a úlohy: Asset se vytvoří v úložišti, vrátí se adresa URL SAS, soubory se nahrají do úložiště a pak se tato transformace aplikuje na soubory. | No | No |
-| `Channel`<!-- row --> | `LiveEvent` | Živé události nahrazují kanály z rozhraní v2 API. Přenášejí většinu funkcí a nabízí další nové funkce, jako jsou živé přepisy, úsporný režim a podpora pro přijímání RTMP. <br/><br/>Podívejte [se na živá událost ve scénáři živé streamování](migrate-v-2-v-3-migration-scenario-based-live-streaming.md) | No | No |
-| `ContentKey`<!-- row --> | <!-- empty --> | `ContentKeys` už není entitou, teď je to vlastnost lokátoru streamování.<br/><br/>  V v3 jsou data klíče obsahu přidružená k `StreamingLocator` (pro výstupní šifrování) nebo samotnému prostředku (pro šifrování úložiště na straně klienta). | Yes | No |
-| `ContentKeyAuthorizationPolicy`<!-- row --> | `ContentKeyPolicy` | <!-- empty --> | Yes | No |
-| `ContentKeyAuthorizationPolicyOption` <!-- row --> | <!-- empty --> |  `ContentKeyPolicyOptions` jsou součástí `ContentKeyPolicy` . | Yes | No |
-| `IngestManifest`<!-- row --> | <!-- empty --> | Entita `IngestManifests` v v3 neexistuje. Nahrání souborů v v3 zahrnuje rozhraní API služby Azure Storage. Prostředky se nejprve vytvoří a pak se nahrají soubory do přidruženého kontejneru úložiště. Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | No | No |
-| `IngestManifestAsset`<!-- row --> | <!-- empty --> | Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | No | No |
-| `IngestManifestFile`<!-- row --> | <!-- empty --> | Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | No | No |
-| `Job`<!-- row --> | `Job` | Vytvořte `Transform` před vytvořením `Job` . | No | No |
-| `JobTemplate`<!-- row --> | `Transform` | `Transform`Místo toho použijte. Transformace je samostatná entita z úlohy a je opakovaně použita. | No | No |
-| `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Yes | No |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | Místo vyhledávání `MediaProcessor` pro použití podle názvu použijte požadovanou předvolbu při definování transformace. Použitá předvolba určí procesor médií používaný systémem úloh. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NEDEF (jen pro čtení v v2) |
-| `NotificationEndPoint`<!-- row --> | <!--empty --> | Oznámení v v3 jsou zpracovávána prostřednictvím Azure Event Grid. `NotificationEndpoint`Je nahrazeno registrací předplatného Event Grid, který také zapouzdřuje konfiguraci pro typy oznámení, které mají být přijímány (ve verzi v2 byla zpracována `JobNotificationSubscription` úlohou, `TaskNotificationSubscription` úlohou a telemetrie `ComponentMonitoringSetting` ). Telemetrii v2 byla rozdělená mezi Azure Event Grid a Azure Monitor, aby se vešla do vylepšení většího ekosystému Azure. | No | No |
-| `Program`<!-- row --> | `LiveOutput` | Živé výstupy teď nahrazují programy v rozhraní API v3.  | No | No |
-| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Koncové body streamování zůstávají primárně stejné. Používají se k dynamickému balení, šifrování a doručování HLS a PŘERUŠOVANého obsahu pro živé i streamování na vyžádání buď přímo ze zdroje, nebo přes CDN. Mezi nové funkce patří podpora pro lepší Azure Monitor integraci a vytváření grafů. |  Yes | Yes |
-| `Task`<!-- row --> | `JobOutput` | Nahradil `JobOutput` (což už není samostatnou entitou v rozhraní API).  Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). | No | No |
-| `TaskTemplate`<!-- row --> | `TransformOutput` | Nahradil `TransformOutput` (což už není samostatnou entitou v rozhraní API). Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). | No | No |
-| `Inputs`<!-- row --> | `Inputs` | Vstupy a výstupy jsou teď na úrovni úlohy. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . | No | No |
-| `Outputs`<!-- row --> | `Outputs` | Vstupy a výstupy jsou teď na úrovni úlohy.  V v3 se formát metadat změnil z XML na JSON.  Živé výstupy začínají při vytváření a při odstranění se zastaví. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . | No | No |
+| `AccessPolicy`<!-- row --> | <!-- empty --> |  Entita `AccessPolicies` v v3 neexistuje. | Ne | Ne |
+| `Asset`<!-- row --> | `Asset` | <!-- empty --> | Ano | Ano |
+| `AssetDeliveryPolicy`<!-- row --> | `StreamingPolicy` | <!-- empty --> | Ano | Ne |
+| `AssetFile`<!-- row --> | <!-- empty --> |Entita `AssetFiles` v v3 neexistuje. I když soubory (objekty blob úložiště), které nahráváte, jsou stále považovány za soubory.<br/><br/> Místo toho použijte rozhraní API Azure Storage k vytvoření výčtu objektů BLOB v kontejneru. Existují dva způsoby, jak použít transformaci na soubory s úlohou:<br/><br/>Soubory, které jsou už nahrané do úložiště: identifikátor URI by zahrnoval ID assetu pro úlohy, které se mají provést u prostředků v rámci účtu úložiště.<br/><br/>Soubory, které se mají nahrát během procesu transformace a úlohy: Asset se vytvoří v úložišti, vrátí se adresa URL SAS, soubory se nahrají do úložiště a pak se tato transformace aplikuje na soubory. | Ne | Ne |
+| `Channel`<!-- row --> | `LiveEvent` | Živé události nahrazují kanály z rozhraní v2 API. Přenášejí většinu funkcí a nabízí další nové funkce, jako jsou živé přepisy, úsporný režim a podpora pro přijímání RTMP. <br/><br/>Podívejte [se na živá událost ve scénáři živé streamování](migrate-v-2-v-3-migration-scenario-based-live-streaming.md) | Ne | Ne |
+| `ContentKey`<!-- row --> | <!-- empty --> | `ContentKeys` už není entitou, teď je to vlastnost lokátoru streamování.<br/><br/>  V v3 jsou data klíče obsahu přidružená k `StreamingLocator` (pro výstupní šifrování) nebo samotnému prostředku (pro šifrování úložiště na straně klienta). | Ano | Ne |
+| `ContentKeyAuthorizationPolicy`<!-- row --> | `ContentKeyPolicy` | <!-- empty --> | Ano | Ne |
+| `ContentKeyAuthorizationPolicyOption` <!-- row --> | <!-- empty --> |  `ContentKeyPolicyOptions` jsou součástí `ContentKeyPolicy` . | Ano | Ne |
+| `IngestManifest`<!-- row --> | <!-- empty --> | Entita `IngestManifests` v v3 neexistuje. Nahrání souborů v v3 zahrnuje rozhraní API služby Azure Storage. Prostředky se nejprve vytvoří a pak se nahrají soubory do přidruženého kontejneru úložiště. Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | Ne | Ne |
+| `IngestManifestAsset`<!-- row --> | <!-- empty --> | Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | Ne | Ne |
+| `IngestManifestFile`<!-- row --> | <!-- empty --> | Existuje mnoho způsobů, jak získat data do kontejneru Azure Storage, který se dá použít místo toho. `JobInputHttp` poskytuje také způsob, jak si v případě potřeby stáhnout vstup úlohy z dané adresy URL. | Ne | Ne |
+| `Job`<!-- row --> | `Job` | Vytvořte `Transform` před vytvořením `Job` . | Ne | Ne |
+| `JobTemplate`<!-- row --> | `Transform` | `Transform`Místo toho použijte. Transformace je samostatná entita z úlohy a je opakovaně použita. | Ne | Ne |
+| `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Ano | Ne |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | Místo vyhledávání `MediaProcessor` pro použití podle názvu použijte požadovanou předvolbu při definování transformace. Použitá předvolba určí procesor médií používaný systémem úloh. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Ne | NEDEF (jen pro čtení v v2) |
+| `NotificationEndPoint`<!-- row --> | <!--empty --> | Oznámení v v3 jsou zpracovávána prostřednictvím Azure Event Grid. `NotificationEndpoint`Je nahrazeno registrací předplatného Event Grid, který také zapouzdřuje konfiguraci pro typy oznámení, které mají být přijímány (ve verzi v2 byla zpracována `JobNotificationSubscription` úlohou, `TaskNotificationSubscription` úlohou a telemetrie `ComponentMonitoringSetting` ). Telemetrii v2 byla rozdělená mezi Azure Event Grid a Azure Monitor, aby se vešla do vylepšení většího ekosystému Azure. | Ne | Ne |
+| `Program`<!-- row --> | `LiveOutput` | Živé výstupy teď nahrazují programy v rozhraní API v3.  | Ne | Ne |
+| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Koncové body streamování zůstávají primárně stejné. Používají se k dynamickému balení, šifrování a doručování HLS a PŘERUŠOVANého obsahu pro živé i streamování na vyžádání buď přímo ze zdroje, nebo přes CDN. Mezi nové funkce patří podpora pro lepší Azure Monitor integraci a vytváření grafů. |  Ano | Ano |
+| `Task`<!-- row --> | `JobOutput` | Nahradil `JobOutput` (což už není samostatnou entitou v rozhraní API).  Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Ne | Ne |
+| `TaskTemplate`<!-- row --> | `TransformOutput` | Nahradil `TransformOutput` (což už není samostatnou entitou v rozhraní API). Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Ne | Ne |
+| `Inputs`<!-- row --> | `Inputs` | Vstupy a výstupy jsou teď na úrovni úlohy. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . | Ne | Ne |
+| `Outputs`<!-- row --> | `Outputs` | Vstupy a výstupy jsou teď na úrovni úlohy.  V v3 se formát metadat změnil z XML na JSON.  Živé výstupy začínají při vytváření a při odstranění se zastaví. Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . | Ne | Ne |
 
 
 | **Další změny** | **2**  | **Technologie** |
@@ -73,7 +73,7 @@ Projděte si zásady vytváření názvů, které se vztahují k prostředkům M
 | **Kódování** <!--new row --> |||
 | Přenosové rychlosti kódování <!--new row --> | přenosové rychlosti měřené v KB/s: 128 (KB/s)| bity za sekundu ex: 128000 (bity za sekundu)|
 | Kódování DRM FairPlay <!--new row --> | V Media Services V2 lze zadat inicializační vektor (IV). | V Media Services V3 nelze zadat FairPlay IV.|
-| Kodér úrovně Premium <!--new row --> | Kodér úrovně Premium a starší indexer| [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset) a starší [procesory media Analytics](https://docs.microsoft.com/azure/media-services/previous/legacy-components) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3. Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . |
+| Kodér úrovně Premium <!--new row --> | Kodér úrovně Premium a starší indexer| [Kodér úrovně Premium](../previous/media-services-encode-asset.md) a starší [procesory media Analytics](../previous/legacy-components.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3. Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Viz témata kódování v [kódování založeném na scénářích](migrate-v-2-v-3-migration-scenario-based-encoding.md) . |
 | **Transformace a úlohy** <!--new row -->|||
 | Zpracování protokolu HTTPS na základě úloh <!--new row --> |<!-- empty -->| Pro zpracování úloh založených na souborech můžete jako vstup použít adresu URL HTTPS. Nemusíte mít obsah, který je už uložený v Azure, ani nemusíte vytvářet prostředky. |
 | Šablony ARM pro úlohy <!--new row --> | Šablony ARM v v2 neexistovaly. | Transformaci lze použít k vytvoření opakovaně použitelných konfigurací, k vytvoření Azure Resource Manager šablon a k izolaci nastavení zpracování mezi několika zákazníky nebo klienty. |

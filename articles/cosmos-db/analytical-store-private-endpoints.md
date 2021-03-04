@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 26c99beb95d60b476fff255321d85c0db8aa7363
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679220"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692194"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurace privátních koncových bodů pro Azure Cosmos DB analytické úložiště
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak nastavit spravované privátní koncové body 
 
 ### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Nastavení pracovního prostoru Azure synapse Analytics se spravovanou virtuální sítí
 
-Umožňuje [vytvořit pracovní prostor ve službě Azure synapse Analytics se zapnutou datovou exfiltrace.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md). Pomocí [ochrany dat exfiltrace](../synapse-analytics/security/workspace-data-exfiltration-protection.md)můžete zajistit, aby uživatelé se zlými úmysly nemohli kopírovat ani přenášet data z prostředků Azure do umístění mimo rozsah vaší organizace.
+[Umožňuje vytvořit pracovní prostor ve službě Azure synapse Analytics se zapnutou datovou exfiltrace.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) Pomocí [ochrany dat exfiltrace](../synapse-analytics/security/workspace-data-exfiltration-protection.md)můžete zajistit, aby uživatelé se zlými úmysly nemohli kopírovat ani přenášet data z prostředků Azure do umístění mimo rozsah vaší organizace.
 
 Následující omezení přístupu se použijí, pokud je pro pracovní prostor Azure synapse Analytics zapnutá ochrana dat exfiltrace:
 

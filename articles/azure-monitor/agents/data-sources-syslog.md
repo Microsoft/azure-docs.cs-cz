@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2d7406c1e801a07f10342c47e7334e6a12bfd449
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729194"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Shromáždění zdrojů dat syslog pomocí agenta Log Analytics
 Syslog je protokol protokolování událostí, který je společný pro Linux. Aplikace budou odesílat zprávy, které mohou být uloženy v místním počítači nebo doručeny do kolekce syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
 
 > [!IMPORTANT]
-> Tento článek popisuje shromažďování událostí protokolu syslog pomocí [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
+> Tento článek popisuje shromažďování událostí protokolu syslog pomocí [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
 
 > [!NOTE]
 > Azure Monitor podporuje shromažďování zpráv odeslaných pomocí rsyslog nebo syslog-ng, kde rsyslog je výchozí démon. Výchozí démon procesu Syslog verze 5 Red Hat Enterprise Linux, CentOS a verze Oracle Linux (sysklog) není pro shromažďování událostí syslog podporován. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat [démona rsyslog](http://rsyslog.com) a nakonfigurovat tak, aby nahradila sysklog.
@@ -57,7 +57,7 @@ Nové zařízení můžete přidat tak, že nejprve vyberete možnost **použít
 Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů. Pokud chcete protokol syslog nakonfigurovat ručně u každého agenta pro Linux, zrušte jeho zrušení zaškrtněte v části *Konfigurace na moje počítače*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurace protokolu syslog v agentovi Linux
-Když [je agent Log Analytics nainstalovaný v klientském počítači se systémem Linux](../learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor syslog, který definuje zařízení a závažnost shromažďovaných zpráv. Úpravou tohoto souboru můžete změnit konfiguraci. Konfigurační soubor se liší v závislosti na procesu démona syslog, který klient nainstaloval.
+Když [je agent Log Analytics nainstalovaný v klientském počítači se systémem Linux](../vm/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor syslog, který definuje zařízení a závažnost shromažďovaných zpráv. Úpravou tohoto souboru můžete změnit konfiguraci. Konfigurační soubor se liší v závislosti na procesu démona syslog, který klient nainstaloval.
 
 > [!NOTE]
 > Pokud upravíte konfiguraci syslogu, je nutné restartovat démona syslog, aby se změny projevily.
@@ -222,7 +222,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |
@@ -230,7 +230,6 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 | Syslog &#124; souhrn AggregatedValue = Count () podle zařízení |Počet záznamů syslog podle zařízení |
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
-* Použijte [vlastní pole](./../platform/custom-fields.md) k analýze dat ze záznamů syslog do jednotlivých polí.
-* [Nakonfigurujte agenty Linux](../learn/quick-collect-linux-computer.md) pro shromažďování dalších typů dat.
-
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Použijte [vlastní pole](../logs/custom-fields.md) k analýze dat ze záznamů syslog do jednotlivých polí.
+* [Nakonfigurujte agenty Linux](../vm/quick-collect-linux-computer.md) pro shromažďování dalších typů dat.

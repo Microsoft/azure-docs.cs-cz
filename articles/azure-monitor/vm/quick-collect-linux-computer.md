@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: ef6e31968f85407e8055315becdc1337b474ad70
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dbe51930ec92ec4f89738dc5d543003f45acebf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733818"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rychlý Start: shromáždění dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
-[Azure monitor](../overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů se systémem Linux ve vašem prostředí do pracovního prostoru Log Analytics pro účely podrobných analýz a korelace. Instalace [agenta Log Analytics](../agents/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. V tomto rychlém startu se dozvíte, jak pomocí několika jednoduchých kroků nakonfigurovat a shromažďovat data ze serveru Linux. Informace o virtuálních počítačích Azure Linux najdete v tématu [shromažďování dat o virtuálních počítačích Azure](../learn/quick-collect-azurevm.md).  
+[Azure monitor](../overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů se systémem Linux ve vašem prostředí do pracovního prostoru Log Analytics pro účely podrobných analýz a korelace. Instalace [agenta Log Analytics](../agents/log-analytics-agent.md) umožňuje Azure monitor shromažďovat data z datového centra nebo jiného cloudového prostředí. V tomto rychlém startu se dozvíte, jak pomocí několika jednoduchých kroků nakonfigurovat a shromažďovat data ze serveru Linux. Informace o virtuálních počítačích Azure Linux najdete v tématu [shromažďování dat o virtuálních počítačích Azure](./quick-collect-azurevm.md).  
 
 Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy](../agents/agents-overview.md#supported-operating-systems) a [Konfigurace brány firewall sítě](../agents/log-analytics-agent.md#network-requirements).
  
@@ -166,4 +166,4 @@ Teď, když shromažďujete data o provozu a výkonu z místního počítače s 
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../logs/log-analytics-tutorial.md)

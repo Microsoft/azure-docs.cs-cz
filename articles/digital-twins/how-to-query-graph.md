@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737966"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -21,7 +21,7 @@ Tento článek nabízí příklady dotazů a podrobnější pokyny k použití *
 
 Tento článek začíná vzorovými dotazy, které ilustrují strukturu dotazovacího jazyka a běžné operace dotazů pro digitální vlákna. Pak popisuje, jak spustit dotazy po jejich zápisu pomocí [rozhraní API pro dotazování](/rest/api/digital-twins/dataplane/query) digitálních vláken Azure nebo [sady SDK](how-to-use-apis-sdks.md#overview-data-plane-apis).
 
-> [!TIP]
+> [!NOTE]
 > Pokud používáte ukázkové dotazy níže s voláním rozhraní API nebo SDK, budete muset text dotazu zhuštěnit na jeden řádek.
 
 ## <a name="show-all-digital-twins"></a>Zobrazit všechny digitální vlákna
@@ -36,8 +36,8 @@ Získat digitální vlákna podle **vlastností** (včetně ID a metadat):
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
-> ID digitálního vlákna se dotazuje pomocí pole metadata `$dtId` .
+> [!NOTE]
+> Na ID digitálního dvojčete se dotazuje pomocí pole metadat `$dtId`.
 
 Můžete také získat vlákna na základě **toho, zda je definována určitá vlastnost**. Tady je dotaz, který vrací vlákna, která mají definovanou vlastnost *Location* :
 
@@ -50,6 +50,10 @@ To vám může přispět k získání vláken podle jejich vlastností *značek*
 Můžete také získat vlákna na základě **typu vlastnosti**. Tady je dotaz, který získá vlákna, jejichž vlastnost *teploty* je číslo:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> Pokud je vlastnost typu `Map` , můžete použít klíče a hodnoty mapy přímo v dotazu, například takto:
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>Dotaz podle modelu
 
@@ -88,10 +92,10 @@ Tady je příklad dotazu, který určuje hodnotu pro všechny tři parametry:
 
 Při dotazování na základě **vztahů** digitálních vláken má dotazovací jazyk pro digitální vlákna Azure speciální syntaxi.
 
-Relace jsou načteny do oboru dotazu v `FROM` klauzuli. Důležité rozlišení od "klasických" jazyků typu SQL je to, že každý výraz v této `FROM` klauzuli není tabulka. místo toho `FROM` klauzule vyjadřuje křížové vztahy mezi entitami a je zapsána ve verzi služby Azure Digital revlákens `JOIN` .
+Relace jsou načteny do oboru dotazu v klauzuli `FROM`. Důležité rozlišení od "klasických" jazyků typu SQL je to, že každý výraz v této `FROM` klauzuli není tabulka. místo toho `FROM` klauzule vyjadřuje křížové vztahy mezi entitami a je zapsána ve verzi služby Azure Digital revlákens `JOIN` .
 
-Zavoláte se s možnostmi modelu digitálních vláken Azure, relace neexistují nezávisle na zdvojených [objektech](concepts-models.md) . To znamená, že jazyk dotazu Azure Digital revlákens `JOIN` je trochu odlišný od obecného SQL `JOIN` , protože relace, na které se tady nejde dotázat, nezávisle na sobě a musí být vázané na vlákna.
-Aby bylo možné tento rozdíl začlenit, klíčové slovo `RELATED` se používá v `JOIN` klauzuli pro odkazování na množinu vztahů typu vlákna.
+Zavoláte se s možnostmi modelu digitálních vláken Azure, relace neexistují nezávisle na zdvojených [objektech](concepts-models.md) . To znamená, že `JOIN` dotazovacího jazyka Azure Digital Twins se trochu liší od `JOIN` obecného SQL, protože na relace se zde nelze dotazovat nezávisle a musí být vázány na dvojče.
+Za účelem začlenění tohoto rozdílu se v klauzuli `JOIN` používá klíčové slovo `RELATED` pro odkazování na sadu relací dvojčete.
 
 Následující část obsahuje několik příkladů toho, co vypadá.
 
@@ -107,11 +111,11 @@ Tady je ukázkový dotaz založený na relacích. Tento fragment kódu vybere v�
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
-> Vývojář není muset korelovat `JOIN` s hodnotou klíče v `WHERE` klauzuli (nebo zadat hodnotu klíče vloženou s `JOIN` definicí). Tato korelace je vypočítána automaticky systémem, protože samotné vlastnosti vztahu identifikují cílovou entitu.
+> Vývojář není muset korelovat `JOIN` s hodnotou klíče v `WHERE` klauzuli (nebo zadat hodnotu klíče vloženou s `JOIN` definicí). Tato korelace se počítá automaticky systémem, protože samotné vlastnosti relace identifikují cílovou entitu.
 
 ### <a name="query-the-properties-of-a-relationship"></a>Dotazování vlastností relace
 
-Podobně jako digitální vlákna mají vlastnosti, které jsou popsány prostřednictvím DTDL, mohou mít relace také vlastnosti. Můžete se dotazovat na vlákna na **základě vlastností jejich vztahů**.
+Podobně jako mají digitální dvojčata vlastnosti popisované pomocí DTDL i relace mohou mít vlastnosti. Můžete se dotazovat na vlákna na **základě vlastností jejich vztahů**.
 Jazyk dotazů digitálních vláken Azure umožňuje filtrování a projekci vztahů přiřazením aliasu k relaci v rámci `JOIN` klauzule.
 
 Můžete například zvážit vztah *servicedBy* , který má vlastnost *reportedCondition* . V níže uvedeném dotazu je tomuto vztahu přiřazen alias R, aby odkazoval na jeho vlastnost.
@@ -220,7 +224,12 @@ Následující fragment kódu ilustruje volání [rozhraní .NET (C#) SDK](/dotn
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Toto volání vrátí výsledky dotazu ve formě objektu [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) .
+Dotaz použitý v tomto volání vrátí seznam digitálních vláken, které výše uvedený příklad představuje s [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) objekty. Návratový typ dat pro každý dotaz bude záviset na tom, jaké výrazy určíte pomocí `SELECT` příkazu:
+* Dotazy, které začínají `SELECT * FROM ...` na, vrátí seznam digitálních vláken (které mohou být serializovány jako `BasicDigitalTwin` objekty nebo jiné vlastní digitální typy vláken, které jste pravděpodobně vytvořili).
+* Dotazy, které začínají ve formátu, `SELECT <A>, <B>, <C> FROM ...` vrátí slovník s klíči `<A>` , `<B>` a `<C>` .
+* Další formáty `SELECT` příkazů mohou být vytvořené pro vrácení vlastních dat. Můžete zvážit vytvoření vlastních tříd pro zpracování velmi přizpůsobených sad výsledků. 
+
+### <a name="query-with-paging"></a>Dotaz se stránkováním
 
 Volání na podporu stránkování. Tady je kompletní příklad použití `BasicDigitalTwin` jako typ výsledku dotazu s zpracováním chyb a stránkováním:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417402"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724349"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Prostředky pro vytváření vlastních konektorů Sentinel Azure
 
@@ -36,12 +36,12 @@ Následující tabulka porovnává základní podrobnosti o jednotlivých metod�
 
 |Popis metody  |Schopnost | Bez serveru    |Složitost  |
 |---------|---------|---------|---------|
-|**[Agent Log Analytics](#connect-with-the-log-analytics-agent)** <br>Nejlepší pro shromažďování souborů z místních a IaaS zdrojů   | Pouze kolekce souborů  |   No      |Nízká         |
+|**[Agent Log Analytics](#connect-with-the-log-analytics-agent)** <br>Nejlepší pro shromažďování souborů z místních a IaaS zdrojů   | Pouze kolekce souborů  |   Ne      |Nízká         |
 |**[Logstash](#connect-with-logstash)** <br>Nejlepší pro místní a IaaS zdroje, jakýkoli zdroj, pro který je k dispozici modul plug-in a organizace, které jsou už obeznámené s Logstash  | Dostupné moduly plug-in a vlastní modul plug-in poskytují značnou flexibilitu.   |   Žádné vyžaduje spuštění virtuálního počítače nebo clusteru virtuálních počítačů.           |   Slab podporuje mnoho scénářů s moduly plug-in      |
-|**[Logic Apps](#connect-with-logic-apps)** <br>Vysoké náklady; Nepoužívejte pro data s vysokým objemem dat <br>Nejlepší pro cloudové zdroje s nízkým objemem  | Programování bez kódu umožňuje omezená flexibilitu bez podpory implementace algoritmů.<br><br> Pokud vaše požadavky už žádné dostupné akce nepodporují, může vytvoření vlastní akce přidat složitost.    |    Yes         |   Slab jednoduchý a bezkódový vývoj      |
-|**[PowerShell](#connect-with-powershell)** <br>Nejlepší pro vytváření prototypů a periodické nahrávání souborů | Přímá podpora pro kolekci souborů. <br><br>PowerShell se dá použít ke shromažďování dalších zdrojů, ale vyžaduje kódování a konfiguraci skriptu jako služby.      |No               |  Nízká       |
+|**[Logic Apps](#connect-with-logic-apps)** <br>Vysoké náklady; Nepoužívejte pro data s vysokým objemem dat <br>Nejlepší pro cloudové zdroje s nízkým objemem  | Programování bez kódu umožňuje omezená flexibilitu bez podpory implementace algoritmů.<br><br> Pokud vaše požadavky už žádné dostupné akce nepodporují, může vytvoření vlastní akce přidat složitost.    |    Ano         |   Slab jednoduchý a bezkódový vývoj      |
+|**[PowerShell](#connect-with-powershell)** <br>Nejlepší pro vytváření prototypů a periodické nahrávání souborů | Přímá podpora pro kolekci souborů. <br><br>PowerShell se dá použít ke shromažďování dalších zdrojů, ale vyžaduje kódování a konfiguraci skriptu jako služby.      |Ne               |  Nízká       |
 |**[Rozhraní API pro Log Analytics](#connect-with-the-log-analytics-api)** <br>Nejlepší pro implementaci integrace nezávislého výrobce softwaru a pro jedinečné požadavky na kolekci   | Podporuje všechny možnosti, které jsou k dispozici v kódu.  | Závisí na implementaci           |     Vysoká    |
-|**[Azure Functions](#connect-with-azure-functions)** Nejvhodnější pro zdroje cloudu s vysokým objemem a pro jedinečné požadavky na kolekci  | Podporuje všechny možnosti, které jsou k dispozici v kódu.  |  Yes             |     Maximální vyžaduje znalosti programování.    |
+|**[Azure Functions](#connect-with-azure-functions)** Nejvhodnější pro zdroje cloudu s vysokým objemem a pro jedinečné požadavky na kolekci  | Podporuje všechny možnosti, které jsou k dispozici v kódu.  |  Ano             |     Maximální vyžaduje znalosti programování.    |
 |     |         |                |
 
 > [!TIP]
@@ -55,9 +55,9 @@ Následující tabulka porovnává základní podrobnosti o jednotlivých metod�
 
 Pokud váš zdroj dat doručuje události do souborů, doporučujeme, abyste k vytvoření vlastního konektoru použili agenta Azure Monitor Log Analytics.
 
-- Další informace najdete v tématu [shromažďování vlastních protokolů v Azure monitor](/azure/azure-monitor/platform/data-sources-custom-logs).
+- Další informace najdete v tématu [shromažďování vlastních protokolů v Azure monitor](../azure-monitor/agents/data-sources-custom-logs.md).
 
-- Příklad této metody najdete [v tématu shromažďování vlastních zdrojů dat JSON s agentem Log Analytics pro Linux v Azure monitor](/azure/azure-monitor/platform/data-sources-json).
+- Příklad této metody najdete [v tématu shromažďování vlastních zdrojů dat JSON s agentem Log Analytics pro Linux v Azure monitor](../azure-monitor/agents/data-sources-json.md).
 
 ## <a name="connect-with-logstash"></a>Připojení pomocí Logstash
 
@@ -83,7 +83,7 @@ Příklady užitečných modulů plug-in Logstash najdete v těchto tématech:
 
 ## <a name="connect-with-logic-apps"></a>Připojení pomocí Logic Apps
 
-Pomocí [Aplikace logiky Azure](/azure/logic-apps/) můžete vytvořit vlastní konektor pro službu Azure Sentinel bez serveru.
+Pomocí [Aplikace logiky Azure](../logic-apps/index.yml) můžete vytvořit vlastní konektor pro službu Azure Sentinel bez serveru.
 
 > [!NOTE]
 > Při vytváření konektorů bez serveru s využitím Logic Apps může být užitečné, použití Logic Apps pro vaše konektory může být nákladné pro velké objemy dat.
@@ -93,14 +93,14 @@ Pomocí [Aplikace logiky Azure](/azure/logic-apps/) můžete vytvořit vlastní 
 
 1. **Pomocí jedné z následujících triggerů spusťte Logic Apps**:
 
-    |Trigger  |Description  |
+    |Trigger  |Popis  |
     |---------|---------|
-    |**Opakovaný úkol**     |   Můžete například naplánovat, aby aplikace logiky načetla data pravidelně ze specifických souborů, databází nebo externích rozhraní API. <br>Další informace najdete v tématu [vytváření, plánování a spouštění opakujících se úloh a pracovních postupů v Azure Logic Apps](/azure/connectors/connectors-native-recurrence).      |
-    |**Aktivace na vyžádání**     | Spusťte aplikaci logiky na vyžádání pro ruční shromažďování a testování dat. <br>Další informace najdete v tématu  [volání, triggery nebo vnořené aplikace logiky pomocí koncových bodů https](/azure/logic-apps/logic-apps-http-endpoint).        |
-    |**Koncový bod HTTP/S**     |  Doporučuje se pro streamování a pokud zdrojový systém může spustit přenos dat. <br>Další informace najdete v tématu [koncové body služby volání přes protokol HTTP nebo https](/azure/connectors/connectors-native-http).       |
+    |**Opakovaný úkol**     |   Můžete například naplánovat, aby aplikace logiky načetla data pravidelně ze specifických souborů, databází nebo externích rozhraní API. <br>Další informace najdete v tématu [vytváření, plánování a spouštění opakujících se úloh a pracovních postupů v Azure Logic Apps](../connectors/connectors-native-recurrence.md).      |
+    |**Aktivace na vyžádání**     | Spusťte aplikaci logiky na vyžádání pro ruční shromažďování a testování dat. <br>Další informace najdete v tématu  [volání, triggery nebo vnořené aplikace logiky pomocí koncových bodů https](../logic-apps/logic-apps-http-endpoint.md).        |
+    |**Koncový bod HTTP/S**     |  Doporučuje se pro streamování a pokud zdrojový systém může spustit přenos dat. <br>Další informace najdete v tématu [koncové body služby volání přes protokol HTTP nebo https](../connectors/connectors-native-http.md).       |
     |     |         |
 
-1. **K získání událostí použijte libovolný konektor aplikace logiky, který čte informace**. Příklad:
+1. **K získání událostí použijte libovolný konektor aplikace logiky, který čte informace**. Například:
 
     - [Připojení k REST API](/connectors/custom-connectors/)
     - [Připojení k SQL Server](/connectors/sql/)
@@ -112,9 +112,9 @@ Pomocí [Aplikace logiky Azure](/azure/logic-apps/) můžete vytvořit vlastní 
 
 1. **Připravte informace, které chcete načíst**.
 
-    Například použijte [akci analyzovat JSON](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action) pro přístup k vlastnostem v obsahu JSON, který vám umožní vybrat tyto vlastnosti ze seznamu dynamického obsahu při zadávání vstupů pro vaši aplikaci logiky.
+    Například použijte [akci analyzovat JSON](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) pro přístup k vlastnostem v obsahu JSON, který vám umožní vybrat tyto vlastnosti ze seznamu dynamického obsahu při zadávání vstupů pro vaši aplikaci logiky.
 
-    Další informace najdete v tématu [provádění operací s daty v Azure Logic Apps](/azure/logic-apps/logic-apps-perform-data-operations).
+    Další informace najdete v tématu [provádění operací s daty v Azure Logic Apps](../logic-apps/logic-apps-perform-data-operations.md).
 
 1. **Zapište data do Log Analytics**.
 
@@ -174,14 +174,14 @@ Události můžete streamovat do Azure Sentinel pomocí Log Analytics rozhraní 
 
 Při volání koncového bodu RESTful přímo vyžaduje více programování, poskytuje také větší flexibilitu.
 
-Další informace najdete v tématu [Log Analytics rozhraní API kolekce dat](/azure/azure-monitor/platform/data-collector-api), zejména v následujících příkladech:
+Další informace najdete v tématu [Log Analytics rozhraní API kolekce dat](../azure-monitor/logs/data-collector-api.md), zejména v následujících příkladech:
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>Připojení pomocí Azure Functions
 
-Pomocí Azure Functions společně s rozhraním API RESTful a různými jazyky kódování, jako je [PowerShell](/azure/azure-functions/functions-reference-powershell), můžete vytvořit vlastní konektor bez serveru.
+Pomocí Azure Functions společně s rozhraním API RESTful a různými jazyky kódování, jako je [PowerShell](../azure-functions/functions-reference-powershell.md), můžete vytvořit vlastní konektor bez serveru.
 
 Příklady této metody najdete v těchto tématech:
 
@@ -189,7 +189,7 @@ Příklady této metody najdete v těchto tématech:
 - [Připojení okta jednoho Sign-On ke službě Azure Sentinel pomocí funkce Azure Functions](connect-okta-single-sign-on.md)
 - [Připojení Proofpoint klepnutím do Azure Sentinel pomocí funkce Azure Functions](connect-proofpoint-tap.md)
 - [Připojení virtuálního počítače s Qualys ke službě Azure Sentinel pomocí funkce Azure Functions](connect-qualys-vm.md)
-- [Ingestování souborů XML, CSV nebo jiných formátů dat](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [Ingestování souborů XML, CSV nebo jiných formátů dat](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Monitorování přiblížení pomocí Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blog)
 - [Nasazení Function App pro získání dat rozhraní API pro správu sady Office 365 do služby Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (komunita Azure Sentinel GitHub)
 
@@ -197,7 +197,7 @@ Příklady této metody najdete v těchto tématech:
 
 K extrakci relevantních informací a naplnění příslušných polí v kontextu Azure Sentinel můžete použít integrovanou techniku vlastního konektoru.
 
-Příklad:
+Například:
 
 - **Pokud jste používali Logstash**, analyzujte data pomocí modulu plug-in [grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) Filter.
 - **Pokud jste použili funkci Azure Functions**, analyzujte data pomocí kódu. Další informace najdete v tématu [analyzátory](normalization.md#parsers).

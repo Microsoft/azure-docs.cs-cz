@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688531"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -72,7 +72,7 @@ Příkladem je režim spánku, který po dobu 20 sekund umožní určitému nov�
 
 Přiřazení role můžete vymezit na konkrétní skupinu prostředků pomocí parametru **ResourceGroupName**. Vymezit konkrétní rozsah můžete také pomocí parametrů **ResourceType** a **ResourceName**. 
 
-Pokud nemáte **Windows 10 nebo Windows Server 2016**, Stáhněte si ze služby Microsoft Script Center [generátor certifikátů podepsaný svým držitelem](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) . Rozbalte jeho obsah a importujte potřebnou rutinu.
+Pokud nemáte **Windows 10 nebo Windows Server 2016**, stáhněte [rutinu New-SELFSIGNEDCERTIFICATEEX](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) z řešení PKI. Rozbalte jeho obsah a importujte potřebnou rutinu.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate

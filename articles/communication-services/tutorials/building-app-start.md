@@ -8,14 +8,16 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd535227b421f4fb56dac3afb37033e3d77f75f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658059"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691531"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Kurz: Příprava webové aplikace pro komunikační služby Azure (Node.js)
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Komunikační služby Azure umožňují přidat do svých aplikací komunikaci v reálném čase. V tomto kurzu se naučíte, jak nastavit webovou aplikaci, která podporuje komunikační služby Azure. Toto je úvodní kurz určený pro nové vývojáře, kteří chtějí začít používat komunikaci v reálném čase.
 
@@ -55,7 +57,7 @@ Vaše místní vývojové prostředí se nakonfiguruje takto:
 
 Node.js použijeme ke stažení a instalaci různých závislostí, které potřebujeme pro naši aplikaci na straně klienta. Použijeme ho k vygenerování statických souborů, které pak budeme hostovat v Azure, takže se nemusíte starat o konfiguraci na vašem serveru.
 
-Vývojáři systému Windows mohou postupovat podle [tohoto NodeJS kurzu](/windows/nodejs/setup-on-windows) ke konfiguraci Node, NVM a npm.
+Vývojáři systému Windows mohou postupovat podle [tohoto NodeJS kurzu](/windows/nodejs/setup-on-windows) ke konfiguraci Node, NVM a npm. 
 
 Tento kurz jsme otestovali pomocí verze LTS 12.20.0. Po instalaci NVM použijte následující příkaz prostředí PowerShell k nasazení verze, kterou chcete použít:
 
@@ -159,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }
+    }     
 }
 ```
 
@@ -216,7 +218,7 @@ Váš soubor by teď měl vypadat takto:
 }
 ```
 
-Přidali jste příkaz, který lze použít z npm.
+Přidali jste příkaz, který lze použít z npm. 
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="Probíhá úprava package.js":::
 
@@ -277,13 +279,13 @@ npm run build:dev
 Konzola vám ukáže, kde je server spuštěný. Ve výchozím nastavení je to `http://localhost:8080` . Příkaz Build: dev je příkaz, který jsme přidali do našeho `package.json` dřívějšího.
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Spuštění vývojového serveru":::
-
+ 
  V prohlížeči přejděte na adresu a měli byste vidět stránku a výstrahu, která je nakonfigurovaná v předchozích krocích.
-
+ 
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="Stránka HTML":::
-
-
-Když je server spuštěný, můžete změnit kód a Server a stránka HTML se automaticky znovu načítají.
+  
+ 
+Když je server spuštěný, můžete změnit kód a Server a stránka HTML se automaticky znovu načítají. 
 
 V dalším kroku přejdete do `app.js` souboru v Visual Studio Code a odstraníte `alert('Hello world alert!');` . Uložte soubor a ověřte, že výstraha zmizí z prohlížeče.
 
@@ -321,11 +323,11 @@ const { merge } = require('webpack-merge');
  ```
 
 Všimněte si, že tato konfigurace bude sloučena s webpack.common.js (kde jsme zadali vstupní soubor a kam výsledky Uložit) a nastavíte režim na "produkční".
-
+ 
 V `package.json` přidejte následující kód:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js"
+"build:prod": "webpack --config webpack.prod.js" 
 ```
 
 Soubor by měl vypadat takto:
@@ -339,14 +341,14 @@ Soubor by měl vypadat takto:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js"
+    "build:prod": "webpack --config webpack.prod.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.6",
-    "@azure/communication-common": "^1.0.0"
+    "@azure/communication-calling": "^1.0.0-beta.3",
+    "@azure/communication-common": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -366,13 +368,13 @@ V terminálu spusťte:
 npm run build:prod
 ```
 
-Příkaz vytvoří `dist` složku a statický soubor připravený pro produkční prostředí `app.js` .
+Příkaz vytvoří `dist` složku a statický soubor připravený pro produkční prostředí `app.js` . 
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="Výrobní sestavení":::
-
-
+ 
+ 
 ### <a name="deploy-your-app-to-azure-storage"></a>Nasazení aplikace pro Azure Storage
-
+ 
 Zkopírujte `index.html` a `app.css` do `dist` složky.
 
 Ve `dist` složce vytvořte nový soubor a pojmenujte ho `404.html` . Zkopírujte následující kód do tohoto souboru:
@@ -397,45 +399,45 @@ Uložte soubor (CTRL + S).
 Klikněte pravým tlačítkem a vyberte nasadit na statický web prostřednictvím Azure Storage.
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Zahájení nasazování do Azure":::
-
+ 
 V `Select subscription` poli vyberte přihlásit se k Azure (nebo vytvořte bezplatný účet Azure, pokud jste ještě nevytvořili předplatné).
-
+ 
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Přihlášení k Azure":::
-
+ 
 Vyberte `Create new Storage Account`  >  `Advanced` :
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="Vytvoření skupiny účtů úložiště":::
-
+ 
  Zadejte název skupiny úložišť:
-
+ 
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="Přidání názvu pro účet":::
-
+ 
 V případě potřeby vytvořte novou skupinu prostředků:
-
+ 
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="Vytváří se nová skupina.":::
-
+  
   Odpověď "Ano", chcete-li povolit statické hostování webů? "
-
+  
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="Výběr možnosti pro povolení hostování statického webu":::
-
+  
 Přijměte výchozí název souboru v "zadejte název dokumentu indexu", protože jsme soubor vytvořili `index.html` .
 
-Zadejte `404.html` pro "zadejte cestu k chybovému dokumentu 404.
-
-Vyberte umístění aplikace. Umístění, které vyberete, bude definovat, který procesor médií bude použit při budoucí volání aplikace ve skupině volání.
+Zadejte `404.html` pro "zadejte cestu k chybovému dokumentu 404.  
+  
+Vyberte umístění aplikace. Umístění, které vyberete, bude definovat, který procesor médií bude použit při budoucí volání aplikace ve skupině volání. 
 
 Služba Azure Communication Services vybere procesor médií v závislosti na umístění aplikace.
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="Vybrat umístění":::
-
-Počkejte na vytvoření prostředku a webu.
-
+  
+Počkejte na vytvoření prostředku a webu. 
+ 
 Klikněte na Procházet k webu:
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="Nasazení dokončeno":::
-
+ 
 Z vývojářských nástrojů v prohlížeči si můžete prohlédnout zdroj a prohlédnout si náš soubor připravený pro produkční prostředí.
-
+ 
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Web":::
 
 Přejděte na [Azure Portal](https://portal.azure.com/#home), vyberte svoji skupinu prostředků, vyberte aplikaci, kterou jste vytvořili, a přejděte na `Settings`  >  `Static website` . Vidíte, že jsou povolené statické weby a Všimněte si primárního koncového bodu, dokumentu indexu a souborů dokumentů s cestou k chybám.
@@ -446,7 +448,7 @@ V části Blob service vyberte kontejnery a zobrazí se dva kontejnery, jeden pr
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="Konfigurace kontejneru":::
 
-Pokud přejdete na `$web` , zobrazí se vaše soubory, které jste vytvořili v aplikaci Visual Studio a nasadili do Azure.
+Pokud přejdete na `$web` , zobrazí se vaše soubory, které jste vytvořili v aplikaci Visual Studio a nasadili do Azure. 
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="Nasazení":::
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725505"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -76,6 +76,11 @@ Stažený spustitelný soubor nemůžete spustit na virtuálním počítači, kt
 ### <a name="virtual-machine-backups-having-large-disks"></a>Zálohy virtuálních počítačů s velkými disky
 
 Pokud má zálohovaný počítač velký počet disků (>16) nebo velké disky (> 4 TB), nedoporučujeme spouštět skript na stejném počítači pro obnovení, protože bude mít významný dopad na virtuální počítač. Místo toho doporučujeme mít samostatný virtuální počítač jenom pro obnovení souborů (virtuální počítače Azure s D2v3) a pak ho vypnout, pokud není potřeba. 
+
+Viz požadavky pro obnovení souborů z zálohovaných virtuálních počítačů s velkým diskem:<br>
+[Operační systém Windows](#for-backed-up-vms-with-large-disks-windows)<br>
+[Operační systém Linux](#for-backed-up-vms-with-large-disks-linux)
+
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Krok 3: požadavky na operační systém pro úspěšné spuštění skriptu
 

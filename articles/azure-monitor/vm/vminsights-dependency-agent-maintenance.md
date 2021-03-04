@@ -1,21 +1,21 @@
 ---
-title: Postup upgradu agenta závislostí Azure Monitor pro virtuální počítače
-description: Tento článek popisuje, jak upgradovat agenta Azure Monitor pro virtuální počítače závislostí pomocí příkazového řádku, Průvodce instalací a dalších metod.
+title: Postup upgradu agenta závislostí virtuálních počítačů
+description: Tento článek popisuje, jak upgradovat agenta závislostí virtuálních počítačů pomocí příkazového řádku, Průvodce instalací a dalších metod.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612227"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722904"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Postup upgradu agenta závislostí Azure Monitor pro virtuální počítače
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>Postup upgradu agenta závislostí virtuálních počítačů
 
-Po počátečním nasazení agenta závislostí Azure Monitor pro virtuální počítače se uvolní aktualizace, které zahrnují opravy chyb nebo podporu nových funkcí nebo funkcí.  Tento článek vám pomůže pochopit dostupné metody a postup ručního provedení upgradu nebo automatizace.
+Po počátečním nasazení agenta závislostí virtuálních počítačů najdete aktualizace, které zahrnují opravy chyb nebo podporu nových funkcí nebo funkcí.  Tento článek vám pomůže pochopit dostupné metody a postup ručního provedení upgradu nebo automatizace.
 
 ## <a name="upgrade-options"></a>Možnosti upgradu 
 
@@ -70,4 +70,4 @@ Pokud se nepovede spustit agenta závislostí, podrobnější informace o chybě
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zastavit monitorování virtuálních počítačů po určitou dobu nebo Azure Monitor pro virtuální počítače zcela odebrat, přečtěte si téma [zakázání monitorování virtuálních počítačů v Azure monitor pro virtuální počítače](../vm/vminsights-optout.md).
+Pokud chcete zastavit monitorování virtuálních počítačů po určitou dobu nebo odebrat přehledy z virtuálního počítače úplně, přečtěte si téma [zakázání monitorování virtuálních počítačů v rámci služby VM Insights](../vm/vminsights-optout.md).

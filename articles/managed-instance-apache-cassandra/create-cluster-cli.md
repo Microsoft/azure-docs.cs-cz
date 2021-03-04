@@ -1,0 +1,155 @@
+---
+title: Rychlý Start – použití rozhraní příkazového řádku k vytvoření spravované instance Azure pro cluster Apache Cassandra
+description: Pomocí tohoto rychlého startu můžete vytvořit spravovanou instanci Azure pro cluster Apache Cassandra pomocí Azure CLI.
+author: TheovanKraay
+ms.author: thvankra
+ms.service: managed-instance-apache-cassandra
+ms.topic: quickstart
+ms.date: 03/02/2021
+ms.openlocfilehash: 510fcf48091266af255c15aced80651619133aab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101748477"
+---
+# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra pomocí rozhraní příkazového řádku Azure (Preview)
+
+Spravovaná instance Azure pro Apache Cassandra poskytuje automatizované operace nasazení a škálování pro spravovaná Open Source datacentra Apache Cassandra. Tato služba vám pomůže zrychlit hybridní scénáře a snížit průběžnou údržbu.
+
+> [!IMPORTANT]
+> Spravovaná instance Azure pro Apache Cassandra je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster se službou Azure Managed instance pro Apache Cassandra. Také ukazuje vytvoření datového centra a škálování uzlů v rámci datového centra nahoru nebo dolů.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+* Tento článek vyžaduje Azure CLI verze 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
+
+* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) s připojením k místnímu nebo místnímu prostředí. Další informace o připojení k místnímu prostředí do Azure najdete v článku věnovaném [připojení místní sítě k Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) .
+
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Vytvoření clusteru spravované instance
+
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+
+1. V Azure CLI nastavte své ID předplatného:
+
+   ```azurecli-interactive
+   az account set -s <Subscription_ID>
+   ```
+
+1. V dalším kroku vytvořte ve skupině prostředků Virtual Network s vyhrazenou podsítí:
+
+   ```azurecli-interactive
+   az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
+   ```
+
+1. Použijte některá zvláštní oprávnění pro Virtual Network a podsíť, které vyžaduje spravovaná instance. K tomu je potřeba získat ID prostředku pro existující Virtual Network. Spusťte následující příkaz a zkopírujte hodnotu `Resource ID` parametru:
+
+   ```azurecli-interactive
+   # get the resource ID of the Virtual Network
+   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
+
+1. Now apply the special permissions by using the `az role assignment create` command. Use the `Resource ID` parameter from the output of previous command to the `scope` parameter:
+
+   ```azurecli-interactive
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   ```
+
+   > [!NOTE]
+   > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné zásady služby a identifikátory rolí v uvedeném pořadí.
+
+1. Dále vytvořte cluster v nově vytvořené Virtual Network. Spusťte následující příkaz a ujistěte se, že jste použili `Resource ID` hodnotu získanou v předchozím příkazu jako hodnotu `delegatedManagementSubnetId` proměnné:
+
+   ```azurecli-interactive
+   resourceGroupName='<Resource_Group_Name>'
+   clusterName='<Cluster_Name>'
+   location='eastus2'
+   delegatedManagementSubnetId='<Resource_ID>'
+   initialCassandraAdminPassword='myPassword'
+    
+   az managed-cassandra cluster create \
+      --cluster-name $clusterName \
+      --resource-group $resourceGroupName \
+      --location $location \
+      --delegated-management-subnet-id $delegatedManagementSubnetId \
+      --initial-cassandra-admin-password $initialCassandraAdminPassword \
+      --debug
+   ```
+
+1. Nakonec vytvořte datacentrum pro cluster se třemi uzly:
+
+   ```azurecli-interactive
+   dataCenterName='dc1'
+   dataCenterLocation='eastus2'
+   delegatedSubnetId='<Resource_ID>'
+    
+   az managed-cassandra datacenter create \
+      --resource-group $resourceGroupName \
+      --cluster-name $clusterName \
+      --data-center-name $dataCenterName \
+      --data-center-location $dataCenterLocation \
+      --delegated-subnet-id $delegatedSubnetId \
+      --node-count 3 
+   ```
+
+1. Pokud chcete horizontální navýšení kapacity nebo horizontální navýšení kapacity uzlů v datovém centru, spusťte následující příkaz. Změňte hodnotu `node-count` parametru na požadovanou hodnotu:
+
+   ```azurecli-interactive
+   resourceGroupName='<Resource_Group_Name>'
+   clusterName='<Cluster Name>'
+   dataCenterName='dc1'
+   dataCenterLocation='eastus2'
+   delegatedSubnetId= '<Resource_ID>'
+    
+   az managed-cassandra datacenter update \
+      --resource-group $resourceGroupName \
+      --cluster-name $clusterName \
+      --data-center-name $dataCenterName \
+      --node-count 9 
+   ```
+
+## <a name="connect-to-your-cluster"></a>Připojení ke clusteru
+
+Spravovaná instance Azure pro Apache Cassandra nevytváří uzly s veřejnými IP adresami. Pokud se chcete připojit ke svému nově vytvořenému clusteru Cassandra, musíte v rámci virtuální sítě vytvořit jiný prostředek. Tímto prostředkem může být aplikace nebo virtuální počítač s nainstalovaným Open Source dotazovacím nástrojem Apache [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) . K nasazení virtuálního počítače s Ubuntu můžete použít [šablonu správce prostředků](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) . Po nasazení se k počítači připojte pomocí SSH a nainstalujte CQLSH, jak je znázorněno v následujících příkazech:
+
+```bash
+# Install default-jre and default-jdk
+sudo apt update
+sudo apt install openjdk-8-jdk openjdk-8-jre
+
+# Install the Cassandra libraries in order to get CQLSH:
+echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install cassandra
+
+# Export the SSL variables:
+export SSL_VERSION=TLSv1_2
+export SSL_VALIDATE=false
+
+# Connect to CQLSH (replace <IP> with the private IP addresses of the nodes in your Datacenter):
+host=("<IP>" "<IP>" "<IP>")
+cqlsh $host 9042 -u cassandra -p cassandra --ssl
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, můžete `az group delete` k odebrání skupiny prostředků, spravované instance a všech souvisejících prostředků použít příkaz:
+
+```azurecli-interactive
+az group delete --name <Resource_Group_Name>
+```
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto rychlém startu jste zjistili, jak vytvořit spravovanou instanci Azure pro cluster Apache Cassandra pomocí Azure CLI. Teď můžete začít pracovat s clusterem:
+
+> [!div class="nextstepaction"]
+> [Nasazení clusteru spravovaného Apache Spark s využitím Azure Databricks](deploy-cluster-databricks.md)

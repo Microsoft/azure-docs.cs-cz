@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710868"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenční příručka na části vizualizace návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek představuje referenční příručku k nastavením pro části vizualizace, které jsou k dispozici ve vlastních zobrazeních.
@@ -24,7 +24,7 @@ Další informace o návrháři zobrazení najdete v těchto tématech:
 
 Dostupné typy dlaždic návrháře zobrazení jsou popsány v následující tabulce:
 
-| Typ zobrazení | Description |
+| Typ zobrazení | Popis |
 |:--- |:--- |
 | [Seznam dotazů](#list-of-queries-part) |Zobrazí seznam dotazů protokolu. Můžete vybrat každý dotaz a zobrazit jeho výsledky. |
 | [Číslo a seznam](#number-and-list-part) |V záhlaví se zobrazí jedno číslo, které zobrazuje počet záznamů z dotazu protokolu. V seznamu se zobrazí prvních deset výsledků dotazu s grafem, který označuje relativní hodnotu číselného sloupce nebo jeho změny v čase. |
@@ -39,7 +39,7 @@ Dostupné typy dlaždic návrháře zobrazení jsou popsány v následující ta
 V dalších oddílech jsou podrobně popsány typy dlaždic a jejich vlastnosti.
 
 > [!NOTE]
-> Části v zobrazeních jsou založené na [dotazech protokolu](../log-query/log-query-overview.md) v pracovním prostoru Log Analytics. V současné době nepodporují [dotazy na více zdrojů](../log-query/cross-workspace-query.md) k načtení dat z Application Insights.
+> Části v zobrazeních jsou založené na [dotazech protokolu](../logs/log-query-overview.md) v pracovním prostoru Log Analytics. V současné době nepodporují [dotazy na více zdrojů](../logs/cross-workspace-query.md) k načtení dat z Application Insights.
 
 ## <a name="list-of-queries-part"></a>Seznam částí dotazů
 Část Seznam dotazů zobrazuje seznam dotazů protokolu. Můžete vybrat každý dotaz a zobrazit jeho výsledky. Zobrazení obsahuje jeden dotaz ve výchozím nastavení a můžete vybrat **+ dotaz** pro přidání dalších dotazů.
@@ -81,7 +81,7 @@ V záhlaví se zobrazí jedno číslo, které zobrazuje počet záznamů z dotaz
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -112,7 +112,7 @@ Záhlaví obsahuje dvě čísla, která zobrazují počet záznamů ze samostatn
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -153,7 +153,7 @@ Záhlaví zobrazí jedno číslo, které shrnuje sloupec value v dotazu protokol
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -185,7 +185,7 @@ Záhlaví zobrazuje výsledky dvou dotazů protokolu v průběhu času jako slou
 | Operace |Operace, která má být provedena pro minigraf. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -246,7 +246,7 @@ V záhlaví se zobrazuje spojnicový graf s více řadami z dotazu protokolu v p
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -282,7 +282,7 @@ Záhlaví zobrazí spojnicový graf s více řadami z dotazu protokolu v průbě
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Name |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |**Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -318,7 +318,7 @@ Oddělovač názvu a hodnoty je oddělovač s jedním znakem, který slouží k 
 Představte si například vlastnost *umístění* , která zahrnuje hodnoty, jako je například *Redmond-Building 41* a *Bellevue-budova 12*. Pro název můžete zadat spojovník (-) pro oddělovač názvů a hodnot a *sestavení měst* . Tento přístup analyzuje každou hodnotu do dvou vlastností označovaných jako *město* a *budova*.
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Navigace kliknutím
-Navigace kliknutím definuje akci, která se provede při kliknutí na záhlaví nebo položku seznamu v zobrazení.  Otevře se dotaz ve [Log Analytics](../log-query/log-query-overview.md) nebo spustí jiné zobrazení.
+Navigace kliknutím definuje akci, která se provede při kliknutí na záhlaví nebo položku seznamu v zobrazení.  Otevře se dotaz ve [Log Analytics](../logs/log-query-overview.md) nebo spustí jiné zobrazení.
 
 Následující tabulka popisuje nastavení pro navigaci kliknutím.
 
@@ -352,9 +352,9 @@ Následující tabulka popisuje nastavení prahových hodnot:
 | Nastavení | Popis |
 |:--- |:--- |
 | Povolit prahové hodnoty |Kliknutím na tento odkaz zobrazíte ikonu barvy vlevo od každé hodnoty. Ikona určuje stav hodnoty relativní vzhledem k určeným prahovým hodnotám. |
-| Name |Název prahové hodnoty. |
+| Název |Název prahové hodnoty. |
 | Prahová hodnota |Hodnota prahové hodnoty. Barva stavu každé položky seznamu je nastavena na barvu nejvyšší prahové hodnoty, která je překročena hodnotou položky. Pokud nejsou překročeny žádné prahové hodnoty, použije se výchozí barva. |
 | Barva |Barva, která označuje prahovou hodnotu. |
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md) pro podporu dotazů v částech vizualizace.
+* Přečtěte si o [dotazech protokolu](../logs/log-query-overview.md) pro podporu dotazů v částech vizualizace.

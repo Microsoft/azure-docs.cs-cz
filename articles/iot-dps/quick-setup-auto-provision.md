@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd521e9798b09f7930b43ab95c7cd7ef9e693d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91297228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737915"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service s využitím Azure Portal
 
@@ -25,11 +25,12 @@ V tomto rychlém startu se dozvíte, jak nastavit IoT Hub Device Provisioning Se
 * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
 * Propojení centra IoT se službou Device Provisioning
 
+## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Abyste mohli začít s tímto článkem, budete potřebovat předplatné Azure. Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), pokud jste to ještě neudělali.
 
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -38,7 +39,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 1. Znovu vyberte tlačítko **+ vytvořit prostředek** .
 
-2. Vyhledejte **službu Device Provisioning**na *webu Marketplace* . Vyberte **IoT Hub Device Provisioning Service** a stiskněte tlačítko **vytvořit** . 
+2. Vyhledejte **službu Device Provisioning** na *webu Marketplace* . Vyberte **IoT Hub Device Provisioning Service** a stiskněte tlačítko **vytvořit** . 
 
 3. Zadejte následující informace pro novou instanci služby Device Provisioning a stiskněte **vytvořit**.
 
@@ -49,7 +50,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
       ![Zadejte základní informace o instanci služby Device Provisioning v okně portálu.](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Výběrem tlačítka oznámení můžete monitorovat vytvoření instance prostředku. Po úspěšném nasazení služby vyberte **Připnout na řídicí panel**a pak **Přejít k prostředku**.
+4. Výběrem tlačítka oznámení můžete monitorovat vytvoření instance prostředku. Po úspěšném nasazení služby vyberte **Připnout na řídicí panel** a pak **Přejít k prostředku**.
 
     ![Monitorování oznámení nasazení](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 

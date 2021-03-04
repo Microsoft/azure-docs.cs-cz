@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714727"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Analýza úložiště Azure metriky (klasické)
 
@@ -25,7 +25,7 @@ Azure Storage používá řešení Analýza úložiště k ukládání metrik, k
 - Diagnostikujte problémy s požadavky provedenými u služby úložiště.
 - Zvyšte výkon aplikací, které používají službu.
 
- Pro nové účty úložiště jsou ve výchozím nastavení povolené metriky Analýza úložiště. Metriky můžete nakonfigurovat v [Azure Portal](https://portal.azure.com/), pomocí PowerShellu nebo pomocí Azure CLI. Podrobné pokyny najdete v tématu [povolení a správa Azure Storagech analytických metrik (Classic)](./storage-monitor-storage-account.md). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. K povolení Analýza úložiště pro každou službu použijte operace set Service Properties.  
+ Pro nové účty úložiště jsou ve výchozím nastavení povolené metriky Analýza úložiště. Metriky můžete nakonfigurovat v [Azure Portal](https://portal.azure.com/), pomocí PowerShellu nebo pomocí Azure CLI. Podrobné pokyny najdete v tématu [povolení a správa Azure Storagech analytických metrik (Classic)](./manage-storage-analytics-logs.md). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. K povolení Analýza úložiště pro každou službu použijte operace set Service Properties.  
 
 > [!NOTE]
 > K dispozici jsou Analýza úložiště metriky pro Azure Blob Storage, Azure Queue Storage, Azure Table Storage a Azure Files.
@@ -69,7 +69,7 @@ Azure Storage používá řešení Analýza úložiště k ukládání metrik, k
  Tyto tabulky se automaticky vytvoří, když je povolený Analýza úložiště pro koncový bod služby úložiště. Jsou k nim přistupované prostřednictvím oboru názvů účtu úložiště, například `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")` . Tabulky metrik se nezobrazují v operaci výpisu a musí být dostupné přímo prostřednictvím názvu tabulky.
 
 ## <a name="metrics-alerts"></a>Výstrahy metrik
-Zvažte nastavení výstrah v [Azure Portal](https://portal.azure.com) , takže budete automaticky upozorňováni na důležité změny v chování vašich služeb úložiště. Podrobné pokyny najdete v tématu [vytváření výstrah metrik](storage-monitor-storage-account.md#create-metric-alerts).
+Zvažte nastavení výstrah v [Azure Portal](https://portal.azure.com) , takže budete automaticky upozorňováni na důležité změny v chování vašich služeb úložiště. Podrobné pokyny najdete v tématu [vytváření výstrah metrik](./manage-storage-analytics-logs.md).
 
 Použijete-li nástroj Průzkumník služby Storage ke stažení těchto dat metrik ve formátu s oddělovači, můžete data analyzovat pomocí aplikace Microsoft Excel. Seznam dostupných Průzkumník služby Storage nástrojů najdete v tématu [Azure Storage klientských nástrojů](./storage-explorers.md).
 

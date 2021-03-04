@@ -55,7 +55,7 @@
             - name: Konfigurace Azure Monitoru pro kontejnery pro ARO 4 (Preview)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Zákaz Azure Monitoru pro kontejnery v ARO 4 (Preview)
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Vývoj a spouštění aplikací
       items:
         - name: Nasazení aplikace Open Liberty / WebSphere Liberty
@@ -80,10 +80,10 @@
             - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
               items:
                 - name: Konfigurace Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Spouštění privilegovaných kontejnerů v Azure Red Hat OpenShiftu 3.11
           href: howto-run-privileged-containers.md

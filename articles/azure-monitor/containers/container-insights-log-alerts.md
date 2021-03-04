@@ -1,18 +1,18 @@
 ---
-title: Protokolování výstrah z Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
+title: Protokolovat výstrahy ze služby Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu pro paměť a využití procesoru ze služby Container Insights.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609495"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711191"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Vytváření upozornění protokolu ve službě Azure Monitor pro kontejnery
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Jak vytvořit výstrahy protokolu z kontejneru Insights
 
-Azure Monitor pro kontejnery monitorují výkon úloh kontejneru, které jsou nasazeny na spravované nebo samostatné clustery Kubernetes. V tomto článku se dozvíte, jak vytvořit výstrahy založené na protokolech v následujících situacích s clustery AKS:
+Container Insights monitoruje výkon kontejnerů, které se nasazují na spravované nebo samostatné clustery Kubernetes. V tomto článku se dozvíte, jak vytvořit výstrahy založené na protokolech v následujících situacích s clustery AKS:
 
 - Pokud využití procesoru nebo paměti na uzlech clusteru překročí prahovou hodnotu
 - Pokud využití procesoru nebo paměti na jakémkoli kontejneru v rámci kontroleru překročí prahovou hodnotu v porovnání s limitem nastaveným na odpovídajícím prostředku
@@ -20,9 +20,9 @@ Azure Monitor pro kontejnery monitorují výkon úloh kontejneru, které jsou na
 - Počet *neúspěšných*, *nevyřízených*, *neznámých*, *spuštěných* nebo *úspěšných* fází pod sebou
 - Pokud volné místo na disku na uzlech clusteru překročí prahovou hodnotu
 
-Pokud chcete upozornit na vysoké využití procesoru nebo paměti nebo je málo volného místa na disku v uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření výstrahy metriky nebo upozornění na měření metriky. I když výstrahy metrik mají nižší latenci než výstrahy protokolu, výstrahy protokolu poskytují pokročilé dotazy a větší sofistikovanější. Dotazy na výstrahy protokolu porovnávají hodnotu DateTime s použitím operátoru *Now* a vrátí jednu hodinu. (Azure Monitor pro kontejnery ukládají všechna data ve formátu koordinovaného světového času (UTC).)
+Pokud chcete upozornit na vysoké využití procesoru nebo paměti nebo je málo volného místa na disku v uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření výstrahy metriky nebo upozornění na měření metriky. I když výstrahy metrik mají nižší latenci než výstrahy protokolu, výstrahy protokolu poskytují pokročilé dotazy a větší sofistikovanější. Dotazy na výstrahy protokolu porovnávají hodnotu DateTime s použitím operátoru *Now* a vrátí jednu hodinu. (V kontejneru Insights se uchovávají všechna data ve formátu koordinovaného světového času (UTC).)
 
-Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před tím, než začnete. Další informace o výstrahách, které používají dotazy protokolu, najdete [v tématu protokolování výstrah v Azure monitor](../alerts/alerts-unified-log.md). Další informace o upozorněních metrik najdete [v tématu výstrahy metrik v Azure monitor](../alerts/alerts-metric-overview.md).
+Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../alerts/alerts-overview.md) před tím, než začnete. Další informace o výstrahách, které používají dotazy protokolu, najdete [v tématu protokolování výstrah v Azure monitor](../alerts/alerts-unified-log.md). Další informace o upozorněních metrik najdete [v tématu výstrahy metrik v Azure monitor](../alerts/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Dotazy na hledání protokolu využití prostředků
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
-Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu z Azure Monitor pro kontejnery. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu. Použijte jeden z vyhledávacích dotazů protokolu, které jsou k dispozici dříve, a začněte s. Informace o vytvoření pomocí šablony ARM najdete v tématu [ukázky vytvoření upozornění protokolu pomocí šablony prostředků Azure](../alerts/alerts-log-create-templates.md).
+Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu ze služby Container Insights. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu. Použijte jeden z vyhledávacích dotazů protokolu, které jsou k dispozici dříve, a začněte s. Informace o vytvoření pomocí šablony ARM najdete v tématu [ukázky vytvoření upozornění protokolu pomocí šablony prostředků Azure](../alerts/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../alerts/alerts-log-api-switch.md).
@@ -283,7 +283,7 @@ Tato část vás provede vytvořením pravidla výstrahy měření metriky pomoc
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
-3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
+3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující službu Container Insights. 
 4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů protokolu Azure.
 5. Na stránce **protokoly** vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které jste zadali dříve do pole **vyhledávací dotaz** , a pak výběrem **příkazu Spustit** Ověřte výsledky. Pokud tento krok neprovedete, možnost **+ nová výstraha** není dostupná k výběru.
 6. Vyberte **+ nová výstraha** a vytvořte výstrahu protokolu.

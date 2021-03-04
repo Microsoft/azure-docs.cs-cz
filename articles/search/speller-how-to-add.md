@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679393"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694797"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Přidat kontrolu pravopisu do dotazů v Kognitivní hledání
 
@@ -36,7 +36,7 @@ Odvolání můžete vylepšit tak, že před dosažením vyhledávacího modulu 
   QueryLanguage se vyžaduje pro kontrolu pravopisu a aktuálně "en-US" je jediná platná hodnota.
 
 > [!Note]
-> Parametr pro kontrolu pravopisu je k dispozici na všech úrovních ve stejných oblastech, které poskytují sémantické vyhledávání. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Parametr pro kontrolu pravopisu je k dispozici na všech úrovních ve stejných oblastech, které poskytují sémantické vyhledávání. Pro přístup k této funkci verze Preview se nemusíte registrovat. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
 ## <a name="spell-correction-with-simple-search"></a>Snadné hledání oprav pravopisu
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>Jazykové požadavky
 
-Parametr queryLanguage vyžadovaný pro kontrolu pravopisu musí být konzistentní s případnými [analyzátory jazyka](index-add-language-analyzers.md) přiřazenými k definicím polí ve schématu indexu. V požadavku na dotaz určuje queryLanguage, které lexikony se používají pro kontrolu pravopisu, a používá se také jako vstup do [algoritmu sémantického hodnocení](semantic-how-to-query-response.md) , pokud ho používáte. Analyzátory jazyka se používají při indexování a při načítání vyhovujících dokumentů v indexu vyhledávání. Aby byla konzistentní, pokud queryLanguage je "en-US", musí být všechny analyzátory jazyka také anglické variantou ("en. Microsoft" nebo "en. Lucene"). 
+Parametr queryLanguage vyžadovaný pro kontrolu pravopisu musí být konzistentní s případnými [analyzátory jazyka](index-add-language-analyzers.md) přiřazenými k definicím polí ve schématu indexu. 
+
++ queryLanguage určuje, které lexikony se používají pro kontrolu pravopisu, a používá se také jako vstup do [algoritmu sémantického hodnocení](semantic-how-to-query-response.md) , pokud používáte "queryType = sémantické".
+
++ Analyzátory jazyka se používají během indexování a provádění dotazů k nalezení vyhovujících dokumentů v indexu vyhledávání. Příkladem definice pole, která používá analyzátor jazyka, je `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` .
+
+Pro dosažení nejlepších výsledků při použití nástroje pro kontrolu pravopisu, pokud je queryLanguage "en-US", musí být všechny analyzátory jazyka také anglické variantou ("en. Microsoft" nebo "en. Lucene").
 
 > [!NOTE]
 > Analyzátory jazyka nezávislá (například klíčové slovo, Simple, Standard, stop, prázdné znaky nebo `standardasciifolding.lucene` ) nejsou v konfliktu s nastavením queryLanguage.

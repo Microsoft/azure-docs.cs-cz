@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707570"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitoru
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
@@ -138,7 +138,7 @@ K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhran
 - Dotazy jsou omezené na velikost odpovědi na 8MB a čas provedení dotazu 110 sekund.
 
 ## <a name="next-steps"></a>Další kroky
-- Seznamte se s [daty shromažďovanými nástrojem Azure monitor](/data-platform.md).
+- Seznamte se s [daty shromažďovanými nástrojem Azure monitor](data-platform.md).
 - Přečtěte si o [řídicích panelech Azure](../azure-portal/azure-portal-dashboards.md).
 - Informace o [Průzkumník metrik](essentials/metrics-getting-started.md)
 - Seznamte se se [sešity](./visualize/workbooks-overview.md).

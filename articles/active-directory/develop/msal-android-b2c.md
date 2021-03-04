@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si o konkrétních otázkách při použití Azure AD B2C s knihovnou Microsoft Authentication Library pro Android (MSAL. Svém
 services: active-directory
-author: brianmel
+author: iambmelt
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,19 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 902159153bccbea851481e1f81d03e8e70495020
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688871"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
 
 Knihovna Microsoft Authentication Library (MSAL) umožňuje vývojářům aplikací ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml). Azure AD B2C je služba správy identit. Použijte ho k přizpůsobení a řízení, jak se zákazníci při používání vašich aplikací přihlásí, přihlásí a spravují své profily.
+
+## <a name="choosing-a-compatible-authorization_user_agent"></a>Výběr kompatibilního authorization_user_agent
+Systém správy identit B2C podporuje ověřování s několika poskytovateli účtů sociálních sítí, jako jsou Google, Facebook, Twitter a Amazon. Pokud máte v úmyslu podporovat takové typy účtů v aplikaci, doporučuje se nakonfigurovat MSAL veřejné klientské aplikace tak, aby při určování manifestu používaly buď hodnotu nebo, a to `DEFAULT` `BROWSER` [`authorization_user_agent`](msal-configuration.md#authorization_user_agent) kvůli omezením, které zakazují použití ověřování založeného na WebView u některých externích zprostředkovatelů identity.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Konfigurace známých autorit a identifikátor URI pro přesměrování
 
@@ -45,6 +48,7 @@ Konfigurační soubor aplikace by byl deklarován dvakrát `authorities` . Jednu
   "client_id": "<your_client_id_here>",
   "redirect_uri": "<your_redirect_uri_here>",
   "account_mode" : "MULTIPLE",
+  "authorization_user_agent" : "DEFAULT",
   "authorities": [
     {
       "type": "B2C",

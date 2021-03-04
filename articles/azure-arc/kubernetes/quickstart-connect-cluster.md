@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/24/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, oblouk, Azure, cluster
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689245"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Rychlý Start: připojení existujícího clusteru Kubernetes ke službě Azure ARC 
 
@@ -25,7 +25,7 @@ V tomto rychlém startu budeme těžit výhody Kubernetes s podporou ARC Azure a
 
 * Ověřte, že máte následující:
     * Spuštěný cluster Kubernetes.
-    * `kubeconfig`Soubor.
+    * `kubeconfig`Soubor ukazující na cluster, který chcete připojit ke službě Azure ARC.
     * Oprávnění číst a zapsat pro uživatele nebo instanční objekt, který se připojuje k vytvoření typu prostředku Kubernetes s povoleným ARC Azure `Microsoft.Kubernetes/connectedClusters` .
 * Nainstalujte [nejnovější verzi Helm 3](https://helm.sh/docs/intro/install).
 * Nainstalujte následující Kubernetes rozšíření CLI s povoleným rozšířením Azure ARC verze >= 1.0.0:
@@ -68,16 +68,6 @@ V tomto rychlém startu budeme těžit výhody Kubernetes s podporou ARC Azure a
 | `https://login.microsoftonline.com`                                                                            | Vyžaduje se pro načtení a aktualizaci tokenů Azure Resource Manager.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Vyžaduje se pro získání imagí kontejneru pro agenty Azure ARC.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Požadováno pro vyžádání certifikátů s přiřazenými systémy Identita spravované služby (MSI).                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>Instalace rozšíření rozhraní příkazového řádku s povoleným Kubernetesem Azure ARC
-
-Zadejte následující příkazy:  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registrace dvou poskytovatelů pro Kubernetes s povoleným ARC Azure
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> Výše uvedený příkaz bez zadaného parametru Location vytvoří prostředek Kubernetes s povolenou službou Azure ARC ve stejném umístění jako skupina prostředků. Pokud chcete vytvořit prostředek Kubernetes s povolenou službou Azure ARC v jiném umístění, zadejte buď `--location <region>` nebo `-l <region>` při spuštění `az connectedk8s connect` příkazu.
 
 ## <a name="verify-cluster-connection"></a>Ověřit připojení clusteru
 

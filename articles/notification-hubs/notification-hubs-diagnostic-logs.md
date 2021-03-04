@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736232"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Povolit protokoly diagnostiky pro Notification Hubs
 
@@ -28,7 +28,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON) 
 
 Řetězce JSON pro diagnostické protokoly obsahují prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ------- | ------- |
 | time | Časové razítko UTC protokolu |
 | resourceId | Relativní cesta k prostředku Azure |
@@ -141,8 +141,7 @@ Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o konfiguraci nastavení diagnostiky najdete v těchto tématech:
-* [Přehled protokolů diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md)
+* [Přehled protokolů diagnostiky Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 Další informace o službě Azure Notification Hubs najdete v těchto tématech:
 * [Co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
-

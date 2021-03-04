@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 6d71d9889701ec834747e4bec1dd111157c3206e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694610"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Povolení funkcí synapse pracovního prostoru v existujícím vyhrazeném fondu SQL (dřív SQL DW)
 
@@ -32,7 +32,7 @@ Následující informace budou platit při používání vyhrazené databáze SQ
 - **Schopnosti SQL** Až bude funkce pracovního prostoru synapse povolená, všechny možnosti SQL zůstanou v logickém SQL serveru. Přístup k serveru přes poskytovatele prostředků SQL bude i nadále možné po povolení pracovního prostoru. Všechny funkce správy lze iniciovat prostřednictvím pracovního prostoru a operace bude provedena na logickém SQL Server hostujících vaše fondy SQL. Pokud je pracovní prostor povolený, žádné existující automatizace, nástroje nebo připojení se nepřerušily nebo přeruší.  
 - **Přesunout prostředek**  Při zahájení přesunu prostředků na serveru s povolenou funkcí pracovní prostor synapse dojde k přerušení propojení mezi serverem a pracovním prostorem a nebudete už mít přístup k existujícím vyhrazeným instancím fondu SQL (dříve SQL DW) z pracovního prostoru. Aby se zajistilo, že se připojení zachová, doporučuje se, aby oba prostředky zůstaly v rámci stejného předplatného a skupiny prostředků. 
 - **Monitorování** Žádosti SQL odeslané prostřednictvím synapse studia v pracovním prostoru vyhrazeného fondu SQL (dříve SQL DW) se dají zobrazit v centru monitorování. Pro všechny ostatní monitorovací aktivity můžete přejít na Azure Portal vyhrazeného fondu SQL (dříve SQL DW). 
-- Řízení **zabezpečení** a **přístupu** jak je uvedeno výše, všechny funkce správy pro SQL Server a vyhrazené fondy SQL (dříve SQL DW) se budou i nadále nacházet na logickém SQL serveru. Mezi tyto funkce patří Správa pravidel brány firewall, nastavení správce Azure AD serveru a veškeré řízení přístupu k datům ve vyhrazeném fondu SQL (dřív SQL DW). Aby bylo zajištěno, že vyhrazený fond SQL (dříve SQL DW) je dostupný a dá se použít v pracovním prostoru synapse, je potřeba provést následující kroky. Členství v rolích pracovního prostoru neuděluje uživatelům oprávnění k datům ve vyhrazených instancích fondu SQL (dříve SQL DW). Použijte normální zásady [ověřování SQL](sql-data-warehouse-authentication.md) , abyste měli jistotu, že uživatelé mají přístup k vyhrazeným instancím fondu SQL (dříve SQL DW) na logickém serveru. Pokud má vyhrazený server hostitele SQL (dřív SQL DW) přiřazenou spravovanou identitu, bude název této spravované identity stejný jako název spravované identity v pracovním prostoru, který se automaticky vytvoří, aby podporoval partnerské služby pracovního prostoru (např. kanály ADF).  V připojeném scénáři můžou existovat dvě spravované identity se stejným názvem. Spravované identity je možné odlišit svými ID objektů Azure AD, funkce k vytváření uživatelů SQL pomocí ID objektů se připravují.
+- Řízení **zabezpečení** a **přístupu** jak je uvedeno výše, všechny funkce správy pro SQL Server a vyhrazené fondy SQL (dříve SQL DW) se budou i nadále nacházet na logickém SQL serveru. Mezi tyto funkce patří Správa pravidel brány firewall, nastavení správce Azure AD serveru a veškeré řízení přístupu k datům ve vyhrazeném fondu SQL (dřív SQL DW). Aby bylo zajištěno, že vyhrazený fond SQL (dříve SQL DW) je dostupný a dá se použít v pracovním prostoru synapse, je potřeba provést následující kroky. Členství v rolích pracovního prostoru neuděluje uživatelům oprávnění k datům ve vyhrazených instancích fondu SQL (dříve SQL DW). Použijte normální zásady [ověřování SQL](sql-data-warehouse-authentication.md) , abyste měli jistotu, že uživatelé mají přístup k vyhrazeným instancím fondu SQL (dříve SQL DW) na logickém serveru. Pokud má vyhrazený server hostitele SQL (dřív SQL DW) přiřazenou spravovanou identitu, bude název této spravované identity stejný jako název spravované identity v pracovním prostoru, který se automaticky vytvoří, aby podporoval partnerské služby pracovního prostoru (např. kanály ADF).  V připojeném scénáři můžou existovat dvě spravované identity se stejným názvem. Spravované identity je možné odlišit pomocí jejich ID objektů Azure AD, funkce k vytváření uživatelů SQL pomocí ID objektů budou brzy dostupné.
 
     ```sql
     CREATE USER [<workspace managed identity] FROM EXTERNAL PROVIDER 

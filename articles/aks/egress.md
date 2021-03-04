@@ -5,12 +5,12 @@ description: Naučte se vytvářet a používat statickou veřejnou IP adresu pr
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563241"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726542"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy se *základní* službou pro vyrovnávání zatížení ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ V tomto článku se předpokládá, že používáte Azure Basic Load Balancer. 
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 > [!IMPORTANT]
 > Tento článek používá nástroj pro vyrovnávání zatížení *Basic* SKU s jedním fondem uzlů. Tato konfigurace není k dispozici pro více fondů uzlů, protože nástroj pro vyrovnávání zatížení *Basic* SKU není u více fondů uzlů podporován. Další informace o používání nástroje pro vyrovnávání zatížení *Standard* SKU najdete v tématu [použití veřejné Standard Load Balancer ve službě Azure KUBERNETES Service (AKS)][slb] .
@@ -33,7 +33,7 @@ Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 Odchozí provoz z clusteru AKS se řídí [konvencemi Azure Load Balancer][outbound-connections]. Před vytvořením první služby Kubernetes typu `LoadBalancer` nebude uzel agenta v clusteru AKS součástí žádného fondu Azure Load Balancer. V této konfiguraci uzly nemají veřejnou IP adresu na úrovni instance. Azure překládá odchozí tok do veřejné zdrojové IP adresy, která není konfigurovatelná ani deterministické.
 
-Jakmile se vytvoří služba Kubernetes typu `LoadBalancer` , přidají se uzly agentů do fondu Azure Load Balancer. V případě odchozího toku Azure převede na první veřejnou IP adresu konfigurovanou v nástroji pro vyrovnávání zatížení. Tato veřejná IP adresa je platná jenom pro životnost tohoto prostředku. Odstraníte-li službu Kubernetes vyrovnávání zatížení sítě, bude odstraněna také přidružená služba Vyrovnávání zatížení a IP adresa. Pokud chcete přiřadit konkrétní IP adresu nebo ponechat IP adresu pro znovu nasazené služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
+Jakmile se vytvoří služba Kubernetes typu `LoadBalancer` , přidají se uzly agentů do fondu Azure Load Balancer. Load Balancer Basic zvolí jeden front-end, který se má použít pro odchozí toky, pokud jsou kandidáti na odchozí toky více (veřejných) front-endu IP. Tento výběr není možné konfigurovat a měli byste zvážit, že je algoritmus výběru náhodný. Tato veřejná IP adresa je platná jenom pro životnost tohoto prostředku. Odstraníte-li službu Kubernetes vyrovnávání zatížení sítě, bude odstraněna také přidružená služba Vyrovnávání zatížení a IP adresa. Pokud chcete přiřadit konkrétní IP adresu nebo ponechat IP adresu pro znovu nasazené služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
 
 ## <a name="create-a-static-public-ip"></a>Vytvoření statické veřejné IP adresy
 

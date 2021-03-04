@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650741"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739432"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>Vytváření tokenů SAS pro překlad dokumentu
 
@@ -21,8 +21,8 @@ V tomto článku se dozvíte, jak vytvořit tokeny sdíleného přístupového p
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Budete potřebovat aplikaci [**Průzkumník služby Azure Storage**](/azure/vs-azure-tools-storage-manage-with-storage-explorer) nainstalovanou ve vývojovém prostředí Windows, MacOS nebo Linux. Průzkumník služby Azure Storage je bezplatný nástroj, který umožňuje snadnou správu prostředků cloudového úložiště Azure.
-* Po instalaci aplikace Průzkumník služby Azure Storage [připojte ji k účtu úložiště](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#connect-to-a-storage-account-or-service) , který používáte pro překlad dokumentu.
+* Budete potřebovat aplikaci [**Průzkumník služby Azure Storage**](../../../vs-azure-tools-storage-manage-with-storage-explorer.md) nainstalovanou ve vývojovém prostředí Windows, MacOS nebo Linux. Průzkumník služby Azure Storage je bezplatný nástroj, který umožňuje snadnou správu prostředků cloudového úložiště Azure.
+* Po instalaci aplikace Průzkumník služby Azure Storage [připojte ji k účtu úložiště](../../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#connect-to-a-storage-account-or-service) , který používáte pro překlad dokumentu.
 
 ### <a name="create-your-tokens"></a>Vytvoření tokenů
 
@@ -65,7 +65,7 @@ V tomto článku se dozvíte, jak vytvořit tokeny sdíleného přístupového p
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Vytváření tokenů SAS pro objekty BLOB v Azure Portal
 
 > [!NOTE]
-> Vytváření tokenů SAS pro kontejnery přímo v Azure Portal není aktuálně podporováno. Můžete ale vytvořit token SAS pomocí [**Průzkumník služby Azure Storage**](#create-sas-tokens-with-azure-storage-explorer) nebo dokončit úlohu [programově](/azure/storage/blobs/sas-service-create).
+> Vytváření tokenů SAS pro kontejnery přímo v Azure Portal není aktuálně podporováno. Můžete ale vytvořit token SAS pomocí [**Průzkumník služby Azure Storage**](#create-sas-tokens-with-azure-storage-explorer) nebo dokončit úlohu [programově](../../../storage/blobs/sas-service-create.md).
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Požadavky
@@ -104,7 +104,7 @@ Přejděte na [Azure Portal](https://ms.portal.azure.com/#home) a přejděte ná
 
 ## <a name="learn-more"></a>Další informace
 
-* [Vytváření tokenů SAS pro objekty blob nebo kontejnery prostřednictvím kódu programu](/azure/storage/blobs/sas-service-create)
+* [Vytváření tokenů SAS pro objekty blob nebo kontejnery prostřednictvím kódu programu](../../../storage/blobs/sas-service-create.md)
 * [Oprávnění pro adresář, kontejner nebo objekt BLOB](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)
 
 ## <a name="next-steps"></a>Další kroky

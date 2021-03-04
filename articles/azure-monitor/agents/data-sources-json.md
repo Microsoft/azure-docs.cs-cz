@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 4d4e868a181c216c29eeb5772b3e4c6108f514b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cd216e277a64d6e3edc87dc4027550bc8c7c5bfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726236"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďování vlastních zdrojů dat JSON pomocí agenta Log Analytics pro Linux v Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Vlastní zdroje dat JSON můžete shromažďovat do [Azure monitor](../platform/data-platform.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat můžou být jednoduché skripty vracející JSON, jako je například [kudrlinkou](https://curl.haxx.se/) , nebo jeden z nich má více než [300 modulů plug-in](https://www.fluentd.org/plugins/all). Tento článek popisuje konfiguraci nutnou pro tuto kolekci dat.
+Vlastní zdroje dat JSON můžete shromažďovat do [Azure monitor](../data-platform.md) pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat můžou být jednoduché skripty vracející JSON, jako je například [kudrlinkou](https://curl.haxx.se/) , nebo jeden z nich má více než [300 modulů plug-in](https://www.fluentd.org/plugins/all). Tento článek popisuje konfiguraci nutnou pro tuto kolekci dat.
 
 
 > [!NOTE]
@@ -104,4 +104,4 @@ Vnořené zdroje dat JSON jsou podporovány, ale jsou indexované na základě n
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

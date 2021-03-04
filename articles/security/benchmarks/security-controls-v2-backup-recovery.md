@@ -4,19 +4,21 @@ description: Zálohování a obnovení Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368881"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724417"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Řízení zabezpečení v2: zálohování a obnovení
 
 Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb.
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě Azure Security test dodržování předpisů: zálohování a obnovení.](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: zajištění pravidelného automatizovaného zálohování
 
@@ -26,9 +28,9 @@ Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se b
 
 Ujistěte se, že zálohujete systémy a data a udržujete provozní kontinuitu po neočekávané události. To by mělo být definováno všemi cíli pro cíl bodu obnovení (RPO) a plánovaný čas obnovení (RTO).
 
-Povolte Azure Backup a nakonfigurujte zdroj zálohy (například virtuální počítače Azure, SQL Server, databáze HANA nebo sdílené složky) a také požadovanou frekvenci a dobu uchování.  
+Povolte Azure Backup a nakonfigurujte zdroj zálohy (například virtuální počítače Azure, SQL Server, databáze HANA nebo sdílené složky) a také požadovanou frekvenci a dobu uchování.
 
-V případě vyšší úrovně ochrany můžete povolit geograficky redundantní možnosti úložiště pro replikaci zálohovaných dat do sekundární oblasti a obnovení pomocí obnovení mezi oblastmi.
+V případě vyšší úrovně ochrany můžete povolit možnost geograficky redundantního úložiště pro replikaci zálohovaných dat do sekundární oblasti a obnovení pomocí obnovení mezi oblastmi.
 
 - [Provozní kontinuita a zotavení po havárii na podnikové úrovni](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
@@ -54,15 +56,15 @@ V případě vyšší úrovně ochrany můžete povolit geograficky redundantní
 |--|--|--|--|
 | BR – 2 | 10,2 | CP-9 |
 
-Zajistěte, aby byly zálohy chráněny proti útokům. To by mělo zahrnovat šifrování záloh v zájmu ochrany před ztrátou důvěrných informací.   
+Zajistěte, aby byly zálohy chráněny proti útokům. To by mělo zahrnovat šifrování záloh v zájmu ochrany před ztrátou důvěrných informací.
 
-U místních záloh pomocí Azure Backup je k dispozici šifrování v klidovém formátu pomocí hesla, které zadáte. Pro pravidelné zálohování služeb Azure se zálohovaná data automaticky šifrují pomocí klíčů spravovaných platformou Azure. Zálohy můžete šifrovat pomocí spravovaného klíče zákazníka. V takovém případě zajistěte, aby byl tento klíč spravovaný zákazníkem v trezoru klíčů také v oboru zálohování. 
+U místních záloh pomocí Azure Backup je k dispozici šifrování v klidovém formátu pomocí hesla, které zadáte. Pro pravidelné zálohování služeb Azure se zálohovaná data automaticky šifrují pomocí klíčů spravovaných platformou Azure. Zálohy můžete šifrovat pomocí spravovaného klíče zákazníka. V takovém případě zajistěte, aby byl tento klíč spravovaný zákazníkem v trezoru klíčů také v oboru zálohování.
 
 Pomocí řízení přístupu na základě role Azure v Azure Backup, Azure Key Vault nebo jiných prostředcích můžete chránit zálohy a spravované klíče zákazníka. Kromě toho můžete povolit pokročilé funkce zabezpečení, které budou vyžadovat vícefaktorové ověřování, aby bylo možné změnit nebo odstranit zálohy.
 
 - [Přehled funkcí zabezpečení v Azure Backup](../../backup/security-overview.md)
 
-- [Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem](../../backup/encryption-at-rest-with-cmk.md) 
+- [Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem](../../backup/encryption-at-rest-with-cmk.md) 
 
 - [Postup zálohování klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -82,7 +84,7 @@ Pomocí řízení přístupu na základě role Azure v Azure Backup, Azure Key V
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| BR-3 | 10,3 | CP-4, CP-9 |
+| BR-3 | 10.3 | CP-4, CP-9 |
 
 Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můžete obnovit zálohovaných klíčů spravovaných zákazníkem.
 
@@ -104,7 +106,7 @@ Pravidelně provádějte obnovování dat zálohování. Ujistěte se, že můž
 |--|--|--|--|
 | BR-4 | 10,4 | CP-9 |
 
-Ujistěte se, že máte k dispozici míry, abyste zabránili ztrátě klíčů a obnovili je. Povolte v Azure Key Vaultu obnovitelné odstranění a ochranu před vymazáním, aby byly klíče chráněné proti náhodnému nebo zlomyslnému odstranění.  
+Ujistěte se, že máte k dispozici míry, abyste zabránili ztrátě klíčů a obnovili je. Povolte v Azure Key Vaultu obnovitelné odstranění a ochranu před vymazáním, aby byly klíče chráněné proti náhodnému nebo zlomyslnému odstranění.
 
 - [Jak povolit obnovitelné odstranění a ochranu před vymazáním v Key Vaultu](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

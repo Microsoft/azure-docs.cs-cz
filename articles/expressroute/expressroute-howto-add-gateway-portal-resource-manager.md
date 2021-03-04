@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761776"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740898"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup pro tuto úlohu používá virtuální síť na základě hodnot v následujícím seznamu odkazů konfigurace. Tento seznam používáme v našem ukázkovém postupu. Seznam můžete zkopírovat pro použití jako odkaz a nahradit hodnoty vlastními.
 
@@ -50,6 +50,11 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
 
 Před zahájením konfigurace si můžete zobrazit [video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) o těchto krocích.
 
+> [!IMPORTANT]
+> Podpora protokolu IPv6 pro soukromý partnerský vztah je v současnosti v **Public Preview**. Pokud chcete připojit virtuální síť k okruhu ExpressRoute pomocí nakonfigurovaného privátního partnerského vztahu založeného na protokolu IPv6, ujistěte se, že je vaše virtuální síť duální, a postupuje podle pokynů pro [protokol IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> 
+> 
+
 ## <a name="create-the-gateway-subnet"></a>Vytvoření podsítě brány
 
 1. Na [portálu](https://portal.azure.com)přejděte na virtuální síť správce prostředků, pro kterou chcete vytvořit bránu virtuální sítě.
@@ -58,9 +63,13 @@ Před zahájením konfigurace si můžete zobrazit [video](https://azure.microso
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Přidání podsítě brány":::
 
-1. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **rozsahu adres** tak, aby odpovídaly vašim požadavkům na konfiguraci. Doporučujeme vytvořit podsíť brány s příponou/27 nebo větší (/26,/25 atd.). Pak vyberte **OK** a uložte hodnoty a vytvořte podsíť brány.
+1. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **rozsahu adres** tak, aby odpovídaly vašim požadavkům na konfiguraci. Doporučujeme vytvořit podsíť brány s příponou/27 nebo větší (/26,/25 atd.).
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Přidání podsítě":::
+    Pokud používáte virtuální síť Dual stack a naplánujete použití privátního partnerského vztahu založeného na protokolu IPv6 přes ExpressRoute, klikněte na **Přidat IP6 adresního prostoru** a vstupní hodnoty **rozsahu IPv6 adres** .
+
+Pak vyberte **OK** a uložte hodnoty a vytvořte podsíť brány.
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
 
@@ -71,13 +80,18 @@ Před zahájením konfigurace si můžete zobrazit [video](https://azure.microso
     | --------| ----- |
     | Předplatné | Ověřte, zda je vybráno správné předplatné. |
     | Skupina prostředků | Skupina prostředků se automaticky vybere po výběru virtuální sítě. | 
-    | Name | Pojmenujte bránu. To není totéž jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.|
+    | Název | Pojmenujte bránu. To není totéž jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.|
     | Oblast | Změňte pole **region** tak, aby odkazovalo na umístění, kde se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť, tato virtuální síť se nezobrazí v rozevírací nabídce zvolit virtuální síť. |
     | Typ brány | Vybrat **ExpressRoute**|
-    | Skladová položka | Z rozevíracího seznamu vyberte SKU brány. |
+    | SKU | Z rozevíracího seznamu vyberte SKU brány. |
     | Virtuální síť | Vyberte *TestVNet*. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu.|
     | Název veřejné IP adresy | Zadejte název veřejné IP adresy. |
+
+    > [!IMPORTANT]
+    > Pokud máte v úmyslu používat privátní partnerský vztah založený na protokolu IPv6 přes ExpressRoute, ujistěte se, že jste vybrali AZ SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) pro **SKU**.
+    > 
+    > 
 
 1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořte** a začněte vytvářet bránu. Nastavení se ověří a provede se nasazení brány. Dokončení vytváření brány virtuální sítě může trvat až 45 minut.
 

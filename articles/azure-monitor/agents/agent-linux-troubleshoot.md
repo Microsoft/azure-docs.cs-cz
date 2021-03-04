@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 7e01d234b5b94997cbfd275c4b4566ec4fa332a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 136e063f6d272589c609bad93532df025a15a68d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609214"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723618"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -92,7 +92,7 @@ Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i vět�
 | NOT_DEFINED | Vzhledem k tomu, že nezbytné závislosti nejsou nainstalovány, modul plug-in auoms audit nebude nainstalován. | Instalace auoms selhala, nainstalujte balíček audited. |
 | 2 | Pro sadu prostředí se dala zadat neplatná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
 | 3 | Sada Shell neposkytla žádnou možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
-| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
+| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
 | 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí příkazu `sudo` . |
 | 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
@@ -116,7 +116,7 @@ Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i vět�
 | --- | --- |
 | 2 | Skriptu omsadmin je zadaná neplatná možnost. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
 | 3 | Skriptu omsadmin je zadaná neplatná konfigurace. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` pro použití. |
-| 4 | Skriptu omsadmin byl poskytnut neplatný proxy server. Ověřte proxy server a Prohlédněte si [dokumentaci k používání proxy serveru http](../platform/log-analytics-agent.md#firewall-requirements). |
+| 4 | Skriptu omsadmin byl poskytnut neplatný proxy server. Ověřte proxy server a Prohlédněte si [dokumentaci k používání proxy serveru http](./log-analytics-agent.md#firewall-requirements). |
 | 5 | z Azure Monitor byla přijata chyba HTTP 403. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
 | 6 | Od Azure Monitor přijata chyba HTTP, která není 200. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
 | 7 | Nepovedlo se připojit k Azure Monitor. Podrobnosti najdete v úplném výstupu skriptu omsadmin. |
@@ -198,7 +198,7 @@ Pod výstupním modulem plug-in odkomentujte následující oddíl odebráním `
 
 2. Projděte si část [nastavení proxy serveru](agent-manage.md#update-proxy-settings) , abyste ověřili, že jste správně nakonfigurovali agenta pro komunikaci prostřednictvím proxy server.    
 
-3. Ověřte, že koncové body, které jsou uvedené v seznamu [požadavků brány firewall Azure monitor sítě](../platform/log-analytics-agent.md#firewall-requirements) , se přidají do seznamu povolených hodnot správně. Pokud používáte Azure Automation, propojí se i nezbytné kroky konfigurace sítě.
+3. Ověřte, že koncové body, které jsou uvedené v seznamu [požadavků brány firewall Azure monitor sítě](./log-analytics-agent.md#firewall-requirements) , se přidají do seznamu povolených hodnot správně. Pokud používáte Azure Automation, propojí se i nezbytné kroky konfigurace sítě.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: při pokusu o zprovoznění se zobrazí chyba 403.
 
@@ -447,7 +447,7 @@ Po použití možnosti můžete pokračovat v reonboard. `--purge`
 ### <a name="resolution"></a>Řešení 
 Problém vyřešíte provedením následujících kroků.
 1. Odebere rozšíření z Azure Portal.
-2. Nainstalujte agenta podle [pokynů](../learn/quick-collect-linux-computer.md).
+2. Nainstalujte agenta podle [pokynů](../vm/quick-collect-linux-computer.md).
 3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Počkejte několik minut a stav zřizování se změní na **zřizování bylo úspěšné**.
 

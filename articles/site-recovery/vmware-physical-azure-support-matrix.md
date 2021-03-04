@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 5eab1a1c8d085ab48dd54012908d40eec99ca4c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705071"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -32,7 +32,7 @@ Zotavení po havárii fyzických serverů | Replikace místních fyzických serv
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 vCenter Server | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | V nasazení zotavení po havárii doporučujeme použít Server vCenter.
-vSphere hostitelé | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Přečtěte si další informace](vmware-physical-azure-config-process-server-overview.md).
+vSphere hostitelé | Verze 7,0 & následné aktualizace v této verzi, 6,7, 6,5, 6,0 nebo 5,5 | Doporučujeme, aby se hostitelé vSphere a vCenter servery nacházely ve stejné síti jako procesový Server. Ve výchozím nastavení běží procesový Server na konfiguračním serveru. [Další informace](vmware-physical-azure-config-process-server-overview.md).
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurační server
 
@@ -68,7 +68,7 @@ Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném po�
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
-Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Přečtěte si další informace](./site-recovery-workload.md).
+Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](./site-recovery-workload.md).
 Název počítače | Ujistěte se, že zobrazované názvy počítačů nespadají do [rezervovaných názvů prostředků Azure](../azure-resource-manager/templates/error-reserved-resource-name.md) .<br/><br/> V názvech logických svazků se nerozlišují velká a malá písmena. Zajistěte, aby žádné dva svazky v zařízení neměly stejný název. Např. svazky s názvy "voLUME1", "voLUME1" nelze chránit prostřednictvím Azure Site Recovery.
 
 ### <a name="for-windows"></a>Pro Windows
@@ -79,7 +79,7 @@ Windows Server 2019 | Podporováno z [kumulativní aktualizace 34](https://suppo
 Windows Server 2016 64 – bit | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2/Windows Server 2012 | Podporuje se.
 Windows Server 2008 R2 s aktualizací SP1 a vyšší. | Podporuje se.<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 2008 R2 s aktualizací SP1 nebo novějším. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
-Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Přečtěte si další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
+Windows Server 2008 s aktualizací SP2 nebo novější (64bitová/32bitová verze) |  Podporováno pouze pro migraci. [Další informace](migrate-tutorial-windows-server-2008.md).<br/><br/> Od agenta služby mobility verze [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích s Windows 2008 SP2. SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 Windows 10, Windows 8.1, Windows 8 | Podporuje se jenom 64-bit systému. 32 bitový systém není podporován.
 Windows 7 s aktualizací SP1 64-bit | Podporováno z [kumulativní aktualizace 36](https://support.microsoft.com/help/4503156) (verze 9,22 služby mobility) a vyšší. </br></br> Od agenta služby mobility [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) potřebujete aktualizaci [cestou nadřazené (Servicing Stack Update)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) nainstalovanou na počítačích se systémem Windows 7 SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 
@@ -93,7 +93,7 @@ Linux: CentOS | 5,2 až 5,11</b><br/> 6,1 až 6,10</b><br/> </br> 7,0, 7,1, 7,2,
 Ubuntu | Ubuntu 14,04 * Server LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions)<br/>Ubuntu 16,04 * Server LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 * Server LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions) </br> Ubuntu 20,04 * Server LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions) </br> (*zahrnuje podporu pro všechny 14,04.* x *, 16,04.* x *, 18,04.* x *, 20,04.* x * verze)
 Debian | Debian 7/Debian 8 (zahrnuje podporu pro všechny 7. *x*, 8. *x* verze); Debian 9 (zahrnuje podporu 9,1 až 9,13. Debian 9,0 se nepodporuje.), Debian 10 [(kontrola podporovaných verzí jádra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(kontrola podporovaných verzí jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(kontrola podporovaných verzí jádra)](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3. [Zajistěte si stažení nejnovějšího instalačního programu agenta mobility na konfiguračním serveru](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server). </br> SUSE Linux Enterprise Server 11 SP4 </br> **Poznámka**: upgrade replikovaných počítačů z SUSE Linux Enterprise Server 11 SP3 na verzi SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a po upgradu ji znovu povolte. <br/>|
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,5,](https://support.microsoft.com/help/4597409/) 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9, 8,0](https://support.microsoft.com/help/4597409/) [, 8,1](https://support.microsoft.com/help/4573888/) [, 8,2](https://support.microsoft.com/help/4573888/) [, 8,3](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Podpora [9,35](https://support.microsoft.com/help/4573888/) pro zbytek RedHat jader je dostupná ve všech jádrech uek a RedHat kernel <= 3.10.0-1062. * v [9,36](https://support.microsoft.com/help/4578241/) .
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, [7,4, 7,5](https://support.microsoft.com/help/4573888/), 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 7,8, [7,9,](https://support.microsoft.com/help/4597409/) [8,0, 8,1](https://support.microsoft.com/help/4573888/), [](https://support.microsoft.com/help/4597409/) [8,3](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Podpora [9,35](https://support.microsoft.com/help/4573888/) pro zbytek RedHat jader je dostupná ve všech jádrech uek a RedHat kernel <= 3.10.0-1062. * v [9,36](https://support.microsoft.com/help/4578241/) .
 
 > [!Note]
 >- Pro každou verzi Windows Azure Site Recovery podporuje jenom sestavení [LTSC (Long-Term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  [Pololetní verze kanálů](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) v tuto chvíli nejsou aktuálně podporovány.
@@ -189,14 +189,14 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
 Síť VLAN sítě hostitele | Ano.
 Síť IPv4 hostitele | Ano.
-Síť IPv6 hostitele | Ne.
-Seskupování síťových adaptérů hosta/serveru | Ne.
+Síť IPv6 hostitele | No.
+Seskupování síťových adaptérů hosta/serveru | No.
 Síť IPv4 hosta/serveru | Ano.
-Síť s protokolem IPv6 Host/Server | Ne.
+Síť s protokolem IPv6 Host/Server | No.
 Statická IP adresa sítě hosta/serveru (Windows) | Ano.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Ano.
-Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md).
+Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Další informace](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 ## <a name="azure-vm-network-after-failover"></a>Síť virtuálních počítačů Azure (po převzetí služeb při selhání)
@@ -243,7 +243,7 @@ Host/Server – vyloučit disk | Ano
 Funkce Multipath Host/Server (MPIO) | Ne
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
-Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechna [operačních systémech rozhraní Azure Marketplace UEFI](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) s agentem Site Recovery mobility verze 9,30 a vyšší. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechny [Azure Marketplace operační systémy UEFI](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) s agentem Site Recovery mobility verze 9,30 a vyšší. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Kanály replikace
 

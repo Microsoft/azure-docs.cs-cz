@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712690"
 ---
 # <a name="how-to-export-fhir-data"></a>Jak exportovat FHIR data
 
@@ -50,15 +50,57 @@ Existují dva povinné parametry hlaviček, které je třeba nastavit pro $expor
 ### <a name="query-parameters"></a>Parametry dotazů
 Rozhraní Azure API pro FHIR podporuje následující parametry dotazu. Všechny tyto parametry jsou volitelné:
 
-|Parametr dotazu        | Definováno specifikací FHIR?    |  Description|
+|Parametr dotazu        | Definováno specifikací FHIR?    |  Popis|
 |------------------------|---|------------|
-| \_outputFormat | Yes | V současné době podporuje tři hodnoty, které se mají Zarovnat ke specifikaci FHIR: Application/FHIR + ndjson, Application/ndjson nebo pouze ndjson. Všechny úlohy exportu budou vracet `ndjson` a předaná hodnota nemá žádný vliv na chování kódu. |
-| \_doby | Yes | Umožňuje exportovat pouze prostředky, které byly od zadaného času změněny. |
-| \_textový | Yes | Umožňuje určit typy prostředků, které budou zahrnuty. Například \_ typ = pacient by vrátil jenom prostředky pacienta.|
-| \_typefilter | Yes | Chcete-li požádat o přesnější filtrování, můžete použít \_ TypeFilter spolu s \_ parametrem typu. Hodnota parametru _typeFilter je čárkami oddělený seznam dotazů FHIR, které dále omezují výsledky. |
-| \_vnitřního | No |  Určuje kontejner v nakonfigurovaném účtu úložiště, kam se mají data exportovat. Pokud je určen kontejner, data budou exportována do tohoto kontejneru do nové složky s názvem. Pokud kontejner není zadán, bude exportován do nového kontejneru pomocí časového razítka a ID úlohy. |
+| \_outputFormat | Ano | V současné době podporuje tři hodnoty, které se mají Zarovnat ke specifikaci FHIR: Application/FHIR + ndjson, Application/ndjson nebo pouze ndjson. Všechny úlohy exportu budou vracet `ndjson` a předaná hodnota nemá žádný vliv na chování kódu. |
+| \_doby | Ano | Umožňuje exportovat pouze prostředky, které byly od zadaného času změněny. |
+| \_textový | Ano | Umožňuje určit typy prostředků, které budou zahrnuty. Například \_ typ = pacient by vrátil jenom prostředky pacienta.|
+| \_typefilter | Ano | Chcete-li požádat o přesnější filtrování, můžete použít \_ TypeFilter spolu s \_ parametrem typu. Hodnota parametru _typeFilter je čárkami oddělený seznam dotazů FHIR, které dále omezují výsledky. |
+| \_vnitřního | Ne |  Určuje kontejner v nakonfigurovaném účtu úložiště, kam se mají data exportovat. Pokud je určen kontejner, data budou exportována do tohoto kontejneru do nové složky s názvem. Pokud kontejner není zadán, bude exportován do nového kontejneru pomocí časového razítka a ID úlohy. |
 
+## <a name="secure-export-to-azure-storage"></a>Zabezpečený export do Azure Storage
 
+Rozhraní Azure API pro FHIR podporuje operaci zabezpečeného exportu. Jednou z možností, jak spustit zabezpečený export, je povolit pro přístup k účtu úložiště Azure konkrétní IP adresy přidružené k rozhraní Azure API pro FHIR. Konfigurace se liší v závislosti na tom, jestli je účet úložiště ve stejném nebo jiném umístění než Azure API pro FHIR.
+
+### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Když je účet úložiště Azure v jiné oblasti
+
+V portálu vyberte okno síť účtu úložiště Azure. 
+
+   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure Storage nastavení sítě." lightbox="media/export-data/storage-networking.png":::
+   
+Vyberte vybrané sítě a zadejte IP adresu do pole **Rozsah adres** v části Brána firewall \| Přidat rozsahy IP adres, aby se povolil přístup z Internetu nebo místních sítí. IP adresu z následující tabulky najdete pro oblast Azure, ve které se zřídí Azure API pro službu FHIR.
+
+|**Oblast Azure**         |**Veřejná IP adresa** |
+|:----------------------|:-------------------|
+| Austrálie – východ       | 20.53.44.80       |
+| Střední Kanada       | 20.48.192.84      |
+| USA – střed           | 52.182.208.31     |
+| East US              | 20.62.128.148     |
+| USA – východ 2            | 20.49.102.228     |
+| Východní USA 2 EUAP       | 20.39.26.254      |
+| Německo – sever        | 51.116.51.33      |
+| Německo – středozápad | 51.116.146.216    |
+| Japonsko – východ           | 20.191.160.26     |
+| Jižní Korea – střed        | 20.41.69.51       |
+| USA – středosever     | 20.49.114.188     |
+| Severní Evropa         | 52.146.131.52     |
+| Jižní Afrika – sever   | 102.133.220.197   |
+| Středojižní USA     | 13.73.254.220     |
+| Southeast Asia       | 23.98.108.42      |
+| Švýcarsko – sever    | 51.107.60.95      |
+| Spojené království – jih             | 51.104.30.170     |
+| Spojené království – západ              | 51.137.164.94     |
+| USA – středozápad      | 52.150.156.44     |
+| West Europe          | 20.61.98.66       |
+| Západní USA 2            | 40.64.135.77      |
+
+### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Když je účet úložiště Azure ve stejné oblasti
+
+Proces konfigurace je stejný, jak je uvedeno výše, s výjimkou, že se místo toho použije konkrétní rozsah IP adres ve formátu CIDR, 100.64.0.0/10. Důvodem, proč je nutné zadat rozsah IP adres, který zahrnuje 100.64.0.0 – 100.127.255.255, je, protože skutečná IP adresa používaná službou se liší, ale bude v rámci rozsahu pro každý požadavek $export.
+
+> [!Note] 
+> Je možné, že se místo toho dá použít privátní IP adresa v rozsahu 10.0.2.0/24. V takovém případě se operace $export nezdařila. Můžete opakovat požadavek $export, ale není nijak zaručeno, že se v dalším čase bude používat IP adresa v rozsahu 100.64.0.0/10. To je známé chování sítě podle návrhu. Alternativou je konfigurace účtu úložiště v jiné oblasti.
+    
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak exportovat FHIR prostředky pomocí příkazu $export. V dalším kroku se dozvíte, jak exportovat de identifikovaná data:

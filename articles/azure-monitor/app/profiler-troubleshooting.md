@@ -6,17 +6,14 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab719b47245f3adc2fba610f9c0473868889a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711446"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
-
-> [!CAUTION]
-> Při spuštění profileru pro ASP.NET Core aplikací na Azure App Service došlo k chybě. Máme opravu, ale pro nasazení celého světa bude trvat několik týdnů. Tuto chybu můžete obejít tak, že do své aplikace přidáte sadu Application Insights SDK s [pokyny.](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Obecné řešení potíží
 
@@ -67,6 +64,7 @@ Vlákno, které rychle směřuje do stavu čekání, obvykle čeká na ostatní 
 Odešlete lístek podpory na portálu. Nezapomeňte do chybové zprávy zahrnout ID korelace.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Řešení potíží s profilerem v Azure App Service
+
 Pro správné fungování profileru postupujte takto:
 * Váš plán služby Web App Service musí být na úrovni Basic nebo vyšší.
 * Vaše webová aplikace musí mít povolený Application Insights.
@@ -95,6 +93,10 @@ Pokud profiler nefunguje za vás, můžete si ho stáhnout a poslat mu do našeh
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>Zkontroluje stavovou stránku rozšíření webu diagnostické služby.
 Pokud byl Profiler povolen přes [podokno Application Insights](profiler.md) na portálu, byl povolen rozšířením webu diagnostické služby.
+
+> [!NOTE]
+> Nekódovatelné instalace Application Insights Profiler se řídí zásadami podpory .NET Core.
+> Další informace o podporovaných modulech runtime najdete v tématu [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Stavovou stránku tohoto rozšíření můžete zaškrtnout na následující adrese URL: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
@@ -140,7 +142,7 @@ Pokud znovu nasazujete webovou aplikaci do prostředku Web Apps s povoleným pro
 
 *Adresář není prázdný. d: \\ Domovská stránka \\ \\ wwwroot \\ App_Data \\ úlohy*
 
-K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z Azure Pipelines. Řešením je přidání následujících dalších parametrů nasazení do úlohy Nasazení webu:
+K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z Azure Pipelines. Řešením je přidání následujících parametrů nasazení do úlohy Nasazení webu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

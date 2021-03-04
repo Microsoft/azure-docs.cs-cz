@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738187"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -138,7 +138,9 @@ Odpověď **: Ano**. Můžete ji přepisovat sami nebo použít profesionální 
 
 Odpověď **: školení** modelu se zvukovými daty může být zdlouhavý proces. V závislosti na množství dat může vytvoření vlastního modelu trvat několik dní. Pokud nemůže být dokončena do jednoho týdne, služba může přerušit operaci školení a ohlásit model jako neúspěšný.
 
-Pro dosažení rychlejších výsledků použijte jednu z [oblastí](custom-speech-overview.md#set-up-your-azure-account) , kde je k dispozici vyhrazený hardware pro školení. Obecně platí, že služba zpracovává přibližně 10 hodin zvukových dat za den v oblastech s takovým hardwarem. Může zpracovat pouze 1 hodinu zvukových dat za den v jiných oblastech. Plně vyškolený model můžete zkopírovat do jiné oblasti pomocí [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Školení s pouhým textem je mnohem rychlejší a obvykle se dokončí během několika minut.
+Použijte jednu z [oblastí](custom-speech-overview.md#set-up-your-azure-account) , kde je k dispozici vyhrazený hardware pro školení. Služba řeči bude v těchto oblastech používat až 20 hodin zvukového školení. V jiných oblastech bude používat jenom až 8 hodin.
+
+Obecně platí, že služba zpracovává přibližně 10 hodin zvukových dat za den v oblastech s vyhrazeným hardwarem. Může zpracovat pouze 1 hodinu zvukových dat za den v jiných oblastech. Plně vyškolený model můžete zkopírovat do jiné oblasti pomocí [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Školení s pouhým textem je mnohem rychlejší a obvykle se dokončí během několika minut.
 
 Některé základní modely nejde přizpůsobit pomocí zvukových dat. V případě, že služba bude pouze používat text přepisu pro účely školení a ignorování zvukových dat. Školení se pak dokončí mnohem rychleji a výsledky budou stejné jako školení jenom s textem. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) .
 

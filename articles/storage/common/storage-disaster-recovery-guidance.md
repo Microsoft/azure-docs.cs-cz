@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737643"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -55,7 +55,7 @@ Kromě toho mějte na paměti tyto osvědčené postupy pro udržení vysoké do
 
 - **Disky:** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
 - **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/soft-delete-blob-overview.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](storage-use-data-movement-library.md).
-- **Soubory:** Použijte [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) k zálohování sdílených složek souborů. Povolit i [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) , aby se chránily proti náhodným odstranění sdílení souborů. Pro geografickou redundanci, pokud není k dispozici GRS, zkopírujte soubory do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) .
+- **Soubory:** Použijte [Azure Backup](../../backup/azure-file-share-backup-overview.md) k zálohování sdílených složek souborů. Povolit i [obnovitelné odstranění](../files/storage-files-prevent-file-share-deletion.md) , aby se chránily proti náhodným odstranění sdílení souborů. Pro geografickou redundanci, pokud není k dispozici GRS, zkopírujte soubory do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) .
 - **Tabulky:** pomocí [AzCopy](./storage-use-azcopy-v10.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
 
 ## <a name="track-outages"></a>Sledovat výpadky

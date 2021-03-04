@@ -3,12 +3,12 @@ title: Nastavení operací vRealize pro řešení Azure VMware
 description: Naučte se, jak nastavit operace vRealize pro privátní cloud řešení Azure VMware.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880687"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738425"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Nastavení operací vRealize pro řešení Azure VMware
 
@@ -37,7 +37,7 @@ vRealize Operations Manager je platforma pro správu provozu, která správcům 
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Místní operace vRealize spravující nasazení řešení Azure VMware
 Většina zákazníků má stávající místní nasazení operací vRealize pro správu jedné nebo několika místních domén servery vCenter. Když zřídí privátní cloud řešení Azure VMware, připojí své místní prostředí ke svému privátnímu cloudu s využitím řešení Azure ExpressRoute nebo VPN úrovně 3.  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Místní operace vRealize spravující nasazení řešení Azure VMware"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Místní operace vRealize spravující nasazení řešení Azure VMware" border="false":::
 
 K rozšiřování funkcí vRealize operací do privátního cloudu řešení Azure VMware vytvoříte [instanci adaptéru pro prostředky privátního cloudu](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html). Shromažďuje data z privátního cloudu řešení Azure VMware a přináší je do místních vRealize operací. Místní instance vRealize Operations Manager se může přímo připojit ke Správci vCenter a NSX-T Manageru v řešení Azure VMware. Volitelně můžete nasadit vzdálené kolektor operací vRealize do privátního cloudu řešení Azure VMware. Kolektor komprimuje a šifruje data shromážděná z privátního cloudu předtím, než se pošle přes síť ExpressRoute nebo VPN, do vRealize Operations Manager spuštěná v místním počítači. 
 

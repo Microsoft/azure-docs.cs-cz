@@ -1,20 +1,20 @@
 ---
-title: Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
-description: Popisuje, jak povolíte Azure Monitor pro virtuální počítače pro více virtuálních počítačů Azure nebo sady škálování virtuálních počítačů pomocí Azure Policy.
+title: Povolení přehledů virtuálních počítačů pomocí Azure Policy
+description: Popisuje, jak povolit přehledy pro virtuální počítače Azure s více virtuálními počítači Azure nebo Virtual Machine Scale Sets pomocí Azure Policy.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707536"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
-Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo k hybridnímu virtuálnímu počítači připojenému pomocí Azure ARC (Preview) pomocí Azure Policy. Azure Policy vám umožní přiřadit definice zásad, které budou instalovat požadované agenty pro Azure Monitor pro virtuální počítače v prostředí Azure a automaticky povolit monitorování pro virtuální počítače při vytvoření každého virtuálního počítače. Azure Monitor pro virtuální počítače poskytuje funkci, která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Místo toho, abyste pracovali přímo s Azure Policy, použijte tuto funkci.
+# <a name="enable-vm-insights-by-using-azure-policy"></a>Povolení přehledů virtuálních počítačů pomocí Azure Policy
+Tento článek vysvětluje, jak povolit službu Azure Insights pro virtuální počítače Azure nebo hybridní virtuální počítač připojený pomocí Azure ARC (Preview) pomocí Azure Policy. Azure Policy vám umožní přiřadit definice zásad, které do vašeho prostředí Azure nainstalují požadované agenty pro virtuální počítač Insights, a automaticky povolit monitorování pro virtuální počítače při vytvoření každého virtuálního počítače. Funkce VM Insights nabízí funkci, která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Místo toho, abyste pracovali přímo s Azure Policy, použijte tuto funkci.
 
 Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení Azure monitor ve velkém měřítku pomocí Azure Policy](../deploy-scale.md).
 
@@ -22,15 +22,15 @@ Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení 
 > Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../deploy-scale.md#azure-monitor-for-vms).
 
 ## <a name="prerequisites"></a>Požadavky
-- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](../insights/vminsights-configure-workspace.md).
-- V části [podporované operační systémy](../insights/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
+- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
+- V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>Azure Monitor pro virtuální počítače iniciativa
-Azure Monitor pro virtuální počítače poskytuje předdefinované definice zásad pro instalaci agenta Log Analytics a agenta závislostí na virtuálních počítačích Azure. Každá z těchto definic zásad zahrnuje **Azure monitor pro virtuální počítače** v iniciativě. Přiřaďte tuto iniciativu ke skupině pro správu, k předplatnému nebo skupině prostředků, abyste mohli automaticky instalovat agenty na jakékoli virtuální počítače Azure se systémem Windows nebo Linux v daném oboru.
+## <a name="vm-insights-initiative"></a>Iniciativa VM Insights
+Funkce VM Insights poskytuje předdefinované definice zásad pro instalaci agenta Log Analytics a agenta závislostí na virtuálních počítačích Azure. Každá z těchto definic zásad zahrnuje iniciativu **Povolit službu VM Insights** . Přiřaďte tuto iniciativu ke skupině pro správu, k předplatnému nebo skupině prostředků, abyste mohli automaticky instalovat agenty na jakékoli virtuální počítače Azure se systémem Windows nebo Linux v daném oboru.
 
 ## <a name="open-policy-coverage-feature"></a>Otevřít funkci pokrytí zásad
-Pokud chcete získat přístup k **pokrytí zásad Azure monitor pro virtuální počítače**, přejděte na **virtuální počítače** v nabídce **Azure monitor** v Azure Portal. Vyberte **Další možnosti** připojení a pak **Povolit** v části **Povolit používání zásad**.
+Pokud chcete získat přístup k **pokrytí zásad virtuálních počítačů**, přejděte na **virtuální počítače** v nabídce **Azure monitor** v Azure Portal. Vyberte **Další možnosti** připojení a pak **Povolit** v části **Povolit používání zásad**.
 
 [![Karta Začínáme s Azure Monitor z virtuálních počítačů](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte přiřazení, vytvořte ho kliknutím na **přiřadit zás
 
 [![Vytvořit přiřazení](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-Jedná se o stejnou stránku, abyste přiřadili iniciativu v Azure Policy s tím rozdílem, že je pevně zakódované s rozsahem, který jste vybrali, a s definicí definice iniciativy **Enable Azure monitor pro virtuální počítače** . Volitelně můžete změnit **název přiřazení** a přidat **Popis**. Vyberte **vyloučení** , pokud chcete poskytnout vyloučení do oboru. Rozsahem může být například skupina pro správu a můžete zadat odběr v této skupině pro správu, který bude vyloučen z přiřazení.
+Jedná se o stejnou stránku, abyste přiřadili iniciativu v Azure Policy s tím rozdílem, že se pevně zakódované s rozsahem, který jste vybrali, a s definicí povolit iniciativu pro **virtuální počítač** . Volitelně můžete změnit **název přiřazení** a přidat **Popis**. Vyberte **vyloučení** , pokud chcete poskytnout vyloučení do oboru. Rozsahem může být například skupina pro správu a můžete zadat odběr v této skupině pro správu, který bude vyloučen z přiřazení.
 
 [![Přiřadit iniciativu](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -48,14 +48,14 @@ Na stránce **parametry** vyberte **pracovní prostor Log Analytics** , který b
    > [!NOTE]
    > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, například `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
-[![Pracovní prostor](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
+[![Stejných](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
 
 Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti přiřazení a teprve potom kliknutím na **vytvořit** vytvořte. V tomto okamžiku nevytvářejte úlohu nápravy, protože pravděpodobně budete potřebovat více úloh nápravy, aby bylo možné povolit stávající virtuální počítače. Viz [napravení výsledků dodržování předpisů](#remediate-compliance-results) níže.
 
 ## <a name="review-compliance"></a>Kontrola dodržování předpisů
-Po vytvoření přiřazení můžete zkontrolovat a spravovat pokrytí pro **Azure monitor pro virtuální počítače** iniciativu v rámci skupin pro správu a předplatných. Tím se zobrazí, kolik virtuálních počítačů existuje v každé ze skupin nebo předplatných pro správu a jejich stav dodržování předpisů.
+Po vytvoření přiřazení můžete zkontrolovat a spravovat pokrytí pro možnost Povolit iniciativu pro službu **VM Insights** napříč vašimi skupinami pro správu a předplatnými. Tím se zobrazí, kolik virtuálních počítačů existuje v každé ze skupin nebo předplatných pro správu a jejich stav dodržování předpisů.
 
-[![Stránka Azure Monitor pro virtuální počítače Správa zásad](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![Stránka zásady správy virtuálních počítačů v Insights](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 V následující tabulce je uveden popis informací v tomto zobrazení.
@@ -105,11 +105,11 @@ Klikněte na **opravit** , aby se vytvořila úloha nápravy, a pak ji **napravo
 [![Snímek obrazovky znázorňující podokno nápravy zásad pro monitor | Virtual Machines.](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-Po dokončení opravných úloh by vaše virtuální počítače měly odpovídat agentům nainstalovaným a povoleným pro Azure Monitor pro virtuální počítače. 
+Po dokončení opravných úloh by vaše virtuální počítače měly odpovídat agentům nainstalovaným a povoleným pro službu VM Insights. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače. 
+Teď, když je monitorování pro vaše virtuální počítače povolené, jsou tyto informace k dispozici pro analýzu pomocí služby VM Insights. 
 
-- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md). 
-- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md). 
+- Pokud si chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení mapy virtuálních počítačů](vminsights-maps.md). 
+- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

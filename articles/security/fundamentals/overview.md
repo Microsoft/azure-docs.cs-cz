@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720558"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ Následující funkce jsou možnosti, které můžete zkontrolovat a poskytnout 
 | [Povinné školení zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Řízení na umístění dat](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Centrum běžných ovládacích prvků](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](https://azuredatacentermap.azurewebsites.net/)|
 | [Testování průniku](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [zjišťování neoprávněných vniknutí, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [audity & protokolování](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Poskytnutí přístupu k datům podle vašich podmínek](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services kontrolní seznam pro náležité opatrnosti](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Kdo v Microsoftu má přístup k vašim datům za podmínek](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Stav datového centra umění](https://www.microsoft.com/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](network-overview.md) | [Reakce na vynucování zákonů](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů podle služby, umístění & oboru](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Jak Microsoft zabezpečuje zákaznická data ve službách Azure](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [Odpověď na incident zabezpečení](https://aka.ms/SecurityResponsepaper), [sdílená odpovědnost](./shared-responsibility.md) |[Přísné standardy ochrany osobních údajů](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Kontrola certifikace pro služby Azure, centrum průhledností](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [Odpověď na incident zabezpečení](/samples/browse/?redirectedfrom=TechNet-Gallery), [sdílená odpovědnost](./shared-responsibility.md) |[Přísné standardy ochrany osobních údajů](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Kontrola certifikace pro služby Azure, centrum průhledností](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>Funkce pro zabezpečení dat a aplikací
 V závislosti na modelu cloudové služby je k dispozici proměnlivá odpovědnost za správu zabezpečení aplikace nebo služby. Na platformě Azure jsou dostupné možnosti, které vám pomůžou s plněním těchto odpovědností prostřednictvím integrovaných funkcí a prostřednictvím partnerských řešení, která se dají nasadit do předplatného Azure.
@@ -288,7 +288,7 @@ Můžete povolit následující kategorie diagnostického protokolu pro skupin z
 ### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-introduction.md) průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/security-center-recommendations.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní prostředky
 V této části najdete další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
 
 ### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus

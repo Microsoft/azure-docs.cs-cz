@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717413"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -25,11 +25,11 @@ Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezen
 
 Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený v [Azure Key Vault](../../key-vault/general/overview.md), což vám umožní řídit přístup k vašim datům kdykoli. Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) funguje.
 
-Klíč spravovaný zákazníkem se doručuje na [vyhrazené clustery](../log-query/logs-dedicated-clusters.md) , které poskytují vyšší úroveň ochrany a řízení. Data ingestovaná do vyhrazených clusterů se dvakrát šifrují – jednou na úrovni služby pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem a jednou na úrovni infrastruktury pomocí dvou různých šifrovacích algoritmů a dvou různých klíčů. [Dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) chrání proti scénáři, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V takovém případě bude další vrstva šifrování nadále chránit vaše data. Vyhrazený cluster také umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](#customer-lockbox-preview) .
+Klíč spravovaný zákazníkem se doručuje na [vyhrazené clustery](./logs-dedicated-clusters.md) , které poskytují vyšší úroveň ochrany a řízení. Data ingestovaná do vyhrazených clusterů se dvakrát šifrují – jednou na úrovni služby pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem a jednou na úrovni infrastruktury pomocí dvou různých šifrovacích algoritmů a dvou různých klíčů. [Dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) chrání proti scénáři, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V takovém případě bude další vrstva šifrování nadále chránit vaše data. Vyhrazený cluster také umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](#customer-lockbox-preview) .
 
 Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají zašifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci klíče spravované zákazníkem, ale vaše kontrola nad daty SSD dodržuje [odvolání klíčů](#key-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí klíče spravovaného zákazníkem v první polovině roku 2021.
 
-Log Analytics vyhrazené clustery používají [cenový model](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) rezervace kapacity od 1000 GB za den.
+Log Analytics vyhrazené clustery používají [cenový model](./logs-dedicated-clusters.md#cluster-pricing-model) rezervace kapacity od 1000 GB za den.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Jak klíč spravovaný zákazníkem funguje v Azure Monitor
 
@@ -145,7 +145,7 @@ Clustery podporují dva [typy spravovaných identit](../../active-directory/mana
 > [!IMPORTANT]
 > Spravovanou identitu přiřazenou uživatelem nemůžete použít, pokud je vaše Key Vault v Private-Link (vNet). V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
-Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
+Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](./logs-dedicated-clusters.md#creating-a-cluster). 
 
 ## <a name="grant-key-vault-permissions"></a>Udělení oprávnění Key Vault
 
@@ -253,7 +253,7 @@ Odpověď na požadavek GET by měla vypadat jako při dokončení aktualizace k
 
 K provedení této operace, která zahrnuje a, musíte mít oprávnění Write pro váš pracovní prostor i cluster `Microsoft.OperationalInsights/workspaces/write` `Microsoft.OperationalInsights/clusters/write` .
 
-Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster).
+Postupujte podle postupu popsaného v [článku věnovaném vyhrazeným clusterům](./logs-dedicated-clusters.md#link-a-workspace-to-cluster).
 
 ## <a name="key-revocation"></a>Odvolání klíče
 
@@ -387,7 +387,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed operací klíčů
 
-Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace jsou označovány jako [vyhrazené článek o clusteru](../log-query/logs-dedicated-clusters.md#change-cluster-properties) .
+Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace jsou označovány jako [vyhrazené článek o clusteru](./logs-dedicated-clusters.md#change-cluster-properties) .
 
 - Načíst všechny clustery ve skupině prostředků  
 - Načíst všechny clustery v předplatném
@@ -470,8 +470,8 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   **Aktualizace clusteru**
   -  400 – cluster je ve stavu odstraňování. Probíhá asynchronní operace. Cluster musí před provedením jakékoli operace aktualizace dokončit jeho operaci.
-  -  400 – KeyVaultProperties není prázdný, ale má špatný formát. Viz [aktualizace identifikátoru klíče](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
-  -  400 – nepovedlo se ověřit klíč v Key Vault. Příčinou může být nedostatečná oprávnění nebo pokud klíč neexistuje. Ověřte, že jste [nastavili zásady klíče a přístupu](../platform/customer-managed-keys.md#grant-key-vault-permissions) v Key Vault.
+  -  400 – KeyVaultProperties není prázdný, ale má špatný formát. Viz [aktualizace identifikátoru klíče](#update-cluster-with-key-identifier-details).
+  -  400 – nepovedlo se ověřit klíč v Key Vault. Příčinou může být nedostatečná oprávnění nebo pokud klíč neexistuje. Ověřte, že jste [nastavili zásady klíče a přístupu](#grant-key-vault-permissions) v Key Vault.
   -  400-klíč nelze obnovit. Key Vault musí být nastavené na obnovitelné odstranění a ochranu vyprázdnit. Viz [dokumentace Key Vault](../../key-vault/general/soft-delete-overview.md)
   -  400 – operaci nelze nyní provést. Počkejte, až se operace Async dokončí, a zkuste to znovu.
   -  400 – cluster je ve stavu odstraňování. Počkejte, až se operace Async dokončí, a zkuste to znovu.
@@ -492,5 +492,5 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
   -  409--operace propojení pracovního prostoru nebo zrušení propojení v procesu.
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Log Analytics vyhrazeném účtování clusteru](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
-- Další informace o [správném návrhu pracovních prostorů Log Analytics](../platform/design-logs-deployment.md)
+- Další informace o [Log Analytics vyhrazeném účtování clusteru](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- Další informace o [správném návrhu pracovních prostorů Log Analytics](./design-logs-deployment.md)

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731081"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Jak vylepšit model Custom Vision
 
-V této příručce se dozvíte, jak vylepšit kvalitu Custom Vision Serviceho modelu. Kvalita [klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) nebo [objektu pro rozpoznávání objektů](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) závisí na množství, kvalitě a množství dat, která zadáte, a na tom, jak jsou vyrovnávány celé datové sady. Dobrý model obsahuje datovou sadu s vyrovnáváním školení, která je zavedená na základě toho, co se do ní bude odesílat. Proces sestavování takového modelu je iterativní; pro dosažení očekávaných výsledků je běžné, že vybereme několik zaokrouhlení školení.
+V této příručce se dozvíte, jak vylepšit kvalitu Custom Vision Serviceho modelu. Kvalita [klasifikátoru](./getting-started-build-a-classifier.md) nebo [objektu pro rozpoznávání objektů](./get-started-build-detector.md) závisí na množství, kvalitě a množství dat, která zadáte, a na tom, jak jsou vyrovnávány celé datové sady. Dobrý model obsahuje datovou sadu s vyrovnáváním školení, která je zavedená na základě toho, co se do ní bude odesílat. Proces sestavování takového modelu je iterativní; pro dosažení očekávaných výsledků je běžné, že vybereme několik zaokrouhlení školení.
 
 Níže je obecný vzor, který vám pomůže naučit přesnější model:
 

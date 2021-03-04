@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587555"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708488"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Co je automatické instrumentace nebo připojení s nekódováním Azure Monitor Application Insights?
 
@@ -45,27 +45,27 @@ Po přidání dalších integrací se matice schopností automatické instrument
 Monitorování aplikací na Azure App Service ve Windows je dostupné pro .NET pro [aplikace](./azure-web-apps.md?tabs=net) .NET a ve výchozím nastavení je povolené.
 
 #### <a name="netcore"></a>. NETCore
-Monitorování pro [. NETCore aplikace](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) lze povolit jediným kliknutím.
+Monitorování pro [. NETCore aplikace](./azure-web-apps.md?tabs=netcore) lze povolit jediným kliknutím.
 
 #### <a name="java"></a>Java
-Integrace portálu pro monitorování aplikací Java v App Service ve Windows není momentálně k dispozici. do své aplikace ale můžete přidat Application Insights [samostatného agenta java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) , aniž byste museli změny kódu nasadit do App Service. Agent Application Insights Java 3,0 je všeobecně dostupný.
+Integrace portálu pro monitorování aplikací Java v App Service ve Windows není momentálně k dispozici. do své aplikace ale můžete přidat Application Insights [samostatného agenta java 3,0](./java-in-process-agent.md) , aniž byste museli změny kódu nasadit do App Service. Agent Application Insights Java 3,0 je všeobecně dostupný.
 
 #### <a name="nodejs"></a>Node.js
-Monitorování pro Node.js aplikace ve Windows se momentálně nedá na portálu povolit. K monitorování aplikací Node.js použijte [sadu SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs).
+Monitorování pro Node.js aplikace ve Windows se momentálně nedá na portálu povolit. K monitorování aplikací Node.js použijte [sadu SDK](./nodejs.md).
 
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>. NETCore
-K monitorování. NETCore aplikace spuštěné v systému Linux, použijte [sadu SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+K monitorování. NETCore aplikace spuštěné v systému Linux, použijte [sadu SDK](./asp-net-core.md).
 
 #### <a name="java"></a>Java 
-Povolení monitorování aplikací Java pro App Service v systému Linux z portálu není k dispozici, ale před nasazením aplikací do App Service můžete do aplikace přidat [Application Insights agenta java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) . Agent Application Insights Java 3,0 je všeobecně dostupný.
+Povolení monitorování aplikací Java pro App Service v systému Linux z portálu není k dispozici, ale před nasazením aplikací do App Service můžete do aplikace přidat [Application Insights agenta java 3,0](./java-in-process-agent.md) . Agent Application Insights Java 3,0 je všeobecně dostupný.
 
 #### <a name="nodejs"></a>Node.js
-[Monitorování Node.js aplikací v App Service v systému Linux](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs) je ve verzi Public Preview a je možné je povolit v Azure Portal, které jsou k dispozici ve všech oblastech. 
+[Monitorování Node.js aplikací v App Service v systému Linux](./azure-web-apps.md?tabs=nodejs) je ve verzi Public Preview a je možné je povolit v Azure Portal, které jsou k dispozici ve všech oblastech. 
 
 #### <a name="python"></a>Python
-Použití sady SDK k [monitorování aplikace v Pythonu](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
+Použití sady SDK k [monitorování aplikace v Pythonu](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -77,7 +77,7 @@ Instrumentace služby Azure Kubernetes bez kódu je teď k dispozici pro aplikac
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Virtuální počítače Azure s Windows a sada škálování virtuálních počítačů
 
-Pro [.NET](./azure-vm-vmss-apps.md) a [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)jsou k dispozici automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače.  
+Pro [.NET](./azure-vm-vmss-apps.md) a [Java](./java-in-process-agent.md)jsou k dispozici automatické instrumentace pro virtuální počítače Azure a sadu škálování virtuálního počítače.  
 
 ## <a name="on-premises-servers"></a>Místní servery
 Můžete snadno povolit monitorování pro [místní Windows servery pro aplikace .NET](./status-monitor-v2-overview.md) a pro [aplikace v jazyce Java](./java-in-process-agent.md).
@@ -90,4 +90,3 @@ Univerzální samostatný agent Java funguje v jakémkoli prostředí, není pot
 * [Přehled Application Insights](./app-insights-overview.md)
 * [Mapa aplikace](./app-map.md)
 * [Monitorování výkonu na konci](../app/tutorial-performance.md)
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612796"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708862"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Použití funkcí v Azure Monitorch dotazech protokolu
 
@@ -35,7 +35,7 @@ Vytvořte funkci s Log Analytics v Azure Portal kliknutím na **Uložit** a zad�
 Použijte funkci zahrnutím jejího aliasu do jiného dotazu. Dá se použít jako jakákoli jiná tabulka.
 
 ## <a name="function-parameters"></a>Parametry funkce 
-Můžete přidat parametry do funkce, abyste při volání mohli zadat hodnoty pro určité proměnné. Jediným způsobem, jak aktuálně vytvořit funkci s parametry, je použití šablony Správce prostředků. Příklad najdete v tématu [Správce prostředků ukázek šablon pro dotazy protokolů v Azure monitor](../samples/resource-manager-log-queries.md#parameterized-function) .
+Můžete přidat parametry do funkce, abyste při volání mohli zadat hodnoty pro určité proměnné. Jediným způsobem, jak aktuálně vytvořit funkci s parametry, je použití šablony Správce prostředků. Příklad najdete v tématu [Správce prostředků ukázek šablon pro dotazy protokolů v Azure monitor](./resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Příklad
 Následující vzorový dotaz vrátí všechny chybějící aktualizace zabezpečení hlášené za poslední den. Uložte tento dotaz jako funkci s aliasem _security_updates_last_day_. 

@@ -1,17 +1,20 @@
 ---
 title: Iterativní vývoj a ladění v Azure Data Factory
 description: Naučte se vyvíjet a ladit kanály Data Factory v uživatelském prostředí ADF iterativním způsobem.
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392523"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712942"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Mapování toků dat vám umožní vytvořit logiku transformace dat bez kódu, 
 Můžete monitorovat aktivní relace ladění toku dat napříč továrnou v prostředí **monitorování** .
 
 ![Zobrazit relace ladění toku dat](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+Data ve verzi Preview v Návrháři toku dat a ladění toků dat mají za cíl fungovat nejlépe s malými ukázkami dat. Pokud ale potřebujete testovat logiku v kanálu nebo toku dat proti velkým objemům dat, zvětšete velikost Azure Integration Runtime používaného v relaci ladění s více jádry a minimálními výpočetními prostředky pro obecné účely.
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Ladění kanálu s aktivitou toku dat
 
@@ -83,7 +88,7 @@ Použití existující relace ladění významně zkrátí čas spuštění toku
 Pomocí modulu runtime aktivit se vytvoří nový cluster s použitím nastavení zadaného v modulu runtime integrace každé aktivity toku dat. To umožňuje izolovat každou úlohu a měla by se používat pro komplexní úlohy nebo testování výkonu. Hodnotu TTL můžete také řídit v Azure IR tak, aby prostředky clusteru používané pro ladění byly pro toto časové období k dispozici pro poskytování dalších požadavků na úlohy.
 
 > [!NOTE]
-> Pokud máte kanál s daty, která běží paralelně, vyberte možnost použít modul runtime aktivit, aby Data Factory mohl používat Integration Runtime, které jste vybrali v aktivitě toku dat. Tím umožníte, aby toky dat běžely na několika clusterech a mohli pojmout vaše paralelní provádění toku dat.
+> Máte-li kanál s toky dat spouštěnými paralelně nebo datovými toky, které je třeba testovat s velkými datovými sadami, vyberte možnost použít modul runtime aktivit, aby Data Factory mohli použít Integration Runtime, kterou jste vybrali v aktivitě toku dat. Tím umožníte, aby toky dat běžely na několika clusterech a mohli pojmout vaše paralelní provádění toku dat.
 
 ![Spuštění kanálu s tokem dat](media/iterative-development-debugging/iterative-development-dataflow.png)
 

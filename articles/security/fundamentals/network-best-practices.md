@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735722"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy Azure pro zabezpečení sítě
 Tento článek popisuje shromažďování osvědčených postupů Azure pro vylepšení zabezpečení sítě. Tyto osvědčené postupy se odvozují z našich zkušeností s používáním sítí Azure a zkušeností zákazníků, jako je sami.
@@ -206,7 +206,7 @@ Privátní propojení Azure přináší následující výhody:
 - **Globální dosah**: Připojte soukromě ke službám běžícím v jiných oblastech. Virtuální síť příjemce může být v oblasti a a může se připojit ke službám v oblasti B.
 - **Jednoduché nastavení a Správa**: ve virtuálních sítích už nepotřebujete vyhrazené veřejné IP adresy pro zabezpečení prostředků Azure prostřednictvím brány firewall protokolu IP. Pro nastavení privátních koncových bodů nejsou potřeba žádná zařízení NAT nebo brány. Soukromé koncové body jsou konfigurovány prostřednictvím jednoduchého pracovního postupu. Na straně služby můžete také snadno spravovat požadavky na připojení v prostředku služby Azure. Privátní propojení Azure funguje i pro zákazníky a služby patřící do různých klientů Azure Active Directory. 
     
-Další informace o privátních koncových bodech a službách a oblastech Azure, které jsou pro privátní koncové body dostupné, najdete v tématu věnovaném [privátním odkazům Azure](https://docs.microsoft.com/azure/private-link/private-link-overview).
+Další informace o privátních koncových bodech a službách a oblastech Azure, které jsou pro privátní koncové body dostupné, najdete v tématu věnovaném [privátním odkazům Azure](../../private-link/private-link-overview.md).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,16 +4,16 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723601"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
-Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. Tyto metriky můžou být [metrikami platforem](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../platform/metrics-custom-overview.md), [Oblíbené protokoly z Azure monitor převedené na metriky](./alerts-metric-logs.md) a Application Insights metriky. Výstrahy metriky jsou vyhodnocovány v pravidelných intervalech, aby bylo možné zjistit, zda jsou splněné podmínky na jedné nebo více metrik časových řad, a upozorňovat na to, až budou vyhodnocení splněna. Upozornění na metriku jsou stavová, to znamená, že odesílají oznámení pouze při změně stavu.
+Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. Tyto metriky můžou být [metrikami platforem](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [vlastní metriky](../essentials/metrics-custom-overview.md), [Oblíbené protokoly z Azure monitor převedené na metriky](./alerts-metric-logs.md) a Application Insights metriky. Výstrahy metriky jsou vyhodnocovány v pravidelných intervalech, aby bylo možné zjistit, zda jsou splněné podmínky na jedné nebo více metrik časových řad, a upozorňovat na to, až budou vyhodnocení splněna. Upozornění na metriku jsou stavová, to znamená, že odesílají oznámení pouze při změně stavu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují výstrahy metrik?
 
@@ -26,7 +26,7 @@ Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, 
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: static
-- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](../platform/metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
+- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](../essentials/metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -43,7 +43,7 @@ Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmí
 - Cílový prostředek (prostředek Azure, který chcete monitorovat): myVM
 - Metrika: procento využití procesoru
 - Typ podmínky: dynamické
-- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](../platform/metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
+- Typ agregace (statistika, která se spouští přes nezpracované hodnoty metrik. [Podporované typy agregace](../essentials/metrics-aggregation-explained.md#aggregation-types) jsou minimální, maximální, průměrná, celková, počet): průměr.
 - Období (pohled na pozadí, na kterém jsou zaškrtnuté hodnoty metrik): za posledních 5 minut
 - Frekvence (frekvence, s jakou výstraha metrika kontroluje, jestli jsou podmínky splněné): 1 min
 - Operátor: je větší než
@@ -141,7 +141,7 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače<sup>1</sup>  | **Ano** | **Ano** | No |
+| Virtuální počítače<sup>1</sup>  | **Ano** | **Ano** | Ne |
 | Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
 | Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
 | Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |
@@ -180,9 +180,8 @@ V případě upozornění na metriky budete obvykle informováni do 5 minut, pok
 ## <a name="next-steps"></a>Další kroky
 
 - [Naučte se vytvářet, zobrazovat a spravovat upozornění na metriky v Azure.](../alerts/alerts-metric.md)
-- [Naučte se vytvářet upozornění v rámci Azure montior Průzkumník metrik](../platform/metrics-charts.md#alert-rules)
+- [Naučte se vytvářet upozornění v rámci Azure montior Průzkumník metrik](../essentials/metrics-charts.md#alert-rules)
 - [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](./alerts-metric-create-templates.md)
-- [Další informace o skupinách akcí](../platform/action-groups.md)
+- [Další informace o skupinách akcí](./action-groups.md)
 - [Další informace o typu podmínky dynamického prahového hodnoty](../alerts/alerts-dynamic-thresholds.md)
 - [Další informace o řešení potíží s upozorněními na metriky](alerts-troubleshoot-metric.md)
-

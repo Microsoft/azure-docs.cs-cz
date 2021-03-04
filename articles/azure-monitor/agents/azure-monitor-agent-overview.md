@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711531"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -19,9 +19,9 @@ Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného opera
 ## <a name="relationship-to-other-agents"></a>Vztah k jiným agentům
 Agent Azure Monitor nahrazuje následující agenty, které jsou aktuálně používány nástrojem Azure Monitor ke shromažďování dat hostů z virtuálních počítačů:
 
-- [Agent Log Analytics](../platform/log-analytics-agent.md) – odesílá data do pracovního prostoru Log Analytics a podporuje řešení Azure monitor pro virtuální počítače a monitorování.
-- [Diagnostické rozšíření](../platform/diagnostics-extension-overview.md) – odesílá data do Azure monitor metrik (jenom Windows), Azure Event Hubs a Azure Storage.
-- [Agent telegraf](../platform/collect-custom-metrics-linux-telegraf.md) – odesílá data do Azure monitor metrik (jenom Linux).
+- [Agent Log Analytics](./log-analytics-agent.md) – odesílá data do pracovního prostoru Log Analytics a podporuje řešení pro přehled a monitorování virtuálních počítačů.
+- [Diagnostické rozšíření](./diagnostics-extension-overview.md) – odesílá data do Azure monitor metrik (jenom Windows), Azure Event Hubs a Azure Storage.
+- [Agent telegraf](../essentials/collect-custom-metrics-linux-telegraf.md) – odesílá data do Azure monitor metrik (jenom Linux).
 
 Kromě toho, že se tato funkce konsoliduje do jednoho agenta, přináší agent Azure Monitor v rámci stávajících agentů následující výhody:
 
@@ -52,7 +52,7 @@ Agent Azure Monitor spolupracuje s [všeobecně dostupnými agenty pro Azure mon
 ## <a name="current-limitations"></a>Aktuální omezení
 Během veřejné verze Preview agenta Azure Monitor platí následující omezení:
 
-- Agent Azure Monitor nepodporuje řešení a přehledy, jako je Azure Monitor pro virtuální počítače a Azure Security Center. Jediným scénářem, který se aktuálně podporuje, je shromažďování dat pomocí pravidel shromažďování dat, která nakonfigurujete. 
+- Agent Azure Monitor nepodporuje řešení a přehledy, jako jsou třeba přehledy virtuálních počítačů a Azure Security Center. Jediným scénářem, který se aktuálně podporuje, je shromažďování dat pomocí pravidel shromažďování dat, která nakonfigurujete. 
 - Pravidla shromažďování dat musí být vytvořena ve stejné oblasti jako kterýkoli Log Analytics pracovní prostor, který se používá jako cíl.
 - Virtuální počítače Azure, služba Virtual Machine Scale Sets a servery s podporou ARC Azure jsou aktuálně podporované. Služba Azure Kubernetes a jiné typy výpočetních prostředků se aktuálně nepodporují.
 - Virtuální počítač musí mít přístup k následujícím koncovým bodům HTTPS:
@@ -64,7 +64,7 @@ Během veřejné verze Preview agenta Azure Monitor platí následující omezen
 ## <a name="coexistence-with-other-agents"></a>Koexistence s ostatními agenty
 Agent Azure Monitor může společně s existujícími agenty fungovat, abyste mohli nadále používat stávající funkce během hodnocení nebo migrace. To je důležité hlavně z důvodu omezení ve verzi Public Preview v části Podpora stávajících řešení. Měli byste být opatrní při shromažďování duplicitních dat, protože by to mohlo zkosit výsledky dotazu a mít za následek další poplatky za přijímání a uchovávání dat.
 
-Azure Monitor pro virtuální počítače například používá agenta Log Analytics k posílání údajů o výkonu do Log Analyticsho pracovního prostoru. Můžete také nakonfigurovat pracovní prostor pro shromažďování událostí systému Windows a událostí protokolu syslog od agentů. Pokud nainstalujete agenta Azure Monitor a vytvoříte pravidlo shromažďování dat pro tyto stejné události a data o výkonu, bude výsledkem duplicitní data.
+Například virtuální počítač Insights používá agenta Log Analytics k posílání údajů o výkonu do pracovního prostoru Log Analytics. Můžete také nakonfigurovat pracovní prostor pro shromažďování událostí systému Windows a událostí protokolu syslog od agentů. Pokud nainstalujete agenta Azure Monitor a vytvoříte pravidlo shromažďování dat pro tyto stejné události a data o výkonu, bude výsledkem duplicitní data.
 
 
 ## <a name="costs"></a>Náklady
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny typy dat, které můžete v současnosti s
 
 Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pracovní prostor podporující protokoly Azure Monitor.
 
-| Zdroj dat | Cíle | Description |
+| Zdroj dat | Cíle | Popis |
 |:---|:---|:---|
 | Výkon        | Metriky Azure Monitoru<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly událostí systému Windows | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí systému Windows. |

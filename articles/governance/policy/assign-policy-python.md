@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad pomocí Pythonu'
 description: V tomto rychlém startu pomocí Pythonu vytvoříte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742326"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Pythonu
 
@@ -17,7 +17,7 @@ Prvním krokem k porozumění dodržování předpisů v Azure je zjištění st
 
 Knihovna Pythonu se používá ke správě prostředků Azure z příkazového řádku nebo ve skriptech. V této příručce se dozvíte, jak pomocí knihovny Pythonu vytvořit přiřazení zásady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -40,7 +40,7 @@ Chcete-li povolit Pythonu pro práci s Azure Policy, musí být knihovna přidá
    az login
    ```
 
-1. V prostředí Python dle výběru nainstalujte požadované knihovny pro Azure Resource Graph:
+1. V prostředí Python dle výběru nainstalujte požadované knihovny pro Azure Policy:
 
    ```bash
    # Add the Python library for Python
@@ -96,7 +96,7 @@ Podrobnosti přiřazení:
 - **policy_definition_id** – cesta definice zásad na základě toho, kterou používáte k vytvoření přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_. V tomto příkladu je definice zásad integrovaná a cesta neobsahuje informace o skupině pro správu nebo předplatném.
 - **Scope** – obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude uplatňovat. Může být v rozsahu od skupiny pro správu k individuálnímu prostředku. Nezapomeňte nahradit `{scope}` jedním z následujících způsobů:
   - Skupina pro správu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Formě `/subscriptions/{subscriptionId}`
+  - Předplatné: `/subscriptions/{subscriptionId}`
   - Skupina prostředků: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Partner `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **Popis** – podrobnější vysvětlení toho, co zásada dělá nebo proč je přiřazena tomuto oboru.

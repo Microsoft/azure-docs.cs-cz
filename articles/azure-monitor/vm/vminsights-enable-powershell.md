@@ -1,33 +1,33 @@
 ---
-title: Povolení Azure Monitor pro virtuální počítače pomocí prostředí PowerShell
-description: Popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo službu Virtual Machine Scale Sets pomocí Azure PowerShell.
+title: Povolení přehledů virtuálních počítačů pomocí PowerShellu
+description: Popisuje, jak povolit službu VM Insights pro virtuální počítače Azure nebo službu Virtual Machine Scale Sets pomocí Azure PowerShell.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612179"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717073"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Povolení Azure Monitor pro virtuální počítače pomocí prostředí PowerShell
-Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače na virtuálních počítačích Azure pomocí PowerShellu. Tento postup lze použít pro následující:
+# <a name="enable-vm-insights-using-powershell"></a>Povolení přehledů virtuálních počítačů pomocí PowerShellu
+Tento článek popisuje, jak ve virtuálních počítačích Azure povolit přehledy virtuálních počítačů pomocí PowerShellu. Tento postup lze použít pro následující:
 
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](../insights/vminsights-configure-workspace.md).
-- V části [podporované operační systémy](../insights/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
+- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
+- V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
 
 ## <a name="powershell-script"></a>Skript prostředí PowerShell
 
-Pokud chcete povolit Azure Monitor pro virtuální počítače pro víc virtuálních počítačů nebo virtuálních počítačů, použijte skript PowerShellu [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights), který je k dispozici v galerii Azure PowerShell. Tento skript prochází:
+Pokud chcete povolit přehledy pro virtuální počítače s několika virtuálními počítači nebo Virtual Machine Scale Sets, použijte skript PowerShellu [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights), který je k dispozici v galerii Azure PowerShell. Tento skript prochází:
 
 - Všechny virtuální počítače a sady škálování virtuálních počítačů ve vašem předplatném.
 - Rozsah skupiny prostředků, který je *určený skupinou zdrojů.*
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Následující příklad ukazuje použití příkazů PowerShellu ve složce k povolení Azure Monitor pro virtuální počítače a pochopení očekávaného výstupu:
+Následující příklad ukazuje použití příkazů PowerShellu ve složce k povolení přehledů virtuálních počítačů a pochopení očekávaného výstupu:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Viz téma [použití Azure monitor pro virtuální počítače mapa](vminsights-maps.md) k zobrazení zjištěných závislostí aplikace. 
+* Podívejte se na téma [použití mapy virtuálních počítačů](vminsights-maps.md) k zobrazení zjištěných závislostí aplikací. 
 * V tématu [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md) můžete identifikovat kritická místa, celkové využití a výkon vašeho virtuálního počítače.

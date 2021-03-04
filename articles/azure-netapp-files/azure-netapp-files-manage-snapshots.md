@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379110"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738731"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -195,7 +195,7 @@ NFSv 4.1 nezobrazuje `.snapshot` adresář ( `ls -la` ). Pokud se ale možnost s
 
 1. `ls`K vypsání souboru, který chcete obnovit z adresáře, použijte příkaz Linux `.snapshot` . 
 
-    Příklad:
+    Například:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -210,7 +210,7 @@ NFSv 4.1 nezobrazuje `.snapshot` adresář ( `ls -la` ). Pokud se ale možnost s
 
 2. Pomocí `cp` příkazu zkopírujte soubor do nadřazeného adresáře.  
 
-    Příklad: 
+    Například: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -257,6 +257,9 @@ Možnost vrátit svazek můžete najít v nabídce snímky svazku. Po výběru s
 ## <a name="delete-snapshots"></a>Odstranit snímky  
 
 Snímky, které už nepotřebujete zachovat, můžete odstranit. 
+
+> [!IMPORTANT]
+> Operaci odstranění snímku nelze vrátit zpět. Odstraněný snímek nelze obnovit. 
 
 1. Přejděte do nabídky **snímky** svazku. Klikněte pravým tlačítkem na snímek, který chcete odstranit. Vyberte **Odstranit**.
 

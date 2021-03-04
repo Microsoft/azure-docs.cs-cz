@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 64bdbf1005f0283438777b3bb2ba1d3312b6e140
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627055"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714102"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro pravidla upozornění protokolů v Azure Monitor
 Tento článek obsahuje ukázky [šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) pro vytváření a konfiguraci výstrah dotazů protokolu v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -479,4 +479,4 @@ Následující ukázka vytvoří pravidlo, které může cílit na libovolný pr
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
-* [Přečtěte si další informace o pravidlech výstrah](../platform/alerts-overview.md).
+* [Přečtěte si další informace o pravidlech výstrah](./alerts-overview.md).

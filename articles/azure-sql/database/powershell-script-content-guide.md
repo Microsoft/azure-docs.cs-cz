@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690962"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Ukázky Azure PowerShell pro Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 |---|---|
 |**Vytvoření a konfigurace spravovaných instancí**||
 | [Vytvoření a Správa spravované instance](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Tento skript PowerShellu ukazuje, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell. |
-| [Vytvoření a Správa spravované instance pomocí šablony Azure Resource Manager](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vám ukáže, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell a Azure Resource Manager šabloně.|
+| [Vytvoření a Správa spravované instance pomocí šablony Azure Resource Manager](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu vám ukáže, jak vytvořit a spravovat spravovanou instanci pomocí Azure PowerShell a Azure Resource Manager šabloně.|
 | [Obnovení databáze do spravované instance v jiné geografické oblasti](../managed-instance/scripts/restore-geo-backup.md) | Tento skript PowerShellu vytvoří zálohu jedné databáze a obnoví ji do jiné oblasti. To se označuje jako scénář obnovení po havárii geografického obnovení. |
 | **Konfigurace transparentního šifrování dat**||
 | [Správa transparentního šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu nakonfiguruje transparentní šifrování dat ve scénáři Bring Your Own Key pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault.|
@@ -80,6 +80,6 @@ Přečtěte si další informace o [rutinách PowerShellu pro spravovanou instan
 
 ---
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Příklady uvedené na této stránce využívají [rutiny PowerShellu](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nacházejí v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

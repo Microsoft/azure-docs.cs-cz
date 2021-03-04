@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690800"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,12 +187,12 @@ Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publ
 
 ## <a name="faq---advanced-classification-capabilities"></a>Nejčastější dotazy – pokročilé možnosti klasifikace
 
-**Otázka**: bude [Azure dosah](https://docs.microsoft.com/azure/purview/overview) nahrazovat klasifikaci & Discovery data ve službě SQL nebo bude brzy vytříděna klasifikace dat SQL pro zjišťování &?
-**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](https://docs.microsoft.com/azure/purview/overview) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodnete vyřadit jakékoli služby, funkce, rozhraní API nebo SKU, obdržíte oznámení s předstihem, včetně cesty migrace nebo přechodu. Další informace o zásadách životního cyklu Microsoftu najdete tady.
+**Otázka**: bude [Azure dosah](../../purview/overview.md) nahrazovat klasifikaci & Discovery data ve službě SQL nebo bude brzy vytříděna klasifikace dat SQL pro zjišťování &?
+**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](../../purview/overview.md) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodnete vyřadit jakékoli služby, funkce, rozhraní API nebo SKU, obdržíte oznámení s předstihem, včetně cesty migrace nebo přechodu. Další informace o zásadách životního cyklu Microsoftu najdete tady.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 
 - Zvažte konfiguraci [auditování Azure SQL](../../azure-sql/database/auditing-overview.md) pro monitorování a auditování přístupu k utajovaným citlivým datům.
 - Prezentaci, která zahrnuje klasifikaci & Discovery data, najdete v tématu zjišťování [, klasifikace, označování & ochrany dat SQL | Zpřístupnění dat](https://www.youtube.com/watch?v=itVi9bkJUNc).
-- Informace o klasifikaci Azure SQL Database a Azure synapse Analytics pomocí popisků Azure dosah pomocí příkazů T-SQL najdete v tématu [klasifikace dat SQL Azure pomocí popisků Azure dosah](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels).
+- Informace o klasifikaci Azure SQL Database a Azure synapse Analytics pomocí popisků Azure dosah pomocí příkazů T-SQL najdete v tématu [klasifikace dat SQL Azure pomocí popisků Azure dosah](../../sql-database/scripts/sql-database-import-purview-labels.md).

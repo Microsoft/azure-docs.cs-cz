@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379892"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740432"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 
@@ -30,7 +30,7 @@ Pokud chcete zachovat data o běhu kanálu po dobu více než 45 dnů, nastavte 
 
 ## <a name="pipeline-run-information"></a>Informace o spuštění kanálu
 
-Vlastnosti spuštění kanálu najdete v [referenčních informacích k rozhraní PipelineRun API](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun). Spuštění kanálu má během svého životního cyklu jiný stav. možné hodnoty stavu spuštění jsou uvedené níže:
+Vlastnosti spuštění kanálu najdete v [referenčních informacích k rozhraní PipelineRun API](/rest/api/datafactory/pipelineruns/get#pipelinerun). Spuštění kanálu má během svého životního cyklu jiný stav. možné hodnoty stavu spuštění jsou uvedené níže:
 
 * Ve frontě
 * InProgress
@@ -163,5 +163,4 @@ Kompletní návod k vytváření a monitorování kanálu pomocí PowerShellu na
 Úplnou dokumentaci k rutinám PowerShellu najdete v tématu [Data Factory powershellové Reference k rutinám](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály. 
-
+V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály.

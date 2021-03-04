@@ -1,25 +1,25 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e567bedf48393a36215c1ac3f3d11f467ae7badd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742224"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Napravit nekompatibilní prostředky pomocí Azure Policy
 
-Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tak, že na základě pokynů Azure Policy spustíte efekt **deployIfNotExists** nebo **upravíte operace** přiřazené zásady u stávajících prostředků, ať už jde o skupinu pro správu, předplatné, skupinu prostředků nebo jednotlivý prostředek. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
+Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tím, že se dá pokyn Azure Policy spustit efekt **deployIfNotExists** nebo **upravit operace** přiřazené zásady u stávajících prostředků a předplatných, ať už jde o skupinu pro správu, předplatné, skupinu prostředků nebo jednotlivý prostředek. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>Jak funguje Oprava zabezpečení
 
 Když Azure Policy spustí šablonu v definici zásady **deployIfNotExists** , použije [spravovanou identitu](../../../active-directory/managed-identities-azure-resources/overview.md).
 Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se při přiřazování zásady nebo iniciativy chyba. Při použití portálu Azure Policy automaticky uděluje spravované identitě uvedené role po spuštění přiřazení. Při použití sady SDK musí být role uděleny manuálně spravované identitě. _Umístění_ spravované identity nemá vliv na jeho operaci s Azure Policy.
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Snímek obrazovky zásad deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
 
 > [!IMPORTANT]
 > V následujících scénářích musí mít spravovaná identita přiřazení [manuálně udělený přístup](#manually-configure-the-managed-identity) , jinak se nasazení opravy nezdaří:
@@ -98,7 +98,7 @@ Existují dva způsoby, jak udělit spravované identitě přiřazení definovan
 
 Chcete-li přidat roli ke spravované identitě přiřazení, postupujte podle následujících kroků:
 
-1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby**a pak vyhledáte a vyberete **zásadu**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby** a pak vyhledáte a vyberete **zásadu**.
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**.
 
@@ -123,17 +123,18 @@ Chcete-li přidat roli ke spravované identitě přiřazení, postupujte podle n
 
 ### <a name="create-a-remediation-task-through-portal"></a>Vytvoření úlohy nápravy prostřednictvím portálu
 
-Během hodnocení určuje přiřazení zásad s **deployIfNotExists** nebo **úpravou** efektů, jestli existují nekompatibilní prostředky. Pokud jsou nalezeny nekompatibilní prostředky, podrobnosti jsou k dispozici na stránce **nápravy** . Společně se seznamem zásad, které mají nekompatibilní prostředky, je možnost aktivovat **úlohu nápravy**. Tato možnost vytvoří nasazení ze šablony **deployIfNotExists** nebo operace **Úpravy** .
+Během hodnocení určuje přiřazení zásad s **deployIfNotExists** nebo **úpravou** efektů, jestli existují nekompatibilní prostředky nebo odběry. Pokud se najde nekompatibilní prostředky nebo odběry, podrobnosti najdete na stránce o **nápravě** . Společně se seznamem zásad, které mají nekompatibilní prostředky nebo odběry, je možnost aktivovat **úlohu nápravy**.
+Tato možnost vytvoří nasazení ze šablony **deployIfNotExists** nebo operace **Úpravy** .
 
 Chcete-li vytvořit **úlohu nápravy**, postupujte podle následujících kroků:
 
-1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby**a pak vyhledáte a vyberete **zásadu**.
+1. Spusťte službu Azure Policy v Azure Portal tak, že vyberete **všechny služby** a pak vyhledáte a vyberete **zásadu**.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Snímek obrazovky s vyhledáváním zásad ve všech službách" border="false":::
 
 1. Na levé straně stránky Azure Policy vyberte **náprava** .
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Snímek obrazovky s uzlem pro nápravu na stránce zásad" border="false":::
 
 1. Všechna přiřazení zásad **deployIfNotExists** a **Upravit** s nekompatibilními prostředky jsou obsažená v **zásadách, které se mají opravit** na kartě a v tabulce dat. Vyberte zásady s prostředky, které nedodržují předpisy. Otevře se stránka **Nová úloha nápravy** .
 
@@ -142,17 +143,17 @@ Chcete-li vytvořit **úlohu nápravy**, postupujte podle následujících krok�
 
 1. Na stránce **Nová úloha nápravy** vyfiltrujte prostředky, které se mají opravit, pomocí teček **oboru** a vyberte podřízené prostředky, ze kterých je zásada přiřazena (včetně směrem k jednotlivým objektům prostředku). Kromě toho použijte rozevírací seznam **umístění** k dalšímu filtrování prostředků. Budou opraveny pouze prostředky uvedené v tabulce.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Snímek obrazovky uzlu opravit problém a mřížku prostředků, které se mají opravit" border="false":::
 
 1. Spusťte úlohu nápravy, jakmile se prostředky vyfiltrují výběrem možnosti **opravit**. Na kartě **úlohy opravy** se otevře stránka kompatibilita zásad, ve které se zobrazí stav průběhu úkolů. Nasazení vytvořená úlohou nápravy začínají hned.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Snímek obrazovky s kartou nápravné úlohy a průběh stávajících úloh nápravy" border="false":::
 
 1. Kliknutím na **úlohu nápravy** ze stránky dodržování zásad získáte podrobnosti o průběhu. Filtrování použité pro úlohu se zobrazí spolu se seznamem prostředků, které jsou opraveny.
 
 1. Na stránce **úloha nápravy** klikněte pravým tlačítkem na prostředek a zobrazte buď nasazení úlohy opravy, nebo prostředek. Na konci řádku výběrem **možnosti související události** zobrazíte podrobnosti, jako je například chybová zpráva.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Snímek obrazovky se zásadou deployIfNotExists, ve které chybí definované oprávnění ke spravované identitě" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Snímek obrazovky kontextové nabídky prostředku na kartě Úloha napravit" border="false":::
 
 Prostředky nasazené prostřednictvím **nápravné úlohy** se přidají na kartě **nasazené prostředky** na stránce dodržování zásad.
 

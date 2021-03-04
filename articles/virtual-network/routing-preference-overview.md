@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.custom: references_regions
-ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 56fd9898065dd55b9a56547a775f7f2aa4a56156
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672940"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693726"
 ---
 # <a name="what-is-routing-preference"></a>Co je předvolba směrování?
 
@@ -71,7 +70,7 @@ Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Int
 
 ## <a name="limitations"></a>Omezení
 
-* Preference směrování v současnosti není podporována v oblasti Austrálie – střed, Austrálie – východ, Kanada – jih, Korea – střed a Korea – jih.
+
 * Preference směrování je kompatibilní jenom se standardní SKU zóny s redundantními verzemi veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.
 * Preference směrování aktuálně podporuje jenom veřejné IP adresy IPv4. Veřejné IP adresy protokolu IPv6 nejsou podporovány.
 

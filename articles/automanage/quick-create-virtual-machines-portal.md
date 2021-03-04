@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648029"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686977"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Rychlý Start: povolení služby Azure automanage pro virtuální počítače v Azure Portal
 
@@ -43,11 +43,11 @@ Přihlaste se na [Azure Portal](https://aka.ms/AutomanagePortal-Ignite21).
 
 3. Vyberte **Začínáme**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="Začínáme s jedním virtuálním počítačem.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="Začínáme s jedním virtuálním počítačem.":::
 
 4. Zvolte nastavení pro vaši správu (prostředí, předvolby, spravovat účet) a **Povolit**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="Povolte na jednom virtuálním počítači.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="Povolte na jednom virtuálním počítači.":::
 
 ## <a name="enable-automanage-for-multiple-vms"></a>Povolení automanage pro více virtuálních počítačů
 
@@ -64,42 +64,39 @@ Přihlaste se na [Azure Portal](https://aka.ms/AutomanagePortal-Ignite21).
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
-4. V části **konfigurační profil** klikněte na **Procházet a změňte profily a předvolby**.
+4. V části **prostředí** vyberte typ prostředí: **vývoj/testování** nebo **produkce**. 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Procházet a změnit profily a předvolby.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Vyberte prostředí.":::
 
-5. V okně **vybrat konfigurační profil + Předvolby** :
-    1. Vyberte profil vlevo: *vývoj/testování* pro testování, výrobní *zakázka* pro produkci.
-    1. Klikněte na tlačítko **Vybrat** .
+   Kliknutím na **porovnat podrobnosti prostředí** zobrazíte rozdíly mezi prostředími.
+    1. V rozevíracím seznamu vyberte prostředí: *vývoj/testování* pro testování, *produkce* pro produkční prostředí.
+    1. Klikněte na tlačítko **OK** .
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Procházet konfigurační profil v produkčním prostředí":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Projděte si produkční prostředí.":::
+
+5. Ve výchozím nastavení se pro předvolby konfigurace vybere předvolba **osvědčených postupů Azure** . Pokud to chcete změnit, vytvořte novou předvolbu nebo vyberte některou z existujících. 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Vytvořte preference.":::
 
 6. Klikněte na tlačítko **Povolit**.
 
 
 ## <a name="enable-automanage-for-a-new-vm"></a>Povolení automanage pro nový virtuální počítač
 
-Pokud chcete vytvořit nový virtuální počítač a povolit možnost automanage, přihlaste [se k Azure Portal](https://aka.ms/AutomanagePortal-Ignite21) .
+Pokud chcete vytvořit nový virtuální počítač a povolit možnost automanage, přihlaste [se k Azure Portal](https://aka.ms/AzureAutomanagePreview) .
 
-1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
-
-2. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte obrázek, který chcete použít, a pak zvolte **vytvořit**.
+1. Vyplňte kartu **základy** s podrobnostmi o vašem virtuálním počítači.
 
 > [!NOTE]
-> Podívejte se na podporované verze pro [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions) a [Windows Server](automanage-windows-server.md#supported-windows-server-versions).
+> Podívejte se na [podporované oblasti](automanage-virtual-machines#supported-regions) pro automanage a pro automanage podporované verze systému [Linux distribuce](automanage-linux.md#supported-linux-distributions-and-versions) a [Windows Server](automanage-windows-server.md#supported-windows-server-versions).
 
-3. Vyplňte kartu **základy** s podrobnostmi o vašem virtuálním počítači.
+2. Přejděte na kartu **Správa** a vyberte své prostředí pro automatické **spravování**.
 
-> [!NOTE]
-> Ověřte [oblasti podporované](automanage-virtual-machines#supported-regions)při autosprávě.
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="Povolit automanage na kartě Správa.":::
 
-4. Přejděte na kartu **Správa** a vyberte své prostředí pro automatické **spravování**.
+3. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="Povolit automanage na kartě Správa.":::
-
-5. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
-
-6. Když se zobrazí zpráva, že ověření proběhlo úspěšně, vyberte **vytvořit**.
+4. Když se zobrazí zpráva, že ověření proběhlo úspěšně, vyberte **vytvořit**.
 
 ## <a name="disable-automanage-for-vms"></a>Zakázat pro virtuální počítače automanage
 
@@ -131,4 +128,4 @@ V tomto rychlém startu jste povolili Azure automanage pro virtuální počíta�
 Zjistěte, jak můžete vytvářet a používat vlastní předvolby při povolování automatické správy na virtuálním počítači.
 
 > [!div class="nextstepaction"]
-> [Azure automanage pro virtuální počítače – vlastní konfigurační profil](virtual-machines-custom-preferences.md)
+> [Azure automanage pro virtuální počítače – předvolby pro vlastní konfiguraci](virtual-machines-custom-preferences.md)

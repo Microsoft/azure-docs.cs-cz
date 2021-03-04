@@ -2,13 +2,13 @@
 title: Kopírovat aplikace a data do uzlů fondu
 description: Naučte se kopírovat aplikace a data do uzlů fondu.
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378498"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703643"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Kopírovat aplikace a data do uzlů fondu
 
@@ -33,10 +33,6 @@ Pokud Každá úloha spuštěná ve fondu spustí aplikaci (. exe), která musí
 Pro aplikace nebo data, která je potřeba nainstalovat na každý uzel ve fondu, zvažte použití [balíčků aplikací](batch-application-packages.md). K balíčku aplikace není přidružený žádný příkaz Install, ale ke spuštění příkazu install můžete použít spouštěcí úkol. Pokud vaše aplikace nevyžaduje instalaci nebo se skládá z velkého počtu souborů, můžete použít tuto metodu.
 
 Balíčky aplikací jsou užitečné v případě, že máte velký počet souborů, protože mohou zkombinovat mnoho odkazů na soubory do malé datové části. Pokud se pokusíte zahrnout více než 100 samostatných souborů prostředků do jednoho úkolu, může služba Batch zacházet z interního systémového omezení pro jednu úlohu. Balíčky aplikací jsou užitečné také v případě, že máte mnoho různých verzí stejné aplikace a je třeba mezi nimi volit.
-
-## <a name="extensions"></a>Rozšíření
-
-[Rozšíření](create-pool-extensions.md) jsou malé aplikace, které usnadňují konfiguraci po zřízení a nastavení na výpočetních uzlech Batch. Při vytváření fondu můžete vybrat podporované rozšíření, které bude nainstalováno na výpočetních uzlech, jak jsou zřízeny. Potom může rozšíření provést zamýšlenou operaci.
 
 ## <a name="job-preparation-task-resource-files"></a>Soubory prostředků přípravné úlohy
 

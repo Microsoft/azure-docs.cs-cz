@@ -4,14 +4,14 @@ description: Naučte se vytvářet cluster AKS s důvěrnými uzly a nasazovat a
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 2/8/2020
+ms.date: 2/25/2020
 ms.author: amgowda
-ms.openlocfilehash: 866c8340cf9c16d768f4035326aa2ec52dbf1401
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 51b0813849236d9335d1482019f740fc8b23749f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703282"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) s důvěrnými uzly (DCsv2) pomocí rozhraní příkazového řádku Azure
 
@@ -26,7 +26,7 @@ V tomto rychlém startu se dozvíte, jak nasadit cluster Azure Kubernetes Servic
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Funkce důvěrného výpočetního uzlu (DC <x> s-v2)
 
-1. Linux Worker Nodes podporující pouze kontejnery Linux
+1. Linux Worker Nodes podporující kontejnery Linux
 1. Virtuální počítač 2. generace s Ubuntu 18,04 uzly Virtual Machines
 1. PROCESOR založený na procesorech Intel SGX s využitím paměti EPC (Encrypted Page cache). Další informace najdete [tady](./faq.md) .
 1. Podpora Kubernetes verze 1.16 +
@@ -37,41 +37,8 @@ Návod k nasazení vyžaduje následující:
 
 1. Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 1. Verze Azure CLI 2.0.64 nebo novější je nainstalovaná a nakonfigurovaná na vašem počítači pro nasazení (spuštěním nástroje `az --version` zjistíte verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) .
-1. Minimální verze [rozšíření Azure AKS-Preview](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) 0.5.0
 1. Minimálně šest jader **DC <x> s-v2** dostupných v předplatném pro použití. Ve výchozím nastavení kvóta virtuálních počítačů pro důvěrné výpočetní služby na předplatné Azure 8 jader. Pokud plánujete zřídit cluster, který vyžaduje více než 8 jader, postupujte podle [těchto](../azure-portal/supportability/per-vm-quota-requests.md) pokynů a vyvolejte lístek zvýšení kvóty.
 
-## <a name="cli-based-preparation-steps-required-for-add-on-in-preview---optional-but-recommended"></a>Přípravné kroky založené na rozhraní příkazového řádku (povinné pro doplněk ve verzi Preview – volitelné, ale doporučené)
-Pomocí následujících pokynů povolte v AKS doplněk pro důvěrné výpočetní operace.
-
-### <a name="step-1-installing-the-cli-prerequisites"></a>Krok 1: instalace požadovaných součástí CLI
-
-Pokud chcete nainstalovat rozšíření AKS-Preview 0.5.0 nebo novější, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
-
-```azurecli-interactive
-az extension update --name aks-preview
-```
-### <a name="step-2-azure-confidential-computing-addon-feature-registration-on-azure"></a>Krok 2: registrace funkce doplňku důvěrných výpočetních funkcí Azure v Azure
-Registruje se AKS-ConfidentialComputingAddon v předplatném Azure. Tato funkce přidá daemonset modulu plug-in zařízení SGX, jak [je popsáno v podrobnostech](./confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks):
-1. Modul plug-in ovladače zařízení SGX
-```azurecli-interactive
-az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
-```
-Může trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu AZ Feature list. Tato registrace funkce se provádí jenom jednou pro každé předplatné. Pokud jste to předtím zaregistrovali, můžete předchozí krok přeskočit:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
-```
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu AZ Provider Register:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 ## <a name="creating-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Vytváření nového clusteru AKS s důvěrnými výpočetními uzly a doplňkem
 Podle pokynů níže přidejte uzly s podporou důvěrného zpracování s doplňkem.
 

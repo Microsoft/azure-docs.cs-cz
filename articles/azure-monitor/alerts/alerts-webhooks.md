@@ -4,19 +4,19 @@ description: Naučte se, jak přesměrovat výstrahy metrik Azure do jiných sys
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ead28618582ff670aca048bb92803d61c6ca938
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723516"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
 
 > [!WARNING]
-> Tento článek popisuje, jak používat starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../platform/alerts-overview.md). Klasické výstrahy jsou [vyřazené](../platform/monitoring-classic-retirement.md) pro uživatele veřejného cloudu, ale i v omezeném počtu použití pro prostředky, které ještě nepodporují nové výstrahy.
+> Tento článek popisuje, jak používat starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazené](./monitoring-classic-retirement.md) pro uživatele veřejného cloudu, i když jsou omezeného využití do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 >
 
 Webhooky můžete použít ke směrování oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní akce. Webhook na výstraze můžete použít ke směrování do služeb, které odesílají zprávy SMS, k protokolování chyb, k oznamování týmu prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. 
@@ -30,7 +30,7 @@ Pokud chcete přidat nebo aktualizovat identifikátor URI Webhooku, klikněte na
 
 ![Přidat podokno pravidla výstrahy](./media/alerts-webhooks/Alertwebhook.png)
 
-Můžete také nakonfigurovat upozornění pro odeslání na identifikátor URI Webhooku pomocí [rutin Azure PowerShell](../samples/powershell-samples.md#create-metric-alerts), rozhraní příkazového [řádku pro více platforem](../samples/cli-samples.md#work-with-alerts)nebo [rozhraní API REST Azure monitor](/rest/api/monitor/alertrules).
+Můžete také nakonfigurovat upozornění pro odeslání na identifikátor URI Webhooku pomocí [rutin Azure PowerShell](../powershell-samples.md#create-metric-alerts), rozhraní příkazového [řádku pro více platforem](../cli-samples.md#work-with-alerts)nebo [rozhraní API REST Azure monitor](/rest/api/monitor/alertrules).
 
 ## <a name="authenticate-the-webhook"></a>Ověření Webhooku
 Webhook se může ověřit pomocí ověřování na základě tokenu. Identifikátor URI Webhooku se uloží s ID tokenu. Příklad: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

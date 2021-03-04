@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726172"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -294,7 +294,7 @@ Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny]
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Porozumění fakturovanému využití na úrovni starší verze Enterprise (na uzel) 
 
-Jak je popsáno níže podrobněji, vrstva starší verze Enterprise (na uzlech) kombinuje využití napříč všemi Application Insightsmi prostředky v rámci předplatného pro výpočet počtu uzlů a překročení dat. Z důvodu tohoto kombinovaného procesu **se využití všech Application Insights prostředků v rámci předplatného hlásí pouze v jednom z prostředků**.  Díky tomu bude vaše [Fakturované využití](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) sladěné s využitím, které sledujete u každého Application Insightsch prostředků velmi komplikované. 
+Jak je popsáno níže podrobněji, vrstva starší verze Enterprise (na uzlech) kombinuje využití napříč všemi Application Insightsmi prostředky v rámci předplatného pro výpočet počtu uzlů a překročení dat. Z důvodu tohoto kombinovaného procesu **se využití všech Application Insights prostředků v rámci předplatného hlásí pouze v jednom z prostředků**.  Díky tomu bude vaše [Fakturované využití](#viewing-application-insights-usage-on-your-azure-bill) sladěné s využitím, které sledujete u každého Application Insightsch prostředků velmi komplikované. 
 
 > [!WARNING]
 > Z důvodu složitosti sledování a porozumění využití Application Insightsch prostředků ve starší úrovni podniku (na úrovni uzlu) důrazně doporučujeme použít aktuální cenovou úroveň s průběžnými platbami. 

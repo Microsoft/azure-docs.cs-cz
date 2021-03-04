@@ -7,16 +7,16 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734345"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Rychlý Start: odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony ARM
 
-Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager (šablony ARM) vytvořit pracovní prostor Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) .
+Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager (šablony ARM) vytvořit pracovní prostor Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) .
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nakonfigurovali protokol aktivit, který se má odeslat do Log Analytics pracovního prostoru. Teď můžete nakonfigurovat další data, která se mají shromáždit, do pracovního prostoru, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) v Azure monitor a využívat funkce, jako jsou výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . Měli byste další shromáždit [protokoly prostředků](../essentials/resource-logs.md) z vašich prostředků Azure, které vám poskytnou přehled o operacích, které byly provedeny v rámci jednotlivých prostředků v protokolu aktivit.
+V tomto rychlém startu jste nakonfigurovali protokol aktivit, který se má odeslat do Log Analytics pracovního prostoru. Teď můžete nakonfigurovat další data, která se mají shromáždit, do pracovního prostoru, kde je můžete analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md) v Azure monitor a využívat funkce, jako jsou výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . Měli byste další shromáždit [protokoly prostředků](../essentials/resource-logs.md) z vašich prostředků Azure, které vám poskytnou přehled o operacích, které byly provedeny v rámci jednotlivých prostředků v protokolu aktivit.
 
 > [!div class="nextstepaction"]
 > [Shromažďování a analýza protokolů prostředků pomocí Azure Monitor](../essentials/tutorial-resource-logs.md)

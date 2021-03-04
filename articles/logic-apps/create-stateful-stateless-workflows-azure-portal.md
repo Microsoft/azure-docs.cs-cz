@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/02/2021
+ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736331"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Vytváření stavových a bezstavových pracovních postupů v Azure Portal s využitím Azure Logic Apps Preview
 
@@ -34,7 +34,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
 * Aktivovat spuštění pracovního postupu.
 
-* Zobrazit historii spuštění pracovního postupu.
+* Zobrazit historii spuštění a triggeru pracovního postupu.
 
 * Po nasazení povolte nebo otevřete Application Insights.
 
@@ -51,6 +51,8 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
   > [!NOTE]
   > [Stavové aplikace logiky](logic-apps-overview-preview.md#stateful-stateless) provádějí transakce úložiště, například používání front pro plánování a ukládání stavů pracovního postupu v tabulkách a objektech blob. Tyto transakce se účtují [za Azure Storage poplatky](https://azure.microsoft.com/pricing/details/storage/). Další informace o tom, jak stavové aplikace logiky ukládají data v externích úložištích, najdete v tématu stavová [versus Bezstavová](logic-apps-overview-preview.md#stateful-stateless).
+
+* K nasazení do kontejneru Docker budete potřebovat existující image kontejneru Docker. Tuto image můžete například vytvořit pomocí [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)nebo [instance kontejneru Azure](../container-instances/container-instances-overview.md). 
 
 * Pokud chcete v tomto článku sestavit stejnou ukázkovou aplikaci logiky, potřebujete e-mailový účet Office 365 Outlook, který pro přihlášení používá pracovní nebo školní účet Microsoft.
 
@@ -77,7 +79,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro vaši aplikaci logiky. |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Skupina prostředků Azure, kde vytvoříte aplikaci logiky a související prostředky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří skupinu prostředků s názvem `Fabrikam-Workflows-RG` . |
    | **Název aplikace logiky** | Ano | <*Logic-App-Name*> | Název, který se má použít pro vaši aplikaci logiky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří aplikaci logiky s názvem `Fabrikam-Workflows` . <p><p>**Poznámka**: název vaší aplikace logiky automaticky získá příponu, `.azurewebsites.net` , protože prostředek **Aplikace logiky (Preview)** je napájený Azure Functions, který používá stejné zásady vytváření názvů aplikací. |
-   | **Publikovat** | Ano | <*nasazení – prostředí*> | Cíl nasazení pro vaši aplikaci logiky. Do Azure se dá nasadit tak, že vyberete **pracovní postup** nebo kontejner Docker. <p><p>V tomto příkladu se používá **pracovní postup**, což je prostředek **Aplikace logiky (Preview)** v Azure. <p><p>Pokud vyberete **kontejner Docker**, [Určete kontejner, který se použije v nastavení aplikace logiky](#set-docker-container). |
+   | **Publikovat** | Ano | <*nasazení – prostředí*> | Cíl nasazení pro vaši aplikaci logiky. Do Azure se dá nasadit tak, že vyberete **pracovní postup** nebo **kontejner Docker**. <p><p>V tomto příkladu se používá **pracovní postup**, který nasadí prostředek **Aplikace logiky (Preview)** do Azure Portal. <p><p>**Poznámka**: před výběrem **kontejneru Docker** se ujistěte, že jste vytvořili image kontejneru Docker. Tuto image můžete například vytvořit pomocí [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)nebo [instance kontejneru Azure](../container-instances/container-instances-overview.md). Tímto způsobem můžete po výběru **kontejneru Docker** [zadat kontejner, který chcete použít v nastavení aplikace logiky](#set-docker-container). |
    | **Oblast** | Ano | <*Oblast Azure*> | Oblast Azure, která se má použít při vytváření skupiny prostředků a prostředků <p><p>Tento příklad používá **západní USA**. |
    |||||
 
@@ -90,7 +92,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Účet úložiště** | Ano | <*Azure-Storage-Account-Name*> | [Účet Azure Storage](../storage/common/storage-account-overview.md) , který se má použít pro transakce úložiště. Tento název prostředku musí být v různých oblastech jedinečný a musí mít 3-24 znaků a obsahovat jenom číslice a malá písmena. Vyberte buď existující účet, nebo vytvořte nový účet. <p><p>Tento příklad vytvoří účet úložiště s názvem `fabrikamstorageacct` . |
-   | **Typ plánu** | Ano | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je plán [**Premium**](../azure-functions/functions-premium-plan.md) nebo [**App Service**](../azure-functions/dedicated-plan.md). Vaše volba má vliv na cenové úrovně, které si můžete vybrat později. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány hostování spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **Typ plánu** | Ano | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je buď [**Functions Premium**](../azure-functions/functions-premium-plan.md) , nebo [ **plán služby App Service** (vyhrazená)](../azure-functions/dedicated-plan.md). Vaše volba má vliv na možnosti a cenové úrovně, které jsou později dostupné. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p>Například plán služby Functions úrovně Premium poskytuje přístup k funkcím sítě, jako je například připojení a integrace soukromě s virtuálními sítěmi Azure, podobně jako Azure Functions při vytváření a nasazování aplikací logiky. Další informace najdete v těchto tématech: <p><p>- [Možnosti Azure Functions sítě](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps spouštění možností kdekoli v síti pomocí Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
    | **Plán Windows** | Ano | <*plán – název*> | Název plánu, který se má použít. Vyberte buď existující plán, nebo zadejte název nového plánu. <p><p>V tomto příkladu se používá název `Fabrikam-Service-Plan` . |
    | **SKU a velikost** | Ano | <*cenová úroveň*> | [Cenová úroveň](../app-service/overview-hosting-plans.md) , která se má použít pro hostování aplikace logiky Vaše volby jsou ovlivněny typem plánu, který jste předtím zvolili. Pokud chcete změnit výchozí úroveň, vyberte **změnit velikost**. Na základě zatížení, které potřebujete, pak můžete vybrat jiné cenové úrovně. <p><p>V tomto příkladu se používá Volná **cenová úroveň F1** pro úlohy **vývoje a testování** . Další informace najdete v [podrobnostech o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
@@ -103,13 +105,16 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
 1. Až Azure ověří nastavení vaší aplikace logiky, na kartě **Revize + vytvořit** vyberte **vytvořit**.
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky zobrazující Azure Portal a nové nastavení prostředků aplikace logiky](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
+   > [!TIP]
+   > Pokud se zobrazí chyba ověřování po výběru **vytvořit**, otevřete a Projděte si podrobnosti o chybě. Pokud vaše vybraná oblast například dosáhne kvóty pro prostředky, které se pokoušíte vytvořit, možná budete muset vyzkoušet jinou oblast.
+
    Až Azure dokončí nasazení, vaše aplikace logiky se automaticky zalive a spustí, ale ještě nic nedělá, protože žádné pracovní postupy neexistují.
 
-1. Na stránce dokončení nasazení vyberte **Přejít k prostředku** , abyste mohli začít sestavovat pracovní postup.
+1. Na stránce dokončení nasazení vyberte **Přejít k prostředku** , abyste mohli začít sestavovat pracovní postup. Pokud jste vybrali **Docker Container** pro nasazení aplikace logiky, pokračujte postupem, který [poskytuje informace o daném kontejneru Docker](#set-docker-container).
 
    ![Snímek obrazovky zobrazující Azure Portal a dokončené nasazení.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
 
@@ -117,15 +122,13 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
 ## <a name="specify-docker-container-for-deployment"></a>Zadat kontejner Docker pro nasazení
 
-Pokud jste při vytváření aplikace logiky vybrali **kontejner Docker** , ujistěte se, že zadáte informace o kontejneru, který chcete použít pro nasazení, poté, co Azure Portal vytvoří prostředek **Aplikace logiky (Preview)** .
+Než začnete s tímto postupem, budete potřebovat image kontejneru Docker. Tuto image můžete například vytvořit pomocí [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)nebo [instance kontejneru Azure](../container-instances/container-instances-overview.md). Po vytvoření aplikace logiky pak můžete zadat informace o kontejneru Docker.
 
 1. V Azure Portal přejít na prostředek aplikace logiky.
 
-1. V nabídce aplikace logiky v části **Nastavení** vyberte **nastavení kontejneru**. Zadejte podrobnosti a umístění Image kontejneru Docker.
+1. V nabídce aplikace logiky v části **Nastavení** vyberte **centrum nasazení**.
 
-   ![Snímek obrazovky, který zobrazuje nabídku aplikace logiky s vybraným nastavením kontejnerů.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-deploy-container-settings.png)
-
-1. Až budete hotovi, uložte nastavení.
+1. V podokně **centrum nasazení** postupujte podle pokynů pro poskytování a správu podrobností kontejneru Docker.
 
 <a name="add-workflow"></a>
 
@@ -223,7 +226,7 @@ Než budete moct přidat Trigger do prázdného pracovního postupu, ujistěte s
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Záměr** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Do** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
    | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
    | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
@@ -286,9 +289,11 @@ V tomto příkladu se pracovní postup spustí, když aktivační událost žád
 
       ![Snímek obrazovky, který zobrazuje e-mail Outlooku, jak je popsáno v příkladu](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
 
+<a name="view-run-history"></a>
+
 ## <a name="review-run-history"></a>Kontrola historie spuštění
 
-U stavového pracovního postupu můžete po každém spuštění pracovního postupu zobrazit historii spuštění, včetně stavu celkového spuštění, triggeru a pro každou akci společně s jejich vstupy a výstupy.
+U stavového pracovního postupu můžete po každém spuštění pracovního postupu zobrazit historii spuštění, včetně stavu celkového spuštění, triggeru a pro každou akci společně s jejich vstupy a výstupy. V Azure Portal se historie spuštění a historie aktivačních událostí zobrazují na úrovni pracovního postupu, nikoli na úrovni aplikace logiky. Pokud chcete zkontrolovat historie triggerů mimo kontext historie spuštění, přečtěte si téma [Kontrola historie triggerů](#view-trigger-histories).
 
 1. V nabídce Azure Portal v nabídce pracovního postupu vyberte **monitor**.
 
@@ -320,15 +325,15 @@ U stavového pracovního postupu můžete po každém spuštění pracovního po
 
    | Stav akce | Ikona | Popis |
    |---------------|------|-------------|
-   | Bylo přerušeno | ![Ikona pro stav akce přerušeno][aborted-icon] | Akce se zastavila nebo nedokončila z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
-   | Cancelled | ![Ikona pro stav akce zrušeno][cancelled-icon] | Akce byla spuštěna, ale přijala žádost o zrušení. |
-   | Neúspěšný | ![Ikona pro stav akce "neúspěch"][failed-icon] | Akce se nezdařila. |
-   | Spuštěno | ![Ikona pro spuštěný stav akce][running-icon] | Tato akce je aktuálně spuštěná. |
-   | Přeskočeno | ![Ikona pro stav akce přeskočeno][skipped-icon] | Akce byla přeskočena, protože bezprostředně předchozí akce se nezdařila. Akce má `runAfter` podmínku, která vyžaduje, aby předchozí akce byla úspěšně dokončena předtím, než bude možné spustit aktuální akci. |
-   | Úspěšný | ![Ikona stavu akce "úspěch"][succeeded-icon] | Akce byla úspěšná. |
-   | Úspěch s opakováním | ![Ikona pro stav akce úspěšné a opakované pokusy][succeeded-with-retries-icon] | Akce byla úspěšná, ale jenom po jednom nebo několika opakovaných pokusech. Chcete-li zkontrolovat historii opakování, v zobrazení podrobností historie spuštění vyberte tuto akci, aby bylo možné zobrazit vstupy a výstupy. |
-   | Vypršel časový limit | ![Ikona pro stav akce vypršel časový limit][timed-out-icon] | Akce byla zastavena z důvodu vypršení časového limitu zadaného nastavením této akce. |
-   | Čekající | ![Ikona pro stav "čeká na akci"][waiting-icon] | Platí pro akci Webhooku, která čeká na příchozí požadavek od volajícího. |
+   | **Bylo přerušeno** | ![Ikona pro stav akce přerušeno][aborted-icon] | Akce se zastavila nebo nedokončila z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
+   | **Stornován** | ![Ikona pro stav akce zrušeno][cancelled-icon] | Akce byla spuštěna, ale přijala žádost o zrušení. |
+   | **Neúspěšný** | ![Ikona pro stav akce "neúspěch"][failed-icon] | Akce se nezdařila. |
+   | **Spuštěno** | ![Ikona pro spuštěný stav akce][running-icon] | Tato akce je aktuálně spuštěná. |
+   | **Přeskočeno** | ![Ikona pro stav akce přeskočeno][skipped-icon] | Akce byla přeskočena, protože bezprostředně předchozí akce se nezdařila. Akce má `runAfter` podmínku, která vyžaduje, aby předchozí akce byla úspěšně dokončena předtím, než bude možné spustit aktuální akci. |
+   | **Úspěšný** | ![Ikona stavu akce "úspěch"][succeeded-icon] | Akce byla úspěšná. |
+   | **Úspěch s opakováním** | ![Ikona pro stav akce úspěšné a opakované pokusy][succeeded-with-retries-icon] | Akce byla úspěšná, ale jenom po jednom nebo několika opakovaných pokusech. Chcete-li zkontrolovat historii opakování, v zobrazení podrobností historie spuštění vyberte tuto akci, aby bylo možné zobrazit vstupy a výstupy. |
+   | **Vypršel časový limit** | ![Ikona pro stav akce vypršel časový limit][timed-out-icon] | Akce byla zastavena z důvodu vypršení časového limitu zadaného nastavením této akce. |
+   | **Čekající** | ![Ikona pro stav "čeká na akci"][waiting-icon] | Platí pro akci Webhooku, která čeká na příchozí požadavek od volajícího. |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
@@ -346,6 +351,18 @@ U stavového pracovního postupu můžete po každém spuštění pracovního po
    ![Snímek obrazovky zobrazující vstupy a výstupy ve vybrané akci "Odeslat e-mail".](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
 
 1. Chcete-li dále zkontrolovat nezpracované vstupy a výstupy pro daný krok, vyberte možnost **Zobrazit nezpracované vstupy** nebo **Zobrazit nezpracované výstupy**.
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>Kontrola historie triggerů
+
+U stavového pracovního postupu můžete zkontrolovat historii triggerů pro každé spuštění, včetně stavu triggeru společně se vstupy a výstupy, a to odděleně od [kontextu historie spuštění](#view-run-history). V Azure Portal se historie aktivačních událostí a spuštění zobrazí na úrovni pracovního postupu, nikoli na úrovni aplikace logiky. K vyhledání těchto historických dat použijte následující postup:
+
+1. V nabídce Azure Portal v nabídce pracovní postup vyberte v části **vývojář** možnost **aktivovat historie**.
+
+   Podokno **historie aktivačních událostí** zobrazuje historie aktivačních událostí pro spuštění vašeho pracovního postupu.
+
+1. Pokud chcete zkontrolovat určitou historii triggerů, vyberte ID pro toto spuštění.
 
 <a name="enable-open-application-insights"></a>
 
@@ -365,7 +382,10 @@ Pokud chcete povolit Application Insights v nasazené aplikaci logiky nebo otev�
 
    Pokud je povolená Application Insights, vyberte v podokně **Application Insights** možnost **Zobrazit Application Insights data**.
 
-Po Application Insights se můžete podívat na různé metriky pro vaši aplikaci logiky.
+Po Application Insights se můžete podívat na různé metriky pro vaši aplikaci logiky. Další informace najdete v těchto tématech:
+
+* [Azure Logic Apps běžící kdekoli – monitor s Application Insights – část 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [Azure Logic Apps běžící kdekoli – monitor s Application Insights – část 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="enable-run-history-stateless"></a>
 
@@ -385,7 +405,7 @@ Pokud chcete rychle ladit pracovní postup bez stavů, můžete pro tento pracov
 
 1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nastavení nového aplikace" < otevře podokno přidat/upravit nastavení aplikace, a pracovní postupy. {yourWorkflowName}. Možnost OperationOptions je nastavena na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-azure-portal/stateless-operation-options-run-history.png)
 

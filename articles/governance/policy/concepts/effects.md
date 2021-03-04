@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741816"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -19,7 +19,7 @@ V definici zásad se v současné době podporují tyto efekty:
 - [Připojit](#append)
 - [Auditovat](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Odepřít](#deny)
+- [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Zakázáno](#disabled)
 - [Upravit](#modify)
@@ -266,8 +266,7 @@ Podobně jako AuditIfNotExists, definice zásad DeployIfNotExists provede nasaze
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists vyhodnocování
 
-DeployIfNotExists spustí asi 15 minut poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku a vrátil kód stavu úspěch. K nasazení šablony dojde, pokud neexistují žádné související prostředky nebo pokud prostředky definované pomocí **ExistenceCondition** nevyhodnotí hodnotu true.
-Doba nasazení závisí na složitosti prostředků obsažených v šabloně.
+DeployIfNotExists spustí asi 15 minut poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci předplatného nebo prostředku a vrátil kód stavu úspěch. K nasazení šablony dojde, pokud neexistují žádné související prostředky nebo pokud prostředky definované pomocí **ExistenceCondition** nevyhodnotí hodnotu true. Doba nasazení závisí na složitosti prostředků obsažených v šabloně.
 
 V průběhu zkušebního cyklu jsou definice zásad s DeployIfNotExists účinkem odpovídajícím prostředkům označeny jako nevyhovující, ale u tohoto prostředku se neprovádí žádná akce. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md).
 
@@ -482,8 +481,7 @@ Příklad: pravidlo pro Admission Control pro gatekeeper v2, které povoluje pou
 
 ## <a name="modify"></a>Modify
 
-Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání vlastností nebo značek prostředku během vytváření nebo aktualizace.
-Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
+Příkaz Upravit se používá k přidání, aktualizaci nebo odebrání vlastností nebo značek pro předplatné nebo prostředek během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
 
 Následující operace jsou podporovány úpravou:
 

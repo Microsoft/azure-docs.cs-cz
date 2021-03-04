@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699075"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
 
@@ -34,7 +34,7 @@ Azure Load Balancer poskytuje multidimenzionální metriky prostřednictvím met
 
 Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
-| Metric | Typ prostředku | Description | Doporučená agregace |
+| Metric | Typ prostředku | Popis | Doporučená agregace |
 | --- | --- | --- | --- |
 | Dostupnost cesty k datům | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer průběžně kontroluje cestu dat z určité oblasti k front-endu nástroje pro vyrovnávání zatížení, a to až ke stacku SDN, který podporuje váš virtuální počítač. Pokud zůstanou instance v pořádku, měření se řídí stejnou cestou jako provoz s vyrovnáváním zatížení vaší aplikace. Ověřuje se také cesta dat, kterou využívají vaši zákazníci. Měření je pro vaši aplikaci neviditelné a nemá vliv na ostatní operace.| Průměr |
 | Stav sondy stavu | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení nebo filtrované zobrazení jednotlivých koncových bodů instancí ve fondu nástroje pro vyrovnávání zatížení. Můžete zjistit, jak Load Balancer vidí stav vaší aplikace na základě vaší konfigurace sondy stavu. |  Průměr |
@@ -72,18 +72,7 @@ Chcete-li zobrazit metriky pro prostředky Standard Load Balancer:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtěte multidimenzionální metriky prostřednictvím rozhraní API.
 
-Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště přidáním [nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) pro kategorii všechny metriky. 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace upozornění na multidimenzionální metriky ###
-
-Azure Standard Load Balancer podporuje snadno konfigurovatelné výstrahy pro multidimenzionální metriky. Nakonfigurujte vlastní prahové hodnoty pro konkrétní metriky, abyste mohli aktivovat výstrahy s různou úrovní závažnosti, abyste mohli využívat možnosti monitorování prostředků bez dotykového ovládání.
-
-Konfigurace upozornění:
-1. Přejít na dílčí okno výstrahy pro nástroj pro vyrovnávání zatížení
-1. Vytvoření nového pravidla upozornění
-    1.  Konfigurace podmínky výstrahy
-    1.  Volitelné Přidat skupinu akcí pro automatizovanou opravu
-    1.  Přiřazení závažnosti, názvu a popisu výstrahy, která umožňuje intuitivní reakci
+Pokyny k rozhraní API pro načítání multidimenzionálních definic a hodnot naleznete v tématu [návod k Azure Monitoring REST API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Tyto metriky se dají zapsat do účtu úložiště přidáním [nastavení diagnostiky](../azure-monitor/essentials/diagnostic-settings.md) pro kategorii všechny metriky. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Běžné diagnostické scénáře a doporučená zobrazení
 
@@ -228,15 +217,41 @@ Graf zobrazuje následující informace:
 Graf umožňuje zákazníkům řešit vlastní řešení bez nutnosti odhadování nebo požádáte o podporu, jestli dochází k ostatním problémům. Služba není k dispozici, protože sondy stavu selhaly kvůli chybné konfiguraci nebo selhání aplikace.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurace upozornění na multidimenzionální metriky ###
+
+Azure Standard Load Balancer podporuje snadno konfigurovatelné výstrahy pro multidimenzionální metriky. Nakonfigurujte vlastní prahové hodnoty pro konkrétní metriky, abyste mohli aktivovat výstrahy s různou úrovní závažnosti, abyste mohli využívat možnosti monitorování prostředků bez dotykového ovládání.
+
+Konfigurace upozornění:
+1. Přejít na dílčí okno výstrahy pro nástroj pro vyrovnávání zatížení
+1. Vytvoření nového pravidla upozornění
+    1.  Konfigurace podmínky výstrahy
+    1.  Volitelné Přidat skupinu akcí pro automatizovanou opravu
+    1.  Přiřazení závažnosti, názvu a popisu výstrahy, která umožňuje intuitivní reakci
+
+### <a name="inbound-availability-alerting"></a>Upozornění na příchozí dostupnost
+Pokud chcete upozornit na příchozí dostupnost, můžete vytvořit dvě samostatné výstrahy pomocí metriky stavu dostupnosti datových cest a sond stavu. Zákazníci mohou mít různé scénáře, které vyžadují specifickou logiku upozorňování, ale níže uvedené příklady budou užitečné pro většinu konfigurací.
+
+Pomocí dostupnosti cesty k datům můžete aktivovat výstrahy vždy, když dojde k nedostupnosti konkrétního pravidla vyrovnávání zatížení. Tato výstraha se dá nakonfigurovat tak, že nastavíte podmínku upozornění pro dostupnost a rozdělení dat pro cestu k datům a použijete všechny aktuální hodnoty a budoucí hodnoty pro port front-end i front-end IP adresu. Nastavení logiky výstrah tak, aby byla menší nebo rovna nule, způsobí, že se tato výstraha aktivuje vždy, když jakékoli pravidlo vyrovnávání zatížení přestane reagovat. Nastavte členitost agregace a četnost vyhodnocování podle požadovaného vyhodnocení. 
+
+Stav sondy stavu můžete upozornit, když předaná instance back-end nereaguje na test stavu po značnou dobu. Nastavte podmínku upozornění pro použití metriky stavu sondy stavu a rozdělení podle IP adresy back-endu a portu back-endu. Tím zajistíte, že budete moci pro každou jednotlivou instanci back-endu, která bude obsluhovat přenosy na konkrétní port, samostatně vygenerovat výstrahu. Použijte **průměrový** typ agregace a nastavte prahovou hodnotu podle toho, jak často je vaše back-end instance zjištěná a co byste měli zvážit jako prahovou hodnotu vaší dobré kontroly. 
+
+Můžete také upozornit na úroveň back-end fondu tak, že nerozdělí žádné dimenze a nepoužijete **průměrně** typ agregace. To vám umožní nastavit pravidla upozornění, jako je například výstraha v případě, že 50% členů fondu back-endu není v pořádku.
+
+### <a name="outbound-availability-alerting"></a>Upozornění na odchozí dostupnost
+Pokud chcete nakonfigurovat odchozí dostupnost, můžete nakonfigurovat dvě samostatné výstrahy pomocí počtu připojení SNAT a použitých metrik portů SNAT.
+
+Chcete-li zjistit selhání odchozího připojení, nakonfigurujte výstrahu pomocí počtu připojení SNAT a filtrování do stavu připojení = neúspěšné. Použijte **celkovou** agregaci. Pak můžete tuto možnost také rozdělit na back-end IP adresu nastavenou na všechny aktuální a budoucí hodnoty, aby výstraha nebyla závislá na každé instanci back-endu, u které došlo k selhání Nastavte prahovou hodnotu větší než nula nebo vyšší číslo, pokud očekáváte, že se zobrazí některá selhání odchozího připojení.
+
+Pomocí portů SNAT můžete upozornit na vyšší riziko vyčerpání SNAT a selhání odchozího připojení. Při použití této výstrahy se ujistěte, že rozdělujete podle IP adresy back-endu a protokolu, a použijte **průměrnou** agregaci. Nastavte prahovou hodnotu větší než procento počtu portů, které jste přidělili pro jednotlivé instance, které považujete za nebezpečné. Můžete například nakonfigurovat upozornění s nízkou závažností, pokud instance back-endu používá 75% přidělených portů a vysokou závažnost, když používá 90% nebo 100% přidělených portů.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Stav prostředku
 
 Stav prostředků Standard Load Balancer se zveřejňuje prostřednictvím stávajícího **stavu prostředků** v části **monitorování > Service Health**. Vyhodnocuje se každé **dvě minuty** měřením dostupnosti dat, která určuje, jestli jsou k dispozici koncové body vyrovnávání zatížení front-endu.
 
-| Stav prostředku | Description |
+| Stav prostředku | Popis |
 | --- | --- |
 | K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
-| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
-| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
+| Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) a zjistěte, jestli neexistují uživatelem iniciované události, které by měly vliv na dostupnost.
+| Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů pro řešení potíží s RHC](./troubleshoot-rhc.md) , abyste zjistili, jestli neexistují uživatelem iniciované události, které mají vliv na dostupnost. |
 | Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a jakmile se přijmou data, měl by odrážet správný stav. |
 
 Zobrazení stavu prostředků veřejné Standard Load Balancer:
@@ -263,7 +278,7 @@ Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](../servic
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o používání [přehledů](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) k zobrazení těchto metrik, které jsou pro vaše Load Balancer předem nakonfigurované.
+- Přečtěte si o používání [přehledů](./load-balancer-insights.md) k zobrazení těchto metrik, které jsou pro vaše Load Balancer předem nakonfigurované.
 - Přečtěte si další informace o [Standard Load Balancer](./load-balancer-overview.md).
 - Přečtěte si další informace o [odchozím připojení k nástroji pro vyrovnávání zatížení](./load-balancer-outbound-connections.md).
 - Přečtěte si o [Azure monitor](../azure-monitor/overview.md).

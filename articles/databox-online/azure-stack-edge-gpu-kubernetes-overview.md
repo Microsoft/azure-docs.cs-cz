@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448657"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699568"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes na zařízení GPU pro Azure Stack Edge pro
 
@@ -107,6 +107,16 @@ Další informace o nasazení aplikací do clusteru Kubernetes prostřednictvím
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes a ARC Azure
 
 Azure ARC je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů Kubernetes. Azure ARC vám taky umožňuje použít Azure Monitor pro kontejnery k zobrazení a monitorování clusterů. Další informace najdete v Azure-Arc s [povoleným Kubernetes?](../azure-arc/kubernetes/overview.md). Informace o cenách Azure ARC najdete v [cenách Azure ARC](https://azure.microsoft.com/services/azure-arc/#pricing).
+
+Od března 2021 bude Kubernetes s povoleným použitím Azure ARC všeobecně k dispozici pro uživatele a standardní poplatky za používání. Jako zákazník s vyhodnocenou verzí Preview bude pro Azure Stack hraničních zařízení k dispozici bezplatně Kubernetesý Azure ARC. Pokud chcete využít nabídku Preview, vytvořte [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+
+1. V seznamu **Typ problému** vyberte **Fakturace**.
+2. V části **Předplatné** vyberte své předplatné.
+3. V části **Služba** vyberte **moje služby** a pak vyberte **Azure Stack Edge**.
+4. V části **prostředek** vyberte svůj prostředek.
+5. V části **Souhrn** zadejte popis problému.
+6. V části **typ problému** vyberte **neočekávané poplatky**.
+7. V části **problémový typ** vyberte možnost **pomáhat mi při bezplatné zkušební verzi pochopit poplatky**.
 
 
 ## <a name="next-steps"></a>Další kroky

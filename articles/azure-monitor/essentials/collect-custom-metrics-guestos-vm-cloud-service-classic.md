@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 971a3063ff86e2a6b7d1b11f72ff0a257f459da0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6866361b78656d99888c4df70cc0c92ed096425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737048"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pomocí rozšíření Azure Monitor [Diagnostics](../agents/diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)
+Pomocí rozšíření Azure Monitor [Diagnostics](../agents/diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému) spuštěného jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro Azure Classic Cloud Services do úložiště metrik Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem. 
 
@@ -34,7 +34,7 @@ Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu
 
 - Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
-- Vaše cloudová služba musí být v [oblasti, která podporuje vlastní metriky](../platform/metrics-custom-overview.md#supported-regions).
+- Vaše cloudová služba musí být v [oblasti, která podporuje vlastní metriky](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Zřízení cloudové služby a účtu úložiště 
 
@@ -191,4 +191,4 @@ K zobrazení celkové paměti, kterou používá konkrétní role nebo instance 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [vlastních metrikách](../platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).

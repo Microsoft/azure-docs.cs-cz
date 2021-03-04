@@ -7,26 +7,94 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/29/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750744"
 ---
-Tato kategorie entit zahrnuje finanční informace a oficiální formy identifikace. K dispozici počínaje verzí modelu `2019-10-01` . Níže jsou uvedeny podtypy. 
-
 ### <a name="financial-account-identification"></a>Identifikace finančního účtu
 
-| Název podtypu               | Description                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| Směrovací číslo ABA        | Směrovací čísla asociace (ABA) pro americký bankový přenos                  |
-| Kód SWIFT                 | Kódy SWIFT pro informace o platebních pokynech.                           |
-| Platební karta                | Čísla platebních karet                                                       |
-| Číslo IBAN                  | Kódy IBAN pro informace o platebních pokynech.                            |
+Tato kategorie entit zahrnuje finanční informace a oficiální formy identifikace.
 
+#### <a name="category-aba-routing-number"></a>Kategorie: číslo směrování ABA
+
+Tato kategorie obsahuje následující entitu:
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo směrování ABA
+
+    :::column-end:::
+    :::column span="2":::
+        **Podrobnosti**
+
+        Směrovací čísla asociace (ABA) pro americký bankový přenos
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-swift-code"></a>Kategorie: kód SWIFT
+
+Tato kategorie obsahuje následující entitu:
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Kód SWIFT
+
+    :::column-end:::
+    :::column span="2":::
+        **Podrobnosti**
+
+        Kódy SWIFT pro informace o platebních pokynech.
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-credit-card"></a>Kategorie: platební karta
+
+Tato kategorie obsahuje následující entitu:
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Platební karta
+
+    :::column-end:::
+    :::column span="2":::
+        **Podrobnosti**
+
+        Čísla platebních karet 
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-international-banking-account-number-iban"></a>Kategorie: číslo mezinárodního bankovního účtu (IBAN) 
+
+Tato kategorie obsahuje následující entitu:
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Platební karta
+
+    :::column-end:::
+    :::column span="2":::
+        **Podrobnosti**
+
+        Kódy IBAN pro informace o platebních pokynech.
+      
+    :::column-end:::
+:::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>Identifikace specifická pro státní správu a zemi/oblast
 
@@ -37,249 +105,851 @@ Tato kategorie entit zahrnuje finanční informace a oficiální formy identifik
 
 Následující entity jsou seskupené a uvedené podle země:
 
-Argentina
-* Číslo argentinské National identity (DNI)
+#### <a name="argentina"></a>Argentina
 
-Rakousko
-* Karta identity v Rakousku
-* Daňové identifikační číslo v Rakousku
-* Číslo DPH přidané v hodnotě Rakousko
+:::row:::
+    :::column span="":::
+        **Entita**
 
-Austrálie
-* Číslo bankovního účtu Austrálie
-* Australské obchodní číslo
-* Číslo australské společnosti
-* Číslo licence ovladače Austrálie
-* Číslo zdravotního účtu Austrálie
-* Číslo služby Passport v Austrálii
-* Číslo daňového souboru v Austrálii
+        Číslo argentinské National identity (DNI)
 
-Belgie
-* Národní číslo v Belgii
-* Daňové číslo přidané hodnoty v Belgii
+    :::column-end:::
+:::row-end:::
 
-Brazílie 
-* Brazílie – právní číslo entity (CNPJ)
-* Brazílie – CPF číslo
-* Karta National ID Brazílie (RG)
 
-Bulharsko
-* Bulharsko jednotné občanské číslo
+#### <a name="austria"></a>Rakousko
 
-Kanada
-* Číslo bankovního účtu v Kanadě
-* Číslo licence ovladače Kanady
-* Číslo Health Service pro Kanadu
-* Číslo služby Passport pro Kanadu
-* Kanada – osobní identifikační číslo zdravotního stavu (PHIN)
-* Rodné číslo v Kanadě
+:::row:::
+    :::column span="":::
+        **Entita**
 
-Chile
-* Číslo karty identity 
+        Karta identity v Rakousku
 
-Čína
-* Čína – číslo rezidenta identity na kartu (ČLR)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Chorvatsko
-* Chorvatsko číslo karty identity
-* Státní identifikační číslo na kartě Chorvatsko
-* Osobní identifikační číslo (OIB) Chorvatsku
+        Daňové identifikační číslo v Rakousku
 
-Kypr
-* Číslo karty Kypru identity
-* Daňové identifikační číslo Kypru
+    :::column-end:::
 
-Česká republika
-* Osobní identifikační číslo v češtině
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Dánsko
-* Dánsko – osobní identifikační číslo
+        Číslo DPH přidané v hodnotě Rakousko
 
-Estonsko
-* Estonsko – osobní identifikační kód
+    :::column-end:::
+:::row-end:::
 
-Evropské unie (EU)
-* Číslo debetní karty v EU
-* Číslo licence ovladače EU
-* Národní identifikační číslo v EU
-* Číslo Passportu EU
-* Číslo sociálního pojištění (SSN) nebo ekvivalentní ID pro EU
-* Daňové identifikační číslo (DIČ) EU
 
-Finsko
-* Finsko – evropské číslo pojištění pro nákazy
-* Národní ID Finska
-* Číslo Finska služby Passport
 
-Francie
-* Číslo licence ovladače Francie
-* Číslo pojištění stavu Francie
-* Karta National ID Francie (CNI)
-* Francouzský pas číslo
-* Francouzský rodné číslo (INSEE)
-* Daňové identifikační číslo pro Francii (numéro SPI)
-* Daňové číslo přidané hodnoty Francie
+#### <a name="australia"></a>Austrálie
 
-Německo
-* Číslo licence německého ovladače
-* Číslo karty identity v Německu
-* Německé číslo služby Passport
-* Daňové identifikační číslo pro Německo
-* Daňové číslo přidané hodnoty v Německu
+:::row:::
+    :::column span="":::
+        **Entita**
 
-Řecko 
-* Číslo karty národního ID Řecka
-* Daňové identifikační číslo pro Řecko
+        Číslo bankovního účtu Austrálie
 
-Hongkong
-* Číslo HKID (Hongkong – zvláštní identita)
+    :::column-end:::
 
-Maďarsko
-* Národní identifikační číslo Maďarska
-* Daňové identifikační číslo v Maďarsku
-* Daňové číslo přidané hodnoty v Maďarsku
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Indie
-* Indie – trvalé číslo účtu (PAN)
-* Jedinečné identifikační číslo Indie (Aadhaar)
+        Australské obchodní číslo
 
-Indonésie
-* KTP (Indonésie identity Card) – číslo
+    :::column-end:::
 
-Irsko
-* Číslo pro irské osobní veřejné služby (PPS)
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Izrael
-* Mezinárodní ID Izraele
-* Číslo bankovního účtu Izraele
+        Číslo společnosti v Austrálii
 
-Itálie
-* ID licence ovladače Itálie
-* Fiskální kód Itálie
-* Daňové číslo přidané hodnoty v Itálii
+    :::column-end:::
 
-Japonsko
-* Číslo bankovního účtu Japonska
-* Číslo licence ovladače Japonska
-* Japonské číslo osobní
-* Moje číslo společnosti v japonštině
-* Registrační číslo rezidenta v japonštině
-* Číslo karty japonského pobytu
-* Číslo sociálního pojištění Japonska (SIN)
-* Japonské číslo služby Passport
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Lotyšsko
-* Lotyšsko – osobní kód
+        Licence k strojvedoucímu v Austrálii  
 
-Litva
-* Osobní kód v Litvě
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Lucembursko
-* Lucembursko, národní identifikační číslo (fyzické osoby)
-* Lucembursko národní identifikační číslo (nefyzické osoby)
+        Číslo zdravotního účtu Austrálie
 
-Malajsie
-* Číslo karty identity Malajsie
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Malta
-* Malta číslo karty identity
-* Daňové identifikační číslo Malty
+        Číslo služby Passport v Austrálii
 
-Nizozemsko
-* Číslo služby (BSN) nizozemského občana
-* Nizozemské daňové identifikační číslo
-* Daňové číslo přidané hodnoty v Nizozemsku
+    :::column-end:::
 
-Nový Zéland
-* Číslo bankovního účtu Nového Zélandu
-* Číslo licence ovladače Nového Zélandu
-* Číslo Nového Zélandu v vnitrozemských výnosech
-* Nové ministerstvo, které má číslo zdravotního Zélandu
-* Číslo sociální péče na Novém Zélandu
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Norsko
-* Číslo identity Norska
+        Číslo služby Passport v Austrálii
 
-Filipíny
-* Jednotné ID pro více účelů Filipíny
+    :::column-end:::
 
-Polsko
-* Karta identity Polska
-* Mezinárodní ID Polska (PESEL)
-* Číslo Polska Passport
-* REGON číslo Polska
-* Daňové identifikační číslo Polska
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Portugalsko 
-* Číslo karty občanů v Portugalsku
-* Daňové identifikační číslo Portugalska
+        Číslo daňového souboru v Austrálii
 
-Rumunsko
-* Rumunsko – osobní číselný kód (CNP)
+    :::column-end:::
 
-Rusko
-* Ruské Passport číslo (domácí)
-* Ruské Passport číslo (mezinárodní)
+:::row-end:::
 
-Saúdská Arábie
-* Národní ID Saúdské Arábii
 
-Singapur
-* Číslo karty (NRIC) Singapuru (National registration ID)
+#### <a name="belgium"></a>Belgie
 
-Slovensko 
-* Osobní číslo Slovenska
+:::row:::
+    :::column span="":::
+        **Entita**
 
-Slovinsko
-* Daňové identifikační číslo pro Slovinsko
-* Jedinečné hlavní číslo občana Slovinsko
+        Národní číslo v Belgii
 
-Jižní Afrika
-* Identifikační číslo Jižní Afriky
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Jižní Korea
-* Registrační číslo pro rezidentské Jižní Korea
+        Číslo DPH přidané do přidané hodnoty v Belgii
 
-Španělsko 
-* Španělsko DNI
-* Rodné číslo (sociální zabezpečení)
-* Daňové identifikační číslo pro Španělsko
+    :::column-end:::
 
-Švédsko
-* Národní ID Švédska
-* Švédský pas číslo
-* Daňové identifikační číslo Švédska
+:::row-end:::
 
-Švýcarsko
-* Švýcarský sociální rodné číslo AHV
 
-Tchaj-wan 
-* Mezinárodní ID pro Tchaj-wan
-* Rezidentský certifikát pro Tchaj-wan (oblouk/TARC)
-* Číslo služby Passport pro Tchaj-wan
+#### <a name="brazil"></a>Brazílie 
 
-Thajsko
-* Thajský identifikační kód naplnění
+:::row:::
+    :::column span="":::
+        **Entita**
 
-Turecko
-* Národní identifikační číslo v turečtině
+        Brazílie – právní číslo entity (CNPJ)
 
-Ukrajina
-* Ukrajina (domácí) číslo služby Passport
-* Ukrajina – číslo pasu (mezinárodní)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Spojené království
-* britské Číslo řidičského průkazu
-* britské Číslo Shrnutí
-* britské Národní číslo Health Service (NHS)
-* britské Národní pojišťovací číslo (NINO)
-* britské Číslo Passport
-* britské Jedinečné referenční číslo plátce
+        Brazílie – CPF číslo
 
-USA
-* Číslo sociálního pojištění USA (SSN)
-* Číslo licence ovladače USA
-* Číslo služby Passport pro USA
-* Jednotlivá daňové identifikační číslo (ITIN) USA
-* Číslo DEA (USA) pro vynucovací orgány
-* Číslo účtu banky v USA
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Karta National ID Brazílie (RG)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="canada"></a>Kanada
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo bankovního účtu v Kanadě
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo licence ovladače Kanady
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo služby Health Service pro Kanadu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo služby Passport pro Kanadu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanada – osobní identifikační číslo zdravotního stavu (PHIN)
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Rodné číslo v Kanadě
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="chile"></a>Chile 
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo karty identity Chile
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="china"></a>Čína
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Čína – číslo rezidenta identity na kartu (ČLR)
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="european-union-eu"></a>Evropské unie (EU)
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo debetní karty v EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo licence ovladače EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Národní identifikační číslo v EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo Passportu EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo sociálního pojištění (SSN) nebo ekvivalentní ID pro EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo (DIČ) EU
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Evropské unie GPS – souřadnice
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="france"></a>Francie
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo licence ovladače Francie
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo pojištění stavu Francie
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Karta National ID Francie (CNI)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Francouzský pas číslo
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Francouzský rodné číslo (INSEE)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo pro Francii (numéro SPI)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo daně z přidané hodnoty (DPH) pro Francii
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="germany"></a>Německo
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo licence německého ovladače
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo karty identity v Německu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo německé služby Passport
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo pro Německo
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové číslo přidané hodnoty v Německu
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hong-kong"></a>Hongkong
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo HKID (Hongkong – zvláštní identita)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hungary"></a>Maďarsko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Osobní identifikační číslo Maďarska
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo v Maďarsku
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové číslo přidané hodnoty v Maďarsku
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="india"></a>Indie
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Indie – trvalé číslo účtu (PAN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Jedinečné identifikační číslo Indie (Aadhaar)
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="indonesia"></a>Indonésie
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        KTP (Indonésie identity Card) – číslo
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="ireland"></a>Irsko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo pro irské osobní veřejné služby (PPS)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="israel"></a>Izrael
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Mezinárodní ID Izraele
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo bankovního účtu Izraele
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="italy"></a>Itálie
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        ID licence ovladače Itálie
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fiskální kód Itálie
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové číslo přidané hodnoty v Itálii
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="japan"></a>Japonsko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo bankovního účtu Japonska
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo licence ovladače Japonska
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonsko "moje číslo" (osobní)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonsko "moje číslo" (firemní)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Registrační číslo rezidenta v japonštině
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo karty pro pobyt z Japonska
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo sociálního pojištění Japonska (SIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japonské číslo služby Passport
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="luxembourg"></a>Lucembursko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Národní identifikační číslo v Lucemburku (fyzické osoby)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Národní identifikační číslo v Lucemburku (nefyzické osoby)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="malta"></a>Malta
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Malta číslo karty identity
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo Malty
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="new-zealand"></a>Nový Zéland
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo bankovního účtu Nového Zélandu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo licence ovladače Nového Zélandu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo Nového Zélandu v vnitrozemských výnosech
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Nové ministerstvo, které má číslo zdravotního Zélandu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Číslo sociální péče na Novém Zélandu
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="philippines"></a>Filipíny
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Jednotné ID pro více účelů Filipíny
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="portugal"></a>Portugalsko 
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo karty občanů v Portugalsku
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Daňové identifikační číslo Portugalska
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="singapore"></a>Singapur
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo karty (NRIC) Singapuru (National registration ID)
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-africa"></a>Jižní Afrika
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Identifikační číslo Jižní Afriky
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-korea"></a>Jižní Korea
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Registrační číslo pro rezidentské Jižní Korea
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="spain"></a>Španělsko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Španělsko DNI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Rodné číslo (sociální zabezpečení)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Daňové identifikační číslo pro Španělsko
+
+    :::column-end:::
+:::row-end:::
+ 
+#### <a name="switzerland"></a>Švýcarsko
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Švýcarský sociální rodné číslo AHV
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="taiwan"></a>Tchaj-wan 
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Mezinárodní ID pro Tchaj-wan
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Rezidentský certifikát pro Tchaj-wan (oblouk/TARC)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Číslo služby Passport pro Tchaj-wan
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="united-kingdom"></a>Spojené království
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        britské Číslo řidičského průkazu
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       britské Číslo Shrnutí
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       britské Národní číslo Health Service (NHS)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       britské Národní pojišťovací číslo (NINO)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       britské nebo číslo amerického služby Passport
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       britské Jedinečné referenční číslo plátce
+
+    :::column-end:::
+
+:::row-end:::
+
+
+#### <a name="united-states"></a>USA
+
+:::row:::
+    :::column span="":::
+        **Entita**
+
+        Číslo sociálního pojištění USA (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Číslo licence ovladače USA
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       USA nebo Spojené království Číslo Passport
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Jednotlivá daňové identifikační číslo (ITIN) USA
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Číslo DEA (USA) pro vynucovací orgány
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Číslo účtu banky v USA
+
+    :::column-end:::
+:::row-end:::

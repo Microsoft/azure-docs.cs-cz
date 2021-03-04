@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089649"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691208"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>Rychlý Start: vytvoření spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
 
 ### <a name="tags"></a>Značky
 
-- Přidání značek k prostředkům v šabloně Azure Resource Manager (šablona ARM). [Značky](/azure/azure-resource-manager/management/tag-resources) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazují v sestavách nákladů a umožňují ostatním aktivitám správy podle značek. 
+- Přidání značek k prostředkům v šabloně Azure Resource Manager (šablona ARM). [Značky](../../azure-resource-manager/management/tag-resources.md) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazují v sestavách nákladů a umožňují ostatním aktivitám správy podle značek. 
 
 - Vezměte v úvahu aspoň označení vaší nové spravované instance SQL pomocí značky Owner, abyste identifikovali, kdo vytvořil, a značku prostředí, abyste identifikovali, jestli je tento systém produkční, vývoj atd. Další informace najdete v tématu [vývoj strategie vytváření názvů a označování pro prostředky Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  

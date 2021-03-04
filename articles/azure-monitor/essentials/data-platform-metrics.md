@@ -9,19 +9,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bc2dc3fdb74819a923a3fc4dac89262c1f43ac98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700970"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Přehled metrik Azure Monitor
 Metriky Azure Monitor jsou funkcí Azure Monitor, která shromažďuje číselná data z [monitorovaných prostředků](../monitor-reference.md) do databáze časových řad. Metriky jsou číselné hodnoty, které jsou shromažďovány v pravidelných intervalech a popisují určitý aspekt systému v určitou dobu. Metriky v Azure Monitor jsou odlehčené a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Můžete je interaktivně analyzovat pomocí Průzkumníka metrik, pokud je hodnota překročena prahovou hodnotou nebo je vizualizovat v sešitu nebo řídicím panelu, bude aktivní upozornění.
 
 
 > [!NOTE]
-> Azure Monitor metriky jsou jednou ze polovině datové platformy, která podporuje Azure Monitor. Druhý je [Azure monitor protokolů](../platform/data-platform-logs.md) , které shromažďují a organizují data protokolů a výkonu a umožňují jejich analýzu pomocí bohatých dotazovacích jazyků. Metriky jsou jednodušší než data v Azure Monitor protokoly a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Metriky, i když můžou ukládat jenom číselná data do konkrétní struktury, zatímco protokoly můžou ukládat různé datové typy z každého s vlastní strukturou. Pomocí dotazů protokolu, které se nedají použít k analýze dat metrik, můžete také provádět komplexní analýzy dat protokolů.
+> Azure Monitor metriky jsou jednou ze polovině datové platformy, která podporuje Azure Monitor. Druhý je [Azure monitor protokolů](../logs/data-platform-logs.md) , které shromažďují a organizují data protokolů a výkonu a umožňují jejich analýzu pomocí bohatých dotazovacích jazyků. Metriky jsou jednodušší než data v Azure Monitor protokoly a umožňují podpoře scénářů téměř v reálném čase, které jsou zvláště užitečné pro upozorňování a rychlé zjišťování problémů. Metriky, i když můžou ukládat jenom číselná data do konkrétní struktury, zatímco protokoly můžou ukládat různé datové typy z každého s vlastní strukturou. Pomocí dotazů protokolu, které se nedají použít k analýze dat metrik, můžete také provádět komplexní analýzy dat protokolů.
 
 
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Co se dá dělat s Azure Monitor metrikami?
@@ -31,11 +31,11 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít me
 |:---|:---|
 | **Analýza** | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění metriky](../alerts/alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](../alerts/action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
-| **Vizualizace** | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../visualize/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](../platform/grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
+| **Vizualizace** | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../app/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../visualize/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](../visualize/grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
 | **Automatizace** |  Pomocí [automatického škálování](../autoscale/autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
-| **Stahovat** | Přístup k hodnotám metrik z příkazového řádku pomocí  [rutin PowerShellu](/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](../platform/rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí  [CLI](/cli/azure/monitor/metrics). |
-| **Export** | [Směrování metriky do protokolů](../platform/resource-logs.md#send-to-azure-storage) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](../platform/stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
-| **Archiv** | [Archivujte](../platform/platform-logs-overview.md) historii výkonu nebo stavu prostředku pro účely dodržování předpisů, auditování nebo offline generování sestav. |
+| **Stahovat** | Přístup k hodnotám metrik z příkazového řádku pomocí  [rutin PowerShellu](/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](./rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí  [CLI](/cli/azure/monitor/metrics). |
+| **Export** | [Směrování metriky do protokolů](./resource-logs.md#send-to-azure-storage) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](./stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
+| **Archiv** | [Archivujte](./platform-logs-overview.md) historii výkonu nebo stavu prostředku pro účely dodržování předpisů, auditování nebo offline generování sestav. |
 
 ![Přehled metrik](media/data-platform-metrics/metrics-overview.png)
 
@@ -43,22 +43,22 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít me
 ## <a name="data-collection"></a>Shromažďování dat
 Existují tři základní zdroje metrik, které shromažďuje Azure Monitor. Jakmile se tyto metriky shromažďují v databázi metrik Azure Monitor, dají se vyhodnotit společně bez ohledu na jejich zdroj.
 
-**Prostředky Azure**. Prostředky Azure vytvářejí metriky platforem a poskytují přehled o stavu a výkonu. Každý typ prostředku vytvoří [jedinečnou sadu metrik](../platform/metrics-supported.md) bez nutnosti jakékoli konfigurace. Metriky platformy se shromažďují z prostředků Azure v četnosti jedné minuty, pokud není uvedeno jinak v definici metriky. 
+**Prostředky Azure**. Prostředky Azure vytvářejí metriky platforem a poskytují přehled o stavu a výkonu. Každý typ prostředku vytvoří [jedinečnou sadu metrik](./metrics-supported.md) bez nutnosti jakékoli konfigurace. Metriky platformy se shromažďují z prostředků Azure v četnosti jedné minuty, pokud není uvedeno jinak v definici metriky. 
 
 **Aplikace**. Metriky jsou vytvářeny Application Insights pro vaše monitorované aplikace, které vám pomůžou detekovat problémy s výkonem a sledovat trendy v tom, jak se vaše aplikace používá. To zahrnuje tyto hodnoty jako _dobu odezvy serveru_ a _výjimky prohlížeče_.
 
 **Agenti virtuálních počítačů**. Metriky se shromažďují z hostovaného operačního systému virtuálního počítače. Povolte metriky hostovaného operačního systému pro virtuální počítače s Windows s nástrojem [Diagnostika systému Windows (WAD)](../agents/diagnostics-extension-overview.md) a pro virtuální počítače se systémem Linux pomocí [agenta InfluxData telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
 
-**Vlastní metriky**. Kromě standardních metrik, které jsou k dispozici automaticky, můžete definovat metriky. [Ve své aplikaci můžete definovat vlastní metriky](../app/api-custom-events-metrics.md) , které jsou monitorované nástrojem Application Insights nebo vytvářet vlastní metriky pro službu Azure pomocí [rozhraní API pro vlastní metriky](../platform/metrics-store-custom-rest-api.md).
+**Vlastní metriky**. Kromě standardních metrik, které jsou k dispozici automaticky, můžete definovat metriky. [Ve své aplikaci můžete definovat vlastní metriky](../app/api-custom-events-metrics.md) , které jsou monitorované nástrojem Application Insights nebo vytvářet vlastní metriky pro službu Azure pomocí [rozhraní API pro vlastní metriky](./metrics-store-custom-rest-api.md).
 
 - Úplný seznam zdrojů dat, které mohou odesílat data do Azure Monitor metriky, najdete v tématu [co je monitorováno pomocí Azure monitor?](../monitor-reference.md) .
 
 ## <a name="metrics-explorer"></a>Průzkumník metrik
-Pomocí [Průzkumník metrik](metrics-charts.md) můžete interaktivně analyzovat data v databázi metrik a v grafu hodnoty různých metrik v průběhu času. Grafy můžete připnout na řídicí panel a zobrazit je s ostatními vizualizacemi. Metriky můžete také načíst pomocí [REST API monitorování Azure](../platform/rest-api-walkthrough.md).
+Pomocí [Průzkumník metrik](metrics-charts.md) můžete interaktivně analyzovat data v databázi metrik a v grafu hodnoty různých metrik v průběhu času. Grafy můžete připnout na řídicí panel a zobrazit je s ostatními vizualizacemi. Metriky můžete také načíst pomocí [REST API monitorování Azure](./rest-api-walkthrough.md).
 
 ![Průzkumník metrik](media/data-platform-metrics/metrics-explorer.png)
 
-- V tématu [Začínáme s průzkumníkem Azure monitor metriky](../platform/metrics-getting-started.md) můžete začít používat Průzkumníka metrik.
+- V tématu [Začínáme s průzkumníkem Azure monitor metriky](./metrics-getting-started.md) můžete začít používat Průzkumníka metrik.
 
 ## <a name="data-structure"></a>Struktura dat
 Data shromážděná pomocí Azure Monitor metriky se ukládají do databáze časových řad, která je optimalizovaná pro analýzu časových údajů s časovým razítkem. Každá sada hodnot metrik je časová řada s následujícími vlastnostmi:
@@ -113,7 +113,7 @@ Pro většinu prostředků v Azure se metriky ukládají po dobu 93 dnů. Existu
 
 
 > [!NOTE]
-> [Metriky platformy pro Azure monitor prostředky můžete odeslat do Log Analytics pracovního prostoru](../platform/resource-logs.md#send-to-azure-storage) pro dlouhodobé trendy.
+> [Metriky platformy pro Azure monitor prostředky můžete odeslat do Log Analytics pracovního prostoru](./resource-logs.md#send-to-azure-storage) pro dlouhodobé trendy.
 
 
 
@@ -121,7 +121,6 @@ Pro většinu prostředků v Azure se metriky ukládají po dobu 93 dnů. Existu
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Azure monitor datovou platformu](../platform/data-platform.md).
-- Přečtěte si o [datech protokolu v Azure monitor](../platform/data-platform-logs.md).
+- Přečtěte si další informace o [Azure monitor datovou platformu](../data-platform.md).
+- Přečtěte si o [datech protokolu v Azure monitor](../logs/data-platform-logs.md).
 - Přečtěte si o [dostupných datech monitorování](../agents/data-sources.md) různých prostředků v Azure.
-

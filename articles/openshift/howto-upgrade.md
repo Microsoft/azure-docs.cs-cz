@@ -7,12 +7,12 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634971"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720881"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Upgrade clusteru Azure Red Hat OpenShift (ARO)
 
@@ -20,7 +20,7 @@ Součástí životního cyklu clusteru ARO je provádění pravidelných upgrad�
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65, který se nachází později. Aktuální verzi zjistíte spuštěním `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65, který se nachází později. Aktuální verzi zjistíte spuštěním `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli) .
 
 V tomto článku se předpokládá, že máte přístup k existujícímu clusteru Azure Red Hat OpenShift jako uživatel s `admin` oprávněními.
 
@@ -39,4 +39,3 @@ Vyberte verzi, na kterou se má aktualizace aktualizovat, a pak vyberte **aktual
 ## <a name="next-steps"></a>Další kroky
 - [Naučte se upgradovat cluster ARO pomocí rozhraní příkazového řádku (OC).](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - Informace o dostupných OpenShift a aktualizacích pro kontejnery a aktualizace pro kontejnerové platformy najdete v [části Seznam chyb](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) na portálu Customer.
-  

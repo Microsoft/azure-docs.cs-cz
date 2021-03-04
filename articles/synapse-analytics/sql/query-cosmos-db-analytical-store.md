@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d8935c10ce17ad5d3747468d55b2fe6daa21
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677530"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694355"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Dotazování na data Azure Cosmos DB pomocí neserverového fondu SQL ve službě Azure synapse Link
 
@@ -22,10 +22,7 @@ Fond SQL bez serveru umožňuje analyzovat data ve vašich Azure Cosmos DBch kon
 
 Pro dotazování Azure Cosmos DB je podpora celé oblasti [výběru](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) plochy podporována prostřednictvím funkce [OpenRowset](develop-openrowset.md) , která zahrnuje většinu [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS.
 
-V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů, které jsou povolené pomocí odkazu Azure synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto kurzu](./tutorial-data-analyst.md).
-
-> [!IMPORTANT]
-> V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation).  Nespoléhá se na schéma sady výsledků `OPENROWSET` funkce bez `WITH` klauzule, která čte data z kontejneru se schématem s úplnými zobrazeními, protože prostředí dotazů může být zarovnáno se změnami a musí se měnit na základě dobře definovaného schématu. Svůj názor můžete publikovat ve fóru o [zpětné vazbě Azure synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics). Můžete se také obrátit na [produktový tým pro propojení Azure synapse](mailto:cosmosdbsynapselink@microsoft.com) a poskytnout nám svůj názor.
+V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů, které jsou povolené pomocí odkazu Azure synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto kurzu](./tutorial-data-analyst.md). V tomto kurzu se používá kontejner s [Azure Cosmos DB dobře definovaným schématem](../../cosmos-db/analytical-store-introduction.md#schema-representation).
 
 ## <a name="overview"></a>Přehled
 
@@ -377,7 +374,7 @@ Pokud potřebujete zadat dotaz na účty Azure Cosmos DB typu rozhraní API Mong
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Dotazování na položky s úplným schématem přesnosti
 
-Při dotazování na schéma s úplnými přesnostmi musíte explicitně zadat typ SQL a očekávaný typ vlastnosti Azure Cosmos DB v `WITH` klauzuli. Nepoužívejte `OPENROWSET` bez `WITH` klauzule v sestavách, protože formát sady výsledků může být změněn na základě zpětné vazby.
+Při dotazování na schéma s úplnými přesnostmi musíte explicitně zadat typ SQL a očekávaný typ vlastnosti Azure Cosmos DB v `WITH` klauzuli.
 
 V následujícím příkladu předpokládáme, že `string` je správný typ pro `geo_id` vlastnost a `int32` je správného typu pro `cases` vlastnost:
 
@@ -415,7 +412,6 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Nespoléhá se na schéma, které `OPENROWSET` funkce bez `WITH` klauzule nabízí, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu na základě zpětné vazby od zákazníků. Pokud chcete poskytnout zpětnou vazbu, obraťte se na [produktový tým s odkazem na Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).
 - Fond SQL bez serveru vrátí upozornění v době kompilace, pokud `OPENROWSET` řazení sloupce nemá kódování UTF-8. Můžete snadno změnit výchozí kolaci pro všechny `OPENROWSET` funkce běžící v aktuální databázi pomocí příkazu T-SQL `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce.

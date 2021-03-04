@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689330"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Kurz: vývoj ukázkového koncového bodu SCIM
 
@@ -57,6 +57,8 @@ Tento postup umožňuje nasadit koncový bod SCIM do služby pomocí sady [Visua
     ![Snímek obrazovky, který ukazuje vytvoření nové služby App Service.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
 1. Vyberte skupinu prostředků, kterou chcete použít, a vyberte **publikovat**.
+
+    ![Snímek obrazovky, který ukazuje publikování nové služby App Service.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-4.png)
 
 1. Chcete-li   >  Přidat nastavení *Token__TokenIssuer* s hodnotou, v části **Konfigurace** aplikace Azure App Service vyberte možnost **nové nastavení aplikace** `https://sts.windows.net/<tenant_id>/` . Nahraďte `<tenant_id>` ID tenanta Azure AD. Pokud chcete otestovat koncový bod SCIM pomocí [metody post](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint), přidejte nastavení *ASPNETCORE_ENVIRONMENT* s hodnotou `Development` .
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 038663a6b8fe015f36f70b7bf13d25accb470903
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723176"
 ---
 # <a name="log-analytics-tutorial"></a>Kurz Log Analytics
 Log Analytics je nástroj v Azure Portal, který umožňuje upravovat a spouštět dotazy protokolu z dat shromažďovaných službou Azure Monitor protokoly a interaktivně analyzovat jejich výsledky. Pomocí Log Analytics dotazů můžete načíst záznamy, které odpovídají konkrétním kritériím, identifikovat trendy, analyzovat vzorce a poskytovat nejrůznější přehledy o vašich datech. 
@@ -33,7 +33,7 @@ Tento kurz vás provede rozhraním Log Analytics, který vám pomůže začít s
 V tomto kurzu se používá ukázkové [prostředí Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které zahrnuje spoustu ukázkových dat podporujících Ukázkové dotazy. Můžete také použít vlastní předplatné Azure, ale možná nebudete mít data ve stejných tabulkách.
 
 ## <a name="open-log-analytics"></a>Otevřít Log Analytics
-Otevřete [Log Analytics ukázkové prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) nebo v nabídce Azure monitor v předplatném vyberte **protokoly** . Tím se nastaví počáteční obor na Log Analytics pracovní prostor, což znamená, že váš dotaz vybere ze všech dat v daném pracovním prostoru. Pokud vyberete **protokoly** z nabídky prostředku Azure, obor se nastaví jenom na záznamy z tohoto prostředku. Podrobnosti o oboru najdete v tématu [rozsah dotazu protokolu](../log-query/scope.md) .
+Otevřete [Log Analytics ukázkové prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) nebo v nabídce Azure monitor v předplatném vyberte **protokoly** . Tím se nastaví počáteční obor na Log Analytics pracovní prostor, což znamená, že váš dotaz vybere ze všech dat v daném pracovním prostoru. Pokud vyberete **protokoly** z nabídky prostředku Azure, obor se nastaví jenom na záznamy z tohoto prostředku. Podrobnosti o oboru najdete v tématu [rozsah dotazu protokolu](./scope.md) .
 
 Rozsah můžete zobrazit v levém horním rohu obrazovky. Pokud používáte vlastní prostředí, zobrazí se možnost vybrat jiný obor, ale tato možnost není k dispozici v ukázkovém prostředí.
 

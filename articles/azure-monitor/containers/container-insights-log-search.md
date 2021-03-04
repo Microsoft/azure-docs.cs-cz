@@ -1,22 +1,22 @@
 ---
-title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
-description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
+title: Dotazování protokolů ze služby Container Insights | Microsoft Docs
+description: Container Insights shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612328"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711106"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
+# <a name="how-to-query-logs-from-container-insights"></a>Dotazování protokolů z kontejneru Insights
 
-Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů. Data se shromažďují každé tři minuty a předávají se do pracovního prostoru Log Analytics v Azure Monitor. Tato data jsou k dispozici pro [dotazy](../log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Služby Container Insights shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů. Data se shromažďují každé tři minuty a předávají se do pracovního prostoru Log Analytics v Azure Monitor. Tato data jsou k dispozici pro [dotazy](../logs/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="container-records"></a>Záznamy kontejneru
 
-V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovaných Azure Monitor pro kontejnery. Seznam popisů sloupců najdete v referenčních informacích k tabulkám [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) a [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) .
+V následující tabulce jsou uvedeny podrobnosti o záznamech shromážděných pomocí kontejneru Insights. Seznam popisů sloupců najdete v referenčních informacích k tabulkám [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) a [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) .
 
 | Data | Zdroj dat | Datový typ | Pole |
 |------|-------------|-----------|--------|
@@ -47,7 +47,7 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 
 Často je užitečné vytvářet dotazy, které začínají s příkladem nebo dvěma, a pak je upravit tak, aby vyhovovaly vašim požadavkům. Pro lepší sestavování pokročilejších dotazů můžete experimentovat s následujícími ukázkovými dotazy:
 
-| Dotaz | Description | 
+| Dotaz | Popis | 
 |-------|-------------|
 | ContainerInventory<br> &#124; projektový počítač, název, obrázek, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; vykreslit tabulku | Vypsat všechny informace o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;, kde ne (neprázdné (Namespace_s))<br> &#124; seřadit podle TimeGenerated DESC<br> &#124; vykreslit tabulku | Události Kubernetes|
@@ -110,4 +110,4 @@ Výstup zobrazuje výsledky podobné následujícímu příkladu:
 
 ## <a name="next-steps"></a>Další kroky
 
-Azure Monitor pro kontejnery neobsahují předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah výkonu s Azure monitor pro kontejnery](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit Doporučené výstrahy pro zajištění vysokého využití procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
+Součástí kontejneru Insights není předdefinovaná sada výstrah. Podívejte se na téma [vytváření výstrah výkonu pomocí služby Container Insights](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit Doporučené výstrahy pro zajištění vysokého využití procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.

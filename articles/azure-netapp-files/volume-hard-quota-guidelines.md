@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b25d312e6710a07f523c4acdb0fd4b970ce4a2d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374486"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740082"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Co je potřeba pro vaši službu Azure NetApp Files, která se mění na Volume hard disk
 
 Od začátku služby Azure NetApp Files používal mechanizmus zřizování a Automatický růst kapacity fondu. Azure NetApp Files svazky se dynamicky zřídí v nakládání fondu kapacit s podporou pro zákazníky u vybrané úrovně a velikosti. Velikosti svazků (kvóty) se používají k zajištění výkonu a kapacity a kvóty můžete kdykoli upravit. Toto chování znamená, že v současné době je kvóta svazku pomocí páčky výkonu pro řízení šířky pásma pro svazek. V současné době se podkladové fondy kapacit při vyplňování kapacity zvětšují automaticky.   
 
 > [!IMPORTANT] 
-> Chování při zřizování svazku a fondu kapacit Azure NetApp Files se změní na *manuální a ovládaný* mechanismus.  **Od 1. dubna 2021 budou velikosti svazků (kvóta) spravovat výkon šířky pásma i zřízené kapacity a základní fondy kapacity se už nebudou automaticky rozšiřovat.** 
+> Chování při zřizování svazku a fondu kapacit Azure NetApp Files se změní na *manuální a ovládaný* mechanismus.  **Od 1. dubna 2021 (aktualizované) budou velikosti svazků (kvóta) spravovat výkon šířky pásma i zřízené kapacity a základní fondy kapacity se už nebudou automaticky rozšiřovat.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Důvody pro změnu pevné kvóty multilicence
 
@@ -185,8 +185,8 @@ V některých případech fond kapacit hostování nemá dostatečnou kapacitu p
 
 Pokud chcete ručně změnit velikost svazku nebo fondu kapacity, můžete použít [Azure NetApp Files nástroje CLI](azure-netapp-files-sdk-cli.md#cli-tools), včetně Azure CLI a Azure PowerShell.  Ke správě Azure NetApp Files prostředků svazků a fondů můžete použít následující dva příkazy:  
 
-* [`az netappfiles pool`](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest&preserve-view=true)
-* [`az netappfiles volume`](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest&preserve-view=true)
+* [`az netappfiles pool`](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest)
+* [`az netappfiles volume`](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest)
 
 Pokud chcete spravovat Azure NetApp Files prostředky pomocí rozhraní příkazového řádku Azure, můžete otevřít Azure Portal a v horní části řádku nabídek vyberte odkaz Azure **Cloud Shell** : 
 
@@ -196,13 +196,13 @@ Tato akce otevře Azure Cloud Shell:
 
 [![Snímek obrazovky, který zobrazuje okno Cloud Shell. ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png)](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-Následující příklady používají příkazy k [zobrazení](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-show&preserve-view=true) a [aktualizaci](https://docs.microsoft.com/cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-update&preserve-view=true) velikosti svazku:
+Následující příklady používají příkazy k [zobrazení](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-show) a [aktualizaci](/cli/azure/netappfiles/volume?preserve-view=true&view=azure-cli-latest#az-netappfiles-volume-update) velikosti svazku:
  
 [![Snímek obrazovky, který ukazuje použití PowerShellu k zobrazení velikosti svazku. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [![Snímek obrazovky, který ukazuje použití PowerShellu k aktualizaci velikosti svazku. ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png)](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-Následující příklady používají příkazy k [zobrazení](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-show&preserve-view=true) a [aktualizaci](https://docs.microsoft.com/cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-update&preserve-view=true) velikosti fondu kapacity:
+Následující příklady používají příkazy k [zobrazení](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-show) a [aktualizaci](/cli/azure/netappfiles/pool?preserve-view=true&view=azure-cli-latest#az-netappfiles-pool-update) velikosti fondu kapacity:
 
 [![Snímek obrazovky, který ukazuje použití PowerShellu k zobrazení velikosti ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png) fondu kapacity](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
@@ -277,4 +277,4 @@ Chyby a žádosti o funkce můžete odeslat kliknutím na **Nový problém** na 
 
 ## <a name="next-steps"></a>Další kroky
 * [Změna velikosti fondu kapacity nebo svazku](azure-netapp-files-resize-capacity-pools-or-volumes.md) 
-* [Metriky pro Azure NetApp Files](azure-netapp-files-metrics.md) 
+* [Metriky pro Azure NetApp Files](azure-netapp-files-metrics.md)

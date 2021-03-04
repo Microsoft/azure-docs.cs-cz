@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735994"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Základní plán zabezpečení Azure pro privátní propojení Azure
 
@@ -82,7 +82,7 @@ V závislosti na organizačních požadavcích společnosti můžete také povol
 
 - [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

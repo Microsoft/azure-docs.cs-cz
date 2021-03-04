@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 6e65b828e2cf86614707c8a859abc0c4f2395899
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723635"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -82,7 +82,7 @@ Použijte následující postup k vytvoření pravidla shromažďování dat a p
 
 ## <a name="create-association-using-resource-manager-template"></a>Vytvoření asociace pomocí šablony Správce prostředků
 
-Pomocí šablony Správce prostředků nemůžete vytvořit pravidlo shromažďování dat, ale můžete vytvořit přidružení mezi virtuálním počítačem Azure nebo serverem s podporou ARC Azure pomocí šablony Správce prostředků. Ukázkové šablony najdete [v tématu Správce prostředků ukázek šablon pro pravidla shromažďování dat v Azure monitor](../samples/resource-manager-data-collection-rules.md) .
+Pomocí šablony Správce prostředků nemůžete vytvořit pravidlo shromažďování dat, ale můžete vytvořit přidružení mezi virtuálním počítačem Azure nebo serverem s podporou ARC Azure pomocí šablony Správce prostředků. Ukázkové šablony najdete [v tématu Správce prostředků ukázek šablon pro pravidla shromažďování dat v Azure monitor](./resource-manager-data-collection-rules.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

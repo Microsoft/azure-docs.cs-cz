@@ -3,15 +3,15 @@ title: Vytváření úloh automatizace pro správu a monitorování prostředků
 description: Můžete nastavit automatizované úlohy, které vám pomůžou spravovat prostředky Azure a monitorovat náklady díky vytváření pracovních postupů, které běží na Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719045"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Umožňuje spravovat prostředky Azure a monitorovat náklady vytvořením úloh automatizace (Preview).
 
@@ -71,13 +71,15 @@ Porovnáním Azure Automation je cloudová služba pro automatizaci a konfigurac
 
    ![Snímek obrazovky, který zobrazuje podokno úlohy účtu úložiště, ve kterém je na panelu nástrojů vybraná možnost Přidat](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. V podokně **Přidat úlohu** vyberte v části **Vybrat šablonu**šablonu pro úlohu, kterou chcete vytvořit, a vyberte **Další: ověřování**.
+1. V podokně **Přidat úlohu** vyberte v části **Vybrat šablonu** šablonu pro úlohu, kterou chcete vytvořit. Pokud se další stránka nezobrazí, vyberte **Další: ověřování**.
 
    Tento příklad pokračuje tím, že vyberete šablonu úlohy **Odeslat měsíční náklady na prostředek** .
 
    ![Snímek obrazovky, který zobrazuje výběry "Odeslat měsíční náklady na prostředek" a "Další: ověřování"](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. V části **ověřování**v části **připojení** vyberte **vytvořit** pro každé připojení, abyste pro toto připojení mohli zadat přihlašovací údaje pro ověřování. Typy připojení v jednotlivých úlohách se liší v závislosti na úloze.
+1. V části **ověřování** v části **připojení** vyberte **vytvořit** pro každé připojení, které se zobrazí v úloze, abyste mohli zadat přihlašovací údaje pro ověření pro všechna připojení. Typy připojení v jednotlivých úlohách se liší v závislosti na úloze.
+
+   Tento příklad ukazuje pouze jedno z připojení, které je vyžadováno touto úlohou.
 
    ![Snímek obrazovky, který zobrazuje vybranou možnost vytvořit pro Azure Resource Manager připojení](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,9 +91,9 @@ Porovnáním Azure Automation je cloudová služba pro automatizaci a konfigurac
 
    ![Snímek obrazovky, který zobrazuje úspěšné vytvořené připojení](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. Po ověření všech požadovaných připojení vyberte **Další: Konfigurace**.
+1. Po ověření všech připojení vyberte **Další: Konfigurace** , pokud se další stránka nezobrazí.
 
-1. V části **Konfigurace**zadejte název úlohy a jakékoli další informace vyžadované pro daný úkol. Po dokončení vyberte **Vytvořit**.
+1. V části **Konfigurace** zadejte název úlohy a jakékoli další informace vyžadované pro daný úkol. Po dokončení vyberte **Vytvořit**.
 
    > [!NOTE]
    > Po vytvoření nemůžete změnit název úlohy, takže pokud [upravíte původní pracovní postup](#edit-task-workflow), zvažte název, který se pořád používá. Změny provedené v podkladovém pracovním postupu se vztahují pouze na úkol, který jste vytvořili, nikoli na šablonu úkolu.
@@ -121,7 +123,7 @@ Chcete-li zobrazit historii spuštění úlohy spolu se stavy, vstupy, výstupy 
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte prostředek, který obsahuje historii úlohy, kterou chcete zkontrolovat.
 
-1. V nabídce prostředku v části **Nastavení**vyberte **úlohy automatizace**.
+1. V nabídce prostředku v části **Nastavení** vyberte **úlohy automatizace**.
 
 1. V seznamu úlohy vyhledejte úkol, který chcete zkontrolovat. Ve sloupci **spuštění** této úlohy vyberte možnost **Zobrazit**.
 
@@ -148,7 +150,7 @@ Chcete-li zobrazit historii spuštění úlohy spolu se stavy, vstupy, výstupy 
 
    Otevře se podokno **spuštění aplikace logiky** a zobrazí se základní pracovní postup, který byl spuštěn.
 
-   * Pracovní postup vždy začíná [*triggerem*](../connectors/apis-list.md#triggers-actions). Pracovní postup pro tento úkol začíná [triggerem **opakování** ](../connectors/connectors-native-recurrence.md).
+   * Pracovní postup vždy začíná [*triggerem*](../connectors/apis-list.md#triggers-actions). Pracovní postup pro tento úkol začíná [triggerem **opakování**](../connectors/connectors-native-recurrence.md).
 
    * Každý krok zobrazuje jeho stav a dobu běhu. Kroky, které mají dobu 0 sekund, trvalo spuštění méně než 1 sekundu.
 
@@ -182,7 +184,7 @@ Chcete-li změnit úlohu, máte tyto možnosti:
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte prostředek, který má úkol, který chcete aktualizovat.
 
-1. V nabídce prostředku v části **Automatizace**vyberte **úlohy**.
+1. V nabídce prostředku v části **Automatizace** vyberte **úlohy**.
 
 1. V seznamu úlohy vyhledejte úkol, který chcete aktualizovat. Otevřete nabídku se třemi tečkami (**...**) úkolu a vyberte **Upravit v řádku**.
 
@@ -213,7 +215,7 @@ Když změníte základní pracovní postup pro úlohu automatizace, změny ovli
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte prostředek, který má úkol, který chcete aktualizovat.
 
-1. V nabídce prostředku v části **Automatizace**vyberte **úlohy**.
+1. V nabídce prostředku v části **Automatizace** vyberte **úlohy**.
 
 1. V seznamu úlohy vyhledejte úkol, který chcete aktualizovat. Otevřete nabídku se třemi tečkami (**...**) úkolu a vyberte **otevřít v Logic Apps**.
 
@@ -235,11 +237,11 @@ Když změníte základní pracovní postup pro úlohu automatizace, změny ovli
 
    1. Na panelu nástrojů v podokně Přehled vyberte **klonovat**.
 
-   1. V podokně vytvoření aplikace logiky v části **název**zadejte nový název kopírovaného pracovního postupu aplikace logiky.
+   1. V podokně vytvoření aplikace logiky v části **název** zadejte nový název kopírovaného pracovního postupu aplikace logiky.
 
-      S výjimkou **stavu aplikace logiky**nejsou ostatní vlastnosti k dispozici pro úpravy. 
+      S výjimkou **stavu aplikace logiky** nejsou ostatní vlastnosti k dispozici pro úpravy. 
       
-   1. V části **stav aplikace logiky**vyberte **zakázáno** , aby se klonovaný pracovní postup nespouštěl při provádění změn. Pracovní postup můžete povolit, až budete připraveni k otestování svých změn.
+   1. V části **stav aplikace logiky** vyberte **zakázáno** , aby se klonovaný pracovní postup nespouštěl při provádění změn. Pracovní postup můžete povolit, až budete připraveni k otestování svých změn.
 
    1. Až Azure dokončí zřizování klonovaného pracovního postupu, najděte a otevřete tento pracovní postup v návrháři aplikace logiky.
 
@@ -251,7 +253,7 @@ Když změníte základní pracovní postup pro úlohu automatizace, změny ovli
 
    Další informace o triggeru opakování najdete v tématu [Vytvoření, plánování a spuštění opakujících se úloh a pracovních postupů s triggerem opakování](../connectors/connectors-native-recurrence.md). Další informace o dalších triggerech a akcích, které můžete použít, najdete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md).
 
-1. Změny uložíte kliknutím na tlačítko **Uložit**na panelu nástrojů návrháře.
+1. Změny uložíte kliknutím na tlačítko **Uložit** na panelu nástrojů návrháře.
 
    ![Snímek obrazovky, který zobrazuje panel nástrojů návrháře a vybrané příkazy Uložit](./media/create-automation-tasks-azure-resources/save-updated-workflow.png)
 
@@ -265,7 +267,7 @@ Když změníte základní pracovní postup pro úlohu automatizace, změny ovli
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Rádi bychom od vás slyšeli! Pokud chcete nahlásit chyby, poskytnout zpětnou vazbu nebo klást otázky k této funkci Preview, [obraťte se na tým Azure Logic Apps](mailto:logicapps@microsoft.com).
+Rádi bychom od vás slyšeli! Pokud chcete nahlásit chyby, poskytnout zpětnou vazbu nebo klást otázky k této funkci Preview, [obraťte se na tým Azure Logic Apps](mailto:logicappspm@microsoft.com).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 32cbe31f95c03f9b0b5eb1a31a28033dce18b112
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716121"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Povolit spravovanou identitu pro směrování událostí digitálních vláken Azure (Preview): Azure CLI
 
@@ -87,8 +87,7 @@ Další informace o koncových bodech, trasách a typech cílů podporovaných p
 
 ### <a name="assign-the-role"></a>Přiřazení role
 
->[!NOTE]
-> Tuto část musí dokončit uživatel Azure s oprávněními ke správě přístupu uživatelů k prostředkům Azure (včetně udělení a delegování oprávnění). Mezi běžné role, které splňují tento požadavek, patří *vlastník*, *účet* správce nebo kombinace správce a *přispěvatele* *přístupu uživatele* . Další informace o požadavcích na oprávnění pro role digitálních vláken Azure najdete v tématu [*Postup: nastavení instance a ověřování*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Můžete přidat parametr do `--scopes` `az dt create` příkazu, aby bylo možné přiřadit identitu k jednomu nebo více oborům se zadanou rolí. To lze použít při prvním vytvoření instance nebo později předáním názvu instance, která již existuje.
 
@@ -102,7 +101,7 @@ Další příklady přiřazení rolí pomocí tohoto příkazu najdete v [dokume
 
 Alternativně můžete k vytváření a správě rolí použít také skupinu příkazů [**AZ role Assignment**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) . Tato funkce se dá použít k podpoře dalších scénářů, u kterých nechcete seskupovat přiřazení role pomocí příkazu CREATE.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Vytvoření koncového bodu s autorizací na základě identity
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Vytvoření koncového bodu s ověřováním na základě identity
 
 Po nastavení systému spravované identity pro instanci digitálních vláken Azure a přiřazení odpovídajících rolí můžete vytvořit [koncové body](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) digitálních vláken Azure, které umožňují použití identity pro ověřování. Tato možnost je k dispozici pouze pro centra událostí a koncové body typu Service Bus (není podporováno pro Event Grid).
 

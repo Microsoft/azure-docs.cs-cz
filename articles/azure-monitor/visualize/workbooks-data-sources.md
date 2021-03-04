@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: ee4436d2b8445f2a1d368fb6c76e04d1ec790d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700571"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -34,7 +34,7 @@ Autoři sešitu můžou snadno dotazovat se na více zdrojů a vytvořit skuteč
 
 ## <a name="metrics"></a>Metriky
 
-Prostředky Azure emitují [metriky](../platform/data-platform-metrics.md) , ke kterým se dá dostat prostřednictvím sešitů. K metrikám lze v sešitech přicházet prostřednictvím specializovaného ovládacího prvku, který umožňuje určit cílové prostředky, požadované metriky a jejich agregaci. Tato data se pak dají vykreslovat v grafech nebo Gridech.
+Prostředky Azure emitují [metriky](../essentials/data-platform-metrics.md) , ke kterým se dá dostat prostřednictvím sešitů. K metrikám lze v sešitech přicházet prostřednictvím specializovaného ovládacího prvku, který umožňuje určit cílové prostředky, požadované metriky a jejich agregaci. Tato data se pak dají vykreslovat v grafech nebo Gridech.
 
 ![Snímek obrazovky s metrikami v grafech metriky využití procesoru](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -145,6 +145,6 @@ Tento zprostředkovatel podporuje [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](../platform/workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
-* [Řízení](../platform/workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
-* [Tipy pro optimalizaci dotazů Log Analytics](../log-query/query-optimization.md)
+* [Začínáme](./workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Řízení](./workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
+* [Tipy pro optimalizaci dotazů Log Analytics](../logs/query-optimization.md)

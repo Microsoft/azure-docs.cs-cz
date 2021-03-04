@@ -2,13 +2,13 @@
 title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733652"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -31,7 +31,7 @@ Identifikujte předplatné, které plánujete použít k nasazení řešení Azu
 
 Identifikujte skupinu prostředků, kterou chcete použít pro vaše řešení Azure VMware.  Obecně platí, že skupina prostředků je vytvořená speciálně pro řešení Azure VMware, ale můžete použít existující skupinu prostředků.
 
-## <a name="region"></a>Region (Oblast)
+## <a name="region"></a>Oblast
 
 Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další informace najdete v tématu [Příručka k produktům Azure, které jsou k dispozici v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -51,12 +51,6 @@ Identifikujte hostitele velikostí, které chcete použít při nasazení řeše
 Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet hostitelů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
 
 Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
-
-## <a name="vcenter-admin-password"></a>heslo správce vCenter
-Zadejte heslo správce vCenter.  Během nasazení vytvoříte heslo správce vCenter. Heslo je cloudadmin@vsphere.local účtu správce během sestavení vCenter. Použijete ho k přihlášení do vCenter.
-
-## <a name="nsx-t-admin-password"></a>Heslo správce NSX-T
-Zadejte heslo správce NSX-T.  Během nasazení vytvoříte heslo správce NSX-T. Heslo je přiřazeno k uživateli s oprávněními správce v účtu NSX během sestavení NSX. Použijete ho k přihlášení ke Správci NSX-T.
 
 ## <a name="ip-address-segment"></a>Segment IP adres
 

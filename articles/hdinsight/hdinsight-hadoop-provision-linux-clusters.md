@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945549"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741833"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími
 
@@ -60,7 +60,7 @@ Názvy clusterů HDInsight mají následující omezení:
 * Obor názvů clusteru je pro všechny Azure v rámci všech předplatných. Proto musí být název clusteru jedinečný po celém světě.
 * Prvních šest znaků musí být jedinečný v rámci virtuální sítě.
 
-#### <a name="region"></a>Region (Oblast)
+#### <a name="region"></a>Oblast
 
 Umístění clusteru nemusíte explicitně určovat: cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí získáte tak, že vyberete rozevírací seznam **oblast** na [ceny služby HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
@@ -216,7 +216,7 @@ Každý typ clusteru má svůj vlastní počet uzlů, terminologii pro uzly a v�
 | Storm |Nimbus uzel (2), server pro řízení (1 +), ZooKeeper uzel (3) |![Nastavení typu clusteru HDInsight v HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Hlavní uzel (2), pracovní uzel (1 +), uzel ZooKeeper (3) (volné pro velikost virtuálního počítače a1 ZooKeeper) |![Nastavení typu clusteru HDInsight Spark](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
-Další informace najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) v tématu Co jsou komponenty Hadoop a verze v HDInsight?.
+Další informace najdete v tématu [Konfigurace výchozích uzlů a velikosti virtuálních počítačů pro clustery](hdinsight-supported-node-configuration.md) v tématu Co jsou komponenty Hadoop a verze v HDInsight?.
 
 Náklady na clustery HDInsight se určují podle počtu uzlů a velikosti virtuálních počítačů pro uzly.
 

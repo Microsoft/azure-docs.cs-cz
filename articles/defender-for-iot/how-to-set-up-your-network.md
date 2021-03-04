@@ -4,15 +4,15 @@ description: Seznamte se s architekturou řešení, přípravou sítě, požadav
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733240"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -22,7 +22,7 @@ Azure Defender pro IoT zajišťuje nepřetržité monitorování a zjišťován�
 
 **Defender pro místní konzolu pro správu IoT**: místní Konzola pro správu nabízí konsolidované zobrazení všech síťových zařízení. Poskytuje v reálném čase přehled o klíčových ukazatelích a výstrahách rizik a IoT ve všech vašich zařízeních. Úzce se integruje s vašimi pracovními postupy SOC a playbooky umožňuje snadnou prioritu aktivit zmírňování a korelace mezi různými pracovišti hrozeb. 
 
-**Defender pro IoT pro IoT Portal:** Aplikace Defender for IoT vám může pomáhat při nákupu zařízení řešení, instalaci a aktualizaci softwaru a aktualizaci balíčků ČŘ. 
+**Defender pro IoT Portal:** Aplikace Defender for IoT vám může pomáhat při nákupu zařízení řešení, instalaci a aktualizaci softwaru a aktualizaci balíčků ČŘ. 
 
 Tento článek poskytuje informace o architektuře řešení, přípravě sítě, požadavcích a dalších možnostech, které vám pomůžou úspěšně nastavit síť pro práci s Defenderem pro zařízení IoT. Čtenáři, kteří pracují s informacemi v tomto článku, by měli mít zkušenosti s provozem a správou sítí z a IoT. Mezi příklady patří technici pro automatizaci, vedoucí podniku, poskytovatelé síťových infrastruktur, kyberbezpečnosti týmy, CISO nebo ředitelé informačních technologií.
 
@@ -563,7 +563,7 @@ Zkontrolujte tento seznam před nasazením lokality:
 
 Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístění pro program Defender pro zařízení IoT.
 
-1.  Zobrazení globálního diagramu sítě prostředí v průmyslu Příklad:
+1.  Zobrazení globálního diagramu sítě prostředí v průmyslu Například:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagram prostředí průmyslových prostředí pro globální síť":::
 
@@ -605,7 +605,7 @@ Přehled diagramu průmyslové sítě vám umožní definovat vhodné umístěn�
 
     Co je jejich zásada? __________________________________ 
 
-    Příklad:
+    Například:
 
     - Siemens
 

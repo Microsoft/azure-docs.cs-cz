@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361022"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712313"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
 
@@ -89,7 +89,7 @@ U počítačů se systémem Linux je nutné změnit použití číslo_portu ruč
 
  Upozorňujeme, že použitá čísla portů by se měla shodovat se všemi agenty používanými v pracovním prostoru. 
 
-Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. [Přečtěte si další](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) informace o požadavcích na síť pro agenty Log Analytics.
+Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. [Přečtěte si další](../azure-monitor/agents/log-analytics-agent.md#network-requirements) informace o požadavcích na síť pro agenty Log Analytics.
 
 Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
 
@@ -287,7 +287,7 @@ V monitorováních připojení vytvořených před prostředím monitorování p
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metric | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
+| Metric | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasický) | % PROBE selhalo (klasické) | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs (klasický) | Průměrná doba odezvy (MS) (klasická) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |

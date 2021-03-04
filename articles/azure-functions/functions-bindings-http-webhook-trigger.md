@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726389"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -547,7 +547,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `HttpTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **textový** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
 | **směr** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
@@ -751,7 +751,7 @@ Následující konfigurace ukazuje, jak `{id}` je parametr předán do vazby `ro
 
 Když použijete parametry směrování, `invoke_URL_template` automaticky se vytvoří pro vaši funkci. Vaši klienti mohou pomocí šablony URL pochopit parametry, které musí předat v adrese URL při volání funkce pomocí adresy URL. V [Azure Portal](https://portal.azure.com) přejděte na jednu z funkcí AKTIVOVANÝch protokolem HTTP a vyberte **získat adresu URL funkce**.
 
-K rozhraní můžete programově přistupovat `invoke_URL_template` pomocí rozhraní Azure Resource Manager API pro [funkce seznamu](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) nebo [funkce Get](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+K rozhraní můžete programově přistupovat `invoke_URL_template` pomocí rozhraní Azure Resource Manager API pro [funkce seznamu](/rest/api/appservice/webapps/listfunctions) nebo [funkce Get](/rest/api/appservice/webapps/getfunction).
 
 ## <a name="working-with-client-identities"></a>Práce s identitami klientů
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735858"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -219,7 +219,7 @@ Když přesunete počítač z jedné skupiny do druhé, uplatní se u něj zása
 
 Pro správu adaptivních řízení aplikací programově použijte naši REST API. 
 
-Úplná dokumentace k rozhraní API [najdete tady](/rest/api/securitycenter/adaptiveapplicationcontrols).
+Příslušná dokumentace k rozhraní API je k dispozici v [části Adaptivní řízení aplikací v dokumentaci k rozhraní api Security Center](/rest/api/securitycenter/adaptiveapplicationcontrols).
 
 Některé funkce, které jsou dostupné z REST API:
 

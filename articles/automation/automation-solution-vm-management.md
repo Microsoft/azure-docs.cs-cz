@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732271"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
@@ -39,7 +39,7 @@ U aktuální funkce platí následující omezení:
 
 - Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](./automation-security-overview.md#run-as-accounts). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 
-- [Pracovní prostor Azure Monitor Log Analytics](../azure-monitor/platform/design-logs-deployment.md) , ve kterém jsou uloženy protokoly úloh sady Runbook a výsledky streamu úloh v pracovním prostoru pro dotazování a analýzu. Účet Automation se dá propojit s novým nebo existujícím Log Analytics pracovním prostorem a oba prostředky musí být ve stejné skupině prostředků.
+- [Pracovní prostor Azure Monitor Log Analytics](../azure-monitor/logs/design-logs-deployment.md) , ve kterém jsou uloženy protokoly úloh sady Runbook a výsledky streamu úloh v pracovním prostoru pro dotazování a analýzu. Účet Automation se dá propojit s novým nebo existujícím Log Analytics pracovním prostorem a oba prostředky musí být ve stejné skupině prostředků.
 
 Pro práci s virtuálními počítači povolenými pro funkci Start/Stop VMs during off-hours doporučujeme použít samostatný účet Automation. Verze modulů Azure se často upgradují a jejich parametry se můžou změnit. Tato funkce není upgradována na stejném tempo a nemusí fungovat s novějšími verzemi rutin, které používá. Před importem aktualizovaných modulů do účtů služby Automation doporučujeme, abyste je naimportovali do účtu služby test Automation, abyste ověřili, že nedochází k žádným problémům s kompatibilitou.
 
@@ -106,7 +106,7 @@ V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho
 
 Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na hodnotu true podporuje parametr podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru a ověří, jestli jsou cílové správné virtuální počítače. Sada Runbook provede pouze své definované akce, pokud `WhatIf` je parametr nastaven na hodnotu false.
 
-|Runbook | Parametry | Description|
+|Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList` je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf` povolí ověřování logiky sady Runbook bez provedení.|
@@ -158,7 +158,7 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frekvence | Description|
+|Název plánu | Frekvence | Popis|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase. Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků. Povolte související plán **naplánované – StartVM**.|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713656"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
 
@@ -30,7 +30,7 @@ Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení
 
 - Musíte mít nainstalovaný [Azure PowerShell](/powershell/azure) , nebo můžete použít [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](../platform/metrics-custom-overview.md#supported-regions).
+- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení Azure Monitor jako datové jímky 
 Rozšíření Azure Diagnostics používá funkci nazvanou **datové jímky** k směrování metrik a protokolů do různých umístění. Následující kroky ukazují, jak použít Správce prostředků šablonu a PowerShell k nasazení virtuálního počítače pomocí nové jímky dat Azure Monitor. 
@@ -252,7 +252,7 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
    ```
 
    > [!NOTE]  
-   > Nezapomeňte použít oblast Azure, která je povolená pro vlastní metriky. Nezapomeňte použít [oblast Azure, která je povolená pro vlastní metriky](../platform/metrics-custom-overview.md#supported-regions).
+   > Nezapomeňte použít oblast Azure, která je povolená pro vlastní metriky. Nezapomeňte použít [oblast Azure, která je povolená pro vlastní metriky](./metrics-custom-overview.md#supported-regions).
  
 1. Spuštěním následujících příkazů nasaďte virtuální počítač:  
 
@@ -292,4 +292,4 @@ Pak můžete zvolit, aby se dimenze v této metrikě použily k vytvoření graf
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastních metrikách](../platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).

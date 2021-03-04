@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: 16f55dc88ed2d2d019a2fed355a14741263c20af
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735062"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: vytvoření a konfigurace aplikační brány pro hostování více webů pomocí Azure Portal
 
-Můžete použít Azure Portal ke [konfiguraci hostování více](multiple-site-overview.md) webů při vytváření [aplikační brány](overview.md). V tomto kurzu nadefinujete fondy adres back-endu pomocí virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
+Můžete použít Azure Portal ke [konfiguraci hostování více](multiple-site-overview.md) webů při vytváření [aplikační brány](overview.md). V tomto kurzu nadefinujete fondy adres back-endu pomocí virtuálních počítačů. Pak můžete nakonfigurovat naslouchací procesy a pravidla na základě dvou domén, aby se zajistilo, že webový provoz přijde na příslušné servery ve fondech. V tomto kurzu se používají příklady *www.contoso.com* a *www.fabrikam.com*.
 
 V tomto kurzu se naučíte:
 
@@ -47,8 +47,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. Na kartě **základy** zadejte tyto hodnoty pro následující nastavení služby Application Gateway:
 
-   - **Skupina prostředků** : pro skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
-   - **Název aplikační brány** : jako název služby Application Gateway zadejte *myAppGateway* .
+   - **Skupina prostředků**: pro skupinu prostředků vyberte **myResourceGroupAG** . Pokud neexistuje, vyberte **vytvořit novou** a vytvořte ji.
+   - **Název aplikační brány**: jako název služby Application Gateway zadejte *myAppGateway* .
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Vytvořit Application Gateway":::
 
@@ -56,7 +56,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     V části **Konfigurovat virtuální síť** vyberte **vytvořit novou** a vytvořte novou virtuální síť. V okně **vytvořit virtuální síť** , které se otevře, zadejte následující hodnoty pro vytvoření virtuální sítě a dvě podsítě:
 
-    - **Název** : jako název virtuální sítě zadejte *myVNet* .
+    - **Název**: jako název virtuální sítě zadejte *myVNet* .
 
     - **Název podsítě** (Application Gateway podsíť): v mřížce **podsítě** se zobrazí podsíť s názvem *výchozí*. Změňte název této podsítě na *myAGSubnet*.<br>Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.
 
@@ -76,7 +76,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
    > [!NOTE]
    > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená soukromá konfigurace IP adresy front-endu.
 
-2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
+2. Vyberte možnost **Přidat nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Vytvoření další virtuální sítě":::
 
@@ -86,15 +86,16 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy můžou být síťové adaptéry, sady škálování virtuálních počítačů, veřejné IP adresy, interní IP adresy, plně kvalifikované názvy domény (FQDN) a back-endy pro více tenantů, jako je Azure App Service. V tomto příkladu vytvoříte prázdný back-end fond s aplikační bránou a potom přidáte cíle back-end do fondu back-end.
 
-1. Na kartě back- **endy** vyberte **+ Přidat back-end fond**.
+1. Na kartě back- **endy** vyberte **Přidat back-end fond**.
 
 2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
 
-    - **Název** : jako název back-end fondu zadejte *contosoPool* .
-    - **Přidat back-end fond bez cílů** : vyberte **Ano** , pokud chcete vytvořit back-end fond bez cílů. Po vytvoření aplikační brány přidáte cíle back-endu.
+    - **Název**: jako název back-end fondu zadejte *contosoPool* .
+    - **Přidat back-end fond bez cílů**: vyberte **Ano** , pokud chcete vytvořit back-end fond bez cílů. Po vytvoření aplikační brány přidáte cíle back-endu.
 
 3. V okně **Přidat fond back-endu** vyberte **Přidat** a uložte konfiguraci fondu back-end a vraťte se na kartu back- **endy** .
-4. Teď přidejte další back-end fond s názvem *fabrikamPool*.
+4. Teď přidejte další back-end fond s názvem *fabrikamPool* stejným způsobem jako jste přidali předchozí fond.
+1. Vyberte **Přidat**.
 
     :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Vytvořit back-endy":::
 
@@ -104,18 +105,19 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které jste vytvořili pomocí pravidla směrování.
 
-1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo** .
+1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo směrování** .
 
 2. V okně **Přidat pravidlo směrování** , které se otevře, jako **název pravidla** zadejte *contosoRule* .
 
 3. Pravidlo směrování vyžaduje naslouchací proces. Na kartě **naslouchací proces** v okně **Přidat pravidlo směrování** zadejte následující hodnoty pro naslouchací proces:
 
-    - **Název naslouchacího procesu** : jako název naslouchacího procesu zadejte *contosoListener* .
-    - **Front-end IP adresa** : vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
+    - **Název pravidla**: *contosoRule*.
+    - **Název naslouchacího procesu**: *contosoListener*.
+    - **Front-end IP adresa**: vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
 
-   V části **Další nastavení** :
-   - **Typ naslouchacího procesu** : více lokalit
-   - **Název hostitele** : **www.contoso.com**
+   V části **Další nastavení**:
+   - **Typ naslouchacího procesu**: více lokalit
+   - **Název hostitele**: **www.contoso.com**
 
    Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu **cílení na back-end** a nakonfigurujte zbývající část pravidla směrování.
 
@@ -123,10 +125,10 @@ Na kartě **Konfigurace** propojíte front-endové a back-endové fondy, které 
 
 4. Na kartě **cílení na server back-end** vyberte **ContosoPool** pro **cíl back-endu**.
 
-5. Pro **Nastavení http** vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *contosoHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
+5. Pro **Nastavení http** vyberte **Přidat nový** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *contosoHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** . 
 
 6. V okně **Přidat pravidlo směrování** vyberte **Přidat** a uložte pravidlo směrování a vraťte se na kartu **Konfigurace** .
-7. Vyberte **Přidat pravidlo** a přidejte podobné pravidlo, naslouchací proces, cíl back-endu a nastavení HTTP pro Fabrikam.
+7. Vyberte **Přidat pravidlo směrování** a přidejte podobné pravidlo, naslouchací proces, cíl back-endu a nastavení HTTP pro Fabrikam.
 
      :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Pravidlo společnosti Fabrikam":::
 
@@ -144,24 +146,26 @@ V tomto příkladu budete jako cílový back-end používat virtuální počíta
 
 Pokud chcete přidat cíle back-endu, postupujte takto:
 
-1. Vytvořte dva nové virtuální počítače, *contosoVM* a *fabrikamVM* , které se budou používat jako servery back-end.
+1. Vytvořte dva nové virtuální počítače, *contosoVM* a *fabrikamVM*, které se budou používat jako servery back-end.
 2. Nainstalujte službu IIS na virtuální počítače, abyste ověřili, že se služba Application Gateway úspěšně vytvořila.
 3. Přidejte servery back-end do back-endu fondů.
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. V Azure Portal vyberte **vytvořit prostředek**. Zobrazí se **nové** okno.
-2. Vyberte **COMPUTE** a potom v seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
+2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
 3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 
-    - **Skupina prostředků** : pro název skupiny prostředků vyberte **myResourceGroupAG** .
-    - **Název virtuálního počítače** : jako název virtuálního počítače zadejte *contosoVM* .
-    - **Uživatelské jméno** : zadejte název uživatelského jména správce.
-    - **Heslo** : zadejte heslo pro správce.
+    - **Předplatné**: Vyberte předplatné.
+    - **Skupina prostředků**: pro název skupiny prostředků vyberte **myResourceGroupAG** .
+    - **Název virtuálního počítače**: jako název virtuálního počítače zadejte *contosoVM* .
+    - **Oblast**: Vyberte stejnou oblast, kterou jste použili dříve.
+    - **Uživatelské jméno**: zadejte název uživatelského jména správce.
+    - **Heslo**: zadejte heslo pro správce.
 1. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: disky**.  
 2. Přijměte výchozí hodnoty na kartě **disky** a potom vyberte **Další: sítě**.
 3. Na kartě **sítě** ověřte, že je pro **virtuální síť** vybraný **myVNet** a že **podsíť** je nastavená na **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a potom vyberte **Další: Správa**.<br>Application Gateway může komunikovat s instancemi mimo virtuální síť, ve které je, ale je potřeba zajistit připojení k IP adrese.
-4. Na kartě **Správa** nastavte **diagnostiku spouštění** na **vypnuto**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+4. Na kartě **Správa** nastavte **diagnostiku spouštění** na **zakázáno**. Přijměte ostatní výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 5. Na kartě **Revize + vytvořit** zkontrolujte nastavení, opravte chyby ověřování a potom vyberte **vytvořit**.
 6. Než budete pokračovat, počkejte na dokončení vytváření virtuálního počítače.
 
@@ -197,9 +201,9 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 3. Vyberte **contosoPool**.
 
-4. V části **cíle** vyberte v rozevíracím seznamu možnost **virtuální počítač** .
+4. V části **cílový typ** vyberte z rozevíracího seznamu možnost **virtuální počítač** .
 
-5. V části **virtuální počítač** a **Síťová rozhraní** vyberte virtuální počítač **contosoVM** a toto přidružené síťové rozhraní v rozevíracích seznamech.
+5. V části **cíl** vyberte v rozevíracím seznamu síťové rozhraní virtuálního počítače **contosoVM** .
 
     ![Přidání back-endových serverů](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
@@ -208,23 +212,57 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="create-a-www-a-record-in-your-domains"></a>Vytvoření záznamu webové A ve vašich doménách
+## <a name="edit-your-hosts-file"></a>Upravit soubor hostitelů
 
-Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získat IP adresu a použít ji k vytvoření záznamu A v doménách. 
+Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získat IP adresu a použít ji k úpravám souboru hostitelů pro řešení `www.contoso.com` a `www.fabrikam.com` 
 
 1. Klikněte na **všechny prostředky** a pak klikněte na **myAGPublicIPAddress**.
 
     ![Zaznamenat adresu DNS brány Application Gateway](./media/create-multiple-sites-portal/public-ip.png)
 
-2. Zkopírujte IP adresu a použijte ji jako hodnotu nového záznamu na *webové* stránce ve vašich doménách.
+2. Zkopírujte IP adresu a použijte ji jako hodnotu pro nové položky v `hosts` souboru.
+1. Na svém místním počítači otevřete příkazový řádek pro správu a přejděte na `c:\Windows\System32\drivers\etc` .
+1. Otevřete `hosts` soubor a přidejte následující položky, kde `x.x.x.x` je veřejná IP adresa služby Application Gateway:
+   ```dos
+   # Copyright (c) 1993-2009 Microsoft Corp.
+   #
+   # This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+   #
+   # This file contains the mappings of IP addresses to host names. Each
+   # entry should be kept on an individual line. The IP address should
+   # be placed in the first column followed by the corresponding host name.
+   # The IP address and the host name should be separated by at least one
+   # space.
+   #
+   # Additionally, comments (such as these) may be inserted on individual
+   # lines or following the machine name denoted by a '#' symbol.
+   #
+   # For example:
+   #
+   #      102.54.94.97     rhino.acme.com          # source server
+   #       38.25.63.10     x.acme.com              # x client host
+   
+   # localhost name resolution is handled within DNS itself.
+   #    127.0.0.1       localhost
+   #    ::1             localhost
+   x.x.x.x www.contoso.com
+   x.x.x.x www.fabrikam.com
 
+   ```
+1. Soubor uložte.
+1. Spusťte následující příkazy, které načtou a zobrazí změny v souboru hosts:
+   ```dos
+    ipconfig/registerdns
+    ipconfig/displaydns
+   ```
+   
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-1. Do adresního řádku prohlížeče zadejte název domény. Příklad: `http://www.contoso.com`.
+1. Do adresního řádku prohlížeče zadejte název domény. Například, `http://www.contoso.com`.
 
     ![Testování webu Contoso v aplikační bráně](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 
-2. Změňte adresu na jinou ze svých domén. Měli byste vidět něco podobného jako v následujícím příkladu:
+2. Změňte adresu na jinou doménu a měla by se zobrazit něco jako v následujícím příkladu:
 
     ![Testování webu Fabrikam v aplikační bráně](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
@@ -238,6 +276,9 @@ Odebrání skupiny prostředků:
 2. Na stránce **skupiny prostředků** vyhledejte v seznamu **myResourceGroupAG** a pak ho vyberte.
 3. Na **stránce skupina prostředků** vyberte **Odstranit skupinu prostředků**.
 4. Jako **název skupiny prostředků** zadejte *myResourceGroupAG* a pak vyberte **Odstranit**.
+
+Postup obnovení souboru hostitelů:
+1. Odstraňte `www.contoso.com` řádky a `www.fabrikam.com` ze souboru Hosts a spusťte `ipconfig/registerdns` příkaz a `ipconfig/flushdns` z příkazového řádku.
 
 ## <a name="next-steps"></a>Další kroky
 

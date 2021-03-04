@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650367"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701803"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
@@ -285,7 +285,7 @@ Přiřazení rolí Azure je děděné. Přiřazení toku z předplatného, skupi
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen2 dědění seznamů ACL?
 
-Výchozí seznamy ACL lze použít k nastavení seznamů ACL pro nové podřízené podadresáře a soubory vytvořené v nadřazeném adresáři. Chcete-li aktualizovat seznamy ACL pro existující podřízené položky, budete muset pro požadovanou hierarchii adresářů přidat, aktualizovat nebo odebrat seznamy ACL rekurzivně. Další informace najdete v tématu [rekurzivní nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2](recursive-access-control-lists.md). 
+Výchozí seznamy ACL lze použít k nastavení seznamů ACL pro nové podřízené podadresáře a soubory vytvořené v nadřazeném adresáři. Chcete-li aktualizovat seznamy ACL pro existující podřízené položky, budete muset pro požadovanou hierarchii adresářů přidat, aktualizovat nebo odebrat seznamy ACL rekurzivně. Další informace najdete v tématu [rekurzivní nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2](#set-access-control-lists). 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Která oprávnění jsou nutná k rekurzivnímu odstranění adresáře a jeho obsahu?
 

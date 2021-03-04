@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698735"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -105,7 +105,7 @@ K problémům se můžete setkat také při spuštění **[skriptu pro nastaven�
 * **Nasazení šablony se nepovedlo kvůli porušení zásad.**
     * Pokud chcete tento problém vyřešit, obraťte se prosím na správce IT a ujistěte se, že volání, která mají vytvořit virtuální počítač, se budou používat k blokování ověřování SSH. Tato akce nebude nutná, protože používáme zabezpečenou bastionu síť, která pro komunikaci s prostředky Azure vyžaduje uživatelské jméno a heslo. Tyto přihlašovací údaje se uloží do souboru **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** v Cloud Shell, jakmile se virtuální počítač úspěšně vytvoří, nasadí a připojí k IoT Hub.
 * Instalační skript nemůže vytvořit instanční objekt a prostředky Azure.
-    * Pokud chcete tento problém obdržet, zkontrolujte prosím, že vaše předplatné a tenant Azure nedosáhly svých maximálních limitů služeb. Přečtěte si další informace o [limitech a omezeních služby Azure AD](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) a omezeních [, kvótách a omezeních předplatného a služeb Azure.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+    * Pokud chcete tento problém obdržet, zkontrolujte prosím, že vaše předplatné a tenant Azure nedosáhly svých maximálních limitů služeb. Přečtěte si další informace o [limitech a omezeních služby Azure AD](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) a omezeních [, kvótách a omezeních předplatného a služeb Azure.](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 > [!TIP]
 > Pokud jsou k dispozici nějaké další problémy, se kterými budete možná potřebovat pomoc, **[Shromážděte prosím protokoly a odešlete lístek podpory](#collect-logs-for-submitting-a-support-ticket)**. Můžete nás taky kontaktovat odesláním e-mailu na adresu **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .

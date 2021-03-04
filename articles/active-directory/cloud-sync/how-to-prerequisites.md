@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613304"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689313"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Předpoklady pro Azure AD Connect synchronizaci cloudu
 Tento článek poskytuje pokyny k výběru a použití Azure Active Directory (Azure AD) připojit cloudovou synchronizaci jako vaše řešení identity.
@@ -26,22 +26,22 @@ Pro použití Azure AD Connect synchronizace cloudu potřebujete následující:
 
 - Přihlašovací údaje správce domény nebo správce podnikového správce k vytvoření Azure AD Connect gMSA Cloud Sync (skupinový účet spravované služby) pro spuštění služby agenta. 
 - Účet správce hybridní identity pro vašeho tenanta Azure AD, který není uživatelem typu Host.
-- Místní server pro zřizovacího agenta se systémem Windows 2012 R2 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- Místní server pro zřizovacího agenta se systémem Windows 2016 nebo novějším.  Tento server by měl být serverem vrstvy 0, který je založený na [modelu vrstvy správy služby Active Directory](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Místní konfigurace brány firewall.
 
 ## <a name="group-managed-service-accounts"></a>Skupinové účty spravované služby
 Skupinový účet spravované služby je účet spravované domény, který poskytuje automatickou správu hesel, zjednodušenou správu hlavního názvu služby (SPN), schopnost delegovat správu na jiné správce a také rozšiřuje tuto funkci na více serverů.  Azure AD Connect synchronizace cloudu podporuje a používá gMSA ke spuštění agenta.  Během instalace budete vyzváni k zadání přihlašovacích údajů správce, aby bylo možné tento účet vytvořit.  Účet se zobrazí jako (domain\provAgentgMSA $).  Další informace o gMSA najdete v tématu [skupinový účet spravované služby](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) . 
 
 ### <a name="prerequisites-for-gmsa"></a>Předpoklady pro gMSA:
-1.  Schéma služby Active Directory v doménové struktuře domény gMSA se musí aktualizovat na Windows Server 2012.
+1.  Schéma služby Active Directory v doménové struktuře domény gMSA je potřeba aktualizovat na Windows Server 2012.
 2.  [Moduly PowerShellu pro vzdálenou správu](/windows-server/remote/remote-server-administration-tools) počítače v řadiči domény
-3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 2012.
+3.  Aspoň jeden řadič domény v doméně musí používat Windows Server 201.
 4.  Server připojený k doméně, na kterém je agent nainstalovaný, musí být Windows Server 2012 nebo novější.
 
 ### <a name="custom-gmsa-account"></a>Vlastní účet gMSA
 Pokud vytváříte vlastní účet gMSA, musíte zajistit, aby měl účet následující oprávnění.
 
-|Typ |Name |Access |Platí pro| 
+|Typ |Název |Access |Platí pro| 
 |-----|-----|-----|-----|
 |Povolit |Účet gMSA |Číst všechny vlastnosti |Podřízené objekty zařízení| 
 |Povolit |Účet gMSA|Číst všechny vlastnosti |Odvozené objekty InetOrgPerson| 
@@ -65,7 +65,7 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
+1. Identifikujte hostitelský server připojený k doméně se systémem Windows Server 2016 nebo vyšší s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
 
 2. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719861"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Shromažďovat zdroje dat protokolu událostí systému Windows pomocí agenta Log Analytics
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](../agents/agent-data-sources.md) pro agenty Log Analytics na virtuálních počítačích s Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
 
 > [!IMPORTANT]
-> Tento článek popisuje shromažďování událostí systému Windows pomocí [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
+> Tento článek popisuje shromažďování událostí systému Windows pomocí [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
 
 ![Události systému Windows](media/data-sources-windows-events/overview.png)     
 
@@ -63,7 +63,7 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124;, kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |
@@ -73,5 +73,5 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 ## <a name="next-steps"></a>Další kroky
 * Nakonfigurujte Log Analytics pro shromažďování dalších [zdrojů dat](../agents/agent-data-sources.md) pro účely analýzy.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
 * Nakonfigurujte [shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Windows.

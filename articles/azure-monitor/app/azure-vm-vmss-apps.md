@@ -3,12 +3,12 @@ title: Monitorování výkonu na virtuálních počítačích Azure – Azure Ap
 description: Sledování výkonu aplikací pro virtuální počítače Azure a Azure Virtual Machine Scale Sets. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493732"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711477"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
 
@@ -16,7 +16,7 @@ Povolení monitorování webových aplikací založených na platformě .NET neb
 
 Tento článek vás provede povolením Application Insights monitorování pomocí agenta Application Insights a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 > [!IMPORTANT]
-> Aplikace založené na **jazyce Java** běžící na virtuálních počítačích Azure a VMSS se monitorují pomocí **[Application Insightsho agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)**, který je všeobecně dostupný.
+> Aplikace založené na **jazyce Java** běžící na virtuálních počítačích Azure a VMSS se monitorují pomocí **[Application Insightsho agenta Java 3,0](./java-in-process-agent.md)**, který je všeobecně dostupný.
 
 > [!IMPORTANT]
 > Agent Azure Application Insights pro aplikace ASP.NET běžící na **virtuálních počítačích Azure a VMSS** je momentálně ve verzi Public Preview. Pokud chcete monitorovat vaše aplikace ASP.Net spuštěné **v místním** prostředí, použijte [agenta Azure Application Insights pro místní servery](./status-monitor-v2-overview.md), které jsou všeobecně dostupné a plně podporované.
@@ -42,7 +42,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
   * Agent Application Insights automaticky shromažďuje stejné signály závislostí jako sadu .NET SDK. Další informace najdete v tématu [Automatická kolekce závislostí](./auto-collect-dependencies.md#net) .
         
 #### <a name="java"></a>Java
-  * Pro Java je doporučeným přístupem **[Agent java 3,0 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** . Nejoblíbenější knihovny a architektury, jakož i protokoly a závislosti, se [shromažďují automaticky](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics), a to s využitím velkého množství [dalších konfigurací](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config) .
+  * Pro Java je doporučeným přístupem **[Agent java 3,0 Application Insights](./java-in-process-agent.md)** . Nejoblíbenější knihovny a architektury, jakož i protokoly a závislosti, se [shromažďují automaticky](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics), a to s využitím velkého množství [dalších konfigurací](./java-standalone-config.md) .
 
 ### <a name="code-based-via-sdk"></a>Pomocí sady SDK založené na kódu
     
@@ -55,19 +55,19 @@ Existují dva způsoby, jak povolit monitorování aplikací pro virtuální po�
     > Jenom pro aplikace .NET – při monitorování a ruční instrumentaci založené na sadě SDK se uplatní jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](#troubleshooting) níže.
 
 #### <a name="net-core"></a>.NET Core
-Chcete-li monitorovat aplikace .NET Core, použijte [sadu SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 
+Chcete-li monitorovat aplikace .NET Core, použijte [sadu SDK](./asp-net-core.md) 
 
 #### <a name="java"></a>Java 
 
-Pokud potřebujete další vlastní telemetrii pro aplikace Java, přečtěte si téma co [je k dispozici](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application), přidejte [Vlastní rozměry](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)nebo použijte [procesory telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors). 
+Pokud potřebujete další vlastní telemetrii pro aplikace Java, přečtěte si téma co [je k dispozici](./java-in-process-agent.md#send-custom-telemetry-from-your-application), přidejte [Vlastní rozměry](./java-standalone-config.md#custom-dimensions)nebo použijte [procesory telemetrie](./java-standalone-telemetry-processors.md). 
 
 #### <a name="nodejs"></a>Node.js
 
-K instrumentaci aplikace Node.js použijte [sadu SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs).
+K instrumentaci aplikace Node.js použijte [sadu SDK](./nodejs.md).
 
 #### <a name="python"></a>Python
 
-Pokud chcete monitorovat aplikace v Pythonu, použijte [sadu SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+Pokud chcete monitorovat aplikace v Pythonu, použijte [sadu SDK](./opencensus-python.md).
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Správa Application Insights agenta pro aplikace .NET na virtuálních počítačích Azure pomocí PowerShellu
 

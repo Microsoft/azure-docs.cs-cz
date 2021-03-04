@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181403"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686559"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Spotinst
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Spotinst s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -171,9 +171,9 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Spotinst.
 
     ![Snímek obrazovky se zobrazí oddíl přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/spotinst-tutorial/adduser2.png)
 
-    * Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je **BrittaSimon**.
+    * Do textového pole **úplné jméno** zadejte jméno a příjmení uživatele `BrittaSimon` .
 
-    * Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je `brittasimon\@contoso.com` .
+    * Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je `brittasimon@contoso.com` .
 
     * Pro **role organizace, role účtu a účty** vyberte podrobnosti specifické pro vaši organizaci.
 

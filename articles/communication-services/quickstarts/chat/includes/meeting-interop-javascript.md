@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 02/17/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 93cbc693e340174cf92aa2515d5e09f1ff3c1b31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0c5ff52e5d3769124cd101b2483f18aea6963d25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656111"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750879"
 ---
 ## <a name="joining-the-meeting-chat"></a>Spojení s chatem na schůzce 
 
@@ -304,6 +304,7 @@ Otevřete prohlížeč a přejděte na http://localhost:8080/ . Měli byste vid�
 
 :::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Snímek obrazovky dokončené aplikace JavaScriptu":::
 
-Do textových polí vložte odkaz na schůzku týmů a ID vlákna. Stiskněte *připojit týmy na schůzku* , aby se připojili k týmům v rámci vaší aplikace služby Communications a chat. Chcete-li spustit konverzaci, přejděte do dolní části stránky.
+Do textových polí vložte odkaz na schůzku týmů a ID vlákna. Stiskněte *připojit týmy* na schůzku, aby se připojili k týmům. Po přijetí uživatele služby ACS do schůzky můžete chatovat z aplikace služby komunikace. Chcete-li spustit konverzaci, přejděte k poli v dolní části stránky.
 
-**Poznámka:** ve scénářích interoperability s týmy jsou aktuálně podporovány pouze zprávy posílání, přijímání a úprav. Další funkce, jako je například psaní ukazatelů a komunikačních služeb uživatele, kteří přidávají nebo odebírají jiné uživatele z jednání týmů, ještě nejsou podporovány.  
+> [!NOTE] 
+> V současné době jsou pro scénáře interoperability s týmy podporovány pouze zprávy, které jsou odesílány, přijímány a upravovány. Další funkce, jako je například psaní ukazatelů a komunikačních služeb uživatele, kteří přidávají nebo odebírají jiné uživatele z jednání týmů, ještě nejsou podporovány.  

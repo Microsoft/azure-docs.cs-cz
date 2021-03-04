@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712503"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Kurz: vytvoření Azure Load Balancer mezi oblastmi pomocí Azure Portal
 
@@ -41,28 +41,29 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-[Přihlaste](https://portal.azure.com) se k portálu Azure Preview.
+[Přihlaste](https://preview.portal.azure.com) se k portálu Azure Preview.
 
 ## <a name="create-cross-region-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi
 
 V této části vytvoříte Nástroj pro vyrovnávání zatížení mezi oblastmi a veřejnou IP adresu.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síťové > Load Balancer** nebo vyhledejte **Load Balancer** do vyhledávacího pole.
-
-2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
+1. Vyberte **Vytvořit prostředek**. 
+2. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte **Nástroj pro vyrovnávání zatížení** .
+3. Na stránce **Vyrovnávání zatížení** vyberte **vytvořit**.
+4. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreateCRLBTutorial-RG** .|
-    | Name                   | Zadejte **myLoadBalancer-CR** .                                   |
-    | Oblast         | Vyberte **západní USA**.                                        |
+    | Název                   | Zadejte **myLoadBalancer-CR** .                                   |
+    | Oblast         | Vyberte **(US) západní USA**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | Skladová položka           | Vybrat **Standard** |
+    | SKU           | Ponechte výchozí hodnotu **Standard**. |
     | Úroveň           | Vybrat **globální** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu.|
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP-CR** .|
-    | Předvolba směrování| Vybrat **síť Microsoft** |
+    | Předvolba směrování| Vyberte **síť Microsoft**. </br> Další informace o předvolbách směrování najdete v tématu [co je předvolby směrování (Preview)?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
     > Nástroj pro vyrovnávání zatížení mezi oblastmi se dá nasadit jenom v těchto domácích oblastech: **východní USA 2, západní USA, západní Evropa, jihovýchodní Asie, střed USA, Severní Evropa, východní Asie**. Další informace najdete na webu **https://aka.ms/homeregionforglb**.

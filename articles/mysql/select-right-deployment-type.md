@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926185"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736181"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Volba pravého serveru MySQL v Azure
 
@@ -19,7 +19,7 @@ S Azure můžou vaše úlohy serveru MySQL běžet v hostované infrastruktuře 
 
 Při rozhodování Vezměte v úvahu tyto dvě možnosti:
 
-- **Azure Database for MySQL** . Tato možnost je plně spravovaný databázový stroj MySQL založený na stabilní verzi MySQL Community Edition. Tato relační databáze jako služba (DBaaS), která je hostovaná na cloudové platformě Azure, spadá do kategorie odvětví PaaS.
+- **Azure Database for MySQL**. Tato možnost je plně spravovaný databázový stroj MySQL založený na stabilní verzi MySQL Community Edition. Tato relační databáze jako služba (DBaaS), která je hostovaná na cloudové platformě Azure, spadá do kategorie odvětví PaaS.
 
   Se spravovanou instancí MySQL v Azure můžete používat integrované funkce viz automatizované opravy, vysoké dostupnosti, automatizované zálohování, elastické škálování, zabezpečení na podnikové úrovni, dodržování předpisů a zásad správného řízení, monitorování a upozorňování, které jinak vyžadují rozsáhlou konfiguraci, když je server MySQL buď v místním prostředí, nebo na virtuálním počítači Azure. Při použití MySQL jako služby můžete průběžné platby s možností horizontálního navýšení nebo horizontálního navýšení kapacity pro větší kontrolu bez přerušení.
   
@@ -35,7 +35,7 @@ Při rozhodování Vezměte v úvahu tyto dvě možnosti:
   - Redundantní vysoká dostupnost zóny
   - Spravovaná okna údržby
 
-- **MySQL na virtuálních počítačích Azure** . Tato možnost spadá do kategorie odvětví IaaS. Pomocí této služby můžete server MySQL spustit ve spravovaném virtuálním počítači na cloudové platformě Azure. Na virtuálním počítači můžete nainstalovat všechny poslední verze a edice MySQL.
+- **MySQL na virtuálních počítačích Azure**. Tato možnost spadá do kategorie odvětví IaaS. Pomocí této služby můžete server MySQL spustit ve spravovaném virtuálním počítači na cloudové platformě Azure. Na virtuálním počítači můžete nainstalovat všechny poslední verze a edice MySQL.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>Porovnání možností nasazení MySQL v Azure
 
@@ -43,17 +43,19 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 
 | Atribut          | Azure Database for MySQL<br/>Jeden server |Azure Database for MySQL<br/>Flexibilní Server  |MySQL na virtuálních počítačích Azure                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| Podpora verze MySQL | 5,6, 5,7 & 8,0| 5.7 | Libovolná verze|
+| Podpora verze MySQL | 5,6, 5,7 & 8,0| 5,7 & 8,0 | Libovolná verze|
 | Škálování na výpočetní výkon | Podporováno (škálování od a do úrovně Basic není podporováno)| Podporováno | Podporováno|
 | Velikost úložiště | 5 GiB až 16 TiB| 5 GiB až 16 TiB | 32 GiB 32 767 GiB|
 | Škálování online úložiště | Podporováno| Podporováno| Nepodporováno|
 | Automatické škálování úložiště | Podporováno| Nepodporováno ve verzi Preview| Nepodporováno|
+| Škálování dalších IOPs | Nepodporuje se| Podporováno| Nepodporováno|
 | Připojení k síti | – Veřejné koncové body s bránou firewall serveru.<br/> – Privátní přístup s podporou privátních odkazů.|– Veřejné koncové body s bránou firewall serveru.<br/> – Privátní přístup s Virtual Network Integration.| – Veřejné koncové body s bránou firewall serveru.<br/> – Privátní přístup s podporou privátních odkazů.|
 | Smlouva o úrovni služeb (SLA) | 99,99% dostupnost smlouvy SLA |Žádná smlouva SLA ve verzi Preview| 99,99% pomocí Zóny dostupnosti|
 | Opravy operačního systému| Automaticky  | Automaticky s vlastním ovládacím prvkem okna údržby | Spravováno koncovými uživateli |
 | Aktualizace MySQL     | Automaticky  | Automaticky s vlastním ovládacím prvkem okna údržby | Spravováno koncovými uživateli |
 | Vysoká dostupnost | Integrované HA v rámci jedné zóny dostupnosti| Integrované HA v rámci zón dostupnosti a napříč nimi | Vlastní spravované pomocí clusteringu, replikace atd.|
 | Zónová redundance | Nepodporováno | Podporováno | Podporováno|
+| Umístění zóny | Nepodporováno | Podporováno | Podporováno|
 | Hybridní scénáře | Podporováno s [replikace vstupních dat](./concepts-data-in-replication.md)| Není k dispozici ve verzi Preview. | Spravováno koncovými uživateli |
 | Čtení replik | Podporováno (až 5 replik)| Podporováno (až 10 replik)| Spravováno koncovými uživateli |
 | Backup | Automatizovaná doba uchování s 7-35 dny | Automatizovaná doba uchování s 1-35 dny | Spravováno koncovými uživateli |

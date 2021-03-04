@@ -10,20 +10,20 @@ ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: 6784361dde67d7dcc1423d9edbcc92ec513ff6d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690205"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 
 
-## <a name="overview-of-model-interpretability"></a>Přehled interpretace modelu
+## <a name="model-interpretability-overview"></a>Přehled interpretace modelu
 
-Výklad je zásadní pro odborníky na data, auditory a pracovníky pro rozhodování, které se týkají dodržování podnikových zásad, oborových standardů a předpisů pro státní správu:
+Interpretace modelu je kritická pro odborníky přes data, auditory a pracovníky pro rozhodování, aby zajistili dodržování zásad společnosti, oborových standardů a předpisů pro státní správu:
 
 + Vědečtí data potřebují možnost vysvětlit jejich modely vedoucím pracovníkům a zúčastněným stranám, aby mohli pochopit hodnotu a přesnost jejich zjištění. Vyžadují také výklad pro ladění modelů a rozhodování o tom, jak je zlepšit. 
 
@@ -31,15 +31,15 @@ Výklad je zásadní pro odborníky na data, auditory a pracovníky pro rozhodov
 
 + Pracovníci s rozhodovacím rozhodnutím potřebují klidně, protože mají možnost poskytnout transparentnost koncovým uživatelům. To jim umožní získat a zachovat důvěryhodnost.
 
-
 Povolení funkce vysvětlení modelu strojového učení je důležité během dvou hlavních fází vývoje modelu:
+
 + Ve fázi školení mohou návrháři modelů a hodnotitelé použít výstup interpretace modelu k ověření hypotézy a vztahu důvěryhodnosti se zúčastněnými stranami. Využívají také přehledy modelu pro ladění, ověřování chování modelu odpovídá jejich cílům a ke kontrole nespravedlivých nebo nevýznamných funkcí modelu.
 
 + V rámci fáze Inferencing, která má transparentnost kolem nasazených modelů, umožňuje vedoucím pochopit, jak je nasazený, jak model funguje a jak se jeho rozhodnutí zpracovávají a mají dopad na lidi v reálném životě. 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Třídy interpretace jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
+Třídy interpretace modelu jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
 
 * `azureml.interpret`obsahuje funkce podporované Microsoftem.
 
@@ -52,11 +52,7 @@ Pomocí tříd a metod v sadě SDK můžete:
 + Dosáhnete možností interpretace modelu na skutečných datových sadách ve velkém měřítku během školení a odvození.
 + Pomocí interaktivního řídicího panelu vizualizace můžete vyhledat vzory v datech a vysvětlení v době školení.
 
-
 Ve strojovém učení jsou **funkcemi** datová pole, která slouží k předpovědi cílového datového bodu. Například pro předpověď úvěrového rizika je možné použít datová pole pro stáří, velikost účtu a stáří účtu. V tomto případě jsou **funkce** stáří, velikost účtu a stáří účtu. Důležitost funkcí vysvětluje, jak každé datové pole ovlivnilo předpovědi modelu. Například věk může být v předpovědi silně využíván, zatímco velikost účtu a stáří neovlivňují hodnoty předpovědi významně. Tento proces umožňuje datovým vědcům vysvětlit výsledné předpovědi, aby zúčastněné strany měly přehled o tom, jaké funkce jsou v modelu nejdůležitější.
-
-Přečtěte si o podporovaných technikách interpretace, podporovaných modelech strojového učení a podporovaných prostředích pro spuštění.
-
 
 ## <a name="supported-interpretability-techniques"></a>Podporované techniky interpretace
 
@@ -70,9 +66,6 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 |Vysvětlující SHAP jádra| SHAP vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro **libovolný model**.|Model – nezávislá|
 |Napodobit vysvětlení (globální náhrada)| Nevhodnější je vycházet z nápadu pro školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) pro napodobování Blackbox modelů. Globální náhradní model je vnitřně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi **model černého pole** . Vědečtí data mohou interpretovat náhradní model, aby vykreslili závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).|Model – nezávislá|
 |Vysvětlení důležitosti funkce permutace (PFI)| Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce. PFI může vysvětlit celkové chování **jakéhokoli podkladového modelu** , ale nevysvětluje jednotlivé předpovědi. |Model – nezávislá|
-
-
-
 
 Kromě metod interpretace popsaných výše podporujeme jiný vysvětlující SHAP, který se nazývá `TabularExplainer` . V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
 

@@ -4,12 +4,12 @@ description: Popisuje, jak používat CloudEvents schéma pro události v Azure 
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 93e514e0eac40cfaa51d410a446608deca3cbd6d
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 484f118791d57c082a9f4383b1af4a22c04849c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901398"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737898"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 Kromě [výchozího schématu událostí](event-schema.md)Azure Event Grid nativně podporuje události v [implementaci JSON pro vazby protokolu CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) a [http](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) je [otevřená specifikace](https://github.com/cloudevents/spec/blob/v1.0/spec.md) popisující data události.
@@ -60,11 +60,11 @@ Event Grid můžete použít pro vstupní i výstupní události ve schématu Cl
 
  Prostředek Event Grid | Vstupní schéma       | Schéma doručení
 |---------------------|-------------------|---------------------
-| Systémová témata       | Schéma služby Event Grid | Event Grid schématu nebo schématu CloudEvent
-| Témata a domény uživatele | Schéma služby Event Grid | Schéma služby Event Grid
-| Témata a domény uživatele | CloudEvent schéma | CloudEvent schéma
-| Témata a domény uživatele | Vlastní schéma     | Vlastní schéma, Event Grid schéma nebo schéma CloudEvent
-| PartnerTopics       | CloudEvent schéma | CloudEvent schéma
+| Systémová témata       | Schéma služby Event Grid | Event Grid schématu nebo schématu CloudEvents
+| Témata a domény uživatele | Schéma služby Event Grid | Event Grid schématu nebo schématu CloudEvents
+| Témata a domény uživatele | CloudEvents schéma | CloudEvents schéma
+| Témata a domény uživatele | Vlastní schéma     | Vlastní schéma, Event Grid schéma nebo schéma CloudEvents
+| PartnerTopics       | CloudEvents schéma | CloudEvents schéma
 
 Pro všechna schémata událostí Event Grid vyžaduje ověření při publikování do Event Gridho tématu a při vytváření odběru událostí.
 

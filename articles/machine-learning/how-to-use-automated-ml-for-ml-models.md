@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692415"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -179,6 +179,21 @@ Na kartě **Modely** je seznam vytvořených modelů seřazený podle skóre met
 Podrobnější informace o všech dokončených modelech získáte v podrobnostech o školicích běhůch, jako je například souhrn modelu na kartě **model** nebo grafy metriky výkonu na kartě **metriky** . další [informace o grafech](how-to-understand-automated-ml.md).
 
 [![Podrobnosti iterace](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+
+## <a name="model-explanations"></a>Vysvětlení modelu
+
+Pro lepší pochopení modelu si přečtěte, které datové funkce (RAW nebo inženýr) ovlivnily předpovědi modelu pomocí řídicího panelu vysvětlení modelu. 
+
+Řídicí panel s popisem modelu poskytuje obecnou analýzu výukového modelu spolu s jeho předpovědi a vysvětleními. Umožňuje také přejít k jednotlivým datovým bodům a jejich důležitosti funkcím. [Přečtěte si další informace o vizualizacích řídicího panelu a konkrétních plochách](how-to-machine-learning-interpretability-aml.md#visualizations).
+
+Chcete-li získat vysvětlení pro určitý model, 
+
+1. Na kartě **modely** vyberte model, který chcete použít. 
+1. Vyberte tlačítko **vysvětlit model** a poskytněte výpočetní prostředky, které se dají použít ke generování vysvětlení.
+1. Pro stav se podívejte na kartu **Podřízená spuštění** . 
+1. Po dokončení přejděte na kartu **vysvětlení (Preview)** , která obsahuje řídicí panel vysvětlení. 
+
+    ![Řídicí panel vysvětlení modelu](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
 
 ## <a name="deploy-your-model"></a>Nasazení modelu
 

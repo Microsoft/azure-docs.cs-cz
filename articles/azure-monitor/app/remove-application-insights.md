@@ -3,12 +3,12 @@ title: Odebrání Application Insights v aplikaci Visual Studio – Azure Monito
 description: Jak odebrat sadu Application Insights SDK pro ASP.NET a ASP.NET Core v sadě Visual Studio.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704306"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Jak odebrat Application Insights v aplikaci Visual Studio
 
@@ -27,7 +27,7 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
     > [!NOTE]
     > Je-li povolena kolekce trasování, je nutné nejprve odinstalovat soubor Microsoft. ApplicationInsights. TraceListener. Zadáním `Uninstall-package Microsoft.ApplicationInsights.TraceListener` následujícího kroku odeberte Microsoft. ApplicationInsights. Web.
 
-1. Zadejte následující příkaz: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Zadejte následující příkaz: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     Po zadání příkazu dojde k odinstalaci balíčku Application Insights a všech jeho závislostí z projektu.
     
@@ -39,17 +39,17 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
 
     ![V horní nabídce klikněte na nástroje > správce balíčků NuGet > konzola správce balíčků.](./media/remove-application-insights/package-manager.png)
 
-1. Zadejte následující příkaz: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Zadejte následující příkaz: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     Po zadání příkazu dojde k odinstalaci balíčku Application Insights a všech jeho závislostí z projektu.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Odinstalace pomocí uživatelského rozhraní NuGet sady Visual Studio
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Odinstalace pomocí uživatelského rozhraní NuGet sady Visual Studio
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. V *Průzkumník řešení*   na pravé straně klikněte pravým tlačítkem na **řešení**   a vyberte **Spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
 
     Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
     
@@ -57,26 +57,26 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
 
     > [!NOTE]
     > Pokud je povolené shromažďování trasování, musíte nejdřív odinstalovat Microsoft. ApplicationInsights. TraceListener bez vybraných závislostí a potom podle následujících pokynů odinstalovat Microsoft. ApplicationInsights. Web s vybranými možnostmi odebrat závislosti.
-    
-1. Klikněte na balíček Microsoft. ApplicationInsights. Web.Na pravé straně zaškrtněte políčko vedle *projektu*   pro výběr všech projektů.
-    
-1. Chcete-li odebrat všechny závislosti při odinstalaci **Options**, vyberte   rozevírací tlačítko Možnosti pod oddílem, ve kterém jste vybrali možnost projekt.
 
-    V části *Možnosti odinstalace*zaškrtněte políčko u položky *odebrat závislosti*.
+1. Klikněte na balíček **Microsoft. ApplicationInsights. Web** . Na pravé straně zaškrtněte políčko vedle **projektu** pro výběr všech projektů.
+
+1. Chcete-li odebrat všechny závislosti při odinstalaci, vyberte rozevírací tlačítko **Možnosti** pod oddílem, ve kterém jste vybrali možnost projekt.
+
+    V části *Možnosti odinstalace* zaškrtněte políčko u položky *odebrat závislosti*.
 
 1. Vyberte **Odinstalovat**.
     
     ![Snímek obrazovky se zvýrazněným oknem Microsoft. ApplicationInsights. Web a zvýrazněnou možností odebrat závislosti a odinstalování.](./media/remove-application-insights/uninstall-framework.png)
 
-    Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány.Kliknutím na **tlačítko OK**   odinstalujte.
+    Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány. Kliknutím na **tlačítko OK** odinstalujte.
     
     ![Snímek obrazovky se zobrazí dialogové okno se závislostmi, které mají být odebrány.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Po odinstalaci všeho se v *Průzkumník řešení*pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute.cs".Tyto dva soubory můžete odstranit ručně.
+1.  Po odinstalaci všeho se v *Průzkumník řešení* pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute.cs". Tyto dva soubory můžete odstranit ručně.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. V *Průzkumník řešení*   na pravé straně klikněte pravým tlačítkem na **řešení**   a vyberte **Spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
 
     Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
 

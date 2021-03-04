@@ -4,12 +4,12 @@ description: Zjistěte, které metriky se běžně používají k automatickému
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717770"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
 
@@ -33,8 +33,8 @@ Pokud má předchozí případ hodnotu true, přečtěte si téma [použití Pow
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků
 Následující metriky na úrovni hostitele se ve výchozím nastavení generují pro virtuální počítače Azure a VMSS v instancích systému Windows i Linux. Tyto metriky popisují váš virtuální počítač Azure, ale jsou shromážděny z hostitele virtuálního počítače Azure, nikoli prostřednictvím agenta nainstalovaného na virtuálním počítači hosta. Tyto metriky můžete používat v pravidlech automatického škálování.
 
-- [Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Metriky hostitele pro Správce prostředků se systémem Windows a Linux VM Scale Sets](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Metriky hostitele pro Správce prostředků se systémem Windows a Linux VM Scale Sets](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému pro virtuální počítače s Windows založené na Správce prostředků
 Když vytvoříte virtuální počítač v Azure, diagnostika je povolená pomocí diagnostického rozšíření. Diagnostické rozšíření emituje sadu metrik, které se provedou uvnitř virtuálního počítače. To znamená, že můžete automaticky škálovat metriky, které nejsou ve výchozím nastavení emitované.
@@ -186,4 +186,3 @@ Pro službu VM Scale Sets můžete aktualizovat nastavení automatického škál
 > Pro Service Bus koncept skupiny prostředků neexistuje, ale Azure Resource Manager vytvoří výchozí skupinu prostředků pro oblast. Skupina prostředků je obvykle ve formátu výchozí-ServiceBus-[region]. Například "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" atd.
 >
 >
-

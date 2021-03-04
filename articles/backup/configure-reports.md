@@ -3,14 +3,14 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591982"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710613"
 ---
-# <a name="configure-azure-backup-reports-preview"></a>Konfigurace sestav Azure Backup (Preview)
+# <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
 Běžným požadavkem pro správce zálohování je získat přehled o zálohách na základě dat, která jsou delší dobu. Případy použití takového řešení zahrnují:
 
@@ -139,6 +139,20 @@ Po výběru dlaždice **optimalizace zásad** , na které následuje dlaždice *
 Filtr **typu správy zálohování** v horní části karty by měl mít položky **SQL na virtuálním počítači Azure** a **SAP HANA ve vybraných virtuálních počítačích Azure** , aby mřížka mohla zobrazovat databázové úlohy podle očekávání.
 
 ![Optimalizace karet – Optimalizace plánu zálohování](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>Dodržování zásad
+
+Pomocí této karty můžete zjistit, jestli všechny instance služby Backup mají každý den alespoň jednu úspěšnou zálohu. Můžete zobrazit dodržování zásad podle časového období nebo podle instance zálohování.
+
+###### <a name="email-azure-backup-reports"></a>Sestavy Azure Backup e-mailu
+
+Pomocí funkce **Sestava e-mailu** dostupné v sestavách Backup můžete vytvářet automatizované úlohy pro příjem pravidelných sestav prostřednictvím e-mailu. Tato funkce funguje tak, že se v prostředí Azure nasadí aplikace logiky, která se dotazuje na data z vybraných pracovních prostorů Log Analytics (LA) na základě zadaných vstupů.
+
+Jakmile se vytvoří aplikace logiky, budete muset autorizovat připojení k protokolům Azure Monitor a Office 365. Provedete to tak, že v Azure Portal přejdete na **Logic Apps** a vyhledáte název úlohy, kterou jste vytvořili. Výběrem položky nabídky **připojení rozhraní API** otevřete seznam připojení rozhraní API, která je potřeba autorizovat.
+
+###### <a name="customize-azure-backup-reports"></a>Přizpůsobení sestav Azure Backup
+
+Sestavy zálohování využívají funkce v protokolech Azure Monitor. Tyto funkce pracují s daty v nezpracovaných Azure Backup tabulkách v LA a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů.
 
 ## <a name="export-to-excel"></a>Exportovat do aplikace Excel
 

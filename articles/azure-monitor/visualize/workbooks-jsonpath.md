@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: e0be5523cb3846760644d0c81b06d5caa5a35378
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722921"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Jak používat JSONPath k transformaci dat JSON v sešitech
 
@@ -22,7 +22,7 @@ Sešity se mohou dotazovat na data z mnoha zdrojů. Některé koncové body, nap
 
 JSONPath je dotazovací jazyk pro JSON, který se podobá XPath pro XML. Podobně jako XPath JSONPath umožňuje extrakci a filtraci dat ze struktury JSON.
 
-Pomocí transformace JSONPath mohou autoři sešitu převést JSON na strukturu tabulky. Tabulka se pak dá použít k vykreslení [vizualizací sešitu](../platform/workbooks-overview.md#visualizations).
+Pomocí transformace JSONPath mohou autoři sešitu převést JSON na strukturu tabulky. Tabulka se pak dá použít k vykreslení [vizualizací sešitu](./workbooks-overview.md#visualizations).
 
 ## <a name="using-jsonpath"></a>Použití JSONPath
 
@@ -84,5 +84,5 @@ Předpokládejme, že se vám jako reprezentace inventáře obchodu přidáváme
 ![ Úprava položky dotazu se zdrojem dat JSON a formátem výsledku cesty JSON](./media/workbooks-jsonpath/query-jsonpath.png)
 
 ## <a name="next-steps"></a>Další kroky
-- [Přehled sešitů](../platform/workbooks-overview.md)
+- [Přehled sešitů](./workbooks-overview.md)
 - [Skupiny v Azure Monitor sešitech](workbooks-groups.md)

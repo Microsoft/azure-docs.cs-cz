@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579e86df23a0b6369f7ff5b6113c4972e054d5cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cff0773883f7de5788bca5e4e3f680818e2bd77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734872"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](../platform/action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](../platform/alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../logs/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](./alerts-unified-log.md).
 
 V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pomocí Azure Monitor. Pravidla výstrah jsou definována třemi součástmi:
 - Cíl: konkrétní prostředek Azure, který se má monitorovat.
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pom
 Pravidla upozornění protokolů můžete vytvořit také pomocí šablon Azure Resource Manager, které jsou popsány v [samostatném článku](../alerts/alerts-log-create-templates.md).
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](../platform/alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](../platform/alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../logs/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](./alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](./alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytvořte pravidlo upozornění protokolu s Azure Portal
 
@@ -35,13 +35,13 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Přejít na prostředek, na kterém byste chtěli upozornit. Pokud je to možné, zvažte nastavení pravidel upozornění na více prostředků výběrem předplatného nebo rozsahu skupiny prostředků. Upozornění na více prostředků snižuje náklady a nutnost spravovat více pravidel výstrah.
 1. V části **monitorování** vyberte **protokoly**.
-1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
+1. Zadejte dotaz na data protokolu, která mohou problém indikovat. V [tématu Příklady dotazů na výstrahy](../logs/example-queries.md) můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../logs/log-analytics-tutorial.md). Naučíte se také, [jak vytvářet optimalizované dotazy na upozornění](alerts-log-query.md).
 1. Kliknutím na tlačítko + nové pravidlo výstrahy spustíte tok vytváření výstrah.
 
     ![Výstraha Log Analytics-set](media/alerts-log/AlertsAnalyticsCreate.png)
 
 > [!NOTE]
-> Při použití režimu přístupu k prostředkům pro protokoly, které běží na několika prostředcích pomocí skupiny prostředků nebo oboru předplatného, se doporučuje vytvářet výstrahy ve velkém měřítku. Upozorňování se škálováním snižuje režijní náklady na správu pravidel. Aby bylo možné cílit na prostředky, uveďte do výsledků sloupec ID prostředku. [Přečtěte si další informace o rozdělení výstrah podle dimenzí](../platform/alerts-unified-log.md#split-by-alert-dimensions).
+> Při použití režimu přístupu k prostředkům pro protokoly, které běží na několika prostředcích pomocí skupiny prostředků nebo oboru předplatného, se doporučuje vytvářet výstrahy ve velkém měřítku. Upozorňování se škálováním snižuje režijní náklady na správu pravidel. Aby bylo možné cílit na prostředky, uveďte do výsledků sloupec ID prostředku. [Přečtěte si další informace o rozdělení výstrah podle dimenzí](./alerts-unified-log.md#split-by-alert-dimensions).
 
 ### <a name="log-alert-for-log-analytics-and-application-insights"></a>Výstraha protokolu pro Log Analytics a Application Insights
 
@@ -51,11 +51,11 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
     ![Konfigurovat pravidlo výstrahy](media/alerts-log/AlertsPreviewAlertLog.png)
 
-1. Vyberte časový rozsah, ve kterém se má vyhodnotit zadaná podmínka, a to pomocí možnosti [**perioda**](../platform/alerts-unified-log.md#query-time-range) .
+1. Vyberte časový rozsah, ve kterém se má vyhodnotit zadaná podmínka, a to pomocí možnosti [**perioda**](./alerts-unified-log.md#query-time-range) .
 
-1. Výstrahy protokolu můžou být založené na dvou typech [**měr**](../platform/alerts-unified-log.md#measure):
+1. Výstrahy protokolu můžou být založené na dvou typech [**měr**](./alerts-unified-log.md#measure):
     1. **Počet výsledků** – počet záznamů vrácených dotazem.
-    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Příklad:
+    1. **Měření**  -  metriky *Agregovaná hodnota* počítaná pomocí souhrnu seskupené podle zvolených výrazů a výběru z [přihrádky ()](/azure/kusto/query/binfunction) Například:
 
     ```Kusto
     // Reported errors
@@ -65,29 +65,29 @@ Tady je postup, jak začít psát dotazy na výstrahy:
     | summarize AggregatedValue = count() by Computer, bin(TimeGenerated, 15m)
     ```
 
-1. V případě logiky výstrah pro měření metriky můžete volitelně určit, jak mají být [výstrahy rozděleny podle dimenzí](../platform/alerts-unified-log.md#split-by-alert-dimensions) pomocí možnosti **agregace zapnuto** . Výraz seskupování řádků musí být jedinečný a seřazený.
+1. V případě logiky výstrah pro měření metriky můžete volitelně určit, jak mají být [výstrahy rozděleny podle dimenzí](./alerts-unified-log.md#split-by-alert-dimensions) pomocí možnosti **agregace zapnuto** . Výraz seskupování řádků musí být jedinečný a seřazený.
 
     > [!NOTE]
     > Funkce AS [bin ()](/azure/kusto/query/binfunction) může mít za následek nerovnoměrné časové intervaly, služba Alert automaticky převede funkci [bin ()](/azure/kusto/query/binfunction) na [bin_at ()](/azure/kusto/query/binatfunction) s odpovídajícím časem za běhu, aby se zajistilo, že výsledky budou s pevným bodem.
 
     > [!NOTE]
-    > Dimenze rozdělené podle výstrah jsou k dispozici pouze pro aktuální rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](../platform/api-alerts.md), budete muset přepnout. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md). Upozorňování na střed prostředků ve velkém měřítku se podporuje jenom ve verzi rozhraní API `2020-05-01-preview` a výše.
+    > Dimenze rozdělené podle výstrah jsou k dispozici pouze pro aktuální rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](./api-alerts.md), budete muset přepnout. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md). Upozorňování na střed prostředků ve velkém měřítku se podporuje jenom ve verzi rozhraní API `2020-05-01-preview` a výše.
 
     ![možnost agregace při](media/alerts-log/aggregate-on.png)
 
-1. Dále na základě dat ve verzi Preview nastavte [ **operátor**, **prahovou hodnotu**](../platform/alerts-unified-log.md#threshold-and-operator)a [**frekvenci**](../platform/alerts-unified-log.md#frequency).
+1. Dále na základě dat ve verzi Preview nastavte [ **operátor**, **prahovou hodnotu**](./alerts-unified-log.md#threshold-and-operator)a [**frekvenci**](./alerts-unified-log.md#frequency).
 
-1. Volitelně můžete také nastavit [počet porušení pro aktivaci výstrahy](../platform/alerts-unified-log.md#number-of-violations-to-trigger-alert) pomocí **celkového nebo po sobě jdoucích porušení**.
+1. Volitelně můžete také nastavit [počet porušení pro aktivaci výstrahy](./alerts-unified-log.md#number-of-violations-to-trigger-alert) pomocí **celkového nebo po sobě jdoucích porušení**.
 
 1. Vyberte **Hotovo**. 
 
 1. Zadejte název a **Popis** **pravidla výstrahy** a vyberte **závažnost** výstrahy. Tyto podrobnosti se používají ve všech akcích výstrah. Kromě toho můžete zvolit možnost neaktivovat pravidlo výstrahy při vytváření výběrem možnosti **Povolit pravidlo při vytvoření**.
 
-1. Vyberte, zda chcete po spuštění výstrahy potlačit akce s pravidly, a použijte možnost [**potlačit výstrahy**](../platform/alerts-unified-log.md#state-and-resolving-alerts) . Pravidlo se pořád spustí a vytvoří upozornění, ale akce se neaktivují, aby se zabránilo hluku. Hodnota akcí ztlumení musí být větší, než frekvence výstrahy, která má být účinná.
+1. Vyberte, zda chcete po spuštění výstrahy potlačit akce s pravidly, a použijte možnost [**potlačit výstrahy**](./alerts-unified-log.md#state-and-resolving-alerts) . Pravidlo se pořád spustí a vytvoří upozornění, ale akce se neaktivují, aby se zabránilo hluku. Hodnota akcí ztlumení musí být větší, než frekvence výstrahy, která má být účinná.
 
     ![Potlačit výstrahy pro výstrahy protokolu](media/alerts-log/AlertsPreviewSuppress.png)
 
-1. Určete, zda má pravidlo výstrahy aktivovat jednu nebo více [**skupin akcí**](../platform/action-groups.md#webhook) , pokud je splněna podmínka upozornění.
+1. Určete, zda má pravidlo výstrahy aktivovat jednu nebo více [**skupin akcí**](./action-groups.md#webhook) , pokud je splněna podmínka upozornění.
 
     > [!NOTE]
     > Omezení akcí, které je možné provést, najdete v části [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .  
@@ -148,11 +148,11 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Začněte na kartě **Podmínka** :
 
-    1. Ověřte správnost [**míry**](../platform/alerts-unified-log.md#measure), [**typu agregace**](../platform/alerts-unified-log.md#aggregation-type)a [**členitosti agregace**](../platform/alerts-unified-log.md#aggregation-granularity) . 
+    1. Ověřte správnost [**míry**](./alerts-unified-log.md#measure), [**typu agregace**](./alerts-unified-log.md#aggregation-type)a [**členitosti agregace**](./alerts-unified-log.md#aggregation-granularity) . 
         1. Ve výchozím nastavení pravidlo počítá počet výsledků za posledních 5 minut.
         1. Pokud zjistíme souhrnné výsledky dotazu, pravidlo se během několika sekund aktualizuje automaticky a zachytí se.
 
-    1. V případě potřeby vyberte v případě potřeby možnost [rozdělování výstrah podle dimenzí](../platform/alerts-unified-log.md#split-by-alert-dimensions): 
+    1. V případě potřeby vyberte v případě potřeby možnost [rozdělování výstrah podle dimenzí](./alerts-unified-log.md#split-by-alert-dimensions): 
        - **Sloupec ID prostředku** je vybrán automaticky, pokud byl zjištěn, a změní kontext výstrahy aktivované na prostředek záznamu. 
        - Pokud chcete aktivovat výstrahy pro předplatné nebo skupiny prostředků, můžete zrušit výběr **sloupce ID prostředku** . Zrušení výběru je užitečné v případě, že výsledky dotazu jsou založené na různých prostředcích. Například dotaz, který kontroluje, jestli 80% virtuálních počítačů ve skupině prostředků má vysoké využití procesoru.
        - Pro libovolný typ sloupce Number nebo text se dá vybrat také až šest dalších rozdělení pomocí tabulky Dimensions.
@@ -164,19 +164,19 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
         ![Náhled grafu](media/alerts-log/preview-chart.png)
 
-    1. Dále na základě dat ve verzi Preview nastavte **logiku výstrah**. [ **Operátor**, **prahová hodnota**](../platform/alerts-unified-log.md#threshold-and-operator)a [**frekvence**](../platform/alerts-unified-log.md#frequency).
+    1. Dále na základě dat ve verzi Preview nastavte **logiku výstrah**. [ **Operátor**, **prahová hodnota**](./alerts-unified-log.md#threshold-and-operator)a [**frekvence**](./alerts-unified-log.md#frequency).
 
         ![Náhled grafu s použitím prahové hodnoty a logiky výstrah](media/alerts-log/chart-and-alert-logic.png)
 
-    1. Volitelně můžete nastavit [**počet porušení pro aktivaci upozornění**](../platform/alerts-unified-log.md#number-of-violations-to-trigger-alert) v části **Upřesnit možnosti** .
+    1. Volitelně můžete nastavit [**počet porušení pro aktivaci upozornění**](./alerts-unified-log.md#number-of-violations-to-trigger-alert) v části **Upřesnit možnosti** .
     
         ![Upřesnit možnosti](media/alerts-log/advanced-options.png)
 
-1. Na kartě **Akce** vyberte nebo vytvořte požadované [skupiny akcí](../platform/action-groups.md).
+1. Na kartě **Akce** vyberte nebo vytvořte požadované [skupiny akcí](./action-groups.md).
 
     ![Karta akce](media/alerts-log/actions-tab.png)
 
-1. Na kartě **Podrobnosti** definujte **Podrobnosti pravidla výstrahy** a **Podrobnosti projektu**. Volitelně můžete nastavit, zda chcete **Spustit nyní**, nebo [**ztlumení akcí**](../platform/alerts-unified-log.md#state-and-resolving-alerts) po určité době, kdy pravidlo výstrahy bude aktivováno.
+1. Na kartě **Podrobnosti** definujte **Podrobnosti pravidla výstrahy** a **Podrobnosti projektu**. Volitelně můžete nastavit, zda chcete **Spustit nyní**, nebo [**ztlumení akcí**](./alerts-unified-log.md#state-and-resolving-alerts) po určité době, kdy pravidlo výstrahy bude aktivováno.
 
     > [!NOTE]
     > Pravidla upozornění protokolu jsou momentálně Bezstavová a aktivují se akce pokaždé, když je vytvořena výstraha, pokud není ztlumený.
@@ -199,7 +199,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 1. Správa výstrah zobrazuje všechny aktivované výstrahy. [Přečtěte si další informace o správě výstrah](alerts-managing-alert-instances.md).
 
     > [!NOTE]
-    > Pravidla upozornění protokolu jsou momentálně [Bezstavová a neřeší](../platform/alerts-unified-log.md#state-and-resolving-alerts)se.
+    > Pravidla upozornění protokolu jsou momentálně [Bezstavová a neřeší](./alerts-unified-log.md#state-and-resolving-alerts)se.
 
 1. V horním panelu vyberte tlačítko **Spravovat pravidla výstrah** a upravte pravidla:
 
@@ -221,13 +221,13 @@ Níže uvedené rutiny prostředí PowerShell jsou k dispozici pro správu pravi
 - [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry akce pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) .
 - [New-AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje parametry skupin akcí pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
 - [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
-- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
 - [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell Rutina pro výpis stávajících pravidel upozornění protokolů nebo konkrétního pravidla výstrahy protokolu
 - [Update-AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) : rutina prostředí PowerShell pro povolení nebo zakázání pravidla upozornění protokolu
 - [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
 
 > [!NOTE]
-> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená v aktuálně [naplánovaných rozhraních API pravidel dotazů](/rest/api/monitor/scheduledqueryrules/). Pravidla upozornění protokolu vytvořená pomocí [rozhraní API pro upozornění](../platform/api-alerts.md) starší verze Log Analytics se dají spravovat jenom pomocí prostředí PowerShell po [Přepnutí na naplánovaná pravidla dotazů na rozhraní API](../alerts/alerts-log-api-switch.md).
+> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená v aktuálně [naplánovaných rozhraních API pravidel dotazů](/rest/api/monitor/scheduledqueryrules/). Pravidla upozornění protokolu vytvořená pomocí [rozhraní API pro upozornění](./api-alerts.md) starší verze Log Analytics se dají spravovat jenom pomocí prostředí PowerShell po [Přepnutí na naplánovaná pravidla dotazů na rozhraní API](../alerts/alerts-log-api-switch.md).
 
 Tady je příklad kroků pro vytvoření pravidla upozornění protokolu pomocí prostředí PowerShell:
 
@@ -247,6 +247,25 @@ $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsAction
 New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
 ```
 
+Tady je příklad kroků pro vytvoření pravidla upozornění protokolu pomocí PowerShellu s dotazy pro více prostředků:
+
+```powershell
+$authorized = @ ("/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicewsCrossExample", "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceAppInsights")
+
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews" -AuthorizedResource $authorized
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ `"alert`":`"#alertrulename`", `"IncludeSearchResults`":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name" 
+```
+
 Můžete také vytvořit výstrahu protokolu pomocí [šablony a souborů parametrů](./alerts-log-create-templates.md) pomocí prostředí PowerShell:
 
 ```powershell
@@ -261,7 +280,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ## <a name="managing-log-alerts-using-cli"></a>Správa výstrah protokolu pomocí rozhraní příkazového řádku
 
 > [!NOTE]
-> Podpora Azure CLI je dostupná jenom pro rozhraní API scheduledQueryRules `2020-05-01-preview` a novější. Verze rozhraní API zkontrolují může používat Azure Resource Manager CLI se šablonami, jak je popsáno níže. Pokud používáte starší verzi [rozhraní API Log Analytics výstrah](../platform/api-alerts.md), budete muset přepnout na použití rozhraní příkazového řádku. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md).
+> Podpora Azure CLI je dostupná jenom pro rozhraní API scheduledQueryRules `2020-05-01-preview` a novější. Verze rozhraní API zkontrolují může používat Azure Resource Manager CLI se šablonami, jak je popsáno níže. Pokud používáte starší verzi [rozhraní API Log Analytics výstrah](./api-alerts.md), budete muset přepnout na použití rozhraní příkazového řádku. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md).
 
 Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění protokolu pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md). V tomto článku budeme používat Cloud Shell.
 
@@ -323,7 +342,7 @@ Po úspěšném vytvoření se vrátí 201. Po úspěšném dokončení aktualiz
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si informace o [výstrahách protokolu](../platform/alerts-unified-log.md).
+* Přečtěte si informace o [výstrahách protokolu](./alerts-unified-log.md).
 * Vytvářejte výstrahy protokolu pomocí [šablon Azure Resource Manager](./alerts-log-create-templates.md).
 * Porozumění [akcím Webhooku pro výstrahy protokolu](./alerts-log-webhook.md)
-* Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
+* Přečtěte si další informace o [dotazech protokolu](../logs/log-query-overview.md).

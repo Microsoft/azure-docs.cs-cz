@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736538"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
 
@@ -174,7 +174,7 @@ Projděte si kroky popsané v rychlém startu [*vytvoření centra událostí*](
 
 ### <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
-V dalším kroku vytvoříte funkci aktivovanou Event Hubs v rámci aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
+V dalším kroku vytvoříte funkci aktivovanou pomocí Event Hubs v rámci aplikace funkcí. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
 
 Pojmenujte aktivační událost centra událostí *lifecycleevents* a připojte Trigger centra událostí k centru událostí, které jste vytvořili v předchozím kroku. Pokud jste použili jiný název centra událostí, změňte jej tak, aby odpovídal následujícímu názvu aktivační události.
 
@@ -223,7 +223,7 @@ Chcete-li aktivovat proces vyřazení, je nutné ručně odstranit zařízení z
 
 V [první polovině tohoto článku](#auto-provision-device-using-device-provisioning-service)jste v IoT Hub vytvořili zařízení a odpovídající digitální vlákna. 
 
-Nyní přejdete na IoT Hub a odstraňte toto zařízení (můžete to provést pomocí [příkazu Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) nebo v [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Nyní přejdete na IoT Hub a odstraňte toto zařízení (můžete to provést pomocí [příkazu Azure CLI](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) nebo v [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Zařízení se automaticky odebere z digitálních vláken Azure. 
 

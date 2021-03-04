@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 97778951777677ce02adec59d906c1246494457a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0c8f55b6eeba4319b0ce9e39085912b8c4829235
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369403"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720796"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
 Tento článek popisuje architekturu připojení Azure Database for PostgreSQL a také způsob, jakým se přesměruje přenos do vaší Azure Database for PostgreSQL instance databáze od klientů v rámci i mimo Azure.
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Postg
 | Indie – střed | 104.211.96.159     | | |
 | Indie – jih | 104.211.224.146  | | |
 | Indie – západ | 104.211.160.80    | | |
-| Japonsko – východ | 40.79.192.23 | 13.78.61.196 | |
+| Japonsko – východ | 40.79.192.23, 40.79.184.8 | 13.78.61.196 | |
 | Japonsko – západ | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
 | Jižní Korea – střed | 52.231.17.13   | 52.231.32.42 | |
 | Jižní Korea – jih | 52.231.145.3     | 52.231.200.86 | |

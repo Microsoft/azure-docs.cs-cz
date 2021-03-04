@@ -12,17 +12,17 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 59f8d721c23cbb033f295f2ef3045fc96f08ba96
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589153"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733175"
 ---
-# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET pomocí Azure DevOps Starter
+# <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET s využitím Azure DevOps Starteru
 
 Nakonfigurujte průběžnou integraci (CI) a průběžné doručování (CD) pro aplikaci .NET Core nebo ASP.NET s DevOps Starter. DevOps Starter zjednodušuje počáteční konfiguraci kanálu sestavení a vydání v Azure Pipelines.
 
@@ -43,7 +43,9 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 1. Vyberte ukázkovou aplikaci **.NET**. Ukázky .NET zahrnují výběr open source architektury ASP.NET nebo multiplatformní architektury .NET Core.
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > Výchozí možnost pro nastavení DevOps Starter je v **GitHubu**, ale toto nastavení můžete změnit v průvodci.
 2. Tato ukázka představuje aplikaci ASP.NET Core MVC. Vyberte aplikační rozhraní **.NET Core** a pak vyberte **Další**.    
     
 3. Jako cíl nasazení vyberte **Webová aplikace Windows** a pak vyberte **Další**. Volitelně můžete zvolit další služby Azure pro vaše nasazení. Aplikační rozhraní, které jste si zvolili dříve, určuje typ cíle nasazení služby Azure, který je k dispozici zde.
@@ -88,7 +90,7 @@ V předchozím kroku Azure DevOps Starter automaticky nakonfiguroval úplný kan
 
 1. Vyberte tři tečky (...).  Tato akce otevře nabídku, kde můžete spustit několik aktivit, jako je například zařazování nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
     ![Kanál buildu](_img/azure-devops-project-aspnet-core/builddef.png)
 

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704850"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro Azure App Service
 
@@ -18,7 +18,7 @@ App Service domény jsou vlastní domény spravované přímo v Azure. Usnadňuj
 
 Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -54,7 +54,7 @@ Informace o cenách App Servicech doménách najdete na [stránce s cenami App S
    | **Doména** | Zadejte doménu, kterou chcete. Například **contoso.com**. Pokud požadovaná doména není k dispozici, můžete vybrat ze seznamu návrhů dostupných domén nebo vyzkoušet jinou doménu. |
 
     > [!NOTE]
-    > Následující [domény nejvyšší úrovně](https://wikipedia.org/wiki/Top-level_domain) jsou podporovány App Service doménami: _com_, _net_, _co.UK_, _org_, _nl_, _in_,, _biz_ _org.UK_ a _co.in_.
+    > Následující [domény nejvyšší úrovně](https://wikipedia.org/wiki/Top-level_domain) jsou podporovány App Service doménami: _com_, _net_, _co.UK_, _org_, _nl_, _in_,,  _org.UK_ a _co.in_.
     >
     >
     
@@ -211,7 +211,7 @@ Azure se týká vypršení platnosti nebo App Service domén s vypršenou platno
 * Pokud je automatické obnovení zakázané: 90 dní před vypršením platnosti domény, pošle se vám e-mail s oznámením o prodloužení a na portálu se aktivuje tlačítko **prodloužit doménu** .
 * Pokud je povoleno automatické obnovení: dne po datu vypršení platnosti domény, Azure se pokusí vyfakturovat za obnovení názvu domény.
 * Pokud při automatickém obnovování dojde k chybě (například vypršela platnost karty na soubor) nebo pokud je automatické obnovení zakázané a pokud povolíte vypršení platnosti domény, Azure vás upozorní na vypršení platnosti domény a parky, které mají název vaší domény. Doménu můžete [obnovit ručně](#renew-the-domain) .
-* V 4.12. dnech dne po vypršení platnosti vám Azure pošle další e-maily s oznámením. Doménu můžete [obnovit ručně](#renew-the-domain) .
+* V 4.12. dnech dne po vypršení platnosti vám Azure pošle další e-maily s oznámením. Doménu můžete [obnovit ručně](#renew-the-domain) . 5. den po vypršení platnosti se překlad DNS zastaví pro doménu, jejíž platnost vypršela.
 * 19 den po vypršení platnosti zůstane doména pozastavená, ale bude se řídit poplatkem za uplatnění. Můžete zavolat zákaznickou podporu a prodloužit název domény, a to v souladu s platnými poplatky za obnovení a uplatnění.
 * Od 25 dnů po vypršení platnosti Azure zaznamená vaši doménu do aukce za aukci pomocí služby obor názvů domény. Můžete zavolat zákaznickou podporu a prodloužit název domény, a to v souladu s platnými poplatky za obnovení a uplatnění.
 * Po uplynutí 30 dnů po vypršení platnosti už nebudete moci uplatnit svoji doménu.

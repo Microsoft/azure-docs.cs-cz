@@ -1,17 +1,16 @@
 ---
 title: Optimalizujte prostředí Active Directory pomocí Azure Monitor | Microsoft Docs
 description: Řešení kontroly stavu služby Active Directory můžete použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bff61ec9dfcb985ea0111ca58bfd58273e1fe432
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577555"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723244"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí Active Directory s využitím řešení kontroly stavu Active Directory ve službě Azure Monitor
 

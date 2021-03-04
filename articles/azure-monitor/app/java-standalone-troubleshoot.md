@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881123"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737053"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -45,15 +45,23 @@ Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou h
 
 Nejlepším způsobem, jak zjistit, jestli konkrétní příkaz protokolování splňuje prahovou hodnotu nakonfigurovaných protokolovacích rozhraní, je potvrzení, že se zobrazuje v normálním aplikačním protokolu (např. soubor nebo konzola).
 
+Všimněte si také, že pokud je do protokolovacího nástroje předána výjimka, zpráva protokolu (a výjimka) se zobrazí v Azure Portal v `exceptions` tabulce místo v `traces` tabulce.
+
 Další podrobnosti najdete v tématu [Automatická shromážděná konfigurace protokolování](./java-standalone-config.md#auto-collected-logging) .
 
 ## <a name="import-ssl-certificates"></a>Importovat certifikáty SSL
 
 Tato část vám pomůže vyřešit a případně opravit výjimky týkající se certifikátů SSL při použití agenta Java.
 
-Existují dvě různé cesty pro řešení tohoto problému.
+Pro řešení tohoto problému jsou k dispozici dvě různé cesty:
+* Pokud používáte výchozí úložiště klíčů Java
+* Pokud používáte vlastní úložiště klíčů Java
 
-### <a name="if-using-a-default-java-keystore"></a>Pokud používáte výchozí úložiště klíčů Java:
+Pokud si nejste jisti, jakou cestu chcete sledovat, zkontrolujte, jestli máte JVM ARG `-Djavax.net.ssl.trustStore=...` .
+Pokud takový ARG _JVM nemáte,_ budete pravděpodobně používat výchozí úložiště klíčů Java.
+Pokud takový JVM _arg máte,_ budete pravděpodobně používat vlastní úložiště klíčů a v JVM ARG budete odkazovat na vlastní úložiště klíčů.
+
+### <a name="if-using-the-default-java-keystore"></a>Pokud používáte výchozí úložiště klíčů Java:
 
 Výchozí úložiště klíčů Java už bude mít všechny kořenové certifikáty certifikační autority. Může však dojít k nějakým výjimkám, například certifikát koncového bodu ingestování může být podepsán jiným kořenovým certifikátem. Proto pro vyřešení tohoto problému doporučujeme následující tři kroky:
 

@@ -1,19 +1,19 @@
 ---
-title: Mapování oblastí Azure Monitor pro kontejnery
-description: Popisuje mapování oblastí podporované mezi Azure Monitor kontejnerů, Log Analytics pracovním prostoru a vlastními metrikami.
+title: Mapování oblastí v kontejneru Insights
+description: Popisuje mapování oblastí podporovaných mezi službami Container Insights, Log Analytics pracovním prostorem a vlastními metrikami.
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611957"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728871"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblastí podporované Azure Monitor pro kontejnery
+# <a name="region-mappings-supported-by-container-insights"></a>Mapování oblastí podporované službou Container Insights
 
- Při povolování Azure Monitor pro kontejnery jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a clusteru AKS a shromažďování vlastních metrik odeslaných do Azure Monitor.
+ Při povolování služby Container Insights se pro propojení Log Analyticsho pracovního prostoru a clusteru AKS podporují jenom některé oblasti a shromažďují se vlastní metriky odeslané do Azure Monitor.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Mapování podporovaná v pracovním prostoru Log Analytics
 
@@ -53,4 +53,4 @@ Shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lus
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  
+Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit službě Container Insights](container-insights-onboard.md) pochopit požadavky a dostupné metody pro povolení monitorování.  

@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609583"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737252"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
 Tento článek popisuje běžné problémy v Azure Monitor [výstrahy metrik](alerts-metric-overview.md) a jejich řešení.
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu [Přehled výstrah v Microsoft Azure](./alerts-overview.md).
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>Výstraha metriky by měla být aktivována, ale nebyla 
 
 Pokud se domníváte, že výstraha metriky by měla být aktivována, ale nenarazila se na Azure Portal, zkuste provést následující kroky:
 
 1. **Konfigurace** – Zkontrolujte konfiguraci pravidla upozornění metrik, abyste měli jistotu, že je správně nakonfigurované:
-    - Ověřte, zda je **typ agregace** a **členitost agregace (period)** konfigurovány podle očekávání. **Typ agregace** určuje, jak jsou agregovány hodnoty metriky (Další informace [zde](../platform/metrics-aggregation-explained.md#aggregation-types)) a **členitost (period)** určuje, jak daleko zpátky vyhodnocení vyhodnocuje hodnoty metrik při každém spuštění pravidla výstrahy.
+    - Ověřte, zda je **typ agregace** a **členitost agregace (period)** konfigurovány podle očekávání. **Typ agregace** určuje, jak jsou agregovány hodnoty metriky (Další informace [zde](../essentials/metrics-aggregation-explained.md#aggregation-types)) a **členitost (period)** určuje, jak daleko zpátky vyhodnocení vyhodnocuje hodnoty metrik při každém spuštění pravidla výstrahy.
     -  Ověřte, zda je **prahová hodnota** nebo **Citlivost** konfigurována podle očekávání.
     - Pro pravidlo upozornění, které používá dynamické prahové hodnoty, ověřte, jestli jsou nakonfigurovaná Pokročilá nastavení, protože **počet porušení** může filtrovat výstrahy a **Ignorovat data, aby** mohl ovlivnit, jak se počítají prahové hodnoty.
 
@@ -69,10 +69,10 @@ Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nejde najít metriku pro upozornění na metriky hosta virtuálních počítačů.
 
 Pokud chcete upozornit na metriky virtuálních počítačů hostovaného operačního systému (například paměť, místo na disku), ujistěte se, že jste nainstalovali potřebného agenta pro shromažďování těchto dat do Azure Monitor metrik:
-- [Pro virtuální počítače s Windows](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [Pro virtuální počítače s Linuxem](../platform/collect-custom-metrics-linux-telegraf.md)
+- [Pro virtuální počítače s Windows](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Pro virtuální počítače s Linuxem](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-Další informace o shromažďování dat z hostovaného operačního systému virtuálního počítače najdete [tady](../insights/monitor-vm-azure.md#guest-operating-system).
+Další informace o shromažďování dat z hostovaného operačního systému virtuálního počítače najdete [tady](../vm/monitor-vm-azure.md#guest-operating-system).
 
 > [!NOTE] 
 > Pokud jste nakonfigurovali metriky hosta k odeslání do Log Analytics pracovního prostoru, zobrazí se metriky pod prostředkem Log Analytics pracovního prostoru a začnou se **zobrazovat data až** po vytvoření pravidla výstrahy, které je monitoruje. Postupujte podle pokynů ke [konfiguraci upozornění na metriku pro protokoly](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
@@ -84,8 +84,8 @@ Další informace o shromažďování dat z hostovaného operačního systému v
 
 Pokud chcete nastavit upozorňování na konkrétní metriku, ale při vytváření pravidla upozornění se tato metrika nezobrazí, zkontrolujte následující:
 - Pokud pro prostředek nemůžete najít žádné metriky, [zkontrolujte, že je daný typ prostředku pro upozornění na metriky podporovaný](./alerts-metric-near-real-time.md).
-- Pokud se některé metriky prostředku zobrazují, ale nemůžete najít konkrétní metriku, [zkontrolujte, jestli je daná metrika dostupná](../platform/metrics-supported.md). Pokud ano, v popisu metriky zkontrolujte, jestli není dostupná pouze v konkrétních verzích nebo edicích prostředku.
-- Pokud metrika pro prostředek není dostupná, může být k dispozici v protokolech prostředků a umožňovat monitorování pomocí upozornění protokolu. Tady najdete další informace o [shromažďování a analýze protokolů prostředků Azure](../learn/tutorial-resource-logs.md).
+- Pokud se některé metriky prostředku zobrazují, ale nemůžete najít konkrétní metriku, [zkontrolujte, jestli je daná metrika dostupná](../essentials/metrics-supported.md). Pokud ano, v popisu metriky zkontrolujte, jestli není dostupná pouze v konkrétních verzích nebo edicích prostředku.
+- Pokud metrika pro prostředek není dostupná, může být k dispozici v protokolech prostředků a umožňovat monitorování pomocí upozornění protokolu. Tady najdete další informace o [shromažďování a analýze protokolů prostředků Azure](../essentials/tutorial-resource-logs.md).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nejde najít dimenzi metriky, na které se má upozornit.
 
@@ -211,7 +211,7 @@ Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhran�
 
 - Pokud se vám zobrazuje `Metric not found` Chyba:
 
-   - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](../platform/metrics-supported.md), a ne jako **Zobrazovaný název metriky** .
+   - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](../essentials/metrics-supported.md), a ne jako **Zobrazovaný název metriky** .
 
    - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a že poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony Správce prostředků).
 
@@ -253,7 +253,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

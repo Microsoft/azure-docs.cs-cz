@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: e8ee45a1bf6a45be1fd976d3fb1b8aba60d2b989
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609199"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734957"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro Windows a Linux
 
@@ -164,7 +164,7 @@ Následující kroky ukazují, jak znovu nakonfigurovat agenta pro Linux, pokud 
 Aby se změny projevily, není nutné restartovat službu agenta.
 
 ## <a name="update-proxy-settings"></a>Aktualizovat nastavení proxy serveru
-Chcete-li nakonfigurovat, aby agent komunikoval se službou prostřednictvím proxy server nebo [Log Analytics brány](../platform/gateway.md) po nasazení, použijte k dokončení této úlohy jednu z následujících metod.
+Chcete-li nakonfigurovat, aby agent komunikoval se službou prostřednictvím proxy server nebo [Log Analytics brány](./gateway.md) po nasazení, použijte k dokončení této úlohy jednu z následujících metod.
 
 ### <a name="windows-agent"></a>Agent Windows
 

@@ -4,16 +4,16 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734719"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
-Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](../../app-service/index.yml) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
+Povolení monitorování webových aplikací založených na ASP.NET, ASP.NET Core a Node.js, které běží na [Azure App Services](../../app-service/index.yml) , je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
 > Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů pro vývoj**  >   je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď  [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
@@ -61,11 +61,11 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
         
 | Data | Kolekce ASP.NET úrovně Basic | ASP.NET Doporučené shromažďování |
 | --- | --- | --- |
-| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Yes |Yes |
-| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Yes |Yes |
-| Shromažďování výjimek nezpracovaných hostitelským procesem | Yes |Yes |
-| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Yes |Yes |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Yes |
+| Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
+| Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
+| Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
+| Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
 
 3. Pokud chcete nakonfigurovat nastavení, jako je vzorkování, které byste mohli dříve řídit prostřednictvím souboru applicationinsights.config, můžete teď s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
@@ -97,7 +97,7 @@ Cílení na úplné rozhraní z ASP.NET Core, samostatného nasazení a aplikac�
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-V App Service webové aplikace v části **Nastavení**  >  **Vyberte Application Insights**  >  **Povolit**. Monitorování založené na agentech Node.js je aktuálně ve verzi Preview.
+Monitorování založené na agentech Windows není podporované, pokud ho chcete se systémem Linux povolit, přejděte k [ dokumentaciNode.js App Service](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ Aby bylo možné povolit shromažďování telemetrie s Application Insights, je
 |XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`: |
 |InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul binárního zápisu `InstrumentationEngine` zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine` . | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | Jenom pro ASP.NET Core aplikace. Povolí spolupráci (vzájemnou spolupráci) s Application Insights SDK. Načte rozšíření vedle sady SDK a použije ho k odeslání telemetrie (zakáže sadu Application Insights SDK). |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service nastavení aplikace s Azure Resource Manager
 

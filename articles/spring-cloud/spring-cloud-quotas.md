@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 20ebeb23fe09ba4fd70a724828afadfaa3901abd
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02ccb3acb4546e08e7d58159ab9d85bca2d0eed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711871"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóty a plány služeb pro jarní Cloud v Azure
 
@@ -32,7 +32,7 @@ Vlastní domény | instance cloudové služby na jaře Azure | 0 | 25
 Trvalé svazky | instance cloudové služby na jaře Azure | 1 GB/aplikace x 10 | aplikace 50 GB/aplikace x 10
 
 > [!TIP]
-> Sazby uvedené pro celkový počet instancí aplikace na instanci služby platí pro aplikace nebo nasazení v zastaveném stavu. Odstraňte prosím aplikace nebo nasazení, která se nepoužívají.
+> Omezení uvedená pro celkový počet instancí aplikace na instanci služby platí pro aplikace a nasazení v jakémkoli stavu, včetně stavu Zastaveno. Odstraňte prosím aplikace nebo nasazení, které se nepoužívají.
 
 ## <a name="next-steps"></a>Další kroky
 

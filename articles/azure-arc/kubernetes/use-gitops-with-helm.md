@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps s Helm pro konfiguraci clusteru s povoleným obloukem Azure
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0176d614a6bf44e2bf20cc7935521a6387a3b574
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687276"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Nasazení grafů Helm pomocí GitOps u clusteru Kubernetes s povoleným obloukem
 
@@ -81,7 +81,7 @@ Další informace o HelmRelease najdete v dokumentaci k oficiálnímu [operátor
 Pomocí rozšíření Azure CLI pro proveďte `k8s-configuration` propojení připojeného clusteru s ukázkovým úložištěm Git. Dejte této konfiguraci název `azure-arc-sample` a nasaďte operátor toku do `arc-k8s-demo` oboru názvů.
 
 ```console
-az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-chart-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Parametry konfigurace

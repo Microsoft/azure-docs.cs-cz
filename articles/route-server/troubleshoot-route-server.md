@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 02dd9aa74da42f0a5d70de4513b88756a97bea1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fa0f73d06bda02d784628823ee70bc538b375e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695800"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Řešení potíží s Azure Route serverem
 
@@ -21,11 +21,15 @@ ms.locfileid: "101679409"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="bgp-connectivity-issues"></a>Problémy s připojením protokolu BGP
+## <a name="connectivity-issues"></a>Problémy s připojením
 
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>Proč se partnerský vztah protokolu BGP mezi síťové virtuální zařízení a serverem Azure Route prochází a vypíná ("přepíná")?
+### <a name="why-does-my-nva-lose-internet-connectivity-after-it-advertises-the-default-route-00000-to-azure-route-server"></a>Proč můj síťové virtuální zařízení ztratí připojení k Internetu poté, co se inzeruje výchozí trasa (0.0.0.0/0) do serveru služby Azure Route?
+Když váš síťové virtuální zařízení inzeruje výchozí trasu, server Azure Route je naprogramuje pro všechny virtuální počítače ve virtuální síti, včetně samotného síťové virtuální zařízení. Tato výchozí trasa nastaví síťové virtuální zařízení jako další segment směrování pro všechny přenosy vázané na Internet. Pokud vaše síťové virtuální zařízení potřebuje připojení k Internetu, je potřeba nakonfigurovat [trasu definovanou uživatelem](../virtual-network/virtual-networks-udr-overview.md) , aby přepsala tuto výchozí trasu z síťové virtuální zařízení, a připojit udr k podsíti, ve které je služba síťové virtuální zařízení hostovaná (viz následující příklad). V opačném případě hostitelský počítač síťové virtuální zařízení nadále posílá provoz vázaný na Internet, včetně toho, který odesílá síťové virtuální zařízení zpět do samotného síťové virtuální zařízení.
 
-Příčinou přepíná může být nastavení časovače protokolu BGP. Ve výchozím nastavení je časovač Keep-Alive na serveru Azure Route nastavený na 60 sekund a časovač podržení je 180 sekund.
+| Trasa | Další segment směrování |
+|-------|----------|
+| 0.0.0.0/0 | Internet |
+
 
 ### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-goes-down"></a>Proč se dá provést příkaz k odeslání z síťové virtuální zařízení do IP adresy partnerského uzlu protokolu BGP na serveru Azure Route, ale po nastavení partnerského vztahu protokolu BGP mezi nimi Nemůžu Nemůžu testovat stejnou IP adresu? Proč se partnerský vztah protokolu BGP ukončí?
 
@@ -37,11 +41,18 @@ V některých síťové virtuální zařízení je potřeba přidat statickou tr
 
 10.0.1.1 je výchozí IP adresa brány v podsíti, ve které je hostovaný síťové virtuální zařízení (nebo přesněji jedna z síťových karet).
 
-## <a name="bgp-route-issues"></a>Problémy s trasami protokolu BGP
+### <a name="why-do-i-lose-connectivity-to-my-on-premises-network-over-expressroute-andor-azure-vpn-when-im-deploying-azure-route-server-to-a-virtual-network-that-already-has-expressroute-gateway-andor-azure-vpn-gateway"></a>Proč se při nasazování serveru Azure Route do virtuální sítě, která už má ExpressRoute Gateway nebo Azure VPN Gateway, ztratí připojení k místní síti přes ExpressRoute a/nebo Azure VPN?
+Když nasadíte Server Azure Route do virtuální sítě, musíme aktualizovat rovinu ovládacího prvku mezi bránami a virtuální sítí. Během této aktualizace dojde k časovému období, kdy virtuální počítače ve virtuální síti ztratí připojení k místní síti. Důrazně doporučujeme, abyste naplánovali údržbu nasazení serveru Směrování Azure v produkčním prostředí.  
+
+## <a name="control-plane-issues"></a>Problémy s řízením roviny
+
+### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>Proč se partnerský vztah protokolu BGP mezi síťové virtuální zařízení a serverem Azure Route prochází a vypíná ("přepíná")?
+
+Příčinou přepíná může být nastavení časovače protokolu BGP. Ve výchozím nastavení je časovač Keep-Alive na serveru Azure Route nastavený na 60 sekund a časovač podržení je 180 sekund.
 
 ### <a name="why-does-my-nva-not-receive-routes-from-azure-route-server-even-though-the-bgp-peering-is-up"></a>Proč moje síťové virtuální zařízení nepřijímá trasy z Azure Route serveru i v případě, že je partnerský vztah protokolu BGP zapnutý?
 
-ASN, kterou používá Azure Route Server, je 65515. Ujistěte se, že jste pro svůj síťové virtuální zařízení nakonfigurovali jiné číslo ASN, aby bylo možné navázat relaci "eBGP" mezi vaším síťové virtuální zařízení a serverem tras Azure, aby k šíření tras mohlo dojít automaticky.
+ASN, kterou používá Azure Route Server, je 65515. Ujistěte se, že jste pro svůj síťové virtuální zařízení nakonfigurovali jiné číslo ASN, aby bylo možné navázat relaci "eBGP" mezi vaším síťové virtuální zařízení a serverem tras Azure, aby k šíření tras mohlo dojít automaticky. Ujistěte se, že ve své konfiguraci protokolu BGP povolíte "Multi-hop", protože váš síťové virtuální zařízení a směrovací server Azure jsou v různých podsítích ve virtuální síti.
 
 ### <a name="the-bgp-peering-between-my-nva-and-azure-route-server-is-up-i-can-see-routes-exchanged-correctly-between-them-why-arent-the-nva-routes-in-the-effective-routing-table-of-my-vm"></a>Partnerský vztah protokolu BGP mezi síťové virtuální zařízení a serverem Azure Route Server je. Vidíte, že mezi nimi byly vyměňovány trasy správně. Proč nejsou síťové virtuální zařízení trasy v efektivní tabulce směrování tohoto virtuálního počítače? 
 

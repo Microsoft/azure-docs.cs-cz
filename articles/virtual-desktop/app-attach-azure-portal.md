@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737541"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Nastavení připojení aplikace MSIX s využitím webu Azure Portal
 
@@ -36,6 +36,7 @@ Tady je postup, co je potřeba ke konfiguraci připojení aplikace MSIX:
 - MSIX zabalená aplikace se rozšířila na obrázek MSIX, který se nahraje do sdílené složky.
 - Sdílená složka v rámci nasazení virtuálního počítače s Windows, kde bude uložený balíček MSIX.
 - Sdílená složka, do které jste nahráli image MSIX, musí být přístupná i pro všechny virtuální počítače ve fondu hostitelů. Uživatelé budou pro přístup k imagi potřebovat oprávnění jen pro čtení.
+- Pokud certifikát není veřejně důvěryhodný, postupujte podle pokynů v části [Instalace certifikátů](app-attach.md#install-certificates).
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Vypnout automatické aktualizace pro aplikace MSIX připojit k aplikacím
 

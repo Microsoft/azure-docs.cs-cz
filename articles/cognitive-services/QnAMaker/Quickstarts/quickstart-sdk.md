@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: qnamaker-quickstart
-ms.openlocfilehash: de237c1bba699165e63fc0b2e4bfb58d25518bd9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5fd200fcd1d48b533e629fe4429f5bafb5fde817
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730967"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Rychlý Start: QnA Maker Klientská knihovna
 
@@ -56,7 +56,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: testování znalostní báze pomocí dávkového souboru](../index.yml)
+>[Kurz: testování znalostní báze pomocí dávkového souboru](../how-to/test-knowledge-base.md#batch-test-with-tool)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

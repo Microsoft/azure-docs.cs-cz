@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 56afc81794bb18bfb7c9146eeb4ed61a0a75ea0f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c55314764f973a5a015a2bfc02815a58ce659901
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734021"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -72,11 +72,11 @@ ms.locfileid: "100587017"
 
 **<a name="data-ingestion-volume-rate">Frekvence přijímání dat</a>**
 
-Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu izolovat Azure Monitor zákazníky od náhlých špičky příjmu v prostředí s více architekturami. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) je definovaná v pracovních prostorech. Tato hodnota se přeloží na přibližně **6 GB/min** nekomprimovaná – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Limit přenosové rychlosti se vztahuje na data ingestovaná z prostředků Azure prostřednictvím [nastavení diagnostiky](../articles/azure-monitor/platform/diagnostic-settings.md). Po dosažení limitu přenosové rychlosti se mechanismus opakování pokusí ingestovat data čtyřikrát za dobu 30 minut a vyřadit, pokud operace selhává. Neplatí pro data ingestovaná z [agentů](../articles/azure-monitor/agents/agents-overview.md) nebo [rozhraní API kolekce dat](../articles/azure-monitor/platform/data-collector-api.md).
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu izolovat Azure Monitor zákazníky od náhlých špičky příjmu v prostředí s více architekturami. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) je definovaná v pracovních prostorech. Tato hodnota se přeloží na přibližně **6 GB/min** nekomprimovaná – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Limit přenosové rychlosti se vztahuje na data ingestovaná z prostředků Azure prostřednictvím [nastavení diagnostiky](../articles/azure-monitor/essentials/diagnostic-settings.md). Po dosažení limitu přenosové rychlosti se mechanismus opakování pokusí ingestovat data čtyřikrát za dobu 30 minut a vyřadit, pokud operace selhává. Neplatí pro data ingestovaná z [agentů](../articles/azure-monitor/agents/agents-overview.md) nebo [rozhraní API kolekce dat](../articles/azure-monitor/logs/data-collector-api.md).
 
 Když se data odesílaná do vašeho pracovního prostoru nacházejí v míře, která je vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, pošle se do tabulky *operace* ve vašem pracovním prostoru každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-[V tématu monitorování stavu Log Analytics pracovního prostoru v Azure monitor](../articles/azure-monitor/platform/monitor-workspace.md) můžete vytvořit pravidla výstrah, která se budou aktivně informovat, když dosáhnou všech omezení přijímání.
+[V tématu monitorování stavu Log Analytics pracovního prostoru v Azure monitor](../articles/azure-monitor/logs/monitor-workspace.md) můžete vytvořit pravidla výstrah, která se budou aktivně informovat, když dosáhnou všech omezení přijímání.
 
 >[!NOTE]
->V závislosti na tom, jak dlouho jste používali Log Analytics, je možné, že budete mít přístup ke starším cenovým úrovním. Další informace o [cenových úrovních Log Analytics starších verzích](../articles/azure-monitor/platform/manage-cost-storage.md#legacy-pricing-tiers).
+>V závislosti na tom, jak dlouho jste používali Log Analytics, je možné, že budete mít přístup ke starším cenovým úrovním. Další informace o [cenových úrovních Log Analytics starších verzích](../articles/azure-monitor/logs/manage-cost-storage.md#legacy-pricing-tiers).

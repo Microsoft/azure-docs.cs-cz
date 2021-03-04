@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724281"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
 
-
 > [!IMPORTANT]
-> Některé funkce Fusion v Azure Sentinel jsou momentálně ve **verzi Public Preview**.
-> Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Některé detekce fúze (viz ty, které jsou uvedené níže) jsou momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
 
 Pomocí technologie Fusion založené na strojovém učení může Azure Sentinel automaticky detekovat útoky s více fázemi tím, že identifikuje kombinace chování neobvyklé a podezřelých aktivit, které jsou pozorovány v různých fázích dezaktivačního řetězu. Na základě těchto zjištění Azure Sentinel generuje incidenty, které by jinak bylo obtížné zachytit. Tyto incidenty sestávají ze dvou nebo více výstrah nebo aktivit. V takovém případě mají tyto incidenty nízkou hlasitost, vysokou přesnost a vysokou závažnost.
 
@@ -60,12 +58,12 @@ Jak je uvedeno výše, vzhledem k tomu, že fúze koreluje více výstrah zabezp
 Aby bylo možné tyto scénáře detekce útoků využívajících technologii Fusion povolit, musí být všechny uvedené zdroje dat ingestované pomocí přidružených datových konektorů Azure Sentinel.
 
 > [!NOTE]
-> Některé z těchto scénářů jsou ve **verzi Public Preview**. Budou tak označeny.
+> Některé z těchto scénářů jsou ve **verzi Preview**. Budou tak označeny.
 
 ## <a name="compute-resource-abuse"></a>Zneužití prostředků COMPUTE
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Několik aktivit vytváření virtuálních počítačů po podezřelých Azure Active Directory přihlášení
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, dopad 
 
@@ -214,7 +212,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Podezřelá pravidla pro manipulaci s doručenou poštou nastavená po podezřelém přihlášení k Azure AD
 Tento scénář patří do dvou klasifikací hrozeb v tomto seznamu: **exfiltrace dat** a **boční pohyb**. V zájmu srozumitelnosti se tato položka zobrazuje v obou částech.
 
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, boční pohyb, exfiltrace
 
@@ -235,7 +233,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelému pravidlu manipulace s doručenou poštou**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Různé aktivity sdílení sestav Power BI po podezřelém přihlášení ke službě Azure AD 
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace 
 
@@ -256,7 +254,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k více aktivitám sdílení sestav Power BI**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Podezřelá Power BI sdílení sestav po podezřelém přihlášení ke službě Azure AD
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, exfiltrace 
 
@@ -299,7 +297,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému odstranění souboru**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Podezřelá aktivita odstranění e-mailu po podezřelém přihlášení ke službě Azure AD
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, dopad 
 
@@ -322,7 +320,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ## <a name="denial-of-service"></a>Odepření služby
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Několik aktivit odstranění virtuálních počítačů po podezřelém přihlášení ke službě Azure AD
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, dopad
 
@@ -367,7 +365,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Podezřelá pravidla pro manipulaci s doručenou poštou nastavená po podezřelém přihlášení k Azure AD
 Tento scénář patří do dvou klasifikací hrozeb v tomto seznamu: **boční pohyb** a **exfiltrace dat**. V zájmu srozumitelnosti se tato položka zobrazuje v obou částech.
 
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, boční pohyb, exfiltrace
 
@@ -412,7 +410,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ## <a name="malicious-execution-with-legitimate-process"></a>Zlomyslné spouštění s legitimním procesem
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Prostředí PowerShell provedlo podezřelé síťové připojení, za kterým následuje neobvyklé provoz označený bránou firewall pro Palo Alto Networks.
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Realizaci
 
@@ -423,7 +421,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 **Popis:** Incidenty fúze tohoto typu označují, že se odeslal požadavek na odchozí připojení prostřednictvím příkazu PowerShellu. za tímto se neobvyklé příchozí aktivity, které brána firewall Palo Alto sítě zjistila. To znamená, že útočník mohl získat přístup k vaší síti a snaží se provést škodlivé akce. Pokusy o připojení pomocí PowerShellu, které následují tento model, můžou být označením aktivity malwaru a řízení, požadavky na stažení dalšího malwaru nebo útočníka vytvářející vzdálený interaktivní přístup. Stejně jako u všech "živých útoků" se může jednat o legitimní použití PowerShellu. Spuštění příkazu PowerShellu následovaný podezřelou příchozí bránou firewall ale zvyšuje jistotu, že je prostředí PowerShell používáno škodlivým způsobem a mělo by se ještě prozkoumat. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Podezřelé vzdálené spuštění služby WMI následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Spuštění, zjišťování
 
@@ -456,7 +454,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ## <a name="malware-c2-or-download"></a>Malware C2 nebo stažení
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Požadavek na síť na službu pro samoobslužné zpracování dat následovaný provozem neobvyklé označeným příznakem Palo Alto Networks firewall.
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Příkaz a ovládací prvek
 
@@ -467,7 +465,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 **Popis:** Incidenty fúze tohoto typu označují, že došlo k žádosti o odchozí připojení ke službě pro vzdálenou komunikaci, a za tímto účelem se zjistila příchozí aktivita neobvyklé bránou firewall Palo Alto Networks. To znamená, že útočník mohl získat přístup k vaší síti a snaží se zakrývat své akce a záměr. Připojení k síti systému pomocí tohoto modelu by mohla být indikace činnosti příkazu malwaru a řízení, požadavků na stažení dalšího malwaru nebo útočníka vytvářejícího vzdálený interaktivní přístup. V protokolech Palo Alto se Azure Sentinel zaměřuje na [protokoly hrozeb](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)a provoz se považuje za podezřelý, pokud jsou povolené hrozby (podezřelá data, soubory, zaplavení, pakety, kontroly, spyware, adresy URL, viry, chyby zabezpečení, Wildfire-viry, wildfires). Další podrobnosti výstrahy najdete také v protokolu hrozeb Palo Alto, který odpovídá [typu hrozby nebo obsahu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) uvedenému v popisu incidentu fúze.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Odchozí připojení k IP adrese s historií neautorizovaných pokusů o přístup následovaných neobvyklé provozem označenými příznakem Palo Alto Networks firewall
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Příkaz a ovládací prvek
 
@@ -502,7 +500,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 ## <a name="remote-exploitation"></a>Vzdálené využívání
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Podezření na použití architektury útoku, po kterém následují přenosy neobvyklé označené příznakem Palo Alto Networks firewall
-Tento scénář je aktuálně ve **verzi Public Preview**.
+Tento scénář je aktuálně ve **verzi Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, provádění, příčný pohyb, eskalace oprávnění
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582812"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691242"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,7 +187,7 @@ Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávaj
 
 I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený. Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru. Poskytnutí stejného klíčového materiálu dvěma trezorům klíčů v různých oblastech je možné provést vytvořením klíče mimo Trezor klíčů a jejich importem do obou trezorů klíčů. 
 
-Alternativně se dá vytvořit klíč tak, že se pomocí primárního trezoru klíčů nachází ve stejné oblasti jako server a klonuje se klíč do trezoru klíčů v jiné oblasti Azure. Pomocí rutiny [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Operace zálohování a obnovení klíče je povolená jenom mezi trezory klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).  
+Alternativně se dá vytvořit klíč tak, že se pomocí primárního trezoru klíčů nachází ve stejné oblasti jako server a klonuje se klíč do trezoru klíčů v jiné oblasti Azure. Pomocí rutiny [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Operace zálohování a obnovení klíče je povolená jenom mezi trezory klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575224"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714472"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Monitorování instancí App Service pomocí kontroly stavu
 
 ![Selhání kontroly stavu][2]
 
-V tomto článku se pomocí Azure Portal ke sledování instancí App Service používá kontrolu stavu. Při kontrole stavu se zvyšuje dostupnost vaší aplikace odebráním špatných instancí. [Plán App Service](/azure/app-service/overview-hosting-plans) je třeba škálovat na dvě nebo více instancí, aby bylo možné použít kontrolu stavu. Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit ke kritické součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, který indikuje, že aplikace není v pořádku.
+V tomto článku se pomocí Azure Portal ke sledování instancí App Service používá kontrolu stavu. Při kontrole stavu se zvyšuje dostupnost vaší aplikace odebráním špatných instancí. [Plán App Service](./overview-hosting-plans.md) je třeba škálovat na dvě nebo více instancí, aby bylo možné použít kontrolu stavu. Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit ke kritické součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, který indikuje, že aplikace není v pořádku.
 
 ## <a name="what-app-service-does-with-health-checks"></a>Co App Service s kontrolami stavu
 
@@ -48,7 +48,7 @@ V tomto článku se pomocí Azure Portal ke sledování instancí App Service po
 
 Kromě konfigurace možností kontroly stavu můžete také nakonfigurovat následující [nastavení aplikace](configure-common.md):
 
-| Název nastavení aplikace | Povolené hodnoty | Description |
+| Název nastavení aplikace | Povolené hodnoty | Popis |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximální počet selhání nástroje test. Například pokud je nastavena na `2` , vaše instance budou odebrány po `2` neúspěšných příkazech otestuje. Při vertikálním navýšení nebo zmenšování App Service nástroj příkazového řádku otestuje cestu kontroly stavu, aby bylo zajištěno, že budou nové instance připravené. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Aby nedocházelo k nenáročným instancím v pořádku, nebudou vyloučeny žádné více než polovinu instancí. Pokud je například plán App Service škálovat na čtyři instance a tři nejsou v pořádku, bude vyloučeno nejvíce dvou. Ostatní dvě instance (v pořádku a jedna není v pořádku) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Chcete-li toto chování přepsat, nastavte nastavení aplikace na hodnotu mezi `0` a `100` . Vyšší hodnota znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50). |

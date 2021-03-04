@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/22/2021
+ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729704"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -29,6 +29,37 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 >
 > Můžete také přispět. Připojte se k nám ve [komunitě Azure Sentinel Threat Hunters GitHub](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="february-2021"></a>Únor 2021
+
+- [UEBA Insights na stránce entity](#ueba-insights-in-the-entity-page)
+- [Vylepšené vyhledávání incidentů](#improved-incident-search)
+
+### <a name="ueba-insights-in-the-entity-page"></a>UEBA Insights na stránce entity
+
+Stránky s podrobnostmi o entitě Azure Sentinel poskytují [podokno přehledy](identify-threats-with-entity-behavior-analytics.md#entity-insights), ve kterém se zobrazují přehledy chování pro entitu a umožňují rychle identifikovat anomálie a bezpečnostní hrozby.
+
+Pokud jste [povolili UEBA](ueba-enrichments.md)a vybrali jste časový rámec alespoň čtyři dny, bude mít teď v tomto podokně přehledy taky následující nové oddíly pro UEBA Insights:
+
+|Sekce  |Popis  |
+|---------|---------|
+|**UEBA přehledy**     | Shrnuje aktivity uživatelů neobvyklé: <br>– Napříč geografickými umístěními, zařízeními a prostředími<br>– Napříč časovými a frekvenčními horizonty ve srovnání s vlastní historií uživatele <br>– Porovnání s chováním partnerských vztahů <br>– Ve srovnání s chováním organizace     |
+|**Partnerské vztahy uživatele na základě členství ve skupině zabezpečení**     |   Vypíše partnerské vztahy uživatele založené na členství ve skupinách zabezpečení služby Azure AD a poskytnou týmům operací zabezpečení seznam dalších uživatelů, kteří sdílejí podobná oprávnění.  |
+|**Oprávnění pro přístup uživatelů k předplatnému Azure**     |     Zobrazuje přístupová oprávnění uživatele k předplatným Azure, která jsou k dispozici přímo nebo prostřednictvím skupin nebo objektů služby Azure AD.   |
+|**Indikátory hrozeb vztahující se k uživateli**     |  Obsahuje seznam známých hrozeb souvisejících s IP adresami, které se zobrazují v činnostech uživatele. Hrozby jsou uvedené podle typu a rodiny hrozeb a jsou obohaceny službou Microsoft Threat Intelligence.       |
+|     |         |
+
+### <a name="improved-incident-search"></a>Vylepšené vyhledávání incidentů
+
+Vylepšili jsme možnosti vyhledávání incidentu v Azure Sentinel, což vám umožní rychleji procházet incidenty při zkoumání konkrétní hrozby.
+
+Při hledání incidentů ve službě Azure Sentinel teď můžete vyhledávat podle následujících údajů o incidentu:
+
+- ID
+- Nadpis
+- Produkt
+- Vlastník
+- Značka
 
 ## <a name="january-2021"></a>Leden 2021
 
@@ -47,7 +78,7 @@ Průvodce pravidlo naplánované analýzy Azure Sentinel teď poskytuje následu
 
 -   Rozšiřitelné okno pro úpravy, které poskytuje více místa na obrazovce pro zobrazení dotazu.
 -   Klíčové slovo zvýraznění v kódu dotazu.
--   Rozšířená podpora automatického dokončování
+-   Podpora rozšířeného automatického dokončování.
 -   Ověřování dotazů v reálném čase. Chyby v dotazu se teď v posuvníku zobrazují jako červený blok a jako červená tečka v názvu karty **logika pravidla nastavení** . Kromě toho nelze uložit dotaz s chybami.
 
 Další informace najdete v tématu [kurz: detekce hrozeb](tutorial-detect-threats-built-in.md)předem.
@@ -57,7 +88,7 @@ Azure Sentinel teď podporuje nový modul PowerShellu [AZ. SecurityInsights](htt
 
 Modul **AZ. SecurityInsights** podporuje běžné případy použití Sentinel v Azure, jako je například interakce s incidenty ke změně Statues, závažnosti, vlastníka a tak dále, přidávání komentářů a popisků k incidentům a vytváření záložek.
 
-I když pro kanál CI/CD doporučujeme používat šablony [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) , modul **AZ. SecurityInsights** je vhodný pro úlohy po nasazení a je zaměřený na automatizaci SOC.  Například automatizace SOC může zahrnovat kroky ke konfiguraci datových konektorů, vytváření pravidel analýzy nebo přidávání akcí automatizace do pravidel analýz.
+I když pro kanál CI/CD doporučujeme používat šablony [Azure Resource Manager (ARM)](../azure-resource-manager/templates/index.yml) , modul **AZ. SecurityInsights** je vhodný pro úlohy po nasazení a je zaměřený na automatizaci SOC.  Například automatizace SOC může zahrnovat kroky ke konfiguraci datových konektorů, vytváření pravidel analýzy nebo přidávání akcí automatizace do pravidel analýz.
 
 Další informace, včetně úplného seznamu a popisu dostupných rutin, popisů parametrů a příkladů, najdete v [dokumentaci AZ. SecurityInsights PowerShellu](/powershell/module/az.securityinsights/).
 
@@ -85,7 +116,7 @@ Funkce Azure Sentinel teď podporuje vyhrazené clustery Log Analytics jako mož
 
 Vyhrazené clustery umožňují používat funkce, jako jsou klíče spravované zákazníkem, bezpečnostní modul, dvojité šifrování a rychlejší dotazy mezi jednotlivými pracovními prostory, pokud máte ve stejném clusteru více pracovních prostorů.
 
-Další informace najdete v tématu [Azure monitor protokolu vyhrazených clusterů](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters).
+Další informace najdete v tématu [Azure monitor protokolu vyhrazených clusterů](../azure-monitor/logs/logs-dedicated-clusters.md).
 
 ### <a name="logic-apps-managed-identities"></a>Spravované identity Logic Apps
 
@@ -97,7 +128,7 @@ Azure Sentinel teď podporuje spravované identity pro konektor Azure Sentinel L
 
 Další informace naleznete v tématu:
 
-- [Ověřování pomocí spravované identity v Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+- [Ověřování pomocí spravované identity v Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
 - [Dokumentace ke konektoru služby Azure Sentinel Logic Apps](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Vylepšené ladění pravidel pomocí grafů s náhledem analytického pravidla (Public Preview)
@@ -151,18 +182,18 @@ Azure Sentinel používá agenta Log Analytics k posílání událostí do vaše
 > Agent Log Analytics se někdy označuje jako agent OMS nebo Microsoft Monitoring Agent (MMA). 
 > 
 
-Další informace najdete v dokumentaci k [Log Analytics](/azure/azure-monitor/platform/log-analytics-agent) a v [poznámkách k verzi agenta Log Analytics](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
+Další informace najdete v dokumentaci k [Log Analytics](../azure-monitor/agents/log-analytics-agent.md) a v [poznámkách k verzi agenta Log Analytics](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>Listopad 2020
 
 - [Monitorování Logic Apps Playbooky ve službě Azure Sentinel](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
 - [Konektor programu Microsoft 365 Defender (Public Preview)](#microsoft-365-defender-connector-public-preview)
 ### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Monitorování Logic Apps Playbooky ve službě Azure Sentinel
 
-Služba Azure Sentinel se teď integruje s [aplikacemi Azure log](/azure/logic-apps/), což je cloudová služba, která vám pomůže plánovat, automatizovat a orchestrovat úkoly, obchodní procesy a pracovní postupy.
+Služba Azure Sentinel se teď integruje s [aplikacemi Azure log](../logic-apps/index.yml), což je cloudová služba, která vám pomůže plánovat, automatizovat a orchestrovat úkoly, obchodní procesy a pracovní postupy.
 
 Použijte aplikaci logiky Azure v Azure Sentinel jako PlayBook, která se dá automaticky vyvolat při vytvoření incidentu, nebo při třídění a práci s incidenty. 
 
-Pokud chcete poskytnout přehled o stavu, výkonu a využití vašich playbooky, včetně těch, které přidáte pomocí Azure Logic Apps, Přidali jsme do služby [Azure Workbook](/azure/azure-monitor/platform/workbooks-overview) s názvem **playbooky monitoring Health**. 
+Pokud chcete poskytnout přehled o stavu, výkonu a využití vašich playbooky, včetně těch, které přidáte pomocí Azure Logic Apps, Přidali jsme do služby [Azure Workbook](../azure-monitor/visualize/workbooks-overview.md) s názvem **playbooky monitoring Health**. 
 
 Pomocí sešitu **sledování stavu playbooky** můžete monitorovat stav svého playbookyu, nebo se můžete podívat na anomálie v množství úspěšných nebo neúspěšných spuštění. 
 
@@ -172,9 +203,9 @@ Sešit **monitorování stavu playbooky** je teď dostupný v galerii šablon Az
 
 Další informace naleznete v tématu:
 
-- [Dokumentace k Logic Apps](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [Dokumentace k Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Dokumentace k Azure Monitor](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Dokumentace k Azure Monitor](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Konektor programu Microsoft 365 Defender (Public Preview)
  

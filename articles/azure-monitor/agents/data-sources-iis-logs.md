@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610531"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732050"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
-Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které může shromažďovat agent Log Analytics a které jsou uložené v [protokolech Azure monitor](../platform/data-platform.md).
+Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které může shromažďovat agent Log Analytics a které jsou uložené v [protokolech Azure monitor](../data-platform.md).
 
 > [!IMPORTANT]
-> Tento článek popisuje shromažďování protokolů IIS pomocí [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
+> Tento článek popisuje shromažďování protokolů IIS pomocí [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
 
 ![Protokoly IIS](media/data-sources-iis-logs/overview.png)
 
@@ -65,7 +65,7 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | W3CIISLog |Všechny záznamy protokolu služby IIS. |
 | W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |
@@ -75,4 +75,4 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 ## <a name="next-steps"></a>Další kroky
 * Nakonfigurujte Azure Monitor pro shromažďování dalších [zdrojů dat](../agents/agent-data-sources.md) pro účely analýzy.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

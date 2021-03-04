@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729383"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Rychlý Start: nastavení ověření identity Azure pomocí Azure Portal
 
@@ -90,7 +90,7 @@ Podle kroků v této části můžete zobrazit, přidat a odstranit certifikáty
 1. Přejděte do nabídky Azure Portal nebo na domovské stránce a vyberte **všechny prostředky**.
 1. Do pole Filtr zadejte název poskytovatele ověření identity.
 1. Vyberte poskytovatele ověření identity a přejít na stránku Přehled.
-1. V nabídce prostředků na levé straně okna nebo v dolním podokně vyberte **certifikáty Signing Policy** .
+1. V nabídce prostředků na levé straně okna nebo v dolním podokně vyberte **certifikáty Signing Policy** . Zobrazí se výzva k výběru certifikátu pro ověření. Zvolte prosím odpovídající možnost, abyste mohli pokračovat.
 1. Vyberte **Stáhnout certifikáty podepisování zásad**. Tlačítko bude zakázáno pro poskytovatele ověřování identity vytvořené bez požadavku na podepsání zásad.
 1. Stažený textový soubor bude mít všechny certifikáty ve formátu JWS.
 1. Ověřte počet certifikátů a stažené certifikáty.
@@ -122,7 +122,7 @@ Tato část popisuje, jak zobrazit zásady ověření identity a jak nakonfiguro
 1.  Přejděte do nabídky Azure Portal nebo na domovské stránce a vyberte **všechny prostředky**.
 1.  Do pole Filtr zadejte název poskytovatele ověření identity.
 1.  Vyberte poskytovatele ověření identity a přejít na stránku Přehled.
-1.  V nabídce prostředky na levé straně okna nebo v dolním podokně vyberte **zásady** .
+1.  V nabídce prostředky na levé straně okna nebo v dolním podokně vyberte **zásady** . Zobrazí se výzva k výběru certifikátu pro ověření. Zvolte prosím odpovídající možnost, abyste mohli pokračovat.
 1.  Vyberte preferovaný **typ ověření identity** a zobrazte **aktuální zásady**.
 
 ### <a name="configure-an-attestation-policy"></a>Konfigurace zásad ověření identity
@@ -144,6 +144,7 @@ Postupujte podle těchto kroků a nahrajte zásadu v JWT nebo textovém formátu
    Pro možnost nahrání souboru se ve verzi Preview zobrazuje text a nedá se upravovat.
 
 1. V horní nabídce vyberte **aktualizovat** , aby se zobrazila nakonfigurovaná zásada.
+
 
 Pokud se poskytovatel ověření identity vytvořil s požadavkem na podepsání zásady, nahrajte pomocí těchto kroků ve formátu JWT zásady.
 

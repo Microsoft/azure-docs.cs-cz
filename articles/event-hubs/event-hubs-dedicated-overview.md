@@ -3,18 +3,18 @@ title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft 
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1a15206fc35f0d536c7105aa73dfdcfc9967124d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715611"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
 *Clustery Event Hubs* nabízejí nasazení s jedním nájemcem pro zákazníky s nejnáročnějšími požadavky na streamování. Tato nabídka pro jednoho tenanta má garantovanou smlouvu SLA 99,99% a je dostupná jenom na naší vyhrazené cenové úrovni. Cluster Event Hubs může příchozí miliony událostí za sekundu se zaručenou kapacitou a latencí druhé sekundy. Obory názvů a centra událostí vytvořené v rámci vyhrazeného clusteru zahrnují všechny funkce standardní nabídky a další, ale bez omezení pro příchozí přenosy dat. Zahrnuje také oblíbenou funkci [Event Hubs Capture](event-hubs-capture-overview.md) bez dalších poplatků. Tato funkce umožňuje automaticky dávkovat a zaznamenávat datové proudy Azure Storage nebo Azure Data Lake. 
 
-Clustery se zřídí a účtují podle **kapacitních jednotek (kapacitní jednotky)** , což je předem přidělené množství prostředků procesoru a paměti. Pro každý cluster můžete koupit 1, 2, 4, 8, 12, 16 nebo 20 kapacitní jednotky. Kolik možností ingestování a streamování za sekundu závisí na nejrůznějších faktorech, jako jsou následující: 
+Clustery se zřídí a účtují podle **kapacitních jednotek (kapacitní jednotky)**, což je předem přidělené množství prostředků procesoru a paměti. Pro každý cluster můžete koupit 1, 2, 4, 8, 12, 16 nebo 20 kapacitní jednotky. Kolik možností ingestování a streamování za sekundu závisí na nejrůznějších faktorech, jako jsou následující: 
 
 - Počet výrobců a příjemců
 - Tvar datové části
@@ -42,7 +42,7 @@ U svazků s vysokou úrovní příchozího přenosu dat (>100 jednotek propustno
 
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce standardního plánu, ale kapacitu a omezení na podnikové úrovni pro zákazníky s náročnými úlohami. 
 
-| Příznak | Standard | Vyhrazená |
+| Funkce | Standard | Vyhrazená |
 | --- |:---|:---|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
 | Obory názvů |  1 | 50 za CU |
@@ -52,7 +52,7 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 | Oddíly | 32 na centrum událostí | 1024 na centrum událostí<br/>2000 za CU |
 | Skupiny uživatelů | 20 na centrum událostí | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | 1 000 zahrnutý, 5 000 max | 100 K zahrnutí a maximum |
-| Uchovávání zpráv | 7 dní, 84 GB zahrnutých za TU | 90 dní, zahrnutých 10 TB za CU |
+| [Uchovávání událostí](event-hubs-features.md#event-retention) | 7 dní, 84 GB zahrnutých za TU | 90 dní, zahrnutých 10 TB za CU |
 | Zachytávání | Platba za hodinu | Zahrnuje |
 
 Další kvóty a omezení najdete v tématu [Event Hubs kvót a omezení](event-hubs-quotas.md) .

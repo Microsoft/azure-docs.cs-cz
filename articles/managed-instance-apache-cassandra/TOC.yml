@@ -1,0 +1,28 @@
+- name: Dokumentace ke službě Azure Managed instance pro Apache Cassandra
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure Managed instance pro Apache Cassandra?
+      href: introduction.md
+- name: Koncepty
+  items:
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Spravovaná instance vs Azure Cosmos DB rozhraní API Cassandra
+      href: compare-cosmosdb-managed-instance.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření clusteru – portál
+      href: create-cluster-portal.md
+    - name: Vytvoření clusteru – rozhraní příkazového řádku
+      href: create-cluster-cli.md
+    - name: Konfigurace hybridního clusteru
+      href: configure-hybrid-cluster.md
+    - name: Nasazení clusteru Spark s datacihly
+      href: deploy-cluster-databricks.md
+- name: Návody
+  items:
+    - name: Správa pomocí Azure CLI
+      href: manage-resources-cli.md
+    - name: Vizualizace metrik v Prometheus pomocí Grafana
+      href: visualize-prometheus-grafana.md

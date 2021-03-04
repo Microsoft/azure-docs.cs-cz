@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 02/18/2021
+ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702551"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -349,9 +349,9 @@ V [Azure Portal](https://portal.azure.com)má tento filtr vliv na triggery *a* a
 
 V šabloně ARM určete povolené rozsahy příchozích IP adres v definici prostředků vaší aplikace logiky pomocí `accessControl` části. V této části použijte případně `triggers` `actions` volitelné `contents` oddíly, včetně `allowedCallerIpAddresses` oddílu s `addressRange` vlastností a nastavte hodnotu vlastnosti na povolený rozsah IP adres ve formátu *x. x. x* . x. x. x. x. x *. x. x-x. x* . x. x.
 
-* Pokud vaše vnořená aplikace logiky používá **jedinou možnost Logic Apps** , která umožňuje příchozí volání jenom z jiných Logic Apps, které používají akci Azure Logic Apps, nastavte `addressRange` vlastnost na prázdné pole (**[]**).
+* Pokud vaše vnořená aplikace logiky používá **jedinou možnost Logic Apps** , která umožňuje příchozí volání jenom z jiných Logic Apps, které používají vestavěnou Azure Logic Apps akci, nastavte `allowedCallerIpAddresses` vlastnost na prázdné pole (**[]**) a *vynechejte* `addressRange` vlastnost.
 
-* Pokud vaše vnořená aplikace logiky používá pro jiná příchozí volání možnost **konkrétní rozsahy IP** adres, jako jsou například jiné aplikace logiky, které používají akci HTTP, nastavte `addressRange` vlastnost na povolený rozsah IP adres.
+* Pokud vaše vnořená aplikace logiky používá pro jiná příchozí volání možnost **konkrétní rozsahy IP** adres, jako jsou například jiné aplikace logiky, které používají akci HTTP, zahrňte `allowedCallerIpAddresses` část a nastavte `addressRange` vlastnost na povolený rozsah IP adres.
 
 Tento příklad ukazuje definici prostředků pro vnořenou aplikaci logiky, která umožňuje příchozí volání pouze z aplikací logiky, které používají vestavěnou Azure Logic Apps akci:
 
@@ -378,18 +378,14 @@ Tento příklad ukazuje definici prostředků pro vnořenou aplikaci logiky, kte
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}

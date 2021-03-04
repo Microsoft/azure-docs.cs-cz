@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: f878d7cf5fdc2eb6538c1192319405dbde098ba6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a765525b12431c68aa0bba0c0f49c477defff0f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723210"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Provádění dotazů protokolu v Azure Monitor, které jsou rozloženy mezi pracovními prostory a aplikacemi
 
@@ -19,7 +19,7 @@ Protokoly Azure Monitor podporují dotaz napříč několika pracovními prostor
 
 Existují dvě metody dotazování na data, která jsou uložená ve více pracovních prostorech a aplikacích:
 1. Explicitně zadáním pracovního prostoru a podrobností aplikace. Tato technika je podrobně popsána v tomto článku.
-2. Implicitně pomocí [dotazů kontextu prostředků](../platform/design-logs-deployment.md#access-mode). Při dotazování v kontextu konkrétního prostředku, skupiny prostředků nebo předplatného budou relevantní data načtena ze všech pracovních prostorů, které obsahují data pro tyto prostředky. Application Insights data uložená v aplikacích nebudou načtena.
+2. Implicitně pomocí [dotazů kontextu prostředků](./design-logs-deployment.md#access-mode). Při dotazování v kontextu konkrétního prostředku, skupiny prostředků nebo předplatného budou relevantní data načtena ze všech pracovních prostorů, které obsahují data pro tyto prostředky. Application Insights data uložená v aplikacích nebudou načtena.
 
 > [!IMPORTANT]
 > Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Použijte výraz pracovní prostor () k zápisu dotazu, který obsahuje aplikaci v několika pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
@@ -28,12 +28,12 @@ Existují dvě metody dotazování na data, která jsou uložená ve více praco
 ## <a name="cross-resource-query-limits"></a>Omezení dotazů mezi prostředky 
 
 * Počet Application Insightsch prostředků a Log Analytics pracovních prostorů, které můžete zahrnout do jednoho dotazu, je omezený na 100.
-* Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../learn/tutorial-logs-dashboards.md). 
+* Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../visualize/tutorial-logs-dashboards.md). 
 * Dotazy na více prostředků v upozorněních protokolu jsou podporovány pouze v aktuálním [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud používáte starší rozhraní API pro výstrahy Log Analytics, budete muset [Přepnout na aktuální rozhraní API](../alerts/alerts-log-api-switch.md).
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč Log Analyticsmi pracovními prostory a z Application Insights
-Pokud chcete odkazovat na jiný pracovní prostor v dotazu, použijte identifikátor [*pracovního prostoru*](../logs/workspace-expression.md) a pro aplikaci z Application Insights použijte identifikátor [*aplikace*](../log-query/app-expression.md) .  
+Pokud chcete odkazovat na jiný pracovní prostor v dotazu, použijte identifikátor [*pracovního prostoru*](../logs/workspace-expression.md) a pro aplikaci z Application Insights použijte identifikátor [*aplikace*](./app-expression.md) .  
 
 ### <a name="identifying-workspace-resources"></a>Určení prostředků pracovního prostoru
 Následující příklady ukazují dotazy napříč Log Analytics pracovními prostory pro vrácení souhrnných počtů protokolů z tabulky aktualizací v pracovním prostoru s názvem *ContosoRetail-IT*. 
@@ -58,7 +58,7 @@ Určení pracovního prostoru lze provést jedním z několika způsobů:
 
 * ID prostředku Azure – jedinečná identita pracovního prostoru definovaná v Azure ID prostředku použijete, pokud je název prostředku dvojznačný.  U pracovních prostorů je ve formátu: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/pracovní prostory/součásti*.  
 
-    Příklad:
+    Například:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -89,7 +89,7 @@ Určení aplikace v Application Insights lze provést pomocí výrazu *aplikace 
 
 * ID prostředku Azure – jedinečná identita aplikace definovaná pro Azure ID prostředku použijete, pokud je název prostředku dvojznačný. Formát je: */Subscriptions/SubscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/* Component.  
 
-    Příklad:
+    Například:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -107,9 +107,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Použití dotazu mezi prostředky pro více prostředků
-Při použití dotazů mezi prostředky ke korelaci dat z více Log Analyticsch pracovních prostorů a Application Insights prostředků může být dotaz složitý a obtížný. [Funkce v Azure Monitorch dotazech protokolu](../log-query/functions.md) byste měli využít k oddělení logiky dotazů z oboru prostředků dotazů, což zjednodušuje strukturu dotazu. Následující příklad ukazuje, jak můžete monitorovat více prostředků Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
+Při použití dotazů mezi prostředky ke korelaci dat z více Log Analyticsch pracovních prostorů a Application Insights prostředků může být dotaz složitý a obtížný. [Funkce v Azure Monitorch dotazech protokolu](./functions.md) byste měli využít k oddělení logiky dotazů z oboru prostředků dotazů, což zjednodušuje strukturu dotazu. Následující příklad ukazuje, jak můžete monitorovat více prostředků Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
 
-Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. `withsource= SourceApp`Příkaz přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](../log-query/functions.md#create-a-function) s aliasem _applicationsScoping_.
+Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. `withsource= SourceApp`Příkaz přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](./functions.md#create-a-function) s aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -123,7 +123,7 @@ app('Contoso-app5').requests
 
 
 
-[Tuto funkci](../log-query/functions.md#use-a-function) teď můžete použít v dotazu mezi prostředky, jako je následující. Alias funkce _applicationsScoping_ vrací sjednocení tabulky requests ze všech definovaných aplikací. Dotaz pak filtruje neúspěšné žádosti a vizualizuje trendy podle aplikace. V tomto příkladu je operátor _Parse_ volitelný. Extrahuje název aplikace z vlastnosti _SourceApp_ .
+[Tuto funkci](./functions.md#use-a-function) teď můžete použít v dotazu mezi prostředky, jako je následující. Alias funkce _applicationsScoping_ vrací sjednocení tabulky requests ze všech definovaných aplikací. Dotaz pak filtruje neúspěšné žádosti a vizualizuje trendy podle aplikace. V tomto příkladu je operátor _Parse_ volitelný. Extrahuje název aplikace z vlastnosti _SourceApp_ .
 
 ```Kusto
 applicationsScoping 
@@ -142,5 +142,4 @@ applicationsScoping
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled dotazů protokolu a způsobu strukturování dat protokolu Azure Monitor najdete [v tématu Analýza dat protokolu v Azure monitor](../log-query/log-query-overview.md) .
-
+- Přehled dotazů protokolu a způsobu strukturování dat protokolu Azure Monitor najdete [v tématu Analýza dat protokolu v Azure monitor](./log-query-overview.md) .

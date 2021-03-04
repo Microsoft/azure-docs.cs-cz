@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724264"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage nabídky dodržování předpisů
 
 Aby bylo možné organizacím v soulad s vnitrostátními, regionálními a oborovými požadavky pro shromažďování a používání dat jednotlivců, Microsoft Azure & Azure Storage nabízet nejkomplexnější sadu certifikací a osvědčení pro libovolného poskytovatele cloudových služeb.
 
-Na Azure Storage můžete najít níže uvedené nabídky dodržování předpisů, abyste zajistili, že vaše služba bude v používání služby Azure Storage vyřízena. Vztahují se na následující nabídky Azure Storage: objekty blob, soubory, fronty, tabulky, disky, studené úložiště a Premium Storage.
+Na Azure Storage můžete najít níže uvedené nabídky dodržování předpisů, abyste zajistili, že vaše služba bude v používání služby Azure Storage vyřízena. Vztahují se na následující nabídky Azure Storage: objekty BLOB (ADLS Gen2), soubory, fronty, tabulky, disky, studené úložiště a Premium Storage.
 
 ## <a name="global"></a>Globální
 

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715152"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -47,7 +47,7 @@ Nově přidaný zvuk, který ovlivňuje funkci, je k dispozici při indexování
 
 Typ události **clapping** , který byl zahrnut v předchozím modelu zvukových efektů, je teď extrahovaný jako součást typu události **přeplněných reakcí** .
 
-Pokud se rozhodnete, že se mají vaše video na webu [video indexer](https://www.videoindexer.ai/) **Zobrazit,** zvukové efekty se zobrazí na stránce.
+Pokud se rozhodnete zobrazit **přehledy** o videu na webu [video indexer](https://www.videoindexer.ai/) , projeví se na stránce zvukové efekty.
 
 :::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Detekce zvukové události":::
 

@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na Azure Stack Edge
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit živé video analýzy na Azure Stack hraničních zařízeních.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730265"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Nasazení Live video Analytics na Azure Stack Edge
 
@@ -42,7 +42,7 @@ Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetn
 * [Azure Stack vytváření prostředků Edge/Data Box Gateway](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Instalace a nastavení](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Připojení a aktivace](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [Připojení IoT Hub k Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [Připojení IoT Hub k Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Povolení výpočetních požadavků v místním uživatelském rozhraní Azure Stack Edge
 
 Než budete pokračovat, ujistěte se, že:
@@ -234,17 +234,22 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
     
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Přístup k rozhraní Kubernetes API (kubectl).
+* **Přístup k rozhraní Kubernetes API (kubectl)**
 
-    * Podle dokumentace nakonfigurujte počítač pro [přístup ke clusteru Kubernetes](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues).
-    * Všechny nasazené IoT Edge moduly používají `iotedge` obor názvů. Nezapomeňte při použití kubectl použít.
-* Protokoly modulů
+    * Podle dokumentace nakonfigurujte počítač pro [přístup ke clusteru Kubernetes](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Všechny nasazené IoT Edge moduly používají `iotedge` obor názvů. Nezapomeňte při použití kubectl použít.  
 
-    `iotedge`Nástroj není přístupný pro získání protokolů. K zobrazení protokolů nebo kanálu do souboru je nutné použít [protokoly kubectl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  . Příklad: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Metriky pod a Node
+* **Protokoly modulů**
 
-    Pomocí [kubectl shora](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  Zobrazte metriky pod a uzlem. (Tato funkce bude k dispozici v další verzi Azure Stack Edge. >v2007)<br/>`kubectl top pods -n iotedge`
-* Sítě modulů pro zjišťování modulu v Azure Stack hraničních zařízeních je nutné, aby modul měl vazbu portu hostitele v createOptions. Modul bude pak možné adresovat `moduleName:hostport` .
+    `iotedge`Nástroj není přístupný pro získání protokolů. K zobrazení protokolů nebo kanálu do souboru je nutné použít [protokoly kubectl](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  . Příklad: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Metriky pod a Node**
+
+    Pomocí [kubectl shora](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  Zobrazte metriky pod a uzlem.
+    <br/>`kubectl top pods -n iotedge` 
+
+* **Sítě modulů**   
+Pro zjišťování modulů na Azure Stack hraničních zařízeních je potřeba, aby měl modul vazbu portu hostitele v createOptions. Modul bude pak možné adresovat `moduleName:hostport` .
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
     }
     ```
     
-* Připojení svazku
+* **Připojení svazku**
 
     Modul se nepodaří spustit, pokud se kontejner pokouší připojit svazek k existujícímu a neprázdnému adresáři.
-* Sdílená paměť
+
+* **Sdílená paměť při použití gRPC**
 
     Sdílená paměť v Azure Stackch hraničních prostředcích je podporována napříč lusky v jakémkoli oboru názvů pomocí hostitele IPC.
     Konfigurace sdílené paměti v modulu Edge pro nasazení prostřednictvím IoT Hub.
@@ -272,7 +278,7 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
         ...
     ```
     
-* Upřesnit Pod společným umístěním
+* **Upřesnit Pod společným umístěním**
 
     Při použití K8s k nasazení vlastních řešení pro odvození, která komunikují se službou Live video Analytics prostřednictvím gRPC, je nutné zajistit, aby se lusky nasadily na stejných uzlech jako v modulech Live video Analytics.
 
-    * Možnost 1 – použijte spřažení uzlů a předdefinované popisky uzlů pro společné umístění.
+    * **Možnost 1** – použijte spřažení uzlů a předdefinované popisky uzlů pro společné umístění.
 
     V současné době se NodeSelector vlastní konfigurace nejedná o možnost, protože uživatelé nemají přístup k nastavení popisků na uzlech. V závislosti na topologii a konvenci pojmenování zákazníka ale můžou být schopné použít [popisky integrovaných uzlů](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels). Část nodeAffinity, která se odkazuje na Azure Stack hraničních prostředků s živou analýzou videa, se dá přidat do odvozených manifestů pod, aby bylo možné dosáhnout společného umístění.
-    * Možnost 2 – pro společné umístění použijte spřažení pod (doporučeno).
+    * **Možnost 2** – pro společné umístění použijte spřažení pod (doporučeno).
 Kubernetes má podporu pro [spřažení pod](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)  , která může naplánovat lusky na stejném uzlu. Oddíl podAffinity odkazující na modul Live video Analytics se dá přidat do odvozených manifestů pod, aby bylo možné dosáhnout společného umístění.
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes má podporu pro [spřažení pod](https://kubernetes.io/docs/concepts
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **kód chyby 404 při použití `rtspsim` modulu**  
+Kontejner načte videa ze přesně jedné složky v rámci kontejneru. Pokud namapujete nebo navážete externí složku na tu, která už existuje v rámci image kontejneru, zobrazí Docker soubory, které se nacházejí v imagi kontejneru.  
+ 
+    Například bez vazeb, které kontejner může mít tyto soubory:  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    A hostitel může mít tyto soubory:
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    Ale při přidání následující vazby do souboru manifestu nasazení přepíše Docker obsah/live/mediaServer/media tak, aby odpovídal, co je na hostiteli.
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>Další kroky

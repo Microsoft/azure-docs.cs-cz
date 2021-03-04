@@ -6,33 +6,33 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 88643663c2f14cb7d8883eb1210bdee07b00eece
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5e7909725f5e390f4e42a7d62e80f90f897c840f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714149"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
 ## <a name="overview"></a>Přehled
 
-Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](../platform/alerts-overview.md). Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](../platform/action-groups.md).
+Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](./alerts-overview.md). Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../logs/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md).
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../logs/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
 > [!NOTE]
 > Pro verzi rozhraní API `2020-05-01-preview` a výstrahy protokolu orientované na prostředky se momentálně neúčtují žádné další poplatky.  Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete dál používat novou verzi rozhraní API a výstrahy protokolu orientované na prostředky po období oznámení, bude se vám účtovat příslušná sazba.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](../platform/resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md).
+Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](../essentials/resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../logs/example-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../logs/log-analytics-tutorial.md).
 
-[Přispěvatel monitorování Azure](../platform/roles-permissions-security.md) je společná role, která je nutná k vytváření, úpravám a aktualizaci výstrah protokolu. Pro protokoly prostředků je taky potřeba mít přístup & oprávnění k provádění dotazů. Částečný přístup k protokolům prostředků může selhat s dotazy nebo vracet částečné výsledky. [Přečtěte si další informace o konfiguraci upozornění protokolu v Azure](./alerts-log.md).
+[Přispěvatel monitorování Azure](../roles-permissions-security.md) je společná role, která je nutná k vytváření, úpravám a aktualizaci výstrah protokolu. Pro protokoly prostředků je taky potřeba mít přístup & oprávnění k provádění dotazů. Částečný přístup k protokolům prostředků může selhat s dotazy nebo vracet částečné výsledky. [Přečtěte si další informace o konfiguraci upozornění protokolu v Azure](./alerts-log.md).
 
 > [!NOTE]
-> Výstrahy protokolu pro Log Analytics používané ke správě pomocí [rozhraní API pro upozornění](../platform/api-alerts.md)na starší verzi Log Analytics. [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](../alerts/alerts-log-api-switch.md).
+> Výstrahy protokolu pro Log Analytics používané ke správě pomocí [rozhraní API pro upozornění](./api-alerts.md)na starší verzi Log Analytics. [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](../alerts/alerts-log-api-switch.md).
 
 ## <a name="query-evaluation-definition"></a>Definice vyhodnocení dotazu
 
@@ -44,17 +44,17 @@ Definice podmínky pravidel hledání protokolu začíná na:
 V následujících částech jsou popsány různé parametry, které můžete použít k nastavení výše uvedené logiky.
 
 ### <a name="log-query"></a>Dotaz protokolu
-[Log Analytics](../log-query/log-analytics-tutorial.md) dotaz použitý k vyhodnocení pravidla Výsledky vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Dotaz může být vymezen na:
+[Log Analytics](../logs/log-analytics-tutorial.md) dotaz použitý k vyhodnocení pravidla Výsledky vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Dotaz může být vymezen na:
 
 - Konkrétní prostředek, jako je třeba virtuální počítač.
 - Škálování prostředku, jako je například předplatné nebo skupina prostředků.
-- Více prostředků s použitím [dotazu mezi prostředky](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
+- Více prostředků s použitím [dotazu mezi prostředky](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
  
 > [!IMPORTANT]
 > Dotazy na výstrahy mají omezení pro zajištění optimálního výkonu a relevance výsledků. [Další informace najdete tady](./alerts-log-query.md).
 
 > [!IMPORTANT]
-> Dotaz orientovaný na prostředky a [mezi prostředky](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) se podporují jenom pomocí aktuálního rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](../platform/api-alerts.md), budete muset přepnout. [Další informace o přepínání](./alerts-log-api-switch.md)
+> Dotaz orientovaný na prostředky a [mezi prostředky](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) se podporují jenom pomocí aktuálního rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](./api-alerts.md), budete muset přepnout. [Další informace o přepínání](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>Časový rozsah dotazu
 
@@ -102,7 +102,7 @@ U pracovních prostorů a Application Insights se říká na **základě** **mě
 
 ### <a name="aggregation-type"></a>Typ agregace
 
-Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Příklad:
+Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Například:
 - **Count** vrátí počet záznamů v dotazu.
 - Funkce **Average** Vrátí průměrnou hodnotu definování [**členitosti**](#aggregation-granularity) sloupce měr.
 
@@ -154,7 +154,7 @@ Například chcete monitorovat chyby pro více virtuálních počítačů, na kt
 Toto pravidlo monitoruje, zda v posledních 15 minutách nějakého virtuálního počítače obsahovalo chybové události. Každý virtuální počítač se monitoruje samostatně a spustí akce jednotlivě.
 
 > [!NOTE]
-> Dimenze rozdělené podle výstrah jsou k dispozici pouze pro aktuální rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](../platform/api-alerts.md), budete muset přepnout. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md). Upozorňování na střed prostředků ve velkém měřítku se podporuje jenom ve verzi rozhraní API `2020-05-01-preview` a výše.
+> Dimenze rozdělené podle výstrah jsou k dispozici pouze pro aktuální rozhraní scheduledQueryRules API. Pokud používáte starší [rozhraní API Log Analytics výstrah](./api-alerts.md), budete muset přepnout. [Přečtěte si další informace o přepínání](./alerts-log-api-switch.md). Upozorňování na střed prostředků ve velkém měřítku se podporuje jenom ve verzi rozhraní API `2020-05-01-preview` a výše.
 
 ## <a name="alert-logic-definition"></a>Definice logiky výstrah
 
@@ -197,17 +197,17 @@ Informace o cenách najdete na [stránce s cenami Azure monitor](https://azure.m
 
 - Výstrahy protokolu v Application Insights zobrazují s přesným názvem prostředku spolu s vlastnostmi skupiny prostředků a výstrahy.
 - Výstrahy protokolu na Log Analytics zobrazené s přesným názvem prostředku spolu s vlastnostmi skupiny prostředků a výstrahy; Při vytváření pomocí [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules).
-- Výstrahy protokolu vytvořené ze [starších rozhraní Log Analytics API](../platform/api-alerts.md) nejsou sledovány pro [prostředky Azure](../../azure-resource-manager/management/overview.md) a nemají vykonatelné jedinečné názvy prostředků. Tyto výstrahy se pořád vytváří `microsoft.insights/scheduledqueryrules` jako skryté prostředky, které mají tuto strukturu názvů prostředků `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Výstrahy protokolu na starší verzi rozhraní API se zobrazují s výše skrytým názvem prostředku společně se skupinami prostředků a vlastnostmi výstrahy.
+- Výstrahy protokolu vytvořené ze [starších rozhraní Log Analytics API](./api-alerts.md) nejsou sledovány pro [prostředky Azure](../../azure-resource-manager/management/overview.md) a nemají vykonatelné jedinečné názvy prostředků. Tyto výstrahy se pořád vytváří `microsoft.insights/scheduledqueryrules` jako skryté prostředky, které mají tuto strukturu názvů prostředků `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Výstrahy protokolu na starší verzi rozhraní API se zobrazují s výše skrytým názvem prostředku společně se skupinami prostředků a vlastnostmi výstrahy.
 
 > [!NOTE]
 > Nepodporované znaky prostředku, jako například, se `<, >, %, &, \, ?, /` nahrazují `_` názvy skrytých prostředků, které se projeví také v informacích o fakturaci.
 
 > [!NOTE]
-> Výstrahy protokolu pro Log Analytics používané ke správě pomocí starší verze [rozhraní API Log Analytics výstrah](../platform/api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md). [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](../alerts/alerts-log-api-switch.md). Veškerá Správa pravidel výstrah by se měla provádět pomocí [starších Log Analytics rozhraní API](../platform/api-alerts.md) , dokud se nerozhodnete přepnout a nebudete moct skryté prostředky používat.
+> Výstrahy protokolu pro Log Analytics používané ke správě pomocí starší verze [rozhraní API Log Analytics výstrah](./api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md). [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](../alerts/alerts-log-api-switch.md). Veškerá Správa pravidel výstrah by se měla provádět pomocí [starších Log Analytics rozhraní API](./api-alerts.md) , dokud se nerozhodnete přepnout a nebudete moct skryté prostředky používat.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si informace o [vytváření v protokolových výstrahách v Azure](./alerts-log.md).
 * Pochopení [webhooků v protokolových výstrahách v Azure](../alerts/alerts-log-webhook.md).
-* Přečtěte si o [výstrahách Azure](../platform/alerts-overview.md).
-* Přečtěte si další informace o [Log Analytics](../log-query/log-query-overview.md).
+* Přečtěte si o [výstrahách Azure](./alerts-overview.md).
+* Přečtěte si další informace o [Log Analytics](../logs/log-query-overview.md).

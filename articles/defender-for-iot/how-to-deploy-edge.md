@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033349"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705768"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Nasazení modulu zabezpečení na zařízení IoT Edge
 
@@ -34,7 +34,7 @@ Pomocí následujících kroků nasaďte modul zabezpečení Defender for IoT pr
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device).
+1. V IoT Hub se ujistěte, že je zařízení [registrované jako IoT Edge zařízení](../iot-edge/how-to-register-device.md#register-a-new-device).
 
 1. Defender pro IoT Edge modul vyžaduje, aby se na zařízení IoT Edge nainstalovala [auditovaná architektura](https://linux.die.net/man/8/auditd) .
 

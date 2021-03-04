@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712449"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
-Tento článek vysvětluje, jak můžete získat přístup k prostředkům SAP z Logic Apps pomocí [konektoru SAP](https://docs.microsoft.com/connectors/sap/).
+Tento článek vysvětluje, jak můžete získat přístup k prostředkům SAP z Logic Apps pomocí [konektoru SAP](/connectors/sap/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -547,14 +547,14 @@ V případě verzí pro místní bránu dat od dubna 2020 a novějších jsou pr
 
 Pokud [pro Logic Apps používáte místní bránu dat](../logic-apps/logic-apps-gateway-install.md), můžete pro konektor SAP nakonfigurovat rozšířený soubor protokolu. Místní bránu dat můžete použít k přesměrování událostí trasování událostí pro Windows (ETW) do souborů rotujících protokolů, které jsou zahrnuté v souboru protokolování. zip brány. 
 
-Do souboru. zip v nastavení aplikace brány můžete [exportovat všechny protokoly konfigurace a služby brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) .
+Do souboru. zip v nastavení aplikace brány můžete [exportovat všechny protokoly konfigurace a služby brány](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) .
 
 > [!NOTE]
 > Rozšířené protokolování může ovlivnit výkon aplikace Logic Apps, pokud je vždy povoleno. Je osvědčeným postupem, jak vypnout rozšířené soubory protokolu po dokončení analýzy a řešení problémů.
 
 #### <a name="capture-etw-events"></a>Zaznamenat události ETW
 
-Volitelně můžou pokročilí uživatelé zachytit události ETW přímo. Data pak můžete [využívat v Azure Diagnostics Event Hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) nebo [shromažďovat data do protokolů Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). Další informace najdete v tématu [osvědčené postupy pro shromažďování a ukládání dat](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) můžete použít k práci s výslednými soubory ETL nebo můžete napsat vlastní program. Tento návod používá PerfView:
+Volitelně můžou pokročilí uživatelé zachytit události ETW přímo. Data pak můžete [využívat v Azure Diagnostics Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) nebo [shromažďovat data do protokolů Azure monitor](/azure/azure-monitor/agents/diagnostics-extension-logs). Další informace najdete v tématu [osvědčené postupy pro shromažďování a ukládání dat](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) můžete použít k práci s výslednými soubory ETL nebo můžete napsat vlastní program. Tento návod používá PerfView:
 
 1. V nabídce PerfView vyberte **shromáždit** &gt; **shromáždění** a zachyťte události.
 
@@ -729,7 +729,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pom
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-message-from-sap).
 
-   Příklad:
+   Například:
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
@@ -1264,7 +1264,7 @@ Pokud dojde k potížím s duplicitními IDocs, které se odesílají do SAP z a
 
 1. V editoru pro **proměnnou inicializovat** akci nakonfigurujte následující nastavení. Pak změny uložte.
 
-    1. Jako **název** zadejte název proměnné. Například `IDOCtransferID`.
+    1. Jako **název** zadejte název proměnné. Například, `IDOCtransferID`.
 
     1. Jako typ proměnné vyberte **typ** **řetězec** .
 
@@ -1282,7 +1282,7 @@ Pokud dojde k potížím s duplicitními IDocs, které se odesílají do SAP z a
 
     1. Pro **Potvrdit TID** vyberte možnost **ne**.
 
-    1. Vyberte **Přidat nový**  >  **identifikátor GUID ID transakce** seznamu parametrů. Výběrem textového pole otevřete nabídku dynamického obsahu. Na kartě **proměnné** vyberte název proměnné, kterou jste vytvořili. Například `IDOCtransferID`.
+    1. Vyberte **Přidat nový**  >  **identifikátor GUID ID transakce** seznamu parametrů. Výběrem textového pole otevřete nabídku dynamického obsahu. Na kartě **proměnné** vyberte název proměnné, kterou jste vytvořili. Například, `IDOCtransferID`.
 
 1. V záhlaví akce **Odeslat IDOC** vyberte **...**  >  **Nastavení**. U **zásady opakování** doporučujeme vybrat možnost **výchozí** &gt; **Hotovo**. Místo toho ale můžete nakonfigurovat vlastní zásadu pro konkrétní potřeby. Pro vlastní zásady se doporučuje nakonfigurovat aspoň jeden pokus o překonání dočasných výpadků sítě.
 
@@ -1290,7 +1290,7 @@ Pokud dojde k potížím s duplicitními IDocs, které se odesílají do SAP z a
 
 1. V editoru pro akci **Potvrdit ID transakce** nakonfigurujte následující nastavení. Pak změny uložte.
 
-    1. Jako **ID transakce** zadejte název proměnné znovu. Například `IDOCtransferID`.
+    1. Jako **ID transakce** zadejte název proměnné znovu. Například, `IDOCtransferID`.
 
 1. Volitelně můžete ověřit odstranění duplicit v testovacím prostředí. Opakujte akci **Odeslat IDOC** se stejným identifikátorem GUID **ID transakce** , který jste použili v předchozím kroku. Když odesíláte stejný IDoc dvakrát, můžete ověřit, že SAP dokáže identifikovat duplikaci volání tRFC a vyřešit dvě volání na jednu příchozí zprávu IDoc.
 
@@ -1336,7 +1336,7 @@ Podrobné příklady, jak použít akci volání BAPI, naleznete v [ukázkách X
 
 ### <a name="send-idoc-action"></a>Odeslat akci IDoc
 
-Akce [Odeslat IDOC ( `SendIDoc` )](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) odešle zprávu IDOC na Server SAP.
+Akce [Odeslat IDOC ( `SendIDoc` )](/connectors/sap/) odešle zprávu IDOC na Server SAP.
 
 Pro vaše volání musíte použít následující parametry: 
 

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731948"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
 Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží.
@@ -35,9 +35,10 @@ Pokud se tím problém nevyřeší, přečtěte si následující postup ruční
 
 Ujistěte se, že ve vaší publikované aplikaci používáte správný klíč instrumentace. Klíč instrumentace se obvykle čte z ApplicationInsights.config souboru. Ověřte, že hodnota je stejná jako klíč instrumentace pro prostředek Application Insights, který vidíte na portálu.
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>Kontrolovat nastavení klienta SSL (ASP.NET)
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>Ověřte nastavení klienta TLS/SSL (ASP.NET)
 
-Pokud máte ASP.NET aplikaci hostovanou v Azure App Service nebo ve službě IIS na virtuálním počítači, může se vaší aplikaci nepodaří připojit se ke službě Snapshot Debugger z důvodu chybějícího protokolu zabezpečení SSL.
+Pokud máte aplikaci ASP.NET, která je hostovaná v Azure App Service nebo ve službě IIS na virtuálním počítači, může se vaší aplikaci nepodaří připojit se ke službě Snapshot Debugger kvůli chybějícímu protokolu zabezpečení SSL.
+
 [Koncový bod Snapshot Debugger vyžaduje TLS verze 1,2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Sada protokolů zabezpečení SSL je jedním z adaptivní povolených hodnotou targetFramework targetFramework v části System. Web web.config. Pokud je pole targetFramework targetFramework 4.5.2 nebo nižší, pak se ve výchozím nastavení nezahrne TLS 1,2.
 
 > [!NOTE]
@@ -64,6 +65,10 @@ Pokud používáte verzi Preview rozhraní .NET Core nebo pokud vaše aplikace o
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>Zkontroluje stavovou stránku rozšíření webu diagnostické služby.
 Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, bylo povoleno rozšířením webu diagnostické služby.
+
+> [!NOTE]
+> Bezkódová instalace Application Insights Snapshot Debugger se řídí zásadami podpory .NET Core.
+> Další informace o podporovaných modulech runtime najdete v tématu [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Stavovou stránku tohoto rozšíření můžete zaškrtnout na následující adrese URL: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

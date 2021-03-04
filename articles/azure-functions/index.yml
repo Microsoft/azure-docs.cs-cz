@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Functions
-summary: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Vy se zaměříte na části kódu, které jsou pro vás nejdůležitější, a služba Azure Functions se postará o všechno ostatní. Azure Functions můžete také použít k sestavení webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT, správě front zpráv a dalším akcím.
+summary: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Zaměřte se na části kódu, které jsou pro vás nejvhodnější, a funkce zpracuje zbytek. Funkce poskytují výpočetní prostředky pro Azure bez serveru. Pomocí funkcí můžete vytvářet webová rozhraní API, reagovat na změny v databázi, zpracovávat datové proudy IoT, spravovat fronty zpráv a další.
 metadata:
   title: Dokumentace ke službě Azure Functions
-  description: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Vy se zaměříte na části kódu, které jsou pro vás nejdůležitější, a služba Azure Functions se postará o všechno ostatní. Azure Functions můžete také použít k sestavení webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT, správě front zpráv a dalším akcím.
+  description: Azure Functions je cloudová služba dostupná na vyžádání, která poskytuje veškerou nepřetržitě aktualizovanou infrastrukturu a prostředky potřebné ke spouštění vašich aplikací. Vy se zaměříte na části kódu, které jsou pro vás nejdůležitější, a služba Azure Functions se postará o všechno ostatní. Funkce poskytují výpočetní prostředky pro Azure bez serveru. Azure Functions můžete také použít k sestavení webových rozhraní API, reakcím na změny databází, zpracování datových proudů IoT, správě front zpráv a dalším akcím.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100363028"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729160"
 landingContent:
 - title: Informace o službě Azure Functions
   linkLists:

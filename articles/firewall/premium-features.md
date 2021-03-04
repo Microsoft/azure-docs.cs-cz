@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715560"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -80,7 +80,20 @@ Kategorie jsou seřazené na základě závažnosti v oblasti **zodpovědnosti**
 
 #### <a name="category-exceptions"></a>Výjimky kategorie
 
-Můžete vytvořit výjimky pro pravidla vaší webové kategorie. Vytvořte samostatnou kolekci pravidel povolení nebo odepření s vyšší prioritou v rámci skupiny kolekce pravidel. Můžete například nakonfigurovat kolekci pravidel, která umožňuje `www.linkedin.com` s prioritou 100, s kolekcí pravidel, která zakazuje **sociální sítě** s prioritou 200. Tím se vytvoří výjimka pro předdefinovanou webovou kategorii **sítě pro sociální sítě** . 
+Můžete vytvořit výjimky pro pravidla vaší webové kategorie. Vytvořte samostatnou kolekci pravidel povolení nebo odepření s vyšší prioritou v rámci skupiny kolekce pravidel. Můžete například nakonfigurovat kolekci pravidel, která umožňuje `www.linkedin.com` s prioritou 100, s kolekcí pravidel, která zakazuje **sociální sítě** s prioritou 200. Tím se vytvoří výjimka pro předdefinovanou webovou kategorii **sítě pro sociální sítě** .
+
+#### <a name="categorization-change"></a>Změna kategorizace
+
+Změnu kategorizace si můžete vyžádat v těchto případech:
+
+ - Zamyslete se plně kvalifikovaný název domény nebo adresa URL v jiné kategorii. 
+ 
+nebo 
+
+- má navrhovanou kategorii pro plně kvalifikovaný název domény (Nezařazeno do kategorie) nebo adresu URL.
+
+Vítá vás žádost o odeslání žádosti [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
+ 
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -98,6 +111,7 @@ Nedůvěryhodní certifikáty podepsané zákazníky|Certifikáty podepsané zá
 |Chybná zdrojová IP adresa v upozorněních s zprostředkovatelů identity pro HTTP (bez kontroly TLS).|Když se provoz HTTP s prostým textem používá a zprostředkovatelů identity vydá novou výstrahu a cíl je veřejný IP adresou, zobrazovaná zdrojová IP adresa je chybná (místo původní IP adresy se zobrazí interní IP adresa).|Oprava je naplánovaná na GA.|
 |Šíření certifikátů|Po použití certifikátu certifikační autority v bráně firewall může trvat od 5-10 minut, než se certifikát projeví.|Oprava je naplánovaná na GA.|
 |ZPROSTŘEDKOVATELŮ identity obejít|ZPROSTŘEDKOVATELŮ identity nefunguje pro přenos ukončený protokolem TLS a zdrojová IP adresa a zdrojové skupiny IP adres nejsou podporované.|Oprava je naplánovaná na GA.|
+|Podpora TLS 1,3|Protokol TLS 1,3 je částečně podporován. Tunelové propojení TLS od klienta k bráně firewall vychází z TLS 1,2 a z brány firewall na externí webový server vychází z TLS 1,3.|Probíhá zkoumání aktualizací.|
 
 
 

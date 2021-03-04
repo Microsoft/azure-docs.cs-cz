@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905277"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708675"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
@@ -24,7 +24,7 @@ ms.locfileid: "96905277"
 
 Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul  *vnitřních Azure Maps* umožňuje vykreslovat mapy vnitřních verzí vytvořené v rámci služby Azure Maps Creator Services (Preview). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Vytvoření prostředku Creator (Preview)](how-to-manage-creator.md)
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 Chcete-li načíst vnitřní tilesets a styl mapy dlaždic, je nutné vytvořit instanci *správce vnitřních* verzí. Vytvořte instanci *správce vnitřních* objektů tak, že poskytnete *objekt map* a odpovídající `tilesetId` . Pokud chcete podporovat [styl dynamické mapy](indoor-map-dynamic-styling.md), musíte předat `statesetId` . V `statesetId` názvu proměnné se rozlišují malá a velká písmena. Váš kód by měl vypadat jako JavaScript níže.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Chcete-li povolit cyklické dotazování na data stavu, je nutné zadat `statesetId` volání a `indoorManager.setDynamicStyling(true)` . Data o stavu cyklického dotazování umožňují dynamicky aktualizovat stav dynamických vlastností nebo *stavů*. Například funkce, jako je například místnost, může mít zavolanou dynamickou vlastnost (*stav*) `occupancy` . Vaše aplikace se může chtít dotázat na všechny změny *stavu* , aby odrážely změnu ve vizuální mapě. Následující kód ukazuje, jak povolit cyklické dotazování stavu:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ Váš soubor by teď měl vypadat podobně jako v následujícím formátu HTML.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ Váš soubor by teď měl vypadat podobně jako v následujícím formátu HTML.
 Pokud chcete zobrazit mapu vnitřních souborů, načtěte ji do webového prohlížeče. Měl by vypadat podobně jako na obrázku níže. Pokud kliknete na funkci stairwell, *Výběr úrovně* se zobrazí v pravém horním rohu.
 
   ![Obrázek mapy interiéru](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[Viz Živá ukázka](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Další kroky
 

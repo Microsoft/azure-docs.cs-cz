@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f56270d853bf47faebbd6026586111ead6fb0495
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091153"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742377"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Základní hodnoty zabezpečení Azure pro správce Azure Firewall
 
@@ -437,7 +437,7 @@ V Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analy
 
 - [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Ukládání protokolů prostředků v Azure Storagem účtu](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Ukládání protokolů prostředků v Azure Storagem účtu](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

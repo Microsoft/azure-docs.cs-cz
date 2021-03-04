@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 43ceaa716bf9b39dd1686be0c5a853e350cbe118
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582922"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717345"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor vám pomůže maximalizovat dostupnost a výkon vašich aplikací 
 Jedním z příkladů toho, co můžete s Azure Monitor udělat, je:
 
 - Vyhledá a diagnostikuje problémy napříč aplikacemi a závislostmi pomocí [Application Insights](app/app-insights-overview.md).
-- Korelujte problémy infrastruktury s [Azure monitor pro virtuální počítače](vm/vminsights-overview.md) a [Azure monitor pro kontejnery](containers/container-insights-overview.md).
+- Prokorelujte problémy infrastruktury s využitím [virtuálních počítačů](vm/vminsights-overview.md) a informací o službě [Container](containers/container-insights-overview.md)Insights.
 - Přejděte k datům monitorování pomocí [Log Analytics](logs/log-query-overview.md) pro řešení potíží a hloubkovou diagnostiku.
 - Podpora operací se škálováním pomocí [inteligentních výstrah](alerts/alerts-smartgroups-overview.md) a [automatizovaných akcí](alerts/alerts-action-rules.md).
 - Vytvářejte vizualizace pomocí [řídicích panelů](visualize/tutorial-logs-dashboards.md) a [sešitů](visualize/workbooks-overview.md)Azure.
@@ -33,13 +33,13 @@ Jedním z příkladů toho, co můžete s Azure Monitor udělat, je:
 
 ## <a name="overview"></a>Přehled
 
-Následující diagram poskytuje celkový přehled služby Azure Monitor. Uprostřed diagramu jsou úložiště dat pro metriky a protokoly, které jsou dvěma základními typy dat, které používá Azure Monitor. Vlevo jsou [zdroje dat monitorování](agents/data-sources.md) , která naplňují tato [úložiště dat](/data-platform.md). Napravo jsou různé funkce, které Azure Monitor s těmito shromážděnými daty provádět. To zahrnuje takové akce jako analýzy, upozorňování a streamování do externích systémů.
+Následující diagram poskytuje celkový přehled služby Azure Monitor. Uprostřed diagramu jsou úložiště dat pro metriky a protokoly, které jsou dvěma základními typy dat, které používá Azure Monitor. Vlevo jsou [zdroje dat monitorování](agents/data-sources.md) , která naplňují tato [úložiště dat](data-platform.md). Napravo jsou různé funkce, které Azure Monitor s těmito shromážděnými daty provádět. To zahrnuje takové akce jako analýzy, upozorňování a streamování do externích systémů.
 
 ![Přehled služby Azure Monitor](media/overview/overview.png)
 
 ## <a name="monitoring-data-platform"></a>Monitorovaná datová platforma
 
-Všechna data shromážděná Azure Monitor se vejdou do jednoho ze dvou základních typů, [metrik a protokolů](/data-platform.md). [Metriky](essentials/data-platform-metrics.md) jsou číselné hodnoty, které popisují určitý aspekt systému v určitém časovém okamžiku. Jsou odlehčené a schopné podporovat scénáře téměř v reálném čase. [Protokoly](logs/data-platform-logs.md) obsahují různé druhy dat uspořádané do záznamů s různými sadami vlastností pro každý typ. Telemetrie, jako jsou události a trasování, se kromě údajů o výkonu ukládají jako protokoly, aby se mohla kombinovat pro účely analýzy.
+Všechna data shromážděná Azure Monitor se vejdou do jednoho ze dvou základních typů, [metrik a protokolů](data-platform.md). [Metriky](essentials/data-platform-metrics.md) jsou číselné hodnoty, které popisují určitý aspekt systému v určitém časovém okamžiku. Jsou odlehčené a schopné podporovat scénáře téměř v reálném čase. [Protokoly](logs/data-platform-logs.md) obsahují různé druhy dat uspořádané do záznamů s různými sadami vlastností pro každý typ. Telemetrie, jako jsou události a trasování, se kromě údajů o výkonu ukládají jako protokoly, aby se mohla kombinovat pro účely analýzy.
 
 V případě mnoha prostředků Azure uvidíte data shromážděná Azure Monitor přímo na stránce s přehledem v Azure Portal. Podívejte se na libovolný virtuální počítač a zobrazí se několik grafů, které zobrazují metriky výkonu. Kliknutím na kterýkoli z grafů otevřete data v [Průzkumníku metrik](essentials/metrics-charts.md) v Azure Portal, což umožňuje v průběhu času seřadí hodnoty více metrik.  Grafy můžete interaktivně zobrazit nebo připnout na řídicí panel, abyste je viděli s ostatními vizualizacemi.
 
@@ -47,7 +47,7 @@ V případě mnoha prostředků Azure uvidíte data shromážděná Azure Monito
 
 Data protokolu shromážděná pomocí Azure Monitor lze analyzovat pomocí [dotazů](logs/log-query-overview.md) pro rychlé načítání, konsolidaci a analýzu shromážděných dat.  Můžete vytvářet a testovat dotazy pomocí [Log Analytics](./logs/log-query-overview.md) v Azure Portal. Data pak můžete buď přímo analyzovat pomocí různých nástrojů, nebo ukládat dotazy pro použití s [vizualizacemi](visualizations.md) nebo [pravidly upozornění](alerts/alerts-overview.md).
 
-Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](logs/get-started-queries.md).  Pro uživatele, kteří již znají [SQL](log-query/sql-cheatsheet.md) a [Splunk](log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
+Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](logs/get-started-queries.md).  Pro uživatele, kteří již znají [SQL](/azure/data-explorer/kusto/query/sqlcheatsheet) a [Splunk](/azure/data-explorer/kusto/query/splunk-cheat-sheet), jsou k dispozici konkrétní pokyny.
 
 ![Diagram znázorňuje data protokolů, která se přenášejí do Log Analytics pro účely analýzy.](media/overview/logs.png)
 
@@ -61,7 +61,7 @@ Azure Monitor může shromažďovat data z [nejrůznějších zdrojů](monitor-r
 - **Data monitorování předplatného Azure**: data o provozu a správě předplatného Azure a také údaje o stavu a provozu samotného Azure. 
 - **Data monitorování tenanta Azure**: data o provozu služeb Azure na úrovni tenanta, jako je Azure Active Directory.
 
-Azure Monitor začne shromažďovat data, jakmile vytvoříte předplatné Azure a začnete přidávat prostředky, jako jsou virtuální počítače a webové aplikace.  Záznamy [protokolů aktivit](essentials/platform-logs-overview.md) při vytváření nebo úpravách prostředků [Metriky](/data-platform.md) vás informují o tom, jak prostředek pracuje, a prostředky, které je náročné. 
+Azure Monitor začne shromažďovat data, jakmile vytvoříte předplatné Azure a začnete přidávat prostředky, jako jsou virtuální počítače a webové aplikace.  Záznamy [protokolů aktivit](essentials/platform-logs-overview.md) při vytváření nebo úpravách prostředků [Metriky](data-platform.md) vás informují o tom, jak prostředek pracuje, a prostředky, které je náročné. 
 
 [Povolte diagnostiku](essentials/platform-logs-overview.md) , abyste rozšířili shromažďovaná data do interní operace prostředků.  [Přidejte agenta](agents/agents-overview.md) pro výpočetní prostředky pro shromažďování telemetrie ze svých hostovaných operačních systémů. 
 
@@ -79,13 +79,13 @@ Data monitorování jsou užitečná jenom v případě, že může zvýšit va�
 
 ![App Insights](media/overview/app-insights.png)
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
-[Azure monitor pro kontejnery](containers/container-insights-overview.md) monitoruje výkon úloh kontejnerů, které jsou nasazené na spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Poskytuje přehled o výkonu shromažďováním metrik z řadičů, uzlů a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Po povolení monitorování z clusterů Kubernetes se tyto metriky a protokoly automaticky shromažďují pomocí kontejnerové verze Log Analytics agenta pro Linux.
+### <a name="container-insights"></a>Přehledy kontejnerů
+Služba [Container Insights](containers/container-insights-overview.md) monitoruje výkon úloh kontejnerů, které jsou nasazené na spravovaných clusterech Kubernetes hostovaných ve službě Azure KUBERNETES (AKS). Poskytuje přehled o výkonu shromažďováním metrik z řadičů, uzlů a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Po povolení monitorování z clusterů Kubernetes se tyto metriky a protokoly automaticky shromažďují pomocí kontejnerové verze Log Analytics agenta pro Linux.
 
 ![Stav kontejneru](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
-[Azure monitor pro virtuální počítače](vm/vminsights-overview.md) monitoruje vaše virtuální počítače Azure ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linux a identifikuje jejich různé procesy a propojené závislosti na externích procesech. Řešení zahrnuje podporu monitorování výkonu a závislostí aplikací pro virtuální počítače hostované místně nebo jiným poskytovatelem cloudu.  
+### <a name="vm-insights"></a>Přehledy virtuálních počítačů
+Virtual Machine [Insights](vm/vminsights-overview.md) monitoruje vaše virtuální počítače Azure ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linux a identifikuje jejich různé procesy a propojené závislosti na externích procesech. Řešení zahrnuje podporu monitorování výkonu a závislostí aplikací pro virtuální počítače hostované místně nebo jiným poskytovatelem cloudu.  
 
 
 ![Přehledy virtuálních počítačů](media/overview/vm-insights.png)
@@ -145,7 +145,7 @@ K dispozici je více rozhraní API pro čtení a zápis metrik a protokolů do a
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace:
 
-* [Metriky a protokoly](/data-platform.md) pro data shromažďovaná nástrojem Azure monitor.
+* [Metriky a protokoly](data-platform.md) pro data shromažďovaná nástrojem Azure monitor.
 * [Zdroje dat](agents/data-sources.md) pro způsob, jakým jednotlivé komponenty vaší aplikace odesílají telemetrii.
 * [Dotazy protokolu](logs/log-query-overview.md) pro analýzu shromážděných dat
 * [Osvědčené postupy](/azure/architecture/best-practices/monitoring) pro monitorování cloudových aplikací a služeb.

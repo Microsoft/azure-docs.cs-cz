@@ -47,12 +47,19 @@
       items:
         - name: Vaše výhody na trhu
           href: gtm-your-marketplace-benefits.md
-        - name: Zapojení partnerů do společného prodeje
-          href: marketplace-co-sell.md
-        - name: Možnost spoluprodeje v Partnerském centru
-          href: commercial-marketplace-co-sell.md
-        - name: Migrace řešení spoluprodeje z OCP GTM
-          href: co-sell-solution-migration.md
+          items: null
+        - name: Společný prodej s Microsoftem
+          items:
+            - name: Přehled společného prodeje
+              href: marketplace-co-sell.md
+            - name: Požadavky na společný prodej
+              href: co-sell-requirements.md
+            - name: Konfigurace společného prodeje
+              href: commercial-marketplace-co-sell.md
+            - name: Ověření stavu společného prodeje
+              href: co-sell-status.md
+            - name: Migrace řešení spoluprodeje z OCP GTM
+              href: co-sell-solution-migration.md
         - name: Prodej prostřednictvím partnerů CSP
           href: cloud-solution-providers.md
         - name: Průvodce onboardingem programu Connect
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: Příprava technických prostředků modulu IoT Edge
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: Kontrolní seznam před certifikacim
+          href: iot-edge-checklist.md
     - name: Nabídky spravované služby
       items:
         - name: Plánování nabídky spravované služby
@@ -395,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Kódy stavu pro spoluprodej
       href: commercial-marketplace-co-sell-states.md
+    - name: Diagram referenční architektury
+      href: reference-architecture-diagram.md
     - name: Kategorie a podkategorie
       href: categories.md
     - name: Podporované značky HTML

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779766"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694372"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače s Linuxem 
 
-Azure Disk Encryption přispívá k zabezpečení a ochraně vašich dat, aby byly splněny závazky organizace související se zabezpečením a dodržováním předpisů. Používá funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , která vám pomůžou řídit a spravovat klíče šifrování disku a tajné kódy. 
+Azure Disk Encryption přispívá k zabezpečení a ochraně vašich dat, aby byly splněny závazky organizace související se zabezpečením a dodržováním předpisů. Používá funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , která vám pomůžou řídit a spravovat klíče šifrování disku a tajné kódy.
+
+Azure Disk Encryption je odolný proti zóně stejným způsobem jako Virtual Machines. Podrobnosti najdete v tématu [služby Azure, které podporují zóny dostupnosti](../../availability-zones/az-region.md).
 
 Pokud používáte [Azure Security Center](../../security-center/index.yml), budete upozorněni v případě, že máte virtuální počítače, které nejsou šifrované. Výstrahy se zobrazují jako Vysoká závažnost a doporučení slouží k šifrování těchto virtuálních počítačů.
 
@@ -26,7 +28,6 @@ Pokud používáte [Azure Security Center](../../security-center/index.yml), bud
 > [!WARNING]
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md) . 
 > - Některá doporučení můžou zvýšit využití dat, sítě nebo výpočetních prostředků, což má za následek další licence nebo náklady na předplatné. Abyste mohli vytvářet prostředky v Azure v podporovaných oblastech, musíte mít platné aktivní předplatné Azure.
-> - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md) .
 
 Základní informace o nástroji Azure Disk Encryption pro Linux najdete během několika minut pomocí [virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače se systémem linux pomocí nástroje Azure PowerShell rychlý Start](disk-encryption-powershell-quickstart.md).
 
@@ -34,7 +35,11 @@ Základní informace o nástroji Azure Disk Encryption pro Linux najdete během 
 
 ### <a name="supported-vms"></a>Podporované virtuální počítače
 
-Virtuální počítače se systémem Linux jsou k dispozici v [různých velikostech](../sizes.md). Azure Disk Encryption není k dispozici na virtuálních počítačích [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)ani na virtuálních počítačích, které nesplňují tyto minimální požadavky na paměť:
+Virtuální počítače se systémem Linux jsou k dispozici v [různých velikostech](../sizes.md). Azure Disk Encryption se podporuje u virtuálních počítačů 1. generace a 2. generace. Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
+
+Podívejte [se na velikost virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md).
+
+Azure Disk Encryption není k dispozici ani na virtuálních počítačích [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích, které nesplňují tyto minimální požadavky na paměť:
 
 | Virtuální počítač | Minimální požadavek na paměť |
 |--|--|
@@ -42,13 +47,9 @@ Virtuální počítače se systémem Linux jsou k dispozici v [různých velikos
 | Virtuální počítače se systémem Linux při šifrování dat a svazků operačních systémů a v případě použití systému souborů root (/) je 4 GB nebo méně | 8 GB |
 | Virtuální počítače se systémem Linux při šifrování dat a svazků operačních systémů a využití systému souborů root (/) je větší než 4 GB | Použití kořenového souborového systému * 2. Například 16 GB použití kořenového systému souborů vyžaduje aspoň 32 GB paměti RAM. |
 
-Po dokončení procesu šifrování disku s operačním systémem u virtuálních počítačů se systémem Linux lze virtuální počítač nakonfigurovat tak, aby běžel s méně paměti. 
+Po dokončení procesu šifrování disku s operačním systémem u virtuálních počítačů se systémem Linux lze virtuální počítač nakonfigurovat tak, aby běžel s méně paměti.
 
-Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
-
-Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace](../generation-2.md#generation-1-vs-generation-2-capabilities) a [virtuální počítače řady Lsv2-Series](../lsv2-series.md). Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
-
-Azure Disk Encryption není k dispozici pro image virtuálních počítačů bez dočasných disků (dv4, Dsv4, Ev4 a Esv4).  Podívejte [se na velikost virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md).
+Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -58,6 +59,7 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
+
 | Publisher | Nabídka | SKU | NÁZVEM | Typ svazku podporovaný pro šifrování |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Kanonický: UbuntuServer: 18.04-LTS: nejnovější | Operační systém a datový disk |
@@ -65,9 +67,12 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | Canonical | Ubuntu 16.04 | 16,04-DENNĚ – LTS | Kanonický: UbuntuServer: 16.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kanonický: UbuntuServer: 14.04.5-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5 – DENNĚ – LTS | Kanonický: UbuntuServer: 14.04.5-DAILY-LTS: nejnovější | Operační systém a datový disk |
+| RedHat | RHEL 8 – LVM | 8 – LVM | RedHat: RHEL: 8-LVM: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 8,2 | 8.2 | RedHat: RHEL: 8.2: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 8.1 | 8.1 | RedHat: RHEL: 8.1: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7 – LVM | 7 – LVM | RedHat: RHEL: 7 – LVM: 7.8.2020111201 | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: nejnovější | Operační systém a datový disk (viz poznámka níže) |
-| RedHat | RHEL 7 – LVM | 7 – LVM | RedHat: RHEL: 7 – LVM: 7.8.2020111201 | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,4 | 7,4 | RedHat: RHEL: 7.4: nejnovější | Operační systém a datový disk (viz poznámka níže) |
@@ -75,9 +80,12 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: nejnovější | Datový disk (viz poznámka níže) |
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: nejnovější | Datový disk (viz poznámka níže) |
+| OpenLogic | CentOS 8 – LVM | 8 – LVM | OpenLogic: CentOS-LVM: 8-LVM: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 8,2 | 8_2 | OpenLogic: CentOS: 8_2: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 8,1 | 8_1 | OpenLogic: CentOS: 8_1: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7 – LVM | 7 – LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operační systém a datový disk |
 | OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: nejnovější | Operační systém a datový disk |
 | OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: nejnovější | Operační systém a datový disk |
-| OpenLogic | CentOS 7 – LVM | 7 – LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operační systém a datový disk |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: nejnovější | Operační systém a datový disk |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: nejnovější | Operační systém a datový disk |
 | OpenLogic | CentOS 7.4 | 7,4 | OpenLogic: CentOS: 7.4: nejnovější | Operační systém a datový disk |
@@ -148,7 +156,7 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start – vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI ](disk-encryption-cli-quickstart.md)
-- [Rychlý Start – vytvoření a šifrování virtuálního počítače se systémem Linux pomocí prostředí Azure PowerShell](disk-encryption-powershell-quickstart.md)
+- [Rychlý Start – vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure PowerShell](disk-encryption-powershell-quickstart.md) 
 - [Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux](disk-encryption-linux.md)
 - [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started)
 - [Skript prostředí PowerShell pro Azure Disk Encryption předpoklady](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

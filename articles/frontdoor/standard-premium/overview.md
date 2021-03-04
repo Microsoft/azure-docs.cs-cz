@@ -8,27 +8,27 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 32654f743301f9f2f6c010947d73d957c96dceac
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bcfff1a2c8490a05f4b96a8e2ff68186348f596f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100830"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742360"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Co je Azure front dveří Standard/Premium (Preview)?
 
 > [!IMPORTANT]
 > Tato dokumentace je určena pro Azure front-end Standard/Premium (Preview). Hledáte informace o frontách Azure na začátku? Prohlédněte si [dokumentaci ke službě Azure front dveří](../front-door-overview.md).
 
-Přední dvířka Azure (Standard/Premium) je rychlý, spolehlivý a zabezpečený moderní Cloud CDN, který využívá síť Microsoft Global Edge a integruje s inteligentní ochranou hrozeb. Kombinuje funkce Azure CDN Standard od Microsoftu, front Azure a firewallu webových aplikací (WAF) ve službě Azure Web Application firewall () do jediné zabezpečené platformy CDN cloudu.
+Přední dvířka Azure (Standard/Premium) je rychlý, spolehlivý a zabezpečený moderní Cloud CDN, který využívá síť Microsoft Global Edge a integruje s inteligentní ochranou hrozeb. Kombinuje možnosti služby Azure front-dveří, standardu CDN (Azure Content Delivery Network) a firewallu webových aplikací Azure (WAF) do jediné zabezpečené platformy CDN cloudu.
 
-Pomocí služby Azure front bran Standard/Premium můžete transformovat své globální aplikace a podnikové aplikace na zabezpečené a vysoce výkonné přizpůsobené moderní aplikace s obsahem, který je přístupný pro globální cílovou skupinu s nízkou latencí.
+Pomocí služby Azure front bran Standard/Premium můžete transformovat své globální příjemce a podnikové aplikace na zabezpečené a vysoce výkonné přizpůsobené moderní aplikace s obsahem, který je zaměřený na globální cílovou skupinu v hraniční síti blízko uživateli. Umožňuje také vaší aplikaci škálovat bez zahřívání, zatímco využívání z globálního vyrovnávání zatížení HTTP pomocí okamžitého převzetí služeb při selhání.
 
    :::image type="content" source="../media/overview/front-door-overview.png" alt-text="Architektura front-Premium pro Azure na úrovni Standard/Premium" lightbox="../media/overview/front-door-overview-expanded.png":::
 
-Přední dveře Azure (Standard/Premium) fungují ve vrstvě 7 (vrstva HTTP/HTTPS) pomocí protokolu libovolného vysílání s rozdělenou sítí TCP a Microsoftem, aby se zlepšilo globální připojení. Na základě vaší metody směrování můžete zajistit, aby přední dveře Azure směrovaly požadavky klientů na nejrychlejší a nejvíce dostupný počátek. Back-end aplikace je jakákoli internetová služba hostovaná v rámci služby Azure nebo mimo ni. AzureFront dveří úrovně Standard/Premium poskytují řadu metod směrování provozu a možnosti monitorování stavu původu, které vyhovují různým požadavkům aplikací a automatickým scénářům pro převzetí služeb při selhání. Podobně jako u Traffic Manager je přední dveře odolná vůči chybám, včetně selhání do celé oblasti Azure.
+Přední dveře Azure (Standard/Premium) fungují ve vrstvě 7 (vrstva HTTP/HTTPS) pomocí protokolu libovolného vysílání s rozdělenou sítí TCP a Microsoftem, aby se zlepšilo globální připojení. Na základě vaší přizpůsobené metody směrování pomocí sady pravidel můžete zajistit, aby přední dveře Azure směrovaly požadavky klientů na nejrychlejší a nejvíce dostupný počátek. Počátek aplikace je jakákoli internetová služba hostovaná v rámci Azure nebo mimo ni. Přední dveře Azure (Standard/Premium) poskytují řadu metod pro směrování provozu a možnosti monitorování stavu původu tak, aby vyhovovaly různým potřebám aplikací a automatickým scénářům pro převzetí služeb při selhání. Podobně jako u Traffic Manager je přední dveře odolná vůči chybám, včetně selhání do celé oblasti Azure.
 
-Přední dvířka Azure také chrání svoji aplikaci na hranách pomocí brány firewall webových aplikací, ochrany bot a integrovaného rozložení 3/vrstvy 4 DDoS Protection. Zabezpečuje taky vaše soukromé back-endy pomocí služby privátního propojení. Přední dveře Azure poskytují nejlepší zabezpečení Microsoftu v globálním měřítku.  
+Přední dvířka Azure také chrání vaši aplikaci na okrajích s integrovanou ochranou firewallu webových aplikací, ochranou bot a integrovaným rozložením 3/vrstvy 4 distribuovaná ochrana DDoS (Denial of Service). Zabezpečuje taky vaše soukromé back-endy pomocí služby privátního propojení. Přední dveře Azure poskytují nejlepší zabezpečení Microsoftu v globálním měřítku.  
 
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení.
@@ -47,19 +47,19 @@ Přední dvířka Azure také chrání svoji aplikaci na hranách pomocí brány
 
 ## <a name="why-use-azure-front-door-standardpremium-preview"></a>Proč používat Azure front-end Standard/Premium (Preview)?
 
-Přední dveře Azure (Standard/Premium) poskytují jednu sjednocenou platformu pro statický obsah a dynamickou akceleraci aplikací s rozšířenými možnostmi zabezpečení. Přední dvířka také umožňují definovat, spravovat a monitorovat globální směrování pro vaši aplikaci.
+Přední dveře Azure (Standard/Premium) poskytují jednu sjednocenou platformu, která nabízí dynamickou i statickou akceleraci s integrovanými klíč integrace zabezpečení a jednoduchým a předvídatelným cenovým modelem. Přední dvířka také umožňují definovat, spravovat a monitorovat globální směrování pro vaši aplikaci.
 
 Klíčové funkce, které jsou součástí služby Azure front dveří Standard/Premium (Preview):
 
-- Urychlený výkon aplikace pomocí rozděleného protokolu libovolného vysílání založeného na protokolu TCP.
+- Urychlený výkon aplikace pomocí rozděleného protokolu libovolného vysílání **[založeného na protokolu TCP](../front-door-routing-architecture#splittcp.md)** .
 
 - Inteligentní monitorování **[stavu](concept-health-probes.md)** a vyrovnávání zatížení mezi **[zdroji](concept-origin.md)**.
 
-- Definujte vlastní doménu s flexibilním ověřováním domén.
+- Definujte vlastní **[doménu](how-to-add-custom-domain.md)** s flexibilním ověřováním domén.
 
-- Zabezpečení aplikace pomocí integrovaného [firewallu webových aplikací (WAF)](../../web-application-firewall/afds/afds-overview.md).
+- Zabezpečení aplikace pomocí integrovaného **[firewallu webových aplikací (WAF)](../../web-application-firewall/afds/afds-overview.md)**.
 
-- Přesměrování zpracování SSL a integrovaná správa certifikátů.
+- Přesměrování zpracování SSL a integrovaná **[Správa certifikátů](how-to-configure-https-custom-domain.md)**.
 
 - Zabezpečte své zdroje pomocí **[privátního odkazu](concept-private-link.md)**.  
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5070b64c3900aa4ee1cf51519c7b64362ac37413
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596675"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694253"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změna nebo odstranění skupiny zabezpečení sítě
 
@@ -355,16 +355,21 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="network-security-group"></a>Skupina zabezpečení sítě
 
-| Akce                                                        |   Name                                                                |
+| Akce                                                        |   Název                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Získat skupinu zabezpečení sítě                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
 | Microsoft. Network/networkSecurityGroups/DELETE                |   Odstranit skupinu zabezpečení sítě                                       |
 | Microsoft. Network/networkSecurityGroups/JOIN/Action           |   Přidružení skupiny zabezpečení sítě k podsíti nebo síťovému rozhraní 
 
+
+>[!NOTE]
+> Aby bylo možné provádět `write` operace ve skupině zabezpečení sítě, musí mít účet předplatného alespoň `read` oprávnění pro skupinu prostředků spolu s `Microsoft.Network/networkSecurityGroups/write` oprávněním.
+
+
 ### <a name="network-security-group-rule"></a>Pravidlo skupiny zabezpečení sítě
 
-| Akce                                                        |   Name                                                                |
+| Akce                                                        |   Název                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Získat pravidlo                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Vytvořit nebo aktualizovat pravidlo                                               |
@@ -372,7 +377,7 @@ Aby bylo možné provádět úlohy se skupinami zabezpečení sítě, pravidly z
 
 ### <a name="application-security-group"></a>Skupina zabezpečení aplikace
 
-| Akce                                                                     | Name                                                     |
+| Akce                                                                     | Název                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Připojení konfigurace protokolu IP ke skupině zabezpečení aplikace|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Připojit pravidlo zabezpečení ke skupině zabezpečení aplikace    |

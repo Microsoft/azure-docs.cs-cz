@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509566"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702143"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Upgrade hlavní verze v Azure Database for MySQL jednom serveru
 
@@ -59,7 +59,7 @@ Postupujte podle těchto kroků, abyste provedli upgrade hlavní verze Azure Dat
  
    Tento upgrade vyžaduje verzi Azure CLI 2.16.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. Spuštěním příkazu az version zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte az upgrade.
 
-2. Po přihlášení spusťte příkaz [AZ MySQL server upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) :
+2. Po přihlášení spusťte příkaz [AZ MySQL server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) :
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
@@ -89,7 +89,7 @@ Upgrade hlavní verze s minimálními výpadky můžete provést z databáze MyS
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte stávající Azure Database for MySQL 5,6.
 
-2. Vytvořte z primárního serveru [repliku pro čtení](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) .
+2. Vytvořte z primárního serveru [repliku pro čtení](./concepts-read-replicas.md#create-a-replica) .
 
 3. [Upgradujte repliku pro čtení](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) na verzi 5,7.
 
@@ -105,7 +105,7 @@ Upgrade hlavní verze s minimálními výpadky můžete provést z databáze MyS
 
    Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master` Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. Jakmile ověříte, `Seconds_Behind_Master` že je "0", je bezpečné zastavit replikaci.
 
-6. Povýšit repliku pro čtení na primární [zastavením replikace](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server).
+6. Povýšit repliku pro čtení na primární [zastavením replikace](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server).
 
 7. Nasměrujte svoji aplikaci na novou primární (předchozí repliku), na které běží Server 5,7. Každý server má jedinečný připojovací řetězec. Aktualizujte svou aplikaci tak, aby odkazovala na (bývalé) repliku místo zdroje.
 

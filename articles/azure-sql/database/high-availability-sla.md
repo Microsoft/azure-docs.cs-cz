@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593414"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690579"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Redundantní konfigurace zóny služby pro obecné účely využívá [zóny dos
 
 Redundantní konfigurace zóny pro vrstvu pro obecné účely má dvě vrstvy:  
 
-- Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené ve [sdílené složce](../../storage/files/storage-how-to-create-premium-fileshare.md)ZRS PFS (zóna – redundantní úložiště úrovně Premium). Pomocí [redundantního úložiště zóny](../../storage/common/storage-redundancy.md) se data a soubory protokolů synchronně kopírují mezi tři zóny dostupnosti v rámci fyzicky izolovaného Azure.
+- Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené ve [sdílené složce](../../storage/files/storage-how-to-create-file-share.md)ZRS PFS (zóna – redundantní úložiště úrovně Premium). Pomocí [redundantního úložiště zóny](../../storage/common/storage-redundancy.md) se data a soubory protokolů synchronně kopírují mezi tři zóny dostupnosti v rámci fyzicky izolovaného Azure.
 - Bezstavová výpočetní vrstva, která spouští proces sqlservr.exe a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel je provozován službou Azure Service Fabric, která inicializuje sqlservr.exe, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem. V případě redundantních databází pro obecné účely se uzly, které mají volnou kapacitu, snadno dostupné v jiných Zóny dostupnosti pro převzetí služeb při selhání.
 
 Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obecné účely je znázorněná v následujícím diagramu:

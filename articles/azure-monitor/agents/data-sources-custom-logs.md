@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 73496e350a5e40a3945343271b76c6d883991b62
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719929"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďování vlastních protokolů s využitím agenta Log Analytics ve službě Azure Monitor
 
 Zdroj dat vlastních protokolů pro agenta Log Analytics v Azure Monitor umožňuje shromažďovat události z textových souborů na počítačích s Windows i Linux. Mnoho aplikací protokoluje informace do textových souborů namísto standardních protokolovacích služeb, jako je například protokol událostí systému Windows nebo syslog. Po shromáždění můžete data analyzovat do jednotlivých polí v dotazech nebo data extrahovat během shromažďování do jednotlivých polí.
 
 > [!IMPORTANT]
-> Tento článek popisuje shromažďování vlastních protokolů pomocí [agenta Log Analytics](../platform/log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
+> Tento článek popisuje shromažďování vlastních protokolů pomocí [agenta Log Analytics](./log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](../agents/agents-overview.md) .
 
 ![Vlastní kolekce protokolů](media/data-sources-custom-logs/overview.png)
 
@@ -78,7 +78,7 @@ Aplikace může například vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
-| Description | Cesta |
+| Popis | Cesta |
 |:--- |:--- |
 | Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. \\ \* . txt |
 | Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log \* . txt |
@@ -105,7 +105,7 @@ Jakmile Azure Monitor začne shromažďovat z vlastního protokolu, budou zázna
 > Pokud v dotazu chybí vlastnost RawData, může být nutné zavřít a znovu otevřít prohlížeč.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analyzovat položky vlastního protokolu
-Celý záznam v protokolu bude uložen v jediné vlastnosti s názvem **rawData**.  Pravděpodobně budete chtít jednotlivé údaje v každé položce oddělit do jednotlivých vlastností každého záznamu. Pokud chcete použít možnosti analýzy **rawData** do více vlastností, přečtěte si téma [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
+Celý záznam v protokolu bude uložen v jediné vlastnosti s názvem **rawData**.  Pravděpodobně budete chtít jednotlivé údaje v každé položce oddělit do jednotlivých vlastností každého záznamu. Pokud chcete použít možnosti analýzy **rawData** do více vlastností, přečtěte si téma [Analýza textových dat v Azure monitor](../logs/parse-text.md) .
 
 ## <a name="removing-a-custom-log"></a>Odebrání vlastního protokolu
 Pomocí následujícího postupu v Azure Portal odeberte vlastní protokol, který jste předtím definovali.
@@ -116,7 +116,7 @@ Pomocí následujícího postupu v Azure Portal odeberte vlastní protokol, kter
 ## <a name="data-collection"></a>Shromažďování dat
 Azure Monitor bude shromažďovat nové záznamy z každého vlastního protokolu přibližně každých 5 minut.  Agent zaznamená své místo do každého souboru protokolu, ze kterého bude shromažďovat.  Pokud agent přejde do režimu offline po určitou dobu, bude Azure Monitor shromažďovat položky z místa, kde byla naposledy ponechána, a to i v případě, že byly tyto položky vytvořeny v době, kdy byl agent offline.
 
-Celý obsah záznamu protokolu je zapsán do jediné vlastnosti s názvem **rawData**.  Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
+Celý obsah záznamu protokolu je zapsán do jediné vlastnosti s názvem **rawData**.  Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../logs/parse-text.md) .
 
 ## <a name="custom-log-record-properties"></a>Vlastnosti záznamu vlastního protokolu
 Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vlastnostmi v následující tabulce.
@@ -125,7 +125,7 @@ Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vla
 |:--- |:--- |
 | TimeGenerated |Datum a čas, kdy byl záznam shromážděn nástrojem Azure Monitor.  Pokud protokol používá oddělovač založený na čase, pak se jedná o čas získaný z položky. |
 | SourceSystem |Typ agenta, ze kterého byl záznam shromážděn <br> OpsManager – Agent pro Windows, buď Direct Connect, nebo System Center Operations Manager <br> Linux – všichni agenti se systémem Linux |
-| RawData |Celý text shromážděné položky Tato data pravděpodobně budete chtít [analyzovat do jednotlivých vlastností](../log-query/parse-text.md). |
+| RawData |Celý text shromážděné položky Tato data pravděpodobně budete chtít [analyzovat do jednotlivých vlastností](../logs/parse-text.md). |
 | ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro jiné agenty je to AOI-\<workspace ID\> |
 
 
@@ -171,8 +171,8 @@ I když jsou vlastní protokoly užitečné v případě, že se data vejdou na 
 V případech, kdy vaše data nejde shromažďovat s vlastními protokoly, zvažte následující alternativní strategie:
 
 - Pomocí vlastního skriptu nebo jiné metody Zapište data do událostí nebo [syslog](data-sources-syslog.md) [systému Windows](data-sources-windows-events.md) , které jsou shromažďovány pomocí Azure monitor. 
-- Odešlete data přímo do Azure Monitor pomocí [rozhraní API kolekce dat http](../platform/data-collector-api.md). 
+- Odešlete data přímo do Azure Monitor pomocí [rozhraní API kolekce dat http](../logs/data-collector-api.md). 
 
 ## <a name="next-steps"></a>Další kroky
-* Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../logs/parse-text.md) .
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

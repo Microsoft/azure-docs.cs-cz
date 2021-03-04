@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724247"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -566,7 +566,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |
@@ -789,7 +789,7 @@ Další informace najdete v [Application Insights](../../azure-monitor/app/app-i
 
 Další informace o analýzách v Azure Storage najdete v těchto materiálech:
 
-* [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
+* [Monitorování účtu úložiště na webu Azure Portal](./manage-storage-analytics-logs.md)
 * [Analýza úložiště](storage-analytics.md)
 * [Metriky služby Storage Analytics](storage-analytics-metrics.md)
 * [Schéma tabulky metrik analýzy úložiště](/rest/api/storageservices/storage-analytics-metrics-table-schema)

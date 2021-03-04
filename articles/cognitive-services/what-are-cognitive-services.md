@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736624"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -39,18 +39,18 @@ V následujících částech tohoto článku najdete seznam služeb, které jsou
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Počítačové zpracování obrazu](./computer-vision/index.yml "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
+|[Počítačové zpracování obrazu](./computer-vision/index.yml "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
 |[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
 |[Rozpoznávání tváře](./face/index.yml "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Rozpoznávání formulářů](./form-recognizer/index.yml "Rozpoznávání formulářů")|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
-|[Rozpoznávání rukopisu](./ink-recognizer/index.yml "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
+|[Rozpoznávání rukopisu](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
 
 ## <a name="speech-apis"></a>Rozhraní API pro rozpoznávání řeči
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba Speech](./speech-service/index.yml "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči. Služba Speech zahrnuje různé možnosti, jako je převod řeči na text, převod textu na řeč, překlad řeči a mnoho dalšího.|
+|[Služba řeči](./speech-service/index.yml "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči. Služba Speech zahrnuje různé možnosti, jako je převod řeči na text, převod textu na řeč, překlad řeči a mnoho dalšího.|
 <!--
 |[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
 |[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
@@ -63,7 +63,7 @@ V následujících částech tohoto článku najdete seznam služeb, které jsou
 |[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí.|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker vám umožní vytvořit službu otázek a odpovědí z částečně strukturovaného obsahu.|
 |[Analýza textu](./text-analytics/index.yml "Analýza textu")| Analýza textu poskytuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a detekci jazyka.|
-|[Překladač](./translator/index.yml "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
+|[Translator](./translator/index.yml "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
 | [Asistivní čtečka](./immersive-reader/index.yml "Asistivní čtečka") | Moderní čtečka přidává do vašich aplikací možnosti čtení z obrazovky a porozumění. |
 
 ## <a name="decision-apis"></a>Rozhraní API pro rozhodování

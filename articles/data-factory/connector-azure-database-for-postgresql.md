@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: ec4ea645e325ef48d4cb5951cd39fd4e9cbe1617
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738051"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Database for PostgreSQL pomocí Azure Data Factory
 
@@ -30,6 +30,8 @@ Tento konektor Azure Database for PostgreSQL se podporuje pro následující či
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
+Tok dat v současné době podporuje službu Azure Database for PostgreSQL Single server, ale ne flexibilní Server nebo škálovatelné (Citus).
+
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -42,16 +44,16 @@ Pro propojenou službu Azure Database for PostgreSQL jsou podporovány následuj
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **AzurePostgreSql**. | Yes |
-| připojovací řetězec | Připojovací řetězec ODBC pro připojení k Azure Database for PostgreSQL.<br/>Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje pro uložení v Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
-| connectVia | Tato vlastnost představuje [prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| typ | Vlastnost Type musí být nastavená na: **AzurePostgreSql**. | Ano |
+| připojovací řetězec | Připojovací řetězec ODBC pro připojení k Azure Database for PostgreSQL.<br/>Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje pro uložení v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
+| connectVia | Tato vlastnost představuje [prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 Typický připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Tady je více vlastností, které můžete nastavit na váš případ:
 
 | Vlastnost | Popis | Možnosti | Vyžadováno |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda, kterou ovladač používá k šifrování dat posílaných mezi ovladačem a databázovým serverem. Například  `EncryptionMethod=<0/1/6>;`| 0 (bez šifrování) **(výchozí)** /1 (SSL)/6 (RequestSSL) | No |
-| ValidateServerCertificate (VSC) | Určuje, zda ovladač ověřuje certifikát, který je odeslán databázovým serverem, pokud je povoleno šifrování SSL (metoda šifrování = 1). Například  `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** /1 (povoleno) | No |
+| EncryptionMethod (EM)| Metoda, kterou ovladač používá k šifrování dat posílaných mezi ovladačem a databázovým serverem. Například  `EncryptionMethod=<0/1/6>;`| 0 (bez šifrování) **(výchozí)** /1 (SSL)/6 (RequestSSL) | Ne |
+| ValidateServerCertificate (VSC) | Určuje, zda ovladač ověřuje certifikát, který je odeslán databázovým serverem, pokud je povoleno šifrování SSL (metoda šifrování = 1). Například  `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** /1 (povoleno) | Ne |
 
 **Příklad**:
 
@@ -99,7 +101,7 @@ Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte vlastnost Ty
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na **AzurePostgreSqlTable** . | Yes |
+| typ | Vlastnost Type datové sady musí být nastavená na **AzurePostgreSqlTable** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**:
@@ -128,7 +130,7 @@ Chcete-li kopírovat data z Azure Database for PostgreSQL, nastavte typ zdroje v
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzurePostgreSqlSource** . | Yes |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzurePostgreSqlSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `SELECT * FROM mytable` nebo `SELECT * FROM "MyTable"` . Všimněte si, že v PostgreSQL se název entity považuje za nerozlišující velká a malá písmena, pokud není uvedeno v uvozovkách. | Ne (Pokud je určena vlastnost tableName v sadě dat) |
 
 **Příklad**:
@@ -169,9 +171,9 @@ Chcete-li kopírovat data do Azure Database for PostgreSQL, v části **jímka**
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzurePostgreSQLSink**. | Yes |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má provést před zápisem dat do Azure Database for PostgreSQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | No |
-| writeMethod | Metoda použitá k zápisu dat do Azure Database for PostgreSQL.<br>Povolené hodnoty jsou: **CopyCommand** (Preview, což je více výkonných), **BulkInsert** (výchozí). | No |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzurePostgreSQLSink**. | Ano |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má provést před zápisem dat do Azure Database for PostgreSQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
+| writeMethod | Metoda použitá k zápisu dat do Azure Database for PostgreSQL.<br>Povolené hodnoty jsou: **CopyCommand** (Preview, což je více výkonných), **BulkInsert** (výchozí). | Ne |
 | writeBatchSize | Počet řádků načtených do Azure Database for PostgreSQL na dávku.<br>Povolená hodnota je celé číslo, které představuje počet řádků. | Ne (výchozí hodnota je 1 000 000) |
 | writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br>Povolené hodnoty jsou řetězce TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:30:00) |
 
@@ -219,10 +221,10 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Azure Dat
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Tabulka | Pokud vyberete možnost tabulka jako vstup, tok dat načte všechna data z tabulky zadané v datové sadě. | No | - |*(pouze pro vloženou datovou sadu)*<br>tableName |
+| Tabulka | Pokud vyberete možnost tabulka jako vstup, tok dat načte všechna data z tabulky zadané v datové sadě. | Ne | - |*(pouze pro vloženou datovou sadu)*<br>tableName |
 | Dotaz | Pokud jako vstup vyberete dotaz, zadejte dotaz SQL pro načtení dat ze zdroje, který přepíše všechny tabulky zadané v datové sadě. Použití dotazů je skvělý způsob, jak omezit řádky pro testování nebo vyhledávání.<br><br>Klauzule **ORDER by** není podporována, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrátí tabulku, kterou můžete použít v toku dat.<br>Příklad dotazu: `select * from mytable where customerId > 1000 and customerId < 2000` nebo `select * from "MyTable"` . Všimněte si, že v PostgreSQL se název entity považuje za nerozlišující velká a malá písmena, pokud není uvedeno v uvozovkách.| No | Řetězec | query |
-| Velikost dávky | Určete velikost dávky pro velké objemy dat v dávkách. | No | Integer | batchSize |
-| Úroveň izolace | Vyberte jednu z následujících úrovní izolace:<br>– Čtení potvrzeno<br>-Čtení nepotvrzeno (výchozí)<br>-Opakované čtení<br>– Serializovatelný<br>-None (ignorovat úroveň izolace) | No | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZOVATELNÝ<br/>NTATO</small> |isolationLevel |
+| Velikost dávky | Určete velikost dávky pro velké objemy dat v dávkách. | Ne | Integer | batchSize |
+| Úroveň izolace | Vyberte jednu z následujících úrovní izolace:<br>– Čtení potvrzeno<br>-Čtení nepotvrzeno (výchozí)<br>-Opakované čtení<br>– Serializovatelný<br>-None (ignorovat úroveň izolace) | Ne | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZOVATELNÝ<br/>NTATO</small> |isolationLevel |
 
 #### <a name="azure-database-for-postgresql-source-script-example"></a>Příklad zdrojového skriptu Azure Database for PostgreSQL
 
@@ -242,11 +244,11 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které Azure Database for Pos
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Update – metoda | Určete, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Yes | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
-| Klíčové sloupce | Pro aktualizace, upsertuje a DELETE musí být klíčové sloupce nastavené tak, aby určily, který řádek se má změnit.<br>Název sloupce, který vyberete jako klíč, bude použit jako součást následné aktualizace, Upsert a DELETE. Proto je nutné vybrat sloupec, který existuje v mapování jímky. | No | Pole | keys |
-| Přeskočit zápis klíčových sloupců | Pokud chcete hodnotu nezazapisovat do sloupce klíč, zaškrtněte políčko Přeskočit zápis klíčových sloupců. | No | `true` nebo `false` | skipKeyWrites |
-| Akce tabulky |Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné**: v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit**: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit**: všechny řádky z cílové tabulky se odeberou. | No | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
-| Velikost dávky | Určete, kolik řádků se má v každé dávce zapsat. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti. | No | Integer | batchSize |
+| Update – metoda | Určete, jaké operace jsou pro cíl databáze povolené. Ve výchozím nastavení je povolen pouze vkládání.<br>Aby bylo možné aktualizovat, Upsert nebo odstraňovat řádky, je nutné transformaci řádků pro tyto akce označit [změnou řádku](data-flow-alter-row.md) . | Ano | `true` nebo `false` | lze odstranit <br/>vložitelný <br/>aktualizovatelné <br/>upsertable |
+| Klíčové sloupce | Pro aktualizace, upsertuje a DELETE musí být klíčové sloupce nastavené tak, aby určily, který řádek se má změnit.<br>Název sloupce, který vyberete jako klíč, bude použit jako součást následné aktualizace, Upsert a DELETE. Proto je nutné vybrat sloupec, který existuje v mapování jímky. | Ne | Pole | keys |
+| Přeskočit zápis klíčových sloupců | Pokud chcete hodnotu nezazapisovat do sloupce klíč, zaškrtněte políčko Přeskočit zápis klíčových sloupců. | Ne | `true` nebo `false` | skipKeyWrites |
+| Akce tabulky |Určuje, zda mají být před zápisem znovu vytvořeny nebo odebrány všechny řádky z cílové tabulky.<br>- **Žádné**: v tabulce se neprovede žádná akce.<br>- **Znovu vytvořit**: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.<br>- **Zkrátit**: všechny řádky z cílové tabulky se odeberou. | Ne | `true` nebo `false` | znovu vytvořit<br/>zkrátit |
+| Velikost dávky | Určete, kolik řádků se má v každé dávce zapsat. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti. | Ne | Integer | batchSize |
 | Skripty před a po SQL | Zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky. | No | Řetězec | preSQLs<br>postSQLs |
 
 #### <a name="azure-database-for-postgresql-sink-script-example"></a>Příklad skriptu jímky Azure Database for PostgreSQL

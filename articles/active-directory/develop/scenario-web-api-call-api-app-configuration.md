@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686576"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -245,6 +245,8 @@ class MsalAuthHelper {
 Tok spouštěný za běhu (OBO) slouží k získání tokenu pro volání webového rozhraní API pro příjem dat. V tomto toku vaše webové rozhraní API obdrží token nosiče s delegovanými oprávněními z klientské aplikace a potom tento token vymění pro jiný přístupový token pro volání webového rozhraní API pro příjem dat.
 
 Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověření, že je nosný token přijatý od klienta. Webové rozhraní API pak může získat přístupový token pro rozhraní API pro příjem dat pomocí knihovny Python MSAL voláním [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metody. Příklad použití tohoto rozhraní API najdete v tématu [testovací kód pro Microsoft-Authentication-Library-for-Python na GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Také se zobrazí diskuze o [problému 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) ve stejném úložišti pro přístup, který obchází nutnost použití aplikace střední vrstvy.
+
+Můžete si také prohlédnout příklad implementace toku OBO ve vzorku [MS-identity-Python-on-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) .
 
 ---
 

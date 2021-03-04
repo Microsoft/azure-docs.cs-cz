@@ -3,22 +3,22 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693862"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
-Azure image Builder k předávání informací do služby tvůrce imagí používá soubor. JSON. V tomto článku se přejdou na oddíly souboru JSON, takže si můžete vytvořit vlastní. Příklady úplných souborů. JSON najdete v tématu věnovaném [nástroji Azure image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Azure image Builder k předávání informací do služby tvůrce imagí používá soubor. JSON. V tomto článku se přejdou na oddíly souboru JSON, takže si můžete vytvořit vlastní. Příklady úplných souborů. JSON najdete v tématu věnovaném [nástroji Azure image Builder GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 
 Toto je základní formát šablony:
 
@@ -249,7 +249,7 @@ Při použití `customize` :
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
 - Do skriptů neumísťujte citlivá data. 
-- Pokud nepoužíváte [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage), musí být umístění skriptu veřejně přístupná.
+- Pokud nepoužíváte [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity), musí být umístění skriptu veřejně přístupná.
 
 ```json
         "customize": [
@@ -697,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>Další kroky
 
-V [GitHubu pro Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
+V [GitHubu pro Azure image Builder](https://github.com/azure/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.

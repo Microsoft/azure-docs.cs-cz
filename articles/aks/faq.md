@@ -3,12 +3,13 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739623"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -134,7 +135,7 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 
 AKS poskytuje záruky smlouvy SLA jako volitelnou doplňkovou funkci s smlouvou [SLA pro provozuschopnost][uptime-sla]. 
 
-Bezplatná smlouva SLA nabízená ve výchozím nastavení nezaručuje vysoce dostupný koncový bod serveru API (náš cíl na úrovni služby je 99,5%). Může dojít k tomu, že v případě upgradů dojde k problémům s přechodným připojením, které nemají v pořádku Underlay uzly, údržba platformy atd... Pokud vaše úloha neumožňuje tolerovat APIServer restart, doporučujeme použít smlouvu SLA pro provozuschopnost.
+Bezplatná SKU, která je nabízená ve výchozím nastavení, nemá přidruženou *smlouvu* o úrovni služeb, ale má *cíl* na úrovni služby 99,5%. Může dojít k tomu, že v případě upgradů jsou pozorovány problémy s přechodným připojením, které nemají v pořádku Underlay uzly, údržba platformy, zahlcení aplikací rozhraní API serverem API a požadavky atd. Pokud vaše úloha Netolerovat restart serveru rozhraní API, doporučujeme, abyste používali smlouvu SLA pro provozuschopnost.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžu u svých uzlů agentů AKS uplatnit slevy na rezervované platformy Azure?
 
@@ -202,7 +203,7 @@ Agent Log Analytics je podporovaný, protože jde o rozšíření spravované Mi
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá AKS data o zákaznících mimo oblast clusteru?
 
-Funkce pro ukládání zákaznických dat v jedné oblasti je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky.
+Funkce pro ukládání zákaznických dat v jedné oblasti je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) oblasti Asie a Tichomoří geografická a Brazílie – jih (stát Svatý Paulo) Brazílie geograficky. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky.
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>Jsou AKS image vyžadují, aby se spouštěly pod kořenovým adresářem?
 

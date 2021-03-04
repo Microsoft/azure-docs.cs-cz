@@ -3,16 +3,18 @@ title: Webhooky, které reagují na akce registru
 description: Naučte se, jak pomocí webhooků aktivovat události, když se akce push nebo Pull vyskytnou v úložištích registru.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004479"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722241"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
 
 Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů Dockeru podobným způsobem, jakým Docker Hub uchovává veřejné image Dockeru. Může také hostovat úložiště pro [grafy Helm](container-registry-helm-repos.md) (Preview), formát balení pro nasazení aplikací do Kubernetes. Webhooky můžete použít k aktivaci událostí, když probíhají určité akce v jednom z úložišť registru. Webhooky můžou reagovat na události na úrovni registru nebo můžou být vymezené na konkrétní značku úložiště. Pomocí  [geograficky replikovaného](container-registry-geo-replication.md) registru můžete každý Webhook nakonfigurovat tak, aby reagoval na události v konkrétní místní replice.
+
+Koncový bod Webhooku musí být z registru veřejně přístupný. Žádosti Webhooku registru můžete nakonfigurovat tak, aby se ověřily na zabezpečený koncový bod.
 
 Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry Reference k schématu Webhooku](container-registry-webhook-reference.md).
 
@@ -37,7 +39,7 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 | Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavkem POST. Měly by být ve formátu "klíč: hodnota". |
 | Aktivační akce | Akce, které aktivují Webhook Akce zahrnují vložení obrázku, odstranění obrázku, vložení grafu Helm, odstranění grafu Helm a karanténu obrázku. Můžete vybrat jednu nebo více akcí pro aktivaci Webhooku. |
 | Status | Stav Webhooku po jeho vytvoření. Tato možnost je ve výchozím nastavení povolená. |
-| Rozsah | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
+| Obor | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
 
 Příklad formuláře Webhooku:
 

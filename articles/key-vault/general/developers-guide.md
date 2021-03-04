@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791420"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709899"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -41,7 +41,7 @@ Přístup k vrstvě správy řídí [řízení přístupu na základě role v Az
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault)<br>[Rychlý start](quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/)|[Odkaz](/azure/templates/microsoft.keyvault/vaults)<br>[Rychlý start](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Odkaz](/dotnet/api/microsoft.azure.management.keyvault)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Odkaz](/java/api/com.microsoft.azure.management.keyvault)|[Odkaz](/javascript/api/@azure/arm-keyvault)|
+|[Odkaz](/cli/azure/keyvault)<br>[Rychlý start](quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/)|[Odkaz](/azure/templates/microsoft.keyvault/vaults)<br>[Rychlý start](./vault-create-template.md)|[Odkaz](/dotnet/api/microsoft.azure.management.keyvault)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Odkaz](/java/api/com.microsoft.azure.management.keyvault)|[Odkaz](/javascript/api/@azure/arm-keyvault)|
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 

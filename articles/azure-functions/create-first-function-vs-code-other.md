@@ -3,12 +3,12 @@ title: Vytvoření funkce v cestách nebo Rust pomocí Visual Studio Code-Azure 
 description: Naučte se, jak vytvořit funkci přejít jako vlastní obslužnou rutinu Azure Functions a pak publikovat místní projekt na hostování bez serveru v Azure Functions pomocí rozšíření Azure Functions v Visual Studio Code.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: a3ef7bdd19badf7a7deaa8376440016e39e0d14b
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 1142ff76425e2e4bff0d3881be1378d9da07806e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809558"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704731"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce přejít nebo Rust v Azure pomocí Visual Studio Code
 
@@ -89,14 +89,14 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
     ```go
     package main
-
+    
     import (
         "fmt"
         "log"
         "net/http"
         "os"
     )
-
+    
     func helloHandler(w http.ResponseWriter, r *http.Request) {
         message := "This HTTP triggered function executed successfully. Pass a name in the query string for a personalized response.\n"
         name := r.URL.Query().Get("name")
@@ -105,7 +105,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
         }
         fmt.Fprint(w, message)
     }
-
+    
     func main() {
         listenAddr := ":8080"
         if val, ok := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT"); ok {

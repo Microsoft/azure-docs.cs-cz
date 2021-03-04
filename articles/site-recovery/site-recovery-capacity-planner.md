@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87490570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737711"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
 
@@ -43,7 +43,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 
 ## <a name="run-the-quick-planner"></a>Spuštění rychlého plánovače
-1. Stáhněte a otevřete [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
+1. Stáhněte a otevřete [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
 
 2. V seznamu **Vyberte typ plánovače** vyberte **rychlé plánování**.
 
@@ -51,15 +51,15 @@ Nástroj můžete spustit ve dvou režimech:
 
 3. V listu **Capacity Planner** zadejte požadované informace. Vyplňte všechna pole v červeném kruhu na následujícím snímku obrazovky:
 
-   a. V **Možnosti vyberte svůj scénář**zvolte možnost **Hyper-V do Azure** nebo **VMware/fyzický do Azure**.
+   a. V **Možnosti vyberte svůj scénář** zvolte možnost **Hyper-V do Azure** nebo **VMware/fyzický do Azure**.
 
    b. V části **Průměrná denní četnost změn dat (%)** zadejte informace, které shromažďujete, pomocí [Nástroje pro plánování kapacity technologie Hyper-V](./hyper-v-deployment-planner-overview.md) nebo [Site Recovery Plánovač nasazení](./site-recovery-deployment-planner.md).
 
    c. Nastavení **Komprese** se nepoužívá při replikaci virtuálních počítačů Hyper-V do Azure. Pro kompresi použijte zařízení třetí strany, například Riverbed.
 
-   d. Do doby **uchování ve dnech**zadejte počet dní, po které chcete uchovávat repliky.
+   d. Do doby **uchování ve dnech** zadejte počet dní, po které chcete uchovávat repliky.
 
-   e. V **počtu hodin, během kterých by měla být počáteční replikace pro dávku virtuálních počítačů dokončena** , a **počet virtuálních počítačů na počáteční dávku replikace**zadejte nastavení, která se použijí k výpočtu požadavků na počáteční replikaci. Při nasazení Site Recovery se nahraje celá počáteční datová sada.
+   e. V **počtu hodin, během kterých by měla být počáteční replikace pro dávku virtuálních počítačů dokončena** , a **počet virtuálních počítačů na počáteční dávku replikace** zadejte nastavení, která se použijí k výpočtu požadavků na počáteční replikaci. Při nasazení Site Recovery se nahraje celá počáteční datová sada.
 
    ![Snímek obrazovky Capacity Planner listu zobrazující požadované vstupní informace](./media/site-recovery-capacity-planner/inputs.png)
 
@@ -81,29 +81,29 @@ Nástroj můžete spustit ve dvou režimech:
 
 ## <a name="run-the-detailed-planner"></a>Spuštění podrobného plánovače
 
-1. Stáhněte a otevřete [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
+1. Stáhněte a otevřete [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery). Je nutné spustit makra. Po zobrazení výzvy proveďte výběry pro povolení úprav a obsahu.
 
-2. V části **Vyberte typ plánovače**vyberte **podrobný Plánovač** ze seznamu.
+2. V části **Vyberte typ plánovače** vyberte **podrobný Plánovač** ze seznamu.
 
    ![Snímek obrazovky s možností vybrat typ plánovače s vybraným podrobným plánovačem](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. V listu **kvalifikace úlohy** zadejte požadované informace. Musíte vyplnit všechna označená pole.
 
-   a. V **části procesory**zadejte celkový počet jader na zdrojovém serveru.
+   a. V **části procesory** zadejte celkový počet jader na zdrojovém serveru.
 
    b. V části **přidělení paměti (v MB)** zadejte velikost paměti RAM zdrojového serveru.
 
-   c. V poli **počet**síťových adaptérů určete počet síťových adaptérů na zdrojovém serveru.
+   c. V poli **počet** síťových adaptérů určete počet síťových adaptérů na zdrojovém serveru.
 
    d. V části **Celková velikost úložiště (v GB)** zadejte celkovou velikost úložiště virtuálního počítače. Pokud má například zdrojový server tři disky s 500 GB, celková velikost úložiště je 1 500 GB.
 
-   e. V poli **Počet připojených disků**zadejte celkový počet disků zdrojového serveru.
+   e. V poli **Počet připojených disků** zadejte celkový počet disků zdrojového serveru.
 
    f. V části **využití kapacity disku (%)** zadejte průměrné využití.
 
    například V části **denní četnost změn dat (%)** zadejte denní četnost změn dat na zdrojovém serveru.
 
-   h. V části **mapování velikosti virtuálního počítače Azure**zadejte velikost virtuálního počítače Azure, kterou chcete namapovat. Pokud to nechcete provést ručně, vyberte **COMPUTE IaaS virtuální počítače**. Pokud zadáte ruční nastavení a pak vyberete **výpočetní virtuální počítače IaaS**, může být ruční nastavení přepsáno. Výpočetní proces automaticky identifikuje nejlepší shodu velikosti virtuálního počítače Azure.
+   h. V části **mapování velikosti virtuálního počítače Azure** zadejte velikost virtuálního počítače Azure, kterou chcete namapovat. Pokud to nechcete provést ručně, vyberte **COMPUTE IaaS virtuální počítače**. Pokud zadáte ruční nastavení a pak vyberete **výpočetní virtuální počítače IaaS**, může být ruční nastavení přepsáno. Výpočetní proces automaticky identifikuje nejlepší shodu velikosti virtuálního počítače Azure.
 
    ![Snímek obrazovky s listem kvalifikace úlohy, který zobrazuje požadované vstupní informace](./media/site-recovery-capacity-planner/workload-qualification.png)
 

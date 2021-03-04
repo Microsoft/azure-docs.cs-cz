@@ -1,18 +1,18 @@
 ---
-title: Přehled Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje Azure Monitor pro kontejnery, které monitorují řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
+title: Přehled kontejnerových přehledů | Microsoft Docs
+description: Tento článek popisuje službu Container Insights, která monitoruje řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: a9b9e155884b20c19b9b82994a3b9b1bdf53f27a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613019"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723380"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Přehled služby Azure Monitor pro kontejnery
+# <a name="container-insights-overview"></a>Přehled kontejneru Insights
 
-Azure Monitor for Containers je funkce navržená tak, aby sledovala výkon úloh kontejneru nasazených na:
+Container Insights je funkce navržená tak, aby sledovala výkon úloh kontejneru nasazených na:
 
 - Managed Kubernetes clusterů hostovaných ve [službě Azure Kubernetes (AKS)](../../aks/intro-kubernetes.md)
 - Samostatné spravované clustery Kubernetes hostované v Azure pomocí [stroje AKS](https://github.com/Azure/aks-engine)
@@ -21,17 +21,17 @@ Azure Monitor for Containers je funkce navržená tak, aby sledovala výkon úlo
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Kubernetes s povoleným ARC Azure](../../azure-arc/kubernetes/overview.md) (Preview)
 
-Azure Monitor for Containers podporuje clustery s operačním systémem Linux a Windows Server 2019. Moduly runtime kontejnerů, které podporuje, jsou Docker, Moby a jakýkoli CRI kompatibilní modul runtime, jako je například CRI-O a kontejner.
+Container Insights podporuje clustery s operačním systémem Linux a Windows Server 2019. Moduly runtime kontejnerů, které podporuje, jsou Docker, Moby a jakýkoli CRI kompatibilní modul runtime, jako je například CRI-O a kontejner.
 
 Monitorování vašich kontejnerů je důležité, zejména pokud používáte produkční cluster ve velkém měřítku s více aplikacemi.
 
-Azure Monitor pro kontejnery poskytují přehled o výkonu tím, že shromažďují metriky paměti a procesoru z řadičů, uzlů a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Po povolení monitorování z clusterů Kubernetes se metriky a protokoly automaticky shromažďují pomocí kontejnerové verze Log Analytics agenta pro Linux. Metriky se zapisují do úložiště metrik a data protokolu se zapisují do úložiště logs přidruženého k vašemu pracovnímu prostoru [Log Analytics](../log-query/log-query-overview.md) .
+Služba Container Insights poskytuje přehled o výkonu díky shromažďování metrik paměti a procesoru z řadičů, uzlů a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. Shromažďují se také protokoly kontejnerů.  Po povolení monitorování z clusterů Kubernetes se metriky a protokoly automaticky shromažďují pomocí kontejnerové verze Log Analytics agenta pro Linux. Metriky se zapisují do úložiště metrik a data protokolu se zapisují do úložiště logs přidruženého k vašemu pracovnímu prostoru [Log Analytics](../logs/log-query-overview.md) .
 
-![Architektura Azure Monitor for Containers](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Architektura kontejneru Insights](./media/container-insights-overview/azmon-containers-architecture-01.png)
 
-## <a name="what-does-azure-monitor-for-containers-provide"></a>Co Azure Monitor kontejnerů poskytuje?
+## <a name="what-does-container-insights-provide"></a>Co poskytuje kontejner Insights?
 
-Azure Monitor for Containers poskytuje komplexní monitorování s využitím různých funkcí Azure Monitor. Tyto funkce umožňují pochopit výkon a stav clusteru Kubernetes s operačním systémem Linux a Windows Server 2019 a zatížení kontejnerů. Pomocí Azure Monitor pro kontejnery můžete:
+Container Insights nabízí komplexní monitorování s využitím různých funkcí Azure Monitor. Tyto funkce umožňují pochopit výkon a stav clusteru Kubernetes s operačním systémem Linux a Windows Server 2019 a zatížení kontejnerů. Díky službě Container Insights můžete:
 
 * Identifikujte kontejnery AKS, které jsou spuštěny na uzlu, a jejich průměrné využití procesoru a paměti. Tato znalostní báze vám může přispět k identifikaci kritických bodů prostředků.
 * Identifikujte využití procesoru a paměti u skupin kontejnerů a jejich kontejnerů hostovaných v Azure Container Instances.
@@ -56,19 +56,18 @@ Mezi hlavní rozdíly v monitorování clusteru Windows serveru v porovnání s 
 - Monitoruje se jenom pod prostředími, nikoli Docká prostředí.
 - Ve verzi Preview se podporuje maximálně 30 kontejnerů Windows serveru. Toto omezení se nevztahuje na kontejnery Linux.
 
-Podívejte se na následující video, které poskytuje podrobné podrobně úrovně, které vám pomůžou získat informace o monitorování clusteru AKS pomocí Azure Monitor pro kontejnery.
+Podívejte se na následující video, které poskytuje podrobné podrobně úrovně, které vám pomůžou získat informace o monitorování clusteru AKS s využitím služby Container Insights.
 
-> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+> [!VIDEO https://youtu.be/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>Návody k této funkci přistupovat?
 
-K Azure Monitor kontejnerů můžete přistupovat dvěma způsoby, od Azure Monitor nebo přímo z vybraného clusteru AKS. Z Azure Monitor máte globální perspektivu všech nasazených kontejnerů, které jsou monitorované a které nejsou, což vám umožní vyhledávat a filtrovat v rámci předplatných a skupin prostředků a pak přejít na Azure Monitor kontejnerů z vybraného kontejneru.  V opačném případě můžete k této funkci přistupovat přímo z vybraného kontejneru AKS ze stránky AKS.
+Ke kontejneru najdete dva způsoby, od Azure Monitor nebo přímo z vybraného clusteru AKS. Z Azure Monitor máte globální perspektivu všech nasazených kontejnerů, které jsou monitorované a které nejsou, což vám umožní vyhledávat a filtrovat v rámci předplatných a skupin prostředků a pak přejít do kontejneru Insights z vybraného kontejneru.  V opačném případě můžete k této funkci přistupovat přímo z vybraného kontejneru AKS ze stránky AKS.
 
-![Přehled metod pro přístup k Azure Monitor pro kontejnery](./media/container-insights-overview/azmon-containers-experience.png)
+![Přehled metod pro přístup ke kontejneru Insights](./media/container-insights-overview/azmon-containers-experience.png)
 
-Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](../insights/containers.md).
+Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](./containers.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít monitorovat cluster Kubernetes, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.
-
+Pokud chcete začít monitorovat cluster Kubernetes, přečtěte si, [Jak povolit službě Container Insights](container-insights-onboard.md) pochopit požadavky a dostupné metody pro povolení monitorování.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 2d8d5d84d32cdb8cc813d033f3f3fbb453b538fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739912"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace režimu distribuce pro Azure Load Balancer
 
@@ -62,7 +62,7 @@ Použijte PowerShell ke změně nastavení distribuce nástroje pro vyrovnáván
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroupLB
-$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
+$lb.LoadBalancingRules[0].LoadDistribution = 'default'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
@@ -74,7 +74,7 @@ Nastavte hodnotu `LoadDistribution` elementu pro typ vyrovnávání zatížení,
 
 * Zadejte **výchozí** hodnotu pro výchozí chování pro vyrovnávání zatížení s pěti řazenými kolekcemi členů.
 
-# <a name="cli"></a>[**CLI**](#tab/azure-cli)
+# <a name="cli"></a>[**Rozhraní příkazového řádku**](#tab/azure-cli)
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -83,7 +83,7 @@ Pomocí Azure CLI změňte nastavení distribuce nástroje pro vyrovnávání za
 ```azurecli-interactive
 az network lb rule update \
     --lb-name myLoadBalancer \
-    --load-distribution SourceIP \
+    --load-distribution Default \
     --name myHTTPRule \
     --resource-group myResourceGroupLB 
 ```

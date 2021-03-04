@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715526"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Kurz: vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak vytvořit a spravovat konfiguraci směrování/pa
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Veřejné partnerské vztahy](about-public-peering.md)
+> * [Veřejný partnerský vztah](about-public-peering.md)
 > * [Video – privátní partnerské vztahy](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Video – partnerský vztah Microsoftu](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > - Konfigurace, aktualizace a odstranění partnerského vztahu Microsoftu pro okruh
 > - Konfigurace, aktualizace a odstranění privátního partnerského vztahu Azure pro okruh
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * Než začnete s konfigurací, ujistěte [se,](expressroute-prerequisites.md)že jste zkontrolovali požadavky, [požadavky na směrování](expressroute-routing.md)a stránky [pracovního postupu](expressroute-workflows.md) .
@@ -44,7 +44,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejí
 
 Pro okruh ExpressRoute můžete nakonfigurovat privátní partnerské vztahy a partnerské vztahy Microsoftu. Partnerské vztahy se dají konfigurovat v libovolném pořadí, ve kterém si zvolíte. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o doménách směrování a partnerských vztazích najdete v tématu věnovaném [doménám směrování ExpressRoute](expressroute-circuit-peerings.md).
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah s Microsoftem
+## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah Microsoftu
 
 Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute.
 
@@ -243,8 +243,10 @@ Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfigura
 
 1. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Než budete pokračovat v dalších krocích, ujistěte se, že máte následující položky:
 
-   * Podsíť /30 pro primární propojení. Podsíť nesmí být součástí žádného adresního prostoru rezervovaného pro virtuální sítě.
-   * Podsíť /30 pro sekundární propojení. Podsíť nesmí být součástí žádného adresního prostoru rezervovaného pro virtuální sítě.
+   * Dvojice podsítí, které nejsou součástí žádného adresního prostoru rezervovaného pro virtuální sítě. Pro primární propojení se použije jedna podsíť, zatímco druhá se použije pro sekundární propojení. Z každé z těchto podsítí přiřadíte směrovač první použitelná IP adresa, protože společnost Microsoft použije pro svůj směrovač druhou použitelnou IP adresu. Pro tuto dvojici podsítí máte tři možnosti:
+       * IPv4: dvě podsítě/30.
+       * IPv6: dvě podsítě/126.
+       * Obojí: dvě podsítě/30 a dvě podsítě/126.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Ujistěte se, že nepoužíváte 65515.
    * **Volitelné –** Hodnota hash MD5, pokud se rozhodnete ji použít.

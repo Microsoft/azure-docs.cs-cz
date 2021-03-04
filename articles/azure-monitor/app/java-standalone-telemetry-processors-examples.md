@@ -1,35 +1,36 @@
 ---
 title: Příklady procesorů telemetrie – Azure Monitor Application Insights pro Java
-description: Příklady ilustrující procesory telemetrie v Azure Monitor Application Insights pro jazyk Java
+description: Prozkoumejte příklady, které ukazují procesory telemetrie v Azure Monitor Application Insights pro jazyk Java.
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734583"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Příklady procesorů telemetrie – Azure Monitor Application Insights pro Java
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Příklady procesorů telemetrie – Azure Monitor Application Insights pro Java
 
-## <a name="includeexclude-samples"></a>Zahrnout/vyloučit ukázky
+Tento článek popisuje příklady procesorů telemetrie v Application Insights pro jazyk Java. Najdete ukázky pro zahrnutí a vyloučení konfigurací. Také najdete ukázky pro procesory atributů a rozsah procesorů.
+## <a name="include-and-exclude-samples"></a>Zahrnutí a vyloučení ukázek
 
-### <a name="1-include-spans"></a>1. zahrnout rozsahy
+V této části se dozvíte, jak zahrnout a vyloučit rozsahy. Uvidíte také, jak vyloučit vícenásobné rozsahy a použít selektivní zpracování.
+### <a name="include-spans"></a>Zahrnout rozsahy
 
-Následující znázorňuje, včetně rozsahů pro tento procesor atributů. Tento procesor nezpracovává žádné jiné rozsahy, které neodpovídají vlastnostem.
+V této části se dozvíte, jak zahrnout rozsahy pro procesor atributů. Rozsahy, které neodpovídají vlastnostem, nejsou zpracovány procesorem.
 
-Následující podmínky jsou splněné pro shodu:
-* Název rozsahu musí být rovný "span" nebo "spanB". 
+Shoda vyžaduje, aby název rozsahu byl roven `spanA` nebo `spanB` . 
 
-Existují následující možnosti, které odpovídají vloženým vlastnostem a jsou aplikovány akce procesoru.
+Tyto rozsahy odpovídají vloženým vlastnostem a používají se akce procesoru:
 * Název Span1: atributy "span": {ENV: dev, test_request: 123, credit_card: 1234}
 * Název Span2: atributy spanB: {ENV: dev, test_request: false}
 * Název Span3: atributy "span": {ENV: 1, test_request: dev, credit_card: 1234}
 
-Následující rozsahy se neshodují s vloženými vlastnostmi a akce procesoru se neaplikují.
+Tento rozsah neodpovídá vlastnostem include a akce procesoru nejsou aplikovány:
 * Název Span4: atributy spanC: {ENV: dev, test_request: false}
 
 ```json
@@ -58,19 +59,18 @@ Následující rozsahy se neshodují s vloženými vlastnostmi a akce procesoru 
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. vyloučit rozsahy
+### <a name="exclude-spans"></a>Vyloučit rozsahy
 
-Následující ukázky demonstrují vyloučení rozpětí pro tento procesor atributů. Tento procesor nezpracovává všechny rozsahy, které odpovídají vlastnostem.
+Tato část ukazuje, jak vyloučit rozsahy pro procesor atributů. Rozsahy odpovídající vlastnostem nezpracovává tento procesor.
 
-Následující podmínky jsou splněné pro shodu:
-* Název rozsahu musí být rovný "span" nebo "spanB". 
+Shoda vyžaduje, aby název rozsahu byl roven `spanA` nebo `spanB` .
 
-Níže jsou ty, které odpovídají vlastnostem Exclude, a akce procesoru se neaplikují.
+Následující rozsahy odpovídají vlastnostem Exclude a akce procesoru nejsou aplikovány:
 * Název Span1: atributy "span": {ENV: dev, test_request: 123, credit_card: 1234}
 * Název Span2: atributy spanB: {ENV: dev, test_request: false}
 * Název Span3: atributy "span": {ENV: 1, test_request: dev, credit_card: 1234}
 
-Následující rozsahy se neshodují s vlastnostmi Exclude a jsou aplikovány akce procesoru.
+Tento rozsah neodpovídá vlastnostem Exclude a používají se akce procesoru:
 * Název Span4: atributy spanC: {ENV: dev, test_request: false}
 
 ```json
@@ -99,19 +99,19 @@ Následující rozsahy se neshodují s vlastnostmi Exclude a jsou aplikovány ak
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. ExcludeMulti rozsahy
+### <a name="exclude-spans-by-using-multiple-criteria"></a>Vyloučit rozsahy pomocí více kritérií
 
-Následující ukázky demonstrují vyloučení rozpětí pro tento procesor atributů. Tento procesor nezpracovává všechny rozsahy, které odpovídají vlastnostem.
+Tato část ukazuje, jak vyloučit rozsahy pro procesor atributů. Rozsahy odpovídající vlastnostem nezpracovává tento procesor.
 
-Následující podmínky jsou splněné pro shodu:
-* Atribut (' ENV ', ' dev ') musí existovat v rozsahu pro porovnávání.
-* Pokud existuje atribut s klíčem "test_request" v rozsahu, existuje shoda.
+Shoda vyžaduje splnění následujících podmínek:
+* Atribut (například `env` nebo `dev` ) musí existovat v rozsahu.
+* Rozpětí musí mít atribut, který má klíč `test_request` .
 
-Níže jsou ty, které odpovídají vlastnostem Exclude, a akce procesoru se neaplikují.
+Následující rozsahy odpovídají vlastnostem Exclude a akce procesoru nejsou aplikovány.
 * Název Span1: atributy spanB: {ENV: dev, test_request: 123, credit_card: 1234}
 * Název Span2: atributy "span": {ENV: dev, test_request: false}
 
-Následující rozsahy se neshodují s vlastnostmi Exclude a jsou aplikovány akce procesoru.
+Následující rozsah se neshoduje s vlastnostmi vyloučení a používají se akce procesoru:
 * Název Span3: atributy spanB: {ENV: 1, test_request: dev, credit_card: 1234}
 * Název Span4: atributy spanC: {ENV: dev, dev_request: false}
 
@@ -151,16 +151,16 @@ Následující rozsahy se neshodují s vlastnostmi Exclude a jsou aplikovány ak
 }
 ```
 
-### <a name="4-selective-processing"></a>4. selektivní zpracování
+### <a name="selective-processing"></a>Selektivní zpracování
 
-Následující příklad ukazuje, jak zadat sadu vlastností span, které určují, které z nich se má použít pro tento procesor. `include`Z vlastností, které by měly být zahrnuty, a `exclude` vlastnosti jsou dále vyfiltrovány mimo rozsah, které by neměly být zpracovány.
+V této části se dozvíte, jak zadat sadu vlastností rozpětí, které určují, které z nich se má použít pro tento procesor. Vlastnosti include označují, které rozsahy by měly být zpracovány. Vlastnosti vyloučení odfiltrují rozsahy, které by neměly být zpracovány.
 
-V níže uvedené konfiguraci se shodují tyto vlastnosti a akce procesoru:
+V následující konfiguraci se tyto rozsahy shodují s vlastnostmi a používají se akce procesoru:
 
 * Název Span1: atributy spanB: {ENV: produkční, test_request: 123, credit_card: 1234, redact_trace: false}
 * Název Span2: atributy "span": {ENV: staging, test_request: false, redact_trace: true}
 
-Následující rozsahy se neshodují s vloženými vlastnostmi a akcemi procesoru nejsou aplikovány:
+Tyto rozsahy se neshodují s vlastnostmi zahrnutí a akce procesoru nejsou aplikovány:
 * Název Span3: atributy spanB: {ENV: produkční, test_request: true, credit_card: 1234, redact_trace: false}
 * Název Span4: atributy spanC: {ENV: dev, test_request: false}
 
@@ -206,7 +206,7 @@ Následující rozsahy se neshodují s vloženými vlastnostmi a akcemi procesor
 
 ### <a name="insert"></a>Vložit
 
-Následující kód vloží nový atribut {"attribute1": "attributeValue1"} pro rozsah, kde klíč "attribute1" neexistuje.
+Následující ukázka vloží nový atribut `{"attribute1": "attributeValue1"}` do rozsahů, kde klíč `attribute1` neexistuje.
 
 ```json
 {
@@ -230,7 +230,7 @@ Následující kód vloží nový atribut {"attribute1": "attributeValue1"} pro 
 
 ### <a name="insert-from-another-key"></a>Vložit z jiného klíče
 
-Následující hodnota používá hodnotu z atributu "anotherkey" pro vložení nového atributu {"newKey": "Value z atributu" anotherkey "} pro rozsah, kde klíč" newKey "neexistuje. Pokud atribut ' anotherkey ' neexistuje, žádný nový atribut není vložen do rozsahů.
+Následující příklad používá hodnotu z atributu `anotherkey` pro vložení nového atributu `{"newKey": "<value from attribute anotherkey>"}` do rozsahů, kde klíč `newKey` neexistuje. Pokud atribut `anotherkey` neexistuje, žádný nový atribut není vložen do rozsahů.
 
 ```json
 {
@@ -254,7 +254,7 @@ Následující hodnota používá hodnotu z atributu "anotherkey" pro vložení 
 
 ### <a name="update"></a>Aktualizace
 
-Následující aktualizuje atribut na {"DB. tajná" ":" redigováné "} a aktualizuje atribut ' Boo ' pomocí hodnoty z atributu ' foo '. Rozsahy bez atributu ' Boo ' se nezmění.
+Následující příklad aktualizuje atribut na `{"db.secret": "redacted"}` . Aktualizuje atribut `boo` pomocí hodnoty z atributu `foo` . Rozsahy, které nemají atribut, se `boo` nezmění.
 
 ```json
 {
@@ -283,7 +283,7 @@ Následující aktualizuje atribut na {"DB. tajná" ":" redigováné "} a aktual
 
 ### <a name="delete"></a>Odstranit
 
-Následující příklad ukazuje odstranění atributu s klíčem ' credit_card '.
+Následující příklad ukazuje, jak odstranit atribut, který má klíč `credit_card` .
 
 ```json
 {
@@ -306,7 +306,7 @@ Následující příklad ukazuje odstranění atributu s klíčem ' credit_card 
 
 ### <a name="hash"></a>Hodnoty hash
 
-Následující příklad ukazuje hodnoty hash existující hodnoty atributu.
+Následující příklad ukazuje, jak hash hodnoty stávajících atributů.
 
 ```json
 {
@@ -329,13 +329,13 @@ Následující příklad ukazuje hodnoty hash existující hodnoty atributu.
 
 ### <a name="extract"></a>Extrahovat
 
-Následující příklad ukazuje použití regulárního výrazu pro vytvoření nových atributů na základě hodnoty jiného atributu.
-Například předanému http. URL = ' http://example.com/path?queryParam1=value1 , queryParam2 = hodnota2 ' budou vloženy následující atributy:
-* httpProtocol: http
-* httpDomain: example.com
-* httpPath: cesta
-* httpQueryParams: queryParam1 = Hodnota1, queryParam2 = hodnota2
-* hodnota http. URL se nemění.
+Následující příklad ukazuje, jak použít regulární výraz (Regex) k vytvoření nových atributů na základě hodnoty jiného atributu.
+Například, `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` jsou vloženy následující atributy:
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* httpPath: `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http. URL: *bez* změny
 
 ```json
 {
@@ -357,8 +357,8 @@ Například předanému http. URL = ' http://example.com/path?queryParam1=value1
 }
 ```
 
-Následující příklad ukazuje, jak zpracovat rozsahy, které mají název rozpětí odpovídající vzorům RegExp.
-Tento procesor Odstraní atribut "token" a zařadí atribut "Password" v rozsahu, kde název rozsahu odpovídá "auth \* ". a kde se název span neshoduje s "login \* ".
+Následující příklad ukazuje, jak zpracovat rozsahy, které mají název rozpětí, který odpovídá vzorům regulárního výrazu.
+Tento procesor odebere `token` atribut. Zařadí `password` atribut v rámci rozsahů, kde se shoduje název rozsahu `auth.*` a kde se název rozsahu neshoduje `login.*` .
 
 ```json
 {
@@ -401,7 +401,7 @@ Tento procesor Odstraní atribut "token" a zařadí atribut "Password" v rozsahu
 
 ### <a name="name-a-span"></a>Pojmenování rozsahu
 
-Následující příklad určuje hodnoty atributu "DB. svc", "Operation" a "ID" budou tvořit nový název rozsahu, v tomto pořadí, oddělený hodnotou "::".
+Následující příklad určuje hodnoty atributů `db.svc` , `operation` a `id` . Vytvoří nový název rozpětí pomocí těchto atributů v tomto pořadí, které jsou odděleny hodnotou `::` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ Následující příklad určuje hodnoty atributu "DB. svc", "Operation" a "ID" 
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahovat atributy z rozsahu názvů
+### <a name="extract-attributes-from-a-span-name"></a>Extrakce atributů z názvu rozpětí
 
-Řekněme, že název vstupního rozsahu je/API/v1/Document/12345678/Update. Použití následujících výsledků ve výstupním názvu span/api/v1/document/{documentId}/update přidá nový atribut "documentId" = "12345678" do rozsahu.
+Řekněme, že název vstupního rozsahu je `/api/v1/document/12345678/update` . Následující ukázka má za následek název výstupního rozsahu `/api/v1/document/{documentId}/update` . Přidá nový atribut `documentId=12345678` do rozsahu.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ Následující příklad určuje hodnoty atributu "DB. svc", "Operation" a "ID" 
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>Extrakce atributů z názvu span pomocí zahrnutí a vyloučení
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>Extrakce atributů z názvu rozpětí pomocí zahrnutí a vyloučení
 
-Následující příklad ukazuje přejmenování názvu rozsahu na "{operation_website}" a přidání atributu {Key: operation_website, Value: oldSpanName}, pokud má rozsah následující vlastnosti:
-- Název rozpětí obsahuje znak/kdekoli v řetězci.
-- Název rozsahu není "Nepřipojovat/Change".
+Následující příklad ukazuje, jak změnit název rozsahu na `{operation_website}` . Přidá atribut s klíčovým `operation_website` a hodnotou, `{oldSpanName}` Pokud má rozsah následující vlastnosti:
+- Název rozpětí obsahuje `/` libovolné místo v řetězci.
+- Název rozpětí není `donot/change` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

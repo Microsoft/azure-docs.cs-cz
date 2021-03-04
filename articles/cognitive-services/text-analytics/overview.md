@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563224"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722275"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu je cloudová služba, která poskytuje funkce NLP (přirozený jazyk Processing) pro dolování textu a analýzu textu, včetně analýz mínění, dolování stanovisek, extrakce klíčových frází, rozpoznávání jazyka a rozpoznávání pojmenovaných entit.
 
-Rozhraní API je součástí služby [Azure Cognitive Services](../index.yml), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/client-libraries-rest-api.md).
+Rozhraní API je součástí služby [Azure Cognitive Services](../index.yml), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít s REST API [verze 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) nebo [verze 3,1-Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)nebo v [klientské knihovně](quickstarts/client-libraries-rest-api.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 

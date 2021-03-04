@@ -4,15 +4,15 @@ description: Řešení běžných problémů souvisejících s testováním a Ce
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600985"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721153"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Řešení potíží s certifikací virtuálního počítače
 
@@ -220,7 +220,7 @@ Následující tabulka uvádí minimální opravenou verzi Windows serveru:
 |Windows Server 2012|6.2.9200.22099|
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
-|Windows Server 2019|Není k dispozici|
+|Windows Server 2019|NA|
 |
 
 > [!NOTE]
@@ -594,8 +594,37 @@ Potom nabídku znovu publikujte.
 
 Chcete-li dokončit proces publikování, přečtěte si téma [Revize a publikování nabídek](review-publish-offer.md).
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>Image virtuálních počítačů s omezeným přístupem nebo vyžadováním vlastních šablon
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>Uzamčené (nebo) nabídka zakázaného SSH
+
+  Bitové kopie, které jsou publikovány pomocí SSH Disabled (pro Linux) nebo RDP Disabled (pro Windows), jsou považovány za zamčené virtuální počítače. Existují zvláštní obchodní scénáře, které můžou vydavatelé jenom omezit přístup jenom na několik uživatelů. Při ověřování se můžou uzamknout virtuální počítače, které neumožňují provedení určitých certifikačních příkazů.
+
+
+#### <a name="custom-templates"></a>Vlastní šablony
+
+   Obecně platí, že všechny bitové kopie, které jsou publikovány v rámci jednotlivých virtuálních počítačů, budou následovat po šabloně Standard ARM pro nasazení. Existují však situace, kdy může vydavatel vyžadovat přizpůsobení při nasazování virtuálních počítačů (např. více síťových adaptérů, které mají být nakonfigurovány).
+    
+   V závislosti na následujících scénářích (nevyčerpávající) budou vydavatelé používat vlastní šablony pro nasazení virtuálního počítače:
+
+   * Virtuální počítač vyžaduje další síťové podsítě.
+   * Další metadata, která se mají vložit do šablony ARM
+   * Příkazy, které jsou předpokladem pro spuštění šablony ARM.
+
+### <a name="vm-extensions"></a>Rozšíření virtuálních počítačů   
+
+   Rozšíření virtuálních počítačů Azure jsou malé aplikace, které na virtuálních počítačích Azure umožňují provádět úlohy konfigurace a automatizace po nasazení. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače. 
+
+   Ověření rozšíření virtuálních počítačů se systémem Linux vyžadují, aby byla součástí bitové kopie následující:
+* Větší 2.2.41 agenta Azure Linux
+* Verze Pythonu nad 2,8 
+
+
+Další informace najdete v [rozšíření virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+     
 ## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace vlastností nabídek virtuálních počítačů](azure-vm-create-properties.md)
 - [Ceny aktivního tržiště](partner-center-portal/marketplace-rewards.md)
 - Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu partnerského centra](https://aka.ms/marketplacepublishersupport).
+ 

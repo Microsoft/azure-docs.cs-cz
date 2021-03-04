@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664560"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689228"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
 
@@ -26,7 +26,7 @@ V tomto kurzu použijete konfigurace pomocí GitOps v clusteru Kubernetes s povo
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořit účet zdarma] (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Existující Kubernetes připojený cluster s podporou Azure ARC.
     - Pokud jste ještě nepřipojili cluster, Projděte si náš průvodce [rychlým startem clusteru Kubernetes s povoleným připojením k Azure ARC](quickstart-connect-cluster.md).
 - Porozumění výhodám a architektuře této funkce. Další informace najdete v [tématu Konfigurace a GitOps v článku Kubernetes s podporou ARC Azure](conceptual-configurations.md).
@@ -152,7 +152,7 @@ Upravte konfiguraci pomocí následujících volitelných parametrů:
 | ------------- | ------------- |
 | `--enable-helm-operator`| Přepněte na povolení podpory pro nasazení grafu Helm. |
 | `--helm-operator-params` | Hodnoty grafu pro operátor Helm (Pokud je povoleno) Například, `--set helm.versions=v3`. |
-| `--helm-operator-version` | Verze grafu pro operátor Helm (Pokud je povolená) Použijte verzi 1.2.0 +. Výchozí: ' 1.2.0 '. |
+| `--helm-operator-chart-version` | Verze grafu pro operátor Helm (Pokud je povolená) Použijte verzi 1.2.0 +. Výchozí: ' 1.2.0 '. |
 | `--operator-namespace` | Název oboru názvů operátoru. Výchozí: výchozí. Maximální počet: 23 znaků. |
 | `--operator-params` | Parametry pro operátor Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'```. 
 

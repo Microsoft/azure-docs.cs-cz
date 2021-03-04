@@ -3,12 +3,12 @@ title: Integrace pracovních položek (Preview) – Application Insights
 description: Naučte se vytvářet pracovní položky v GitHubu nebo v Azure DevOps s Application Insights daty, která jsou v nich vložená.
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731914"
 ---
 # <a name="work-item-integration-preview"></a>Integrace pracovních položek (Preview)
 
@@ -53,7 +53,7 @@ Chcete-li upravit šablonu, v části *Konfigurovat* klikněte na kartu **pracov
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" Snímek karty pracovní položky s vybranou ikonou upravit tužku":::
 
-![V horní části vyberte upravit ikonu úprav ](./media/work-item-integration/edit-icon.png) a začněte upravovat šablonu. Šablony pracovních položek jsou založené na [Azure monitor sešitech](../platform/workbooks-overview.md). Informace o pracovní položce se generují pomocí dotazovacího jazyka pro klíčové slovo. Dotazy můžete upravit a přidat tak pro svůj tým další kontext. Po dokončení úprav sešit uložte kliknutím na ikonu Uložit ikonu ![ Uložit ](./media/work-item-integration/save-icon.png) na horním panelu nástrojů.
+![V horní části vyberte upravit ikonu úprav ](./media/work-item-integration/edit-icon.png) a začněte upravovat šablonu. Šablony pracovních položek jsou založené na [Azure monitor sešitech](../visualize/workbooks-overview.md). Informace o pracovní položce se generují pomocí dotazovacího jazyka pro klíčové slovo. Dotazy můžete upravit a přidat tak pro svůj tým další kontext. Po dokončení úprav sešit uložte kliknutím na ikonu Uložit ikonu ![ Uložit ](./media/work-item-integration/save-icon.png) na horním panelu nástrojů.
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Snímek sešitu šablony pracovní položky v režimu úprav" lightbox="./media/work-item-integration/edit-workbook.png":::
 

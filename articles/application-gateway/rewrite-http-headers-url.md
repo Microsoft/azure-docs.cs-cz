@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726508"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
 
@@ -60,9 +60,9 @@ Informace o tom, jak přepsat adresu URL pomocí Application Gateway pomocí Azu
 Akce přepisu slouží k zadání adresy URL, hlaviček požadavků nebo hlaviček odpovědí, které chcete přepsat, a nové hodnoty, do které chcete přepsat. Hodnota adresy URL nebo nová nebo existující hlavička může být nastavena na tyto typy hodnot:
 
 * Text
-* Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_*header*}.
-* Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_*header*}.
-* Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_*serverVariable*}. Zobrazit seznam podporovaných proměnných serveru
+* Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header*}.
+* Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header*}.
+* Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable*}. Zobrazit seznam podporovaných proměnných serveru
 * Kombinace textu, hlavičky požadavku, hlavičky odpovědi a serverové proměnné. 
 
 ## <a name="rewrite-conditions"></a>Podmínky přepisu
@@ -100,7 +100,7 @@ Pokud chcete použít celou hodnotu, neměli byste toto číslo uvádět. Stač�
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_*serverVariableName*}.
+Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariableName*}.
 
 Application Gateway podporuje následující proměnné serveru:
 
@@ -164,7 +164,7 @@ Když aplikace back-end pošle odezvu přesměrování, může být vhodné pře
 
 Vzhledem k tomu, že App Service je víceklientské služba, používá v žádosti hlavičku hostitele ke směrování požadavku na správný koncový bod. App Services mají výchozí název domény *. azurewebsites.net (řekněme contoso.azurewebsites.net), který se liší od názvu domény služby Application Gateway (řekněme contoso.com). Vzhledem k tomu, že původní požadavek od klienta má název domény služby Application Gateway (contoso.com) jako název hostitele, služba Application Gateway změní název hostitele na contoso.azurewebsites.net. Tato změna tuto změnu provede, aby služba App Service mohla požadavek směrovat do správného koncového bodu.
 
-Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na contoso.azurewebsites.net/path2 namísto průchodu přes Aplikační bránu (contoso.com/path2). Obcházení aplikační brány není žádoucí.
+Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na místo průchodu `contoso.azurewebsites.net/path2` přes Aplikační bránu ( `contoso.com/path2` ). Obcházení aplikační brány není žádoucí.
 
 Tento problém můžete vyřešit tak, že nastavíte název hostitele v hlavičce umístění na název domény služby Application Gateway.
 
@@ -211,13 +211,13 @@ Chcete-li dosáhnout scénářů, ve kterých chcete vybrat back-end fond na zá
 
 * Třetí pravidlo má podmínku, která kontroluje *QUERY_STRING*  proměnnou pro *kategorii = příslušenství* a má akci, která přepíše cestu URL k/*listing3* a má **znovu vyhodnotit mapu cest** zapnuto.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="Scénář přepsání adresy URL 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="Scénář přepsání adresy URL 1-2.":::
 
  
 
 **Krok 2 (b):** Přidružit tuto sadu přepsání s výchozí cestou k výše uvedenému pravidlu na základě cesty
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="Scénář přepsání adresy URL 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="Scénář přepsání adresy URL 1-3.":::
 
 Když teď uživatel požaduje *contoso.com/listing?Category=any*, pak se porovná s výchozí cestou, protože žádný ze vzorů cest v mapě cest (/listing1,/listing2,/listing3) se neshoduje. Vzhledem k tomu, že jste přidružili výše uvedenou sadu přepsání s touto cestou, vyhodnotí se tato sada přepisování. Vzhledem k tomu, že řetězec dotazu se neshoduje s podmínkou v žádném z 3 pravidel přepsání v této sadě přepsání, nebude provedena žádná akce přepisu, takže požadavek bude směrován beze změny do back-endu přidruženého k výchozí cestě (což je *GenericList*).
 
@@ -234,11 +234,11 @@ V takovém případě Application Gateway může zachytit parametry z adresy URL
 
 **Podmínka** – Pokud se proměnná serveru `uri_path` rovná vzoru `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="Scénář přepsání adresy URL 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="Scénář přepsání adresy URL 2-1.":::
 
 **Action** – nastaví cestu URL k `buy.aspx` řetězci dotazu na `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="Scénář přepsání adresy URL 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="Scénář přepsání adresy URL 2-2.":::
 
 Podrobný průvodce pro dosažení výše popsaného scénáře najdete v tématu [přepisování adresy URL s Application Gateway pomocí Azure Portal](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ V případě přepisu adresy URL Application Gateway přepíše adresu URL před
 
 V případě přesměrování adresy URL Application Gateway odešle klientovi odpověď přesměrování s novou adresou URL. To zase vyžaduje, aby klient znovu odeslal svůj požadavek na novou adresu URL, která je k dispozici v přesměrování. Adresa URL, kterou uživatel vidí v prohlížeči, se aktualizuje na novou adresu URL.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Scénář přepsání adresy URL 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Přepište a přesměrujte.":::
 
 ## <a name="limitations"></a>Omezení
 

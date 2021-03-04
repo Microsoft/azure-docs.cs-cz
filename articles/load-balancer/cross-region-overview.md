@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742598"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer podporuje vyrovnávání zatížení mezi oblastmi,
 * [Sestavit v existujícím řešení vyrovnávání zatížení](#build-cross-region-solution-on-existing-azure-load-balancer) bez výukové křivky
 
 > [!IMPORTANT]
-> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview a je možné ho nasadit na portálu. Přihlaste se, abyste **https://preview.portal.azure.com** mohli tuto funkci Zobrazit a nasadit. </br> </br>
+> Nástroj pro vyrovnávání zatížení mezi oblastmi je momentálně ve verzi Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vyrovnávání zatížení mezi oblastmi nabízí stejné výhody vysokého výkonu a nízké latence jako místní Nástroj pro vyrovnávání zatížení (Standard). 
@@ -79,7 +79,7 @@ Další informace najdete v tématu [Konfigurace distribučního režimu pro Azu
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Možnost horizontálního navýšení nebo snížení kapacity za jeden koncový bod
 
-Když zveřejňujete globální koncový bod nástroje pro vyrovnávání zatížení mezi oblastmi zákazníkům, můžete přidat nebo odebrat regionální nasazení za globálním koncovým bodem bez dopadu na zákazníky. 
+Když zveřejňujete globální koncový bod nástroje pro vyrovnávání zatížení mezi oblastmi zákazníkům, můžete přidat nebo odebrat oblastní nasazení za globálním koncovým bodem bez přerušení. 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -94,7 +94,7 @@ Back-end fond nástroje pro vyrovnávání zatížení mezi oblastmi obsahuje je
 
 Přidejte stávající nasazení nástroje pro vyrovnávání zatížení do nástroje pro vyrovnávání zatížení mezi oblastmi pro vysoce dostupné nasazení v různých oblastech.
 
-**Domovská oblast** je místo, kde je nasazený nástroj pro vyrovnávání zatížení mezi oblastmi. Tato oblast nemá vliv na to, jak se bude směrovat provoz. Pokud dojde k výpadku domovské oblasti, nebude to mít vliv na tok provozu.
+**Domovská oblast** je místo, kde je nasazený nástroj pro vyrovnávání zatížení mezi oblastmi. Tato oblast nemá vliv na to, jak se bude směrovat provoz. Pokud dojde k výpadku domovské oblasti, tok provozu nebude nijak ovlivněn.
 
 ### <a name="home-regions"></a>Domovské oblasti
 * USA – východ 2
@@ -137,13 +137,13 @@ Nástroj pro vyrovnávání zatížení mezi oblastmi směruje provoz na přísl
 
 * Konfigurace protokolu IP front-endu jsou pouze veřejné. Interní front-end není v současné době podporován.
 
-* Soukromý nebo interní nástroj pro vyrovnávání zatížení se nedá přidat do back-endového fondu pro meziregionální Nástroj pro vyrovnávání zatížení. 
+* Soukromý nebo interní nástroj pro vyrovnávání zatížení se nedá přidat do back-endu fondu pro vyrovnávání zatížení mezi oblastmi. 
 
 * Konfigurace IP adresy front-endu protokolu IPv6 mezi oblastmi není podporována. 
 
 * V tuto chvíli nejde nakonfigurovat sondu stavu. Výchozí sonda stavu automaticky shromažďuje informace o dostupnosti pro místní Nástroj pro vyrovnávání zatížení každých 20 sekund. 
 
-* Službu Azure Kubernetes Service (AKS) aktuálně nelze integrovat s Load Balancer mezi oblastmi. Při nastavování Load Balancer pro různé oblasti před veřejným Load Balancer nasazeným pomocí AKS by se měla očekávat ztráta připojení.
+* Integrace se službou Azure Kubernetes Service (AKS) je momentálně nedostupná. Ke ztrátě připojení dojde při nasazení nástroje pro vyrovnávání zatížení mezi oblastmi pomocí veřejného nástroje pro vyrovnávání zatížení (AKS).
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
 Nástroj pro vyrovnávání zatížení mezi oblastmi sdílí [smlouvu SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) standardního nástroje pro vyrovnávání zatížení.

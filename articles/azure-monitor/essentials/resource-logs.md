@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3560152ce5e3185e79c7a7ff34e5360f10236980
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610355"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731455"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
-Protokoly prostředků Azure jsou [protokoly platforem](../essentials/platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](../platform/data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
+Protokoly prostředků Azure jsou [protokoly platforem](../essentials/platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](../logs/data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
 
 V tématu [Vytvoření nastavení diagnostiky můžete odesílat protokoly a metriky platforem do různých cílů](../essentials/diagnostic-settings.md) , kde najdete podrobné informace o vytváření nastavení diagnostiky a [nasazování Azure monitor ve velkém rozsahu pomocí Azure Policy](../deploy-scale.md) podrobnější informace o použití Azure Policy k automatickému vytvoření nastavení diagnostiky pro každý prostředek Azure, který vytvoříte.
 
 ## <a name="send-to-log-analytics-workspace"></a>Odeslání do pracovního prostoru služby Log Analytics
- Odešlete protokoly prostředků do pracovního prostoru Log Analytics, abyste povolili funkce [Azure monitor protokolů](../platform/data-platform-logs.md) , které zahrnují následující:
+ Odešlete protokoly prostředků do pracovního prostoru Log Analytics, abyste povolili funkce [Azure monitor protokolů](../logs/data-platform-logs.md) , které zahrnují následující:
 
 - Proveďte korelaci dat protokolu prostředků s dalšími daty monitorování shromážděnými pomocí Azure Monitor.
 - Konsolidujte položky protokolu z několika prostředků Azure, předplatných a klientů do jednoho umístění pro účely analýzy dohromady.
 - Pomocí dotazů protokolu můžete provádět komplexní analýzy a získat podrobné přehledy o datech protokolu.
 - Používejte výstrahy protokolu se složitou logikou výstrah.
 
-[Vytvořte nastavení diagnostiky](../essentials/diagnostic-settings.md) pro odesílání protokolů prostředků do pracovního prostoru Log Analytics. Tato data jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../platform/data-platform-logs.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
+[Vytvořte nastavení diagnostiky](../essentials/diagnostic-settings.md) pro odesílání protokolů prostředků do pracovního prostoru Log Analytics. Tato data jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../logs/data-platform-logs.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
 
 - Diagnostika Azure – všechna zapsaná data jsou do tabulky _AzureDiagnostics_ .
 - Data specifická pro prostředky jsou zapsána do jednotlivých tabulek pro každou kategorii prostředku.
@@ -90,7 +90,7 @@ Většina prostředků Azure zapíše data do pracovního prostoru v režimu **d
    ![Selektor režimu nastavení diagnostiky](media/resource-logs/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> Příklad nastavení režimu kolekce pomocí šablony Resource Manageru najdete v tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
+> Příklad nastavení režimu kolekce pomocí šablony Resource Manageru najdete v tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Azure monitor](./resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
 
 Existující nastavení diagnostiky můžete upravit do režimu specifického pro prostředky. V tomto případě zůstanou shromážděná data v tabulce _AzureDiagnostics_ , dokud je neodeberete podle nastavení uchování pro daný pracovní prostor. Ve vyhrazené tabulce budou shromažďována nová data. Použijte operátor [Union](/azure/kusto/query/unionoperator) k dotazování dat napříč oběma tabulkami.

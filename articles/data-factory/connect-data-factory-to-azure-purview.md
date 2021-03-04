@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727936"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Připojení Data Factory k Azure dosah (Preview)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Pokud se zobrazí upozornění na portálu Azure Data Factory po registraci úč
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Snímek obrazovky, ve kterém se zobrazí značky registrace účtu dosah.":::
 
-2. Ověřte, jestli je udělené oprávnění k registraci účtu Azure dosah do Data Factory. Viz [Jak připojit Azure Data Factory a Azure dosah](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+2. Ověřte, jestli je udělené oprávnění k registraci účtu Azure dosah do Data Factory. Viz [Jak připojit Azure Data Factory a Azure dosah](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)
 
 ### <a name="register-data-factory-in-azure-purview"></a>Registrace Data Factory ve službě Azure dosah
-Informace o tom, jak zaregistrovat Data Factory v Azure dosah, najdete v tématu [Jak připojit Azure Data Factory a Azure dosah](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
+Informace o tom, jak zaregistrovat Data Factory v Azure dosah, najdete v tématu [Jak připojit Azure Data Factory a Azure dosah](../purview/how-to-link-azure-data-factory.md). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Vykázat data o vzřádkování do Azure dosah
 Když zákazníci spustí aktivitu kopírování, toku dat nebo spuštění balíčku SSIS ve službě Azure Data Factory, zákazníci mohou získat vztah závislosti a mít přehled o celém procesu pracovního postupu mezi zdroji dat a cílem.

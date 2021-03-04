@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e1440feacd10935b15195110cd7ea3e20b4d523c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro JIRA podle rezoluce GmbH
 
@@ -30,7 +30,7 @@ Integrace jednotného přihlašování SAML pro JIRA podle rezoluce GmbH s Azure
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD a jednotného přihlašování SAML pro JIRA podle rezoluce GmbH budete potřebovat následující položky:
 
@@ -45,7 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>Přidání podnikové aplikace pro jednotné přihlašování
 
-Aby bylo možné nastavit jednotné přihlašování ve službě Azure AD, je nutné přidat novou podnikovou aplikaci. V galerii je k dispozici předem nakonfigurovaná předkonfigurovaná aplikace pro toto **rozhraní SAML SSO pro JIRA podle rezoluce GmbH** .
+Aby bylo možné nastavit jednotné přihlašování ve službě Azure AD, je nutné přidat novou podnikovou aplikaci. V galerii je k dispozici předem nakonfigurovaná předkonfigurovaná aplikace pro toto **rozhraní SAML SSO pro JIRA podle rezoluce GmbH**.
 
 **K přidání jednotného přihlašování SAML pro JIRA podle rezoluce GmbH z Galerie proveďte následující kroky:**
 
@@ -53,7 +53,7 @@ Aby bylo možné nastavit jednotné přihlašování ve službě Azure AD, je nu
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace** a klikněte na **všechny aplikace** .
+2. Přejděte na **podnikové aplikace** a klikněte na **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -61,13 +61,13 @@ Aby bylo možné nastavit jednotné přihlašování ve službě Azure AD, je nu
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SAML SSO pro JIRA podle rezoluce GmbH** , v panelu výsledek vyberte **SAML SSO pro JIRA by Resolution GmbH** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci. Můžete také změnit název podnikové aplikace.
+4. Do vyhledávacího pole zadejte **SAML SSO pro JIRA podle rezoluce GmbH**, v panelu výsledek vyberte **SAML SSO pro JIRA by Resolution GmbH** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci. Můžete také změnit název podnikové aplikace.
 
      ![Jednotné přihlašování SAML pro JIRA podle rezoluce GmbH v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-single-sign-on-with-the-saml-sso-plugin-and-azure-ad"></a>Konfigurace a testování jednotného přihlašování pomocí modulu plug-in SAML SSO a Azure AD
 
-V této části budete testovat a konfigurovat jednotné přihlašování k JIRA pro uživatele Azure AD. Tato akce se provede pro testovacího uživatele s názvem **Britta Simon** .
+V této části budete testovat a konfigurovat jednotné přihlašování k JIRA pro uživatele Azure AD. Tato akce se provede pro testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, je potřeba zřídit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci SAML SSO pro JIRA podle rezoluce GmbH.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování, musíte provést následující kroky:
@@ -122,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
 
 1. V jiném okně webového prohlížeče se přihlaste ke své instanci JIRA jako správce.
 
-2. Najeďte myší na ozubeného kola na pravé straně a klikněte na **Spravovat aplikace** .
+2. Najeďte myší na ozubeného kola na pravé straně a klikněte na **Spravovat aplikace**.
     
     ![Snímek obrazovky zobrazující šipku ukazující na ikoně "ozubeného kola" a v rozevíracím seznamu vyberte možnost spravovat aplikace.](./media/samlssojira-tutorial/addon1.png)
 
@@ -140,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
 
     ![Snímek obrazovky s informacemi o tom, že je nainstalovaný a připravený k přechodu dialog s vybraným tlačítkem "Zavřít".](./media/samlssojira-tutorial/store-3.png)
 
-6. Pak klikněte na **Spravovat** .
+6. Pak klikněte na **Spravovat**.
 
     ![Snímek obrazovky, který zobrazuje "S A M L Single Signing JIRA (S/s)" aplikace s vybraným tlačítkem "spravovat".](./media/samlssojira-tutorial/store-4.png)
     
@@ -164,7 +164,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
     
     d. Klikněte na **Next** (Další).
     
-11. Na stránce **Konfigurace zprostředkovatele identity** klikněte na **Další** .
+11. Na stránce **Konfigurace zprostředkovatele identity** klikněte na **Další**.
  
     ![Snímek obrazovky zobrazující stránku "Konfigurace zprostředkovatele identity".](./media/samlssojira-tutorial/addon5b.png)
 
@@ -200,7 +200,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon. S uživatelem budete testovat jednotné přihlašování.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -212,27 +212,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **Britta Simon** .
+    a. Do pole **název** zadejte **Britta Simon**.
   
     b. Do pole **uživatelské jméno** zadejte <b>BrittaSimon@contoso.com</b> .
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části přidáte do podnikové aplikace Britta Simon, která umožňuje použití jednotného přihlašování.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** . 
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**. 
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyhledejte podnikovou aplikaci, kterou jste vytvořili na začátku tohoto kurzu. Pokud budete postupovat podle kroků v tomto kurzu, nazývá se to **JIRA SSO SSO pro podle rezoluce GmbH** . Pokud jste mu přihlásili jiný název, vyhledejte tento název.
+2. V seznamu aplikace vyhledejte podnikovou aplikaci, kterou jste vytvořili na začátku tohoto kurzu. Pokud budete postupovat podle kroků v tomto kurzu, nazývá se to **JIRA SSO SSO pro podle rezoluce GmbH**. Pokud jste mu přihlásili jiný název, vyhledejte tento název.
 
     ![Odkaz na rozhraní SAML SSO pro JIRA podle rezoluce GmbH v seznamu aplikací](common/all-applications.png)
 
-3. Na levém panelu klikněte na **Uživatelé a skupiny** .
+3. Na levém panelu klikněte na **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -254,7 +254,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k JEDNOTNÉmu přihlašování S
 
 1. Přihlaste se k instanci JIRA jako správce.
 
-2. Najeďte myší na ozubeného kola a vyberte **Správa uživatelů** .
+2. Najeďte myší na ozubeného kola a vyberte **Správa uživatelů**.
 
    ![Snímek obrazovky, který zobrazuje šipku ukazující na ikoně "ozubeného kola", která je vybrána v rozevíracím seznamu "Správa uživatelů".](./media/samlssojira-tutorial/user1.png)
 
@@ -262,7 +262,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k JEDNOTNÉmu přihlašování S
 
     ![Snímek obrazovky zobrazující stránku přístup správce se zvýrazněným textovým polem heslo](./media/samlssojira-tutorial/user2.png) 
 
-4. V části karta **Správa uživatelů** klikněte na možnost **vytvořit uživatele** .
+4. V části karta **Správa uživatelů** klikněte na možnost **vytvořit uživatele**.
 
     ![Snímek obrazovky zobrazující kartu Správa uživatelů s vybraným tlačítkem pro vytvoření uživatele](./media/samlssojira-tutorial/user3-new.png) 
 
@@ -272,7 +272,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k JEDNOTNÉmu přihlašování S
 
     a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele:  <b>BrittaSimon@contoso.com</b> .
 
-    b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele: **Britta Simon** .
+    b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele: **Britta Simon**.
 
     c. Do textového pole **uživatelské jméno** zadejte e-mailovou adresu uživatele: <b>BrittaSimon@contoso.com</b> . 
 
@@ -291,7 +291,7 @@ Můžete také otestovat jednotné přihlašování, pokud přejdete na `https:/
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Povolit přesměrování jednotného přihlašování pro JIRA
 
-Jak je uvedeno v části dřív, teď existují dva způsoby, jak spustit jednotné přihlašování. Buď pomocí **Azure Portal** , nebo pomocí **speciálního odkazu na instanci JIRA** . Modul plug-in SAML SSO podle rezoluce GmbH také umožňuje spustit jednotné přihlašování pouhým **přístupem k libovolné adrese URL, která odkazuje na instanci JIRA** .
+Jak je uvedeno v části dřív, teď existují dva způsoby, jak spustit jednotné přihlašování. Buď pomocí **Azure Portal** , nebo pomocí **speciálního odkazu na instanci JIRA**. Modul plug-in SAML SSO podle rezoluce GmbH také umožňuje spustit jednotné přihlašování pouhým **přístupem k libovolné adrese URL, která odkazuje na instanci JIRA**.
 
 V podstatě budou všichni uživatelé přistupující k JIRA po aktivaci možnosti v modulu plug-in přesměrováni do jednotného přihlašování.
 
@@ -302,16 +302,16 @@ Pokud chcete aktivovat přesměrování jednotného přihlašování, proveďte 
 
    ![Částečný snímek obrazovky se stránkou konfigurace modulu plug-in JIRA SAML SingleSignOn zvýraznění odkazu přesměrování v levém navigačním panelu.](./media/samlssojira-tutorial/ssore1.png)
 
-1. **Zapněte přesměrování jednotného přihlašování** .
+1. **Zapněte přesměrování jednotného přihlašování**.
 
    ![Částečný snímek obrazovky JIRA konfigurace modulu plug-in SAML SingleSignOn, který zvýrazní vybrané zaškrtávací políčko Povolit přesměrování jednotného přihlašování (SSO)](./media/samlssojira-tutorial/ssore2.png) 
 
 1. V pravém horním rohu stiskněte tlačítko **Uložit nastavení** .
 
-Po aktivaci možnosti se zobrazí výzva k zadání uživatelského jména a hesla, pokud je možnost **Povolit Nosso** zapnutá přechodem na `https://\<server-base-url>/login.jsp?nosso` . Jako vždy nahraďte **\<server-base-url>** základní adresou URL.
+Po aktivaci možnosti se zobrazí výzva k zadání uživatelského jména a hesla, pokud je možnost **Povolit Nosso** zapnutá přechodem na `https://<server-base-url>/login.jsp?nosso` . Jako vždy nahraďte **\<server-base-url>** základní adresou URL.
 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

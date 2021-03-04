@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732220"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>Ověřování HMAC – REST API odkaz
 
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argument | Description  |
+|  Argument | Popis  |
 | ------ | ------ |
 | **HMAC – SHA256** | Autorizační schéma. _požadovanou_ |
 | **Přihlašovací údaj** | ID přístupového klíče, který se používá k výpočtu podpisu. _požadovanou_ |
@@ -87,7 +87,7 @@ _Řetězec na znaménko =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  Argument | Description  |
+|  Argument | Popis  |
 | ------ | ------ |
 | **HTTP_METHOD** | Název metody pro velká písmena HTTP použitý u žádosti. Další informace najdete v [části 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | Zřetězení absolutní cesty k identifikátoru URI požadavku a řetězce dotazu. Další informace najdete v [části 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).

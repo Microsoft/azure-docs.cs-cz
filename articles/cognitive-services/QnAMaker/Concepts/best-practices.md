@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733427"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
@@ -18,7 +18,7 @@ ms.locfileid: "100104514"
 
 ## <a name="extraction"></a>Extrakce
 
-Služba QnA Maker neustále vylepšuje algoritmy, které extrahují QnAs z obsahu a rozbalí seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../index.yml) pro extrakci dat na základě typu dokumentu.
+Služba QnA Maker neustále vylepšuje algoritmy, které extrahují QnAs z obsahu a rozbalí seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../Concepts/data-sources-and-content.md) pro extrakci dat na základě typu dokumentu.
 
 Obecně platí, že stránky nejčastějších dotazů by měly být samostatné a nekombinované s dalšími informacemi. Příručky k produktu by měly mít prázdná záhlaví a možnou stránku indexu.
 

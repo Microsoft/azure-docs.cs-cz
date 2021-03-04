@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712211"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Možnosti výpočtů a úložiště v Azure Database for PostgreSQL – flexibilní Server
 
@@ -120,6 +120,9 @@ Spotřebu vstupu a výstupu můžete monitorovat v Azure Portal nebo pomocí př
 
 V případě, že je označena jako \* , má IOPS omezený typ virtuálního počítače, který jste vybrali. V opačném případě se IOPS omezí podle zvolené velikosti úložiště.
 
+>[!NOTE]
+> V metrikách se může zobrazit větší IOPS v důsledku nárůstu úrovně disku. Další podrobnosti najdete v [dokumentaci](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) . 
+
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximální I/O šířka pásma (MiB/s) pro vaši konfiguraci
 
 |Název SKU            |Velikost úložiště, GiB                             |32 |64 |128 |256 |512  |1 024|2 048|4 096|8 192 |16 384|
@@ -147,7 +150,7 @@ V případě, že je označena jako \* , má IOPS omezený typ virtuálního po�
 
 Pokud \* je tato možnost označená jako, je vstupně-výstupní šířka pásma omezená typem virtuálního počítače, který jste vybrali. V opačném případě se I/O šířka pásma omezí zvolenou velikostí úložiště.
 
-### <a name="reaching-the-storage-limit"></a>Dosáhlo se limitu úložiště.
+### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
 Při dosažení limitu úložiště začne server vracet chyby a zabrání v dalších úpravách. To může také způsobit problémy s jinými provozními aktivitami, jako jsou zálohování a archivace WAL.
 

@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183375"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733206"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Kurz: vytvoření nové podřízené zóny DNS
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným.  Pokud účet nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Stávající zóna nadřazených Azure DNS.  
@@ -40,7 +40,7 @@ Pro účely tohoto kurzu použijeme contoso.com jako nadřazenou zónu a subdoma
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet.
 
 Existují dva způsoby, jak můžete vytvořit podřízenou zónu DNS.
 1.  Prostřednictvím stránky portálu vytvořit zónu DNS.
@@ -50,7 +50,7 @@ Existují dva způsoby, jak můžete vytvořit podřízenou zónu DNS.
 ## <a name="create-child-dns-zone-via-create-dns-zone"></a>Vytvoření podřízené zóny DNS prostřednictvím vytvoření zóny DNS
 
 V tomto kroku vytvoříme novou podřízenou zónu DNS s názvem **subdomain.contoso.com** a delegujete ji na existující nadřazenou zónu DNS **contoso.com**. Zónu DNS vytvoříte pomocí karet na stránce **vytvořit ZÓNU DNS** .
-1.  V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
+1.  V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 1.  Vyberte **sítě**, vyberte **zónu DNS** a pak vyberte **Přidat** tlačítko.
 
 1.  Na kartě **základy** zadejte nebo vyberte následující hodnoty:
@@ -81,7 +81,8 @@ Můžete také vytvořit novou podřízenou zónu DNS a delegovat ji do nadřaze
 1.  Vyberte **Další: značky** a potom **Další: zkontrolovat + vytvořit**.
 1.  Na kartě **Revize + vytvořit** zkontrolujte souhrn, opravte chyby ověřování a potom vyberte **vytvořit**.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Snímek obrazovky pro vybranou podřízenou zónu" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Snímek obrazovky pro vybranou podřízenou zónu" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>Ověřit podřízenou zónu DNS
 Teď, když máte vytvořenou novou podřízenou zónu DNS *subdomain.contoso.com* . Chcete-li ověřit, že delegování proběhlo správně, je třeba zkontrolovat záznamy názvový server (NS) pro vaši podřízenou zónu v nadřazené zóně, jak je popsáno níže.  
 

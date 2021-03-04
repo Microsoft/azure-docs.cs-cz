@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687239"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -42,13 +42,7 @@ Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenanto
 
 ## <a name="sign-in-endpoints"></a>Koncové body přihlášení
 
-Uživatelé typu host s přímým přístupem se teď můžou ke svým klientům nebo aplikacím Microsoftu přihlašovat pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Následují příklady běžných koncových bodů:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí vlastních přihlašovacích údajů.
+Uživatelé typu host s přímým přístupem se teď můžou ke svým klientům nebo aplikacím Microsoftu přihlašovat pomocí [společného koncového bodu](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (jinými slovy Obecná adresa URL aplikace, která neobsahuje váš kontext tenanta). Během procesu přihlašování uživatel typu Host zvolí **Možnosti přihlášení** a pak vybere možnost **Přihlásit se k organizaci**. Uživatel pak zadá název vaší organizace a pokračuje v přihlašování pomocí vlastních přihlašovacích údajů.
 
 Uživatelé typu host s přímým přístupem můžou také používat koncové body aplikací, které obsahují informace o vašem tenantovi, například:
 

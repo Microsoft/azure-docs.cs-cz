@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688361"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -37,7 +37,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 
 > [!IMPORTANT]
 > * Minimální podporovaná verze Kubernetes je v 1.17. Další informace najdete v tématu [známé problémy](./release-notes.md#known-issues) . 
-> * Minimální podporovaná verze OCP je 4,3.
+> * Minimální podporovaná verze OCP je 4,5.
 > * Podívejte se na [požadavky na připojení](connectivity.md) a zjistěte, co je mezi vaším prostředím a Azure vyžadováno připojení.
 > * Podrobné informace o tom, jak nakonfigurovat trvalé úložiště, najdete v tématu [pokyny ke konfiguraci úložiště](storage-configuration.md) .
 > * Pokud používáte službu Azure Kubernetes, měla by být velikost virtuálního počítače pracovního uzlu clusteru aspoň **Standard_D8s_v3** a používat **prémiové disky.** Cluster by neměl zahrnovat více zón dostupnosti. 

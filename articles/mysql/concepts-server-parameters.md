@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720949"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -21,7 +21,7 @@ Tento článek popisuje informace a pokyny pro konfiguraci parametrů serveru v 
 
 Modul MySQL poskytuje mnoho různých proměnných serveru/parametrů, které lze použít ke konfiguraci a ladění chování modulu. Některé parametry lze nastavit dynamicky během doby běhu, zatímco jiné jsou "statické", což vyžaduje restart serveru, aby se mohl použít.
 
-Azure Database for MySQL zpřístupňuje možnost změnit hodnotu různých parametrů serveru MySQL pomocí [Azure Portal](./howto-server-parameters.md), rozhraní příkazového [řádku Azure](./howto-configure-server-parameters-using-cli.md)a [PowerShellu](./howto-configure-server-parameters-using-powershell.md) tak, aby odpovídaly potřebám vašich úloh.
+Azure Database for MySQL nabízí možnost pomocí webu [Azure Portal](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md) nebo [PowerShellu](./howto-configure-server-parameters-using-powershell.md) změnit hodnoty různých parametrů serveru MySQL tak, aby odpovídaly potřebám vašich úloh.
 
 ## <a name="configurable-server-parameters"></a>Konfigurovatelné parametry serveru
 
@@ -272,7 +272,7 @@ Je také důležité si uvědomit, že vyšší výkon je poskytován na úkor d
 Chcete-li uložit stav fondu vyrovnávací paměti na serveru, nastavte parametr serveru `innodb_buffer_pool_dump_at_shutdown` na hodnotu `ON` . Podobně nastavte parametr serveru `innodb_buffer_pool_load_at_startup` na `ON` Obnovit stav fondu vyrovnávací paměti při spuštění serveru. Dopad při spuštění/restartování můžete ovlivnit snížením a vyladěním hodnoty parametru serveru `innodb_buffer_pool_dump_pct` , ve výchozím nastavení je tento parametr nastaven na hodnotu `25` .
 
 > [!Note]
-> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](./concepts-pricing-tiers.md#storage).
 
 ### <a name="time_zone"></a>time_zone
 

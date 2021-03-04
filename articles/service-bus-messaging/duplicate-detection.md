@@ -3,12 +3,12 @@ title: Zjišťování duplicitních zpráv Azure Service Bus | Microsoft Docs
 description: Tento článek vysvětluje, jak můžete zjišťovat duplicity v Azure Service Busch zprávách. Duplicitní zprávu lze ignorovat a vyřadit.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684804"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711921"
 ---
 # <a name="duplicate-detection"></a>Vyhledávání duplicit
 
@@ -48,7 +48,7 @@ Tato funkce je v portálu při vytváření entit zapnutá pomocí zaškrtávac�
 
 Prostřednictvím kódu programu nastavíte příznak s vlastností [QueueDescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) v plném rozhraní API .NET Framework. V rozhraní Azure Resource Manager API je hodnota nastavena pomocí vlastnosti [queueProperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
 
-Časová historie vyhledávání duplicit ve výchozím nastavení je 30 sekund pro fronty a témata s maximální hodnotou 7 dní. Toto nastavení můžete změnit v okně fronta a vlastnosti tématu v Azure Portal.
+Časová historie vyhledávání duplicit ve výchozím nastavení je 10 minut pro fronty a témata, přičemž minimální hodnota je 20 sekund až do maximální hodnoty 7 dní. Toto nastavení můžete změnit v okně fronta a vlastnosti tématu v Azure Portal.
 
 ![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností historie vyhledávání duplicit zobrazený červeně][2]
 

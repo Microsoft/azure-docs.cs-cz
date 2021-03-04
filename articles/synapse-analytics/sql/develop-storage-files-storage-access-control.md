@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 116fb10956b02b5f6fe578565b9049d9fad54837
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693896"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Řízení přístupu k účtu úložiště pro fond SQL bez serveru ve službě Azure synapse Analytics
 
@@ -122,7 +122,7 @@ Pomocí těchto kroků můžete nakonfigurovat bránu firewall účtu úložišt
     Connect-AzAccount
     ```
 4. Definujte proměnné v PowerShellu: 
-    - Název skupiny prostředků – najdete ho v Azure Portal přehledu pracovního prostoru synapse.
+    - Název skupiny prostředků – najdete ho v Azure Portal přehledu účtu úložiště.
     - Název účtu – název účtu úložiště, který je chráněný pravidly brány firewall.
     - ID tenanta – najdete ho v Azure Portal Azure Active Directory v informacích o tenantovi.
     - Název pracovního prostoru – název pracovního prostoru synapse.

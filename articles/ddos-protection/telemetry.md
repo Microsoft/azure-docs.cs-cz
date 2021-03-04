@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522661"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716189"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
 
-Azure DDoS Protection Standard poskytuje podrobné přehledy a vizualizace útoků pomocí DDoSch analýz. Zákazníci, kteří chrání své virtuální sítě před útoky DDoS, mají podrobnější přehled o útokech na útoky a akcích podniknutých za účelem zmírnění útoku prostřednictvím sestav o zmírnění útoků, & protokolů pro zmírnění rizik. Bohatá telemetrie se zveřejňuje prostřednictvím Azure Monitor včetně podrobných metrik během doby trvání útoku DDoS. Výstrahy je možné nakonfigurovat pro libovolnou Azure Monitor metriky, které jsou vystavené v DDoS Protection. Protokolování se dá dál integrovat s [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure monitor.
+Azure DDoS Protection Standard poskytuje podrobné přehledy a vizualizace útoků pomocí DDoSch analýz. Zákazníci, kteří chrání své virtuální sítě před útoky DDoS, mají podrobnější přehled o útokech na útoky a akcích podniknutých za účelem zmírnění útoku prostřednictvím sestav o zmírnění útoků, & protokolů pro zmírnění rizik. Bohatá telemetrie se zveřejňuje prostřednictvím Azure Monitor včetně podrobných metrik během doby trvání útoku DDoS. Upozornění je možné nakonfigurovat pro všechny metriky služby Azure Monitor zveřejněné službou DDoS Protection. Protokolování se dá dál integrovat s [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure monitor.
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > I když se na Azure Portal zobrazuje více možností **agregace** , pro každou metriku se podporují jenom typy agregace uvedené v následující tabulce. Omlouváme se za tuto nejasnost a pracujeme na jejich řešení.
 
-Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
+Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
 
 
 | Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
@@ -66,15 +66,15 @@ Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [plán Azure DDoS Standard](manage-ddos-protection.md) a na virtuální síti musí být povolený DDoS Protection Standard.
-- DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejdřív vytvořit prostředek s veřejnou IP adresou. Pro [služby Azure](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (včetně nástrojů pro vyrovnávání zatížení Azure, kde jsou virtuální počítače back-end ve virtuální síti), s výjimkou prostředí Azure App Service můžete monitorovat veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic). Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .  
+- DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejprve vytvořit prostředek s veřejnou IP adresou. Pro [služby Azure](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (včetně nástrojů pro vyrovnávání zatížení Azure, kde jsou virtuální počítače back-end ve virtuální síti), s výjimkou prostředí Azure App Service můžete monitorovat veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic). Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .  
 
 ## <a name="view-ddos-protection-telemetry"></a>Zobrazit telemetrii DDoS Protection
 
-Telemetrii k útoku je poskytována prostřednictvím Azure Monitor v reálném čase. Telemetrii je dostupná jenom v případě, že je veřejná IP adresa v oblasti zmírnění rizik. 
+Telemetrie k útokům je k dispozici prostřednictvím služby Azure Monitor v reálném čase. Telemetrii je dostupná jenom v případě, že je veřejná IP adresa v oblasti zmírnění rizik. 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a přejděte k plánu DDoS Protection.
 2. V oblasti **Monitorování** vyberte **Metriky**.
-3. Vyberte **obor**. Vyberte **předplatné** , které obsahuje veřejnou IP adresu, kterou chcete protokolovat, vyberte možnost **Veřejná IP adresa** pro **typ prostředku** a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete metriky protokolovat, a pak vyberte **použít**.
+3. Vyberte **Obor**. Vyberte **předplatné** , které obsahuje veřejnou IP adresu, kterou chcete protokolovat, vyberte možnost **Veřejná IP adresa** pro **typ prostředku** a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete metriky protokolovat, a pak vyberte **použít**.
 4. Vyberte typ **agregace** jako **Max**.
 
 Názvy metrik obsahují různé typy paketů a bajty vs. pakety se základní konstrukcí názvů značek na jednotlivých metrikách, a to následujícím způsobem:

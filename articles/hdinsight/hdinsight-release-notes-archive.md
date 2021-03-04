@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705649"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
@@ -34,7 +34,7 @@ HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od té
 
 ### <a name="deprecation"></a>Vyřazení
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
-Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nebudou moct vytvořit nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#available-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nebudou moct vytvořit nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
 
 #### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
 Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
@@ -62,7 +62,7 @@ HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od té
 
 ### <a name="deprecation"></a>Vyřazení
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
-Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#available-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery 3,6 ML Services po prosinci 31 2020. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#supported-hdinsight-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
 
 #### <a name="disabled-vm-sizes"></a>Zakázané velikosti virtuálních počítačů
 Od listopadu 16 2020 bude HDInsight zablokuje novým zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Stávající zákazníci, kteří použili tyto velikosti virtuálních počítačů v posledních třech měsících, to neovlivní. Počínaje formulářem leden 9 2021 bude HDInsight blokovat všem zákazníkům vytváření clusterů pomocí standand_A8, standand_A9, standand_A10 a standand_A11 velikostí virtuálních počítačů. Existující clustery se spustí, jak je. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
@@ -77,7 +77,7 @@ V nadcházejících verzích dojde k následujícím změnám.
 HDInsight dnes nepodporuje přizpůsobení velikosti uzlů Zookeeper pro typy clusterů Spark, Hadoop a ML. Ve výchozím nastavení se A2_v2/a2 velikosti virtuálních počítačů, které jsou poskytovány zdarma. V nadcházející verzi můžete vybrat velikost virtuálního počítače Zookeeper, která je pro váš scénář nejvhodnější. Budou se účtovat uzly Zookeeper s velikostí virtuálního počítače jinou než A2_v2/a2. Virtuální počítače A2_v2 a a2 jsou stále poskytovány zdarma.
 
 #### <a name="default-cluster-version-will-be-changed-to-40"></a>Výchozí verze clusteru se změní na 4,0.
-Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [dostupné verze](./hdinsight-component-versioning.md#available-versions). Další informace o tom, co je nového ve službě [HDInsight 4,0](./hdinsight-version-release.md)
+Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [podporované verze](./hdinsight-component-versioning.md#supported-hdinsight-versions). Další informace o tom, co je nového ve službě [HDInsight 4,0](./hdinsight-version-release.md)
 
 #### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>Podpora HDInsight 3,6 na konci 30 2021. června
 Podpora HDInsight 3,6 bude ukončena. Počínaje formulářem červeně 30 2021 nemohou zákazníci vytvářet nové clustery HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na HDInsight 4,0, aby se předešlo potenciálnímu přerušení systému/podpory.
@@ -103,7 +103,7 @@ HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od té
 
 ### <a name="deprecation"></a>Vyřazení
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Vyřazení clusteru HDInsight 3,6 ML Services
-Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery služby 3,6 ML. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#available-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
+Typ clusteru HDInsight 3,6 ML Services bude na konci podpory od prosince 31 2020. Zákazníci nevytvoří nové clustery služby 3,6 ML. Existující clustery se spustí, a to bez podpory Microsoftu. [Tady](./hdinsight-component-versioning.md#supported-hdinsight-versions)se podívejte na vypršení platnosti podpory pro verze a typy clusterů HDInsight.
 
 ### <a name="behavior-changes"></a>Změny chování
 Žádná změna chování pro tuto verzi.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: d63627c00f6fd06ba00a9d8a905891238ce94697
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700537"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -34,14 +34,14 @@ Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tu
 
 Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Část | Description |
+| Část | Popis |
 |:--- |:--- |
 | Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
-| Části vizualizace | Prezentovat vizualizaci dat v pracovním prostoru Log Analytics v závislosti na jednom nebo několika [dotazech protokolu](../log-query/log-query-overview.md). Většina částí zahrnuje hlavičku, která poskytuje vizualizaci na nejvyšší úrovni a seznam, který zobrazuje nejvyšší výsledky. Každý typ součásti poskytuje jinou vizualizaci záznamů v pracovním prostoru Log Analytics. V části vyberete prvky pro provedení dotazu protokolu, který poskytuje podrobné záznamy. |
+| Části vizualizace | Prezentovat vizualizaci dat v pracovním prostoru Log Analytics v závislosti na jednom nebo několika [dotazech protokolu](../logs/log-query-overview.md). Většina částí zahrnuje hlavičku, která poskytuje vizualizaci na nejvyšší úrovni a seznam, který zobrazuje nejvyšší výsledky. Každý typ součásti poskytuje jinou vizualizaci záznamů v pracovním prostoru Log Analytics. V části vyberete prvky pro provedení dotazu protokolu, který poskytuje podrobné záznamy. |
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-Pro vytváření nebo úpravy zobrazení potřebujete alespoň [oprávnění na úrovni přispěvatele](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics. Pokud toto oprávnění nemáte, v nabídce se nezobrazí možnost Návrhář zobrazení.
+Pro vytváření nebo úpravy zobrazení potřebujete alespoň [oprávnění na úrovni přispěvatele](../logs/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics. Pokud toto oprávnění nemáte, v nabídce se nezobrazí možnost Návrhář zobrazení.
 
 
 ## <a name="work-with-an-existing-view"></a>Práce s existujícím zobrazením
@@ -54,7 +54,7 @@ Možnosti jsou popsány v následující tabulce:
 | Možnost | Popis |
 |:--|:--|
 | Aktualizovat   | Aktualizuje zobrazení o nejnovější data. | 
-| Protokoly      | Otevře [Log Analytics](../log-query/log-query-overview.md) pro analýzu dat pomocí dotazů protokolu. |
+| Protokoly      | Otevře [Log Analytics](../logs/log-query-overview.md) pro analýzu dat pomocí dotazů protokolu. |
 | Upravit       | Otevře zobrazení v Návrháři zobrazení, kde můžete upravit jeho obsah a konfiguraci.  |
 | Klonování      | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
 | Rozsah dat | U dat obsažených v zobrazení nastavte filtr rozsahu data a času. Tento rozsah kalendářních dat se použije před všemi rozsahy dat nastavenými v dotazech v zobrazení.  |

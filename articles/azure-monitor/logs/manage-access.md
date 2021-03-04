@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bc03d8cdcaf0079ef15e648d16fd5656d9da368c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725675"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -162,7 +162,7 @@ Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
 Role Přispěvatel Log Analytics zahrnuje následující akce Azure:
 
-| Oprávnění | Description |
+| Oprávnění | Popis |
 | ---------- | ----------- |
 | `*/read`     | Možnost zobrazit všechny prostředky a jejich konfiguraci. To zahrnuje zobrazení: <br> Stavu rozšíření virtuálního počítače <br> Konfigurace diagnostiky Azure pro prostředky <br> Všechny vlastnosti a nastavení všech prostředků. <br> U pracovních prostorů umožňuje úplná neomezená oprávnění číst nastavení pracovního prostoru a provádět dotaz na data. Podívejte se na podrobnější možnosti výše. |
 | `Microsoft.Automation/automationAccounts/*` | Možnost vytvořit a konfigurovat účty služby Azure Automation, včetně přidávání a úprav runbooků |
@@ -189,7 +189,7 @@ Pro zajištění přesného řízení přístupu doporučujeme provést přiřaz
 
 Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí přístupu kontextu prostředků, budou mít pro tento prostředek následující oprávnění:
 
-| Oprávnění | Description |
+| Oprávnění | Popis |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
@@ -285,7 +285,7 @@ Výše uvedené příklady definují seznam povolených tabulek. Tento příklad
 
 ### <a name="custom-logs"></a>Vlastní protokoly
 
- Vlastní protokoly se vytvářejí ze zdrojů dat, jako jsou vlastní protokoly a rozhraní API kolekce dat HTTP. Nejjednodušší způsob, jak identifikovat typ protokolu, je kontrola tabulek uvedených v části [vlastní protokoly ve schématu protokolu](../log-query/log-analytics-tutorial.md#table-schema).
+ Vlastní protokoly se vytvářejí ze zdrojů dat, jako jsou vlastní protokoly a rozhraní API kolekce dat HTTP. Nejjednodušší způsob, jak identifikovat typ protokolu, je kontrola tabulek uvedených v části [vlastní protokoly ve schématu protokolu](./log-analytics-tutorial.md#table-schema).
 
  Nemůžete udělit přístup k jednotlivým vlastním protokolům, ale můžete udělit přístup ke všem vlastním protokolům. Chcete-li vytvořit roli s přístupem ke všem vlastním protokolům, vytvořte vlastní roli pomocí následujících akcí:
 
@@ -312,4 +312,4 @@ Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidru�
 
 * Informace o shromažďování dat z počítačů ve vašem datovém centru nebo v jiném cloudovém prostředí najdete v tématu [Přehled agenta Log Analytics](../agents/log-analytics-agent.md) .
 
-* Další informace najdete v tématu [shromáždění dat o virtuálních počítačích Azure](../learn/quick-collect-azurevm.md) ke konfiguraci shromažďování dat z virtuálních počítačů Azure.
+* Další informace najdete v tématu [shromáždění dat o virtuálních počítačích Azure](../vm/quick-collect-azurevm.md) ke konfiguraci shromažďování dat z virtuálních počítačů Azure.

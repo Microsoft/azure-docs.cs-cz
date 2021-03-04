@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609382"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700639"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
 Tento článek popisuje způsob, jak použít [Azure Logic Apps](../../logic-apps/index.yml) k dotazování dat z pracovního prostoru Log Analytics v Azure monitor a odeslání do Azure Storage. Tento postup použijte v případě, že potřebujete exportovat data protokolu Azure Monitor pro scénáře auditování a dodržování předpisů nebo pokud chcete, aby mohla jiná služba načíst tato data.  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-**Časový rozsah** určuje záznamy, které budou zahrnuty v dotazu na základě sloupce **TimeGenerated** . Tato hodnota by měla být nastavena na hodnotu větší nebo vyšší než časový rozsah vybraný v dotazu. Vzhledem k tomu, že tento dotaz nepoužívá sloupec **TimeGenerated** , **nastavení v možnosti dotaz** není k dispozici. Další podrobnosti o časovém rozsahu najdete v tématu [obor dotazů](../log-query/scope.md) . 
+**Časový rozsah** určuje záznamy, které budou zahrnuty v dotazu na základě sloupce **TimeGenerated** . Tato hodnota by měla být nastavena na hodnotu větší nebo vyšší než časový rozsah vybraný v dotazu. Vzhledem k tomu, že tento dotaz nepoužívá sloupec **TimeGenerated** , **nastavení v možnosti dotaz** není k dispozici. Další podrobnosti o časovém rozsahu najdete v tématu [obor dotazů](./scope.md) . 
 
 Vyberte **Poslední 4 hodiny** pro **časový rozsah**. Tím se zajistí, aby se do výsledků zahrnuly všechny záznamy s časem příjmu větším než **TimeGenerated** .
    
@@ -210,6 +210,6 @@ V Azure Portal přejděte do nabídky **účty úložiště** a vyberte svůj ú
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [dotazech protokolu v Azure monitor](../log-query/log-query-overview.md).
+- Přečtěte si další informace o [dotazech protokolu v Azure monitor](./log-query-overview.md).
 - Další informace o [Logic Apps](../../logic-apps/index.yml)
 - Přečtěte si další informace o [Power automatizuje](https://flow.microsoft.com).

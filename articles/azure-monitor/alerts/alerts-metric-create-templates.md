@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609654"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714336"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -27,7 +27,7 @@ Základní postup je následující:
 
 1. Použijte jednu z níže uvedených šablon jako soubor JSON, který popisuje, jak vytvořit výstrahu.
 2. Upravte a použijte odpovídající soubor parametrů jako JSON pro přizpůsobení výstrahy.
-3. Pro `metricName` parametr se podívejte na dostupné metriky v [Azure monitor podporované metriky](../platform/metrics-supported.md).
+3. Pro `metricName` parametr se podívejte na dostupné metriky v [Azure monitor podporované metriky](../essentials/metrics-supported.md).
 4. Nasaďte šablonu pomocí [libovolné metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Šablona pro jednoduchou výstrahu metriky se statickou prahovou hodnotou
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro metriky pro vlastní metriky.
 
-Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](../platform/metrics-custom-overview.md).
+Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](../essentials/metrics-custom-overview.md).
 
 Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
+> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [výstrahách v Azure](../platform/alerts-overview.md) .
+- Přečtěte si další informace o [výstrahách v Azure](./alerts-overview.md) .
 - Naučte [se vytvořit skupinu akcí pomocí šablon Správce prostředků](../alerts/action-groups-create-resource-manager-template.md) .
 - Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) .
-

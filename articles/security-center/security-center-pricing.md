@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 8d8ef4236a9dd993faaaa2aacfd40a7592e9017f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698667"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými riziky.
 
 
-## <a name="free-option-vs-azure-defender-enabled"></a>Možnost Free vs – povolený Azure Defender
+## <a name="security-center-free-vs-azure-defender-enabled"></a>Povolený Security Center zdarma vs Azure Defender
 
 Security Center se nabízí ve dvou režimech:
 
@@ -108,7 +108,7 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
@@ -118,7 +118,7 @@ Pokud jste už získali licenci na Microsoft Defender pro koncový bod, nebudete
 Pokud chcete potvrdit svoji slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru relevantní informace o licenci, oblasti a licence pro jednotlivé příslušné licence.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
+No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
 
 | State        | Popis                                                                                                                                      | Využití instance se účtuje |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|

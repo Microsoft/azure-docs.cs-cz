@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727256"
 ---
 # <a name="create-a-video-indexer-account"></a>Vytvoření účtu Video Indexer
 
@@ -201,7 +201,7 @@ K automatizaci vytváření účtu se jedná o proces dvou kroků:
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>Předpoklady pro připojení k Azure Government
 
--   Předplatné Azure v [Azure Government](https://docs.microsoft.com/azure/azure-government/).
+-   Předplatné Azure v [Azure Government](../../azure-government/index.yml).
 - Účet Azure AD v Azure Government.
 - Všechny předběžné požadavky oprávnění a prostředků, jak je popsáno výše v části [požadavky pro připojení k Azure](#prerequisites-for-connecting-to-azure).
 
@@ -222,7 +222,7 @@ Vytvoření placeného účtu prostřednictvím portálu Video Indexer:
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Vytvořit nový účet prostřednictvím rozhraní API na Azure Government
 
-Pokud chcete vytvořit placený účet v Azure Government, postupujte podle pokynů v části [Vytvoření-placeného účtu](/azure/media-services/video-indexer/connect-to-azure). Tento koncový bod rozhraní API zahrnuje jenom oblasti cloudu státní správy.
+Pokud chcete vytvořit placený účet v Azure Government, postupujte podle pokynů v části [Vytvoření-placeného účtu](). Tento koncový bod rozhraní API zahrnuje jenom oblasti cloudu státní správy.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Omezení Video Indexer v Azure Government
 

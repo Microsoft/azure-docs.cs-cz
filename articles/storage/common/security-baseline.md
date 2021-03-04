@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714710"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -190,7 +190,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: analýza úložiště Azure poskytuje protokoly objektů blob, front a tabulek. Pomocí Azure Portal můžete nakonfigurovat, které protokoly se budou zaznamenávat pro váš účet. 
 
-- [Jak nakonfigurovat monitorování pro účet Azure Storage](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Jak nakonfigurovat monitorování pro účet Azure Storage](./manage-storage-analytics-logs.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -208,7 +208,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné** materiály: při ukládání protokolů událostí zabezpečení do účtu Azure Storage nebo v pracovním prostoru Log Analytics můžete zásady uchovávání informací nastavit podle požadavků vaší organizace. 
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](./storage-monitor-storage-account.md#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Změnit dobu uchovávání dat v Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ Jedním z efektivních způsobů, jak snížit riziko přístupu k nepodezřelé
 
 - [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../blobs/anonymous-read-access-configure.md)
 
-- [Monitorování účtu úložiště na webu Azure Portal](./storage-monitor-storage-account.md)
+- [Monitorování účtu úložiště na webu Azure Portal](./manage-storage-analytics-logs.md)
 
 - [Správa přístupových klíčů účtu úložiště](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 - [Integrace protokolů aktivit Azure do služby Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](./storage-monitor-storage-account.md)
+- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](./manage-storage-analytics-logs.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 
@@ -576,7 +576,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Protokolování analýz služby Azure Storage](./storage-analytics-logging.md)
 
-- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](./storage-monitor-storage-account.md)
+- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](./manage-storage-analytics-logs.md)
 
 **Monitorování služby Azure Security Center:** Momentálně není k dispozici
 

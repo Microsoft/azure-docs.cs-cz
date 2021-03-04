@@ -4,19 +4,21 @@ description: Správa prostředků Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735807"
 ---
 # <a name="security-control-v2-asset-management"></a>Řízení zabezpečení v2: Správa prostředků
 
 Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure. To zahrnuje doporučení týkající se oprávnění pro bezpečnostní pracovníky, přístup k zabezpečení inventáře prostředků a správu schválení pro služby a prostředky (inventarizace, sledování a opravy).
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě pro Azure Security test dodržování předpisů: zabezpečení sítě.](../../governance/policy/samples/azure-security-benchmark#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Zajištění přehledu o rizicích u prostředků pro bezpečnostní tým
 
@@ -24,13 +26,13 @@ Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti za
 |--|--|--|--|
 | DOP. 1 | 1,1, 1,2 | CM-8, PM-5 |
 
-Ujistěte se, že jsou bezpečnostním týmům udělená oprávnění čtenáře zabezpečení ve vašem tenantovi Azure a předplatných, aby mohli monitorovat bezpečnostní rizika pomocí Azure Security Center. 
+Ujistěte se, že jsou bezpečnostním týmům udělená oprávnění čtenáře zabezpečení ve vašem tenantovi Azure a předplatných, aby mohli monitorovat bezpečnostní rizika pomocí Azure Security Center.
 
-V závislosti na nastavení struktury odpovědnosti bezpečnostních týmů může být monitorování bezpečnostních rizik odpovědností centrálního nebo místního bezpečnostního týmu. Přehledy zabezpečení a bezpečnostní rizika se však v rámci organizace musí vždy agregovat centrálně. 
+V závislosti na tom, jak jsou strukturované zodpovědnosti týmu zabezpečení, může být monitorování rizik zabezpečení zodpovědností centrálního týmu zabezpečení nebo místního týmu. Přehledy zabezpečení a bezpečnostní rizika se však v rámci organizace musí vždy agregovat centrálně. 
 
 Oprávnění Čtenář zabezpečení je možné přidělit pro celého tenanta (kořenová skupina pro správu) nebo je vymezit na konkrétní skupiny pro správu nebo konkrétní předplatná. 
 
-Poznámka: K získání přehledu o úlohách a službách se můžou vyžadovat další oprávnění. 
+Poznámka: K získání přehledu o úlohách a službách se můžou vyžadovat další oprávnění.
 
 - [Přehled role Čtenář zabezpečení](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -52,9 +54,9 @@ Poznámka: K získání přehledu o úlohách a službách se můžou vyžadovat
 
 Ujistěte se, že týmy zabezpečení mají přístup k průběžně aktualizovaným inventáři prostředků v Azure. Bezpečnostní týmy tento inventář často potřebují k tomu, aby vyhodnotily potenciální slabá místa organizace vůči vznikajícím rizikům, a jako vstup pro průběžná vylepšování zabezpečení. 
 
-Funkce inventáře Azure Security Center a Azure Resource Graph se můžou dotazovat na všechny prostředky v předplatných, včetně služeb Azure, aplikací a síťových prostředků.  
+Funkce inventáře Azure Security Center a Azure Resource Graph se můžou dotazovat na všechny prostředky v předplatných, včetně služeb Azure, aplikací a síťových prostředků.
 
-Uspořádejte logicky prostředky podle taxonomie vaší organizace pomocí značek i dalších metadat v Azure (název, popis a kategorie).  
+Logicky organizovat prostředky podle taxonomie vaší organizace pomocí značek a dalších metadat v Azure (název, popis a kategorie).
 
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Uspořádejte logicky prostředky podle taxonomie vaší organizace pomocí zna�
 |--|--|--|--|
 | DOP. 3 | 2,3, 2,4 | CM-7, CM-8 |
 
-Pomocí Azure Policy můžete auditovat a omezovat služby, které můžou uživatelé zřídit ve vašem prostředí. Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jejich předplatných a zjišťovat je.  Pomocí Azure Monitoru můžete také vytvořit pravidla pro aktivaci upozornění při zjištění neschválené služby.
+Pomocí Azure Policy můžete auditovat a omezovat služby, které můžou uživatelé zřídit ve vašem prostředí. Pomocí Azure Resource Graphu se můžete dotazovat na prostředky v rámci jejich předplatných a zjišťovat je. Pomocí Azure Monitoru můžete také vytvořit pravidla pro aktivaci upozornění při zjištění neschválené služby.
 
 - [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Pomocí Azure Policy můžete auditovat a omezovat služby, které můžou uživ
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Zajištění zabezpečení správy životního cyklu prostředků
 
@@ -110,7 +112,7 @@ Pokud už je nepotřebujete, odeberte prostředky Azure.
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů komuniko
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Použijte Adaptivní řízení aplikací Azure Security Center (ASC) pro zjišť
 
 Pomocí Azure Automation Change Tracking a inventáře můžete automatizovat shromažďování informací o inventáři z virtuálních počítačů s Windows a Linux. Z Azure Portal je k dispozici název softwaru, verze, Vydavatel a čas aktualizace. Chcete-li získat datum instalace softwaru a další informace, povolte diagnostiku na úrovni hosta a nasměrujte protokoly událostí systému Windows tak, aby Log Analytics pracovní prostor.
 
-V závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty ve výpočetních prostředcích Azure. 
+V závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty ve výpočetních prostředcích Azure.
 
 K vyhledání a identifikaci neschváleného softwaru můžete také použít řešení třetí strany.
 
@@ -160,6 +162,6 @@ K vyhledání a identifikaci neschváleného softwaru můžete také použít ř
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

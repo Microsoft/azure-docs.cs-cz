@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653108"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711701"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -394,5 +394,5 @@ Nyní můžete certifikát App Service odstranit. V levém navigačním panelu v
 * [Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md)
 * [Vynucení protokolu HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Použijte certifikát TLS/SSL v kódu v Azure App Service](configure-ssl-certificate-in-code.md)
+* [Použití certifikátu TLS nebo SSL v kódu ve službě Azure App Service](configure-ssl-certificate-in-code.md)
 * [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

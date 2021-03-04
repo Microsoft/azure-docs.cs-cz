@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor pro virtuální počítače upozornění na stav hosta (Preview)
-description: Popisuje výstrahy vytvořené Azure Monitor pro virtuální počítače stav hosta, včetně způsobu jejich povolení a konfigurace oznámení.
+title: Upozornění na stav hosta pro virtuální počítače v Insights (Preview)
+description: Popisuje výstrahy vytvořené stavem hosta virtuálních počítačů Insights, včetně způsobu jejich povolení a konfigurace oznámení.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 30025f387768aaf1e4d642292c21d5b15ccc7451
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612683"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707502"
 ---
-# <a name="azure-monitor-for-vms-guest-health-alerts-preview"></a>Azure Monitor pro virtuální počítače upozornění na stav hosta (Preview)
-Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Výstraha se dá vytvořit, když se virtuální počítač nebo monitor změní na stav není v pořádku. Tato upozornění můžete zobrazovat a spravovat pomocí těch, která [jsou vytvořená pomocí pravidel upozornění v Azure monitor](../platform/alerts-overview.md) , a při vytváření nové výstrahy se rozhodnout, že se budou aktivně informovat.
+# <a name="vm-insights-guest-health-alerts-preview"></a>Upozornění na stav hosta pro virtuální počítače v Insights (Preview)
+Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Výstraha se dá vytvořit, když se virtuální počítač nebo monitor změní na stav není v pořádku. Tato upozornění můžete zobrazovat a spravovat pomocí těch, která [jsou vytvořená pomocí pravidel upozornění v Azure monitor](../alerts/alerts-overview.md) , a při vytváření nové výstrahy se rozhodnout, že se budou aktivně informovat.
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
-Nemůžete vytvořit pravidlo explicitní výstrahy pro Azure Monitor pro virtuální počítače stav hosta, pokud je tato funkce ve verzi Preview. Ve výchozím nastavení se výstrahy vytvoří pro každý virtuální počítač, ale ne pro každé monitorování.  To znamená, že pokud se monitorování změní na stav, který nemá vliv na aktuální stav virtuálního počítače, nebude vytvořena žádná výstraha, protože stav virtuálního počítače se nezměnil. 
+Pokud je tato funkce ve verzi Preview, nemůžete vytvořit pravidlo explicitní výstrahy pro stav hosta služby VM Insights. Ve výchozím nastavení se výstrahy vytvoří pro každý virtuální počítač, ale ne pro každé monitorování.  To znamená, že pokud se monitorování změní na stav, který nemá vliv na aktuální stav virtuálního počítače, nebude vytvořena žádná výstraha, protože stav virtuálního počítače se nezměnil. 
 
-Výstrahy pro konkrétní virtuální počítač nebo konkrétní monitorování můžete na virtuálním počítači zakázat z nastavení **stav výstrahy** v konfiguraci pro virtuální počítač v Azure Portal. Podrobné informace o konfiguraci monitorování v Azure Portal najdete v tématu [Konfigurace monitorování v Azure monitor pro virtuální počítače stav hosta (Preview)](vminsights-health-configure.md) . Podrobnosti o konfiguraci monitorování v rámci sady virtuálních počítačů najdete v tématu [Konfigurace monitorování v Azure monitor pro virtuální počítače stav hosta pomocí pravidel shromažďování dat (Preview)](vminsights-health-configure-dcr.md) .
+Výstrahy pro konkrétní virtuální počítač nebo konkrétní monitorování můžete na virtuálním počítači zakázat z nastavení **stav výstrahy** v konfiguraci pro virtuální počítač v Azure Portal. Podrobnosti o konfiguraci monitorování v Azure Portal najdete v tématu [Konfigurace sledování ve stavu hosta virtuálních počítačů Insights (Preview)](vminsights-health-configure.md) . Podrobnosti o konfiguraci monitorování v rámci sady virtuálních počítačů najdete v tématu [Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights pomocí pravidel shromažďování dat (Preview)](vminsights-health-configure-dcr.md) .
 
 ## <a name="alert-severity"></a>Závažnost výstrahy
 Závažnost výstrahy vytvořená stavem hosta je přímo mapována na závažnost virtuálního počítače nebo na monitorování, které aktivuje výstrahu.
@@ -31,12 +31,12 @@ Závažnost výstrahy vytvořená stavem hosta je přímo mapována na závažno
 | V pořádku  | Sev4 |
 
 ## <a name="alert-lifecycle"></a>Životní cyklus výstrahy
-Pro každý virtuální počítač se vytvoří [Výstraha Azure](../platform/alerts-overview.md) , kdykoli se změní na **varování** nebo **kritický** stav. Zobrazení výstrahy z **výstrah** v nabídce **Azure monitor** nebo v nabídce virtuálního počítače v Azure Portal.
+Pro každý virtuální počítač se vytvoří [Výstraha Azure](../alerts/alerts-overview.md) , kdykoli se změní na **varování** nebo **kritický** stav. Zobrazení výstrahy z **výstrah** v nabídce **Azure monitor** nebo v nabídce virtuálního počítače v Azure Portal.
 
 Pokud je už výstraha ve stavu **aktivováno** , když se změní stav virtuálního počítače, druhá výstraha se nevytvoří, ale závažnost stejné výstrahy se změní tak, aby odpovídala stavu virtuálního počítače. Například pokud se virtuální počítač změní do **kritického** stavu, když **Upozornění** již bylo ve stavu **aktivováno** , bude Závažnost výstrahy změněna na **Sev1**. Pokud se virtuální počítač změní na stav **výstrahy** , když se už výstraha **Sev1** ve **stavu** vystavení, změní se závažnost výstrahy na **Sev2**. Pokud se virtuální počítač přesune zpátky do stavu **v pořádku** , výstraha se vyřeší se závažností, která se změnila na **Sev4**.
 
 ## <a name="viewing-alerts"></a>Zobrazení výstrah
-Zobrazí výstrahy vytvořené Azure Monitor pro virtuální počítače stav hosta s dalšími [výstrahami v Azure Portal](../platform/alerts-overview.md#alerts-experience). Můžete vybrat **výstrahy** z nabídky **Azure monitor** , abyste zobrazili výstrahy pro všechny monitorované prostředky, nebo vybrat **výstrahy** z nabídky virtuálního počítače, abyste zobrazili výstrahy jenom pro tento virtuální počítač.
+Zobrazit výstrahy vytvořené stavem hosta virtuálních počítačů Insights s dalšími [výstrahami v Azure Portal](../platform/alerts-overview.md#alerts-experience). Můžete vybrat **výstrahy** z nabídky **Azure monitor** , abyste zobrazili výstrahy pro všechny monitorované prostředky, nebo vybrat **výstrahy** z nabídky virtuálního počítače, abyste zobrazili výstrahy jenom pro tento virtuální počítač.
 
 ## <a name="alert-properties"></a>Vlastnosti výstrahy
 
@@ -106,6 +106,6 @@ V části **definovat v tomto oboru** vyberte **Skupina akcí** a potom vyberte 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit stav hosta v Azure Monitor pro virtuální počítače a začlenit agenty.](vminsights-health-enable.md)
+- [Povolit stav hosta v agentech VM Insights a integrovaných agentech.](vminsights-health-enable.md)
 - [Nakonfigurujte monitorování pomocí Azure Portal.](vminsights-health-configure.md)
 - [Nakonfigurujte monitorování pomocí pravidel shromažďování dat.](vminsights-health-configure-dcr.md)

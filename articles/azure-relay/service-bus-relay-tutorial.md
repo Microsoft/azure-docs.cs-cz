@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak vystavit místní službu WCF REST p
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935700"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710783"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay
 
@@ -55,18 +55,18 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 
 1. Spusťte Microsoft Visual Studio jako správce. Provedete to tak, že kliknete pravým tlačítkem na ikonu programu Visual Studio a vyberete **Spustit jako správce**.
 1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
 1. Pojmenujte projekt *EchoService* a vyberte **vytvořit**.
 
    ![Vytvoření konzolové aplikace][2]
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. V okně **Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat**a přijměte podmínky použití.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat** a přijměte podmínky použití.
 
     ![Balíček Service Bus][3]
 
    Tento balíček automaticky přidá odkazy na knihovny Service Bus a WCF `System.ServiceModel` . [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
-1. Do horní části `using` *program.cs*přidejte následující příkazy:
+1. Do horní části `using` *program.cs* přidejte následující příkazy:
 
     ```csharp
     using System.ServiceModel;
@@ -109,7 +109,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 
     Kanál je objekt WCF, kterým si hostitel a klient navzájem posílají informace. Později do kanálu napíšete kód, který bude zobrazovat informace o těchto dvou aplikacích.
 
-1. Vyberte **sestavení**sestavení buildu  >  **Build Solution** nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
+1. Vyberte **sestavení** sestavení buildu  >   nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
 
 ### <a name="example-of-a-wcf-contract"></a>Příklad smlouvy WCF
 
@@ -174,18 +174,18 @@ Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt 
     }
     ```
 
-1. Vyberte **sestavit**sestavení  >  **řešení** nebo vyberte CTRL + SHIFT + B.
+1. Vyberte **sestavit** sestavení  >  **řešení** nebo vyberte CTRL + SHIFT + B.
 
 ### <a name="define-the-configuration-for-the-service-host"></a>Definujte konfiguraci pro hostitele služby.
 
 Konfigurační soubor je podobný konfiguračnímu souboru WCF. Obsahuje název služby, koncový bod a vazbu. Koncový bod je umístění Azure Relay zveřejňuje klienty a hostitele ke vzájemné komunikaci. Vazba je typ protokolu, který se používá ke komunikaci. Hlavním rozdílem je, že tento nakonfigurovaný koncový bod služby odkazuje na vazbu [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) , která není součástí .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jednou z vazeb definovaných službou.
 
-1. V **Průzkumník řešení**dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
+1. V **Průzkumník řešení** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
 1. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
 1. Ve značkách `<system.serviceModel>` přidejte element `<services>`. V jednom konfiguračním souboru můžete definovat několik aplikací Relay. V tomto kurzu se ale definuje jen jedna.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -210,7 +210,7 @@ Konfigurační soubor je podobný konfiguračnímu souboru WCF. Obsahuje název 
 
     Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Později kurz používá tento krok k vytvoření identifikátoru URI, který plně zpřístupňuje hostitele prostřednictvím Azure Relay. Vazba deklaruje, že používáme protokol TCP jako protokol pro komunikaci se službou Relay.
 
-1. Vyberte **sestavení**sestavení buildu  >  **Build Solution** nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
+1. Vyberte **sestavení** sestavení buildu  >   nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
 
 ### <a name="example-of-implementation-of-a-service-contract"></a>Příklad implementace kontraktu služby
 
@@ -439,16 +439,16 @@ Další úlohou je vytvoření klientské aplikace a definování kontraktu slu�
 
 1. Vytvořit nový projekt v aktuálním řešení sady Visual Studio pro klienta:
 
-   1. V **Průzkumník řešení**klikněte pravým tlačítkem na aktuální řešení (ne na projekt) a vyberte **Přidat**  >  **Nový projekt**.
-   1. V poli **Přidat nový projekt**vyberte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+   1. V **Průzkumník řešení** klikněte pravým tlačítkem na aktuální řešení (ne na projekt) a vyberte **Přidat**  >  **Nový projekt**.
+   1. V poli **Přidat nový projekt** vyberte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
    1. Název projektu *EchoClient* a vyberte **vytvořit**.
 
-1. V **Průzkumník řešení**v projektu **EchoClient** poklikejte na **program.cs** , aby se soubor otevřel v editoru, pokud už není otevřený.
+1. V **Průzkumník řešení** v projektu **EchoClient** poklikejte na **program.cs** , aby se soubor otevřel v editoru, pokud už není otevřený.
 1. Změňte název oboru názvů z výchozího názvu `EchoClient` na `Microsoft.ServiceBus.Samples`.
 1. Instalace [balíčku Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
-   1. V **Průzkumník řešení**klikněte pravým tlačítkem na **EchoClient** a pak vyberte **Spravovat balíčky NuGet**.
-   1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat**a přijměte podmínky použití.
+   1. V **Průzkumník řešení** klikněte pravým tlačítkem na **EchoClient** a pak vyberte **Spravovat balíčky NuGet**.
+   1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat** a přijměte podmínky použití.
 
       ![Nainstalovat balíček služby Service Bus][4]
 
@@ -508,12 +508,12 @@ namespace Microsoft.ServiceBus.Samples
 
 V tomto kroku vytvoříte soubor *App.config* pro základní klientskou aplikaci, která přistupuje ke službě vytvořené dříve v tomto kurzu. Tento *App.config* soubor definuje kontrakt, vazbu a název koncového bodu. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
-1. V **Průzkumník řešení**v projektu **EchoClient** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
+1. V **Průzkumník řešení** v projektu **EchoClient** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
 1. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
 1. V rámci `system.serviceModel` elementu přidejte `<client>` element.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>
@@ -724,13 +724,13 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 1. Vyberte CTRL + SHIFT + B a sestavte řešení. Tato akce vytvoří projekt klienta i projekt služby, který jste vytvořili v předchozích krocích.
-1. Než spustíte klientskou aplikaci, musíte se ujistit, že aplikace služby běží. V **Průzkumník řešení**klikněte pravým tlačítkem na řešení **EchoService** a pak vyberte **vlastnosti**.
-1. Na **stránce vlastnosti**, **běžné vlastnosti**  >  **po spuštění projektu**a pak zvolte **více projektů po spuštění**. Ujistěte se, že se **EchoService** v seznamu objeví jako první.
+1. Než spustíte klientskou aplikaci, musíte se ujistit, že aplikace služby běží. V **Průzkumník řešení** klikněte pravým tlačítkem na řešení **EchoService** a pak vyberte **vlastnosti**.
+1. Na **stránce vlastnosti**, **běžné vlastnosti**  >  **po spuštění projektu** a pak zvolte **více projektů po spuštění**. Ujistěte se, že se **EchoService** v seznamu objeví jako první.
 1. V poli **Akce** u projektů **EchoService** i **EchoClient** nastavte **Start**.
 
     ![Stránky vlastností projektu][5]
 
-1. Vyberte **závislosti projektu**. V **projektech**vyberte **EchoClient**. Pro **závisí na**, ujistěte se, že je vybraná možnost **EchoService** .
+1. Vyberte **závislosti projektu**. V **projektech** vyberte **EchoClient**. Pro **závisí na**, ujistěte se, že je vybraná možnost **EchoService** .
 
     ![Závislosti projektu][6]
 

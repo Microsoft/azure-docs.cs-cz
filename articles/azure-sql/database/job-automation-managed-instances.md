@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691888"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatizace úloh správy pomocí úloh agenta SQL ve spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ V úlohách agenta SQL je několik klíčových konceptů:
 
 Kroky úlohy agenta SQL jsou sekvence akcí, které by měl Agent SQL spustit. Každý krok má následující krok, který by měl být proveden, pokud je krok úspěšný nebo neúspěšný, počet opakovaných pokusů v případě selhání.
 
-Agent SQL vám umožňuje vytvořit různé typy kroků úlohy, jako jsou třeba kroky úlohy Transact-SQL, které provádějí jednu dávku Transact-SQL v databázi, nebo kroky příkazu/PowerShellu pro operační systém, které mohou spouštět vlastní skript operačního systému, [kroky úlohy SSIS](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) , které umožňují načíst data pomocí modulu runtime SSIS, nebo kroky [replikace](../managed-instance/replication-transactional-overview.md) , které mohou publikovat změny z databáze do jiných databází.
+Agent SQL vám umožňuje vytvořit různé typy kroků úlohy, jako jsou třeba kroky úlohy Transact-SQL, které provádějí jednu dávku Transact-SQL v databázi, nebo kroky příkazu/PowerShellu pro operační systém, které mohou spouštět vlastní skript operačního systému, [kroky úlohy SSIS](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) , které umožňují načíst data pomocí modulu runtime SSIS, nebo kroky [replikace](../managed-instance/replication-transactional-overview.md) , které mohou publikovat změny z databáze do jiných databází.
 
 > [!Note]
 > Další informace o využití Integration Runtime Azure SSIS s SSISDB hostovaným pomocí spravované instance Azure SQL najdete v tématu [použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).

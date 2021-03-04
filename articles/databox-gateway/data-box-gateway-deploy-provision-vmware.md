@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: dfbc63ccbdf6f0a8abe1e955b43240d799d6783d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583382"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727613"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: Zřízení služby Azure Data Box Gateway v prostředí VMware
 
@@ -55,7 +55,7 @@ Před nasazením virtuálního zařízení se ujistěte, že:
 * Hostitelský systém může pro zřízení virtuálního zařízení vyhradit následující prostředky:
 
   * Minimálně 4 jádra
-  * Minimálně 8 GB paměti RAM
+  * Minimálně 8 GB paměti RAM Důrazně doporučujeme aspoň 16 GB paměti RAM.
   * Jedno síťové rozhraní
   * 250GB disk s operačním systémem
   * 2TB virtuální disk pro data systému

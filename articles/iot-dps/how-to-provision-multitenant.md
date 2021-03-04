@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d0c132d1aa7a37dc8e7620352bb7b9a078d79a09
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571602"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727426"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Postupy zřizování pro architekturu s více tenanty 
 
@@ -36,7 +36,7 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
@@ -417,16 +417,8 @@ Odstranění skupiny prostředků podle názvu:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o opětovném zřízení najdete v tématu Koncepty opětovného [zřizování zařízení IoT Hub](concepts-device-reprovision.md) 
-- Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) . 
+> [!div class="nextstepaction"]
+> Další informace o opětovném zřizování najdete v tématu [Koncepty opětovného zřizování zařízení IoT Hub](concepts-device-reprovision.md)
 
-
-
-
-
-
-
-
-
-
-
+> [!div class="nextstepaction"]
+> Další informace o zrušení zřízení najdete v tématu [Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena](how-to-unprovision-devices.md) .

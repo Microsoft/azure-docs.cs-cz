@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710579"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet peering a Azure bastionu (Preview)
 
@@ -40,9 +40,15 @@ Na tomto obrázku vidíte architekturu nasazení Azure bastionu v modelu hvězdi
 **Uvedené**
 
 1. Připojte se k Azure Portal pomocí libovolného prohlížeče HTML5.
-1. Vyberte virtuální počítač, ke kterému se chcete připojit.
-1. Azure bastionu se v partnerské virtuální síti plynule detekuje.
-1. Jediným kliknutím se v prohlížeči otevře relace RDP/SSH. Omezení souběžných relací RDP a SSH najdete v tématu [relace RDP a SSH](bastion-faq.md#limits).
+2. Ujistěte se, že máte oprávnění **ke čtení** pro cílový virtuální počítač i pro partnerský virtuální síť. Dále ověřte v části IAM, ke které máte přístup pro čtení následujících prostředků:
+   * Role čtenáře na virtuálním počítači.
+   * Role čtecího zařízení na síťové kartě s privátní IP adresou virtuálního počítače
+   * Role čtecího modulu v prostředku Azure bastionu
+   * Role čtecího modulu na Virtual Network (není nutné, pokud není k dispozici žádná Partnerská virtuální síť).
+3. Pokud se chcete podívat na bastionu v rozevírací nabídce **připojit** , musíte vybrat předplatné, ke kterému máte přístup v **předplatném > globální předplatné**.
+4. Vyberte virtuální počítač, ke kterému se chcete připojit.
+5. Azure bastionu se v partnerské virtuální síti plynule detekuje.
+6. Jediným kliknutím se v prohlížeči otevře relace RDP/SSH. Omezení souběžných relací RDP a SSH najdete v tématu [relace RDP a SSH](bastion-faq.md#limits).
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Připojit":::
 
@@ -51,7 +57,7 @@ Na tomto obrázku vidíte architekturu nasazení Azure bastionu v modelu hvězdi
    * [Připojte se k virtuálnímu počítači-RDP](bastion-connect-vm-rdp.md).
    * [Připojte se k virtuálnímu počítači – SSH](bastion-connect-vm-ssh.md).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
 

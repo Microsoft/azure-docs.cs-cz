@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ec8fc4473669b0c056d0b22ff44e5818b87ba3fa
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549637"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721782"
 ---
 # <a name="deploy-and-configure-azure-firewall-premium-preview"></a>Nasazení a konfigurace Azure Firewall Premium Preview
 
@@ -34,7 +34,7 @@ Použijete šablonu k nasazení testovacího prostředí, které má centrální
 - podsíť Azure bastionu (10.0.20.0/24)
 - podsíť brány firewall (10.0.100.0/24)
 
-V tomto testovacím prostředí se pro jednoduchost používá jedna centrální virtuální síť. Pro produkční účely je [topologie rozbočovače a paprsků](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se virtuální sítěem partnerských uzlů běžnější.
+V tomto testovacím prostředí se pro jednoduchost používá jedna centrální virtuální síť. Pro produkční účely je [topologie rozbočovače a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se virtuální sítěem partnerských uzlů běžnější.
 
 :::image type="content" source="media/premium-deploy/premium-topology.png" alt-text="Centrální topologie VNet":::
 
@@ -121,7 +121,7 @@ Můžete použít `curl` k řízení různých hlaviček protokolu HTTP a simula
 
 #### <a name="to-test-idps-for-https-traffic"></a>Testování zprostředkovatelů identity pro přenosy HTTPS
 
-Opakujte tyto testy oblé místo HTTP pomocí protokolu HTTPS. Příklad:
+Opakujte tyto testy oblé místo HTTP pomocí protokolu HTTPS. Například:
 
 `curl --ssl-no-revoke -A "BlackSun" <your web server address>`
 
@@ -143,7 +143,7 @@ Některé stránky HTML můžou být neúplné, protože odkazují na jiné adre
 - Pokud stránka HTML obsahuje odkazy na jiné domény, můžete tyto domény přidat do nového pravidla aplikace s povoleným přístupem k těmto plně kvalifikovaným názvům domény.
 - Pokud stránka HTML obsahuje odkazy na dílčí adresy URL, můžete upravit pravidlo a přidat hvězdičku k adrese URL. Příklad: `targetURLs=www.nytimes.com/section/world*`
 
-   Alternativně můžete k pravidlu přidat novou adresu URL. Příklad: 
+   Alternativně můžete k pravidlu přidat novou adresu URL. Například: 
 
    `www.nytimes.com/section/world, www.nytimes.com/section/world/*`
 

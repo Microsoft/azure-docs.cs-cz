@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702857"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -65,7 +65,7 @@ Zajistěte, aby [ve vaší virtuální síti a skupině prostředků nejsou žá
 
 ## <a name="unsupported-component-versions"></a>Nepodporované verze součástí
 
-Ujistěte se, že používáte [podporovanou verzi Azure HDInsight](../hdinsight-component-versioning.md) a všechny [součásti Apache Hadoop](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) ve vašem řešení.  
+Ujistěte se, že ve vašem řešení používáte [podporovanou verzi Azure HDInsight a Apache Hadoop komponenty](../hdinsight-component-versioning.md) .  
 
 ## <a name="storage-account-name-restrictions"></a>Omezení názvu účtu úložiště
 

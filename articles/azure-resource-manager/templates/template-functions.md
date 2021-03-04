@@ -3,12 +3,12 @@ title: Funkce šablon
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager (šablona ARM) k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707315"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
@@ -34,6 +34,10 @@ Většina funkcí funguje při nasazení do skupiny prostředků, předplatného
 <a id="take" aria-hidden="true"></a>
 <a id="union" aria-hidden="true"></a>
 
+## <a name="any-function"></a>Libovolná funkce
+
+[Funkce any](template-functions-any.md) je k dispozici v bicep k vyřešení problémů s upozorněními na datový typ.
+
 ## <a name="array-functions"></a>Funkce pro práci s poli
 
 Správce prostředků poskytuje několik funkcí pro práci s poli.
@@ -47,11 +51,11 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 * [průnik](template-functions-array.md#intersection)
 * [posledního](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [dlouhé](template-functions-array.md#min)
+* [min](template-functions-array.md#min)
 * [počet](template-functions-array.md#max)
 * [oblasti](template-functions-array.md#range)
 * [přímo](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
+* [nezbytná](template-functions-array.md#take)
 * [sjednocovací](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -130,7 +134,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [dlouhé](template-functions-numeric.md#min)
+* [min](template-functions-numeric.md#min)
 * [počet](template-functions-numeric.md#max)
 * [střední](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -237,9 +241,9 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [přímo](template-functions-string.md#skip)
 * [rozdělení](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [řetezce](template-functions-string.md#string)
+* [řetězec](template-functions-string.md#string)
 * [podřetězec](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
+* [nezbytná](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [sklon](template-functions-string.md#trim)

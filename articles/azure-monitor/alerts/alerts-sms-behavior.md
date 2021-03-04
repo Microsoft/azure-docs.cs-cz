@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: 3ca776a1869874042a6a97cdd59dc00d3a917d33
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609574"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717872"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Chování výstrah SMS ve skupinách akcí
 
@@ -30,7 +30,7 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 * Krátký název skupiny akcí, na kterou se tato výstraha odeslala
 * Název výstrahy
 
-| REPLY | Description |
+| REPLY | Popis |
 | ----- | ----------- |
 | DEZAKTIVOVAT `<Action Group Short name>` | Zakáže další zprávu SMS ze skupiny akcí. |
 | ABY `<Action Group Short name>` | Opětovné povolení serveru SMS ze skupiny akcí |
@@ -42,7 +42,6 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 >Pokud se uživatel odhlásí z upozornění serveru SMS, ale přidá se do nové skupiny akcí; BUDOU dostávat výstrahy SMS pro tuto novou skupinu akcí, ale zůstanou odhlášené ze všech předchozích skupin akcí.
 
 ## <a name="next-steps"></a>Další kroky
-Získejte [Přehled výstrah protokolu aktivit](../platform/alerts-overview.md) a Naučte se, jak získat výstrahy.  
+Získejte [Přehled výstrah protokolu aktivit](./alerts-overview.md) a Naučte se, jak získat výstrahy.  
 Další informace o [omezování míry SMS](alerts-rate-limiting.md)  
-Další informace o [skupinách akcí](../platform/action-groups.md)
-
+Další informace o [skupinách akcí](./action-groups.md)

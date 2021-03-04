@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 4d053e33b8751095be13a40446914033b31feeed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ce79b450e5eaed04150ffafd88528a131417044a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692296"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB (verze 3.6): Podporované funkce a syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody MongoDB, ke kterému jste se přihlásili, se všemi podnikovými funkcemi, které Cosmos DB poskytuje: [globální distribuce](distribute-data-globally.md), [Automatické horizontálního dělení](partitioning-overview.md), dostupnost a záruky latence, šifrování v klidovém formátu, zálohování a spoustu dalšího.
 
 > [!NOTE]
-> Tento článek je určen pro rozhraní Azure Cosmos DB API pro MongoDB 3,6. Informace o verzi MongoDB 4,0 najdete v tématu [podporované funkce a syntaxe pro MongoDB 4,0](mongodb-feature-support-40.md).
+> Verze 3,6 rozhraní Cosmos DB API pro MongoDB nemá žádné aktuální plány pro ukončení života (konce řádku). Minimální oznámení o budoucích konce řádku je tři roky.
 
 ## <a name="protocol-support"></a>Podpora protokolů
 

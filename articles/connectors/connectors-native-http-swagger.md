@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790589"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730877"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
 Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému konektoru http + Swagger můžete automatizovat pracovní postupy, které pravidelně volají libovolný koncový bod REST prostřednictvím [souboru Swagger](https://swagger.io) vytvořením Logic Apps. Aktivační událost HTTP + Swagger a akce fungují stejně jako [Trigger http a akci](connectors-native-http.md) , ale poskytují lepší zkušenosti v návrháři aplikace logiky tím, že zpřístupňují strukturu rozhraní API a výstupy popsané v souboru Swagger. K implementaci triggeru cyklického dotazování použijte vzor cyklického dotazování, který je popsaný v tématu [Vytvoření vlastních rozhraní API a volání dalších rozhraní API, služeb a systémů z Logic Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -34,7 +34,7 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
   Chcete-li vytvořit odkaz na soubor Swagger, který není hostovaný nebo který nesplňuje požadavky na zabezpečení a více zdrojů, můžete [nahrát soubor Swagger do kontejneru objektů BLOB v účtu úložiště Azure](#host-swagger)a povolit pro tento účet úložiště CORS, abyste mohli soubor odkázat.
 
-  V příkladech v tomto tématu se používá [Cognitive Services Face API](../cognitive-services/face/overview.md), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
+  V příkladech v tomto tématu se používá [Cognitive Services rozhraní API pro rozpoznávání tváře](../cognitive-services/face/overview.md), která vyžaduje [účet Cognitive Services a přístupový klíč](../cognitive-services/cognitive-services-apis-create-account.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -44,15 +44,15 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
 Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **triggery** vyberte aktivační událost **http + Swagger** .
 
    ![Vybrat aktivační událost HTTP + Swagger](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další** .
+1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
@@ -74,25 +74,25 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
 1. Pokračujte v vytváření pracovního postupu aplikace logiky s akcemi, které se spustí, když se Trigger aktivuje.
 
-1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit** .
+1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ## <a name="add-an-http--swagger-action"></a>Přidat akci HTTP + Swagger
 
 Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok** .
+1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok**.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci** .
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **Akce** vyberte akci **http + Swagger** .
 
     ![Vybrat akci HTTP + Swagger](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
-1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další** .
+1. Do pole **Adresa URL koncového bodu Swagger** zadejte adresu URL souboru Swagger a vyberte **Další**.
 
-   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+   V tomto příkladu se používá adresa URL Swagger, která je umístěná v Západní USA oblasti [Cognitive Services rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
@@ -112,7 +112,7 @@ Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger
 
    Další informace o typech ověřování dostupných pro HTTP + Swagger najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit** .
+1. Až budete hotovi, nezapomeňte uložit aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 <a name="host-swagger"></a>
 
@@ -122,7 +122,7 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
 1. [Vytvořte účet úložiště Azure](../storage/common/storage-account-create.md).
 
-1. Nyní povolte CORS pro objekt BLOB. V nabídce účtu úložiště vyberte **CORS** . Na kartě **BLOB Service** zadejte tyto hodnoty a pak vyberte **Uložit** .
+1. Nyní povolte CORS pro objekt BLOB. V nabídce účtu úložiště vyberte **CORS**. Na kartě **BLOB Service** zadejte tyto hodnoty a pak vyberte **Uložit**.
 
    | Vlastnost | Hodnota |
    |----------|-------|
@@ -135,7 +135,7 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
    I když tento příklad používá [Azure Portal](https://portal.azure.com), můžete použít nástroj jako [Průzkumník služby Azure Storage](https://storageexplorer.com/)nebo automaticky nakonfigurovat toto nastavení pomocí tohoto ukázkového [skriptu PowerShellu](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
 
-1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). V podokně s **přehledem** kontejneru vyberte **změnit úroveň přístupu** . V seznamu **úroveň veřejného přístupu** vyberte možnost **objekt BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** a vyberte **OK** .
+1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). V podokně s **přehledem** kontejneru vyberte **změnit úroveň přístupu**. V seznamu **úroveň veřejného přístupu** vyberte možnost **objekt BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)** a vyberte **OK**.
 
 1. [Nahrajte soubor Swagger do kontejneru objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a to buď pomocí [Azure Portal](https://portal.azure.com) , nebo [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 

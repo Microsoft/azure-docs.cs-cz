@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709083"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -140,7 +140,7 @@ Pokud vaše webová aplikace Django obsahuje statické front-endové soubory, ne
 
 V případě App Service proveďte následující úpravy:
 
-1. Zvažte použití proměnných prostředí (pro místní vývoj) a nastavení aplikace (při nasazení do cloudu) k dynamickému nastavení Django `STATIC_URL` a `STATIC_ROOT` proměnných. Příklad:    
+1. Zvažte použití proměnných prostředí (pro místní vývoj) a nastavení aplikace (při nasazení do cloudu) k dynamickému nastavení Django `STATIC_URL` a `STATIC_ROOT` proměnných. Například:    
 
     ```python
     STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
@@ -372,6 +372,7 @@ Následující části poskytují další pokyny pro konkrétní problémy.
 - [Aplikace se nezobrazí – výchozí aplikace zobrazuje](#app-doesnt-appear)
 - [Aplikace se nezobrazí – zpráva služba není k dispozici](#service-unavailable)
 - [Nepovedlo se najít setup.py nebo requirements.txt. ](#could-not-find-setuppy-or-requirementstxt)
+- [ModuleNotFoundError při spuštění](#modulenotfounderror-when-app-starts)
 - [Při zadání se hesla nezobrazují v relaci SSH.](#other-issues)
 - [Příkazy v relaci SSH se zdají být oříznuté.](#other-issues)
 - [Statické prostředky se neobjevují v aplikaci pro Django.](#other-issues)
@@ -404,6 +405,10 @@ Následující části poskytují další pokyny pro konkrétní problémy.
 - **Stream protokolu zobrazuje "nepovedlo se najít Setup.py nebo requirements.txt; Nespouští se instalace PIP. "**: procesu sestavení Oryx se nepovedlo najít soubor *requirements.txt* .
 
     - Připojte se ke kontejneru webové aplikace přes [SSH](#open-ssh-session-in-browser) a ověřte, jestli je *requirements.txt* správně pojmenovaná a jestli existuje přímo v *lokalitě/wwwroot*. Pokud neexistuje, zajistěte, aby soubor v úložišti existoval a byl zahrnutý v nasazení. Pokud existuje v samostatné složce, přesuňte ji do kořenového adresáře.
+
+#### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError při spuštění aplikace
+
+Pokud se zobrazí chyba `ModuleNotFoundError: No module named 'example'` , znamená to, že při spuštění aplikace Python nenalezl jeden nebo více modulů. K této situaci nejčastěji dochází, pokud nasadíte virtuální prostředí s vaším kódem. Virtuální prostředí nejsou přenosné, takže virtuální prostředí by nemělo být nasazeno s kódem vaší aplikace. Místo toho Oryx vytvořit virtuální prostředí a nainstalovat balíčky do webové aplikace vytvořením nastavení aplikace, `SCM_DO_BUILD_DURING_DEPLOYMENT` a nastavením na `1` . Tím dojde k vynucení Oryx instalace balíčků při každém nasazení do App Service. Další informace najdete [v tomto článku na přenositelnosti virtuálního prostředí](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
 
 #### <a name="other-issues"></a>Další problémy
 

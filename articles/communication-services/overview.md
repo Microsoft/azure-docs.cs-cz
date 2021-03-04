@@ -8,14 +8,19 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 45ce295ceee9d5bd1c2393eaed854e8f2c5643ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27b1a2654a52c136c0b827b536f5cf99928e5947
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659235"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691582"
 ---
 # <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
+
+[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> Aplikace, které sestavíte pomocí komunikačních služeb Azure, můžou komunikovat s Microsoft Teams. Další informace najdete v dokumentaci pro [spolupráci týmů](./quickstarts/voice-video-calling/get-started-teams-interop.md) .
 
 Komunikační služby Azure umožňují snadno přidávat do vašich aplikací funkce pro komunikaci multimédií, videa a telefonování přes protokol IP v reálném čase. Klientské knihovny komunikačních služeb také umožňují přidat do komunikačních řešení funkce Chat a SMS.
 

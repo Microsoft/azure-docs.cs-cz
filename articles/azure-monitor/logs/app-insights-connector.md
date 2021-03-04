@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611513"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704340"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100611513"
 >
 >Stávající připojení budou fungovat i do 30. června 2019.  V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Pokud chcete pomocí PowerShellu odebrat existující připojení, přečtěte si téma [Odebrání konektoru pomocí PowerShellu](#removing-the-connector-with-powershell) .
 >
->Pokyny k dotazování na data protokolu Application Insights pro více aplikací najdete v tématu [sjednocení více Azure Monitorch Application Insightsch prostředků](../log-query/unify-app-resource-data.md). Další informace o zastaralých portálech OMS najdete v tématu [Přesun portálu OMS do Azure](../platform/oms-portal-transition.md).
+>Pokyny k dotazování na data protokolu Application Insights pro více aplikací najdete v tématu [sjednocení více Azure Monitorch Application Insightsch prostředků](./unify-app-resource-data.md). Další informace o zastaralých portálech OMS najdete v tématu [Přesun portálu OMS do Azure](./oms-portal-transition.md).
 >
 > 
 
@@ -42,12 +42,12 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](./../agents/agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](../agents/om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](./../agents/agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
+| [Skupina pro správu SCOM](../agents/om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Další kroky
 
-- K zobrazení podrobných informací o aplikacích Application Insights použijte [hledání v protokolu](../log-query/log-query-overview.md) .
-
+- K zobrazení podrobných informací o aplikacích Application Insights použijte [hledání v protokolu](./log-query-overview.md) .

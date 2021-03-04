@@ -6,24 +6,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 485c2cc6c95f5922025fe887f7c25131e849a01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723159"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Přehled Log Analytics v Azure Monitor
 Log Analytics je nástroj v Azure Portal, který se používá k úpravě a spouštění dotazů protokolu s daty v protokolech Azure Monitor. Můžete napsat jednoduchý dotaz, který vrátí sadu záznamů, a pak pomocí funkcí Log Analytics řadit, filtrovat a analyzovat. Nebo můžete napsat pokročilejší dotaz, který provede statistickou analýzu a vizualizuje výsledky v grafu, aby identifikoval konkrétní trend. Ať už pracujete s výsledky dotazů interaktivně nebo je použijete s jinými Azure Monitor funkcemi, jako jsou výstrahy nebo sešity dotazů protokolu, Log Analytics je nástroj, který budete používat pro zápis a testování. 
 
 
 > [!TIP]
-> Tento článek obsahuje popis Log Analytics a všech jeho funkcí. Pokud chcete přejít přímo do kurzu, přečtěte si článek [Log Analytics kurz](../log-query/log-analytics-tutorial.md).
+> Tento článek obsahuje popis Log Analytics a všech jeho funkcí. Pokud chcete přejít přímo do kurzu, přečtěte si článek [Log Analytics kurz](./log-analytics-tutorial.md).
 
 
 
 ## <a name="starting-log-analytics"></a>Spouští se Log Analytics
-Spustí Log Analytics z **protokolů** v nabídce **Azure monitor** v Azure Portal. Tato možnost se zobrazí také v nabídce pro většinu prostředků Azure. Bez ohledu na to, odkud ji začnete, bude to stejný nástroj Log Analytics. Nabídka, kterou použijete k zahájení Log Analytics určuje data, která budou dostupná, i když. Pokud ho spustíte z nabídky **Azure monitor** nebo z nabídky **pracovní prostory Log Analytics** , budete mít přístup ke všem záznamům v pracovním prostoru. Pokud vyberete **protokoly** z jiného typu prostředku, budou se data omezovat na data protokolu pro daný prostředek. Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](../log-query/scope.md) .
+Spustí Log Analytics z **protokolů** v nabídce **Azure monitor** v Azure Portal. Tato možnost se zobrazí také v nabídce pro většinu prostředků Azure. Bez ohledu na to, odkud ji začnete, bude to stejný nástroj Log Analytics. Nabídka, kterou použijete k zahájení Log Analytics určuje data, která budou dostupná, i když. Pokud ho spustíte z nabídky **Azure monitor** nebo z nabídky **pracovní prostory Log Analytics** , budete mít přístup ke všem záznamům v pracovním prostoru. Pokud vyberete **protokoly** z jiného typu prostředku, budou se data omezovat na data protokolu pro daný prostředek. Podrobnosti najdete [v tématu Rozsah dotazů protokolu a časový rozsah v Azure Monitor Log Analytics](./scope.md) .
 
 [![Spustit Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
@@ -39,9 +39,9 @@ Ovládací prvky pro práci s dotazem v okně dotazu.
 
 | Možnost | Popis |
 |:---|:---|
-| Obor | Určuje rozsah dat použitých pro dotaz. Může se jednat o všechna data v pracovním prostoru Log Analytics nebo data pro konkrétní prostředek napříč několika pracovními prostory. Viz [obor dotazu](../log-query/scope.md). |
+| Obor | Určuje rozsah dat použitých pro dotaz. Může se jednat o všechna data v pracovním prostoru Log Analytics nebo data pro konkrétní prostředek napříč několika pracovními prostory. Viz [obor dotazu](./scope.md). |
 | Tlačítko spustit | Kliknutím spustíte vybraný dotaz v okně dotazu. Můžete také stisknout SHIFT + ENTER a spustit dotaz. |
-| Výběr času | Vyberte časový rozsah pro data dostupná pro dotaz. Tato aplikace bude přepsána, pokud zahrnete do dotazu filtr času. Viz [Rozsah dotazů protokolu a rozsah času ve Azure Monitor Log Analytics](../log-query/scope.md). |
+| Výběr času | Vyberte časový rozsah pro data dostupná pro dotaz. Tato aplikace bude přepsána, pokud zahrnete do dotazu filtr času. Viz [Rozsah dotazů protokolu a rozsah času ve Azure Monitor Log Analytics](./scope.md). |
 | Tlačítko Uložit | Uložte dotaz do Průzkumníka dotazů pro pracovní prostor. |
  Tlačítko pro kopírování | Zkopíruje odkaz na dotaz, text dotazu nebo výsledky dotazu do schránky. |
 | Tlačítko nové pravidlo upozornění | Vytvoří novou kartu s prázdným dotazem. |
@@ -55,7 +55,7 @@ Ovládací prvky pro práci s dotazem v okně dotazu.
 ### <a name="2-sidebar"></a>2. postranní panel
 Seznam tabulek v pracovním prostoru, Ukázkové dotazy a možnosti filtrování pro aktuální dotaz.
 
-| Karta | Description |
+| Karta | Popis |
 |:---|:---|
 | Tabulky | Vypíše tabulky, které jsou součástí vybraného oboru. Vyberte možnost **Seskupit podle** a změňte seskupení tabulek. Najeďte myší na název tabulky, aby se zobrazilo dialogové okno s popisem tabulky a možností, jak zobrazit jeho dokumentaci a zobrazit náhled jeho dat. Rozbalením tabulky zobrazíte její sloupce. Poklikejte na název tabulky nebo sloupce a přidejte ho do dotazu. |
 | Dotazy | Seznam ukázkových dotazů, které můžete otevřít v okně dotazu. Toto je stejný seznam, který se zobrazí, když otevřete Log Analytics. Vyberte možnost **Seskupit podle** a změňte seskupení dotazů. Poklikejte na dotaz a přidejte ho do okna dotazu, nebo na něj najeďte myší pro další možnosti. |
@@ -91,5 +91,5 @@ Zobrazí výsledky jako jeden z několika dostupných typů grafů. Typ grafu m�
 Pokud jste již obeznámeni s webovým uživatelským rozhraním Azure Průzkumník dat, Log Analytics by měl vypadat dobře. To je proto, že je postavená na Azure Průzkumník dat a používá stejný dotazovací jazyk KQL (Kusto Query Language). Log Analytics přidává funkce specifické pro Azure Monitor, jako je filtrování podle časového rozsahu a možnost vytvořit pravidlo výstrahy z dotazu. Oba nástroje obsahují Průzkumníka, který umožňuje prohledat strukturu dostupných tabulek, ale webové uživatelské rozhraní Azure Průzkumník dat primárně funguje s tabulkami v Azure Průzkumník dat databázemi, zatímco Log Analytics pracuje s tabulkami v pracovním prostoru Log Analytics. 
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte si [kurz použití Log Analytics v Azure Portal](../log-query/log-analytics-tutorial.md).
-- Projděte si [kurz týkající se psaní dotazů](../log-query/get-started-queries.md).
+- Projděte si [kurz použití Log Analytics v Azure Portal](./log-analytics-tutorial.md).
+- Projděte si [kurz týkající se psaní dotazů](./get-started-queries.md).

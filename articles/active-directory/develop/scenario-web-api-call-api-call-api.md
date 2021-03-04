@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bbb42a4955ff0b4fbbac58830ec5c8aecf04915d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686729"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
 
@@ -29,9 +29,15 @@ Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Rozhra
 
 Pokud používáte *Microsoft. identity. Web*, máte tři scénáře použití:
 
-- [Možnost 1: volání Microsoft Graph s využitím sady Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
-- [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
-- [Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.](#a-web-api-that-calls-web-apis-call-an-api)
+  - [Kód kontroleru](#controller-code)
+- [ASP.NET Core](#aspnet-core)
+      - [Možnost 1: volání Microsoft Graph se sadou SDK](#option-1-call-microsoft-graph-with-the-sdk)
+      - [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
+      - [Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy](#option-3-call-a-downstream-web-api-without-the-helper-class)
+- [Java](#java)
+- [Python](#python)
+  - [Další kroky](#next-steps)
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Možnost 1: volání Microsoft Graph se sadou SDK
 
@@ -159,7 +165,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-Ukázka demonstrující tento tok pomocí MSAL Pythonu ještě není k dispozici.
+Ukázka demonstrující tento tok pomocí MSAL Pythonu je k dispozici v [části MS-identity-Python-on-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of).
 
 ---
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687664"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -57,7 +57,7 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
 ### <a name="publish-the-rd-host-endpoint"></a>Publikování koncového bodu hostitele vzdálené plochy
 
 1. [Publikujte novou aplikaci proxy aplikací](application-proxy-add-on-premises-application.md) s následujícími hodnotami:
-   - Interní adresa URL: `https://\<rdhost\>.com/` , kde `\<rdhost\>` je společná kořenová složka RD Web a Brána VP.
+   - Interní adresa URL: `https://<rdhost>.com/` , kde `<rdhost>` je společná kořenová složka RD Web a Brána VP.
    - Externí adresa URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Uživatelé budou při přístupu k VP přejít na tuto adresu URL.
    - Metoda předběžného ověření: Azure Active Directory
    - Přeložit hlavičky adresy URL: ne
@@ -69,7 +69,7 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
 
 4. Vyberte **Azure Active Directory** a pak **Registrace aplikací**. Vyberte aplikaci ze seznamu.
 5. V části **Spravovat** vyberte **branding**.
-6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový bod služby Vzdálená plocha (například `https://\<rdhost\>.com/RDWeb` ).
+6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový bod služby Vzdálená plocha (například `https://<rdhost>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Přímý provoz RDS do proxy aplikace
 
@@ -91,7 +91,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Příklad:**
+   **Například:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```

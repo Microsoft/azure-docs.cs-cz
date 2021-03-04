@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658465"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692262"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB garantuje izolaci výkonu mezi transakčními a analytickými ú
 Ano, můžete nakonfigurovat [spravovaný privátní koncový bod](analytical-store-private-endpoints.md) a omezit přístup k síti z analytického úložiště do Azure synapse spravované virtuální sítě. Spravované soukromé koncové body vytvoří privátní odkaz na analytické úložiště. Tento soukromý koncový bod taky omezí přístup k zápisu do transakčního úložiště, a to mezi další datové služby Azure.
 
 Do stejného Azure Cosmos DB účtu v pracovním prostoru Azure synapse Analytics můžete přidat jak transakční, tak i i analytické úložiště. Pokud chcete pouze spustit analytické dotazy, budete pravděpodobně chtít mapovat pouze privátní koncový bod analýzy.
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Můžu pomocí Azure Cosmos DB analytického úložiště použít klíče spravované zákazníky?
+
+Data můžete v různých transakčních a analytických úložištích hladce snadno šifrovat pomocí stejných klíčů spravovaných zákazníkem automaticky a transparentním způsobem. Použití klíčů spravovaných zákazníkem s Azure Cosmos DB analytické úložiště aktuálně vyžaduje další konfiguraci na vašem účtu. Podrobnosti vám poskytne [tým Azure Cosmos DB](mailto:azurecosmosdbcmk@service.microsoft.com)  .
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Projeví se operace odstranění a aktualizace v transakčním úložišti v analytickém úložišti?
 

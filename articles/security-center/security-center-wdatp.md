@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727001"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -42,8 +42,8 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
-| Podporované platformy:            | Počítače Azure s Windows<br>Počítače ARC Azure s Windows|
-| Podporované verze systému Windows:  |  • Security Center podporuje detekci na Windows serveru 2019, 2016, 2012 R2 a 2008 R2 SP1.<br> • Server pro zákazníky s Office 365 RSZ zakázal monitorování koncového bodu serveru pomocí této integrace.<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy) (evd)<br> •  [Virtuální plocha Windows (WVD)](../virtual-desktop/overview.md)|
+| Podporované platformy:            |  • Počítače Azure s Windows<br> • Počítače s obloukem v Azure, na kterých běží Windows|
+| Podporované verze systému Windows:  |   • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy (evd)<br>Monitorování koncového bodu serveru pomocí těchto integrací bylo pro zákazníky Office 365 RSZ zakázané.|
 | Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
 | Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
 | Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure                                                        |
@@ -76,10 +76,15 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní lic
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Povolení integrace programu Microsoft Defender pro koncové body
 
+1. Ověřte, že váš počítač splňuje požadavky nezbytné pro Defender pro koncový bod:
+
+    - Pro **všechny verze systému Windows**:
+        - Konfigurace nastavení sítě popsaná v tématu [Konfigurace nastavení proxy zařízení a připojení k Internetu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+        - Pokud nasazujete Defender na koncový bod do místních počítačů, připojte ho ke službě Azure ARC, jak je vysvětleno v tématu [připojení hybridních počítačů se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) .
+    - Pro **počítače s Windows serverem 2019** se navíc ujistěte, že běží na platném agentovi a že mají rozšíření MicrosoftMonitoringAgent.
+
 1. Povolte **Azure Defender pro servery**. Podívejte se [na ceny Azure Security Center](security-center-pricing.md#enable-azure-defender).
 
-    > [!NOTE]
-    > Pokud chcete chránit počítače s povoleným obloukem Azure, postupujte podle pokynů v části [rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 
 1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. V nabídce Security Center vyberte **cenové & nastavení**.
@@ -94,7 +99,7 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud máte vlastní lic
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Přístup k programu Microsoft Defender pro portál koncových bodů
 
-1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Přečtěte si další informace](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Ujistěte se, že uživatelský účet má potřebná oprávnění. Další informace najdete v [přiřazení přístupu uživatele k Security Center programu Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Defender pro senzor koncového bodu se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k programu Defender pro portál Endpoint, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby v proxy server](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 

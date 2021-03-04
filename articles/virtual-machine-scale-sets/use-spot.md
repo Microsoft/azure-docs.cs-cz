@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675018"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694984"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines pro Virtual Machine Scale Sets 
 
@@ -68,13 +68,56 @@ Tato nová funkce na úrovni platformy použije AI k automatickému pokusu o obn
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Vyzkoušejte & výhod obnovení:
-- Povoluje se ve výchozím nastavení při nasazení virtuálního počítače se systémem Azure do sady škálování.
 - Došlo k pokusu o obnovení služby Azure bodový Virtual Machines vyřazení z důvodu kapacity.
 - U obnovených Virtual Machines Azure se očekává, že se spustí delší dobu, s nižší pravděpodobností aktivované vyřazením kapacity.
 - Zvyšuje životnost virtuálního počítače na místě Azure, takže úlohy běží delší dobu.
 - Pomáhá Virtual Machine Scale Sets udržovat počet cílů pro Azure Virtual Machines na místě, podobně jako údržba funkcí počtu cílů, které už existují pro virtuální počítače s průběžnými platbami.
 
 Zkuste & obnovení je v sadách škálování, které používají [Automatické škálování](virtual-machine-scale-sets-autoscale-overview.md), zakázané. Počet virtuálních počítačů v sadě škálování je založený na pravidlech automatického škálování.
+
+### <a name="register-for-try--restore"></a>Zaregistrujte se pro try & obnovení
+
+Než budete moct použít funkci try & Restore, musíte zaregistrovat předplatné pro verzi Preview. Dokončení registrace může trvat několik minut. K dokončení registrace funkce můžete použít rozhraní příkazového řádku Azure nebo PowerShell.
+
+
+**Použití rozhraní příkazového řádku**
+
+K povolení verze Preview pro vaše předplatné použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register) . 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Registrace funkce může trvat až 15 minut. Postup kontroly stavu registrace: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Po registraci této funkce pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků. 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**Použití PowerShellu** 
+
+K povolení verze Preview pro vaše předplatné použijte rutinu [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) . 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Registrace funkce může trvat až 15 minut. Postup kontroly stavu registrace: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Po registraci této funkce pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků. 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>Skupiny umístění
 

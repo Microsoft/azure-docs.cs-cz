@@ -1,22 +1,22 @@
 ---
 title: Postup zastavení monitorování clusteru Azure a Red Hat OpenShift v4 | Microsoft Docs
-description: Tento článek popisuje, jak můžete přestat sledovat cluster Azure Red Hat OpenShift a Red Hat OpenShift verze 4 s Azure Monitor for Containers.
+description: Tento článek popisuje, jak můžete přestat sledovat cluster Azure Red Hat OpenShift a Red Hat OpenShift verze 4 se službou Container Insights.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09ca05a25ce9bb02b8a3d515acf060e2e9e7e8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731795"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Postup zastavení monitorování clusteru Azure a Red Hat OpenShift v4
 
-Po povolení monitorování clusteru Azure Red Hat OpenShift a Red Hat OpenShift verze 4. x můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že už ho nechcete monitorovat. Tento článek ukazuje, jak to provést.  
+Po povolení monitorování clusteru Azure Red Hat OpenShift a Red Hat OpenShift verze 4. x můžete zastavit monitorování clusteru pomocí služby Container Insights, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak to provést.  
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>Postup zastavení monitorování pomocí Helm
 
-1. Abyste nejdřív identifikovali Azure Monitor pro vydanou verzi grafu Helm pro kontejnery nainstalované na clusteru, spusťte následující příkaz Helm.
+1. Abyste nejdřív identifikovali verzi grafu Helm Insights, která je nainstalovaná ve vašem clusteru, spusťte následující příkaz Helm.
 
     ```
     helm list
@@ -29,7 +29,7 @@ Po povolení monitorování clusteru Azure Red Hat OpenShift a Red Hat OpenShift
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-Containers-Release-1* představuje verzi grafu helm pro Azure monitor kontejnerů.
+    *azmon-Containers-Release-1* představuje verzi grafu Helm pro službu Container Insights.
 
 2. Chcete-li odstranit vydanou verzi grafu, spusťte následující příkaz Helm.
 
@@ -49,4 +49,4 @@ Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).
+Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../logs/delete-workspace.md).

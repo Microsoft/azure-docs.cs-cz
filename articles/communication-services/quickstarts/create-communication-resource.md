@@ -10,16 +10,18 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 036df8d4c65ebd6288a526b3af7201e6f2131cd4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656566"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691769"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
+ 
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby nasazení a správy Azure. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal.
+Začněte s komunikačními službami Azure tím, že zřizujete první prostředek komunikační služby. Prostředky komunikačních služeb lze zřídit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí klientské knihovny pro správu .NET. Klientská knihovna pro správu a Azure Portal vám umožní vytvářet, konfigurovat, aktualizovat a odstraňovat vaše prostředky a rozhraní pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md), služby nasazení a správy Azure. Všechny funkce, které jsou k dispozici v klientských knihovnách, jsou k dispozici v Azure Portal. 
 
 > [!WARNING]
 > Mějte na paměti, že když jsou komunikační služby k dispozici v několika geografických oblastech, aby bylo možné získat telefonní číslo, musí mít zdroj umístění dat nastavené na US. Všimněte si také, že během veřejné verze Preview nejde přenést prostředky komunikace do jiného předplatného.
@@ -38,7 +40,7 @@ Začněte s komunikačními službami Azure tím, že zřizujete první prostře
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Přístup k vašim připojovacím řetězcům a koncovým bodům služby
 
-Připojovací řetězce umožňují klientským knihovnám komunikačních služeb připojit se k Azure a ověřit je. K připojovacím řetězcům služby Communication Services a koncovým bodům služby můžete přistupovat z Azure Portal nebo programově pomocí rozhraní API Azure Resource Manager.
+Připojovací řetězce umožňují klientským knihovnám komunikačních služeb připojit se k Azure a ověřit je. K připojovacím řetězcům služby Communication Services a koncovým bodům služby můžete přistupovat z Azure Portal nebo programově pomocí rozhraní API Azure Resource Manager. 
 
 Po přechodu na prostředek služby Communication Services vyberte z navigační nabídky **klíče** a zkopírujte **připojovací řetězec** nebo hodnoty **koncového bodu** pro použití klientskými knihovnami komunikačních služeb. Všimněte si, že máte přístup k primárním a sekundárním klíčům. To může být užitečné ve scénářích, kdy byste chtěli poskytnout dočasný přístup k prostředkům komunikačních služeb třetí straně nebo přípravnému prostředí.
 
@@ -47,7 +49,7 @@ Po přechodu na prostředek služby Communication Services vyberte z navigační
 K informacím o klíčích se můžete dostat taky pomocí Azure CLI:
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"
+az communication list --resource-group "<resourceGroup>"    
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -101,7 +103,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 Pokud chcete vyčistit a odebrat předplatné služby Communications Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
-Pokud máte při odstraňování prostředků přiřazená nějaká telefonní čísla, budou se telefonní čísla z vašeho prostředku automaticky vydávat ve stejnou dobu.
+Pokud máte při odstraňování prostředků přiřazená nějaká telefonní čísla, budou se telefonní čísla z vašeho prostředku automaticky vydávat ve stejnou dobu. 
 
 ## <a name="next-steps"></a>Další kroky
 

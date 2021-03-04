@@ -3,16 +3,16 @@ title: Přehled ukázkového plánu Azure Security benchmark Foundation
 description: Přehled a architektura ukázkového plánu Azure Security benchmark Foundation
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741867"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Přehled ukázkového plánu Azure Security benchmark Foundation
 
-Ukázka návrhového plánu Azure Security test Foundation poskytuje sadu vzorů základní infrastruktury, které vám pomůžou vytvořit zabezpečené a kompatibilní prostředí Azure. Podrobný plán vám pomůže nasadit cloudovou architekturu, která nabízí řešení scénářů, které mají požadavky na akreditaci nebo dodržování předpisů. Tato ukázka v rámci tohoto základu plánu je rozšířením podrobného plánu [ukázkových testů Azure Security test](../azure-security-benchmark/index.md). Nasadí a nakonfiguruje hranice sítě, monitorování a další prostředky, které jsou v souladu se zásadami a dalšími guardrails definovanými v [srovnávacím testu zabezpečení Azure](../../../../security/benchmarks/index.yml).
+Ukázka návrhového plánu Azure Security test Foundation poskytuje sadu vzorů základní infrastruktury, které vám pomůžou vytvořit zabezpečené a kompatibilní prostředí Azure. Podrobný plán vám pomůže nasadit cloudovou architekturu, která nabízí řešení scénářů, které mají požadavky na akreditaci nebo dodržování předpisů. Tato ukázka v rámci tohoto základu plánu je rozšířením podrobného plánu [ukázkových testů Azure Security test](../azure-security-benchmark.md). Nasadí a nakonfiguruje hranice sítě, monitorování a další prostředky, které jsou v souladu se zásadami a dalšími guardrails definovanými v [srovnávacím testu zabezpečení Azure](../../../../security/benchmarks/index.yml).
 
 ## <a name="architecture"></a>Architektura
 
@@ -23,7 +23,7 @@ Podrobný plán nasadí virtuální síť centrální sítě, která obsahuje b�
 
 Tento podrobný plán nasadí několik služeb Azure, které poskytují zabezpečený, monitorovaný podnik připravený na podnikové úrovni. Toto prostředí tvoří:
 
-- [Azure monitor protokoly](../../../../azure-monitor/platform/data-platform-logs.md) a účet úložiště Azure pro zajištění, že se protokoly o prostředcích, protokolech aktivit, metrikách a přenosech v síti ukládají do centrálního umístění pro snadné dotazování, analýzy, archivaci a upozorňování.
+- [Azure monitor protokoly](../../../../azure-monitor/logs/data-platform-logs.md) a účet úložiště Azure pro zajištění, že se protokoly o prostředcích, protokolech aktivit, metrikách a přenosech v síti ukládají do centrálního umístění pro snadné dotazování, analýzy, archivaci a upozorňování.
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (standardní verze) pro zajištění ochrany před hrozbami pro prostředky Azure.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) v centru, které podporují podsítě pro připojení zpátky do místní sítě, příchozího a odchozího zásobníku pro připojení k Internetu a volitelné podsítě pro nasazení dalších služeb správy nebo správy. Virtual Network v paprsku obsahuje podsítě pro hostování úloh aplikací. Další podsítě je možné vytvořit po nasazení podle potřeby pro podporu použitelných scénářů.
 - [Azure firewall](../../../../firewall/overview.md) ke směrování veškerého odchozího internetového provozu a povolení příchozího internetového provozu přes pole s odkazem. (Výchozí pravidla brány firewall blokují veškerý příchozí a odchozí provoz Internetu a pravidla musí být po nasazení nakonfigurovaná.)

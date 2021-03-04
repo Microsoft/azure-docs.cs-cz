@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691480"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Ladění modelu pomocí Azure Machine Learning
 
@@ -25,7 +25,7 @@ Automatizujte efektivní ladění parametrů pomocí Azure Machine Learning [bal
 1. Definice hledaného prostoru parametrů
 1. Určení primární metriky k optimalizaci  
 1. Zadat zásady prvotního ukončení pro nízkoúrovňové spouštění
-1. Přidělit prostředky
+1. Vytváření a přiřazování prostředků
 1. Spustit experiment s definovanou konfigurací
 1. Vizualizace školicích běhů
 1. Vyberte nejlepší konfiguraci pro váš model.
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 [Vzorkování mřížky](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) podporuje samostatné parametry. Vzorkování mřížky použijte v případě, že můžete rozpočtovat do vyčerpání prostoru pro hledání. Podporuje předčasné ukončení běhu s nízkým výkonem.
 
-Provede jednoduchou hledání v mřížce přes všechny možné hodnoty. Vzorkování mřížky lze použít pouze s `choice` parametry. Například následující místo má šest vzorků:
+Vzorkování mřížky provádí jednoduché hledání v mřížce přes všechny možné hodnoty. Vzorkování mřížky lze použít pouze s `choice` parametry. Například následující místo má šest vzorků:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayesovské vzorkování
 
-[Vzorkování bayesovského rozhodování](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) je založené na algoritmu optimalizace bayesovského rozhodování. Vybere ukázky založené na tom, jak se prováděly předchozí ukázky, aby nové ukázky vylepšily primární metriku.
+[Vzorkování bayesovského rozhodování](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) je založené na algoritmu optimalizace bayesovského rozhodování. Vybírá ukázky na základě předchozích vzorků, takže nové ukázky zlepšují primární metriku.
 
 Vzorkování bayesovského rozhodování se doporučuje, pokud máte dostatečný rozpočet na prozkoumání prostoru s parametrem. Pro dosažení nejlepších výsledků doporučujeme maximální počet spuštění, který je větší nebo roven 20, počtu vyladěných parametrů. 
 
@@ -187,7 +187,7 @@ Další informace o hodnotách protokolování v běhu školicích kurzů najdet
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Zadat zásady prvotního ukončení
 
-Automatické ukončení nedostatečně výkonného spuštění se zásadami prvotního ukončení. Předčasné ukončení vylepšuje výpočetní efektivitu.
+Automatické ukončení nedostatečně výkonného spuštění se zásadami předčasného ukončení. Předčasné ukončení vylepšuje výpočetní efektivitu.
 
 Můžete nakonfigurovat následující parametry, které řídí, kdy se zásada použije:
 
@@ -203,7 +203,7 @@ Azure Machine Learning podporuje následující zásady prvotního ukončení:
 
 ### <a name="bandit-policy"></a>Zásady Bandit
 
-[Zásada Bandit](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) je založená na rozsahu časové rezervy/rezervy a intervalu vyhodnocení. Bandit ukončí běh, kde primární metrika není v rámci zadané hodnoty faktoru rezervy nebo rezervy v porovnání s nejlepším výkonem.
+[Zásada Bandit](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) je založená na rozsahu časové rezervy/rezervy a intervalu vyhodnocení. Bandit se spustí, když primární metrika není v rámci zadaného faktoru časové rezervy nebo časové rezervy z úspěšného spuštění.
 
 > [!NOTE]
 > Vzorkování bayesovského rozhodování nepodporuje předčasné ukončení. Při použití vzorkování bayesovského rozhodování nastavte `early_termination_policy = None` .
@@ -226,7 +226,7 @@ V tomto příkladu se zásada prvotního ukončení používá v každém interv
 
 ### <a name="median-stopping-policy"></a>Medián – zastavení zásad
 
-[Medián při zastavení](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) je zásada předčasného ukončení založená na běžících průměrech primárních metrik, které běhy oznámily. Tato zásada vypočítá průměry ve všech školicích běhůch a ukončí běh s primárními hodnotami metriky, které jsou horší než střední hodnota průměrů.
+[Medián při zastavení](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) je zásada předčasného ukončení založená na běžících průměrech primárních metrik, které běhy oznámily. Tato zásada vypočítá průměry na všech školicích běhů a zastaví spuštění, jejichž primární hodnota metriky je horší než střední hodnota průměrů.
 
 Tato zásada přijímá následující konfigurační parametry:
 * `evaluation_interval`: frekvence použití zásad (volitelného parametru).
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-V tomto příkladu se zásady prvotního ukončení aplikují v intervalu vyhodnocení 5 v každém intervalu. Běh se ukončí v intervalu 5, pokud je jeho nejlepší primární metrika horší než střední hodnota průměrných běhů v intervalech 1:5 v rámci všech školicích běhů.
+V tomto příkladu se zásady prvotního ukončení aplikují v intervalu vyhodnocení 5 v každém intervalu. Běh se zastavil v intervalu 5, pokud je jeho nejlepší primární metrika horší než střední hodnota průměrů spuštěných v intervalech 1:5 v rámci všech školicích běhů.
 
 ### <a name="truncation-selection-policy"></a>Zásada výběru zkrácení
 
@@ -271,7 +271,7 @@ policy=None
 * Pro konzervativní zásadu, která poskytuje úspory bez ukončení přislíbení úloh, zvažte střední zastavování zásad s `evaluation_interval` 1 a `delay_evaluation` 5. Jedná se o konzervativní nastavení, které může poskytovat přibližně 25 až 35% úspory bez ztráty primární metriky (na základě našich zkušebních údajů).
 * Pro efektivnější úspory použijte zásady Bandit s menší povolenou časovou rezervou nebo zkrácenými zásadami výběru s větším procentem zkrácení.
 
-## <a name="allocate-resources"></a>Přidělit prostředky
+## <a name="create-and-assign-resources"></a>Vytváření a přiřazování prostředků
 
 Určete svůj rozpočet prostředků zadáním maximálního počtu běhů cvičení.
 
@@ -302,18 +302,28 @@ Chcete-li nakonfigurovat experiment s [optimalizací parametrů](/python/api/azu
 * Zásady předčasného ukončení
 * Primární metrika
 * Nastavení přidělení prostředků
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 ScriptRunConfig je školicí skript, který se spustí s ukázkovými parametry. Definuje prostředky na úlohu (jeden nebo víc uzlů) a výpočetní cíl, který se má použít.
 
 > [!NOTE]
->Cíl výpočtů zadaný v nástroji `src` musí mít dostatek prostředků pro uspokojení vaší úrovně souběžnosti. Další informace o ScriptRunConfig najdete v tématu [Konfigurace školicích běhů](how-to-set-up-training-targets.md).
+>Cílový výpočetní výkon, který se používá v nástroji, `script_run_config` musí mít dostatek prostředků pro uspokojení vaší úrovně souběžnosti. Další informace o ScriptRunConfig najdete v tématu [Konfigurace školicích běhů](how-to-set-up-training-targets.md).
 
 Konfigurace experimentu ladění vašich parametrů:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+`HyperDriveConfig`Nastaví parametry předané do `ScriptRunConfig script_run_config` . `script_run_config`Zase předává parametry do skriptu pro školení. Výše uvedený fragment kódu je pořízen z ukázkového výukového poznámkového bloku [, pomocí ladění a nasazení pomocí PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). V této ukázce `learning_rate` `momentum` budou vyladěny parametry a. Předčasné zastavování spuštění bude určeno pomocí `BanditPolicy` , což zastaví běh, jehož primární metrika spadá mimo `slack_factor` (viz [Referenční dokumentace třídy BanditPolicy](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+
+Následující kód z ukázky ukazuje, jak jsou přiladěny hodnoty přijímány, analyzovány a předány funkci školicího skriptu `fine_tune_model` :
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> Každý parametr spustí restart od začátku, včetně opětovného sestavení modelu a _všech datových zavaděčů_. Tyto náklady můžete minimalizovat pomocí Azure Machine Learningho kanálu nebo ručního procesu k tomu, abyste mohli co nejvíce připravit data před spuštěním vašich školicích kurzů. 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Odeslat experiment s optimalizací parametrů
 
@@ -335,7 +375,6 @@ hyperdrive_run = experiment.submit(hd_config)
 ## <a name="warm-start-hyperparameter-tuning-optional"></a>Rychlé spuštění ladění parametrů (volitelné)
 
 Hledání nejlepších hodnot parametrů pro váš model může být iterativní proces. Pokud chcete zrychlit ladění parametrů, můžete znovu použít znalostní bázi z pěti předchozích běhů.
-
 
 Zahřívání od začátku se zpracovává jinak v závislosti na metodě vzorkování:
 - **Vzorkování bayesovského rozhodování**: pro výběr nových ukázek a pro zlepšení primární metriky se používají zkušební verze předchozího běhu jako předchozí znalosti.
@@ -368,7 +407,7 @@ Experiment ladění vašich parametrů můžete nakonfigurovat tak, aby začal z
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

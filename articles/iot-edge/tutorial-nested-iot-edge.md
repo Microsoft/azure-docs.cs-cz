@@ -4,17 +4,17 @@ description: V tomto kurzu se dozvíte, jak vytvořit hierarchickou strukturu Io
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 11/10/2020
+ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f1b1a94dc1d96e625947eef5730c24f080fc155a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721408"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -35,15 +35,17 @@ Tento kurz vás provede vytvořením hierarchie IoT Edge zařízení, nasazením
 > * Nakonfigurujte modul runtime IoT Edge na zařízeních ve vaší hierarchii.
 > * Nainstalujte konzistentní certifikáty napříč vaší hierarchií zařízení.
 > * Přidejte úlohy do zařízení ve vaší hierarchii.
-> * Použijte modul API proxy k bezpečnému směrování přenosů HTTP přes jeden port ze zařízení se spodní vrstvou.
+> * K bezpečnému směrování přenosů HTTP přes jeden port ze zařízení s nižší vrstvou použijte [modul Proxy IoT Edge API](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview) .
 
 V tomto kurzu jsou definovány následující vrstvy sítě:
 
 * **Nejvyšší vrstva**: zařízení IoT Edge v této vrstvě se můžou připojit přímo ke cloudu.
 
-* **Nižší vrstva**: zařízení IoT Edge v této vrstvě se nemohou připojit přímo ke cloudu. Musí projít jedním nebo více zprostředkujícími IoT Edge zařízeními pro odesílání a příjem dat.
+* **Nižší vrstvy**: IoT Edge zařízení ve vrstvách pod horní vrstvou se nemohou připojit přímo ke cloudu. Musí projít jedním nebo více zprostředkujícími IoT Edge zařízeními pro odesílání a příjem dat.
 
-V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení. Jedno zařízení, **topLayerDevice**, představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **lowerLayerDevice**, představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **podřízené zařízení**. Můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **lowerLayerDevice**.
+V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení, která je naformátovaná níže. Jedno zařízení, **horní vrstva zařízení**, představuje zařízení v horní vrstvě hierarchie, které se může připojit přímo ke cloudu. Toto zařízení se bude také označovat jako **nadřazené zařízení**. Druhé zařízení, **nižší vrstva zařízení**, představuje zařízení v nižší vrstvě hierarchie, které se nemůže připojit přímo ke cloudu. V případě potřeby můžete přidat další zařízení nižší vrstvy, která reprezentují vaše provozní prostředí. Zařízení v nižších vrstvách budou také označována jako **podřízená zařízení**. Konfigurace dalších zařízení nižší vrstvy bude následovat po konfiguraci **zařízení nižší vrstvy**.
+
+![Struktura hierarchie kurzu, která obsahuje dvě zařízení: horní vrstva zařízení a nižší vrstva](./media/tutorial-nested-iot-edge/tutorial-hierarchy-diagram.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +55,8 @@ Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 * Účet Azure s platným předplatným. Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) v Azure úrovně Free nebo Standard.
 * Azure CLI v 2.3.1 s nainstalovaným rozšířením Azure IoT v 0.10.6 nebo novějším. V tomto kurzu se používá [Azure Cloud Shell](../cloud-shell/overview.md). Pokud Azure Cloud Shell neznáte, [Projděte si podrobnosti v rychlém](./quickstart-linux.md#prerequisites)startu.
-* Dvě zařízení se systémem Linux nakonfigurovaná jako zařízení IoT Edge. Pokud nemáte dostupná zařízení, můžete vytvořit dva virtuální počítače Azure tak, že nahradíte zástupný text v následujícím příkazu a dvakrát ho spustíte:
+  * Pokud chcete zobrazit aktuální verze modulů a rozšíření Azure CLI, spusťte příkaz [AZ Version](/cli/azure/reference-index?#az_version).
+* Zařízení se systémem Linux, které se má nakonfigurovat jako zařízení IoT Edge pro každé zařízení ve vaší hierarchii. V tomto kurzu se používají dvě zařízení. Pokud nemáte dostupná zařízení, můžete vytvořit virtuální počítače Azure pro každé zařízení v hierarchii tak, že v následujícím příkazu nahradíte zástupný text a spustíte ho:
 
    ```azurecli-interactive
    az vm create \
@@ -71,13 +74,18 @@ Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
   Další informace najdete v tématu věnovaném [otevření portů pro virtuální počítač s využitím webu Azure Portal](../virtual-machines/windows/nsg-quickstart-portal.md).
 
-Tento scénář můžete vyzkoušet také pomocí skriptu [Azure IoT Edge pro průmyslovou ukázku IoT](https://aka.ms/iotedge-nested-sample), který nasadí virtuální počítače Azure jako předem nakonfigurovaná zařízení pro simulaci prostředí továrny.
+>[!TIP]
+>Pokud chcete při vytváření hierarchie IoT Edge zařízení automaticky sledovat, můžete postupovat podle [ukázkových Azure IoT Edge pro průmyslový příklad IoT](https://aka.ms/iotedge-nested-sample). Tento skriptový scénář nasadí virtuální počítače Azure jako předkonfigurovaná zařízení pro simulaci prostředí továrny.
+>
+>Pokud budete chtít pokračovat, i když vytvoříte ukázkovou hierarchii krok za krokem, pokračujte níže uvedenými kroky kurzu.
 
 ## <a name="configure-your-iot-edge-device-hierarchy"></a>Konfigurace IoT Edge hierarchie zařízení
 
 ### <a name="create-a-hierarchy-of-iot-edge-devices"></a>Vytvoření hierarchie IoT Edgech zařízení
 
-První krok, vytvoření zařízení IoT Edge, se dá provést pomocí Azure Portal nebo Azure CLI. V tomto kurzu se vytvoří hierarchie dvou IoT Edgech zařízení: **topLayerDevice** a její podřízená **lowerLayerDevice**.
+IoT Edge zařízení tvoří vrstvy vaší hierarchie. V tomto kurzu dojde k vytvoření hierarchie dvou IoT Edge zařízení: **horní vrstva zařízení** a její podřízenosti, což je **nižší vrstva**. V případě potřeby můžete vytvořit další podřízená zařízení.
+
+Pokud chcete vytvořit zařízení IoT Edge, můžete použít Azure Portal nebo Azure CLI.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -87,7 +95,7 @@ První krok, vytvoření zařízení IoT Edge, se dá provést pomocí Azure Por
 
 1. Vyberte **+ Přidat zařízení IoT Edge**. Toto zařízení bude zařízení nejvyšší vrstvy, takže zadejte odpovídající jedinečné ID zařízení. Vyberte **Uložit**.
 
-1. Znovu vyberte **+ přidat IoT Edge zařízení** . Toto zařízení bude hraniční zařízení nižší vrstvy, takže zadejte odpovídající jedinečné ID zařízení.
+1. Znovu vyberte **+ přidat IoT Edge zařízení** . Toto zařízení bude zařízením nižší vrstvy, takže zadejte odpovídající jedinečné ID zařízení.
 
 1. Zvolte možnost **nastavit nadřazené zařízení**, v seznamu zařízení vyberte zařízení nejvyšší vrstvy a vyberte **OK**. Vyberte **Uložit**.
 
@@ -101,15 +109,27 @@ První krok, vytvoření zařízení IoT Edge, se dá provést pomocí Azure Por
    az iot hub device-identity create --device-id {top_layer_device_id} --edge-enabled --hub-name {hub_name}
    ```
 
-1. Zadejte následující příkaz pro vytvoření podřízeného IoT Edge zařízení a vytvořte vztah nadřazenosti-podřízenosti mezi zařízeními:
+   Po úspěšném vytvoření zařízení dojde ke výstupu konfigurace JSON zařízení.
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --pd {top_layer_device_id} --hub-name {iothub_name}
-    ```
+   ![Výstup JSON úspěšného vytvoření zařízení](./media/tutorial-nested-iot-edge/json-success-output.png)
+
+1. Zadejte následující příkaz, který vytvoří nižší vrstvu IoT Edge zařízení. Pokud chcete ve své hierarchii více vrstev, můžete vytvořit více než jedno zařízení nižší vrstvy. Ujistěte se, že jsou k dispozici jedinečné identity zařízení.
+
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --hub-name {hub_name}
+   ```
+
+1. Zadejte následující příkaz k definování jednotlivých vztahů mezi nadřazenými a podřízenými **zařízeními mezi zařízením nejvyšší vrstvy** a všemi **zařízeními nižší vrstvy**. Nezapomeňte spustit tento příkaz pro každé zařízení nižší vrstvy ve vaší hierarchii.
+
+   ```azurecli-interactive
+   az iot hub device-identity parent set --device-id {lower_layer_device_id} --parent-device-id {top_layer_device_id} --hub-name {hub_name}
+   ```
+
+   Tento příkaz neobsahuje explicitní výstup.
 
 ---
 
-Poznamenejte si připojovací řetězec každého zařízení IoT Edge. Budou použity později.
+V dalším kroku si poznamenejte připojovací řetězec každého zařízení IoT Edge. Budou použity později.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -130,6 +150,48 @@ Poznamenejte si připojovací řetězec každého zařízení IoT Edge. Budou po
    ```
 
 ---
+
+Pokud jste výše uvedené kroky dokončili správně, můžete pomocí následujícího postupu ověřit, jestli jsou vaše vztahy nadřazenosti a podřízenosti v Azure Portal nebo Azure CLI správné.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. V [Azure Portal](https://ms.portal.azure.com/)přejděte do části **IoT Edge** IoT Hub.
+
+1. V seznamu zařízení klikněte na ID zařízení s **nižší vrstvou zařízení** .
+
+1. Na stránce s podrobnostmi o zařízení by se měla zobrazit identita **zařízení nejvyšší vrstvy** uvedená vedle pole **nadřazené zařízení** .
+
+   [Nadřazené zařízení potvrzené podřízeným zařízením](./media/tutorial-nested-iot-edge/lower-layer-device-parent.png)
+
+Můžete také začlenit relaci hierarchie do svého **zařízení nejvyšší vrstvy**.
+
+1. V seznamu zařízení klikněte na ID zařízení **nejvyšší vrstvy** .
+
+1. Vyberte kartu **Spravovat podřízená zařízení** v horní části.
+
+1. V seznamu zařízení byste měli vidět vaše **zařízení nižší vrstvy**.
+
+   [Podřízené zařízení potvrzené nadřazeným zařízením](./media/tutorial-nested-iot-edge/top-layer-device-child.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. V [Azure Cloud Shell](https://shell.azure.com/) můžete ověřit, že se některá z vašich podřízených zařízení úspěšně navázala jako vztah k nadřazenému zařízení tím, že získá identitu potvrzeného nadřazeného zařízení podřízeného zařízení. Tím se vytvoří výstup konfigurace JSON nadřazeného zařízení, které se navýšely na obrázek:
+
+   ```azurecli-interactive
+   az iot hub device-identity parent show --device-id {lower_layer_device_id} --hub-name {hub_name}
+   ```
+
+Můžete také začlenit relaci vaší hierarchie se dotazem na **zařízení nejvyšší vrstvy**.
+
+1. Seznam podřízených zařízení, která Nadřazená zařízení zná:
+
+    ```azurecli-interactive
+    az iot hub device-identity children list --device-id {top_layer_device_id} --hub-name {hub_name}
+    ```
+
+---
+
+Jakmile budete spokojeni s tím, že je vaše hierarchie správně strukturovaná, budete připraveni pokračovat.
 
 ### <a name="create-certificates"></a>Vytvoření certifikátů
 
@@ -165,11 +227,11 @@ K vytvoření ukázkových certifikátů na zařízení se systémem Linux je nu
 1. Pomocí následujícího příkazu vytvořte dvě sady certifikátů CA a privátních klíčů IoT Edge zařízení: jednu sadu pro zařízení nejvyšší vrstvy a jednu sadu pro zařízení nižší vrstvy. Poskytněte jim snadno zapamatovatelné názvy certifikátů certifikační autority, abyste je vzájemně rozlišili.
 
    ```bash
-   ./certGen.sh create_edge_device_ca_certificate "top-layer-device"
-   ./certGen.sh create_edge_device_ca_certificate "lower-layer-device"
+   ./certGen.sh create_edge_device_ca_certificate "{top_layer_certificate_name}"
+   ./certGen.sh create_edge_device_ca_certificate "{lower_layer_certificate_name}"
    ```
 
-   Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů, ale používáme následující certifikát a pár klíčů na každém IoT Edge zařízení a odkazuje se v souboru config. yaml:
+   Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů, ale na každém zařízení IoT Edge používáme následující certifikát a pár klíčů a odkazuje v konfiguračním souboru:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
@@ -183,11 +245,35 @@ Každé zařízení potřebuje kopii certifikátu kořenové certifikační auto
    sudo update-ca-certificates
    ```
 
-   Tento příkaz by měl mít výstup, který v/etc/SSL/certs. přidal jeden certifikát.
+   Tento příkaz by měl mít výstup, ve kterém byl přidán jeden certifikát `/etc/ssl/certs` .
+
+   [Úspěšná zpráva o instalaci certifikátu](./media/tutorial-nested-iot-edge/certificates-success-output.png)
+
+Pokud jste výše uvedené kroky dokončili správně, můžete se podívat na to, že se vaše certifikáty nainstalují, a to tak, že `/etc/ssl/certs` přejdete do tohoto adresáře a vyhledáte nainstalované certifikáty.
+
+1. Přejít na `/etc/ssl/certs` :
+
+   ```bash
+   cd /etc/ssl/certs
+   ```
+
+1. Seznam nainstalovaných certifikátů a `grep` pro `azure` :
+
+   ```bash
+   ll | grep azure
+   ```
+
+   Měla by se zobrazit hodnota hash certifikátu propojená s certifikátem kořenové certifikační autority a certifikátem kořenové certifikační autority propojenou s kopií ve vašem `usr/local/share` adresáři.
+
+   [Výsledky hledání certifikátů Azure](./media/tutorial-nested-iot-edge/certificate-list-results.png)
+
+Jakmile budete spokojeni s tím, že se certifikáty nainstalují na každé zařízení, budete připraveni pokračovat.
 
 ### <a name="install-iot-edge-on-the-devices"></a>Instalace IoT Edge na zařízeních
 
-Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
+Instalace imagí IoT Edge verze 1,2 runtime poskytuje vašim zařízením přístup k funkcím, které jsou nezbytné k tomu, aby fungovaly jako hierarchie zařízení.
+
+Chcete-li nainstalovat IoT Edge, je nutné nainstalovat příslušnou konfiguraci úložiště, nainstalovat požadované součásti a nainstalovat potřebné prostředky vydaných verzí.
 
 1. Nainstalujte konfiguraci úložiště, která odpovídá operačnímu systému vašeho zařízení.
 
@@ -215,7 +301,7 @@ Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
-   
+
 1. Aktualizuje seznamy balíčků na vašem zařízení.
 
    ```bash
@@ -228,111 +314,142 @@ Pomocí následujících kroků na obou zařízeních nainstalujte IoT Edge.
    sudo apt-get install moby-engine
    ```
 
-1. Nainstalujte démona hsmlib a IoT Edge. Pokud chcete zobrazit prostředky pro ostatní distribuce systému Linux, [navštivte verzi GitHub](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1). <!-- Update with proper image links on release -->
+1. Nainstalujte IoT Edge a službu IoT identity.
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
-   sudo dpkg -i ./libiothsm-std.deb
-   sudo dpkg -i ./iotedge.deb
+   sudo apt-get install aziot-edge
    ```
+
+Pokud jste výše uvedené kroky dokončili správně, zobrazila se zpráva Azure IoT Edge banneru s požadavkem, abyste aktualizovali konfigurační soubor Azure IoT Edge, `/etc/aziot/config.toml` na každém zařízení ve vaší hierarchii. Pokud ano, budete připraveni pokračovat.
 
 ### <a name="configure-the-iot-edge-runtime"></a>Konfigurace modulu runtime IoT Edge
 
-Nakonfigurujte modul runtime IoT Edge pomocí následujících kroků na svých zařízeních. Konfigurace modulu runtime IoT Edge pro vaše zařízení se skládá ze čtyř kroků, které jsou dokončené úpravou konfiguračního souboru IoT Edge:
+Kromě zřizování vašich zařízení postup konfigurace naváže důvěryhodnou komunikaci mezi zařízeními ve vaší hierarchii pomocí certifikátů, které jste vytvořili dříve. Kroky také zahájí vytvoření struktury sítě v hierarchii. Zařízení nejvyšší vrstvy bude udržovat připojení k Internetu, což umožňuje, aby si vyčetla image z cloudu, zatímco zařízení nižší vrstvy budou směrovat přes zařízení nejvyšší vrstvy, aby k nim měli přístup.
 
-1. Ruční zřízení každého zařízení přidáním připojovacího řetězce zařízení do konfiguračního souboru.
+Chcete-li konfigurovat modul runtime IoT Edge, je nutné upravit několik součástí konfiguračního souboru. Konfigurace se mírně liší mezi **zařízením horní vrstvy** a **nižší vrstvou zařízení**, takže je důležité mít na vědomí, který konfigurační soubor zařízení upravujete pro každý krok. Konfigurace modulu runtime IoT Edge pro vaše zařízení se skládá ze čtyř kroků, které jsou dokončené úpravou konfiguračního souboru IoT Edge:
 
-1. Dokončete nastavení certifikátů zařízení tak, že přejdete na konfigurační soubor na certifikát certifikační autority zařízení, na privátní klíč certifikační autority zařízení a na certifikát kořenové certifikační autority.
+* Ruční zřízení každého zařízení přidáním připojovacího řetězce zařízení do konfiguračního souboru.
 
-1. Proveďte zavedení systému pomocí agenta IoT Edge.
+* Dokončete nastavení certifikátů zařízení tak, že přejdete na konfigurační soubor na certifikát certifikační autority zařízení, na privátní klíč certifikační autority zařízení a na certifikát kořenové certifikační autority.
 
-1. Aktualizujte parametr **hostname** pro zařízení **nejvyšší vrstvy** a aktualizujte parametr **hostname** a parametr **parent_hostname** pro vaše zařízení **nižší vrstvy** .
+* Proveďte zavedení systému pomocí agenta IoT Edge.
+
+* Aktualizujte parametr **hostname** pro zařízení **nejvyšší vrstvy** a aktualizujte parametr **hostname** a parametr **parent_hostname** pro vaše zařízení **nižší vrstvy** .
 
 Proveďte tyto kroky a restartujte službu IoT Edge pro konfiguraci zařízení.
 
-1. Na každém zařízení otevřete konfigurační soubor IoT Edge.
+>[!TIP]
+>Při procházení konfiguračního souboru v nano můžete pomocí **kombinace kláves CTRL + W** vyhledat klíčová slova v souboru.
+
+1. Na každém zařízení vytvořte konfigurační soubor založený na zahrnuté šabloně.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+
+1. On each device, open the IoT Edge configuration file.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Vyhledejte konfigurace zřizování souboru a zrušte komentář k **ruční konfiguraci zřizování pomocí oddílu připojovacího řetězce** .
+1. Pro zařízení **nejvyšší vrstvy** Najděte oddíl **hostname** . Odkomentujte řádek `hostname` parametrem a aktualizujte hodnotu na plně kvalifikovaný název domény (FQDN) nebo IP adresu zařízení IoT Edge. Použijte jakoukoli hodnotu, kterou zvolíte konzistentně napříč zařízeními ve vaší hierarchii.
 
-1. Aktualizujte hodnotu **device_connection_string** připojovacím řetězcem ze zařízení IoT Edge. Ujistěte se, že jsou všechny ostatní oddíly pro zřizování zakomentovány. Ujistěte se, že **zřizování:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny dvěma mezerami.
-
-   ```yml
-   # Manual provisioning configuration using a connection string
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-     dynamic_reprovisioning: false
+   ```toml
+   hostname = "<device fqdn or IP>"
    ```
 
    >[!TIP]
    >Vložení obsahu schránky do nano `Shift+Right Click` nebo stisknutím klávesy `Shift+Insert` .
 
-1. Vyhledejte část **certifikáty** . Odkomentujte a aktualizujte pole tří certifikátů tak, aby odkazovaly na certifikáty, které jste vytvořili v předchozí části, a přesunuli do zařízení IoT Edge. Zadejte cesty k identifikátorům URI souboru, které mají formát `file:///<path>/<filename>` .
+1. Pro všechna IoT Edge zařízení v **nižších vrstvách** Najděte oddíl **nadřazený název hostitele** . Odkomentujte řádek `parent_hostname` parametrem a aktualizujte hodnotu tak, aby odkazovala na plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení. Použijte přesnou hodnotu, kterou vložíte do pole **hostname** nadřazeného zařízení. Pro IoT Edge zařízení v **horní vrstvě** nechejte tento parametr Zakomentovat.
 
-   ```yml
-   certificates:
-     device_ca_cert: "<File URI path to the device CA certificate unique to this device.>"
-     device_ca_pk: "<File URI path to the device CA private key unique to this device.>"
-     trusted_ca_certs: "<File URI path to the root CA certificate shared by all devices in the gateway hierarchy.>"
-   ```
-
-1. Pro zařízení **nejvyšší vrstvy** Najděte parametr **hostname** . Aktualizujte hodnotu na plně kvalifikovaný název domény (FQDN) nebo IP adresu zařízení IoT Edge. Použijte jakoukoli hodnotu, kterou zvolíte konzistentně napříč zařízeními ve vaší hierarchii.
-
-   ```yml
-   hostname: <device fqdn or IP>
-   ```
-
-1. U zařízení IoT Edge v **nižších vrstvách** aktualizujte konfigurační soubor tak, aby odkazoval na plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a to podle toho, co je v poli **hostname** nadřazeného zařízení. U IoT Edge zařízení v **horní vrstvě** ponechte tento parametr Zakomentovat.
-
-   ```yml
-   parent_hostname: <parent device fqdn or IP>
+   ```toml
+   parent_hostname = "<parent device fqdn or IP>"
    ```
 
    > [!NOTE]
    > V případě hierarchií s více než jednou nižší vrstvou aktualizujte pole *parent_hostname* se plně kvalifikovaným názvem domény zařízení ve vrstvě hned výše.
 
-1. V případě zařízení **nejvyšší vrstvy** najděte část **Agent** YAML a aktualizujte hodnotu image na správnou verzi agenta IoT Edge. V tomto případě budeme nasměrovat agenta IoT Edge nejvyšší vrstvy na Azure Container Registry s dostupnou verzí Public Preview verze Preview agenta IoT Edge.
+1. V souboru vyhledejte část **certifikát skupiny důvěryhodných certifikátů** . Odkomentujte řádek `trust_bundle_cert` parametrem a aktualizujte hodnotu pomocí cesty identifikátoru URI souboru na kořenový certifikát certifikační autority, který sdílí všechna zařízení v hierarchii brány.
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   trust_bundle_cert = "<root CA certificate>"
    ```
 
-1. U zařízení IoT Edge v **nižších vrstvách** aktualizujte název domény hodnoty image tak, aby odkazoval na plně kvalifikovaný název domény nebo IP adresu nadřazeného zařízení, a za ním port proxy serveru rozhraní API, 8000. Přidáte modul API proxy do další části.
+1. Vyhledejte oddíl **zřizování** souboru. Odkomentujte řádky pro **Ruční zřizování pomocí připojovacího řetězce**. Pro každé zařízení ve vaší hierarchii aktualizujte hodnotu **connection_string** připojovacím řetězcem ze zařízení IoT Edge.
+
+   ```toml
+   # Manual provisioning with connection string
+   [provisioning]
+   source = "manual"
+   connection_string: "<Device connection string>"
+   ```
+
+1. Najděte **výchozí oddíl Edge agent** .
+
+   * V případě zařízení **nejvyšší vrstvy** aktualizujte hodnotu image edgeAgent na verzi Public Preview modulu v Azure Container Registry.
+   
+     ```toml
+     [agent.config]
+     image = "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+   * Pro každé zařízení IoT Edge v **nižších vrstvách** aktualizujte image edgeAgent tak, aby odkazovala na nadřazené zařízení následované portem, na kterém proxy API naslouchá. V další části nasadíte modul proxy API do nadřazeného zařízení.
+   
+     ```toml
+     [agent.config]
+     image = "<parent hostname value>:8000/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+1. Vyhledejte část **certifikát hraniční autority** . Odkomentujte první tři řádky této části. Pak aktualizujte dva parametry tak, aby odkazovaly na soubory certifikátů certifikační autority zařízení a soukromé klíče certifikační autority zařízení, které jste vytvořili v předchozí části, a přesunuli do zařízení IoT Edge. Zadejte cesty identifikátorů URI souboru, které mají formát `file:///<path>/<filename>` , například `file:///certs/iot-edge-device-ca-top-layer-device.key.pem` .
 
    ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   [edge_ca]
+   cert = "<File URI path to the device full chain CA certificate unique to this device.>"
+   pk = "<File URI path to the device CA private key unique to this device.>"
    ```
+
+   >[!NOTE]
+   >Nezapomeňte k naplnění pole použít **cestu k úplnému řetězení** certifikátu certifikační autority a název souboru `device_ca_cert` .
 
 1. Uložte soubor a zavřete ho.
 
    `CTRL + X`, `Y`, `Enter`
 
-1. Po zadání informací o zřizování do konfiguračního souboru restartujte démona:
+1. Po zadání informací o zřizování do konfiguračního souboru použijte tyto změny:
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
+
+Než budete pokračovat, ujistěte se, že jste aktualizovali konfigurační soubor každého zařízení v hierarchii. V závislosti na struktuře hierarchie jste nakonfigurovali jedno **zařízení nejvyšší vrstvy** a jedno nebo více **zařízení s nižší vrstvou**.
+
+Pokud jste výše uvedené kroky dokončili správně, můžete ověřit, jestli jsou vaše zařízení správně nakonfigurovaná.
+
+1. Spusťte kontrolu konfigurace a připojení na vašich zařízeních:
+
+   ```bash
+   sudo iotedge check
+   ```
+
+Na **zařízení nejvyšší vrstvy** se očekává, že se zobrazí výstup s několika zkušebními hodnoceními a alespoň jedním upozorněním. Při kontrole se `latest security daemon` zobrazí upozornění, že další verze IoT Edge je nejnovější stabilní verze, protože IoT Edge verze 1,2 je ve verzi Public Preview. Můžou se zobrazit další upozornění týkající se zásad protokolů a v závislosti na vaší síti a zásadách DNS.
+
+Na **nižší vrstvě zařízení** je třeba zobrazit výstup podobný zařízení nejvyšší vrstvy, ale s dalším upozorněním, že nelze z nadřazeného objektu načíst modul EdgeAgent. To je přijatelné, protože modul proxy IoT Edge rozhraní API a modul Docker Container Registry, který na nižší vrstvě přebírá image, se ještě nasazují do **zařízení nejvyšší vrstvy**.
+
+Ukázkový výstup `iotedge check` je zobrazen níže:
+
+[Ukázková konfigurace a výsledky připojení](./media/tutorial-nested-iot-edge/configuration-and-connectivity-check-results.png)
+
+Jakmile budete spokojeni s konfigurací, které jsou na každém zařízení správné, budete připraveni pokračovat.
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>Nasazení modulů do zařízení nejvyšší vrstvy
 
-Zbývající kroky k dokončení konfigurace IoT Edge runtime a úloh nasazení se provádí z cloudu prostřednictvím Azure Portal nebo Azure CLI.
+Moduly slouží k dokončení nasazení a IoT Edge běhového prostředí pro vaše zařízení a dále k definování struktury vaší hierarchie. Modul proxy rozhraní IoT Edge API bezpečně routs přenos HTTP přes jeden port ze zařízení s nižší vrstvou. Modul Docker Registry umožňuje úložiště Docker imagí, ke kterým mají vaše zařízení nižší vrstvy přístup, pomocí směrování image načte do nejvyšší vrstvy zařízení.
+
+Pokud chcete nasadit moduly do zařízení nejvyšší vrstvy, můžete použít Azure Portal nebo Azure CLI.
+
+>[!NOTE]
+>Zbývající kroky k dokončení konfigurace IoT Edge runtime a úloh nasazení se na vašich IoT Edge zařízeních neprovádí.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -348,26 +465,26 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Vedle ikony ozubeného kolečka vyberte **nastavení modulu runtime**.
 
-1. V části **hraniční centrum** v poli obrázek zadejte `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. V části **hraniční centrum** v poli obrázek zadejte `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
    ![Úprava obrázku hraničního centra](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
    ![Upravit proměnné prostředí hraničního centra](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Pod položkou **Agent Edge** v poli Image zadejte `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Vyberte **Uložit**.
+1. Pod položkou **Agent Edge** v poli Image zadejte `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4` . Vyberte **Uložit**.
 
 1. Přidejte modul registru Docker do zařízení nejvyšší vrstvy. Vyberte **+ Přidat** a v rozevíracím seznamu vyberte **IoT Edge modul** . Zadejte název `registry` pro modul registru Docker a zadejte `registry:latest` pro identifikátor URI image. Dále přidejte proměnné prostředí a vytvořte možnosti, které odkazují na místní modul registru v registru Microsoft Container Registry ke stažení imagí kontejneru z a k obsluze těchto imagí v registru: 5000.
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -456,14 +573,14 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -504,9 +621,13 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 ---
 
+Pokud jste výše uvedené kroky dokončili správně, vaše **zařízení nejvyšší vrstvy** by mělo hlásit čtyři moduly: IoT Edge modul proxy rozhraní API, modul docker Container registry a systémové moduly, jak je **uvedeno v nasazení**. Může trvat několik minut, než zařízení dostanou nové nasazení a spustí moduly. Aktualizujte stránku, dokud neuvidíte modul snímače teploty uvedený jako **hlášený zařízením**. Jakmile zařízení ohlásí moduly, budete připraveni pokračovat.
+
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Nasaďte moduly do zařízení nižší vrstvy.
 
-K nasazení úloh z cloudu do **nižších vrstev** můžete použít jak Azure Portal, tak Azure CLI.
+Moduly také slouží jako úlohy pro vaše zařízení nižší vrstvy. Modul pro simulaci teplotního senzoru vytváří ukázková data telemetrie, která poskytují funkční tok dat prostřednictvím vaší hierarchie zařízení.
+
+Pokud chcete nasadit moduly do zařízení s nižší vrstvou, můžete použít Azure Portal nebo Azure CLI.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -522,16 +643,16 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Vedle ikony ozubeného kolečka vyberte **nastavení modulu runtime**.
 
-1. V části **hraniční centrum** v poli obrázek zadejte `$upstream:8000/azureiotedge-hub:1.2.0-rc2` .
+1. V části **hraniční centrum** v poli obrázek zadejte `$upstream:8000/azureiotedge-hub:1.2.0-rc4` .
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Pod položkou **Agent Edge** v poli Image zadejte `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Vyberte **Uložit**.
+1. Pod položkou **Agent Edge** v poli Image zadejte `$upstream:8000/azureiotedge-agent:1.2.0-rc4` . Vyberte **Uložit**.
 
 1. Přidejte modul snímače teploty. V rozevíracím seznamu vyberte **+ Přidat** a vyberte **modul Marketplace** . Vyhledejte `Simulated Temperature Sensor` a vyberte modul.
 
@@ -578,14 +699,14 @@ V [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -627,9 +748,9 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 Notice that the image URI that we used for the simulated temperature sensor module pointed to `$upstream:8000` instead of to a container registry. We configured this device to not have direct connections to the cloud, because it's in a lower layer. To pull container images, this device requests the image from its parent device instead. At the top layer, the API proxy module routes this container request to the registry module, which handles the image pull.
 
-On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
+If you completed the above steps correctly, your **lower layer device** should report three modules: the temperature sensor module and the system modules, as **Specified in Deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by Device**. Once the modules are reported by the device, you are ready to continue.
 
-## IotEdge check
+## Troubleshooting
 
 Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
@@ -640,17 +761,17 @@ When you run `iotedge check` from the lower layer, the program tries to pull the
 In this tutorial, we use port 8000, so we need to specify it:
 
 ```bash
-sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc4
 ```
-   
+
 `azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
-Pokud používáte privátní registr kontejnerů, zajistěte, aby byly všechny Image (například IoTEdgeAPIProxy, edgeAgent, edgeHub a Diagnostika) přítomné v registru kontejneru.    
-    
+Pokud používáte privátní registr kontejnerů, zajistěte, aby byly všechny Image (například IoTEdgeAPIProxy, edgeAgent, edgeHub a Diagnostika) přítomné v registru kontejneru.
+
 ## <a name="view-generated-data"></a>Zobrazit vygenerovaná data
 
 Vámi nabízený modul **snímače teploty** vygeneruje ukázková data prostředí. Posílá zprávy, které zahrnují okolní teplotu a vlhkost, teplotu a tlak počítače a časové razítko.

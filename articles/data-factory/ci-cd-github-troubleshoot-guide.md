@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727953"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
@@ -162,7 +162,7 @@ Až do poslední doby používala publikování kanálu ADF pro nasazení na por
 
 #### <a name="resolution"></a>Řešení
 
-Proces CI/CD byl vylepšen. Funkce **automatického publikování** přijímá, ověřuje a exportuje všechny funkce šablon Azure Resource Manager (ARM) z uživatelského prostředí ADF. Díky tomu dá Logical spotřební přístup prostřednictvím veřejně dostupného balíčku npm [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . To vám umožní programově aktivovat tyto akce místo nutnosti přejít do uživatelského rozhraní ADF a provést kliknutí na tlačítko. Díky tomu budou kanály CI/CD **platit skutečným** prostředím průběžné integrace. Podrobnosti najdete v podrobnostech o [vylepšení publikování ADF/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) . 
+Proces CI/CD byl vylepšen. Funkce **automatického publikování** přijímá, ověřuje a exportuje všechny funkce šablon Azure Resource Manager (ARM) z uživatelského prostředí ADF. Díky tomu dá Logical spotřební přístup prostřednictvím veřejně dostupného balíčku npm [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . To vám umožní programově aktivovat tyto akce místo nutnosti přejít do uživatelského rozhraní ADF a provést kliknutí na tlačítko. Díky tomu budou kanály CI/CD **platit skutečným** prostředím průběžné integrace. Podrobnosti najdete v podrobnostech o [vylepšení publikování ADF/CD](./continuous-integration-deployment-improvements.md) . 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Nejde publikovat kvůli limitu 4 MB ARM šablony.  
 
@@ -176,7 +176,45 @@ Azure Resource Manager omezuje velikost šablony na 4 MB. Omezte velikost šablo
 
 #### <a name="resolution"></a>Řešení
 
-U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Dodržujte prosím osvědčené postupy na [používání propojených a vnořených šablon](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
+U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Dodržujte prosím osvědčené postupy na [používání propojených a vnořených šablon](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
+
+### <a name="cannot-connect-to-git-enterprise"></a>Nejde se připojit k GIT Enterprise 
+
+##### <a name="issue"></a>Problém
+
+Nemůžete se připojit k GIT Enterprise kvůli problémům s oprávněními. Zobrazí se chyba, jako je například **422 – nedokončená entita.**
+
+#### <a name="cause"></a>Příčina
+
+Nenakonfigurovali jste OAuth pro ADF. Vaše adresa URL je chybně nakonfigurovaná.
+
+##### <a name="resolution"></a>Řešení
+
+Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků, protože služba ADF se nejdřív pokusí https://hostname/api/v3/search/repositories?q=user%3 <customer credential> .... a selhání. Potom to zkusí a bude https://hostname/api/v3/orgs/ <vaorg> / <repo> úspěšný. 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>Obnovení z odstraněné datové továrny
+
+#### <a name="issue"></a>Problém
+Zákazník odstranil datovou továrnu nebo skupinu prostředků obsahující Data Factory. Chtěli bychom se seznámit s tím, jak obnovit odstraněnou datovou továrnu.
+
+#### <a name="cause"></a>Příčina
+
+Data Factory lze obnovit pouze v případě, že zákazník má nakonfigurovanou správu zdrojového kódu (DevOps nebo Git). Tím dojde k převedení všech nejnovějších publikovaných prostředků **a neobnoví se** nepublikovaný kanál, datovou sadu a propojenou službu.
+
+Pokud není k dispozici Správa zdrojového kódu, není možné obnovit odstraněné Data Factory z back-endu, protože jakmile se příkaz dostanou, instance se odstraní a nebude uložena žádná záloha.
+
+#### <a name="resoloution"></a>Resoloution
+Postup obnovení odstraněných Data Factory se správou zdrojových kódů najdete v následujících krocích:
+
+ * Vytvoří nový Azure Data Factory.
+
+ * Překonfigurujte Git se stejnými nastaveními, ale ujistěte se, že jste importovali existující Data Factory prostředky do vybraného úložiště a zvolíte možnost Nová větev.
+
+ * Vytvořte žádost o přijetí změn, která sloučí změny do větve pro spolupráci a publikuje ji.
+
+ * Pokud zákazník měl v odstraněných ADF Integration Runtime v místním prostředí, bude muset vytvořit novou instanci v novém ADF, taky odinstalovat a znovu nainstalovat instanci na svém počítači nebo VIRTUÁLNÍm počítači s Prem s nově získaným klíčem. Po dokončení instalace prostředí IR bude muset zákazník změnit propojenou službu tak, aby odkazovala na nové INFRAČERVENé prostředí a otestovali připojení, nebo selže s chybou **neplatným odkazem.**
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

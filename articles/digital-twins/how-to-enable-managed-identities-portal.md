@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545903"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703081"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Povolit spravovanou identitu pro směrování událostí digitálních vláken Azure (Preview): Azure Portal
 
@@ -89,8 +89,7 @@ Další informace o koncových bodech, trasách a typech cílů podporovaných p
 
 ### <a name="assign-the-role"></a>Přiřazení role
 
->[!NOTE]
-> Tuto část musí dokončit uživatel Azure s oprávněními ke správě přístupu uživatelů k prostředkům Azure (včetně udělení a delegování oprávnění). Mezi běžné role, které splňují tento požadavek, patří *vlastník*, *účet* správce nebo kombinace správce a *přispěvatele* *přístupu uživatele* . Další informace o požadavcích na oprávnění pro role digitálních vláken Azure najdete v tématu [*Postup: nastavení instance a ověřování*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 K přiřazení role k identitě Začněte otevřením [Azure Portal](https://portal.azure.com).
 
@@ -116,7 +115,7 @@ K přiřazení role k identitě Začněte otevřením [Azure Portal](https://por
 
 Až skončíte s zadáváním podrobností, vyberte **Uložit**.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Vytvoření koncového bodu s autorizací na základě identity
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Vytvoření koncového bodu s ověřováním na základě identity
 
 Po nastavení systému spravované identity pro instanci digitálních vláken Azure a přiřazení odpovídajících rolí můžete vytvořit [koncové body](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) digitálních vláken Azure, které umožňují použití identity pro ověřování. Tato možnost je k dispozici pouze pro centra událostí a koncové body typu Service Bus (není podporováno pro Event Grid).
 

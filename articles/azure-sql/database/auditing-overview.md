@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572290"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691514"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -46,7 +46,9 @@ Auditování SQL Database můžete použít k těmto akcím:
 
 - **Premium Storage** **se v tuto chvíli nepodporuje**.
 - **Hierarchický obor názvů** pro **Azure Data Lake Storage Gen2 účet úložiště** se v **tuto chvíli nepodporuje**.
-- Povolení auditování u pozastavené služby **Azure synapse** se nepodporuje. Pokud chcete povolit auditování, obnovte Azure synapse.
+- Povolení auditování u pozastavené služby **Azure synapse** se nepodporuje. Pokud chcete povolit auditování, obnovte službu Azure Synapse.
+- Auditování pro **fondy SQL Azure synapse** podporuje **pouze** výchozí skupiny akcí auditu.
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Definování zásad auditování na úrovni serveru vs. databáze
 
@@ -73,9 +75,9 @@ Zásady auditování se dají definovat pro určitou databázi nebo jako výchoz
 - Pokud chcete nakonfigurovat úložiště neměnného protokolu pro události auditu na úrovni serveru nebo databáze, postupujte podle [pokynů Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Pokud konfigurujete neměnné úložiště objektů blob, ujistěte se, že jste vybrali možnost **umožnit další připojení** .
 - Protokoly auditu můžete zapsat na účet Azure Storage za virtuální sítí nebo bránou firewall. Konkrétní pokyny najdete v tématu [zápis auditu do účtu úložiště za virtuální sítí a branou firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Podrobnosti o formátu protokolu, hierarchii složky úložiště a zásadách vytváření názvů najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](./audit-log-format.md).
-- Auditování [replik jen pro čtení](read-scale-out.md) je povoleno automaticky. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](audit-log-format.md).
+- Na [replikách jen pro čtení](read-scale-out.md) je auditování povolené automaticky. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](audit-log-format.md).
 - Při použití ověřování Azure AD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
-- Přihlašovací jména jsou směrována bránou do konkrétní instance, ve které je umístěna databáze.  V případě přihlášení AAD se přihlašovací údaje ověřují předtím, než se pokusíte použít tohoto uživatele k přihlášení do požadované databáze.  V případě selhání není k dispozici požadovaná databáze, takže nedojde k žádnému auditu.  V případě přihlašování SQL se přihlašovací údaje ověřují podle požadovaných dat, takže v takovém případě je můžete auditovat.  Úspěšná přihlášení, která zjevně dosáhnou databáze, se auditují v obou případech.
+- Brána směruje přihlášení do konkrétní instance, ve které se databáze nachází.  V případě přihlášení AAD se přihlašovací údaje ověřují před pokusem o použití daného uživatele k přihlášení do požadované databáze.  V případě selhání nedojde k přístupu k požadované databázi, a proto nedojde k auditování.  V případě přihlašování SQL se přihlašovací údaje ověřují podle požadovaných dat, takže v takovém případě je můžete auditovat.  V obou případech se auditují úspěšná přihlášení, která získají přístup k databázi.
 - Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Nastavení auditování pro server
@@ -175,7 +177,7 @@ Pokud se rozhodnete zapisovat protokoly auditu do protokolů Azure Monitor:
 Pokud se rozhodnete zapisovat protokoly auditu do centra událostí:
 
 - Aby bylo možné využívat protokoly auditu z centra událostí, budete muset nastavit datový proud, který bude zpracovávat události a zapsat je do cíle. Další informace najdete v [dokumentaci k Azure Event Hubs](../index.yml).
-- Protokoly auditu v centru událostí jsou zachyceny v těle událostí [Apache Avro](https://avro.apache.org/) a uloženy pomocí formátu JSON s kódováním UTF-8. Protokoly auditu si můžete přečíst pomocí [nástrojů Avro](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) nebo podobných nástrojů, které zpracovávají tento formát.
+- Protokoly auditu v centru událostí jsou zachyceny v těle událostí [Apache Avro](https://avro.apache.org/) a uloženy pomocí formátu JSON s kódováním UTF-8. Ke čtení protokolů auditu můžete použít [nástroje Avro](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) nebo podobné nástroje, které dokáží tento formát zpracovat.
 
 Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, můžete k zobrazení protokolů použít několik metod:
 

@@ -2,54 +2,43 @@
 title: Informace o tom, jak proces automatické migrace pro Azure Monitor klasické výstrahy funguje
 description: Přečtěte si, jak funguje automatický proces migrace.
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 14118b69b46bafa76889f53152438e2cb2ab4e96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65409a1710a2b4c6b6d5a52c5129ec3e82dc7cc2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734855"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Pochopení procesu automatické migrace pro pravidla upozornění na Classic
 
-Jak jsme [dřív oznámili](../platform/monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. V rámci procesu vyřazení je k dispozici ve Azure Portal [Nástroj pro migraci](alerts-using-migration-tool.md) , který zákazníkům umožňuje aktivovat migraci sami.
-Tento článek vás provede procesem automatické migrace a pomůže vám vyřešit všechny problémy, se kterými můžete běžet.
+Jak jsme [dřív oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou i v omezeném počtu použití až do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 
-  > [!NOTE]
-  > Tento článek se týká jenom veřejného cloudu Azure. Proces odchodu pro Azure Monitor klasické výstrahy v cloudu Azure Government a Azure Čína 21Vianet se budou v budoucnu vyvažovat za budoucí datum.
-
-## <a name="what-will-happen-during-the-automatic-migration-process"></a>K čemu dojde během procesu automatické migrace?
-
-- Od **1. září 2019** nebudou zákazníci moct vytvářet žádná nová pravidla pro klasické výstrahy s výjimkou [určitých metrik](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
-- V případě výjimek může zákazník nadále vytvářet nová pravidla pro klasických výstrah a používat jejich klasické výstrahy, dokud nebudete moci pokračovat v oznamování.
-- Od **1. září 2019** se migrace klasických výstrah spustí v dávkách pro všechny zákazníky, kteří mají klasické výstrahy.
-- Stejně jako u dobrovolných migračních nástrojů se některá z klasických pravidel upozornění, která nemigrovat, zůstanou v tom, jak jsou. Tato pravidla s klasickými výstrahami budou nadále podporována až do dalšího oznámení. Všechna neplatná pravidla pro klasických výstrah však budou odstraněna, protože nejsou funkční.
-Všechna klasická pravidla výstrah, která sledují odstraněné cílové prostředky nebo [metriky, které už nejsou podporované,](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) se považují za neplatnou.
-- Po spuštění migrace pro vaše předplatné, pokud nedochází k nějakým problémům, by migrace měla být dokončena během hodiny. Zákazníci můžou sledovat stav migrace [v okně migrace v Azure monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel).
-- Vlastníci předplatného obdrží e-mail po úspěšném dokončení migrace.
-- Pokud během migrace dojde k nějakým potížím, vlastníci předplatného budou také dostávat e-maily s upozorněním, že mají stejné. Zákazníci můžou k zobrazení všech podrobností problému použít okno migrace.
-- V případě, že je potřeba provést akci od zákazníků, jako je dočasné zakázání zámku prostředku nebo změna přiřazení zásady, budou muset zákazníci tyto problémy vyřešit. Pokud pak problémy nebudou vyřešeny, nelze zaručit úspěšnou migraci klasických výstrah.
-
-    > [!NOTE]
-    > Pokud nechcete čekat na spuštění procesu automatické migrace, můžete migraci i přesto aktivovat pomocí nástroje pro migraci.
+[Nástroj pro migraci](alerts-using-migration-tool.md) je k dispozici ve Azure Portal, aby si zákazníci mohli aktivovat migraci sami. Tento článek vysvětluje automatický proces migrace ve veřejném cloudu, který se spustí po 31. května 2021. Také podrobně popisuje problémy a řešení, se kterými můžete běžet.
 
 ## <a name="important-things-to-note"></a>Důležité informace, které je potřeba vzít v paměti
 
 Proces migrace převede pravidla klasických výstrah na nová, ekvivalentní pravidla upozornění a vytvoří skupiny akcí. V přípravě si pamatujte na tyto body:
 
-- Formáty datové části oznámení pro nová pravidla výstrahy se liší od pravidel klasických výstrah, protože podporují více funkcí. Pokud máte aplikace logiky, Runbooky nebo webhooků aktivované pravidlem klasického upozornění, můžou přestat fungovat podle očekávání, jakmile se migrace dokončí kvůli rozdílům v datových podčástech oznámení. [Přečtěte si, jak připravit na migraci](alerts-prepare-migration.md).
+- Formáty datové části oznámení pro nová pravidla výstrahy se liší od datových částí klasických pravidel upozornění, protože podporují více funkcí. Pokud máte klasické pravidlo upozornění s Logic Apps, Runbooky nebo Webhooky, může přestat fungovat podle očekávání po migraci, a to kvůli rozdílům v datové části. [Přečtěte si, jak připravit na migraci](alerts-prepare-migration.md).
 
 - Některá z klasických pravidel upozornění se nedají migrovat pomocí tohoto nástroje. [Zjistěte, jaká pravidla se nedají migrovat a co s nimi dělat](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
+## <a name="what-will-happen-during-the-automatic-migration-process-in-public-cloud"></a>K čemu dojde během procesu automatické migrace ve veřejném cloudu?
+
+- Od 31. května 2021 nebudete moct vytvářet žádná nová klasická pravidla upozornění a migrace klasických výstrah se spustí v dávkách.
+- Všechna klasická pravidla výstrah, která sledují odstraněné cílové prostředky nebo [metriky, které už nejsou podporované,](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) se považují za neplatnou.
+- Pravidla klasických výstrah, která jsou neplatná, budou odebrána po 31. května 2021.
+- Po spuštění migrace pro předplatné by se mělo dokončit během hodiny. Zákazníci mohou monitorovat stav migrace [v nástroji pro migraci v Azure monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel).
+- Vlastníci předplatného obdrží e-mail o úspěšnosti nebo neúspěchu migrace.
+
     > [!NOTE]
-    > Proces migrace nebude mít vliv na hodnocení vašich klasických pravidel upozornění. Budou i nadále spouštět a odesílat výstrahy, dokud nebudou migrovány a nová pravidla upozornění vstoupí v platnost.
+    > Pokud nechcete čekat na spuštění procesu automatické migrace, můžete migraci i přesto aktivovat pomocí nástroje pro migraci.
 
 ## <a name="what-if-the-automatic-migration-fails"></a>Co když Automatická migrace selhává?
 
-V případě neúspěchu procesu automatické migrace obdrží vlastníci předplatného e-mail s upozorněním na problém. K zobrazení všech podrobností problému můžete použít okno migrace v Azure Monitor.
-
-V [Průvodci odstraňováním potíží](alerts-understand-migration.md#common-problems-and-remedies) najdete pomoc s problémy, se kterými se můžete setkat při migraci.
+V případě neúspěchu procesu automatické migrace obdrží vlastníci předplatného e-mail s upozorněním na problém. K zobrazení všech podrobností problému můžete použít nástroj pro migraci v nástroji Azure Monitor. V [Průvodci odstraňováním potíží](alerts-understand-migration.md#common-problems-and-remedies) najdete pomoc s problémy, se kterými se můžete setkat při migraci.
 
   > [!NOTE]
   > V případě, že je potřeba provést akci od zákazníků, jako je dočasné zakázání zámku prostředku nebo změna přiřazení zásady, budou muset zákazníci tyto problémy vyřešit. Pokud pak problémy nebudou vyřešeny, nelze zaručit úspěšnou migraci klasických výstrah.

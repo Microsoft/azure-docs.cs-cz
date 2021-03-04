@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 0ab7d8548494e96b4a7570ef26ccde39456bf690
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731710"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro virtuální počítač s Windows
-Údaje o výkonu z hostovaného operačního systému virtuálních počítačů Azure se neshromažďují automaticky jako jiné [metriky platforem](../insights/monitor-azure-resource.md#monitoring-data). Nainstalujte rozšíření Azure Monitor [Diagnostics](../agents/diagnostics-extension-overview.md) , které shromáždí metriky operačního systému hosta do databáze metrik, takže se dá použít se všemi funkcemi Azure monitor metrik, včetně výstrah v reálném čase, vytváření grafů, směrování a přístupu z REST API. Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do databáze metrik pomocí šablony Správce prostředků. 
+Údaje o výkonu z hostovaného operačního systému virtuálních počítačů Azure se neshromažďují automaticky jako jiné [metriky platforem](./monitor-azure-resource.md#monitoring-data). Nainstalujte rozšíření Azure Monitor [Diagnostics](../agents/diagnostics-extension-overview.md) , které shromáždí metriky operačního systému hosta do databáze metrik, takže se dá použít se všemi funkcemi Azure monitor metrik, včetně výstrah v reálném čase, vytváření grafů, směrování a přístupu z REST API. Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do databáze metrik pomocí šablony Správce prostředků. 
 
 > [!NOTE]
 > Podrobnosti o konfiguraci diagnostického rozšíření pro shromažďování metrik operačního systému hosta pomocí Azure Portal najdete v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](../agents/diagnostics-extension-windows-install.md).
@@ -29,7 +29,7 @@ Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení
 
 - Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
-- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](../platform/metrics-custom-overview.md#supported-regions). 
+- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](./metrics-custom-overview.md#supported-regions). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení Azure Monitor jako datové jímky
@@ -250,7 +250,7 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > Nezapomeňte [použít oblast Azure, která je povolená pro vlastní metriky](../platform/metrics-custom-overview.md).
+   > Nezapomeňte [použít oblast Azure, která je povolená pro vlastní metriky](./metrics-custom-overview.md).
 
 1. Spuštěním následujících příkazů nasaďte virtuální počítač pomocí šablony Správce prostředků.
    > [!NOTE]
@@ -285,4 +285,4 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastních metrikách](../platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).

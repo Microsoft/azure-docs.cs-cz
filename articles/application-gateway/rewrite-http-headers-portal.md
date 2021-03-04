@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 79314db13531f1fcf518c7931d4a1aa9158a172b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708930"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepsání hlaviček požadavků a odpovědí HTTP pomocí Azure Application Gateway-Azure Portal
 
@@ -31,17 +31,17 @@ Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provés
 
 1. Vytvořte objekty, které jsou požadovány pro přepsání hlaviček protokolu HTTP:
 
-   - **Akce přepisu** : slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
+   - **Akce přepisu**: slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
 
-   - **Podmínka přepisu** : volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
+   - **Podmínka přepisu**: volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
 
      Pokud k akci přiřadíte více než jednu podmínku, bude akce provedena pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická a operace.
 
-   - **Pravidlo přepisu** : obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
+   - **Pravidlo přepisu**: obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
 
-   - **Pořadí pravidel** : pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejnou hodnotu pořadí pravidel pro dvě pravidla přepisu, pořadí spuštění je nedeterministické.
+   - **Pořadí pravidel**: pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejnou hodnotu pořadí pravidel pro dvě pravidla přepisu, pořadí spuštění je nedeterministické.
 
-   - **Sada přepsání** : obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
+   - **Sada přepsání**: obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
 
 2. Připojte sadu přepsání s pravidlem směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
 
@@ -59,7 +59,7 @@ V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavi�
 
 2. V levém podokně vyberte **přepsat** .
 
-3. Vyberte **sadu přepsání** :
+3. Vyberte **sadu přepsání**:
 
    ![Přidat sadu přepsání](media/rewrite-http-headers-portal/add-rewrite-set.png)
 
@@ -99,7 +99,7 @@ V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavi�
 
    - V seznamu **operátor** vyberte **EQUAL (=)**.
 
-   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme vzor  `(https?):\/\/.*azurewebsites\.net(.*)$` .
+   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme vzor `(https?)://.*azurewebsites.net(.*)$` .
 
    - Vyberte **OK**.
 

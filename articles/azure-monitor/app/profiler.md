@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b743b5be195f44c03adbee75c3108f4908d8d4e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717753"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
@@ -25,8 +25,12 @@ Pokud chcete povolit profiler pro aplikaci, postupujte podle následujících po
 
 Application Insights Profiler je předem nainstalován jako součást modulu runtime App Services. Následující postup vám ukáže, jak ho pro App Service povolit. Postupujte podle těchto kroků i v případě, že jste do aplikace zahrnuli sadu App Insights SDK v době sestavení.
 
+> [!NOTE]
+> Nekódovatelné instalace Application Insights Profiler se řídí zásadami podpory .NET Core.
+> Další informace o podporovaných modulech runtime najdete v tématu [zásady podpory .NET Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
 1. Pro App Service přejděte na ovládací panel Azure.
-1. U služby App Service povolte nastavení "Always On". Toto nastavení najdete v části **Nastavení**, **konfigurační** stránka (viz snímek obrazovky v dalším kroku) a klikněte na kartu **Obecné nastavení** .
+1. U služby App Service povolte nastavení "Always On". Toto nastavení najdete v části **Nastavení**, **konfigurační** stránka (viz snímek obrazovky v dalším kroku) a vyberte kartu **Obecné nastavení** .
 1. Přejděte na **nastavení > Application Insights** stránce.
 
    ![Povolení App Insights na portálu App Services](./media/profiler/AppInsights-AppServices.png)
@@ -63,7 +67,7 @@ Pokud chcete Profiler povolit pro jiné cloudy, můžete použít následující
 
 ## <a name="disable-profiler"></a>Zakázat Profiler
 
-Zastavení nebo restartování profileru pro instanci jednotlivé aplikace v části **WebJobs** a zastavení webové úlohy s názvem ApplicationInsightsProfiler3. I v případě, že je profiler zakázán pomocí přepínače na stránce Application Insights, jak je popsáno výše, proces profileru bude stále spuštěn. Profiler ověří, jestli je povolený. Pokud je zakázané, po určitou dobu přejde do režimu spánku, než se znovu zkontroluje. Neprovádí žádné profilování, pokud je zakázaný. Pokud tuto webovou úlohu zakážete, proces profileru se vůbec nespustí, i když se zjistí, jestli je povolená.
+Pokud chcete zastavit nebo restartovat profiler pro instanci jednotlivé aplikace, na levém bočním panelu vyberte **WebJobs** a zastavte webovou úlohu s názvem `ApplicationInsightsProfiler3` .
 
   ![Zakázat profiler pro webovou úlohu][disable-profiler-webjob]
 

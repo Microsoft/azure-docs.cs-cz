@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687970"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurace zabezpečení pro skupinu serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -23,6 +23,7 @@ Tento dokument popisuje různé aspekty týkající se zabezpečení skupiny ser
 - Správa uživatelů
    - Obecné perspektivy
    - Změna hesla _Postgres_ administrativního uživatele
+- Auditování
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -159,13 +160,14 @@ Obecný formát příkazu pro změnu hesla:
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-Kde--Admin-Password je logická hodnota, která se vztahuje k přítomnosti hodnoty v proměnné prostředí AZDATA_PASSWORD **relace**.
-Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje a má hodnotu, při spuštění výše uvedeného příkazu se nastaví heslo uživatele Postgres na hodnotu této proměnné prostředí.
+Kde `--admin-password` je logická hodnota, která se vztahuje k přítomnosti hodnoty v proměnné prostředí AZDATA_PASSWORD **relace** .
+Pokud proměnná prostředí AZDATA_PASSWORD **relace** existuje a má hodnotu, při spuštění výše uvedeného příkazu se nastaví heslo uživatele Postgres na hodnotu této proměnné prostředí.
 
-Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje, ale nemá hodnotu nebo proměnná prostředí AZDATA_PASSWORD **relace**neexistuje, vyzve uživatele k zadání hesla interaktivně.
+Pokud proměnná prostředí AZDATA_PASSWORD **relace** existuje, ale nemá hodnotu, nebo proměnná prostředí AZDATA_PASSWORD **relace** neexistuje, vyzve uživatele k zadání hesla interaktivně.
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Interaktivní postup změny hesla Postgres administrativního uživatele:
-1. Odstraňte proměnnou prostředí AZDATA_PASSWORD **relace**nebo odstraňte její hodnotu.
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Interaktivním způsobem změňte heslo Postgres administrativního uživatele.
+
+1. Odstraňte proměnnou prostředí AZDATA_PASSWORD **relace** nebo odstraňte její hodnotu.
 2. Spusťte příkaz:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje, ale nemá hodno
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>Změna hesla uživatele s právy pro správu Postgres pomocí proměnné prostředí AZDATA_PASSWORD **relace**:
-1. Nastavte hodnotu proměnné prostředí AZDATA_PASSWORD **relace**na to, co chcete mít k heslu.
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>Změňte heslo administrativního uživatele Postgres pomocí proměnné prostředí AZDATA_PASSWORD **relace** :
+1. Nastavte hodnotu proměnné prostředí AZDATA_PASSWORD **relace** na to, co chcete zadat jako heslo.
 2. Spusťte příkaz:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ Pokud proměnná prostředí AZDATA_PASSWORD **relace**existuje, ale nemá hodno
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Auditování
+
+V případě scénářů auditu Nakonfigurujte skupinu serverů tak, aby používala `pgaudit` rozšíření Postgres. Další podrobnosti `pgaudit` najdete v tématu [ `pgAudit` projekt GitHubu](https://github.com/pgaudit/pgaudit/blob/master/README.md). Pokud chcete povolit `pgaudit` rozšíření ve skupině serverů, [použijte rozšíření PostgreSQL](using-extensions-in-postgresql-hyperscale-server-group.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-- Tady si přečtěte podrobnosti o `pgcrypto` rozšíření. [here](https://www.postgresql.org/docs/current/pgcrypto.html)
-- Přečtěte si podrobnosti o [tom, jak používat rozšíření Postgres](using-extensions-in-postgresql-hyperscale-server-group.md).
+- Zobrazit [ `pgcrypto` rozšíření](https://www.postgresql.org/docs/current/pgcrypto.html)
+- Viz [použití rozšíření PostgreSQL](using-extensions-in-postgresql-hyperscale-server-group.md)
 

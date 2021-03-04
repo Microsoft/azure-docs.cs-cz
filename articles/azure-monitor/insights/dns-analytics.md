@@ -1,17 +1,16 @@
 ---
 title: DNS Analytics řešení v Azure Monitor | Microsoft Docs
 description: Nastavte a použijte řešení DNS Analytics v Azure Monitor k získání přehledu o infrastruktuře DNS v oblasti zabezpečení, výkonu a provozu.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708097"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -35,10 +34,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../agents/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
-| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../agents/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
+| [Agenti systému Windows](../agents/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../agents/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 

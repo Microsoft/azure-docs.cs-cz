@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: abcd95a0c433b59df6e7a564e5db948ea2a9eaf5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717209"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenční příručka pro zobrazení dlaždic návrháře v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek představuje referenční příručku k nastavením pro dlaždice, které jsou k dispozici ve vlastních zobrazeních.
@@ -24,7 +24,7 @@ Další informace o návrháři zobrazení najdete v těchto tématech:
 
 K dispozici jsou dlaždice návrháře zobrazení, které jsou popsány v následující tabulce:  
 
-| dlaždici | Description |
+| dlaždici | Popis |
 |:--- |:--- |
 | [Číselná](#number-tile) |Počet záznamů z dotazu. |
 | [Dvě čísla](#two-numbers-tile) |Počty záznamů ze dvou různých dotazů. |
@@ -36,7 +36,7 @@ K dispozici jsou dlaždice návrháře zobrazení, které jsou popsány v násle
 V dalších oddílech jsou podrobně popsány typy dlaždic a jejich vlastnosti.
 
 > [!NOTE]
-> Dlaždice v zobrazeních jsou založené na [dotazech protokolu](../log-query/log-query-overview.md) v pracovním prostoru Log Analytics. V současné době nepodporují [dotazy na více zdrojů](../log-query/cross-workspace-query.md) k načtení dat z Application Insights.
+> Dlaždice v zobrazeních jsou založené na [dotazech protokolu](../logs/log-query-overview.md) v pracovním prostoru Log Analytics. V současné době nepodporují [dotazy na více zdrojů](../logs/cross-workspace-query.md) k načtení dat z Application Insights.
 
 ## <a name="number-tile"></a>Dlaždice číslo
 Dlaždice **číslo** zobrazuje počet záznamů z dotazu protokolu a popisku.
@@ -46,7 +46,7 @@ Dlaždice **číslo** zobrazuje počet záznamů z dotazu protokolu a popisku.
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | **dlaždici** | |
 | Legenda |Text zobrazený pod hodnotou |
 | Dotaz |Dotaz, který je spuštěn. Zobrazí se počet záznamů vrácených dotazem. |
@@ -64,7 +64,7 @@ Tato dlaždice zobrazuje počet záznamů ze dvou různých dotazů protokolu a 
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | **První dlaždice** | |
 | Legenda |Text zobrazený pod hodnotou |
 | Dotaz |Dotaz, který je spuštěn. Zobrazí se počet záznamů vrácených dotazem. |
@@ -85,7 +85,7 @@ Na dlaždici **prstenec** se zobrazí jedno číslo, které shrnuje sloupec hodn
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | **Prstencový graf** | |
 | Dotaz |Dotaz, který je spuštěn pro prstenec. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. |
 | **Prstencový graf** |**Centrum>** |
@@ -109,7 +109,7 @@ Tato dlaždice je spojnicový graf, který v průběhu času zobrazuje více řa
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se spouští pro spojnicový graf. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. Pokud dotaz používá klíčové slovo *interval* , osa x použije tento časový interval. Pokud dotaz nepoužije klíčové slovo *interval* , osa x použije hodinové intervaly. |
 | **Spojnicový graf** |**> osa Y** |
@@ -130,7 +130,7 @@ Tato dlaždice má spojnicový graf, který zobrazuje více řad z dotazu protok
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se spouští pro spojnicový graf. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. Pokud dotaz používá klíčové slovo *interval* , osa x použije tento časový interval. Pokud dotaz nepoužije klíčové slovo *interval* , osa x použije hodinové intervaly. |
 | **Spojnicový graf** |**Popisek>** |
@@ -155,7 +155,7 @@ Dlaždice **dvě časové osy** zobrazuje výsledky dvou dotazů protokolu v pr�
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Description |Text zobrazený pod názvem dlaždice |
+| Popis |Text zobrazený pod názvem dlaždice |
 | První graf | |
 | Legenda |Text zobrazený pod popiskem prvního seriálu |
 | Barva |Barva, která se používá pro sloupce v první řadě |
@@ -173,5 +173,5 @@ Dlaždice **dvě časové osy** zobrazuje výsledky dvou dotazů protokolu v pr�
 
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md) pro podporu dotazů v dlaždicích.
+* Přečtěte si o [dotazech protokolu](../logs/log-query-overview.md) pro podporu dotazů v dlaždicích.
 * Přidejte do vlastního zobrazení [části vizualizace](view-designer-parts.md) .

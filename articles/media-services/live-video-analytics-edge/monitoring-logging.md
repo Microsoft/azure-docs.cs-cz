@@ -3,12 +3,12 @@ title: Monitorování a protokolování – Azure
 description: Tento článek poskytuje přehled monitorování a protokolování v živé analýze videí v IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507810"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730234"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -208,7 +208,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle tohoto schématu:
 
 #### <a name="event-classes"></a>Třídy událostí
 
-|Název třídy|Description|
+|Název třídy|Popis|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které vám pomůžou diagnostikovat problémy a výkon.|
@@ -230,7 +230,7 @@ Příklady:
 
 Tyto metriky se budou nahlásit z videa Live video Analytics v modulu IoT Edge:  
 
-|Název metriky|Typ|Popisek|Description|
+|Název metriky|Typ|Popisek|Popis|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Měřidlo|iothub, edge_device module_name, graph_topology|Celkový počet aktivních grafů na topologii.|
 |lva_received_bytes_total|Čítač|iothub, edge_device, module_name, graph_topology, graph_instance graph_node|Celkový počet bajtů přijatých uzlem Podporováno pouze pro zdroje RTSP.|
@@ -305,27 +305,70 @@ Pomocí těchto kroků povolíte shromažďování metrik z živé analýzy vide
      `AZURE_CLIENT_SECRET`: Určuje tajný klíč aplikace, který se má použít.  
      
      >[!TIP]
-     > Instančnímu objektu můžete přidělit roli **vydavatele metrik monitorování** . Postupujte podle kroků v části **[Vytvoření instančního objektu](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** a vytvořte instanční objekt a přiřaďte roli.
+     > Instančnímu objektu můžete přidělit roli **vydavatele metrik monitorování** . Postupujte podle kroků v části **[Vytvoření instančního objektu](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** a vytvořte instanční objekt a přiřaďte roli.
 
 1. Po nasazení modulů se metriky zobrazí v Azure Monitor pod jediným oborem názvů. Názvy metrik budou odpovídat těm, které emituje Prometheus. 
 
    V takovém případě v Azure Portal v levém podokně vyberte **metriky a vyberte metriky** . Měla by se zobrazit Metrika.
 
-Pomocí Prometheus spolu s [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)můžete generovat a [monitorovat metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , jako jsou například používané CPUPercent, MemoryUsedPercent atd. Pomocí dotazovacího jazyka Kusto můžete psát dotazy níže a získat procento využití procesoru, které používají moduly IoT Edge.
-```kusto
-let cpu_metrics = promMetrics_CL
-| where Name_s == "edgeAgent_used_cpu_percent"
-| extend dimensions = parse_json(Tags_s)
-| extend module_name = tostring(dimensions.module_name)
-| where module_name in ("lvaEdge","yolov3","tinyyolov3")
-| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
-cpu_metrics
-| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
-| extend module_name = "Total"
-| union cpu_metrics
-```
+### <a name="log-analytics-metrics-collection"></a>Kolekce metrik Log Analytics
+Pomocí [koncového bodu Prometheus](https://prometheus.io/docs/practices/naming/) spolu s [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)můžete generovat a [monitorovat metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , jako jsou například používané CPUPercent, MemoryUsedPercent atd.   
 
-[![Diagram, který zobrazuje metriky pomocí dotazu Kusto](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+> [!NOTE]
+> Konfigurace níže neshromažďuje protokoly, **jenom metriky**. Je možné rozložit modul sběrače na shromažďování a odesílání protokolů.
+
+[![Diagram, který zobrazuje kolekci metrik pomocí Log Analytics.](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+
+1. Naučte se [shromažďovat metriky](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector) .
+1. Pomocí příkazů Docker CLI Sestavte [soubor Docker](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux) a publikujte image do služby Azure Container Registry.
+    
+   Další informace o použití rozhraní příkazového řádku Docker pro vložení do registru kontejneru najdete v tématu [Image Docker push a pull](../../container-registry/container-registry-get-started-docker-cli.md). Další informace o Azure Container Registry najdete v [dokumentaci](../../container-registry/index.yml).
+
+1. Po dokončení operace Push na Azure Container Registry se do manifestu nasazení vloží následující:
+    ```json
+    "azmAgent": {
+      "settings": {
+        "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_METRICS_COLLECTOR}"
+      },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": {
+        "LogAnalyticsWorkspaceId": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_ID}" },
+        "LogAnalyticsSharedKey": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_SECRET}" },
+        "LogAnalyticsLogType": { "value": "IoTEdgeMetrics" },
+        "MetricsEndpointsCSV": { "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics,http://lvaEdge:9600/metrics" },
+        "ScrapeFrequencyInSecs": { "value": "30 " },
+        "UploadTarget": { "value": "AzureLogAnalytics" }
+      }
+    }
+    ```
+    > [!NOTE]
+    > Moduly `edgeHub` `edgeAgent` a `lvaEdge` jsou názvy modulů, které jsou definovány v souboru manifestu nasazení. Ujistěte se prosím, že se názvy modulů shodují.   
+
+    Hodnoty a můžete získat `LogAnalyticsWorkspaceId` `LogAnalyticsSharedKey` pomocí následujících kroků:
+    1. Přejít na Azure Portal
+    1. Hledání vašich Log Analyticsch pracovních prostorů
+    1. Po nalezení Log Analytics pracovního prostoru přejděte k `Agents management` Možnosti v levém navigačním podokně.
+    1. Najdete ID pracovního prostoru a tajné klíče, které můžete použít.
+
+1. V dalším kroku vytvořte sešit kliknutím na `Workbooks` kartu v levém navigačním podokně.
+1. Pomocí dotazovacího jazyka Kusto můžete psát dotazy níže a získat procento využití procesoru, které používají moduly IoT Edge.
+    ```kusto
+    let cpu_metrics = IoTEdgeMetrics_CL
+    | where Name_s == "edgeAgent_used_cpu_percent"
+    | extend dimensions = parse_json(Tags_s)
+    | extend module_name = tostring(dimensions.module_name)
+    | where module_name in ("lvaEdge","yolov3","tinyyolov3")
+    | summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+    cpu_metrics
+    | summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+    | extend module_name = "Total"
+    | union cpu_metrics
+    ```
+
+    [![Diagram, který zobrazuje metriky pomocí dotazu Kusto](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>protokolování
 
 Stejně jako u jiných IoT Edgech modulů můžete také [prozkoumávat protokoly kontejnerů](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) na hraničním zařízení. Informace, které se zapisují do protokolů, můžete nakonfigurovat pomocí [následujících dvojitých vlastností modulu](module-twin-configuration-schema.md) :

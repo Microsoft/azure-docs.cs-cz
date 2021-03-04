@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715033"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -51,7 +51,7 @@ Přečtěte si další informace o [programu Microsoft Antimalware pro Azure](an
 Přečtěte si další informace o antimalwarovém softwaru, které vám pomůžou ochránit vaše virtuální počítače:
 
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](../../virtual-machines/extensions/trend.md)
+* [Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows](../../virtual-machines/extensions/symantec.md)
 * [Řešení zabezpečení v Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 

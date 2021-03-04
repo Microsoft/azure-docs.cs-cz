@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 02/21/2021
-ms.openlocfilehash: 7acb891cc887fb118a338cc837c5c5c4c98a63d8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691905"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Porovnání funkcí: Azure SQL Database a Azure SQL Managed instance
 
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Příkaz BULK INSERT](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ano, ale jenom z Azure Blob Storage jako zdroj. | Ano, ale jenom z Azure Blob Storage jako zdroj – zobrazení [rozdílů](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset). |
 | [Certifikáty a asymetrické klíče](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace. | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace – viz [rozdíly v certifikátech](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
 | [Change Data Capture-CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
-| [Kolace – Server/instance](/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace serveru `SQL_Latin1_General_CP1_CI_AS` se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md) a nelze ji později aktualizovat. |
+| [Kolace – Server/instance](/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace serveru `SQL_Latin1_General_CP1_CI_AS` se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](../managed-instance/create-template-quickstart.md) a nelze ji později aktualizovat. |
 | [Indexy Columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva, pro důležité obchodní informace a úrovně škálování](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul CLR (Common Language Runtime) – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano, ale bez přístupu k systému souborů v `CREATE ASSEMBLY` příkazu – viz [rozdíly CLR](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
 | [Přihlašovací údaje](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom **Azure Key Vault** a `SHARED ACCESS SIGNATURE` – Viz [Podrobnosti](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) . |

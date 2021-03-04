@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3ea5168641f233f2e9580612a2f245fd8fef860f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378141"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699347"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -28,10 +28,10 @@ Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpří
 
 ## <a name="new-features"></a>Nové funkce
 ### <a name="dav4-series-support"></a>Podpora řady Dav4-Series
-HDInsight přidal v této verzi podporu řady Dav4-Series. Další informace o [Dav4-Series najdete tady](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series).
+HDInsight přidal v této verzi podporu řady Dav4-Series. Další informace o [Dav4-Series najdete tady](/azure/virtual-machines/dav4-dasv4-series).
 
 ### <a name="kafka-rest-proxy-ga"></a>Kafka REST proxy GA 
-Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Kafka REST proxy je od této verze všeobecně k dispozici. Další informace o [proxy Kafka REST najdete tady](https://docs.microsoft.com/azure/hdinsight/kafka/rest-proxy).
+Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Kafka REST proxy je od této verze všeobecně k dispozici. Další informace o [proxy Kafka REST najdete tady](/azure/hdinsight/kafka/rest-proxy).
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
 HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Služba se postupně migruje na [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
@@ -49,14 +49,14 @@ HDInsight se postupně migruje na Azure Virtual Machine Scale Sets. Pro clustery
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>Průlomová změna pro .NET pro Apache Spark 1.0.0
-S nejnovější verzí zavádí HDInsight první oficiální verzi v 1.0.0 knihovny [.NET for Apache Spark](https://github.com/dotnet/spark) . Poskytuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x společně s hostitelem [dalších funkcí](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). U této hlavní verze dojde k zásadním změnám. Další informace o krocích potřebných k aktualizaci kódu a kanálů najdete [v příručce k migraci rozhraní .NET pro Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [v příručce k rozhraní .NET pro Apache Spark v 1.0 v Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+S nejnovější verzí zavádí HDInsight první oficiální verzi v 1.0.0 knihovny [.NET for Apache Spark](https://github.com/dotnet/spark) . Poskytuje úplnost rozhraní API dataframe pro Spark 2.4. x a Spark 3.0. x společně s hostitelem [dalších funkcí](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md). U této hlavní verze dojde k zásadním změnám. Další informace o krocích potřebných k aktualizaci kódu a kanálů najdete [v příručce k migraci rozhraní .NET pro Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . Další informace najdete [v příručce k rozhraní .NET pro Apache Spark v 1.0 v Azure HDInsight](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
 
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
 V nadcházejících verzích dojde k následujícím změnám.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Výchozí verze clusteru se změní na 4,0.
-Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [dostupné verze](./hdinsight-component-versioning.md#available-versions). Přečtěte si další informace o tom, co je v [HDInsight 4,0](./hdinsight-version-release.md)novinkou.
+Od února 2021 se výchozí verze clusteru HDInsight změní z 3,6 na 4,0. Další informace o dostupných verzích najdete v tématu [dostupné verze](./hdinsight-component-versioning.md). Přečtěte si další informace o tom, co je v [HDInsight 4,0](./hdinsight-version-release.md)novinkou.
 
 ### <a name="os-version-upgrade"></a>Upgrade verze operačního systému
 HDInsight upgraduje verzi operačního systému z Ubuntu 16,04 na 18,04. Upgrade se dokončí do dubna 2021.

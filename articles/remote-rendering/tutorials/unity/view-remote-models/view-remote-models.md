@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: ef2d0eb409cbef2fdd3579ae5e8b409e24bdda2f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592037"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735960"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -55,43 +55,9 @@ V tomto příkladu budeme předpokládat, že se projekt vytváří ve složce s
 
 ## <a name="include-the-azure-remote-rendering-package"></a>Zahrnutí balíčku vzdáleného vykreslování Azure
 
-Je potřeba upravit soubor `Packages/manifest.json` , který je umístěný ve složce projektu Unity. Otevřete soubor v textovém editoru a přidejte následující řádky do horní části svého manifestu:
+[Postupujte podle pokynů](../../../how-tos/unity/install-remote-rendering-unity-package.md) , jak přidat balíček vzdáleného vykreslování Azure do projektu Unity.
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že jsou balíčky načteny v okně *projektu* :
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="potvrdit importy balíčků":::
-
-Pokud se vaše balíčky nenačítá, vyhledejte chyby v konzole Unity. Pokud nemáte žádné chyby a stále nevidíte žádné balíčky ve složce **Packages** , zkontrolujte přepínací tlačítko viditelnosti balíčku. \
-![Snímek obrazovky se šipkou ukazující na přepínací tlačítko viditelnost balíčku](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku.
-
-Následující kroky zajišťují, aby projekt používal nejnovější verzi balíčku vzdáleného vykreslování.
-
-1. V horní nabídce editoru Unity otevřete *okno >správce balíčků*.
-1. Vyberte balíček **Microsoft Azure vzdálené vykreslování**.
-1. Na stránce Správce balíčků pro balíček **Microsoft Azure vzdálené vykreslování** zkontrolujte, zda je k dispozici tlačítko **aktualizovat** . Pokud je, klikněte na něj, aby se balíček aktualizoval na nejnovější dostupnou verzi: \
-![Balíček ARR ve Správci balíčků](./media/package-manager.png)
-1. Aktualizace balíčku občas může vést k chybám konzoly. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
-1. Pokud je balíček aktuální, bude se správce balíčků zobrazovat v aktuálním **stavu** místo na tlačítku aktualizovat. \
-![Aktuální balíček](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>Konfigurace kamery
 
 1. Vyberte **hlavní uzel kamery** .

@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713367"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -119,6 +119,18 @@ Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a 
 Pokud chcete deaktivovat nebo vyřešit aktivní výstrahu, můžete vybrat položku seznamu odpovídající výstraze, kterou chcete deaktivovat. Otevře se obrazovka, která zobrazuje podrobné informace o výstraze s tlačítkem pro zrušení **Aktivace** v horní části. Výběrem tohoto tlačítka se změní stav výstrahy na **neaktivní**. Výstrahu můžete také deaktivovat tak, že pravým tlačítkem myši kliknete na položku seznamu, která odpovídá dané výstraze, a vyberete **deaktivovat**.
 
 ![Deaktivace výstrah trezoru RS](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Výstrahy Azure Monitor pro Azure Backup (Preview)
+
+Azure Backup taky poskytuje výstrahy prostřednictvím Azure Monitor a umožňuje tak uživatelům konzistentní prostředí pro správu výstrah v různých službách Azure, včetně zálohování. S výstrahami Azure Monitor můžete směrovat výstrahy na libovolný kanál, který podporuje Azure Backup jako je e-mail, ITSM, Webhook, aplikace logiky atd.
+
+V současné době je tato funkce dostupná pro databáze Azure pro server PostgreSQL, objekty blob Azure a Azure Managed Disks. Výstrahy se generují pro následující scénáře a dají se k nim přistupovat tak, že přejdete do trezoru záloh a kliknete na položku nabídky **výstrahy** :
+
+- Odstranit data zálohy
+- Selhání zálohování (Pokud chcete dostávat upozornění na selhání zálohování, musíte zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
+- Selhání obnovení (Pokud chcete dostávat upozornění na selhání obnovení, je nutné zaregistrovat příznak AFEC s názvem **EnableAzureBackupJobFailureAlertsToAzureMonitor** prostřednictvím portálu Preview).
+
+Další informace o výstrahách Azure Monitor najdete [v tématu Přehled výstrah v Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652781"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730571"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -68,6 +69,16 @@ Pokud jste například ve scénáři importu měli zdrojová data v Kanadě, že
 2. Jakmile se Prem data zkopíruje do Data Box, vraťte zařízení do datacentra Azure v Kanadě. Data v Data Box pak se nahrají do cílového účtu úložiště v oblasti Kanada Azure zvolené během vytváření objednávky.
 
 3. Pak můžete použít nástroj jako AzCopy ke zkopírování dat do účtu úložiště v Západní USA. Tento krok se započítá se [standardními](https://azure.microsoft.com/pricing/details/storage/) [poplatky za úložiště a šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) , které nejsou zahrnuté do data box fakturace.
+
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>Otázka: Ukládá Data Box data o zákaznících mimo oblast služby?
+
+A. No. Data Box neukládají žádná zákaznická data mimo oblast služby. Zákazník má plné vlastnictví svých dat a může ukládat data do zadaného umístění na základě účtu úložiště, který během vytváření objednávky vybral.  
+
+Kromě zákaznických dat se Data Box data zahrnující artefakty zabezpečení související se zařízením, protokoly monitorování pro zařízení a službu a metadata týkající se služeb. Ve všech oblastech (s výjimkou Brazílie – jih a jihovýchodní Asie) se Data Box data ukládají a replikují do spárované oblasti pomocí geograficky redundantního účtu úložiště, která chrání před ztrátou dat.  
+
+Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní asie se data box data ukládají do účtu úložiště s redundantním úložištěm (ZRS) tak, aby byla obsažena v jedné oblasti. V případě jihovýchodní Asie se všechna Data Box data ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii. 
+
+Pokud dojde k výpadku služby v oblasti Brazílie – jih a jihovýchodní Asie, můžou zákazníci vytvořit nové objednávky z jiné oblasti. Nové objednávky budou obsluhovány z oblasti, ve které jsou vytvořeny, a zákazníci jsou odpovědni za to, že se Data Box zařízení dostanou do dodání.
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Otázka: Jak můžu obnovit data v případě, že dojde k chybě celé oblasti?
 

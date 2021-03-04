@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720932"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Možnosti výpočtů a úložiště v Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -72,7 +72,7 @@ Podrobné specifikace dostupných typů serverů jsou následující:
 Další podrobnosti o dostupných výpočetních řadách najdete v dokumentaci k VIRTUÁLNÍm počítačům Azure pro [shluky (B-Series)](../../virtual-machines/sizes-b-series-burstable.md), [pro obecné účely (Ddsv4-Series)](../../virtual-machines/ddv4-ddsv4-series.md)a [paměťově optimalizovaná (Edsv4-Series)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->Pokud se virtuální počítač spustí, zastaví nebo restartuje, může dojít ke ztrátě kreditů pro [výpočetní vrstvu (B-Series)](../../virtual-machines/sizes-b-series-burstable.md) . Další informace najdete v tématu [Nejčastější dotazy k roztržení (B-Series)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Pokud se virtuální počítač spustí, zastaví nebo restartuje, může dojít ke ztrátě kreditů pro [výpočetní vrstvu (B-Series)](../../virtual-machines/sizes-b-series-burstable.md) . Další informace najdete v tématu [Nejčastější dotazy k roztržení (B-Series)](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Storage
 
@@ -83,7 +83,7 @@ Další podrobnosti o dostupných výpočetních řadách najdete v dokumentaci 
 
 Spotřebu úložiště můžete monitorovat v Azure Portal (s Azure Monitor) pomocí omezení úložiště, procenta úložiště a metrik využití úložiště. Informace o metrikách najdete v [článku o monitorování](./concepts-monitoring.md) . 
 
-### <a name="reaching-the-storage-limit"></a>Dosáhlo se limitu úložiště.
+### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
 Když je úložiště spotřebované na serveru blízko, aby se dosáhlo limitu stanoveného, server je přepnut do režimu jen pro čtení, aby chránil všechny ztracené zápisy na serveru. Servery s menší než 100 GiB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 5% velikosti zřízeného úložiště. Servery s více než 100 GiB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 5 GiB.
 

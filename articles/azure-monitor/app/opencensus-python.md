@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704408"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -221,6 +221,15 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 ### <a name="metrics"></a>Metriky
 
+OpenCensus. stats podporuje 4 agregační metody, ale poskytuje částečnou podporu pro Azure Monitor:
+
+- **Počet:** Počet bodů měření. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. 
+- **Součet:** Součet bodů měření. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. 
+- **LastValue:** Uchová poslední zaznamenanou hodnotu a všechno ostatní.
+- **Distribuce:** Rozdělení histogramu bodů měření. Tato metoda není **nástrojem Azure Exportér podporována**.
+
+### <a name="count-aggregation-example"></a>Příklad agregace Count
+
 1. Nejdřív vygenerujeme některá místní data metriky. Vytvoříme jednoduchou metriku pro sledování počtu, kolikrát uživatel vybere klíč **ENTER** .
 
     ```python
@@ -320,7 +329,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
         main()
     ```
 
-1. Exportér posílá data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se odesílají každý interval. Data můžete najít v části `customMetrics` .
+1. Exportér posílá data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se odesílají každý interval. Hodnota je kumulativní, může se zvýšit a nastavit na hodnotu 0 při restartu. Data můžete najít v části `customMetrics` , ale `customMetrics` vlastnosti ValueCount, ValueSum, ValueMin, ValueMax a valueStdDev se nepoužívají efektivně.
 
 #### <a name="performance-counters"></a>Čítače výkonu
 

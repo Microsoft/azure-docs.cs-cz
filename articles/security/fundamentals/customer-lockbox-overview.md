@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/15/2020
-ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/19/2021
+ms.openlocfilehash: 04fc020b2b08d4d3dc68b62c417eb8e2d2e85b97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489883"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720609"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox pro Microsoft Azure
 
@@ -22,18 +22,16 @@ ms.locfileid: "96489883"
 
 Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, ve kterém můžou kontrolovat a schvalovat nebo zamítat žádosti zákazníků o přístup k datům. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
 
-Tento článek popisuje, jak se iniciují a ukládají požadavky na Customer Lockbox pro pozdější revize a audity.
+Tento článek popisuje, jak povolit Customer Lockbox a jak se spouští, sledují a ukládají požadavky na bezpečnostní moduly pro pozdější revize a audity.
 
-Customer Lockbox je teď obecně dostupný a v současné době podporuje přístup ke vzdálené ploše virtuálních počítačů.
+<a id='supported-services-and-scenarios-in-preview'># # Podporované služby a scénáře (všeobecně dostupné)
 
-## <a name="supported-services-and-scenarios-in-preview"></a>Podporované služby a scénáře ve verzi Preview
+Pro Customer Lockbox jsou teď všeobecně dostupné tyto služby:
 
-Následující služby pro Customer Lockbox jsou v současné době ve verzi Preview:
-
-- API Management
+- Azure API Management
 - Azure App Service
-- Cognitive Services
-- Container Registry
+- Azure Cognitive Services
+- Azure Container Registry
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Data Box
@@ -41,34 +39,21 @@ Následující služby pro Customer Lockbox jsou v současné době ve verzi Pre
 - Azure Data Factory
 - Azure Database for PostgreSQL
 - Azure Functions
-- HDInsight
+- Azure HDInsight
 - Azure Kubernetes Service
 - Azure Monitor
 - Azure Storage
-- Azure SQL DB
+- Azure SQL Database
 - Přenosy předplatných Azure
 - Azure Synapse Analytics
-- Virtuální počítače (nově popisuje také přístup k výpisům paměti a spravovaným diskům)
+- Virtuální počítače v Azure (zahrnující přístup ke vzdálené ploše, přístup k výpisům paměti a spravované disky)
 
-Pokud chcete povolit Customer Lockbox pro tyto nabídky verze Preview pro vaši organizaci, zaregistrujte se do [Customer Lockbox pro Azure Public Preview](https://aka.ms/customerlockbox/insiderprogram).
+## <a name="enable-customer-lockbox"></a>Povolit Customer Lockbox
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>Podporované služby a scénáře ve všeobecné dostupnosti
-
-Následující služby a scénáře jsou aktuálně všeobecně dostupné pro Customer Lockbox.
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>Přístup ke vzdálené ploše virtuálních počítačů
-
-Customer Lockbox v současné době podporuje žádosti o přístup ke vzdálené ploše virtuálních počítačů. Podporují se následující úlohy:
-- Platforma jako služba (PaaS) – Azure Cloud Services (webová role a role pracovního procesu)
-- Infrastruktura jako služba (IaaS) – Windows a Linux (pouze Azure Resource Manager)
-- Škálovací sada virtuálních počítačů – Windows a Linux
+Nyní můžete povolit Customer Lockbox z [modulu pro správu](https://aka.ms/customerlockbox/administration) v okně Customer Lockbox.  
 
 > [!NOTE]
-> IaaS klasické instance nejsou podporovány Customer Lockbox. Pokud máte úlohy spuštěné v IaaS klasických instancích, doporučujeme, abyste je migrovali z modelu nasazení Classic do Správce prostředků. Pokyny najdete v tématu [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/migration-classic-resource-manager-overview.md).
-
-#### <a name="detailed-audit-logs"></a>Podrobné protokoly auditu
-
-V případě scénářů, které zahrnují přístup ke vzdálené ploše, můžete s využitím protokolů událostí Windows zkontrolovat akce provedené technikem podpory. Zvažte použití služby Azure Security Center ke shromáždění protokolů událostí a zkopírování dat do vašeho pracovního prostoru pro účely analýzy. Další informace najdete v tématu [Shromažďování dat ve službě Azure Security Center](../../security-center/security-center-enable-data-collection.md).
+> Aby bylo možné Customer Lockbox povolit, musí mít uživatelský účet [přiřazenou roli globálního správce](../../active-directory/roles/manage-roles-portal.md).
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -80,7 +65,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
 3. Pracovník podpory Azure zkontroluje požadavek služby a určí další kroky k vyřešení tohoto problému.
 
-4. Pokud pracovník podpory nemůže vyřešit problém pomocí standardních nástrojů a telemetrie, je dalším krokem vyžádání zvýšených oprávnění pomocí služby pro přístup JIT (just-in-time). Tento požadavek může být od původního inženýra podpory. Nebo může to být z jiného inženýra, protože problém se překládá týmu Azure DevOps.
+4. Pokud pracovník podpory nemůže vyřešit problém pomocí standardních nástrojů a telemetrie, je dalším krokem vyžádání zvýšených oprávnění pomocí služby pro přístup JIT (just-in-time). Tato žádost může být od původního inženýra podpory nebo z jiného inženýra, protože problém se překládá týmu Azure DevOps.
 
 5. Po odeslání žádosti o přístup prostřednictvím inženýra Azure vyhodnotí služba za běhu požadavek, který vezme v úvahu následující faktory:
     - Rozsah prostředku
@@ -99,7 +84,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
     ![Azure Customer Lockbox – oznámení e-mailem](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
-8. E-mailové oznámení poskytuje odkaz na okno **Customer Lockbox** v Azure Portal. Pomocí tohoto odkazu se určený schvalovatel přihlásí k Azure Portal, aby se zobrazily nedokončené žádosti, jejichž organizace má Customer Lockbox:
+8. E-mailové oznámení poskytuje odkaz na okno **Customer Lockbox** v modulu pro správu. Pomocí tohoto odkazu se určený schvalovatel přihlásí k Azure Portal, aby se zobrazily nedokončené žádosti, jejichž organizace má Customer Lockbox:
 
     ![Azure Customer Lockbox – cílová stránka](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
 
@@ -109,7 +94,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
     ![Azure Customer Lockbox – zobrazení žádosti, která čeká na vyřízení](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Příklad:
+10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Například:
 
     ![Azure Customer Lockbox – zobrazení žádosti o lístek podpory](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
@@ -137,18 +122,17 @@ Příklad:
 
 ## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Integrace Customer Lockboxu se srovnávacím testem zabezpečení Azure
 
-Představili jsme nový základní ovládací prvek ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) v rámci srovnávacího testu zabezpečení Azure, který pokrývá Customer Lockbox použitelnost. Zákazníci teď můžou využít srovnávací testy ke kontrole Customer Lockbox použitelnosti služby.
+Představili jsme nový základní ovládací prvek ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) v rámci srovnávacího testu zabezpečení Azure, který pokrývá Customer Lockbox použitelnost. Zákazníci teď můžou srovnávací testy využít ke kontrole Customer Lockbox použitelnosti služby.
 
 ## <a name="exclusions"></a>Vyloučení
 
-Požadavky Customer Lockboxu se neaktivují v následujících scénářích technické podpory:
+Žádosti Customer Lockbox se nespouštějí v následujících scénářích technické podpory:
 
 - Technik Microsoftu potřebuje provést aktivitu, která nepatří mezi standardní provozní postupy. Příkladem je obnovení nebo zotavení služeb v neočekávaných nebo nepředvídatelných scénářích.
-
-- Technik Microsoftu přistupuje k platformě Azure v rámci řešení potíží a neúmyslně získá přístup k datům zákazníků. Například v důsledku řešení potíží síťovým týmem Azure může dojít k zachytávání paketů na síťovém zařízení. Pokud však zákazník přenášená data zašifroval, technik je nebude moct přečíst.
+- Technik Microsoftu přistupuje k platformě Azure v rámci řešení potíží a neúmyslně získá přístup k datům zákazníků. Například v důsledku řešení potíží síťovým týmem Azure může dojít k zachytávání paketů na síťovém zařízení. V tomto scénáři, pokud zákazník šifruje data během přenosu, nemůže inženýr data přečíst.
 
 ## <a name="next-steps"></a>Další kroky
 
-Customer Lockbox je k dispozici automaticky pro všechny zákazníky, kteří mají [plán podpory Azure](https://azure.microsoft.com/support/plans/) s minimální úrovní **vývojářů**.
+Customer Lockbox je k dispozici všem zákazníkům, kteří mají [plán podpory Azure](https://azure.microsoft.com/support/plans/) s minimální úrovní **vývoje**. Customer Lockbox můžete povolit z [modulu pro správu](https://aka.ms/customerlockbox/administration) v okně Customer Lockbox.
 
-Pokud máte oprávněný plán podpory, nemusíte k povolení Customer Lockbox použít žádnou akci. Pokud je tato akce nutná pro průběh lístku podpory, který je popsán od někoho ve vaší organizaci, je žádost o Customer Lockbox iniciovaná pracovníkem Microsoftu.
+Pokud je tato akce nutná pro průběh případu podpory, je žádost o Customer Lockbox iniciována pracovníkem Microsoftu.

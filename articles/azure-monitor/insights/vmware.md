@@ -1,17 +1,16 @@
 ---
 title: VMware Monitoring řešení v Azure Monitor | Microsoft Docs
 description: Přečtěte si, jak může řešení VMware Monitoring pomáhat spravovat protokoly a monitorovat hostitele ESXi.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704357"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
 
@@ -50,14 +49,14 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. Zkontrolujte konzolu vSphere a ověřte, jestli je syslog správně nastavený. Potvrďte u hostitele ESXI, že je nakonfigurovaný port **1514** .
 1. Stáhněte a nainstalujte agenta Log Analytics pro Linux na server Linux. Další informace najdete v [dokumentaci ke službě Log Analytics Agent pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře/etc/opt/Microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi. conf do adresáře/etc/opt/Microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Příklad:
+1. Po instalaci agenta Log Analytics pro Linux přejděte do adresáře/etc/opt/Microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi. conf do adresáře/etc/opt/Microsoft/omsagent/conf/omsagent.d a změňte vlastníka/skupinu a oprávnění souboru. Například:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Příklad:
+1. Otestujte připojení mezi serverem Linux a hostitelem ESXi pomocí `nc` příkazu na hostiteli ESXi. Například:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514

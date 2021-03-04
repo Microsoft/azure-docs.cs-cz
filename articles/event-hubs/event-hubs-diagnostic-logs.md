@@ -2,13 +2,13 @@
 title: Nastavení diagnostických protokolů – centrum událostí Azure | Microsoft Docs
 description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573170"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742530"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
@@ -59,7 +59,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 Řetězce JSON protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Název | Description
+Název | Popis
 ------- | -------
 `TaskName` | Popis úlohy, která se nezdařila
 `ActivityId` | Interní ID, které se používá ke sledování
@@ -97,7 +97,7 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-Název | Description
+Název | Popis
 ------- | -------
 `ActivityId` | Interní ID, které se používá pro účely sledování |
 `EventName` | Název operace Seznam hodnot pro tento prvek najdete v tématu [názvy událostí](#event-names) . |
@@ -136,7 +136,7 @@ Název události je vyplněný jako typ operace + typ prostředku z následujíc
 ## <a name="autoscale-logs-schema"></a>Schéma protokolů automatického škálování
 JSON protokolu automatického škálování obsahuje prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | `TrackingId` | Interní ID, které se používá pro účely trasování |
 | `ResourceId` | ID prostředku Azure Resource Manager. |
@@ -155,7 +155,7 @@ Tady je příklad události automatického škálování:
 ## <a name="kafka-coordinator-logs-schema"></a>Schéma protokolů koordinátora Kafka
 JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | `RequestId` | ID žádosti, která se používá pro účely trasování |
 | `ResourceId` | ID prostředku Azure Resource Manager |
@@ -183,7 +183,7 @@ JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulc
 ## <a name="kafka-user-error-logs-schema"></a>Schéma protokolů chyb uživatele Kafka
 JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ---- | ----------- |
 | `TrackingId` | ID sledování, které se používá pro účely trasování. |
 | `NamespaceName` | Název oboru názvů |
@@ -197,7 +197,7 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
 Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ---  | ----------- | 
 | `SubscriptionId` | ID předplatného Azure |
 | `NamespaceName` | Název oboru názvů |
@@ -207,7 +207,7 @@ Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky u
 | `Count` | Počet výskytů pro danou akci |
 | `ResourceId` | ID prostředku Azure Resource Manager. |
 
-Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **vybraných sítí** nebo z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsmu oboru názvů, můžete použít následující alternativní řešení. Povolte filtrování IP adres a přidejte celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs nepodporuje rozsahy IPv6. 
+Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **vybraných sítí** nebo z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsmu oboru názvů, můžete použít následující alternativní řešení. [Povolte filtrování IP](event-hubs-ip-filtering.md)adres a přidejte celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs filtrování IP adres nepodporuje rozsahy IPv6. Všimněte si, že v protokolu se můžou zobrazit adresy privátních koncových bodů ve formátu IPv6. 
 
 ### <a name="example"></a>Příklad
 
@@ -227,7 +227,7 @@ Protokoly virtuální sítě se generují jenom v případě, že obor názvů u
 ## <a name="customer-managed-key-user-logs"></a>Klíčové uživatelské protokoly spravované uživatelem
 Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uvedené v následující tabulce:
 
-| Název | Description |
+| Název | Popis |
 | ---- | ----------- | 
 | `Category` | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
 | `ResourceId` | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |

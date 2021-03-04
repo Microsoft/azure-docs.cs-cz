@@ -188,3 +188,6 @@
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Co je nového?
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

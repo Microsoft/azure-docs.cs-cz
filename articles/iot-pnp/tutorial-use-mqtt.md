@@ -7,18 +7,25 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e56142dfc68767945cd0d08c87f14e19551a156e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741459"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Kurz – použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
 
 Pokud je to možné, měli byste použít jednu ze sad SDK pro zařízení Azure IoT k vytváření technologie Plug and Play klientů zařízení IoT. Ve scénářích, jako je například použití paměťově omezeného zařízení, možná budete muset ke komunikaci se službou IoT Hub použít knihovnu MQTT.
 
 Ukázka v tomto kurzu používá [Mosquitto](http://mosquitto.org/) Library MQTT a Visual Studio. Kroky v tomto kurzu předpokládají, že používáte Windows na vašem vývojovém počítači.
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Stáhněte a sestavte knihovnu Mosquitto pro zatmění.
+> * Upravte vzorový kód MQTT založený na jazyce C a zpřístupněte zařízení technologie Plug and Play IoT.
+> * Identifikujte témata MQTT, která používá zařízení IoT technologie Plug and Play.
 
 ## <a name="prerequisites"></a>Požadavky
 

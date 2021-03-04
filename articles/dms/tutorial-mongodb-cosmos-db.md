@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 1ba6a45062f4018c59f5b41ab616f7a04f87140a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b669870537ffb58d9ae7e8a5c65276d310ba6a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722020"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: migrace MongoDB k rozhraní API Azure Cosmos DB pro MongoDB v režimu offline pomocí DMS
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Spuštění migrace
 > * Monitorujte migraci.
 
-V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním počítači Azure, abyste mohli rozhraní API pro MongoDB Azure Cosmos DB pomocí Azure Database Migration Service. Pokud ještě nemáte nastavený zdroj MongoDB, přečtěte si článek [instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure](../virtual-machines/windows/install-mongodb.md).
+V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním počítači Azure, abyste mohli rozhraní API pro MongoDB Azure Cosmos DB pomocí Azure Database Migration Service. Pokud ještě nemáte nastavený zdroj MongoDB, přečtěte si článek [instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure](/previous-versions/azure/virtual-machines/windows/install-mongodb).
 
 ## <a name="prerequisites"></a>Požadavky
 

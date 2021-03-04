@@ -3,12 +3,12 @@ title: Zásady správného řízení prostředků pro kontejnery a služby
 description: Azure Service Fabric umožňuje zadat požadavky a omezení prostředků pro služby spuštěné jako procesy nebo kontejnery.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 889fce77c1a3a743e9805ec482a9c87b9bf8da65
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735654"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
@@ -95,12 +95,12 @@ Tady je příklad, jak dát Service Fabric k použití 50% dostupného procesoru
 Pro většinu zákazníků a scénářů se doporučuje automatické zjišťování kapacit uzlů pro procesor a paměť, což je doporučená konfigurace (automatické zjišťování je ve výchozím nastavení zapnuté). Pokud ale potřebujete úplnou ruční instalaci kapacit uzlů, můžete je nakonfigurovat podle typu uzlu pomocí mechanismu pro popis uzlů v clusteru. Tady je příklad, jak nastavit typ uzlu se čtyřmi jádry a 2 GB paměti:
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 Když je povolená Automatická detekce dostupných prostředků a kapacity uzlů se v manifestu clusteru definují ručně, Service Fabric zkontroluje, jestli má uzel dostatek prostředků pro podporu kapacity, kterou uživatel definoval:
@@ -120,8 +120,8 @@ Automatické zjišťování dostupných prostředků může být vypnuto, pokud 
 Pro zajištění optimálního výkonu byste měli v manifestu clusteru zapnout taky následující nastavení:
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" />
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -160,7 +160,7 @@ V tomto příkladu se `CpuCores` atribut používá k určení žádosti o 1 já
 
 **ServicePackageA** se umístí jenom na uzel, kde zbývající kapacita procesoru po odečtení **součtu požadavků na procesor všech balíčků služeb umístěných v tomto uzlu** je větší nebo rovna 1 jádru. V uzlu bude balíček služby omezený na jedno jádro. Balíček služby obsahuje dva balíčky kódu (**CodeA1** a **CodeA2**) a oba určují `CpuShares` atribut. Podíl CpuShares 512:256 se používá k výpočtu limitů procesoru pro jednotlivé balíčky kódu. CodeA1 se tedy omezí na dvě třetiny jádra a CodeA2 se omezí na jednu třetinu jader. Pokud CpuShares nejsou zadány pro všechny balíčky kódu, Service Fabric rozdělí limit procesoru rovnoměrně mezi ně.
 
-Zatímco CpuShares zadaná pro balíčky kódu představuje relativní podíl celkového limitu procesoru balíčku služby, hodnoty paměti pro balíčky kódu jsou zadány v absolutních výrazech. V tomto příkladu se `MemoryInMB` atribut používá k určení požadavků na paměť 1024 MB pro CodeA1 i CodeA2. Vzhledem k tomu, že není zadán limit paměti ( `MemoryInMBLimit` atribut), Service Fabric používá také zadané hodnoty požadavků jako limity pro balíčky kódu. Požadavek (a omezení) paměti pro balíček služby se počítá jako součet hodnot požadavků na paměť (a limitu) svých balíčků kódu daného prvku. V případě **ServicePackageA**je tedy požadavek a limit paměti počítán jako 2048 MB.
+Zatímco CpuShares zadaná pro balíčky kódu představuje relativní podíl celkového limitu procesoru balíčku služby, hodnoty paměti pro balíčky kódu jsou zadány v absolutních výrazech. V tomto příkladu se `MemoryInMB` atribut používá k určení požadavků na paměť 1024 MB pro CodeA1 i CodeA2. Vzhledem k tomu, že není zadán limit paměti ( `MemoryInMBLimit` atribut), Service Fabric používá také zadané hodnoty požadavků jako limity pro balíčky kódu. Požadavek (a omezení) paměti pro balíček služby se počítá jako součet hodnot požadavků na paměť (a limitu) svých balíčků kódu daného prvku. V případě **ServicePackageA** je tedy požadavek a limit paměti počítán jako 2048 MB.
 
 **ServicePackageA** se umístí jenom na uzel, kde zbývající kapacita paměti po odečtení **součtu požadavků na paměť u všech balíčků služeb, které jsou umístěné na tomto uzlu,** je větší nebo rovna 2048 MB. V uzlu budou oba balíčky kódu omezeny na 1024 MB paměti. Balíčky kódu (kontejnery nebo procesy) nebudou moci přidělovat více paměti, než je toto omezení, a pokus o to by vyplynule z důvodu nedostatku paměti.
 
@@ -249,7 +249,7 @@ Při použití zásad správného řízení prostředků u služby Service Fabri
 * Uzly končící ve stavu není v pořádku.
 * Nereagující Service Fabric rozhraní API pro správu clusteru
 
-Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit omezení prostředků pro všechny Service Fabric uživatelské služby spuštěné v uzlu* (řídí se a neřídí se), aby se zaručilo, že uživatelské služby nikdy nebudou používat víc než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v oddílu PlacementAndLoadBalancing manifestem clusteru na hodnotu true. Toto nastavení je ve výchozím nastavení vypnuté.
+Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit omezení prostředků pro všechny Service Fabric uživatelské služby spuštěné v uzlu* (řídí se a neřídí se), aby se zaručilo, že uživatelské služby nikdy nebudou používat víc než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v oddílu PlacementAndLoadBalancing manifestem clusteru na hodnotu true. Toto nastavení je ve výchozím nastavení vypnuté.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -260,7 +260,7 @@ Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit o
 Další poznámky:
 
 * Vynucení limitu prostředků se vztahuje jenom na `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` metriky prostředků a.
-* Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo přes uživatele ručně zadáním kapacit uzlů (jak je vysvětleno v části [instalace clusteru pro povolení zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ).Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby.Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
+* Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo přes uživatele ručně zadáním kapacit uzlů (jak je vysvětleno v části [instalace clusteru pro povolení zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby. Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
 
 ## <a name="other-resources-for-containers"></a>Další zdroje informací o kontejnerech
 

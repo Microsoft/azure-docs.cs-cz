@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4db42d8fa8c676b20b236577ce6646b909df7c3a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638882"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688038"
 ---
 # <a name="api-management-caching-policies"></a>Zásady ukládání do mezipaměti pro službu API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
@@ -117,8 +117,8 @@ Další informace najdete v tématu [výrazy zásad](api-management-policy-expre
 | typ ukládání do mezipaměti               | Vyberte jednu z následujících hodnot atributu:<br />- `internal` Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external` Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
 | pro ukládání do mezipaměti – typ        | Tento atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -None-ukládání do mezipaměti se nepovoluje.<br />– soukromé ukládání do mezipaměti privátních dat je povolené.<br />– ukládání do mezipaměti veřejného a sdíleného pro příjem dat je povolené.                                                                                                          | Ne       | žádné              |
 | nutné – znovu ověřit                | Pokud je povoleno ukládání do mezipaměti, tato vlastnost zapne nebo vypne `must-revalidate` direktivu řízení mezipaměti v odpovědích brány.                                                                                                                                                                                                                      | Ne       | true              |
-| různé – podle vývojáře              | Nastavte na `true` do mezipaměti odpovědi na účet vývojáře, který vlastní [klíč předplatného](./api-management-subscriptions.md) , který je součástí žádosti.                                                                                                                                                                                                                                                                                                  | Ano      |         Nepravda          |
-| různé – podle – Developer-Groups       | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [skupinu uživatelů](./api-management-howto-create-groups.md).                                                                                                                                                                                                                                                                                                             | Ano      |       Nepravda            |
+| různé – podle vývojáře              | Nastavte na `true` do mezipaměti odpovědi na účet vývojáře, který vlastní [klíč předplatného](./api-management-subscriptions.md) , který je součástí žádosti.                                                                                                                                                                                                                                                                                                  | Ano      |         Ne          |
+| různé – podle – Developer-Groups       | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [skupinu uživatelů](./api-management-howto-create-groups.md).                                                                                                                                                                                                                                                                                                             | Ano      |       Ne            |
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -248,7 +248,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 `cache-store-value`Služba provádí úložiště mezipaměti podle klíče. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad.
 
 > [!NOTE]
-> Tato zásada musí mít odpovídající [hodnotu Get ze zásad mezipaměti](#GetFromCacheByKey) .
+> Operace uložení hodnoty v mezipaměti provedené touto zásadou je asynchronní. Uloženou hodnotu lze načíst pomocí zásad pro [získání hodnoty z mezipaměti](#GetFromCacheByKey) . Uložená hodnota však nemusí být okamžitě k dispozici pro načtení, protože asynchronní operace, která ukládá hodnotu v mezipaměti, může stále probíhat. 
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -279,7 +279,7 @@ Další informace a příklady těchto zásad najdete v tématu [vlastní uklád
 | typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal` Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external` Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
 | doba trvání         | Hodnota se uloží do mezipaměti pro zadanou hodnotu trvání zadanou v sekundách.                                                                                                                                                                                                                                                                                 | Ano      | –               |
 | key              | Klíč mezipaměti, do které se hodnota uloží.                                                                                                                                                                                                                                                                                                                   | Ano      | –               |
-| value            | Hodnota, která má být uložena do mezipaměti.                                                                                                                                                                                                                                                                                                                                     | Ano      | –               |
+| hodnota            | Hodnota, která má být uložena do mezipaměti.                                                                                                                                                                                                                                                                                                                                     | Ano      | –               |
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 

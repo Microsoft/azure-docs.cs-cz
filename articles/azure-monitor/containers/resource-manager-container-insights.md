@@ -1,26 +1,26 @@
 ---
-title: Ukázky šablon Správce prostředků pro Azure Monitor pro kontejnery
-description: Ukázka Azure Resource Manager šablon pro nasazení a configureAzure monitorování kontejnerů.
+title: Ukázky šablon Správce prostředků pro službu Container Insights
+description: Ukázky Azure Resource Manager šablon pro nasazení a configureContainer přehledy.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723329"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Ukázky šablon Správce prostředků pro Azure Monitor pro kontejnery
+# <a name="resource-manager-template-samples-for-container-insights"></a>Ukázky šablon Správce prostředků pro službu Container Insights
 Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci agenta Log Analytics pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>Povolit pro cluster AKS
-Následující ukázka povoluje Azure Monitor pro kontejnery v clusteru AKS.
+Následující ukázka umožňuje získat přehledy o kontejnerech v clusteru AKS.
 
 
 ### <a name="template-file"></a>Soubor šablony
@@ -357,4 +357,4 @@ Následující ukázka povoluje Azure Monitor pro kontejnery v clusteru AKS.
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
-* [Přečtěte si další informace o Azure monitor pro kontejnery](../containers/container-insights-overview.md).
+* [Přečtěte si další informace o službě Container Insights](../containers/container-insights-overview.md).

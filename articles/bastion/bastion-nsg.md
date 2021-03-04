@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700214"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
@@ -32,11 +32,15 @@ V tomto diagramu:
 
 V této části se dozvíte, jak se síťový provoz mezi uživatelem a službou Azure bastionu a kdy do cílových virtuálních počítačů ve vaší virtuální síti:
 
+> [!IMPORTANT]
+> Pokud se rozhodnete použít NSG s vaším prostředkem Azure bastionu, **musíte** vytvořit všechna následující pravidla přenosů dat příchozího a odchozího provozu. Vynechání některého z následujících pravidel v NSG zablokuje vašemu prostředku Azure bastionu v tom, aby v budoucnu přijímal potřebné aktualizace, a proto se prostředek otevře v budoucích ohroženích zabezpečení.
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure bastionu se nasazuje konkrétně na ***AzureBastionSubnet** _.
+Azure bastionu se nasazuje konkrétně pro ***AzureBastionSubnet***.
 
-_ **Přenos příchozího přenosu dat:**
+* **Příchozí přenos dat:**
 
    * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
    * **Příchozí přenos dat z roviny ovládacího prvku Azure bastionu:** Pro připojení řídicí roviny povolte port 443 příchozí ze značky služby **GatewayManager** . To umožňuje, aby řídicí plocha, kterou správce bran, mohla komunikovat se službou Azure bastionu.

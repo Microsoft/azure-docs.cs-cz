@@ -6,6 +6,8 @@
       href: overview.md
     - name: "Poznámky k\_verzi"
       href: release-notes.md
+    - name: Známé problémy
+      href: known-issues.md
 - name: Rychlé starty
   items:
     - name: Vytvoření kontroleru dat
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 'Monitorování, analytika protokolů, fakturační údaje, Azure Portal'
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Vysoká dostupnost
+              href: managed-instance-high-availability.md
             - name: Odstranit
               href: delete-managed-instance.md
         - name: Migrace

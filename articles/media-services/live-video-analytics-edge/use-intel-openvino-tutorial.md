@@ -4,12 +4,12 @@ description: V tomto kurzu použijete server modelů AI, který poskytuje Intel,
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955712"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702211"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Kurz: Analýza živého videa pomocí OpenVINO™ modelového serveru – rozšíření AI od Intel 
 
@@ -88,11 +88,11 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
 1. Přejít do složky *Src/Cloud-to-Device-Console-App* Tady vidíte *appsettings.jsv* souboru a několik dalších souborů:
 
-    * ***C2D-Console-App. csproj** _ – soubor projektu pro Visual Studio Code.
-    _ ***operations.jsv** _ – seznam operací, které má program spustit.
-    _ ***Program.cs** _ – ukázkový kód programu. Tento kód:
+    * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
+    * ***operations.jsna*** seznam operací, které má program spustit.
+    * ***Program.cs*** – vzorový programový kód. Tento kód:
 
-        _ Načte nastavení aplikace.
+        * Načte nastavení aplikace.
         * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](direct-methods.md).
         * Pozastaví, aby bylo možné kontrolovat výstup programu v okně **terminálu** a prozkoumávat události vygenerované modulem v okně **výstup** .
         * Vyvolá přímé metody pro vyčištění prostředků.
@@ -117,7 +117,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     ![Generovat manifest nasazení IoT Edge](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    *deployment.yolov3.amd64.js* v souboru manifestu se vytvoří ve složce *Src/Edge/config* .
+    *deployment.openvino.amd64.js* v souboru manifestu se vytvoří ve složce *Src/Edge/config* .
 
 1. Pokud jste dokončili rychlé zprovoznění [Najít pohyb a generovat události](detect-motion-emit-events-quickstart.md) , tento krok přeskočte. 
 

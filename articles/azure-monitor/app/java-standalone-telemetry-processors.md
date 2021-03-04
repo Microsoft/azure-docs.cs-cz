@@ -1,70 +1,62 @@
 ---
 title: Procesory telemetrie (Preview) – Azure Monitor Application Insights pro Java
-description: Jak nakonfigurovat procesory telemetrie v Azure Monitor Application Insights pro Java
+description: Naučte se konfigurovat procesory telemetrie v Azure Monitor Application Insights pro Java.
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734566"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Procesory telemetrie (Preview) – Azure Monitor Application Insights pro Java
 
 > [!NOTE]
-> Tato funkce je stále ve verzi Preview.
+> Funkce telemetrie procesorů je ve verzi Preview.
 
-Agent Java 3,0 pro Application Insights nyní má funkce pro zpracování dat telemetrie před exportem dat.
+Agent Java 3,0 pro Application Insights může zpracovat data telemetrie předtím, než se data exportují.
 
-Níže jsou uvedeny některé případy použití procesorů telemetrie:
- * Maskovat citlivá data
- * Podmíněné přidání vlastních dimenzí
- * Aktualizujte název, který se používá pro agregaci a zobrazení v Azure Portal
- * Odpustit atributy rozsahu pro řízení nákladů na ingestování
+Tady jsou některé případy použití pro procesory telemetrie:
+ * Vytvářejte citlivá data.
+ * Podmíněně přidejte vlastní dimenze.
+ * Aktualizujte název rozsahu, který se používá k agregaci podobné telemetrie v Azure Portal.
+ * Odřaďte atributy span pro řízení nákladů na ingestování.
 
 ## <a name="terminology"></a>Terminologie
 
-Předtím, než se přeskočíme na procesory telemetrie, je důležité pochopit, k čemu se pojem rozpětí vztahuje.
+Než se dozvíte o procesorech telemetrie, měli byste pochopit *Rozsah* období. Rozpětí je obecný termín pro:
 
-Rozpětí je obecný termín pro všechny tyto tři věci:
+* Příchozí požadavek.
+* Odchozí závislost (například vzdálené volání jiné služby).
+* Závislost v rámci procesu (například práce prováděná dílčími součástmi služby).
 
-* Příchozí požadavek
-* Odchozí závislost (např. vzdálené volání jiné služby)
-* Závislost v procesu (například práce prováděná dílčími součástmi služby)
+Pro procesory telemetrie jsou tyto komponenty s rozsahem důležité:
 
-Pro účely procesorů telemetrie jsou důležité komponenty rozsahu:
-
-* Name
+* Název
 * Atributy
 
-Název rozsahu je primární zobrazení používané pro požadavky a závislosti v Azure Portal.
-
-Atributy span reprezentují standardní i vlastní vlastnosti daného požadavku nebo závislosti.
+Název rozsahu je primární zobrazení pro požadavky a závislosti v Azure Portal. Rozsah atributů představuje standardní i vlastní vlastnosti daného požadavku nebo závislosti.
 
 ## <a name="telemetry-processor-types"></a>Typy procesorů telemetrie
 
-Aktuálně existují dva typy procesorů telemetrie.
+V současné době dva typy procesorů telemetrie jsou procesory atributů a procesory rozpětí.
 
-#### <a name="attribute-processor"></a>Procesor atributů
+Procesor atributů může atributy vložit, aktualizovat, odstranit nebo hash.
+Může také použít regulární výraz k extrakci jednoho nebo více nových atributů z existujícího atributu.
 
-Procesor atributů má možnost vkládat, aktualizovat, odstraňovat nebo atributy hash.
-Může také extrahovat (prostřednictvím regulárního výrazu) jeden nebo více nových atributů z existujícího atributu.
-
-#### <a name="span-processor"></a>Procesor span
-
-Procesor s rozsahem má možnost aktualizovat název telemetrie.
-Může také extrahovat (prostřednictvím regulárního výrazu) jeden nebo více nových atributů z názvu rozpětí.
+Procesor s rozsahem může aktualizovat název telemetrie.
+Může také použít regulární výraz pro extrakci jednoho nebo více nových atributů z názvu rozpětí.
 
 > [!NOTE]
-> Všimněte si, že aktuálně procesory telemetrie pouze zpracovávají atributy typu řetězec a nezpracovávají atributy typu Boolean nebo Number.
+> V současné době zpracovávají procesory telemetrie pouze atributy typu String. Nezpracovávají atributy typu Boolean nebo Number.
 
 ## <a name="getting-started"></a>Začínáme
 
-Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístěte jej do stejného adresáře jako `applicationinsights-agent-*.jar` s následující šablonou.
+Začněte tím, že vytvoříte konfigurační soubor s názvem *applicationinsights.jsv*. Uložte ho do stejného adresáře jako *ApplicationInsights-agent- \* . jar*. Použijte následující šablonu.
 
 ```json
 {
@@ -88,29 +80,27 @@ Vytvořte konfigurační soubor s názvem `applicationinsights.json` a umístět
 }
 ```
 
-## <a name="includeexclude-criteria"></a>Kritéria zahrnutí/vyloučení
+## <a name="include-criteria-and-exclude-criteria"></a>Zahrnout kritéria a kritéria vyloučení
 
 Procesory atributů i procesory na úrovni span podporují volitelné `include` a `exclude` kritéria.
-Procesor bude použit pouze pro ty rozsahy, které odpovídají jeho `include` kritériím (Pokud je k dispozici) _a_ neodpovídá jeho `exclude` kritériím (Pokud je k dispozici).
+Procesor se aplikuje jenom na rozsahy, které odpovídají jeho `include` kritériím (Pokud je zadaný) _, a_ neodpovídá jeho `exclude` kritériím (Pokud je k dispozici).
 
-Chcete-li konfigurovat tuto možnost, musí být v části `include` a/nebo `exclude` aspoň jedna `matchType` a jedna z `spanNames` nebo `attributes` .
-Konfigurace zahrnutí/vyloučení je podporovaná tak, aby obsahovala víc než jednu zadanou podmínku.
-Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby došlo ke shodě. 
+Pokud chcete tuto možnost nakonfigurovat v části `include` nebo `exclude` (nebo v obou), zadejte aspoň jednu `matchType` a buď `spanNames` nebo `attributes` .
+Konfigurace include-Exclude umožňuje více než jednu zadanou podmínku.
+Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby bylo možné porovnat výsledek. 
 
-**Povinné pole**: 
-* `matchType` Určuje, jakým `spanNames` způsobem `attributes` jsou interpretovány položky a pole. Možné hodnoty jsou `regexp` nebo `strict`. 
+* **Povinné pole**: `matchType` Určuje, jakým způsobem `spanNames` jsou položky polí a `attributes` polí interpretovány. Možné hodnoty jsou `regexp` a `strict` . 
 
-**Volitelná pole**: 
-* `spanNames` musí odpovídat nejméně jedné z položek. 
-* `attributes` Určuje seznam atributů, které mají být porovnány. Všechny tyto atributy se musí přesně shodovat, aby došlo ke shodě.
-
+* **Volitelná pole**: 
+    * `spanNames` musí odpovídat nejméně jedné z položek. 
+    * `attributes` Určuje seznam atributů, které mají být shodné. Všechny tyto atributy se musí přesně shodovat, aby bylo možné porovnat výsledek.
+    
 > [!NOTE]
-> Pokud `include` `exclude` jsou zadány oba a, `include` vlastnosti jsou zkontrolovány před `exclude` vlastnostmi.
+> Pokud `include` `exclude` jsou zadány oba a, `include` jsou před `exclude` Zaškrtnutím vlastností zkontrolovány vlastnosti.
 
-#### <a name="sample-usage"></a>Ukázka použití
+### <a name="sample-usage"></a>Ukázkové použití
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Všechny zadané podmínky se musí vyhodnotit na hodnotu true, aby došlo ke sh
   }
 ]
 ```
-Další informace najdete v dokumentaci k [příkladům procesoru telemetrie](./java-standalone-telemetry-processors-examples.md) .
+Další informace najdete v tématu [Příklady procesoru telemetrie](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="attribute-processor"></a>Procesor atributů
 
-Procesor atributů mění atributy rozsahu. Volitelně podporuje možnost zahrnout/vyloučit rozsahy. Provede seznam akcí, které se provádějí v pořadí zadaném v konfiguračním souboru. Podporované akce:
+Procesor atributů mění atributy rozsahu. Může podporovat možnost zahrnout nebo vyloučit rozsahy. Provede seznam akcí, které se provádějí v pořadí, v jakém konfigurační soubor určuje. Procesor podporuje tyto akce:
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-Vloží nový atribut z rozsahů, kde klíč ještě neexistuje.   
+`insert`Akce vloží nový atribut z rozsahů, kde klíč ještě neexistuje.   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Vloží nový atribut z rozsahů, kde klíč ještě neexistuje.
   }
 ]
 ```
-Pro `insert` akci je nutné provést následující akce:
-  * `key`
-  * jedna z `value` nebo `fromAttribute`
-  * `action`:`insert`
+`insert`Akce vyžaduje následující nastavení:
+* `key`
+* Buď `value` nebo `fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-Aktualizuje atribut v rozpětí, kde klíč existuje.
+`update`Akce aktualizuje atribut v poli rozsahy, kde klíč již existuje.
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Aktualizuje atribut v rozpětí, kde klíč existuje.
   }
 ]
 ```
-Pro `update` akci je nutné provést následující akce:
-  * `key`
-  * jedna z `value` nebo `fromAttribute`
-  * `action`:`update`
+`update`Akce vyžaduje následující nastavení:
+* `key`
+* Buď `value` nebo `fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-Odstraní atribut z rozsahu.
+`delete`Akce odstraní atribut z rozsahu.
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Odstraní atribut z rozsahu.
   }
 ]
 ```
-Pro `delete` akci je nutné provést následující akce:
-  * `key`
-  * `action`: `delete`
+`delete`Akce vyžaduje následující nastavení:
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-Hash (SHA1) existující hodnota atributu
+`hash`Hodnoty hash akcí (SHA1) stávající hodnota atributu.
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Hash (SHA1) existující hodnota atributu
   }
 ]
 ```
-Pro `hash` akci je nutné provést následující akce:
+`hash`Akce vyžaduje následující nastavení:
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> Tato funkce je pouze v 3.0.2 a novějších.
+> Tato `extract` funkce je k dispozici pouze ve verzi 3.0.2 a novější.
 
-Extrahuje hodnoty pomocí pravidla regulárního výrazu ze vstupního klíče do cílových klíčů zadaných v pravidle. Pokud cílový klíč již existuje, bude přepsán. Chová se podobně jako u nastavení [procesoru span](#extract-attributes-from-span-name) `toAttributes` s existujícím atributem jako se zdrojem.
+`extract`Akce extrahuje hodnoty pomocí pravidla regulárního výrazu ze vstupního klíče do cílových klíčů, které pravidlo určuje. Pokud cílový klíč již existuje, bude přepsán. Tato akce se chová jako nastavení [procesoru span](#extract-attributes-from-the-span-name) `toAttributes` , kde je existující atribut zdrojem.
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Extrahuje hodnoty pomocí pravidla regulárního výrazu ze vstupního klíče d
   }
 ]
 ```
-Pro `extract` akci je nutné provést následující akce:
+`extract`Akce vyžaduje následující nastavení:
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-Další informace najdete v dokumentaci k [příkladům procesoru telemetrie](./java-standalone-telemetry-processors-examples.md) .
+Další informace najdete v tématu [Příklady procesoru telemetrie](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="span-processor"></a>Procesor span
 
-Procesor span upraví název rozsahu nebo atributy rozsahu na základě názvu rozpětí. Volitelně podporuje možnost zahrnout/vyloučit rozsahy.
+Procesor span upraví název rozsahu nebo atributy rozsahu na základě názvu rozpětí. Může podporovat možnost zahrnout nebo vyloučit rozsahy.
 
 ### <a name="name-a-span"></a>Pojmenování rozsahu
 
-V části název je nutné zadat následující nastavení:
+`name`Oddíl vyžaduje `fromAttributes` nastavení. Hodnoty z těchto atributů jsou použity k vytvoření nového názvu zřetězeny v pořadí, které určuje konfigurace. Procesor změní název rozpětí pouze v případě, že jsou všechny tyto atributy přítomny v rozsahu.
 
-* `fromAttributes`: Hodnota atributu pro klíče slouží k vytvoření nového názvu v pořadí zadaném v konfiguraci. Aby se procesor mohl přejmenovat, musí být zadaný v rozsahu všech klíčů atributů.
-
-Volitelně můžete nakonfigurovat následující nastavení:
-
-* `separator`: Řetězec, který se zadá, se použije k rozdělení hodnot.
+`separator`Nastavení je volitelné. Toto nastavení je řetězec. Je určen k rozdělení hodnot.
 > [!NOTE]
-> Pokud je přejmenování závislé na atributech, které jsou upravovány procesorem atributů, zajistěte, aby byl procesor rozsahu určen po procesoru atributů ve specifikaci kanálu.
+> Pokud při přejmenování dojde k úpravě atributů na procesor atributů, ujistěte se, že je procesor span zadaný po procesoru atributů ve specifikaci kanálu.
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ Volitelně můžete nakonfigurovat následující nastavení:
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahovat atributy z rozsahu názvů
+### <a name="extract-attributes-from-the-span-name"></a>Extrahovat atributy z názvu rozpětí
 
-Převezme seznam regulárních výrazů, které odpovídají názvu rozpětí proti a extrakci atributů z něj na základě dílčích výrazů. Musí být zadány v `toAttributes` části.
+V `toAttributes` části jsou uvedeny regulární výrazy, které odpovídají názvu rozpětí proti. Extrahuje atributy založené na podvýrazech.
 
-Vyžadují se následující nastavení:
+`rules`Nastavení je povinné. Toto nastavení uvádí pravidla, která se používají k extrakci hodnot atributů z názvu rozpětí. 
 
-`rules` : Seznam pravidel pro extrakci hodnot atributů z rozsahu názvu. Hodnoty v názvu rozpětí jsou nahrazeny názvy extrahovaných atributů. Každé pravidlo v seznamu je řetězec vzorového regulárního výrazu. Název rozpětí je kontrolován proti regulárnímu výrazu. Pokud regulární výraz odpovídá, jsou všechny pojmenované dílčí výrazy regulárního výrazu extrahovány jako atributy a přidány do rozsahu. Název každého dílčího výrazu se změní na název atributu a část odpovídající podvýrazu se změní na hodnotu atributu. Odpovídající část názvu rozpětí je nahrazena názvem extrahovaný atribut. Pokud atributy již v rozsahu existují, budou přepsány. Tento proces se opakuje pro všechna pravidla v pořadí, ve kterém jsou zadaná. Každé následné pravidlo funguje na názvu rozsahu, který je výstupem po zpracování předchozího pravidla.
+Hodnoty v názvu rozpětí jsou nahrazeny názvy extrahovaných atributů. Každé pravidlo v seznamu je vzorový řetězec regulárního výrazu (Regex). 
+
+Tady je způsob, jakým jsou hodnoty nahrazené názvy extrahovaných atributů:
+
+1. Název rozpětí je zkontrolován proti regulárnímu výrazu. 
+1. Pokud regulární výraz odpovídá, jsou všechny pojmenované dílčí výrazy regulárního výrazu extrahovány jako atributy. 
+1. Extrahované atributy jsou přidány do rozsahu. 
+1. Název každého dílčího výrazu se zobrazí jako název atributu. 
+1. Část odpovídající podvýrazu se změní na hodnotu atributu. 
+1. Odpovídající část názvu rozpětí je nahrazena názvem extrahovaný atribut. Pokud atributy již existují v rozsahu, budou přepsány. 
+ 
+Tento proces se opakuje pro všechna pravidla v pořadí, ve kterém jsou zadaná. Každé další pravidlo funguje na názvu rozsahu, který je výstupem předchozího pravidla.
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ Vyžadují se následující nastavení:
 
 ```
 
-## <a name="list-of-attributes"></a>Seznam atributů
+## <a name="common-span-attributes"></a>Společné atributy span
 
-Níže jsou uvedeny některé běžné atributy span, které lze použít v procesorech telemetrie.
+V této části jsou uvedeny některé běžné atributy rozsahu, které mohou procesory telemetrie použít.
 
 ### <a name="http-spans"></a>Rozsahy HTTP
 
 | Atribut  | Typ | Description | 
 |---|---|---|
 | `http.method` | řetězec | Metoda požadavku HTTP|
-| `http.url` | řetězec | Úplná adresa URL požadavku HTTP ve formuláři `scheme://host[:port]/path?query[#fragment]` . Fragmenty se většinou neodesílají přes protokol HTTP, ale pokud je známá, měla by být zahrnutá i přesto.|
+| `http.url` | řetězec | Úplná adresa URL požadavku HTTP ve formuláři `scheme://host[:port]/path?query[#fragment]` . Fragment není obvykle přenášen přes protokol HTTP. Pokud je ale tento fragment známý, měl by obsahovat.|
 | `http.status_code` | číslo | [Stavový kód odpovědi HTTP](https://tools.ietf.org/html/rfc7231#section-6).|
-| `http.flavor` | řetězec | Druh používaného protokolu HTTP |
+| `http.flavor` | řetězec | Typ protokolu HTTP. |
 | `http.user_agent` | řetězec | Hodnota záhlaví [User-agentu protokolu HTTP](https://tools.ietf.org/html/rfc7231#section-5.5.3) odeslaného klientem |
 
 ### <a name="jdbc-spans"></a>JDBC rozpětí
 
 | Atribut  | Typ | Description  |
 |---|---|---|
-| `db.system` | řetězec | Identifikátor používaného produktu pro systém správy databáze (DBMS). |
+| `db.system` | řetězec | Identifikátor používaného produktu systému správy databáze (DBMS). |
 | `db.connection_string` | řetězec | Připojovací řetězec použitý k připojení k databázi. Doporučuje se odebrat vložené přihlašovací údaje.|
 | `db.user` | řetězec | Uživatelské jméno pro přístup k databázi. |
-| `db.name` | řetězec | Tento atribut slouží k hlášení názvu databáze, ke které se přistupovalo. Příkazy, které přepínají databázi, by měly být nastavené na cílovou databázi (i v případě, že příkaz selhává).|
-| `db.statement` | řetězec | Prováděný příkaz databáze.|
+| `db.name` | řetězec | Řetězec použitý k nahlášení názvu databáze, ke které se přistupovalo. Pro příkazy, které přepínají databázi, by měl být tento řetězec nastaven na cílovou databázi, i když příkaz neproběhne úspěšně.|
+| `db.statement` | řetězec | Příkaz databáze, který se spouští.|

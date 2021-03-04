@@ -1,18 +1,18 @@
 ---
-title: Konfigurace Azure Monitor pro kontejnery integrace Prometheus | Microsoft Docs
-description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers, aby vyodpadí metriky z Prometheus s clusterem Kubernetes.
+title: Konfigurace integrace Prometheus Insights do kontejneru | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat agenta služby Container Insights, aby vyšrotal metriky z Prometheus s vaším clusterem Kubernetes.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731727"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace získávání metrik Prometheus pomocí služby Azure Monitor pro kontejnery
+# <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Konfigurace likvidace metrik Prometheus s využitím kontejnerů Insights
 
-[Prometheus](https://prometheus.io/) je oblíbený open source řešení pro monitorování metrik a je součástí [cloudového nativního výpočetního základu](https://www.cncf.io/). Azure Monitor for Containers poskytuje bezproblémové prostředí pro připojování ke shromažďování metrik Prometheus. Aby bylo možné používat Prometheus, je obvykle potřeba nastavit a spravovat server Prometheus s úložištěm. Integrací s Azure Monitor není třeba server Prometheus. Potřebujete jenom vystavit koncový bod Prometheus metriky prostřednictvím vývozců nebo lusků (aplikace) a kontejnerový Agent pro Azure Monitor pro kontejnery může metriky vyřadit. 
+[Prometheus](https://prometheus.io/) je oblíbený open source řešení pro monitorování metrik a je součástí [cloudového nativního výpočetního základu](https://www.cncf.io/). Container Insights poskytuje bezproblémové prostředí pro připojování ke shromažďování Prometheusch metrik. Aby bylo možné používat Prometheus, je obvykle potřeba nastavit a spravovat server Prometheus s úložištěm. Integrací s Azure Monitor není třeba server Prometheus. Pouze potřebujete zveřejnit koncový bod Prometheus metriky prostřednictvím vývozců nebo lusků (aplikace) a kontejnerový Agent pro službu Container Insights může metriky vyřadit. 
 
 ![Architektura monitorování kontejnerů pro Prometheus](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -42,20 +42,20 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 | Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | Adresa URL/koncový bod | Pro jednotlivé uzly nebo pro clustery v rámci clusteru | `http://myurl:9101/metrics` |
 
-Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
+Při zadání adresy URL vyřadí Služba Container Insights jenom koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
 
 |Obor | Klíč | Datový typ | Hodnota | Popis |
 |------|-----|-----------|-------|-------------|
 | Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
-| | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Příklad: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Příklad: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní parametr Container Insights a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
 | | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Příklad: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | Když se nastaví na `true` nastavení v rámci celého clusteru, Azure monitor pro agenty kontejnerů vyřadí v celém clusteru Kubernetes lusky pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | V případě nastavení na `true` úrovni celého clusteru bude agent služby Container Insights vyřadit Kubernetes do celého clusteru pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastaven na hodnotu `true` . |
 | | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https` . | 
 | | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta metriky není `/metrics` , definujte ji pomocí této poznámky. |
 | | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, ze kterého se má vyřadit. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
 | | `monitor_kubernetes_pods_namespaces` | Řetězec | Pole oddělené čárkami | Seznam povolených oborů názvů, ze kterých se mají vyřadit metriky z Kubernetes lusků<br> Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`. |
-| Napříč uzly | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Příklad: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| Napříč uzly | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Příklad: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní parametr Container Insights a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
 | V rozsáhlých uzlech nebo v clusteru | `interval` | Řetězec | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Můžete upravit kolekci pro *[prometheus_data_collection_settings. Node]* a/nebo *[prometheus_data_collection_settings. cluster]* na časové jednotky, například s, m, h. |
 | V rozsáhlých uzlech nebo v clusteru | `fieldpass`<br> `fielddrop`| Řetězec | Pole oddělené čárkami | Nastavením seznamu Povolit ( `fieldpass` ) a zakázat () můžete určit určité metriky, které mají být shromažďovány nebo nikoli z koncového bodu `fielddrop` . Nejprve musíte nastavit seznam povolených. |
 
@@ -124,7 +124,7 @@ Proveďte následující kroky ke konfiguraci konfiguračního souboru ConfigMap
         ```
 
         >[!NOTE]
-        >$NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
+        >$NODE _IP je konkrétní parametr Container Insights a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
 
     - Chcete-li nakonfigurovat vyřazení metrik Prometheus zadáním poznámky pod, proveďte následující kroky:
 
@@ -241,7 +241,7 @@ Pomocí následujících kroků proveďte konfiguraci konfiguračního souboru C
         ```
 
         >[!NOTE]
-        >$NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
+        >$NODE _IP je konkrétní parametr Container Insights a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
 
     - Chcete-li nakonfigurovat vyřazení metrik Prometheus zadáním poznámky pod, proveďte následující kroky:
 
@@ -330,7 +330,7 @@ Chcete-li zobrazit metriky Prometheus Azure Monitor a všechny chyby konfigurace
 
 ## <a name="view-prometheus-metrics-in-grafana"></a>Zobrazení metrik Prometheus v Grafana
 
-Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
+Container Insights podporuje zobrazování metrik uložených ve vašem pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
 
 ## <a name="review-prometheus-data-usage"></a>Kontrola využití dat Prometheus
 
@@ -364,8 +364,8 @@ Ve výstupu se zobrazí výsledky podobné následujícímu:
 
 ![Výsledky dotazu do protokolu pro objem příjmu dat](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-Další informace o tom, jak monitorovat využití dat a analyzovat náklady, najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../platform/manage-cost-storage.md).
+Další informace o tom, jak monitorovat využití dat a analyzovat náklady, najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../logs/manage-cost-storage.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o konfiguraci nastavení kolekce agentů pro stdout, stderr a proměnné prostředí z úloh kontejnerů [najdete tady](container-insights-agent-config.md). 
+Další informace o konfiguraci nastavení kolekce agentů pro stdout, stderr a proměnné prostředí z úloh kontejnerů [najdete tady](container-insights-agent-config.md).

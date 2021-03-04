@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704833"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
@@ -61,7 +61,7 @@ V levém navigačním panelu aplikace spusťte dialog **vazby TLS/SSL** :
 
 ![Přidat vazbu k doméně](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-V části **vlastní doména**vyberte vlastní doménu, pro kterou chcete přidat vazbu.
+V části **vlastní doména** vyberte vlastní doménu, pro kterou chcete přidat vazbu.
 
 Pokud už vaše aplikace obsahuje certifikát pro vybranou vlastní doménu, pokračujte na [vytvoření vazby](#create-binding) přímo. V opačném případě pokračujte dál.
 
@@ -159,13 +159,13 @@ Konfigurační příručky specifické pro konkrétní jazyk, jako je napříkla
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-* [Použijte certifikát TLS/SSL v kódu v Azure App Service](configure-ssl-certificate-in-code.md)
+* [Použití certifikátu TLS nebo SSL v kódu ve službě Azure App Service](configure-ssl-certificate-in-code.md)
 * [Nejčastější dotazy: App Service certifikátů](./faq-configuration-and-management.md)

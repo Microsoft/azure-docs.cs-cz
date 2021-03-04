@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691820"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -71,7 +71,7 @@ Pomocí následujícího postupu Zabezpečte svůj pracovní prostor a přidruž
 1. Vytvořte [pracovní prostor podporující privátní linku](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) , který umožní komunikaci mezi vaší virtuální sítí a pracovním prostorem.
 1. Přidejte Azure Key Vault do virtuální sítě s [koncovým bodem služby](../key-vault/general/overview-vnet-service-endpoints.md) nebo [soukromým koncovým bodem](../key-vault/general/private-link-service.md). Nastavte Key Vault na ["umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
 1. Přidejte svůj účet Azure Storage do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
-1. [Nakonfigurujte Azure Container registry pro použití privátního koncového bodu](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) a [Povolte delegování podsítě v Azure Container Instances](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
+1. [Nakonfigurujte Azure Container registry pro použití privátního koncového bodu](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 ![Diagram architektury znázorňující, jak pracovní prostor a přidružené prostředky komunikují přes koncové body služby nebo privátní koncové body uvnitř virtuální sítě](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

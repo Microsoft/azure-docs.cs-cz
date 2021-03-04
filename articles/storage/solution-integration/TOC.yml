@@ -1,0 +1,31 @@
+- name: Azure Storage ověřená Partnerská řešení
+  href: /azure/storage/solution-integration
+- name: Partneři Analýza úložiště Azure a velkých objemů dat
+  items:
+    - name: Přehled ověřených partnerů
+      href: .\validated-partners\analytics\partner-overview.md
+  expanded: false
+- name: 'Azure Storage archivace, zálohování a BCDR partneři'
+  items:
+    - name: Přehled ověřených partnerů
+      href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+    - name: Průvodce rychlým startem pro CommVault
+      href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - name: Průvodce rychlým startem pro Veeam
+      href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+  expanded: false
+- name: Partneři řešení Azure Storage kontejnerů
+  items:
+    - name: Přehled ověřených partnerů
+      href: .\validated-partners\container-solutions\partner-overview.md
+  expanded: false
+- name: Azure Storage partneři pro správu a migraci dat
+  items:
+    - name: Přehled ověřených partnerů
+      href: .\validated-partners\data-management\partner-overview.md
+  expanded: false
+- name: Azure Storage partneři primárního a sekundárního úložiště
+  items:
+    - name: Přehled ověřených partnerů
+      href: .\validated-partners\primary-secondary-storage\partner-overview.md
+  expanded: false

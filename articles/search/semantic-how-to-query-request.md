@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 0af868f62f9bc62ee6b4b2a10d16f8eed632b6d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679397"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693641"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>Formulování žádosti
 
-1. Nastavte "queryType" na "sémantické" a "queryLanguage" na "en-US". Oba parametry jsou povinné.
+1. Nastavte **`"queryType"`** na "sémantické" a **`"queryLanguage"`** na "en-US". Oba parametry jsou povinné.
 
    QueryLanguage musí být konzistentní s jakýmkoli [analyzátorem jazyka](index-add-language-analyzers.md) přiřazeným k definicím polí ve schématu indexu. Pokud queryLanguage je "en-US", musí být všechny analyzátory jazyka také anglické variantou ("en. Microsoft" nebo "en. Lucene"). Žádné nezávislá analyzátory jazyka, jako je klíčové slovo nebo jednoduchá, nemají žádné konflikty s hodnotami queryLanguage.
 
@@ -90,7 +90,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    Obsah ve vyhledávacím indexu může být tvořen v několika jazycích, takže vstup dotazu je pravděpodobně v jednom. Vyhledávací web nekontroluje kompatibilitu queryLanguage, Language Analyzer a jazyka, ve kterém se obsah skládá, a nezapomeňte jim zajistit jejich obor, aby nedocházelo k nesprávným výsledkům.
 
-1. Volitelné, ale Doporučené, nastavte "searchFields".
+<a name="searchfields"></a>
+
+1. Set **`"searchFields"`** (volitelné, ale doporučené).
 
    V sémantickém dotazu pořadí polí v "searchFields" odráží prioritu nebo relativní důležitost pole v sémantickém hodnocení. Budou použita pouze pole řetězců nejvyšší úrovně (samostatné nebo v kolekci). Vzhledem k tomu, že searchFields obsahuje jiné chování v jednoduchých a úplných dotazech Lucene (kde není k dispozici žádný předpokládaný způsob priority), neobsahovaná pole a podpole nebudou mít za následek chybu, ale také se nepoužijí v sémantickém hodnocení.
 
@@ -104,9 +106,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    + Pokud nejsou zadaná žádná pole, budou se všechna hledaná pole považovat za sémantické hodnocení dokumentů. To se ale nedoporučuje, protože nemusí vracet optimální výsledky z indexu vyhledávání.
 
-1. Odeberte klauzule orderBy, pokud existují v existující žádosti. Sémantické skóre se používá k seřazení výsledků a pokud zahrnete explicitní logiku řazení, vrátí se chyba HTTP 400.
+1. Odeberte **`"orderBy"`** klauzule, pokud existují v existující žádosti. Sémantické skóre se používá k seřazení výsledků a pokud zahrnete explicitní logiku řazení, vrátí se chyba HTTP 400.
 
-1. Volitelně můžete přidat "odpovědi" nastavené na "extrahovatelné" a zadat počet odpovědí, pokud potřebujete více než 1.
+1. Volitelně můžete přidat **`"answers"`** nastavení na "extrahovatelné" a zadat počet odpovědí, pokud potřebujete více než 1.
 
 1. Volitelně můžete přizpůsobit styl zvýraznění aplikovaný na titulky. Popisky použijí formátování zvýraznění u klíčových pasáží v dokumentu, které shrnují odpověď. Výchozí formát je `<em>`. Pokud chcete určit typ formátování (například žluté pozadí), můžete nastavit highlightPreTag a highlightPostTag.
 

@@ -7,19 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206448"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687528"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal
 
 > [!IMPORTANT] 
->  V období Preview se za použití datových služeb s podporou Azure ARC neúčtují žádné náklady. I když fakturační systém funguje na konci, je měřič účtování nastavený na $0.  Pokud budete postupovat podle tohoto scénáře, zobrazí se položky ve vaší fakturaci za službu, která je aktuálně pojmenována do **služby Hybrid Data Services** , a pro prostředky typu s názvem **Microsoft. AzureData/ `<resource type>` **. Budete moct zobrazit záznam pro každou datovou službu – Azure ARC, který vytvoříte, ale každý záznam se bude účtovat $0.
+>  V období Preview se za použití datových služeb s podporou Azure ARC neúčtují žádné náklady. I když fakturační systém funguje na konci, je měřič účtování nastavený na $0.  Pokud budete postupovat podle tohoto scénáře, zobrazí se položky ve vaší fakturaci za službu, která je aktuálně pojmenována do **služby Hybrid Data Services** , a pro prostředky typu s názvem **Microsoft. AzureData/ `<resource type>`**. Budete moct zobrazit záznam pro každou datovou službu – Azure ARC, který vytvoříte, ale každý záznam se bude účtovat $0.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -111,8 +111,9 @@ azdata arc dc upload -p usage.json
 
 Pomocí těchto kroků můžete zobrazit fakturační údaje v Azure Portal:
 
-1. Otevřete Azure Portal pomocí speciální adresy URL:  [https://aka.ms/arcdata](https://aka.ms/arcdata) .
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Do pole Hledat v horní části obrazovky zadejte **cost management** a klikněte na službu cost management.
+1. V části **přehled cost management** klikněte na kartu **cost management** .
 1. Na levé straně klikněte na kartu **Analýza nákladů** .
 1. Klikněte na tlačítko **náklady podle prostředku** v horní části zobrazení.
 1. Ujistěte se, že je váš obor nastavený na předplatné, ve kterém se vytvořily prostředky datové služby.

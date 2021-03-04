@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 48d4fe254f51dde932f04ef791e1109a0ced07ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879423"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701616"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
 
@@ -173,7 +173,7 @@ S integrovaným sešitem událostí brány firewall Azure WAF můžete získat p
 
 #### <a name="azure-monitor-workbook-for-waf"></a>Azure Monitor sešitu pro WAF
 
-Tento sešit umožňuje vlastní vizualizaci událostí WAF souvisejících se zabezpečením napříč několika panely, které lze filtrovat. Funguje se všemi WAF typy, včetně Application Gateway, frontových dveří a CDN a dá se filtrovat podle typu WAF nebo konkrétní instance WAF. Import přes šablonu nebo šablonu ARM. Pokud chcete nasadit tento sešit, přečtěte si článek [WAF Workbook](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
+Tento sešit umožňuje vlastní vizualizaci událostí WAF souvisejících se zabezpečením napříč několika panely, které lze filtrovat. Funguje se všemi WAF typy, včetně Application Gateway, frontových dveří a CDN a dá se filtrovat podle typu WAF nebo konkrétní instance WAF. Import přes šablonu nebo šablonu ARM. Pokud chcete nasadit tento sešit, přečtěte si článek [WAF Workbook](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook).
 
 #### <a name="logging"></a>protokolování
 
@@ -221,7 +221,7 @@ Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hro
 
 Cenové modely se liší od WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 Další informace o tom, co je nového u brány firewall webových aplikací Azure, najdete v tématu [Aktualizace Azure](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall).
 

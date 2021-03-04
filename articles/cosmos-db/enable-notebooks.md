@@ -5,15 +5,15 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: fd7f663ee5b6ceb49e6f1a393fc30919d5b245e9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692772"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Povolit poznámkové bloky pro účty Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ Integrované poznámkové bloky Jupyter v Azure Cosmos DB umožňují analyzovat
 Od 10. února 2021 budou mít nové účty Azure Cosmos vytvořené v jedné z [podporovaných oblastí](#supported-regions) automaticky povolené poznámkové bloky. Pro povolení poznámkových bloků není nutná žádná další konfigurace. Pomocí následujících pokynů vytvořte nový účet:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte **vytvořit**  >  **databáze** prostředků  >  **Azure Cosmos DB**.
-1. Zadejte základní nastavení pro účet. 
- 
+1. Zadejte základní nastavení pro účet.
+
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit možnost **síť** a **značky** . 
-1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
+1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**.
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Podokno Oznámení portálu Azure Portal":::
 
@@ -60,12 +60,12 @@ Poznámkové bloky můžete také povolit u stávajících účtů. Tento krok j
 
 Pokud chcete ověřit, jestli můžete použít poznámkové bloky, vyberte v části ukázkové poznámkové bloky jednu z poznámkových bloků. Tím se uloží kopie poznámkového bloku do svého pracovního prostoru a otevře se.
 
-V tomto příkladu použijeme **soubor GettingStarted. ipynb**. 
+V tomto příkladu použijeme **soubor GettingStarted. ipynb**.
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Zobrazit Poznámkový blok soubor GettingStarted. ipynb":::
 
 Spuštění poznámkového bloku:
-1. Vyberte první buňku kódu, která obsahuje kód Pythonu. 
+1. Vyberte první buňku kódu, která obsahuje kód Pythonu.
 1. Vyberte **Spustit** , aby se buňka spustila. Tuto buňku můžete také spustit **stisknutím SHIFT + ENTER** .
 1. Obnovte podokno prostředků, aby se zobrazila vytvořená databáze a kontejner.
 
@@ -76,7 +76,7 @@ Můžete také vybrat **Nový Poznámkový blok** pro vytvoření nového pozná
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Vytvoření nebo nahrání nového poznámkového bloku":::
 
 ## <a name="supported-regions"></a>Podporované oblasti
-Integrované poznámkové bloky pro Azure Cosmos DB jsou teď dostupné ve 29 oblastech Azure. U nových účtů Azure Cosmos vytvořených v těchto oblastech budou poznámkové bloky automaticky povolené. Poznámkové bloky jsou s vaším účtem bezplatné. 
+Integrované poznámkové bloky pro službu Azure Cosmos DB jsou v současné době k dispozici ve 29 oblastech Azure. U nových účtů Azure Cosmos vytvořených v těchto oblastech budou poznámkové bloky automaticky povolené. Poznámkové bloky jsou s vaším účtem bezplatné. 
 
 - Austrálie – střed
 - Austrálie – střed 2
@@ -112,8 +112,7 @@ Integrované poznámkové bloky pro Azure Cosmos DB jsou teď dostupné ve 29 ob
 
 * Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter](cosmosdb-jupyter-notebooks.md)
 * [Prozkoumat galerii ukázek poznámkových bloků](https://cosmos.azure.com/gallery.html)
+* [Publikování poznámkových bloků do galerie poznámkových bloků Azure Cosmos DB](publish-notebook-gallery.md)
 * [Použití funkcí a příkazů poznámkového bloku Pythonu](use-python-notebook-features-and-commands.md)
 * [Použití funkcí a příkazů pro Poznámkový blok jazyka C#](use-csharp-notebook-features-and-commands.md)
 * [Import poznámkových bloků z úložiště GitHub](import-github-notebooks.md)
-
-

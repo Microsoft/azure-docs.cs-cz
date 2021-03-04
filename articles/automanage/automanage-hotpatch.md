@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662207"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687562"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Hotpatch pro edici Windows serveru Azure (Preview)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch pro nové virtuální počítače (Preview)
 
 Technologie HotPatching je nový způsob, jak nainstalovat aktualizace na nové virtuální počítače s Windows serverem Azure Edition (VM), které po instalaci nevyžadují restart. Tento článek obsahuje informace o hotpatch pro virtuální počítače edice Windows Server Azure, které mají následující výhody:
 * Nižší dopad na úlohy s menším restartováním
@@ -26,7 +26,7 @@ Technologie HotPatching je nový způsob, jak nainstalovat aktualizace na nové 
 
 Hotpatch funguje tak, že nejdřív vytvoříte směrný plán s web Windows Update nejnovější kumulativní aktualizací. Hotpatches se pravidelně uvolňují (například v druhém úterý v měsíci), které se na tento směrný plán sestaví. Hotpatches bude obsahovat aktualizace, které nevyžadují restart. V pravidelných intervalech (počínaje každé tři měsíce) se směrný plán aktualizuje novou nejnovější kumulativní aktualizací.
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch vzorový plán.":::
 
 Existují dva typy směrných plánů: **plánované standardní hodnoty** a **neplánované standardní hodnoty**.
 *  **Plánované standardní hodnoty** jsou vydávány v pravidelných tempo s hotpatch verzemi v.  Plánované standardní hodnoty zahrnují všechny aktualizace srovnatelné _nejnovější kumulativní aktualizace_ pro tento měsíc a vyžadují restart.
@@ -154,7 +154,7 @@ Pokud chcete zobrazit stav opravy pro váš virtuální počítač, přejděte d
 Na této obrazovce se zobrazí stav hotpatch pro váš virtuální počítač. Můžete si také projít, jestli máte k dispozici nějaké opravy pro váš virtuální počítač, který není nainstalovaný. Jak je popsáno výše v části "opravit instalaci", všechny aktualizace zabezpečení a kritické aktualizace se na VIRTUÁLNÍm počítači automaticky nainstalují pomocí [automatických oprav hostů na virtuálním](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) počítači a nevyžadují se žádné další akce. Opravy s jinými klasifikací aktualizací se neinstalují automaticky. Místo toho se dají zobrazit v seznamu dostupných oprav na kartě aktualizace dodržování předpisů. Historii nasazení aktualizací na VIRTUÁLNÍm počítači můžete zobrazit také prostřednictvím historie aktualizací. Zobrazí se historie aktualizací za posledních 30 dní spolu s podrobnostmi o instalaci opravy.
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Správa hotpatch":::
 
 S automatickými opravami hosta virtuálního počítače se váš virtuální počítač pravidelně a automaticky vyhodnocuje pro dostupné aktualizace. Tato pravidelná posouzení zajistí, že budou zjištěny dostupné opravy. Výsledky posouzení můžete zobrazit na obrazovce Aktualizace výše, včetně času posledního posouzení. Můžete také zvolit, že se má kdykoli aktivovat vyhodnocení opravy na vyžádání pro váš virtuální počítač, a to pomocí možnosti vyhodnotit nyní a po dokončení posouzení zkontrolovat výsledky.
 
@@ -197,7 +197,7 @@ Pro spuštění virtuálního počítače s Windows serverem Azure Edition s pov
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>Jsou pořád potřeba restartování pro virtuální počítač zaregistrovaný v hotpatch?
 
-* Restartování se ještě vyžaduje k instalaci aktualizací, které nejsou součástí programu hotpatch, a jsou nutné pravidelně po navýšení směrného plánu (web Windows Update nejnovější kumulativní aktualizace). Tento restart zajistí synchronizaci virtuálního počítače se všemi opravami zahrnutými v kumulativní aktualizaci. Směrné plány (které vyžadují restart) se spustí na tempo o třech měsících a v průběhu času se prodlouží o 6 + měsíců.
+* Restartování se ještě vyžaduje k instalaci aktualizací, které nejsou součástí programu hotpatch, a jsou nutné pravidelně po navýšení směrného plánu (web Windows Update nejnovější kumulativní aktualizace). Tento restart zajistí synchronizaci virtuálního počítače se všemi opravami zahrnutými v kumulativní aktualizaci. Směrné plány (které vyžadují restart) začnou na tempo tři měsíce a v průběhu času se zvýší.
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Mají ovlivněné aplikace při instalaci aktualizace hotpatch?
 

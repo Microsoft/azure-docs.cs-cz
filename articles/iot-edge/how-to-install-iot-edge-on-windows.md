@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008566"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736504"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -85,7 +85,7 @@ Azure IoT Edge pro Linux v systému Windows podporuje následující metody zři
 
 Ruční zřizování je snazší, pokud chcete začít s několika zařízeními. Služba Device Provisioning je užitečná pro zřizování mnoha zařízení.
 
-Pokud plánujete použít jednu z metod DPS ke zřízení zařízení nebo zařízení, postupujte podle kroků uvedených v příslušném článku výše a vytvořte instanci DPS, propojte svou instanci DPS s vaším IoT Hub a vytvořte registraci DPS. Můžete vytvořit *jednotlivou registraci* pro jedno zařízení nebo *skupinu pro zápis skupin* zařízení. Další informace o typech registrace najdete v [konceptech Azure IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/concepts-service#enrollment).
+Pokud plánujete použít jednu z metod DPS ke zřízení zařízení nebo zařízení, postupujte podle kroků uvedených v příslušném článku výše a vytvořte instanci DPS, propojte svou instanci DPS s vaším IoT Hub a vytvořte registraci DPS. Můžete vytvořit *jednotlivou registraci* pro jedno zařízení nebo *skupinu pro zápis skupin* zařízení. Další informace o typech registrace najdete v [konceptech Azure IoT Hub Device Provisioning Service](../iot-dps/concepts-service.md#enrollment).
 
 ## <a name="create-a-new-deployment"></a>Vytvořit nové nasazení
 
@@ -97,7 +97,7 @@ Na úvodní stránce centra pro správu systému Windows pod seznamem připojen�
 
 Centrum pro správu systému Windows můžete použít k instalaci a správě Azure IoT Edge pro Linux v systému Windows buď na místním zařízení, nebo na vzdálených spravovaných zařízeních. V této příručce bude připojení k místnímu hostiteli sloužit jako cílové zařízení pro nasazení Azure IoT Edge pro Linux ve Windows.
 
-Pokud chcete místo místního zařízení nasadit na vzdálené cílové zařízení a v seznamu nevidíte požadované cílové zařízení, postupujte podle [pokynů pro přidání zařízení.](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
+Pokud chcete místo místního zařízení nasadit na vzdálené cílové zařízení a v seznamu nevidíte požadované cílové zařízení, postupujte podle [pokynů pro přidání zařízení.](/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
 
    ![Počáteční řídicí panel centra pro správu Windows s uvedeným cílovým zařízením](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
@@ -136,7 +136,7 @@ Po dokončení nasazení budete připraveni zřídit své zařízení. Vyberte *
 Pokud jste to ještě neučinili, nainstalujte do svého cílového zařízení IoT Edge pro Linux v systému Windows.
 
 > [!NOTE]
-> Následující proces PowerShellu popisuje, jak vytvořit nasazení místního hostitele Azure IoT Edge pro Linux ve Windows. Pokud chcete vytvořit nasazení na vzdáleném cílovém zařízení pomocí PowerShellu, můžete použít [vzdálené prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote) k navázání připojení ke vzdálenému zařízení a spuštění těchto příkazů na tomto zařízení vzdáleně.
+> Následující proces PowerShellu popisuje, jak vytvořit nasazení místního hostitele Azure IoT Edge pro Linux ve Windows. Pokud chcete vytvořit nasazení na vzdáleném cílovém zařízení pomocí PowerShellu, můžete použít [vzdálené prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) k navázání připojení ke vzdálenému zařízení a spuštění těchto příkazů na tomto zařízení vzdáleně.
 
 1. V relaci PowerShellu se zvýšenými oprávněními spusťte každý z následujících příkazů a stáhněte IoT Edge pro Linux ve Windows.
 
@@ -173,9 +173,8 @@ Pokud jste to ještě neučinili, nainstalujte do svého cílového zařízení 
    Deploy-Eflow
    ```
 
-   <!-- Most likely temporary until cmdlet is fully documented -->
    > [!NOTE]
-   > Tento příkaz můžete spustit bez parametrů nebo volitelně přizpůsobit nasazení pomocí parametrů. Prohlédněte si modul PowerShellu AzureEFLOW. psm1 a zobrazte parametry a jejich význam (viz část C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW).
+   > Tento příkaz můžete spustit bez parametrů nebo volitelně přizpůsobit nasazení pomocí parametrů. Jejich význam najdete v [referenčních informacích ke skriptům IoT Edge pro Linux v prostředí Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) .
 
 1. Pokud souhlasíte s licenčními podmínkami, zadejte ' Y '.
 
@@ -319,7 +318,10 @@ V této části se dozvíte, jak automaticky zřídit vaše zařízení pomocí 
 
 Ověřte, že IoT Edge pro Linux v systému Windows byl úspěšně nainstalován a nakonfigurován v zařízení IoT Edge.
 
+# <a name="windows-admin-center"></a>[Centrum pro správu systému Windows](#tab/windowsadmincenter)
+
 1. Vyberte zařízení IoT Edge ze seznamu připojených zařízení v centru pro správu Windows, abyste se k němu mohli připojit.
+
 1. Na stránce Přehled zařízení se zobrazí některé informace o zařízení:
 
     1. Část **seznam IoT Edge modulu** zobrazuje spuštěné moduly na zařízení. Když se služba IoT Edge poprvé spustí, měl by se zobrazit jenom modul **edgeAgent** spuštěný. Ve výchozím nastavení se spustí modul edgeAgent a pomůže vám nainstalovat a spustit všechny další moduly, které nasadíte do svého zařízení.
@@ -338,6 +340,38 @@ Ověřte, že IoT Edge pro Linux v systému Windows byl úspěšně nainstalová
        ```bash
        sudo iotedge check
        ```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+1. Přihlaste se ke svému IoT Edge pro Linux na virtuálním počítači s Windows pomocí následujícího příkazu v relaci PowerShellu:
+
+   ```azurepowershell-interactive
+   Ssh-EflowVm
+   ```
+
+1. Po přihlášení můžete pomocí následujícího příkazu pro Linux vyhledat seznam spuštěných IoT Edge modulů:
+
+   ```bash
+   iotedge list
+   ```
+
+1. Pokud potřebujete řešit potíže se službou IoT Edge, použijte následující příkazy systému Linux.
+
+    1. Pokud potřebujete řešit potíže se službou, načtěte protokoly služby.
+
+       ```bash
+       journalctl -u iotedge
+       ```
+
+    2. Použijte `check` Nástroj k ověření stavu konfigurace a připojení zařízení.
+
+       ```bash
+       sudo iotedge check
+       ```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

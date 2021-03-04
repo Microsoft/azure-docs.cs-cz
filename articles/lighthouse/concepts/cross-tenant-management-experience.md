@@ -3,12 +3,12 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 97b28409a7f180ffbf4f8766ee281710d6226019
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573091"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699245"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -97,8 +97,8 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazit a aktualizovat výstrahy ve všech předplatných
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
-- [Log Analytics](../../azure-monitor/platform/service-providers.md): dotazování dat ze vzdálených pracovních prostorů ve více klientech (Všimněte si, že účty Automation používané pro přístup k datům z pracovních prostorů v klientech zákazníka se musí vytvořit ve stejném tenantovi)
-- [Vytváření, zobrazování a správa výstrah protokolu aktivit](../../azure-monitor/platform/alerts-activity-log.md) v klientech zákazníků
+- [Log Analytics](../../azure-monitor/logs/service-providers.md): dotazování dat ze vzdálených pracovních prostorů ve více klientech (Všimněte si, že účty Automation používané pro přístup k datům z pracovních prostorů v klientech zákazníka se musí vytvořit ve stejném tenantovi)
+- [Vytváření, zobrazování a správa výstrah protokolu aktivit](../../azure-monitor/alerts/alerts-activity-log.md) v klientech zákazníků
 - Vytváření výstrah v klientech zákazníků, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions, v části Správa tenanta prostřednictvím webhooků
 - Vytvoření [nastavení diagnostiky](../..//azure-monitor/essentials/diagnostic-settings.md) v klientech zákazníka pro posílání protokolů prostředků do pracovních prostorů v tenantovi pro správu
 - Pro úlohy SAP [Sledujte metriky řešení SAP s agregovaným zobrazením napříč klienty zákazníka](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) .

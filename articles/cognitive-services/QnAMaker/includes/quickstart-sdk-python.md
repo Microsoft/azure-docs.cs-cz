@@ -3,12 +3,12 @@ title: 'Rychlý Start: QnA Maker klientskou knihovnu pro Python'
 description: V tomto rychlém startu se dozvíte, jak začít s knihovnou klienta QnA Maker pro Python.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: cf3afcb9575f09b8c8d7b0b272dd738936756801
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c5a0beeed5d508e174b42c1525768e724f91d083
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730942"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/version-1)
 
@@ -133,7 +133,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku.
 
 [QnA maker](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker) používá dva různé objektové modely:
 * **[QnAMakerClient](#qnamakerclient-object-model)** je objekt, který slouží k vytvoření, správě, publikování a stažení znalostní báze Knowledge Base.
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** je objekt pro dotazování znalostní báze pomocí rozhraní GenerateAnswer API a posílání nových navrhovaných dotazů pomocí rozhraní API pro vlaky (jako součást [aktivního učení](../concepts/active-learning-suggestions.md)).
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** je objekt pro dotazování znalostní báze pomocí rozhraní GenerateAnswer API a posílání nových navrhovaných dotazů pomocí rozhraní API pro vlaky (jako součást [aktivního učení](../how-to/use-active-learning.md)).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/version-2)
 

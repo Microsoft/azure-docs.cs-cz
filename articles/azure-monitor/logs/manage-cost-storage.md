@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731387"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -268,7 +268,7 @@ Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Op
 - Název pravidla výstrahy: dosáhlo se denního limitu dat.
 - Závažnost: upozornění (závažnost 1)
 
-Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
+Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
 
@@ -488,8 +488,8 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 | AzureDiagnostics           | Změnit [kolekci protokolů prostředků](../essentials/diagnostic-settings.md#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) . |
 | Application Insights | Zkontrolovat možnosti pro [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) . |
-| Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
+| [Analýza SQL](../insights/azure-sql.md) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
+| Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](../../sentinel/connect-data-sources.md) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Získávání uzlů, které se účtují v cenové úrovni podle počtu uzlů
 

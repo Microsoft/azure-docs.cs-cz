@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718518"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pro Microsoft Azure Storage
 
@@ -132,6 +132,8 @@ Existují dva potřebné balíčky pro integraci Key Vault:
 * Azure. Core obsahuje `IKeyEncryptionKey` rozhraní a `IKeyEncryptionKeyResolver` . Klientská knihovna pro úložiště pro .NET už ji definuje jako závislost.
 * Azure. Security. Key trezor. Keys (v4. x) obsahuje klienta Key Vault REST a také kryptografické klienty používané při šifrování na straně klienta.
 
+Key Vault je navržená pro hlavní klíče s vysokou hodnotou a omezení omezování na Key Vault jsou navržená s ohledem na to. Od služby Azure. Security. Keys trezor. Keys 4.1.0, ale není k dispozici `IKeyEncryptionKeyResolver` implementace, která podporuje ukládání klíčů do mezipaměti. Aby bylo možné ukládání do mezipaměti provést z důvodu omezování, může být [Tato ukázka](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) následována vložením vrstvy do mezipaměti do `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` instance.
+
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Existují tři Key Vault balíčky:
@@ -140,15 +142,15 @@ Existují tři Key Vault balíčky:
 * Microsoft. Azure. webtrezor (V3. x) obsahuje klienta služby Key Vault REST.
 * Microsoft. Azure. klíčů trezor. Extensions (V3. x) obsahuje kód rozšíření, který zahrnuje implementace kryptografických algoritmů a RSAKey a SymmetricKey. Závisí na oborech názvů základní a trezoru klíčů a poskytuje funkce pro definování agregovaného překladače (když uživatelé chtějí používat víc zprostředkovatelů klíčů) a překladač klíčů pro ukládání do mezipaměti. I když klientská knihovna pro úložiště nezávisí přímo na tomto balíčku, pokud uživatelé chtějí použít Azure Key Vault k ukládání klíčů nebo k používání rozšíření Key Vault ke využívání místních a cloudových zprostředkovatelů kryptografických služeb, bude tento balíček potřebovat.
 
-Další informace o využití Key Vault v V11 najdete v [ukázkách šifrovacího kódu V11](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
-
----
-
 Key Vault je navržená pro hlavní klíče s vysokou hodnotou a omezení omezování na Key Vault jsou navržená s ohledem na to. Při provádění šifrování na straně klienta s Key Vault je upřednostňovaným modelem použití symetrických hlavních klíčů uložených jako tajné klíče v Key Vault a v mezipaměti místně. Uživatelé musí provést následující akce:
 
 1. Vytvořte tajný kód offline a nahrajte ho do Key Vault.
 2. Použijte základní identifikátor tajného klíče jako parametr k vyřešení aktuální verze tajného klíče pro šifrování a místní ukládání těchto informací do mezipaměti. Použít CachingKeyResolver pro ukládání do mezipaměti; pro uživatele není očekávána implementace vlastní logiky ukládání do mezipaměti.
 3. Při vytváření zásad šifrování používejte překladač mezipaměti jako vstup.
+
+Další informace o využití Key Vault v V11 najdete v [ukázkách šifrovacího kódu V11](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
+
+---
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

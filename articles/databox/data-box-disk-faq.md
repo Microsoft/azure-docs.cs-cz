@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f1924ce19ccb0f48aa1a7c9a0515fa89505dae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724825"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -48,7 +49,7 @@ A. Informace o ceně Data Box disků najdete na [stránce s cenami](https://azur
 A.  Pokud chcete získat Azure Data Box disky, přihlaste se k Azure Portal a vytvořte Data Box pořadí pro disky. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Otázka: Jaký je maximální objem dat, který se dá přenést pomocí disků Data Box Disk v jedné instanci?
-A. Pro 5 disků, z nichž každá má kapacitu 8 TB (7 TB použitelné kapacity), je maximální použitelná kapacita 35 TB. Takže můžete přenést 35 TB dat v jedné instanci. Pro přenos většího objemu dat je nutné objednat další disky.
+A. Pro pět disků, z nichž každá má velikost 8 TB (7 TB použitelné kapacity), je maximální použitelná kapacita 35 TB. Takže můžete přenést 35 TB dat v jedné instanci. Pro přenos většího objemu dat je nutné objednat další disky.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Otázka: Jak zjistím, jestli jsou disky Data Box Disk dostupné v mojí oblasti? 
 A.  Pokud chcete zjistit, kde jsou Data Box disky aktuálně k dispozici, přejděte do [oblasti dostupnost](data-box-disk-overview.md#region-availability).  
@@ -72,6 +73,18 @@ Dodejte [podporovaný disk](../import-export/storage-import-export-requirements.
 2. Po zkopírování dat z místního serveru na disky je vraťte do datacentra Azure v Kanadě pomocí poskytnutých návratových popisků Microsoftu. Data přítomná v Data Box Disk a pak se nahrají do cílového účtu úložiště v oblasti Kanady Azure, kterou jste zvolili během vytváření objednávky.
 
 3. Pak můžete použít nástroj jako AzCopy ke zkopírování dat do účtu úložiště v Západní USA. Tento krok se započítá se [standardními](https://azure.microsoft.com/pricing/details/storage/) [poplatky za úložiště a šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/) , které nejsou zahrnuté do data box disk fakturace.
+
+#### <a name="q-does-data-box-disk-store-any-customer-data-outside-of-the-service-region"></a>Otázka: Ukládá Data Box Disk data o zákaznících mimo oblast služby?
+
+A. No. Data Box Disk neukládají žádná zákaznická data mimo oblast služby. Zákazník má plné vlastnictví svých dat a může ukládat data do zadaného umístění na základě účtu úložiště, který během vytváření objednávky vybral.  
+
+Kromě zákaznických dat se Data Box Disk data zahrnující protokoly metadat a monitorování. Ve všech oblastech (s výjimkou Brazílie – jih a jihovýchodní Asie) se Data Box Disk data ukládají a replikují do [spárované oblasti](../best-practices-availability-paired-regions.md) pomocí geograficky redundantního účtu úložiště, která chrání před ztrátou dat.  
+
+Z důvodu [požadavků](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) na umístění dat v oblasti Brazílie – jih a jihovýchodní asie se data box disk data ukládají do účtu úložiště s redundantním úložištěm (ZRS) tak, aby byla obsažena v jedné oblasti. V případě jihovýchodní Asie se všechna Data Box Disk data ukládají v Singapuru a v oblasti Brazílie – jih jsou data uložená v Brazílii. 
+
+Pokud dojde k výpadku služby v oblasti Brazílie – jih a jihovýchodní Asie, můžou zákazníci vytvořit nové objednávky z jiné oblasti. Nové objednávky budou obsluhovány z oblasti, ve které jsou vytvořeny, a zákazníkům jsou odpovědni za dodávku Data Box Disk do a z ní.
+
+
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Otázka: Jak můžu obnovit data v případě, že dojde k chybě celé oblasti?
 
@@ -110,7 +123,7 @@ Tyto doby realizace jsou *odhady*. Čas pro každou fázi zpracování objednáv
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>Otázka: Můžu v objednávce určit počet disků Data Box Disk?
-A.  No. Získáte 8 TB disků (maximálně 5 disků) v závislosti na velikosti dat a dostupnosti disků.  
+A.  No. V závislosti na velikosti dat a dostupnosti disků získáte 8 TB disků (maximálně pět disků).  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Otázka: Jak disky Data Box Disk odemknu? 
 A.  Na webu Azure Portal přejděte k vaší objednávce disků Data Box Disk a přejděte na **podrobnosti o zařízení**. Zkopírujte klíč. Stáhněte a rozbalte odemykací nástroj Data Box Disku z webu Azure Portal do operačního systému. Spusťte tento nástroj v počítači s daty, která chcete zkopírovat na disky. Zadejte klíč k odemknutí disků. Stejný klíč odemkne všechny disky. 

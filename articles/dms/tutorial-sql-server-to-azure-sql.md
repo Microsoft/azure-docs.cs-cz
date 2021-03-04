@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 6c5d758f94a4ad4e70a8b02a02c7c61097725f63
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742105"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 
@@ -33,10 +33,6 @@ V tomto kurzu se naučíte:
 > - Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > - Spuštění migrace
 > - Monitorujte migraci.
-
-[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
-
-Tento článek popisuje offline migraci z SQL Server do databáze v Azure SQL Database. Informace o online migraci najdete v tématu [Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -275,7 +271,5 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 ### <a name="additional-resources"></a>Další zdroje informací
 
-- Migrace SQL pomocí praktického testovacího prostředí [služby Azure Data Migration Service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) .
-- Informace o známých problémech a omezeních při provádění online migrací pro Azure SQL Database najdete v článku [známé problémy a řešení pro Azure SQL Database online migrace](known-issues-azure-sql-online.md).
 - Informace o Azure Database Migration Service najdete v článku [co je Azure Database Migration Service?](./dms-overview.md).
 - Informace o Azure SQL Database najdete v článku [co je služba Azure SQL Database?](../azure-sql/database/sql-database-paas-overview.md).

@@ -1,22 +1,21 @@
 ---
 title: Sledování výkonu v Network Performance Monitor
 description: Funkce sledování výkonu v Network Performance Monitor pomáhá monitorovat síťové připojení mezi různými místy ve vaší síti. Můžete monitorovat cloudová nasazení a místní umístění, několik datových center a poboček a klíčové aplikace nebo mikroslužby s více vrstvami.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728616"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Řešení Network Performance Monitor: sledování výkonu
 
 > [!IMPORTANT]
-> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Funkce sledování výkonu v [Network Performance Monitor](network-performance-monitor.md) pomáhá monitorovat síťové připojení mezi různými místy ve vaší síti. Můžete monitorovat cloudová nasazení a místní umístění, několik datových center a poboček a klíčové aplikace nebo mikroslužby s více vrstvami. Pomocí nástroje sledování výkonu můžete detekovat problémy se sítí ještě předtím, než uživatelé podali stížnost. Mezi klíčové výhody patří: 
 
@@ -132,4 +131,3 @@ Na následujícím obrázku se v červené cestě a segmentech směrování zobr
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../logs/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

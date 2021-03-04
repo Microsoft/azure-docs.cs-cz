@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit aplikaci logiky, která využívá spole�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609686"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738663"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
@@ -23,8 +23,8 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá s
 ## <a name="prerequisites"></a>Požadavky 
 
 V tomto článku se předpokládá, že čtenář je známý 
-* Nastavení pravidel upozornění ([metrika](../alerts/alerts-metric.md), [protokol](../platform/alerts-log.md), [Protokol aktivit](../platform/alerts-activity-log.md))
-* Nastavení [skupin akcí](../platform/action-groups.md)
+* Nastavení pravidel upozornění ([metrika](../alerts/alerts-metric.md), [protokol](./alerts-log.md), [Protokol aktivit](./alerts-activity-log.md))
+* Nastavení [skupin akcí](./action-groups.md)
 * Povolení [společného schématu výstrah](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) v rámci skupin akcí
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Vytvoření aplikace logiky s využitím společného schématu výstrah
@@ -137,5 +137,5 @@ V tomto článku se předpokládá, že čtenář je známý
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si další informace o skupinách akcí](../platform/action-groups.md).
+* [Přečtěte si další informace o skupinách akcí](./action-groups.md).
 * [Přečtěte si další informace o běžném schématu výstrah](./alerts-common-schema.md).

@@ -6,19 +6,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1a2a54bf2d4c5de3e6cfca66256f60592fc1f3e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983719"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737507"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
-Možnosti směrování ve virtuálním rozbočovači poskytuje směrovač, který spravuje všechna směrování mezi branami pomocí Border Gateway Protocol (BGP). Virtuální rozbočovač může obsahovat několik bran, jako je třeba Brána VPN typu Site-to-site, brána ExpressRoute, brána typu Point-to-site, Azure Firewall. Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN. 
+Možnosti směrování ve virtuálním rozbočovači poskytuje směrovač, který spravuje všechna směrování mezi branami pomocí Border Gateway Protocol (BGP). Virtuální rozbočovač může obsahovat několik bran, jako je třeba Brána VPN typu Site-to-site, brána ExpressRoute, brána typu Point-to-site, Azure Firewall. Tento směrovač taky zajišťuje přenosové propojení mezi virtuálními sítěmi, které se připojují k virtuálnímu rozbočovači, a může podporovat až agregovanou propustnost 50 GB/s. Tyto možnosti směrování platí pro standardní virtuální zákazníky sítě WAN.
 
 Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
 
@@ -28,9 +28,9 @@ V následujících částech najdete popis klíčových konceptů v směrování
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Tabulka směrování centra
 
-Tabulka směrování virtuálního rozbočovače může obsahovat jednu nebo více tras. Trasa zahrnuje její název, popisek, cílový typ, seznam cílových předpon a další informace o směrování pro paket, který má být směrován. **Připojení** obvykle bude mít konfiguraci směrování, která se přidruží nebo šíří do směrovací tabulky.
+Tabulka směrování virtuálního rozbočovače může obsahovat jednu nebo více tras. Trasa zahrnuje její název, popisek, cílový typ, seznam cílových předpon a další informace o směrování pro paket, který má být směrován. **Připojení** obvykle bude mít konfiguraci směrování přidruženou nebo rozšířenou do směrovací tabulky.
 
-### <a name="connection"></a><a name="connection"></a>Připojení
+### <a name="connections"></a><a name="connection"></a>Připojení
 
 Připojení jsou Správce prostředků prostředky, které mají konfiguraci směrování. Existují čtyři typy připojení:
 
@@ -55,29 +55,33 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 
 **Tabulka směrování None** je k dispozici také pro každé virtuální centrum. Rozšiřování do tabulky směrování None znamená, že pro rozšíření od připojení nejsou nutné žádné trasy. Připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Řídí":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Šíření":::
 
-### <a name="labels"></a><a name="static"></a>Popisky
-Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek. To je užitečné hlavně při šíření tras z připojení k několika směrovacím tabulkám. Například výchozí směrovací tabulka má vestavěný popisek s názvem default. Když uživatelé šíří trasy připojení k výchozímu popisku, bude automaticky platit pro všechny výchozí směrovací tabulky napříč všemi rozbočovači ve virtuální síti WAN. 
+### <a name="labels"></a><a name="labels"></a>Popisky
+
+Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek. To je užitečné hlavně při šíření tras z připojení k několika směrovacím tabulkám. Například **výchozí směrovací tabulka** má vestavěný popisek s názvem default. Když uživatelé šíří trasy připojení k výchozímu popisku, bude automaticky platit pro všechny výchozí směrovací tabulky napříč všemi rozbočovači ve virtuální síti WAN.
 
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
 
 Konfigurace statických tras poskytuje mechanismus pro řízení provozu prostřednictvím IP adresy dalšího směrování, což může být virtuální síťové zařízení (síťové virtuální zařízení) zřízené ve virtuální síti paprsků připojené k virtuálnímu rozbočovači. Statická trasa se skládá z názvu trasy, seznamu předpon cíle a IP adresy dalšího směrování.
 
-## <a name="reset-hub"></a><a name="route"></a>Resetování centra
-K dispozici pouze v Azure Portal, tato možnost poskytuje uživateli prostředky pro přenesení všech neúspěšných prostředků, jako jsou směrovací tabulky, směrovač rozbočovače nebo prostředek virtuálního rozbočovače zpátky zpět do svého stavu zřizování rightful. Toto je další možnost, kterou může uživatel zvážit před kontaktováním Microsoftu pro podporu. Tato operace neresetuje žádné brány ve virtuálním rozbočovači. 
-
-## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Směrování tabulek v základních a standardních virtuálních sítích WAN před sadou funkcí asociace a rozšíření
+## <a name="route-tables-for-pre-existing-routes"></a><a name="route"></a>Směrovací tabulky pro předem existující trasy
 
 Směrovací tabulky teď mají funkce pro přidružení a šíření. Již existující směrovací tabulka je směrovací tabulka, která nemá tyto funkce. Pokud máte již existující trasy ve směrování centra a chcete používat nové funkce, vezměte v úvahu následující skutečnosti:
 
 * **Standardní virtuální zákazníci sítě WAN s předem existujícími trasami ve virtuálním centru**:
 
-Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
+   Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, bude nutné je nejprve odstranit a pak se pokusit vytvořit nové směrovací tabulky (k dispozici v části směrovací tabulky pro centrum v Azure Portal).
 
-* **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+* **Základní virtuální zákazníci sítě WAN s předem existujícími trasami ve virtuálním centru**:
 
-## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Doporučení pro směrování virtuálních sítí WAN
+   Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
+
+## <a name="hub-reset"></a><a name="reset"></a>Resetování centra
+
+**Resetování** virtuálního rozbočovače je k dispozici pouze v Azure Portal. Resetování nabízí způsob, jak přenést všechny neúspěšné prostředky, jako jsou směrovací tabulky, směrovač rozbočovače nebo prostředek virtuálního rozbočovače, zpátky do svého stavu zřizování rightful. Než se obrátíte na podporu Microsoftu, zvažte nastavení centra. Tato operace neresetuje žádné brány ve virtuálním rozbočovači.
+
+## <a name="additional-considerations"></a><a name="considerations"></a>Další aspekty
 
 Při konfiguraci směrování virtuální sítě WAN Vezměte v úvahu následující skutečnosti:
 
@@ -86,11 +90,8 @@ Při konfiguraci směrování virtuální sítě WAN Vezměte v úvahu následuj
 * Větev-do větve prostřednictvím Azure Firewall není aktuálně podporována.
 * Při použití Azure Firewall ve více oblastech musí být všechny virtuální sítě s paprsky přidruženy ke stejné směrovací tabulce. Například podmnožina virtuální sítě projde skrze Azure Firewall, zatímco jiné virtuální sítěy obcházejí Azure Firewall ve stejném virtuálním rozbočovači není možné.
 * Pro každé připojení k virtuální síti se dá nakonfigurovat jedna IP adresa dalšího směrování.
-* Virtuální rozbočovač nepodporuje statickou trasu pro 0.0.0.0/0 a další segment směrování Virtual Network připojení (nebo IP zařízení ve virtuální síti VNet).
-* Všechny informace týkající se trasy 0.0.0.0/0 jsou omezeny na směrovací tabulku místního centra. Tato trasa se nešíří napříč rozbočovači.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
-
-Další informace o virtuální síti WAN najdete v části [Nejčastější dotazy](virtual-wan-faq.md).
+* Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md).
+* Další informace o virtuální síti WAN najdete v části [Nejčastější dotazy](virtual-wan-faq.md).

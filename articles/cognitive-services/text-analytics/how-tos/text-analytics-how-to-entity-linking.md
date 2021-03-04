@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683364"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710341"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -37,11 +37,11 @@ Funkce PII je součástí NER a může identifikovat a redigování citlivé ent
 
 | Funkce                                                         | NER v 3.0 | NER v 3.1 – Preview. 3 |
 |-----------------------------------------------------------------|--------|----------|
-| Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
-| Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
-| Samostatné koncové body pro posílání NER entit a žádostí o připojení. | X      | X        |
-| Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | X        |
-| Redigování `PII`        |        | X        |
+| Metody pro jednotlivé a dávkové požadavky                          | ×      | ×        |
+| Rozšířené rozpoznávání entit napříč několika kategoriemi           | ×      | ×        |
+| Samostatné koncové body pro posílání NER entit a žádostí o připojení. | ×      | ×        |
+| Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | ×        |
+| Redigování `PII`        |        | ×        |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
@@ -473,7 +473,7 @@ Příklad obecné odpovědi NER:
 ---
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit pomocí Analýza textu v Cognitive Services. Souhrn:
 

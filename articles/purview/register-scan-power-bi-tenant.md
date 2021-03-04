@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695736"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrace a kontrola klienta Power BIu (Preview)
 
@@ -98,11 +98,13 @@ Nejdřív přidejte příznak speciální funkce na adresu URL dosah.
     > Pro Power BI je registrace a kontrola zdroje dat povolena pouze pro jednu instanci.
 
 
-4. Pojmenujte svoji kontrolu. Všimněte si, že jedinou podporovanou metodou ověřování je **spravovaná identita**.
+4. Pojmenujte svoji kontrolu. Pak vyberte možnost zahrnout nebo vyloučit osobní pracovní prostory. Všimněte si, že jedinou podporovanou metodou ověřování je **spravovaná identita**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Obrázek znázorňující nastavení kontroly Power BI":::
 
-    Název kontroly musí být dlouhý 3-63 znaků a musí obsahovat jenom písmena, číslice, podtržítka a spojovníky.  Mezery nejsou povoleny.
+    > [!Note]
+    > * Přepnutí konfigurace vyhledávání do zahrnutí nebo vyloučení osobního pracovního prostoru spustí úplnou kontrolu zdroje PowerBI.
+    > * Název kontroly musí být dlouhý 3-63 znaků a musí obsahovat jenom písmena, číslice, podtržítka a spojovníky. Mezery nejsou povoleny.
 
 5. Nastavte aktivační událost kontroly. Vaše možnosti jsou **jednou**, **každých 7 dní**, a **každých 30 dní**.
 

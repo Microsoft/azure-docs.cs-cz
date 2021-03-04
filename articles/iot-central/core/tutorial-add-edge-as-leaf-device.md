@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724876"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Kurz: Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central
 
@@ -37,7 +37,7 @@ Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-io
 
 K dokončení kroků v tomto kurzu potřebujete aktivní předplatné Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Stáhněte soubor manifestu IoT Edge z GitHubu. Klikněte pravým tlačítkem na následující odkaz a vyberte **Uložit odkaz jako**: [EnvironmentalSensorManifest.jszapnuto](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) .
 
@@ -60,6 +60,9 @@ Vytvoření šablony zařízení z IoT Edge manifestu:
 1. V modulu **SimulatedTemperatureSensor** vyberte rozhraní pro **správu** , aby se zobrazily tyto dvě vlastnosti definované v manifestu:
 
 :::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+
+> [!TIP]
+> Tento manifest nasazení vyžádá image modulu z Azure Container Registry úložiště, které nevyžaduje žádné přihlašovací údaje pro připojení. Pokud chcete použít image modulu z privátního úložiště, nastavte přihlašovací údaje registru kontejneru v manifestu.
 
 ### <a name="add-telemetry-to-manifest"></a>Přidat telemetrii do manifestu
 
@@ -97,9 +100,9 @@ Přidání definic telemetrie do šablony zařízení:
 
 1. Vyberte **Uložit** a aktualizujte šablonu.
 
-Rozhraní pro **správu** teď zahrnuje typy telemetrie **počítačů**, **ambientních**a **timeCreated** :
+Rozhraní pro **správu** teď zahrnuje typy telemetrie **počítačů**, **ambientních** a **timeCreated** :
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Rozhraní s typy telemetrie počítačů a okolí":::
 
 ### <a name="add-views-to-template"></a>Přidat zobrazení do šablony
 
@@ -115,7 +118,7 @@ Rozhraní pro **správu** teď zahrnuje typy telemetrie **počítačů**, **ambi
 
 1. Vyberte **Uložit** a uložte **zobrazení IoT Edge zobrazení telemetrie zařízení** .
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Šablona zařízení s zobrazením telemetrie":::
 
 ### <a name="publish-the-template"></a>Publikování šablony
 
@@ -123,7 +126,7 @@ Než budete moct přidat zařízení, které používá šablonu **zařízení E
 
 Přejděte do šablony **zařízení Edge pro senzory prostředí** a vyberte **publikovat**. V části **Publikovat tuto šablonu zařízení na panelu aplikace** vyberte **publikovat** a publikujte šablonu:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Publikování šablony zařízení":::
 
 ## <a name="add-iot-edge-device"></a>Přidat IoT Edge zařízení
 
@@ -133,9 +136,9 @@ Teď jste publikovali šablonu **zařízení hraničního senzoru pro životní 
 
 1. Vyberte **+ Nová** a přidejte ze šablony nové zařízení. Na stránce **vytvořit nové zařízení** vyberte **vytvořit**.
 
-Nyní máte nové zařízení se **zaregistrovaným**stavem:
+Nyní máte nové zařízení se **zaregistrovaným** stavem:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Nové, registrované zařízení":::
 
 ### <a name="get-the-device-credentials"></a>Získání přihlašovacích údajů zařízení
 
@@ -143,9 +146,9 @@ Když později v tomto kurzu nasadíte IoT Edge zařízení, budete potřebovat 
 
 1. Na stránce **zařízení** vyberte zařízení, které jste vytvořili.
 
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 
-1. Na stránce **připojení zařízení** si poznamenejte **Rozsah ID**, **ID zařízení**a **primární klíč**. Tyto hodnoty použijete později.
+1. Na stránce **připojení zařízení** si poznamenejte **Rozsah ID**, **ID zařízení** a **primární klíč**. Tyto hodnoty použijete později.
 
 1. Vyberte **Zavřít**.
 
@@ -181,7 +184,7 @@ Na stránce **vlastní nasazení** :
 
 1. Zkontrolujte volby a pak vyberte **vytvořit**:
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Vytvoření virtuálního počítače s IoT Edge":::
 
 Dokončení nasazení trvá několik minut. Po dokončení nasazení přejděte do skupiny prostředků **centrálního Edge-RG** v Azure Portal.
 
@@ -265,19 +268,19 @@ Konfigurace IoT Edge na virtuálním počítači pro použití DPS k registraci 
     > [!TIP]
     > Možná budete muset počkat na spuštění všech modulů.
 
-## <a name="view-the-telemetry"></a>Zobrazit telemetrii
+## <a name="view-the-telemetry"></a>Zobrazení telemetrie
 
 Simulované IoT Edge zařízení teď běží na virtuálním počítači. Ve vaší aplikaci IoT Central je stav zařízení nyní **zřízený** na stránce **zařízení** :
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Zřízené IoT Edge zařízení":::
 
 Telemetrii můžete zobrazit ze zařízení na stránce **zobrazení IoT Edge telemetrie zařízení** :
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Telemetrie zařízení":::
 
 Na stránce **moduly** se zobrazuje stav IoT Edge modulů na zařízení:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Šablona zařízení vytvořená z manifestu IoT Edge":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Stav modulu zařízení":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

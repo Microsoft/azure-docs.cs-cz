@@ -2,13 +2,13 @@
 title: Kurz – přístup k privátnímu cloudu
 description: Přečtěte si, jak získat přístup k privátnímu cloudu řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b7f21dbba5256712607241bb1258962fc22418fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/22/2021
+ms.openlocfilehash: 81296223ab941633a4b0f1316e359a0eb2ff73ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738476"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Kurz: přístup k privátnímu cloudu řešení Azure VMware
 
@@ -30,9 +30,12 @@ V tomto kurzu se naučíte:
 
 1. V poli pro skok se přihlaste k klientovi vSphere pomocí jednotného přihlašování VMware vCenter pomocí uživatelského jména správce cloudu a Verity, že se uživatelské rozhraní úspěšně zobrazuje.
 
-1. V Azure Portal vyberte svůj privátní cloud a potom v zobrazení **Přehled** vyberte **Identita > výchozí**. 
+1. V Azure Portal vyberte svůj privátní cloud a pak **spravujte**  >  **identitu**. 
 
    Adresy URL a přihlašovací údaje uživatele pro zobrazení privátního cloudu vCenter a správce NSX-T.
+
+   >[!TIP]
+   >Pokud chcete vygenerovat nová hesla vCenter a NSX-T, vyberte **vytvořit nové heslo** .
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
 
@@ -44,13 +47,13 @@ V tomto kurzu se naučíte:
 
 1. Na kartě vCenter zadejte `cloudadmin@vmcp.local` přihlašovací údaje uživatele z předchozího kroku.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Přihlaste se k privátnímu cloudu vCenter." border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="portál vCenter." border="true":::
 
 1. Na druhé kartě prohlížeče se přihlaste ke Správci NSX-T.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Na druhé kartě prohlížeče se přihlaste ke Správci NSX-T." border="true":::
 
 
 

@@ -66,10 +66,8 @@
     - name: Řešení specifická pro odvětví
       items:
         - name: Retail
-          href: retail/overview-iot-central-retail.md
           items:
             - name: Kontrola analýz v obchodech
-              href: retail/store-analytics-architecture.md
               items:
                 - name: 1. Vytvoření aplikace pro maloobchod
                   href: retail/tutorial-in-store-analytics-create-app.md
@@ -77,28 +75,15 @@
                   href: retail/tutorial-in-store-analytics-customize-dashboard.md
                 - name: 3. Export dat a vizualizace přehledů
                   href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
-            - name: Inteligentní řízení zásob
-              href: retail/architecture-smart-inventory-management.md
-              items:
-                - name: Vytvoření aplikace pro inteligentní řízení zásob
-                  href: retail/tutorial-iot-central-smart-inventory-management.md
-            - name: Propojená logistika
-              href: retail/architecture-connected-logistics.md
-              items:
-                - name: Vytvoření aplikace pro propojenou logistiku
-                  href: retail/tutorial-iot-central-connected-logistics.md
-            - name: Digitální distribuční centrum
-              href: retail/architecture-digital-distribution-center.md
-              items:
-                - name: Vytvoření aplikace pro digitální distribuční centrum
-                  href: retail/tutorial-iot-central-digital-distribution-center.md
-            - name: Centrum mikroplnění
-              href: retail/architecture-micro-fulfillment-center.md
-              items:
-                - name: Vytvoření aplikace centra mikroplnění
-                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Vytvoření aplikace pro inteligentní řízení zásob
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Vytvoření aplikace pro propojenou logistiku
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Vytvoření aplikace pro digitální distribuční centrum
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Vytvoření aplikace centra mikroplnění
+              href: retail/tutorial-micro-fulfillment-center.md
             - name: Analýza videa – detekce objektů a pohybu
-              href: retail/architecture-video-analytics.md
               items:
                 - name: 0. Nasazení aplikace pro detekci objektů a pohybu
                   href: retail/tutorial-video-analytics-deploy.md
@@ -119,38 +104,21 @@
                 - name: 4. Úprava a sestavení modulů brány s analýzou živého videa
                   href: retail/tutorial-video-analytics-build-module.md
         - name: Energetický sektor
-          href: energy/overview-iot-central-energy.md
           items:
-            - name: Architektura aplikací pro inteligentní měření
-              href: energy/concept-iot-central-smart-meter-app.md
             - name: Vytvoření aplikace pro inteligentní monitorování měřičů
               href: energy/tutorial-smart-meter-app.md
-            - name: Architektura aplikací pro solární panely
-              href: energy/concept-iot-central-solar-panel-app.md
             - name: Vytvoření aplikace pro monitorování solárních panelů
               href: energy/tutorial-solar-panel-app.md
         - name: Státní správa
-          href: government/overview-iot-central-government.md
           items:
-            - name: Referenční architektura propojeného monitorování odpadů
-              href: government/concepts-connectedwastemanagement-architecture.md
             - name: Vytvoření aplikace pro propojené nakládání s odpady
               href: government/tutorial-connected-waste-management.md
-            - name: Referenční architektura monitorování spotřeby vody
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
             - name: Vytvoření aplikace pro monitorování spotřeby vody
               href: government/tutorial-water-consumption-monitoring.md
-            - name: Referenční architektura monitorování kvality vody
-              href: government/concepts-waterqualitymonitoring-architecture.md
             - name: Vytvoření aplikace pro monitorování kvality vody
               href: government/tutorial-water-quality-monitoring.md
-            - name: Připojení aplikace Azure IoT Central k polím služby Dynamics 365
-              href: government/how-to-configure-connected-field-services.md
         - name: Zdravotnictví
-          href: healthcare/overview-iot-central-healthcare.md
           items:
-            - name: Architektura průběžného monitorování pacientů
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
             - name: Vytvoření aplikace pro průběžné monitorování pacientů
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: Vytvoření řídicího panelu pro posouzení informací o zdravotním stavu
@@ -162,9 +130,51 @@
     - name: Příručka pro vývojáře zařízení
       href: core/overview-iot-central-developer.md
     - name: Průvodce tvůrcem řešení
-      href: core/overview-iot-central-developer.md
+      href: core/overview-iot-central-solution-builder.md
     - name: Co jsou šablony aplikací?
       href: core/concepts-app-templates.md
+    - name: Šablony aplikací specifické pro odvětví
+      items:
+        - name: Retail
+          items:
+            - name: Přehled
+              href: retail/overview-iot-central-retail.md
+            - name: Architektura rezervace in-Store Analytics
+              href: retail/store-analytics-architecture.md
+            - name: Architektura správy inteligentních inventářů
+              href: retail/architecture-smart-inventory-management.md
+            - name: Architektura připojené logistické architektury
+              href: retail/architecture-connected-logistics.md
+            - name: Digitální distribuční centrum
+              href: retail/architecture-digital-distribution-center.md
+            - name: Architektura Micro-splního centra
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: Analýza videa – detekce objektů a pohybu
+              href: retail/architecture-video-analytics.md
+        - name: Energetický sektor
+          items:
+            - name: Přehled
+              href: energy/overview-iot-central-energy.md
+            - name: Architektura aplikací pro inteligentní měření
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Architektura aplikací pro solární panely
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: Státní správa
+          items:
+            - name: Přehled
+              href: government/overview-iot-central-government.md
+            - name: Architektura monitorování propojených odpadů
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Architektura monitorování spotřeby vody
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Architektura monitorování kvality vody
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: Zdravotnictví
+          items:
+            - name: Přehled
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: Architektura průběžného monitorování pacientů
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: Co jsou šablony zařízení?
       href: core/concepts-device-templates.md
     - name: Připojení zařízení
@@ -221,6 +231,8 @@
           href: core/howto-create-custom-analytics.md
         - name: Vizualizace dat v Power BI
           href: core/howto-connect-powerbi.md
+        - name: Připojení aplikace k polím služby Dynamics 365
+          href: government/how-to-configure-connected-field-services.md
     - name: správu zařízení
       items:
         - name: Přidání a odebrání zařízení

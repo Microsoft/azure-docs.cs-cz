@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 9503d93afbf14be159e6b982d9be5977717349ac
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6b1df49ed0f2c543706d7584a1ade5dc5554a564
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750026"
 ---
 Tento kurz vyžaduje následující prostředky Azure:
 
@@ -36,10 +36,10 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
     1. **Síťové rozhraní** – umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a dalšími prostředky.
     1. **Připojení bastionu** – to vám umožní připojit se k virtuálnímu počítači pomocí prohlížeče a Azure Portal.
     1. **Veřejná IP adresa** – umožňuje prostředkům Azure komunikovat s internetem a veřejně přístupnými službami Azure.
-    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Další informace o [virtuálních sítích](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Virtuální síť** – Tato možnost umožňuje mezi sebou zabezpečit mnoho typů prostředků Azure, jako je třeba virtuální počítač, aby bylo možné bezpečně komunikovat mezi sebou, internetem a místními sítěmi. Další informace o [virtuálních sítích](../../../../../virtual-network/virtual-networks-overview.md)
     1. **IoT Hub** – slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT, IoT Edge moduly a zařízeními, která spravuje.
     1. **Účet Media Service** – to pomáhá se správou a streamování mediálního obsahu v Azure.
-    1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Účet úložiště** – musíte mít jeden primární účet úložiště a k vašemu Media Services účtu můžete mít k dispozici libovolný počet sekundárních účtů úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](../../../../latest/storage-account-concept.md).
     1. **Registr kontejnerů** – to pomáhá ukládat a spravovat vaše soukromé image kontejnerů Docker a související artefakty.
 
 1. Po dokončení skriptu vyberte složené závorky a vystavte strukturu složek. V adresáři *~/clouddrive/lva-Sample* se zobrazí několik souborů. V tomto rychlém startu jsou důležité tyto:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687103"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak integrovat SAP Fiori s Azure Active Directory (Az
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -146,7 +146,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
-    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi vyplní automaticky v PODOKNĚ **Konfigurace základní konfigurace SAML** . Do pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https:\//\<your company instance of SAP Fiori\>` .
+    c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi vyplní automaticky v PODOKNĚ **Konfigurace základní konfigurace SAML** . Do pole **přihlašovací adresa URL** zadejte adresu URL, která má následující vzor: `https://<your company instance of SAP Fiori>` .
 
     > [!NOTE]
     > Několik zákazníků hlásí chyby související s nesprávně nakonfigurovanými hodnotami **adresy URL odpovědi** . Pokud se zobrazí tato chyba, můžete k nastavení správné adresy URL odpovědi pro vaši instanci použít následující skript prostředí PowerShell:
@@ -191,7 +191,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -247,11 +247,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Možnosti požadavků na ověření a možnost Dokončit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-1. Vyberte federace identity **důvěryhodných zprostředkovatelů**  >   (ve spodní části stránky). Vyberte **Edit** (Upravit).
+1. Vyberte federace identity **důvěryhodných zprostředkovatelů**  >   (ve spodní části stránky). Vyberte **Upravit**.
 
     ![Karty důvěryhodných zprostředkovatelů a federace identit v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-1. Vyberte **Add** (Přidat).
+1. Vyberte **Přidat**.
 
     ![Možnost přidat na kartě federace identit](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 

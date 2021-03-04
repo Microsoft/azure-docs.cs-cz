@@ -3,16 +3,16 @@ title: Získání přehledů pomocí centra zálohování
 description: Naučte se analyzovat historické trendy a získat hlubší přehled o zálohách pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592021"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719453"
 ---
-# <a name="obtain-insights-using-backup-center-preview"></a>Získání přehledů pomocí centra zálohování (Preview)
+# <a name="obtain-insights-using-backup-center"></a>Získání přehledů pomocí centra zálohování
 
-K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav (Preview)](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) a [sešity Azure](../azure-monitor/visualize/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
+K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/logs/data-platform-logs.md) a [sešity Azure](../azure-monitor/visualize/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
 
 - Přidělování a prognózování spotřebovaného cloudového úložiště.
 
@@ -24,7 +24,7 @@ K analýze historických trendů a získání hlubších přehledů o zálohách
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-- Sestavy zálohování (Preview) nejsou aktuálně k dispozici pro zálohování Azure Database for PostgreSQL serveru.
+- Sestavy zálohování nejsou aktuálně k dispozici pro zálohování Azure Database for PostgreSQL serveru.
 
 - Podrobný seznam podporovaných a nepodporovaných scénářů najdete v tématu věnovaném [matrici podpory](backup-center-support-matrix.md) .
 
@@ -53,6 +53,8 @@ K dispozici jsou následující zobrazení:
 1. **Zásady** – pomocí této karty můžete zobrazit informace o všech aktivních zásadách, jako je třeba počet přidružených položek a celkové cloudové úložiště spotřebované položkami zálohovanými v rámci dané zásady. [Další informace](./configure-reports.md#policies)
 
 1. **Optimalizovat** – pomocí této karty získáte přehled o potenciálních možnostech optimalizace nákladů pro vaše zálohy. [Další informace](./configure-reports.md#optimize)
+
+1. **Přistoupení k zásadám** – pomocí této karty získáte přehled o tom, jestli má každá instance zálohování alespoň jednu úspěšnou zálohu za den.
 
 ## <a name="next-steps"></a>Další kroky
 

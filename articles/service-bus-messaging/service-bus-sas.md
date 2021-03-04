@@ -4,12 +4,12 @@ description: Přehled řízení přístupu Service Bus pomocí podpisů sdílen�
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737813"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -130,9 +130,9 @@ Pokud víte nebo máte podezření, že došlo k ohrožení bezpečnosti klíče
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Ověřování pomocí sdíleného přístupového podpisu s Service Bus
 
-Zde popsané scénáře zahrnují konfiguraci autorizačních pravidel, generování tokenů SAS a autorizaci klientů.
+Scénář popsaný níže zahrnuje konfiguraci autorizačních pravidel, generování tokenů SAS a autorizaci klientů.
 
-Úplnou pracovní ukázku aplikace Service Bus, která ilustruje konfiguraci a používá autorizaci SAS, najdete v tématu [ověřování pomocí sdíleného přístupového podpisu s Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázka, která demonstruje použití autorizačních pravidel SAS nakonfigurovaných v oborech názvů nebo tématech k zabezpečení předplatného Service Bus, najdete tady: [použití ověřování pomocí sdíleného přístupového podpisu (SAS) s Předplatnými Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Ukázku Service Bus aplikace, která ilustruje konfiguraci a používá autorizaci SAS, najdete v tématu [ověřování pomocí sdíleného přístupového podpisu s Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Přístup k autorizačním pravidlům sdíleného přístupu pro entitu
 

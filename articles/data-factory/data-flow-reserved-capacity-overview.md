@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526302"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699670"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Úspora nákladů na prostředky s využitím rezervovaných Azure Data Factorych toků dat
 
@@ -21,12 +21,12 @@ V porovnání s cenami za průběžné platby můžete ušetřit peníze pomocí
 
 Nemusíte přiřadit rezervaci ke konkrétní továrně nebo prostředí Integration runtime. Stávající továrny nebo nově nasazené továrny automaticky získají výhodu. Když zakoupíte rezervaci, zavedete se k využití výpočetních nákladů toku dat za období jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za výpočetní prostředky, které odpovídají atributům rezervace, se už nebudou účtovat podle tarifů průběžných plateb. 
 
-[Rezervovanou kapacitu](https://portal.azure.com) si můžete koupit tak, že zvolíte rezervace [předem nebo s měsíčními platbami](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md). Pro nákup rezervované kapacity platí:
+[Rezervovanou kapacitu](https://portal.azure.com) si můžete koupit tak, že zvolíte rezervace [předem nebo s měsíčními platbami](../cost-management-billing/reservations/prepare-buy-reservation.md). Pro nákup rezervované kapacity platí:
 
 - Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
 - U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném. Rezervovaná kapacita.
 
-Další informace o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši registraci v podniku](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) a [pochopení využití rezervací Azure pro vaše předplatné](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage)s průběžnými platbami.
+Další informace o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši registraci v podniku](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) a [pochopení využití rezervací Azure pro vaše předplatné](../cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
 
 > [!NOTE]
 > Zakoupená Rezervovaná kapacita neumožňuje předem přidělit ani rezervovat prostředky infrastruktury (virtuální počítače nebo clustery) pro vaše použití.
@@ -49,7 +49,7 @@ Velikost rezervace by měla být založená na celkovém množství výpočetní
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 

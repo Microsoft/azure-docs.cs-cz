@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy týkající se privátního propojení Azure
+title: Nejčastější dotazy ke službě Azure Private Link
 description: Přečtěte si o privátních odkazech Azure.
 services: private-link
 author: malopMSFT
@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709401"
 ---
-# <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy týkající se privátního propojení Azure
+# <a name="azure-private-link-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Private Link
 
 ## <a name="private-link"></a>Private Link
 
@@ -65,6 +65,12 @@ Službu privátního propojení můžete škálovat několika různými způsoby
 - Přidání back-end virtuálních počítačů do fondu za vaším Standard Load Balancer 
 - Přidejte IP adresu ke službě privátního propojení. Povolujeme až 8 IP adres na jednu službu privátního propojení.  
 - Přidejte novou službu privátního propojení do Standard Load Balancer. Pro každý nástroj pro vyrovnávání zatížení povolujeme až osm služeb privátních odkazů.   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Co je konfigurace protokolu IP NAT (překladu síťových adres) použitá ve službě soukromé vazby? Jak můžu škálovat z pohledu dostupných portů a připojení? 
+
+Konfigurace protokolu IP NAT zajišťuje, aby nedošlo ke konfliktu IP adres mezi zdrojovým a cílovým adresním prostorem (poskytovatelem služeb) a poskytováním zdrojového překladu adres na přenosech privátních odkazů na straně cíle (na straně poskytovatele služeb). IP adresa překladu adres (NAT) se zobrazí jako zdrojová IP adresa pro všechny pakety přijaté službou a cílovou IP adresou pro všechny pakety odesílané vaší službou.  IP adresu NAT si můžete vybrat z libovolné podsítě ve virtuální síti poskytovatele služeb. 
+
+Každá IP adresa NAT poskytuje pro každý virtuální počítač za Standard Load Balancer 64 000 připojení TCP (64 portů). Aby bylo možné škálovat a přidávat další připojení, můžete buď přidat nové IP adresy NAT, nebo přidat další virtuální počítače za Standard Load Balancer. Provedete to tak, že budete škálovat dostupnost portů a povolíte další připojení. Připojení se budou distribuovat napříč IP adresami NAT a virtuálními počítači za Standard Load Balancer.
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Můžu připojit službu k více soukromým koncovým bodům?
 Ano. Jedna služba privátního propojení může přijímat připojení z více privátních koncových bodů. Jeden privátní koncový bod se ale může připojit jenom k jedné službě privátního propojení.  

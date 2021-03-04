@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85341567"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723669"
 ---
 # <a name="entity-functions"></a>Funkce entit
 
@@ -24,7 +24,10 @@ Entity poskytují prostředky pro horizontální navýšení kapacity aplikací 
 
 Entity se chovají jako malé služby, které komunikují prostřednictvím zpráv. Každá entita má jedinečnou identitu a vnitřní stav (pokud existuje). Podobně jako služby a objekty, entity provádějí operace po zobrazení výzvy. Když se operace spustí, může aktualizovat vnitřní stav entity. Může také volat externí služby a čekat na odpověď. Entity komunikují s jinými entitami, orchestrací a klienty pomocí zpráv, které jsou implicitně odesílány prostřednictvím spolehlivých front. 
 
-Aby se zabránilo konfliktům, budou mít všechny operace na jedné entitě zaručené spouštění na základě sériového běhu, tj. jednoho po druhém. 
+Aby se zabránilo konfliktům, budou mít všechny operace na jedné entitě zaručené spouštění na základě sériového běhu, tj. jednoho po druhém.
+
+> [!NOTE]
+> Když se entita vyvolá, zpracuje její datovou část k dokončení a pak naplánuje nové spuštění, které se aktivuje, jakmile přijdete o budoucí vstupy. Výsledkem je, že protokoly spuštění vaší entity můžou po každém vyvolání entity zobrazit další spuštění; Toto je očekávané.
 
 ### <a name="entity-id"></a>ID entity
 K entitám se dostanete pomocí jedinečného identifikátoru *ID entity*. ID entity je jednoduše dvojice řetězců, které jedinečně identifikují instanci entity. Skládá se z:
@@ -149,7 +152,48 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>Příklad: entita Pythonu
+
+Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v Pythonu.
+
+**Čítač/function.jszapnuto**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Čítač/__init__. py**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>Přístup k entitám
@@ -201,6 +245,19 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
+```
+
 ---
 
 Termínový *signál* znamená, že volání rozhraní API entity je jednosměrné a asynchronní. Pro funkci klienta není možné zjistit, kdy entita tuto operaci zpracovala. Funkce klienta navíc nemůže sledovat žádné hodnoty výsledků ani výjimky. 
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python v současné době nepodporuje čtení stavů entit z klienta. Místo toho použijte Orchestrator `callEntity` .
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript v současné době nepodporuje signalizaci entity z nástroje Orchestrator. Místo toho použijte `callEntity`.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 Pouze orchestrace jsou schopny volat entity a získat odpověď, což může být buď návratová hodnota, nebo výjimka. Funkce klienta, které používají [vazbu klienta](durable-functions-bindings.md#entity-client) , mohou signalizovat pouze entity.
@@ -318,6 +395,11 @@ Například můžeme upravit `Counter` příklad předchozí entity tak, že po�
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python ještě nepodporuje signály entit a entit. Místo toho prosím použijte Orchestrator pro signály entit.
 
 ---
 
@@ -406,7 +488,7 @@ Jakékoli porušení těchto pravidel způsobí chybu za běhu, například `Loc
 
 ## <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objekty Actors, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo zrnam, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Příklad:
+Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objekty Actors, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo zrnam, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Například:
 
 * Trvalé entity jsou adresovatelné prostřednictvím ID entity.
 * Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.
@@ -421,7 +503,6 @@ Je potřeba zaznamenat si několik důležitých rozdílů:
 * Vzory odpovědí na požadavky v entitách jsou omezené na orchestraci. V rámci entit je povoleno pouze jednosměrné zasílání zpráv (označované také jako signalizace), jako v původním modelu actor a na rozdíl od zrn v Orleans. 
 * Trvalé entity se nezablokují. V Orleans může docházet k zablokování a neřešit, dokud nevyprší časový limit zprávy.
 * Odolné entity lze použít ve spojení s trvalými orchestrací a podporují mechanismy distribuovaného zamykání. 
-
 
 ## <a name="next-steps"></a>Další kroky
 

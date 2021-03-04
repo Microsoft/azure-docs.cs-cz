@@ -4,12 +4,12 @@ description: Sledování problémů pomocí automatického škálování Azure p
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711395"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Řešení potíží s automatické škálování Azure
  
@@ -24,14 +24,14 @@ Služba automatického škálování poskytuje metriky a protokoly, které vám 
   
 ## <a name="autoscale-metrics"></a>Automatické škálování metrik
 
-Automatické škálování nabízí [čtyři metriky](../platform/metrics-supported.md#microsoftinsightsautoscalesettings) pro pochopení jeho provozu. 
+Automatické škálování nabízí [čtyři metriky](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings) pro pochopení jeho provozu. 
 
 - **Zaznamenaná hodnota metriky** – hodnota metriky, na které jste zvolili akci škálování, jak je vidět nebo je vypočítána modulem automatického škálování. Vzhledem k tomu, že jedno nastavení automatického škálování může mít několik pravidel, a proto více zdrojů metriky, můžete filtrovat pomocí "zdroje metrik" jako dimenzi.
 - **Prahová hodnota metriky** – prahová hodnota, kterou jste nastavili pro provedení akce škálování. Vzhledem k tomu, že jedno nastavení automatického škálování může mít několik pravidel, a proto více zdrojů metriky, můžete filtrovat pomocí metrikové pravidlo jako dimenzi.
 - **Pozorovaná kapacita** – aktivní počet instancí cílového prostředku zobrazený modulem automatického škálování.
 - **Zahájené akce škálování** – Počet akcí horizontálního navýšení a snížení kapacity zahájených modulem automatického škálování. Můžete filtrovat podle škály na více instancí vs. škálování v akcích.
 
-Můžete použít [Průzkumník metrik](../platform/metrics-getting-started.md) k vytvoření grafu výše uvedených metrik na jednom místě. Graf by měl zobrazovat:
+Můžete použít [Průzkumník metrik](../essentials/metrics-getting-started.md) k vytvoření grafu výše uvedených metrik na jednom místě. Graf by měl zobrazovat:
 
   - Skutečná metrika
   - Metrika zobrazená/vypočítaná modulem automatického škálování
@@ -87,7 +87,7 @@ Graf v dolní části zobrazuje několik hodnot.
  - **Zjištěná kapacita** (fialová) zobrazuje počet instancí zobrazených modulem automatického škálování. 
  - **Prahová hodnota metriky** (světle zelená) je nastavena na hodnotu 10. 
 
-Pokud existuje více pravidel pro akce škálování, můžete použít možnost rozdělení nebo **Přidat filtr** v grafu Průzkumníka metrik pro zobrazení metriky podle konkrétního zdroje nebo pravidla. Další informace o rozdělení grafu metriky najdete v tématu [Pokročilé funkce metrik grafů – rozdělení](../platform/metrics-charts.md#apply-splitting)
+Pokud existuje více pravidel pro akce škálování, můžete použít možnost rozdělení nebo **Přidat filtr** v grafu Průzkumníka metrik pro zobrazení metriky podle konkrétního zdroje nebo pravidla. Další informace o rozdělení grafu metriky najdete v tématu [Pokročilé funkce metrik grafů – rozdělení](../essentials/metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Příklad 3 – porozumění událostem automatického škálování
 
@@ -97,13 +97,13 @@ Na obrazovce nastavení automatického škálování přejděte na kartu **histo
 
 ## <a name="autoscale-resource-logs"></a>Automatické škálování protokolů prostředků
 
-Služba automatického škálování, která je stejná jako u jakéhokoli jiného prostředku Azure, poskytuje [protokoly prostředků](../platform/platform-logs-overview.md). Existují dvě kategorie protokolů.
+Služba automatického škálování, která je stejná jako u jakéhokoli jiného prostředku Azure, poskytuje [protokoly prostředků](../essentials/platform-logs-overview.md). Existují dvě kategorie protokolů.
 
 - **Vyhodnocení automatického škálování** – modul automatického škálování zaznamenává záznamy protokolu pro každé vyhodnocení jedné podmínky pokaždé, když provede kontrolu.  Položka obsahuje podrobnosti o pozorovaných hodnotách metrik, vyhodnocených pravidlech a v případě, že výsledkem vyhodnocení je akce škálování nebo ne.
 
 - **Akce škálování automatického škálování** – modul zaznamenává události akcí škálování na základě služby automatického škálování a výsledků těchto akcí škálování (úspěch, selhání a velikost zjištěného škálování podle služby automatického škálování).
 
-Stejně jako u libovolné Azure Monitor podporované služby, můžete k směrování těchto protokolů použít [nastavení diagnostiky](../platform/diagnostic-settings.md) :
+Stejně jako u libovolné Azure Monitor podporované služby, můžete k směrování těchto protokolů použít [nastavení diagnostiky](../essentials/diagnostic-settings.md) :
 
 - pro podrobnou analýzu do svého pracovního prostoru Log Analytics
 - Postup Event Hubs a pak na nástroje jiné než Azure
@@ -206,4 +206,4 @@ Vytvořte pravidla upozornění pro upozornění na akce nebo chyby automatické
 Další informace najdete v tématu [protokoly prostředků automatického škálování](autoscale-resource-log-schema.md) .
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si informace o [osvědčených postupech automatického škálování](autoscale-best-practices.md). 
+Přečtěte si informace o [osvědčených postupech automatického škálování](autoscale-best-practices.md).

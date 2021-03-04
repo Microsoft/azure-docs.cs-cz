@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732849"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -24,7 +24,7 @@ V tomto článku budeme poskytovat přehled a Úvod do základních konceptů fl
 
 ## <a name="overview"></a>Přehled
 
-Azure Database for MySQL flexibilní Server je plně spravovaná databázová služba navržená tak, aby poskytovala přesnější kontrolu a flexibilitu nad funkcemi správy databáze a nastaveními konfigurace. Obecně platí, že služba poskytuje větší flexibilitu a přizpůsobení konfigurace serveru na základě požadavků uživatelů. Flexibilní architektura serveru umožňuje uživatelům, aby se mohli rozhodnout o vysoké dostupnosti v rámci jedné zóny dostupnosti a napříč několika zónami dostupnosti. Flexibilní servery také poskytují lepší ovládací prvky pro optimalizaci nákladů s možností zastavit nebo spustit server a rozzpůsobitelné skladové položky, které jsou ideální pro úlohy, které nepotřebují nepřetržitě plný výpočetní výkon. Služba aktuálně podporuje komunitní verze MySQL 5,7. Služba je momentálně ve verzi Preview, která je dnes k dispozici v nejrůznějších [oblastech Azure](https://azure.microsoft.com/global-infrastructure/services/).
+Azure Database for MySQL flexibilní Server je plně spravovaná databázová služba navržená tak, aby poskytovala přesnější kontrolu a flexibilitu nad funkcemi správy databáze a nastaveními konfigurace. Obecně platí, že služba poskytuje větší flexibilitu a přizpůsobení konfigurace serveru na základě požadavků uživatelů. Flexibilní architektura serveru umožňuje uživatelům, aby se mohli rozhodnout o vysoké dostupnosti v rámci jedné zóny dostupnosti a napříč několika zónami dostupnosti. Flexibilní servery také poskytují lepší ovládací prvky pro optimalizaci nákladů s možností zastavit nebo spustit server a rozzpůsobitelné skladové položky, které jsou ideální pro úlohy, které nepotřebují nepřetržitě plný výpočetní výkon. Služba aktuálně podporuje komunitní verze MySQL 5,7 a 8,0. Služba je momentálně ve verzi Preview, která je dnes k dispozici v nejrůznějších [oblastech Azure](https://azure.microsoft.com/global-infrastructure/services/).
 
 Flexibilní servery jsou vhodné pro 
 - Vývoj aplikací, který vyžaduje lepší kontrolu a přizpůsobení.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/23/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653913"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736628"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -24,7 +24,12 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 ## <a name="february-2021"></a>Únor 2021
 
+* `2021-01-15`Verze modelu pro koncový bod PII v [pojmenované entitě Recognition](how-tos/text-analytics-how-to-entity-linking.md) v 3.1-Preview. x, která poskytuje 
+  * Rozšířená podpora 9 nových jazyků
+  * Vylepšená kvalita AI u pojmenovaných kategorií entit pro podporované jazyky.
 * Cenové úrovně S0 až S4 se vyřadí do 8. března 2021. Pokud máte existující Analýza textu prostředek pomocí cenové úrovně S4 S0, měli byste ho aktualizovat tak, aby používaly [cenovou úroveň](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)Standard (S).
+* [Kontejner pro detekci jazyka](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment) je teď všeobecně dostupný.
+* v 2.1 rozhraní API se vyřazuje. 
 
 ## <a name="january-2021"></a>Leden 2021
 

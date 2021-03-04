@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 0791ccf10c76f2a1781bf373c674f606ca365fff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9218886ded7827d4b7a1e2413f1470ee5cd1563d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733954"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Ukázky šablon Správce prostředků pro Azure Monitor
 
@@ -54,7 +54,7 @@ az deployment group create \
 - [Dotazy protokolu](logs/resource-manager-log-queries.md) – vytvoření uložených dotazů protokolu v pracovním prostoru Log Analytics.
 - [Log Analytics pracovní prostor](logs/resource-manager-workspace.md) – vytvořit pracovní prostor Log Analytics a nakonfigurovat kolekci různých zdrojů dat od agenta Log Analytics.
 - [Sešity](visualize/resource-manager-workbooks.md) – Vytvářejte sešity.
-- [Azure monitor pro kontejnery](containers/resource-manager-container-insights.md) – zprovoznění Azure monitor clusterů pro kontejnery.
+- [Container Insights](containers/resource-manager-container-insights.md) – zprovoznění clusterů do kontejneru Insights.
 - [Azure monitor pro virtuální počítače](vm/resource-manager-vminsights.md) – zprovoznění virtuálních počítačů k Azure monitor pro virtuální počítače.
 
 

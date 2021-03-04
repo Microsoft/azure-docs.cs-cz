@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650775"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738153"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
@@ -26,6 +26,8 @@ Abyste mohli začít, budete potřebovat:
 * Prostředek služby [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) **(nejedná se** o prostředek Cognitive Services). 
 
 * [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Veškerý přístup k Azure Storage probíhá prostřednictvím účtu úložiště.
+
+* Formulář dokončeného [**překladu dokumentů (Preview)**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , který umožní vašemu předplatnému Azure používat novou funkci překladu dokumentů.
 
 > [!NOTE]
 > Překlad dokumentu se v současné době podporuje jenom v prostředku překladatele (s jednou službou), **nikoli** v Cognitive Services (Multi-Service) prostředku.
@@ -64,7 +66,7 @@ Požadavky na službu translatoru vyžadují pro ověření přístupu klíč ur
 
 ## <a name="create-your-azure-blob-storage-containers"></a>Vytvoření kontejnerů úložiště objektů BLOB v Azure
 
-V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) budete muset [**vytvořit kontejnery**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) pro zdrojové, cílové a volitelné soubory glosáře.
+V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) budete muset [**vytvořit kontejnery**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) pro zdrojové, cílové a volitelné soubory glosáře.
 
 * **Zdrojový kontejner** Do tohoto kontejneru se nahrávají soubory pro překlad (povinné).
 * **Cílový kontejner** Do tohoto kontejneru se budou ukládat přeložené soubory (povinné).  
@@ -111,7 +113,7 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 
 ### <a name="java"></a>[Java](#tab/java)
 
-* Vytvořte pracovní adresář pro váš projekt. Příklad:
+* Vytvořte pracovní adresář pro váš projekt. Například:
 
 ```powershell
 mkdir sample-project
@@ -184,7 +186,7 @@ Požadavek na překlad dokumentu Batch se odešle do koncového bodu služby tra
 
 Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následující hlavičky:
 
-|Hlavička protokolu HTTP|Description|
+|Hlavička protokolu HTTP|Popis|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Požadováno**: hodnota je klíč předplatného Azure pro váš překladatel nebo Cognitive Services prostředek.|
 |Typ obsahu|**Požadováno**: Určuje typ obsahu datové části. Přijaté hodnoty jsou Application/JSON nebo charset = UTF-8.|
@@ -201,26 +203,7 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 >[!NOTE]
 > Pokud soubor se stejným názvem již v cíli existuje, bude přepsán.
 
-### <a name="post-a-translation-request"></a>ODESLÁNÍ žádosti o překlad
-
-> [!IMPORTANT]
->
-> * Pro ukázky kódu níže může být nutné aktualizovat následující pole v závislosti na operaci:
-
->> [!div class="checklist"]
->>
->> * `endpoint`
->> * `subscriptionKey`
->> * `sourceURL`
->> * `targetURL`
->> * `glossaryURL`
->> * `id`  (ID úlohy)
->>
-> * Úlohu můžete najít `id`  v `Operation-Location`  hodnotě adresy URL hlavičky odpovědi metody post. Posledním parametrem adresy URL je úloha operace **`id`** .  
-> * Můžete také použít požadavek GET Jobs k načtení úlohy `id`  pro operaci překladu dokumentu.
-> * Pro níže uvedené ukázky budete mít pevný kód pro svůj klíč a koncový bod. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  
->
-> Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+## <a name="post-a-translation-request"></a>ODESLÁNÍ žádosti o překlad
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="post-request-body-without-optional-glossaryurl"></a>Text žádosti POST bez volitelného glossaryURLu
@@ -286,7 +269,26 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 }
 ```
 
-## <a name="_post-document-translation_-request-code-samples"></a>Ukázka kódu požadavku na _Překlad dokumentu_
+> [!IMPORTANT]
+>
+> Pro ukázky kódu níže může být nutné aktualizovat následující pole v závislosti na operaci:
+>>>
+>> * `endpoint`
+>> * `subscriptionKey`
+>> * `sourceURL`
+>> * `targetURL`
+>> * `glossaryURL`
+>> * `id`  (ID úlohy)
+>>
+> Místo, kde má být nalezena `id` hodnota:
+> * Úlohu můžete najít `id`  v `Operation-Location`  hodnotě adresy URL hlavičky odpovědi metody post. Posledním parametrem adresy URL je úloha operace **`id`** .  
+> * Můžete také použít požadavek GET Jobs k načtení úlohy `id`  pro operaci překladu dokumentu.
+>
+> Pro níže uvedené ukázky kódu budete mít pevný kód a koncový bod, kde je uvedeno. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  
+>
+> Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+
+## <a name="_post-document-translation_-request"></a>_Odeslat požadavek na posunutí dokumentu_
 
 Odešle službě překladu požadavek na překlad dokumentu Batch.
 
@@ -519,7 +521,7 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_-code-samples"></a>_Získat ukázky kódu formátů souborů_
+## <a name="_get-file-formats_"></a>_ZÍSKAT formáty souborů_ 
 
 Načte seznam podporovaných formátů souborů. V případě úspěchu vrátí tato metoda `200 OK` kód odpovědi.
 
@@ -696,7 +698,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_-code-samples"></a>_Získat ukázky kódu stavu úlohy_
+## <a name="_get-job-status_"></a>_ZÍSKAT stav úlohy_ 
 
 Získejte aktuální stav pro jednu úlohu a souhrn všech úloh v žádosti o překlad dokumentu. V případě úspěchu vrátí tato metoda `200 OK` kód odpovědi.
 <!-- markdownlint-disable MD024 -->
@@ -875,7 +877,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_-code-samples"></a>_Získat ukázky kódu stavu dokumentu_
+## <a name="_get-document-status_"></a>_ZÍSKAT stav dokumentu_
 
 ### <a name="brief-overview"></a>Stručný přehled
 
@@ -1055,7 +1057,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_-code-samples"></a>_Odstranit_ ukázky kódu úlohy
+## <a name="_delete-job_"></a>_Odstranit úlohu_ 
 
 ### <a name="brief-overview"></a>Stručný přehled
 
@@ -1254,7 +1256,7 @@ Následující tabulka uvádí omezení pro data, která se odesílají do přek
 
 * [Reference k rozhraní API pro překladatele V3](../reference/v3-0-reference.md)
 * [Podpora jazyků](../language-support.md)
-* [Předplatná v Azure API Management](/azure/api-management/api-management-subscriptions).
+* [Předplatná v Azure API Management](../../../api-management/api-management-subscriptions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

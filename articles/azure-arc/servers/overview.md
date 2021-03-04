@@ -4,12 +4,12 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686219"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -57,7 +57,7 @@ Například pokud je počítač zaregistrován pomocí ARC Azure v oblasti Vých
 
 ### <a name="supported-environments"></a>Podporovaná prostředí
 
-Servery s podporou ARC podporují správu fyzických serverů a virtuálních počítačů hostovaných *mimo* Azure. Konkrétní informace o tom, která hybridní cloudová prostředí hostující virtuální počítače jsou podporovaná, najdete v tématu [agent – přehled. MD # Supported-Environments].
+Servery s podporou ARC podporují správu fyzických serverů a virtuálních počítačů hostovaných *mimo* Azure. Konkrétní informace o tom, která hybridní cloudová prostředí hostující virtuální počítače jsou podporovaná, najdete v tématu [požadavky na agenta připojených počítačů](agent-overview.md#supported-environments).
 
 > [!NOTE]
 > Servery s podporou ARC nejsou navržené ani nepodporované a umožňují správu virtuálních počítačů spuštěných v Azure.

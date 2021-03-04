@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715203"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -38,7 +38,7 @@ Tento přehled obsahuje následující oblasti:
 
 * [Omezení ve verzi Preview Azure Logic Apps](#limits).
 
-Další informace najdete v těchto článcích:
+Další informace najdete v těchto tématech:
 
 * [Azure Logic Apps běžící kdekoli – modul runtime s hloubkou podrobně](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
@@ -50,7 +50,7 @@ Další informace najdete v těchto článcích:
 
 Modul runtime Azure Logic Apps Preview používá rozšíření [Azure Functions](../azure-functions/functions-overview.md) a je hostovaný jako rozšíření v modulu runtime Azure Functions. Tato architektura znamená, že můžete spustit nový typ aplikace logiky kdekoli, kde Azure Functions běžet. Modul runtime služby Azure Logic Apps Preview můžete hostovat na téměř libovolné síťové topologii, kterou potřebujete, a vybrat dostupnou výpočetní velikost pro zpracování potřebných úloh, které váš pracovní postup potřebuje. Další informace o rozšíření Azure Functions najdete v tématu věnovaném [sadě WebJobs SDK: vytváření vlastních vstupních a výstupních vazeb](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-Díky tomuto novému přístupu se modul runtime Azure Logic Apps Preview a vaše pracovní postupy nacházejí v rámci aplikace, které můžete zabalit dohromady. Tato funkce umožňuje nasazení a spouštění pracovních postupů pouhým kopírováním artefaktů do hostitelského prostředí a spuštěním vaší aplikace. Tento přístup také poskytuje standardizované prostředí pro vytváření DevOpsch kanálů v rámci projektů pracovních postupů pro spouštění požadovaných testů a ověření před nasazením změn v produkčních prostředích. Další informace najdete v tématu [Azure Logic Apps spouštění odkudkoli a za běhu s hlubokým podrobně](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
+Díky tomuto novému přístupu se modul runtime Azure Logic Apps Preview a vaše pracovní postupy nacházejí v rámci aplikace, které můžete zabalit dohromady. Tato funkce umožňuje nasazení a spouštění pracovních postupů pouhým kopírováním artefaktů do hostitelského prostředí a spuštěním vaší aplikace. Tento přístup také poskytuje standardizované prostředí pro vytváření kanálů nasazení v rámci projektů pracovních postupů pro spouštění požadovaných testů a ověření před nasazením změn v produkčních prostředích. Další informace najdete v tématu [Azure Logic Apps spouštění odkudkoli a za běhu s hlubokým podrobně](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
 
 Následující tabulka stručně shrnuje rozdíly ve způsobu, jakým pracovní postupy sdílejí prostředky, na základě prostředí, ve kterém se spouštějí. Rozdíly v omezeních najdete v tématu [limity v Azure Logic Apps Preview](#limits).
 
@@ -139,10 +139,17 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 
 * Povolte možnosti protokolování a trasování diagnostiky pro vaši aplikaci logiky pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md) , když to podporuje vaše předplatné Azure a nastavení aplikace logiky.
 
+* Přístup k síťovým funkcím, jako je připojení a integrace s virtuálními sítěmi Azure, podobně jako Azure Functions při vytváření a nasazování aplikací logiky s využitím [plánu Azure Functions Premium](../azure-functions/functions-premium-plan.md). Další informace najdete v těchto tématech:
+
+  * [Možnosti sítí Azure Functions](../azure-functions/functions-networking-options.md)
+
+  * [Azure Logic Apps spouštění možností kdekoli v síti pomocí Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * Znovu vygenerujte přístupové klíče pro spravovaná připojení používaná jednotlivými pracovními postupy v prostředku **Aplikace logiky (Preview)** . Pro tuto úlohu [použijte stejný postup jako u prostředku **Logic Apps** , ale na úrovni jednotlivých pracovních postupů](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nikoli na úrovni prostředků aplikace logiky.
 
-> [!NOTE]
-> Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+* Pomocí stejných kroků jako v Návrháři bez náhledu přidejte do nového návrháře paralelní větve.
+ 
+Další informace najdete v tématu [Změna, omezené, nedostupné a nepodporované funkce](#limited-unavailable-unsupported) a [Stránka Logic Apps Public Preview známých problémů na GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
 * **Podpora OS**: návrhář v Visual Studio Code v současnosti nefunguje v operačním systému Linux, ale stále můžete nasazovat Logic Apps, které používají modul runtime Preview Logic Apps na virtuální počítače se systémem Linux. Prozatím můžete vytvářet aplikace logiky v Visual Studio Code ve Windows nebo macOS a pak je nasadit do virtuálního počítače se systémem Linux.
 
-* **Aktivační události a akce**: některé vestavěné triggery nejsou k dispozici, například posuvné okno a dávku. Pokud chcete spustit pracovní postup, použijte [integrované opakování, požadavek, http, Webhook http, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md). Integrované triggery a akce se spouštějí nativně v modulu runtime služby Azure Logic Apps Preview, zatímco spravované konektory se nasazují v Azure. V návrháři se předdefinované triggery a akce zobrazí pod **integrovanou** kartou, zatímco triggery a akce spravovaného konektoru se zobrazí na kartě **Azure** .
+* **Aktivační události a akce**: integrované triggery a akce se spouštějí nativně v modulu runtime služby Azure Logic Apps Preview, zatímco spravované konektory se nasazují v Azure. Některé vestavěné triggery nejsou k dispozici, například posuvné okno a dávku.
+
+  Pokud chcete spustit pracovní postup, použijte [integrované opakování, požadavek, http, Webhook http, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md). V návrháři se předdefinované triggery a akce zobrazí pod **integrovanou** kartou, zatímco triggery a akce spravovaného konektoru se zobrazí na kartě **Azure** .
 
   > [!NOTE]
   > Pro místní spuštění v Visual Studio Code triggery a akce založené na webhookech vyžadují další nastavení. Další informace najdete v tématu [Vytvoření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
@@ -199,11 +208,11 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
       * Akce vloženého kódu již nevyžadují účet pro integraci.
 
-      * Pokud používáte macOS nebo Linux, **vložené operace kódu** nejsou aktuálně k dispozici, pokud používáte rozšíření Azure Logic Apps (Preview) v Visual Studio Code.
+      * V případě systému macOS a Linux se teď **vložené operace s kódem** podporují při použití rozšíření Azure Logic Apps (Preview) v Visual Studio Code.
 
-      * Pokud provedete změny v operaci vloženého kódu, musíte restartovat aplikaci logiky.
+      * Pokud provedete změny v **operaci vloženého kódu** , už nemusíte restartovat aplikaci logiky.
 
-      * Vložené akce kódu mají [aktualizované limity](logic-apps-overview-preview.md#inline-code-limits).
+      * **Vložené akce kódu** mají [aktualizované limity](logic-apps-overview-preview.md#inline-code-limits).
 
     * Některé [integrované aktivační události B2B a akce pro účty pro integraci](../connectors/apis-list.md#integration-account-connectors) nejsou k dispozici, například akce kódování a dekódování **plochého souboru** .
 
@@ -211,17 +220,15 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
 * **Dostupnost plánu hostování**: ať už vytvoříte nový typ prostředku **Aplikace logiky (Preview)** v Azure Portal nebo nasadíte z Visual Studio Code, můžete v Azure použít jenom plán hostování Premium nebo App Service. Plány hostování spotřeby nejsou k dispozici a nejsou podporovány pro nasazení tohoto typu prostředku. Můžete nasadit z Visual Studio Code do kontejneru Docker, ale ne do [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
-* **Paralelní větve**: v současné době nemůžete přidávat paralelní větve pomocí nového prostředí návrháře. Tyto větve však můžete přidat i v původním prostředí návrháře a jejich zobrazení v novém návrháři.
-
-  1. V dolní části návrháře zakažte nové prostředí tím, že vyberete nový ovládací prvek **plátna** .
-
-  1. Přidejte do pracovního postupu paralelní větve.
-
-  1. Nové prostředí zapněte tak, že znovu vyberete nový ovládací prvek **plátna** .
+* **Ladění zarážek v Visual Studio Code**: i když můžete přidat a používat zarážky v rámci **workflow.js** souboru pro pracovní postup, zarážky se podporují jenom pro akce v tuto chvíli, ne triggery. Další informace najdete v tématu [Vytvoření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
 * **Lupa Control**: ovládací prvek Lupa není aktuálně k dispozici v návrháři.
 
-* **Ladění zarážek v Visual Studio Code**: i když můžete přidat a používat zarážky v rámci **workflow.js** souboru pro pracovní postup, zarážky se podporují jenom pro akce v tuto chvíli, ne triggery. Další informace najdete v tématu [Vytvoření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Historie aktivačních událostí a historie spuštění**: pro typ prostředku **Aplikace logiky (Preview)** , historie aktivačních událostí a historie spuštění v Azure Portal se zobrazí na úrovni pracovního postupu, nikoli na úrovni aplikace logiky. K vyhledání těchto historických dat použijte následující postup:
+
+   * Chcete-li zobrazit historii spuštění, otevřete pracovní postup ve vaší aplikaci logiky. V nabídce pracovní postup vyberte v části **vývojář** možnost **monitor**.
+
+   * Pokud chcete zkontrolovat historii triggerů, otevřete pracovní postup ve vaší aplikaci logiky. V nabídce pracovní postup vyberte v části **vývojář** možnost **aktivovat historie**.
 
 <a name="limits"></a>
 

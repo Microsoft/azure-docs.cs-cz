@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733410"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Správa výpočetních prostředků na GPU Azure Stack Edge pro
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955446"
 
 Tento článek popisuje, jak spravovat výpočetní prostředky prostřednictvím služby IoT Edge na zařízení GPU Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a konfiguraci IoT Edge a místní webové uživatelské rozhraní pro správu výpočetních nastavení sítě.
 
-V tomto článku získáte informace o těchto tématech:
-
-> [!div class="checklist"]
-> * Spravovat triggery
-> * Správa konfigurace IoT Edge
 
 
 ## <a name="manage-triggers"></a>Spravovat triggery
@@ -130,6 +125,22 @@ V Azure Portal proveďte následující kroky, které synchronizují přístupov
     ![Po zobrazení výzvy vyberte Ano.](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. Po dokončení synchronizace zavřete dialogové okno.
+
+## <a name="change-external-service-ips-for-containers"></a>Změna IP adres externích služeb pro kontejnery
+
+IP adresy externích služeb Kubernetes se používají pro přístup ke službám, které jsou přístupné mimo cluster Kubernetes. Po aktivaci zařízení můžete nastavit nebo upravit IP adresy externích služeb pro kontejnerové úlohy pro vaše zařízení tím, že přistupujete k místnímu uživatelskému rozhraní.
+
+
+1. V místním uživatelském rozhraní zařízení přejít na **COMPUTE**.
+1. Vyberte port, jehož síť je nakonfigurovaná pro výpočetní výkon. V okně, které se otevře, zadejte (nové) nebo upravte (pokud existuje) IP adresy externích služeb Kubernetes. Tyto IP adresy se používají pro všechny služby, které je potřeba zveřejnit mimo cluster Kubernetes. 
+    - Pro `edgehub` službu, která běží na vašem zařízení, potřebujete minimálně jednu IP adresu služby, kterou používají IoT Edge moduly. 
+    - Pro každý další IoT Edge modul nebo kontejner, který máte v úmyslu nasadit, budete potřebovat IP adresu. 
+    - Jedná se o statické a souvislé IP adresy.
+
+    ![Změna IP adres služby Kubernetes](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. Vyberte **Použít**. Po použití IP adres zařízení nepotřebuje restartování ani restartování. Nové IP adresy se projeví okamžitě.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled clusterů Azure Stream Analytics (Preview)
+title: Přehled clusterů Azure Stream Analytics
 description: Přečtěte si o samostatném tenantovi vyhrazené nabídce Stream Analytics clusteru.
 author: sidramadoss
 ms.author: sidram
@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e5157a02f97370b20db85bf5e3e8aae98a2d8668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019529"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709287"
 ---
-# <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Přehled clusteru Azure Stream Analytics (Preview)
+# <a name="overview-of-azure-stream-analytics-cluster"></a>Přehled clusteru Azure Stream Analytics
 
 Azure Stream Analytics cluster nabízí nasazení jednoho tenanta pro složité a náročné scénáře streamování. Ve velkém měřítku můžou clustery Stream Analytics zpracovávat více než 200 MB za sekundu v reálném čase. Úlohy Stream Analytics spuštěné na vyhrazených clusterech můžou využívat všechny funkce v rámci standardní nabídky a zahrnují podporu připojení privátního propojení k vašim vstupům a výstupům.
 
@@ -56,11 +56,11 @@ SU je stejný jako u standardních a vyhrazených nabídek. Jedna úloha, která
 
 ### <a name="can-i-scale-my-cluster"></a>Můžu svůj cluster škálovat?
 
-Yes. Kapacitu clusteru můžete snadno nakonfigurovat tak, abyste mohli podle potřeby [škálovat směrem nahoru nebo dolů](scale-cluster.md) , aby splňovala vaše měnící se požadavky.
+Ano. Kapacitu clusteru můžete snadno nakonfigurovat tak, abyste mohli podle potřeby [škálovat směrem nahoru nebo dolů](scale-cluster.md) , aby splňovala vaše měnící se požadavky.
 
 ### <a name="can-i-run-my-existing-jobs-on-these-new-clusters-ive-created"></a>Můžu na těchto nových clusterech spouštět stávající úlohy?
 
-Yes. Existující úlohy můžete propojit s nově vytvořeným Stream Analyticsm clusterem a spustit je obvyklým způsobem. Nemusíte znovu vytvářet existující Stream Analytics úlohy od začátku.
+Ano. Existující úlohy můžete propojit s nově vytvořeným Stream Analyticsm clusterem a spustit je obvyklým způsobem. Nemusíte znovu vytvářet existující Stream Analytics úlohy od začátku.
 
 ### <a name="how-much-will-these-clusters-cost-me"></a>Do kolika se tyto clustery budou zasílat?
 

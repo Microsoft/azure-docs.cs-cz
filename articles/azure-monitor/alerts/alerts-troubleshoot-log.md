@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738646"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s výstrahami protokolu v Azure Monitor  
 
 V tomto článku se dozvíte, jak vyřešit běžné problémy s výstrahami protokolu v Azure Monitor. Poskytuje také řešení pro běžné problémy s funkcemi a konfigurací výstrah protokolů.
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](../platform/action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../logs/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat jednu nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případy, kdy Azure Portal zobrazuje aktivované pravidlo výstrahy a přidružená skupina akcí neprovádí oznámení. V takových případech si přečtěte podrobnosti [o řešení potíží](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -26,7 +26,7 @@ Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-qu
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba přijímání dat pro protokoly
 
-Azure Monitor zpracovává terabajty protokolů zákazníků z celého světa, což může způsobit [latenci přijímání protokolů](../platform/data-ingestion-time.md).
+Azure Monitor zpracovává terabajty protokolů zákazníků z celého světa, což může způsobit [latenci přijímání protokolů](../logs/data-ingestion-time.md).
 
 Protokoly jsou částečně strukturovaná data a jsou v podstatě více latentních, než metriky. Pokud máte prodlevu více než 4 minuty v aktivovaném upozorněních, měli byste zvážit použití [Upozornění na metriky](alerts-metric-overview.md). Data můžete do úložiště metrik odesílat z protokolů pomocí [výstrah metrik pro protokoly](alerts-metric-logs.md).
 
@@ -60,7 +60,7 @@ Nakonfigurované [pravidlo výstrahy protokolu v Azure monitor](./alerts-log.md)
 
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha aktivovaná částečnými daty
 
-Azure Monitor zpracovává terabajty protokolů zákazníků z celého světa, což může způsobit [latenci přijímání protokolů](../platform/data-ingestion-time.md).
+Azure Monitor zpracovává terabajty protokolů zákazníků z celého světa, což může způsobit [latenci přijímání protokolů](../logs/data-ingestion-time.md).
 
 Protokoly jsou částečně strukturovaná data a jsou v podstatě více latentních, než metriky. Pokud se setkáváte s mnoha chybami v aktivovaném upozorněních, měli byste zvážit použití [Upozornění na metriky](alerts-metric-overview.md). Data můžete do úložiště metrik odesílat z protokolů pomocí [výstrah metrik pro protokoly](alerts-metric-logs.md).
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 Není nutné přidávat do dotazu logiku pro upozorňování a provádět v nich dokonce problémy. Pokud v příkladu výše zahrnete `count` do dotazu, bude vždy výsledkem hodnota 1, protože služba Výstrahy bude provádět `count` `count` .
 
-Optimalizovaným dotazem je to, co služba Výstrahy protokolu spouští. Upravený dotaz můžete spustit na [portálu](../log-query/log-query-overview.md) Log Analytics nebo v [rozhraní API](/rest/api/loganalytics/).
+Optimalizovaným dotazem je to, co služba Výstrahy protokolu spouští. Upravený dotaz můžete spustit na [portálu](../logs/log-query-overview.md) Log Analytics nebo v [rozhraní API](/rest/api/loganalytics/).
 
 U pracovních prostorů a Application Insights se říká **dotaz, který se má spustit** v podokně podmínka. Ve všech ostatních typech prostředků vyberte na kartě podmínka možnost **Zobrazit konečný dotaz na výstrahu** .
 
@@ -108,7 +108,7 @@ Azure Monitor zakáže upozornění protokolu po týdnu, pokud dojde k jeho nep�
 Při vytvoření pravidla upozornění protokolu se dotaz ověří na správnou syntaxi. V některých případech se může stát, že dotaz uvedený v pravidle výstrahy protokolu selže. Mezi běžné příčiny patří:
 
 - Pravidla byla vytvořena prostřednictvím rozhraní API a uživatel ji přeskočil.
-- Dotaz [běží na několika prostředcích](../log-query/cross-workspace-query.md) a jeden nebo víc prostředků se odstranil nebo přesunul.
+- Dotaz [běží na několika prostředcích](../logs/cross-workspace-query.md) a jeden nebo víc prostředků se odstranil nebo přesunul.
 - [Dotaz se nezdařil](https://dev.loganalytics.io/documentation/Using-the-API/Errors) z těchto důvodů:
     - Řešení protokolování nebylo [nasazeno do pracovního prostoru](../insights/solutions.md#install-a-monitoring-solution), takže tabulky se nevytvoří.
     - Data se přestala přenášet do tabulky v dotazu po dobu více než 30 dnů.
@@ -219,5 +219,5 @@ Pokud se dotaz na sedm dní neobjeví nepřetržitě, Azure Monitor zakáže upo
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si informace o [upozorněních protokolu v Azure](./alerts-unified-log.md).
-- Přečtěte si další informace o [konfiguraci výstrah protokolu](../log-query/log-query-overview.md).
-- Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
+- Přečtěte si další informace o [konfiguraci výstrah protokolu](../logs/log-query-overview.md).
+- Přečtěte si další informace o [dotazech protokolu](../logs/log-query-overview.md).

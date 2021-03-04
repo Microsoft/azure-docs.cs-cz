@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741425"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
@@ -123,6 +123,18 @@ Pokud například Azure Firewall zachytí požadavek HTTPS pro `www.google.com/n
 - Firewall Premium – bude prověřena úplná adresa URL, takže `www.google.com/news` bude zařazena do kategorie *zpráv*.
 
 Kategorie jsou seřazené na základě závažnosti v oblasti **zodpovědnosti**, **vysoké šířky pásma**, **používání firmy**, **ztráty produktivity**, **Obecné procházení** a **Nezařazeno do kategorie**.
+
+### <a name="categorization-change"></a>Změna kategorizace
+
+Změnu kategorizace si můžete vyžádat v těchto případech:
+
+ - Zamyslete se plně kvalifikovaný název domény nebo adresa URL v jiné kategorii. 
+ 
+nebo 
+
+- má navrhovanou kategorii pro plně kvalifikovaný název domény (Nezařazeno do kategorie) nebo adresu URL.
+
+Vítá vás žádost o odeslání žádosti [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
 
 ### <a name="category-exceptions"></a>Výjimky kategorie
 

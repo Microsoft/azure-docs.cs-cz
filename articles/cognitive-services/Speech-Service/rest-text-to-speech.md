@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733444"
 ---
 # <a name="text-to-speech-rest-api"></a>Rozhraní REST API pro převod textu na řeč
 
@@ -76,7 +76,7 @@ Než začnete používat toto rozhraní API, pochopte:
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Description | Požadováno/volitelné |
+| Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -211,7 +211,7 @@ Tyto oblasti jsou podporované pro převod textu na řeč pomocí REST API. Ujis
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro požadavky na převod textu na řeč.
 
-| Hlavička | Description | Požadováno/volitelné |
+| Hlavička | Popis | Požadováno/volitelné |
 |--------|-------------|---------------------|
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Vyžadováno |
 | `Content-Type` | Určuje typ obsahu pro zadaný text. Přijatá hodnota: `application/ssml+xml` . | Vyžadováno |
@@ -279,5 +279,5 @@ Pokud je stav HTTP `200 OK` , tělo odpovědi obsahuje zvukový soubor v požado
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynchronní syntéza pro dlouhý formát zvuku](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynchronní syntéza pro dlouhý formát zvuku](./long-audio-api.md)
 - [Začínáme se službou Custom Voice](how-to-custom-voice.md)

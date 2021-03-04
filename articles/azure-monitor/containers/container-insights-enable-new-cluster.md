@@ -1,19 +1,19 @@
 ---
 title: Monitorování nového clusteru Azure Kubernetes Service (AKS) | Microsoft Docs
-description: Naučte se, jak povolit monitorování pro nový cluster Azure Kubernetes Service (AKS) s předplatným Azure Monitor for Containers.
+description: Naučte se, jak povolit monitorování pro nový cluster Azure Kubernetes Service (AKS) s předplatným Container Insights.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717566"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
-Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](../../aks/index.yml) , kterou jste připravili k nasazení v rámci vašeho předplatného.
+Tento článek popisuje, jak nastavit službu Container Insights pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](../../aks/index.yml) , kterou jste připravili k nasazení v rámci vašeho předplatného.
 
 Monitorování clusteru AKS můžete povolit pomocí jedné z podporovaných metod:
 
@@ -34,14 +34,14 @@ Pokud [nasazujete nový cluster AKS pomocí terraformu](/azure/developer/terrafo
 >[!NOTE]
 >Pokud se rozhodnete používat Terraformu, musíte mít spuštěného poskytovatele Terraformu Azure RM verze 1.17.0 nebo vyšší.
 
-Chcete-li přidat Azure Monitor pro kontejnery do pracovního prostoru, přečtěte si téma [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadáním **oms_agent**. 
+Pokud chcete přidat do pracovního prostoru přehledy o kontejnerech, přečtěte si téma [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadáním **oms_agent**. 
 
 Jakmile povolíte monitorování a všechny úlohy konfigurace budou úspěšně dokončeny, můžete monitorovat výkon clusteru jedním ze dvou způsobů:
 
 * Přímo v clusteru AKS výběrem možnosti **stav** v levém podokně.
 * Výběrem dlaždice **monitorovat službu Container Insights** na stránce clusteru AKS pro vybraný cluster. V Azure Monitor v levém podokně vyberte **stav**. 
 
-  ![Možnosti výběru Azure Monitor pro kontejnery v AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+  ![Možnosti pro výběr služby Container Insights v AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru. 
 
@@ -117,5 +117,5 @@ Po několika minutách se příkaz dokončí a vrátí informace o řešení ve 
 
 * Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
-* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků clusteru AKS a spuštěných úloh se naučíte [používat službu](container-insights-analyze.md) Container Insights.
 

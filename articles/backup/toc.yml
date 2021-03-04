@@ -68,6 +68,8 @@
           href: azure-file-share-support-matrix.md
         - name: Matice podpory pro zálohování disků Azure
           href: disk-backup-support-matrix.md
+        - name: Matice podpory zálohování Azure BLOBs
+          href: blob-backup-support-matrix.md
         - name: Řadiče domény služby Active Directory
           href: active-directory-backup-restore.md
         - name: Podporované SKU virtuálních počítačů pro Azure Policy
@@ -132,6 +134,8 @@
           href: backup-center-govern-environment.md
         - name: Provádění akcí
           href: backup-center-actions.md
+        - name: Zdroje informací a materiály z komunity
+          href: backup-center-community.md
     - name: Zálohování virtuálních počítačů Azure
       items:
         - name: Přehled
@@ -224,6 +228,14 @@
           href: backup-managed-disks.md
         - name: Obnovení
           href: restore-managed-disks.md
+    - name: Zálohování objektů blob Azure
+      items:
+        - name: Přehled
+          href: blob-backup-overview.md
+        - name: Konfigurace a Správa
+          href: blob-backup-configure-manage.md
+        - name: Obnovení
+          href: blob-restore.md
     - name: Zálohování sdílených složek Azure
       items:
         - name: Přehled
@@ -437,6 +449,10 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+    - name: Úroveň přístupu
+      items:
+        - name: Úroveň archivu
+          href: archive-tier-support.md
     - name: Řešení potíží
       items:
         - name: Virtuální počítač Azure

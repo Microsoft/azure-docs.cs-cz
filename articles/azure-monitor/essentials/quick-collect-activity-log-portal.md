@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734277"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí Azure Portal
-Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . 
+Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . 
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
@@ -73,7 +73,7 @@ Vyzkoušejte složitější dotaz, například to, `AzureActivity | summarize co
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste nakonfigurovali protokol aktivit, který se má odeslat do Log Analytics pracovního prostoru. Teď můžete nakonfigurovat další data, která se mají shromáždit, do pracovního prostoru, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) v Azure monitor a využívat funkce, jako jsou výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . Měli byste další shromáždit [protokoly prostředků](../essentials/resource-logs.md) z vašich prostředků Azure, které vám poskytnou přehled o operacích, které byly provedeny v rámci jednotlivých prostředků v protokolu aktivit.
+V tomto rychlém startu jste nakonfigurovali protokol aktivit, který se má odeslat do Log Analytics pracovního prostoru. Teď můžete nakonfigurovat další data, která se mají shromáždit, do pracovního prostoru, kde je můžete analyzovat pomocí [dotazů protokolu](../logs/log-query-overview.md) v Azure monitor a využívat funkce, jako jsou výstrahy a [sešity](../visualize/workbooks-overview.md) [protokolu](../alerts/alerts-log-query.md) . Měli byste další shromáždit [protokoly prostředků](../essentials/resource-logs.md) z vašich prostředků Azure, které vám poskytnou přehled o operacích, které byly provedeny v rámci jednotlivých prostředků v protokolu aktivit.
 
 
 > [!div class="nextstepaction"]

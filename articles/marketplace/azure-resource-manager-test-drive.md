@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730367"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
@@ -75,7 +75,7 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 | Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
-| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https://<..>.blob.core.windows.net/<..>` |
 | **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
 | **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS \^ 2kH     |
 | **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |

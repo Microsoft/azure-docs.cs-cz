@@ -3,12 +3,12 @@ title: Řešení potíží se službou Azure VM File Recovery
 description: Řešení potíží při obnovování souborů a složek ze zálohy virtuálního počítače Azure
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735873"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700299"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Řešení potíží s obnovením souborů zálohování virtuálních počítačů Azure
 
@@ -36,7 +36,7 @@ V této části najdete postup řešení potíží s chybovými zprávami, kter�
 
 **Doporučená akce**: 12 hodin po stažení skriptu je neplatných a nedá se spustit. Přejděte na portál a pak stáhněte nový skript, abyste mohli pokračovat v obnovování souborů.
 
-### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>modul iscsi_tcp nejde načíst (nebo) iscsi_tcp_module se nenašel.
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>Modul iscsi_tcp nejde načíst (nebo) Modul iscsi_tcp_module se nenašel
 
 **Doporučená akce**: Chcete-li tento problém vyřešit, postupujte podle kroků v [části stažení skriptu úspěšně, ale spuštění se nezdaří](#the-script-downloads-successfully-but-fails-to-run).
 
@@ -88,7 +88,7 @@ Vyřešte tento problém podle kroků pro váš operační systém.
 Při prvním spuštění skriptu na Windows Serveru 2012 R2 a Windows serveru 2016 (s fondy úložiště) se může fond úložiště připojit k virtuálnímu počítači jen pro čtení.
 
 >[!Tip]
-> Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+> Ujistěte se, že máte [správný počítač pro spuštění skriptu](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 Tento problém vyřešíte tak, že ručně přiřadíte ke fondu úložiště přístup pro čtení i zápis a připojíte virtuální disky:
 
@@ -108,7 +108,7 @@ Tento problém vyřešíte tak, že ručně přiřadíte ke fondu úložiště p
 
 Při provádění obnovení souborů služba zálohování detekuje svazky a automaticky se připojí. Pokud však jsou v zálohovaných discích nezpracované oddíly, tyto disky nejsou automaticky připojeny a datový disk nelze pro obnovení zobrazit.
 
-Tento problém vyřešíte tak, že přejdete na [obnovit soubory ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Tento problém vyřešíte tak, že přejdete na [obnovit soubory ze zálohy virtuálního počítače Azure](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>Obnovení souboru pro Linux se nepovede, protože operační systém nemohl identifikovat systém souborů.
 
@@ -122,7 +122,7 @@ Pokud chcete tento problém vyřešit, ověřte, jestli je svazek zašifrovaný 
 
    ![Snímek obrazovky zobrazující výsledky příkazu pro výpis blokovaných zařízení](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. Ověřte systém souborů a šifrování. Pokud je svazek zašifrovaný, obnovení souborů se nepodporuje. Další informace najdete v [matrici podpory pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Ověřte systém souborů a šifrování. Pokud je svazek zašifrovaný, obnovení souborů se nepodporuje. Další informace najdete v [matrici podpory pro zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md#support-for-file-level-restore).
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Disky jsou připojené, ale svazky nejsou připojené.
 
@@ -139,7 +139,7 @@ Když spustíte skript pro obnovení souborů pro Windows, zobrazí se zpráva "
 Chcete-li tento problém identifikovat a vyřešit, proveďte následující kroky:
 
 >[!Tip]
->Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Ujistěte se, že máte [správný počítač pro spuštění skriptu](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 1. V okně **příkazového** řádku spusťte příkaz **diskmgmt** a spusťte **správu disků**.
 1. Vyhledejte všechny další disky. V následujícím příkladu je **disk 2** další disk.
@@ -159,9 +159,9 @@ Chcete-li tento problém identifikovat a vyřešit, proveďte následující kro
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->Ujistěte se, že máte [správný počítač pro spuštění skriptu](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Ujistěte se, že máte [správný počítač pro spuštění skriptu](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-Pokud chráněný virtuální počítač se systémem Linux používá LVM nebo pole RAID, postupujte podle kroků v části [obnovení souborů ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Pokud chráněný virtuální počítač se systémem Linux používá LVM nebo pole RAID, postupujte podle kroků v části [obnovení souborů ze zálohy virtuálního počítače Azure](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Soubory nemůžete kopírovat z připojených svazků.
 

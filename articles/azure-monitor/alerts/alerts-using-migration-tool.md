@@ -4,29 +4,20 @@ description: Naučte se používat dobrovolný migrační nástroj k migraci pra
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644346c7355df581843fa8a838eea50cfeccefd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729092"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Migrace pravidel vašich klasických výstrah pomocí nástroje k dobrovolné migraci
 
-Jak jsme [dřív oznámili](../platform/monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Nástroj pro migraci byl v Azure Portal k dispozici pro zákazníky, kteří použili pravidla pro klasických výstrah a chtějí spustit migraci sami. V tomto článku se dozvíte, jak používat nástroj pro migraci, který se taky použije pro zbývající výstrahy, které čekají na další oznámení.
+Jak jsme [dřív oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou i v omezeném počtu použití až do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 
-## <a name="benefits-of-new-alerts"></a>Výhody nových výstrah
-
-Klasické výstrahy se nahrazují novými a jednotnými výstrahami v Azure Monitor. Nová platforma pro výstrahy přináší následující výhody:
-
-- Pro [mnoho dalších služeb Azure](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)můžete upozorňovat na nejrůznější multidimenzionální metriky.
-- Nové výstrahy metriky podporují [pravidla pro výstrahy s více prostředky](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) , která významně snižují režijní náklady na správu mnoha pravidel.
-- Jednotný mechanismus oznámení, který podporuje:
-  - [Skupiny akcí](../platform/action-groups.md), modulární mechanismus oznamování, který funguje se všemi novými typy výstrah (metrika, protokol a protokol aktivit).
-  - Nové mechanismy oznámení, jako je SMS, Voice a konektor ITSM.
-- [Jednotné prostředí výstrah](../platform/alerts-overview.md) přináší na jednom místě všechna upozornění na různé signály (metrika, protokol a protokol aktivit).
+Nástroj pro migraci je v Azure Portal k dispozici pro zákazníky, kteří použili pravidla pro klasických výstrah a chtějí spustit migraci sami. Tento článek vysvětluje, jak používat nástroj pro migraci.
 
 ## <a name="before-you-migrate"></a>Před migrací
 
@@ -83,7 +74,7 @@ Když bude předplatné připravené k migraci, vlastník předplatného obdrž�
 
 ### <a name="who-can-trigger-the-migration"></a>Kdo může migraci aktivovat?
 
-Uživatelé, kteří mají přiřazenou roli Přispěvatel monitorování na úrovni předplatného, můžou migraci aktivovat. [Přečtěte si další informace o řízení přístupu na základě role v Azure pro proces migrace](alerts-understand-migration.md#who-can-trigger-the-migration).
+Uživatelé, kteří mají přiřazenou roli Přispěvatel monitorování na úrovni předplatného, můžou aktivovat migraci. [Přečtěte si další informace o řízení přístupu na základě role v Azure pro proces migrace](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Jak dlouho bude migrace trvat?
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721013"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení Azure Database for MySQL
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě. Viz také [Obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) platná pro databázový stroj MySQL.
@@ -29,7 +29,7 @@ Moduly plug-in pro heslo, jako je například "validate_password" a "caching_sha
 
 ## <a name="storage-engines"></a>Moduly úložiště
 
-MySQL podporuje mnoho úložných strojů. Na Azure Database for MySQL flexibilním serveru jsou podporované a nepodporované následující úložiště:
+MySQL podporuje mnoho úložných strojů. V Azure Database for MySQL jsou podporované a nepodporované následující úložiště:
 
 ### <a name="supported"></a>Podporováno
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

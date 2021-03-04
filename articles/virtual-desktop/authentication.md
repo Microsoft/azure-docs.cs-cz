@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/26/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a4366bfee6b1d9c5f52d649910163269962684
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500296"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709253"
 ---
 # <a name="supported-authentication-methods"></a>Podporované metody ověřování
 
@@ -21,14 +21,14 @@ V tomto článku vám poskytneme stručný přehled toho, jaké druhy ověřová
 
 ## <a name="session-host-authentication"></a>Ověřování hostitele relace
 
-Virtuální počítač s Windows podporuje ověřování hostitele relací pomocí protokolu NTLM (NT LAN Manager) i protokolu Kerberos. Chcete-li však používat protokol Kerberos, musí klient získat lístky zabezpečení protokolu Kerberos ze služby služba KDC (Key Distribution Center) (KDC) spuštěné v řadiči domény. Aby bylo možné získat lístky, klient musí mít k řadiči domény přímý dohled. Pomocí podnikové sítě můžete získat přímý přehled o pohledu. Můžete také použít připojení VPN k podnikové síti.
+Virtuální počítač s Windows podporuje ověřování hostitele relací pomocí protokolu NTLM (NT LAN Manager) i protokolu Kerberos. Chcete-li však používat protokol Kerberos, musí klient získat lístky zabezpečení protokolu Kerberos ze služby služba KDC (Key Distribution Center) (KDC) spuštěné v řadiči domény. Aby bylo možné získat lístky, klient musí mít k řadiči domény přímý dohled. Pomocí podnikové sítě můžete získat přímý přehled o pohledu. Můžete také použít připojení VPN k podnikové síti nebo nastavit [proxy server služby KDC](key-distribution-center-proxy.md).
 
 Toto jsou aktuálně podporované metody přihlašování:
 
 - Desktopový klient Windows
     - Uživatelské jméno a heslo
     - Pomocí
-    - Windows Hello
+    - Windows Hello pro firmy (jenom důvěryhodný certifikát)
 - Klient Windows Storu
     - Uživatelské jméno a heslo
 - Webový klient
@@ -41,7 +41,7 @@ Toto jsou aktuálně podporované metody přihlašování:
     - Uživatelské jméno a heslo
 
 >[!NOTE]
->Čipové karty a Windows Hello můžou k přihlášení použít jenom Kerberos. Přihlášení pomocí protokolu Kerberos vyžaduje pro řadič domény řadu kontrol.
+>Čipové karty a Windows Hello pro firmy můžou k přihlášení používat jenom Kerberos. Přihlášení pomocí protokolu Kerberos vyžaduje dohled nad řadičem domény nebo [proxy serverem služby KDC](key-distribution-center-proxy.md).
 
 ## <a name="hybrid-identity"></a>Hybridní identita
 

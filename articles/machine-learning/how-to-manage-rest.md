@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692449"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Použití požadavků DELETE k vyčištění prostředků 
 > * Použití autorizace na základě klíčů k určení skóre nasazených modelů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](./how-to-manage-workspace.md)
@@ -79,7 +79,7 @@ Odpověď by měla poskytnout token pro přístup, který je vhodný pro jednu h
 Poznamenejte si token, protože ho budete používat k ověřování všech dalších požadavků na správu. Provedete to tak, že nastavíte hlavičku autorizace ve všech požadavcích:
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 Všimněte si, že hodnota začíná řetězcem "Bearer", včetně jednoho prostoru před přidáním tokenu.
@@ -202,7 +202,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začíná cesta `history/v1.0` a kdy se mají vypisovat modely, začíná cesta `modelmanagement/v1.0` . REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. 
 
-|Oblast|Cesta|
+|Plošný|Cesta|
 |-|-|
 |Artifacts|/rest/api/azureml|
 |Úložiště dat|/azure/machine-learning/how-to-access-data|

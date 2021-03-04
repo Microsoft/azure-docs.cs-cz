@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804936"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730707"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Virtuální počítače GPU pro zařízení Azure Stack Edge pro
 
@@ -110,8 +110,8 @@ Při nasazení virtuálních počítačů GPU do zařízení postupujte podle t�
 1. Po vytvoření virtuálního počítače nasaďte rozšíření GPU pomocí šablony rozšíření. Informace o virtuálních počítačích se systémem Linux najdete v tématu instalace [rozšíření GPU pro Linux](#gpu-extension-for-linux) a pro virtuální počítače s Windows najdete v tématu [Instalace rozšíření GPU pro Windows](#gpu-extension-for-windows).
 
 1. Pokud chcete ověřit instalaci rozšíření GPU, připojte se k virtuálnímu počítači GPU:
-    1. Pokud používáte virtuální počítač s Windows, postupujte podle kroků v části [připojení k virtuálnímu počítači s Windows](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm). [Ověřte instalaci](#verify-windows-driver-installation).
-    1. Pokud používáte virtuální počítač se systémem Linux, postupujte podle kroků v části [připojení k virtuálnímu počítači se systémem Linux](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). [Ověřte instalaci](#verify-linux-driver-installation).
+    1. Pokud používáte virtuální počítač s Windows, postupujte podle kroků v části [připojení k virtuálnímu počítači s Windows](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm). [Ověřte instalaci](#verify-windows-driver-installation).
+    1. Pokud používáte virtuální počítač se systémem Linux, postupujte podle kroků v části [připojení k virtuálnímu počítači se systémem Linux](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). [Ověřte instalaci](#verify-linux-driver-installation).
 
 1. V případě potřeby můžete výpočetní síť přepnout zpátky na cokoli, co potřebujete. 
 
@@ -545,7 +545,7 @@ Výstup spuštění rozšíření se zaznamená do následujícího souboru: `/v
 
 Pomocí těchto kroků Ověřte instalaci ovladače:
 
-1. Připojte se k virtuálnímu počítači GPU. Postupujte podle pokynů v tématu [připojení k virtuálnímu počítači se systémem Linux](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). 
+1. Připojte se k virtuálnímu počítači GPU. Postupujte podle pokynů v tématu [připojení k virtuálnímu počítači se systémem Linux](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). 
 
     Zde je ukázkový výstup:
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 53fc01839ef522afaffe52cd8a3126e40ba94a05
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e32b9c690db70baeda7dec2f9f1270f82c6881bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733291"
 ---
 # <a name="configure-azure-defender-for-iot-agent-based-solution"></a>Konfigurace řešení Azure Defender pro řešení založené na agentech IoT  
 
@@ -87,7 +87,7 @@ Přístup k výstrahám v pracovním prostoru Log Analytics po konfiguraci:
 
 1. Vyberte možnost **prozkoumat doporučení v pracovním prostoru Log Analytics**. 
  
-Další informace o dotazování dat z Log Analytics najdete v tématu [Začínáme s dotazy v Log Analytics](../azure-monitor/log-query/get-started-queries.md). 
+Další informace o dotazování dat z Log Analytics najdete v tématu [Začínáme s dotazy v Log Analytics](../azure-monitor/logs/get-started-queries.md). 
 
 ## <a name="turn-off-defender-for-iot"></a>Vypnout Defender pro IoT 
 
@@ -99,4 +99,4 @@ Postup zapnutí nebo vypnutí programu Defender pro službu IoT na konkrétním 
 
 ## <a name="next-steps"></a>Další kroky 
 
-Přejděte k dalšímu článku, abyste mohli [nakonfigurovat vaše řešení](quickstart-configure-your-solution.md). 
+Přejděte k dalšímu článku, abyste mohli [nakonfigurovat vaše řešení](quickstart-configure-your-solution.md).

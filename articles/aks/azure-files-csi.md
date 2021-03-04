@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0fc291403997cdccbfa190fcd5739e97c47eab6a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636976"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729432"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní pro kontejnerové úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -35,11 +35,11 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 Třída úložiště se používá k definování, jak se vytvoří sdílená složka souborů Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure Files. Pro *skuName* vyberte jednu z následujících [SKU Azure Storage pro redundanci][storage-skus] :
 
-* **Standard_LRS** : standardní místně redundantní úložiště
-* **Standard_GRS** : standardní geograficky redundantní úložiště
-* **Standard_ZRS** : standardní zóna – redundantní úložiště
-* **Standard_RAGRS** : standardní geograficky redundantní úložiště s přístupem pro čtení
-* **Premium_LRS** : místně redundantní úložiště úrovně Premium
+* **Standard_LRS**: standardní místně redundantní úložiště
+* **Standard_GRS**: standardní geograficky redundantní úložiště
+* **Standard_ZRS**: standardní zóna – redundantní úložiště
+* **Standard_RAGRS**: standardní geograficky redundantní úložiště s přístupem pro čtení
+* **Premium_LRS**: místně redundantní úložiště úrovně Premium
 
 > [!NOTE]
 > Azure Files podporuje Azure Premium Storage. Minimální sdílená složka Premium je 100 GB.
@@ -226,7 +226,7 @@ az provider register --namespace Microsoft.Storage
 
 ### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Vytvoření účtu úložiště pro sdílenou složku NFS
 
-[Vytvořit `Premium_LRS` Účet služby Azure Storage](../storage/files/storage-how-to-create-premium-fileshare.md) s následujícími konfiguracemi pro podporu sdílených složek NFS:
+[Vytvořit `Premium_LRS` Účet služby Azure Storage](../storage/files/storage-how-to-create-file-share.md) s následujícími konfiguracemi pro podporu sdílených složek NFS:
 - druh účtu: úložiště
 - je vyžadován zabezpečený přenos (povolit pouze provoz HTTPS): false
 - Vyberte virtuální síť uzlů agentů v bránách firewall a virtuálních sítích, takže můžete chtít vytvořit účet úložiště ve skupině prostředků MC_.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 18ccadcf43d41c677a665ed068d093f51389b576
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657328"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691871"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
@@ -190,7 +190,7 @@ Podrobnosti o vašich výpočetních instancích najdete na stránce **COMPUTE**
 
 * Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 
-* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se k ní dostat jenom z virtuální sítě. Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro <název instance>. <region> . instances.azureml.ms s privátní IP adresou privátního koncového bodu v pracovním prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
+* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro <název instance>. <region> . instances.azureml.ms s privátní IP adresou privátního koncového bodu v pracovním prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
     
 ## <a name="next-steps"></a>Další kroky
 

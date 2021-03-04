@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f924bcdce0937c74c3deeab96f3d4b2a85e3944d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704442"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
 
@@ -70,7 +70,7 @@ Součástí instalace poskytovatele MySQL OMI je programový soubor MySQL OMI Au
 
 Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth.
 
-| Operace | Příklad | Description
+| Operace | Příklad | Popis
 |:--|:--|:--|
 | AutoUpdate *false nebo true* | mycimprovauth AutoUpdate – NEPRAVDA | Nastaví, jestli se má soubor ověření automaticky aktualizovat při restartování nebo aktualizaci. |
 | výchozí *přihlašovací heslo pro adresu BIND* | mycimprovauth výchozí adresa 127.0.0.1 root PWD | Nastaví výchozí instanci v souboru OMI pro ověřování MySQL.<br>Pole heslo by mělo být zadáno v prostém textu – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64. |
@@ -167,4 +167,4 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromáždí čítače výkonu](data-sources-performance-counters.md) od agentů systému Linux.
-* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
+* Přečtěte si o [dotazech protokolů](../logs/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

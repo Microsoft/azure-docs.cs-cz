@@ -74,10 +74,14 @@
           href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
-        - name: Informace o zásadách protokolu IPsec
+        - name: Informace o zásadách protokolu S2S IPsec
           href: virtual-wan-ipsec.md
         - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
           href: path-selection-multiple-links.md
+    - name: Připojení typu point-to-site
+      items:
+        - name: Informace o zásadách IPsec P2S
+          href: point-to-site-ipsec.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -108,6 +112,8 @@
           href: connect-virtual-network-gateway-vwan.md
         - name: Konfigurace vlastních zásad IPsec
           href: virtual-wan-custom-ipsec-portal.md
+        - name: Konfigurovat pravidla překladu adres (NAT)
+          href: nat-rules-vpn-gateway.md
     - name: Uživatelská síť VPN (point-to-site)
       items:
         - name: Vytvoření připojení uživatelské sítě VPN

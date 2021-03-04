@@ -1,22 +1,22 @@
 ---
-title: Zobrazení závislostí aplikace pomocí Azure Monitor pro virtuální počítače
-description: Mapa je funkce Azure Monitor pro virtuální počítače. Automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak používat funkci map v různých scénářích.
+title: Zobrazení závislostí aplikace s využitím virtuálních počítačů Insights
+description: Mapa je funkce pro službu VM Insights. Automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak používat funkci map v různých scénářích.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719640"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače k porozumění součástem aplikace
-V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Použití funkce map pro službu VM Insights k porozumění součástem aplikace
+V části VM Insights můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
 
-Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tématu [povolení Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md).
+Informace o konfiguraci služby VM Insights najdete v tématu [Povolení služby VM Insights](./vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se na [Azure Portal](https://portal.azure.com).
@@ -49,7 +49,7 @@ Chcete-li, aby funkce map zobrazovala relevantní výstrahy, vytvořte pravidlo 
 - Přidejte klauzuli pro seskupení výstrah podle počítače (například **podle intervalu počítače 1 minute**).
 - Založte upozornění na metriku.
 
-Další informace o výstrahách Azure a vytváření pravidel výstrah najdete v tématu [sjednocené výstrahy v Azure monitor](../platform/alerts-overview.md).
+Další informace o výstrahách Azure a vytváření pravidel výstrah najdete v tématu [sjednocené výstrahy v Azure monitor](../alerts/alerts-overview.md).
 
 V pravém horním rohu možnost **Legenda** popisuje symboly a role na mapě. Pro bližší zobrazení mapy a jejich přesunu použijte ovládací prvky přiblížení v pravém dolním rohu. Můžete nastavit úroveň přiblížení a přizpůsobit mapu velikosti stránky.  
 
@@ -85,7 +85,7 @@ Pokud skupina obsahuje monitorované a nemonitorované servery, můžete vybrat 
 
 ## <a name="view-a-map-from-a-vm"></a>Zobrazení mapy z virtuálního počítače 
 
-Přístup k Azure Monitor pro virtuální počítače přímo z virtuálního počítače:
+Přístup ke CLOUDu Insights přímo z virtuálního počítače:
 
 1. V Azure Portal vyberte **Virtual Machines**. 
 2. V seznamu vyberte virtuální počítač. V části **monitorování** vyberte **přehledy**.  
@@ -99,7 +99,7 @@ Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidě
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Zobrazení mapy ze sady škálování virtuálních počítačů
 
-Přístup k Azure Monitor pro virtuální počítače přímo ze sady škálování virtuálních počítačů:
+Přístup k VIRTUÁLNÍmu počítači můžete získat přímo ze sady škálování virtuálních počítačů:
 
 1. V Azure Portal vyberte **Virtual Machine Scale Sets**.
 2. V seznamu vyberte virtuální počítač. Pak v části **monitorování** zvolte **přehledy**.  
@@ -128,11 +128,10 @@ V Azure Monitor funkce mapa poskytuje globální pohled na vaše virtuální po�
 
 Pomocí selektoru **pracovního prostoru** v horní části stránky vyberte pracovní prostor. Pokud máte více než jeden Log Analytics pracovní prostor, vyberte pracovní prostor, který je povolený pro řešení a který obsahuje virtuální počítače, které se k němu nahlásí. 
 
-Selektor **skupin** vrátí předplatná, skupiny prostředků, [skupiny počítačů](../platform/computer-groups.md)a sady škálování virtuálních počítačů pro počítače, které se vztahují k vybranému pracovnímu prostoru. Váš výběr se vztahuje pouze na funkci mapy a neprovádí se nad výkonem nebo stavem.
+Selektor **skupin** vrátí předplatná, skupiny prostředků, [skupiny počítačů](../logs/computer-groups.md)a sady škálování virtuálních počítačů pro počítače, které se vztahují k vybranému pracovnímu prostoru. Váš výběr se vztahuje pouze na funkci mapy a neprovádí se nad výkonem nebo stavem.
 
 Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** . Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
 
 ## <a name="next-steps"></a>Další kroky
 
-K identifikaci kritických bodů, kontrole výkonu a pochopení celkového využití virtuálních počítačů, najdete informace v tématu [zobrazení stavu výkonu pro Azure monitor pro virtuální počítače](vminsights-performance.md). 
-
+K identifikaci kritických bodů, kontrole výkonu a pochopení celkového využití virtuálních počítačů, najdete informace v tématu [zobrazení stavu výkonu pro službu VM Insights](vminsights-performance.md).

@@ -101,7 +101,7 @@
     - name: Reference
       items:
         - name: Reference k rozhraní API pro překlad dokumentu
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: Přehled

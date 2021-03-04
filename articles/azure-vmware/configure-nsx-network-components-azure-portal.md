@@ -3,12 +3,12 @@ title: Konfigurace síťových součástí NSX v řešení Azure VMware
 description: Naučte se používat konzolu řešení Azure VMware ke konfiguraci segmentů sítě NSX-T.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716917"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurace síťových součástí NSX v řešení Azure VMware
 
@@ -36,13 +36,9 @@ Segment NSX-T můžete vytvořit a nakonfigurovat z konzoly řešení Azure VMwa
 >[!NOTE]
 >Pokud plánujete používat protokol DHCP, budete muset před vytvořením a konfigurací segmentu NSX-T [nakonfigurovat server DHCP nebo službu DHCP Relay](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal) .
 
-1. V privátním cloudu řešení Azure VMware v části **zatížení sítě** vyberte **segmenty**  >  **Přidat**.
+1. V privátním cloudu řešení Azure VMware v části **zatížení sítě** vyberte **segmenty**  >  **Přidat**. Zadejte podrobnosti nového logického segmentu a vyberte **OK**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="Snímek obrazovky ukazující, jak přidat nový segment":::
-
-1. Zadejte podrobnosti nového logického segmentu.
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="Snímek obrazovky zobrazující podrobnosti o novém segmentu.":::
    
    - **Název segmentu** – název logického přepínače, který je viditelný v vCenter.
    - **Brána podsítě** – IP adresa brány pro podsíť logického přepínače s maskou podsítě. Virtuální počítače jsou připojené k logickému přepínači a všechny virtuální počítače, které se připojují k tomuto přepínači, patří do stejné podsítě.  Všechny virtuální počítače připojené k tomuto logickému segmentu navíc musí mít IP adresu ze stejného segmentu.
@@ -50,8 +46,6 @@ Segment NSX-T můžete vytvořit a nakonfigurovat z konzoly řešení Azure VMwa
    - **Připojená brána**  -  *Vybrané ve výchozím nastavení a jen pro čtení.*  Brána a typ informací o segmentech úrovně 1. 
       - **T1** – název brány vrstvy 1 ve Správci NSX-T. Privátní cloud řešení Azure VMware se dodává s bránou NSX-T úrovně 0 v aktivním/aktivním režimu a výchozí bránou NSX-T úrovně 1 v aktivním nebo pohotovostním režimu.  Segmenty vytvořené prostřednictvím konzoly řešení Azure VMware se připojují pouze k výchozí bráně 1 a zatížení těchto segmentů získá East-West a North-South připojení. Pomocí Správce NSX-T můžete vytvořit jenom další brány úrovně 1. Brány vrstvy 1 vytvořené z konzoly správce NSX-T nejsou viditelné v konzole řešení Azure VMware. 
       - Segment překryvných **typů** podporovaný řešením Azure VMware.
-
-1. Vyberte **OK** a vytvořte segment a připojte ho k bráně vrstvy 1. 
 
    Segment je teď viditelný v konzole řešení Azure VMware, NSX-T a vCenter.
 
@@ -157,24 +151,12 @@ Nakonfigurujete výchozí zónu DNS a zónu plně kvalifikovaného názvu domén
 
 ### <a name="step-2-configure-dns-service"></a>Krok 2. Konfigurace služby DNS
 
-1. Vyberte kartu **Služba DNS** , vyberte **Přidat** a potom zadejte:
+1. Vyberte kartu **Služba DNS** a pak vyberte **Přidat**. Zadejte podrobnosti a vyberte **OK**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="Snímek obrazovky zobrazující informace požadované pro službu DNS":::
 
-   1. Název služby DNS.
-
-   1. Zadejte IP adresu služby DNS.
-
-   1. Vyberte výchozí zónu DNS, kterou jste vytvořili v rámci karty zóny DNS.
-
-   1. Vyberte zóny plně kvalifikovaného názvu domény, které jste přidali pod kartu zóny DNS.
-
-   1. Vyberte **úroveň protokolu**.
-
    >[!TIP]
    >Ve výchozím nastavení je vybraná **Brána-1** a při nasazování řešení Azure VMware se odráží brána vytvořená.
-
-1. Vyberte **OK**. 
 
    Služba DNS se úspěšně přidala.
 

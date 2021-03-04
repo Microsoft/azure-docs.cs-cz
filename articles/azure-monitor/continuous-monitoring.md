@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ca6185d829e5941145905e1bc63cc2fb9ac781e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579502"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731642"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -36,7 +36,7 @@ Aby bylo možné získat pozor v celém prostředí, je nutné povolit monitorov
 Aplikace jsou stejně spolehlivé jako základní infrastruktura. Monitorování povolené v celé infrastruktuře vám pomůže dosáhnout plné viditelnosti a zjednodušit zjištění potenciální hlavní příčiny, když se něco nepodaří. Azure Monitor vám pomůže sledovat stav a výkon celé hybridní infrastruktury včetně prostředků, jako jsou virtuální počítače, kontejnery, úložiště a síť.
 
 - Automaticky získáte [metriky platforem, protokoly aktivit a diagnostické protokoly](agents/data-sources.md) z většiny vašich prostředků Azure bez konfigurace.
-- Povolte hlubší monitorování pro virtuální počítače s [Azure monitor pro virtuální počítače](vm/vminsights-overview.md).
+- Povolte hlubší monitorování virtuálních počítačů s využitím služby [VM Insights](vm/vminsights-overview.md).
 -  Povolte hlubší monitorování pro clustery AKS s [Azure monitor pro kontejnery](containers/container-insights-overview.md).
 - Přidejte do svého prostředí [řešení monitorování](./monitor-reference.md) pro různé aplikace a služby.
 

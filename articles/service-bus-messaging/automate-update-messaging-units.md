@@ -3,12 +3,12 @@ title: Azure Service Bus – automaticky aktualizovat jednotky zasílání zprá
 description: V tomto článku se dozvíte, jak můžete používat automatické aktualizace jednotek zasílání zpráv Service Bus oboru názvů.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581635"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720592"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Automaticky aktualizovat jednotky zasílání zpráv Azure Service Bus oboru názvů 
 Automatické škálování umožňuje mít ke zpracování zatížení vaší aplikace správné množství prostředků, na kterých běží. Umožňuje přidat prostředky pro zvýšení zátěže a také ušetřit peníze odebráním nečinných prostředků. Další informace o funkci automatického škálování Azure Monitor najdete [v tématu Přehled automatického škálování v Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) . 
@@ -57,7 +57,7 @@ Automatické škálování jednotek zasílání zpráv můžete nakonfigurovat p
 Nemůžete nastavit plán pro automatické škálování na konkrétní dny nebo rozsah kalendářních dat pro výchozí podmínku. Tato podmínka škálování se spustí, když se neshoduje žádná z dalších podmínek škálování s plánem. 
 
 ### <a name="scale-based-on-a-metric"></a>Škálování na základě metriky
-Následující postup ukazuje, jak přidat podmínku pro automatické zvýšení jednotek zasílání zpráv (horizontální navýšení kapacity), pokud je využití procesoru větší než 75%, a snižuje počet jednotek zasílání zpráv (v případě škálování), pokud je využití procesoru menší než 25%. Přírůstky jsou provedeny od 1 do 2, 2 až 4 a 4 až 8. Podobně se snižují snížení hodnoty od 8 do 4, 4 až 2 a 2 až 1. 
+Následující postup ukazuje, jak přidat podmínku pro automatické zvýšení jednotek zasílání zpráv (horizontální navýšení kapacity), pokud je využití procesoru větší než 75%, a snižuje počet jednotek zasílání zpráv (v případě škálování), pokud je využití procesoru menší než 25%. Přírůstky jsou provedeny od 1 do 2, 2 až 4, 4 až 8 a 8 až 16. Podobně jsou snížení hodnoty provedeny od 16 do 8, 8 až 4, 4 až 2 a 2 až 1. 
 
 1. Na stránce **Nastavení automatického škálování** vyberte **vlastní automatické škálování** pro možnost **zvolit způsob horizontálního** navýšení kapacity prostředku. 
 1. V části **výchozí** na stránce zadejte **název** výchozí podmínky. Vyberte ikonu **tužky** a text upravte. 
@@ -74,7 +74,7 @@ Následující postup ukazuje, jak přidat podmínku pro automatické zvýšení
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Výchozí – horizontální navýšení kapacity, pokud je využití procesoru větší než 75%":::       
 
         > [!NOTE]
-        > Funkce automatického škálování zvyšuje počet jednotek zasílání zpráv pro obor názvů, pokud celkové využití CPU v tomto příkladu překročí 75%. Přírůstky jsou provedeny od 1 do 2, 2 až 4 a 4 až 8. 
+        > Funkce automatického škálování zvyšuje počet jednotek zasílání zpráv pro obor názvů, pokud celkové využití CPU v tomto příkladu překročí 75%. Přírůstky jsou provedeny od 1 do 2, 2 až 4, 4 až 8 a 8 až 16. 
 1. Vyberte **+ Přidat pravidlo** znovu a na stránce **pravidlo škálování** proveďte tyto kroky:
     1. Vyberte metriku z rozevíracího seznamu **název metriky** . V tomto příkladu je to **procesor**. 
     1. Vyberte operátor a prahové hodnoty. V tomto příkladu jsou v **prahové hodnotě metriky** **méně než** **25** , což umožňuje aktivovat akci škálování. 
@@ -84,7 +84,7 @@ Následující postup ukazuje, jak přidat podmínku pro automatické zvýšení
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Výchozí – škála v případě, že využití procesoru je méně než 25%":::       
 
         > [!NOTE]
-        > Funkce automatického škálování snižuje počet jednotek zasílání zpráv pro obor názvů, pokud celkové využití CPU v tomto příkladu dosahuje 25%. Snížení se provádí od 8 do 4, 4 až 2 a 2 až 1. 
+        > Funkce automatického škálování snižuje počet jednotek zasílání zpráv pro obor názvů, pokud celkové využití CPU v tomto příkladu dosahuje 25%. Snížení se provádí od 16 do 8, 8 až 4, 4 až 2 a 2 až 1. 
 1. Nastavte **minimální** a **maximální** a **výchozí** počet jednotek zasílání zpráv.
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Výchozí pravidlo založené na metrikě":::

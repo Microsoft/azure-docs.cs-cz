@@ -2,14 +2,14 @@
 title: Vytvoření účtu v Azure Portal
 description: Naučte se vytvořit účet Azure Batch na portálu Azure, abyste mohli spouštět velké paralelní úlohy v cloudu.
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368502"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703660"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -101,7 +101,7 @@ V režimu předplatného uživatele se vyžaduje [Azure Key Vault](../key-vault/
 
 Při vytváření účtu Batch v režimu předplatného uživatele zadejte **předplatné uživatele** jako režim přidělování fondů, vyberte Key Vault, který jste vytvořili, a zaškrtnutím políčka udělte Azure Batch přístup k Key Vault.
 
-Pokud dáváte přednost ručnímu udělení přístupu Key Vault, přejděte do části **zásady přístupu** Key Vault a vyberte **Přidat zásady přístupu**. Vyberte odkaz vedle pole **Vybrat objekt zabezpečení** a vyhledejte **Microsoft Azure Batch** (ID aplikace **ddbf3205-c6bd-46ae-8127-60eb93363864**). Vyberte tento objekt zabezpečení a pak nakonfigurujte **tajná oprávnění** pomocí rozevírací nabídky. Azure Batch musí být udělené minimální oprávnění **získat**, **Zobrazit**, **nastavit** a **Odstranit** .
+Pokud dáváte přednost ručnímu udělení přístupu Key Vault, přejděte do části **zásady přístupu** Key Vault a vyberte **Přidat zásady přístupu**. Vyberte odkaz vedle pole **Vybrat objekt zabezpečení** a vyhledejte **Microsoft Azure Batch** (ID aplikace **ddbf3205-c6bd-46ae-8127-60eb93363864**). Vyberte tento objekt zabezpečení a pak nakonfigurujte **tajná oprávnění** pomocí rozevírací nabídky. Azure Batch musí být udělené minimální oprávnění **získat**, **Zobrazit**, **nastavit** a **Odstranit** . U [trezorů klíčů s povoleným obnovitelném odstraněním](../key-vault/general/soft-delete-overview.md)musí být také udělené oprávnění **obnovit** Azure Batch.
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Snímek obrazovky s vybranými tajnými oprávněními pro Azure Batch":::
 

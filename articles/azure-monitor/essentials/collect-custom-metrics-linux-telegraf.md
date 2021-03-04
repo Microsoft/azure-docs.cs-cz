@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fbed48dda3d6b022d30bb9fb0507c3f9f203771d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4274f976a04a9694c0429a2a4794d645304a9e97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728803"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -25,7 +25,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
  ![Přehled telegrafního agenta](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Vlastní metriky se ve všech oblastech nepodporují. [Tady](../platform/metrics-custom-overview.md#supported-regions) jsou uvedené podporované oblasti.
+> Vlastní metriky se ve všech oblastech nepodporují. [Tady](./metrics-custom-overview.md#supported-regions) jsou uvedené podporované oblasti.
 
 ## <a name="send-custom-metrics"></a>Odeslat vlastní metriky 
 
@@ -136,4 +136,4 @@ V tomto návodu jste navíc použili agenta telegraf k vygenerování metrik o v
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**. Pak potvrďte název skupiny prostředků, která se má odstranit. 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [vlastních metrikách](../platform/metrics-custom-overview.md).
+- Přečtěte si další informace o [vlastních metrikách](./metrics-custom-overview.md).

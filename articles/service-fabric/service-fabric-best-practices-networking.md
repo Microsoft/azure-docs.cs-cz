@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732560"
 ---
 # <a name="networking"></a>Sítě
 
@@ -39,7 +39,7 @@ Vyvoláním vlastnosti *enableAcceleratedNetworking* ve vaší správce prostře
 ```
 Cluster Service Fabric můžete zřídit v systému [Linux s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami a [s využitím akcelerovaných sítí](../virtual-network/create-vm-accelerated-networking-powershell.md).
 
-Akcelerované sítě se podporují pro skladové položky řady virtuálních počítačů Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 a MS/MMS. Akcelerované síťové služby byly úspěšně testovány pomocí Standard_DS8_v3 SKU v 01/23/2019 pro cluster Service Fabric Windows a použití Standard_DS12_v2 na 01/29/2019 pro cluster Service Fabric Linux.
+Akcelerované sítě se podporují pro skladové položky řady virtuálních počítačů Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 a MS/MMS. Akcelerované síťové služby byly úspěšně testovány pomocí Standard_DS8_v3 SKU v 01/23/2019 pro cluster Service Fabric Windows a použití Standard_DS12_v2 na 01/29/2019 pro cluster Service Fabric Linux. Upozorňujeme, že urychlené síťové služby vyžadují aspoň 4 vCPU. 
 
 Pokud chcete povolit akcelerované síťové služby v existujícím clusteru Service Fabric, musíte nejdřív [škálovat Service Fabric clusteru tím, že přidáte sadu škálování virtuálního počítače](./virtual-machine-scale-set-scale-node-type-scale-out.md), abyste provedli následující akce:
 1. Zřízení NodeType s povolenými akcelerovanými síťovými službami
@@ -62,7 +62,7 @@ Aby bylo možné zrychlit síťové služby v existujícím clusteru, je potřeb
 Základní pravidla jsou minimální pro uzamčení zabezpečení clusteru spravovaného Service Fabric Azure. Nepodaří-li se otevřít následující porty nebo schválit IP adresu nebo adresu URL, zabráníte správnému fungování clusteru a nemusí být podporované. Pomocí této sady pravidel je naprosto potřeba použít [automatické upgrady imagí operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), jinak bude potřeba otevřít další porty.
 
 ### <a name="inbound"></a>Příchozí 
-|Priorita   |Name               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
+|Priorita   |Název               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |Internet           |VirtualNetwork    |Povolit
 |3910       |Klient             |19000       |TCP       |Internet           |VirtualNetwork    |Povolit
@@ -97,7 +97,7 @@ Další informace o příchozích pravidlech zabezpečení:
 
 ### <a name="outbound"></a>Odchozí
 
-|Priorita   |Name               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
+|Priorita   |Název               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Síť            |Všechny         |TCP       |VirtualNetwork     |VirtualNetwork    |Povolit
 |3910       |Poskytovatel prostředků  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Povolit

@@ -1,18 +1,18 @@
 ---
-title: Povolit Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
+title: Povolit službu Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak povolit a nakonfigurovat službu Container Insights, abyste mohli porozumět tomu, jak váš kontejner vykonává a jaké problémy byly zjištěny v souvislosti s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708352"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
+# <a name="enable-container-insights"></a>Povolit službu Container Insights
 
-Tento článek poskytuje přehled možností, které jsou k dispozici pro nastavení Azure Monitor pro kontejnery pro monitorování výkonu úloh nasazených do prostředí Kubernetes a hostovaných na:
+Tento článek poskytuje přehled možností, které jsou k dispozici pro nastavení služby Container Insights pro monitorování výkonu úloh nasazených do prostředí Kubernetes a hostovaných na:
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3. x a 4. x  
@@ -23,7 +23,7 @@ Můžete také monitorovat výkon úloh, které jsou nasazeny na samoobslužně 
 - Azure, pomocí [modulu AKS](https://github.com/Azure/aks-engine)
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) nebo místně pomocí modulu AKS.
 
-Můžete povolit Azure Monitor pro kontejnery pro nové nasazení nebo pro jedno nebo více existujících nasazení Kubernetes pomocí kterékoli z následujících podporovaných metod:
+Můžete povolit službu Container Insights pro nové nasazení nebo pro jedno nebo více existujících nasazení Kubernetes pomocí kterékoli z následujících podporovaných metod:
 
 - Azure Portal
 - Azure PowerShell
@@ -44,37 +44,37 @@ Než začnete, ujistěte se, že jste splnili následující požadavky:
 
 - Máte Log Analytics pracovní prostor.
 
-   Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech, které jsou uvedeny v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
+   Služba Container Insights podporuje pracovní prostor Log Analytics v oblastech, které jsou uvedeny v [produktech dostupných v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
 
    Pracovní prostor můžete vytvořit, když povolíte monitorování pro nový cluster AKS, nebo můžete nechat prostředí pro připojování vytvořit výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru AKS. 
    
    Pokud se rozhodnete vytvořit pracovní prostor sami, můžete ho vytvořit pomocí: 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Azure Portal](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Azure Portal](../logs/quick-create-workspace.md) 
    
-   Seznam podporovaných dvojic mapování, které se mají použít pro výchozí pracovní prostor, najdete v tématu [mapování oblastí pro Azure monitor kontejnerů](container-insights-region-mapping.md).
+   Seznam podporovaných dvojic mapování, které se mají použít pro výchozí pracovní prostor, najdete v tématu [mapování oblastí pro službu Container Insights](container-insights-region-mapping.md).
 
-- Jste členem skupiny *přispěvatelů Log Analytics* pro povolení monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../platform/manage-access.md).
+- Jste členem skupiny *přispěvatelů Log Analytics* pro povolení monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../logs/manage-access.md).
 
 - Jste členem [skupiny *Owner*](../../role-based-access-control/built-in-roles.md#owner) v prostředku clusteru AKS.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- Chcete-li zobrazit data monitorování, je nutné mít v pracovním prostoru Log Analytics [*Log Analytics roli Čtenář*](../platform/manage-access.md#manage-access-using-azure-permissions) , nakonfigurovanou pomocí Azure monitor for Containers.
+- Chcete-li zobrazit data monitorování, musíte mít roli [*čtenář Log Analytics*](../logs/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics, která je nakonfigurována pomocí kontejneru Insights.
 
 - Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Předtím, než [nakonfigurujete agenta](container-insights-prometheus-integration.md) tak, aby shromáždil metriky, je důležité si projít [dokumentaci k Prometheus](https://prometheus.io/) , která vám pomůže pochopit, jaká data se dají vyřadit a jaké metody se podporují.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Azure Monitor pro kontejnery oficiálně podporují následující konfigurace:
+Container Insights oficiálně podporuje následující konfigurace:
 
 - Prostředí: Azure Red Hat OpenShift, Kubernetes v místním prostředí a modul AKS v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - Verze Kubernetes a zásady podpory jsou stejné jako ty, které jsou [podporované ve službě Azure Kubernetes Service (AKS)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
 
-V následující tabulce jsou uvedeny informace o konfiguraci proxy serveru a brány firewall, které jsou vyžadovány pro informující agenta pro komunikaci s Azure Monitor for Containers. Veškerý síťový provoz z agenta je odchozí na Azure Monitor.
+V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a brány firewall, které jsou potřebné pro informování agentů s kontejnerem pro komunikaci se službou Container Insights. Veškerý síťový provoz z agenta je odchozí na Azure Monitor.
 
 |Prostředek agenta|Port |
 |--------------|------|
@@ -86,7 +86,7 @@ V následující tabulce jsou uvedeny informace o konfiguraci proxy serveru a br
 
 V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet:
 
-|Prostředek agenta|Port |Description | 
+|Prostředek agenta|Port |Popis | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
@@ -94,7 +94,7 @@ V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a b
 
 Následující tabulka uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA:
 
-|Prostředek agenta|Port |Description | 
+|Prostředek agenta|Port |Popis | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.us` | 443 | Připojování OMS |
@@ -102,7 +102,7 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 
 ## <a name="components"></a>Komponenty
 
-Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontejnerů pro Linux, který je speciálně vyvinutý pro Azure Monitor pro kontejnery. Tento specializovaný agent shromažďuje data o výkonu a událostech ze všech uzlů v clusteru a Agent je automaticky nasazen a zaregistrován v zadaném Log Analytics pracovním prostoru během nasazování. 
+Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontejnerů pro Linux, který je speciálně vyvinutý pro službu Container Insights. Tento specializovaný agent shromažďuje data o výkonu a událostech ze všech uzlů v clusteru a Agent je automaticky nasazen a zaregistrován v zadaném Log Analytics pracovním prostoru během nasazování. 
 
 Verze agenta je Microsoft/OMS: ciprod04202018 nebo novější a představuje datum v následujícím formátu: *MMDDYYYY*.
 
@@ -116,7 +116,7 @@ Po vydání nové verze agenta se automaticky upgraduje na spravované clustery 
 >
 > Šablona musí být nasazená ve stejné skupině prostředků jako cluster.
 
-Pokud chcete povolit Azure Monitor pro kontejnery, použijte jednu z metod, která je popsaná v následující tabulce:
+Pokud chcete povolit službu Container Insights, použijte jednu z metod, která je popsaná v následující tabulce:
 
 | Stav nasazení | Metoda | Popis |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ Pokud chcete povolit Azure Monitor pro kontejnery, použijte jednu z metod, kter
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste povolili monitorování, můžete začít s analýzou výkonu clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).
+Teď, když jste povolili monitorování, můžete začít s analýzou výkonu clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí. Informace o používání služby Container Insights najdete v tématu [zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).

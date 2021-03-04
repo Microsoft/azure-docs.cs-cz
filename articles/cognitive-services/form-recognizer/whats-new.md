@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703384"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -91,7 +91,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 * **Podpora měny** – detekce a extrakce globálních symbolů měn.
 * **Azure gov** – Nástroj pro rozpoznávání formulářů je teď dostupný i v Azure gov.
 * **Rozšířené funkce zabezpečení**: 
-   * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem, označované také jako Přineste si vlastní klíč (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
+   * **Přineste si vlastní** Nástroj pro rozpoznávání vlastního klíče, který vaše data automaticky šifruje, když jsou trvale chráněná v cloudu, a pomůžou vám splnit závazky zabezpečení a dodržování předpisů vaší organizace. Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem, označované také jako Přineste si vlastní klíč (BYOK)](./encrypt-data-at-rest.md), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.  
    * **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="security-improvements"></a>Vylepšení zabezpečení
 
-* Customer-Managed klíče jsou nyní k dispozici pro FormRecognizer. Další informace najdete v tématu [šifrování dat v klidovém formátu pro rozpoznávání formulářů](./form-recognizer-encryption-of-data-at-rest.md).
+* Customer-Managed klíče jsou nyní k dispozici pro FormRecognizer. Další informace najdete v tématu [šifrování dat v klidovém formátu pro rozpoznávání formulářů](./encrypt-data-at-rest.md).
 * Pomocí spravovaných identit můžete získat přístup k prostředkům Azure pomocí Azure Active Directory. Další informace najdete v tématu [autorizace přístupu ke spravovaným identitám](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>Březen 2020 

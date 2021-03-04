@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6e6ad96da5f5c7901fda1f041c55075552edecde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591439"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720337"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
 
@@ -168,7 +168,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 * [Azure Stream Analytics poskytuje diagnostické protokoly a data aktivit ke kontrole.](./stream-analytics-job-diagnostic-logs.md)
 
-* [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
+* [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 * [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 

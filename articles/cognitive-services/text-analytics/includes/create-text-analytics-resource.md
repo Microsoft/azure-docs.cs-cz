@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: daafea59b96cc8da6b78f0733c9f54e0e4d3a8c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b6479d48a51ba962f2f6bfba16dac3b0886a9ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009858"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750508"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Vytvoření prostředku Cognitive Services pro analýzu textu
 
@@ -37,5 +37,5 @@ ms.locfileid: "96009858"
 
     |Karta prostředek na portálu|Nastavení|Hodnota|
     |--|--|--|
-    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Vypadá to jako `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` .|
+    |**Přehled**|Koncový bod|Zkopírujte koncový bod. Vypadá to jako `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0` .|
     |**Klíče**|Klíč rozhraní API|Zkopírujte jeden ze dvou klíčů. Jedná se o alfanumerický řetězec s 32 znaky bez mezer nebo pomlček: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585139"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735773"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -37,7 +37,7 @@ Pomocí Microsoft Azure můžete:
 
 - Chraňte své podnikání.
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>Technické možnosti zabezpečení pro splnění vaší zodpovědnosti
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>Technické možnosti zabezpečení pro splnění vaší zodpovědnosti
 
 Microsoft Azure poskytuje služby, které vám pomůžou splnit požadavky na zabezpečení, ochranu osobních údajů a dodržování předpisů. Následující obrázek vám pomůže vysvětlit různé služby Azure, které můžete použít k vytvoření zabezpečené a kompatibilní aplikační infrastruktury na základě oborových standardů.
 
@@ -143,7 +143,7 @@ Azure AD Privileged Identity Management vám umožní:
 
 #### <a name="identity-protection"></a>Ochrana identit
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) je služba zabezpečení, která poskytuje konsolidovanou pohled na detekci rizik a potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Identity Protection používá funkce detekce anomálií stávajících Azure Active Directory (k dispozici prostřednictvím sestav aktivit neobvyklé Azure AD) a přináší nové typy detekce rizika, které mohou detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) je služba zabezpečení, která poskytuje konsolidovanou pohled na detekci rizik a potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Identity Protection používá funkce detekce anomálií stávajících Azure Active Directory (k dispozici prostřednictvím sestav aktivit neobvyklé Azure AD) a přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
 
 ## <a name="secure-resource-access"></a>Zabezpečený přístup k prostředkům
 
@@ -184,7 +184,7 @@ Pro organizace, které potřebují zabezpečený přístup z jedné pracovní st
 
 Větší sady dat lze přesunout pomocí vyhrazeného vysokorychlostního propojení WAN, například [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pokud se rozhodnete používat ExpressRoute, můžete také šifrovat data na úrovni aplikace pomocí [protokolu SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) nebo jiných protokolů pro přidání ochrany.
 
-Pokud spolupracujete s Azure Storage prostřednictvím webu Azure Portal, všechny transakce nastávají prostřednictvím protokolu HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)je také možné použít [REST API úložiště](/rest/api/storageservices/) prostřednictvím protokolu HTTPS.
+Pokud spolupracujete s Azure Storage přes Azure Portal, všechny transakce nastávají prostřednictvím protokolu HTTPS. K interakci s [Azure Storage](https://azure.microsoft.com/services/storage/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)je také možné použít [REST API úložiště](/rest/api/storageservices/) prostřednictvím protokolu HTTPS.
 
 Organizace, které nechrání data při přenosu, jsou náchylnější k [útokům](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14))prostředníkem, [odposlouchávání](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))a zneužití relace. Tyto útoky mohou představovat první krok k získání přístupu k důvěrným datům.
 
@@ -194,7 +194,7 @@ Další informace o možnosti Azure VPN najdete v článku [plánování a návr
 
 [Azure RMS](/azure/information-protection/what-is-azure-rms) používá k zabezpečení souborů a e-mailů zásady šifrování, identity a autorizace. Azure RMS funguje napříč různými zařízeními – telefony, tablety a počítači, a to ochranou v rámci vaší organizace i mimo vaši organizaci. Tato funkce je možná, protože Azure RMS přidává úroveň ochrany, která zůstává s daty, i když opustí hranice vaší organizace.
 
-Když použijete Azure RMS k ochraně souborů, používáte standardní kryptografii s plnou podporou [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Když využijete Azure RMS pro ochranu dat, máte jistotu, že ochrana zůstává se souborem, i když je zkopírována do úložiště, které není pod kontrolou, jako je například služba cloudového úložiště. Ke stejnému dochází u souborů sdílených e-mailem. soubor je chráněný jako příloha e-mailové zprávy s pokyny, jak otevřít chráněnou přílohu.
+Když použijete Azure RMS k ochraně souborů, používáte standardní kryptografii s plnou podporou [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Pokud používáte Azure RMS pro ochranu dat, máte jistotu, že ochrana zůstává se souborem, i když je zkopírována do úložiště, které není pod kontrolou, jako je například služba cloudového úložiště. Ke stejnému dochází u souborů sdílených e-mailem. soubor je chráněný jako příloha e-mailové zprávy s pokyny, jak otevřít chráněnou přílohu.
 Při plánování Azure RMS přijetí doporučujeme následující:
 
 - Nainstalujte [aplikaci sdílení RMS](/azure/information-protection/rms-client/sharing-app-windows). Tato aplikace se integruje s aplikacemi Office instalací doplňku Office tak, aby uživatelé mohli snadno chránit soubory přímo.
@@ -278,6 +278,8 @@ Síť Azure podporuje možnost přizpůsobení chování směrování pro síťo
 
 Azure podporuje vyhrazené připojení WAN Link k vaší místní síti a Virtual Network Azure s [ExpressRoute](../../expressroute/expressroute-introduction.md). Propojení mezi Azure a vaší lokalitou používá vyhrazené připojení, které nepřekračuje veřejný Internet. Pokud je vaše aplikace Azure spuštěná v několika datových centrech, můžete použít [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) k směrování požadavků od uživatelů, které jsou v jednotlivých instancích aplikace inteligentně. Provoz můžete směrovat i do služeb, které neběží v Azure, pokud jsou dostupné z Internetu.
 
+Azure také podporuje privátní a zabezpečené připojení k prostředkům PaaS (například Azure Storage a SQL Database) z Azure Virtual Network pomocí [privátního propojení Azure](https://docs.microsoft.com/azure/private-link/private-link-overview). Prostředek PaaS je namapovaný na [privátní koncový bod](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ve vaší virtuální síti. Propojení mezi soukromým koncovým bodem ve vaší virtuální síti a prostředkem PaaS používá páteřní síť Microsoft a nepřekračuje veřejný Internet. Vystavení vaší služby pro veřejný Internet již není nutné. Pro přístup k hostovaným zákaznickým a partnerským službám Azure ve vaší virtuální síti můžete použít také soukromé odkazy Azure.  Kromě toho privátní propojení Azure umožňuje vytvořit ve virtuální síti vlastní [službu privátního propojení](https://docs.microsoft.com/azure/private-link/private-link-service-overview) a dodat ji svým zákazníkům ve svých virtuálních sítích soukromě. Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered.
+
 ## <a name="virtual-machine-security"></a>Zabezpečení virtuálních počítačů
 
 [Azure Virtual Machines](../../virtual-machines/index.yml) umožňuje flexibilním způsobem nasadit široké škály výpočetních řešení. Díky podpoře pro Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP a Azure BizTalk Services můžete nasadit libovolné úlohy a jakýkoli jazyk na téměř jakémkoli operačním systému.
@@ -304,7 +306,7 @@ Kromě toho kontrolní seznam:
 
 - Zpřístupňuje klíčová témata pro rozhodování pro rozhodovací pracovníky na začátku procesu přijetí cloudu.
 
-- Podporuje důkladné obchodní diskuze o předpisech a vlastní cíle organizace na ochranu osobních údajů, identifikovatelné osobní údaje (PII) a zabezpečení dat.
+- Podporuje důkladné obchodní diskuze týkající se předpisů a vlastní cíle organizace na ochranu osobních údajů, osobních údajů a zabezpečení dat.
 
 - Pomáhá organizacím identifikovat případné problémy, které by mohly ovlivnit cloudový projekt.
 
@@ -383,7 +385,7 @@ Auditování zabezpečení sítě je důležité pro detekci ohrožení zabezpe�
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako je .NET, Node.js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem devOps a má spojovací body k různým vývojářským nástrojům.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře na různých platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací dělají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako je .NET, Node.js a Java EE, hostované místně nebo v cloudu. Integruje se s vaším procesem DevOps a má spojovací body k různým vývojářským nástrojům.
 
 Monitoruje tyto parametry:
 

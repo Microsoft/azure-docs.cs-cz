@@ -1,17 +1,16 @@
 ---
 title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložiště | Microsoft Docs
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
-ms.subservice: ''
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 13c884d9f140fbd962bfa32ef2d853339aec325a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708063"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -85,7 +84,7 @@ Když vyberete nějakou hodnotu v jednom ze sloupců v sešitu, přejdete k podr
 
 ## <a name="view-from-a-storage-account"></a>Zobrazení z účtu úložiště
 
-Přístup k Azure Monitor pro virtuální počítače přímo z účtu úložiště:
+Přístup k virtuálnímu počítači můžete získat přímo z účtu úložiště:
 
 1. V Azure Portal vyberte účty úložiště.
 

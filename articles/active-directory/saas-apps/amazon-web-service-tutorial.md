@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689007"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -26,9 +26,26 @@ V tomto kurzu se naučíte, jak integrovat Amazon Web Services (AWS) s Azure Act
 * Umožněte uživatelům, aby se automaticky přihlásili k Amazon Web Services (AWS) s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-> [!Note]
-> Azure AD nepodporuje integraci jednotného přihlašování s AWS SSO, jedná se o jiný produkt od AWS. I když [zde](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)AWS zmiňujeme, Azure AD doporučuje zákazníkům používat integraci AWS IAM místo toho, aby bylo možné dosáhnout lepších bezpečnostních mechanismů, které používají zásady podmíněného přístupu na jednotlivých účtech, a také lépe řídit tyto aplikace.
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Porozumění různým aplikacím AWS v galerii aplikací Azure AD
+Pomocí níže uvedených informací můžete v galerii aplikací Azure AD učinit rozhodnutí pomocí Sign-On AWS a Single-Account AWS aplikací pro přístup k aplikacím.
 
+**Jednotné přihlašování AWS**
+
+Do Galerie aplikací Azure AD se přidalo [jednotné přihlašování AWS](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) v únoru 2021. Usnadňuje správu přístupu centrálně prostřednictvím několika účtů AWS a aplikací AWS s přihlášením prostřednictvím Microsoft Azure AD. Microsoft Azure AD federovat se pomocí jednotného přihlašování AWS SSO a pomocí AWS SSO můžete spravovat oprávnění ve všech účtech AWS z jednoho místa. AWS SSO zřídí oprávnění automaticky a udržuje je aktuální při aktualizaci zásad a přiřazení přístupu. Koncoví uživatelé se můžou ověřit pomocí svých přihlašovacích údajů Azure AD pro přístup ke konzole AWS, rozhraní příkazového řádku a integrovaným aplikacím AWS SSO.
+
+**Přístup k Single-Account AWS**
+
+[Přístup k AWS Single-Account](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) používali zákazníci během posledních několika let a umožňují FEDEROVAT Azure AD na jeden účet AWS a pomocí Azure AD spravovat přístup k ROLÍM AWS IAM. AWS správci IAM definují role a zásady v každém účtu AWS. Pro každý účet AWS můžou správci Azure AD federovat do AWS IAM, přiřazovat uživatele nebo skupiny k účtu a konfigurovat službu Azure AD tak, aby odesílala kontrolní výrazy, které autorizují přístup k rolím.  
+
+| Funkce | AWS jednu Sign-On | Přístup k Single-Account AWS |
+|:--- |:---:|:---:|
+|Podmíněný přístup| Podporuje jednu zásadu podmíněného přístupu pro všechny účty AWS. | Podporuje jednu zásadu podmíněného přístupu pro všechny účty nebo vlastní zásady na účet.|
+| Přístup k rozhraní příkazového řádku | Podporováno | Podporováno|
+| Privileged Identity Management | Zatím nepodporováno | Zatím nepodporováno |
+| Centralizovaná správa účtů | Centralizovaná správa účtů v AWS. | Centralizovaná správa účtů ve službě Azure AD (bude nejspíš vyžadovat podnikovou aplikaci Azure AD na účet). |
+| Certifikát SAML| Jeden certifikát| Samostatné certifikáty na aplikaci nebo účet | 
+
+## <a name="aws-single-account-access-architecture"></a>Architektura AWS Single-Account Access
 ![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
 Pro více instancí můžete nakonfigurovat více identifikátorů. Například:
@@ -113,7 +130,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AWS několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name  | Zdrojový atribut  | Obor názvů |
+    | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -147,7 +164,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 

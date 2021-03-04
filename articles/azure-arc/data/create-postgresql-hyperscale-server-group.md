@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním na ARC Azure
-description: Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním na ARC Azure
+title: Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
+description: Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387984"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687936"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -25,14 +25,14 @@ Tento dokument popisuje kroky pro vytvoření PostgreSQL skupiny serverů s šk�
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="getting-started"></a>Začínáme
-Pokud jste již obeznámeni s tématy níže, můžete tento odstavec vynechat.
+Pokud jste již obeznámeni s tématy uvedenými níže, můžete tento odstavec vynechat.
 Než budete pokračovat v vytváření, můžete si přečíst důležitá témata:
 - [Přehled datových služeb s podporou ARC Azure](overview.md)
 - [Režimy připojení a požadavky](connectivity.md)
 - [Koncepty konfigurace úložiště a Kubernetes úložiště](storage-configuration.md)
 - [Model prostředků Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-Pokud dáváte přednost tomu, abyste si vyzkoušeli nějaké možnosti bez zřízení celého prostředí, začněte rychle začít pomocí [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
+Pokud dáváte přednost vyzkoušení bez samotného celého prostředí, začněte rychle začít pomocí [Azure ARC rychlé zprovoznění](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ve službě Azure Kubernetes Service (AKS), AWS elastické Kubernetesové služby (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure.
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Přihlášení k řadiči dat ARC Azure
@@ -55,51 +55,95 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 ```
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Předběžný a dočasný krok jenom pro uživatele OpenShift
+Před přechodem k dalšímu kroku implementujte tento krok. Pokud chcete nasadit skupinu serverů PostgreSQL s vlastním škálováním na Red Hat OpenShift v jiném projektu než ve výchozím nastavení, musíte pro svůj cluster spustit následující příkazy, abyste mohli aktualizovat omezení zabezpečení. Tento příkaz uděluje potřebná oprávnění účtům služeb, které budou spouštět PostgreSQL skupinu serverů s vlastním škálováním. V poli omezení kontextu zabezpečení (SCC) ARC – data-SCC je ten, který jste přidali při nasazení řadiče dat ARC Azure.
 
-Před přechodem k dalšímu kroku implementujte tento krok. Pokud chcete nasadit skupinu serverů PostgreSQL s vlastním škálováním na Red Hat OpenShift v jiném projektu než ve výchozím nastavení, musíte pro svůj cluster spustit následující příkazy, abyste mohli aktualizovat omezení zabezpečení. Tento příkaz uděluje potřebná oprávnění účtům služeb, které budou spouštět PostgreSQL skupinu serverů s vlastním škálováním. V poli omezení kontextu zabezpečení (SCC) **_ARC – data-SCC_** je ten, který jste přidali při nasazení řadiče dat ARC Azure.
-
-```console
+```Console
 oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
-_**Server-Group-Name** je název skupiny serverů, kterou vytvoříte během dalšího kroku._
-   
-Další informace o SCCs v OpenShift najdete v [dokumentaci k OpenShift](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
-Teď můžete implementovat další krok.
+**Server-Group-Name je název skupiny serverů, kterou vytvoříte během dalšího kroku.**
 
-## <a name="create-an-azure-database-for-postgresql-hyperscale-server-group"></a>Vytvoření Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním
+Další informace o SCCs v OpenShift najdete v [dokumentaci k OpenShift](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html). Teď můžete implementovat další krok.
 
-Pokud chcete ve službě Azure ARC vytvořit Azure Database for PostgreSQL skupinu serverů se škálováním na více systému, použijte následující příkaz:
+
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
+
+Pokud chcete na řadiči dat ARC vytvořit PostgreSQL skupinu serverů s podporou rozšíření Azure ARC, použijete příkaz `azdata arc postgres server create` , ke kterému budete předávat několik parametrů.
+
+Podrobnosti o všech parametrech, které můžete nastavit v čase vytvoření, najdete v výstupu příkazu:
+```console
+azdata arc postgres server create --help
+```
+
+Hlavní parametry by měly být zváženy:
+- **název skupiny serverů** , kterou chcete nasadit. Uveďte buď `--name` nebo `-n` následované názvem, jehož délka nesmí být delší než 11 znaků.
+
+- **verze modulu PostgreSQL** , který chcete nasadit: ve výchozím nastavení je to verze 12. K nasazení verze 12 můžete buď vynechat tento parametr, nebo předat jeden z následujících parametrů: `--engine-version 12` nebo `-ev 12` . K nasazení verze 11 označte `--engine-version 11` nebo `-ev 11` .
+
+- **počet pracovních uzlů** , které chcete nasadit pro horizontální navýšení kapacity, a případně dosažení lepších výkonů. Než budete pokračovat, přečtěte si [koncepty o Postgres škálování](concepts-distributed-postgres-hyperscale.md). Chcete-li určit počet uzlů pracovních procesů, které mají být nasazeny, použijte parametr `--workers` nebo `-w` za něj zadejte celé číslo větší nebo rovno 2. Například pokud chcete nasadit skupinu serverů se dvěma pracovními uzly, uveďte `--workers 2` nebo `-w 2` . Vytvoří se tři lusky, jedna pro uzel koordinátora/instance a dvě pro pracovní uzly/instance (jeden pro každý z pracovních procesů).
+
+- **třídy úložiště** , které má skupina serverů používat. Je důležité nastavit třídu úložiště přímo v době, kdy nasazujete skupinu serverů, protože po nasazení nejde změnit. Pokud jste po nasazení změnili třídu úložiště, budete muset extrahovat data, odstranit skupinu serverů, vytvořit novou skupinu serverů a importovat data. Můžete určit třídy úložiště, které se mají používat pro data, protokoly a zálohy. Ve výchozím nastavení platí, že pokud neuvedete třídy úložiště, budou použity třídy úložiště v řadiči dat.
+    - Chcete-li pro data nastavit třídu úložiště, označte parametr `--storage-class-data` nebo `-scd` za něj uveďte název třídy úložiště.
+    - Chcete-li nastavit třídu úložiště pro protokoly, označte parametr `--storage-class-logs` nebo `-scl` za něj uveďte název třídy úložiště.
+    - nastavení třídy úložiště pro zálohy: v této verzi Preview PostgreSQL s povoleným rozšířením Azure ARC existují dva způsoby, jak nastavit třídy úložiště v závislosti na tom, jaké typy operací zálohování a obnovení chcete provést. Pracujeme na zjednodušení tohoto prostředí. Označíte buď třídu úložiště, nebo připojení ke svazku s deklarací identity. Deklarace identity připojení svazku je dvojice existující deklarace identity trvalého svazku (ve stejném oboru názvů) a typu svazku (a volitelná metadata v závislosti na typu svazku) oddělená dvojtečkou. Trvalý svazek bude pro skupinu serverů PostgreSQL připojen ke každé pod.
+        - Chcete-li naplánovat pouze úplné obnovení databáze, nastavte parametr `--storage-class-backups` nebo `-scb` následovaný názvem třídy úložiště.
+        - Pokud máte v úmyslu obnovovat úplné obnovení databáze a obnovení bodu v čase, nastavte parametr `--volume-claim-mounts` nebo `-vcm` následovaný názvem deklarace svazku a typem svazku.
+
+Všimněte si, že při spuštění příkazu CREATE budete vyzváni k zadání hesla výchozího `postgres` správce. V této verzi Preview nejde změnit jméno tohoto uživatele. Můžete přeskočit interaktivní výzvu nastavením `AZDATA_PASSWORD` proměnné prostředí relace před spuštěním příkazu CREATE.
+
+### <a name="examples"></a>Příklady
+
+**Pokud chcete nasadit skupinu serverů Postgres verze 12 s názvem postgres01 se dvěma pracovními uzly, které používají stejné třídy úložiště jako řadič dat, spusťte následující příkaz:**
+```console
+azdata arc postgres server create -n postgres01 --workers 2
+```
+
+**Pokud chcete nasadit skupinu serverů Postgres verze 12 s názvem postgres01 se dvěma pracovními uzly, které používají stejné třídy úložiště jako řadič dat pro data a protokoly, ale konkrétní třída úložiště pro obnovení úplného obnovení i v čase, použijte následující postup:**
+
+ V tomto příkladu se předpokládá, že je skupina serverů hostovaná v clusteru Azure Kubernetes Service (AKS). V tomto příkladu se jako název třídy úložiště používá azurefile-Premium. Níže uvedený příklad můžete nastavit tak, aby odpovídal vašemu prostředí. Všimněte si, že pro tuto konfiguraci **se vyžaduje AccessModes ReadWriteMany** .  
+
+Nejprve vytvořte soubor YAML, který obsahuje níže uvedený popis záložního virtuálního okruhu, a pojmenujte ho CreateBackupPVC. yml. Příklad:
+```console
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-pvc
+  namespace: arc
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: azurefile-premium
+```
+
+Dále vytvořte okruh PVC pomocí definice uložené v souboru YAML:
 
 ```console
-azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+kubectl create -f e:\CreateBackupPVC.yml -n arc
+``` 
 
-#Example
-#azdata arc postgres server create -n postgres01 --workers 2
+Potom vytvořte skupinu serverů:
+
+```console
+azdata arc postgres server create -n postgres01 --workers 2 -vcm backup-pvc:backup
 ```
 
 > [!IMPORTANT]
-> - Třída úložiště používaná pro zálohy (_--Storage-Class-Backup-SCB_) je ve výchozím nastavení pro třídu úložiště dat řadiče dat, pokud není k dispozici.
-> - Pokud chcete obnovit skupinu serverů do samostatné skupiny serverů (například obnovení bodu v čase), musíte nakonfigurovat skupinu serverů tak, aby používala virtuální okruhy s režimem přístupu ReadWriteMany. To je potřeba udělat při vytváření skupiny serverů. Po jeho vytvoření ho nelze změnit. Další podrobnosti najdete v tématu:
->    - [Vytvořit skupinu serverů, která je připravená na zálohování a obnovení](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Omezení PostgreSQL škálování s povoleným rozšířením Azure ARC](limitations-postgresql-hyperscale.md)
+> - Přečtěte si [aktuální omezení související se zálohováním a obnovením](limitations-postgresql-hyperscale.md#backup-and-restore).
 
 
-> [!NOTE]
-> - **K dispozici jsou další parametry příkazového řádku.  Úplný seznam možností zobrazíte spuštěním `azdata arc postgres server create --help` .**
->
-> - Jednotka přijatá parametrem--Volume-Size-* je množství prostředků Kubernetes (celé číslo následované jedním z těchto pokusů (T, G, M, K, m) nebo jejich mocniny dvou ekvivalentů (ti, GI, mi, Ki)).
-> - Názvy musí být delší než 12 znaků a musí odpovídat konvencím názvů DNS.
-> - Zobrazí se výzva k zadání hesla pro standardního administrativního uživatele _Postgres_ .  Interaktivní výzvu můžete přeskočit nastavením `AZDATA_PASSWORD` proměnné prostředí relace před spuštěním příkazu CREATE.
-> - Pokud jste nasadili řadič dat pomocí AZDATA_USERNAME a AZDATA_PASSWORD proměnných prostředí relace ve stejné relaci terminálu, pak se hodnoty pro AZDATA_PASSWORD použijí i k nasazení skupiny serverů PostgreSQL s velkým měřítkem. Pokud dáváte přednost použití jiného hesla, buď (1) aktualizujte hodnotu pro AZDATA_PASSWORD nebo (2) odstraňte proměnnou prostředí AZDATA_PASSWORD nebo při vytváření skupiny serverů v případě, že odstraníte její hodnotu, se zobrazí výzva k interaktivnímu zadání hesla.
-> - Název výchozího správce pro databázový stroj PostgreSQL ve velkém měřítku je _Postgres_ a v tomto okamžiku jej nelze změnit.
+> [!NOTE]  
+> - Pokud jste nasadili řadič dat `AZDATA_USERNAME` pomocí `AZDATA_PASSWORD` proměnné prostředí a prostředí relace ve stejné relaci Terminálové služby, pak hodnoty pro `AZDATA_PASSWORD` budou použity také k nasazení skupiny serverů PostgreSQL s velkým měřítkem. Pokud dáváte přednost použití jiného hesla, buď (1) aktualizujte hodnotu pro `AZDATA_PASSWORD` nebo (2) odstraňte `AZDATA_PASSWORD` proměnnou prostředí nebo (3) Odstraňte její hodnotu, aby se při vytváření skupiny serverů zobrazila výzva k interaktivnímu zadání hesla.
 > - Když vytvoříte skupinu serverů PostgreSQL s škálovatelným škálováním, nebudou se prostředky hned registrovat přímo v Azure. V rámci procesu nahrávání [inventáře prostředků](upload-metrics-and-logs-to-azure-monitor.md)  nebo dat o [využití](view-billing-data-in-azure.md) do Azure se prostředky vytvoří v Azure a vaše prostředky budete moct zobrazit v Azure Portal.
 
 
 
-## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Výpis skupin Azure Database for PostgreSQL serverů vytvořených v nastavení ARC
+## <a name="list-the-postgresql-hyperscale-server-groups-deployed-in-your-arc-data-controller"></a>Seznam skupin serverů PostgreSQL s vlastním škálováním nasazených v řadiči dat ARC
 
-Pokud chcete zobrazit PostgreSQL skupiny serverů s škálovatelným škálováním na Azure ARC, použijte následující příkaz:
+Pokud chcete zobrazit seznam PostgreSQL skupin serverů s vlastním škálováním nasazených v řadiči dat ARC, spusťte následující příkaz:
 
 ```console
 azdata arc postgres server list
@@ -112,14 +156,14 @@ Name        State     Workers
 postgres01  Ready     2
 ```
 
-## <a name="get-the-endpoints-to-connect-to-your-azure-database-for-postgresql-server-groups"></a>Získání koncových bodů pro připojení ke skupinám Azure Database for PostgreSQL serverů
+## <a name="get-the-endpoints-to-connect-to-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Získání koncových bodů pro připojení ke skupinám serverů s povoleným PostgreSQLým rozšířením Azure ARC
 
-Chcete-li zobrazit koncové body pro instanci PostgreSQL, spusťte následující příkaz:
+Chcete-li zobrazit koncové body pro skupinu serverů PostgreSQL, spusťte následující příkaz:
 
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Příklad:
+Například:
 ```console
 [
   {
@@ -137,9 +181,7 @@ Příklad:
 ]
 ```
 
-Pomocí koncového bodu instance PostgreSQL se můžete připojit ke skupině serverů PostgreSQL s vlastním škálováním z oblíbeného nástroje:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin atd.
-
-Pokud k testování používáte virtuální počítač Azure, postupujte podle následujících pokynů:
+Pomocí koncového bodu instance PostgreSQL se můžete připojit ke skupině serverů PostgreSQL s vlastním škálováním z oblíbeného nástroje:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin atd. Když to uděláte, připojíte se k uzlu nebo instanci koordinátora, která bude mít za následek směrování dotazu do příslušných pracovních uzlů nebo instancí, pokud jste vytvořili distribuované tabulky. Pokud chcete získat další informace, přečtěte si [Koncepty s povoleným PostgreSQLm škálováním Azure ARC](concepts-distributed-postgres-hyperscale.md).
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Zvláštní Poznámka o nasazeních virtuálních počítačů Azure
 
@@ -192,7 +234,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si téma koncepty a návody Azure Database for PostgreSQLho škálování pro distribuci vašich dat napříč několika PostgreSQL uzly s vlastním škálováním a využijte výhod Azure Database for PostgreSQL vysokého měřítka. :
+- Přečtěte si téma koncepty a návody Azure Database for PostgreSQLho škálování pro distribuci dat napříč několika uzly v PostgreSQL a s výhodou lepších výkonů:
     * [Uzly a tabulky](../../postgresql/concepts-hyperscale-nodes.md)
     * [Určení typu aplikace](../../postgresql/concepts-hyperscale-app-type.md)
     * [Volba distribučního sloupce](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
@@ -203,7 +245,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > \* V dokumentech výše přeskočte oddíly, **které se přihlásí k Azure Portal**, & **Vytvoření Azure Database for PostgreSQL-Citus (škálování)**. Implementujte zbývající kroky v nasazení ARC Azure. Tyto části jsou specifické pro Azure Database for PostgreSQL Citus (PaaS), které nabízíme jako službu v cloudu Azure, ale ostatní části dokumentů jsou přímo použitelné pro PostgreSQL škálování na úrovni Azure ARC.
 
-- [Škálování skupiny serverů Azure Database for PostgreSQL Hyperscale na více instancí](scale-out-postgresql-hyperscale-server-group.md)
+- [Horizontální navýšení kapacity Azure ARC pro PostgreSQL skupinu serverů s vlastním škálováním](scale-out-postgresql-hyperscale-server-group.md)
 - [Koncepty konfigurace úložiště a Kubernetes úložiště](storage-configuration.md)
 - [Rozšiřování deklarací trvalých svazků](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Model prostředků Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 13726009e07172c9038bc8b45001e390c5b7ad70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709770"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -49,26 +49,29 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyro
 
 Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
-
-2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
+1. Vyberte **Vytvořit prostředek**. 
+2. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte **Nástroj pro vyrovnávání zatížení** .
+3. Na stránce **Vyrovnávání zatížení** vyberte **vytvořit**.
+4. Na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreatePubLBQS-RG** .|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | SKU           | Vybrat **Standard** |
+    | SKU           | Ponechte výchozí **Standard**. |
+    | Úroveň          | Ponechte výchozí **oblast**. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z 1, 2 nebo 3. |
     | Přidat veřejnou IPv6 adresu | Vyberte **Ne**. </br> Další informace o adresách IPv6 a nástroji pro vyrovnávání zatížení najdete v tématu [co je protokol IPv6 pro Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
+    | Předvolba směrování | Ponechte výchozí **síť Microsoft**. </br> Další informace o předvolbách směrování najdete v tématu [co je předvolby směrování (Preview)?](./routing-preference-overview.md). |
 
-3. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+5. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 
-4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
+6. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="Vytvoření standardního nástroje pro vyrovnávání zatížení" border="true":::
  
@@ -273,7 +276,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Name |  **myVM2** |**myVM3**|
+    | Název |  **myVM2** |**myVM3**|
     | Zóna dostupnosti | **2** |**3**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
@@ -334,15 +337,16 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyro
 
 Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
-
-2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
+1. Vyberte **Vytvořit prostředek**. 
+2. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte **Nástroj pro vyrovnávání zatížení** .
+3. Na stránce **Vyrovnávání zatížení** vyberte **vytvořit**.
+4. Na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nové** a do textového pole zadejte **CreatePubLBQS-RG** .|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **základní** |
@@ -351,9 +355,9 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Přiřazení | Vybrat **dynamický** |
     | Přidat veřejnou IPv6 adresu | Vyberte **Ne**. </br> Další informace o adresách IPv6 a nástroji pro vyrovnávání zatížení najdete v tématu [co je protokol IPv6 pro Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
 
-3. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+5. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 
-4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
+6. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Vytvoření základního nástroje pro vyrovnávání zatížení" border="true":::
 
@@ -558,7 +562,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Name |  **myVM2** |**myVM3**|
+    | Název |  **myVM2** |**myVM3**|
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 

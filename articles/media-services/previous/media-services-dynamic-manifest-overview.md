@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727324"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtry a dynamické manifesty
 
@@ -88,11 +88,11 @@ Pro dosažení této flexibility Media Services nabízí **dynamické manifesty*
 
 Adresa URL POMLČKy MPEG s filtrem
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 Adresa URL Smooth Streaming s filtrem
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 Další informace o tom, jak doručovat svůj obsah a vytvořit adresy URL streamování, najdete v tématu [doručování obsahu – přehled](media-services-deliver-content-overview.md).
@@ -110,8 +110,8 @@ Existují dva typy filtrů assetů:
 
 Typy globálních a místních filtrů mají stejné vlastnosti. Hlavní rozdíl mezi těmito dvěma hodnotami je, pro které scénáře, jaký typ souborového je vhodnější. Globální filtry jsou obvykle vhodné pro profily zařízení (filtrování verzí), kde se k oříznutí konkrétního prostředku dají použít místní filtry.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Typické scénáře
-Jak bylo zmíněno dříve, při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách. Kromě toho mohou být k dispozici další požadavky, které zahrnují filtrování prostředků a používání **dynamického manifestu**s. Následující části poskytují stručný přehled různých scénářů filtrování.
+## <a name="common-scenarios"></a><a id="scenarios"></a>Obvyklé scénáře
+Jak bylo zmíněno dříve, při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách. Kromě toho mohou být k dispozici další požadavky, které zahrnují filtrování prostředků a používání **dynamického manifestu** s. Následující části poskytují stručný přehled různých scénářů filtrování.
 
 * Zadejte jenom podmnožinu zvukových a video verzí, které některá zařízení můžou zpracovat (místo všech verzí, které jsou k assetu přidružené). 
 * Přehrávání pouze části videa (místo přehrávání celého videa).

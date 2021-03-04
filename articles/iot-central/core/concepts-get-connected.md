@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 4db7c9fdfd439e049ca76fec6f0e66bd4a37fffd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062674"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702704"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -217,7 +217,44 @@ Když se reálné zařízení připojí k vaší aplikaci IoT Central, změní s
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Nezachovejte ani do mezipaměti připojovacího řetězce zařízení, který funkce DPS vrátí při prvním připojení zařízení. Pokud chcete zařízení znovu připojit, Projděte si standardní tok registrace zařízení, abyste získali správný připojovací řetězec zařízení. Pokud zařízení připojovací řetězec ukládá do mezipaměti, software zařízení bude mít riziko, že se zastaralým připojovacím řetězcem pracuje. Pokud IoT Central aktualizuje základní službu Azure IoT Hub, kterou používá, zařízení se zastaralým připojovacím řetězcem se nemůže připojit.
+Tato doporučení ukazují, jak implementovat zařízení, která využívají integrované zotavení po havárii a automatické škálování v IoT Central.
+
+Následující seznam zobrazuje tok vysoké úrovně, když se zařízení připojuje k IoT Central:
+
+1. Pomocí DPS zřiďte zařízení a získejte připojovací řetězec zařízení.
+
+1. Pomocí připojovacího řetězce se připojte k internímu koncovému bodu IoT Hub IoT Central. Posílání dat a příjem dat z vaší aplikace IoT Central.
+
+1. Pokud se zařízení stane selháním připojení, pak v závislosti na typu chyby zkuste připojení znovu nebo zařízení znovu zajistěte.
+
+### <a name="use-dps-to-provision-the-device"></a>Zřízení zařízení pomocí DPS
+
+Pokud chcete zřídit zařízení s DPS, použijte ID oboru, přihlašovací údaje a ID zařízení z vaší aplikace IoT Central. Další informace o typech přihlašovacích údajů najdete v tématu Registrace [skupiny X. 509](#x509-group-enrollment) a [registrace skupiny SAS](#sas-group-enrollment). Další informace o ID zařízení najdete v tématu [registrace zařízení](#device-registration).
+
+Po úspěšném obnovení DPS vrátí připojovací řetězec, který může zařízení použít k připojení k vaší IoT Central aplikaci. Informace o řešení chyb zřizování najdete v tématu [Zkontrolujte stav zřizování vašeho zařízení](troubleshoot-connection.md#check-the-provisioning-status-of-your-device).
+
+Zařízení může připojovací řetězec Uložit do mezipaměti, aby ho bylo možné použít pro pozdější připojení. Zařízení se ale musí připravit na [zpracování selhání připojení](#handle-connection-failures).
+
+### <a name="connect-to-iot-central"></a>Připojení k IoT Central
+
+Pomocí připojovacího řetězce se připojte k internímu koncovému bodu IoT Hub IoT Central. Připojení umožňuje odeslat telemetrii do aplikace IoT Central, synchronizovat hodnoty vlastností s vaší aplikací IoT Central a reagovat na příkazy odesílané vaší IoT Central aplikaci.
+
+### <a name="handle-connection-failures"></a>Zpracování chyb připojení
+
+Pro účely škálování nebo zotavení po havárii může IoT Central aktualizovat svůj základní IoT Hub. Aby se zachovalo připojení, váš kód zařízení by měl zpracovávat konkrétní chyby připojení navázáním připojení k novému koncovému bodu IoT Hub.
+
+Pokud zařízení získá při připojení některou z následujících chyb, měli byste znovu provést krok zřizování s DPS a získat nový připojovací řetězec. Tyto chyby znamenají, že připojovací řetězec, který zařízení používá, již není platný:
+
+- Nedosažitelný IoT Hub koncový bod.
+- Token zabezpečení s vypršenou platností
+- Zařízení je v IoT Hub zakázané.
+
+Pokud zařízení získá při připojení některou z následujících chyb, měla by k opakovanému připojení použít záložní strategii. Tyto chyby znamenají, že připojovací řetězec, který zařízení používá, je stále platný, ale přechodné podmínky zastavuje připojení zařízení:
+
+- Obsluha zařízení se zablokovala.
+- Došlo k vnitřní chybě 500 od služby.
+
+Další informace o kódech chyb zařízení najdete v tématu [řešení potíží s připojením zařízení](troubleshoot-connection.md).
 
 ## <a name="sdk-support"></a>Podpora SDK
 

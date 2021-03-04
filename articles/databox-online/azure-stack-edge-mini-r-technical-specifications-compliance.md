@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727477"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack – Mini – technické specifikace R
 
@@ -27,7 +27,7 @@ Azure Stack hraničních zařízení v jazyce R obsahuje následující specifik
 | Specifikace           | Hodnota                  |
 |-------------------------|------------------------|
 | Procesor    | PROCESOR s 16 jádry, Intel Xeon-D 1577 |
-| Paměť              | 48 GB RAM (2400 MT/s)                  |
+| Memory (Paměť)              | 48 GB RAM (2400 MT/s)                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
@@ -80,9 +80,9 @@ V následující tabulce jsou uvedeny specifikace jednotek napájení:
 
 ## <a name="included-battery"></a>Zahrnutá baterie
 
-Azure Stack hraničních zařízení R navíc zahrnuje baterii, která se účtuje zdrojem napájení. 
+Azure Stack hraničních zařízení R navíc zahrnuje baterii, která se účtuje zdrojem napájení.
 
-Další typ baterie 2590 se dá použít ve spojení s baterií připojení a prodloužit tak používání zařízení mezi poplatky. Tato baterie by měla být v souladu se všemi předpisy pro bezpečnost, přepravu a prostředí, které jsou použitelné v zemi použití.
+Další [Typ baterie 2590](https://www.bren-tronics.com/bt-70791ck.html) se dá použít ve spojení s baterií připojení a prodloužit tak používání zařízení mezi poplatky. Tato baterie by měla být v souladu se všemi předpisy pro bezpečnost, přepravu a prostředí, které jsou použitelné v zemi použití.
 
 
 | Specifikace           | Hodnota                      |

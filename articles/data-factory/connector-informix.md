@@ -4,16 +4,17 @@ description: Naučte se, jak kopírovat data z a do IBM Informix pomocí aktivit
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: 95ecb44f154ab84a60a1ee673826d83fc51305b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 23fc5cabb947f579177a26afc6baec873f2df154
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727885"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopírování dat z a do IBM Informix pomocí Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z úložiště dat IBM Informix. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
@@ -27,12 +28,13 @@ Tento konektor Informix se podporuje pro následující činnosti:
 
 Data ze zdroje Informix můžete kopírovat do libovolného podporovaného úložiště dat jímky nebo je zkopírovat z libovolného podporovaného zdrojového úložiště dat do jímky Informix. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
+
 ## <a name="prerequisites"></a>Požadavky
 
 K použití tohoto konektoru Informix potřebujete:
 
 - Nastavte Integration Runtime pro místní hostování. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
-- Nainstalujte na Integration Runtime počítač ovladač Informix ODBC pro úložiště dat. Můžete například použít ovladač IBM INFORMIX Informix DRIVER (64-bit).
+- Nainstalujte na Integration Runtime počítač ovladač Informix ODBC pro úložiště dat. Informace o instalaci a instalaci ovladačů najdete v článku [Průvodce ovladačem Informix ODBC](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm) v centru Knowledge Center společnosti IBM, kde najdete podrobnosti nebo kontaktujte tým podpory společnosti IBM ohledně pokynů k instalaci ovladače.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -46,13 +48,13 @@ Pro propojenou službu Informix jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Informix** . | Yes |
-| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration Runtimem počítači (v odpovídajícím způsobem je potřeba zadat část přihlašovacích údajů v propojené službě). <br> Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Yes |
-| authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat Informix.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Yes |
-| userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | No |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
-| pověření | Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Označte toto pole jako SecureString. | No |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
+| typ | Vlastnost Type musí být nastavená na: **Informix** . | Ano |
+| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration Runtimem počítači (v odpovídajícím způsobem je potřeba zadat část přihlašovacích údajů v propojené službě). <br> Můžete také vložit heslo do Azure Key Vault a získat `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Ano |
+| authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat Informix.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Ano |
+| userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| pověření | Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Označte toto pole jako SecureString. | Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
 **Příklad:**
 
@@ -86,7 +88,7 @@ Chcete-li kopírovat data z Informix, jsou podporovány následující vlastnost
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **Informix** . | Yes |
+| typ | Vlastnost Type datové sady musí být nastavená na: **Informix** . | Ano |
 | tableName | Název tabulky v Informix. | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
 
 **Příklad**
@@ -117,7 +119,7 @@ Chcete-li kopírovat data z Informix, v části **zdroj** aktivity kopírování
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **InformixSource** . | Yes |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **InformixSource** . | Ano |
 | query | Pomocí vlastního dotazu můžete číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
@@ -158,10 +160,10 @@ Chcete-li kopírovat data do Informix, v části **jímka** aktivity kopírován
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **InformixSink** . | Yes |
-| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br/>Povolené hodnoty jsou: TimeSpan. Příklad: "00:30:00" (30 minut). |No |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **InformixSink** . | Ano |
+| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br/>Povolené hodnoty jsou: TimeSpan. Příklad: "00:30:00" (30 minut). |Ne |
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí hodnota je 0 – automaticky se zjistilo) |
-| preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do úložiště dat v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |No |
+| preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do úložiště dat v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |Ne |
 
 **Příklad:**
 

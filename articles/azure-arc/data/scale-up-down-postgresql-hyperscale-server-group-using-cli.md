@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687545"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Horizontální navýšení a snížení kapacity Azure Database for PostgreSQL skupiny serverů se škálováním na více systému pomocí rozhraní CLI (azdata nebo kubectl)
 
@@ -180,6 +180,21 @@ Zobrazí se nová definice skupiny serverů:
 ## <a name="scale-down-the-server-group"></a>Horizontální navýšení kapacity skupiny serverů
 
 Pro horizontální navýšení kapacity skupiny serverů spusťte stejný příkaz, ale nastavte menší hodnoty pro nastavení, které chcete škálovat. Chcete-li odebrat požadavky a omezení, zadejte její hodnotu jako prázdný řetězec.
+
+## <a name="reset-to-default-values"></a>Obnovit výchozí hodnoty
+Chcete-li obnovit výchozí hodnoty v limitech/paměti nebo parametrech požadavků na základní hodnotu, upravte je a místo skutečné hodnoty předejte prázdný řetězec. Například pokud chcete resetovat parametr Core limit (CL), spusťte následující příkazy:
+- v klientovi se systémem Linux:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- na klientovi se systémem Windows: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

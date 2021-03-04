@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091217"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738935"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -63,7 +63,7 @@ Stávající aplikace můžete migrovat na App Service pomocí [Nástroje pro on
 
 Azure vám jako poskytovatel infrastruktury jako služby (IaaS) umožňuje nasazení nebo migraci vaší aplikace do virtuálních počítačů se systémem Windows nebo Linux. V kombinaci s Azure Virtual Network podporuje Azure Virtual Machines nasazení virtuálních počítačů s Windows nebo Linux do Azure. U virtuálních počítačů máte celkovou kontrolu nad konfigurací počítače. Při používání virtuálních počítačů zodpovídáte za veškerou instalaci, konfiguraci, údržbu a opravy operačního systému na serverovém softwaru.
 
-Z důvodu úrovně kontroly, kterou máte s virtuálními počítači, můžete v Azure spustit celou řadu úloh serveru, které se nevejdou do modelu PaaS. Mezi tyto úlohy patří databázové servery, Windows Server Active Directory a Microsoft SharePoint. Další informace najdete v dokumentaci k Virtual Machines pro [Linux](../../virtual-machines/linux/index.yml) nebo [Windows](../../virtual-machines/windows/index.yml).
+Z důvodu úrovně kontroly, kterou máte s virtuálními počítači, můžete v Azure spustit celou řadu úloh serveru, které se nevejdou do modelu PaaS. Mezi tyto úlohy patří databázové servery, Windows Server Active Directory a Microsoft SharePoint. Další informace najdete v dokumentaci k Virtual Machines pro [Linux](../../virtual-machines/index.yml) nebo [Windows](../../virtual-machines/index.yml).
 
 > **Kdy použít**: použijte Virtual Machines, pokud chcete mít plnou kontrolu nad infrastrukturou aplikace nebo migrujete místní aplikační úlohy do Azure bez nutnosti provádět změny.
 >

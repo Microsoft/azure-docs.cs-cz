@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e6cf8b0ea7064b99cf6f630a83b2800900f29c47
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f705ca1e001d3b7852c5bec5b494f23eb7943626
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Kurz: Azure Active Directory integrace s funkčními službami
 
@@ -30,7 +30,7 @@ Integrace funkcí s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s funkčními službami potřebujete následující položky:
 
@@ -62,13 +62,13 @@ Pokud chcete nakonfigurovat integraci funkčního prostředí do Azure AD, musí
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte možnost **spolehlivá** , vyberte možnost **funkční** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte možnost **spolehlivá**, vyberte možnost **funkční** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Funkční v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD na základě testovacího uživatele s názvem **Britta Simon** .
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD na základě testovacího uživatele s názvem **Britta Simon**.
 Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v funkčním prostředí.
 
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD, musíte provést následující stavební bloky:
@@ -86,7 +86,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete konfigurovat jednotné přihlašování Azure AD, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **funkční** integrace aplikací vyberte **jednotné přihlašování** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce **funkční** integrace aplikací vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -143,7 +143,7 @@ Po povolení jednotného přihlašování vám správce s vlastním účtem pom�
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -155,27 +155,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon** .
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon\@yourcompanydomain.extension` . Například, BrittaSimon@contoso.com.
+    b. Do pole typ **uživatelského jména** zadejte `brittasimon@yourcompanydomain.extension` například: `brittasimon@contoso.com` .
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k funkčnímu.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte možnost **funkční** .
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **funkční**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte možnost **funkční** .
+2. V seznamu aplikace vyberte možnost **funkční**.
 
     ![Odkaz funkční v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -199,7 +199,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici funkční na přístupovém panelu byste měli být automaticky přihlášeni k funkčnímu přístupu, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

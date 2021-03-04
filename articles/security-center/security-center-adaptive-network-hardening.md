@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 23cbabf1c4fb1433fa1201f77528db9d9f393ed5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712143"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
+# <a name="improve-your-network-security-posture-with-adaptive-network-hardening"></a>Vylepšení stav zabezpečení sítě díky adaptivnímu posílení sítě
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Security Center.
 
 ## <a name="availability"></a>Dostupnost
@@ -29,7 +29,7 @@ Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v 
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|Oprávnění k zápisu do skupin zabezpečení sítě počítače|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Co je adaptivní posílení zabezpečení sítě?

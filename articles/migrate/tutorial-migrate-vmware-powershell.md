@@ -5,13 +5,13 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 02/10/2021
-ms.openlocfilehash: 006b2838a4e593397f8968e53ba2364d16753a40
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/02/2021
+ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715067"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta) – PowerShell
 
@@ -37,22 +37,18 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 1. Dokončete [kurz: Vyhledání virtuálních počítačů VMware pomocí posouzení serveru](tutorial-discover-vmware.md) pro přípravu Azure a VMware pro migraci.
-1. Dokončete [kurz: vyhodnoťte virtuální počítače VMware pro migraci na virtuální počítače Azure](./tutorial-assess-vmware-azure-vm.md) před jejich migrací do Azure.
-1. [Instalace modulu AZ PowerShell Module](/powershell/azure/install-az-ps)
+2. Dokončete [kurz: vyhodnoťte virtuální počítače VMware pro migraci na virtuální počítače Azure](./tutorial-assess-vmware-azure-vm.md) před jejich migrací do Azure.
+3. [Instalace modulu AZ PowerShell Module](/powershell/azure/install-az-ps)
 
 ## <a name="2-install-azure-migrate-powershell-module"></a>2. Instalace modulu Azure Migrate PowerShellu
 
-Modul Azure Migrate PowerShell je k dispozici ve verzi Preview. Modul PowerShell budete muset nainstalovat pomocí následujícího příkazu.
-
-```azurepowershell-interactive
-Install-Module -Name Az.Migrate
-```
+Modul Azure Migrate PowerShell je k dispozici jako součást Azure PowerShell ( `Az` ). Spusťte `Get-InstalledModule -Name Az.Migrate` příkaz a ověřte, jestli je na vašem počítači nainstalovaný modul prostředí PowerShell Azure Migrate.  
 
 ## <a name="3-sign-in-to-your-microsoft-azure-subscription"></a>3. Přihlaste se k předplatnému Microsoft Azure
 
 Přihlaste se ke svému předplatnému Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
-```azurepowershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -88,12 +84,10 @@ Azure Migrate používá odlehčené [Azure Migrate zařízení](migrate-applian
 
 Pokud chcete načíst konkrétní virtuální počítač VMware v projektu Azure Migrate, zadejte název Azure Migrate projektu ( `ProjectName` ), skupinu prostředků Azure Migrate projektu ( `ResourceGroupName` ) a název virtuálního počítače ( `DisplayName` ).
 
-> [!IMPORTANT]
-> **Hodnota parametru název virtuálního počítače ( `DisplayName` ) rozlišuje velká a malá písmena**.
 
 ```azurepowershell-interactive
 # Get a specific VMware VM in an Azure Migrate project
-$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM
+$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM | Format-Table DisplayName, Name, Type
 
 # View discovered server details
 Write-Output $DiscoveredServer
@@ -101,14 +95,14 @@ Write-Output $DiscoveredServer
 
 Tento virtuální počítač migrujeme jako součást tohoto kurzu.
 
-Všechny virtuální počítače VMware můžete také načíst v Azure Migrate projektu pomocí parametrů **ProjectName** a **ResourceGroupName** .
+Všechny virtuální počítače VMware v Azure Migrate projektu můžete také načíst pomocí `ProjectName` parametrů () a ( `ResourceGroupName` ).
 
 ```azurepowershell-interactive
 # Get all VMware VMs in an Azure Migrate project
 $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName
 ```
 
-Pokud máte v Azure Migrate projektu více zařízení, můžete k načtení všech virtuálních počítačů zjištěných pomocí konkrétního Azure Migrate zařízení **použít parametry** **ProjectName**, **ResourceGroupName** a promítnout.
+Pokud máte více zařízení v Azure Migrate projektu, můžete použít `ProjectName` parametry (), () a `ResourceGroupName` ( `ApplianceName` ) a načíst všechny virtuální počítače zjištěné pomocí konkrétní Azure Migrate zařízení.
 
 ```azurepowershell-interactive
 # Get all VMware VMs discovered by an Azure Migrate Appliance in an Azure Migrate project
@@ -125,41 +119,42 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 - **Účet úložiště protokolu**: zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na disky spravované replikou.
 - **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci.
 
-Před replikací prvního virtuálního počítače v projektu Azure Migrate spusťte následující skript, který zřídí infrastrukturu replikace. Tento skript zřídí a nakonfiguruje výše uvedené prostředky, abyste mohli začít migrovat vaše virtuální počítače VMware.
+Před replikací prvního virtuálního počítače v projektu Azure Migrate spusťte následující příkaz, který zřídí infrastrukturu replikace. Tento příkaz zřídí a nakonfiguruje výše uvedené prostředky, abyste mohli začít migrovat vaše virtuální počítače VMware.
 
 > [!NOTE]
 > Jeden Azure Migrate projekt podporuje migrace pouze do jedné oblasti Azure. Po spuštění tohoto skriptu nemůžete změnit cílovou oblast, do které chcete migrovat virtuální počítače VMware.
-> `Initialize-AzMigrateReplicationInfrastructure`Pokud nakonfigurujete nové zařízení v Azure Migrate projektu, budete muset skript spustit.
+> `Initialize-AzMigrateReplicationInfrastructure`Pokud nakonfigurujete nové zařízení v projektu Azure Migrate, budete muset spustit příkaz.
 
-V tomto článku inicializujeme infrastrukturu replikace, abychom mohli migrovat naše virtuální počítače do `Central US` oblasti. Soubor si můžete [Stáhnout](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) z úložiště GitHubu nebo ho spustit pomocí následujícího fragmentu kódu.
+V tomto článku inicializujeme infrastrukturu replikace, abychom mohli migrovat naše virtuální počítače do `Central US` oblasti.
 
 ```azurepowershell-interactive
-# Download the script from Azure Migrate GitHub repository
-Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-migrate/migrate-at-scale-vmware-agentles/Initialize-AzMigrateReplicationInfrastructure.ps1 -OutFile .\AzMigrateReplicationinfrastructure.ps1
+# Initialize replication infrastructure for the current Migrate project
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject. Name -Scenario agentlessVMware -TargetRegion "CentralUS" 
 
-# Run the script for initializing replication infrastructure for the current Migrate project
-.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion CentralUS
 ```
 
 ## <a name="7-replicate-vms"></a>7. replikace virtuálních počítačů
 
-Po dokončení zjišťování a inicializaci infrastruktury replikace můžete zahájit replikaci virtuálních počítačů VMware do Azure. Můžete spustit až 300 replikace současně.
+Po dokončení zjišťování a inicializaci infrastruktury replikace můžete zahájit replikaci virtuálních počítačů VMware do Azure. Můžete spustit až 500 replikace současně.
 
 Vlastnosti replikace můžete zadat následujícím způsobem.
 
-- **Cílové předplatné a skupina prostředků** – zadejte předplatné a skupinu prostředků, do kterých se má virtuální počítač migrovat, a to zadáním ID skupiny prostředků pomocí `TargetResourceGroupId` parametru.
-- **Cílová virtuální síť a podsíť** – zadejte ID Virtual Network Azure a název podsítě, do které se má virtuální počítač migrovat, pomocí `TargetNetworkId` parametrů a v `TargetSubnetName` uvedeném pořadí.
-- **Název cílového virtuálního počítače** – zadejte název virtuálního počítače Azure, který se má vytvořit, pomocí `TargetVMName` parametru.
-- **Velikost cílového virtuálního počítače** – určete velikost virtuálního počítače Azure, která se má použít pro virtuální počítač pro replikaci pomocí `TargetVMSize` parametru. Pokud například chcete migrovat virtuální počítač na D2_v2 virtuálního počítače v Azure, zadejte hodnotu `TargetVMSize` jako "Standard_D2_v2".
-- **Licence** – Chcete-li použít zvýhodněné hybridní využití Azure pro počítače s Windows serverem, které jsou pokryté s aktivními předplatnými Software Assurance nebo Windows Server, zadejte hodnotu `LicenseType` parametru jako "windowsserver". V opačném případě zadejte hodnotu `LicenseType` parametru jako "NoLicenseType".
-- **Disk s operačním** systémem – zadejte jedinečný identifikátor disku, který obsahuje zaváděcí program pro spouštění a instalaci operačního systému. ID disku, který se má použít, je vlastnost jedinečného identifikátoru (UUID) pro disk načtený pomocí `Get-AzMigrateServer` rutiny.
-- **Typ disku** – zadejte hodnotu `DiskType` parametru následujícím způsobem.
-    - Chcete-li použít disky spravované na úrovni Premium, zadejte jako hodnotu parametru "Premium_LRS" `DiskType` .
-    - Chcete-li použít standardní disky SSD, zadejte jako hodnotu parametru "StandardSSD_LRS" `DiskType` .
-    - Chcete-li použít standardní disky HDD, zadejte jako hodnotu parametru "Standard_LRS" `DiskType` .
+- **Cílové předplatné a skupina prostředků** – určete předplatné a skupinu prostředků, do které se má virtuální počítač migrovat, zadáním ID skupiny prostředků pomocí parametru ( `TargetResourceGroupId` ).
+- **Cílová virtuální síť a podsíť** – zadejte ID Virtual Network Azure a název podsítě, do které se má virtuální počítač migrovat, pomocí `TargetNetworkId` parametrů () a ( `TargetSubnetName` ) v uvedeném pořadí.
+- **Název cílového virtuálního počítače** – zadejte název virtuálního počítače Azure, který se má vytvořit, pomocí `TargetVMName` parametru ().
+- **Velikost cílového virtuálního počítače** – zadejte velikost virtuálního počítače Azure, která se má použít pro replikační virtuální počítač pomocí `TargetVMSize` parametru (). Pokud například chcete migrovat virtuální počítač na D2_v2 virtuálního počítače v Azure, zadejte hodnotu pro ( `TargetVMSize` ) jako "Standard_D2_v2".
+- **Licence** – Chcete-li použít zvýhodněné hybridní využití Azure pro počítače s Windows serverem, které jsou pokryté s aktivními předplatnými Software Assurance nebo Windows Server, zadejte hodnotu `LicenseType` parametru () jako **windowsserver**. V opačném případě zadejte hodnotu `LicenseType` parametru () jako "NoLicenseType".
+- **Disk s operačním** systémem – zadejte jedinečný identifikátor disku, který obsahuje zaváděcí program pro spouštění a instalaci operačního systému. ID disku, které se má použít, je vlastnost jedinečného identifikátoru (UUID) pro disk načtený pomocí rutiny [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) .
+- **Typ disku** – zadejte hodnotu parametru () následujícím `DiskType` způsobem.
+    - Chcete-li použít disky spravované na úrovni Premium, zadejte jako parametr value for () hodnotu "Premium_LRS" `DiskType` .
+    - Chcete-li použít standardní disky SSD, zadejte jako parametr value for () hodnotu "StandardSSD_LRS" `DiskType` .
+    - Pokud chcete použít standardní disky HDD, zadejte jako parametr value for () hodnotu "Standard_LRS" `DiskType` .
 - **Redundance infrastruktury** – zadejte následující možnost redundance infrastruktury.
-    - Zóna dostupnosti pro připnutí migrovaného počítače ke konkrétní zóně dostupnosti v oblasti Tuto možnost použijte k distribuci serverů, které tvoří aplikační vrstvu s více uzly napříč Zóny dostupnosti. Tato možnost je dostupná jenom v případě, že cílová oblast vybraná pro migraci podporuje Zóny dostupnosti. Pokud chcete použít zóny dostupnosti, zadejte hodnotu zóny dostupnosti pro `TargetAvailabilityZone` parametr.
-    - Skupina dostupnosti umístí migrovaný počítač do skupiny dostupnosti. Vybraná cílová skupina prostředků musí mít jednu nebo víc skupin dostupnosti, aby bylo možné tuto možnost použít. Chcete-li použít skupinu dostupnosti, zadejte ID skupiny dostupnosti pro `TargetAvailabilitySet` parametr.
+    - Zóna dostupnosti pro připnutí migrovaného počítače ke konkrétní zóně dostupnosti v oblasti Tuto možnost použijte k distribuci serverů, které tvoří aplikační vrstvu s více uzly napříč Zóny dostupnosti. Tato možnost je dostupná jenom v případě, že cílová oblast vybraná pro migraci podporuje Zóny dostupnosti. Pokud chcete použít zóny dostupnosti, zadejte hodnotu zóny dostupnosti pro `TargetAvailabilityZone` parametr ().
+    - Skupina dostupnosti umístí migrovaný počítač do skupiny dostupnosti. Vybraná cílová skupina prostředků musí mít jednu nebo víc skupin dostupnosti, aby bylo možné tuto možnost použít. Chcete-li použít skupinu dostupnosti, zadejte parametr ID skupiny dostupnosti pro ( `TargetAvailabilitySet` ).
+ - **Účet úložiště diagnostiky spouštění** – Chcete-li použít účet úložiště diagnostiky spouštění, zadejte parametr ID pro ( `TargetBootDiagnosticStorageAccount` ).
+    -  Účet úložiště, který se používá pro diagnostiku spouštění, by měl být ve stejném předplatném, do kterého migrujete vaše virtuální počítače.  
+    - Ve výchozím nastavení není pro tento parametr nastavena žádná hodnota. 
 
 ### <a name="replicate-vms-with-all-disks"></a>Replikace virtuálních počítačů se všemi disky
 
@@ -187,11 +182,11 @@ Write-Output $MigrateJob.State
 
 ### <a name="replicate-vms-with-select-disks"></a>Replikace virtuálních počítačů pomocí vybraných disků
 
-Můžete také selektivně replikovat disky zjištěného virtuálního počítače pomocí rutiny [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) a poskytnout je jako vstup do parametru **DiskToInclude** v rutině [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) . Pomocí `New-AzMigrateDiskMapping` rutiny můžete také určit různé typy cílových disků pro jednotlivé disky, které se mají replikovat.
+Můžete také selektivně replikovat disky zjištěného virtuálního počítače pomocí rutiny [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) a poskytnout je jako vstup do `DiskToInclude` parametru () v rutině [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) . Pomocí rutiny [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) můžete také určit různé typy cílových disků pro jednotlivé disky, které se mají replikovat.
 
-Zadejte hodnoty pro následující parametry `New-AzMigrateDiskMapping` rutiny.
+Zadejte hodnoty pro následující parametry rutiny [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) .
 
-- **DiskId** – zadejte jedinečný identifikátor disku, který se má migrovat. ID disku, který se má použít, je vlastnost jedinečného identifikátoru (UUID) pro disk načtený pomocí `Get-AzMigrateServer` rutiny.
+- **DiskId** – zadejte jedinečný identifikátor disku, který se má migrovat. ID disku, které se má použít, je vlastnost jedinečného identifikátoru (UUID) pro disk načtený pomocí rutiny [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) .
 - **IsOSDisk** – zadejte hodnotu true, pokud je disk, který se má migrovat, disk s operačním systémem virtuálního počítače, jinak false.
 - **DiskType** – zadejte typ disku, který se má používat v Azure.
 
@@ -224,7 +219,7 @@ while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStart
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
@@ -238,24 +233,13 @@ Replikace probíhá takto:
 
 Pomocí rutiny [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) Sledujte stav replikace.
 
-> [!NOTE]
-> ID zjištěného virtuálního počítače a replikace jsou dva různé jedinečné identifikátory. Oba tyto identifikátory lze použít k načtení podrobností o replikačním serveru.
 
-### <a name="monitor-replication-using-discovered-vm-identifier"></a>Monitorování replikace pomocí zjištěného identifikátoru virtuálního počítače
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
-```
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
 
-### <a name="monitor-replication-using-replicating-vm-identifier"></a>Monitorování replikace pomocí identifikátoru replikačního virtuálního počítače
-
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
+# Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
 
@@ -336,25 +320,28 @@ $job = Get-AzMigrateJob -InputObject $job
 
 Následující vlastnosti lze pro virtuální počítač aktualizovat.
 
-- **Název virtuálního počítače** – zadejte název virtuálního počítače Azure, který se má vytvořit, pomocí parametru **TargetVMName** .
-- **Velikost virtuálního počítače** – zadejte velikost virtuálního počítače Azure, která se má použít pro virtuální počítač pro replikaci pomocí parametru **TargetVMSize** . Pokud třeba chcete migrovat virtuální počítač na D2_v2 virtuálního počítače v Azure, zadejte hodnotu pro **TargetVMSize** jako `Standard_D2_v2` .
-- **Virtual Network** – zadejte ID Virtual Network Azure, na které se má virtuální počítač migrovat, pomocí parametru **TargetNetworkId** .
-- **Skupina prostředků** – zadejte ID skupiny prostředků, do které se má virtuální počítač migrovat, zadáním ID skupiny prostředků pomocí parametru **TargetResourceGroupId** .
-- **Síťové rozhraní** – konfiguraci síťových adaptérů lze zadat pomocí rutiny [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) . Objekt je pak předán vstupu do parametru **NicToUpdate** v rutině [set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) .
+- **Název virtuálního počítače** – zadejte název virtuálního počítače Azure, který se má vytvořit, pomocí `TargetVMName` parametru [].
+- **Velikost virtuálního počítače** – zadejte velikost virtuálního počítače Azure, která se má použít pro virtuální počítač pro replikaci pomocí `TargetVMSize` parametru []. Pokud třeba chcete migrovat virtuální počítač na D2_v2 virtuálního počítače v Azure, zadejte hodnotu pro [ `TargetVMSize` ] jako `Standard_D2_v2` .
+- **Virtual Network** – zadejte ID Virtual Network Azure, na které se má virtuální počítač migrovat, pomocí `TargetNetworkId` parametru [].
+- **Skupina prostředků** – zadejte ID skupiny prostředků, do které se má virtuální počítač migrovat, zadáním ID skupiny prostředků pomocí `TargetResourceGroupId` parametru [].
+- **Síťové rozhraní** – konfiguraci síťových adaptérů lze zadat pomocí rutiny [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) . Objekt je pak předán vstupu do `NicToUpdate` parametru [] v rutině [set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) .
 
-    - **Změna přidělování IP** adres – Chcete-li zadat statickou IP adresu pro síťový adaptér, zadejte adresu IPv4, která se má použít jako statická IP adresa virtuálního počítače pomocí parametru **TargetNicIP** . Pokud chcete dynamicky přiřadit IP adresu pro síťové rozhraní, zadejte `auto` hodnotu parametru **TargetNicIP** .
-    - Použijte hodnoty `Primary` , `Secondary` nebo `DoNotCreate` pro parametr **TargetNicSelectionType** určete, jestli se má síťové rozhraní primární, sekundární nebo nemá vytvořit na migrovaném virtuálním počítači. Jako primární síťová karta pro virtuální počítač lze zadat pouze jednu síťovou kartu.
+    - **Změna přidělování IP** adres – Pokud pro síťovou kartu zadáte statickou IP adresu, zadejte adresu IPv4, která se má použít jako statická IP adresa virtuálního počítače pomocí `TargetNicIP` parametru []. Pokud chcete dynamicky přiřadit IP adresu pro síťové rozhraní, zadejte `auto` hodnotu parametru **TargetNicIP** .
+    - Použijte hodnoty `Primary` `Secondary` nebo `DoNotCreate` pro parametr [ `TargetNicSelectionType` ] k určení, zda má být síťové rozhraní primární, sekundární nebo nemá být na migrovaném virtuálním počítači vytvořeno. Jako primární síťová karta pro virtuální počítač lze zadat pouze jednu síťovou kartu.
     - Pokud chcete vytvořit primární síťovou kartu, budete taky muset zadat jiné síťové adaptéry, které se mají nastavit jako sekundární, nebo se na migrovaném virtuálním počítači nevytvoří.
-    - Chcete-li změnit podsíť pro síťové rozhraní, zadejte název podsítě pomocí parametru **TargetNicSubnet** .
+    - Chcete-li změnit podsíť pro síťové rozhraní, zadejte název podsítě pomocí `TargetNicSubnet` parametru [].
 
- - **Zóna dostupnosti** – pro použití zón dostupnosti zadejte hodnotu zóny dostupnosti pro parametr **TargetAvailabilityZone** .
- - **Nastavení dostupnosti** – pro použití skupiny dostupnosti zadejte ID skupiny dostupnosti pro parametr **TargetAvailabilitySet** .
+ - **Zóna dostupnosti** – pro použití zón dostupnosti zadejte hodnotu zóny dostupnosti pro `TargetAvailabilityZone` parametr [].
+ - **Nastavení dostupnosti** – pro použití skupiny dostupnosti Určete ID skupiny dostupnosti pro `TargetAvailabilitySet` parametr [].
 
-`Get-AzMigrateServerReplication`Rutina vrátí úlohu, kterou je možné sledovat pro monitorování stavu operace.
+Rutina [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) vrátí úlohu, kterou je možné sledovat pro monitorování stavu operace.
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+
+# Retrieve all properties of a replicating VM 
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
 # View NIC details of the replicating server
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
@@ -380,20 +367,11 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
         sleep 10;
         $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
 
-Můžete také zobrazit seznam všech replikačních serverů v projektu Azure Migrate a pak pomocí identifikátoru replikačního virtuálního počítače aktualizovat vlastnosti virtuálního počítače.
 
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
-```
 
 ## <a name="11-run-a-test-migration"></a>11. spuštění testovací migrace
 
@@ -403,7 +381,7 @@ Když se spustí rozdílová replikace, můžete před spuštěním úplné migr
 - Testovací migrace simuluje migraci tím, že vytvoří virtuální počítač Azure pomocí replikovaných dat (obvykle se migruje na virtuální síť, která není v produkčním prostředí, ve vašem předplatném Azure).
 - Replikovaný virtuální počítač Azure můžete použít k ověření migrace, provádění testování aplikace a řešení všech problémů před úplnou migrací.
 
-Vyberte Virtual Network Azure, která se má použít pro testování, zadáním ID virtuální sítě pomocí parametru **TestNetworkID** .
+Vyberte Virtual Network Azure, která se má použít pro testování, zadáním ID virtuální sítě pomocí `TestNetworkID` parametru [].
 
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
@@ -418,7 +396,7 @@ while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -
         sleep 10;
         $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $TestMigrationJob.State
 ```
 
@@ -434,7 +412,7 @@ while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrat
         sleep 10;
         $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $CleanupTestMigrationJob.State
 ```
 
@@ -442,7 +420,7 @@ Write-Output $CleanupTestMigrationJob.State
 
 Po ověření, že migrace testu funguje podle očekávání, můžete replikační Server migrovat pomocí následující rutiny. Rutina vrátí úlohu, kterou je možné sledovat pro monitorování stavu operace.
 
-Pokud nechcete zdrojový server vypnout, použijte parametr **TurnOffSourceServer** .
+Pokud nechcete zdrojový server vypnout, nepoužívejte `TurnOffSourceServer` parametr [].
 
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
@@ -472,7 +450,7 @@ Write-Output $MigrateJob.State
            sleep 10;
            $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
    }
-   #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+   # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
    Write-Output $StopReplicationJob.State
    ```
 
@@ -487,8 +465,8 @@ Write-Output $MigrateJob.State
 ## <a name="14-post-migration-best-practices"></a>14. osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693624"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -34,7 +34,8 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš pracovní prostor je připravený během několika minut.
 
 > [!NOTE]
-> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jiné akce, můžete ztratit přístup k artefaktům v tomto pracovním prostoru.  
+> Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jiné akce, můžete ztratit přístup k artefaktům v tomto pracovním prostoru.
+> V současné době nemůžete v rámci předplatného [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview) vytvořit pracovní prostor analýzy synapse.
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 
@@ -45,7 +46,7 @@ Po vytvoření pracovního prostoru Azure synapse máte dva způsoby, jak otevř
 
 ## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>Příprava existujícího účtu úložiště pro použití s Azure synapse Analytics
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Přejít na existující účet úložiště ADLSGEN2
 1. V levém podokně vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny:
     * Přiřaďte roli **vlastníka** sami sobě.

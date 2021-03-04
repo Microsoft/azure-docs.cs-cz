@@ -1,0 +1,56 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Storage ověřených partnerských řešení
+summary: Azure Storage ověřená Partnerská řešení umožňují pokročilým scénářům navrchu Azure Storage platformy.
+metadata:
+  title: Azure Storage ověřená Partnerská řešení
+  description: Azure Storage ověřená Partnerská řešení umožňují pokročilým scénářům navrchu Azure Storage platformy.
+  services: storage
+  ms.service: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: beber-msft
+  ms.author: beber
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 2e9a2ac1e8d33020a94c2c783d3d695a459fcea5
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749096"
+landingContent:
+- title: Partneři Analýza úložiště Azure a velkých objemů dat
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři Analýza úložiště Azure
+      url: .\validated-partners\analytics\partner-overview.md
+- title: Azure Storage archivace, zálohování a BCDR partneři
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověřený Azure Storage archivované a BCDR partneři
+      url: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Průvodce rychlým startem pro CommVault
+      url: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - text: Průvodce rychlým startem pro Veeam
+      url: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+- title: Partneři řešení Azure Storage kontejnerů
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři řešení Azure Storage kontejnerů
+      url: .\validated-partners\container-solutions\partner-overview.md
+- title: Azure Storage partneři pro správu a migraci dat
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověřené partnery Azure Storage správy dat a migrace
+      url: .\validated-partners\data-management\partner-overview.md
+- title: Azure Storage partneři primárního a sekundárního úložiště
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ověření partneři pro primární a sekundární úložiště
+      url: .\validated-partners\primary-secondary-storage\partner-overview.md

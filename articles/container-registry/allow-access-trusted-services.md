@@ -3,12 +3,12 @@ title: Přístup k registru s omezeným přístupem přes síť pomocí důvěry
 description: Povolení důvěryhodné instance služby Azure pro zabezpečený přístup k registru kontejneru omezeného na síť pro vyžádání nebo vložení imagí
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 3cc32630ea689891e7ba75163c33bc499a38becd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527443"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716478"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Povoluje důvěryhodným službám zabezpečený přístup k registru kontejnerů s omezeným přístupem k síti (Preview).
 
@@ -41,7 +41,6 @@ Pokud je povolené nastavení **Povolit důvěryhodné služby** registru, můž
 |Důvěryhodná služba  |Podporované scénáře použití  |
 |---------|---------|
 |Úlohy ACR     | [Přístup k jinému registru z ACR úlohy](container-registry-tasks-cross-registry-authentication.md)       |
-|Machine Learning | [Nasazení](../machine-learning/how-to-deploy-custom-docker-image.md) nebo [výuka](../machine-learning/how-to-train-with-custom-image.md) modelu v Machine Learning pracovním prostoru pomocí vlastní image kontejneru Docker |
 |Azure Container Registry | [Import imagí z jiného služby Azure Container Registry](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]

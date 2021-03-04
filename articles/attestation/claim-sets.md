@@ -7,18 +7,18 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704799"
 ---
 # <a name="claim-sets"></a>Sady deklarací identity
 
 Deklarace identity vygenerované v procesu ověřování enclaves pomocí Microsoft Azure ověření identity mohou být rozděleny do následujících kategorií:
 
-- **Příchozí deklarace identity**: deklarace identity vygenerované Microsoft Azure ověření identity po analýze legitimace ověřování a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách.
+- **Příchozí deklarace identity**: deklarace identity vygenerované Microsoft azurem ověření identity po analýze legitimace ověřování a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách.
 
 - **Odchozí deklarace identity**: deklarace identity vygenerované službou Azure Attestation a obsahují všechny deklarace identity, které končí v tokenu ověření identity.
 
@@ -26,7 +26,8 @@ Deklarace identity vygenerované v procesu ověřování enclaves pomocí Micros
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>Běžné příchozí deklarace identity napříč všemi typy ověření identity
 
-Níže jsou deklarace identity generované službou Azure Attestation a dají se použít k definování autorizačních pravidel ve vlastních zásadách:
+Níže jsou deklarace identity generované službou Azure Attestation a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách pro všechny typy ověření identity.
+
 - **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
 - **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
 - **x-MS-Policy-hash**: hash zásad hodnocení Azure Attestation vypočítaných jako BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
@@ -44,7 +45,9 @@ policy_signer | x-MS-Policy-Signer
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>Běžné odchozí deklarace identity napříč všemi typy ověření identity
 
-Pod deklaracemi, které jsou definované [tokenem IETF](https://tools.ietf.org/html/rfc7519) a kterou používá Azure Attestation v objektu Response:
+Níže jsou deklarace identity zahrnuté v tokenu ověření identity pro všechny typy ověření identity službou.
+
+Zdroj: definovaný serverem [IETF JWT](https://tools.ietf.org/html/rfc7519)
 
 - **Deklarace identity "JTI" (JWT ID)**
 - **Deklarace identity "ISS" (Issuer)**
@@ -52,10 +55,12 @@ Pod deklaracemi, které jsou definované [tokenem IETF](https://tools.ietf.org/h
 - **Deklarace identity "EXP" (čas vypršení platnosti)**
 - **Deklarace "NBF" (ne před)**
 
-Pod deklaracemi, které jsou definované [sdružením IETF](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) a kterou používá Azure Attestation v objektu Response:
+Zdroj: podle definice [IETF Eat](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9)
+
 - **Hodnota Nonce deklarace (nonce)**
 
-Ve výchozím nastavení jsou deklarace identity vygenerované na základě příchozích deklarací identity.
+Ve výchozím nastavení jsou v tokenu ověření zahrnuty deklarace identity na základě příchozích deklarací identity:
+
 - **x-MS-ver**: verze schématu JWT (očekávaná jako "1,0")
 - **x-MS-ověření identity-typ**: řetězcová hodnota představující typ ověření identity 
 - **x-MS-Policy-hash**: hodnota řetězce obsahující SHA256 hash textu zásad vypočítaného BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (text zásady))))
@@ -65,7 +70,8 @@ Ve výchozím nastavení jsou deklarace identity vygenerované na základě př�
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Příchozí deklarace identity specifické pro ověření identity SGX
 
-Níže jsou deklarace identity vygenerované službou pro ověření identity SGX a dají se použít k definování autorizačních pravidel ve vlastních zásadách:
+Níže jsou deklarace identity vygenerované službou Azure Attestation a můžou je používat autoři zásad k definování autorizačních pravidel ve vlastních zásadách pro SGX ověření identity.
+
 - **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
 - **x-MS-SGX-Product-ID**
 - **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách
@@ -74,7 +80,8 @@ Níže jsou deklarace identity vygenerované službou pro ověření identity SG
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>Odchozí deklarace identity specifické pro ověření identity SGX
 
-Níže jsou deklarace identity vygenerované službou a zahrnuté do objektu Response pro ověření identity SGX:
+Služba pro ověření identity SGX vygenerovala tyto deklarace a zahrne je do tokenu ověření identity.
+
 - **x-MS-SGX-je-laditelné**: logická hodnota, která označuje, jestli má enklávy povolený ladění nebo ne.
 - **x-MS-SGX-Product-ID**
 - **x-MS-SGX-mrsigner**: hodnota zakódovaná v poli "mrsigner" v uvozovkách

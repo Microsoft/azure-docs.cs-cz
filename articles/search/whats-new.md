@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694593"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -23,7 +23,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
 |------------------------------|---------------|---------------|
-| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které upraví výsledky hledání, aby vznikly relevantnější výsledky. V případě malých změn v žádosti o vyhledávání můžete tyto funkce vyzkoušet u stávajících indexů.</br></br>[Sémantický dotaz](semantic-how-to-query-request.md) je nový typ dotazu, který využívá výhody při zpracování v přirozeném jazyce ke zlepšení hodnocení, a pochopení záměru dotazování na poskytování odpovědí, titulků a sémantických světel.</br></br>[Sémantické hodnocení a reakce (odpovědi, popisy a světla)](semantic-how-to-query-response.md) odkazují na algoritmus, který definuje sémantický dotaz a na strukturu odpovědi. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
+| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které zlepšují relevanci výsledků hledání s velmi malým úsilím. V případě malých změn v žádosti o vyhledávání můžete tyto funkce vyzkoušet u stávajících indexů.</br></br>[Sémantický dotaz](semantic-how-to-query-request.md) je nový typ dotazu, který využívá výhody při zpracování v přirozeném jazyce ke zlepšení hodnocení, a pochopení záměru dotazování na poskytování odpovědí, titulků a sémantických světel.</br></br>[Sémantické hodnocení a reakce (odpovědi, popisy a světla)](semantic-how-to-query-response.md) odkazují na model, který vyhodnocuje výsledky a schopnost modelu přidat strukturu do odpovědi. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
 | [Výrazy pro dotaz na kontrolu pravopisu](speller-how-to-add.md) | Předtím, než se na vyhledávacím panelu dostanou výrazy pro dotaz, můžete nechat zkontrolovat chyby pravopisu. `speller`Možnost funguje s libovolným typem dotazu (jednoduchý, úplný nebo sémantický). |  Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview|
 | [Indexer SharePointu Online](search-howto-index-sharepoint-online.md) | Tento indexer vás připojí k webu SharePointu Online, abyste mohli indexovat obsah z knihovny dokumentů. | Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
 
@@ -46,7 +46,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 | Month (Měsíc) | Funkce | Popis |
 |-------|---------|-------------|
 | Listopad | [Šifrování klíče spravovaného zákazníkem (rozšířené)](search-security-manage-encryption-keys.md) | Rozšiřuje šifrování spravované zákazníkem v celém rozsahu prostředků vytvořených a spravovaných vyhledávací službou. Všeobecně k dispozici.|
-| Září | [Rozšíření Visual Studio Code pro Azure Kognitivní hledání](search-get-started-vs-code.md) | Přidá pracovní prostor, navigaci, IntelliSense a šablony pro vytváření indexů, indexerů, zdrojů dat a dovednosti. | Verze Public Preview |
+| Září | [Rozšíření Visual Studio Code pro Azure Kognitivní hledání](search-get-started-vs-code.md) | Přidá pracovní prostor, navigaci, IntelliSense a šablony pro vytváření indexů, indexerů, zdrojů dat a dovednosti. Tato funkce je aktuálně ve verzi Public Preview.| 
 | Září | [Identita spravované služby (indexery)](search-howto-managed-identities-data-sources.md) | Všeobecně k dispozici.  |
 | Září | [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Všeobecně k dispozici.  |
 | Září | [REST API správy (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Všeobecně k dispozici. |

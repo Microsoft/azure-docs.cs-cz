@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: b5becd8ddaf74ab2acd059054a095ce9d21c178f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 49ec43e59989f3fdad8f5731867953cc7cbb5757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366836"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699704"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatizované publikování pro průběžnou integraci a doručování
 
@@ -22,7 +22,7 @@ ms.locfileid: "100366836"
 
 Nepřetržitá integrace je postup testování každé změny provedené v základu kódu automaticky a jakmile je možné průběžné doručování následovat za testováním, které se provádí během nepřetržité integrace a vkládání změn do pracovního nebo produkčního systému.
 
-V Azure Data Factory průběžná integrace a doručování (CI/CD) znamená přesun Data Factory kanálů z jednoho prostředí (vývoj, testování, produkce) do jiného. Azure Data Factory využívá [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k uložení konfigurace různých entit ADF (kanálů, datových sad, toků dat atd.). Existují dva navrhované metody, jak propagovat datovou továrnu na jiné prostředí:
+Ve službě Azure Data Factory kontinuální integrace a průběžné doručování (CI/CD) představují přesun kanálů Data Factory z jednoho prostředí (vývojového, testovacího, produkčního) do jiného. Azure Data Factory využívá [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) k uložení konfigurace různých entit ADF (kanálů, datových sad, toků dat atd.). Existují dva navrhované metody, jak propagovat datovou továrnu na jiné prostředí:
 
 - Automatizované nasazení pomocí Data Factory integrace s [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines).
 - Ručně nahrajte šablonu Správce prostředků pomocí integrace Data Factory UX s Azure Resource Manager.
@@ -119,7 +119,7 @@ Pokud chcete začít, postupujte podle následujících kroků:
             "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
         },
         "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.2"
+            "@microsoft/azure-data-factory-utilities":"^0.1.3"
         }
     } 
     ```

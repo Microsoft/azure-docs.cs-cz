@@ -236,7 +236,7 @@
         - name: Monitorování (klasické prostředí)
           items:
             - name: Monitorování na webu Azure Portal (klasické prostředí)
-              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/manage-storage-analytics-logs.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Řešení potíží
       items:
         - name: Problémy s latencí

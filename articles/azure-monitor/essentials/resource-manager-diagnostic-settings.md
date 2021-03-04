@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731438"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Ukázky Správce prostředků šablon pro nastavení diagnostiky v Azure Monitor
 Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro vytvoření nastavení diagnostiky pro prostředek Azure. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
@@ -349,7 +349,7 @@ Následující ukázka vytvoří nastavení diagnostiky pro databázi SQL Azure 
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>Nastavení diagnostiky pro trezor Recovery Services
-Následující ukázka vytvoří nastavení diagnostiky pro trezor služby Azure Recovery Services přidáním prostředku typu `microsoft.recoveryservices/vaults/providers/diagnosticSettings` do šablony. Tento příklad určuje režim shromažďování, jak je popsáno v [protokolech prostředků Azure](../platform/resource-logs.md#send-to-log-analytics-workspace). Zadejte `Dedicated` nebo `AzureDiagnostics` pro `logAnalyticsDestinationType` vlastnost.
+Následující ukázka vytvoří nastavení diagnostiky pro trezor služby Azure Recovery Services přidáním prostředku typu `microsoft.recoveryservices/vaults/providers/diagnosticSettings` do šablony. Tento příklad určuje režim shromažďování, jak je popsáno v [protokolech prostředků Azure](./resource-logs.md#send-to-log-analytics-workspace). Zadejte `Dedicated` nebo `AzureDiagnostics` pro `logAnalyticsDestinationType` vlastnost.
 
 ### <a name="template-file"></a>Soubor šablony
 
@@ -812,5 +812,5 @@ Následující ukázka vytvoří nastavení diagnostiky pro každý koncový bod
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte další ukázkové šablony pro Azure monitor](../samples/resource-manager-samples.md).
+* [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
 * [Přečtěte si další informace o nastavení diagnostiky](../essentials/diagnostic-settings.md).

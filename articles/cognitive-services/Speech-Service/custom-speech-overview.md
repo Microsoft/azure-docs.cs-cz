@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388647"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716563"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -45,7 +45,9 @@ Tento diagram zvýrazňuje části, které tvoří [Custom Speech oblasti sady S
 Musíte mít účet Azure a předplatné služby Speech ještě předtím, než budete moct pomocí nástroje [Speech Studio](https://speech.microsoft.com/customspeech) vytvořit vlastní model. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> Pokud máte v úmyslu vytvořit vlastní model se **zvukovými daty**, vyberte jednu z následujících oblastí, která má vyhrazený hardware k dispozici pro školení. Tím se zkrátí doba potřebná k učení modelu.
+> Ujistěte se prosím, že jste vytvořili předplatné Standard (S0). Bezplatné předplatné (F0) se nepodporuje.
+
+Pokud máte v úmyslu vytvořit vlastní model se **zvukovými daty**, vyberte jednu z následujících oblastí, která má vyhrazený hardware k dispozici pro školení. Tím se zkrátí doba potřebná k výuce modelu a umožní vám využít více zvuků pro školení. V těchto oblastech bude služba řeči používat až 20 hodin zvukového školení. v ostatních oblastech bude používat jenom až 8 hodin.
 
 * Austrálie – východ
 * Střední Kanada
@@ -61,9 +63,6 @@ Musíte mít účet Azure a předplatné služby Speech ještě předtím, než 
 * USA (Gov) – Virginia
 * West Europe
 * Západní USA 2
-
-> [!NOTE]
-> Ujistěte se prosím, že jste vytvořili předplatné Standard (S0). Bezplatné předplatné (F0) se nepodporuje.
 
 Po vytvoření účtu Azure a předplatného služby Speech se budete muset přihlásit ke službě [Speech Studio](https://speech.microsoft.com/customspeech) a připojit své předplatné.
 

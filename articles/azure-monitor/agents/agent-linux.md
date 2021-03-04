@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9e0d9162c497ff035438b5a65c6f4500ce834860
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734923"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics na počítačích s Linuxem
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
 
 * [Nainstalujte agenta pro Linux pomocí skriptu obálky](#install-the-agent-using-wrapper-script) hostovaného na GitHubu. Toto je doporučená metoda pro instalaci a upgrade agenta, pokud je počítač připojen k Internetu, a to přímo nebo prostřednictvím proxy server.
-* [Ručně stáhněte a nainstalujte](#install-the-agent-manually) agenta. To je nutné v případě, že počítač se systémem Linux nemá přístup k Internetu a bude komunikovat s Azure Monitor nebo Azure Automation prostřednictvím [brány Log Analytics](../platform/gateway.md). 
+* [Ručně stáhněte a nainstalujte](#install-the-agent-manually) agenta. To je nutné v případě, že počítač se systémem Linux nemá přístup k Internetu a bude komunikovat s Azure Monitor nebo Azure Automation prostřednictvím [brány Log Analytics](./gateway.md). 
 
 >[!IMPORTANT]
-> Metody instalace popsané v tomto článku se obvykle používají pro virtuální počítače v místním prostředí nebo v jiných cloudech. V tématu [Možnosti instalace](../platform/log-analytics-agent.md#installation-options) získáte efektivnější možnosti, které můžete použít pro virtuální počítače Azure.
+> Metody instalace popsané v tomto článku se obvykle používají pro virtuální počítače v místním prostředí nebo v jiných cloudech. V tématu [Možnosti instalace](./log-analytics-agent.md#installation-options) získáte efektivnější možnosti, které můžete použít pro virtuální počítače Azure.
 
 
 
@@ -32,7 +32,7 @@ Seznam distribucí pro Linux podporovaný agentem Log Analytics najdete v témat
 >OpenSSL 1.1.0 se podporuje jenom na platformách x86_x64 (64 bitů) a OpenSSL starších než 1. x se na žádné platformě nepodporuje.
 
 >[!NOTE]
->Spuštění agenta Log Analytics Linux v kontejnerech se nepodporuje. Pokud potřebujete monitorovat kontejnery, využijte prosím [řešení monitorování kontejnerů](../insights/containers.md) pro hostitele Docker nebo [Azure monitor pro kontejnery](../insights/container-insights-overview.md) pro Kubernetes.
+>Spuštění agenta Log Analytics Linux v kontejnerech se nepodporuje. Pokud potřebujete monitorovat kontejnery, využijte prosím [řešení monitorování kontejnerů](../containers/containers.md) pro hostitele Docker nebo službu [Container Insights](../containers/container-insights-overview.md) pro Kubernetes.
 
 Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory:  
 
@@ -87,7 +87,7 @@ Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS po
 
 V následující tabulce jsou vysvětlené balíčky požadované pro [Podporované distribuce Linux](#supported-operating-systems) , na které se agent nainstaluje.
 
-|Požadovaný balíček |Description |Minimální verze |
+|Požadovaný balíček |Popis |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
@@ -100,7 +100,7 @@ V následující tabulce jsou vysvětlené balíčky požadované pro [Podporova
 >Aby bylo možné shromažďovat zprávy syslog, jsou vyžadovány buď rsyslog, nebo syslog-ng. Výchozí démon procesu Syslog verze 5 Red Hat Enterprise Linux, CentOS a verze Oracle Linux (sysklog) není pro shromažďování událostí syslog podporován. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat démona rsyslog a nakonfigurovat tak, aby nahradila sysklog.
 
 ## <a name="network-requirements"></a>Požadavky sítě
-Požadavky na síť pro agenta pro Linux najdete v tématu [Přehled agenta Log Analytics](../platform/log-analytics-agent.md#network-requirements) .
+Požadavky na síť pro agenta pro Linux najdete v tématu [Přehled agenta Log Analytics](./log-analytics-agent.md#network-requirements) .
 
 ## <a name="agent-install-package"></a>Balíček pro instalaci agenta
 
@@ -190,7 +190,7 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

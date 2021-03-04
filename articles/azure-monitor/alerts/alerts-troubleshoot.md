@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609566"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717855"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor
 
 Tento článek popisuje běžné problémy při Azure Monitor upozorňování a oznámeních.
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu [Přehled výstrah v Microsoft Azure](./alerts-overview.md).
 
 Pokud máte problém s vypálením nebo vypálením výstrahy v případě, že jste očekávali, podívejte se na články níže. Výstrahy "aktivované" můžete zobrazit v Azure Portal.
 
@@ -36,7 +36,7 @@ Pokud se na webu Azure Portal zobrazuje aktivované upozornění, ale neobdržel
 
 1. **Byl e-mail potlačen [pravidlem akce](../alerts/alerts-action-rules.md)**?
 
-    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](../platform/action-groups.md):
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](./action-groups.md):
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Pokud se na portálu zobrazuje aktivované upozornění, ale neobdrželi jste SM
 
 1. **Byla akce potlačena [pravidlem akce](../alerts/alerts-action-rules.md)?**
 
-    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](../platform/action-groups.md): 
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](./action-groups.md): 
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Pokud se na portálu zobrazuje aktivované upozornění, ale jeho nakonfigurovan
 
 1. **Byla akce potlačena pravidlem akce?**
 
-    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](../platform/action-groups.md):
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](./action-groups.md):
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -133,15 +133,15 @@ Pokud se na portálu zobrazuje aktivované upozornění, ale jeho nakonfigurovan
 
 1. **Neaktivoval se Webhook?**
 
-    1. **Byly zdrojové IP adresy blokované?**
+    1. **Došlo k zablokování zdrojových IP adres?**
     
-       Přidejte [IP adresy](../platform/action-groups.md#action-specific-information) , ze kterých se Webhook volá, do seznamu povolených.
+       Přidejte [IP adresy](./action-groups.md#action-specific-information) , ze kterých se Webhook volá, do seznamu povolených.
 
-    1. **Funguje koncový bod Webhooku správně?**
+    1. **Funguje správně koncový bod webhooku?**
 
        Ověřte správnost a správné fungování koncového bodu webhooku, který jste nakonfigurovali. Projděte si protokoly webhooku nebo instrumentujte jeho kód, abyste mohli provést šetření (například nastavte protokolování příchozí datové části).
 
-    1. **Zavoláte si časovou rezervu nebo Microsoft Teams?**  
+    1. **Voláte Slack nebo Microsoft Teams?**  
     Každý z těchto koncových bodů očekává specifický formát JSON. Postupujte podle [těchto pokynů](../alerts/action-groups-logic-app.md) a nakonfigurujte místo toho akci aplikace logiky.
 
     1. **Přestal Webhook reagovat nebo vrátil chyby?** 
@@ -180,12 +180,12 @@ Pokud vám upozornění přišlo, ale myslíte si, že některá z jeho polí ch
 
     Zkontrolujte, jestli je na úrovni akce zadaný očekávaný formát. Mohli jste například vytvořit kód, který reaguje na upozornění (webhook, funkce, aplikace logiky atd.) a očekává určitý formát, ale později jste vy nebo někdo jiný v akci zadali jiný formát.  
 
-    Zkontrolujte také, jestli formát datové části neobsahuje [upozornění protokolu aktivit](../alerts/activity-log-alerts-webhook.md), [upozornění prohledávání protokolu](../alerts/alerts-log-webhook.md) (pro Application Insights i Log Analytics), [upozornění na metriky](alerts-metric-near-real-time.md#payload-schema), [společné schéma upozornění](../alerts/alerts-common-schema-definitions.md) nebo zastaralá [klasická upozornění na metriky](../platform/alerts-webhooks.md).
+    Zkontrolujte také, jestli formát datové části neobsahuje [upozornění protokolu aktivit](../alerts/activity-log-alerts-webhook.md), [upozornění prohledávání protokolu](../alerts/alerts-log-webhook.md) (pro Application Insights i Log Analytics), [upozornění na metriky](alerts-metric-near-real-time.md#payload-schema), [společné schéma upozornění](../alerts/alerts-common-schema-definitions.md) nebo zastaralá [klasická upozornění na metriky](./alerts-webhooks.md).
 
  
 1. **Výstrahy protokolu aktivit: jsou k dispozici informace v protokolu aktivit?** 
 
-    [Výstrahy protokolu aktivit](../platform/activity-log-alerts.md) jsou výstrahy založené na událostech zapsaných do protokolu aktivit Azure, jako jsou například události týkající se vytváření, aktualizace nebo odstraňování prostředků Azure, stavu služeb a událostí stavu prostředků nebo zjištění z Azure Advisor a Azure Policy. Pokud jste obdrželi upozornění založené na protokolu aktivit, ale některá požadovaná pole chybí nebo jsou nesprávná, nejprve zkontrolujte události v samotném protokolu aktivit. Pokud prostředek Azure do své události protokolu aktivit požadovaná pole nezapíše, příslušné upozornění tato pole nebude obsahovat. 
+    [Výstrahy protokolu aktivit](./activity-log-alerts.md) jsou výstrahy založené na událostech zapsaných do protokolu aktivit Azure, jako jsou například události týkající se vytváření, aktualizace nebo odstraňování prostředků Azure, stavu služeb a událostí stavu prostředků nebo zjištění z Azure Advisor a Azure Policy. Pokud jste obdrželi upozornění založené na protokolu aktivit, ale některá požadovaná pole chybí nebo jsou nesprávná, nejprve zkontrolujte události v samotném protokolu aktivit. Pokud prostředek Azure do své události protokolu aktivit požadovaná pole nezapíše, příslušné upozornění tato pole nebude obsahovat. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Pravidlo akce nefunguje podle očekávání 
 
@@ -250,4 +250,4 @@ Pokud při pokusu o vytvoření, aktualizaci nebo odstranění [pravidla akce](.
 
 ## <a name="next-steps"></a>Další kroky
 - Pokud používáte upozornění protokolu, podívejte se také na téma [řešení potíží s výstrahami protokolu](./alerts-troubleshoot-log.md).
-- Vraťte se na [Azure Portal](https://portal.azure.com) a ověřte, jestli jste problém vyřešili výše uvedeným pokynů. 
+- Vraťte se na [Azure Portal](https://portal.azure.com) a ověřte, jestli jste problém vyřešili výše uvedeným pokynů.

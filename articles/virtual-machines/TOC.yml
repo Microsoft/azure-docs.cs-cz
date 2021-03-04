@@ -860,87 +860,71 @@
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
                 - name: Rozhraní příkazového řádku
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
-        - name: Azure Disk Encryption scénáře
+        - name: Azure Disk Encryption
           items:
-            - name: Azure Disk Encryption přehledy
-              items:
-                - name: Windows
-                - name: Linux
             - name: Linux
-              href: ./linux/disk-encryption-linux.md
-            - name: Windows
-              href: ./windows/disk-encryption-windows.md
-            - name: Rozhraní příkazového řádku
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-cli-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-cli-quickstart.md
-            - name: PowerShell
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-powershell-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portál
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-portal-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-portal-quickstart.md
-            - name: Trezor klíčů pro Azure Disk Encryption
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-key-vault.md
-                - name: Windows
-                  href: ./windows/disk-encryption-key-vault.md
-            - name: Ukázkové skripty
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-sample-scripts.md
-                - name: Windows
-                  href: ./windows/disk-encryption-sample-scripts.md
-            - name: Azure Disk Encryption v izolované síti
-              href: ./linux/disk-encryption-isolated-network.md
-            - name: Jak ověřit stav šifrování
-              href: ./linux/how-to-verify-encryption-status.md
-            - name: Jak nakonfigurovat LVM RAID pro šifrování
-              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
-            - name: Postup změny velikosti šifrovaných svazků LVM
-              href: ./linux/how-to-resize-encrypted-lvm.md
-            - name: Změna velikosti oddílů operačního systému Linux GPT
-              href: linux/resize-os-disk-gpt-partition.md
-            - name: řešení potíží
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-troubleshooting.md
-                - name: Windows
-                  href: ./windows/disk-encryption-troubleshooting.md
-            - name: Nejčastější dotazy
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-faq.md
-                - name: Windows
-                  href: ./windows/disk-encryption-faq.md
-            - name: Azure Disk Encryption – předchozí verze
               items:
                 - name: Přehled
+                  href: ./linux/disk-encryption-overview.md
+                - name: Rychlé starty
                   items:
-                    - name: Linux
-                      href: ./linux/disk-encryption-overview-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Azure CLI
+                      href: ./linux/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./linux/disk-encryption-powershell-quickstart.md
+                    - name: portál Azure
+                      href: ./linux/disk-encryption-portal-quickstart.md
                 - name: Trezor klíčů pro Azure Disk Encryption
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Ukázkové skripty pro šifrování disků
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Šifrování disků v izolované síti
+                  href: ./linux/disk-encryption-isolated-network.md
+                - name: Jak ověřit stav šifrování
+                  href: ./linux/how-to-verify-encryption-status.md
+                - name: Jak nakonfigurovat LVM RAID pro šifrování
+                  href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+                - name: Jak změnit velikost zašifrovaných svazků lvm
+                  href: ./linux/how-to-resize-encrypted-lvm.md
+                - name: Řešení potíží s šifrováním disků
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Šifrování disků – nejčastější dotazy
+                  href: ./linux/disk-encryption-faq.md
+                - name: Šifrování disků – předchozí verze
                   items:
-                    - name: Linux
+                    - name: Přehled
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Trezor klíčů pro Azure Disk Encryption
                       href: ./linux/disk-encryption-key-vault-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-key-vault-aad.md
-                - name: Scénáře šifrování disků
-                  items:
-                    - name: Linux
+                    - name: Scénáře šifrování disků pro Linux
                       href: ./linux/disk-encryption-linux-aad.md
-                    - name: Windows
+            - name: Windows
+              items:
+                - name: Scénáře šifrování disků pro Windows
+                  href: ./windows/disk-encryption-windows.md
+                - name: Rychlé starty
+                  items:
+                    - name: Azure CLI
+                      href: ./windows/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./windows/disk-encryption-powershell-quickstart.md
+                    - name: portál Azure
+                      href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Trezor klíčů pro Azure Disk Encryption
+                  href: ./windows/disk-encryption-key-vault.md
+                - name: Ukázkové skripty pro šifrování disků
+                  href: ./windows/disk-encryption-sample-scripts.md
+                - name: Řešení potíží s šifrováním disků
+                  href: ./windows/disk-encryption-troubleshooting.md
+                - name: Šifrování disků – nejčastější dotazy
+                  href: ./windows/disk-encryption-faq.md
+                - name: Šifrování disků – předchozí verze
+                  items:
+                    - name: Přehled
+                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Trezor klíčů pro Azure Disk Encryption
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                    - name: Scénáře šifrování disků pro Windows
                       href: ./windows/disk-encryption-windows-aad.md
     - name: Optimalizace výkonu a nákladů
       items:

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688004"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -80,7 +80,7 @@ Azure automanage je k dispozici bez dalších nákladů ve verzi Public Preview.
 
 **Je možné použít možnost automanage prostřednictvím zásad Azure?**
 
-Ano, máme vestavěnou zásadu, která automaticky aplikuje správu na všechny virtuální počítače v rámci definovaného oboru. Spolu s vaším účtem pro vlastní správu také určíte konfigurační profil (DevTest nebo produkční). Další informace o povolení automanage prostřednictvím zásad Azure [najdete tady](virtual-machines-policy-enable.md).
+Ano, máme vestavěnou zásadu, která automaticky aplikuje správu na všechny virtuální počítače v rámci definovaného oboru. Můžete také zadat konfiguraci prostředí (DevTest nebo Production) společně s vaším účtem pro vlastní správu. Další informace o povolení automanage prostřednictvím zásad Azure [najdete tady](virtual-machines-policy-enable.md).
 
 
 **Co je účet pro autosprávu?**
@@ -93,9 +93,9 @@ Ano, máme vestavěnou zásadu, která automaticky aplikuje správu na všechny 
 Pokud je váš virtuální počítač propojený s existujícím pracovním prostorem Log Analytics, bude možné tento pracovní prostor použít k použití těchto řešení: Change Tracking, inventarizaci a Update Management. Všem virtuálním počítačům připojeným k tomuto pracovnímu prostoru budou tato řešení povolena.
 
 
-**Můžu změnit konfigurační profil mého virtuálního počítače?**
+**Můžu změnit prostředí svého virtuálního počítače?**
 
-V tuto chvíli budete muset pro tento virtuální počítač Zakázat možnost automanage a potom znovu povolit automanage s požadovaným konfiguračním profilem a preferencemi.
+V tuto chvíli budete muset pro tento virtuální počítač Zakázat možnost automanage a potom znovu povolit službu automanage s požadovaným prostředím a preferencemi.
 
 
 **Pokud je můj virtuální počítač už nakonfigurovaný pro službu, třeba Update Management, provede to, aby se znovu nakonfigurovala.**

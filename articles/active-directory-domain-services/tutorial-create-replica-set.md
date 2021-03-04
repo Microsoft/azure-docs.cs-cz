@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687494"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Kurz: vytvoření a použití sad replik pro zajištění odolnosti nebo geografického umístění v Azure Active Directory Domain Services (Preview)
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>Kurz: vytvoření a použití sad replik pro zajištění odolnosti nebo geografického umístění v Azure Active Directory Domain Services
 
 Pokud chcete zlepšit odolnost služby Azure Active Directory Domain Services (Azure služba AD DS) spravované domény nebo ji nasaďte do dalších geografických umístění blízko vašich aplikací, můžete použít *sady replik*. Každý obor názvů spravované domény Azure služba AD DS, jako je například *aaddscontoso.com*, obsahuje jednu počáteční sadu replik. Možnost vytvářet další sady replik v jiných oblastech Azure poskytuje geografickou odolnost pro spravovanou doménu.
 
 Sadu replik můžete přidat do kterékoli partnerské virtuální sítě v libovolné oblasti Azure, která podporuje Azure služba AD DS.
-
-Sady replik jsou funkcí veřejné verze Preview v Azure AD Domain Services. Počítejte s tím, že rozdíly v podpoře, které existují pro funkce, jsou stále ve verzi Preview. Další informace o [verzi Preview najdete v Azure Active Directory verze Preview smlouvy SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto kurzu se naučíte:
 
@@ -34,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -78,7 +76,7 @@ Chcete-li vytvořit další sadu replik, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
 1. Vyberte spravovanou doménu, například *aaddscontoso.com*.
-1. Na levé straně vyberte **sady replik (Preview)**. Každá spravovaná doména obsahuje jednu počáteční sadu replik ve vybrané oblasti, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
+1. Na levé straně vyberte **sady replik**. Každá spravovaná doména obsahuje jednu počáteční sadu replik ve vybrané oblasti, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
     ![Ukázkový snímek obrazovky pro zobrazení a přidání sady replik v Azure Portal](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ Chcete-li odstranit sadu replik, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
 1. Vyberte spravovanou doménu, například *aaddscontoso.com*.
-1. Na levé straně vyberte **sady replik (Preview)**. V seznamu sad replik vyberte kontextovou nabídku **...** vedle sady replik, kterou chcete odstranit.
+1. Na levé straně vyberte **sady replik**. V seznamu sad replik vyberte kontextovou nabídku **...** vedle sady replik, kterou chcete odstranit.
 1. V místní nabídce vyberte **Odstranit** a pak potvrďte, že chcete odstranit sadu replik.
 
 > [!NOTE]

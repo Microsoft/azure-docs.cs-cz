@@ -4,18 +4,18 @@ description: Použití Azure Data Factory ke kopírování dat z Office 365
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 8b98344dcb2321d5d91c9974dc833a735164d428
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 54aa511414695d28e390529af61d484e465f1c19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710261"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 365 do úložiště objektů BLOB v Azure_. Pomocí podobných kroků můžete zkopírovat data do Azure Data Lake Gen1 nebo Gen2. V [článku konektor office 365](connector-office-365.md) najdete obecné informace o kopírování dat z Office 365.
 

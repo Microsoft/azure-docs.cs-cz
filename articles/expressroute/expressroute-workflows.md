@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721731"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 
@@ -77,8 +77,12 @@ Nakonfigurujte domény směrování. Pokud poskytovatel připojení spravuje kon
 
 Povolte privátní partnerské vztahy pro připojení k virtuálním počítačům a cloudovým službám nasazeným v rámci služby Azure Virtual Network.
 
-* Podsíť partnerského vztahu pro cestu 1 (/30)
-* Podsíť partnerského vztahu pro cestu 2 (/30)
+* Podsítě IPv4:
+    * Podsíť partnerského vztahu pro cestu 1 (/30)
+    * Podsíť partnerského vztahu pro cestu 2 (/30)
+* Podsítě IPv6 (volitelné):
+    * Podsíť partnerského vztahu pro cestu 1 (/126)
+    * Podsíť partnerského vztahu pro cestu 2 (/126)
 * ID sítě VLAN pro partnerský vztah
 * ASN pro partnerský vztah
 * ExpressRoute ASN = 12076
@@ -88,8 +92,12 @@ Povolte privátní partnerské vztahy pro připojení k virtuálním počítač�
 
 Tuto možnost povolte pro přístup k Microsoft online služby, jako je například Microsoft 365. Kromě toho jsou všechny služby Azure PaaS přístupné prostřednictvím partnerského vztahu Microsoftu. Abyste se mohli připojit k Microsoftu, než je ten, který používáte pro Internet, musíte zajistit, abyste použili samostatný proxy server nebo Edge. Použití stejné hrany pro ExpressRoute i Internet způsobí asymetrické směrování a způsobí výpadky připojení pro vaši síť.
 
-* Podsíť partnerského vztahu pro cestu 1 (/30) – musí být veřejná IP adresa.
-* Podsíť partnerského vztahu pro cestu 2 (/30) – musí být veřejná IP adresa.
+* Podsítě IPv4:
+    * Podsíť partnerského vztahu pro cestu 1 (/30) – musí být veřejná IP adresa.
+    * Podsíť partnerského vztahu pro cestu 2 (/30) – musí být veřejná IP adresa.
+* Podsítě IPv6 (volitelné):
+    * Podsíť partnerského vztahu pro cestu 1 (/126) – musí být veřejná IP adresa.
+    * Podsíť partnerského vztahu pro cestu 2 (/126) – musí být veřejná IP adresa.
 * ID sítě VLAN pro partnerský vztah
 * ASN pro partnerský vztah
 * Inzerované předpony – musí být předpony veřejných IP adres.

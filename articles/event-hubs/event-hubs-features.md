@@ -2,13 +2,13 @@
 title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739071"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -47,7 +47,12 @@ Event Hubs zajišťuje, aby všechny události sdílející hodnotu klíče odd�
 
 ### <a name="event-retention"></a>Uchovávání událostí
 
-Publikované události se odeberou z centra událostí na základě konfigurovatelné zásady uchovávání na základě časových limitů. Výchozí hodnota a nejkratší možné období uchování je 1 den (24 hodin). Pro Event Hubs Standard je maximální doba uchovávání 7 dní. V případě Event Hubs úrovně Dedicated je maximální doba uchování 90 dní.
+Publikované události se odeberou z centra událostí na základě konfigurovatelné zásady uchovávání na základě časových limitů. Tady je několik důležitých bodů:
+
+- **Výchozí** hodnota a **nejkratší** možné období uchování je **1 den (24 hodin)**.
+- Pro Event Hubs **Standard** je maximální doba uchovávání **7 dní**. 
+- Pro Event Hubs **vyhrazené** je maximální doba uchování **90 dní**.
+- Pokud změníte dobu uchování, bude platit pro všechny zprávy, včetně zpráv, které jsou již v centru událostí. 
 
 > [!NOTE]
 > Event Hubs je modul streamování událostí v reálném čase, který není určený pro použití namísto databáze nebo jako trvalé úložiště pro nekonečné uchovávání datových proudů událostí. 
@@ -117,6 +122,9 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 *Vytváření kontrolních bodů* je proces, pomocí kterého čtenáři označují nebo potvrzují svou pozici v rámci posloupnosti událostí v oddílu. Za vytváření kontrolních bodů zodpovídá příjemce. Proces probíhá na bázi oddílů ve skupinách příjemců. Taková zodpovědnost znamená, že si každý čtenář oddílu v každé skupině příjemců musí udržovat přehled o své aktuální pozici v datovém proudu událostí a může informovat službu, když bude považovat datový proud za dokončený.
 
 Pokud se čtenář z oddílu odpojí, začne při opětovném připojení číst od kontrolního bodu, který dříve zaslal poslední čtenář daného oddílu z této skupiny příjemců. Když se čtenář připojí, předá posun do centra událostí, aby určil umístění, ve kterém se má začít číst. Takto můžete vytváření kontrolních bodů použít jak k označování událostí jako „dokončených“, tak k zajištění ochrany pro případ, že nastane selhání u čtenářů spuštěných na různých strojích. Ke starším datům se je možné vrátit tak, že určíte nižší posun od tohoto kontrolního bodu. Díky tomuto mechanismu umožňuje vytváření kontrolních bodů nejen obnovu při selhání, ale i opakované přehrání datového proudu.
+
+> [!IMPORTANT]
+> Posuny poskytuje služba Event Hubs. Je odpovědností, že příjemce má vytvořit kontrolní bod při zpracování událostí.
 
 > [!NOTE]
 > Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 

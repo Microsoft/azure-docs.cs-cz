@@ -4,12 +4,12 @@ description: Pomocí scénářů Service Fabric chaos test a převzetí služeb 
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9939ef12dcbcc2b5d8733a68166c8e7162c4b0ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ef49d541cd00d289176ca61e055102faf6df7514
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594981"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735552"
 ---
 # <a name="testability-scenarios"></a>Scénáře testování
 Velké distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric poskytuje vývojářům možnost psát služby, které se spouštějí na nespolehlivých infrastrukturách. Aby bylo možné zapisovat vysoce kvalitní služby, vývojáři musí být schopni tuto nespolehlivou infrastrukturu vyvolávat, aby otestovali stabilitu svých služeb.
@@ -123,7 +123,7 @@ class Test
 
 PowerShell
 
-Modul Service Fabric PowerShell obsahuje dva způsoby, jak začít scénář chaos. `Invoke-ServiceFabricChaosTestScenario` je založen na klientech a pokud je klientský počítač vypínán prostřednictvím testu, nebudou zavedeny žádné další chyby. Alternativně je k dispozici sada příkazů, které mají za následek, že je test spuštěn v případě vypnutí počítače. `Start-ServiceFabricChaos` používá stavovou a spolehlivou systémovou službu nazvanou FaultAnalysisService a zajišťuje, že chyby zůstanou zavedeny až do chvíle, kdy TimeToRun nebude. `Stop-ServiceFabricChaos` dá se použít k ručnímu zastavení scénáře a obdrží `Get-ServiceFabricChaosReport` sestavu. Další informace najdete v tématu [Reference k Azure Service Fabric PowerShellu](/powershell/module/servicefabric/) a vystavování [chaos řízených v clusterech Service Fabric](service-fabric-controlled-chaos.md).
+Modul Service Fabric PowerShell obsahuje dva způsoby, jak začít scénář chaos. `Invoke-ServiceFabricChaosTestScenario` je založen na klientech a pokud je klientský počítač vypínán prostřednictvím testu, nebudou zavedeny žádné další chyby. Alternativně je k dispozici sada příkazů, které mají za následek, že je test spuštěn v případě vypnutí počítače. `Start-ServiceFabricChaos` používá stavovou a spolehlivou systémovou službu nazvanou FaultAnalysisService a zajišťuje, že chyby zůstanou zavedeny až do chvíle, kdy TimeToRun nebude. `Stop-ServiceFabricChaos` dá se použít k ručnímu zastavení scénáře a obdrží `Get-ServiceFabricChaosReport` sestavu. Další informace najdete v tématu [Reference k Azure Service Fabric PowerShellu](/powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps) a vystavování [chaos řízených v clusterech Service Fabric](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

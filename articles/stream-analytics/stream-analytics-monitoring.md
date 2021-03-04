@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572970"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726763"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -30,6 +30,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 | ---------------------- | ---------------------------------------- |
 | Nevyřízené události vstupu       | Počet nevyřízených vstupních událostí. Nenulová hodnota této metriky znamená, že vaše úloha nebude moci udržovat počet příchozích událostí. Pokud je tato hodnota pomalá nebo stále nenulová, měli byste škálovat svou úlohu. Další informace najdete v tématu [pochopení a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
 | Chyby převodu dat | Počet výstupních událostí, které nebylo možné převést na očekávané výstupní schéma. Chcete-li odstranit události, které se vyskytnou v tomto scénáři, můžete změnit zásady chyb na možnost drop. |
+| Využití procesoru v% (Preview)       | Procento využití procesoru vaší úlohou Pokud je tato metrika konzistentně vyšší než 80%, může to znamenat, že je vaše úloha v kritickém využití procesoru, a pravděpodobně způsobí, že se vstupní události vrátí do protokolu. Můžete zvýšit počet služby SUs přidělené vaší úloze a zmírnit tak takové problémy. |
 | Události předčasného vstupu       | Události, jejichž časové razítko aplikace je dřívější než doba jejich příchodu, o více než 5 minut. |
 | Neúspěšné žádosti o funkce | Počet neúspěšných volání funkce Azure Machine Learning (Pokud je k dispozici). |
 | Události funkcí        | Počet událostí odeslaných do funkce Azure Machine Learning (Pokud je k dispozici). |
@@ -42,7 +43,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 | Události mimo pořadí    | Počet událostí, které byly přijaty mimo pořadí, které byly buď vyřazeny nebo předány upravenému časovému razítku, na základě zásad řazení událostí. To může být ovlivněno konfigurací nastavení okna mimo pořadí tolerance. |
 | Výstupní události          | Množství dat zaslaných úlohou Stream Analytics do cíle výstupu v rámci počtu událostí |
 | Běhové chyby         | Celkový počet chyb souvisejících se zpracováním dotazů (kromě chyb nalezených při ingestování událostí nebo výstupních výsledků) |
-| Využití SU%       | Pokud je využití prostředků konzistentně více než 80%, prodleva meze roste a počet nevyřízených událostí roste, zvažte zvýšení počtu jednotek streamování. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků. |
+| Využití SU%       | Procento paměti využívané vaší úlohou. Pokud je využití SU% konzistentně více než 80%, zpoždění vodoznaku roste a počet nevyřízených událostí roste, zvažte zvýšení počtu jednotek streamování. Vysoké využití indikuje, že úloha používá blízko maximálního počtu přidělených prostředků. |
 | Zpoždění vodoznaku       | Maximální prodleva vodoznaku napříč všemi oddíly všech výstupů v rámci úlohy. |
 
 Pomocí těchto metrik můžete [monitorovat výkon Stream Analytics úlohy](./stream-analytics-set-up-alerts.md#scenarios-to-monitor). 

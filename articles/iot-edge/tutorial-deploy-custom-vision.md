@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 564f19a1be5b3ce8a5267a07bd4f1f6de80fecf1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736487"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -37,10 +37,10 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!TIP]
->Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
+>Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -77,7 +77,7 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
    | Název | Zadejte název projektu, například **EdgeTreeClassifier**. |
    | Popis | Volitelný popis projektu. |
    | Prostředek | Vyberte jednu ze skupin prostředků Azure, která zahrnuje prostředek Custom Vision Service, nebo **vytvořte novou** , pokud jste ho ještě nepřidali. |
-   | Typy projektů | **Mazal** |
+   | Typy projektů | **Klasifikace** |
    | Typy klasifikace | **Více tříd (jedna značka na obrázek)** |
    | Domény | **Obecné (kompaktní)** |
    | Možnosti exportu | **Základní platformy (Tensorflow, CoreML, ONNX,...)** |
@@ -324,11 +324,11 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
 
 Místo toho, abychom k poskytování kanálu obrázků pro tento scénář použili skutečnou kameru, použijeme jeden testovací obrázek. Testovací obrázek je součástí úložiště GitHub s trénovacími obrázky, které jste stáhli dříve v tomto kurzu. 
 
-1. Přejděte na testovací obrázek, který se nachází v testu vyzkoušení **-CustomVision-Windows**  /  **Samples**  /  **Images**  /  **test** imagí. 
+1. Přejděte na testovací obrázek, který se nachází v testu vyzkoušení **-CustomVision-Windows**  /    /    /  **test** imagí. 
 
 2. Zkopírujte soubor **test_image.jpg**. 
 
-3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do **modules**  /  složky **cameraCapture** modulů. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
+3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do   /  složky **cameraCapture** modulů. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
 
 4. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture.
 

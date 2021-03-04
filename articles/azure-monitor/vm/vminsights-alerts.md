@@ -1,36 +1,36 @@
 ---
-title: Výstrahy z Azure Monitor pro virtuální počítače
-description: Popisuje, jak vytvořit pravidla upozornění z údajů o výkonu shromážděných v Azure Monitor pro virtuální počítače.
+title: Výstrahy z virtuálního počítače Insights
+description: Popisuje, jak vytvořit pravidla upozornění z údajů o výkonu shromážděných službou VM Insights.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611261"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704051"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Jak vytvořit výstrahy z Azure Monitor pro virtuální počítače
-[Výstrahy v Azure monitor](../platform/alerts-overview.md) proaktivně upozorňují na zajímavá data a vzory v datech monitorování. Azure Monitor pro virtuální počítače nezahrnuje předem nakonfigurovaná pravidla výstrah, ale můžete vytvořit vlastní, a to na základě dat, která shromažďuje. Tento článek obsahuje pokyny týkající se vytváření pravidel výstrah, včetně sady ukázkových dotazů.
+# <a name="how-to-create-alerts-from-vm-insights"></a>Jak vytvořit výstrahy z VM Insights
+[Výstrahy v Azure monitor](../alerts/alerts-overview.md) proaktivně upozorňují na zajímavá data a vzory v datech monitorování. V rámci virtuálních počítačů nejsou pravidla výstrah předem nakonfigurovaná, můžete je ale vytvářet na základě dat, která shromažďuje. Tento článek obsahuje pokyny týkající se vytváření pravidel výstrah, včetně sady ukázkových dotazů.
 
 > [!IMPORTANT]
-> Výstrahy popsané v tomto článku jsou založené na dotazech protokolu ze shromážděných dat Azure Monitor pro virtuální počítače. To se liší od výstrah vytvořených [Azure monitor pro stav hosta virtuálního počítače](vminsights-health-overview.md) , který je aktuálně ve verzi Public Preview. Vzhledem k tomu, že tato funkce je blízko obecné dostupnosti, se budou konsolidovat pokyny pro upozorňování.
+> Výstrahy popsané v tomto článku jsou založené na dotazech protokolu z shromážděných dat z kolekce VM Insights. To se liší od výstrah vytvořených [Azure monitor pro stav hosta virtuálního počítače](vminsights-health-overview.md) , který je aktuálně ve verzi Public Preview. Vzhledem k tomu, že tato funkce je blízko obecné dostupnosti, se budou konsolidovat pokyny pro upozorňování.
 
 
 ## <a name="alert-rule-types"></a>Typy pravidel výstrah
-Azure Monitor má [různé typy pravidel upozornění](../platform/alerts-overview.md#what-you-can-alert-on) na základě dat použitých k vytvoření výstrahy. Všechna data shromažďovaná v Azure Monitor pro virtuální počítače jsou uložená v protokolech Azure Monitor, které podporují [výstrahy protokolu](../alerts/alerts-log.md). V současné době nemůžete používat [Upozornění na metriky](../alerts/alerts-log.md) s daty o výkonu shromážděnými z Azure monitor pro virtuální počítače, protože data nejsou shromažďována do Azure monitor metrik. Pokud chcete shromažďovat data pro upozornění na metriky, nainstalujte [diagnostické rozšíření](../agents/diagnostics-extension-overview.md) pro virtuální počítače s Windows nebo [agenta telegraf](../platform/collect-custom-metrics-linux-telegraf.md) pro virtuální počítače se systémem Linux, abyste mohli shromažďovat údaje o výkonu do metrik.
+Azure Monitor má [různé typy pravidel upozornění](../alerts/alerts-overview.md#what-you-can-alert-on) na základě dat použitých k vytvoření výstrahy. Všechna data shromážděná službou VM Insights jsou uložená v protokolech Azure Monitor, které podporují [výstrahy protokolu](../alerts/alerts-log.md). V současné době nemůžete používat [Upozornění na metriky](../alerts/alerts-log.md) s daty o výkonu shromážděnými z virtuálních počítačů Insights, protože data nejsou shromažďována do Azure monitor metrik. Pokud chcete shromažďovat data pro upozornění na metriky, nainstalujte [diagnostické rozšíření](../agents/diagnostics-extension-overview.md) pro virtuální počítače s Windows nebo [agenta telegraf](../essentials/collect-custom-metrics-linux-telegraf.md) pro virtuální počítače se systémem Linux, abyste mohli shromažďovat údaje o výkonu do metrik.
 
 Existují dva typy upozornění protokolu v Azure Monitor:
 
 - [Počet výstrah výsledků](../alerts/alerts-unified-log.md#count-of-the-results-table-rows) vytvoří jednu výstrahu, když dotaz vrátí alespoň zadaný počet záznamů. Ty jsou ideální pro nečíselná data, například pro události Windows a syslog shromažďované [agentem Log Analytics](../agents/log-analytics-agent.md) nebo pro analýzu trendů výkonu napříč více počítači.
-- [Výstrahy měření metriky](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) vytvoří samostatnou výstrahu pro každý záznam v dotazu, který má hodnotu, která překračuje prahovou hodnotu definovanou v pravidle výstrahy. Tato pravidla výstrah jsou ideální pro data o výkonu shromážděná Azure Monitor pro virtuální počítače, protože mohou vytvořit jednotlivé výstrahy pro každý počítač.
+- [Výstrahy měření metriky](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) vytvoří samostatnou výstrahu pro každý záznam v dotazu, který má hodnotu, která překračuje prahovou hodnotu definovanou v pravidle výstrahy. Tato pravidla výstrah jsou ideální pro data o výkonu shromážděná službou VM Insights, protože můžou vytvářet jednotlivé výstrahy pro každý počítač.
 
 
 ## <a name="alert-rule-walkthrough"></a>Návod pro pravidlo upozornění
-Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu z Azure Monitor pro virtuální počítače. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu.
+Tato část vás provede vytvořením pravidla výstrahy měření metriky pomocí údajů o výkonu ze služby VM Insights. Tento základní postup můžete použít u nejrůznějších dotazů protokolu pro upozornění na různé čítače výkonu.
 
 Začněte vytvořením nového pravidla výstrahy podle postupu v části [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](../alerts/alerts-log.md). V případě **prostředku** vyberte pracovní prostor Log Analytics, který Azure monitor virtuální počítače ve vašem předplatném používat. Vzhledem k tomu, že je cílový prostředek pro pravidla upozornění protokolu vždycky Log Analytics pracovním prostorem, dotaz protokolu musí zahrnovat jakýkoliv filtr pro konkrétní virtuální počítače nebo sady škálování virtuálních počítačů. 
 
@@ -44,7 +44,7 @@ V **logice výstrahy** vyberte **měření metriky** a pak zadejte **prahovou ho
 ![Pravidlo upozornění na měření metriky](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>Ukázkové dotazy na výstrahy
-Následující dotazy lze použít s pravidlem výstrahy měření metriky pomocí údajů o výkonu shromažďovaných v Azure Monitor pro virtuální počítače. Každý shrnuje data podle počítače tak, aby byla pro každý počítač vytvořena výstraha s hodnotou, která překračuje prahovou hodnotu.
+Následující dotazy lze použít s pravidlem výstrahy měření metriky pomocí údajů o výkonu shromažďovaných službou VM Insights. Každý shrnuje data podle počítače tak, aby byla pro každý počítač vytvořena výstraha s hodnotou, která překračuje prahovou hodnotu.
 
 ### <a name="cpu-utilization"></a>Využití procesoru
 
@@ -200,5 +200,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [výstrahách v Azure monitor](../platform/alerts-overview.md).
-- Přečtěte si další informace o [dotazech protokolu pomocí dat z Azure monitor pro virtuální počítače](vminsights-log-search.md).
+- Přečtěte si další informace o [výstrahách v Azure monitor](../alerts/alerts-overview.md).
+- Přečtěte si další informace o [dotazech protokolu pomocí dat z Cloud Insights](vminsights-log-search.md).

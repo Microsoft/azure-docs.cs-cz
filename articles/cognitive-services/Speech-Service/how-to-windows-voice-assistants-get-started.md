@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026484"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713044"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Začínáme se hlasovými asistenty ve Windows
 
 Tento průvodce vás provede jednotlivými kroky pro zahájení vývoje hlasového asistenta ve Windows.
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
 
 Pokud chcete začít vyvíjet hlasového asistenta pro Windows, budete se muset ujistit, že máte správné vývojové prostředí.
 
@@ -34,7 +34,7 @@ Pokud chcete začít vyvíjet hlasového asistenta pro Windows, budete se muset 
 
 Některé prostředky nezbytné pro kompletně přizpůsobeného hlasového agenta ve Windows budou vyžadovat prostředky od Microsoftu. [Ukázka hlasového asistenta UWP](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) poskytuje ukázkové verze těchto prostředků pro počáteční vývoj a testování, takže tento oddíl není potřebný pro počáteční vývoj.
 
-- **Model klíčového slova:** Aktivace hlasu vyžaduje, aby od Microsoftu byl model klíčových slov ve formě souboru. bin. Soubor. bin uvedený v ukázce hlasového asistenta UWP je vyškolený pro klíčové slovo contoso.
+- **Model klíčového slova:** Aktivace hlasu vyžaduje, aby od Microsoftu byl model klíčových slov ve formě souboru. bin. Soubor. bin uvedený v ukázce hlasového asistenta UWP je vyškolený pro klíčové slovo *Contoso*.
 - **Token funkce omezeného přístupu:** Vzhledem k tomu, že rozhraní API ConversationalAgent poskytují přístup ke zvukovým mikrofonům, jsou chráněna omezeními funkcí omezeného přístupu. Pokud chcete použít funkci omezeného přístupu, budete muset získat token funkcí s omezeným přístupem, který je připojený k identitě balíčku vaší aplikace od Microsoftu.
 
 ## <a name="establish-a-dialog-service"></a>Vytvoření služby dialogu

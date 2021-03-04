@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704391"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce webhooku pro pravidla výstrah protokolu
 
-[Výstraha protokolu](alerts-log.md) podporuje [konfiguraci skupin akcí Webhooku](../platform/action-groups.md#webhook). V tomto článku popíšeme, které vlastnosti jsou k dispozici a jak nakonfigurovat vlastní Webhook JSON.
+[Výstraha protokolu](alerts-log.md) podporuje [konfiguraci skupin akcí Webhooku](./action-groups.md#webhook). V tomto článku popíšeme, které vlastnosti jsou k dispozici a jak nakonfigurovat vlastní Webhook JSON.
 
 > [!NOTE]
 > Vlastní Webhook založený na JSON se v současnosti ve verzi rozhraní API nepodporuje. `2020-05-01-preview`
@@ -47,7 +47,7 @@ Výchozí vlastnosti akce Webhooku a jejich vlastní názvy parametrů JSON:
 | *SearchQuery* |#searchquery |Dotaz na hledání protokolu používaný pravidlem výstrahy |
 | *SearchResults* |"IncludeSearchResults": true|Záznamy vrácené dotazem jako tabulka JSON omezené na prvních 1 000 záznamů. "IncludeSearchResults": hodnota true je přidána do vlastní definice Webhooku JSON jako vlastnost nejvyšší úrovně. |
 | *Dimenze* |"IncludeDimensions": true|Kombinace hodnot dimenzí, které aktivovaly výstrahu jako oddíl JSON. "IncludeDimensions": hodnota true je přidána do vlastní definice Webhooku JSON jako vlastnost nejvyšší úrovně. |
-| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaného jako [měření metriky nebo počet výsledků](../platform/alerts-unified-log.md#measure).|
+| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaného jako [měření metriky nebo počet výsledků](./alerts-unified-log.md#measure).|
 | *ID pracovního prostoru* |#workspaceid |ID vašeho pracovního prostoru Log Analytics |
 | *ID aplikace* |#applicationid |ID vaší aplikace Application Insights |
 | *ID předplatného* |#subscriptionid |ID vašeho předplatného Azure |
@@ -84,7 +84,7 @@ Tato část ukazuje ukázkovou datovou část pro Webhooky pro výstrahy protoko
 Následující ukázková datová část je určena pro akci standardního Webhooku, která se používá pro výstrahy na základě Log Analytics:
 
 > [!NOTE]
-> Hodnota pole "závažnost" se změní, pokud jste [přešli na aktuální rozhraní scheduledQueryRules API](../alerts/alerts-log-api-switch.md) z [rozhraní API pro upozornění na starší verzi Log Analytics](../platform/api-alerts.md).
+> Hodnota pole "závažnost" se změní, pokud jste [přešli na aktuální rozhraní scheduledQueryRules API](../alerts/alerts-log-api-switch.md) z [rozhraní API pro upozornění na starší verzi Log Analytics](./api-alerts.md).
 
 ```json
 {
@@ -318,8 +318,8 @@ Následující ukázková datová část je určena pro vlastní akci Webhooku p
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si informace o [upozorněních protokolu v Azure Alerts](../platform/alerts-unified-log.md).
+- Přečtěte si informace o [upozorněních protokolu v Azure Alerts](./alerts-unified-log.md).
 - Naučte se [Spravovat výstrahy protokolu v Azure](alerts-log.md).
-- Vytváření a Správa [skupin akcí v Azure](../platform/action-groups.md).
-- Přečtěte si další informace o [Application Insights](../log-query/log-query-overview.md).
-- Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md). 
+- Vytváření a Správa [skupin akcí v Azure](./action-groups.md).
+- Přečtěte si další informace o [Application Insights](../logs/log-query-overview.md).
+- Přečtěte si další informace o [dotazech protokolu](../logs/log-query-overview.md).

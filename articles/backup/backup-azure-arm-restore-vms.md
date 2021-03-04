@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820564"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722683"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -27,7 +27,7 @@ Azure Backup nabízí několik způsobů, jak obnovit virtuální počítač.
 **Mezi oblastmi (sekundární oblast)** | Obnovení mezi oblastmi se dá použít k obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárované v oblasti Azure](../best-practices-availability-paired-regions.md#what-are-paired-regions).<br><br> Pokud se zálohování provádí v sekundární oblasti, můžete obnovit všechny virtuální počítače Azure pro vybraný bod obnovení.<br><br> Během zálohování se snímky nereplikují do sekundární oblasti. Replikují se jenom data uložená v trezoru. Sekundární oblast proto obnoví pouze obnovení [úrovně trezoru](about-azure-vm-restore.md#concepts) . Čas obnovení sekundární oblasti bude skoro stejný jako čas obnovení vrstvy trezoru pro primární oblast.  <br><br> Tato funkce je k dispozici pro následující možnosti:<br> <li> [Vytvořit virtuální počítač](#create-a-vm) <br> <li> [Obnovit disky](#restore-disks) <br><br> Momentálně nepodporujeme možnost [nahradit existující disky](#replace-existing-disks) .<br><br> Oprávnění<br> Operaci obnovení v sekundární oblasti můžou provádět správci zálohování a správci aplikací.
 
 > [!NOTE]
-> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Přečtěte si další informace](backup-azure-restore-files-from-vm.md).
+> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
 
 ## <a name="storage-accounts"></a>Účty úložiště
 
@@ -79,7 +79,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuál
 1. V části **název virtuálního počítače** zadejte virtuální počítač, který v předplatném neexistuje.
 1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro nový virtuální počítač, nebo vytvořte novou s globálně jedinečným názvem. Pokud přiřadíte název, který už existuje, Azure přiřadí skupině stejný název jako virtuální počítač.
 1. Ve **virtuální síti** vyberte virtuální síť, do které se virtuální počítač umístí. Zobrazí se všechny virtuální sítě přidružené k předplatnému. Vyberte podsíť. Ve výchozím nastavení je vybraná první podsíť.
-1. Do pole **pracovní umístění** zadejte účet úložiště pro virtuální počítač. [Přečtěte si další informace](#storage-accounts).
+1. Do pole **pracovní umístění** zadejte účet úložiště pro virtuální počítač. [Další informace](#storage-accounts).
 
     ![Průvodce obnovením konfigurace – výběr možností obnovení](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -95,7 +95,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z b
 
 1. V **nastavení obnovit konfiguraci**  >  **vytvořit nový**  >  **typ obnovení** vyberte **obnovit disky**.
 1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro obnovené disky nebo vytvořte novou s globálně jedinečným názvem.
-1. Do pole **pracovní umístění** zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Přečtěte si další informace](#storage-accounts).
+1. Do pole **pracovní umístění** zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Další informace](#storage-accounts).
 
     ![Vybrat skupinu prostředků a pracovní umístění](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
@@ -130,7 +130,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete stávající disk 
 
 1. V **nastavení obnovit konfiguraci** vyberte **nahradit existující**.
 1. V **typu obnovení** vyberte **nahradit disk/s**. Toto je bod obnovení, který bude použit k nahrazení existujících disků virtuálního počítače.
-1. V části **pracovní umístění** určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Přečtěte si další informace](#storage-accounts).
+1. V části **pracovní umístění** určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Další informace](#storage-accounts).
 
    ![Průvodce obnovením konfigurace nahradit existující](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -160,7 +160,7 @@ Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekun
 
 Funkce obnovení koncového uživatele v sekundární oblasti bude podobná primární oblasti obnovení uživatelského prostředí. Při konfiguraci podrobností v podokně obnovit konfiguraci pro konfiguraci obnovení se zobrazí výzva k zadání pouze sekundárních parametrů oblasti.
 
-V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) sekundární oblasti v primární oblasti v rozmezí až 12 hodin, i když replikace [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) je 15 minut.
+V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) sekundární oblasti v primární oblasti v rozmezí až 12 hodin, i když replikace [geograficky redundantního úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) je 15 minut.
 
 ![Vyberte virtuální počítač, který chcete obnovit.](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-obje
 >- Funkce obnovení mezi oblastmi obnovuje CMK (klíče spravované zákazníky) s povolenými virtuálními počítači Azure, které se nezálohují do trezoru Recovery Services s povoleným CMK, jako virtuální počítače s povoleným CMK v sekundární oblasti.
 >- Role Azure potřebné k obnovení v sekundární oblasti jsou stejné jako v primární oblasti.
 
-[Připojené virtuální počítače zóny Azure](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) je možné obnovit v jakýchkoli [zónách dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) stejné oblasti.
+[Připojené virtuální počítače zóny Azure](../virtual-machines/windows/create-portal-availability-zone.md) je možné obnovit v jakýchkoli [zónách dostupnosti](../availability-zones/az-overview.md) stejné oblasti.
 
 V procesu obnovení se zobrazí **zóna dostupnosti možnosti.** Jako první se zobrazí výchozí zóna. Chcete-li zvolit jinou zónu, zvolte číslo zvolené zóny. Pokud není připnuté zóna k dispozici, nebudete schopni obnovit data do jiné zóny, protože zálohovaná data nejsou zonally replikovaná.
 

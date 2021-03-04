@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: b1262533c3398a774b85e4143289a9b7c342aeab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728956"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor pro stávající zákazníky Operations Manager
 Tento článek poskytuje pokyny pro zákazníky, kteří aktuálně používají [System Center Operations Manager](/system-center/scom/welcome) a plánují přechod [Azure monitor](overview.md) při migraci obchodních aplikací a dalších prostředků do Azure. Předpokládá, že váš konečný cíl je úplným přechodem do cloudu a nahrazuje co nejvíce Operations Manager funkcím Azure Monitor, aniž by to ohrozilo vaše podnikání a provozní požadavky. 
@@ -56,7 +56,7 @@ Vaše prostředí před přesunutím jakýchkoli součástí do Azure vychází 
 
 Vaše migrace do Azure začíná na IaaS a přesouvá virtuální počítače podporující obchodní aplikace do Azure. Požadavky na monitorování těchto aplikací a serverového softwaru, které jsou závislé na tom, že se nezmění a vy na těchto serverech budete nadále používat stávající sady Management Pack Operations Manager. 
 
-Azure Monitor je pro vaše služby Azure povolený hned po vytvoření předplatného Azure. Automaticky shromažďuje metriky platforem a protokol aktivit a konfiguruje protokoly prostředků, které se mají shromažďovat, abyste mohli interaktivně analyzovat veškerou dostupnou telemetrii pomocí dotazů protokolu. Ve virtuálních počítačích povolíte Azure Monitor pro virtuální počítače, abyste mohli analyzovat data monitorování napříč celým prostředím společně a zjišťovat vztahy mezi počítači a procesy. Tím, že na svých místních fyzických a virtuálních počítačích rozšíříte Azure Monitor, povolíte na nich servery s povoleným použitím ARC Azure. 
+Azure Monitor je pro vaše služby Azure povolený hned po vytvoření předplatného Azure. Automaticky shromažďuje metriky platforem a protokol aktivit a konfiguruje protokoly prostředků, které se mají shromažďovat, abyste mohli interaktivně analyzovat veškerou dostupnou telemetrii pomocí dotazů protokolu. Ve virtuálních počítačích povolíte přehledy virtuálních počítačů, abyste mohli analyzovat data monitorování napříč celým prostředím společně a zjišťovat vztahy mezi počítači a procesy. Tím, že na svých místních fyzických a virtuálních počítačích rozšíříte Azure Monitor, povolíte na nich servery s povoleným použitím ARC Azure. 
 
 U každé z vašich obchodních aplikací povolíte Application Insights. Identifikuje různé součásti každé aplikace, začne shromažďovat data o využití a výkonu a identifikuje všechny chyby, ke kterým dochází v kódu. Vytvoříte testy dostupnosti pro proaktivní testování externích aplikací a upozorní vás na případné problémy s výkonem nebo dostupností. I když vám Application Insights poskytuje výkonné funkce, které v Operations Manager nemáte, budete se nadále spoléhat na vlastní sady Management Pack, které jste pro své obchodní aplikace vyvinuli, protože zahrnují scénáře monitorování, které ještě nejsou zahrnuté v Azure Monitor. 
 
@@ -89,21 +89,21 @@ Přehledy jsou založené na [sešitech](visualize/workbooks-overview.md) v Azur
 ## <a name="monitor-server-software-and-local-infrastructure"></a>Monitorování softwaru a místní infrastruktury serveru
 Když přesunete počítače do cloudu, požadavky na monitorování se pro software nemění. Už nemusíte monitorovat fyzické součásti, protože jsou virtualizované, ale hostovaný operační systém a jeho úlohy mají stejné požadavky bez ohledu na jejich prostředí.
 
-[Azure monitor pro virtuální počítače](vm/vminsights-overview.md) je primární funkcí v Azure monitor pro monitorování virtuálních počítačů a jejich hostovaných operačních systémů a úloh. Podobně jako u Operations Manager Azure Monitor pro virtuální počítače používá Agent ke shromažďování dat z hostovaného operačního systému virtuálních počítačů. Jedná se o stejné údaje o výkonu a událostech, které se obvykle používají v sadách Management Pack pro účely analýzy a upozorňování. K identifikaci a upozornění na problémy pro obchodní aplikace a serverový software běžící v těchto počítačích nejsou k dispozici žádná předplatná pravidla. Musíte vytvořit vlastní pravidla výstrah, která budou aktivním upozorněním na zjištěné problémy.
+[Přehledy virtuálních](vm/vminsights-overview.md) počítačů jsou primární funkcí v Azure monitor pro monitorování virtuálních počítačů a jejich hostovaných operačních systémů a úloh. Podobně jako u Operations Manager se v Cloud Insights používá Agent ke shromažďování dat z hostovaného operačního systému virtuálních počítačů. Jedná se o stejné údaje o výkonu a událostech, které se obvykle používají v sadách Management Pack pro účely analýzy a upozorňování. K identifikaci a upozornění na problémy pro obchodní aplikace a serverový software běžící v těchto počítačích nejsou k dispozici žádná předplatná pravidla. Musíte vytvořit vlastní pravidla výstrah, která budou aktivním upozorněním na zjištěné problémy.
 
-[![Azure Monitor pro virtuální počítače výkon](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![Výkon virtuálního počítače Insights](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Monitor také neměří stav různých aplikací a služeb spuštěných na virtuálním počítači. Výstrahy metriky se můžou automaticky vyřešit, když hodnota klesne pod prahovou hodnotu, ale Azure Monitor aktuálně nemá možnost definovat kritéria stavu pro aplikace a služby běžící na počítači, ani neposkytuje souhrn stavu pro seskupení stavu souvisejících součástí.
 
 > [!NOTE]
-> Nová [funkce stavu hosta pro Azure monitor pro virtuální počítače](vm/vminsights-health-overview.md) je teď ve verzi Public Preview a upozorní na základě stavu sady metrik výkonu. Je to zpočátku omezené na určitou sadu čítačů výkonu, které souvisejí s hostovaným operačním systémem, a ne aplikace nebo jiné úlohy spuštěné ve virtuálním počítači.
+> Nová [funkce stavu hosta pro službu VM Insights](vm/vminsights-health-overview.md) je teď ve verzi Public Preview a upozorní na základě stavu sady metrik výkonu. Je to zpočátku omezené na určitou sadu čítačů výkonu, které souvisejí s hostovaným operačním systémem, a ne aplikace nebo jiné úlohy spuštěné ve virtuálním počítači.
 > 
-> [![Stav hosta Azure Monitor pro virtuální počítače](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![Stav hosta pro virtuální počítače Insights](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-Monitorování softwaru na vašich počítačích v hybridním prostředí obvykle používá kombinaci Azure Monitor pro virtuální počítače a Operations Manager v závislosti na požadavcích jednotlivých počítačů a na vaší splatnosti při vývoji provozních procesů kolem Azure Monitor. Agent pro správu Microsoft (dále jen agent Log Analytics v Azure Monitor) se používá v obou platformách, aby se jeden počítač mohl monitorovat současně.
+Monitorování softwaru na vašich počítačích v hybridním prostředí obvykle využije kombinaci Operations Manager pro virtuální počítače a v závislosti na požadavcích jednotlivých počítačů a na dobu vývoje provozních procesů, které se Azure Monitor. Agent pro správu Microsoft (dále jen agent Log Analytics v Azure Monitor) se používá v obou platformách, aby se jeden počítač mohl monitorovat současně.
 
 > [!NOTE]
-> V budoucnu se Azure Monitor pro virtuální počítače přechodem na [agenta Azure monitor](agents/azure-monitor-agent-overview.md), který je aktuálně ve verzi Public Preview. Bude kompatibilní s Microsoft Monitoring Agent, aby se stejný virtuální počítač dál mohl monitorovat pomocí obou platforem.
+> V budoucnu se služba VM Insights převede na [agenta Azure monitor](agents/azure-monitor-agent-overview.md), který je aktuálně ve verzi Public Preview. Bude kompatibilní s Microsoft Monitoring Agent, aby se stejný virtuální počítač dál mohl monitorovat pomocí obou platforem.
 
 Nadále používejte Operations Manager pro funkce, které se ještě nedají poskytnout Azure Monitor. Patří sem sady Management Pack pro důležitý serverový software, jako je IIS, SQL Server nebo Exchange. Můžete mít také vytvořené vlastní sady Management Pack pro místní infrastrukturu, u kterých není možné získat přístup k Azure Monitor. I nadále používejte Operations Manager, pokud je pevně integrovaná do provozních procesů, dokud nebudete moct přejít na modernizaci vaší provozní operace, kde Azure Monitor a jiné služby Azure se můžou rozšířit nebo nahradit. 
 
@@ -114,9 +114,9 @@ Pomocí Azure Monitor virtuálních počítačů Vylepšete aktuální monitorov
 - Pomocí [dotazů protokolu](logs/log-query-overview.md) můžete interaktivně analyzovat telemetrii z vašich virtuálních počítačů s daty z dalších prostředků Azure.
 - Vytvořte [pravidla upozornění protokolů](alerts/alerts-log-query.md) založená na komplexní logice napříč několika virtuálními počítači.
 
-[![Mapa Azure Monitor pro virtuální počítače](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![Mapa pro službu VM Insights](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Kromě virtuálních počítačů Azure může Azure Monitor pro virtuální počítače monitorovat počítače v místním prostředí a v jiných cloudech pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md). Servery s podporou ARC umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, ve vaší podnikové síti nebo v jiném cloudovém poskytovateli konzistentním se správou nativních virtuálních počítačů Azure.
+Kromě virtuálních počítačů Azure můžou služby VM Insights monitorovat počítače v místním prostředí i v jiných cloudech pomocí [serverů s podporou ARC Azure](../azure-arc/servers/overview.md). Servery s podporou ARC umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, ve vaší podnikové síti nebo v jiném cloudovém poskytovateli konzistentním se správou nativních virtuálních počítačů Azure.
 
 
 
@@ -131,7 +131,7 @@ Pokud je vaše monitorování obchodní aplikace omezené na funkčnost poskytov
 - Zjištění výjimek a přechod do trasování zásobníku a souvisejících požadavků.
 - Proveďte pokročilou analýzu pomocí funkcí, jako je [distribuované trasování](app/distributed-tracing.md) a [inteligentní zjišťování](app/proactive-diagnostics.md).
 - Použijte [Průzkumníka metrik](essentials/metrics-getting-started.md) pro interaktivní analýzu dat výkonu.
-- Pomocí [dotazů protokolu](logs/log-query-overview.md) můžete interaktivně analyzovat shromážděnou telemetrii společně s daty shromážděnými pro služby Azure a Azure monitor pro virtuální počítače.
+- Pomocí [dotazů protokolu](logs/log-query-overview.md) můžete interaktivně analyzovat shromážděnou telemetrii společně s daty shromážděnými pro služby Azure a s přehledy virtuálních počítačů.
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -150,5 +150,5 @@ Po základní strategii v ostatních částech této příručky můžete dál p
 - Podrobné porovnání Azure Monitor a System Center Operations Manager a další informace o návrhu a implementaci hybridního monitorovacího prostředí najdete v [Průvodci monitorováním cloudu](/azure/cloud-adoption-framework/manage/monitor/) .
 - Přečtěte si další informace o [monitorování prostředků Azure v Azure monitor](essentials/monitor-azure-resource.md).
 - Přečtěte si další informace o [monitorování virtuálních počítačů Azure v Azure monitor](vm/monitor-vm-azure.md).
-- Přečtěte si další informace o [Azure monitor pro virtuální počítače](vm/vminsights-overview.md).
+- Přečtěte si další informace o službě [VM Insights](vm/vminsights-overview.md).
 - Přečtěte si další informace o [Application Insights](app/app-insights-overview.md).

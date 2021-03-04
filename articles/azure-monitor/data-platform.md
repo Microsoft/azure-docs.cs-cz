@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731693"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
@@ -28,7 +28,7 @@ Díky tomu, že v dnešních složitých výpočetních prostředích využívaj
 ## <a name="observability-data-in-azure-monitor"></a>Data o pozorování v Azure Monitor
 Metriky, protokoly a distribuovaná trasování se běžně označují jako tři pilíře, které je možné pozorovat. Jedná se o různé druhy dat, které nástroj pro monitorování musí shromažďovat a analyzovat, aby poskytoval dostatečnou pozorovateli monitorovaného systému. Možnost pozorování se dá dosáhnout korelacemi dat z několika pilířů a agregací dat napříč celou sadou monitorovaných prostředků. Vzhledem k tomu, že Azure Monitor ukládá data z více zdrojů dohromady, lze data sladit a analyzovat pomocí společné sady nástrojů. Také koreluje data mezi několika předplatnými Azure a klienty, kromě hostování dat pro jiné služby.
 
-Prostředky Azure generují významné množství dat monitorování. Azure Monitor konsoliduje tato data společně s daty monitorování z jiných zdrojů do metriky nebo na platformu protokolů. Každé je optimalizováno pro konkrétní scénáře monitorování a každá podporuje různé funkce v Azure Monitor. Funkce, jako jsou analýza dat, vizualizace nebo upozorňování, vyžadují, abyste porozuměli rozdílům, abyste mohli požadovaný scénář implementovat nejúčinnějším a cenově nejefektivnějším způsobem. Přehledy v Azure Monitor jako [Application Insights](app/app-insights-overview.md) nebo [Azure monitor pro virtuální počítače](vm/vminsights-overview.md) mají analytické nástroje, které vám umožní zaměřit se na konkrétní scénář monitorování, aniž by bylo nutné porozumět rozdílům mezi těmito dvěma typy dat. 
+Prostředky Azure generují významné množství dat monitorování. Azure Monitor konsoliduje tato data společně s daty monitorování z jiných zdrojů do metriky nebo na platformu protokolů. Každé je optimalizováno pro konkrétní scénáře monitorování a každá podporuje různé funkce v Azure Monitor. Funkce, jako jsou analýza dat, vizualizace nebo upozorňování, vyžadují, abyste porozuměli rozdílům, abyste mohli požadovaný scénář implementovat nejúčinnějším a cenově nejefektivnějším způsobem. Přehledy v Azure Monitor, jako je například [Application Insights](app/app-insights-overview.md) nebo [virtuální počítač Insights](vm/vminsights-overview.md) , mají analytické nástroje, které vám umožní zaměřit se na konkrétní scénář monitorování, aniž by bylo nutné porozumět rozdílům mezi dvěma typy dat. 
 
 
 ### <a name="metrics"></a>Metriky

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726307"
 ---
 # <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Implementovat dynamické styly pro mapy vnitřních verzí Creator (Preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "96903441"
 
 [Služba stavu funkcí](/rest/api/maps/featurestate) Azure Maps Creator umožňuje aplikovat styly založené na dynamických vlastnostech funkcí dat mapy vnitřního prvku.  Například můžete vykreslit místnosti pro schůzky zařízení s určitou barvou, která odráží stav obsazení. V tomto článku vám ukážeme, jak dynamicky vykreslovat funkce pro vnitřní mapu pomocí [služby stavu funkcí](/rest/api/maps/featurestate) a [vnitřního webového modulu](how-to-use-indoor-module.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvoření účtu Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -54,11 +54,11 @@ map.events.add("click", function(e){
 
     var features = map.layers.getRenderedShapes(e.position, "indoor");
 
-    var result = features.reduce(function (ids, feature) {
-        if (feature.layer.id == "indoor_unit_office") {
+    features.forEach(function (feature) {
+        if (feature.layer.id == 'indoor_unit_office') {
             console.log(feature);
         }
-    }, []);
+    });
 });
 ```
 
@@ -78,7 +78,7 @@ V další části nastavíme *stav* obsazení Office `UNIT26` na `true` . i kdy�
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle** žádosti **post** napište následující JSON s aktualizacemi funkcí. Tato aktualizace se uloží jenom v případě, že se za časovým razítkem použitým v předchozích požadavcích na aktualizaci stavu funkce pro stejnou funkci ukládá časové razítko `ID` . Pokud chcete aktualizovat svou hodnotu, předejte "obsazené" `keyName` .
+3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle** žádosti **post** Zapište následující nezpracovaný kód JSON s aktualizacemi funkcí. Tato aktualizace se uloží jenom v případě, že se za časovým razítkem použitým v předchozích požadavcích na aktualizaci stavu funkce pro stejnou funkci ukládá časové razítko `ID` . Pokud chcete aktualizovat svou hodnotu, předejte "obsazené" `keyName` .
 
     ```json
     {
@@ -108,9 +108,11 @@ V další části nastavíme *stav* obsazení Office `UNIT26` na `true` . i kdy�
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>Vizualizace dynamických stylů na mapě
 
-Webová aplikace, kterou jste dříve otevřeli v prohlížeči, by nyní měla odrážet aktualizovaný stav funkcí mapy. `UNIT27`(151) by se mělo zobrazit zelenou a `UNIT26` (157) by se mělo zobrazit červeně.
+Webová aplikace, kterou jste dříve otevřeli v prohlížeči, by nyní měla odrážet aktualizovaný stav funkcí mapy. `UNIT27`(142) by se mělo zobrazit zelenou a `UNIT26` (143) by se mělo zobrazit červeně.
 
 ![Volná místnost v zelených a zaneprázdněných místnostech v Red](./media/indoor-map-dynamic-styling/room-state.png)
+
+[Viz Živá ukázka](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -128,7 +130,7 @@ Viz odkazy na rozhraní API uvedená v tomto článku:
 > [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Datová sada](creator-indoor-maps.md#datasets)
+> [Integrován](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

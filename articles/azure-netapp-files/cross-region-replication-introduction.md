@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 02/25/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4d4cf7a0dc73070f4f48ed87f60a2458bc925b13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220900"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707349"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikace Azure NetApp Files svazků mezi oblastmi
 
@@ -31,7 +31,7 @@ Funkce replikace Azure NetApp Files zajišťuje ochranu dat prostřednictvím re
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Podporované páry replikace mezi oblastmi
 
-Replikace svazků Azure NetApp Files je podporovaná mezi různými [regionálními páry Azure](/azure/best-practices-availability-paired-regions#azure-regional-pairs) a nepáry. Replikace svazku Azure NetApp Files je v současné době k dispozici mezi těmito oblastmi:  
+Replikace svazků Azure NetApp Files je podporovaná mezi různými [regionálními páry Azure](../best-practices-availability-paired-regions.md#azure-regional-pairs) a nepáry. Replikace svazku Azure NetApp Files je v současné době k dispozici mezi těmito oblastmi:  
 
 ### <a name="azure-regional-pairs"></a>Regionální páry Azure
 
@@ -52,6 +52,7 @@ Replikace svazků Azure NetApp Files je podporovaná mezi různými [regionáln�
 *   Střed USA – jih a Východní USA
 *   Střed USA – jih a Východní USA 2
 *   Východní USA a Východní USA 2
+*   Východní USA 2 a Západní USA 2
 *   Austrálie – východ a jihovýchodní Asie 
 *   Německo – středozápad a Velká Británie – jih
 
@@ -125,5 +126,3 @@ Na cílový svazek se vztahuje normální Azure NetApp Files poplatek za kapacit
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
 * [Odstranění svazků nebo replikací svazků](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
-
-

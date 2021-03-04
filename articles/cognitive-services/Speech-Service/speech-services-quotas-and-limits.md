@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754160"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699976"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -37,9 +37,9 @@ V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
 | Omezení REST API | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
-| Maximální velikost zvukového vstupního souboru | – | 1 GB |
+| Maximální velikost zvukového vstupního souboru | – | 1 GB |
 | Maximální velikost vstupního objektu BLOB (může obsahovat více než jeden soubor, například v archivu zip, nezapomeňte si uvědomit výše uvedený limit velikosti souboru) | – | 2,5 GB |
-| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
+| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
 | Maximální počet objektů blob na kontejner | – | 10000 |
 | Maximální počet souborů na žádost o přepis (při použití více adres URL obsahu jako vstupu) | – | 1000  |
 | Maximální počet souběžně spuštěných úloh | – | 2000  |
@@ -104,7 +104,7 @@ Souběžná omezení požadavků pro **základní** a **vlastní** modely je pot
 Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
->[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované. Kontejnery řeči ale mají svá vlastní omezení kapacity, která by se měla vzít v úvahu. Přečtěte si otázku *"může vám pomáhat s plánováním kapacity a odhadem nákladů na kontejnery Prem řeči na text?"* z [kontejnerů řeči se Nejčastější dotazy](speech-container-faq.md).
+>[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované. Kontejnery řeči ale mají svá vlastní omezení kapacity, která by se měla vzít v úvahu. Přečtěte si otázku *"může vám pomáhat s plánováním kapacity a odhadem nákladů na kontejnery Prem řeči na text?"* z [kontejnerů řeči se Nejčastější dotazy](./speech-container-howto.md).
 
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
 - Pro **základní model**:
@@ -205,4 +205,3 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
   - Informace o prostředcích Azure, které jste [shromáždili před](#prepare-the-required-information) 
   - Dokončete zadávání požadovaných informací a klikněte na tlačítko *vytvořit* v nabídce *Revize + vytvořit* kartu.
   - Poznamenejte si číslo žádosti o podporu v oznámeních Azure Portal. Brzy budete kontaktováni za účelem dalšího zpracování.
-

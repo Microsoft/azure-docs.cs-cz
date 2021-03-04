@@ -2,13 +2,13 @@
 title: Výstupy v šablonách
 description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/19/2021
+ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653794"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703830"
 ---
 # <a name="outputs-in-arm-templates"></a>Výstupy v šablonách ARM
 
@@ -35,7 +35,21 @@ Pro JSON přidejte `outputs` oddíl do šablony. Výstupní hodnota získá pln�
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Pro bicep použijte `output` klíčové slovo.
+
+V následujícím příkladu `publicIP` je identifikátor veřejné IP adresy nasazené v souboru bicep. Výstupní hodnota získá plně kvalifikovaný název domény pro veřejnou IP adresu.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
 Pokud potřebujete výstup vlastnosti, která má v názvu pomlčku, místo zápisu tečky použijte hranaté závorky kolem názvu. Použijte například  `['property-name']` místo `.property-name` .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -58,16 +72,6 @@ Pokud potřebujete výstup vlastnosti, která má v názvu pomlčku, místo záp
 ```
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
-
-Pro bicep použijte `output` klíčové slovo.
-
-V následujícím příkladu `publicIP` je symbolický název veřejné IP adresy nasazené v souboru bicep. Výstupní hodnota získá plně kvalifikovaný název domény pro veřejnou IP adresu.
-
-```bicep
-output hostname string = publicIP.properties.dnsSettings.fqdn
-```
-
-Pokud potřebujete výstup vlastnosti, která má v názvu pomlčku, místo zápisu tečky použijte hranaté závorky kolem názvu. Použijte například  `['property-name']` místo `.property-name` .
 
 ```bicep
 var user = {
@@ -99,9 +103,7 @@ Ve formátu JSON přidejte `condition` element pro definování, zda je vrácen 
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Podmíněný výstup není aktuálně k dispozici pro bicep.
-
-Operátor ale můžete použít `?` k vrácení jedné ze dvou hodnot v závislosti na podmínce.
+K určení podmíněného výstupu v bicep použijte `?` operátor. Následující příklad buďto vrátí adresu URL koncového bodu nebo prázdný řetězec v závislosti na podmínce.
 
 ```bicep
 param deployStorage bool = true

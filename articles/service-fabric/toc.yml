@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: Konfigurace spravovaného clusteru
           href: how-to-managed-cluster-configuration.md
+        - name: Přidat pravidla NSG a další možnosti sítě spravovaného clusteru
+          href: how-to-managed-cluster-networking.md
         - name: Nasazení aplikací spravovaného clusteru pomocí šablony ARM
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Konfigurace spravovaného clusteru se spravovanou identitou
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Povolit šifrování disku pro uzly spravovaného clusteru
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Použití spravované identity pro uzly spravovaného clusteru
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Plánování a příprava
       items:
         - name: Plánování kapacity clusteru

@@ -235,3 +235,11 @@
   items:
     - name: Mapování mezi dokumentem SSAE a CI srovnávacím testem
       href: v2-cis-benchmark.md
+    - name: Základní informace o zabezpečení Azure
+      href: ../fundamentals/index.yml
+    - name: Sdílená odpovědnost v cloudu
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Security Center
+      href: ../../security-center/index.yml
+    - name: Ukázkový plán Azure Security benchmark Foundation
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml

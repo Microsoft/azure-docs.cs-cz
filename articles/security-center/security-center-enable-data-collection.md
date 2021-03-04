@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596153"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729857"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatické zřizování agentů a rozšíření z Azure Security Center
 
@@ -38,8 +38,8 @@ Data se shromažďují pomocí:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:          | **Funkce**: Automatické zřizování je všeobecně dostupné (GA).<br>**Agenti a rozšíření**: Agent Log Analytics pro virtuální počítače Azure je v cloudu, protože je ve verzi Preview, doplněk zásad pro KUBERNETES je GA.                |
 | Stanov                | Free                                                                                                                                                                                                                         |
-| Podporovaná umístění: | ![Yes](./media/icons/yes-icon.png) Počítače Azure<br>![No](./media/icons/no-icon.png) Počítače ARC Azure<br>![No](./media/icons/no-icon.png) Uzly Kubernetes<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Cloud                 | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
+| Podporovaná umístění: | ![Ano](./media/icons/yes-icon.png) Počítače Azure<br>![Ne](./media/icons/no-icon.png) Počítače ARC Azure<br>![Ne](./media/icons/no-icon.png) Uzly Kubernetes<br>![Ne](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Cloud                 | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -235,7 +235,7 @@ Následující případy použití určují, jak Automatické zřizování fungu
 
 - **Agent Log Analytics je na počítači nainstalovaný, ale ne jako rozšíření (přímý Agent)** – Pokud je agent Log Analytics nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center nainstaluje rozšíření agenta Log Analytics a může upgradovat agenta Log Analytics na nejnovější verzi.
 Nainstalovaný Agent bude pokračovat v hlášení již nakonfigurovaných pracovních prostorů a dále bude hlásit pracovnímu prostoru nakonfigurovanému v Security Center (pro počítače se systémem Windows je podporována podpora více domovských stránek).
-Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve výchozím nastavení není Security Center), bude nutné do něj nainstalovat řešení "Security/" securityFree ", aby bylo možné Security Center zahájit zpracování událostí z virtuálních počítačů a počítačů, které do daného pracovního prostoru hlásí.
+Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve výchozím nastavení není Security Center), budete muset do něj nainstalovat řešení "Security" nebo "SecurityCenterFree", aby bylo možné Security Center zahájit zpracování událostí z virtuálních počítačů a počítačů, které do daného pracovního prostoru hlásí.
 
     Pro počítače se systémem Linux zatím není podporována podpora více domovských stránek agenta, takže pokud je zjištěna existující instalace agenta, Automatické zřizování nebude provedeno a konfigurace počítače nebude změněna.
 
@@ -244,8 +244,8 @@ Pokud je nakonfigurovaným pracovním prostorem pracovní prostor uživatele (ve
 - **V počítači je nainstalován agent System Center Operations Manager** – Security Center bude instalovat rozšíření agenta Log Analytics na straně sebe na stávající Operations Manager. Stávající agent Operations Manager bude pokračovat v hlášení na Server Operations Manager normálně. Agent Operations Manager a Agent Log Analytics sdílejí běžné běhové knihovny, které budou během tohoto procesu aktualizovány na nejnovější verzi. Pokud je nainstalovaná verze agenta Operations Manager 2012 **, nepovolujte** Automatické zřizování.
 
 - K **dispozici již existující rozšíření virtuálního počítače**:
-    - Pokud je agent monitorování nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav pouze do jednoho pracovního prostoru. Security Center nepřepisují existující připojení k pracovním prostorům uživatelů. Security Center bude ukládat data zabezpečení z virtuálního počítače v pracovním prostoru, který je už připojený, a to za předpokladu, že je na něm nainstalované řešení Security nebo securityFree. Security Center může v tomto procesu upgradovat verzi rozšíření na nejnovější verzi.  
-    - Chcete-li zjistit, který pracovní prostor existující rozšíření odesílá data, spusťte test a [Ověřte připojení pomocí Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Případně můžete otevřít Log Analytics pracovní prostory, vybrat pracovní prostor, vybrat virtuální počítač a podívat se na připojení agenta Log Analytics. 
+    - Pokud je agent monitorování nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav pouze do jednoho pracovního prostoru. Security Center nepřepisují existující připojení k pracovním prostorům uživatelů. Security Center bude ukládat data zabezpečení z virtuálního počítače v pracovním prostoru, který je už připojený, a to za předpokladu, že je na něm nainstalované řešení Security nebo SecurityCenterFree. Security Center může v tomto procesu upgradovat verzi rozšíření na nejnovější verzi.
+    - Chcete-li zjistit, který pracovní prostor existující rozšíření odesílá data, spusťte test a [Ověřte připojení pomocí Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Případně můžete otevřít Log Analytics pracovní prostory, vybrat pracovní prostor, vybrat virtuální počítač a podívat se na připojení agenta Log Analytics.
     - Pokud máte prostředí, ve kterém je agent Log Analytics nainstalovaný na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, Projděte si seznam [operačních systémů podporovaných Azure Security Center](security-center-os-coverage.md) , abyste se ujistili, že je váš operační systém podporovaný. Další informace najdete v tématu [existující zákazníci Log Analytics](./faq-azure-monitor-logs.md).
  
 

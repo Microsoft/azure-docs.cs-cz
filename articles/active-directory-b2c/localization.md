@@ -1,22 +1,10 @@
 ---
-title: Lokalizace – Azure Active Directory B2C
-description: Zadejte element lokalizace vlastní zásady v Azure Active Directory B2C.
-services: active-directory-b2c
-author: msmimart
-manager: celestedg
-ms.service: active-directory
-ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
-ms.author: mimart
-ms.subservice: B2C
-ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108616"
+title: Localization-Azure Active Directory B2C Popis: Určete element lokalizace vlastní zásady v Azure Active Directory B2C.
+služby: Active-Directory-B2C Author: msmimart Manager: celestedg
+
+MS. Service: Active-Directory MS. pracovního postupu: identita MS. téma: referenční MS. Date: 10/15/2020 MS. Author: mimart MS. subservice: B2C MS. Custom: "B2C-support"
 ---
+
 # <a name="localization-element"></a>Element Localization
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -335,14 +323,14 @@ Hodnota UxElement slouží k lokalizaci jednoho z prvků uživatelského rozhran
 
 ### <a name="displaycontrol"></a>Prvek
 
-Hodnota ovládacího prvku DataGridView slouží k lokalizaci jednoho z prvků uživatelského rozhraní [ovládacího prvku zobrazení](display-controls.md) . Následující příklad ukazuje, jak lokalizovat tlačítka Odeslat a ověřit. 
+Hodnota ovládacího prvku DataGridView slouží k lokalizaci jednoho z prvků uživatelského rozhraní [ovládacího prvku zobrazení](display-controls.md) . Pokud je tato možnost povolená, localizedStrings ovládací prvek zobrazení přebírá ***přednost** před některými StringIDsy _ *UxElement**, jako je **ver_but_send**, **ver_but_edit**, **ver_but_resend** a **ver_but_verify**. Následující příklad ukazuje, jak lokalizovat tlačítka Odeslat a ověřit. 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
 ```
 
-V části metadata technického profilu s vlastním příznakem musí mít odkazované ContentDefinition DataUri nastavenou na [rozložení stránky verze](page-layout.md) 2.1.0 nebo vyšší. Příklad:
+V části metadata technického profilu s vlastním příznakem musí mít odkazované ContentDefinition DataUri nastavenou na [rozložení stránky verze](page-layout.md) 2.1.0 nebo vyšší. Například:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">

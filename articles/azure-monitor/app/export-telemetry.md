@@ -2,16 +2,20 @@
 title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584231"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737031"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
+
+> [!IMPORTANT]
+> Průběžný export se už nepoužívá. [Migrujte na prostředek Application Insights založený na pracovním prostoru](convert-classic-resource.md) a použijte [nastavení diagnostiky](#diagnostic-settings-based-export) pro export telemetrie.
 
 > [!NOTE]
 > Průběžný export podporují pouze klasické prostředky Application Insights. [Prostředky Application Insights založené na pracovním prostoru](./create-workspace-resource.md) musí používat [nastavení diagnostiky](./create-workspace-resource.md#export-telemetry).
@@ -27,6 +31,44 @@ Před nastavením průběžného exportu je možné zvážit několik možností
 * Můžete také získat přístup k nastavení [průběžného exportu prostřednictvím PowerShellu](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Po průběžném exportu kopíruje vaše data do úložiště (kde může zůstat tak dlouho, jak budete chtít), je stále k dispozici v Application Insights pro obvyklou [dobu uchování](./data-retention-privacy.md).
+
+## <a name="supported-regions"></a>Podporované oblasti
+
+Průběžný export je podporovaný v následujících oblastech:
+
+* Southeast Asia
+* Střední Kanada
+* Indie – střed
+* Severní Evropa
+* Spojené království – jih
+* Austrálie – východ
+* Japonsko – východ
+* Jižní Korea – střed
+* Francie – střed
+* Východní Asie
+* USA – západ
+* Střední USA
+* USA – východ 2
+* Středojižní USA
+* Západní USA 2
+* Jižní Afrika – sever
+* USA – středosever
+* Brazílie – jih
+* Švýcarsko – sever
+* Austrálie – jihovýchod
+* Spojené království – západ
+* Německo – středozápad
+* Švýcarsko – západ
+* Austrálie – střed 2
+* Spojené arabské emiráty – střed
+* Brazílie – jihovýchod
+* Austrálie – střed
+* Spojené arabské emiráty sever
+* Norsko – východ
+* Japonsko – západ
+
+> [!NOTE]
+> Aplikace, které jsou už nakonfigurované v **západní Evropa** a **východní USA** , se podporují, ale nepodporují se připojování nových aplikací v těchto oblastech.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Průběžný export – Pokročilá konfigurace úložiště
 
@@ -61,7 +103,7 @@ Může to trvat přibližně hodinu, než se data objeví v úložišti.
 
 Po dokončení prvního exportu najdete v kontejneru úložiště objektů BLOB v Azure strukturu podobnou následující: (Tato operace se bude lišit v závislosti na shromažďovaných datech.)
 
-|Název | Description |
+|Název | Popis |
 |:----|:------|
 | [Dostupnost](export-data-model.md#availability) | Oznamuje [webové testy dostupnosti](./monitor-web-app-availability.md).  |
 | [Událost](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](./api-custom-events-metrics.md#trackevent). 
@@ -138,7 +180,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)

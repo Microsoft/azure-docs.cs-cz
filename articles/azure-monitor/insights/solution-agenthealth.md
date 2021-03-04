@@ -1,17 +1,16 @@
 ---
 title: Agent Health řešení v Azure Monitor | Microsoft Docs
 description: Tento článek vám pomůže pochopit, jak používat toto řešení k monitorování stavu agentů, kteří hlásí přímo Log Analytics nebo System Center Operations Manager.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711055"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Řešení Agent Health v Azure Monitor
 Řešení Agent Health v Azure vám pomůže pochopit, pro všechny agenty, kteří odesílají zprávy přímo do pracovního prostoru Log Analytics v Azure Monitor nebo ve skupině pro správu System Center Operations Manager připojené k Azure Monitor, které nereagují a odesílají provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -38,10 +37,10 @@ Přidejte Agent Health řešení do svého pracovního prostoru Log Analytics po
 ### <a name="supported-agents"></a>Podporovaní agenti
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows | Yes | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
-| Skupina pro správu nástroje System Center Operations Manager | Yes | Události prezenčního signálu se shromažďují z agentů, kteří se nahlásí do skupiny pro správu každých 60 sekund, a pak předají Azure Monitor. Přímé připojení od agentů Operations Manager k Azure Monitor se nevyžaduje. Data události prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
+| Agenti systému Windows | Ano | Události prezenčního signálu se shromažďují z přímých agentů systému Windows.|
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Události prezenčního signálu se shromažďují z agentů, kteří se nahlásí do skupiny pro správu každých 60 sekund, a pak předají Azure Monitor. Přímé připojení od agentů Operations Manager k Azure Monitor se nevyžaduje. Data události prezenčního signálu se předávají ze skupiny pro správu do pracovního prostoru Log Analytics.|
 
 ## <a name="using-the-solution"></a>Použití řešení
 Když přidáte řešení do svého pracovního prostoru Log Analytics, do řídicího panelu se přidá dlaždice **Agent Health** . Tato dlaždice ukazuje celkový počet agentů a počet nereagujících agentů za posledních 24 hodin.<br><br> ![Dlaždice řešení Agent Health na řídicím panelu](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -90,7 +89,7 @@ Každý agent, který hlásí do Operations Manager management server bude odes�
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Celkový počet agentů |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Počet nereagujících agentů za posledních 24 hodin |

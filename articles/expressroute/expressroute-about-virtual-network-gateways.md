@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: b721a9b8d8bdff3f3aaf05f15857c00347e7abb4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 45b059784cc0b442b615a2a1cb50386da6ee990f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740915"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>O branách virtuální sítě ExpressRoute
 
@@ -53,7 +53,7 @@ Než vytvoříte bránu ExpressRoute, musíte vytvořit podsíť brány. Podsí�
 
 Při vytváření podsítě brány zadáte počet IP adres, které podsíť obsahuje. IP adresy v podsíti brány jsou přiděleny virtuálním počítačům brány a službám brány. Některé konfigurace vyžadují víc IP adres než jiné. 
 
-Při plánování velikosti podsítě brány si přečtěte dokumentaci ke konfiguraci, kterou plánujete vytvořit. Například konfigurace s ExpressRoute/VPN Gateway vyžaduje větší podsíť brány než většina ostatních konfigurací. Kromě toho můžete chtít zajistit, aby podsíť brány obsahovala dostatek IP adres, aby mohla pojmout možné budoucí další konfigurace. I když můžete vytvořit podsíť brány, která je menší než/29, doporučujeme vytvořit podsíť brány o velikosti/27 nebo větší (/27,/26 atd.), pokud máte dostupný adresní prostor. To bude vyhovovat většině konfigurací.
+Při plánování velikosti podsítě brány si přečtěte dokumentaci ke konfiguraci, kterou plánujete vytvořit. Například konfigurace s ExpressRoute/VPN Gateway vyžaduje větší podsíť brány než většina ostatních konfigurací. Kromě toho můžete chtít zajistit, aby podsíť brány obsahovala dostatek IP adres, aby mohla pojmout možné budoucí další konfigurace. I když můžete vytvořit podsíť brány, která je menší než/29, doporučujeme vytvořit podsíť brány o velikosti/27 nebo větší (/27,/26 atd.), pokud máte dostupný adresní prostor. Pokud vytváříte podsíť s duálním zásobníkem brány, doporučujeme použít také rozsah IPv6/64 nebo vyšší. To bude vyhovovat většině konfigurací.
 
 Následující příklad Správce prostředků PowerShell ukazuje podsíť brány s názvem GatewaySubnet. Můžete vidět, že zápis CIDR určuje/27, což umožňuje dostatek IP adres pro většinu konfigurací, které aktuálně existují.
 
@@ -77,6 +77,11 @@ Redundantní brány v zóně používají pro bránu ExpressRoute konkrétní no
 
 Nové SKU brány podporují také další možnosti nasazení, které nejlépe vyhovují vašim potřebám. Při vytváření brány virtuální sítě pomocí nových SKU brány máte také možnost nasazení brány do konkrétní zóny. Tento postup se označuje jako brána pro oblast. Když nasadíte bránu pro oblast, všechny instance brány se nasadí ve stejné zóně dostupnosti.
 
+> [!IMPORTANT]
+> Pokud máte v úmyslu používat privátní partnerský vztah založený na protokolu IPv6 přes ExpressRoute, ujistěte se, že jste vybrali AZ SKU pro bránu, kterou nasadíte v podsíti brány Dual Stack.
+> 
+>
+
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 Brána virtuální sítě ExpressRoute je navržená pro výměnu síťových tras a směrování síťového provozu. FastPath je navržená tak, aby vylepšila výkon datových cest mezi vaší místní sítí a virtuální sítí. Pokud je povoleno, FastPath odesílá síťový provoz přímo virtuálním počítačům ve virtuální síti a vynechá bránu.
@@ -86,7 +91,7 @@ Další informace o FastPath, včetně omezení a požadavků, najdete v tématu
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>Rozhraní REST API a rutiny PowerShellu
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API a rutin PowerShellu pro konfigurace brány virtuální sítě najdete na následujících stránkách:
 
-| **Klasický** | **Resource Manager** |
+| **Standardním** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](/powershell/module/az.network#networking) |
 | [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/virtual-network/) |

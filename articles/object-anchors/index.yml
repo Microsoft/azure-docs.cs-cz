@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Dokumentace ke kotvám objektů Azure
+summary: Kotvy objektů lze použít k detekci objektu ve fyzickém světě a k odhadu jeho 6 – DoF představují 3D model objektu.
+metadata:
+  title: Dokumentace ke kotvám objektů Azure
+  description: Použijte kotvy objektů Azure k detekci objektu na fyzickém světě a odhadujte jeho 6 – DoF k danému objektu má 3D model.
+  services: azure-object-anchors
+  ms.service: azure-object-anchors
+  ms.topic: landing-page
+  author: craigktreasure
+  ms.author: crtreasu
+  ms.date: 04/01/2020
+  ms.openlocfilehash: 84ef8d771f4471c11dd77422444a5be98d5c8212
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749117"
+landingContent:
+- title: O kotvách objektů Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou kotvy objektů Azure?
+      url: overview.md
+    - text: Zobrazit poznámky k verzi na GitHubu
+      url: https://github.com/Azure/azure-object-anchors/releases
+- title: Seznámení s klíčovými koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Přehled sady SDK
+      url: ./concepts/sdk-overview.md
+- title: Rychlé starty
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Převod modelu
+      url: ./quickstarts/get-started-model-conversion.md
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: HoloLens v Unity s MRTK
+      url: ./quickstarts/get-started-unity-hololens-mrtk.md
+    - text: HoloLens DirectX
+      url: ./quickstarts/get-started-hololens-directx.md

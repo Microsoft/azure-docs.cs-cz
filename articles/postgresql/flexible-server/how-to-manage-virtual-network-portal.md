@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 46d8fe6427b2a3e7811719792ac4bf67ddbcc3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732764"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Vytvoření a správa virtuálních sítí pro Azure Database for PostgreSQL flexibilní Server pomocí Azure Portal
 
@@ -34,6 +34,13 @@ K vytvoření flexibilního serveru ve virtuální síti potřebujete:
     > Virtuální síť a podsíť by měly být ve stejné oblasti a předplatném jako flexibilní Server.
 
 -  [Delegování podsítě](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service) do **Microsoft. DBforPostgreSQL/flexibleServers**. Toto delegování znamená, že tuto podsíť můžou používat jenom Azure Database for PostgreSQL flexibilní servery. V delegované podsíti nemůžou být žádné jiné typy prostředků Azure.
+-  Přidejte `Microsoft.Storage` do koncového bodu služby pro podsíť delegovanou na flexibilní servery. K tomu je potřeba provést následující kroky:
+     1. Přejít na stránku Virtual Network.
+     2. Vyberte virtuální síť, ve které plánujete nasazení flexibilního serveru.
+     3. Vyberte podsíť delegovanou pro flexibilní Server.
+     4. Na obrazovce vyžádané replikace v části **koncový bod služby** vyberte možnost `Microsoft.storage` z rozevíracího seznamu.
+     5. Uložte změny.
+
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Vytvoření Azure Database for PostgreSQL-flexibilního serveru v už existující virtuální síti
 
@@ -42,7 +49,7 @@ K vytvoření flexibilního serveru ve virtuální síti potřebujete:
 3. Jako možnost nasazení vyberte **flexibilní Server** .
 4. Vyplňte formulář **základy** .
 5. Chcete-li nakonfigurovat, jak se chcete připojit k serveru, přejdete na kartu **sítě** .
-6. V části **způsob připojení**vyberte **privátní přístup (integrace virtuální sítě)**. Přejít na **Virtual Network** a vyberte už existující *virtuální síť* a *podsíť* , která se vytvořila v rámci výše uvedených požadavků.
+6. V části **způsob připojení** vyberte **privátní přístup (integrace virtuální sítě)**. Přejít na **Virtual Network** a vyberte už existující *virtuální síť* a *podsíť* , která se vytvořila v rámci výše uvedených požadavků.
 7. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte flexibilní konfiguraci serveru.
 8. Vyberte **Vytvořit**, aby se server zřídil. Zřizování může trvat několik minut.
 

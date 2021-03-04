@@ -1,26 +1,26 @@
 ---
-title: Ukázky šablon Správce prostředků pro Azure Monitor pro virtuální počítače
-description: Ukázky Azure Resource Manager šablon pro nasazení a configureAzure monitorování pro virtuální počítače
+title: Ukázky šablon Správce prostředků pro virtuální počítač Insights
+description: Ukázky Azure Resource Manager šablon pro nasazení a configureVM přehledy.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 91c8396795a85cd63fa502c4b091b7ca9a42865b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627053"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733750"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>Ukázky šablon Správce prostředků pro Azure Monitor pro virtuální počítače
-Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) , které umožňují Azure monitor pro virtuální počítače na virtuálních počítačích. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
+# <a name="resource-manager-template-samples-for-vm-insights"></a>Ukázky šablon Správce prostředků pro virtuální počítač Insights
+Tento článek obsahuje vzorové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) , které umožňují PŘEHLEDy virtuálních počítačů na virtuálních počítačích. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
-Následující ukázka umožňuje Azure Monitor pro virtuální počítače pro pracovní prostor Log Analytics.
+Následující ukázka povoluje přehledy pro virtuální počítače pro Log Analytics pracovní prostor.
 
 
 ### <a name="template-file"></a>Soubor šablony
@@ -98,7 +98,7 @@ Následující ukázka umožňuje Azure Monitor pro virtuální počítače pro 
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>Zprovoznění virtuálního počítače Azure
-Následující ukázka přidá virtuální počítač Azure, který se Azure Monitor pro virtuální počítače.
+Následující příklad přidá virtuální počítač Azure do služby Azure Insights.
 
 
 ### <a name="template-file"></a>Soubor šablony
@@ -219,7 +219,7 @@ Následující ukázka přidá virtuální počítač Azure, který se Azure Mon
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>Připojení sady škálování virtuálních počítačů Azure
-Následující ukázka přidá sadu škálování virtuálního počítače Azure do Azure Monitor pro virtuální počítače.
+Následující příklad přidá sadu škálování virtuálního počítače Azure na službu VM Insights.
 
 
 ### <a name="template-file"></a>Soubor šablony
@@ -340,5 +340,5 @@ Následující ukázka přidá sadu škálování virtuálního počítače Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte další ukázkové šablony pro Azure monitor](../samples/resource-manager-samples.md).
-* [Přečtěte si další informace o Azure monitor pro virtuální počítače](../vm/vminsights-overview.md).
+* [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
+* [Přečtěte si další informace o službě VM Insights](vminsights-overview.md).

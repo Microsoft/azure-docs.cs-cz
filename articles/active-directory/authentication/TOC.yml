@@ -176,7 +176,7 @@
     - name: Vytváření sestav
       items:
         - name: Aktivita metod ověřování
-          href: howto-authentication-methods-usage-insights.md
+          href: howto-authentication-methods-activity.md
         - name: Sestavy SSPR
           href: howto-sspr-reporting.md
         - name: Sestavy MFA

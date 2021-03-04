@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389140"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699677"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Správa oznámení o upozorněních na události zařízení u prostředků Azure Stack Edge pro
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak vytvořit pravidla akcí v Azure Portal pro aktivac
 
 Pravidlo akce může aktivovat nebo potlačit oznámení o výstrahách. Pravidlo akce je přidáno do *skupiny akcí* – sada předvoleb oznámení, která se používá k oznámení uživatelům, kteří potřebují pracovat s výstrahami aktivovanými v různých kontextech pro prostředek nebo sadu prostředků.
 
-Další informace o pravidlech akcí najdete v tématu [Konfigurace pravidla akce](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](/azure/azure-monitor/platform/action-groups).
+Další informace o pravidlech akcí najdete v tématu [Konfigurace pravidla akce](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule). Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE]
 > Funkce pravidel akcí je ve verzi Preview. Některé obrazovky a kroky se můžou při objemnějším procesu změnit.
@@ -34,7 +34,7 @@ Další informace o pravidlech akcí najdete v tématu [Konfigurace pravidla akc
 Proveďte následující kroky v Azure Portal k vytvoření pravidla akce pro vaše zařízení Azure Stack Edge.
 
 > [!NOTE]
-> Tyto kroky vytvoří pravidlo akce, které odesílá oznámení do skupiny akcí. Podrobnosti o vytvoření pravidla akce pro potlačení oznámení najdete v tématu [Konfigurace pravidla akce](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+> Tyto kroky vytvoří pravidlo akce, které odesílá oznámení do skupiny akcí. Podrobnosti o vytvoření pravidla akce pro potlačení oznámení najdete v tématu [Konfigurace pravidla akce](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 1. V Azure Portal přejít na Azure Stack hraniční zařízení a pak na **sledování > výstrahy**. Vyberte **Spravovat akce**.
 
@@ -72,7 +72,7 @@ Proveďte následující kroky v Azure Portal k vytvoření pravidla akce pro va
 
    2. V části **filtry** přidejte každý filtr, který chcete použít. U každého filtru vyberte typ filtru, **operátor** a **hodnotu**.
    
-      Seznam možností filtru najdete v tématu [kritéria filtru](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria).
+      Seznam možností filtru najdete v tématu [kritéria filtru](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria).
 
       Níže uvedené ukázkové filtry platí pro všechny výstrahy na úrovních závažnosti 2, 3 a 4, které služba monitorování vyvolává pro Azure Stack hraničních prostředků.
 
@@ -85,11 +85,11 @@ Proveďte následující kroky v Azure Portal k vytvoření pravidla akce pro va
    ![Možnost skupiny akcí pro vytvoření pravidla akce, které odesílá oznámení](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > Chcete-li vytvořit pravidlo, které potlačí oznámení, vyberte možnost **potlačení**. Další informace najdete v tématu [Konfigurace pravidla akce](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+   > Chcete-li vytvořit pravidlo, které potlačí oznámení, vyberte možnost **potlačení**. Další informace najdete v tématu [Konfigurace pravidla akce](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 6. Vyberte skupinu akcí, kterou chcete použít s tímto pravidlem akce. Pak zvolte **Vybrat**. Vaše nové pravidlo akce bude přidáno do předvoleb oznámení vybrané skupiny akcí.
 
-   Pokud potřebujete vytvořit novou skupinu akcí, vyberte **+ vytvořit skupinu akcí** a postupujte podle kroků v [části Vytvoření skupiny akcí pomocí Azure Portal](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal).
+   Pokud potřebujete vytvořit novou skupinu akcí, vyberte **+ vytvořit skupinu akcí** a postupujte podle kroků v [části Vytvoření skupiny akcí pomocí Azure Portal](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal).
 
    ![Vyberte skupinu akcí pro použití s pravidlem a pak zvolte Vybrat.](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ E-mailové oznámení budou vypadat podobně jako u tohoto.
 
 ## <a name="next-steps"></a>Další kroky
 
-<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - Informace o kontrole událostí zařízení, stavu hardwaru a grafech metrik najdete v tématu [monitorování Azure Stack Edge pro](azure-stack-edge-monitor.md) . 
 - Informace o optimalizaci Azure Monitor pro zařízení s grafickým procesorem Azure Stack Edge pro najdete v tématu věnovaném [použití Azure monitor](azure-stack-edge-gpu-enable-azure-monitor.md) .
-- Informace o správě jednotlivých výstrah najdete v tématu [Vytvoření, zobrazení a Správa upozornění na metriku pomocí cíle odkazů Azure monitor](/azure/azure-monitor/platform/alerts-metric) .
+- Informace o správě jednotlivých výstrah najdete v tématu [Vytvoření, zobrazení a Správa upozornění na metriku pomocí cíle odkazů Azure monitor](../azure-monitor/alerts/alerts-metric.md) .

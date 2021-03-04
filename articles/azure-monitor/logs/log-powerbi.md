@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: 80a508aeb7eff9567bea67cb84350fc2e77551da
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d1db5f5e4164d971dff3ec6b042fa4b0a969e508
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609391"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704238"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Log Analytics integrace s Power BI
 
@@ -19,7 +19,7 @@ Tento článek se zaměřuje na způsoby zakládání dat z Log Analytics do Mic
 
 ## <a name="background"></a>Pozadí 
 
-Protokoly Azure Monitor jsou platforma, která poskytuje ucelené řešení pro ingestování protokolů. [Azure Monitor Log Analytics](../platform/data-platform.md#) je rozhraní pro dotazování těchto protokolů. Další informace o celé Azure Monitor datové platformě, včetně Log Analytics, najdete v tématu [Azure monitor datovou platformu](../platform/data-platform.md). 
+Protokoly Azure Monitor jsou platforma, která poskytuje ucelené řešení pro ingestování protokolů. [Azure Monitor Log Analytics](../platform/data-platform.md#) je rozhraní pro dotazování těchto protokolů. Další informace o celé Azure Monitor datové platformě, včetně Log Analytics, najdete v tématu [Azure monitor datovou platformu](../data-platform.md). 
 
 Microsoft Power BI je platforma pro vizualizaci dat od Microsoftu. Další informace o tom, jak začít, najdete na [domovské stránce Power BI](https://powerbi.microsoft.com/). 
 
@@ -82,4 +82,4 @@ Další informace najdete v [integraci Log Analytics a Excelu](log-excel.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Začínáme s [Log Analytics dotazy](../log-query/log-query-overview.md)
+Začínáme s [Log Analytics dotazy](./log-query-overview.md)

@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691922"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Nastavení připojení Azure SQL
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Minimální verze [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) umožňuje zákazníkům zvolit, jakou verzi TLS SQL Database používá.
 
-V současné době podporujeme protokoly TLS 1.0, 1.1 a 1.2. Nastavení minimální verze protokolu TLS zajišťuje podporu novějších verzí protokolu TLS. Například výběrem vyšší verze protokolu TLS než 1.1 se zajistí, že se budou přijímat pouze připojení přes protokol TLS 1.1 a 1.2 a připojení přes protokol TLS 1.0 se budou zamítat. Po otestování, že vaše aplikace podporují protokol TLS 1.2, doporučujeme nastavit minimální verzi protokolu TLS na tuto verzi. Tato verze obsahuje opravy ohrožení zabezpečení v předchozích verzích a představuje nejvyšší podporovanou verzi protokolu TLS ve službě Azure SQL Database.
+V současné době podporujeme protokoly TLS 1.0, 1.1 a 1.2. Nastavení minimální verze protokolu TLS zajišťuje podporu novějších verzí protokolu TLS. Například zvolíte-li TLS verze 1,1, budou přijímána pouze připojení k TLS 1,1 a 1,2 a připojení k TLS 1,0 budou odmítnuta. Po otestování, že vaše aplikace podporují protokol TLS 1.2, doporučujeme nastavit minimální verzi protokolu TLS na tuto verzi. Tato verze obsahuje opravy ohrožení zabezpečení v předchozích verzích a představuje nejvyšší podporovanou verzi protokolu TLS ve službě Azure SQL Database.
 
 > [!IMPORTANT]
 > Výchozí hodnotou pro minimální verzi TLS je povolení všech verzí. Po vykonání verze TLS se nemůžete vrátit k výchozímu nastavení.

@@ -3,18 +3,18 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707298"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
 Jednou z klíčových zodpovědností správce zálohování nebo dodržování předpisů v organizaci je zajistit, aby všechny důležité podnikové počítače byly zálohovány s odpovídajícím uchováváním.
 
-V současné době Azure Backup poskytuje celou řadu předdefinovaných zásad (pomocí [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)), které vám pomůžou automaticky zajistit, aby byly virtuální počítače Azure nakonfigurované pro zálohování. V závislosti na způsobu uspořádání vašich zálohovacích týmů a prostředků můžete použít kteroukoli z následujících zásad:
+V současné době Azure Backup poskytuje celou řadu předdefinovaných zásad (pomocí [Azure Policy](../governance/policy/overview.md)), které vám pomůžou automaticky zajistit, aby byly virtuální počítače Azure nakonfigurované pro zálohování. V závislosti na způsobu uspořádání vašich zálohovacích týmů a prostředků můžete použít kteroukoli z následujících zásad:
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Zásady 1 – Konfigurace zálohování na virtuálních počítačích bez dané značky do stávajícího trezoru služby Recovery Services ve stejném umístění
 
@@ -29,7 +29,7 @@ Pokud organizujete aplikace ve vyhrazených skupinách prostředků a chcete je 
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Zásada 4-[Preview] Konfigurace zálohování na virtuálních počítačích s danou značkou do nového trezoru služby Recovery Services s výchozími zásadami
 Tato zásada funguje stejně jako u zásad 3 výše. jediným rozdílem je, že tyto zásady můžete použít k **zahrnutí** virtuálních počítačů, které obsahují určitou značku, v rozsahu této zásady. 
 
-Kromě výše uvedeného Azure Backup taky poskytuje zásady [pouze pro audit](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) – **Azure Backup by mělo být povolené Virtual Machines**. Tato zásada určuje, které virtuální počítače nemají zapnutou zálohu, ale nekonfiguruje pro tyto virtuální počítače automaticky zálohy. To je užitečné, když hledáte jenom vyhodnocení celkového dodržování předpisů u virtuálních počítačů, ale nechcete, aby se okamžitě projevila akce.
+Kromě výše uvedeného Azure Backup taky poskytuje zásady [pouze pro audit](../governance/policy/concepts/effects.md#audit) – **Azure Backup by mělo být povolené Virtual Machines**. Tato zásada určuje, které virtuální počítače nemají zapnutou zálohu, ale nekonfiguruje pro tyto virtuální počítače automaticky zálohy. To je užitečné, když hledáte jenom vyhodnocení celkového dodržování předpisů u virtuálních počítačů, ale nechcete, aby se okamžitě projevila akce.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 

@@ -2,15 +2,15 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700384"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>Správa verzí
+
+Při vytváření specifikace šablony zadejte název verze. Při iteraci kódu šablony můžete buď aktualizovat existující verzi (pro opravy hotfix) nebo publikovat novou verzi. Verze je textový řetězec. Můžete se rozhodnout, že budete postupovat podle systému správy verzí, včetně sémantické správy verzí. Uživatelé specifikace šablony můžou poskytnout název verze, který chtějí použít při jeho nasazení.
+
+## <a name="use-tags"></a>Použití značek
+
+[Značky](../management/tag-resources.md) vám pomůžou logicky organizovat vaše prostředky. Pomocí Azure PowerShell a Azure CLI můžete přidat značky do specifikací šablon:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+Při vytváření nebo úpravách specifikace šablony se zadaným parametrem verze, ale bez parametru tag/Tags:
+
+- Pokud existuje specifikace šablony a obsahuje značky, ale verze neexistuje, nová verze zdědí stejné značky jako stávající specifikace šablony.
+
+Při vytváření nebo úpravách specifikace šablony s parametrem tag/Tags a zadaným parametrem verze:
+
+- Pokud specifikace šablony a verze neexistují, přidají se značky k nové specifikaci šablony i k nové verzi.
+- Pokud specifikace šablony existuje, ale verze neexistuje, přidají se do nové verze jenom tyto značky.
+- Pokud existují specifikace šablony i verze, použijí se značky pouze na verzi.
+
+Při úpravách šablony se zadaným parametrem tag/Tags, ale bez zadaného parametru verze, jsou značky přidány pouze do specifikace šablony.
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>Vytvoření specifikace šablony s propojenými šablonami
 
 Pokud hlavní šablona pro specifikaci šablony odkazuje na propojené šablony, příkazy PowerShellu a rozhraní příkazového řádku můžou automaticky vyhledávat a zabalit propojené šablony z místního disku. Nemusíte ručně konfigurovat účty úložiště nebo úložiště k hostování specifikací šablon – vše je v prostředku specifikace šablony obsaženo samostatně.
@@ -331,10 +403,6 @@ Následující příklad je podobný jako předchozí příklad, ale `id` vlastn
 ```
 
 Další informace o propojování specifikací šablon najdete v tématu [kurz: nasazení specifikace šablony jako propojené šablony](template-specs-deploy-linked-template.md).
-
-## <a name="versioning"></a>Správa verzí
-
-Při vytváření specifikace šablony zadejte název verze. Při iteraci kódu šablony můžete buď aktualizovat existující verzi (pro opravy hotfix) nebo publikovat novou verzi. Verze je textový řetězec. Můžete se rozhodnout, že budete postupovat podle systému správy verzí, včetně sémantické správy verzí. Uživatelé specifikace šablony můžou poskytnout název verze, který chtějí použít při jeho nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,22 +1,22 @@
 ---
-title: Výstrahy metrik z Azure Monitor pro kontejnery
-description: Tento článek kontroluje Doporučené výstrahy metriky, které jsou dostupné z Azure Monitor pro kontejnery ve verzi Public Preview.
+title: Výstrahy metrik z kontejneru Insights
+description: Tento článek popisuje doporučené výstrahy metriky dostupné ze služby Container Insights ve verzi Public Preview.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 59c8d7b58809c981130d2ce92406fb5b1ce146ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611585"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728888"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Doporučené výstrahy metriky (Preview) z Azure Monitor pro kontejnery
+# <a name="recommended-metric-alerts-preview-from-container-insights"></a>Doporučené výstrahy metriky (Preview) z kontejneru Insights
 
-Pokud chcete upozornit na problémy systémových prostředků, když se setkáváte na vyžádání a běží blízko kapacity, Azure Monitor u kontejnerů byste vytvořili upozornění protokolu na základě údajů o výkonu uložených v protokolech Azure Monitor. Azure Monitor for Containers nyní zahrnuje předem konfigurovaná pravidla upozornění na metriky pro cluster AKS a Kubernetes s podporou ARC Azure, který je ve verzi Public Preview.
+S využitím služby Container Insights vytvoříte výstrahu protokolu na základě údajů o výkonu uložených v protokolech Azure Monitor a upozorníte tak problémy systémových prostředků, když se setkáváte o poptávce a běží blízko kapacity Služba Container Insights teď zahrnuje předem konfigurovaná pravidla upozornění na metriky pro cluster AKS a Kubernetes s povoleným ARC Azure, který je ve verzi Public Preview.
 
 Tento článek popisuje prostředí a poskytuje pokyny ke konfiguraci a správě těchto pravidel výstrah.
 
-Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před tím, než začnete. Další informace o výstrahách metrik najdete [v tématu výstrahy metrik v Azure monitor](../alerts/alerts-metric-overview.md).
+Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../alerts/alerts-overview.md) před tím, než začnete. Další informace o výstrahách metrik najdete [v tématu výstrahy metrik v Azure monitor](../alerts/alerts-metric-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,15 +31,15 @@ Než začnete, zkontrolujte následující:
     * Spusťte příkaz: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . Ve vráceném stavu si všimněte hodnoty v části **Image** pro omsagent v oddílu *Containers* výstupu. 
     * Na kartě **uzly** vyberte uzel clusteru a v podokně **vlastnosti** napravo si poznamenejte hodnotu v části **značka image agenta**.
 
-    Hodnota zobrazená pro AKS by měla být verze **ciprod05262020** nebo novější. Hodnota zobrazená pro cluster Kubernetes s povoleným ARC Azure by měla být verze **ciprod09252020** nebo novější. Pokud má cluster starší verzi, přečtěte si téma [Postup upgradu agenta Azure monitor for Containers](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) , kde najdete pokyny k získání nejnovější verze.
+    Hodnota zobrazená pro AKS by měla být verze **ciprod05262020** nebo novější. Hodnota zobrazená pro cluster Kubernetes s povoleným ARC Azure by měla být verze **ciprod09252020** nebo novější. Pokud má cluster starší verzi, přečtěte si téma [Postup upgradu agenta Container Insights](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) , kde najdete kroky pro získání nejnovější verze.
 
     Další informace týkající se vydání agenta najdete v tématu [Historie vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Pokud chcete ověřit metriky, můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je, můžete pokračovat a začít nastavovat výstrahy. Pokud se nezobrazí žádná metrika, v instančním objektu nebo ve službě MSI chybí potřebná oprávnění. Pokud chcete ověřit, jestli je hlavní název služby (SPN) nebo MSI členem role **vydavatele metrik monitorování** , použijte postup popsaný v části [upgrade na cluster pomocí Azure CLI](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) a potvrďte a nastavte přiřazení role.
 
 ## <a name="alert-rules-overview"></a>Přehled pravidel výstrah
 
-Pokud chcete upozornit na to, co Azure Monitor kontejnerů, zahrnuje následující výstrahy metriky pro clustery Kubernetes a Azure ARC s povoleným AKS:
+V případě, že jsou součástí služby Container Insights informace o tom, jaké jsou výstrahy pro AKS a clustery Kubernetes s podporou ARC Azure, zahrnují následující výstrahy metriky:
 
-|Název| Description |Výchozí prahová hodnota |
+|Název| Popis |Výchozí prahová hodnota |
 |----|-------------|------------------|
 |Průměrný procesor kontejneru% |Vypočítá průměrný procesor využívaný na jeden kontejner.|V případě, že průměrné využití procesoru na kontejner je větší než 95%.| 
 |Průměrná paměť pracovní sady v kontejneru% |Vypočítá průměrnou paměť pracovní sady použitou na kontejner.|V případě, že průměrná spotřeba paměti pracovní sady na kontejner je větší než 95%. |
@@ -108,15 +108,15 @@ Pomocí těchto kroků povolíte výstrahy metrik v Azure Monitor z Azure Portal
 
 ### <a name="from-the-azure-portal"></a>Pomocí webu Azure Portal
 
-Tato část vás provede povolením výstrahy metriky Azure Monitor pro kontejnery (Preview) z Azure Portal.
+Tato část vás provede povolením výstrahy metriky služby Container Insights (Preview) z Azure Portal.
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. Přístup k funkci upozornění na metriku Azure Monitor for Containers (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně v Azure Portal vyberete **přehledy** .
+2. Přístup k funkci výstrahy metrik služby Container Insights (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně v Azure Portal vyberete **přehledy** .
 
 3. Na panelu příkazů vyberte **Doporučené výstrahy**.
 
-    ![Možnost Doporučené výstrahy v Azure Monitor pro kontejnery](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
+    ![Možnost Doporučené výstrahy v kontejneru Insights](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
 4. Podokno vlastností **Doporučené výstrahy** se automaticky zobrazuje na pravé straně stránky. Ve výchozím nastavení jsou všechna pravidla výstrah v seznamu zakázaná. Po výběru možnosti **Povolit** se vytvoří pravidlo upozornění a název pravidla se aktualizuje tak, aby zahrnoval odkaz na prostředek výstrahy.
 
@@ -198,7 +198,7 @@ Základní postup je následující:
 
 ## <a name="edit-alert-rules"></a>Upravit pravidla upozornění
 
-Můžete zobrazit a spravovat pravidla výstrah Azure Monitor pro kontejnery, upravit její prahovou hodnotu nebo nakonfigurovat [skupinu akcí](../alerts/action-groups.md) pro cluster AKS. I když můžete provádět tyto akce z Azure Portal a Azure CLI, můžete je taky dělat přímo z clusteru AKS v Azure Monitor for Containers.
+Můžete zobrazit a spravovat pravidla výstrah ve službě Container Insights, abyste mohli upravit její prahovou hodnotu nebo nakonfigurovat [skupinu akcí](../alerts/action-groups.md) pro cluster AKS. I když můžete provádět tyto akce z Azure Portal a Azure CLI, můžete je taky dělat přímo z clusteru AKS ve službě Container Insights.
 
 1. Na panelu příkazů vyberte **Doporučené výstrahy**.
 

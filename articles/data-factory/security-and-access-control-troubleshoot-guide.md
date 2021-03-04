@@ -4,14 +4,14 @@ description: Naučte se řešit problémy zabezpečení a řízení přístupu v
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706126"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Řešení potíží s Azure Data Factory zabezpečení a řízení přístupu
 
@@ -107,7 +107,7 @@ Chcete-li tento problém vyřešit, postupujte takto:
 
 Nemůžete zaregistrovat ověřovací klíč IR na místním virtuálním počítači, protože je povolené privátní propojení. Zobrazí se následující chybová zpráva:
 
-Nepovedlo se získat token služby ze služby ADF s klíčem * * * * * * * * * * * * * * * * * * * * * * a čas: 0,1250079 sekund, kód chyby: InvalidGatewayKey, activityId je: XXXXXXX a podrobná chybová zpráva je IP adresa klienta není platná. Služba Data Factory nedokázala získat přístup k veřejné síti, a proto se nemůže připojit ke cloudu, aby provedla úspěšné připojení. "
+Nepovedlo se získat token služby ze služby ADF s klíčem * * * * * * * * * * * * * * * * * * * * * * a čas: 0,1250079 sekund kód chyby je: InvalidGatewayKey, activityId je: XXXXXXX a podrobná chybová zpráva je IP adresa klienta není platná. příčinou může být to, že služba Data Factory nedokázala získat přístup k veřejné síti, a proto se nemůže spojit s cloudem, aby bylo možné provést úspěšné připojení. "
 
 #### <a name="cause"></a>Příčina
 
@@ -142,7 +142,6 @@ Chcete-li tento problém vyřešit, postupujte takto:
 
 1. Do prostředí Integration runtime znovu přidejte ověřovací klíč IR.
 
-
 **Řešení 2**
 
 Problém vyřešíte tak, že přejdete do [privátního odkazu Azure pro Azure Data Factory](./data-factory-private-link.md).
@@ -150,6 +149,45 @@ Problém vyřešíte tak, že přejdete do [privátního odkazu Azure pro Azure 
 Zkuste povolit přístup k veřejné síti v uživatelském rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Snímek obrazovky s povoleným ovládacím prvkem povolit přístup k veřejné síti v podokně síť](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>V privátní zóně DNS služby ADF se přepíší Azure Resource Manager chyba způsobující nenalezení překladu názvů DNS.
+
+#### <a name="cause"></a>Příčina
+Azure Resource Manager i ADF používají stejnou soukromou zónu, což může způsobit konflikt na privátní DNS zákazníka s scénářem, ve kterém se nenaleznou Azure Resource Manager záznamy.
+
+#### <a name="solution"></a>Řešení
+1. Vyhledá zóny Privátní DNS **privatelink.Azure.com** v Azure Portal.
+![Snímek obrazovky s hledáním zón Privátní DNS](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. Ověřte, jestli existuje záznam **ADF** A.
+![Snímek obrazovky záznamu](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  Přejít na **odkazy virtuální sítě** a odstranit všechny záznamy.
+![Snímek obrazovky s odkazem na virtuální síť](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  Přejděte na datovou továrnu v Azure Portal a znovu vytvořte privátní koncový bod pro Azure Data Factory portál.
+![Snímek obrazovky s opětovným vytvořením privátního koncového bodu](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  Vraťte se zpět na zóny Privátní DNS a ověřte, jestli je k dispozici nová privátní zóna DNS **privatelink.ADF.Azure.com**.
+![Snímek obrazovky s novým záznamem DNS](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>Chyba připojení ve veřejném koncovém bodě
+
+#### <a name="symptoms"></a>Příznaky
+
+Při kopírování dat pomocí veřejného přístupu účtu Azure Blob Storage spouští kanál náhodně selhání s následující chybou.
+
+Například: jímka služby Azure Blob Storage používala Azure IR (veřejnou, nespravovanou virtuální síť) a zdroj Azure SQL Database používal spravovanou virtuální síť IR. Nebo zdroj/jímka používají spravovaná virtuální síť jenom s využitím úložiště s veřejným přístupem.
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>Příčina
+
+ADF může i nadále používat spravovanou virtuální síť IR, ale může dojít k této chybě, protože veřejný koncový bod pro Azure Blob Storage ve spravované virtuální síti není spolehlivý na základě výsledku testování a Azure Blob Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu Virtual Network ze spravovaných [koncových bodů spravované virtuální sítí &](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network).
+
+#### <a name="solution"></a>Řešení
+
+- Je povolený privátní koncový bod na zdroji a také jímka při použití spravované virtuální sítě IR.
+- Pokud stále chcete použít veřejný koncový bod, můžete namísto použití spravované virtuální sítě (IR) pro zdroj a jímku přepnout na veřejný infračervený přenos. I když přepnete zpátky na veřejné INFRAČERVENé prostředí, může ADF i nadále používat spravovanou virtuální síť IR, pokud je ještě dostupná spravovaná virtuální síť IR.
 
 ## <a name="next-steps"></a>Další kroky
 

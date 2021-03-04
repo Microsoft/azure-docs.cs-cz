@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží s Azure Monitor pro virtuální počítačem stavem hosta (Preview)
-description: Popisuje kroky, které můžete provést při potížích s Azure Monitor pro virtuální počítače stavem.
+title: Řešení potíží se stavem hosta virtuálních počítačů (Preview)
+description: Popisuje postup řešení potíží, který můžete provést v případě problémů se stavem pro virtuální počítače s přehledem.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: da8097341f8499be4e28fa37c06d963d057966ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609718"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703915"
 ---
-# <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>Řešení potíží s Azure Monitor pro virtuální počítačem stavem hosta (Preview)
-Tento článek popisuje kroky, které můžete provést při potížích s Azure Monitor pro virtuální počítače stavem.
+# <a name="troubleshoot-vm-insights-guest-health-preview"></a>Řešení potíží se stavem hosta virtuálních počítačů (Preview)
+Tento článek popisuje kroky, které můžete provést, když máte problémy se stavem pro virtuální počítače s přehledem.
 
 ## <a name="error-message-that-no-data-is-available"></a>Chybová zpráva, že nejsou k dispozici žádná data 
 
@@ -34,7 +34,7 @@ Ověřte, že se na virtuálním počítači úspěšně zřídilo rozšíření
 ![Rozšíření virtuálních počítačů](media/vminsights-health-troubleshoot/extensions.png)
 
 ### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Ověřte, že je na virtuálním počítači povolená identita přiřazená systémem.
-Ověřte, jestli je na virtuálním počítači povolená identita přiřazená systémem. Z nabídky virtuálního počítače v Azure Portal vyberte **Identita** . 
+Ověřte, jestli je na virtuálním počítači povolená identita přiřazená systémem. Z nabídky virtuálního počítače v Azure Portal vyberte **Identita** . Pokud je povolená identita spravované uživatelem bez ohledu na stav identity spravované systémem, Azure Monitor Agent nebude moct komunikovat se službou konfigurace a rozšíření stavu hosta nebude fungovat.
 
 ![Identita přiřazená systémem](media/vminsights-health-troubleshoot/system-identity.png)
 
@@ -48,4 +48,4 @@ Tato chyba označuje, že v předplatném nebyl zaregistrován poskytovatel pros
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získejte přehled o funkci stavu hosta Azure Monitor pro virtuální počítače](vminsights-health-overview.md)
+- [Přehled funkce stavu hosta v rámci virtuálních počítačů Insights](vminsights-health-overview.md)

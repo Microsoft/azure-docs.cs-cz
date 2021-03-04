@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 02/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738986"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
@@ -68,7 +68,7 @@ K přípravě jednotek proveďte následující kroky.
 6. Klíč BitLockeru jednotky získáte spuštěním následujícího příkazu:
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. Pokud chcete disk připravit, spusťte následující příkaz. **V závislosti na velikosti dat to může trvat několik hodin až dnů.**
+7. Pokud chcete disk připravit, spusťte následující příkaz. **V závislosti na velikosti dat může Příprava disku trvat několik hodin až dnů.**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ K přípravě jednotek proveďte následující kroky.
     |/bk:     |Klíč BitLockeru pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
     |/srcdir:     |Písmeno jednotky disku, který se má odeslat a potom `:\` . Například, `D:\`.         |
     |/dstdir:     |Název cílového kontejneru v Azure Storage.         |
-    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku se jedná o `BlockBlob` a pro objekty blob stránky `PageBlob` .         |
-    |/skipwrite:     |Možnost, která určuje, že se nevyžadují žádná nová data ke zkopírování a stávající data na disku se připravují.          |
+    |/blobtype:     |Tato možnost určuje typ objektů blob, do kterých chcete importovat data. Pro objekty blob bloku je typ objektu BLOB `BlockBlob` a pro objekty blob stránky `PageBlob` .         |
+    |/skipwrite:     | Určuje, že se nevyžadují žádná nová data, která se mají zkopírovat, a stávající data na disku se připravují.          |
     |/enablecontentmd5:     |Možnost, pokud je povolená, zajistí, že se algoritmus MD5 vypočítá a nastaví jako `Content-md5` vlastnost u každého objektu BLOB. Tuto možnost použijte pouze v případě, že chcete `Content-md5` pole použít po nahrání dat do Azure. <br> Tato možnost nemá vliv na kontrolu integrity dat (ke které dochází ve výchozím nastavení). Nastavení zvyšuje čas potřebný k nahrání dat do cloudu.          |
 8. Opakujte předchozí krok pro každý disk, který je třeba odeslat. Soubor deníku se zadaným názvem se vytvoří pro každé spuštění příkazového řádku.
 
     > [!IMPORTANT]
     > * Společně se souborem deníku `<Journal file name>_DriveInfo_<Drive serial ID>.xml` se vytvoří i soubor ve stejné složce, ve které se nástroj nachází. Soubor. XML se používá místo souboru deníku při vytváření úlohy, pokud je soubor deníku příliš velký.
+   > * Maximální velikost souboru deníku, který umožňuje portál, je 2 MB. Pokud soubor deníku tento limit překročí, vrátí se chyba.
 
 ## <a name="step-2-create-an-import-job"></a>Krok 2: vytvoření úlohy importu
 
@@ -323,7 +324,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>Krok 3 (volitelné): konfigurace klíče spravovaného zákazníkem
 
-Přeskočte tento krok a přejděte k dalšímu kroku, pokud chcete k ochraně klíčů BitLockeru pro jednotky použít spravovaný klíč společnosti Microsoft. Pokud chcete nakonfigurovat vlastní klíč k ochraně klíče BitLockeru, postupujte podle pokynů v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pro import a export Azure v Azure Portal](storage-import-export-encryption-key-portal.md)
+Přeskočte tento krok a přejděte k dalšímu kroku, pokud chcete k ochraně klíčů BitLockeru pro jednotky použít spravovaný klíč společnosti Microsoft. Pokud chcete nakonfigurovat vlastní klíč k ochraně klíče BitLockeru, postupujte podle pokynů v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pro import a export Azure v Azure Portal](storage-import-export-encryption-key-portal.md).
 
 ## <a name="step-4-ship-the-drives"></a>Krok 4: dodání jednotek
 

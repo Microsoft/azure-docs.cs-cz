@@ -4,22 +4,22 @@ description: Naučte se, jak upravit Webhooky, Logic Apps a runbooky pro přípr
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c88d0b8595434298eb564034a44665c5375457c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609619"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701038"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
 
 > [!NOTE]
-> Jak jsme [dřív oznámili](../platform/monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou stále v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Datum vyřazení těchto výstrah bylo ještě rozšířeno. Brzy bude oznámeno nové datum.
+> Jak jsme [dřív oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazení pro uživatele veřejného cloudu, i když jsou i v omezeném počtu použití až do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 >
 
-Pokud se rozhodnete, že chcete migrovat pravidla vašich klasických výstrah na nová pravidla upozornění, pamatujte na to, že mezi těmito dvěma systémy existují rozdíly. V tomto článku se dozvíte o těchto rozdílech a o tom, jak můžete tuto změnu připravit.
+Pokud se rozhodnete dobrovolně migrovat pravidla pro vaše Klasická upozornění na nová pravidla upozornění, existují rozdíly mezi těmito dvěma systémy. V tomto článku se dozvíte o těchto rozdílech a o tom, jak můžete tuto změnu připravit.
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
@@ -36,7 +36,7 @@ Následující tabulka je odkazem na programová rozhraní pro klasické a nové
 
 ## <a name="notification-payload-changes"></a>Změny datové části oznámení
 
-Formát datové části oznámení se mírně liší mezi [pravidly upozornění Classic](../platform/alerts-webhooks.md) a [novými výstrahami metriky](alerts-metric-near-real-time.md#payload-schema). Pokud máte žádné Webhooky, aplikace logiky nebo akce sady Runbook aktivované klasickými pravidly upozornění, je nutné aktualizovat tyto koncové body oznámení tak, aby přijímaly formát datové části nových výstrah metrik.
+Formát datové části oznámení se mírně liší mezi [pravidly upozornění Classic](alerts-webhooks.md) a [novými výstrahami metriky](alerts-metric-near-real-time.md#payload-schema). Pokud máte pravidla pro klasické výstrahy s Webhooky, aplikací logiky nebo akcemi sady Runbook, je nutné aktualizovat cíle pro příjem nového formátu datové části.
 
 Pomocí následující tabulky namapujte pole datové části Webhooku z klasického formátu do nového formátu:
 
@@ -153,13 +153,13 @@ else {
 
 ## <a name="partner-integration-via-webhooks"></a>Integrace partnerů prostřednictvím webhooků
 
-Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](../platform/partners.md) už v rámci svých integrací podporuje novější výstrahy metriky. Známé integrace, které už fungují s novými výstrahami metriky:
+Většina [našich partnerů, kteří se integrují s klasickými výstrahami,](../partners.md) už v rámci svých integrací podporuje novější výstrahy metriky. Známé integrace, které už fungují s novými výstrahami metriky:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Pokud používáte integraci partnera, která zde není uvedená, potvrďte u poskytovatele Integration zprostředkovatele, že integrace funguje s novými výstrahami metriky.
+Pokud používáte integraci partnera, která zde není uvedená, potvrďte u poskytovatele, kterého pracují s novými výstrahami metriky.
 
 ## <a name="next-steps"></a>Další kroky
 

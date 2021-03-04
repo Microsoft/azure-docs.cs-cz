@@ -1,16 +1,16 @@
 ---
-title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers | Microsoft Docs
+title: Konfigurace Azure Red Hat OpenShift v3. x s kontejnerem Insights | Microsoft Docs
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612377"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708369"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
+# <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí služby Container Insights
 
 >[!IMPORTANT]
 > Azure Red Hat OpenShift 3,11 bude vyřazení od června 2022.
@@ -21,33 +21,33 @@ ms.locfileid: "100612377"
 > Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](../../openshift/tutorial-create-cluster.md).
 > Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:aro-feedback@microsoft.com).
 
-Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3 a nejnovější verzi verze 3, aby bylo možné dosáhnout podobného monitorování.
+Služba Container Insights poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3 a nejnovější verzi verze 3, aby bylo možné dosáhnout podobného monitorování.
 
 >[!NOTE]
 >Podpora pro Azure Red Hat OpenShift je v současnosti funkcí ve verzi Public Preview.
 >
 
-Azure Monitor for Containers je možné povolit pro nové nebo jedno nebo více stávajících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
+Službu Container Insights můžete povolit pro nové nebo jedno nebo více stávajících nasazení Azure Red Hat OpenShift pomocí následujících podporovaných metod:
 
 - Pro existující cluster z Azure Portal nebo pomocí šablony Azure Resource Manager.
 - Pro nový cluster pomocí šablony Azure Resource Manager nebo při vytváření nového clusteru pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/openshift#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 
-Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, jak je popsáno v článku [Přehled](container-insights-overview.md) s výjimkou následujících funkcí:
+Container Insights podporuje monitorování Azure Red Hat OpenShift, jak je popsáno v článku [Přehled](container-insights-overview.md) s výjimkou následujících funkcí:
 
 - Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Pracovní prostor služby Log Analytics](../platform/design-logs-deployment.md).
+- [Pracovní prostor služby Log Analytics](../logs/design-logs-deployment.md).
 
-    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../samples/resource-manager-workspace.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
+    Služba Container Insights podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../logs/resource-manager-workspace.md), prostřednictvím [PowerShellu](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../logs/quick-create-workspace.md).
 
-- Pokud chcete povolit a přistupovat k funkcím v Azure Monitor pro kontejnery, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*přispěvatele Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics s nakonfigurovaným Azure monitor for Containers.
+- Aby bylo možné povolit a přistupovat k funkcím ve službě Container Insights, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*Log Analytics přispěvatel*](../logs/manage-access.md#manage-access-using-azure-permissions) pracovního prostoru Log Analytics, která je nakonfigurovaná pomocí služby Container Insights.
 
-- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtenář Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurovaným Azure monitor for Containers.
+- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtenář Log Analytics*](../logs/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurovaným pomocí kontejneru Insights.
 
 ## <a name="identify-your-log-analytics-workspace-id"></a>Identifikace ID vašeho pracovního prostoru Log Analytics
 
@@ -176,13 +176,13 @@ Provedením následujících kroků povolíte monitorování clusteru Azure Red 
 
 4. V seznamu nemonitorovaných clusterů Najděte cluster v seznamu a klikněte na **Povolit**. Výsledky v seznamu můžete zjistit tak, že ve sloupci **typu clusteru** vyhledáte hodnotu **ARO** společnosti.
 
-5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .  
+5. Pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k kontejneru přehledy** .  
     Seznam předchází výchozí pracovní prostor a umístění, do kterého se cluster nasazuje v rámci předplatného.
 
     ![Povolit monitorování pro nemonitorované clustery](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../learn/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, ke kterému je nasazený cluster RedHat OpenShift.
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro uložení dat monitorování z clusteru, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../logs/quick-create-workspace.md). Nezapomeňte vytvořit pracovní prostor ve stejném předplatném, ke kterému je nasazený cluster RedHat OpenShift.
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
@@ -246,10 +246,10 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
 ## <a name="next-steps"></a>Další kroky
 
-- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru RedHat OpenShift a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru RedHat OpenShift a úlohách, které se na nich běží, se naučíte, [Jak používat službu](container-insights-analyze.md) Container Insights.
 
 - Ve výchozím nastavení agent kontejnerů shromažďuje protokoly kontejnerů stdout/stderr všech kontejnerů spuštěných ve všech oborech názvů kromě Kube-System. Pokud chcete nakonfigurovat kolekci protokolů kontejnerů specificky pro konkrétní obory názvů nebo obory názvů, zkontrolujte [konfiguraci agenta služby Container Insights](container-insights-agent-config.md) a nakonfigurujte požadovaná nastavení shromažďování dat na váš soubor konfigurace ConfigMap.
 
 - Pokud si chcete vyřadit a analyzovat metriky Prometheus z clusteru, přečtěte si téma Konfigurace vyřazení [metrik Prometheus](container-insights-prometheus-integration.md) .
 
-- Informace o tom, jak zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, najdete v tématu [Postup zastavení monitorování clusteru Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md).
+- Informace o tom, jak zastavit monitorování clusteru pomocí služby Container Insights, najdete v tématu [Postup zastavení monitorování clusteru Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md).

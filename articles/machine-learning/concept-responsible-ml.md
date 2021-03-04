@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 12/21/2020
+ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692058"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
 
@@ -42,7 +42,7 @@ V případě umělých a autonomních systémů, které se integrují do prostř
 
 Obtížně vysvětlené nebo neprůhledné systémy mohou být problematické, protože jsou pro účastníky, jako jsou vývojáři systému, regulačních skupin, uživatelé a tvůrci obchodních rozhodnutí, obtížné porozumět tomu, proč systémy provádějí určitá rozhodnutí. Některé systémy AI jsou vysvětlené než jiné a někdy se jedná o kompromis mezi systémem s vyšší přesností a jedním z nich, který je popsán.
 
-K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
+K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. Balíček InterpretML podporuje širokou škálu metod interpretace, jako je například SHapley aditivní vysvětlení (SHAP), napodobující vysvětlení a funkci permutace (PFI).  [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>Zmírnění rovnosti v modelech strojového učení
 

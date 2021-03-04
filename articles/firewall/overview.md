@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 02/16/2021
+ms.date: 02/24/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 6e5b553ea3be7e5b4b1d8cb396b35fdf2d5796a9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721765"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -55,7 +55,8 @@ Brána Azure Firewall má následující známé problémy:
 
 |Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla filtrování sítě pro protokoly jiné než TCP/UDP nefungují s SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](../load-balancer/load-balancer-overview.md). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
+|Pokud aktualizujete pravidlo z IP adresy na skupinu IP adres nebo naopak pomocí portálu, oba typy se uloží, ale na portálu se zobrazí jenom jedna.|K tomuto problému dochází u klasických pravidel.<br><br>Když pomocí portálu aktualizujete typ zdroje pravidla překladu adres (NAT) z IP adresy na skupinu IP adres nebo naopak, uloží se oba typy do back-endu, ale prezentuje jenom nově aktualizovaný typ.<br><br>K tomuto problému dochází, když aktualizujete typ cílového pravidla sítě nebo aplikace z IP adresy na typ skupiny IP adres nebo naopak.|Oprava na portálu je zaměřená na březen 2021.<br><br>Mezitím pomocí Azure PowerShell, Azure CLI nebo rozhraní API můžete změnit pravidlo z IP adresy na skupinu IP adres nebo naopak.|
+|Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla filtrování sítě pro protokoly jiné než TCP/UDP nefungují s SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](../load-balancer/load-balancer-overview.md). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
 |Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a CLI v síťových pravidlech nepodporují protokol ICMP jako platný protokol.|Protokol ICMP je stále možné používat prostřednictvím portálu a REST API. Pracujeme na přidání protokolu ICMP v PowerShellu a rozhraní příkazového řádku brzy.|
 |Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikací s značkami plně kvalifikovaného názvu domény vyžadují port: definice protokolu.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo volitelné při použití značek FQDN.|
 |Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného se nepodporuje.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného se nepodporuje.|Podpora této funkce je naše mapa cest. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|

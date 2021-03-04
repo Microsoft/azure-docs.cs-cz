@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b042049c803ad04b54bb6c2a242ca1008bc17dd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734515"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
 
 > [!NOTE]
-> V tomto článku se předpokládá, že jste obeznámeni se základními funkcemi funkce Průzkumník metrik Azure v Azure Monitor. Pokud jste nový uživatel a chcete zjistit, jak vytvořit první graf metriky, přečtěte si téma [Začínáme s Průzkumníkem metrik](../platform/metrics-getting-started.md).
+> V tomto článku se předpokládá, že jste obeznámeni se základními funkcemi funkce Průzkumník metrik Azure v Azure Monitor. Pokud jste nový uživatel a chcete zjistit, jak vytvořit první graf metriky, přečtěte si téma [Začínáme s Průzkumníkem metrik](./metrics-getting-started.md).
 
 V Azure Monitor [metriky](data-platform-metrics.md) představují řadu měřených hodnot a počty, které se shromažďují a ukládají v průběhu času. Metriky můžou být standardní (označované taky jako platforma) nebo vlastní. 
 
@@ -49,11 +49,11 @@ Až budete s výběrem spokojeni, vyberte **použít**.
 ### <a name="view-metrics-across-multiple-resources"></a>Zobrazení metrik v různých prostředcích
 Některé typy prostředků se mohou dotazovat na metriky v několika prostředcích. Prostředky musí být v rámci stejného předplatného a umístění. Tyto typy prostředků najdete v horní části nabídky **typy prostředků** . 
 
-Další informace najdete v tématu [Výběr více prostředků](../platform/metrics-dynamic-scope.md#select-multiple-resources).
+Další informace najdete v tématu [Výběr více prostředků](./metrics-dynamic-scope.md#select-multiple-resources).
 
 ![Snímek obrazovky znázorňující typy různých prostředků](./media/metrics-charts/multi-resource-scope.png)
 
-Pro typy, které jsou kompatibilní s více prostředky, můžete zadávat dotazy na metriky v rámci předplatného nebo několika skupin prostředků. Další informace najdete v tématu [Výběr skupiny prostředků nebo předplatného](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
+Pro typy, které jsou kompatibilní s více prostředky, můžete zadávat dotazy na metriky v rámci předplatného nebo několika skupin prostředků. Další informace najdete v tématu [Výběr skupiny prostředků nebo předplatného](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
 ## <a name="multiple-metric-lines-and-charts"></a>Více čar a grafů metriky
 
@@ -67,7 +67,7 @@ Představte si například, že máte pět účtů úložiště a chcete zjistit
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Víc metrik na stejném grafu
 
-Chcete-li zobrazit více metrik ve stejném grafu, [vytvořte nejprve nový graf](../platform/metrics-getting-started.md#create-your-first-metric-chart). Pak vyberte **Přidat metriku**. Opakováním tohoto kroku přidejte další metriky do stejného grafu.
+Chcete-li zobrazit více metrik ve stejném grafu, [vytvořte nejprve nový graf](./metrics-getting-started.md#create-your-first-metric-chart). Pak vyberte **Přidat metriku**. Opakováním tohoto kroku přidejte další metriky do stejného grafu.
 
 > [!NOTE]
 > Grafy by obvykle neměly kombinovat metriky, které používají různé měrné jednotky. Nepoužívejte třeba kombinování jedné metriky, která používá milisekundy s jinou, která používá kilobajty. Také se vyhněte smíchání metrik, jejichž měřítko se výrazně liší. 
@@ -86,7 +86,7 @@ Když přidáte metriku do grafu, Průzkumník metrik automaticky použije vých
 
 Před použitím různých agregací v grafu byste měli pochopit, jak je Průzkumník metrik zpracovává. Metriky představují řadu měření (neboli hodnoty metrik), které jsou zachyceny v časovém období. Při vykreslení grafu se hodnoty vybrané metriky samostatně agreguje v *časovém intervalu*. 
 
-Velikost časového intervalu můžete vybrat pomocí [panelu pro výběr času](../platform/metrics-getting-started.md#select-a-time-range)v Průzkumníkovi metrik. Pokud jste nevybrali časový interval explicitně, použije se ve výchozím nastavení aktuálně vybraný časový rozsah. Po určení časového intervalu se hodnoty metrik, které byly zachyceny během každé časové intervaly, sčítají v grafu, jeden datový bod za časový interval.
+Velikost časového intervalu můžete vybrat pomocí [panelu pro výběr času](./metrics-getting-started.md#select-a-time-range)v Průzkumníkovi metrik. Pokud jste nevybrali časový interval explicitně, použije se ve výchozím nastavení aktuálně vybraný časový rozsah. Po určení časového intervalu se hodnoty metrik, které byly zachyceny během každé časové intervaly, sčítají v grafu, jeden datový bod za časový interval.
 
 Předpokládejme například, že se v grafu zobrazuje metrika *doby odezvy serveru* . Používá *průměrnou* agregaci v časovém intervalu za *posledních 24 hodin*. V tomto příkladu:
 
@@ -230,6 +230,42 @@ Otevře se podokno vytvoření pravidla výstrahy. V podokně vidíte rozměry m
 
 Další informace najdete v tématu [Vytvoření, zobrazení a Správa upozornění na metriky](../alerts/alerts-metric.md).
 
+## <a name="correlate-metrics-to-logs"></a>Korelace metrik s protokoly
+Abychom zákazníkům pomohla diagnostikovat hlavní příčinu anomálií v grafu metriky, vytvořili jsme podrobné informace o protokolech. V protokolech umožňujících zákazníkům korelovat špičky v grafu metriky k protokolům a dotazům. 
+
+Předtím, než jsme se podrobněi do prostředí, chceme nejprve zavést různé typy protokolů a dotazů. 
+
+| Označení             | Definice  | 
+|------------------|-------------|
+| Protokoly aktivit    | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (rovinu správy) Kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy se u prostředků ve vašem předplatném mají dělat operace zápisu (PUT, POST, DELETE). Pro každé předplatné Azure existuje jeden protokol aktivit.  |   
+| Diagnostický protokol   | Poskytněte přehled o operacích, které byly provedeny v rámci prostředku Azure (rovina dat), například získání tajného kódu z Key Vault nebo vytvoření žádosti do databáze. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. **Poznámka:** Musí být poskytované službou a povolené zákazníkem.  | 
+| Doporučený protokol | Dotazy založené na scénářích, které zákazník může využít k prozkoumání anomálií v Průzkumníku metrik.  |
+
+V současné době jsou k dispozici podrobné protokoly pro výběr poskytovatelů prostředků. Poskytovatelé prostředků, kteří mají kompletní přehled o protokolování, jsou: 
+
+* Application Insights 
+* Automatické škálování 
+* App Services  
+* Storage  
+
+Níže najdete ukázková prostředí pro Application Insights poskytovatele prostředků.
+
+![Špička selhání v okně metriky App Insights](./media/metrics-charts/drill-into-log-ai.png)
+
+Pokud chcete zjistit, špička v neúspěšných žádostech, klikněte na přejít k podrobnostem o protokolech.
+
+![Snímek obrazovky s rozevíracím seznamem pro přechod k protokolům](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+Kliknutím na možnost selhání přejdete k vlastnímu oknu selhání, které vám poskytne operace nezdařené operace, hlavní typy výjimek a závislosti. 
+
+![Snímek obrazovky s oknem selhání App Insights](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>Běžné problémy s podrobnostmi v protokolech
+
+* Protokolování a dotazy jsou zakázané – Chcete-li zobrazit doporučené protokoly a dotazy, je nutné směrovat diagnostické protokoly na Log Analytics. Přečtěte si [Tento dokument](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) , kde se dozvíte, jak to udělat. 
+* Jsou k dispozici pouze protokoly aktivit – funkce přejít k protokolům je k dispozici pouze pro vybrané poskytovatele prostředků. Ve výchozím nastavení jsou k dispozici protokoly aktivit. 
+
+ 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud v grafu nevidíte žádná data, přečtěte si následující informace pro řešení potíží:
@@ -242,6 +278,5 @@ Pokud v grafu nevidíte žádná data, přečtěte si následující informace p
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vytváření řídicích panelů s akcemi pomocí metrik najdete v tématu [vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../learn/tutorial-app-dashboards.md).
+Další informace o vytváření řídicích panelů s akcemi pomocí metrik najdete v tématu [vytváření vlastních řídicích panelů klíčových ukazatelů výkonu](../app/tutorial-app-dashboards.md).
 
- 

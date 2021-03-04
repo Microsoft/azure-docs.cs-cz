@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703503"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Povolení Azure Diagnostics v Azure Cloud Services (Classic)
 
 > [!IMPORTANT]
 > [Azure Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md) je nový model nasazení založený na Azure Resource Manager pro produkt Azure Cloud Services.V důsledku této změny se Azure Cloud Services běžící na modelu nasazení založeném na Azure Service Manager přejmenovala jako Cloud Services (Classic) a všechna nová nasazení by měla používat [Cloud Services (Rozšířená podpora)](../cloud-services-extended-support/overview.md).
 
-Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagnostics.md) pro pozadí Azure Diagnostics.
+Další informace najdete v tématu [přehled Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-overview.md) pro pozadí Azure Diagnostics.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Postup povolení diagnostiky v roli pracovního procesu
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.

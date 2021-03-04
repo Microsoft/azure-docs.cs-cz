@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 331d4a36e2e466ea4103bda4a7f8c9f443751beb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65f61324c496d4b76e6f599966a780c735114870
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686661"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>Přehled spravované instance SQL s podporou ARC Azure
 
@@ -26,11 +26,11 @@ Spravovaná instance SQL ARC s podporou Azure je datová služba Azure SQL, kter
 
 Služba Azure ARC s povoleným systémem SQL Managed instance má téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server a umožňuje stávajícím SQL Server zákazníkům překládat své aplikace do služby Azure ARC Data Services s minimálními změnami aplikací a databází při zachování suverenity dat. Ve stejnou chvíli zahrnuje spravovaná instance SQL integrované možnosti správy, které výrazně snižují režijní náklady na správu. 
 
-Spravovaná instance SQL s podporou ARC Azure je aktuálně ve verzi Preview.
-
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o [funkcích a možnostech spravované instance SQL ARC s podporou Azure](managed-instance-features.md)
+
+[Vysoká dostupnost spravované instance s podporou ARC Azure](managed-instance-high-availability.md)
 
 [Začněte vytvořením kontroleru dat](create-data-controller.md)
 

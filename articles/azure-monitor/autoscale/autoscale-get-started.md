@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6ac3ebb4cf007141967786f51243c741a6045c83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726049"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým škálováním v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -128,7 +128,7 @@ Tato část popisuje, jak přesunout automatické škálování Azure do jiné o
 ### <a name="move"></a>Přesunout
 Pomocí [REST API](/rest/api/monitor/autoscalesettings/createorupdate) můžete v novém prostředí vytvořit nastavení automatického škálování. Nastavení automatického škálování vytvořené v cílové oblasti bude kopií nastavení automatického škálování ve zdrojové oblasti.
 
-[Nastavení diagnostiky](../platform/diagnostic-settings.md) , která byla vytvořena v přidružení s nastavením automatického škálování ve zdrojové oblasti, nelze přesunout. Až se dokončí vytváření nastavení pro účely autovýprodej, budete muset v cílové oblasti znovu vytvořit nastavení diagnostiky. 
+[Nastavení diagnostiky](../essentials/diagnostic-settings.md) , která byla vytvořena v přidružení s nastavením automatického škálování ve zdrojové oblasti, nelze přesunout. Až se dokončí vytváření nastavení pro účely autovýprodej, budete muset v cílové oblasti znovu vytvořit nastavení diagnostiky. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Další informace o přesouvání prostředků napříč oblastmi Azure
 Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../azure-resource-manager/management/move-resource-group-and-subscription.md) .

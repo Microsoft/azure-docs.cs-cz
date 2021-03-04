@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení zálohování disku 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707213"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Matice podpory Azure disk Backup (ve verzi Preview)
 
@@ -58,7 +58,7 @@ Další oblasti budou oznámeny, jakmile budou k dispozici.
 
 - V současné době (ve verzi Preview) není podporováno použití PowerShellu a Azure CLI ke konfiguraci zálohování a obnovení disků.
 
-- Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
+- Při konfiguraci zálohování musí být vybraný disk, který se má zálohovat, a skupinu prostředků snímku, kde mají být snímky uložené, a to v rámci stejného předplatného. Pro určitý disk nemůžete vytvořit přírůstkový snímek mimo předplatné tohoto disku. Přečtěte si další informace o [přírůstkových snímcích](../virtual-machines/disks-incremental-snapshots.md#restrictions) pro spravovaný disk. Další informace o tom, jak zvolit skupinu prostředků snímku, najdete v tématu  [Konfigurace zálohování](backup-managed-disks.md#configure-backup).
 
 - Pro úspěšné operace zálohování a obnovení vyžadují přiřazení role spravovanou identitu trezoru záloh. Používejte jenom definice rolí, které jsou uvedené v dokumentaci. Použití jiných rolí, jako je vlastník, přispěvatel atd., se nepodporuje. Pokud po přiřazení rolí začnete konfigurovat operace zálohování nebo obnovení, můžete se setkat s problémy s oprávněními. Důvodem je to, že platnost přiřazení rolí trvá několik minut.
 

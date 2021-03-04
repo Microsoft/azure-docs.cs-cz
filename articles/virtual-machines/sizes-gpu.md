@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 58987523d86b0e3acb63d3dc220f68753501830e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b88cc2d70d38d84436beaff41b5b40b9c06debca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695545"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro grafické procesory
 
@@ -43,7 +43,7 @@ Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azur
 
 - Virtuální počítače řady N-Series jde nasadit jenom v modelu nasazení Správce prostředků.
 
-- Virtuální počítače řady N-Series se liší v typu Azure Storage podporují jejich disky. Virtuální počítače síťového adaptéru a NV podporují jenom disky virtuálních počítačů, které jsou založené na standardu Disk Storage (HDD). Virtuální počítače NCv2, NCv3, ND, NDv2 a NVv2 podporují pouze disky virtuálních počítačů, které jsou zajištěny pomocí Premium Disk Storage (SSD).
+- Virtuální počítače řady N-Series se liší v typu Azure Storage podporují jejich disky. Virtuální počítače síťového adaptéru a NV podporují jenom disky virtuálních počítačů, které jsou založené na standardu Disk Storage (HDD). Všechny ostatní virtuální počítače GPU podporují disky virtuálních počítačů, které jsou řízené standardními Disk Storage a službou Premium Disk Storage (SSD).
 
 - Pokud chcete nasadit více než několik virtuálních počítačů řady N-Series, vezměte v úvahu předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 

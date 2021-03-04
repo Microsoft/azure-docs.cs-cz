@@ -7,18 +7,39 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51e8f01726c732604199ff08323f073d508da66e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602312"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720150"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Příklady zásad ověřování identity
 
-Zásady ověření identity se používají ke zpracování legitimace ověřování a určení, jestli ověření identity Azure vydá token ověření identity. Generování tokenu ověření identity se dá řídit pomocí vlastních zásad. Níže jsou uvedeny některé příklady zásad ověřování identity.
+Zásady ověření identity se používají ke zpracování legitimace ověřování a určení, jestli ověření identity Azure vydá token ověření identity. Generování tokenu ověření identity se dá řídit pomocí vlastních zásad. Níže jsou uvedeny některé příklady zásad ověřování identity. 
 
-## <a name="default-policy-for-an-sgx-enclave"></a>Výchozí zásady pro SGX enklávy 
+## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Ukázková vlastní zásada pro SGX enklávy 
+
+```
+version= 1.0;
+authorizationrules
+{
+       [ type=="x-ms-sgx-is-debuggable", value==false ]
+        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
+        && [ type=="x-ms-sgx-svn", value>= 0 ]
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
+    => permit();
+};
+issuancerules {
+c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
+};
+
+```
+Další informace o příchozích deklaracích generovaných ověřením Azure najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets). Pomocí příchozích deklarací můžou tvůrci zásad definovat autorizační pravidla ve vlastních zásadách. 
+
+Oddíl pravidel vystavování není povinný. Tuto část můžou použít uživatelé, aby mohli mít další odchozí deklarace identity vygenerované v tokenu ověření identity s vlastními názvy. Další informace o odchozích deklaracích generovaných službou v tokenu ověření identity najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets).
+
+## <a name="default-policy-for-an-sgx-enclave"></a>Výchozí zásady pro SGX enklávy
 
 ```
 version= 1.0;
@@ -38,17 +59,18 @@ issuancerules
 };
 ```
 
-## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Ukázková vlastní zásada pro SGX enklávy 
+Deklarace identity použité ve výchozích zásadách se považují za zastaralé, ale jsou plně podporované a v budoucnu budou i nadále zahrnuty. Doporučuje se používat nepoužívané názvy deklarací identity. Další informace o doporučených názvech deklarací identity najdete v tématu [sady deklarací identity](/azure/attestation/claim-sets). 
+
+## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Ukázková vlastní zásada pro podporu více SGX enclaves
 
 ```
 version= 1.0;
-authorizationrules
+authorizationrules 
 {
-       [ type=="x-ms-sgx-is-debuggable", value==false ]
-        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
-        && [ type=="x-ms-sgx-svn", value>= 0 ]
-        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
-    => permit();
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&& 
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
 };
 ```
 

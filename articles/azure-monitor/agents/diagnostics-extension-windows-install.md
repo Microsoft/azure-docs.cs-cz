@@ -3,17 +3,16 @@ title: Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 description: Přečtěte si o instalaci a konfiguraci rozšíření Windows Diagnostics. Seznamte se také s popisem způsobu, jakým jsou data uložená v a Azure Storage účtu.
 services: azure-monitor
 author: bwren
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 865590ce67acee128863a7913aa844b951d07d56
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612940"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708556"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
@@ -192,7 +191,7 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Description |
+| Data | Typ úložiště | Popis |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |
@@ -204,7 +203,7 @@ V následující tabulce jsou uvedeny různé typy dat shromážděných z rozš
 | Uživatelská | Objekt blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
-K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Příklad:
+K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Například:
 
 * Průzkumník serveru v aplikaci Visual Studio – Pokud jste nainstalovali nástroje Azure pro Microsoft Visual Studio, můžete použít uzel Azure Storage v Průzkumník serveru k zobrazení dat objektů BLOB jen pro čtení a tabulek z vašich účtů úložiště Azure. Můžete zobrazit data z místního účtu emulátoru úložiště a taky z účtů úložiště, které jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadnou práci s Azure Storagemi daty v systémech Windows, OSX a Linux.

@@ -1,20 +1,20 @@
 ---
-title: Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta (Preview)
-description: Popisuje, jak upravit výchozí monitorování pro Azure Monitor pro virtuální počítače stav hosta (Preview) pomocí Azure Portal.
+title: Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights (Preview)
+description: Popisuje, jak změnit výchozí monitorování pro stav hosta služby VM Insights (Preview) pomocí Azure Portal.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719589"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Konfigurace monitorování v Azure Monitor pro virtuální počítače stav hosta (Preview)
-Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou odebírány v pravidelných intervalech. Tento článek popisuje, jak můžete upravit výchozí monitorování pomocí Azure Portal. Popisuje také základní koncepty monitorování požadovaných ke [konfiguraci monitorování pomocí pravidla shromažďování dat](vminsights-health-configure-dcr.md).
+# <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights (Preview)
+Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak můžete upravit výchozí monitorování pomocí Azure Portal. Popisuje také základní koncepty monitorování požadovaných ke [konfiguraci monitorování pomocí pravidla shromažďování dat](vminsights-health-configure-dcr.md).
 
 ## <a name="open-monitor-configuration"></a>Otevřít konfiguraci monitorování
 Otevřete okno Konfigurace monitorování Azure Portal tím, že vyberete monitor a pak kartu **Konfigurace** .

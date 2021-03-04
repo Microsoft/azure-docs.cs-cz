@@ -3,12 +3,12 @@ title: Co je nového ve službě Azure Backup
 description: Seznamte se s novými funkcemi v Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762366"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728174"
 ---
 # <a name="whats-new-in-azure-backup"></a>Co je nového ve službě Azure Backup
 
@@ -18,6 +18,8 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
 
 ## <a name="updates-summary"></a>Souhrn aktualizací
 
+- Únor 2021
+  - [Zálohování objektů blob Azure (ve verzi Preview)](#backup-for-azure-blobs-in-preview)
 - Leden 2021
   - [Zálohování disku Azure (ve verzi Preview)](#azure-disk-backup-in-preview)
   - [Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem (všeobecně dostupné)](#encryption-at-rest-using-customer-managed-keys)
@@ -34,6 +36,14 @@ Další informace o nových vydaných verzích najdete v tématu popisujícím t
   - [Zálohování SAP HANA v RHEL Azure Virtual Machines (ve verzi Preview)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Redundantní úložiště zóny (ZRS) pro zálohovaná data (ve verzi Preview)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Obnovitelné odstranění pro úlohy SQL Server a SAP HANA na virtuálních počítačích Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Zálohování objektů blob Azure (ve verzi Preview)
+
+Provozní záloha pro objekty BLOB je spravované místní řešení pro ochranu dat, které umožňuje chránit objekty blob bloku z různých scénářů ztráty dat, jako jsou poškození, odstranění objektů BLOB a náhodné odstranění účtu úložiště. Data jsou uložená místně v rámci samotného zdrojového účtu úložiště a v každém případě je můžete kdykoli obnovit do vybraného bodu v čase. Poskytuje tak jednoduché, bezpečné a nákladově efektivní prostředky pro ochranu objektů BLOB.
+
+Provozní záloha pro objekty BLOB se integruje do centra zálohování, a to mimo jiné možnosti správy zálohování, aby poskytovala samostatné podokno se skleněným řízením, které vám umožní řídit, monitorovat, provozovat a analyzovat zálohy ve velkém měřítku.
+
+Další informace najdete v tématu [Přehled provozní zálohy pro objekty blob Azure (ve verzi Preview)](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-in-preview"></a>Zálohování disku Azure (ve verzi Preview)
 

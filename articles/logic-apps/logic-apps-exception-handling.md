@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702500"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -27,7 +27,7 @@ U většiny základních výjimek a zpracování chyb můžete použít *zásady
 
 Tady jsou typy zásad opakování:
 
-| Typ | Description |
+| Typ | Popis |
 |------|-------------|
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
@@ -69,7 +69,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Povinné*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo `exponential` |
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
@@ -78,7 +78,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Volitelné*
 
-| Hodnota | Typ | Description |
+| Hodnota | Typ | Popis |
 |-------|------|-------------|
 | <*minimální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*maximální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -263,13 +263,14 @@ Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/lo
 
 ### <a name="get-context-and-results-for-failures"></a>Získání kontextu a výsledků pro selhání
 
-I když je užitečné zachycení selhání z oboru, můžete také chtít, aby byl kontext, který vám pomůže pochopit přesně to, které akce se nezdařily, a všechny chyby nebo stavové kódy, které byly vráceny.
+I když je užitečné zachycení selhání z oboru, můžete také chtít, aby byl kontext, který vám pomůže pochopit přesně to, které akce se nezdařily, a všechny chyby nebo stavové kódy, které byly vráceny. [ `result()` Funkce](../logic-apps/workflow-definition-language-functions-reference.md#result) vrátí výsledky z akcí nejvyšší úrovně v rámci akce s vymezeným oborem tak, že přijme jeden parametr, což je název oboru, a vrátí pole obsahující výsledky z těchto akcí první úrovně. Tyto objekty akcí obsahují stejné atributy jako `actions()` funkce vrácené funkcí, jako je čas zahájení akce, čas ukončení, stav, vstupy, ID korelace a výstupy. 
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)Funkce poskytuje kontext o výsledcích ze všech akcí v oboru. `result()`Funkce přijímá jeden parametr, což je název oboru, a vrátí pole, které obsahuje všechny výsledky akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako `actions()` objekt, jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které selhaly v rámci oboru, můžete snadno spárovat `@result()` výraz s `runAfter` vlastností.
+> [!NOTE]
+> `result()`Funkce vrátí výsledky *pouze* z akcí první úrovně a nikoli z hlubších vnořených akcí, jako jsou akce přepnutí nebo podmínky.
 
-Chcete-li spustit akci pro každou akci v oboru, který má `Failed` výsledek, a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat `@result()` výraz s akcí [**pole filtru**](logic-apps-perform-data-operations.md#filter-array-action) a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Můžete převzít filtrované pole výsledků a provést akci pro každou chybu pomocí `For_each` smyčky.
+Chcete-li získat kontext o akcích, které se v oboru nezdařily, můžete použít `@result()` výraz s názvem oboru a `runAfter` vlastností. Chcete-li filtrovat vrácené pole dolů na akce, které mají `Failed` stav, můžete přidat [akci **pole filtru**](logic-apps-perform-data-operations.md#filter-array-action). Chcete-li spustit akci pro vrácenou akci, která selhala, převezměte vrácené filtrované pole a použijte [ **pro každou** smyčku](../logic-apps/logic-apps-control-flow-loops.md).
 
-Tady je příklad následovaný detailním vysvětlením, který pošle požadavek HTTP POST s textem odpovědi pro všechny akce, které selhaly v rámci oboru "My_Scope":
+Tady je příklad následovaný detailním vysvětlením, který pošle požadavek HTTP POST s textem odpovědi pro všechny akce, které selhaly v rámci akce oboru s názvem "My_Scope":
 
 ```json
 "Filter_array": {

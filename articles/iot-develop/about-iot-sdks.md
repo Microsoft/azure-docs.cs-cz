@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4935037ec0152b089c7c685b6bdd0e605d89f3f2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654888"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702670"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 
@@ -70,7 +70,7 @@ Tyto sady SDK jsou specializované na spouštění na zařízeních s omezenými
 
 * [Úložiště GitHub](https://github.com/azure-rtos/threadx)
 * [Začínáme příručky](https://github.com/azure-rtos/getting-started) a [Další ukázky](https://github.com/azure-rtos/samples)
-* [Referenční dokumentace](https://docs.microsoft.com/azure/rtos/threadx/)
+* [Referenční dokumentace](/azure/rtos/threadx/)
 
 ### <a name="unconstrained-device-sdks"></a>Neomezená sady SDK pro zařízení
 Tyto sady SDK můžete spustit na jakémkoli zařízení, které může podporovat modul runtime s vyšším pořadím. To zahrnuje zařízení, jako jsou počítače, maliny Pis a smartphony. Jsou odlišeny primárně podle jazyka, takže můžete zvolit libovolnou knihovnu, která nejlépe vyhovuje vašemu týmu a scénáři.
@@ -125,7 +125,7 @@ Azure IoT taky nabízí sady SDK pro služby, které vám umožňují vytvářet
 
 Sady SDK služby IoT Hub vám umožňují vytvářet aplikace, které se svým IoT Hub můžou snadno komunikovat a spravovat zařízení a zabezpečení. Tyto sady SDK můžete použít k posílání zpráv z cloudu na zařízení, vyvolání přímých metod v zařízeních, aktualizaci vlastností zařízení a k dalším prostředkům.
 
-[**Další informace o IoT Hub**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Zkuste ovládat zařízení** .](/azure/iot-hub/quickstart-control-device-python)
+[**Další informace o IoT Hub**](https://azure.microsoft.com/services/iot-hub/)  |  [ **Zkuste ovládat zařízení** .](../iot-hub/quickstart-control-device-python.md)
 
 **Sada SDK pro IoT Hub služby C#**: [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)  |  [](https://www.nuget.org/packages/Microsoft.Azure.Devices/)  |  [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples)  |  [Referenční dokumentace](/dotnet/api/microsoft.azure.devices) ukázek balíčku úložiště GitHubu
 
@@ -139,7 +139,7 @@ Sady SDK služby IoT Hub vám umožňují vytvářet aplikace, které se svým I
 
 Digitální vlákna Azure je nabídka typu platforma jako služba (PaaS), která umožňuje vytváření diagramů znalostí na základě digitálních modelů celého prostředí. Tato prostředí můžou být budovy, továrny, farmy, energetické sítě, železnice, Stadium a další – dokonce i celá města. Tyto digitální modely se dají využít k získání přehledů, které poskytují lepší produkty, optimalizované operace, snížené náklady a převratná prostředí pro zákazníky. Azure IoT nabízí sady SDK pro služby, které usnadňují sestavování aplikací, které využívají sílu digitálních vláken Azure.
 
-[**Další informace o digitálních zdvojeních Azure**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Kódování aplikace ADT**](/azure/digital-twins/tutorial-code)
+[**Další informace o digitálních zdvojeních Azure**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Kódování aplikace ADT**](../digital-twins/tutorial-code.md)
 
 **Sada SDK služby C# ADT**: [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [Referenční dokumentace](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) ukázek balíčku úložiště GitHubu
 
@@ -153,7 +153,7 @@ Digitální vlákna Azure je nabídka typu platforma jako služba (PaaS), která
 
 IoT Hub Device Provisioning Service (DPS) je pomocná služba pro IoT Hub, která umožňuje nulovému zřizování za běhu do správného služby IoT Hub bez nutnosti zásahu člověka. DPS umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení. Sady SDK služby DPS umožňují vytvářet aplikace, které můžou bezpečně spravovat vaše zařízení, a to vytvořením skupin registrací a prováděním hromadných operací.
 
-[**Další informace o službě Device Provisioning Service**](/azure/iot-dps/)  |  [ **Zkuste vytvořit registraci skupiny pro zařízení X. 509** .](/azure/iot-dps/quick-enroll-device-x509-csharp)
+[**Další informace o službě Device Provisioning Service**](../iot-dps/index.yml)  |  [ **Zkuste vytvořit registraci skupiny pro zařízení X. 509** .](../iot-dps/quick-enroll-device-x509-csharp.md)
 
 **Sada SDK služby Device Provisioning v C#**: [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [Referenční dokumentace](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true) ukázek balíčku úložiště GitHubu
 

@@ -1,17 +1,16 @@
 ---
 title: Řešení pro přenos dat v Azure Monitor | Microsoft Docs
 description: Data o kabelech jsou konsolidovaná síťová a výkonná data z počítačů s agenty Log Analytics. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713622"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
 
@@ -26,7 +25,7 @@ Kromě agenta Log Analytics používá řešení pro přenos dat také agenty z�
 > 
 >Stávající zákazníci, kteří používají řešení pro přenos dat, ho můžou dál používat. Pokyny pro časovou osu migrace pro přesun na Service Map budeme publikovat.
 >
->Noví zákazníci by měli nainstalovat [Service map řešení](../vm/service-map.md) nebo [Azure monitor pro virtuální počítače](../vm/vminsights-overview.md).  Sada dat Service Map je srovnatelná s daty o kabelech.  Azure Monitor pro virtuální počítače zahrnuje Service Map datovou sadu s dalšími údaji o výkonu a funkcemi pro analýzu. 
+>Noví zákazníci by měli nainstalovat [Service map řešení](../vm/service-map.md) nebo [přehledy virtuálních počítačů](../vm/vminsights-overview.md).  Sada dat Service Map je srovnatelná s daty o kabelech.  Funkce VM Insights zahrnuje sadu dat Service Map s dalšími údaji o výkonu a funkcemi pro analýzu. 
 
 
 Ve výchozím nastavení Azure Monitor protokoluje data o výkonu procesoru, paměti, disku a sítě z čítačů integrovaných do systémů Windows a Linux a také dalších čítačů výkonu, které lze zadat. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile se připojení ukončí, bude označeno jako odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
@@ -56,10 +55,10 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 | **Připojený zdroj** | **Podporováno** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../agents/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../vm/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Yes | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../agents/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
-| Účet služby Azure Storage | No | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
+| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../agents/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../vm/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../agents/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
+| Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
 V systému Windows se Microsoft Monitoring Agent (MMA) používá v System Center Operations Manager a Azure Monitor ke shromažďování a posílání dat. V závislosti na kontextu se agent nazývá Agent System Center Operations Manager, Log Analytics agent, MMA nebo Direct agent. System Center Operations Manager a Azure Monitor poskytují mírně odlišnou verzi MMA. Tyto verze mohou jednotlivé sestavy System Center Operations Manager, Azure Monitor nebo obojí.
 

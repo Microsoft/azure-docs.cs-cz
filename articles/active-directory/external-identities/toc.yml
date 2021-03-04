@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: Přizpůsobení pozvánek pomocí rozhraní API
               href: customize-invitation-api.md
-        - name: Federovat s externími zprostředkovateli identity
+        - name: Zprostředkovatelé identit
           items:
+            - name: Účet Microsoft (Preview)
+              href: microsoft-account.md
             - name: Federace Googlu
               href: google-federation.md
             - name: Federace Facebooku

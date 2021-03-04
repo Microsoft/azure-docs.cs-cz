@@ -77,6 +77,8 @@ items:
                 href: manage-data-sources.md
               - name: Přehled konektorů Purview
                 href: purview-connector-overview.md
+              - name: Azure Multiple source
+                href: register-scan-azure-multiple-sources.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -102,8 +104,16 @@ items:
                 href: register-scan-azure-synapse-analytics.md
               - name: Místní server SQL
                 href: register-scan-on-premises-sql-server.md
+              - name: Oracle
+                href: register-scan-oracle-source.md
               - name: Tenant Power BI – portál
                 href: register-scan-power-bi-tenant.md
+              - name: SAP ECC
+                href: register-scan-sapecc-source.md
+              - name: SAP S/4HANA
+                href: register-scan-saps4hana-source.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
               - name: Amazon S3
                 href: register-scan-amazon-s3.md
       - name: Obchodní glosář
@@ -113,6 +123,10 @@ items:
           - name: Správa šablon termínů
             href: how-to-manage-term-templates.md
           - name: Prostředky hromadné úpravy pro přiřazení termínů glosáře
+            href: how-to-bulk-edit-assets.md
+      - name: Hromadné úpravy
+        items:
+          - name: Hromadné úpravy prostředků k označení poznámek a kontaktů
             href: how-to-bulk-edit-assets.md
       - name: Klasifikace
         items:
@@ -158,3 +172,5 @@ items:
     items:
       - name: Podporované klasifikace
         href: supported-classifications.md
+      - name: Průvodce nasazením funkce ABAP
+        href: abap-functions-deployment-guide.md

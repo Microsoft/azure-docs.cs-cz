@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/04/2020
-ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699755"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -39,9 +39,9 @@ Ve většině případů je vhodné sestavovat toky dat v režimu ladění, abys
 
 ## <a name="cluster-status"></a>Stav clusteru
 
-Indikátor stavu clusteru v horní části návrhové plochy se po přípravě clusteru na ladění změní na zelený. Pokud je váš cluster již zateplný, bude zelený indikátor zobrazen téměř okamžitě. Pokud váš cluster ještě nebyl spuštěný, když jste zadali režim ladění, budete muset počkat 5-7 minut, než se cluster vytočí. Indikátor bude dokončen až do jeho připravenosti.
+Indikátor stavu clusteru v horní části návrhové plochy se po přípravě clusteru na ladění změní na zelený. Pokud je váš cluster již zateplný, bude zelený indikátor zobrazen téměř okamžitě. Pokud váš cluster ještě nebyl spuštěný, když jste zadali režim ladění, pak cluster Spark provede studenou spouštěcí službu. Indikátor se dokončí, dokud prostředí není připravené na interaktivní ladění.
 
-Až skončíte s laděním, vypněte přepínač ladění, aby se cluster Azure Databricks mohl ukončit a že se už nebudete účtovat za aktivitu ladění.
+Až budete s laděním hotovi, vypněte přepínač ladění, aby cluster Spark mohl skončit a nadále se vám nebude účtovat aktivita ladění.
 
 ## <a name="debug-settings"></a>Nastavení ladění
 
@@ -50,6 +50,8 @@ Jakmile zapnete režim ladění, můžete upravit způsob, jakým datový tok da
 ![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
 
 Pokud máte v toku dat nebo kterékoli z jeho odkazovaných datových sad parametry, můžete určit, které hodnoty se mají použít během ladění, a to tak, že vyberete kartu **parametry** .
+
+Tady použijte nastavení vzorkování, abyste nastavili ukázkové soubory nebo ukázkové tabulky dat, takže nemusíte měnit zdrojové datové sady. Pomocí ukázkového souboru nebo tabulky můžete zachovat stejné nastavení logiky a vlastností v toku dat při testování s podmnožinou dat.
 
 ![Parametry nastavení ladění](media/data-flow/debug-settings2.png "Parametry nastavení ladění")
 

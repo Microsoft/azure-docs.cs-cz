@@ -1,20 +1,20 @@
 ---
-title: Zprovoznění a správa senzorů v programu Defender pro IoT Portal
+title: Zprovoznění a správa senzorů a předplatných v programu Defender pro IoT Portal
 description: Naučte se, jak pořídit, zobrazovat a spravovat senzory v programu Defender pro IoT Portal.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733257"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Zprovoznění a správa senzorů v programu Defender pro IoT Portal
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Zprovoznění a správa senzorů a předplatných v programu Defender pro IoT Portal
 
 Tento článek popisuje, jak připojit, zobrazit a spravovat senzory v programu [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -64,7 +64,7 @@ Na [portálu Defender pro IoT](https://portal.azure.com/#blade/Microsoft_Azure_I
 
 ## <a name="manage-onboarded-sensors"></a>Správa integrovaných senzorů
 
-Pro úlohy správy související se senzory se používá [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) .
+Použijte [Defender pro IoT Portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) pro úlohy správy související se senzory.
 
 Integrované senzory je možné zobrazit na stránce **weby a senzory** . Z této stránky můžete také upravovat informace o senzoru.
 
@@ -78,8 +78,8 @@ Pomocí možností úprav **webů a senzorů** upravte název a zónu senzorů.
 
 Postup úpravy:
 
-1. Klikněte pravým tlačítkem myši na tři tečky (**...**) pro senzor, který chcete upravit.
-1. Vyberte Upravit.
+1. Vyberte **tři tečky** (**...**) pro senzor, který chcete upravit.
+1. Vyberte **Upravit**.
 1. Aktualizujte zónu senzorů nebo vytvořte novou zónu.
 
 ### <a name="delete-a-sensor"></a>Odstranění snímače
@@ -122,6 +122,24 @@ Postup opětovné aktivace snímače:
 8. Vyberte **nahrát** a vyberte soubor, který jste uložili na stránce snímače desky.
 
 9. Vyberte **aktivovat**.
+
+## <a name="offboard-a-subscription"></a>Odpojení předplatného
+
+Předplatná se spravují měsíčně. Když odpojení předplatné, bude se vám účtovat toto předplatné až do konce měsíce. 
+
+Před zrušením předplatného odinstalujte všechny senzory, které jsou přidružené k předplatnému. Další informace o tom, jak odstranit senzor, najdete v tématu [odstranění snímače](#delete-a-sensor). 
+
+Odpojení předplatného:
+
+1. Přejděte na stránku s **cenami** .
+1. Vyberte předplatné a pak vyberte ikonu **Odstranit** :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
+1. V místní nabídce potvrzení zaškrtněte políčko a potvrďte tak, že jste odstranili všechny senzory přidružené k předplatnému.
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Zaškrtněte políčko a vyberte odpojení, aby se odpojení senzor.":::
+
+1. Vyberte tlačítko **odpojení** . 
+
+Místní prostředí to neovlivní, ale měli byste senzor odinstalovat z místního prostředí nebo ho znovu přiřadit k jinému předplatnému, aby se zabránilo jakémukoli souvisejícím datům v toku do místní konzoly pro správu. 
 
 ## <a name="see-also"></a>Viz také
 

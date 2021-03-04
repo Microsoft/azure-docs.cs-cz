@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 31a034a7f52efd915b7a07e1abb953a14839892e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609655"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718059"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
 
@@ -22,7 +22,7 @@ Rádi bychom slyšeli vaši zpětnou vazbu, podíváme se na <azurealertsfeedbac
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Proč a kdy se doporučuje použít typ dynamické podmínky?
 
-1. **Škálovatelné upozorňování** – pravidla dynamické výstrahy prahové hodnoty můžou vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik najednou a zároveň zajistit stejné snadné definování pravidla výstrahy pro jednu metriku. Poskytují méně výstrahy pro vytváření a správu. K jejich vytvoření můžete použít buď Azure Portal, nebo rozhraní API Azure Resource Manager. Škálovatelný přístup je obzvlášť užitečný při práci s dimenzemi metriky nebo při použití na více prostředků, jako jsou například všechny prostředky předplatného.  [Přečtěte si další informace o tom, jak nakonfigurovat výstrahy metrik s dynamickými prahovými hodnotami pomocí šablon](../platform/alerts-metric-create-templates.md).
+1. **Škálovatelné upozorňování** – pravidla dynamické výstrahy prahové hodnoty můžou vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik najednou a zároveň zajistit stejné snadné definování pravidla výstrahy pro jednu metriku. Poskytují méně výstrahy pro vytváření a správu. K jejich vytvoření můžete použít buď Azure Portal, nebo rozhraní API Azure Resource Manager. Škálovatelný přístup je obzvlášť užitečný při práci s dimenzemi metriky nebo při použití na více prostředků, jako jsou například všechny prostředky předplatného.  [Přečtěte si další informace o tom, jak nakonfigurovat výstrahy metrik s dynamickými prahovými hodnotami pomocí šablon](./alerts-metric-create-templates.md).
 
 1. **Rozpoznávání vzorců inteligentní metriky** – s využitím naší technologie v ml jsme schopni automaticky detekovat modely metrik a přizpůsobovat metriky v průběhu času, což může často zahrnovat sezónnost (hourly/denně/týdně). Přizpůsobování chování metriky v průběhu času a upozorňování na základě odchylek od jejího vzoru zbavuje zatížení, které se u každé metriky navzájemují jako "pravé" prahové hodnoty. Algoritmus ML použitý v dynamických mezních hodnotách je navržený tak, aby nedocházelo k mezním hodnotám s vysokou přesností (nízká přesnost) nebo šířce (nízké), které nemají očekávaný vzor.
 
@@ -61,7 +61,7 @@ Můžete zvolit výstrahu, která se má aktivovat, na jednu z následujících 
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamená rozšířené nastavení v případě dynamických prahových hodnot?
 
-**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Příklad:
+**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Například:
 
 Chcete-li aktivovat upozornění, když je problém v průběhu 20 minut v intervalu po dobu 4 po sobě jdoucích časů v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -75,7 +75,7 @@ Chcete-li aktivovat výstrahu v případě, že došlo k narušení za dynamick�
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Jak zjistím, proč se aktivovala výstraha dynamické prahové hodnoty?
 
-Kliknutím na odkaz v e-mailu nebo textové zprávě nebo v prohlížeči zobrazíte zobrazení výstrah v Azure Portal, můžete prozkoumat spuštěné instance výstrah v zobrazení výstrah. [Přečtěte si další informace o zobrazení výstrah](../platform/alerts-overview.md#alerts-experience).
+Kliknutím na odkaz v e-mailu nebo textové zprávě nebo v prohlížeči zobrazíte zobrazení výstrah v Azure Portal, můžete prozkoumat spuštěné instance výstrah v zobrazení výstrah. [Přečtěte si další informace o zobrazení výstrah](./alerts-overview.md#alerts-experience).
 
 Zobrazení výstrah zobrazuje:
 
@@ -188,4 +188,4 @@ K interpretaci předchozího grafu použijte následující informace.
 - **Červená tečka s černým kruhem** – zobrazí první hodnotu metriky mimo povolený rozsah. Jedná se o hodnotu, která aktivuje výstrahu metriky a umístí ji do aktivního stavu.
 - **Červené tečky**– označují dodatečné měřené hodnoty mimo povolený rozsah. Nebudou aktivovat další výstrahy metrik, ale výstraha zůstane aktivní.
 - **Červená oblast** – zobrazuje čas, kdy byla hodnota metriky mimo povolený rozsah. Výstraha zůstane v aktivním stavu, pokud jsou následující měřené hodnoty mimo povolený rozsah, ale neaktivují se žádné nové výstrahy.
-- **Konec červené oblasti** – když se modrá čára vrátí do povolených hodnot, červená oblast se zastaví a osa měřené hodnoty se změní na modrou. Stav aktivované výstrahy metriky v okamžiku červené tečky s černým obrysem je nastaven na hodnotu Vyřešeno. 
+- **Konec červené oblasti** – když se modrá čára vrátí do povolených hodnot, červená oblast se zastaví a osa měřené hodnoty se změní na modrou. Stav aktivované výstrahy metriky v okamžiku červené tečky s černým obrysem je nastaven na hodnotu Vyřešeno.

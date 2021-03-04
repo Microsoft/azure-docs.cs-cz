@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588566"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705496"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -56,7 +56,7 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 
 - Povolí podporu pro **[Vyrovnávání zatížení](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby. [Přehledy pro Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) nabízí předkonfigurovaný řídicí panel s užitečnými vizualizacemi pro tyto metriky.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
+- Standard Load Balancer poskytuje multidimenzionální metriky prostřednictvím [Azure monitor](../azure-monitor/overview.md).  Tyto metriky je možné filtrovat, seskupovat a rozdělit pro danou dimenzi.  Poskytují aktuální a historické poznatky o výkonu a stavu vaší služby. [Přehledy pro Azure Load Balancer](./load-balancer-insights.md) nabízí předkonfigurovaný řídicí panel s užitečnými vizualizacemi pro tyto metriky.  Podporuje se taky Resource Health. Další podrobnosti najdete v **[diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md)** .
 
 - Vyrovnávání zatížení služeb na **[několika portech, několika IP adresách nebo obojím](./load-balancer-multivip-overview.md)**.
 

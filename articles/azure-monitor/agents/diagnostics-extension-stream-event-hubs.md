@@ -1,17 +1,16 @@
 ---
 title: Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
 description: Nakonfigurujte diagnostické rozšíření v Azure Monitor, aby se odesílala data do centra událostí Azure, abyste je mohli přesměrovat do umístění mimo Azure.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732033"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
 Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek popisuje, jak odeslat data z diagnostického rozšíření Windows Azure (WAD) do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) , abyste mohli přesměrovat do umístění mimo Azure.

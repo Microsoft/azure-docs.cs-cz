@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690409"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ Následující tabulka porovnává Doporučené možnosti migrace:
 
 |Možnost migrace  |Kdy je použít  |Požadavky  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrujte jednotlivé databáze nebo více databází se škálováním. </br> – Může během procesu migrace pojmout výpadky. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač |  – Migrace ve velkém měřítku může být automatizovaná přes [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md). </br> -Doba k dokončení migrace závisí na velikosti databáze a ovlivněná časem zálohování a obnovení. </br> – Může být vyžadováno dostatečné výpadky. |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrujte jednotlivé databáze nebo více databází se škálováním. </br> – Může během procesu migrace pojmout výpadky. </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač |  – Migrace ve velkém měřítku může být automatizovaná přes [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md). </br> -Doba k dokončení migrace závisí na velikosti databáze a ovlivněná časem zálohování a obnovení. </br> – Může být vyžadováno dostatečné výpadky. |
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | – Migrujte jednotlivé databáze obchodních aplikací.  </br> – Rychlá a snadná migrace bez samostatné služby nebo nástroje pro migraci  </br> </br> Podporované zdroje: </br> -SQL Server (2005-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač | -Záloha databáze používá více vláken pro optimalizaci přenosu dat do služby Azure Blob Storage, ale šířka pásma a velikost databáze ISV může ovlivnit přenosovou rychlost. </br> -Výpadky by měly pojmout dobu potřebnou k provedení úplného zálohování a obnovení (což je velikost operace s daty).| 
 |[Služba pro opětovné přehrání protokolů (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Migrujte jednotlivé databáze obchodních aplikací.  </br> – Pro migrace databáze je potřeba více ovládacích prvků.  </br> </br> Podporované zdroje: </br> -SQL Server (2008-2019) místní nebo Azure VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP COMPUTE SQL Server virtuální počítač | – Migrace zahrnuje vytvoření úplných záloh databáze při SQL Server a zkopírování záložních souborů do Azure Blob Storage. LRS se používá k obnovení záložních souborů z Azure Blob Storage do spravované instance SQL. </br> – Databáze obnovované během procesu migrace budou v režimu obnovení a nelze je použít ke čtení nebo zápisu do dokončení procesu.| 
 | | | |
@@ -163,7 +163,7 @@ Mimo architekturu s vysokou dostupností, která je součástí spravované inst
 
 #### <a name="sql-agent-jobs"></a>Úlohy agenta SQL
 
-K migraci [úloh agenta SQL](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)použijte možnost DMS (offline Azure Database Migration Service). V opačném případě skriptujte úlohy v jazyce Transact-SQL (T-SQL) pomocí SQL Server Management Studio a pak je ručně znovu vytvořte na cílové spravované instanci SQL. 
+K migraci [úloh agenta SQL](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)použijte možnost DMS (offline Azure Database Migration Service). V opačném případě skriptujte úlohy v jazyce Transact-SQL (T-SQL) pomocí SQL Server Management Studio a pak je ručně znovu vytvořte na cílové spravované instanci SQL. 
 
 > [!IMPORTANT]
 > Azure DMS v současné době podporuje jenom úlohy s kroky v subsystému T-SQL. Úlohy s SSIS kroky balíčku se musí migrovat ručně. 

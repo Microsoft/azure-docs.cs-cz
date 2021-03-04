@@ -3,12 +3,12 @@ title: O procesu obnovení virtuálního počítače Azure
 description: Přečtěte si, jak služba Azure Backup obnovuje virtuální počítače Azure.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 62d1ff7973693f29c77c77fe2ad4fbbb598a5fa4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738408"
 ---
 # <a name="about-azure-vm-restore"></a>Informace o obnovení virtuálních počítačů Azure
 
@@ -50,6 +50,6 @@ Tento článek popisuje, jak [služba Azure Backup](./backup-overview.md) obnovu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nejčastější dotazy týkající se obnovení virtuálního počítače](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
+- [Nejčastější dotazy týkající se obnovení virtuálního počítače](/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Podporované metody obnovení](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Řešení potíží s obnovením](./backup-azure-vms-troubleshoot.md#restore)

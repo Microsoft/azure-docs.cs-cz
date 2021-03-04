@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: 0d791ebedd1b03bd50150170ad1b36a08371c9ae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ccf7f272069516d53732b10ec1af5bb4841f1208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654874"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730418"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby Azure IoT Hub (Python)
 
@@ -69,7 +69,7 @@ V této části použijete sadu Python SDK k posílání zpráv ze simulovaného
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
 
-1. V otevřeném prostředí CLI spusťte příkaz [AZ IoT Hub monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) a začněte monitorovat události na simulovaném zařízení IoT.  Zprávy o událostech budou vytištěny v terminálu po doručení.
+1. V otevřeném prostředí CLI spusťte příkaz [AZ IoT Hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) a začněte monitorovat události na simulovaném zařízení IoT.  Zprávy o událostech budou vytištěny v terminálu po doručení.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -130,12 +130,12 @@ Pokud už nepotřebujete prostředky Azure vytvořené v rámci tohoto rychlého
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky.
 
 Odstranění skupiny prostředků podle názvu:
-1. Spusťte příkaz [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) . Tím odeberete skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
+1. Spusťte příkaz [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků, IoT Hub a registraci zařízení, kterou jste vytvořili.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Spuštěním příkazu [AZ Group list](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) potvrďte odstranění skupiny prostředků.  
+1. Spuštěním příkazu [AZ Group list](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-list) potvrďte odstranění skupiny prostředků.  
 
     ```azurecli
     az group list

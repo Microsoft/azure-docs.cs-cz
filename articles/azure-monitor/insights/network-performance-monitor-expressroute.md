@@ -1,22 +1,21 @@
 ---
 title: Řešení Network Performance Monitor v Azure Log Analytics | Microsoft Docs
 description: Pomocí možnosti monitorování ExpressRoute v Network Performance Monitor můžete monitorovat komplexní připojení a výkon mezi vašimi pobočkami a Azure, a to prostřednictvím Azure ExpressRoute.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725692"
 ---
 # <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
 > [!IMPORTANT]
-> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Funkce Azure ExpressRoute monitor [Network Performance Monitor](network-performance-monitor.md) v nástroji můžete použít k monitorování komplexního připojení a výkonu mezi firemními pobočkami a Azure, a to prostřednictvím Azure ExpressRoute. Klíčové výhody: 
 
@@ -112,7 +111,7 @@ Network Performance Monitor pomáhá diagnostikovat několik problémů s připo
 
 Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictvím **LogAnalytics**. Na stránce **Diagnostika npm** uvidíte popisy každé aktivované zprávy diagnostiky.
 
-| Kód oznámení (protokoly) | Description |
+| Kód oznámení (protokoly) | Popis |
 | --- | --- |
 | 5501 | Nejde procházet sekundárním připojením okruhu ExpressRoute. |
 | 5502 | Primární připojení okruhu ExpressRoute se nedá Procházet. |
@@ -144,4 +143,3 @@ Můžete zobrazit kódy oznámení a nastavit výstrahy na nich prostřednictví
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../logs/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

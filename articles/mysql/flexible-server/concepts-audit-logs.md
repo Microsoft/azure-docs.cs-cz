@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718739"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Sledovat činnost databáze pomocí protokolů auditu v Azure Database for MySQL flexibilním serveru
 
@@ -46,7 +46,7 @@ Další parametry, které můžete upravit pro řízení chování protokolován
 | `DCL` | Dotazy jako "udělení oprávnění" |
 | `ADMIN` | Dotazy jako "Zobrazit stav" |
 | `GENERAL` | Vše v DML_SELECT, DML_NONSELECT, DML, DDL, DCL a správce |
-| `TABLE_ACCESS` | – Dostupné jenom pro MySQL 5,7 <br> – Příkazy pro čtení z tabulky, jako je například SELECT nebo INSERT INTO... VYBRALI <br> – Příkazy DELETE v tabulce, jako je například DELETE nebo TRUNCATE TABLE <br> – Příkazy INSERT v tabulce, jako je INSERT nebo Replace <br> – Příkazy aktualizace tabulky, jako je například aktualizace |
+| `TABLE_ACCESS` | – Příkazy pro čtení z tabulky, jako je například SELECT nebo INSERT INTO... VYBRALI <br> – Příkazy DELETE v tabulce, jako je například DELETE nebo TRUNCATE TABLE <br> – Příkazy INSERT v tabulce, jako je INSERT nebo Replace <br> – Příkazy aktualizace tabulky, jako je například aktualizace |
 
 ## <a name="access-audit-logs"></a>Přístup k protokolům auditu
 
@@ -72,7 +72,7 @@ Následující části popisují výstup protokolů auditu MySQL na základě ty
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (k dispozici pouze pro MySQL 5,7) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | Jedinečné ID připojení generované MySQL |
 | `host_s` | Funkce Blank |
 | `ip_s` | IP adresa klienta připojujícího se k MySQL |
@@ -116,7 +116,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 ### <a name="table-access"></a>Přístup k tabulce
 
 > [!NOTE]
-> Protokoly přístupu k tabulce jsou pouze výstupem pro MySQL 5,7.<br>V případě `sql_text_s` se protokol zkrátí, pokud překračuje 2048 znaků.
+> V případě `sql_text_s` se protokol zkrátí, pokud překračuje 2048 znaků.
 
 | **Vlastnost** | **Popis** |
 |---|---|

@@ -6,14 +6,14 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709882"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Řešení potíží s Azure IoT Hub Device Provisioning Service
 
@@ -32,7 +32,7 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 4. Vyberte požadovanou metriku. 
    <br />V současné době existují tři metriky pro DPS:
 
-    | Název metriky | Description |
+    | Název metriky | Popis |
     |-------|------------|
     | Pokusy o ověření identity | Počet zařízení, která se pokusila ověřit pomocí služby Device Provisioning Service|
     | Pokusy o registraci | Počet zařízení, která se pokusila o registraci IoT Hub po úspěšném ověření|
@@ -44,7 +44,7 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 
 7. Vyberte **Přidat podmínku** a pak podle následujících pokynů vyberte požadovanou metriku a prahovou hodnotu.
 
-Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azure?](../azure-monitor/alerts/alerts-overview.md)
+Další informace najdete v tématu [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md).
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Zobrazení a řešení chyb pomocí analytického protokolu
 
@@ -58,7 +58,7 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 
 5. Povolte shromažďování požadovaných protokolů.
 
-    | Název protokolu | Description |
+    | Název protokolu | Popis |
     |-------|------------|
     | DeviceOperations | Protokoly související s událostmi připojení zařízení |
     | ServiceOperations | Protokoly událostí související s používáním sady SDK služby (např. vytvoření nebo aktualizace skupin registrací)|
@@ -75,7 +75,7 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 ## <a name="common-error-codes"></a>Běžné kódy chyb
 Pomocí této tabulky můžete pochopit a řešit běžné chyby.
 
-| Kód chyby| Description | Stavový kód HTTP |
+| Kód chyby| Popis | Stavový kód HTTP |
 |-------|------------|------------|
 | 400 | Tělo požadavku není platné. nelze jej například analyzovat nebo objekt nelze ověřit.| 400 Špatný formát |
 | 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 – Neautorizováno|

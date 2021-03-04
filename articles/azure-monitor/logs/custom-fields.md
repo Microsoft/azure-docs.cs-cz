@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 685c54131e4a82950ea64e5374d9e1d260ffabc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713673"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor (Preview)
 
 > [!NOTE]
-> Tento článek popisuje, jak analyzovat textová data v Log Analytics pracovním prostoru při jejich shromažďování. Po shromáždění textu podle pokynů popsaných v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md)doporučujeme analyzovat textová data ve filtru dotazu. Nabízí několik výhod používání vlastních polí.
+> Tento článek popisuje, jak analyzovat textová data v Log Analytics pracovním prostoru při jejich shromažďování. Po shromáždění textu podle pokynů popsaných v tématu [Analýza textových dat v Azure monitor](./parse-text.md)doporučujeme analyzovat textová data ve filtru dotazu. Nabízí několik výhod používání vlastních polí.
 
 > [!IMPORTANT]
-> Vlastní pole zvyšují množství dat shromažďovaných v pracovním prostoru Log Analytics, což může zvýšit vaše náklady. Podrobnosti najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../platform/manage-cost-storage.md#pricing-model) .
+> Vlastní pole zvyšují množství dat shromažďovaných v pracovním prostoru Log Analytics, což může zvýšit vaše náklady. Podrobnosti najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](./manage-cost-storage.md#pricing-model) .
 
 Funkce **vlastní pole** Azure monitor umožňuje rozšíření existujících záznamů v pracovním prostoru Log Analytics přidáním vlastních vyhledávacích polí.  Vlastní pole jsou automaticky vyplněna z dat extrahovaných z jiných vlastností ve stejném záznamu.
 
@@ -42,9 +42,9 @@ Následující části obsahují postup pro vytvoření vlastního pole.  V doln
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1 – identifikace záznamů, které budou mít vlastní pole
-Prvním krokem je identifikace záznamů, které získají vlastní pole.  Začnete se [standardním dotazem protokolu](../log-query/log-query-overview.md) a pak vyberete záznam, který se bude chovat jako model, ze kterého Azure monitor vědět.  Pokud určíte, že budete chtít extrahovat data do vlastního pole, otevře se **Průvodce extrakcí polí** , kde ověříte a upřesníte kritéria.
+Prvním krokem je identifikace záznamů, které získají vlastní pole.  Začnete se [standardním dotazem protokolu](./log-query-overview.md) a pak vyberete záznam, který se bude chovat jako model, ze kterého Azure monitor vědět.  Pokud určíte, že budete chtít extrahovat data do vlastního pole, otevře se **Průvodce extrakcí polí** , kde ověříte a upřesníte kritéria.
 
-1. Přejít na **protokoly** a použít [dotaz k načtení záznamů](../log-query/log-query-overview.md) , které budou mít vlastní pole.
+1. Přejít na **protokoly** a použít [dotaz k načtení záznamů](./log-query-overview.md) , které budou mít vlastní pole.
 2. Vyberte záznam, který Log Analytics použít jako model pro extrakci dat, aby bylo možné naplnit vlastní pole.  Budete identifikovat data, která chcete extrahovat z tohoto záznamu, a Log Analytics bude tyto informace používat k určení logiky pro naplnění vlastního pole pro všechny podobné záznamy.
 3. Rozbalte vlastnosti záznamu, klikněte na elipsu nalevo od vlastnosti horní části záznamu a vyberte **extrahovat pole z**.
 4. Otevře se **Průvodce extrakcí polí** a vybraný záznam se zobrazí ve sloupci **hlavní příklad** .  Vlastní pole bude definováno pro tyto záznamy se stejnými hodnotami ve vlastnostech, které jsou vybrány.  
@@ -128,6 +128,5 @@ Nyní můžeme použít vlastní pole jako jakoukoli jinou vlastnost záznamu.  
 ![Seskupit podle dotazu](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md) pro vytváření dotazů pomocí vlastních polí pro kritéria.
+* Přečtěte si o [dotazech protokolu](./log-query-overview.md) pro vytváření dotazů pomocí vlastních polí pro kritéria.
 * Monitorujte [vlastní soubory protokolů](../agents/data-sources-custom-logs.md) , které analyzujete pomocí vlastních polí.
-

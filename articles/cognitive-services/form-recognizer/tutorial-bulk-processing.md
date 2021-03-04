@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606041"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699993"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Kurz: hromadné extrakce dat formuláře pomocí Azure Data Factory
 
@@ -65,7 +65,7 @@ Azure Databricks Poznámkový blok pak pomocí proškolených modelů extrahuje 
 
 Vaše nevyřízené položky formulářů můžou být ve vašem místním prostředí nebo na serveru FTP (s). Tento kurz používá formuláře v účtu úložiště Azure Data Lake Gen 2. Soubory můžete přenést pomocí Azure Data Factory, Průzkumník služby Azure Storage nebo AzCopy. Datové sady pro školení a bodování můžou být v různých kontejnerech, ale školicí datové sady pro všechny typy formulářů musí být ve stejném kontejneru (i když můžou být v různých složkách).
 
-Pokud chcete vytvořit nový Data Lake, postupujte podle pokynů v části [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account).
+Pokud chcete vytvořit nový Data Lake, postupujte podle pokynů v části [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](../../storage/blobs/create-data-lake-storage-account.md).
 
 ## <a name="create-a-parameterization-table"></a>Vytvoření tabulky Parametrizace
 
@@ -89,7 +89,7 @@ V tabulce se použijí následující pole:
 
 ### <a name="create-the-table"></a>Vytvoření tabulky
 
-[Vytvořte Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)a potom v [Editoru dotazů](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal) spusťte následující skript SQL, abyste vytvořili potřebnou tabulku.
+[Vytvořte Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)a potom v [Editoru dotazů](../../azure-sql/database/connect-query-portal.md) spusťte následující skript SQL, abyste vytvořili potřebnou tabulku.
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ Pomocí Azure Databricks uložíte a spustíte kód Pythonu, který komunikuje s
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Vytvoření oboru tajného kódu, který je zálohovaný pomocí Azure Key Vault
 
-Pokud chcete odkazovat na tajné kódy v Azure Key Vault jsme vytvořili výše, budete muset vytvořit obor tajného kódu v datacihlách. Postupujte podle kroků v části [Vytvoření oboru tajného klíče, který je Azure Key Vault zálohovaný](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
+Pokud chcete odkazovat na tajné kódy v Azure Key Vault jsme vytvořili výše, budete muset vytvořit obor tajného kódu v datacihlách. Postupujte podle kroků v části [Vytvoření oboru tajného klíče, který je Azure Key Vault zálohovaný](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
 
 ### <a name="create-a-databricks-cluster"></a>Vytvoření clusteru Databricks
 
@@ -461,7 +461,7 @@ Teď můžeme vytvořit hodnoticí Poznámkový blok. Podobně jako školicí Po
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Automatizace školení a bodování pomocí Azure Data Factory
 
-Jediným krokem je nastavení služby Azure Data Factory (ADF) pro automatizaci procesů školení a bodování. Nejprve postupujte podle kroků v části [Vytvoření datové továrny](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory). Po vytvoření prostředku ADF budete muset vytvořit tři kanály: jednu pro školení a dvě pro bodování (vysvětlení najdete níže).
+Jediným krokem je nastavení služby Azure Data Factory (ADF) pro automatizaci procesů školení a bodování. Nejprve postupujte podle kroků v části [Vytvoření datové továrny](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory). Po vytvoření prostředku ADF budete muset vytvořit tři kanály: jednu pro školení a dvě pro bodování (vysvětlení najdete níže).
 
 ### <a name="training-pipeline"></a>Školicí kanál
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526852"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722309"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
 
@@ -29,9 +29,9 @@ Mnoho malých, ale důležitých podrobností se dohlíží k vytvoření profes
 > Pokud chcete naučit neuronové hlas, musíte zadat profil hlasového talentů se souborem s vyjádřením informací o zvuku, který je k dispozici v hlasovém talentůu, abyste mohli využít jeho data o řeči k učení vlastního hlasového modelu. Při přípravě skriptu nahrávání se ujistěte, že jste zahrnuli níže uvedenou větu. 
 
 > "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."
-Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](https://aka.ms/CNV-data-privacy) .
+Tato věta se použije k ověření, jestli se školicí data provádějí stejnou osobou, která tento souhlas provede. Tady si můžete přečíst další informace o [ověřování hlasových talentů](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) .
 
-> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](https://aka.ms/gating-overview) a [použijete přístup tady](https://aka.ms/customneural). 
+> Vlastní neuronové hlas je k dispozici s omezeným přístupem. Ujistěte se, že rozumíte [požadavkům na AI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijete přístup tady](https://aka.ms/customneural). 
 
 > [!TIP]
 > Pro nejvyšší výsledky kvality zvažte, že společnost Microsoft bude pomáhat s vývojem vlastního hlasu. Microsoft má rozsáhlé zkušenosti s vytvářením vysoce kvalitních hlasů pro vlastní produkty, včetně Cortany a kanceláře.
@@ -112,7 +112,7 @@ V rámci autorského zákona může být čtení textu s copyrightem objektu act
 
 Naštěstí je možné tyto problémy zcela vyhnout. Existuje mnoho zdrojů textu, které můžete použít bez oprávnění nebo licence.
 
-|Zdroj textu|Description|
+|Zdroj textu|Popis|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|Přibližně 1100 vět vybraných z ochrany autorského práva fungují speciálně pro použití v projektech syntézy řeči. Vynikající počáteční bod.|
 |Už funguje<br>v části Copyright|Obvykle funguje publikace před 1923. V anglickém jazyce [Gutenberg Project](https://www.gutenberg.org/) nabízí desítky tisíců takových děl. Možná se budete chtít soustředit na novější práci, protože jazyk bude přiblížný k moderní angličtině.|

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 12983f43e5f778cdf46c2ea3e0177d43838e5b47
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ff20479062e31bb61756b3de7bbf04540b2d5598
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051594"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690392"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulátor – poznámky k verzi a informace o stažení
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,16 @@ Tento článek ukazuje poznámky k verzi emulátoru Azure Cosmos DB se seznamem 
 |**Stažení MSI**|[Stažení softwaru společnosti Microsoft](https://aka.ms/cosmosdb-emulator)|
 |**Začínáme**|[Vývoj místně pomocí emulátoru Azure Cosmos DB](local-emulator.md)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="21111-22-february-2021"></a>2.11.11 (22. února 2021)
+
+ - Tato verze aktualizuje obsah místní Průzkumník dat na nejnovější verzi Azure Portal.
+
 
 ### <a name="21110-5-january-2021"></a>2.11.10 (5. ledna 2021)
 
- - Tato verze aktualizuje obsah místního Průzkumník dat na nejnovější verzi webu Azure Portal a přidá novou možnost Public, "/ExportPemCert", která umožňuje uživateli emulátoru přímo exportovat certifikát veřejného emulátoru jako. Soubor PEM
+ - Tato verze aktualizuje obsah místního Průzkumník dat na nejnovější verzi Azure Portal a přidá novou možnost Public, "/ExportPemCert", která umožňuje uživateli emulátoru přímo exportovat certifikát veřejného emulátoru jako. Soubor PEM
 
 ### <a name="2119-3-december-2020"></a>2.11.9 (3. prosince 2020)
 

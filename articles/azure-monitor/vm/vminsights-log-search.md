@@ -1,25 +1,25 @@
 ---
-title: Dotazování protokolů z Azure Monitor pro virtuální počítače
-description: Azure Monitor pro virtuální počítače řešení shromažďuje metriky a data protokolů do a tento článek popisuje záznamy a obsahuje vzorové dotazy.
+title: Dotazování protokolů z virtuálních počítačů Insights
+description: Řešení VM Insights shromažďuje metriky a data protokolů v a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbecb15173c929aee46e7d1eeb5e83aab86430f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713520"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače
+# <a name="how-to-query-logs-from-vm-insights"></a>Dotazování protokolů z virtuálních počítačů Insights
 
-Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, data inventáře počítače a procesu a informace o stavu a předávají je do pracovního prostoru Log Analytics v Azure Monitor.  Tato data jsou k dispozici pro [dotazy](../log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Přehledy virtuálních počítačů shromažďují metriky výkonu a připojení, data inventáře počítačů a procesů a informace o stavu a předávají je do pracovního prostoru Log Analytics v Azure Monitor.  Tato data jsou k dispozici pro [dotazy](../logs/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="map-records"></a>Mapování záznamů
 
-Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění procesu nebo počítače nebo jeho zprovoznění do Azure Monitor pro virtuální počítače funkce map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro Azure Resource Manager ServiceMap. Pole a hodnoty v ServiceMapProcess_CLch událostech se mapují na pole prostředku procesu v rozhraní API pro Azure Resource Manager ServiceMap. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
+Jeden záznam se vygeneruje za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které se generují, když se proces nebo počítač spustí nebo je připojen k funkci mapování služby VM Insights. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro Azure Resource Manager ServiceMap. Pole a hodnoty v ServiceMapProcess_CLch událostech se mapují na pole prostředku procesu v rozhraní API pro Azure Resource Manager ServiceMap. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
 
 K dispozici jsou interně generované vlastnosti, které můžete použít k identifikaci jedinečných procesů a počítačů:
 
@@ -112,7 +112,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |:--|:--|
 |MaliciousIp |Adresa RemoteIp |
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
-|Description |Popis pozorované hrozby. |
+|Popis |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová* a *červená*. |
 |Spolehlivost |Hodnoty jsou *0 – 100*. |
 |Závažnost |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
@@ -233,7 +233,7 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |Group (Skupina) | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
 |StartTime | Čas spuštění fondu procesů |
 |FirstPid | První PID ve fondu procesů |
-|Description | Popis procesu |
+|Popis | Popis procesu |
 |CompanyName | Název společnosti |
 |Vnitřní | Interní název |
 |ProductName | Název produktu |
@@ -442,7 +442,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |Zdroj | *vm.azm.ms* |
 |Obor názvů | Kategorie čítače výkonu | 
-|Name | Název čítače výkonu |
+|Název | Název čítače výkonu |
 |Val | Shromážděná hodnota | 
 |Značky | Související podrobnosti o záznamu Značky používané s různými typy záznamů najdete v následující tabulce.  |
 |ID agenta | Jedinečný identifikátor pro každého agenta počítače |
@@ -451,7 +451,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 Čítače výkonu, které jsou aktuálně shromážděny do tabulky *InsightsMetrics* , jsou uvedeny v následující tabulce:
 
-| Obor názvů | Název | Description | Jednotka | Značky |
+| Obor názvů | Název | Popis | Jednotka | Značky |
 |:---|:---|:---|:---|:---|
 | Počítač    | Tep             | Prezenční signál počítače                        | | |
 | Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|
@@ -473,6 +473,6 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud s psaním dotazů protokolu v Azure Monitor začínáte, přečtěte si téma [použití Log Analytics](../log-query/log-analytics-tutorial.md) v Azure Portal k zápisu dotazů protokolu.
+* Pokud s psaním dotazů protokolu v Azure Monitor začínáte, přečtěte si téma [použití Log Analytics](../logs/log-analytics-tutorial.md) v Azure Portal k zápisu dotazů protokolu.
 
-* Přečtěte si informace o [zápisu vyhledávacích dotazů](../log-query/get-started-queries.md).
+* Přečtěte si informace o [zápisu vyhledávacích dotazů](../logs/get-started-queries.md).

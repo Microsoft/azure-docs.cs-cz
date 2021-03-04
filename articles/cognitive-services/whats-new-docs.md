@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989002"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710311"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services Docs: co je nového ve 1. lednu 2021 – 31. ledna 2021
 
@@ -29,31 +29,31 @@ Vítá vás novinky v Cognitive Services docs od 1. ledna 2021 do 31. ledna 2021
 
 **Nové články**
 
-- [Kurz: hromadné extrakce dat formuláře pomocí Azure Data Factory](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [Kurz: hromadné extrakce dat formuláře pomocí Azure Data Factory](./form-recognizer/tutorial-bulk-processing.md)
 
 **Aktualizované články**
 
-- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Co je služba Rozpoznávání formulářů?](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>Asistivní čtečka
 
 **Aktualizované články**
 
-- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>Personalizace
 
 **Aktualizované články**
 
-- [Funkce jsou informace o akcích a kontextu.](/azure/cognitive-services/personalizer/concepts-features.md)
+- [Funkce jsou informace o akcích a kontextu.](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Analýza textu
 
 **Aktualizované články**
 
-- [Podpora jazyka rozhraní API pro analýzu textu V3](/azure/cognitive-services/text-analytics/language-support.md)
-- [Migrace na verzi 3. x z rozhraní API pro analýzu textu](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Co je nového v rozhraní API pro analýzu textu?](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Podpora jazyka rozhraní API pro analýzu textu V3](./text-analytics/language-support.md)
+- [Migrace na verzi 3. x z rozhraní API pro analýzu textu](./text-analytics/migration-guide.md)
+- [Co je nového v rozhraní API pro analýzu textu?](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>Přispěvatelé komunity
 

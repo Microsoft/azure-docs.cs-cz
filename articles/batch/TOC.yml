@@ -158,9 +158,6 @@
           href: batch-sig-images.md
         - name: Vytvoření fondu s využitím prostředku spravované image
           href: batch-custom-images.md
-        - name: Vytvoření fondu napříč Zóny dostupnosti
-          displayName: 'region, zonal policy'
-          href: create-pool-availability-zones.md
         - name: Vytvoření fondu s povoleným šifrováním disků
           href: disk-encryption.md
         - name: Vytvoření fondu ve virtuální síti
@@ -172,8 +169,6 @@
         - name: Vytvoření fondu bez veřejných IP adres
           displayName: private
           href: batch-pool-no-public-ip-address.md
-        - name: Použití rozšíření u fondů
-          href: create-pool-extensions.md
         - name: Konfigurace spravovaných identit
           displayName: user-assigned
           href: managed-identity-pools.md

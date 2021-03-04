@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719011"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
@@ -33,7 +33,18 @@ I když není to nutné, pro zajištění nejlepší kompatibility s touto funkc
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` musí následovat po [formátu úrovně závažnosti SYSLOG](https://wikipedia.org/wiki/Syslog#Severity_level) a `{Timestamp}` měla by být naformátovaná jako `yyyy-MM-dd hh:mm:ss.fff zzz` .
+`{Timestamp}` by měl být formátován jako `yyyy-MM-dd hh:mm:ss.fff zzz` a `{Log Level}` by měl postupovat podle následující tabulky, která odvozuje své úrovně závažnosti od [kódu závažnosti ve standardu syslog](https://wikipedia.org/wiki/Syslog#Severity_level).
+
+| Hodnota | Severity |
+|-|-|
+| 0 | Zásah |
+| 1 | Výstrahy |
+| 2 | Kritické |
+| 3 | Chyba |
+| 4 | Upozornění |
+| 5 | Šestiměsíční |
+| 6 | Informační |
+| 7 | Ladění |
 
 [Třída protokolovacího nástroje v IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) slouží jako kanonická implementace.
 
@@ -63,7 +74,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | položek | Pole JSON | Pole s `id` a `filter` řazenými kolekcemi členů. |
@@ -82,7 +93,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 
 Úspěšné načtení protokolů vrátí **"stav": 200** následovaný datovou částí, která obsahuje protokoly načtené z modulu, filtrované podle nastavení, které zadáte v žádosti.
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +134,7 @@ V Azure Portal volejte metodu s názvem metody `GetModuleLogs` a následující 
 
 ![Vyvolat přímo metodu GetModuleLogs v Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Příklad:
+Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Například:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -172,7 +183,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem pro zápis do kontejneru Azure Blob Storage](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -186,13 +197,13 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 Následující vyvolání nahraje poslední řádky protokolu 100 ze všech modulů v komprimovaném formátu JSON:
 
@@ -289,7 +300,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem k zápisu do služby Azure Blob Storage Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -310,13 +321,13 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -368,13 +379,13 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

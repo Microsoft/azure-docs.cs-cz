@@ -3,12 +3,12 @@ title: Rychlý Start Azure – vytvoření centra událostí pomocí Azure Porta
 description: V tomto rychlém startu se dozvíte, jak vytvořit centrum událostí Azure pomocí Azure Portal.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742037"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rychlý start: Vytvoření centra událostí pomocí webu Azure Portal
 Azure Event Hubs je platforma pro zpracování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -25,7 +25,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 Skupina prostředků je logická kolekce prostředků Azure. Všechny prostředky se nasazují a spravují ve skupině prostředků. Vytvoření skupiny prostředků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
 
    ![Skupiny prostředků – tlačítko Přidat](./media/event-hubs-quickstart-portal/resource-groups1.png)
@@ -33,7 +33,7 @@ Skupina prostředků je logická kolekce prostředků Azure. Všechny prostředk
 1. V poli **předplatné** vyberte název předplatného Azure, ve kterém chcete vytvořit skupinu prostředků.
 1. Zadejte jedinečný **název pro skupinu prostředků**. Systém okamžitě zkontroluje, jestli je název dostupný v aktuálně vybraném předplatném Azure.
 1. Vyberte **oblast** pro skupinu prostředků.
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 
    ![Skupina prostředků – Vytvořit](./media/event-hubs-quickstart-portal/resource-groups2.png)
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**. 
@@ -87,7 +87,7 @@ Pokud chcete v rámci oboru názvů vytvořit centrum událostí, postupujte ná
 
     Nastavení **počet oddílů** umožňuje paralelizovat spotřebu napříč mnoha spotřebiteli. Další informace najdete v tématu [oddíly](event-hubs-scalability.md#partitions).
 
-    Nastavení **uchovávání zpráv** určuje, jak dlouho služba Event Hubs udržuje data. Maximální limity pro toto nastavení najdete v tématu [kvóty a omezení](event-hubs-quotas.md).
+    Nastavení **uchovávání zpráv** určuje, jak dlouho služba Event Hubs udržuje data. Další informace najdete v tématu [uchovávání událostí](event-hubs-features.md#event-retention).
 1. Stav vytvoření centra událostí můžete kontrolovat v části výstrahy. Až se centrum událostí vytvoří, zobrazí se v seznamu Center událostí.
 
     ![Centrum událostí se vytvořilo.](./media/event-hubs-quickstart-portal/event-hub-created.png)

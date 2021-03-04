@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611285"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717141"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -26,7 +26,7 @@ Tento článek popisuje podrobnosti o připojování a používání Service Map
 * [Agent závislostí](vminsights-enable-overview.md#agents) nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../vm/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms).
+>Pokud jste už nasadili Service Map, můžete si teď také zobrazit vaše mapy v nástroji VM Insights, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [Přehled virtuálních počítačů Insights](../vm/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa přehledů virtuálních počítačů najdete v následujících [nejčastějších dotazech](../faq.md#azure-monitor-for-vms).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -154,7 +154,7 @@ V seznamu skupin klikněte na nabídku se třemi tečkami vedle názvu skupiny.
 
 Některé procesy obsluhují konkrétní role na počítačích: webové servery, aplikační servery, databáze a tak dále. Service Map v oknech procesu a počítače s ikonami rolí, které vám pomůžou identifikovat na první pohled roli a proces, který server hraje.
 
-| Ikona role | Description |
+| Ikona role | Popis |
 |:--|:--|
 | ![Webový server](media/service-map/role-web-server.png) | Webový server |
 | ![Aplikační server](media/service-map/role-application-server.png) | Aplikační server |
@@ -241,7 +241,7 @@ Service Map se integruje s prohledáváním protokolů a zobrazuje počet všech
 
 ## <a name="service-desk-integration"></a>Integrace oddělení služeb
 
-Service Map integrace s konektorem pro správu služby IT je automaticky, pokud jsou obě řešení ve vašem pracovním prostoru Log Analytics povolená a nakonfigurovaná. Integrace v Service Map je označená jako oddělení služeb. Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí konektoru správy služeb IT](../platform/itsmc-overview.md).
+Service Map integrace s konektorem pro správu služby IT je automaticky, pokud jsou obě řešení ve vašem pracovním prostoru Log Analytics povolená a nakonfigurovaná. Integrace v Service Map je označená jako oddělení služeb. Další informace najdete v tématu [centrálně spravovat pracovní položky ITSM pomocí konektoru správy služeb IT](../alerts/itsmc-overview.md).
 
 Podokno **Služba Machine Service** obsahuje seznam všech událostí správy služeb IT pro vybraný server ve vybraném časovém rozsahu. Server zobrazí ikonu, pokud jsou k dispozici aktuální položky a podokno služba Machine Service.
 
@@ -304,7 +304,7 @@ Podokno **aktualizace počítače** zobrazuje data z řešení Update Management
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 
-Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Data inventáře Service Map počítačů a procesů jsou k dispozici pro [vyhledávání](../logs/log-query-overview.md) v Log Analytics. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a proces, kromě záznamů, které jsou generovány při spuštění nebo zprovoznění procesu nebo počítače na Service Map. Tyto záznamy obsahují vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL se mapují na pole prostředku počítače v rozhraní API pro Azure Resource Manager ServiceMap. Pole a hodnoty v ServiceMapProcess_CLch událostech se mapují na pole prostředku procesu v rozhraní API pro Azure Resource Manager ServiceMap. Pole ResourceName_s se shoduje s polem název v odpovídajícím prostředku Správce prostředků. 
 
@@ -550,7 +550,7 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [hledání v protokolu](../log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
+Přečtěte si další informace o [hledání v protokolu](../logs/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -571,7 +571,7 @@ Může být užitečné nejprve nainstalovat [nejnovější knihovny modulu runt
 
 V následující tabulce jsou uvedena čísla kódů a navrhovaná řešení.
 
-| Kód | Description | Řešení |
+| Kód | Popis | Řešení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která není nainstalovaná. | Projděte si nejnovější protokol instalačního programu knihovny.<br><br>Pokud odkaz na `Windows8.1-KB2999226-x64.msu` je následovaný řádkem, nemáte `Error 0x80240017: Failed to execute MSU package,` požadavky na instalaci KB2999226. Postupujte podle pokynů v části Požadavky v článku věnovaném komponentě [Universal C Runtime ve Windows](https://support.microsoft.com/kb/2999226). Instalace požadovaných součástí možná bude vyžadovat několik spuštění služby Windows Update a restartování.<br><br>Znovu spusťte instalační program Microsoft Dependency Agenta. |
 

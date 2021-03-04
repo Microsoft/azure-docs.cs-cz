@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587984"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737558"
 ---
 # <a name="monitoring-time-series-insights"></a>Time Series Insights monitorování
 
@@ -63,7 +63,7 @@ Pro Azure Time Series Insights můžete shromažďovat protokoly z následujíc�
 
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
-Metriky pro Azure Time Series Insights můžete analyzovat společně s metrikami z jiných služeb Azure tak, že v nabídce Azure Monitor otevřete metriky. Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) .
+Metriky pro Azure Time Series Insights můžete analyzovat společně s metrikami z jiných služeb Azure tak, že v nabídce Azure Monitor otevřete metriky. Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md) .
 
 Seznam shromážděných metrik platformy najdete v tématu [monitorování Azure Time Series Insights dat – referenční informace](how-to-monitor-tsi-reference.md#metrics)
 
@@ -115,7 +115,7 @@ Níže jsou uvedené dotazy, které vám pomůžou monitorovat Azure Time Series
 
 ## <a name="alerts"></a>Výstrahy
 
-Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/platform/alerts-metric-overview.md), [protokolech](../azure-monitor/platform/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
+Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](../azure-monitor/alerts/alerts-metric-overview.md), [protokolech](../azure-monitor/alerts/alerts-unified-log.md)a [protokolu aktivit](../azure-monitor/alerts/activity-log-alerts.md). Různé typy výstrah mají výhody a nevýhody.
 
 Při vytváření pravidla výstrahy na základě metrik platforem mějte na paměti, že pro Time Series Insights metriky platforem, které jsou shromažďovány v jednotkách Count, nemusí být některé agregace dostupné nebo použitelné.
 

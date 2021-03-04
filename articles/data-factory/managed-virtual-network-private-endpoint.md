@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699623"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -43,7 +43,7 @@ Výhody použití spravovaných Virtual Network:
 
 ## <a name="managed-private-endpoints"></a>Spravované privátní koncové body
 
-Spravované privátní koncové body jsou privátní koncové body vytvořené v Azure Data Factory spravované Virtual Network vytvoření privátního odkazu na prostředky Azure. Azure Data Factory tyto privátní koncové body spravuje vaším jménem. 
+Spravované privátní koncové body jsou privátní koncové body vytvořené v Azure Data Factory spravované Virtual Network vytvoření privátního odkazu na prostředky Azure. Azure Data Factory spravuje tyto privátní koncové body za vás. 
 
 ![Nový spravovaný privátní koncový bod](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
@@ -108,11 +108,13 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Odchozí komunikace prostřednictvím veřejného koncového bodu ze spravovaného ADF Virtual Network
 - Pro odchozí komunikaci je otevřen pouze port 443.
-- Azure Storage a Azure Data Lake Gen2 se nepodporují připojení prostřednictvím veřejného koncového bodu ze spravovaného Virtual Network ADF.
+- Azure Storage a Azure Data Lake Gen2 nepodporují připojení prostřednictvím veřejného koncového bodu ze spravované virtuální sítě ADF.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Vytvoření propojené služby Azure Key Vault 
 - Pokud vytváříte propojenou službu Azure Key Vault, v prostředí Azure Integration Runtime na ni není žádný odkaz. Proto nemůžete vytvořit privátní koncový bod během vytváření propojené služby Azure Key Vault. Když ale vytvoříte propojenou službu pro úložiště dat, která odkazují na Azure Key Vault propojená služba a odkazy na propojenou službu Azure Integration Runtime se spravovaným Virtual Network povoleno, budete moct vytvořit privátní koncový bod pro Azure Key Vault propojenou službu během vytváření. 
 - Operace **Testování připojení** pro propojenou službu Azure Key Vault ověří jenom formát adresy URL, ale neprovede žádnou síťovou operaci.
+- Sloupec **s privátním koncovým bodem** se vždycky zobrazuje jako prázdný, i když vytvoříte privátní koncový bod pro Azure Key Vault.
+![Soukromý koncový bod pro integrace](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Další kroky
 

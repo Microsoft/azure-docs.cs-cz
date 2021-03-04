@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6840abe507543c4e03448401f091b6caa0a466c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717447"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -54,7 +54,7 @@ Seznam IP adres a portů vyžadovaných agentům a jiným externím prostředků
 Azure Monitor shromažďuje data z nejrůznějších zdrojů, včetně protokolů a metrik z platformy a prostředků Azure, vlastních aplikací a agentů běžících na virtuálních počítačích. Další služby, například Azure Security Center a Network Watcher shromažďují data do Log Analyticsho pracovního prostoru, aby je bylo možné analyzovat pomocí Azure Monitor dat. Můžete také odesílat vlastní data Azure Monitor pomocí REST API pro protokoly nebo metriky. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Jaká data shromažďuje Azure Monitor? 
-Azure Monitor shromažďuje data z nejrůznějších zdrojů do [protokolů](logs/data-platform-logs.md) nebo [metrik](essentials/data-platform-metrics.md). Každý typ dat má své vlastní relativní výhody a každá z nich podporuje konkrétní sadu funkcí v Azure Monitor. Pro každé předplatné Azure existuje jedna databáze metrik, zatímco můžete vytvořit několik pracovních prostorů Log Analytics pro shromažďování protokolů v závislosti na vašich požadavcích. Viz [Azure monitor datovou platformu](/data-platform.md).
+Azure Monitor shromažďuje data z nejrůznějších zdrojů do [protokolů](logs/data-platform-logs.md) nebo [metrik](essentials/data-platform-metrics.md). Každý typ dat má své vlastní relativní výhody a každá z nich podporuje konkrétní sadu funkcí v Azure Monitor. Pro každé předplatné Azure existuje jedna databáze metrik, zatímco můžete vytvořit několik pracovních prostorů Log Analytics pro shromažďování protokolů v závislosti na vašich požadavcích. Viz [Azure monitor datovou platformu](data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Je možné shromažďovat v Azure Monitor maximální množství dat?
 Množství dat metrik, která můžete shromažďovat, není nijak omezené, ale tato data se ukládají maximálně po 93 dnech. Podívejte se [na uchovávání metrik](essentials/data-platform-metrics.md#retention-of-metrics). Množství dat protokolu, která můžete shromažďovat, není nijak omezené, ale může to mít vliv na cenovou úroveň, kterou zvolíte pro pracovní prostor Log Analytics. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/monitor/).
@@ -86,7 +86,7 @@ p
 Data se z pracovního prostoru odeberou podle [doby jejich uchování](logs/manage-cost-storage.md#change-the-data-retention-period). Můžete odstranit konkrétní data z důvodů ochrany osobních údajů nebo dodržování předpisů. Další informace najdete v tématu [Jak exportovat a odstranit soukromá data](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
 ### <a name="is-log-analytics-storage-immutable"></a>Je Log Analytics úložiště neměnné?
-Data v úložišti databáze nelze po ingestování měnit, ale je možné je odstranit pomocí [cesty rozhraní API *vyprázdnění* pro odstranění privátních dat](platform/personal-data-mgmt.md#delete). I když data nejde změnit, některé certifikace vyžadují, aby byla data zachovaná neměnná a v úložišti se nedají změnit ani odstranit. Data neměnnosti je možné dosáhnout pomocí [exportu dat](platform/logs-data-export.md) do účtu úložiště, který je nakonfigurovaný jako [neproměnlivé úložiště](../storage/blobs/storage-blob-immutability-policies-manage.md).
+Data v úložišti databáze nelze po ingestování měnit, ale je možné je odstranit pomocí [cesty rozhraní API *vyprázdnění* pro odstranění privátních dat](./logs/personal-data-mgmt.md#delete). I když data nejde změnit, některé certifikace vyžadují, aby byla data zachovaná neměnná a v úložišti se nedají změnit ani odstranit. Data neměnnosti je možné dosáhnout pomocí [exportu dat](./logs/logs-data-export.md) do účtu úložiště, který je nakonfigurovaný jako [neproměnlivé úložiště](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Co je pracovní prostor služby Log Analytics?
 Všechna data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics. Pracovní prostor je v podstatě kontejner, ve kterém jsou data protokolu shromažďována z nejrůznějších zdrojů. Můžete mít jeden Log Analytics pracovní prostor pro všechna data monitorování nebo mohou mít požadavky na více pracovních prostorů. Přečtěte si téma [navrhování Azure Monitorch protokolů nasazení](logs/design-logs-deployment.md).
@@ -283,7 +283,7 @@ Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejno
 
 Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a které vám pomůžou nakonfigurovat Application Insights ve webových aplikacích. Neshromažďuje telemetrii: když aplikaci nekonfigurujete, můžete ji zastavit. 
 
-[Přečtěte si další informace](app/monitor-performance-live-website-now.md#questions).
+[Další informace](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Jaká telemetrie se shromažďuje pomocí Application Insights?
 
@@ -328,7 +328,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Není shromažďována, pokud `X-Forwarded-For` je nastavena.
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Přečtěte si další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -607,7 +607,7 @@ Kolektor OpenTelemetry je popsaný v [souboru Readme pro GitHub](https://github.
 [OpenCensus](https://opencensus.io/) je ukazatel na [OpenTelemetry](https://opentelemetry.io/). Microsoft pomáhá společně s [OpenTracing](https://opentracing.io/) a OpenCensus vytvořit OpenTelemetry, což je standardní standard pro dodržování standardů na světě. Stávající provozní prostředí [Python SDK](app/opencensus-python.md) pro Azure monitor je založené na OpenCensus, ale nakonec budou všechny sady Azure monitor SDK založené na OpenTelemetry.
 
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
+## <a name="container-insights"></a>Přehledy kontejnerů
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Co *jiné procesy* reprezentují v rámci zobrazení uzlu?
 
@@ -676,11 +676,11 @@ Pokud první možnost není vhodná v důsledku změn dotazů, můžete shromaž
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>Můžu zobrazit metriky shromážděné v Grafana?
 
-Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
+Container Insights podporuje zobrazování metrik uložených ve vašem pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Můžu monitorovat cluster AKS s Azure Monitor pro kontejnery?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>Můžu monitorovat cluster AKS s využitím služby Container Insights?
 
-Azure Monitor for Containers podporuje monitorování úloh kontejneru nasazených do AKS (dřív označovaných jako ACS-Engine) clusterů hostovaných v Azure. Další podrobnosti a přehled kroků požadovaných k povolení monitorování pro tento scénář najdete v tématu [použití Azure monitor pro kontejnery pro AKS modul](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+Služba Container Insights podporuje monitorování úloh kontejnerů, které se nasazují do AKS (dřív označovaného jako ACS-Engine) clusterů hostovaných v Azure. Další podrobnosti a přehled kroků požadovaných k povolení monitorování tohoto scénáře najdete v tématu [použití služby Container Insights pro AKS-Engine](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Proč se mi nezobrazují data v pracovním prostoru Log Analytics?
 
@@ -696,11 +696,11 @@ Pokud se zobrazí chyba **chybějící registrace odběru pro Microsoft. Operati
 
 ### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Podporuje AKS clustery Kubernetes RBAC?
 
-Řešení pro monitorování kontejnerů nepodporuje Kubernetes RBAC, ale podporuje se Azure Monitor pro kontejnery. Na stránce s podrobnostmi řešení se nemusí zobrazovat správné informace v oknech, které zobrazují data pro tyto clustery.
+Řešení pro monitorování kontejnerů nepodporuje Kubernetes RBAC, ale podporuje se v kontejneru Insights. Na stránce s podrobnostmi řešení se nemusí zobrazovat správné informace v oknech, které zobrazují data pro tyto clustery.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Návody Povolit shromažďování protokolů pro kontejnery v oboru názvů Kube-System prostřednictvím Helm?
 
-Kolekce protokolů z kontejnerů v oboru názvů Kube-System je ve výchozím nastavení zakázaná. Shromažďování protokolů lze povolit nastavením proměnné prostředí v omsagent. Další informace najdete na stránce [Azure monitor pro kontejnery](https://aka.ms/azuremonitor-containers-helm-chart) na webu GitHub. 
+Kolekce protokolů z kontejnerů v oboru názvů Kube-System je ve výchozím nastavení zakázaná. Shromažďování protokolů lze povolit nastavením proměnné prostředí v omsagent. Další informace najdete na stránce GitHub pro [kontejner Insights](https://aka.ms/azuremonitor-containers-helm-chart) . 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Návody aktualizovat omsagent na nejnovější vydanou verzi?
 
@@ -708,7 +708,7 @@ Informace o tom, jak upgradovat agenta, najdete v tématu [Správa agentů](cont
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Návody povolit víceřádkové protokolování?
 
-V současné době Azure Monitor pro kontejnery nepodporuje víceřádkové protokolování, ale k dispozici jsou alternativní řešení. Můžete nakonfigurovat všechny služby pro zápis ve formátu JSON a potom Docker/Moby je zapíše jako jeden řádek.
+V současné době kontejnerové poznatky nepodporují víceřádkové protokolování, ale k dispozici jsou alternativní řešení. Můžete nakonfigurovat všechny služby pro zápis ve formátu JSON a potom Docker/Moby je zapíše jako jeden řádek.
 
 Můžete například zabalit protokol jako objekt JSON, jak je znázorněno v následujícím příkladu pro ukázkovou node.js aplikaci:
 
@@ -732,30 +732,30 @@ Podrobný přehled tohoto problému najdete v následujícím [odkazu na GitHub]
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Návody vyřešit chyby Azure AD, když povolíte živé protokoly? 
 
-Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' <ID aplikace \> '**. Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' <ID aplikace \> '**. Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s využitím kontejneru Insights](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Proč není možné upgradovat cluster po registraci?
 
-Pokud po povolení Azure Monitor pro kontejnery pro cluster AKS odstraníte pracovní prostor Log Analytics, který cluster odeslal do, při pokusu o upgrade clusteru se nezdaří. Pokud chcete tento problém obejít, budete muset zakázat monitorování a pak ho znovu povolit odkazování na jiný platný pracovní prostor v rámci vašeho předplatného. Pokud se pokusíte upgradovat cluster znovu, měl by se zpracovat a dokončit úspěšně.  
+Pokud po povolení služby Container Insights pro cluster AKS odstraníte pracovní prostor Log Analytics, který cluster odeslal data do, při pokusu o upgrade clusteru se nezdaří. Pokud chcete tento problém obejít, budete muset zakázat monitorování a pak ho znovu povolit odkazování na jiný platný pracovní prostor v rámci vašeho předplatného. Pokud se pokusíte upgradovat cluster znovu, měl by se zpracovat a dokončit úspěšně.  
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Které porty a domény potřebuji pro agenta otevřít nebo povolit?
 
 Podívejte se na [požadavky na bránu firewall sítě](containers/container-insights-onboard.md#network-firewall-requirements) pro informace o konfiguraci proxy serveru a brány firewall vyžadované pro kontejnerový agent s Azure, vládou USA a Azure Čína 21Vianet cloudy.
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
+## <a name="vm-insights"></a>Přehledy virtuálních počítačů
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu se připojit k existujícímu pracovnímu prostoru?
-Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k Azure Monitor pro virtuální počítače za předpokladu, že je v některé z [podporovaných oblastí](vm/vminsights-configure-workspace.md#supported-regions).
+Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru Log Analytics, můžete tento pracovní prostor i nadále používat při připojování k VIRTUÁLNÍm počítačům, pokud je v některé z [podporovaných oblastí](vm/vminsights-configure-workspace.md#supported-regions).
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Můžu se připojit k novému pracovnímu prostoru? 
-Pokud vaše virtuální počítače nejsou aktuálně připojené k existujícímu pracovnímu prostoru Log Analytics, je potřeba vytvořit nový pracovní prostor pro ukládání vašich dat. Vytvoření nového výchozího pracovního prostoru se provádí automaticky, pokud nakonfigurujete jeden virtuální počítač Azure pro Azure Monitor pro virtuální počítače prostřednictvím Azure Portal.
+Pokud vaše virtuální počítače nejsou aktuálně připojené k existujícímu pracovnímu prostoru Log Analytics, je potřeba vytvořit nový pracovní prostor pro ukládání vašich dat. Vytvoření nového výchozího pracovního prostoru se provádí automaticky, pokud nakonfigurujete jeden virtuální počítač Azure pro službu VM Insights prostřednictvím Azure Portal.
 
-Pokud se rozhodnete použít metodu založenou na skriptu, tyto kroky jsou pokryté v článku [povolení Azure monitor pro virtuální počítače pomocí Azure PowerShell nebo šablony Správce prostředků](./vm/vminsights-enable-powershell.md) . 
+Pokud se rozhodnete použít metodu založenou na skriptu, tyto kroky jsou pokryté v článku povolení informací o službě [VM Insights pomocí Azure PowerShell nebo správce prostředků šabloně](./vm/vminsights-enable-powershell.md) . 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Jak mám dělat, když už můj virtuální počítač hlásí stávající pracovní prostor?
-Pokud už data z virtuálních počítačů shromažďujete, je možné, že jste ji už nakonfigurovali k nahlášení dat do existujícího pracovního prostoru Log Analytics.  Pokud je tento pracovní prostor v některé z našich podporovaných oblastí, můžete Azure Monitor pro virtuální počítače do tohoto existujícího pracovního prostoru povolit.  Pokud pracovní prostor, který už používáte, není v některé z našich podporovaných oblastí, nebudete moct Azure Monitor pro virtuální počítače v tuto chvíli zaregistrovat.  Aktivně pracujeme na podpoře dalších oblastí.
+Pokud už data z virtuálních počítačů shromažďujete, je možné, že jste ji už nakonfigurovali k nahlášení dat do existujícího pracovního prostoru Log Analytics.  Pokud je tento pracovní prostor v některé z našich podporovaných oblastí, můžete povolit přehledy o virtuálních počítačích pro daný stávající pracovní prostor.  Pokud pracovní prostor, který už používáte, není v některé z našich podporovaných oblastí, nebudete moct v tuto chvíli připojit k virtuálnímu počítači.  Aktivně pracujeme na podpoře dalších oblastí.
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Proč se můj virtuální počítač nepovedlo zařadit do provozu?
@@ -763,7 +763,7 @@ Při připojování virtuálního počítače Azure z Azure Portal dojde k násl
 
 * Pokud je vybraná tato možnost, vytvoří se výchozí pracovní prostor Log Analytics.
 * Agent Log Analytics je nainstalovaný na virtuálních počítačích Azure pomocí rozšíření virtuálního počítače, pokud je to potřeba.  
-* Agent závislostí Azure Monitor pro virtuální počítače se nainstaluje na virtuální počítače Azure s použitím rozšíření, pokud je stanovený jako povinný. 
+* Agent závislosti mapy virtuálních počítačů se nainstaluje na virtuální počítače Azure s použitím rozšíření, pokud je to potřeba. 
 
 Během procesu připojení zkontrolujeme stav každé z výše uvedených a vrátíte na portálu stav oznámení. Konfigurace pracovního prostoru a instalace agenta obvykle trvá 5 až 10 minut. Zobrazení dat monitorování na portálu trvá dalších 5 až 10 minut.  
 
@@ -776,10 +776,10 @@ Naše grafy výkonu byly aktualizovány tak, aby používaly data uložená v ta
 Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](./vm/vminsights-enable-powershell.md).
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Jak se Azure Monitor pro virtuální počítače funkce map liší od Service Map?
-Funkce mapy Azure Monitor pro virtuální počítače je založena na Service Map, ale má následující rozdíly:
+### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>Jak se funkce map služby VM Insights liší od Service Map?
+Funkce mapy virtuálních počítačů je založená na Service Map, ale má následující rozdíly:
 
-* Zobrazení mapy je dostupné z okna virtuálního počítače a z Azure Monitor pro virtuální počítače v části Azure Monitor.
+* K zobrazení mapy se dá získat přístup z okna virtuálního počítače a z hlediska služby VM Insights v části Azure Monitor.
 * Připojení na mapě teď lze kliknout a zobrazit zobrazení dat metriky připojení na bočním panelu pro vybrané připojení.
 * K dispozici je nové rozhraní API, které slouží k vytváření map pro lepší podporu složitějších map.
 * Monitorované virtuální počítače jsou teď součástí uzlu skupiny klientů a prstencový graf zobrazuje poměr monitorovaných a nemonitorovaných virtuálních počítačů ve skupině.  Můžete ji také použít k filtrování seznamu počítačů při rozbalení skupiny.
@@ -787,19 +787,19 @@ Funkce mapy Azure Monitor pro virtuální počítače je založena na Service Ma
 * Styl mapy byl aktualizován tak, aby byl s mapou aplikace z Application Insights lépe konzistentní.
 * Postranní panely byly aktualizovány a nemají kompletní sadu integrace, které byly podporovány v Service Map-Update Management, Change Tracking, zabezpečení a oddělení služeb. 
 * Možnost výběru skupin a počítačů na mapě byla aktualizována a teď podporuje předplatná, skupiny prostředků, službu Azure Virtual Machine Scale Sets a cloudové služby.
-* Ve funkci mapování Azure Monitor pro virtuální počítače nelze vytvořit nové Service Map skupiny počítačů.  
+* Nemůžete vytvořit nové skupiny Service Map počítačů v rámci funkce mapa pro službu VM Insights.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Proč moje grafy výkonu zobrazují tečkované řádky?
 K tomu může dojít z několika důvodů.  V případech, kdy existuje mezera v kolekci dat, můžeme řádky považovat za tečky.  Pokud jste upravili četnost vzorkování dat pro povolené čítače výkonu (výchozí nastavení je shromažďování dat každých 60 sekund), tečkované čáry v grafu se zobrazí, pokud vyberete úzký časový rozsah grafu a frekvence vzorkování je menší než velikost intervalu použitá v grafu (například frekvence vzorkování je každých 10 minut a každé pole v grafu je 5 minut).  Když zvolíte širší časový rozsah, který se má zobrazit, musí se čáry grafu zobrazovat jako plné čáry místo teček v tomto případě.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Jsou skupiny podporované pomocí Azure Monitor pro virtuální počítače?
+### <a name="are-groups-supported-with-vm-insights"></a>Jsou skupiny podporované pomocí přehledů virtuálních počítačů?
 Ano, Jakmile nainstalujete agenta závislostí, shromáždíme informace z virtuálních počítačů pro zobrazení skupin na základě předplatného, skupiny prostředků, sady škálování virtuálních počítačů a cloudových služeb.  Pokud jste používali Service Map a vytvořili jste skupiny počítačů, zobrazí se také.  Skupiny počítačů se zobrazí také ve filtru skupiny, pokud jste je vytvořili pro pracovní prostor, který si prohlížíte. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Návody se zobrazí podrobnosti o tom, co řídí řádek 95. percentilu v agregovaných grafech výkonu?
 Ve výchozím nastavení je seznam seřazený tak, aby se zobrazily virtuální počítače s nejvyšší hodnotou 95. percentilu pro vybranou metriku, s výjimkou dostupného grafu paměti, který zobrazuje počítače s nejnižší hodnotou 5. percentilu.  Když kliknete na graf, otevře se zobrazení **horních seznamů**  s odpovídající vybranou metrikou.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Jak funkce map zpracovává duplicitní IP adresy napříč různými virtuální sítě a podsítěmi?
-Pokud duplikujete rozsahy IP adres buď pomocí virtuálních počítačů, nebo virtuálních počítačů Azure pro škálování v podsítích a virtuální sítě, může to způsobit, že Azure Monitor pro virtuální počítače mapa zobrazí nesprávné informace. Jedná se o známý problém a chystáme se prozkoumat možnosti pro zlepšení tohoto prostředí.
+Pokud duplikujete rozsahy IP adres buď pomocí virtuálních počítačů, nebo virtuálních počítačů Azure pro škálování v podsítích a virtuální sítě, může to způsobit, že mapa služby VM Insights zobrazí nesprávné informace. Jedná se o známý problém a chystáme se prozkoumat možnosti pro zlepšení tohoto prostředí.
 
 ### <a name="does-map-feature-support-ipv6"></a>Podporuje funkce mapy protokol IPv6?
 Funkce map aktuálně podporuje jenom protokol IPv4 a prozkoumáme podporu pro protokol IPv6. Podporujeme také protokol IPv4, který je tunelem v rámci protokolu IPv6.
@@ -809,7 +809,7 @@ I když jsme vylepšili mapování na zpracování rozsáhlých a složitých ko
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Proč se síťový graf na kartě výkon liší od síťového grafu na stránce Přehled virtuálního počítače Azure?
 
-Stránka s přehledem pro virtuální počítač Azure zobrazuje grafy založené na měření aktivity hostitele v hostovaném virtuálním počítači.  V článku Přehled síťového grafu na virtuálním počítači Azure se zobrazí jenom síťový provoz, který se bude fakturovat.  To nezahrnuje přenos mezi virtuálními sítěmi.  Data a grafy zobrazené pro Azure Monitor pro virtuální počítače jsou založené na datech z virtuálního počítače hosta a v síťovém grafu se zobrazují všechny přenosy protokolu TCP/IP, které jsou příchozí a odchozí pro tento virtuální počítač, včetně mezi virtuálními sítěmi.
+Stránka s přehledem pro virtuální počítač Azure zobrazuje grafy založené na měření aktivity hostitele v hostovaném virtuálním počítači.  V článku Přehled síťového grafu na virtuálním počítači Azure se zobrazí jenom síťový provoz, který se bude fakturovat.  To nezahrnuje přenos mezi virtuálními sítěmi.  Data a grafy zobrazené pro službu VM Insights jsou založené na datech z virtuálního počítače hosta a v síťovém grafu se zobrazují všechny přenosy protokolu TCP/IP, které jsou příchozí a odchozí pro tento virtuální počítač, včetně mezi virtuálními sítěmi.
 
 ### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Jak je měřena doba odezvy pro data uložená v VMConnection a zobrazená na panelu připojení a sešitech?
 
@@ -818,9 +818,9 @@ Doba odezvy je aproximace. Vzhledem k tomu, že kód aplikace neznáte, nevíte 
 Tato aproximace funguje dobře u protokolů, které jsou založené na požadavcích a odpovědích: jedna žádost se na připojení doprovází a přijde jedna odpověď. Jedná se o případ HTTP (S) (bez použití kanálů), ale nevyhovuje pro jiné protokoly.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Existují nějaká omezení, pokud mám Log Analytics cenového plánu zdarma?
-Pokud jste nakonfigurovali Azure Monitor s pracovním prostorem Log Analytics pomocí *bezplatné* cenové úrovně, funkce Azure monitor pro virtuální počítače map bude podporovat jenom pět připojených počítačů připojených k pracovnímu prostoru. Pokud máte pět virtuálních počítačů připojených k bezplatnému pracovnímu prostoru, odpojíte jeden z virtuálních počítačů a později se připojíte k novému VIRTUÁLNÍmu počítači, nový virtuální počítač se nemonitoruje a neprojeví se na stránce Mapa.  
+Pokud jste nakonfigurovali Azure Monitor s pracovním prostorem Log Analytics pomocí *bezplatné* cenové úrovně, funkce mapy virtuálních počítačů bude podporovat jenom pět připojených počítačů připojených k pracovnímu prostoru. Pokud máte pět virtuálních počítačů připojených k bezplatnému pracovnímu prostoru, odpojíte jeden z virtuálních počítačů a později se připojíte k novému VIRTUÁLNÍmu počítači, nový virtuální počítač se nemonitoruje a neprojeví se na stránce Mapa.  
 
-V rámci této podmínky budete po otevření virtuálního počítače vyzváni v možnosti **vyzkoušet nyní** a v levém podokně vyberte **přehledy** , i když už je nainstalovaný na virtuálním počítači.  Nebudete ale mít k možnost, která by normálně probíhala, pokud se tento virtuální počítač nepřipojil k Azure monitor pro virtuální počítače. 
+V rámci této podmínky budete po otevření virtuálního počítače vyzváni v možnosti **vyzkoušet nyní** a v levém podokně vyberte **přehledy** , i když už je nainstalovaný na virtuálním počítači.  Nebudete ale mít k možnost, která by normálně probíhala v případě, že tento virtuální počítač nebyl připojen k virtuálnímu počítači Insights. 
 
 
 ## <a name="next-steps"></a>Další kroky

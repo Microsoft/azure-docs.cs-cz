@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723822"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s řešením Change Tracking a Inventory
 
@@ -34,7 +34,7 @@ Počítač už je nasazený do jiného pracovního prostoru pro Change Tracking.
 
 ### <a name="resolution"></a>Řešení
 
-1. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak to ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky** vyberete **propojený pracovní prostor** .
+1. Ujistěte se, že váš počítač hlásí správný pracovní prostor. Pokyny k tomu, jak to ověřit, najdete v tématu [ověření připojení agenta k Azure monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Také se ujistěte, že je tento pracovní prostor propojený s vaším účtem Azure Automation. Potvrďte to tak, že přejdete na svůj účet Automation a v části **související prostředky** vyberete **propojený pracovní prostor** .
 
 1. Ujistěte se, že se počítače zobrazí v pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation. Spusťte následující dotaz v pracovním prostoru Log Analytics.
 

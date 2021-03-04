@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 482e6c9f2e25b867574090a1f34e95f466916ba9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711837"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
@@ -26,6 +26,7 @@ Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným
 |Přístup k protokolům     |SYSTÉM SOUBORŮ NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Doporučený operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
 |[Dostupné úrovně](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage, transakce optimalizovaná, horká, studená         |
+|Model fakturace         |[Plaťte za zřízenou kapacitu](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model)         |[Platíte za zřízenou kapacitu pro úroveň Premium](https://docs.microsoft.com/azure/storage/files/understanding-billing#provisioned-model), průběžné [platby pro úroveň Standard](https://docs.microsoft.com/azure/storage/files/understanding-billing#pay-as-you-go-model)         |
 |[Redundance](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Authentication     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
 |Oprávnění     |Oprávnění ve stylu systému UNIX         |Oprávnění ve stylu NTFS         |

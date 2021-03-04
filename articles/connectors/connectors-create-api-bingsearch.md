@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716546"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Výsledky hledání Vyhledávání Bingu pomocí Azure Logic Apps
 
@@ -52,11 +52,11 @@ Nebo, pokud připojení již existuje, zadejte potřebné informace pro aktivač
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | Vyhledávací dotaz | Yes | <*Hledat slova*> | Zadejte klíčová slova pro hledání, která chcete použít. |
-   | Uvádět | Yes | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
-   | Bezpečné vyhledávání | Yes | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Počet | No | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
-   | Posun | No | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
+   | Vyhledávací dotaz | Ano | <*Hledat slova*> | Zadejte klíčová slova pro hledání, která chcete použít. |
+   | Uvádět | Ano | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
+   | Bezpečné vyhledávání | Ano | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
+   | Počet | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Posun | Ne | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
    Například:
@@ -103,11 +103,11 @@ V seznamu akce vyberte akci, kterou chcete.
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | Vyhledávací dotaz | Yes | <*výraz hledání*> | Zadejte výraz pro dotazování na výsledky triggeru. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořit výraz pomocí Tvůrce výrazů. |
-   | Uvádět | Yes | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
-   | Bezpečné vyhledávání | Yes | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
-   | Počet | No | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
-   | Posun | No | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
+   | Vyhledávací dotaz | Ano | <*výraz hledání*> | Zadejte výraz pro dotazování na výsledky triggeru. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořit výraz pomocí Tvůrce výrazů. |
+   | Uvádět | Ano | <*jazyka*> | Národní prostředí hledání Výchozí hodnota je "en-US", ale můžete vybrat jinou hodnotu. |
+   | Bezpečné vyhledávání | Ano | <*úroveň vyhledávání*> | Úroveň filtru pro vyloučení obsahu pro dospělé. Výchozí hodnota je "střední", ale vyberete jinou úroveň. |
+   | Počet | Ne | <*výsledky – počet*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být menší než zadané číslo. |
+   | Posun | Ne | <*Přeskočit hodnotu*> | Počet výsledků, které se mají přeskočit před vrácením výsledků |
    |||||
 
    Předpokládejme například, že chcete, aby výsledky, jejichž název kategorie obsahuje slovo "tech".
@@ -150,9 +150,9 @@ V seznamu akce vyberte akci, kterou chcete.
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | Název připojení | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | Verze rozhraní API | Yes | <*Verze API-Version*> | Ve výchozím nastavení je verze rozhraní Vyhledávání Bingu API nastavená na aktuální verzi. V případě potřeby můžete vybrat starší verzi. |
-   | Klíč rozhraní API | Yes | <*Klíč rozhraní API*> | Vyhledávání Bingu klíč rozhraní API, který jste získali dříve. Pokud klíč nemáte, Získejte [hned svůj klíč rozhraní API](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Název připojení | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | Verze rozhraní API | Ano | <*Verze API-Version*> | Ve výchozím nastavení je verze rozhraní Vyhledávání Bingu API nastavená na aktuální verzi. V případě potřeby můžete vybrat starší verzi. |
+   | Klíč rozhraní API | Ano | <*Klíč rozhraní API*> | Vyhledávání Bingu klíč rozhraní API, který jste získali dříve. Pokud klíč nemáte, Získejte [hned svůj klíč rozhraní API](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Například:

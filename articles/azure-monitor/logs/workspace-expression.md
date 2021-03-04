@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 9ce9957d348fc9d57ff688408d6aaade67e95465
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b1f850b262a0027d3a9cb2e926bcb2c8a49665
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611980"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710902"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>výraz pracovního prostoru () v Azure Monitor dotaz protokolu
 
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [výraz aplikace](../log-query/app-expression.md) , který odkazuje na aplikaci Application Insights.
-- Přečtěte si informace o tom, jak jsou uložená [data Azure monitor](../log-query/log-query-overview.md) .
+- Podívejte se na [výraz aplikace](./app-expression.md) , který odkazuje na aplikaci Application Insights.
+- Přečtěte si informace o tom, jak jsou uložená [data Azure monitor](./log-query-overview.md) .
 - Přístup k celé dokumentaci pro [dotazovací jazyk Kusto](/azure/kusto/query/).

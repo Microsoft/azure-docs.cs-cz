@@ -3,12 +3,12 @@ title: Live video Analytics na IoT Edge Nejčastější dotazy – Azure
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se analýzy živých videí na IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702245"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Nejčastější dotazy k analýze videí na IoT Edge
 
@@ -170,7 +170,7 @@ U rozšíření gRPC je každá relace pro jeden kanál kamery, takže není nut
 
 **Má všechny ProcessMediaStreams na konkrétním kontejneru spustit stejný model AI?** 
 
-Ne. Spuštění nebo zastavení volání koncového uživatele v instanci grafu představuje relaci, nebo pravděpodobně dojde k odpojení kamery nebo opětovnému připojení. Cílem je zachovat jednu relaci, pokud je kamera streamovaná videem. 
+No. Spuštění nebo zastavení volání koncového uživatele v instanci grafu představuje relaci, nebo pravděpodobně dojde k odpojení kamery nebo opětovnému připojení. Cílem je zachovat jednu relaci, pokud je kamera streamovaná videem. 
 
 * Dva kamery odesílající video ke zpracování vytvoří dvě relace. 
 * Jeden fotoaparát do grafu, který má dva uzly rozšíření gRPC, vytvoří dvě relace. 
@@ -230,7 +230,7 @@ Ano. Můžete využívat metriky Prometheus a publikovat je do služby Event Gri
 
 **Můžu použít Azure Monitor k zobrazení stavu, metrik a výkonu mých grafů multimédií v cloudu nebo na hraničních zařízeních?**
 
-Ano, podporujeme tento přístup. Další informace najdete v tématu [Přehled metrik Azure monitor](../../azure-monitor/platform/data-platform-metrics.md).
+Ano, podporujeme tento přístup. Další informace najdete v tématu [Přehled metrik Azure monitor](../../azure-monitor/essentials/data-platform-metrics.md).
 
 **Existují nějaké nástroje, které usnadňují monitorování Media Services IoT Edge modulu?**
 

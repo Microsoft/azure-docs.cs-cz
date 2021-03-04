@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727154"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Osvědčené postupy pro zajištění optimálního výkonu Azure Database for MySQL a jednoho serveru
 
@@ -65,7 +65,7 @@ Doporučujeme otestovat a monitorovat čas restartování, aby se zajistilo, že
 Pokud chcete uložit stav fondu vyrovnávací paměti při vypnutí serveru, nastavte parametr serveru `innodb_buffer_pool_dump_at_shutdown` na `ON` . Podobně nastavte parametr serveru `innodb_buffer_pool_load_at_startup` na `ON` Obnovit stav fondu vyrovnávací paměti při spuštění serveru. Vlivem a vyladěním hodnoty parametru serveru můžete ovlivnit čas spuštění a restartování `innodb_buffer_pool_dump_pct` . Ve výchozím nastavení je tento parametr nastaven na hodnotu `25` .
 
 > [!Note]
-> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> Parametry zahřívání fondu vyrovnávací paměti InnoDB se podporují jenom v serverech úložiště pro obecné účely s úložištěm o velikosti až 16 TB. Další informace o [možnostech úložiště Azure Database for MySQL najdete tady](./concepts-pricing-tiers.md#storage).
 
 ## <a name="next-steps"></a>Další kroky
 

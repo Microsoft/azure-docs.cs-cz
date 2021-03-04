@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 4f9cc8321d5d1d19dbcb8294ad6205b01337ee72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715050"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Přehled provozní kontinuity pomocí Azure Database for MySQL-flexibilního serveru (Preview)
 
@@ -27,7 +27,7 @@ Následující tabulka znázorňuje funkce flexibilní nabídky serveru.
 | **Zálohování & obnovení** | Flexibilní server automaticky provádí každodenní zálohování souborů databáze a průběžně zálohuje transakční protokoly. Zálohy je možné uchovávat po dobu od 1 do 35 dnů. Databázový server budete moct obnovit do libovolného bodu v čase v rámci doby uchovávání záloh. Čas obnovení bude závislý na velikosti dat, která se mají obnovit, a času k provedení obnovení protokolu. Další podrobnosti najdete v tématu [Koncepty – zálohování a obnovení](./concepts-backup-restore.md) . |Zálohovaná data zůstávají v rámci oblasti. |
 | **Místní redundantní zálohování** | Flexibilní zálohování serveru se automaticky a bezpečně ukládají v rámci oblasti a ve stejné zóně dostupnosti v místním redundantním úložišti. Místně redundantní zálohy replikují soubory zálohovacích dat serveru třikrát v jednom fyzickém umístění v primární oblasti. Místně redundantní úložiště záloh poskytuje v průběhu daného roku alespoň 99,999999999% (11 devíti) odolnosti objektů. Další podrobnosti najdete v tématu [Koncepty – zálohování a obnovení](./concepts-backup-restore.md) .| Platí pro všechny oblasti |
 | **Redundantní vysoká dostupnost zóny** | Flexibilní Server se dá nasadit v režimu vysoké dostupnosti, který nasadí primární a pohotovostní servery ve dvou různých zónách dostupnosti v rámci jedné oblasti. Tato akce se chrání před selháním na úrovni zóny a také pomáhá snižovat prostoje aplikací během plánovaných a neplánovaných výpadků. Data z primárního serveru se synchronně replikují do záložní repliky. Během jakékoliv výpadky se databázový server automaticky převezme z pohotovostní repliky. Další podrobnosti najdete v tématu [Koncepty – vysoká dostupnost](./concepts-high-availability.md) . | Podporováno pro výpočetní úrovně pro obecné účely a paměťově optimalizované. K dispozici pouze v oblastech, kde je k dispozici více zón.|
-| **Soubory ke sdílení souborů úrovně Premium** | Soubory databáze jsou uložené v vysoce trvalých a spolehlivých sdílených složkách Azure Premium, které poskytují redundanci dat se třemi kopiemi repliky uloženými v zóně dostupnosti s využitím automatických možností obnovení dat. Další podrobnosti najdete v tématu [sdílené složky úrovně Premium](../../storage/files/storage-how-to-create-premium-fileshare.md) . | Data uložená v rámci zóny dostupnosti |
+| **Soubory ke sdílení souborů úrovně Premium** | Soubory databáze jsou uložené v vysoce trvalých a spolehlivých sdílených složkách Azure Premium, které poskytují redundanci dat se třemi kopiemi repliky uloženými v zóně dostupnosti s využitím automatických možností obnovení dat. Další podrobnosti najdete v tématu [sdílené složky úrovně Premium](../../storage/files/storage-how-to-create-file-share.md) . | Data uložená v rámci zóny dostupnosti |
 
 > [!IMPORTANT]
 > Během období Preview se nenabízí smlouva SLA pro dobu provozu, RTO a RPO. Podrobnosti uvedené na této stránce pro vaše informace a účely plánování.
@@ -42,7 +42,7 @@ Tady je několik plánovaných scénářů údržby, které účtují výpadky:
 | **Nové nasazení softwaru (Azure)** | Nové opravy funkcí nebo opravy chyb se automaticky nastávají v rámci plánované údržby služby a můžete naplánovat, kdy se tyto aktivity budou provádět. Další informace najdete v [dokumentaci](https://aka.ms/servicehealthpm)a také na [portálu](https://aka.ms/servicehealthpm) . |
 | **Upgrady dílčí verze (Azure)** | Azure Database for MySQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. To by znamenalo krátké výpadky v sekundách a databázový server se automaticky restartuje s novou podverzí. Další informace najdete v [dokumentaci](../concepts-monitoring.md#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
 
-Pokud je flexibilní server nakonfigurovaný s **vysokou dostupností zóny** , provede flexibilní Server nejdřív operace na pohotovostním serveru a pak na primárním serveru bez převzetí služeb při selhání. Další podrobnosti najdete v tématu [Koncepty – vysoká dostupnost](./concepts-high-availability.md) .
+Pokud je flexibilní server nakonfigurovaný s **vysokou dostupností zóny**, provede flexibilní Server nejdřív operace na pohotovostním serveru a pak na primárním serveru bez převzetí služeb při selhání. Další podrobnosti najdete v tématu [Koncepty – vysoká dostupnost](./concepts-high-availability.md) .
 
 ## <a name="unplanned-downtime-mitigation"></a>Zmírnění neplánovaných výpadků
 

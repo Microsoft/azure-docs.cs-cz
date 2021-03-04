@@ -42,7 +42,7 @@ Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by m�
 
 ## <a name="storage-account-double-encryption"></a>Dvojité šifrování účtu úložiště
 
-Účty úložiště podporují dvojité šifrování, ale druhá vrstva musí být explicitně povolená. V části [Azure Storage šifrování pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption)neaktivní neaktivní data.  
+Účty úložiště podporují dvojité šifrování, ale druhá vrstva musí být explicitně povolená. V části [Azure Storage šifrování pro](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)neaktivní neaktivní data.  
 
 ## <a name="storage-account-errors"></a>Chyby účtu úložiště
 

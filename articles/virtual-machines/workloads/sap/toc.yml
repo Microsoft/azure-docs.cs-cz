@@ -197,6 +197,8 @@
               href: high-availability-guide-rhel.md
             - name: HA v Red Hat Enterprise Linuxu pro instanci (A)SCS s využitím Azure NetApp Files
               href: high-availability-guide-rhel-netapp-files.md
+            - name: Velké instance HA pro SAP v RHEL
+              href: large-instance-high-availability-rhel.md
         - name: Příprava infrastruktury Azure
           items:
             - name: Windows se sdíleným diskem pro instanci (A)SCS

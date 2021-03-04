@@ -1,26 +1,26 @@
 ---
-title: Kubernetes monitorování pomocí Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s Azure Monitor pro kontejnery.
+title: Kubernetes monitorování pomocí kontejneru Insights | Microsoft Docs
+description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s využitím služby Container Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612430"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711344"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Monitorování výkonu clusteru Kubernetes pomocí služby Container Insights
 
-Díky Azure Monitor pro kontejnery můžete pomocí grafů výkonu a stavu monitorovat úlohy Kubernetes clusterů hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí ze dvou perspektiv. Můžete monitorovat přímo z clusteru nebo můžete zobrazit všechny clustery v rámci předplatného Azure Monitor. Zobrazení Azure Container Instances je také možné při monitorování konkrétního clusteru AKS.
+Díky službě Container Insights můžete pomocí diagramů výkonu a stavu monitorovat úlohy Kubernetes clusterů hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiné prostředí ze dvou perspektiv. Můžete monitorovat přímo z clusteru nebo můžete zobrazit všechny clustery v rámci předplatného Azure Monitor. Zobrazení Azure Container Instances je také možné při monitorování konkrétního clusteru AKS.
 
 Tento článek vám pomůže pochopit dvě perspektivy a jak Azure Monitor vám pomůže rychle posoudit, prozkoumat a vyřešit zjištěné problémy.
 
-Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu připojení [Azure monitor kontejnerů](container-insights-onboard.md).
+Informace o tom, jak povolit službu Container Insights, najdete v tématu [zprovoznění služby Container Insights](container-insights-onboard.md).
 
 Azure Monitor poskytuje zobrazení více clusterů, které zobrazuje stav všech monitorovaných clusterů Kubernetes se systémem Linux a Windows Server 2019 nasazených ve skupinách prostředků ve vašich předplatných. Zobrazuje clustery zjištěné ve všech prostředích, která nejsou monitorovaná řešením. Stav clusteru můžete okamžitě pochopit a z tohoto místa můžete přejít k podrobnostem na stránce s výkonem uzlů a kontroléru nebo přejít k zobrazení grafů výkonu pro cluster. U clusterů AKS, které byly zjištěny a identifikovány jako nemonitorované, můžete kdykoli povolit monitorování.
 
-Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro kontejnery v porovnání s clusterem se systémem Linux jsou popsány [zde](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) v článku Přehled.
+Hlavní rozdíly v monitorování clusteru Windows serveru s využitím služby Container Insights v porovnání s clusterem Linux [jsou popsané v](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) článku Přehled.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -37,7 +37,7 @@ Můžete určit rozsah výsledků prezentovaných v mřížce a zobrazit tak clu
 * Clustery **Azure** – AKS a AKS-Engine hostované ve službě Azure Kubernetes
 * **Azure Stack (Preview)** – AKS-Engine clustery hostované v Azure Stack
 * **Mimo Azure (Preview)** – Kubernetes clustery jsou hostované místně.
-* **Vše** – zobrazení všech clusterů Kubernetes hostovaných v Azure, Azure Stack a místních prostředích, která jsou zaregistrovaná Azure monitor pro kontejnery
+* **Vše** – zobrazení všech clusterů Kubernetes hostovaných v Azure, Azure Stack a místních prostředích, která jsou zaregistrovaná do služby Container Insights
 
 Pokud chcete zobrazit clustery z konkrétního prostředí, vyberte ji v části **prostředí** v levém horním rohu stránky.
 
@@ -59,7 +59,7 @@ K dispozici jsou tyto stavy:
 * **Nenalezeno**: pracovní prostor, skupinu prostředků nebo předplatné obsahující pracovní prostor pro toto řešení bylo odstraněno.
 * **Neautorizováno**: uživatel nemá požadovaná oprávnění ke čtení dat v pracovním prostoru.
 * **Chyba**: při pokusu o čtení dat z pracovního prostoru došlo k chybě.
-* Nesprávně **nakonfigurované**: Azure monitor pro kontejnery se v zadaném pracovním prostoru správně nenakonfigurovaly.
+* Nesprávně **nakonfigurované**: v zadaném pracovním prostoru se nepovedlo správně nakonfigurovat kontejner Insights.
 * **Žádná data**: za posledních 30 minut se v pracovním prostoru nenahlásila žádná data.
 
 Služba Health (stav) počítá celkový stav clusteru jako *nejhorší ze* tří stavů s jednou výjimkou. Pokud některý ze tří stavů není znám, celkový stav clusteru zobrazuje **Neznámý**.
@@ -88,7 +88,7 @@ V seznamu clusterů můžete přejít na stránku **clusteru** tak, že vyberete
 
 ## <a name="view-performance-directly-from-a-cluster"></a>Zobrazení výkonu přímo z clusteru
 
-Přístup k Azure monitor pro kontejnery je k dispozici přímo z clusteru AKS výběrem možnosti  >  **cluster** Insights v levém podokně nebo při výběru clusteru ze zobrazení více clusterů. Informace o clusteru jsou rozdělené do čtyř perspektiv:
+Přístup k kontejneru Insights je k dispozici přímo z clusteru AKS výběrem možnosti  >  **cluster** Insights v levém podokně nebo při výběru clusteru ze zobrazení více clusterů. Informace o clusteru jsou rozdělené do čtyř perspektiv:
 
 - Cluster
 - Uzly
@@ -109,13 +109,13 @@ Grafy výkonu zobrazují čtyři metriky výkonu:
 - **Počet uzlů**: počet uzlů a stav z Kubernetes. Stavy clusterů, které jsou reprezentovány, jsou celkem, připravené a nejsou připravené. Je možné je filtrovat individuálně nebo kombinovat v selektoru nad grafem.
 - **Počet aktivních pod**: počet pod a stav z Kubernetes. Stavy, které jsou reprezentovány, jsou celkem, čeká, spuštěno, neznámý, úspěch nebo selhání. Je možné je filtrovat individuálně nebo kombinovat v selektoru nad grafem.
 
-Pomocí šipek vlevo a vpravo můžete cyklicky přepínat mezi jednotlivými datovými body v grafu. Pomocí šipek nahoru a dolů můžete cyklicky procházet řádky percentilu. Vyberte ikonu připnutí v pravém horním rohu libovolného grafu, abyste mohli vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na Azure Monitor pro kontejnery a načte správný rozsah a zobrazení.
+Pomocí šipek vlevo a vpravo můžete cyklicky přepínat mezi jednotlivými datovými body v grafu. Pomocí šipek nahoru a dolů můžete cyklicky procházet řádky percentilu. Vyberte ikonu připnutí v pravém horním rohu libovolného grafu, abyste mohli vybraný graf připnout na poslední prohlížený řídicí panel Azure. Z řídicího panelu můžete změnit velikost grafu nebo změnit jeho umístění. Výběr grafu z řídicího panelu vás přesměruje na kontejner Insights a načte správný rozsah a zobrazení.
 
-Azure Monitor for Containers také podporuje [Průzkumníka metrik](../essentials/metrics-getting-started.md)Azure monitor, kde můžete vytvářet vlastní diagramy, sladit a prozkoumat trendy a připnout je na řídicí panely. Z Průzkumníka metrik můžete také použít kritéria, která jste nastavili k vizualizaci metrik, jako základ pro [pravidlo upozornění založené na metrikách](../alerts/alerts-metric.md).
+Container Insights také podporuje Azure Monitor [Průzkumník metrik](../essentials/metrics-getting-started.md), kde můžete vytvářet vlastní diagramy, sladit a prozkoumat trendy a připnout je na řídicí panely. Z Průzkumníka metrik můžete také použít kritéria, která jste nastavili k vizualizaci metrik, jako základ pro [pravidlo upozornění založené na metrikách](../alerts/alerts-metric.md).
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Zobrazit metriky kontejneru v Průzkumníkovi metrik
 
-V Průzkumníku metrik můžete zobrazit agregované metriky využití uzlů a pod Azure Monitor pro kontejnery. Následující tabulka shrnuje podrobnosti, které vám pomůžou pochopit, jak používat grafy metrik k vizualizaci metrik kontejnerů.
+V Průzkumníkovi metriky můžete zobrazit agregované metriky využití uzlů a pod kontejnerem Insights. Následující tabulka shrnuje podrobnosti, které vám pomůžou pochopit, jak používat grafy metrik k vizualizaci metrik kontejnerů.
 
 |Obor názvů | Metric | Popis |
 |----------|--------|-------------|
@@ -297,12 +297,12 @@ Správce zásad sítě Azure zahrnuje informativní metriky Prometheus, které v
 
 ## <a name="workbooks"></a>Workbooks
 
-Sešity kombinují text, dotazy protokolů, metriky a parametry do propracovaných interaktivních sestav, které umožňují analyzovat výkon clusteru. Popis sešitů dostupných pro Azure Monitor kontejnerů najdete [v tématu sešity v Azure monitor for Containers](../insights/container-insights-reports.md) .
+Sešity kombinují text, dotazy protokolů, metriky a parametry do propracovaných interaktivních sestav, které umožňují analyzovat výkon clusteru. Popis sešitů dostupných pro službu Container Insights najdete [v tématu sešity ve službě Container Insights](../insights/container-insights-reports.md) .
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si téma [vytvoření výstrah výkonu pomocí Azure monitor pro kontejnery](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
+- Přečtěte si téma [vytvoření výstrah výkonu pomocí služby Container Insights](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
 
 - V [příkladech dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) si můžete prohlédnout předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizaci nebo analýze clusterů.
 

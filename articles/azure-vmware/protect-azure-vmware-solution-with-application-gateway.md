@@ -3,12 +3,12 @@ title: Použití Azure Application Gateway k ochraně webových aplikací v ře�
 description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733580"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
@@ -35,7 +35,7 @@ Diagram znázorňuje scénář testování, který slouží k ověření Applica
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagram znázorňující scénář testování, který slouží k ověření Application Gateway pomocí webových aplikací řešení Azure VMware." border="false":::
 
-Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný na privátním cloudu řešení Azure VMware za NSX T0 a T1 Gateway. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
+Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) pro virtuální síť. Webový server je hostovaný na privátním cloudu řešení Azure VMware za NSX T0 a T1 Gateway. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -193,3 +193,4 @@ Teď, když jste se seznámili s používáním Application Gateway k ochraně w
 - [Konfigurace Azure Application Gateway pro různé scénáře](../application-gateway/configuration-overview.md).
 - [Nasazuje se Traffic Manager pro vyrovnávání zatížení řešení Azure VMware](deploy-traffic-manager-balance-workloads.md).
 - [Integrace Azure NetApp Files s využitím úloh Azure VMware pro řešení](netapp-files-with-azure-vmware-solution.md).
+- [Ochrana prostředků Azure ve virtuálních sítích](../ddos-protection/ddos-protection-overview.md)

@@ -818,6 +818,8 @@
               href: enable-notebooks.md
             - name: Import poznámkových bloků z GitHubu
               href: import-github-notebooks.md
+            - name: Publikování poznámkových bloků do galerie
+              href: publish-notebook-gallery.md
             - name: Použití integrovaných příkazů poznámkového bloku v Pythonu
               href: use-python-notebook-features-and-commands.md
             - name: Použití integrovaných příkazů poznámkového bloku v C#

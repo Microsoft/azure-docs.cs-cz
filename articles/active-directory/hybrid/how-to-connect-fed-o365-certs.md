@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661447"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686865"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Prodloužit platnost federačních certifikátů pro Microsoft 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -106,9 +106,9 @@ Ve výstupu Get-MsolFederationProperty nebo Get-AdfsCertificate ověřte, že da
 
 | AutoCertificateRollover | Synchronizace certifikátů s Azure AD | Federační metadata jsou veřejně přístupná. | Obou | Akce |
 |:---:|:---:|:---:|:---:|:---:|
-| Yes |Yes |Yes |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
-| Yes |No |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
-| No |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Ano |Ano |Ano |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
+| Ano |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Ne |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
 \[-] Nezáleží
 
@@ -157,7 +157,7 @@ Na druhé straně, pokud je **AutoCertificateRollover** nastavené na **hodnotu 
    >
 3. Podívejte se na výstup příkazu na libovolných uvedených certifikátech. Pokud AD FS vygeneroval nový certifikát, měli byste vidět dva certifikáty ve výstupu: jeden, pro který je **primární** hodnota **true** , a datum **NotAfter** spadá do 5 dnů a jedna, pro kterou je **primární** hodnota **false** , a **NotAfter** je přibližně ročně v budoucnosti.
 4. Pokud vidíte jenom jeden certifikát a datum **NotAfter** je do 5 dní, musíte vygenerovat nový certifikát.
-5. Pokud chcete vygenerovat nový certifikát, spusťte na příkazovém řádku PowerShellu následující příkaz: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+5. Pokud chcete vygenerovat nový certifikát, spusťte na příkazovém řádku PowerShellu následující příkaz: `PS C:\Update-ADFSCertificate –CertificateType token-signing` .
 6. Ověřte aktualizaci tak, že znovu spustíte následující příkaz: PS C: \> Get-ADFSCertificate – CertificateType token-signing
 
 Nyní by měly být uvedeny dva certifikáty, z nichž jedna má **NotAfter** datum v budoucnosti, a pro kterou je **primární** hodnota **false**.

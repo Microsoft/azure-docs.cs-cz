@@ -8,42 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: af7c3f85a75cfb425003b0da2af268fbba1d1d10
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736606"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
 #### <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment-analysis)
 
-| Jazyk              | Kód jazyka | Podpora v2 | Podpora V3 | Spouští se verze modelu V3: |              Poznámky |
-|:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Čínština (zjednodušená)    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` také přijato |
-| Čínština (tradiční)   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
-| Dánština               |     `da`      |     ✓      |            |                            |                    |
-| Nizozemština                 |     `nl`      |     ✓      |            |                            |                    |
-| Angličtina               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Finština               |     `fi`      |     ✓      |            |                            |                    |
-| Francouzština                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Němčina                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Řečtina                 |     `el`      |     ✓      |            |                            |                    |
-| Hindština                 |     `hi`      |            |      ✓     |          2020-04-01        |                    |
-| Italština               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Japonština              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Korejština                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norština (Bokmål)   |     `no`      |     ✓      |     ✓      |         2020-07-01         |                    |
-| Polština                |     `pl`      |     ✓      |            |                            |                    |
-| Portugalština (Brazílie)   |    `pt-BR`    |            |     ✓      |         2020-04-01         |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` také přijato |
-| Ruština               |     `ru`      |     ✓      |            |                            |                    |
-| Španělština               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Švédština               |     `sv`      |     ✓      |            |                            |                    |
-| Turečtina               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
+| Jazyk              | Kód jazyka | Podpora V3 | Spouští se verze modelu V3: |              Poznámky |
+|:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
+| Čínština (zjednodušená)    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` také přijato |
+| Čínština (tradiční)   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
+| Angličtina               |     `en`      |     ✓      |         2019-10-01         |                    |
+| Francouzština                |     `fr`      |     ✓      |         2019-10-01         |                    |
+| Němčina                |     `de`      |     ✓      |         2019-10-01         |                    |
+| Italština               |     `it`      |     ✓      |         2019-10-01         |                    |
+| Japonština              |     `ja`      |     ✓      |         2019-10-01         |                    |
+| Korejština                |     `ko`      |    ✓      |         2019-10-01         |                    |
+| Norština (Bokmål)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` také přijato |
+| Španělština               |     `es`      |     ✓      |         2019-10-01         |                    |
+| Turečtina               |     `tr`      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Dolování stanovisek (verze 3.1 – Preview)
 
@@ -85,31 +77,46 @@ ms.locfileid: "99092580"
 
 #### <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/key-phrase-extraction)
 
-| Jazyk              | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: |       Poznámky        |
-|:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
-| Dánština                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
-| Nizozemština                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Angličtina               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Finština               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Francouzština                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Němčina                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Italština               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Japonština              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Korejština                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norština (Bokmål)   |     `no`      |     ✓      |     ✓      |                2020-07-01                 | `nb` také přijato |
-| Polština                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
-| portugalština (Portugalsko) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` také přijato |
-| Ruština               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Španělština               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Švédština               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Jazyk              | Kód jazyka |  Podpora V3 | K dispozici od verze V3 modelu: |       Poznámky        |
+|:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
+| Dánština                |     `da`      |     ✓     |                2019-10-01                 |                    |
+| Nizozemština                 |     `nl`      |     ✓      |                2019-10-01                 |                    |
+| Angličtina               |     `en`      |     ✓      |                2019-10-01                 |                    |
+| Finština               |     `fi`      |     ✓      |                2019-10-01                 |                    |
+| Francouzština                |     `fr`      |     ✓      |                2019-10-01                 |                    |
+| Němčina                |     `de`      |     ✓      |                2019-10-01                 |                    |
+| Italština               |     `it`      |     ✓      |                2019-10-01                 |                    |
+| Japonština              |     `ja`      |     ✓      |                2019-10-01                 |                    |
+| Korejština                |     `ko`      |     ✓      |                2019-10-01                 |                    |
+| Norština (Bokmål)   |     `no`      |     ✓      |                2020-07-01                 | `nb` také přijato |
+| Polština                |     `pl`      |    ✓      |                2019-10-01                 |                    |
+| Portugalština (Brazílie)   |    `pt-BR`    |     ✓      |                2019-10-01                 |                    |
+| portugalština (Portugalsko) |    `pt-PT`    |    ✓      |                2019-10-01                 | `pt` také přijato |
+| Ruština               |     `ru`      |     ✓      |                2019-10-01                 |                    |
+| Španělština               |     `es`      |     ✓      |                2019-10-01                 |                    |
+| Švédština               |     `sv`      |     ✓      |                2019-10-01                 |                    |
 
 #### <a name="entity-linking"></a>[Propojení entit](#tab/entity-linking)
 
-| Jazyk | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: | Poznámky |
-|:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
-| Angličtina  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
-| Španělština  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Jazyk | Kód jazyka |  Podpora V3 | K dispozici od verze V3 modelu: | Poznámky |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| Angličtina  |     `en`      |     ✓      |                2019-10-01                 |       |
+| Španělština  |     `es`      |    ✓      |                2019-10-01                 |       |
+
+#### <a name="personally-identifiable-information-pii"></a>[Identifikovatelné osobní údaje (PII)](#tab/pii)
+
+| Jazyk               | Kód jazyka | Podpora V3 | Od verze V3 model: |       Poznámky        |
+|:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
+| Čínština (zjednodušená)     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` také přijato |
+| Angličtina                |     `en`      |     ✓      |               2020-07-01        |                    |
+| Francouzština                 |     `fr`      |     ✓      |               2021-01-15        |                    |
+| Němčina                 |     `de`      |     ✓      |               2021-01-15        |                    |
+| Italština               |     `it`      |     ✓       |               2021-01-15        |                    |
+| Japonština              |     `ja`      |     ✓       |               2021-01-15        |                    |
+| Korejština                |     `ko`      |     ✓       |               2021-01-15        |                    |
+| Portugalština (Brazílie)   |    `pt-BR`    |     ✓       |               2021-01-15        |                    |
+| portugalština (Portugalsko) |    `pt-PT`    |     ✓       |               2021-01-15        | `pt` také přijato |
+| Španělština               |     `es`      |     ✓       |               2020-04-01        |                    |
 
 #### <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language-detection)
 
@@ -222,6 +229,7 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete zk
 |Písmeno|`bo`|✓|2021-01-05|
 |Tigriňňa|`ti`|✓|2021-01-05|
 |Tongánština|`to`|✓|2020-09-01|
+|Turečtina|`tr`|✓|2021-01-05|
 |Turkmenština|`tk`|✓|2021-01-05|
 |Xhoština|`xh`|✓|2021-01-05|
 |Jorubština|`yo`|✓|2021-01-05|

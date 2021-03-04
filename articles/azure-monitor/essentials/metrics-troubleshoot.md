@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610403"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731489"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -62,7 +62,7 @@ Abyste mohli shromažďovat metriky **hostitelského operačního systému**, mu
 
 K tomuto problému může dojít v případě, že se řídicí panel vytvořil s použitím metriky, která se později označila za zastaralou a odebrala se z Azure. Pokud chcete ověřit, že se jedná o tento případ, otevřete kartu **metriky** prostředku a zkontrolujte dostupné metriky ve výběru metriky. Pokud se metrika nezobrazí, znamená to, že se odebrala z Azure. Když se metrika označí za zastaralou, obvykle existuje nová lepší metrika, která poskytuje podobný pohled na stav prostředku.
 
-**Řešení:** Aktualizujte dlaždici, která selhala, výběrem alternativní metriky pro váš graf na řídicím panelu. Můžete si [projít seznam dostupných metrik pro služby Azure](../platform/metrics-supported.md).
+**Řešení:** Aktualizujte dlaždici, která selhala, výběrem alternativní metriky pro váš graf na řídicím panelu. Můžete si [projít seznam dostupných metrik pro služby Azure](./metrics-supported.md).
 
 ## <a name="chart-shows-dashed-line"></a>V grafu se zobrazuje přerušovaná čára
 
@@ -104,5 +104,5 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 
 * [Další informace o tom, jak začít s Průzkumníkem metrik](metrics-getting-started.md)
 * [Další informace o rozšířených funkcích Průzkumníka metrik](../essentials/metrics-charts.md)
-* [Seznam dostupných metrik pro služby Azure](../platform/metrics-supported.md)
+* [Seznam dostupných metrik pro služby Azure](./metrics-supported.md)
 * [Příklady nakonfigurovaných grafů](../essentials/metric-chart-samples.md)

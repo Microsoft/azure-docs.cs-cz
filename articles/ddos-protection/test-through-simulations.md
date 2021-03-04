@@ -11,23 +11,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3be8682b3a12f06aa83db1791cb0ed125bbcee7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806235"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719232"
 ---
 # <a name="test-through-simulations"></a>Testování prostřednictvím simulací
 
 Je dobrým zvykem otestovat vaše předpoklady, jak budou vaše služby reagovat na útok díky provádění pravidelných simulací. Během testování ověřte, že vaše služby nebo aplikace nadále fungují podle očekávání a že nedochází k přerušení činnosti koncového uživatele. Identifikujte mezery z hlediska technologie a procesu a zahrňte je do strategie DDoS Response. Tyto testy doporučujeme provádět v přípravném prostředí nebo během období mimo špičku, abyste minimalizovali dopad na produkční prostředí.
 
-Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breakingpoint-cloud), samoobslužným generátorem provozu, který vytvoří rozhraní, ve kterém můžou zákazníci Azure vygenerovat provoz z veřejných koncových bodů s povoleným DDoS Protection pro simulace. Simulaci můžete použít k těmto akcím:
+Ve spolupráci se samoobslužným generátorem provozu [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) jsme vytvořili rozhraní, ve kterém můžou zákazníci Azure pro účely simulací generovat provoz směřující na veřejné koncové body s povolenou službou DDoS Protection. Tyto simulace můžete využít k:
 
-- Ověřte, jak Azure DDoS Protection pomáhá chránit vaše prostředky Azure před útoky DDoS.
-- Optimalizujte proces reakce na incidenty při útoku DDoS.
-- DDoS dodržování předpisů v dokumentu.
-- Vyškolte své týmy zabezpečení sítě.
+- Ověření, jak Azure DDoS Protection pomáhá chránit vaše prostředky Azure před útoky DDoS
+- Optimalizaci procesu reakce na incidenty v případě probíhajícího útoku DDoS
+- Dokumentaci dodržování předpisů v rámci ochrany před útoky DDoS
+- Trénování týmů starajících se o zabezpečení sítě
+
+> [!NOTE]
+> BreakingPoint Cloud je dostupný jenom pro veřejný cloud.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -1,17 +1,16 @@
 ---
 title: Přehled rozšíření Azure Diagnostics
 description: Použití diagnostiky Azure pro ladění, měření výkonu, monitorování, analýzy provozu v cloudových službách, virtuálních počítačích a Service Fabric
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: f3cde32178449169b07f57d4abbc346d8ca89df4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726219"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](../agents/agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
@@ -33,8 +32,8 @@ Agenta Log Analytics v Azure Monitor lze také použít ke shromažďování dat
 Mezi hlavní rozdíly, které je potřeba vzít v úvahu, patří:
 
 - Rozšíření Azure Diagnostics se dá použít jenom s virtuálními počítači Azure. Agent Log Analytics se dá použít s virtuálními počítači v Azure, jinými cloudy a místním prostředím.
-- Rozšíření Azure Diagnostics odesílá data do Azure Storage, [Azure monitor metriky](../platform/data-platform-metrics.md) (pouze Windows) a Event Hubs. Agent Log Analytics shromažďuje data do [protokolů Azure monitor](../platform/data-platform-logs.md).
-- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](../../security-center/index.yml).
+- Rozšíření Azure Diagnostics odesílá data do Azure Storage, [Azure monitor metriky](../essentials/data-platform-metrics.md) (pouze Windows) a Event Hubs. Agent Log Analytics shromažďuje data do [protokolů Azure monitor](../logs/data-platform-logs.md).
+- Pro [řešení](../monitor-reference.md#insights-and-core-solutions), službu [VM Insights](../vm/vminsights-overview.md)a další služby, jako je například [Azure Security Center](../../security-center/index.yml), se vyžaduje agent Log Analytics.
 
 ## <a name="costs"></a>Náklady
 Pro diagnostické rozšíření Azure se neúčtují žádné náklady, ale pro ingestování dat vám můžou být účtovány poplatky. Podívejte se na [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) pro cíl, kde shromažďujete data.
@@ -44,7 +43,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Protokoly událostí systému Windows   | Události z protokolu událostí systému Windows. |
 | Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
@@ -59,7 +58,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
 | Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
@@ -72,9 +71,9 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
-| Metriky Azure Monitoru | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](../platform/collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Metriky Azure Monitoru | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
 | Application Insights | Shromažďovat data z aplikací běžících ve vašem VIRTUÁLNÍm počítači a Application Insights je integrovat s ostatními monitorováním aplikací. Viz [odeslání diagnostických dat do Application Insights](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +84,11 @@ Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Lo
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
-| Metriky Azure Monitoru | Kromě LAD nainstalujte agenta telegraf. Viz [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](../platform/collect-custom-metrics-linux-telegraf.md).
+| Metriky Azure Monitoru | Kromě LAD nainstalujte agenta telegraf. Viz [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](../essentials/collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Instalace a konfigurace

@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b1403b12c05420c6296cbafd0d4ee0bc02f8dd4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 665137688a000433a9101a77342fa6f9350d7141
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611177"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714319"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 
-Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../log-query/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat spuštění jedné nebo více akcí pomocí [skupin akcí](../platform/action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](../platform/alerts-unified-log.md).
+Výstrahy protokolu umožňují uživatelům pomocí [log Analyticsho](../logs/log-analytics-tutorial.md) dotazu vyhodnotit protokoly prostředků každou nastavenou frekvencí a vyvolat výstrahu na základě výsledků. Pravidla mohou aktivovat spuštění jedné nebo více akcí pomocí [skupin akcí](./action-groups.md). [Přečtěte si další informace o funkcích a terminologii výstrah protokolu](./alerts-unified-log.md).
 
-V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [výstrahy protokolu](../platform/alerts-unified-log.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. Výstrahy protokolu se vytvářejí ve `Microsoft.Insights/scheduledQueryRules` zprostředkovateli prostředků. Viz reference k rozhraní API pro [naplánovaná pravidla dotazů rozhraní API](/rest/api/monitor/scheduledqueryrules/).
+V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [výstrahy protokolu](./alerts-unified-log.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. Výstrahy protokolu se vytvářejí ve `Microsoft.Insights/scheduledQueryRules` zprostředkovateli prostředků. Viz reference k rozhraní API pro [naplánovaná pravidla dotazů rozhraní API](/rest/api/monitor/scheduledqueryrules/).
 
 Základní postup je následující:
 
@@ -26,15 +26,15 @@ Základní postup je následující:
 4. Nasaďte šablonu pomocí libovolné metody nasazení.
 
 > [!NOTE]
-> Data protokolu z [Log Analytics pracovního prostoru](../log-query/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](../platform/alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](../platform/alerts-metric-logs.md).
+> Data protokolu z [Log Analytics pracovního prostoru](../logs/log-analytics-tutorial.md) lze odeslat do úložiště metrik Azure monitor. Výstrahy metrik mají [různé chování](./alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete. Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](./alerts-metric-logs.md).
 
 > [!NOTE]
-> Výstrahy protokolu pro Log Analytics používané ke správě pomocí starší verze [rozhraní API Log Analytics výstrah](../platform/api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md). [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](alerts-log-api-switch.md).
+> Výstrahy protokolu pro Log Analytics používané ke správě pomocí starší verze [rozhraní API Log Analytics výstrah](./api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md). [Přečtěte si další informace o přepnutí na aktuální rozhraní ScheduledQueryRules API](alerts-log-api-switch.md).
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>Jednoduchá šablona (až do rozhraní API verze 2018-04-16)
 
-[Naplánovaná Šablona vytváření pravidel dotazů](/rest/api/monitor/scheduledqueryrules/createorupdate) na základě [počtu upozornění protokolu výsledků](../platform/alerts-unified-log.md#count-of-the-results-table-rows) (Ukázková sada dat jako proměnné):
+[Naplánovaná Šablona vytváření pravidel dotazů](/rest/api/monitor/scheduledqueryrules/createorupdate) na základě [počtu upozornění protokolu výsledků](./alerts-unified-log.md#count-of-the-results-table-rows) (Ukázková sada dat jako proměnné):
 
 ```json
 {
@@ -109,7 +109,7 @@ Tento kód JSON se dá uložit a nasadit pomocí [Azure Resource Manager v Azure
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>Šablona s dotazem mezi prostředky (až do rozhraní API verze 2018-04-16)
 
-[Naplánovaná šablona pro vytváření pravidel dotazů](/rest/api/monitor/scheduledqueryrules/createorupdate) založená na [měření metriky](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , která odesílá dotazy [mezi prostředky](../log-query/cross-workspace-query.md) (ukázková datová sada jako proměnné):
+[Naplánovaná šablona pro vytváření pravidel dotazů](/rest/api/monitor/scheduledqueryrules/createorupdate) založená na [měření metriky](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , která odesílá dotazy [mezi prostředky](../logs/cross-workspace-query.md) (ukázková datová sada jako proměnné):
 
 ```json
 {
@@ -432,7 +432,7 @@ Tento kód JSON se dá uložit a nasadit pomocí [Azure Resource Manager v Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [upozorněních protokolu](../platform/alerts-unified-log.md)
-* Další informace o [správě upozornění protokolů](../platform/alerts-log.md)
-* Porozumění [akcím Webhooku pro výstrahy protokolu](../platform/alerts-log-webhook.md)
-* Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
+* Další informace o [upozorněních protokolu](./alerts-unified-log.md)
+* Další informace o [správě upozornění protokolů](./alerts-log.md)
+* Porozumění [akcím Webhooku pro výstrahy protokolu](./alerts-log-webhook.md)
+* Přečtěte si další informace o [dotazech protokolu](../logs/log-query-overview.md).

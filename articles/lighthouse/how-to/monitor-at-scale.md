@@ -3,12 +3,12 @@ title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742581"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
@@ -49,7 +49,7 @@ Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, 
 
 Můžete zobrazit [výstrahy](../../azure-monitor/alerts/alerts-overview.md) pro delegovaná předplatná v klientech zákazníků, které spravujete.
 
-Ve spravovaném tenantovi můžete [výstrahy protokolu aktivit vytvářet, zobrazovat a spravovat](../../azure-monitor/platform/alerts-activity-log.md) v Azure Portal nebo prostřednictvím rozhraní API a nástrojů pro správu.
+Ve spravovaném tenantovi můžete [výstrahy protokolu aktivit vytvářet, zobrazovat a spravovat](../../azure-monitor/alerts/alerts-activity-log.md) v Azure Portal nebo prostřednictvím rozhraní API a nástrojů pro správu.
 
 Pokud chcete výstrahy aktualizovat automaticky napříč více zákazníky, použijte dotaz na [Azure Resource Graph](../../governance/resource-graph/overview.md) k filtrování výstrah. Dotaz můžete připnout na řídicí panel a vybrat všechny příslušné zákazníky a odběry. Například níže uvedený dotaz zobrazí výstrahy o závažnosti 0 a 1 a aktualizuje každých 60 minut.
 

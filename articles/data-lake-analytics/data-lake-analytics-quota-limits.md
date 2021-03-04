@@ -2,17 +2,14 @@
 title: Úprava kvót a omezení ve službě Azure Data Lake Analytics
 description: Naučte se upravovat a zvyšovat kvóty a omezení v účtech Azure Data Lake Analytics (ADLA).
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220835"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710171"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Úprava kvót a omezení ve službě Azure Data Lake Analytics
 
@@ -53,7 +50,7 @@ Toto je maximální počet úloh, které mohou běžet souběžně ve vašem ú�
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Vyberte existující účet ADLA.
 3. Klikněte na **Vlastnosti**.
-4. Upravte hodnoty pro **maximální Austrálie**, **maximální počet spuštěných úloh**a omezení pro **odesílání úloh** tak, aby vyhovovaly vašim potřebám.
+4. Upravte hodnoty pro **maximální Austrálie**, **maximální počet spuštěných úloh** a omezení pro **odesílání úloh** tak, aby vyhovovaly vašim potřebám.
 
 ## <a name="increase-maximum-quota-limits"></a>Zvýšení maximálních limitů kvót
 
@@ -65,7 +62,7 @@ Další informace o omezeních Azure najdete v [dokumentaci k omezením specific
 
    ![Nová žádost o podporu pro Azure Data Lake Analytics portál](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 
-2. Vyberte **kvótu**typu problému.
+2. Vyberte **kvótu** typu problému.
 
 3. Vyberte své **předplatné** (Ujistěte se, že se nejedná o zkušební předplatné).
 

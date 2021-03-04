@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692466"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>Použití transakcí s více dokumenty v rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ Transakce s více dokumenty následují sémantika **kyselosti** :
 
 ## <a name="requirements"></a>Požadavky
 
-Transakce s více dokumenty jsou podporovány v kolekci unsharded ve verzi 4,0. Transakce s více dokumenty nejsou v kolekcích nebo v kolekcích horizontálně dělené podporovány.
+Transakce s více dokumenty jsou podporovány v kolekci unsharded v rozhraní API verze 4,0. Transakce s více dokumenty nejsou podporovány napříč kolekcemi nebo v kolekcích horizontálně dělené v 4,0. Časový limit pro transakce je pevný 5 sekund.
 
 Všechny ovladače, které podporují síťový protokol verze 4,0 nebo vyšší, budou podporovat rozhraní Azure Cosmos DB API pro transakce MongoDB více dokumentů.
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>Spuštění transakcí s více dokumenty v prostředí MongoDB
+> [!Note]
+> Tento příklad nefunguje v MongoSH beta verzi (prostředí) vložené v MongoDB kompasu.
 
 1. Otevřete příkazový řádek, v adresáři, ve kterém je nainstalovaná aplikace Mongo Shell verze 4,0 a vyšší:
 

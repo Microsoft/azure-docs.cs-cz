@@ -4,12 +4,12 @@ description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717804"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
 
@@ -21,7 +21,7 @@ REST API výstrahy Log Analytics umožňuje vytvářet a spravovat výstrahy v L
 Log Analytics vyhledávání REST API je RESTful a lze k němu přistupovat prostřednictvím REST API Azure Resource Manager. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí  [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a PowerShellu je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful Azure Resource Manager API k volání Log Analytics pracovních prostorů a provádění příkazů hledání v nich. Rozhraní API bude výstupem výsledků hledání ve formátu JSON, což vám umožní používat výsledky hledání mnoha různými způsoby prostřednictvím kódu programu.
 
 ## <a name="prerequisites"></a>Požadavky
-V současné době je možné výstrahy vytvořit pouze s uloženým hledáním v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../log-query/log-query-overview.md) .
+V současné době je možné výstrahy vytvořit pouze s uloženým hledáním v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../logs/log-query-overview.md) .
 
 ## <a name="schedules"></a>Plány
 Uložené hledání může mít jeden nebo více plánů. Plán definuje, jak často se spouští hledání, a časový interval, po kterém jsou kritéria identifikována.
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
 
-| Sekce | Description | Využití |
+| Sekce | Popis | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Závažnost |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pomocí [REST API provádět prohledávání protokolu](../log-query/log-query-overview.md) v Log Analytics.
+* Pomocí [REST API provádět prohledávání protokolu](../logs/log-query-overview.md) v Log Analytics.
 * Informace o [upozorněních protokolu ve službě Azure monitor](./alerts-unified-log.md)
 * Jak [vytvářet, upravovat a spravovat pravidla upozornění protokolů ve službě Azure monitor](./alerts-log.md)
-

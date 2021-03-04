@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 0841bbd8baa524d3eea3afcbffc0aa5ead41409e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703044"
 ---
 # <a name="install-defender-for-iot-micro-agent-preview"></a>Instalace programu Defender pro IoT Micro Agent (Preview)
 
@@ -25,7 +25,7 @@ Před instalací modulu Defender for IoT je nutné vytvořit identitu modulu v I
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
-Nainstalujte a nakonfigurujte úložiště balíčků Microsoft pomocí následujících [pokynů](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software). 
+Nainstalujte a nakonfigurujte úložiště balíčků Microsoft pomocí následujících [pokynů](/windows-server/administration/linux-package-repository-for-microsoft-software). 
 
 V případě Debian 9 pokyny neobsahují úložiště, které je třeba přidat. k přidání úložiště použijte následující příkazy: 
 

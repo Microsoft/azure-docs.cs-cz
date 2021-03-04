@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e87899010660eac11166275bdfd61151bb12c10f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585254"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686933"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Podmíněný přístup je podporován v nejnovějších verzích uživatelských
 
 Přečtěte si další informace o [identitě a podmíněném přístupu](conditional-access-identity-protection-overview.md) v Azure AD B2C, nebo se podívejte, [jak ji nastavit](conditional-access-identity-protection-setup.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro vytváření zásad rizikového přihlašování se vyžaduje Azure AD B2C Premium 2. Klienti Premium P1 můžou vytvářet umístění, aplikace nebo zásady na základě skupin.
 - Pro účely testování můžete [zaregistrovat testovací webovou aplikaci](tutorial-register-applications.md) `https://jwt.ms` , což je webová aplikace vlastněná společností Microsoft, která zobrazuje dekódování obsahu tokenu (obsah tokenu nikdy nezůstane v prohlížeči). 
@@ -129,6 +129,8 @@ Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zás
 ## <a name="add-conditional-access-to-your-policy"></a>Přidání podmíněného přístupu k zásadám
 
 Příklad zásad podmíněného přístupu na [GitHubu](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)najdete v části.
+
+Můžete si taky přečíst další informace o tom, jak [ve vlastních zásadách definovat technický profil podmíněného přístupu](conditional-access-technical-profile.md).
 
 ::: zone-end
 

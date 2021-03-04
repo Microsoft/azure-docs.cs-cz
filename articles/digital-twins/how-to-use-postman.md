@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715696"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Jak používat metodu POST k posílání žádostí do rozhraní API digitálních vláken Azure
 
@@ -140,7 +140,7 @@ Chcete-li pokračovat s příkladem dotazu, bude tento článek používat rozhr
 1. Ověřte, že hlavičky zobrazené pro požadavek na kartě *hlavičky* odpovídají názvům popsaným v referenční dokumentaci. Pro tento požadavek byly automaticky vyplněny několik záhlaví. V případě rozhraní API pro dotazy není nutné provádět žádné možnosti záhlaví, proto je tento krok hotový.
 1. Ověřte, že text zobrazený pro požadavek na kartě *tělo* odpovídá potřebám popsaným v referenční dokumentaci. Pro rozhraní API pro dotazy je k zadání textu dotazu potřeba tělo JSON. Tady je příklad těla této žádosti, který se dotazuje na všechny digitální vlákna v instanci:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="V podrobnostech o nové žádosti se zobrazí karta tělo. Obsahuje nezpracované tělo JSON s dotazem SELECT * FROM DIGITALTWINS."lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="V podrobnostech o nové žádosti se zobrazí karta tělo. Obsahuje nezpracované tělo JSON s dotazem SELECT * FROM DIGITALTWINS." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Další informace o tom, jak vytvářet dotazy digitálních vláken Azure, najdete v tématu [*Postup: dotazování na dvojitou graf*](how-to-query-graph.md).
 

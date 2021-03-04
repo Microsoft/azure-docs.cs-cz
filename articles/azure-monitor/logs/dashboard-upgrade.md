@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 139241d679007bf72680f91a1518a1ef90cc7efc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609422"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700622"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Upgrade vizualizací řídicího panelu Log Analytics
 
@@ -82,4 +82,4 @@ Vzhledem k tomu, že řídicí panely můžou obsahovat více vizualizací z ně
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytváření a sdílení řídicích panelů v Log Analytics](../learn/tutorial-logs-dashboards.md)
+[Vytváření a sdílení řídicích panelů v Log Analytics](../visualize/tutorial-logs-dashboards.md)

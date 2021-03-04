@@ -1,20 +1,24 @@
 ---
 title: Podporované oblasti pro propojený pracovní prostor Log Analytics
 description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics v souvislosti s některými funkcemi Azure Automation.
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720167"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
 V Azure Automation můžete povolit Update Management, Change Tracking a inventář a Start/Stop VMs during off-hours funkce pro vaše servery a virtuální počítače. Tyto funkce mají závislost na pracovním prostoru Log Analytics, a proto vyžadují propojení pracovního prostoru s účtem Automation. Pouze některé oblasti jsou však podporovány, aby je bylo možné propojit dohromady. Mapování se obecně *nedá* použít, pokud plánujete propojit účet Automation s pracovním prostorem, který tyto funkce nemá povolený.
+
+Zde popsané mapování se vztahuje pouze na propojení pracovního prostoru Log Analytics k účtu Automation. Nevztahují se na virtuální počítače, které jsou připojené k pracovnímu prostoru, který je propojený s účtem Automation. Virtuální počítače nejsou omezené na oblasti podporované daným Log Analytics pracovním prostorem. Můžou být v libovolné oblasti. Mějte na paměti, že virtuální počítače v jiné oblasti mohou ovlivnit požadavky na stav, místní a země nebo požadavky na dodržování předpisů vaší společnosti. Pokud máte virtuální počítače v jiné oblasti, můžete také účtovat poplatky za šířku pásma dat.
+
+Před připojením virtuálních počítačů k pracovnímu prostoru v jiné oblasti byste si měli projít požadavky a potenciální náklady na potvrzení a pochopení právního a nákladového dopadu.
 
 Tento článek obsahuje podporovaná mapování, aby bylo možné úspěšně povolit a používat tyto funkce ve vašem účtu Automation.
 

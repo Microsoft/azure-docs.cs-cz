@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3b6928b759d2349051dbb69258952f2f1ee10a31
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694338"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
-
 
 Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-Crypt systému Linux k zajištění úplného šifrování disku s diskem operačního systému a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
 
@@ -408,7 +407,6 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Výpis stavu systému jádra (kdump).
 - Oracle ACFS (systém souborů clusteru ASM).
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Disky NVMe virtuálních počítačů Lsv2 Series (viz: [Lsv2-Series](../lsv2-series.md)).
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
@@ -416,7 +414,6 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
-- [Velikosti virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md); konkrétně dv4, Dsv4, Ev4 a Esv4.
 - Šifrování virtuálních počítačů v clusterech s podporou převzetí služeb při selhání
 
 ## <a name="next-steps"></a>Další kroky

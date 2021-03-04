@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739364"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -39,8 +39,6 @@ Transformace vyhledávání se podobá levému vnějšímu spojení. Všechny ř
 
 **Podmínky vyhledávání:** Vyberte sloupce, na kterých se má shoda. Pokud je splněna podmínka rovnosti, řádky budou považovány za shodné. Najeďte myší a vyberte vypočítaný sloupec a extrahujte hodnotu pomocí [jazyka výrazu toku dat](data-flow-expression-functions.md).
 
-Transformace vyhledávání podporuje pouze shody rovnosti. Pokud chcete výraz vyhledávání přizpůsobit tak, aby zahrnoval jiné operátory, jako je větší než, doporučuje se použít [v transformaci JOIN vzájemné spojení](data-flow-join.md#custom-cross-join). V případě vzájemného spojení se vyhnete případným chybám kartézském produktu při spuštění.
-
 Výstupní data obsahují všechny sloupce z obou datových proudů. Chcete-li odstranit duplicitní nebo nechtěné sloupce, po transformaci vyhledávání přidejte [transformaci Select](data-flow-select.md) . Sloupce je také možné v transformaci jímky vyřadit nebo přejmenovat.
 
 ### <a name="non-equi-joins"></a>Spojení nepoužívající operátora
@@ -65,7 +63,7 @@ Při testování transformace vyhledávání s náhledem dat v režimu ladění 
 
 ![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
 
-V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání** . Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná** .
+V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná**.
 
 Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
 

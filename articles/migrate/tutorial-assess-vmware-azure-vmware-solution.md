@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c1c56edacbc777b5e8b53da588bc763201379964
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566809"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718798"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci do služby AVS
 
@@ -50,6 +50,9 @@ Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu veli
 **Jako v místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost uzlů v prostředí AVS je založená na velikosti místního virtuálního počítače, spolu s nastavením, které zadáte při posuzování pro typ uzlu, typ úložiště a nastavení neúspěšného přihlášení.
 **Na základě výkonu** | Vyhodnoťte na základě shromážděných dynamických údajů o výkonu. | Doporučená velikost uzlů v rámci služby AVS je založená na datech využití procesoru a paměti spolu s nastaveními, která zadáte při posuzování typu uzlu, typu úložiště a nastavení neúspěšného přihlášení.
 
+> [!NOTE]
+> Posouzení řešení Azure VMware (AVS) se dá vytvořit jenom pro virtuální počítače VMware.
+
 ## <a name="run-an-assessment"></a>Spuštění posouzení
 
 Proveďte posouzení následujícím způsobem:
@@ -60,7 +63,7 @@ Proveďte posouzení následujícím způsobem:
 
 1. V **Azure Migrate: vyhodnocování serveru** klikněte na **vyhodnotit**.
 
-1. V   >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **Azure VMware Solution (AVS) (verze Preview)**.
+1. V   >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **Azure VMware Solution (AVS)**.
 
 1. Ve **zdroji zjišťování**:
 
@@ -76,14 +79,14 @@ Proveďte posouzení následujícím způsobem:
 
     - V části **cílové umístění** zadejte oblast Azure, do které chcete migrovat.
        - Doporučení pro velikost a náklady jsou založena na umístění, které zadáte.
-       - V současné době můžete vyhodnotit pro čtyři oblasti (Austrálie – východ, Východní USA, Západní Evropa Západní USA).
    - **Typ úložiště** je nastaven na **síti vSAN**. Toto je výchozí typ úložiště pro privátní cloud služby AVS.
    - **Rezervované instance** se aktuálně pro uzly služby AVS nepodporují.
 1. Ve **velikosti virtuálního počítače**:
     - **Typ uzlu** je nastaven na **AV36**. Azure Migrate doporučuje uzel uzlů potřebných k migraci virtuálních počítačů na funkci AVS.
     - V **Nastavení FTT (úroveň RAID**) vyberte možnost Netolerovat a kombinaci RAID.  Vybraná možnost FTT v kombinaci s požadavkem na místní disk virtuálního počítače Určuje celkové úložiště síti vSAN vyžadované v rámci funkce AVS.
     - V části přepočet virtuálních **procesorů** zadejte poměr virtuálních jader přidružených k jednomu fyzickému jádru v uzlu AVS. Přesáhne předplatné větší než 4:1 může způsobit snížení výkonu, ale dá se použít pro úlohy typu webový server.
-
+    - V části faktor převzetí **paměti** zadejte poměr paměti nad potvrzením v clusteru. Hodnota 1 představuje 100% využití paměti, 0,5 například 50% a 2 by používalo 200% dostupné paměti. Hodnoty můžete přidat jenom od 0,5 do 10 až na jedno desetinné místo.
+    - V části **deduplicity a kompresní faktor** určete očekávané deduplicity a kompresní faktor pro vaše úlohy. Skutečná hodnota se dá získat z místní síti vSAN nebo konfigurace úložiště a může se lišit podle úlohy. Hodnota 3 by znamenala 3x, takže se použije jenom úložiště 100 GB pro disk 300 GB. Hodnota 1 by znamenala žádné deduplicity ani komprimaci. Můžete přidat jenom hodnoty od 1 do 10 až na jedno desetinné místo.
 1. V **uzlu velikost**: 
     - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení statických metadat nebo dat na základě výkonu. Pokud používáte údaje o výkonu:
         - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
@@ -127,7 +130,6 @@ Posouzení služby AVS popisuje:
 - Počet uzlů pro funkci AVS: odhadovaný počet uzlů AVS potřebných ke spuštění virtuálních počítačů.
 - Využití v uzlech služby AVS: předpokládané využití procesoru, paměti a úložiště napříč všemi uzly.
     - Využití zahrnuje přední faktoring v následujících režijních clusterech, jako jsou vCenter Server, NSX Manager (velký), NSX Edge, pokud je nasazený HCX, a to i v případě, že je nasadí zařízení HCX Manager a IX. ~ 44vCPU (11 procesor), 75 GB paměti RAM a 722GB úložiště před komprimací a odstranění duplicitních dat. 
-    - Paměť, deduplicity a komprese jsou aktuálně nastavené na 100% využití paměti a 1,5 deduplicity a komprimace, které budou uživatelem definovaným vstupem v přidaných verzích dále umožňující uživateli vyladit požadované změny velikosti.
 - Odhad měsíčních nákladů: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
 
 ## <a name="view-an-assessment"></a>Zobrazení posouzení
@@ -167,7 +169,7 @@ Souhrn posouzení zobrazuje odhadované náklady na výpočetní prostředky a �
 
     - Odhadované náklady vycházejí z počtu uzlů AVS, které jsou potřeba k tomu, aby se všechny virtuální počítače celkově vyžádaly.
     - Jelikož jsou ceny za funkci AVS na jeden uzel, celkové náklady nebudou mít náklady na výpočetní výkon a distribuci nákladů na úložiště.
-    - Odhad nákladů slouží ke spuštění místních virtuálních počítačů v rámci služby AVS. Posouzení Azure Migrate serveru nebere v úvahu náklady na PaaS nebo SaaS.
+    - Odhad nákladů slouží ke spuštění místních virtuálních počítačů v rámci služby AVS. Posouzení pro funkci AVS nebere v úvahu náklady na PaaS nebo SaaS.
 
 2. Kontrola měsíčních odhadů úložiště. Zobrazení ukazuje agregované náklady na úložiště pro skupinu pohodnocenou a rozdělené přes různé typy disků úložiště. 
 3. Můžete přejít k podrobnostem a zobrazit podrobnosti o cenách pro konkrétní virtuální počítače.

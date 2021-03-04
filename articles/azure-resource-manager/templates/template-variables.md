@@ -2,13 +2,13 @@
 title: Proměnné v šablonách
 description: Popisuje definování proměnných v šabloně Azure Resource Manager (šablona ARM) a souboru bicep.
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700333"
 ---
 # <a name="variables-in-arm-templates"></a>Proměnné v šablonách ARM
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 K vytvoření hodnoty proměnné lze použít [funkce šablon](template-functions.md) .
 
-V šablonách JSON nelze použít [referenční](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) v deklaraci proměnné. Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
-
-Funkce reference a list jsou platné při deklaraci proměnné v souboru bicep.
-
 Následující příklad vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablon k získání hodnoty parametru a zřetězuje je do jedinečného řetězce.
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+V šablonách JSON nelze použít [referenční](template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](template-functions-resource.md#list) v deklaraci proměnné. Tyto funkce získávají běhový stav prostředku a nelze jej provést před nasazením, když jsou proměnné vyřešeny.
+
+V souborech bicep jsou funkce reference a list platné při deklaraci proměnné.
+
 ## <a name="use-variable"></a>Použít proměnnou
 
 Následující příklad ukazuje, jak použít proměnnou pro vlastnost prostředku.
@@ -101,6 +101,9 @@ Následující příklad ukazuje, jak použít proměnnou pro vlastnost prostře
 V šabloně JSON odkazujete na hodnotu proměnné pomocí funkce [Variables](template-functions-deployment.md#variables) .
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ V šabloně JSON odkazujete na hodnotu proměnné pomocí funkce [Variables](tem
 V souboru bicep odkazujete na hodnotu proměnné, a to zadáním názvu proměnné.
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

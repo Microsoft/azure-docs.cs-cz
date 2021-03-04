@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386301"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739330"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy ke službě Azure Data Factory
 
@@ -48,7 +48,7 @@ Data Factory poskytuje volnost modelování veškerého stylu toku, který je vy
     - Kontejnery smyček:
         * Aktivita foreach provede iteraci v zadané kolekci aktivit ve smyčce. 
 - Toky založené na aktivačních událostech:
-    - Kanály se můžou aktivovat na vyžádání nebo podle času na zdi.
+    - Kanály se můžou aktivovat na vyžádání, podle času na zdi nebo v reakci na základě témat pro Event Grid.
 - Rozdílové toky:
     - Parametry se dají použít k definování horní meze pro rozdílové kopírování při přesouvání tabulek dimenzí nebo odkazů z relačního úložiště v místním prostředí nebo v cloudu, aby se data načetla do jezera.
 
@@ -84,7 +84,7 @@ Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit 
 
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 
 Můžete monitorovat datové továrny prostřednictvím PowerShellu, sady SDK nebo nástrojů pro monitorování vizuálů v uživatelském rozhraní prohlížeče. Efektivním a efektivním způsobem můžete monitorovat a spravovat vlastní toky na vyžádání, na základě triggeru a hodiny. Zrušit stávající úlohy, Projděte si přehled o selháních, přejděte k podrobnostem a Získejte podrobné chybové zprávy a Nalaďte problémy, a to vše z jednoho podokna skla bez kontextu přepínání nebo navigace mezi obrazovkami.
 

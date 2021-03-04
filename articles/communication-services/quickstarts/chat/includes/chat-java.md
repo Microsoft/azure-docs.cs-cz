@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 72e00306563e8cccdd476cf0ae5bfb4ddaa63ecf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749946"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Pro ověřování musí klient odkazovat na `azure-communication-common` balíč
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -141,11 +141,11 @@ Odpověď `chatThreadClient` se používá k provádění operací na vytvořen�
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -207,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` vrátí různé typy zpráv, které mohou být identifikovány pomocí `chatMessage.getType()` . Tyto typy:
 
-- `Text`: Běžná zpráva chatu odeslaná účastníkem vlákna.
+- `text`: Běžná zpráva chatu odeslaná účastníkem vlákna.
 
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
+- `html`: Zpráva chatu HTML odeslaná účastníkem vlákna.
 
-- `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna.
+- `topicUpdated`: Systémová zpráva, která indikuje, že téma bylo aktualizováno.
 
-- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna.
+- `participantAdded`: Systémová zpráva, která indikuje, že jeden nebo více účastníků bylo přidáno do konverzačního vlákna.
+
+- `participantRemoved`: Systémová zpráva, která indikuje, že účastník byl odebrán z konverzačního vlákna.
 
 Další podrobnosti najdete v tématu [typy zpráv](../../../concepts/chat/concepts.md#message-types).
 
@@ -224,7 +226,7 @@ Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj o
 Použijte `addParticipants` metodu pro přidání účastníků do vlákna identifikovaného IDvlákna.
 
 - Slouží `listParticipants` k vypsání účastníků, kteří mají být přidáni do konverzačního vlákna.
-- `user`je povinné, je CommunicationUserIdentifier, které jste vytvořili pomocí CommunicationIdentityClient v rychlém startu pro [uživatelský přístup tokenu](../../access-tokens.md) .
+- `communicationIdentifier`je povinné, je CommunicationIdentifier, které jste vytvořili pomocí CommunicationIdentityClient v rychlém startu pro [uživatelský přístup tokenu](../../access-tokens.md) .
 - `display_name`volitelné, je zobrazované jméno účastníka vlákna.
 - `share_history_time`volitelné, je čas, od kterého je historie chatu sdílena s účastníkem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Pokud chcete sdílet žádnou historii předchozí až po přidání účastníka, nastavte ho na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na požadované datum.
 
@@ -232,11 +234,11 @@ Použijte `addParticipants` metodu pro přidání účastníků do vlákna ident
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -247,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>Odebrání uživatele z konverzačního vlákna
+## <a name="remove-participant-from-a-chat-thread"></a>Odebrání účastníka z konverzačního vlákna
 
-Podobně jako při přidávání uživatele do vlákna můžete odebrat uživatele z konverzačního vlákna. K tomu je potřeba sledovat identity uživatelů přidaných účastníků.
+Podobně jako při přidávání účastníka do vlákna můžete odebrat účastníky z konverzačního vlákna. K tomu je potřeba sledovat identity přidaných účastníků.
 
-Použijte `removeParticipant` , kde `user` je CommunicationUserIdentifier, který jste vytvořili.
+Použijte `removeParticipant` , kde `identifier` je CommunicationIdentifier, který jste vytvořili.
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>Spuštění kódu

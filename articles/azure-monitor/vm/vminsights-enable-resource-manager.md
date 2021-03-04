@@ -1,20 +1,20 @@
 ---
-title: Povolení Azure Monitor pro virtuální počítače pomocí šablon Správce prostředků
-description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro jeden nebo několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager.
+title: Povolení přehledů virtuálních počítačů pomocí šablon Správce prostředků
+description: Tento článek popisuje, jak povolit analytické informace pro jeden nebo několik virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets pomocí šablon Azure PowerShell nebo Azure Resource Manager.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a719be730c76d8e334195fdc9b35bbcad0d06b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707485"
 ---
-# <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>Povolení Azure Monitor pro virtuální počítače pomocí šablon Správce prostředků
-Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač nebo sadu škálování virtuálního počítače pomocí šablon Správce prostředků. Tento postup lze použít pro následující:
+# <a name="enable-vm-insights-using-resource-manager-templates"></a>Povolení přehledů virtuálních počítačů pomocí šablon Správce prostředků
+Tento článek popisuje, jak povolit přehledy virtuálních počítačů pro virtuální počítač nebo sadu škálování virtuálních počítačů pomocí Správce prostředků šablon. Tento postup lze použít pro následující:
 
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
@@ -22,8 +22,8 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](../insights/vminsights-configure-workspace.md). 
-- V části [podporované operační systémy](../insights/vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
+- [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md). 
+- V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
@@ -37,14 +37,14 @@ Vytvořili jsme příklady Azure Resource Manager šablon pro připojování vir
 
 Soubor ke stažení obsahuje následující šablony pro různé scénáře:
 
-- Šablona **ExistingVmOnboarding** povoluje Azure monitor pro virtuální počítače, pokud virtuální počítač už existuje.
-- Šablona **NewVmOnboarding** vytvoří virtuální počítač a povolí Azure monitor pro virtuální počítače k jeho monitorování.
-- Šablona **ExistingVmssOnboarding** povoluje Azure monitor pro virtuální počítače, pokud už existuje sada škálování virtuálního počítače.
-- **NewVmssOnboarding** Template vytvoří virtuální počítač Scale Sets a povolí Azure monitor pro virtuální počítače k jejich monitorování.
-- Šablona **ConfigureWorkspace** konfiguruje pracovní prostor Log Analytics tak, aby podporoval Azure monitor pro virtuální počítače tím, že umožňuje řešení a shromažďování čítačů výkonu operačního systému Linux a Windows.
+- Šablona **ExistingVmOnboarding** umožňuje virtuálnímu počítači přehledy virtuálních počítačů, pokud už existuje.
+- **NewVmOnboarding** Template vytvoří virtuální počítač, který umožňuje přehledy pro monitorování virtuálního počítače.
+- **ExistingVmssOnboarding** šablona povoluje přehledy virtuálních počítačů, pokud už existuje sada škálování virtuálního počítače.
+- **NewVmssOnboarding** šablona vytvoří službu Virtual Machine Scale Sets, která umožňuje přehledy monitorování.
+- Šablona **ConfigureWorkspace** konfiguruje váš pracovní prostor Log Analytics pro podporu přehledů virtuálních počítačů tím, že umožňuje řešení a shromažďování čítačů výkonu operačního systému Linux a Windows.
 
 >[!NOTE]
->Pokud se sada škálování virtuálních počítačů už nastavila a zásada upgradu je nastavená na **Ruční**, Azure monitor pro virtuální počítače po spuštění šablony Azure Resource Manager **ExistingVmssOnboarding** nebude ve výchozím nastavení povolená. Je nutné ručně upgradovat instance.
+>Pokud jste už sadu škálování virtuálních počítačů nastavili a zásada upgradu je nastavená na **Ruční**, služba VM Insights po spuštění šablony **ExistingVmssOnboarding** Azure Resource Manager nebude ve výchozím nastavení povolená pro instance. Je nutné ručně upgradovat instance.
 
 ## <a name="deploy-templates"></a>Nasazení šablon
 Šablony lze nasadit pomocí [libovolné metody nasazení pro správce prostředků šablony](../../azure-resource-manager/templates/deploy-powershell.md) , včetně následujících příkladů pomocí PowerShellu a rozhraní příkazového řádku.
@@ -62,8 +62,8 @@ az deployment group create --resource-group <ResourceGroupName> --template-file 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače.
+Teď, když je monitorování pro vaše virtuální počítače povolené, jsou tyto informace k dispozici pro analýzu pomocí služby VM Insights.
 
-- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
+- Pokud si chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení mapy virtuálních počítačů](vminsights-maps.md).
 
 - Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

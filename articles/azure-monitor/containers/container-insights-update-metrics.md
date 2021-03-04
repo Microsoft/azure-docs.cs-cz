@@ -1,19 +1,19 @@
 ---
-title: Postup aktualizace Azure Monitor pro kontejnery pro metriky | Microsoft Docs
-description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejnery pro povolení funkce vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
+title: Postup aktualizace služby Container Insights pro metriky | Microsoft Docs
+description: Tento článek popisuje, jak aktualizovat přehledy kontejnerů a povolit funkci vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708267"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak aktualizovat službu Azure Monitor pro kontejnery a povolit metriky
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>Jak aktualizovat službu Container Insights a povolit metriky
 
-Azure Monitor for Containers zavádí podporu pro shromažďování metrik ze služeb Azure Kubernetes Services (AKS) a uzlů Kubernetes clusterů Azure s podporou ARC a jejich zápis do úložiště Azure Monitor metrik. Tato změna má poskytovat vylepšenou časovou osu při vytváření agregačních výpočtů (střední, Count, Max, min, Sum) v grafech výkonu, podpora připnutí grafů výkonu v Azure Portal řídicích panelech a podpora upozornění na metriky.
+Služba Container Insights zavádí podporu pro shromažďování metrik ze služeb Azure Kubernetes Services (AKS) a uzlů Kubernetes clusterů s povoleným ARC Azure a jejich zápis do úložiště metrik Azure Monitor. Tato změna má poskytovat vylepšenou časovou osu při vytváření agregačních výpočtů (střední, Count, Max, min, Sum) v grafech výkonu, podpora připnutí grafů výkonu v Azure Portal řídicích panelech a podpora upozornění na metriky.
 
 >[!NOTE]
 >Tato funkce v současné době nepodporuje clustery Azure Red Hat OpenShift.
@@ -47,7 +47,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z Azure Portal
 
-V případě existujících AKS clusterů monitorovaných službou Azure Monitor for Containers po výběru clusteru k zobrazení jeho stavu z zobrazení více clusterů v Azure Monitor nebo přímo z clusteru výběrem možnosti **přehledy** v levém podokně by se v horní části portálu měla zobrazit banner.
+V případě existujících clusterů AKS monitorovaných službou Container Insights po výběru clusteru pro zobrazení jeho stavu z zobrazení více clusterů v Azure Monitor nebo přímo z clusteru výběrem možnosti **přehledy** v levém podokně se zobrazí banner v horní části portálu.
 
 ![Upgradovat banner clusteru AKS v Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

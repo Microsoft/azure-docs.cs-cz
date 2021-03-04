@@ -3,21 +3,21 @@ title: Přečtěte si o nejnovějších verzích hostovaných operačních syst�
 description: Nejnovější novinky k vydání a kompatibilita SDK pro Azure Cloud Services hostovaný operační systém.
 services: cloud-services
 documentationcenter: na
-author: yohaddad
+author: gunnarcms
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2021
-ms.author: yohaddad
-ms.openlocfilehash: 2f7670dfeb83611fe6168f9ed06e7f3e754eed60
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 2/19/2021
+ms.author: gunnarcms
+ms.openlocfilehash: 3bce980f183dc55b67684cb097399efdb62b4b43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807695"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716631"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -41,6 +41,9 @@ Poskytuje aktuální informace o nejnovějších vydáních hostovaného operač
 Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizace zpráv
+
+###### <a name="february-19-2021"></a>**19. února 2021**
+Hostovaný operační systém v únoru vydal. 
 
 ###### <a name="february-5-2021"></a>**5. února 2021**
 Hostovaný operační systém v lednu vydal. 
@@ -155,8 +158,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-6.28 _202102-01 |  19. února 2021  |  Post 6,30  |  
 |  WA-HOST-OS-6.27 _202101-01 |  5. února 2021  |  Post 6,29  |  
-|  WA-HOST-OS-6.26 _202012-01 |  15. ledna 2021  |  Post 6,28  |  
+|~~WA-HOST-OS-6.26 _202012-01~~|  15. ledna 2021  |  19. února 2021  |  
 |~~WA-HOST-OS-6.25 _202011-01~~|  19. prosince 2020  |  5. února 2021  |  
 |~~WA-HOST-OS-6.24 _202010-02~~|  17. listopadu 2020  |  15. ledna 2021  |  
 |~~WA-HOST-OS-6.23 _202009-01~~|  10. října 2020  |  19. prosince 2020  |  
@@ -195,8 +199,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-5.52 _202102-01  |  19. února 2021  |  Post 5,54  | 
 |  WA-HOST-OS-5.51 _202101-01  |  5. února 2021  |  Post 5,53  | 
-|  WA-HOST-OS-5.50 _202012-01  |  15. ledna 2021  |  Post 5,52  | 
+|~~WA-HOST-OS-5.50 _202012-01~~|  15. ledna 2021  |  19. února 2021  | 
 |~~WA-HOST-OS-5.49 _202011-01~~|  19. prosince 2020  |  5. února 2021  | 
 |~~WA-HOST-OS-5.48 _202010-02~~|  17. listopadu 2020  |  15. ledna 2021  | 
 |~~WA-HOST-OS-5.47 _202009-01~~|  10. října 2020  |  19. prosince 2020  | 
@@ -232,8 +237,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-4.87 _202102-01  |  19. února 2021  |  Post 4,89  | 
 |  WA-HOST-OS-4.86 _202101-01  |  5. února 2021  |  Post 4,88  | 
-|  WA-HOST-OS-4.85 _202012-01  |  15. ledna 2021  |  Post 4,87  | 
+|~~WA-HOST-OS-4.85 _202012-01~~|  15. ledna 2021  |  19. února 2021  | 
 |~~WA-HOST-OS-4.84 _202011-01~~|  19. prosince 2020  |  5. února 2021  | 
 |~~WA-HOST-OS-4.83 _202010-02~~|  17. listopadu 2020  |  15. ledna 2021  | 
 |~~WA-HOST-OS-4.82 _202009-01~~|  10. října 2020  |  19. prosince 2020  | 
@@ -269,8 +275,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-3.94 _202102-01  |  19. února 2021  |  Post 3,96  |
 |  WA-HOST-OS-3.93 _202101-01  |  5. února 2021  |  Post 3,95  |
-|  WA-HOST-OS-3.92 _202012-01  |  15. ledna 2021  |  Post 3,94  |  
+|~~WA-HOST-OS-3.92 _202012-01~~|  15. ledna 2021  |  19. února 2021  |  
 |~~WA-HOST-OS-3.91 _202011-01~~|  19. prosince 2020  |  5. února 2021  |  
 |~~WA-HOST-OS-3.90 _202010-02~~|  17. listopadu 2020  |  15. ledna 2021  |  
 |~~WA-HOST-OS-3.89 _202009-01~~|  10. října 2020  |  19. prosince 2020  |  
@@ -306,8 +313,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-2.107 _202102-01  |  19. února 2021  |  Post 2,109  |  
 |  WA-HOST-OS-2.106 _202101-01  |  5. února 2021  |  Post 2,108  |  
-|  WA-HOST-OS-2.105 _202012-01  |  15. ledna 2021  |  Post 2,107  |  
+|~~WA-HOST-OS-2.105 _202012-01~~|  15. ledna 2021  |  19. února 2021  |  
 |~~WA-HOST-OS-2.104 _202011-01~~|  19. prosince 2020  |  5. února 2021  |  
 |~~WA-HOST-OS-2.103 _202010-02~~|  17. listopadu 2020  |  15. ledna 2021  |  
 |~~WA-HOST-OS-2.102 _202009-01~~|  10. října 2020  |  19. prosince 2020  |  

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927484"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728004"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
@@ -41,7 +41,7 @@ Tento seznam obsahuje Cognitive Services používané v tomto kurzu. Postupujte 
 | Služba | Funkce | Popis |
 |---------|---------|-------------|
 | Translator | [Získat jazyky](./reference/v3-0-languages.md) | Načte Úplný seznam podporovaných jazyků pro překlad textu. |
-| Translator | [Posunut](./reference/v3-0-translate.md) | Přeloží text na více než 70 jazyků. |
+| Translator | [Posunut](./reference/v3-0-translate.md) | Přeloží text na jazyky a dialekty 90. |
 | Translator | [Soustavy](./reference/v3-0-detect.md) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
 | Kontrola pravopisu Bingu | [Kontrola pravopisu](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Opravte chyby pravopisu, aby se zlepšila přesnost překladu. |
 
@@ -264,7 +264,7 @@ Nakonec jsme přidali kód pro volání metod pro načtení jazyků pro překlad
 
 ## <a name="get-supported-languages"></a>Zjištění podporovaných jazyků
 
-Překladatel aktuálně podporuje více než 70 jazyků. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
+Překladatel aktuálně podporuje jazyky a dialekty 90. Vzhledem k tomu, že se nová jazyková podpora přidá v průběhu času, doporučujeme, abyste místo zakódujeme seznamu jazyků ve vaší aplikaci zavolali prostředek jazyků vystavený překladatelem.
 
 V této části vytvoříme `GET` požadavek na prostředek jazyků a určíme, že chceme seznam jazyků dostupných pro překlad.
 

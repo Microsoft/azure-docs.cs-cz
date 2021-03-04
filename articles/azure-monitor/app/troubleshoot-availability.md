@@ -4,14 +4,14 @@ description: Řešení potíží s webovými testy v Azure Application Insights.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728922"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -58,7 +58,7 @@ Sestava Poradce při potížích umožňuje snadno diagnostikovat běžné probl
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nedostali jsme mi e-mail, když se aktivuje výstraha, nebo se vyřešilo?
 
-Zkontrolujte konfiguraci klasických výstrah a potvrďte, že je váš e-mail přímo uveden, nebo distribuční seznam, na který jste v systému nakonfigurované, aby přijímal oznámení. Pokud je, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Také se podívejte, jestli správce pošty může mít nakonfigurované nějaké zásady, které by mohly způsobovat tento problém.
+Zkontrolujte konfiguraci skupiny akcí výstrahy a potvrďte, že je váš e-mail přímo uveden, nebo distribuční seznam, na který jste v systému nakonfigurované, aby přijímal oznámení. Pokud je, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Také se podívejte, jestli správce pošty může mít nakonfigurované nějaké zásady, které by mohly způsobovat tento problém.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Nedostali jsme oznámení Webhooku?
 
@@ -110,21 +110,6 @@ Existuje limit 100 požadavků na test. Test se také zastaví, pokud běží d�
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Jak mohu spustit test pomocí certifikátů klientů?
 
 To se v tuto chvíli nepodporuje.
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží oznámení o výstrahách (Classic)?
-
-Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../alerts/alerts-classic.overview.md)a s novým prostředím výstrah, přečtěte si [článek Přehled výstrah](../alerts/alerts-overview.md). Pro řízení upozornění na upozornění v novém prostředí výstrahy použijte [skupiny akcí](../alerts/action-groups.md).
-
-* Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
-
-* Pro výstrahy týkající se selhání z umístění X z umístění Y, pokud je tato možnost zapnutá, posílá uživatelům s rolemi správce/spolusprávce možnost **Hromadná a skupinová** zaškrtávací políčka.  Oznámení budou dostávat v podstatě _Všichni_ správci _předplatného_ .
-
-* U upozornění na metriky dostupnosti je možnost **Hromadná a skupinová** zaškrtávací políčko, pokud je povolena, odesílá uživatelům s rolemi vlastník, přispěvatel nebo čtenář v předplatném. V důsledku toho budou mít _Všichni_ uživatelé s přístupem k předplatnému Application Insights prostředek v oboru a budou dostávat oznámení. 
-
-> [!NOTE]
-> Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
-
-Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../alerts/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 
 ## <a name="next-steps"></a>Další kroky
 

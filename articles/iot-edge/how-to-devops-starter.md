@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721484"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Starter
 
@@ -29,6 +29,16 @@ DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou o
 1. V levém podokně vyberte **vytvořit prostředek** a pak vyhledejte **DevOps Starter**.  
 
 1. Vyberte **Vytvořit**.
+
+1. Ve výchozím nastavení je DevOps Starter nastavený na GitHubu. Pokud chcete využít funkce v tomto postupu, přepněte DevOps Starter na nastavení pomocí Azure DevOps. Postupujte podle odkazu **změnit nastavení** .
+
+   ![Pokud chcete přejít z GitHubu na Azure DevOps, vyberte změnit nastavení.](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. V pravém podokně zvolte dlaždici **Azure DevOps** a potom vyberte **Hotovo**.
+
+   ![Vyberte Azure DevOps a nastavte si DevOps Starter.](./media/how-to-devops-starter/select-azure-devops.png)
+
+   Teď byste měli vidět, že se DevOps Starter nastavil s Azure DevOps.
 
 ## <a name="create-a-new-application-pipeline"></a>Vytvořit nový kanál aplikace
 

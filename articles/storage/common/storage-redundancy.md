@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726832"
 ---
 # <a name="azure-storage-redundancy"></a>Redundance Azure Storage
 
@@ -87,10 +87,11 @@ Při vytváření účtu úložiště vyberete primární oblast pro daný úče
 
 Azure Storage nabízí dvě možnosti pro kopírování dat do sekundární oblasti:
 
-- **Geograficky redundantní úložiště (GRS)** kopíruje data synchronně třikrát v rámci jednoho fyzického umístění v primární oblasti s využitím LRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
-- **Geograficky redundantní úložiště (GZRS)** kopíruje data synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí ZRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
+- **Geograficky redundantní úložiště (GRS)** kopíruje data synchronně třikrát v rámci jednoho fyzického umístění v primární oblasti s využitím LRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti. V rámci sekundární oblasti se data zkopírují synchronně třikrát pomocí LRS.
+- **Geograficky redundantní úložiště (GZRS)** kopíruje data synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí ZRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti. V rámci sekundární oblasti se data zkopírují synchronně třikrát pomocí LRS.
 
-Hlavním rozdílem mezi GRS a GZRS je způsob, jakým se data replikují v primární oblasti. V rámci sekundární oblasti jsou data vždy synchronně replikována třikrát pomocí LRS. LRS v sekundární oblasti chrání vaše data proti selhání hardwaru.
+> [!NOTE]
+> Hlavním rozdílem mezi GRS a GZRS je způsob, jakým se data replikují v primární oblasti. V rámci sekundární oblasti jsou data vždy synchronně replikována třikrát pomocí LRS. LRS v sekundární oblasti chrání vaše data proti selhání hardwaru.
 
 V GRS nebo GZRS nejsou data v sekundární oblasti k dispozici pro přístup pro čtení nebo zápis, pokud nedojde k převzetí služeb při selhání sekundární oblastí. Pro přístup pro čtení do sekundární oblasti nakonfigurujte účet úložiště tak, aby používal geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS). Další informace najdete v tématu [přístup pro čtení k datům v sekundární oblasti](#read-access-to-data-in-the-secondary-region).
 

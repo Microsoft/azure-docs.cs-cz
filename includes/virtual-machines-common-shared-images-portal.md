@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751105"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí
 
@@ -93,10 +93,7 @@ Replikace obrázku do všech cílových oblastí může chvíli trvat.
 
 Doporučujeme sdílet přístup na úrovni Galerie imagí. Následující postup vás provede sdílením galerie, kterou jste právě vytvořili.
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
-1. V nabídce vlevo vyberte **skupiny prostředků**. 
-1. V seznamu skupin prostředků vyberte **myGalleryRG**. Otevře se okno pro vaši skupinu prostředků.
-1. V nabídce na levé straně stránky **myGalleryRG** vyberte **řízení přístupu (IAM)**. 
+1. Na stránce pro novou galerii imagí v nabídce vlevo vyberte **řízení přístupu (IAM)**. 
 1. V části **Přidat přiřazení role** vyberte **Přidat**. Otevře se podokno **Přidat přiřazení role** . 
 1. V části **role** vyberte **Čtenář**.
 1. V části **přiřadit přístup k** nechejte výchozí nastavení **uživatele, skupiny nebo instančního objektu služby Azure AD**.

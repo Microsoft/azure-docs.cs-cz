@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722666"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Vytvoření a nasazení cloudové služby Azure (Rozšířená podpora) pomocí sady Visual Studio
 
@@ -63,7 +63,7 @@ Projekt aplikace Visual Studio Azure obsahuje přidružení k projektům rolí v
 - **Definiční soubor služby** – definuje nastavení modulu runtime pro vaši aplikaci, včetně toho, jaké role jsou povinné, koncové body a velikost virtuálního počítače.
 - **Konfigurační soubor služby** – konfiguruje, kolik instancí role se spouští, a hodnoty nastavení definované pro roli.
 
-Další informace o těchto souborech najdete v tématu [Konfigurace rolí pro cloudovou službu Azure se sadou Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
+Další informace o těchto souborech najdete v tématu [Konfigurace rolí pro cloudovou službu Azure se sadou Visual Studio](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="publish-a-cloud-service"></a>Publikování cloudové služby
 
@@ -75,7 +75,7 @@ Další informace o těchto souborech najdete v tématu [Konfigurace rolí pro c
 
 1. **Účet** – vyberte účet nebo v rozevíracím seznamu účet vyberte **Přidat účet** .
 
-1. **Vyberte své předplatné** – vyberte předplatné, které chcete použít pro vaše nasazení. Předplatné, které používáte pro nasazení Cloud Services (Rozšířená podpora), musí mít přiřazené role vlastníka nebo přispěvatele prostřednictvím řízení přístupu na základě role (RBAC). Pokud vaše předplatné nemá žádnou z těchto rolí, přečtěte si téma [Postup přidání přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps) , který chcete přidat, než budete pokračovat dál.
+1. **Vyberte své předplatné** – vyberte předplatné, které chcete použít pro vaše nasazení. Předplatné, které používáte pro nasazení Cloud Services (Rozšířená podpora), musí mít přiřazené role vlastníka nebo přispěvatele prostřednictvím řízení přístupu na základě role (RBAC). Pokud vaše předplatné nemá žádnou z těchto rolí, přečtěte si téma [Postup přidání přiřazení role](../role-based-access-control/role-assignments-steps.md) , který chcete přidat, než budete pokračovat dál.
 
 1. Kliknutím na tlačítko **Další** přejděte na stránku **Nastavení** .
 
@@ -105,7 +105,7 @@ Další informace o těchto souborech najdete v tématu [Konfigurace rolí pro c
 
    ![Nastavení diagnostiky](./media/diagnostics-settings.png)
 
-   Diagnostika umožňuje řešit potíže s cloudovou službou Azure (nebo virtuálním počítačem Azure). Informace o diagnostice najdete v tématu [Konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Informace o Application Insights najdete v tématu [co je Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview).
+   Diagnostika umožňuje řešit potíže s cloudovou službou Azure (nebo virtuálním počítačem Azure). Informace o diagnostice najdete v tématu [Konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Informace o Application Insights najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 1. Kliknutím na tlačítko **Další** přejděte na stránku **Souhrn** .
 
@@ -126,4 +126,4 @@ Pokud chcete vyčistit prostředky Azure, které jste vytvořili pomocí tohoto 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí tlačítka **Konfigurovat** na obrazovce **publikování** nastavte průběžnou integraci (CI). Další informace najdete v [dokumentaci Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).
+Pomocí tlačítka **Konfigurovat** na obrazovce **publikování** nastavte průběžnou integraci (CI). Další informace najdete v [dokumentaci Azure Pipelines](/azure/devops/pipelines).

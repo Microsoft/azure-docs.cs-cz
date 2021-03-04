@@ -5,23 +5,23 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336159"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692126"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Tento článek představuje úvod do geoprostorové funkce v Azure Cosmos DB. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Po přečtení naší dokumentace k geoprostorovému indexování budete moci zodpovědět následující otázky:
+Tento článek představuje úvod do geoprostorové funkce v Azure Cosmos DB. Po přečtení naší dokumentace k geoprostorovému indexování budete moci zodpovědět následující otázky:
 
 * Návody ukládat prostorová data do Azure Cosmos DB?
-* Jak se dají dotazovat geoprostorové údaje v Azure Cosmos DB v SQL a LINQ?
+* Jak se dají dotazovat prostorová data v Azure Cosmos DB v SQL a LINQ?
 * Návody povolit nebo zakázat indexování prostorových dat v Azure Cosmos DB?
 
 ## <a name="spatial-data-use-cases"></a>Případy použití prostorových dat
@@ -121,9 +121,9 @@ Azure Cosmos DB interpretuje souřadnice, jak je znázorněno na referenčním s
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }

@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 942698e5c42e1f46ff05dacdacdb0d124135a6c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690426"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatizace úloh správy pomocí elastických úloh (Preview)
 
@@ -56,7 +56,7 @@ Elastické úlohy můžou cílit na [databáze SQL Azure](sql-database-paas-over
 
 V případě automatizace úloh skriptů T-SQL v SQL Server a spravované instanci SQL Azure zvažte možnost [Agent SQL](job-automation-managed-instances.md). 
 
-V případě automatizace úloh skriptů T-SQL ve službě Azure synapse Analytics zvažte [kanály s opakovanými triggery](/azure/synapse-analytics/data-integration/concepts-data-factory-differences.md), které jsou [založené na Azure Data Factory](/azure/synapse-analytics/data-integration/concepts-data-factory-differences).
+V případě automatizace úloh skriptů T-SQL ve službě Azure synapse Analytics zvažte [kanály s opakovanými triggery](../../synapse-analytics/data-integration/concepts-data-factory-differences.md), které jsou [založené na Azure Data Factory](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
 
 Je potřeba poznamenat rozdíly mezi agentem SQL (dostupnými v SQL Server a jako součást spravované instance SQL) a Agent elastické úlohy databáze (který může spouštět T-SQL ve službě Azure SQL Database nebo databázích v SQL Server a Azure SQL Managed instance, Azure synapse Analytics).
 

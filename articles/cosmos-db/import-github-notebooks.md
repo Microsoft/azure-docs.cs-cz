@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339797"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690647"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,13 +51,18 @@ Pokud chcete odpojit svůj účet GitHubu z pracovního prostoru poznámkových 
 
 Můžete upravit existující Poznámkový blok nebo přidat nový Poznámkový blok do úložiště a uložit změny zpátky do GitHubu.
 
-Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit** ). Otevře se dialogové okno, kde můžete zadat potvrzovací zprávu pro změny, které jste udělali. Vyberte **Potvrdit** a Poznámkový blok na GitHubu se aktualizuje. Aktualizace můžete ověřit tak, že se přihlásíte k účtu GitHub a ověříte historii potvrzení změn.
+Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit**). Otevře se dialogové okno, kde můžete zadat potvrzovací zprávu pro změny, které jste udělali. Vyberte **Potvrdit** a Poznámkový blok na GitHubu se aktualizuje. Aktualizace můžete ověřit tak, že se přihlásíte k účtu GitHub a ověříte historii potvrzení změn.
 
 V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzdáleného. V takovém případě ale možnost potvrzení slouží jako "fázování, potvrzování a" doručování "vašich aktualizací do GitHubu.
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Upravit poznámkové bloky a potvrdit změny do GitHubu":::
 
+Po úpravě poznámkového bloku [ho můžete publikovat do galerie poznámkových bloků](publish-notebook-gallery.md). 
+
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o výhodách [Azure Cosmos DB poznámkových blocích Jupyter.](cosmosdb-jupyter-notebooks.md)
-
+* [Prozkoumat galerii ukázek poznámkových bloků](https://cosmos.azure.com/gallery.html)
+* [Publikování poznámkových bloků do galerie poznámkových bloků Azure Cosmos DB](publish-notebook-gallery.md)
+* [Použití funkcí a příkazů poznámkového bloku Pythonu](use-python-notebook-features-and-commands.md)
+* [Použití funkcí a příkazů pro Poznámkový blok jazyka C#](use-csharp-notebook-features-and-commands.md)

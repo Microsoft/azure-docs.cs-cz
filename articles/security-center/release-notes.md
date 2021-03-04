@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727086"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -37,9 +37,10 @@ Aktualizace v únoru zahrnují:
 
 - [Nová stránka výstrah zabezpečení v Azure Portal vydaná pro obecnou dostupnost (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Doporučení pro ochranu úloh Kubernetes vydaná pro obecnou dostupnost (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Microsoft Defender pro integraci koncových bodů s Azure Defenderem teď podporuje Windows Server 2019 a virtuální plochu Windows 10 (WVD) (ve verzi Preview).](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení](#direct-link-to-policy-from-recommendation-details-page)
 - [Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
-- [Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativě (ve verzi Preview).](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [Vylepšení stránky inventáře prostředků](#asset-inventory-page-enhancements)
 
 
@@ -75,6 +76,17 @@ Další informace najdete v článku [osvědčené postupy ochrany úloh pomocí
 > I když se doporučení zobrazovala ve verzi Preview, nespustila není v pořádku, takže se nezahrnuly do výpočtů vašeho zabezpečeného skóre. s tímto oznámením GA budou součástí výpočtu skóre. Pokud jste to ještě neudělali, může to vést ke mírnému dopadu na vaše zabezpečené skóre. Opravte je všude, kde je to možné, jak je popsáno v tématu o [opravách doporučení v Azure Security Center](security-center-remediate-recommendations.md).
 
 
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Microsoft Defender pro integraci koncových bodů s Azure Defenderem teď podporuje Windows Server 2019 a virtuální plochu Windows 10 (WVD) (ve verzi Preview).
+
+Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpečení koncového bodu. Poskytuje řízení a hodnocení ohrožení zabezpečení založené na rizicích a také zjišťování a odpověď koncového bodu (EDR). Úplný seznam výhod používání programu Defender pro koncový bod spolu s Azure Security Center najdete v tématu [Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncový bod](security-center-wdatp.md).
+
+Pokud povolíte Azure Defender pro servery na Windows serveru, součástí plánu je licence k programu Defender pro koncový bod. Pokud jste už Azure Defender povolili pro servery a máte ve svém předplatném servery Windows 2019, automaticky obdrží v rámci této aktualizace Defender pro koncový bod. Není vyžadována žádná ruční akce. 
+
+Podpora se teď rozšířila tak, aby zahrnovala Windows Server 2019 a [virtuální plochu Windows (WVD)](../virtual-desktop/overview.md).
+
+> [!NOTE]
+> Pokud povolujete Defender pro koncový bod na počítači s Windows serverem 2019, ujistěte se, že splňuje požadavky popsané v tématu [Povolení integrace programu Microsoft Defender pro koncové body](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration).
+
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Přímá vazba na zásadu ze stránky s podrobnostmi o doporučení
 
 Při prohlížení podrobností doporučení je často užitečné, abyste mohli zobrazit základní zásady. Pro každé doporučení, které zásady podporuje, je k dispozici nový odkaz na stránce s podrobnostmi o doporučení:
@@ -91,9 +103,12 @@ Pokud si prohlédnete seznam doporučení v našich [doporučeních o zabezpeče
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Doporučení klasifikace dat SQL už nemá vliv na vaše zabezpečené skóre.
 Doporučení **citlivá data v databázích SQL by měla být klasifikována** už neovlivní vaše zabezpečené skóre. Toto je jediné doporučení v ovládacím prvku zabezpečení **klasifikace dat** , aby měl ovládací prvek nyní hodnotu zabezpečeného skóre 0.
 
+Úplný seznam všech ovládacích prvků zabezpečení v Security Center spolu s jejich hodnocením a seznamem doporučení v jednotlivých tématech najdete v tématu [ovládací prvky zabezpečení a jejich doporučení](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativních režimech (Preview).
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>Automatizace pracovního postupu se můžou aktivovat změnami pro vyhodnocení dodržování předpisů v legislativě (ve verzi Preview).
 Do možností triggeru pro vaše automatizované pracovní postupy jsme přidali třetí datový typ: změny v protestech dodržování předpisů v legislativních prostředích.
+
+Naučte se používat nástroje pro automatizaci pracovních postupů v [automatizaci odpovědí na Security Center triggery](workflow-automation.md).
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Použití změn pro vyhodnocení dodržování předpisů v legislativě pro aktivaci automatizace pracovního postupu" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
@@ -187,7 +202,7 @@ Přečtěte si další informace o [zabezpečeném řízení hodnocení a zabezp
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Pro obecnou dostupnost se vydává rozhraní API pro stanovení skóre zabezpečení (GA).
 
-K vašemu skóre teď můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](/rest/api/securitycenter/securescores/). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Příklad:
+K vašemu skóre teď můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](/rest/api/securitycenter/securescores/). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Například:
 
 - použití rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné
 - použití rozhraní API pro **řízení zabezpečeného skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných
@@ -672,7 +687,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .

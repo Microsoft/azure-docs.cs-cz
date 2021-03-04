@@ -4,15 +4,15 @@ description: Strategie řízení a testování Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369051"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727018"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Řízení zabezpečení v2: zásady správného řízení a strategie
 
@@ -24,15 +24,15 @@ Zásady správného řízení a strategie poskytují pokyny k zajištění soudr
 |--|--|--|--|
 | GS – 1 | 2, 13 | SC, AC |
 
-Ujistěte se, že jste dokument a komunikovali s jasnými strategiemi pro nepřetržité monitorování a ochranu systémů a dat. Stanovte priority zjišťování, hodnocení, ochrany a monitorování nejdůležitějších podnikových dat a systémů. 
+Ujistěte se, že jste dokument a komunikovali s jasnými strategiemi pro nepřetržité monitorování a ochranu systémů a dat. Stanovte priority zjišťování, hodnocení, ochrany a monitorování nejdůležitějších podnikových dat a systémů.
 
 Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky: 
 
 - Standard klasifikace dat v souladu s obchodními riziky
 
-- Přehled organizace zabezpečení o rizicích a inventáři prostředků 
+- Přehled organizace zabezpečení o rizicích a inventáři prostředků
 
-- Schválení služeb Azure k používání provedené organizací zabezpečení 
+- Schválení služeb Azure k používání provedené organizací zabezpečení
 
 - Zabezpečení prostředků po dobu jejich životního cyklu
 
@@ -127,9 +127,9 @@ Ujistěte se, že máte dokument a komunikujete s jasnými strategiemi pro role 
 |--|--|--|--|
 | GS – 5 | 9 | CA, SC |
 
-Navažte přístup k zabezpečení sítě Azure v rámci celkové strategie řízení přístupu zabezpečení vaší organizace.  
+Navažte přístup k zabezpečení sítě Azure v rámci celkové strategie řízení přístupu zabezpečení vaší organizace.
 
-Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky: 
+Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky:
 
 - Centralizovaná správa sítě a odpovědnost za zabezpečení
 
@@ -141,7 +141,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 - Strategie vzájemného propojení hybridního cloudu a místního připojení
 
-- Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční síťová architektura)
+- Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční Síťová architektura)
 
 Další informace najdete v následujících referenčních materiálech:
 
@@ -165,9 +165,9 @@ Další informace najdete v následujících referenčních materiálech:
 |--|--|--|--|
 | GS – 6 | 16, 4 | AC, AU, SC |
 
-V rámci celkové strategie řízení přístupu k zabezpečení vaší organizace vytvořte přístup k identitě Azure a privilegovanému přístupu.  
+V rámci celkové strategie řízení přístupu k zabezpečení vaší organizace vytvořte přístup k identitě Azure a privilegovanému přístupu.
 
-Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky: 
+Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pro následující prvky:
 
 - Centralizovaný systém identit a ověřování a jeho vzájemné propojení s dalšími interními a externími systémy identit
 
@@ -175,7 +175,7 @@ Tato strategie by měla zahrnovat zdokumentované pokyny, zásady a standardy pr
 
 - Ochrana vysoce privilegovaných uživatelů
 
-- Monitorování a zpracování anomálních aktivit uživatelů  
+- Monitorování a zpracování anomálních aktivit uživatelů
 
 - Uživatelská identita a kontrola přístupu a proces odsouhlasení
 

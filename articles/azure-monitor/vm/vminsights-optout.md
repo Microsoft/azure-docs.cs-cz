@@ -1,25 +1,25 @@
 ---
-title: Zakázat monitorování v Azure Monitor pro virtuální počítače
-description: Tento článek popisuje, jak zastavit monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače.
+title: Zakázat monitorování v nástroji VM Insights
+description: Tento článek popisuje, jak zastavit monitorování virtuálních počítačů ve službě VM Insights.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7eca08abf1ef3bed1aa7fdd806853b94d5615854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717056"
 ---
-# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Zakázání monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače
+# <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Zakázání monitorování virtuálních počítačů ve službě VM Insights
 
-Jakmile povolíte monitorování virtuálních počítačů, můžete se později rozhodnout zakázat monitorování v Azure Monitor pro virtuální počítače. Tento článek popisuje, jak zakázat monitorování pro jeden nebo více virtuálních počítačů.  
+Jakmile povolíte monitorování virtuálních počítačů, můžete se později rozhodnout zakázat monitorování v nástroji VM Insights. Tento článek popisuje, jak zakázat monitorování pro jeden nebo více virtuálních počítačů.  
 
-V současné době Azure Monitor pro virtuální počítače nepodporuje selektivní zakázání monitorování virtuálních počítačů. Pracovní prostor Log Analytics může podporovat Azure Monitor pro virtuální počítače a další řešení. Může také shromažďovat další data monitorování. Pokud vaše Log Analytics pracovní prostor poskytuje tyto služby, je potřeba pochopit účinek a metody zakázání monitorování před tím, než začnete.
+V současné době nepodporuje služba VM Insights selektivní zakázání monitorování virtuálních počítačů. Váš pracovní prostor Log Analytics může podporovat přehledy virtuálních počítačů a další řešení. Může také shromažďovat další data monitorování. Pokud vaše Log Analytics pracovní prostor poskytuje tyto služby, je potřeba pochopit účinek a metody zakázání monitorování před tím, než začnete.
 
-Azure Monitor pro virtuální počítače spoléhá na následující komponenty, které doručí své zkušenosti:
+Funkce Cloud Insights využívá k zajištění svého prostředí tyto komponenty:
 
 * Log Analytics pracovní prostor, který ukládá data monitorování z virtuálních počítačů a jiných zdrojů.
 * Kolekce čítačů výkonu nakonfigurovaných v pracovním prostoru. Kolekce aktualizuje konfiguraci monitorování na všech virtuálních počítačích připojených k pracovnímu prostoru.
@@ -34,19 +34,19 @@ Při přípravě na zakázání monitorování virtuálních počítačů mějte
 >[!NOTE]
 > Po odebrání součástí řešení z pracovního prostoru můžete dál zobrazovat data o výkonu a mapování pro virtuální počítače Azure. Data se nakonec přestanou zobrazovat v zobrazeních **výkon** a **Mapa** . Možnost **Povolit** bude dostupná z vybraného virtuálního počítače Azure, takže v budoucnu můžete monitorování znovu povolit.  
 
-## <a name="remove-azure-monitor-for-vms-completely"></a>Zcela odebrat Azure Monitor pro virtuální počítače
+## <a name="remove-vm-insights-completely"></a>Úplné odebrání přehledů z virtuálního počítače
 
-Pokud stále potřebujete Log Analytics pracovní prostor, postupujte podle těchto kroků a úplně odeberte Azure Monitor pro virtuální počítače. Řešení odeberete `VMInsights` z pracovního prostoru.  
+Pokud stále potřebujete Log Analytics pracovní prostor, postupujte podle těchto kroků a úplně odeberte přehledy o virtuálních počítačích. Řešení odeberete `VMInsights` z pracovního prostoru.  
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Log Analytics**.
-3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste zvolili, když jste povolili Azure Monitor pro virtuální počítače.
+3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste zvolili, když jste povolili službu VM Insights.
 4. Na levé straně vyberte **řešení**.  
 5. V seznamu řešení vyberte **VMInsights (název pracovního prostoru)**. Na stránce **Přehled** pro řešení vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **Ano**.
 
 ## <a name="disable-monitoring-and-keep-the-workspace"></a>Zakázat monitorování a zachovat pracovní prostor  
 
-Pokud má váš Log Analytics pracovní prostor stále podporovat monitorování z jiných zdrojů, pomocí následujících kroků zakažte monitorování na virtuálním počítači, který jste použili k vyhodnocení Azure Monitor pro virtuální počítače. Pro virtuální počítače Azure odeberete rozšíření virtuálního počítače agenta závislosti a rozšíření virtuálního počítače Log Analytics agenta pro Windows nebo Linux přímo z virtuálního počítače. 
+Pokud váš pracovní prostor Log Analytics stále potřebuje podporovat monitorování z jiných zdrojů, postupujte podle těchto kroků a zakažte monitorování na virtuálním počítači, který jste použili k vyhodnocení přehledů virtuálních počítačů. Pro virtuální počítače Azure odeberete rozšíření virtuálního počítače agenta závislosti a rozšíření virtuálního počítače Log Analytics agenta pro Windows nebo Linux přímo z virtuálního počítače. 
 
 >[!NOTE]
 >Agenta Log Analytics neodstraňujte, pokud: 

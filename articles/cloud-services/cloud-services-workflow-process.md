@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700129"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Pracovní postup architektury klasického virtuálního počítače Windows Azure 
 
@@ -80,7 +80,7 @@ Následující diagram znázorňuje architekturu prostředků Azure.
 5. WindowsAzureGuestAgent nastaví hostovaný operační systém (bránu firewall, seznamy ACL, LocalStorage atd.), zkopíruje nový konfigurační soubor XML do c:\Config a potom spustí proces WaHostBootstrapper.
 6. U úplných webových rolí služby IIS WaHostBootstrapper spustí IISConfigurator a oznámí IT, aby odstranil všechny existující služby fondů pro webovou roli z IIS.
 7. WaHostBootstrapper přečte úlohy **po spuštění** z E:\RoleModel.xml a začne spouštět úlohy po spuštění. WaHostBootstrapper počká, dokud nebudou dokončeny všechny jednoduché úvodní úlohy a vrátila zprávu "úspěch".
-8. U úplných webových rolí služby IIS WaHostBootstrapper oznamuje IISConfigurator, že má nakonfigurovat službu IIS AppPool a odkazuje na lokalitu `E:\Sitesroot\<index>` , kde `<index>` je index založený na nule na počet `<Sites>` prvků definovaných pro danou službu.
+8. U úplných webových rolí služby IIS WaHostBootstrapper oznamuje IISConfigurator, že má nakonfigurovat službu IIS AppPool a odkazuje na lokalitu `E:\Sitesroot\<index>` , kde `<index>` je index založený na nule na počet `<Sites>` prvků definovaných pro službu.
 9. WaHostBootstrapper spustí proces hostitele v závislosti na typu role:
     1. **Role pracovního procesu**: WaWorkerHost.exe je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Jakmile se vrátí, WaHostBootstrapper spustí metodu Run () a pak ji současně označí jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení (pokud jsou definovány InputEndpoints). WaHostBootsrapper pak přejde do smyčky kontroly stavu role.
     2. **Plná webová role služby IIS**: aIISHost je spuštěná. WaHostBootstrapper spustí metodu OnStart (). Po návratu začne spustit metodu Run () a pak zároveň označí roli jako připravenou a umístí ji do rotace nástroje pro vyrovnávání zatížení. WaHostBootsrapper pak přejde do smyčky kontroly stavu role.

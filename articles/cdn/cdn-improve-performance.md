@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993665"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728191"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -153,10 +153,10 @@ Následující tabulky popisují Azure CDN chování komprese pro každý scén�
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Komprese je povolena a soubor je vhodný pro kompresi
 | Formát požadovaný klientem (přes Accept-Encoding záhlaví) | Formát souboru v mezipaměti | Odpověď CDN klientovi | Poznámky |
 | --- | --- | --- | --- |
-| Komprimované |Komprimované |Komprimované |Překóduje síť CDN mezi podporovanými formáty. |
+| Komprimované |Komprimované |Komprimované |Překóduje síť CDN mezi podporovanými formáty. <br/>**Azure CDN od Microsoftu** nepodporuje překódování mezi formáty a místo toho načítá data ze zdroje, komprimuje a ukládá je do mezipaměti odděleně pro formát. |
 | Komprimované |Nekomprimovaných |Komprimované |CDN provede kompresi. |
 | Komprimované |Neuložený v mezipaměti |Komprimované |CDN provede kompresi, pokud zdroj vrátí nekomprimovaný soubor. <br/>**Azure CDN z Verizon** předá tento nekomprimovaný soubor na první požadavek a pak zkomprimuje a uloží soubor do mezipaměti pro následné požadavky. <br/>Soubory s `Cache-Control: no-cache` hlavičkou nejsou nikdy komprimovány. |
-| Nekomprimovaných |Komprimované |Nekomprimovaných |CDN provádí dekompresi. |
+| Nekomprimovaných |Komprimované |Nekomprimovaných |CDN provádí dekompresi. <br/>**Azure CDN od Microsoftu** nepodporuje dekompresi a místo toho načítá data ze zdroje a ukládá je do mezipaměti odděleně pro nekomprimované klienty. |
 | Nekomprimovaných |Nekomprimovaných |Nekomprimovaných | |
 | Nekomprimovaných |Neuložený v mezipaměti |Nekomprimovaných | |
 

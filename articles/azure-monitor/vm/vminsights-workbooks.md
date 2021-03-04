@@ -1,19 +1,19 @@
 ---
-title: Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
-description: Zjednodušte vytváření složitých sestav s předdefinovanými a vlastními parametrizovanými sešity pro Azure Monitor pro virtuální počítače.
+title: Vytváření interaktivních sestav – přehledy virtuálních počítačů pomocí sešitů
+description: Zjednodušte vytváření složitých sestav s předdefinovanými a vlastními parametrizovanými sešity pro službu VM Insights.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731285"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Vytváření interaktivních sestav – přehledy virtuálních počítačů pomocí sešitů
 
 Sešity kombinují text, [dotazy protokolů](/azure/data-explorer/kusto/query/), metriky a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
 
@@ -24,9 +24,9 @@ Sešity jsou užitečné pro scénáře, jako například:
 * Sdílení výsledků experimentu změny velikosti virtuálního počítače s ostatními členy týmu. Můžete vysvětlit cíle experimentu s textem a pak zobrazit jednotlivé metriky využití a analytické dotazy použité k vyhodnocení experimentu spolu s jasnými voláními pro skutečnost, zda byla každá metrika nad nebo pod cílovou.
 * Oznamujeme dopad výpadku při používání vašeho virtuálního počítače, kombinování dat, vysvětlení textu a diskuzi o dalších krocích, aby se předešlo výpadkům v budoucnosti.
 
-Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální počítače obsahuje, abyste mohli začít.
+Následující tabulka shrnuje sešity, které virtuální počítač Insights zahrnuje, abyste mohli začít.
 
-| sešit | Description | Obor |
+| sešit | Popis | Obor |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
 | Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
@@ -96,7 +96,7 @@ Oddíly dotazů jsou vysoce flexibilní a dají se použít k zodpovězení otá
 
 Nebudete se také omezovat jenom na dotazování z kontextu virtuálního počítače, ze kterého jste sešit spustili. Můžete zadávat dotazy na více virtuálních počítačů a také Log Analytics pracovní prostory, pokud máte přístupová oprávnění k těmto prostředkům.
 
-Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z konkrétní Application Insights aplikace pomocí identifikátoru **pracovního prostoru** . Další informace o dotazech mezi prostředky najdete v [oficiálních pokynech](../log-query/cross-workspace-query.md).
+Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z konkrétní Application Insights aplikace pomocí identifikátoru **pracovního prostoru** . Další informace o dotazech mezi prostředky najdete v [oficiálních pokynech](../logs/cross-workspace-query.md).
 
 ### <a name="advanced-analytic-query-settings"></a>Pokročilé nastavení analytického dotazu
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>Přidávání oddílů metrik
 
-Oddíly metrik poskytují úplný přístup, který umožňuje začlenit do interaktivních sestav Azure Monitor data metrik. V Azure Monitor pro virtuální počítače budou předem připravené sešity obvykle obsahovat analytická data dotazů, nikoli data metriky.  Můžete se rozhodnout vytvořit sešity s daty metriky, abyste mohli plně využít výhod obou funkcí na jednom místě. Máte také možnost přijímat data metrik z prostředků v libovolném z předplatných, ke kterým máte přístup.
+Oddíly metrik poskytují úplný přístup, který umožňuje začlenit do interaktivních sestav Azure Monitor data metrik. Ve službě VM Insights budou předem připravené sešity obvykle obsahovat analytická data dotazů, nikoli data metrik.  Můžete se rozhodnout vytvořit sešity s daty metriky, abyste mohli plně využít výhod obou funkcí na jednom místě. Máte také možnost přijímat data metrik z prostředků v libovolném z předplatných, ke kterým máte přístup.
 
 Tady je příklad dat virtuálního počítače, která jsou načítána do sešitu, aby bylo možné vytvořit vizualizaci mřížky výkonu procesoru:
 
@@ -244,4 +244,4 @@ Chcete-li připnout odkaz na sešit na řídicí panel Azure:
 
 - Pokud chcete zjistit omezení a celkový výkon virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálního počítače Azure](vminsights-performance.md).
 
-- Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy Azure monitor pro virtuální počítače](vminsights-maps.md).
+- Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy virtuálních počítačů](vminsights-maps.md).

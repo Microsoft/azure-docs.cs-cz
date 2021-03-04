@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731676"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
@@ -21,13 +21,13 @@ Application Insights metriky založené na protokolu vám umožní analyzovat st
 * [Metriky založené na protokolu](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](/azure/kusto/query/) z uložených událostí.
 * [Standardní metriky](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) se ukládají jako předem agregované časové řady.
 
-Vzhledem k tomu, že *Standardní metriky* jsou během shromažďování předem shrnuty, mají lepší výkon v době dotazu. Díky tomu je lepší volbou pro řídicí panely a výstrahy v reálném čase. *Metriky založené na protokolech* mají více dimenzí, díky kterým jsou nadřazené volbou pro analýzu dat a pro diagnostiku ad-hoc. [Selektor oboru názvů](../platform/metrics-getting-started.md#create-your-first-metric-chart) použijte k přepínání mezi standardními metrikami založenými na protokolech v [Průzkumníkovi metrik](../platform/metrics-getting-started.md).
+Vzhledem k tomu, že *Standardní metriky* jsou během shromažďování předem shrnuty, mají lepší výkon v době dotazu. Díky tomu je lepší volbou pro řídicí panely a výstrahy v reálném čase. *Metriky založené na protokolech* mají více dimenzí, díky kterým jsou nadřazené volbou pro analýzu dat a pro diagnostiku ad-hoc. [Selektor oboru názvů](./metrics-getting-started.md#create-your-first-metric-chart) použijte k přepínání mezi standardními metrikami založenými na protokolech v [Průzkumníkovi metrik](./metrics-getting-started.md).
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>Interpretace a používání dotazů z tohoto článku
 
 V tomto článku jsou uvedeny metriky s podporovanými agregacemi a dimenzemi. Podrobnosti o metrikách založených na protokolu zahrnují základní příkazy dotazů Kusto. Pro přehlednost každý dotaz používá výchozí hodnoty pro časovou členitost, typ grafu a někdy rozdělení dimenze, které zjednodušují použití dotazu v Log Analytics bez nutnosti úpravy.
 
-Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](../platform/metrics-getting-started.md), neexistují žádné výchozí hodnoty – dotaz se dynamicky upraví na základě nastavení grafu:
+Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](./metrics-getting-started.md), neexistují žádné výchozí hodnoty – dotaz se dynamicky upraví na základě nastavení grafu:
 
 - Vybraný **časový rozsah** je přeložen do další klauzule *WHERE timestamp...* , aby bylo možné vybrat pouze události z vybraného časového rozsahu. Například graf zobrazující data za posledních 24 hodin, dotaz obsahuje *| místo > před časovým razítkem (24 h)*.
 
@@ -38,7 +38,7 @@ Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](../platform/metrics
 - Vybraná dimenze **rozděleného grafu** se převede na další vlastnost Shrnutí. Například pokud rozdělíte graf podle *umístění* a sekreslíte pomocí členitosti s časem 5 minut, je shrnuta klauzule *Shrnutí* *... po přihrádce (časové razítko, 5 m), umístění*.
 
 > [!NOTE]
-> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../log-query/log-analytics-tutorial.md) a [Azure monitor](../overview.md).
+> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../logs/log-analytics-tutorial.md) a [Azure monitor](../overview.md).
 
 ## <a name="availability-metrics"></a>Metriky dostupnosti
 

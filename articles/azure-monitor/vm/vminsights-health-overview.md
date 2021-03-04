@@ -1,26 +1,26 @@
 ---
-title: Stav hosta Azure Monitor pro virtuální počítače (Preview)
-description: Přehled funkce stavu v Azure Monitor pro virtuální počítače včetně toho, jak můžete zobrazit stav virtuálních počítačů a přijímat výstrahy, když se virtuální počítač stává stavem není v pořádku.
+title: Stav hosta pro virtuální počítače Insights (Preview)
+description: Přehled funkce Health Insights v rámci virtuálních počítačů, včetně toho, jak můžete zobrazit stav virtuálních počítačů a přijímat výstrahy, když se virtuální počítač stává stavem není v pořádku.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707451"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>Stav hosta Azure Monitor pro virtuální počítače (Preview)
-Azure Monitor pro virtuální počítače stav hosta umožňuje zobrazit stav virtuálních počítačů na základě sady měření výkonu, které jsou v pravidelných intervalech odebírány z hostovaného operačního systému. Můžete rychle zjistit stav všech virtuálních počítačů v rámci předplatného nebo skupiny prostředků, přejít k podrobnostem o podrobném stavu konkrétního virtuálního počítače nebo ho aktivně upozornit, když se virtuální počítač neobjeví v pořádku. 
+# <a name="vm-insights-guest-health-preview"></a>Stav hosta pro virtuální počítače Insights (Preview)
+Stav hosta pro virtuální počítače Insights umožňuje zobrazit stav virtuálních počítačů na základě sady měření výkonu, které jsou v pravidelných intervalech odebírány z hostovaného operačního systému. Můžete rychle zjistit stav všech virtuálních počítačů v rámci předplatného nebo skupiny prostředků, přejít k podrobnostem o podrobném stavu konkrétního virtuálního počítače nebo ho aktivně upozornit, když se virtuální počítač neobjeví v pořádku. 
 
 ## <a name="enable-virtual-machine-health"></a>Povolit stav virtuálního počítače
-Podrobnosti o povolení funkce stavu hosta a virtuálních počítačů s připojováním najdete v tématu [Povolení stavu hosta Azure monitor pro virtuální počítače (Preview)](vminsights-health-enable.md) .
+Podrobnosti o povolení funkce stavu hosta a virtuálních počítačů pro registraci najdete v tématu [Povolení stavu hosta služby VM Insights (Preview)](vminsights-health-enable.md) .
 
 ## <a name="pricing"></a>Ceny
-Pro funkci stavu hosta se neúčtují žádné přímé náklady, ale v pracovním prostoru Log Analytics existují náklady na ingestování a ukládání dat o stavu. Všechna data jsou uložená v tabulce *HealthStateChangeEvent* . Podrobnosti o cenových modelech a nákladech najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../platform/manage-cost-storage.md) .
+Pro funkci stavu hosta se neúčtují žádné přímé náklady, ale v pracovním prostoru Log Analytics existují náklady na ingestování a ukládání dat o stavu. Všechna data jsou uložená v tabulce *HealthStateChangeEvent* . Podrobnosti o cenových modelech a nákladech najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../logs/manage-cost-storage.md) .
 
 ## <a name="view-virtual-machine-health"></a>Zobrazit stav virtuálního počítače
 Sloupec **stavu virtuálního počítače hosta** na **stránce Začínáme** poskytuje rychlý přehled o stavu každého virtuálního počítače v konkrétním předplatném nebo skupině prostředků. Aktuální stav každého virtuálního počítače se zobrazí, zatímco ikony pro každou skupinu zobrazují počet virtuálních počítačů, které jsou aktuálně v jednotlivých stavech v dané skupině.
@@ -35,7 +35,7 @@ Kliknutím na stav virtuálního počítače zobrazíte podrobný stav každého
 
 V následující tabulce jsou uvedeny agregované a monitorované monitorování jednotek pro jednotlivé virtuální počítače. 
 
-| Monitor | Typ | Description |
+| Monitor | Typ | Popis |
 |:---|:---|:---|
 | Využití procesoru | Jednotka | Procento využití procesoru. |
 | Systémy souborů | Agregace | Agregovat stav všech systémů souborů na virtuálním počítači se systémem Linux. |
@@ -53,7 +53,7 @@ Každé monitorování má lookback okno a analyzuje všechny vzorky shromážd�
 
 Monitory mají v následující tabulce možné stavové stavy, které budou v jednom okamžiku pouze v jednom. Po inicializaci monitorování se spustí v dobrém stavu.
 
-| Stav | Description |
+| Stav | Popis |
 |:---|:---|
 | V pořádku  | Monitor aktuálně nepřekračuje varovnou nebo kritickou prahovou hodnotu. |
 | Upozornění  | Monitorování překročilo prahovou hodnotu upozornění (Pokud je definována). |
@@ -66,7 +66,7 @@ Monitory mají v následující tabulce možné stavové stavy, které budou v j
 
 Existují dva typy monitorování, jak je znázorněno v následující tabulce.
 
-| Monitor | Description |
+| Monitor | Popis |
 |:---|:---|
 | Monitorování jednotky | Měří určitý aspekt prostředku nebo aplikace. Může se jednat o kontrolu čítače výkonu za účelem zjištění výkonu nebo dostupnosti prostředku. |
 | Souhrnné monitorování | Seskupuje více monitorování a poskytuje jeden souhrnný stav. Souhrnné monitorování může obsahovat jedno nebo více monitorování jednotky a další souhrnná monitorování. |
@@ -95,7 +95,7 @@ Vyberte monitorování a zobrazte jeho podrobnosti, které obsahují následují
 [![Historie monitorování podrobností](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>Konfigurace
-Zobrazení a úprava konfigurace monitorování pro vybraný virtuální počítač. Podrobnosti najdete v tématu [Konfigurace monitorování v Azure monitor pro virtuální počítače stav hosta (Preview)](vminsights-health-enable.md) .
+Zobrazení a úprava konfigurace monitorování pro vybraný virtuální počítač. Podrobnosti najdete v tématu [Konfigurace monitorování ve stavu hosta služby VM Insights (Preview)](vminsights-health-enable.md) .
 
 [![Konfigurace podrobností monitorování](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +104,6 @@ Zobrazení a úprava konfigurace monitorování pro vybraný virtuální počít
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit stav hosta v Azure Monitor pro virtuální počítače a začlenit agenty.](vminsights-health-enable.md)
+- [Povolit stav hosta v agentech VM Insights a integrovaných agentech.](vminsights-health-enable.md)
 - [Nakonfigurujte monitorování pomocí Azure Portal.](vminsights-health-configure.md)
 - [Nakonfigurujte monitorování pomocí pravidel shromažďování dat.](vminsights-health-configure-dcr.md)

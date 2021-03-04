@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706091"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box Gateway
 
@@ -65,7 +65,7 @@ Před nasazením virtuálního zařízení se ujistěte, že:
 - Hostitelský systém může pro zřízení virtuálního zařízení Data Box vyhradit následující prostředky:
   
   - Minimálně 4 virtuální procesory.
-  - Minimálně 8 GB paměti RAM
+  - Minimálně 8 GB paměti RAM Důrazně doporučujeme aspoň 16 GB paměti RAM.
   - Jedno síťové rozhraní
   - 250GB disk s operačním systémem
   - 2TB virtuální disk pro data systému
@@ -122,7 +122,7 @@ Chcete-li vytvořit prostředek Data Box Gateway, proveďte následující kroky
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Název   |Popisný název pro identifikaci prostředku.<br>Název obsahuje 2 až 50 znaků obsahujících písmena, číslice a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
-    |Region (Oblast)  |Vyberte oblast, do které chcete prostředek nasadit. Vyberte umístění blízko geografické oblasti, kde chcete zařízení nasadit. <br> Seznam všech oblastí, ve kterých jsou k dispozici datové Base brány/Azure Stack hraniční prostředky, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). <br> Pro Azure Government jsou k dispozici všechny oblasti státní správy uvedené v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/) .|
+    |Oblast  |Vyberte oblast, do které chcete prostředek nasadit. Vyberte umístění blízko geografické oblasti, kde chcete zařízení nasadit. <br> Seznam všech oblastí, ve kterých jsou k dispozici datové Base brány/Azure Stack hraniční prostředky, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). <br> Pro Azure Government jsou k dispozici všechny oblasti státní správy uvedené v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/) .|
 
    Pak vyberte **zkontrolovat + vytvořit** a zkontrolujte vaši objednávku.
 

@@ -1,20 +1,20 @@
 ---
-title: Základní Azure Policy zabezpečení pro Azure Security test
+title: Základní hodnoty zabezpečení Azure pro Azure Policy
 description: Základní Azure Policy zabezpečení poskytuje postupy a prostředky pro implementaci doporučení zabezpečení uvedených v srovnávacím testu zabezpečení Azure.
 author: msmbaldwin
 ms.service: azure-policy
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740341"
 ---
-# <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Základní Azure Policy zabezpečení pro Azure Security test
+# <a name="azure-security-baseline-for-azure-policy"></a>Základní hodnoty zabezpečení Azure pro Azure Policy
 
 Tato základní hodnota zabezpečení se vztahuje na pokyny z [srovnávacího testu zabezpečení Azure](../../../security/benchmarks/overview.md) na Azure Policy. Azure Security Benchmark poskytuje doporučení, jak můžete zabezpečit svá cloudová řešení v Azure. Obsah se seskupuje podle **domén dodržování předpisů** a **kontrolních** mechanismů zabezpečení, které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů vztahujících se na Azure Policy. **Ovládací prvky** , které se nevztahují k Azure Policy byly vyloučeny. Pokud chcete zjistit, jak Azure Policy kompletně mapuje srovnávací test zabezpečení Azure, přečtěte si [celý soubor mapování standardních hodnot Azure Policy Security](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
@@ -22,117 +22,111 @@ Mapování kontrolních prvků srovnávacích testů zabezpečení Azure na pře
 
 Azure Policy používá pojem _vlastnictví_ místo _zodpovědnosti_. Podrobnosti o _vlastnictví_ najdete v tématu [Azure Policy definice zásad](./definition-structure.md#type) a [sdílená odpovědnost v cloudu](../../../security/fundamentals/shared-responsibility.md).
 
-
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../../../security/benchmarks/security-control-logging-monitoring.md).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](../../../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: povolení protokolování auditu pro prostředky Azure
 
 **Doprovodné** materiály: Azure Policy používá protokol aktivit, které jsou automaticky povoleny, aby zahrnoval zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
-* [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-* [Principy protokolování a různých typů protokolů v Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
-
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Principy protokolování a různých typů protokolů v Azure](/azure/azure-monitor/platform/platform-logs-overview)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../../../security/benchmarks/security-control-identity-access-control.md).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a Access Control](../../../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: použijte vyhrazené účty pro správu.
 
-**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. 
-
-Pomocí [Azure AD Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) privilegovaných rolí nebo [Azure Resource Manager](../../../azure-resource-manager/management/overview.md)můžete také povolit řešení s dostatečným přístupem (za běhu).
-
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+**Doprovodné** materiály: vytvořte standardní operační postupy kolem používání vyhrazených účtů pro správu. Pomocí Azure Security Center správy identit a přístupu můžete monitorovat počet účtů pro správu. Pomocí [Azure Active Directory (Azure AD) Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) privilegované role nebo [Azure Resource Manager](../../../azure-resource-manager/management/overview.md)můžete také povolit řešení s dostatečným přístupem (za běhu).
 
 **Odpovědnost:** Zákazník
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Používejte vyhrazené počítače (privilegovaný přístup k pracovní stanici) pro všechny úlohy správy
+**Azure Security Center Monitoring**: [Srovnávací test zabezpečení Azure](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) je výchozí iniciativou pro Security Center a je základem pro [doporučení Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Definice Azure Policy související s tímto ovládacím prvkem jsou automaticky povoleny Security Center. Výstrahy související s tímto ovládacím prvkem můžou pro související služby vyžadovat plán [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) .
 
-**Doprovodné** materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
+**Azure Policy předdefinované definice – Microsoft. GuestConfiguration**:
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+[!INCLUDE [Resource Policy for Microsoft.GuestConfiguration 3.3](../../../../includes/policy/standards/asb/rp-controls/microsoft.guestconfiguration-3-3.md)]
 
-* [Jak povolit vícefaktorové ověřování v Azure](../../../active-directory/authentication/howto-mfa-getstarted.md)
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: Používejte zabezpečené pracovní stanice spravované Azure pro úlohy správy
 
+**Doprovodné** materiály: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným vícefaktorového ověřováním, které je nakonfigurované pro přihlášení k prostředkům Azure a jejich konfigurace.
 
-**Monitorování služby Azure Security Center:** Nelze použít
+- [Další informace o pracovních stanicích s privilegovaným přístupem](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+
+- [Postup povolení vícefaktorového ověřování v Azure](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../../../security/benchmarks/security-control-data-protection.md).*
+*Další informace najdete v tématu [Azure Security Benchmark: ochrana dat](../../../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC. 
 
 **Pokyny**: k řízení přístupu k Azure Policy použijte řízení přístupu na základě role Azure (Azure RBAC).
 
-* [Oprávnění Azure RBAC v Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
+- [Oprávnění Azure RBAC v Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
 
-* [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
-
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Jak nakonfigurovat službu Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
 
 **Doprovodné** materiály: pomocí Azure monitor s protokoly aktivit můžete vytvořit upozornění, když se změny probíhají v Azure Policy.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](../../../azure-monitor/alerts/alerts-activity-log.md)
-
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Odpovědnost:** Zákazník
 
+**Monitorování Azure Security Center**: žádné
+
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../../../security/benchmarks/security-control-inventory-asset-management.md).*
+*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](../../../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: Údržba metadat assetu
 
 **Doprovodné** materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie. Pomocí Azure Policy _Upravit_ efekt můžete vykázat a vymáhat dodržování předpisů a konzistentní zásady správného řízení značek.
 
-* [Kurz: vytvoření a Správa zásad](../tutorials/create-and-manage.md)
+- [Kurz: vytvoření a Správa zásad](../tutorials/create-and-manage.md)
 
-* [Kurz: Správa zásad správného řízení značek](../tutorials/govern-tags.md)
-
-
-**Monitorování služby Azure Security Center:** Momentálně není k dispozici
+- [Kurz: Správa zásad správného řízení značek](../tutorials/govern-tags.md)
 
 **Odpovědnost:** Zákazník
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
+**Monitorování Azure Security Center**: žádné
+
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definování a údržba inventáře schválených prostředků Azure
 
 **Doprovodné** materiály: Vytvořte soupis schválených definic zásad a přiřazení zásad podle potřeb vaší organizace.
 
-**Monitorování služby Azure Security Center:** Nelze použít
-
 **Odpovědnost:** Zákazník
+
+**Monitorování Azure Security Center**: žádné
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
 **Doprovodné** materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných.
 
-* [Jak nakonfigurovat a spravovat Azure Policy](../tutorials/create-and-manage.md)
-
-
-**Monitorování služby Azure Security Center:** Nelze použít
+- [Jak nakonfigurovat a spravovat Azure Policy](../tutorials/create-and-manage.md)
 
 **Odpovědnost:** Zákazník
 
+**Monitorování Azure Security Center**: žádné
+
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](../../../security/benchmarks/overview.md)
-- Další informace o [základních úrovních zabezpečení Azure](../../../security/benchmarks/security-baselines-overview.md)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
+- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

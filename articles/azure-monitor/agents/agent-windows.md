@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: abad5a0146f98993cd02425b33466c447f9d97ca
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50bfed0ee4346955a9e478e7567f00610d8184f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708658"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Instalace agenta Log Analytics na počítačích s Windows
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích s Windows pomocí následujících metod:
@@ -20,7 +20,7 @@ Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v 
 * [Azure Automation konfiguraci požadovaného stavu (DSC)](#install-agent-using-dsc-in-azure-automation). 
 
 >[!IMPORTANT]
-> Metody instalace popsané v tomto článku se obvykle používají pro virtuální počítače v místním prostředí nebo v jiných cloudech. V tématu [Možnosti instalace](../platform/log-analytics-agent.md#installation-options) získáte efektivnější možnosti, které můžete použít pro virtuální počítače Azure.
+> Metody instalace popsané v tomto článku se obvykle používají pro virtuální počítače v místním prostředí nebo v jiných cloudech. V tématu [Možnosti instalace](./log-analytics-agent.md#installation-options) získáte efektivnější možnosti, které můžete použít pro virtuální počítače Azure.
 
 > [!NOTE]
 > Pokud potřebujete nakonfigurovat agenta tak, aby vydával zprávy do více než jednoho pracovního prostoru, nemůžete to provést při počáteční instalaci, a to až po aktualizaci nastavení z ovládacích panelů nebo PowerShellu, jak je popsáno v tématu [Přidání nebo odebrání pracovního prostoru](agent-manage.md#adding-or-removing-a-workspace).  
@@ -42,12 +42,12 @@ Agent Windows bude začínat výhradně pomocí podepisování SHA-2 na 17. srpn
 4. Doporučuje se nakonfigurovat agenta tak, aby [používal protokol TLS 1,2](agent-windows.md#configure-agent-to-use-tls-12). 
 
 ## <a name="network-requirements"></a>Požadavky sítě
-Požadavky na síť pro agenta pro Windows najdete v tématu [přehled log Analyticsho agenta](../platform/log-analytics-agent.md#network-requirements) .
+Požadavky na síť pro agenta pro Windows najdete v tématu [přehled log Analyticsho agenta](./log-analytics-agent.md#network-requirements) .
 
 
    
 ## <a name="configure-agent-to-use-tls-12"></a>Nakonfigurovat agenta na používání protokolu TLS 1,2
-Protokol [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) zajišťuje zabezpečení dat při přenosu pro komunikaci mezi agentem Windows a službou Log Analytics. Pokud instalujete v [operačním systému bez TLS 1,2 ve výchozím nastavení povolený](../platform/data-security.md#sending-data-securely-using-tls-12), nakonfigurujte TLS 1,2 pomocí následujících kroků.
+Protokol [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) zajišťuje zabezpečení dat při přenosu pro komunikaci mezi agentem Windows a službou Log Analytics. Pokud instalujete v [operačním systému bez TLS 1,2 ve výchozím nastavení povolený](../logs/data-security.md#sending-data-securely-using-tls-12), nakonfigurujte TLS 1,2 pomocí následujících kroků.
 
 1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Vytvoření podklíče v části **protokoly** pro TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**

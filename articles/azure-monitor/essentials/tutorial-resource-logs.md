@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 88138cc1366dcef68aeccf652af05704e72c8e15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734141"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 
@@ -93,7 +93,7 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
 
 
 5. Zadejte dotaz a kliknutím na tlačítko **Spustit** prozkoumejte výsledky. 
-6. Kurz týkající se psaní dotazů protokolu najdete v tématu Začínáme [s dotazy protokolu v Azure monitor](../log-query/get-started-queries.md) .
+6. Kurz týkající se psaní dotazů protokolu najdete v tématu Začínáme [s dotazy protokolu v Azure monitor](../logs/get-started-queries.md) .
 
     ![Dotaz protokolu](media/tutorial-resource-logs/log-query-1.png)
 
@@ -104,4 +104,4 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
 Teď, když jste se naučili, jak shromažďovat protokoly prostředků do Log Analyticsho pracovního prostoru, dokončete kurz týkající se zápisu dotazů protokolu pro analýzu těchto dat.
 
 > [!div class="nextstepaction"]
-> [Začínáme s dotazy protokolů v Azure Monitoru](../log-query/get-started-queries.md)
+> [Začínáme s dotazy protokolů v Azure Monitoru](../logs/get-started-queries.md)

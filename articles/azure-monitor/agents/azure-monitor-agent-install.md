@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719946"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Instalace agenta Azure Monitor (Preview)
 Tento článek poskytuje různé možnosti, které jsou aktuálně k dispozici pro instalaci [agenta Azure monitor](azure-monitor-agent-overview.md) na virtuálních počítačích Azure i serverech s podporou ARC Azure a také možnosti vytváření [přidružení s pravidly shromažďování dat](data-collection-rule-azure-monitor-agent.md) , která určují, která data má agent shromažďovat.
@@ -42,7 +42,7 @@ Pomocí Správce prostředků šablon můžete nainstalovat agenta Azure Monitor
 Získejte ukázkové šablony pro instalaci agenta a vytvoření asociace z následujících možností: 
 
 - [Šablona pro instalaci agenta Azure Monitor (Azure a ARC Azure)](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [Šablona pro vytvoření přidružení s pravidlem shromažďování dat](../samples/resource-manager-data-collection-rules.md)
+- [Šablona pro vytvoření přidružení s pravidlem shromažďování dat](./resource-manager-data-collection-rules.md)
 
 Nainstalujte šablony pomocí [libovolné metody nasazení pro správce prostředků šablony](../../azure-resource-manager/templates/deploy-powershell.md) , například následující příkazy.
 

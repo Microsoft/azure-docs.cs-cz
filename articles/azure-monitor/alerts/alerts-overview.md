@@ -1,15 +1,15 @@
 ---
 title: Přehled upozorňování a monitorování oznámení v Azure
-description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a rozhraní výstrah.
+description: Přehled výstrah v Azure Monitor
 ms.subservice: alerts
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: e2d447b7407ed874d9c183c5cd2009882f1d6b3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609622"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723584"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled upozornění v Microsoft Azure 
 
@@ -94,7 +94,7 @@ Místo toho můžete [pomocí rozhraní REST API programově vytvořit výčet i
 > [!NOTE]
    >  Můžete přistupovat jenom k výstrahám generovaným za posledních 30 dní.
 
-Nezobrazuje ani nesleduje klasické výstrahy. Chcete-li aktualizovat stránku, můžete změnit odběry nebo parametry filtru. 
+Chcete-li aktualizovat stránku, můžete změnit odběry nebo parametry filtru.
 
 ![Snímek stránky s výstrahami](media/alerts-overview/alerts-page.png)
 
@@ -167,7 +167,7 @@ Když vyberete výstrahu, Tato stránka poskytuje podrobnosti o výstraze a umo�
 
 Stránka Podrobnosti výstrahy obsahuje následující části:
 
-| Sekce | Description |
+| Sekce | Popis |
 |:---|:---|
 | Souhrn | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |

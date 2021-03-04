@@ -3,12 +3,12 @@ title: Vytvoření fondu napříč zónami dostupnosti
 description: Přečtěte si, jak vytvořit fond Batch pomocí zásad pro oblast, která vám umožní chránit před chybami.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725284"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>Vytvoření fondu Azure Batch napříč Zóny dostupnosti
 
@@ -22,7 +22,7 @@ Batch udržuje v Azure paritu na podpoře Zóny dostupnosti. Pokud chcete použ�
 
 Aby bylo možné fond dávek přidělit přes zóny dostupnosti, musí oblast Azure, ve které je fond vytvořen, podporovat požadovanou SKLADOVOU položku virtuálního počítače ve více než jedné zóně. Můžete to ověřit voláním [rozhraní API seznam SKU prostředků](/rest/api/compute/resourceskus/list) a zkontrolováním pole **LocationInfo** v [resourceSku](/rest/api/compute/resourceskus/list#resourcesku). Ujistěte se, že pro požadovanou SKU virtuálního počítače je podporována více než jedna zóna.
 
-Pro [účty Batch v režimu předplatného uživatele](accounts.md#batch-accounts)se ujistěte, že předplatné, ve kterém vytváříte fond, nemá omezení nabídky na požadované SKU virtuálního počítače. Potvrďte to tak, že zavoláte [rozhraní API seznamu SKU prostředků](/rest/api/compute/resourceskus/list) a zkontrolujete [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Pokud existuje omezení zóny, můžete odeslat [lístek podpory](../azure-portal/supportability/sku-series-unavailable.md) pro odebrání omezení zóny.
+Pro [účty Batch v režimu předplatného uživatele](accounts.md#batch-accounts)se ujistěte, že předplatné, ve kterém vytváříte fond, nemá omezení nabídky na požadované SKU virtuálního počítače. Potvrďte to tak, že zavoláte [rozhraní API seznamu SKU prostředků](/rest/api/compute/resourceskus/list) a zkontrolujete [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Pokud existuje omezení zóny, můžete odeslat [lístek podpory](/troubleshoot/azure/general/region-access-request-process) pro odebrání omezení zóny.
 
 Všimněte si také, že nemůžete vytvořit fond se zásadami pro oblast, pokud má povolenou komunikaci mezi uzly a používá [SKU virtuálního počítače, který podporuje InfiniBand](../virtual-machines/workloads/hpc/enable-infiniband.md).
 
@@ -83,4 +83,3 @@ Text požadavku
 - Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Seznamte se [s vytvářením fondů v podsíti virtuální sítě Azure](batch-virtual-network.md).
 - Přečtěte si o [vytváření Azure Batch fondu bez veřejných IP adres](./batch-pool-no-public-ip-address.md).
-

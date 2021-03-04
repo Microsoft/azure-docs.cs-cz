@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714948"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -345,7 +345,7 @@ Pokud chcete povolit zóny v sadě škálování virtuálního počítače, mus�
 
 * První hodnotou je vlastnost **Zones** , která určuje zóny dostupnosti přítomná v sadě škálování virtuálního počítače.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true. **Sada škálování rozložené přes 3 AZ může škálovat virtuální počítače až 300 i s "singlePlacementGroup = true".**
-* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny, pokud je nastavena hodnota true. Doporučujeme tuto možnost nastavit na true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Třetí hodnota je "zoneBalance", která zajišťuje striktní vyrovnávání zóny. Tato hodnota by měla být true, aby nedošlo k nevyvážené distribuci virtuálních počítačů napříč zónami. Cluster s nevyváženou distribucí virtuálních počítačů mezi zónami je méně pravděpodobný, aby se zóna scenatio dolů. Přečtěte si o [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Přepsání FaultDomain a UpgradeDomain není nutné konfigurovat.
 
 ```json
@@ -409,7 +409,7 @@ Pro podporu více zón dostupnosti musí být povolený Service Fabric nodeType.
 > * Veřejné IP adresy a Load Balancer prostředky by měly používat standardní SKU, jak je popsáno výše v článku.
 > * vlastnost "multipleAvailabilityZones" v nodeType lze definovat pouze v době vytváření nodeType a nelze ji změnit později. Proto se pomocí této vlastnosti nedají konfigurovat existující nodeType.
 > * Pokud je hodnota "sfZonalUpgradeMode" vynechána nebo nastavena na "hierarchické", nasazení clusteru a aplikací bude pomalejší, protože v clusteru jsou k dispozici další domény upgradu. Je důležité správně upravit časový limit zásad upgradu, aby zahrnoval dobu trvání upgradu pro 15 domén upgradu.
-> * Doporučuje se nastavit úroveň spolehlivosti clusteru na Platinum a zajistit tak, že cluster bude zachován v případě scénáře s jednou zónou.
+> * Nastavte cluster **reliabilityLevel = Platinum** , aby se zajistilo, že cluster bude zachován v rámci scénáře s jednou zónou.
 
 >[!NOTE]
 > Pro osvědčené postupy doporučujeme sfZonalUpgradeMode nastavit na hierarchické nebo vynechat. Nasazení bude následovat po rozbalení virtuálních počítačů, které mají vliv na menší množství replik a/nebo instancí, čímž budou bezpečnější.

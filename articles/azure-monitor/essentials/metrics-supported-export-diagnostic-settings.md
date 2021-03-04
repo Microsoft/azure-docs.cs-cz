@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610615"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734379"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metriky platformy Azure Monitor, které je možné exportovat prostřednictvím nastavení diagnostiky
 
-Azure Monitor poskytuje ve výchozím nastavení [metriky platforem](../essentials/data-platform-metrics.md) bez konfigurace. Nabízí několik způsobů, jak pracovat s metrikami platforem, včetně jejich grafů na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Úplný seznam metrik platforem, které jsou aktuálně k dispozici v konsolidovaném kanálu metriky Azure Monitor, najdete v tématu [metriky – podporované](../platform/metrics-supported.md) . Pro dotazování a přístup k těmto metrikám použijte [verzi api 2018-01-01](/rest/api/monitor/metricdefinitions). Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API.
+Azure Monitor poskytuje ve výchozím nastavení [metriky platforem](../essentials/data-platform-metrics.md) bez konfigurace. Nabízí několik způsobů, jak pracovat s metrikami platforem, včetně jejich grafů na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Úplný seznam metrik platforem, které jsou aktuálně k dispozici v konsolidovaném kanálu metriky Azure Monitor, najdete v tématu [metriky – podporované](./metrics-supported.md) . Pro dotazování a přístup k těmto metrikám použijte [verzi api 2018-01-01](/rest/api/monitor/metricdefinitions). Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API.
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>Metriky nejde exportovat prostřednictvím nastavení diagnostiky.
 
-Obsah, který se použil v tomto umístění, se přesunul na [seznam podporovaných Azure monitor metrik](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
+Obsah, který se použil v tomto umístění, se přesunul na [seznam podporovaných Azure monitor metrik](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
 Při exportu metrik prostřednictvím nastavení diagnostiky platí omezení. Všechny metriky je možné exportovat pomocí REST API. 
 
@@ -548,5 +548,4 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. SQL/servery/elasticPools | xtp_storage_percent | In-Memory OLTP úložiště v procentech | 
 | Microsoft. SQL/servery | dtu_consumption_percent | Procento DTU | 
 | Microsoft. SQL/servery | dtu_used | Využité DTU | 
-| Microsoft. SQL/managedInstances | avg_cpu_percent | Průměrné procento procesoru | 
-
+| Microsoft. SQL/managedInstances | avg_cpu_percent | Průměrné procento procesoru |

@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ab6556bc391eb3136fa8c4ba40f5a5d71da956e7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093032"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729912"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Předdefinované definice Azure Policy pro Azure Security Center
 
@@ -20,7 +20,7 @@ Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integr
 
 - Skupina [iniciativy](#azure-security-center-initiatives) obsahuje definice Azure Policy iniciativ v kategorii "Security Center".
 - [Výchozí skupina iniciativ](#azure-security-center-initiatives) obsahuje všechny definice Azure Policy, které jsou součástí výchozí iniciativy Security Center, [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md). Tato společnost Microsoft vytvořila, široce uznávaná sestavení srovnávacích testů na základě kontrol z [centra pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) se zaměřuje na zabezpečení zaměřené na Cloud.
-- Skupina [kategorií](#azure-security-center-category) obsahuje seznam všech Azure Policych definic v kategorii "Security Center".
+- Skupina [kategorií](#azure-security-center-category) uvádí všechny definice Azure Policy v kategorii "Security Center".
 
 Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](./tutorial-security-policy.md). Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
@@ -32,7 +32,7 @@ Další informace o integrovaných iniciativách, které jsou monitorovány nás
 
 [!INCLUDE [azure-policy-reference-policyset-security-center](../../includes/policy/reference/bycat/policysets-security-center.md)]
 
-## <a name="azure-security-center-default-initiative"></a>Azure Security Center výchozí iniciativa
+## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Výchozí iniciativa Security Center (srovnávací test zabezpečení Azure)
 
 Další informace o předdefinovaných zásadách sledovaných nástrojem Security Center naleznete v následující tabulce:
 

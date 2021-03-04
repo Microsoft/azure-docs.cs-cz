@@ -1,19 +1,19 @@
 ---
-title: Nastavte Azure Monitor pro kontejnery dynamická data (Preview) | Microsoft Docs
-description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl s Azure Monitor for Containers.
+title: Nastavte živá data služby Container Insights (Preview) | Microsoft Docs
+description: Tento článek popisuje, jak nastavit zobrazení protokolů kontejnerů v reálném čase (stdout/stderr) a událostí bez použití kubectl se službou Container Insights.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713775"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak nastavit funkci živých dat (Preview)
 
-Chcete-li zobrazit živá data (Preview) s Azure Monitor pro kontejnery z clusterů AKS (Azure Kubernetes Service), je nutné nakonfigurovat ověřování pro udělení oprávnění k přístupu k datům Kubernetes. Tato konfigurace zabezpečení umožňuje přístup k datům v reálném čase prostřednictvím rozhraní API Kubernetes přímo v Azure Portal.
+Chcete-li zobrazit živá data (Preview) se službou Container Insights z clusterů Azure Kubernetes Service (AKS), je nutné nakonfigurovat ověřování pro udělení oprávnění k přístupu k datům Kubernetes. Tato konfigurace zabezpečení umožňuje přístup k datům v reálném čase prostřednictvím rozhraní API Kubernetes přímo v Azure Portal.
 
 Tato funkce podporuje následující metody řízení přístupu k protokolům, událostem a metrikám:
 
@@ -46,7 +46,7 @@ Azure Portal vás vyzve k ověření přihlašovacích údajů pro cluster Azure
 
 Aby se odstranila nutnost použít další změny konfigurace, aby Kubernetes role uživatele **clusterUser** přístup k funkci živá data (Preview) po [Povolení autorizace KUBERNETES RBAC](#configure-kubernetes-rbac-authorization) , AKS se přidala nová vazba role clusteru Kubernetes s názvem **clusterMonitoringUser**. Pro přístup k rozhraní Kubernetes API a koncovým bodům pro použití funkce živá data (Preview) má tato vazba role clusteru všechna potřebná oprávnění.
 
-Aby bylo možné používat funkci živá data (Preview) s tímto novým uživatelem, musíte být členem role uživatele nebo [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) [clusteru služby Azure Kubernetes](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) v prostředku clusteru AKS. Azure Monitor pro kontejnery, pokud je povoleno, je nakonfigurován k ověřování pomocí clusterMonitoringUser ve výchozím nastavení. Pokud vazba role clusterMonitoringUser neexistuje v clusteru, místo toho se použije **clusterUser** pro ověřování. Přispěvatel vám poskytne přístup k clusterMonitoringUser (pokud existuje) a uživatel clusteru služby Azure Kuberenetes vám poskytne přístup k clusterUser. Kterákoli z těchto dvou rolí poskytuje dostatečný přístup k použití této funkce.
+Aby bylo možné používat funkci živá data (Preview) s tímto novým uživatelem, musíte být členem role uživatele nebo [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) [clusteru služby Azure Kubernetes](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) v prostředku clusteru AKS. Služba Container Insights, pokud je povolená, je nakonfigurovaná k ověřování pomocí clusterMonitoringUser ve výchozím nastavení. Pokud vazba role clusterMonitoringUser neexistuje v clusteru, místo toho se použije **clusterUser** pro ověřování. Přispěvatel vám poskytne přístup k clusterMonitoringUser (pokud existuje) a uživatel clusteru služby Azure Kuberenetes vám poskytne přístup k clusterUser. Kterákoli z těchto dvou rolí poskytuje dostatečný přístup k použití této funkce.
 
 AKS vydal tuto novou vazbu role v lednu 2020, takže clustery vytvořené před lednem 2020 je neobsahují. Pokud máte cluster vytvořený před lednem 2020, můžete nový **clusterMonitoringUser** přidat do existujícího clusteru provedením operace Put v clusteru nebo provedením jakékoli jiné operace v clusteru, který provádí operaci Put v clusteru, jako je například aktualizace verze clusteru.
 
@@ -106,7 +106,7 @@ Registrace klienta Azure AD musí být znovu nakonfigurovaná, aby Azure Portal 
 Další informace o pokročilém nastavení zabezpečení v Kubernetes najdete v [dokumentaci k Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Pokud vytváříte nový cluster s podporou RBAC Kubernetes, přečtěte si téma věnované [integraci Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration-cli.md) a postupujte podle pokynů ke konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro Azure Monitor pro kontejnery odpovídající hodnotám uvedeným v kroku 3 níže.
+>Pokud vytváříte nový cluster s podporou RBAC Kubernetes, přečtěte si téma věnované [integraci Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration-cli.md) a postupujte podle pokynů ke konfiguraci ověřování Azure AD. Všimněte si, že během postupu vytvoření klientské aplikace se v této části zvýrazní dvě adresy URL pro přesměrování, které je potřeba vytvořit pro službu Container Insights, která se shoduje s hodnotami uvedenými v kroku 3 níže.
 
 ### <a name="client-registration-reconfiguration"></a>Konfigurace registrace klienta
 

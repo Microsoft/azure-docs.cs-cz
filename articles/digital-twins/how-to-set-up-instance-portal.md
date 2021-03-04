@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a6355a08a936c74ae6a05f163a93a991ba82ab4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702908"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -56,8 +56,8 @@ Pokud chcete pro instanci nakonfigurovat další podrobnosti, další část pop
 
 Tady jsou další možnosti, které můžete konfigurovat během instalace, pomocí dalších karet v procesu **vytváření prostředků** .
 
-* **Sítě**: na této kartě můžete povolit privátní koncové body s [privátním propojením Azure](../private-link/private-link-overview.md) , abyste vyloučili vystavení veřejné sítě pro vaši instanci. Pokyny najdete v tématu [*Postup: povolení privátního přístupu pomocí privátního propojení (Preview)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Upřesnit**: na této kartě můžete povolit [systémově spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro vaši instanci, kterou lze použít při předávání událostí do [koncových bodů](concepts-route-events.md). Pokyny najdete v tématu [*Postup: povolení spravovaných identit pro události směrování (Preview)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
+* **Sítě**: na této kartě můžete povolit privátní koncové body s [privátním propojením Azure](../private-link/private-link-overview.md) , abyste vyloučili vystavení veřejné sítě pro vaši instanci. Pokyny najdete v tématu [*Postup: povolení privátního přístupu pomocí privátního propojení (Preview)*](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation).
+* **Upřesnit**: na této kartě můžete povolit [systémově spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) pro vaši instanci, kterou lze použít při předávání událostí do [koncových bodů](concepts-route-events.md). Pokyny najdete v tématu [*Postup: povolení spravovaných identit pro události směrování (Preview)*](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation).
 * **Značky**: na této kartě můžete do své instance přidat značky, které vám pomůžou je uspořádat mezi prostředky Azure. Další informace o značkách prostředků Azure najdete v tématech [*označení prostředků, skupin prostředků a předplatných pro logickou organizaci*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty

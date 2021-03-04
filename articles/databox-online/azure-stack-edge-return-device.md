@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703180"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Vrácení zařízení Azure Stack Edge pro
 
@@ -30,26 +30,16 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="erase-data-from-the-device"></a>Vymazání dat ze zařízení
 
-Pokud chcete vymazat data z datových disků vašeho zařízení, musíte zařízení resetovat. Zařízení můžete obnovit pomocí místního webového uživatelského rozhraní nebo rozhraní PowerShell.
+Pokud chcete vymazat data z datových disků vašeho zařízení, musíte zařízení resetovat.
 
-Než obnovíte tovární nastavení, v případě potřeby vytvořte v zařízení kopii místních dat. Data ze zařízení můžete zkopírovat do kontejneru Azure Storage.
+Než obnovíte tovární nastavení, v případě potřeby vytvořte v zařízení kopii místních dat. Data ze zařízení můžete zkopírovat do kontejneru Azure Storage. 
 
-Můžete iniciovat, že se zařízení bude vracet ještě předtím, než se zařízení resetuje. 
+Můžete iniciovat, že se zařízení bude vracet ještě předtím, než se zařízení resetuje.
 
-Pokud chcete zařízení obnovit pomocí místního webového uživatelského rozhraní, proveďte následující kroky.
+Zařízení můžete obnovit v místním webovém uživatelském rozhraní nebo v PowerShellu. Pokyny pro PowerShell najdete v tématu [resetování zařízení](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-1. V místním webovém uživatelském rozhraní přejdete do části **údržba > resetování zařízení**.
-2. Vyberte **obnovit zařízení**.
 
-    ![Resetování zařízení](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. Po zobrazení výzvy k potvrzení si přečtěte upozornění a pokračujte výběrem **Ano** .
-
-    ![Potvrdit resetování](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-Resetování smaže data z datových disků zařízení. V závislosti na množství dat v zařízení tento proces trvá přibližně 30-40 minut.
-
-Případně se připojte k rozhraní PowerShell zařízení a pomocí `Reset-HcsAppliance` rutiny smažte data z datových disků. Další informace najdete v tématu [resetování zařízení](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+[! ZAHRNOUT] [obnovit data ze zařízení](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - Pokud vyměňujete nebo upgradujete na nové zařízení, doporučujeme, abyste zařízení obnovili až po obdržení nového zařízení.
@@ -67,15 +57,15 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 
     1. Zadejte sériové číslo zařízení. Sériové číslo zařízení získáte tak, že přejdete do místního webového uživatelského rozhraní zařízení a pak přejdete na **Přehled**.  
     
-    ![Sériové číslo zařízení 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![Sériové číslo zařízení 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. Zadejte číslo označení služby, které je pro vaše zařízení jedinečné. Značka služby se nachází v pravém dolním rohu zařízení (při zařízení). Vyžádejte si informační značku (je to panel s popisem snímku). Tento panel obsahuje systémové informace, jako je například značka služby, síťová karta, adresa MAC atd. 
+    2. Zadejte číslo značky služby. Číslo značky služby je identifikátor s pěti nebo více znaky, které jsou pro vaše zařízení jedinečné. Značka služby se nachází v pravém dolním rohu zařízení (při zařízení). Vyžádejte si informační značku (je to panel s popisem snímku). Tento panel obsahuje systémové informace, jako je například značka služby, síťová karta, adresa MAC atd. 
     
-    ![Označení služby – číslo 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![Označení služby – číslo 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. V rozevíracím seznamu vyberte důvod pro vrácení.
 
-    ![Vrátit zařízení 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![Vrátit zařízení 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. V části **Podrobnosti o dopravě**:
 
@@ -84,7 +74,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 
     ![Návratový zařízení 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. Přečtěte si **podmínky ochrany osobních údajů** a zaškrtněte políčko proti poznámce, kterou jste si přečetli a souhlasíte s podmínkami ochrany osobních údajů.
+4. Přečtěte si **podmínky ochrany osobních údajů** a zaškrtněte políčko podle poznámky, kterou jste si přečetli a souhlasíte s podmínkami ochrany osobních údajů.
 
 5. Vyberte možnost **Spustit návrat**.
 
@@ -109,7 +99,7 @@ Chcete-li naplánovat vyzvednutí, proveďte následující kroky.
 
     1. Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
     2. Ve svém volání citujete číslo sledování zpětné dodávky, jak je znázorněno na vytištěném popisku.
-    3. Pokud číslo sledování není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
+    3. Pokud číslo sledování není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili další poplatek.
 
     Místo plánování vyzvednutí můžete také vyřadit Azure Stack Edge pro do nejbližšího umístění.
 
@@ -124,7 +114,7 @@ Po přijetí zařízení v datovém centru Azure se v zařízení zkontroluje po
 Zařízení můžete v Azure Portal odstranit:
 
 - Po umístění objednávky a před tím, než je zařízení připraveno společností Microsoft.
-- Po tom, co zařízení vrátíte do Microsoftu, projde fyzickou kontrolu v datacentru Azure a zavolá Azure Stack tým pro provoz Edge pro s potvrzením, že se zařízení vrátilo.
+- Po vrácení zařízení společnosti Microsoft a volání Azure Stack týmu pro Operations Edge pro potvrzení, že bylo zařízení vráceno. Provozní tým nevolá, dokud vrácené zařízení neprojde fyzickou kontrolou v datacentru Azure.
 
 Pokud jste zařízení aktivovali v jiném předplatném nebo umístění, Microsoft přesune vaši objednávku na nové předplatné nebo umístění během jednoho pracovního dne. Po přesunutí objednávky můžete tento prostředek odstranit.
 

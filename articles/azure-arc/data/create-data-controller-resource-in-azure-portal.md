@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686474"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Vytvoření řadiče dat ARC Azure v Azure Portal
 
@@ -48,6 +48,10 @@ Pomocí následujících kroků vytvořte řadič dat ARC Azure pomocí Azure Po
 1. Vyberte konfigurační profil nasazení.
 1. Klikněte na tlačítko **otevřít v Azure Studio** .
 1. Na další obrazovce se zobrazí souhrn vašich výběrů a poznámkového bloku, který se vygeneruje.  Poznámkový blok si můžete stáhnout kliknutím na tlačítko **Stáhnout zřizovací Poznámkový blok** .
+
+   > [!IMPORTANT]
+   > Na platformě Azure Red Hat OpenShift nebo Red Hat OpenShift Container Platform musíte před vytvořením kontroleru dat použít omezení kontextu zabezpečení. Postupujte podle pokynů v tématu [použití omezení kontextu zabezpečení pro datové služby s podporou ARC Azure na OpenShift](how-to-apply-security-context-constraint.md).
+
 1. Otevřete Poznámkový blok v Azure Data Studio a klikněte na tlačítko **Spustit vše** v horní části.
 1. Dokončete vytvoření řadiče dat podle pokynů a pokynů v poznámkovém bloku.
 

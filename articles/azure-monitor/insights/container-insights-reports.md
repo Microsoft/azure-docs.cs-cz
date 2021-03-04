@@ -1,17 +1,17 @@
 ---
-title: Sestavy v Azure Monitor pro kontejnery
-description: Popisuje sestavy, které jsou k dispozici pro analýzu dat shromažďovaných Azure Monitor pro kontejnery.
+title: Sestavy v kontejneru Insights
+description: Popisuje sestavy, které jsou k dispozici pro analýzu dat shromažďovaných službou Container Insights.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704272"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Sestavy v Azure Monitor pro kontejnery
-Sestavy v Azure Monitor pro kontejnery jsou doporučeny pro předem připravené [sešity Azure](../visualize/workbooks-overview.md). Tento článek popisuje různé dostupné sestavy a přístup k nim.
+# <a name="reports-in-container-insights"></a>Sestavy v kontejneru Insights
+Sestavy v kontejneru Insights jsou doporučeny předem připravené [sešity Azure](../visualize/workbooks-overview.md). Tento článek popisuje různé dostupné sestavy a přístup k nim.
 
 ## <a name="viewing-reports"></a>Zobrazení sestav
 Z nabídky **Azure monitor** v Azure Portal vyberte **kontejnery**. V části **monitorování** vyberte **přehledy** , zvolte konkrétní cluster a pak vyberte stránku **sestavy (Preview)** . 

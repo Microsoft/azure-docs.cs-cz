@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231431"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724145"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Firewall webových aplikací Azure na frontách Azure
 
@@ -23,6 +23,8 @@ WAF na předních dveřích je globální a centralizované řešení. Je nasaze
 WAF zabraňuje škodlivým útokům blízko zdrojů útoku předtím, než vstoupí do vaší virtuální sítě. Globální ochranu získáte škálováním bez obětování výkonu. Zásady WAF jednoduše odkazují na libovolný profil front-dveří v rámci vašeho předplatného. Nová pravidla se dají nasadit během několika minut, takže můžete rychle reagovat na měnící se vzory hrozeb.
 
 ![Firewall webových aplikací Azure](../media/overview/wafoverview.png)
+
+Přední dvířka Azure jsou [ve verzi Preview dvě nové SKU](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview): přední dveře Standard a SKU front-dveří Premium. WAF je nativně integrovaná s SKU front-dveří Premium s úplnými možnostmi. Pro skladovou jednotku Standard Standard je podporována pouze [vlastní pravidla](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules) .
 
 ## <a name="waf-policy-and-rules"></a>Zásady a pravidla WAF
 
@@ -121,7 +123,7 @@ Pokud je zapnutá ochrana robota, příchozí požadavky, které odpovídají pr
 
 Všechny typy pravidel WAF můžete nakonfigurovat a nasadit pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 Monitorování pro WAF ve front-dveřích je integrované s Azure Monitor pro sledování výstrah a snadné monitorování trendů provozu.
 

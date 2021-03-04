@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: Workbooks
           href: visualize/resource-manager-workbooks.md
-        - name: Azure Monitor pro kontejnery
+        - name: Přehledy kontejnerů
           href: containers/resource-manager-container-insights.md
-        - name: Azure Monitor pro virtuální počítače
+        - name: Přehledy virtuálních počítačů
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: Přehled
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: Odeslání kontextu uživatele
-              href: app/usage-send-user-context.md
             - name: 'Uživatelé, relace, události'
               href: app/usage-segmentation.md
             - name: Trychtýře
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: Řešení potíží
           href: app/change-analysis-troubleshoot.md
-    - name: Azure Monitor pro virtuální počítače
+    - name: Přehledy virtuálních počítačů
       items:
         - name: Přehled
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: Zákaz monitorování
           href: vm/vminsights-optout.md
-    - name: Azure Monitor pro kontejnery
+    - name: Přehledy kontejnerů
       items:
         - name: Přehled
           href: containers/container-insights-overview.md

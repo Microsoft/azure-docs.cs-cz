@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 02/16/2021
-ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706737"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
@@ -56,7 +56,7 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 * Nové prostředky pro vývojáře
     * [Nástroje pro kontinuální integraci](developer-reference-resource.md#continuous-integration-tools)
     * Workshop – Naučte se osvědčené postupy pro [ _přirozené Language Understanding_ (NLU) pomocí Luis](developer-reference-resource.md#workshops)
-* [Spravované klíče zákazníka](luis-encryption-of-data-at-rest.md) – Šifrujte všechna data, která používáte v Luis, pomocí vlastního klíče.
+* [Spravované klíče zákazníka](./encrypt-data-at-rest.md) – Šifrujte všechna data, která používáte v Luis, pomocí vlastního klíče.
 * [Zobrazit AI](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video) – Podívejte se na nové funkce v Luis.
 
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737626"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -50,7 +50,7 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    Další informace o jednotlivých typech odpovědí najdete v tématu věnovaném [dimenzím metrik](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+    Další informace o jednotlivých typech odpovědí najdete v tématu věnovaném [dimenzím metrik](./storage-files-monitoring-reference.md#metrics-dimensions).
 
     ![Snímek obrazovky s možnostmi metriky pro sdílené složky úrovně Premium, která zobrazuje filtr vlastností "typ odpovědi".](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -258,13 +258,12 @@ K potvrzení můžete použít metriky Azure na portálu –
    > [!NOTE]
    > Pokud typy odezvy nejsou uvedeny v rozevíracím seznamu **hodnoty dimenze** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnoty dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na možnost **Přidat vlastní hodnotu**, zadejte typ respone (například **SuccessWithThrottling**), vyberte **OK** a pak opakováním těchto kroků přidejte všechny použitelné typy odpovědí pro sdílenou složku.
 
-8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
-
+8. Pro **sdílené složky Premium** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílená složka**. Pro **standardní sdílené složky** přejděte na **Krok #10**.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílenou složkou, dimenze **sdílené složky** nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici žádné metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
+9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
 
     > [!TIP]

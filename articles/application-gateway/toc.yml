@@ -158,6 +158,8 @@
           href: ingress-controller-install-existing.md
         - name: Příchozí přenos dat pro AKS přes Helm (greenfield)
           href: ingress-controller-install-new.md
+        - name: Migrace z nasazení Helm do doplňku AKS
+          href: ingress-controller-migration.md
         - name: Zákaz a znovupovolení doplňkového kontroleru pro příchozí přenos dat pro AKS
           href: ingress-controller-disable-addon.md
         - name: Povolení spřažení souborů cookie

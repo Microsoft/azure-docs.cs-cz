@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 4a7e80b77048d1853c9cb0d6e59c5bdd76e8d823
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 41293f96246dd4badab000c4e7f936d825e7665a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691123"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB (verze serveru 4,0): podporované funkce a syntaxe
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -583,7 +583,7 @@ Azure Cosmos DB podporuje hodnotu TTL (Time-to-Live) na základě časového raz
 
 ## <a name="transactions"></a>Transakce
 
-Azure Cosmos DB podporuje transakce pro kolekce unsharded. Časový limit pro transakce je pevný 5 sekund.
+Transakce s více dokumenty jsou podporovány v rámci kolekce unsharded. Transakce s více dokumenty nejsou v kolekcích nebo v kolekcích horizontálně dělené podporovány. Časový limit pro transakce je pevný 5 sekund.
 
 ## <a name="user-and-role-management"></a>Správa uživatelů a rolí
 

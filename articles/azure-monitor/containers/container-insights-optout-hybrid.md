@@ -1,18 +1,18 @@
 ---
 title: Postup zastavení monitorování hybridního clusteru Kubernetes | Microsoft Docs
-description: Tento článek popisuje, jak můžete zastavit monitorování clusteru hybridního Kubernetes pomocí Azure Monitor pro kontejnery.
+description: Tento článek popisuje, jak můžete zastavit monitorování hybridního clusteru Kubernetes s využitím služby Container Insights.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100613042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713690"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Postup zastavení monitorování hybridního clusteru
 
-Po povolení monitorování clusteru Kubernetes můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že už ho nechcete monitorovat. Tento článek ukazuje, jak to provést v následujících prostředích:
+Po povolení monitorování clusteru Kubernetes můžete zastavit monitorování clusteru pomocí služby Container Insights, pokud se rozhodnete, že už ho nechcete monitorovat. Tento článek ukazuje, jak to provést v následujících prostředích:
 
 - AKS Engine v Azure a Azure Stack
 - OpenShift verze 4 a vyšší
@@ -25,7 +25,7 @@ Následující postup platí pro následující prostředí:
 - AKS Engine v Azure a Azure Stack
 - OpenShift verze 4 a vyšší
 
-1. Abyste nejdřív identifikovali Azure Monitor pro vydanou verzi grafu Helm pro kontejnery nainstalované na clusteru, spusťte následující příkaz Helm.
+1. Abyste nejdřív identifikovali verzi grafu Helm Insights, která je nainstalovaná ve vašem clusteru, spusťte následující příkaz Helm.
 
     ```
     helm list
@@ -38,7 +38,7 @@ Následující postup platí pro následující prostředí:
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-Containers-Release-1* představuje verzi grafu helm pro Azure monitor kontejnerů.
+    *azmon-Containers-Release-1* představuje verzi grafu Helm pro službu Container Insights.
 
 2. Chcete-li odstranit vydanou verzi grafu, spusťte následující příkaz Helm.
 
@@ -96,7 +96,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Příklad:
+Například:
 
 ```powershell
 \disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId
@@ -149,7 +149,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Příklad:
+Například:
 
 ```bash
 bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId
@@ -157,4 +157,4 @@ bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-conte
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../platform/delete-workspace.md).
+Pokud se pracovní prostor Log Analytics vytvořil jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics](../logs/delete-workspace.md).

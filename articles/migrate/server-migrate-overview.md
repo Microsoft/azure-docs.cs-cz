@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895624"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715118"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware
 
@@ -28,7 +28,7 @@ Tato vybraná porovnání vám pomůžou rozhodnout, kterou metodu použít. Mů
 **Nastavení** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
 **Oprávnění Azure** | Potřebujete oprávnění k vytvoření projektu Azure Migrate a k registraci aplikací služby Azure AD vytvořených při nasazení Azure Migrateho zařízení. | V předplatném Azure potřebujete oprávnění Přispěvatel. 
-**Replikace** | Z vCenter Server lze souběžně replikovat maximálně 300 virtuálních počítačů.<br/> Pokud máte pro migraci více než 50 virtuálních počítačů, vytvořte několik dávek virtuálních počítačů.<br/> Další replikace bude mít vliv na výkon.<br/><br/> Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.| Kapacita replikace se zvyšuje škálováním zařízení replikace.
+**Replikace** | Z vCenter Server lze souběžně replikovat maximálně 500 virtuálních počítačů. Na portálu můžete pro replikaci vybrat až 10 počítačů najednou. Pokud chcete replikovat více počítačů, přidejte je do dávek po 10.| Kapacita replikace se zvyšuje škálováním zařízení replikace.
 **Nasazení zařízení** | [Zařízení Azure Migrate](migrate-appliance.md) je nasazené místně. | [Zařízení replikace Azure Migrate](migrate-replication-appliance.md) je nasazené místně.
 **Site Recovery kompatibilita** | Kompatibility. | Pokud jste pro počítač nastavili replikaci pomocí Site Recovery, nemůžete replikovat pomocí Azure Migrate migrace serveru.
 **Cílový disk** | Spravované disky | Spravované disky

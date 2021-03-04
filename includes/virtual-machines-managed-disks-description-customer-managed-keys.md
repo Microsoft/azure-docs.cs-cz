@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751021"
 ---
 Můžete zvolit správu šifrování na úrovni každého spravovaného disku s vlastními klíči. Šifrování na straně serveru pro spravované disky pomocí klíčů spravovaných zákazníkem nabízí integrované prostředí s Azure Key Vault. Můžete buď importovat [klíče RSA](../articles/key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault. 
 
@@ -43,3 +43,7 @@ Následující seznam popisuje diagram podrobněji:
 1. Pro čtení nebo zápis dat odesílají spravované disky požadavky na Azure Key Vault k šifrování (zabalení) a dešifrování (rozbalení) šifrovacího klíče dat, aby bylo možné provádět šifrování a dešifrování dat. 
 
 Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtěte si téma [Azure Key Vault PowerShellu](/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Automatické střídání klíčů pro klíče spravované zákazníkem (Preview)
+
+Můžete zvolit, že se má povolit automatické střídání klíčů na nejnovější verzi klíče. Disk odkazuje na klíč přes sadu Disk Encryption. Když povolíte automatické otočení pro sadu šifrování disků, systém automaticky aktualizuje všechny spravované disky, snímky a image, které odkazují na šifrování disků, aby používala novou verzi klíče do jedné hodiny. Tato funkce je aktuálně dostupná v omezených oblastech ve verzi Preview. Informace o regionální dostupnosti najdete v části [podporované oblasti](#supported-regions) .

@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691939"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
@@ -94,7 +94,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Description| Hodnota pro kurz
+        Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
@@ -128,7 +128,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
     1. Vyberte **+ vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
         1. Naplňte formulář **virtuálního počítače** a nastavte výpočetní výkon.
 
-            Pole | Description | Hodnota pro kurz
+            Pole | Popis | Hodnota pro kurz
             ----|---|---
             &nbsp;Priorita virtuálního počítače &nbsp; |Vyberte prioritu, kterou by měl váš experiment mít.| Vyhrazená
             &nbsp;Typ virtuálního počítače &nbsp;| Vyberte typ virtuálního počítače pro výpočetní výkon.|PROCESOR (jednotka ústředního zpracování)
@@ -136,7 +136,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         
         1. Výběrem možnosti **Další** naplňte **formulář Konfigurovat nastavení**.
         
-            Pole | Description | Hodnota pro kurz
+            Pole | Popis | Hodnota pro kurz
             ----|---|---
             Název výpočetních prostředků |  Jedinečný název, který identifikuje váš výpočetní kontext. | automl – COMPUTE
             Minimální/maximální počet uzlů| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
@@ -159,7 +159,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
 
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
-        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
@@ -187,6 +187,30 @@ Následující naviguje **Podrobnosti** a karty **metriky** k zobrazení vlastno
 
 ![Podrobnosti spuštění iterace](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
+## <a name="model-explanations"></a>Vysvětlení modelu
+
+Počkejte, až se modely dokončí, můžete se také podívat na vysvětlení modelů a zjistit, které datové funkce (RAW nebo inženýr) ovlivnily předpovědi konkrétního modelu. 
+
+Tato vysvětlení modelu je možné vygenerovat na vyžádání a jsou shrnuty na řídicím panelu vysvětlení modelu, který je součástí karty **vysvětlení (Preview)** .
+
+Chcete-li vygenerovat vysvětlení modelu, 
+ 
+1. Vyberte **Spustit 1** v horní části pro přechod zpět na obrazovku **modely** . 
+1. Vyberte kartu **modely** .
+1. Pro tento kurz vyberte první MaxAbsScaler model **LightGBM** .
+1. V horní části vyberte tlačítko **vysvětlit model** . Napravo se zobrazí podokno **vysvětlený model** . 
+1. Vyberte **automl – výpočetní** prostředí, které jste předtím vytvořili. Tento výpočetní cluster iniciuje podřízený běh pro generování vysvětlení modelu.
+1. V dolní části vyberte **vytvořit** . K hornímu okraji obrazovky se zobrazí zelená zpráva o úspěchu. 
+    >[!NOTE]
+    > Spuštění vysvětlení trvá přibližně 2-5 minut.
+1. Vyberte tlačítko **vysvětlení (Preview)** . Tato karta se vyplní, jakmile se spuštění vysvětlení dokončí.
+1. Na levé straně rozbalte podokno a vyberte řádek, který je v části **funkce** **nezpracovaný** . 
+1. Na pravé straně vyberte kartu **důležitost agregované funkce** . Tento graf znázorňuje, které datové funkce ovlivnily předpovědi vybraného modelu. 
+
+    V tomto příkladu se zdá, že *Doba trvání* má největší vliv na předpovědi tohoto modelu.
+    
+    ![Řídicí panel vysvětlení modelu](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
+
 ## <a name="deploy-the-best-model"></a>Nasazení nejlepšího modelu
 
 Automatizované rozhraní Machine Learning umožňuje nasadit nejlepší model jako webovou službu v několika krocích. Nasazení je integrací modelu, takže může předpovídat nová data a identifikovat potenciální oblasti příležitostí. 
@@ -211,7 +235,7 @@ Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přib
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
     Typ výpočetních prostředků | Výběr instance služby Azure COMPUTE (ACI)
     Povolit ověřování| Zakázat. 
-    Použití vlastních nasazení| Zakázat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
+    Použití vlastních nasazení| Zakázat. Umožňuje automatické vygenerování výchozího souboru ovladače (skriptu bodování) a souboru prostředí. 
     
     V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
 

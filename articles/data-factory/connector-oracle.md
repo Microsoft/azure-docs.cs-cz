@@ -4,14 +4,14 @@ description: Naučte se, jak kopírovat data z podporovaných úložišť zdroj�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: bba1ae991f2a4702a0d55a8dc3f6c7a44b9e7b65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ebafac024593767e884be908acbf0efb9ead50e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703299"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 
@@ -66,9 +66,9 @@ Propojená služba Oracle podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Yes |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte identifikátor SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud použijete název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>V případě pokročilých možností nativního připojení Oracle se můžete rozhodnout přidat položku v [souboru Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) soubor na serveru Oracle a v propojené službě ADF Oracle vyberte použít typ připojení název služby Oracle a nakonfigurujte odpovídající název služby. | Yes |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| typ | Vlastnost Type musí být nastavena na hodnotu **Oracle**. | Ano |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci Oracle Database. <br/>Můžete také vložit heslo do Azure Key Vault a z `password` připojovacího řetězce si vyžádat konfiguraci. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md) . <br><br>**Podporovaný typ připojení**: k identifikaci databáze můžete použít název **Oracle SID** nebo **Oracle** :<br>– Pokud používáte identifikátor SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud použijete název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>V případě pokročilých možností nativního připojení Oracle se můžete rozhodnout přidat položku v [souboru Tnsnames. ORA](http://www.orafaq.com/wiki/Tnsnames.ora) soubor na serveru Oracle a v propojené službě ADF Oracle vyberte použít typ připojení název služby Oracle a nakonfigurujte odpovídající název služby. | Ano |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 >[!TIP]
 >Pokud se zobrazí chyba, "ORA-01025: parametr UPI je mimo rozsah", a vaše verze Oracle je 8i, přidejte `WireProtocolMode=1` do svého připojovacího řetězce. Pak to zkuste znovu.
@@ -173,7 +173,7 @@ Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `OracleTable` . | Yes |
+| typ | Vlastnost Type datové sady musí být nastavena na hodnotu `OracleTable` . | Ano |
 | schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
 | tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
@@ -212,14 +212,14 @@ Chcete-li kopírovat data z Oracle, nastavte typ zdroje v aktivitě kopírován�
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `OracleSource` . | Yes |
-| oracleReaderQuery | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | No |
-| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Oracle. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None` ), stupeň paralelismu na souběžně načtená data z databáze Oracle se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | No |
-| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | No |
-| partitionNames | Seznam fyzických oddílů, které je třeba zkopírovat. <br>Použijte, pokud je parametr partition `PhysicalPartitionsOfTable` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfTabularPartitionName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | No |
-| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfRangePartitionColumnName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | No |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionUpbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | No |
-| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | No |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavena na hodnotu `OracleSource` . | Ano |
+| oracleReaderQuery | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
+| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Oracle. <br>Povolené hodnoty jsou: **none** (default), **PhysicalPartitionsOfTable** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None` ), stupeň paralelismu na souběžně načtená data z databáze Oracle se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
+| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud možnost partition není `None` . | Ne |
+| partitionNames | Seznam fyzických oddílů, které je třeba zkopírovat. <br>Použijte, pokud je parametr partition `PhysicalPartitionsOfTable` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfTabularPartitionName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte  `?AdfRangePartitionColumnName` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionUpbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
+| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je parametr partition `DynamicRange` . Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Oracle](#parallel-copy-from-oracle) . | Ne |
 
 **Příklad: kopírování dat pomocí základního dotazu bez oddílu**
 
@@ -259,10 +259,10 @@ Chcete-li kopírovat data do Oracle, nastavte typ jímky v aktivitě kopírován
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type jímky aktivity kopírování musí být nastavena na `OracleSink` . | Yes |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavena na `OracleSink` . | Ano |
 | writeBatchSize | Při dosažení velikosti vyrovnávací paměti vloží data do tabulky SQL `writeBatchSize` .<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
-| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | No |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | No |
+| writeBatchTimeout | Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
 
 **Příklad:**
 
@@ -363,7 +363,8 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | DLOUHO NEZPRACOVANÉ |Byte [] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |
-| Automatické |Decimal, String (if Precision > 28) |
+| ČÍSLO (p, s) |Decimal, String (Pokud p > 28) |
+| ČÍSLO bez přesnosti a škálování |dvojité |
 | NVARCHAR2 |Řetězec |
 | ZÍSKÁNÍ |Byte [] |
 | ROWID |Řetězec |

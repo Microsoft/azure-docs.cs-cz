@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456955"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s využitím bonusu
 
@@ -131,7 +131,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 1. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak vyberte **integrace a aplikace**.
 
     ![Bonusová část pro sociální sítě](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. V části **jednotné přihlašování**vyberte **SAML**.
+1. V části **jednotné přihlašování** vyberte **SAML**.
 
 1. Na stránce dialogu **SAML** proveďte následující kroky:
 
@@ -151,7 +151,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -175,7 +175,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k bonusům.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **bonus**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **bonus**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -232,7 +232,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
     b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
 
-    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `brittasimon\@contoso.com` .
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `brittasimon@contoso.com` .
 
     d. Klikněte na **Uložit**.
 
@@ -245,7 +245,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici bonus na přístupovém panelu byste se měli automaticky přihlášeni k bonusu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

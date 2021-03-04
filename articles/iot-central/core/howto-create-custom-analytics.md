@@ -1,37 +1,37 @@
 ---
 title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Microsoft Docs
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/18/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123041"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741670"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
-V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Centralovou aplikaci s využitím vlastních analýz a vizualizací. V tomto příkladu se používá pracovní prostor [Azure Databricks](/azure/azure-databricks/) k analýze IoT Centralho datového proudu telemetrie a k vygenerování vizualizací, jako je například [krabicový graf](https://wikipedia.org/wiki/Box_plot).
+V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Centralovou aplikaci s využitím vlastních analýz a vizualizací. V tomto příkladu se používá pracovní prostor [Azure Databricks](/azure/azure-databricks/) k analýze IoT Centralho datového proudu telemetrie a k vygenerování vizualizací, jako je například [krabicový graf](https://wikipedia.org/wiki/Box_plot).  
 
 V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s [integrovanými analytickými nástroji](./howto-create-custom-analytics.md)udělat.
 
 V této příručce se dozvíte, jak:
 
-* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Pomocí *průběžného exportu dat* Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -62,7 +62,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Název    | Zvolit název oboru názvů |
-| Cenová úroveň | Základní |
+| Cenová úroveň | Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
 | Umístění | USA – východ |
@@ -89,7 +89,7 @@ Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **
 IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali telemetrii do centra událostí. V této části vytvoříte centrum událostí pro příjem telemetrie z vaší aplikace IoT Central. Centrum událostí doručí telemetrii do vaší Stream Analytics úlohy ke zpracování.
 
 1. V Azure Portal přejděte na obor názvů Event Hubs a vyberte **+ centrum událostí**.
-1. Pojmenujte centrum událostí **centralexport**a vyberte **vytvořit**.
+1. Pojmenujte centrum událostí **centralexport** a vyberte **vytvořit**.
 1. V seznamu Center událostí v oboru názvů vyberte **centralexport**. Pak zvolte **zásady sdíleného přístupu**.
 1. Vyberte **+ Přidat**. Vytvořte zásadu **s názvem s** deklarací **naslouchání** .
 1. Když je zásada připravená, vyberte ji v seznamu a potom zkopírujte hodnotu **připojovací řetězec – primární klíč** .
@@ -103,7 +103,7 @@ Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
+1. Přejděte na stránku **Export dat (starší verze)** , vyberte **+ Nový** a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
     | Nastavení | Hodnota |
@@ -134,7 +134,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | ------- | ----- |
 | Název clusteru | centralanalysis |
 | Režim clusteru | Standard |
-| Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Verze Pythonu | 3 |
 | Povolit automatické škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
@@ -146,11 +146,11 @@ Vytvoření clusteru může trvat několik minut, než budete pokračovat, počk
 
 ### <a name="install-libraries"></a>Instalovat knihovny
 
-Na stránce **clustery** počkejte, dokud nebude **spuštěn**stav clusteru.
+Na stránce **clustery** počkejte, dokud nebude **spuštěn** stav clusteru.
 
 Následující kroky ukazují, jak importovat knihovnu, kterou vaše ukázka potřebuje, do clusteru:
 
-1. Na stránce **clustery** počkejte, než se **spustí**stav interaktivního clusteru **centralanalysis** .
+1. Na stránce **clustery** počkejte, než se **spustí** stav interaktivního clusteru **centralanalysis** .
 
 1. Vyberte cluster a pak zvolte kartu **knihovny** .
 
@@ -228,7 +228,7 @@ Aplikaci IoT Central můžete odstranit ze stránky **pro správu** v rámci apl
 
 V této příručce se naučíte:
 
-* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Pomocí *průběžného exportu dat* Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení dat telemetrie.
 
 Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [vizualizovat a analyzovat data Azure IoT Central v řídicím panelu Power BI](howto-connect-powerbi.md).

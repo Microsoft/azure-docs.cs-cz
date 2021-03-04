@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709100"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manager
 
@@ -75,7 +75,7 @@ Až dokončíte přidávání nebo úpravu záznamů DNS u svého poskytovatele 
 
 ### <a name="what-about-root-domains"></a>Co jsou kořenové domény?
 
-Vzhledem k tomu, že Traffic Manager podporuje pouze vlastní mapování domén se záznamy CNAME a protože standardy DNS nepodporují záznamy CNAME pro mapování kořenových domén (například **contoso.com**), Traffic Manager nepodporuje mapování na kořenové domény. Pokud chcete tento problém obejít, použijte přesměrování adresy URL z na úrovni aplikace. V ASP.NET Core například můžete použít [přepis adresy URL](/aspnet/core/fundamentals/url-rewriting). Pak použijte Traffic Manager k vyrovnávání zatížení subdomény (**www.contoso.com**). Další možností je [vytvořit záznam aliasu pro název domény vrchol, který bude odkazovat na profil Traffic Manager Azure](https://docs.microsoft.com/azure/dns/tutorial-alias-tm). Příklad: contoso.com. Místo používání přesměrování služby můžete Azure DNS nakonfigurovat tak, aby odkazovaly na Traffic Manager profil přímo z vaší zóny. 
+Vzhledem k tomu, že Traffic Manager podporuje pouze vlastní mapování domén se záznamy CNAME a protože standardy DNS nepodporují záznamy CNAME pro mapování kořenových domén (například **contoso.com**), Traffic Manager nepodporuje mapování na kořenové domény. Pokud chcete tento problém obejít, použijte přesměrování adresy URL z na úrovni aplikace. V ASP.NET Core například můžete použít [přepis adresy URL](/aspnet/core/fundamentals/url-rewriting). Pak použijte Traffic Manager k vyrovnávání zatížení subdomény (**www.contoso.com**). Další možností je [vytvořit záznam aliasu pro název domény vrchol, který bude odkazovat na profil Traffic Manager Azure](../dns/tutorial-alias-tm.md). Příklad: contoso.com. Místo používání přesměrování služby můžete Azure DNS nakonfigurovat tak, aby odkazovaly na Traffic Manager profil přímo z vaší zóny. 
 
 U scénářů s vysokou dostupností můžete instalaci DNS vyrovnávání zatížení implementovat bez Traffic Manager vytvořením několika *záznamů* , které ukazují z kořenové domény na IP adresu každé kopie aplikace. Pak [namapujte stejnou kořenovou doménu na všechny kopie aplikace](app-service-web-tutorial-custom-domain.md#map-an-a-record). Vzhledem k tomu, že stejný název domény nejde namapovat na dvě různé aplikace ve stejné oblasti, Tato instalace funguje jenom v případě, že se vaše aplikace kopírují v různých oblastech.
 

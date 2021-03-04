@@ -11,26 +11,31 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 883e658fd3f03eb50d54e548ffac49e23b340808
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688615"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Přidání uživatelského toku samoobslužné registrace do aplikace
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 
-Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší organizací. Přidružení toku uživatele k aplikaci vám umožní povolit registraci této aplikace. Můžete zvolit více než jednu aplikaci, kterou chcete přidružit k toku uživatele. Po přidružení toku uživatele k jedné nebo více aplikacím se uživatelé, kteří navštíví tuto aplikaci, budou moci zaregistrovat a získat účet Guest pomocí možností nakonfigurovaných v toku uživatele.
+> [!NOTE]
+> Některé z funkcí, které jsou uvedené v tomto článku, jsou funkce Azure Active Directory veřejné verze Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+
+U aplikací, které sestavíte, můžete vytvořit uživatelské toky, které umožní uživateli si zaregistrovat aplikaci a vytvořit nový účet Guest. Uživatelský tok pro samoobslužné přihlašování definuje řadu kroků, které bude uživatel sledovat při registraci, poskytovatelům identity, které jim umožníte použít, a atributy uživatele, které chcete shromažďovat. Můžete přidružit jednu nebo více aplikací k jednomu uživatelskému toku.
 
 > [!NOTE]
 > Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="add-social-identity-providers-optional"></a>Přidat zprostředkovatele sociálních identit (volitelné)
+### <a name="add-identity-providers-optional"></a>Přidat zprostředkovatele identity (volitelné)
 
-Služba Azure AD je výchozím zprostředkovatelem identity pro samoobslužné registrace. To znamená, že se uživatelé můžou k účtu Azure AD zaregistrovat ve výchozím nastavení. Poskytovatelé sociálních identit taky můžou být součástí těchto toků registrace pro podporu účtů Google a Facebook.
+Služba Azure AD je výchozím zprostředkovatelem identity pro samoobslužné registrace. To znamená, že se uživatelé můžou k účtu Azure AD zaregistrovat ve výchozím nastavení. V uživatelských tocích samoobslužné registrace můžete také zahrnout poskytovatele sociálních identit, jako je Google a Facebook, účet Microsoft (Preview) a jednorázové heslo e-mailu (Preview).
 
+- [Poskytovatel identity účtu Microsoft (ve verzi Preview)](microsoft-account.md)
+- [E-mailové ověřování heslem jednorázového hesla](one-time-passcode.md)
 - [Přidat Facebook do seznamu poskytovatelů sociálních identit](facebook-federation.md)
 - [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2fa827bc2841a0bae4c9646c8a70e42dc2b500e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702449"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Mezery mezi funkcemi Azure Media Services V2 a V3
 
@@ -42,7 +42,7 @@ Rozhraní V3 API má na rozdíl od rozhraní v2 API následující funkce. Někt
     - Přidali jsme podporu pro mapování zvukových kanálů na standardní kodér.  Podívejte [se na zvuk v dokumentaci k rozhraní Swagger pro kódování Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).
     - Pokud jste používali pokročilé funkce nebo formáty výstupu licencovaného produktu třetí strany, jako je například MXF nebo ProRes, použijte Partnerská řešení Azure ze služby streamování, které bude transakčním časem po vyřazení v2. Alternativně můžete použít předpracované sdělení nebo [Bitmovin](http://bitmovin.com).
 
-- Vlastnost "Skupina dostupnosti" na koncovém bodu streamování ve verzi v2 již není podporována. Podívejte se na vzorový projekt a pokyny pro VOD doručování s [vysokou dostupností](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding) v rozhraní V3 API.
+- Vlastnost "Skupina dostupnosti" na koncovém bodu streamování ve verzi v2 již není podporována. Podívejte se na vzorový projekt a pokyny pro VOD doručování s [vysokou dostupností](./media-services-high-availability-encoding.md) v rozhraní V3 API.
 
 - V Media Services V3 nelze zadat FairPlay IV. I když nemá vliv na zákazníky, kteří používají Media Services pro balíčky i doručování licencí, může to být problém při použití systému DRM jiného výrobce k doručování licencí FairPlay (hybridní režim).
 

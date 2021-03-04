@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 620afb0ca5de7c6a89db107fb4616748473f0809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596920"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701650"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -481,21 +481,10 @@ Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadav
 
 - Úspěšné požadavky
 - Neúspěšné požadavky, včetně vypršení časového limitu, omezování, chyb sítě, selhání autorizace a dalších chyb
-- Požadavky, které používají sdílený přístupový podpis (SAS) nebo OAuth, včetně neúspěšných a úspěšných požadavků
-- Požadavky na analytické údaje (data protokolu Classic v kontejneru **$logs** a data metriky třídy v **$metricch** tabulkách)
+- Požadavky, které používají protokol Kerberos, NTLM nebo sdílený přístupový podpis (SAS), včetně neúspěšných a úspěšných požadavků
+- Požadavky na analytické údaje (data protokolu Classic v kontejneru **$logs** a data metriky classic v **$metricch** tabulkách)
 
 Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
-
-### <a name="log-anonymous-requests"></a>Protokolování anonymních požadavků
-
- Protokolují se tyto typy anonymních požadavků:
-
-- Úspěšné požadavky
-- Chyby serveru
-- Chyby vypršení časového limitu u klientů i serveru
-- Neúspěšné žádosti o získání s kódem chyby 304 (nezměněno)
-
-Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Přístup k protokolům v účtu úložiště
 
@@ -631,13 +620,12 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
    > [!NOTE]
    > Pokud typy odezvy nejsou uvedeny v rozevíracím seznamu **hodnoty dimenze** , znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnoty dimenze, klikněte vedle rozevíracího seznamu **hodnoty dimenze** na možnost **Přidat vlastní hodnotu**, zadejte typ respone (například **SuccessWithThrottling**), vyberte **OK** a pak opakováním těchto kroků přidejte všechny použitelné typy odpovědí pro sdílenou složku.
 
-8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
-
+8. Pro **sdílené složky Premium** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílená složka**. Pro **standardní sdílené složky** přejděte na **Krok #10**.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílenou složkou, dimenze **sdílené složky** nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici žádné metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
+9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
 
     > [!TIP]
@@ -654,12 +642,12 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
 4. Kliknutím na **Přidat podmínku** přidejte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte metriku **kapacity souboru** .
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
+6. Pro **sdílené složky Premium** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílená složka**. Pro **standardní sdílené složky** přejděte na **Krok #8**.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílenou složkou, dimenze **sdílené složky** nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici žádné metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
+7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 8. Zadejte **prahovou hodnotu** v bajtech. Pokud je například velikost sdílené složky 100 TiB a chcete dostat upozornění, když je velikost sdílené složky 80% kapacity, prahová hodnota v bajtech je 87960930222080.
 9. Definujte zbytek **parametrů výstrahy** (členitost agregace a četnost vyhodnocení) a klikněte na **Hotovo**.
 10. Kliknutím na **Přidat skupiny akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
@@ -673,12 +661,12 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
 4. Kliknutím na **Přidat podmínku** přidejte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
-7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
+6. Pro **sdílené složky Premium** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílená složka**. Pro **standardní sdílené složky** přejděte na **Krok #8**.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílenou složkou, dimenze **sdílené složky** nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici žádné metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
+7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 8. Jako prahovou hodnotu zadejte **536870912000** bajtů. 
 9. Klikněte na rozevírací seznam **členitosti agregace** a vyberte **24 hodin**.
 10. Vyberte **frekvenci hodnocení** a **klikněte na Hotovo**.

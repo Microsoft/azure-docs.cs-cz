@@ -8,12 +8,16 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./webjobs-create-ieux
+ms.openlocfilehash: 8afc8ca9b0dedb10ecdb30e8abb22a5d0986de5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674026"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723873"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -66,11 +70,11 @@ when making changes in one don't forget the other two.
 
 1. V [Azure Portal](https://portal.azure.com)navštivte stránku **App Service** vaší App Service webové aplikace, aplikace API nebo mobilní aplikace.
 
-2. Vyberte **WebJobs** .
+2. Vyberte **WebJobs**.
 
    ![Vybrat webové úlohy](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. Na stránce webové **úlohy** vyberte **Přidat** .
+2. Na stránce webové **úlohy** vyberte **Přidat**.
 
     ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -85,13 +89,13 @@ when making changes in one don't forget the other two.
    | **Typ** | Průběžný | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
    | **Škálování** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
 
-4. Klikněte na **OK** .
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
    ![Seznam WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-2. Chcete-li ukončit nebo restartovat průběžnou úlohu WebJob, klikněte pravým tlačítkem myši na webovou úlohu v seznamu a klikněte na tlačítko **zastavit** nebo **Spustit** .
+2. Chcete-li ukončit nebo restartovat průběžnou úlohu WebJob, klikněte pravým tlačítkem myši na webovou úlohu v seznamu a klikněte na tlačítko **zastavit** nebo **Spustit**.
 
     ![Zastavení průběžné úlohy WebJob](./media/web-sites-create-web-jobs/continuousstop.png)
 
@@ -104,11 +108,11 @@ when making changes in one don't forget the other two.
 
 1. V [Azure Portal](https://portal.azure.com)navštivte stránku **App Service** vaší App Service webové aplikace, aplikace API nebo mobilní aplikace.
 
-2. Vyberte **WebJobs** .
+2. Vyberte **WebJobs**.
 
    ![Vybrat webové úlohy](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. Na stránce webové **úlohy** vyberte **Přidat** .
+2. Na stránce webové **úlohy** vyberte **Přidat**.
 
     ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -123,13 +127,13 @@ when making changes in one don't forget the other two.
    | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
    | **Triggery** | Ruční | |
 
-4. Klikněte na **OK** .
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
    ![Seznam WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. Webovou úlohu spustíte tak, že kliknete pravým tlačítkem na jeho název v seznamu a kliknete na **Spustit** .
+7. Webovou úlohu spustíte tak, že kliknete pravým tlačítkem na jeho název v seznamu a kliknete na **Spustit**.
    
     ![Spustit úlohu WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
@@ -142,11 +146,11 @@ when making changes in one don't forget the other two.
 
 1. V [Azure Portal](https://portal.azure.com)navštivte stránku **App Service** vaší App Service webové aplikace, aplikace API nebo mobilní aplikace.
 
-2. Vyberte **WebJobs** .
+2. Vyberte **WebJobs**.
 
    ![Vybrat webové úlohy](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. Na stránce webové **úlohy** vyberte **Přidat** .
+2. Na stránce webové **úlohy** vyberte **Přidat**.
 
    ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -159,10 +163,10 @@ when making changes in one don't forget the other two.
    | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
    | **Nahrání souboru** | ConsoleApp.zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
    | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Triggery** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
+   | **Triggery** | Plánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
    | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
 
-4. Klikněte na **OK** .
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -196,7 +200,7 @@ Další informace najdete v tématu [plánování aktivované webové úlohy](we
    
     ![Podrobnosti o spuštění webové úlohy](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   Pokud chcete zobrazit výstupní text v samostatném okně prohlížeče, vyberte **Stáhnout** . Pokud chcete stáhnout samotný text, klikněte pravým tlačítkem na **Stáhnout** a pomocí možností prohlížeče uložte obsah souboru.
+   Pokud chcete zobrazit výstupní text v samostatném okně prohlížeče, vyberte **Stáhnout**. Pokud chcete stáhnout samotný text, klikněte pravým tlačítkem na **Stáhnout** a pomocí možností prohlížeče uložte obsah souboru.
    
 5. V horní části stránky vyberte odkaz s popisem webové **úlohy** , který umožňuje přejít na seznam WebJobs.
 

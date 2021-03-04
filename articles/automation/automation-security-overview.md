@@ -4,14 +4,14 @@ description: Tento článek poskytuje přehled ověřování účtu Azure Automa
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254995"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708896"
 ---
 # <a name="automation-account-authentication-overview"></a>Přehled ověřování účtů služby Automation
 
@@ -44,6 +44,8 @@ Další informace o modelech nasazení Azure Resource Manager a Classic najdete 
 >Předplatná Azure Cloud Solution Provider (CSP) podporují pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Pokud používáte předplatné CSP, účet Spustit jako pro Azure Classic se nevytvoří, ale vytvoří se účet Spustit jako pro Azure. Další informace o předplatných CSP najdete [v tématu dostupné služby v předplatných CSP](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 Když vytvoříte účet Automation, vytvoří se ve výchozím nastavení účet Spustit jako. Pokud se rozhodnete, že ho nechcete vytvořit spolu s účtem Automation, můžete ho vytvořit jednotlivě později. Účet Spustit jako pro Azure Classic je volitelný a vytvoří se samostatně, pokud potřebujete spravovat klasické prostředky.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Účet Spustit jako
 

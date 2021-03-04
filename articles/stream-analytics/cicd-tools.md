@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 3ed3ff44b927fa230dedf16387c1daca889d7c66
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718416"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Automatizace sestavení, testů a nasazení Azure Stream Analytics úlohy pomocí nástrojů CI/CD
 
@@ -166,6 +166,9 @@ Pokud chcete, aby ověření testu ignorovalo určitý výstup, nastavte **poža
   ]
 }
 ```
+
+> [!NOTE]
+> V současné době jediná povolená hodnota pro `ScriptType` element je `InputMock` , což je také výchozí hodnota. Pokud je nastavená na jinou hodnotu, ignoruje se a použije se výchozí hodnota ( `InputMock` ). 
 
 ### <a name="run-a-unit-test"></a>Spustit test jednotky
 

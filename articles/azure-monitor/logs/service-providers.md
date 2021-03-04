@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f69de583dea14be3c7ce3ab6779af549e95de75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09b5a6bd11db1a8faa29e7b3871156f9c28d1140
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717379"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -48,7 +48,7 @@ Mezi výhody distribuované architektury patří:
 
 Mezi nevýhody distribuované architektury patří:
 
-* Centralizované vizualizace a analýza dat napříč klienty zákazníka pomocí nástrojů, jako jsou Azure Monitor sešity, můžou mít za následek pomalejší prostředí, zejména při analýze dat napříč více než 50 + pracovními prostory.
+* Centralizované vizualizace a analýza dat [napříč klienty zákazníka](cross-workspace-query.md) pomocí nástrojů, jako jsou Azure monitor sešity, můžou mít za následek pomalejší prostředí, zejména při analýze dat napříč více než 50 + pracovními prostory.
 * Pokud se zákazníkům pro správu delegovaných prostředků Azure nepřipojíte, musí se správci poskytovatele služeb zřídit v adresáři zákazníka a pro poskytovatele služeb je těžší spravovat velký počet zákaznických klientů najednou.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. centrální protokoly se ukládají v pracovním prostoru umístěném v tenantovi poskytovatele služeb.
@@ -85,7 +85,7 @@ Existují dvě možnosti implementace protokolů v centrálním umístění:
 
 * Automatizace vytváření pracovních prostorů pomocí [PowerShellu](../logs/powershell-workspace-configuration.md)
 
-* Integrace s existujícími systémy pomocí [výstrah](../platform/alerts-overview.md)
+* Integrace s existujícími systémy pomocí [výstrah](../alerts/alerts-overview.md)
 
 * Generování souhrnných sestav pomocí [Power BI](../visualize/powerbi.md)
 

@@ -1,24 +1,24 @@
 ---
 title: Postup zastavení monitorování clusteru služby Azure Kubernetes | Microsoft Docs
-description: Tento článek popisuje, jak můžete zrušit monitorování clusteru Azure AKS pomocí Azure Monitor for Containers.
+description: Tento článek popisuje, jak můžete přestat sledovat váš cluster Azure AKS s využitím služby Container Insights.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610247"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723533"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování služby AKS (Azure Kubernetes Service) pomocí služby Azure Monitor pro kontejnery
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Postup zastavení monitorování služby Azure Kubernetes (AKS) se službou Container Insights
 
 Po povolení monitorování clusteru AKS můžete zastavit monitorování clusteru, pokud se rozhodnete, že ho už nechcete monitorovat. V tomto článku se dozvíte, jak toho dosáhnout pomocí Azure CLI nebo pomocí poskytnutých šablon Azure Resource Manager.  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Pomocí příkazu [AZ AKS Disable-addons](/cli/azure/aks#az-aks-disable-addons) zakažte Azure monitor pro kontejnery. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
+Pomocí příkazu [AZ AKS Disable-addons](/cli/azure/aks#az-aks-disable-addons) zakažte službu Container Insights. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -165,4 +165,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí Azure Portal](../platform/delete-workspace.md). Nezapomeňte na **ID prostředku pracovního prostoru** zkopírované dříve v kroku 4, který budete potřebovat.
+Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí Azure Portal](../logs/delete-workspace.md). Nezapomeňte na **ID prostředku pracovního prostoru** zkopírované dříve v kroku 4, který budete potřebovat.

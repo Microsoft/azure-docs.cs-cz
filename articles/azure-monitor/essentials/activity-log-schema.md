@@ -7,21 +7,21 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a050e9832537dd9b6690c7f9409bfbb5b795af2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2cea95dba3be02b9db584b0650761cb2d640283
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728769"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
-[Protokol aktivit Azure](../platform/platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje kategorie protokolů aktivit a schéma pro každou z nich. 
+[Protokol aktivit Azure](./platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje kategorie protokolů aktivit a schéma pro každou z nich. 
 
 Schéma se bude lišit v závislosti na tom, jak přistupujete k protokolu:
  
 - Schémata popsaná v tomto článku se nacházejí při přístupu k protokolu aktivit z [REST API](/rest/api/monitor/activitylogs). Toto je také schéma použité při výběru možnosti **JSON** při zobrazení události v Azure Portal.
-- Když použijete [nastavení diagnostiky](../platform/diagnostic-settings.md) k odeslání protokolu aktivit do Azure Storage nebo Azure Event Hubs, přečtěte si téma poslední [schéma oddílu z účtu úložiště a centra událostí](#schema-from-storage-account-and-event-hubs) schématu.
-- Pokud použijete [nastavení diagnostiky](../platform/diagnostic-settings.md) k odeslání protokolu aktivit do pracovního prostoru Log Analytics, přečtěte si téma [Azure monitor data reference](/azure/azure-monitor/reference/) pro schéma.
+- Když použijete [nastavení diagnostiky](./diagnostic-settings.md) k odeslání protokolu aktivit do Azure Storage nebo Azure Event Hubs, přečtěte si téma poslední [schéma oddílu z účtu úložiště a centra událostí](#schema-from-storage-account-and-event-hubs) schématu.
+- Pokud použijete [nastavení diagnostiky](./diagnostic-settings.md) k odeslání protokolu aktivit do pracovního prostoru Log Analytics, přečtěte si téma [Azure monitor data reference](/azure/azure-monitor/reference/) pro schéma.
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 Každá položka v protokolu aktivit má úroveň závažnosti. Úroveň závažnosti může mít jednu z následujících hodnot:  
@@ -36,7 +36,7 @@ Každá položka v protokolu aktivit má úroveň závažnosti. Úroveň závaž
 Devlopers každého poskytovatele prostředků volí úrovně závažnosti svých položek prostředků. V důsledku toho se skutečná závažnost může lišit v závislosti na tom, jak je vaše aplikace sestavená. Například položky, které jsou důležité pro konkrétní prostředek v izolaci, nemusí být tak důležité jako "chyby" v typu prostředku, který je centrální pro vaši aplikaci Azure. Nezapomeňte tuto skutečnost vzít v úvahu při rozhodování o tom, k jakým událostem chcete upozornit.  
 
 ## <a name="categories"></a>Kategorie
-Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Další informace o jednotlivých kategoriích a jejich schématu najdete v následujících částech, když přistupujete k protokolu aktivit z portálu, PowerShellu, CLI a REST API. Schéma se liší při [streamování protokolu aktivit do úložiště nebo Event Hubs](../platform/resource-logs.md#send-to-azure-event-hubs). V poslední části článku je uveden mapování vlastností [schématu protokolů prostředků](../platform/resource-logs-schema.md) .
+Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Další informace o jednotlivých kategoriích a jejich schématu najdete v následujících částech, když přistupujete k protokolu aktivit z portálu, PowerShellu, CLI a REST API. Schéma se liší při [streamování protokolu aktivit do úložiště nebo Event Hubs](./resource-logs.md#send-to-azure-event-hubs). V poslední části článku je uveden mapování vlastností [schématu protokolů prostředků](./resource-logs-schema.md) .
 
 | Kategorie | Popis |
 |:---|:---|
@@ -141,7 +141,7 @@ Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstra
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | autorizace |Objekt BLOB vlastností události Azure RBAC Obvykle zahrnuje vlastnosti "Action", "role" a "Scope". |
 | volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. |
@@ -288,7 +288,7 @@ Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kter�
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | barev | Vždy "admin, operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -381,7 +381,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | volající | Vždy Microsoft. Insights/alertRules |
 | barev | Vždy "admin, operace" |
@@ -407,7 +407,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 Pole Properties (vlastnosti) bude obsahovat různé hodnoty v závislosti na zdroji události výstrahy. Dvěma běžnými zprostředkovateli událostí výstrah jsou výstrahy protokolu aktivit a upozornění na metriky.
 
 #### <a name="properties-for-activity-log-alerts"></a>Vlastnosti pro výstrahy protokolu aktivit
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | Properties. subscriptionId | ID předplatného z události protokolu aktivit, které způsobilo aktivaci tohoto pravidla upozornění protokolu aktivit. |
 | Properties. eventDataId | ID dat události z události protokolu aktivit, která způsobila aktivaci tohoto pravidla upozornění protokolu aktivit. |
@@ -418,7 +418,7 @@ Pole Properties (vlastnosti) bude obsahovat různé hodnoty v závislosti na zdr
 | vlastnosti. status | Stav z události protokolu aktivit, která způsobila aktivaci tohoto pravidla upozornění protokolu aktivit.|
 
 #### <a name="properties-for-metric-alerts"></a>Vlastnosti pro výstrahy metriky
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | vlastnosti. RuleUri | ID prostředku pro samotné pravidlo výstrahy metriky. |
 | vlastnosti. RuleName | Název pravidla výstrahy metriky. |
@@ -491,7 +491,7 @@ Tato kategorie obsahuje záznam všech událostí souvisejících s provozem mod
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | volající | Vždy Microsoft. Insights/autoscaleSettings |
 | barev | Vždy "admin, operace" |
@@ -581,7 +581,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -662,7 +662,7 @@ Tato kategorie obsahuje záznam všech nových doporučení, která jsou vygener
 
 ```
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -772,7 +772,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 
 ### <a name="policy-event-property-descriptions"></a>Popis vlastností události zásad
 
-| Název prvku | Description |
+| Název prvku | Popis |
 | --- | --- |
 | autorizace | Pole vlastností služby Azure RBAC události Pro nové prostředky se jedná o akci a rozsah žádosti, která aktivovala vyhodnocení. U existujících prostředků se jedná o akci "Microsoft. Resources/checkPolicyCompliance/Read". |
 | volající | Pro nové prostředky se jedná o identitu, která iniciovala nasazení. U stávajících prostředků se jedná o identifikátor GUID Microsoft Azure Insights RP. |
@@ -804,10 +804,10 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Schéma z účtu úložiště a Center událostí
-Při streamování protokolu aktivit Azure do účtu úložiště nebo centra událostí data následují po [schématu protokolu prostředků](../platform/resource-logs-schema.md). Následující tabulka poskytuje mapování vlastností z výše uvedených schémat na schéma protokolů prostředků.
+Při streamování protokolu aktivit Azure do účtu úložiště nebo centra událostí data následují po [schématu protokolu prostředků](./resource-logs-schema.md). Následující tabulka poskytuje mapování vlastností z výše uvedených schémat na schéma protokolů prostředků.
 
 > [!IMPORTANT]
-> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](../platform/resource-logs-blob-format.md) .
+> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](./resource-logs-blob-format.md) .
 
 
 | Vlastnost schématu pro protokoly prostředků | Vlastnost schématu REST API protokolu aktivit | Poznámky |
@@ -894,5 +894,5 @@ Následuje příklad události s použitím tohoto schématu..
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o protokolu aktivit](../platform/platform-logs-overview.md)
-* [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](../platform/diagnostic-settings.md)
+* [Další informace o protokolu aktivit](./platform-logs-overview.md)
+* [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](./diagnostic-settings.md)

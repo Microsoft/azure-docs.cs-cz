@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581242"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737405"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -164,7 +164,7 @@ Azure Sentinel má integrovaný sešit Azure WAF, který poskytuje přehled udá
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
 **Doprovodné** materiály: odešlete protokoly brány firewall webových aplikací (WAF) Azure do vlastního účtu úložiště a definujte zásady uchovávání informací. Pomocí Azure Monitor můžete nastavit dobu uchování pracovního prostoru Log Analytics na základě požadavků vaší organizace na dodržování předpisů.
-- [Konfigurace monitorování pro účet úložiště](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurace monitorování pro účet úložiště](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

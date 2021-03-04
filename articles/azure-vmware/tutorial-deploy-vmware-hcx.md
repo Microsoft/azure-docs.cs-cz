@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357887"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728225"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -47,7 +47,7 @@ Při přípravě nasazení doporučujeme Přečtěte si následující dokumenta
 * [Síťové porty vyžadované pro VMware HCX](https://ports.vmware.com/home/VMware-HCX)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud plánujete použít VMware HCX Enterprise, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
 
@@ -76,12 +76,15 @@ Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="Snímek obrazovky s IP adresou HCX VMware" lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. Vyberte **Spravovat**  >  **identitu** a pro identifikaci hesla vyberte **heslo správce vCenter** .
+1. Vyberte **Spravovat**  >  **identitu**. 
+
+   Adresy URL a přihlašovací údaje uživatele pro zobrazení privátního cloudu vCenter a správce NSX-T.
 
    > [!TIP]
-   > Heslo vCenter bylo definováno při nastavování privátního cloudu. Jedná se o stejné heslo, které použijete k přihlášení ke službě Azure VMware Solution HCX Manager.
+   > Heslo vCenter bylo definováno při nastavování privátního cloudu. Jedná se o stejné heslo, které použijete k přihlášení ke službě Azure VMware Solution HCX Manager. Pro generování nových hesel vCenter a NSX-T můžete vybrat **vygenerovat nové heslo** .
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="vyhledejte heslo HCX." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
+
 
 1. Otevřete okno prohlížeče a přihlaste se k Azure VMware Solution HCX Manageru na `https://x.x.x.9` portu 443 s **cloudadmin \@ vSphere.** přihlašovací údaje místního uživatele
 

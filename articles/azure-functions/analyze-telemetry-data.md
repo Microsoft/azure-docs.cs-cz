@@ -4,12 +4,12 @@ description: Naučte se zobrazovat a dotazovat se na data telemetrie Azure Funct
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591184"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729364"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analýza telemetrie Azure Functions v Application Insights 
 
@@ -60,7 +60,7 @@ Informace o tom, jak používat Application Insights, najdete v [dokumentaci k A
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Prověřování | Description |
+| Prověřování | Popis |
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data o výkonu můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
@@ -142,14 +142,14 @@ Následující dotazy telemetrie jsou specifické pro metriky, které mají vliv
 
 ## <a name="azure-monitor-metrics"></a>Azure Monitor metriky
 
-Kromě dat telemetrie shromažďovaných v Application Insights můžete také získat data o tom, jak aplikace Function App běží z [Azure monitor metrik](../azure-monitor/platform/data-platform-metrics.md). Spolu s běžnými [metrikami dostupnými pro App Service aplikace jsou k dispozici](../app-service/web-sites-monitor.md#understand-metrics)dvě metriky, které jsou specifické pro funkce, které mají zájem:
+Kromě dat telemetrie shromažďovaných v Application Insights můžete také získat data o tom, jak aplikace Function App běží z [Azure monitor metrik](../azure-monitor/essentials/data-platform-metrics.md). Spolu s běžnými [metrikami dostupnými pro App Service aplikace jsou k dispozici](../app-service/web-sites-monitor.md#understand-metrics)dvě metriky, které jsou specifické pro funkce, které mají zájem:
 
 | Metric | Popis |
 | ---- | ---- |
 | **FunctionExecutionCount** | Čítač spuštění funkce označuje počet provedení aplikace Function App. To koreluje s počtem pokusů, kolikrát je funkce ve vaší aplikaci spuštěná. Tato metrika se v současné době nepodporuje pro plány Premium a vyhrazené (App Service) spuštěné v systému Linux. |
 | **FunctionExecutionUnits** | Jednotky spuštění funkce jsou kombinací doby provádění a využití paměti.  Data paměti nejsou metrikou, která je aktuálně dostupná prostřednictvím Azure Monitor. Pokud ale chcete optimalizovat využití paměti ve vaší aplikaci, může použít data čítače výkonu shromažďovaná nástrojem Application Insights. Tato metrika se v současné době nepodporuje pro plány Premium a vyhrazené (App Service) spuštěné v systému Linux.|
 
-Další informace o výpočtu nákladů na plán spotřeby pomocí Application Insights dat najdete v tématu [odhad nákladů na plán spotřeby](functions-consumption-costs.md). Další informace o tom, jak zobrazit metriky pomocí Průzkumníka monitorování, najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md).
+Další informace o výpočtu nákladů na plán spotřeby pomocí Application Insights dat najdete v tématu [odhad nákladů na plán spotřeby](functions-consumption-costs.md). Další informace o tom, jak zobrazit metriky pomocí Průzkumníka monitorování, najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/essentials/metrics-getting-started.md).
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -158,4 +158,3 @@ Další informace o monitorování Azure Functions:
 
 + [Monitorování Azure Functions](functions-monitoring.md)
 + [Postup konfigurace monitorování pro Azure Functions](configure-monitoring.md)
-

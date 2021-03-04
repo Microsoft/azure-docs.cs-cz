@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 02/18/2021
 ms.author: victorh
-ms.openlocfilehash: ba344c3b1570c041e1602bdfcde1b3a4055dc396
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 8b1d1007e817bafe3d75f0f0d7c3fc6eb5470854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729466"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Kurz: Vytvoření zásad brány firewall webových aplikací na frontách Azure pomocí Azure Portal
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Přidružit k hostiteli front-endu
 > * Konfigurace pravidel WAF
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vytvořte profil front-dveří podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří](../../frontdoor/quickstart-create-front-door.md). 
 
@@ -62,19 +62,21 @@ Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pr
 Když vytvoříte zásadu WAF, použije se výchozí zásada WAF v režimu **detekce** . V režimu **detekce** neblokuje WAF žádné požadavky, místo toho se protokolují požadavky, které odpovídají pravidlům WAF, do protokolů WAF.
 Pokud chcete zobrazit WAF v akci, můžete změnit nastavení režimu z **detekce** na **prevence**. V režimu **prevence** se požadavky, které odpovídají pravidlům definovaným ve výchozí sadě pravidel (DRS), zablokují a přihlásily v protokolech WAF.
 
- :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="Snímek stránky s vytvořením zásady s použitím tlačítka pro kontrolu a vytvoření a seznam pro předplatné, skupinu prostředků a název zásady." border="false":::
+ :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="Snímek obrazovky oddílu nastavení zásad Přepínač Mode je nastaven na hodnotu prevence." border="false":::
 
 ### <a name="custom-rules"></a>Vlastní pravidla
 
 Vlastní pravidlo můžete vytvořit tak, že v části **vlastní pravidla** vyberete **Přidat vlastní pravidlo** . Tím se spustí stránka Konfigurace vlastního pravidla. Níže je uveden příklad konfigurace vlastního pravidla pro blokování požadavku, pokud řetězec dotazu obsahuje **blockme**.
 
-:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="Snímek stránky s vytvořením zásady s použitím tlačítka pro kontrolu a vytvoření a seznam pro předplatné, skupinu prostředků a název zásady." border="false":::
+:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="Snímek obrazovky se stránkou konfigurace vlastního pravidla zobrazující nastavení pravidla, které kontroluje, zda proměnná řetězce dotazu obsahuje hodnotu blockme." border="false":::
 
 ### <a name="default-rule-set-drs"></a>Výchozí sada pravidel (DRS)
 
-Výchozí sada pravidel spravovaná v Azure je ve výchozím nastavení povolená. Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, **zaškrtněte políčko před** číslem pravidla a na kartě výše vyberte **Zakázat** . Chcete-li změnit typy akcí pro jednotlivá pravidla v rámci sady pravidel, zaškrtněte políčko před číslem pravidla a potom vyberte kartu **Akce změny** výše.
+Výchozí sada pravidel spravovaná v Azure je ve výchozím nastavení povolená. Aktuální výchozí verze je DefaultRuleSet_1.0. V rozevíracím seznamu jsou k dispozici v rozevíracím seznamu WAF **spravovaná pravidla** **a v** nedávné době k dispozici RuleSet Microsoft_DefaultRuleSet_1 1.
 
- :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="Snímek stránky s vytvořením zásady s použitím tlačítka pro kontrolu a vytvoření a seznam pro předplatné, skupinu prostředků a název zásady." border="false":::
+Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, **zaškrtněte políčko před** číslem pravidla a na kartě výše vyberte **Zakázat** . Chcete-li změnit typy akcí pro jednotlivá pravidla v rámci sady pravidel, zaškrtněte políčko před číslem pravidla a potom vyberte kartu **Akce změny** výše.
+
+ :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="Snímek obrazovky se stránkou spravovaná pravidla, která zobrazuje sadu pravidel, skupiny pravidel, pravidla a tlačítka akcí povolit, zakázat a změnit. Je zaškrtnuto jedno pravidlo." border="false":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

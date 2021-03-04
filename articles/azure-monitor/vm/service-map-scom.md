@@ -1,29 +1,29 @@
 ---
-title: Integrace mapy Azure Monitor pro virtuální počítače s Operations Manager | Microsoft Docs
-description: Azure Monitor pro virtuální počítače automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek popisuje použití funkce map k automatickému vytváření diagramů distribuovaných aplikací v Operations Manager.
+title: Integrace mapy virtuálních počítačů s Operations Manager | Microsoft Docs
+description: Služba VM Insights automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek popisuje použití funkce map k automatickému vytváření diagramů distribuovaných aplikací v Operations Manager.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725488"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrace System Center Operations Manager s funkcí mapa pro službu VM Insights
 
-V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Díky této integraci mezi funkcí map a System Center Operations Manager můžete automaticky vytvářet diagramy distribuovaných aplikací v Operations Manager, které jsou založené na mapch dynamických závislostí v Azure Monitor pro virtuální počítače. Tento článek popisuje, jak nakonfigurovat skupinu pro správu System Center Operations Manager pro podporu této funkce.
+V části VM Insights můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Díky této integraci mezi funkcí map a System Center Operations Manager můžete automaticky vytvářet diagramy distribuovaných aplikací v Operations Manager, které jsou založené na dynamických mapách závislostí ve službě VM Insights. Tento článek popisuje, jak nakonfigurovat skupinu pro správu System Center Operations Manager pro podporu této funkce.
 
 >[!NOTE]
->Pokud jste již nasadili Service Map, můžete zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map Azure Monitor pro virtuální počítače je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../vm/vminsights-overview.md).
+>Pokud jste již nasadili Service Map, můžete zobrazit své mapy v nástroji VM Insights, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map pro službu VM Insights je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [Přehled virtuálních počítačů Insights](../vm/vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * System Center Operations Manager skupina pro správu (2012 R2 nebo novější).
-* Pracovní prostor Log Analytics nakonfigurovaný pro podporu Azure Monitor pro virtuální počítače.
+* Pracovní prostor Log Analytics nakonfigurovaný tak, aby podporoval službu VM Insights.
 * Jeden nebo více virtuálních počítačů se systémem Windows a Linux nebo fyzických počítačů, které jsou monitorovány Operations Manager a odesílají data do pracovního prostoru Log Analytics. Servery se systémem Linux, které vytvářejí Operations Manager skupině pro správu, musí být nakonfigurovány tak, aby se přímo připojovaly k Azure Monitor. Další informace najdete v přehledu [shromáždění dat protokolu pomocí agenta Log Analytics](../agents/log-analytics-agent.md).
 * Instanční objekt s přístupem k předplatnému Azure, které je přidružené k pracovnímu prostoru Log Analytics. Další informace najdete v pro [Vytvoření instančního objektu](#create-a-service-principal).
 
@@ -43,7 +43,7 @@ Po instalaci Service Map Management Pack se v rámci **Operations Management Sui
 >[!NOTE]
 >[Operations Management Suite byl kolekce služeb](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , které Log Analytics, je teď součástí [Azure monitor](../overview.md).
 
-Chcete-li nakonfigurovat integraci mapování Azure Monitor pro virtuální počítače, postupujte následovně:
+Pokud chcete nakonfigurovat integraci mapování pro službu VM Insights, postupujte následovně:
 
 1. Chcete-li otevřít Průvodce konfigurací, v podokně **přehled Service map** klikněte na možnost **Přidat pracovní prostor**.  
 
@@ -66,7 +66,7 @@ Chcete-li nakonfigurovat integraci mapování Azure Monitor pro virtuální poč
     Pro integraci k sestavení diagramu distribuované aplikace pro server musí být server:
 
    * Monitorováno pomocí Operations Manager
-   * Nakonfigurováno pro sestavy do pracovního prostoru Log Analytics nakonfigurovaného pomocí Azure Monitor pro virtuální počítače
+   * Nakonfigurováno pro hlášení do pracovního prostoru Log Analytics nakonfigurovaného pomocí přehledů virtuálních počítačů
    * Uvedené ve skupině Service Map servery
 
      ![Skupina konfigurace Operations Manager](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ Složka Service Map má čtyři uzly:
   >[!NOTE]
   >Tyto výstrahy nejsou Log Analytics výstrahy synchronizované s Operations Manager se generují ve skupině pro správu založené na pracovních postupech definovaných v Management Pack Service Map.
 
-* **Servery**: vypíše monitorované servery, které jsou nakonfigurované pro synchronizaci z Azure monitor pro virtuální počítače funkce mapy.
+* **Servery**: vypíše monitorované servery, které jsou nakonfigurované pro synchronizaci z funkce mapa služby VM Insights.
 
     ![Podokno Operations Manager monitorovací servery](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ V této aktuální verzi můžete nakonfigurovat pouze jeden pracovní prostor L
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurace pravidel a přepsání
 
-Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule* pravidelně načítá informace z funkce map Azure monitor pro virtuální počítače. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
+Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule* pravidelně načítá informace z funkce mapa služby VM Insights. Chcete-li upravit interval synchronizace, můžete pravidlo přepsat a změnit hodnotu parametru **IntervalMinutes**.
 
 ![Okno Vlastnosti Operations Manager Overrides](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ Pravidlo *Microsoft.SystemCenter. ServiceMapImport. Rule* pravidelně načítá 
 Aktuální návrh přináší následující problémy a omezení:
 
 * Můžete se připojit pouze k jednomu pracovnímu prostoru Log Analytics.
-* I když můžete přidat servery do skupiny serverů Service Map ručně prostřednictvím podokna **vytváření obsahu** , mapy pro tyto servery se nesynchronizují okamžitě. Budou synchronizovány z Azure Monitor pro virtuální počítače funkce mapa během dalšího cyklu synchronizace.
-* Pokud provedete jakékoli změny v diagramech distribuovaných aplikací vytvořených Management Pack, budou tyto změny při příští synchronizaci s Azure Monitor pro virtuální počítače pravděpodobně přepsány.
+* I když můžete přidat servery do skupiny serverů Service Map ručně prostřednictvím podokna **vytváření obsahu** , mapy pro tyto servery se nesynchronizují okamžitě. Budou synchronizovány s funkcí mapa služby VM Insights během dalšího cyklu synchronizace.
+* Pokud provedete jakékoli změny v diagramech distribuovaných aplikací vytvořených Management Pack, tyto změny budou pravděpodobně přepsány při příští synchronizaci se službou VM Insights.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -144,5 +144,5 @@ Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v t
 
 ### <a name="suggestions"></a>Návrhy
 
-Máte jakoukoli zpětnou vazbu pro nás o integraci s funkcí Azure Monitor pro virtuální počítače map nebo s touto dokumentací? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.
+Máte k dispozici jakoukoli zpětnou vazbu ohledně integrace s funkcí mapa služby VM Insights nebo této dokumentace? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.
 

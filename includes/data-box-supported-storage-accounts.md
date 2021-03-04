@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209541"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706027"
 ---
 Tady je seznam podporovaných účtů úložiště a typů úložiště pro Data Box zařízení. Úplný seznam všech možností pro všechny typy účtů úložiště najdete v tématu [typy účtů úložiště](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
@@ -45,6 +45,7 @@ V případě exportních objednávek následující tabulka zobrazuje podporovan
 > [!IMPORTANT]
 > - Pro účty pro obecné účely Data Box nepodporuje typy úložiště front, tabulek a disků pro příkazy import. Pro exportní objednávky Data Box pro účty pro obecné účely nepodporuje typy úložiště Queue, Table, disk a Azure Data Lake Gen 2.
 > - Data Box nepodporuje přidávání objektů BLOB pro Blob Storage a blokování účtů Blob Storage.
+> - Podpora protokolů systému souborů NFS (Network File System) 3,0 ve službě Azure Blob Storage není podporována Data Box.
 > - Data nahraná do objektů blob stránky musí mít 512 bajtů (například VHD).
 > - Exportovat lze maximálně 80 TB.
 > - Historie souborů a snímky objektů BLOB se neexportují.

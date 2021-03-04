@@ -251,6 +251,8 @@
       href: how-to-create-test-certificates.md
     - name: Skripty správy pro zařízení s Windows
       href: reference-windows-scripts.md
+    - name: IoT Edge pro Linux ve skriptech Windows
+      href: reference-iot-edge-for-linux-on-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky

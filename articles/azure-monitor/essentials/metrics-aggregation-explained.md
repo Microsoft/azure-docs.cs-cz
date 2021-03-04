@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725862"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Vysvětlení metrik Azure Monitor metriky metriky a zobrazení
 
@@ -101,7 +101,7 @@ Metriky jsou zachyceny pro každý jednotlivý prostředek. Nicméně úroveň, 
 
 Při vytváření grafu metriky v Průzkumníku metrik máte možnost "rozdělit" graf podle dimenze.  Rozdělení grafu znamená, že hledáte podkladová data pro více podrobností a vidíte tato data v Průzkumníkovi metriky nebo filtrovaná.
 
-Například [Microsoft. ApiManagement/Service](../platform/metrics-supported.md#microsoftapimanagementservice) má jako dimenzi pro mnoho metrik *umístění* . 
+Například [Microsoft. ApiManagement/Service](./metrics-supported.md#microsoftapimanagementservice) má jako dimenzi pro mnoho metrik *umístění* . 
 
 - **Kapacita** je jedna taková metrika. Dimenze *umístění* implikuje, že základní systém ukládá záznam metriky pro kapacitu každého umístění, nikoli jenom jednu pro agregovanou částku. Tyto informace pak můžete načíst nebo rozdělit v grafu metriky.  
 
@@ -109,7 +109,7 @@ Například [Microsoft. ApiManagement/Service](../platform/metrics-supported.md#
 
 - Jedna z flexibilnější metriky, **požadavky**, má 7 různých dimenzí. 
  
-Podrobnosti o jednotlivých metrikách a dostupných dimenzích najdete v článku [podporované metriky](../platform/metrics-supported.md) Azure monitor. Kromě toho může dokumentace pro každého poskytovatele prostředků a typ poskytovat další informace o dimenzích a o tom, co měří.
+Podrobnosti o jednotlivých metrikách a dostupných dimenzích najdete v článku [podporované metriky](./metrics-supported.md) Azure monitor. Kromě toho může dokumentace pro každého poskytovatele prostředků a typ poskytovat další informace o dimenzích a o tom, co měří.
 
 K dig problému můžete použít rozdělení a filtrování společně. Níže je příklad obrázku ukazujícího *průměrné bajty zápisu na disk* pro skupinu virtuálních počítačů ve skupině prostředků. Máme souhrn všech virtuálních počítačů s touto metrikou, ale můžeme chtít, abyste si DIGI, které jsou vlastně zodpovědné za špičky kolem 6:00. Jsou to stejný počítač? Kolik počítačů je součástí?  
 

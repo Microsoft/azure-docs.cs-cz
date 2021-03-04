@@ -3,12 +3,12 @@ title: Obnovit Managed Disks Azure
 description: Přečtěte si, jak obnovit Azure Managed Disks z Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703745"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Obnovit Azure Managed Disks (ve verzi Preview)
 
@@ -66,7 +66,7 @@ K provedení operace obnovení se vyžadují následující požadavky:
     >
     >Během naplánovaných záloh nebo operací zálohování na vyžádání Azure Backup ukládá přírůstkové snímky disku ve skupině prostředků snímku, která je k dispozici při konfiguraci zálohování disku. Azure Backup používá tyto přírůstkové snímky během operace obnovení. Pokud jsou snímky smazány nebo přesunuty ze skupiny prostředků snímku nebo pokud je u skupiny prostředků snímku zrušeno přiřazení role úložiště záloh, operace obnovení selže.
 
-1. Pokud je disk, který se má obnovit, zašifrovaný pomocí [klíčů spravovaných zákazníkem (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) nebo pomocí klíčů spravovaných [platformou a klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal), přiřaďte mu oprávnění role **Čtenář** k spravované identitě úložiště záloh na prostředku **sady šifrování disku** .
+1. Pokud je disk, který se má obnovit, zašifrovaný pomocí [klíčů spravovaných zákazníkem (CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) nebo pomocí klíčů spravovaných [platformou a klíčů spravovaných zákazníkem](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md), přiřaďte mu oprávnění role **Čtenář** k spravované identitě úložiště záloh na prostředku **sady šifrování disku** .
 
 Po splnění požadavků proveďte operaci obnovení pomocí těchto kroků.
 

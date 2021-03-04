@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573577"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708250"
 ---
 # <a name="deploy-azure-monitor"></a>Nasazení Azure Monitoru
 Povolením Azure Monitor monitorování všech vašich prostředků Azure je kombinace konfigurace Azure Monitor komponent a konfigurace prostředků Azure pro generování dat monitorování pro Azure Monitor shromažďování. Tento článek popisuje různé kroky potřebné k dokončení implementace Azure Monitor s využitím společné konfigurace pro monitorování všech prostředků ve vašem předplatném Azure. Základní popisy jednotlivých kroků jsou k dispozici s odkazy na další dokumentaci pro podrobné požadavky na konfiguraci.
@@ -22,7 +22,7 @@ Povolením Azure Monitor monitorování všech vašich prostředků Azure je kom
 ## <a name="configuration-goals"></a>Cíle konfigurace
 Cílem úplné implementace Azure Monitor je shromáždit všechna dostupná data ze všech vašich cloudových prostředků a aplikací a na základě těchto dat Povolit co nejvíce funkcí Azure Monitor.
 
-Data shromážděná pomocí Azure Monitor se odesílají buď do [Azure monitor metriky](essentials/data-platform-metrics.md) , nebo do [protokolů Azure monitor](logs/data-platform-logs.md). Každá z nich ukládá různé druhy dat a umožňuje různé druhy analýz a výstrah. Popis různých typů výstrah najdete v tématu [porovnání Azure monitor metrik a protokolů](/data-platform.md) pro porovnání dvou a [přehled výstrah v Microsoft Azure](alerts/alerts-overview.md) . 
+Data shromážděná pomocí Azure Monitor se odesílají buď do [Azure monitor metriky](essentials/data-platform-metrics.md) , nebo do [protokolů Azure monitor](logs/data-platform-logs.md). Každá z nich ukládá různé druhy dat a umožňuje různé druhy analýz a výstrah. Popis různých typů výstrah najdete v tématu [porovnání Azure monitor metrik a protokolů](data-platform.md) pro porovnání dvou a [přehled výstrah v Microsoft Azure](alerts/alerts-overview.md) . 
 
 Některá data je možné odeslat do obou metrik a protokolů, aby je bylo možné využívat pomocí různých funkcí. V těchto případech může být potřeba nakonfigurovat každou samostatně. Například data metriky jsou automaticky odesílány prostředky Azure do metrik, které podporují Průzkumníka metrik a výstrahy metriky. Musíte vytvořit nastavení diagnostiky pro každý prostředek, abyste odesílali stejná data metriky do protokolů, což vám umožní analyzovat trendy výkonu s ostatními daty protokolů pomocí Log Analytics. Níže uvedené části označují, kam se odesílají data, a zahrnuje každý krok potřebný k odeslání dat do všech možných umístění.
 
@@ -84,32 +84,32 @@ Seznam dostupných přehledů a řešení v Azure Monitor najdete v tématu [co 
 
 Virtuální počítače generují podobné údaje jako jiné prostředky Azure, ale potřebujete agenta, aby mohli shromažďovat data z hostovaného operačního systému. Porovnání agentů používaných v Azure Monitor najdete v tématu [přehled Azure monitor agentů](agents/agents-overview.md) . 
 
-[Azure monitor pro virtuální počítače](vm/vminsights-overview.md) používá agenta Log Analytics a agenta závislostí ke shromažďování dat z hostovaného operačního systému virtuálních počítačů, takže tyto agenty můžete nasadit jako součást implementace tohoto přehledu. To umožňuje agentovi Log Analytics pro jiné služby, které ho používají, jako je například Azure Security Center.
+Pro shromažďování dat z hostovaného operačního systému virtuálních počítačů používá [Cloud Insights](vm/vminsights-overview.md) agenta Log Analytics a agenta závislostí, takže tyto agenty můžete nasadit v rámci implementace tohoto přehledu. To umožňuje agentovi Log Analytics pro jiné služby, které ho používají, jako je například Azure Security Center.
 
 
 [![Nasazení virtuálního počítače ](media/deploy/deploy-azure-vm.png) Azure](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>Konfigurace pracovního prostoru pro Azure Monitor pro virtuální počítače
-Azure Monitor pro virtuální počítače vyžaduje pracovní prostor Log Analytics, který bude obvykle stejný jako vytvořený pro shromažďování dat z jiných prostředků Azure. Než povolíte všechny virtuální počítače, musíte do pracovního prostoru přidat řešení požadované pro Azure Monitor pro virtuální počítače.
+### <a name="configure-workspace-for-vm-insights"></a>Konfigurace pracovního prostoru pro službu VM Insights
+Virtuální počítač Insights vyžaduje Log Analytics pracovní prostor, který bude obvykle stejný jako vytvořený pro shromažďování dat z jiných prostředků Azure. Než povolíte všechny virtuální počítače, musíte přidat řešení požadované pro virtuální počítač Insights do pracovního prostoru.
 
-Podrobnosti o konfiguraci Log Analyticsho pracovního prostoru pro Azure Monitor pro virtuální počítače najdete v tématu [konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](vm/vminsights-configure-workspace.md) .
+Podrobnosti o konfiguraci pracovního prostoru Log Analytics pro službu VM Insights najdete v tématu [konfigurace Log Analytics pracovního prostoru pro virtuální počítače – přehledy](vm/vminsights-configure-workspace.md) .
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>Povolit Azure Monitor pro virtuální počítače na každém virtuálním počítači
-Po nakonfigurování pracovního prostoru můžete povolit každý virtuální počítač instalací agenta Log Analytics a agenta závislostí. K dispozici je několik metod pro instalaci těchto agentů, včetně Azure Policy, což umožňuje automaticky konfigurovat jednotlivé virtuální počítače při jejich vytvoření. Údaje o výkonu a podrobnosti procesu shromážděné nástrojem Azure Monitor pro virtuální počítače jsou uloženy v protokolech Azure Monitor.
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>Povolit službu VM Insights na každém virtuálním počítači
+Po nakonfigurování pracovního prostoru můžete povolit každý virtuální počítač instalací agenta Log Analytics a agenta závislostí. K dispozici je několik metod pro instalaci těchto agentů, včetně Azure Policy, což umožňuje automaticky konfigurovat jednotlivé virtuální počítače při jejich vytvoření. Údaje o výkonu a podrobnosti o procesech shromážděné službou VM Insights jsou uložené v protokolech Azure Monitor.
 
-V tématu [povolení Azure monitor pro virtuální počítače přehled](vm/vminsights-enable-overview.md) možností nasazení agentů do virtuálních počítačů a jejich povolení k monitorování.
+V tématu [Povolení přehledu virtuálních počítačů](vm/vminsights-enable-overview.md) najdete možnosti nasazení agentů do virtuálních počítačů a jejich povolení pro monitorování.
 
 ### <a name="configure-workspace-to-collect-events"></a>Konfigurace pracovního prostoru pro shromažďování událostí
-Azure Monitor pro virtuální počítače bude shromažďovat údaje o výkonu a podrobnosti a závislosti procesů z hostovaného operačního systému každého virtuálního počítače. Agent Log Analytics může také shromažďovat protokoly z hosta včetně protokolu událostí z Windows a syslog ze systému Linux. Načte konfiguraci pro tyto protokoly z Log Analyticsho pracovního prostoru, ke kterému je připojený. Pracovní prostor stačí nakonfigurovat jenom jednou a pokaždé, když se agent připojí, stáhne změny konfigurace. 
+Přehledy virtuálních počítačů budou shromažďovat údaje o výkonu a podrobnosti a závislosti procesů z hostovaného operačního systému každého virtuálního počítače. Agent Log Analytics může také shromažďovat protokoly z hosta včetně protokolu událostí z Windows a syslog ze systému Linux. Načte konfiguraci pro tyto protokoly z Log Analyticsho pracovního prostoru, ke kterému je připojený. Pracovní prostor stačí nakonfigurovat jenom jednou a pokaždé, když se agent připojí, stáhne změny konfigurace. 
 
 Podrobnosti o konfiguraci pracovního prostoru Log Analytics pro shromažďování dalších dat z vašich virtuálních počítačů agenta najdete [v tématu zdroje dat agenta v Azure monitor](agents/agent-data-sources.md) .
 
 > [!NOTE]
-> Pracovní prostor můžete také nakonfigurovat tak, aby shromáždil čítače výkonu, ale tento postup bude pravděpodobně redundantní s daty o výkonu shromažďovanými nástrojem Azure Monitor pro virtuální počítače. Údaje o výkonu shromážděné pracovním prostorem budou uloženy v tabulce *perf* , zatímco data o výkonu shromážděná pomocí Azure monitor pro virtuální počítače jsou uložena v tabulce *InsightsMetrics* . Nakonfigurujte shromažďování výkonu v pracovním prostoru pouze v případě, že požadujete čítače, které nejsou již shromážděny pomocí Azure Monitor pro virtuální počítače.
+> Pracovní prostor můžete také nakonfigurovat tak, aby shromáždil čítače výkonu, ale tento postup bude pravděpodobně redundantní s údaji o výkonu shromažďovanými službou VM Insights. Údaje o výkonu shromážděné pracovním prostorem budou uloženy v tabulce *perf* , zatímco data o výkonu shromážděná službou VM Insights se ukládají do tabulky *InsightsMetrics* . Nakonfigurujte shromažďování výkonu v pracovním prostoru pouze v případě, že požadujete čítače, které nejsou již shromážděny pomocí nástroje VM Insights.
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>Diagnostické rozšíření a Agent telegraf
-Azure Monitor pro virtuální počítače používá agenta Log Analytics, který odesílá údaje o výkonu do Log Analyticsho pracovního prostoru, ale nemá Azure Monitor metriky. Odeslání těchto dat do metrik umožní jejich analýzu pomocí Průzkumník metrik a použití s upozorněními na metriky. To vyžaduje diagnostické rozšíření v systému Windows a agenta telegraf na platformě Linux.
+V rámci virtuálních počítačů se používá agent Log Analytics, který odesílá data o výkonu do pracovního prostoru Log Analytics, ale ne do metrik Azure Monitor. Odeslání těchto dat do metrik umožní jejich analýzu pomocí Průzkumník metrik a použití s upozorněními na metriky. To vyžaduje diagnostické rozšíření v systému Windows a agenta telegraf na platformě Linux.
 
 Podrobnosti o instalaci a konfiguraci těchto agentů najdete v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](agents/diagnostics-extension-windows-install.md) a [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](essentials/collect-custom-metrics-linux-telegraf.md) .
 

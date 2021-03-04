@@ -4,19 +4,21 @@ description: Správa identit Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698599"
 ---
 # <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
 
 Správa identit pokrývá ovládací prvky pro vytvoření zabezpečené identity a řízení přístupu pomocí Azure Active Directory. To zahrnuje použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií.
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrovaném iniciativě Azure Security test dodržování předpisů: Správa identit](../../governance/policy/samples/azure-security-benchmark#identity-management)
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardizace Azure Active Directory jako centrálního systému pro identifikaci a ověřování
 
@@ -24,12 +26,12 @@ Správa identit pokrývá ovládací prvky pro vytvoření zabezpečené identit
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD) je výchozí služba pro správu identit a přístupu v Azure. S využitím Azure AD byste měli standardizovat řízení správy identit a přístupu v rámci vaší organizace pro:
+Azure Active Directory (Azure AD) je výchozí služba pro správu identit a přístupu v Azure. Ve službě Azure AD byste se měli standardizovat, aby bylo možné spravovat identitu a správu přístupu vaší organizace v nástroji:
 - cloudové prostředky Microsoftu, jako jsou Azure Portal, Azure Storage, virtuální počítače Azure (s Linuxem a Windows), Azure Key Vault a aplikace PaaS a SaaS
 
 - prostředky vaší organizace, jako jsou aplikace v Azure nebo prostředky vaší podnikové sítě
 
-Zabezpečení Azure AD by v rámci postupů vaší organizace v oblasti cloudového zabezpečení mělo mít vysokou prioritu. Azure AD nabízí skóre zabezpečení identit, které pomáhá vyhodnocovat stav zabezpečení identit s ohledem na doporučené osvědčené postupy Microsoftu. S využitím tohoto skóre můžete změřit, nakolik vaše konfigurace odpovídá doporučeným osvědčeným postupům, a zlepšit stav zabezpečení.
+Zabezpečení služby Azure AD by mělo mít vysokou prioritu v praxi cloudového zabezpečení vaší organizace. Azure AD poskytuje bezpečnostní skóre identity, které vám pomůžou vyhodnotit stav zabezpečení identity vzhledem k osvědčeným postupům Microsoftu. S využitím tohoto skóre můžete změřit, nakolik vaše konfigurace odpovídá doporučeným osvědčeným postupům, a zlepšit stav zabezpečení.
 
 Poznámka: Azure AD podporuje externí zprostředkovatele identit, kteří umožňují uživatelům bez účtu Microsoft přihlašovat se ke svým aplikacím a prostředkům s využitím své externí identity.
 
@@ -37,7 +39,7 @@ Poznámka: Azure AD podporuje externí zprostředkovatele identit, kteří umož
 
 - [Vytvoření a konfigurace instance Azure AD](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Definování tenantů Azure AD](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Definování tenantů Azure AD](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [Používání externích zprostředkovatelů identit pro aplikaci](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Poznámka: Azure AD podporuje externí zprostředkovatele identit, kteří umož
 
 Pro jiné než lidské účty, jako jsou služby nebo automatizace, použijte spravované identity Azure, místo abyste vytvořili výkonnější účet pro přístup k prostředkům nebo spustit kód. Spravované identity Azure se můžou ověřit u služeb a prostředků Azure, které podporují ověřování Azure AD. Ověřování je povoleno prostřednictvím předdefinovaných pravidel udělení přístupu, což vyloučí pevně zakódované přihlašovací údaje ve zdrojovém kódu nebo konfiguračních souborech. 
 
-Pro služby, které nepodporují spravované identity, použijte službu Azure AD k vytvoření instančního objektu s omezenými oprávněními na úrovni prostředků.  Doporučuje se nakonfigurovat instanční objekty s přihlašovacími údaji certifikátu a vrátit se k klientským tajným klíčům. V obou případech se Azure Key Vault dá použít společně se spravovanými identitami Azure, takže běhové prostředí (například funkce Azure) může přihlašovací údaje načíst z trezoru klíčů.
+Pro služby, které nepodporují spravované identity, použijte službu Azure AD k vytvoření instančního objektu s omezenými oprávněními na úrovni prostředků. Doporučuje se nakonfigurovat instanční objekty s přihlašovacími údaji certifikátu a vrátit se k klientským tajným klíčům. V obou případech se Azure Key Vault dá použít společně se spravovanými identitami Azure, takže běhové prostředí (například funkce Azure) může přihlašovací údaje načíst z trezoru klíčů.
 
 - [Spravované identity Azure](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -111,16 +113,17 @@ Pomocí jednotného přihlašování (SSO) Azure AD můžete spravovat a zabezpe
 |--|--|--|--|
 | IM – 4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
-Azure AD podporuje ovládací prvky silného ověřování prostřednictvím služby Multi-Factor Authentication (MFA) a metod silného hesla.  
-- Multi-Factor Authentication: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu pro vaše nastavení MFA. Vícefaktorové ověřování se dá vyhovět všem uživatelům, vybrat uživatele nebo na úrovni jednotlivých uživatelů na základě podmínek přihlášení a rizikových faktorů. 
+Azure AD podporuje ovládací prvky silného ověřování prostřednictvím služby Multi-Factor Authentication (MFA) a metod silného hesla.
 
-- Ověřování bez hesla: k dispozici jsou tři možnosti ověřování bez hesla: Windows Hello pro firmy, Microsoft Authenticator aplikace a místní metody ověřování, jako jsou čipové karty. 
+- Multi-Factor Authentication: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu pro vaše nastavení MFA. Vícefaktorové ověřování se dá vyhovět všem uživatelům, vybrat uživatele nebo na úrovni jednotlivých uživatelů na základě podmínek přihlášení a rizikových faktorů.
+
+- Ověřování bez hesla: k dispozici jsou tři možnosti ověřování bez hesla: Windows Hello pro firmy, Microsoft Authenticator aplikace a místní metody ověřování, jako jsou čipové karty.
 
 Pro správce a privilegované uživatele zkontrolujte, že se používá nejvyšší úroveň metody silného ověřování, a pak uveďte příslušné zásady silného ověřování pro ostatní uživatele.
 
-Pokud se pro ověřování Azure AD pořád používá starší verze ověřování založené na heslech, pamatujte na to, že účty jenom pro Cloud (uživatelské účty vytvořené přímo v Azure) mají výchozí základní zásady hesel. A hybridní účty (uživatelské účty, které pocházejí z místní služby Active Directory) dodržují místní zásady hesel. Při použití ověřování založeného na hesle poskytuje Azure AD funkci ochrany heslem, která uživatelům brání v nastavení hesla, která se dají snadno uhodnout. Společnost Microsoft poskytuje globální seznam zakázaných hesel, která jsou aktualizována na základě telemetrie, a zákazníci mohou seznam rozšířit podle svých potřeb (například branding, kulturní odkazy atd.). Tato ochrana heslem se dá použít jenom pro cloudové a hybridní účty. 
+Pokud se pro ověřování Azure AD pořád používá starší verze ověřování založené na heslech, pamatujte na to, že účty jenom pro Cloud (uživatelské účty vytvořené přímo v Azure) mají výchozí základní zásady hesel. A hybridní účty (uživatelské účty, které pocházejí z místní služby Active Directory) dodržují místní zásady hesel. Při použití ověřování založeného na hesle poskytuje Azure AD funkci ochrany heslem, která uživatelům brání v nastavení hesla, která se dají snadno uhodnout. Společnost Microsoft poskytuje globální seznam zakázaných hesel, která jsou aktualizována na základě telemetrie, a zákazníci mohou seznam rozšířit podle svých potřeb (například branding, kulturní odkazy atd.). Tato ochrana heslem se dá použít jenom pro cloudové a hybridní účty.
 
-Poznámka: ověřování založené jenom na přihlašovacích údajích hesla je náchylné k oblíbeným metodám útoku. Pro zajištění vyššího zabezpečení používejte silné ověřování, jako je MFA a zásady silného hesla. Pro aplikace třetích stran a služby Marketplace, které můžou mít výchozí hesla, je byste při počátečním nastavení služby měli změnit. 
+Poznámka: ověřování založené jenom na přihlašovacích údajích hesla je náchylné k oblíbeným metodám útoku. Pro zajištění vyššího zabezpečení používejte silné ověřování, jako je MFA a zásady silného hesla. Pro aplikace třetích stran a služby Marketplace, které můžou mít výchozí hesla, je byste při počátečním nastavení služby měli změnit.
 
 - [Jak povolit vícefaktorové ověřování v Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -155,7 +158,7 @@ Azure AD poskytuje následující zdroje dat:
 
 -   Uživatelé označení příznakem rizika – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený.
 
-Tyto zdroje dat je možné integrovat se službami Azure Monitor a Azure Sentinel nebo se systémy SIEM třetích stran.
+Tyto zdroje dat je možné integrovat s Azure Monitor, s Sentinelou v Azure a systémy SIEM třetích stran.
 
 Azure Security Center může také upozorňovat na určité podezřelé aktivity, jako je například nadměrný počet neúspěšných pokusů o ověření a zastaralých účtů v rámci předplatného. 
 
@@ -175,7 +178,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Připojení dat z Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **Odpovědnost:** Zákazník
 
@@ -219,7 +222,7 @@ Podmíněný přístup Azure AD můžete použít pro přesnější řízení p�
 
 Implementujte ke službě Azure DevOps Credential Scanner k identifikaci přihlašovacích údajů v rámci kódu. Kontrola přihlašovacích údajů také podporuje přesun zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je například Azure Key Vault.
 
-V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jiné formy tajných kódů v kódu použít funkci nativního skenování tajných kódů.
+V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jiné formy tajných kódů v kódu použít funkci nativního vyhledávání tajného klíče.
 
 - [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -241,9 +244,9 @@ V případě GitHubu můžete k identifikaci přihlašovacích údajů nebo jin�
 
 Ujistěte se, že máte k dispozici moderní řízení přístupu a monitorování relací pro starší verze aplikací a data, která ukládají a zpracovávají. I když se sítě VPN běžně používají pro přístup k starším aplikacím, často mají jenom základní řízení přístupu a omezené monitorování relací.
 
-Azure Proxy aplikací služby AD umožňuje publikovat starší verze místních aplikací pro vzdálené uživatele s jednotným přihlašováním (SSO) a přitom explicitně ověřovat důvěryhodnost vzdálených uživatelů a zařízení pomocí podmíněného přístupu Azure AD. 
+Azure Proxy aplikací služby AD umožňuje publikovat starší verze místních aplikací pro vzdálené uživatele s jednotným přihlašováním (SSO) a přitom explicitně ověřovat důvěryhodnost vzdálených uživatelů a zařízení pomocí podmíněného přístupu Azure AD.
 
-Alternativně Microsoft Cloud App Security je služba CASB (Cloud Access Security Broker), která poskytuje ovládací prvky pro monitorování uživatelských relací a blokování akcí (pro starší místní aplikace a aplikace cloudového softwaru jako služby (SaaS)). 
+Alternativně Microsoft Cloud App Security je služba CASB (Cloud Access Security Broker), která poskytuje ovládací prvky pro monitorování uživatelských relací a blokování akcí (pro starší místní aplikace a aplikace cloudového softwaru jako služby (SaaS)).
 
 - [Proxy aplikací služby AD Azure](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

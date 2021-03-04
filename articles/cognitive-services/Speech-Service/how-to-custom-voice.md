@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733512"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -39,10 +39,10 @@ Diagram níže popisuje kroky pro vytvoření vlastního hlasového modelu pomoc
 
 ## <a name="custom-neural-voices"></a>Vlastní hlasy neuronové
 
-Vlastní hlas v současné době podporuje úrovně Standard a neuronové. Vlastní neuronové hlas umožňuje uživatelům vytvářet vyšší kvality hlasových modelů a přitom přitom vyžadovat méně dat a poskytuje míry, které vám pomůžou nasadit AI zodpovědnou. Doporučujeme používat vlastní neuronové hlas pro vývoj realističtějších hlasů pro více přirozených konverzací a umožnit vašim zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. [Přečtěte si další informace o vlastním neuronovéém hlasu](https://aka.ms/CNV-Transparency-Note). 
+Vlastní hlas v současné době podporuje úrovně Standard a neuronové. Vlastní neuronové hlas umožňuje uživatelům vytvářet vyšší kvality hlasových modelů a přitom přitom vyžadovat méně dat a poskytuje míry, které vám pomůžou nasadit AI zodpovědnou. Doporučujeme používat vlastní neuronové hlas pro vývoj realističtějších hlasů pro více přirozených konverzací a umožnit vašim zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. [Přečtěte si další informace o vlastním neuronovéém hlasu](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 > [!NOTE]
-> V rámci snahy Microsoftu o návrh zodpovědného AI jsme omezili použití vlastního hlasu neuronové. Přístup k technologii můžete získat až po kontrole vašich aplikací a s potvrzením, že je budete používat v souladu s našimi zodpovědnými principy AI. Přečtěte si další informace o našich [zásadách pro omezení přístupu](https://aka.ms/gating-overview) a [použijte je tady](https://aka.ms/customneural). [Jazyky](language-support.md#customization) a [oblasti](regions.md#custom-voices) podporované standardem a neuronové verzí vlastního hlasu se liší. Než začnete, Projděte si podrobnosti.  
+> V rámci snahy Microsoftu o návrh zodpovědného AI jsme omezili použití vlastního hlasu neuronové. Přístup k technologii můžete získat až po kontrole vašich aplikací a s potvrzením, že je budete používat v souladu s našimi zodpovědnými principy AI. Přečtěte si další informace o našich [zásadách pro omezení přístupu](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijte je tady](https://aka.ms/customneural). [Jazyky](language-support.md#customization) a [oblasti](regions.md#custom-voices) podporované standardem a neuronové verzí vlastního hlasu se liší. Než začnete, Projděte si podrobnosti.  
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
@@ -71,7 +71,7 @@ Pokud chcete vytvořit svůj první projekt, vyberte kartu **Převod textu na ř
 
 Pokud používáte vlastní hlas bez neuronové (nebo standardního), zvažte, jestli chcete migrovat na vlastní neuronové hlas hned podle následujících kroků. Přechod na vlastní neuronové hlas vám pomůže vyvíjet realističtější hlasy ještě více přirozených konverzací a umožnit zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. 
 
-1. Přečtěte si další informace o našich [zásadách pro omezení přístupu](https://aka.ms/gating-overview) a [použijte je tady](https://aka.ms/customneural). Všimněte si, že přístup k vlastní hlasové službě neuronové se může vztahovat jenom na naše kritérium týkající se nároků Microsoftu. Zákazníci mohou získat přístup k technologii až po kontrole jejich aplikace a potvrdili, že ji budou používat v souladu se svými [odpovědnými principy AI](https://microsoft.com/ai/responsible-ai) a [kodexem chování](https://aka.ms/custom-neural-code-of-conduct). 
+1. Přečtěte si další informace o našich [zásadách pro omezení přístupu](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijte je tady](https://aka.ms/customneural). Všimněte si, že přístup k vlastní hlasové službě neuronové se může vztahovat jenom na naše kritérium týkající se nároků Microsoftu. Zákazníci mohou získat přístup k technologii až po kontrole jejich aplikace a potvrdili, že ji budou používat v souladu se svými [odpovědnými principy AI](https://microsoft.com/ai/responsible-ai) a [kodexem chování](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 2. Jakmile je vaše aplikace schválená, budete mít přístup k funkci školení "neuronové". Ujistěte se, že se přihlašujete k [vlastnímu hlasovému portálu](https://speech.microsoft.com/customvoice) pomocí stejného předplatného Azure, které zadáte ve své aplikaci. 
     > [!IMPORTANT]
     > Abychom chránili hlasové talentůy a zabránili školením v hlasových modelech s neoprávněným záznamem nebo bez potvrzení ze služby Voice talentů, potřebujeme, aby zákazník nahrál zaznamenané prohlášení o hlasovém talentůu, které poskytuje svůj souhlas. Při přípravě skriptu nahrávání nezapomeňte zahrnout tuto větu. "I [stav vašeho jména a příjmení] si uvědomte, že nahrávky mého hlasu budou použity uživatelem [State název společnosti] k vytvoření a použití syntetické verze mého hlasu."

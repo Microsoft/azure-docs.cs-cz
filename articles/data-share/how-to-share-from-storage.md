@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739258"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -24,6 +24,7 @@ Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Az
 Když se v rámci sdílení na základě snímků sdílí systémy souborů, kontejnery nebo složky, můžou si příjemci dat vytvořit úplnou kopii sdílených dat. Nebo mohou použít funkci přírůstkového snímku ke kopírování pouze nových nebo aktualizovaných souborů. Funkce přírůstkového snímku je založena na době poslední změny souborů. 
 
 Existující soubory, které mají stejný název, budou během snímku přepsány. Soubor, který je odstraněný ze zdroje, se v cíli neodstraní. Prázdné podsložky ve zdroji se nekopírují do cíle. 
+
 ## <a name="share-data"></a>Sdílení dat
 
 Informace v následujících částech použijte ke sdílení dat pomocí Azure Data Share. 
@@ -41,7 +42,7 @@ Informace v následujících částech použijte ke sdílení dat pomocí Azure 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-data-share-account"></a>Vytvoření účtu pro sdílení dat
 
@@ -133,7 +134,7 @@ Než přijmete pozvánku ke sdílení dat, ujistěte se, že máte následujíc�
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ### <a name="open-an-invitation"></a>Otevřít pozvánku
 
@@ -184,7 +185,7 @@ Podle kroků v této části můžete nakonfigurovat umístění pro příjem da
 ### <a name="trigger-a-snapshot"></a>Aktivace snímku
 Kroky v této části se vztahují jenom na sdílení na základě snímků.
 
-1. Snímek můžete aktivovat na kartě **Podrobnosti** . Na kartě vyberte **spouštěcí snímek**. Můžete zvolit, že se má aktivovat úplný snímek nebo přírůstkový snímek dat. Pokud připravujete data od poskytovatele dat poprvé, vyberte možnost **úplné kopírování**. 
+1. Snímek můžete aktivovat na kartě **Podrobnosti** . Na kartě vyberte **spouštěcí snímek**. Můžete zvolit, že se má aktivovat úplný snímek nebo přírůstkový snímek dat. Pokud připravujete data od poskytovatele dat poprvé, vyberte možnost **úplné kopírování**. Při provádění snímku se další snímky nespustí až do dokončení předchozího.
 
    ![Snímek obrazovky znázorňující výběr snímku triggeru](./media/trigger-snapshot.png "Spustit snímek") 
 
@@ -194,6 +195,14 @@ Kroky v této části se vztahují jenom na sdílení na základě snímků.
 
 ### <a name="view-history"></a>Zobrazení historie
 Historii snímků můžete zobrazit pouze ve sdílení na základě snímků. Chcete-li zobrazit historii, otevřete kartu **Historie** . Tady vidíte historii všech snímků, které se vygenerovaly během posledních 30 dnů. 
+
+## <a name="storage-snapshot-performance"></a>Výkon snímku úložiště
+Výkon snímku úložiště je ovlivněn řadou faktorů kromě počtu souborů a velikosti sdílených dat. Vždy se doporučuje provádět vlastní testování výkonu. Níže jsou uvedeny některé příklady faktorů, které mají vliv na výkon.
+
+* Souběžný přístup ke zdrojovým a cílovým úložištím dat.  
+* Umístění zdrojových a cílových úložišť dat. 
+* V případě přírůstkového snímku může počet souborů ve sdílené datové sadě ovlivnit čas, který bude mít za následek vyhledání seznamu souborů s časem poslední změny po posledním úspěšném snímku. 
+
 
 ## <a name="next-steps"></a>Další kroky
 Zjistili jste, jak sdílet a přijímat data z účtu úložiště pomocí služby Azure Data Share. Další informace o sdílení z jiných zdrojů dat najdete v tématu [podporovaná úložiště dat](supported-data-stores.md).

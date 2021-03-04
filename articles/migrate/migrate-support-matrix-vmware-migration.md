@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703865"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705207"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -29,8 +29,8 @@ Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou 
 
 ## <a name="migration-limitations"></a>Omezení migrace
 
-- Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud chcete migrovat více počítačů, proveďte replikaci do skupin po 10.
-- Pro migraci bez agentů VMware můžete současně spustit až 300 replikace.
+- Můžete vybrat až 10 virtuálních počítačů najednou pro replikaci prostřednictvím Azure Portal. Pokud chcete migrovat více počítačů, proveďte replikaci do skupin po 10. Počet virtuálních počítačů, které se dají replikovat prostřednictvím rutin PowerShellu, není nijak omezený. Naším doporučením je replikovat maximálně 500 virtuálních počítačů z jednoho vCenter přes PowerShell, aby se zajistil optimální výkon.
+- Pro migraci bez agentů VMware můžete z každého vCenter Server spustit současně až 500 replikace.
 
 ## <a name="agentless-migration"></a>Migrace bez agentů 
 
@@ -56,7 +56,7 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 --- | ---
 **Podporované operační systémy** | Můžete migrovat operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](../virtual-machines/linux/endorsed-distros.md) , které podporuje Azure.
 **Virtuální počítače s Windows v Azure** | Před migrací možná budete muset [provést nějaké změny](prepare-for-migration.md#verify-required-changes-before-migrating) virtuálních počítačů. 
-**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
+**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8, 9 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
 **Spouštění ze systému Linux** | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky.
 **Spouštění UEFI** | Podporuje se. Virtuální počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2. 
 **Velikost disku** | 2 TB disk s operačním systémem;  32 TB datových disků.
@@ -72,7 +72,7 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 **Seskupené síťové adaptéry** | Nepodporováno
 **IPv6** | Nepodporováno
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (standardní pevný disk, Standard SSD, Premium SSD) v Azure.
-**Současná replikace** | 300 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 300.
+**Současná replikace** | 500 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 500.
 **Automatická instalace agenta virtuálního počítače Azure (Agent systému Windows)** | Podporováno pro systémy Windows Server 2008 R2 a vyšší.
 
 ### <a name="appliance-requirements-agentless"></a>Požadavky na zařízení (bez agenta)
@@ -172,7 +172,7 @@ Sdílený virtuální pevný disk | Nepodporováno
 Disk FC | Nepodporováno 
 BitLocker | Nepodporováno<br/><br/> Před migrací počítače je třeba zakázat nástroj BitLocker.
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. 
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](prepare-for-migration.md).
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/><br/> – Před migrací povolte RDP na místním virtuálním počítači.<br/><br/> Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/><br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/> Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md).
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/><br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/><br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.<br/><br/> Kromě toho přidejte veřejnou IP adresu pro virtuální počítač.  
 
 

@@ -8,16 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9e69b4e9279f9147c2ee13d42a42aec0c5a15d96
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722649"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Použití certifikátů s Azure Cloud Services (Rozšířená podpora)
 
-Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Trezory klíčů je možné vytvořit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) a [PowerShellu](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Také je nutné povolit Key Vault pro příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl získat certifikát uložený jako tajné klíče z Key Vault.  
+Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Trezory klíčů je možné vytvořit prostřednictvím [Azure Portal](../key-vault/general/quick-create-portal.md) a [PowerShellu](../key-vault/general/quick-create-powershell.md). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Také je nutné povolit Key Vault pro příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl získat certifikát uložený jako tajné klíče z Key Vault.  
 
 ## <a name="upload-a-certificate-to-key-vault"></a>Nahrajte certifikát do Key Vault 
 

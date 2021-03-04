@@ -1,19 +1,19 @@
 ---
-title: Zobrazit Azure Monitor pro nasazení kontejnerů (Preview) | Microsoft Docs
-description: Tento článek popisuje zobrazení Kubernetes nasazení v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
+title: Zobrazit nasazení v kontejneru Insights (Preview) | Microsoft Docs
+description: Tento článek popisuje zobrazení Kubernetes nasazení v reálném čase bez použití kubectl ve službě Container Insights.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713911"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Postup zobrazení nasazení (Preview) v reálném čase
 
-U Azure Monitor pro kontejnery, funkce Zobrazit nasazení (Preview) emuluje přímý přístup k objektům nasazení Kubernetes v reálném čase tím, že vystavuje `kubeclt get deployments` `kubectl describe deployment {your deployment}` příkazy a.
+Díky službě Container Insights funkce Zobrazit nasazení (Preview) emuluje přímý přístup k objektům Kubernetes nasazení v reálném čase tím, že zpřístupňuje `kubeclt get deployments` příkazy a `kubectl describe deployment {your deployment}` .
 
 >[!NOTE]
 >AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá na přímý přístup z prohlížeče k rozhraní Kubernetes API přes proxy server. Povolením blokování rozhraní Kubernetes API z tohoto proxy serveru v zabezpečení sítě se tento provoz zablokuje.
@@ -56,7 +56,7 @@ Po výběru nasazení ze seznamu se automaticky zobrazí podokno vlastností na 
 
 Při revizi podrobností nasazení můžete zobrazit protokoly kontejnerů a události v reálném čase. Zaškrtněte podokno **Zobrazit konzolu Live** a živá data (Preview) se zobrazí pod datovou mřížkou nasazení, kde můžete data v reálném protokolu zobrazit v souvislém datovém proudu. Pokud se v indikátoru stavu načítání zobrazuje zelený symbol zaškrtnutí, který je na pravé straně podokna, znamená to, že se data dají načíst a zahájí streamování do konzoly.
 
-Můžete také filtrovat podle oboru názvů nebo událostí na úrovni clusteru. Další informace o zobrazení dat v reálném čase v konzole nástroje najdete v tématu [zobrazení živých dat (Preview) s Azure monitor pro kontejnery](container-insights-livedata-overview.md).
+Můžete také filtrovat podle oboru názvů nebo událostí na úrovni clusteru. Další informace o zobrazení dat v reálném čase v konzole nástroje najdete v tématu [zobrazení živých dat (Preview) pomocí služby Container Insights](container-insights-livedata-overview.md).
 
 ![Nasazení zobrazují živá data v konzole nástroje.](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

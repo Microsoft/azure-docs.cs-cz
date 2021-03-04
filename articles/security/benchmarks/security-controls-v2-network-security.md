@@ -4,19 +4,21 @@ description: Zabezpečení sítě Azure Security test v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fbe71b0ae7bf711d740cbba38c84b68de553f031
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369323"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698548"
 ---
 # <a name="security-control-v2-network-security"></a>Řízení zabezpečení v2: zabezpečení sítě
 
 Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure. To zahrnuje zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS.
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě pro Azure Security test dodržování předpisů: zabezpečení sítě.](../../governance/policy/samples/azure-security-benchmark#network-security)
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: implementace zabezpečení pro interní provoz
 
@@ -24,9 +26,9 @@ Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sít
 |--|--|--|--|
 | NS-1 | 9,2, 9,4, 14,1, 14,2, 14,3 | AC-4, CA-3, SC-7 |
 
-Zajistěte, aby všechny virtuální sítě Azure dodržovaly princip segmentace podniku, který se rovná obchodním rizikům. Každý systém, který by mohl organizaci zvýšit riziko, by se měl izolovat v rámci vlastní virtuální sítě a dostatečně zabezpečený pomocí skupiny zabezpečení sítě (NSG) a/nebo Azure Firewall. 
+Zajistěte, aby všechny virtuální sítě Azure dodržovaly princip segmentace podniku, který se rovná obchodním rizikům. Každý systém, který by mohl organizaci zvýšit riziko, by se měl izolovat v rámci vlastní virtuální sítě a dostatečně zabezpečený pomocí skupiny zabezpečení sítě (NSG) a/nebo Azure Firewall.
 
-Na základě vašich aplikací a strategie segmentace segmentace můžete omezit nebo povolit provoz mezi interními prostředky na základě pravidel skupiny zabezpečení sítě. Pro konkrétní dobře definované aplikace (jako je například aplikace se třemi vrstvami) může to být vysoce zabezpečený odepřít ve výchozím nastavení, povolit výjimku "přístup". To se nemusí dobře škálovat, pokud máte mnoho aplikací a koncových bodů vzájemně pracujících. V případě potřeby můžete také použít Azure Firewall v situacích, kdy je centrální Správa nutná přes velký počet podnikových segmentů nebo paprsků (v topologii s rozbočovačem/paprsky). 
+Na základě vašich aplikací a strategie segmentace segmentace můžete omezit nebo povolit provoz mezi interními prostředky na základě pravidel skupiny zabezpečení sítě. Pro konkrétní dobře definované aplikace (jako je například aplikace se třemi vrstvami) může to být vysoce zabezpečený odepřít ve výchozím nastavení, povolit výjimku "přístup". To se nemusí dobře škálovat, pokud máte mnoho aplikací a koncových bodů vzájemně pracujících. V případě potřeby můžete také použít Azure Firewall v situacích, kdy je centrální Správa nutná přes velký počet podnikových segmentů nebo paprsků (v topologii s rozbočovačem/paprsky).
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě můžete doporučit konfigurace skupin zabezpečení sítě, které omezují porty a zdrojové IP adresy na základě odkazu na pravidla pro přenos externích sítí.
 
@@ -44,9 +46,9 @@ Pomocí ověřování Azure můžete zjistit použití starších nezabezpečen�
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)     
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -58,9 +60,9 @@ Pomocí ověřování Azure můžete zjistit použití starších nezabezpečen�
 
 Pomocí Azure ExpressRoute nebo virtuální privátní sítě (VPN) Azure můžete vytvořit privátní připojení mezi datacentry Azure a místní infrastrukturou v prostředí s okolním umístěním. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí spolehlivější, rychlejší a nižší latenci než typická připojení k Internetu. Pro sítě VPN typu Point-to-site a VPN typu Site-to-site můžete připojit místní zařízení nebo sítě k virtuální síti pomocí libovolné kombinace těchto možností sítě VPN a Azure ExpressRoute.
 
-Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, použijte partnerský vztah virtuální sítě nebo privátní odkaz. Síťový provoz mezi partnerskými virtuálními sítěmi je privátní a udržuje se v páteřní síti Azure. 
+Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, použijte partnerský vztah virtuální sítě nebo privátní odkaz. Síťový provoz mezi partnerskými virtuálními sítěmi je privátní a udržuje se v páteřní síti Azure.
 
-- [Jaké jsou modely připojení ExpressRoute](../../expressroute/expressroute-connectivity-models.md) 
+- [Jaké jsou modely připojení ExpressRoute](../../expressroute/expressroute-connectivity-models.md)
 
 - [Azure VPN – přehled](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
@@ -72,21 +74,21 @@ Pokud chcete propojit dvě nebo víc virtuálních sítí v Azure společně, po
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Zřízení přístupu privátní sítě ke službám Azure
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| NS – 3 | 14,1 | AC-4, CA-3, SC-7 |
+| NS – 3 | 14.1 | AC-4, CA-3, SC-7 |
 
-Pomocí privátního odkazu Azure můžete z virtuálních sítí povolit privátní přístup ke službám Azure bez přechodu na Internet. V situacích, kdy privátní propojení Azure ještě není k dispozici, použijte koncové body služby Azure Virtual Network.  Koncové body služby Azure Virtual Network poskytují zabezpečený přístup ke službám prostřednictvím optimalizované trasy přes páteřní síť Azure.  
+Pomocí privátního odkazu Azure můžete z virtuálních sítí povolit privátní přístup ke službám Azure bez přechodu na Internet. V situacích, kdy privátní propojení Azure ještě není k dispozici, použijte koncové body služby Azure Virtual Network. Koncové body služby Azure Virtual Network poskytují zabezpečený přístup ke službám prostřednictvím optimalizované trasy přes páteřní síť Azure.
 
-Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených službami Azure další mírou důkladné ochrany. 
+Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených službami Azure další hloubkovou mírou ochrany.
 
 - [Principy privátního odkazu Azure](../../private-link/private-link-overview.md)
 
@@ -96,9 +98,9 @@ Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -108,13 +110,13 @@ Soukromý přístup je kromě ověřování a zabezpečení provozu nabízených
 |--|--|--|--|
 | NS – 4 | 9,5, 12,3, 12,9 | SC-5, SC-7 |
 
-Chraňte prostředky Azure před útoky z externích sítí, včetně útoků distribuovaných útoků na DDoS, specifických pro aplikace a nevyžádaných a potenciálně škodlivých internetových přenosů. Azure zahrnuje nativní možnosti:
+Chraňte prostředky Azure před útoky z externích sítí, včetně útoků DDoS (Distributed Denial of Service), útoků specifických pro aplikace a nevyžádaných a potenciálně škodlivých internetových přenosů. Azure zahrnuje nativní možnosti:
 -   Pomocí Azure Firewall můžete chránit aplikace a služby před potenciálně škodlivým provozem z Internetu a dalších externích umístění. 
 
--   Využijte možnosti firewallu webových aplikací (WAF) v Azure Application Gateway, přední dveře Azure a Azure Content Delivery Network (CDN) k ochraně aplikací, služeb a rozhraní API proti útokům na aplikační vrstvu. 
+-   Využijte možnosti firewallu webových aplikací (WAF) v Azure Application Gateway, přední dveře Azure a Azure Content Delivery Network (CDN) k ochraně aplikací, služeb a rozhraní API proti útokům na aplikační vrstvu.
 
--   Chraňte své prostředky proti útokům DDoS tím, že ve svých virtuálních sítích Azure povolíte standardní ochranu DDoS. 
--   K detekci rizik s konfigurací, které souvisí s výše uvedeným, použijte Azure Security Center. 
+-   Chraňte své prostředky proti útokům DDoS tím, že ve svých virtuálních sítích Azure povolíte standardní ochranu DDoS.
+-   K detekci rizik s konfigurací, které souvisí s výše uvedeným, použijte Azure Security Center.
 
 - [Dokumentace k Azure Firewall](../../firewall/index.yml)
 
@@ -128,7 +130,7 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 
 - [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -138,7 +140,7 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 |--|--|--|--|
 | NS-5 | 12,6, 12,7 | SI-4 |
 
-Pomocí Azure Firewall filtrování založeného na kompatibilitě hrozeb můžete výstrahy zablokovat a zablokovat provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu. Když je nutná kontrola datové části, můžete nasadit systém (identifikátory/IP adresy) třetí strany z Azure Marketplace s možnostmi kontroly zatížení. Alternativně můžete použít ID hostitele/IP adresy nebo řešení pro detekci a odpověď na základě hostitele (EDR) ve spojení s nebo místo síťových ID/IP adres.  
+Pomocí Azure Firewall filtrování založeného na kompatibilitě hrozeb můžete výstrahy zablokovat a zablokovat provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu. Když je nutná kontrola datové části, můžete z Azure Marketplace nasadit systém ochrany před neoprávněnými vniknutími třetích stran (ID/IP adresy), a to z s možnostmi kontroly zatížení. Alternativně můžete použít ID hostitele/IP adresy nebo řešení pro detekci a odpověď na základě hostitele (EDR) ve spojení s nebo místo síťových ID/IP adres.
 
 Poznámka: Pokud máte regulativní nebo jiný požadavek na použití IDENTIFIKÁTORů/IP adres, zajistěte, aby byla vždy vyladěna tak, aby poskytovala vysoce kvalitní výstrahy pro řešení SIEM. 
 
@@ -146,17 +148,17 @@ Poznámka: Pokud máte regulativní nebo jiný požadavek na použití IDENTIFIK
 
 - [Azure Marketplace zahrnuje možnosti ID třetích stran.](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [EDR schopnost služby Microsoft Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
+- [Microsoft Defender pro funkci koncového bodu](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Odpovědnost:** Zákazník
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: zjednodušení pravidel zabezpečení sítě
 
@@ -164,7 +166,7 @@ Poznámka: Pokud máte regulativní nebo jiný požadavek na použití IDENTIFIK
 |--|--|--|--|
 | NS – 6 | 1.5 | IA-4 |
 
-Zjednodušte pravidla zabezpečení sítě pomocí značek služeb a skupin zabezpečení aplikací (skupiny ASG). 
+Zjednodušte pravidla zabezpečení sítě pomocí značek služeb a skupin zabezpečení aplikací (skupiny ASG).
 
 Pomocí značek Virtual Network služby můžete definovat řízení přístupu k síti pro skupiny zabezpečení sítě nebo Azure Firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby v poli zdroj nebo cíl pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
@@ -178,9 +180,9 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -190,9 +192,9 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 |--|--|--|--|
 | NS – 7 | – | SC-20, SC-21 |
 
-Dodržujte osvědčené postupy pro zabezpečení DNS, které vám umožní zmírnit časté útoky, jako je dangling DNS, útoky na servery DNS, poškození DNS a falšování identity atd. 
+Dodržujte osvědčené postupy pro zabezpečení DNS, které vám umožní zmírnit časté útoky, jako je dangling DNS, útoky na servery DNS, poškození DNS a falšování identity atd.
 
-Pokud se jako autoritativní služba DNS používá Azure DNS, zajistěte, aby byly zóny a záznamy DNS chráněné před náhodnými nebo škodlivými úpravami pomocí Azure RBAC a zámků prostředků. 
+Pokud se jako autoritativní služba DNS používá Azure DNS, zajistěte, aby byly zóny a záznamy DNS chráněné před náhodnými nebo škodlivými úpravami pomocí Azure RBAC a zámků prostředků.
 
 - [Přehled Azure DNS](../../dns/dns-overview.md)
 
@@ -204,8 +206,8 @@ Pokud se jako autoritativní služba DNS používá Azure DNS, zajistěte, aby b
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
+- [Architektura zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

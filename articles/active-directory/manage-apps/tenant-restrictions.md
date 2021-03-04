@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611dd5e53ae96e06677b1c4a6a6f009e582b33af
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646261"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687069"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -109,19 +109,18 @@ I když se konfigurace omezení tenanta provádí v podnikové infrastruktuře p
 
 Správce pro tenanta, který je zadaný jako tenant s omezeným přístupem, může pomocí této sestavy zobrazit blokované přihlášení kvůli zásadám omezení tenanta, včetně použité identity a ID cílového adresáře. Přihlášení jsou obsažena v případě, že je nastavení klienta toto omezení buď tenant klienta, nebo tenant prostředků pro přihlášení.
 
-> [!NOTE]
-> Sestava může obsahovat omezené informace, jako je ID cílového adresáře, když se uživatel, který je v jiném klientovi než se přihlásí jako tenant s omezeným přístupem. V takovém případě jsou uživatelsky identifikovatelné informace, jako je název a hlavní název uživatele, maskovány pro ochranu uživatelských dat v jiných klientech (" 00000000-0000-0000-0000-00000000@domain.com "). 
+Sestava může obsahovat omezené informace, jako je ID cílového adresáře, když se uživatel, který je v jiném klientovi než se přihlásí jako tenant s omezeným přístupem. V takovém případě jsou uživatelsky identifikovatelné informace, jako je název a hlavní název uživatele, maskovány na ochranu uživatelských dat v jiných klientech ("{PII odebral} @domain.com " nebo 00000000-0000-0000-0000-000000000000 místo uživatelských jmen a ID objektů podle potřeby). 
 
 Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určení rozsahu sestavy. Můžete filtrovat podle určitého časového intervalu, uživatele, aplikace, klienta nebo stavu. Pokud vyberete tlačítko **sloupce** , můžete se rozhodnout zobrazit data s libovolnou kombinací následujících polí:
 
-- **Uživatel**
+- **Uživatel** – toto pole může mít odebrané identifikovatelné osobní údaje, kde bude nastaveno na `00000000-0000-0000-0000-000000000000` . 
 - **Aplikace**
 - **Stav**
 - **Date** (Datum)
-- **Datum (UTC)** (kde UTC je koordinovaný světový čas)
+- **Datum (UTC)** – kde UTC je koordinovaný světový čas
 - **IP adresa**
 - **Klient**
-- **Uživatelské jméno**
+- **Uživatelské jméno** – toto pole může mít odebrané identifikovatelné osobní údaje, kde bude nastaveno na `{PII Removed}@domain.com`
 - **Umístění**
 - **ID cílového tenanta**
 
@@ -196,7 +195,7 @@ V závislosti na možnostech vaší infrastruktury proxy může být možné př
 
 Konkrétní podrobnosti najdete v dokumentaci k proxy server.
 
-## <a name="blocking-consumer-applications"></a>Blokování aplikací příjemce
+## <a name="blocking-consumer-applications-public-preview"></a>Blokování aplikací příjemce (Public Preview)
 
 Aplikace od Microsoftu, které podporují účty uživatelů a účty organizace, jako je [OneDrive](https://onedrive.live.com/) nebo [Microsoft Learn](https://docs.microsoft.com/learn/), můžou být někdy hostované na stejné adrese URL.  To znamená, že uživatelé, kteří musí mít přístup k této adrese URL pro účely práce, mají také přístup k osobnímu použití, což nemusí být povoleno v souladu s pokyny pro váš operační systém.
 
@@ -204,11 +203,11 @@ Některé organizace se pokoušejí tuto chybu opravit tak, že blokují `login.
 
 1. Blok blokuje `login.live.com` použití osobních účtů ve scénářích hostů v B2B, které se můžou intrude na návštěvníky a spolupráci.
 1. [Autopilot vyžaduje použití `login.live.com` ](https://docs.microsoft.com/mem/autopilot/networking-requirements) aby bylo možné nasadit nástroj. Scénáře Intune a autopilotu můžou selhat `login.live.com` , když je blokované.
-1. Pracovní telemetrie a aktualizace Windows, které spoléhají na službu MSA pro ID zařízení, [budou přestat fungovat](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. Pracovní telemetrie a aktualizace Windows, které spoléhají na službu login.live.com pro ID zařízení, [budou přestat fungovat](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Konfigurace pro spotřebitelské aplikace
 
-I když `Restrict-Access-To-Tenants` záhlaví funguje jako seznam povolených, MSA blok funguje jako signál odepřít a oznamuje účet Microsoft platformě, aby se uživatelům neumožnilo přihlašovat se k aplikacím příjemce. K odeslání tohoto signálu `sec-Restrict-Tenant-Access-Policy` se hlavička vloží do provozu s `login.live.com` využitím stejného firemního proxy serveru nebo brány firewall. [](#proxy-configuration-and-requirements) Hodnota hlavičky musí být `restrict-msa` . Když je hlavička přítomná a aplikace příjemce se pokouší přihlašovat přímo k uživateli, toto přihlášení se zablokuje.
+Zatímco `Restrict-Access-To-Tenants` záhlaví funguje jako seznam povolených, účet Microsoft (MSA) blok funguje jako signál odepřít, oznamuje účet Microsoft platformě, aby nepovolovala uživatelům přihlašovat se k aplikacím spotřebitele. K odeslání tohoto signálu se `sec-Restrict-Tenant-Access-Policy` Hlavička vloží do provozu v provozu `login.live.com` pomocí stejného firemního proxy serveru nebo brány firewall. [](#proxy-configuration-and-requirements) Hodnota hlavičky musí být `restrict-msa` . Když je hlavička přítomná a aplikace příjemce se pokouší přihlašovat přímo k uživateli, toto přihlášení se zablokuje.
 
 V tuto chvíli se ověřování u uživatelských aplikací nezobrazuje v [protokolech správce](#admin-experience), protože Login.Live.com se hostuje nezávisle na službě Azure AD.
 

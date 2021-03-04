@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: cfe6aa489bcc771213ec04ca9cddd1267ccf1338
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cda3af012a83342d5650c542fafdcd6bc36bd8e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717974"
 ---
 # <a name="optimizing-log-alert-queries"></a>Optimalizace dotazů na výstrahy protokolu
-Tento článek popisuje, jak zapsat a převést dotazy na [výstrahy protokolu](../platform/alerts-unified-log.md) , abyste dosáhli optimálního výkonu. Optimalizované dotazy omezují latenci a zatížení výstrah, které se často spouštějí.
+Tento článek popisuje, jak zapsat a převést dotazy na [výstrahy protokolu](./alerts-unified-log.md) , abyste dosáhli optimálního výkonu. Optimalizované dotazy omezují latenci a zatížení výstrah, které se často spouštějí.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Jak začít psát dotaz protokolu výstrah
 
-Dotazy na výstrahy začínají [dotazem na data protokolu v Log Analytics](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) , která tento problém signalizují. V [tématu Příklady dotazů na výstrahy](../log-query/example-queries.md) můžete pochopit, co můžete zjistit. Můžete také začít [psát vlastní dotaz](../log-query/log-analytics-tutorial.md). 
+Dotazy na výstrahy začínají [dotazem na data protokolu v Log Analytics](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) , která tento problém signalizují. V [tématu Příklady dotazů na výstrahy](../logs/example-queries.md) můžete pochopit, co můžete zjistit. Můžete také začít [psát vlastní dotaz](../logs/log-analytics-tutorial.md). 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>Dotazy, které indikují problém, a ne upozornění
 
@@ -44,7 +44,7 @@ Není nutné přidávat do dotazu logiku pro upozorňování a provádět v nich
 Použití `limit` a `take` v dotazech může zvýšit latenci a zatížení výstrah, protože výsledky nejsou v průběhu času konzistentní. Doporučuje se používat ho pouze v případě potřeby.
 
 ## <a name="log-query-constraints"></a>Omezení dotazů na protokol
-[Dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) začínají buď s tabulkou, [`search`](/azure/kusto/query/searchoperator) nebo [`union`](/azure/kusto/query/unionoperator) operátorem.
+[Dotazy protokolu v Azure monitor](../logs/log-query-overview.md) začínají buď s tabulkou, [`search`](/azure/kusto/query/searchoperator) nebo [`union`](/azure/kusto/query/unionoperator) operátorem.
 
 Dotazy na pravidla upozornění protokolu by měly vždy začínat tabulkou, která má definovat jasný rozsah, což zvyšuje výkon dotazů a relevanci výsledků. Dotazy v pravidlech výstrah běží často, takže pomocí `search` a `union` můžou mít za následek nadměrné nároky na přidání latence k výstraze, protože to vyžaduje skenování napříč více tabulkami. Tyto operátory také omezují schopnost služby upozorňování na optimalizaci dotazu.
 
@@ -57,7 +57,7 @@ SecurityEvent
 | where EventID == 4624
 ```
 
-Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více prostředků](../log-query/cross-workspace-query.md) , protože dotazy na více zdrojů používají typ `union` , který omezuje obor dotazu na konkrétní prostředky. Následující příklad bude platný dotaz na výstrahu protokolu:
+Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více prostředků](../logs/cross-workspace-query.md) , protože dotazy na více zdrojů používají typ `union` , který omezuje obor dotazu na konkrétní prostředky. Následující příklad bude platný dotaz na výstrahu protokolu:
 
 ```Kusto
 union
@@ -67,7 +67,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> [Dotazy na více prostředků](../log-query/cross-workspace-query.md) jsou podporovány v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud pořád používáte [starší rozhraní API Log Analytics výstrah](../platform/api-alerts.md) pro vytváření upozornění protokolů, můžete se přepínat [tady](../alerts/alerts-log-api-switch.md).
+> [Dotazy na více prostředků](../logs/cross-workspace-query.md) jsou podporovány v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Pokud pořád používáte [starší rozhraní API Log Analytics výstrah](./api-alerts.md) pro vytváření upozornění protokolů, můžete se přepínat [tady](../alerts/alerts-log-api-switch.md).
 
 ## <a name="examples"></a>Příklady
 Následující příklady zahrnují dotazy protokolů, které používají, a `search` `union` poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití v pravidlech výstrah.
@@ -217,4 +217,4 @@ SecurityEvent
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si informace o [upozorněních protokolu](alerts-log.md) v Azure monitor.
-- Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md).
+- Přečtěte si o [dotazech protokolu](../logs/log-query-overview.md).

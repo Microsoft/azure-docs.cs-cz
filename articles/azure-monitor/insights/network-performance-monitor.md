@@ -1,24 +1,23 @@
 ---
 title: Řešení Network Performance Monitor v Azure | Microsoft Docs
 description: Network Performance Monitor v Azure vám pomůže monitorovat výkon sítí v reálném čase a zjišťovat a vyhledávat tak slabá místa výkonu sítě.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711123"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
 ![Symbol Network Performance Monitor](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Network Performance Monitor je cloudové řešení monitorování hybridní sítě, které vám pomůže monitorovat výkon sítě mezi různými body v infrastruktuře vaší sítě. Umožňuje rovněž monitorovat síťové připojení ke službě a koncovým bodům aplikace a monitorovat výkon Azure ExpressRoute. 
 
@@ -301,4 +300,4 @@ Informace o cenách jsou k dispozici [online](network-performance-monitor-pricin
 * **Připojte se k našemu kohorta:** Vždycky se zajímá, že noví zákazníci se k naší kohorta připojí. V rámci tohoto řešení získáte předběžný přístup k novým funkcím a příležitostí, které nám pomohou vylepšit Network Performance Monitor. Pokud se zajímáte o připojení, vyplňte tento [rychlý průzkum](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Další kroky 
-Přečtěte si další informace o [monitorování výkonu](network-performance-monitor-performance-monitor.md), [monitorování připojení služby](network-performance-monitor-performance-monitor.md)a [monitorování ExpressRoute](network-performance-monitor-expressroute.md). 
+Přečtěte si další informace o [monitorování výkonu](network-performance-monitor-performance-monitor.md), [monitorování připojení služby](network-performance-monitor-performance-monitor.md)a [monitorování ExpressRoute](network-performance-monitor-expressroute.md).

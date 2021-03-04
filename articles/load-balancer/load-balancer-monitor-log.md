@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596809"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709814"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Protokoly Azure Monitor pro Azure Standard Load Balancer
 
@@ -74,7 +74,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 ## <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
-Protokol aktivit je ve výchozím nastavení vygenerován. Můžete ji nakonfigurovat tak, aby se vyexportovali na úrovni předplatného, a to podle [pokynů uvedených v tomto článku](../azure-monitor/platform/activity-log.md). Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
+Protokol aktivit je ve výchozím nastavení vygenerován. Můžete ji nakonfigurovat tak, aby se vyexportovali na úrovni předplatného, a to podle [pokynů uvedených v tomto článku](../azure-monitor/essentials/activity-log.md). Další informace o těchto protokolech najdete v článku [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](../azure-resource-manager/management/view-activity-logs.md) .
 
 Data protokolu aktivit můžete zobrazit a analyzovat pomocí některé z následujících metod:
 
@@ -113,4 +113,4 @@ Funkce exportu metriky do protokolu pro Azure Load Balancer má následující o
 
 ## <a name="next-steps"></a>Další kroky
 * [Zkontrolujte dostupné metriky pro nástroj pro vyrovnávání zatížení.](./load-balancer-standard-diagnostics.md)
-* [Vytváření a testování dotazů podle následujících pokynů Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Vytváření a testování dotazů podle následujících pokynů Azure Monitor](../azure-monitor/logs/log-query-overview.md)

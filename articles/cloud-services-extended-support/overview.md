@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762822"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700197"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>O službě Azure Cloud Services (Rozšířená podpora)
 
@@ -21,7 +21,7 @@ ms.locfileid: "98762822"
 > Cloud Services (Rozšířená podpora) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Cloud Services (Rozšířená podpora) je nový model nasazení založený na [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) pro [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) produkt a je v současnosti ve verzi Public Preview. Cloud Services (Rozšířená podpora) má primární výhodu při poskytování místní odolnosti a paritě funkcí v Azure Cloud Services nasazených pomocí Azure Service Manager. Nabízí také některé funkce ARM, jako je například přístup a řízení na základě role (RBAC), značky, zásady a podpora šablon nasazení.  
+Cloud Services (Rozšířená podpora) je nový model nasazení založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) produkt a je v současnosti ve verzi Public Preview. Cloud Services (Rozšířená podpora) má primární výhodu při poskytování místní odolnosti a paritě funkcí v Azure Cloud Services nasazených pomocí Azure Service Manager. Nabízí také některé funkce ARM, jako je například přístup a řízení na základě role (RBAC), značky, zásady a podpora šablon nasazení.  
 
 V této změně se model nasazení založený na Azure Service Manager pro Cloud Services přejmenuje [Cloud Services (Classic)](../cloud-services/cloud-services-choose-me.md). Zachováte si možnost vytvářet a rychle nasazovat webové a cloudové aplikace a služby. V závislosti na aktuální poptávce budete moci škálovat infrastrukturu cloudových služeb a zajistit, aby výkon vašich aplikací zůstal stále při současném snížení nákladů.  
 
@@ -41,11 +41,11 @@ Aby bylo možné nasadit Cloud Services (Rozšířená podpora), vyžadují se p
 
 Hlavní rozdíly mezi Cloud Services (Classic) a Cloud Services (Rozšířená podpora) s ohledem na nasazení jsou: 
 
-- Azure Resource Manager nasazení používají [šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) , což je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. Konfigurace služby a soubor definice služby musí být v souladu s [šablonou ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) během nasazování Cloud Services (Rozšířená podpora). To můžete provést buď [ručním vytvořením šablony ARM](deploy-template.md) , nebo pomocí [PowerShellu](deploy-powershell.md), [portálu](deploy-portal.md) a sady [Visual Studio](deploy-visual-studio.md).  
+- Azure Resource Manager nasazení používají [šablony ARM](../azure-resource-manager/templates/overview.md) , což je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. Konfigurace služby a soubor definice služby musí být v souladu s [šablonou ARM](../azure-resource-manager/templates/overview.md) během nasazování Cloud Services (Rozšířená podpora). To můžete provést buď [ručním vytvořením šablony ARM](deploy-template.md) , nebo pomocí [PowerShellu](deploy-powershell.md), [portálu](deploy-portal.md) a sady [Visual Studio](deploy-visual-studio.md).  
 
-- Zákazníci musí použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) ke [správě certifikátů v Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md). Azure Key Vault umožňuje bezpečně ukládat a spravovat přihlašovací údaje aplikací, jako jsou tajné klíče, klíče a certifikáty, v centrálním a zabezpečeném cloudovém úložišti. Vaše aplikace se můžou ověřit, aby se v době spuštění načetly přihlašovací údaje, aby se Key Vault. 
+- Zákazníci musí použít [Azure Key Vault](../key-vault/general/overview.md) ke [správě certifikátů v Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md). Azure Key Vault umožňuje bezpečně ukládat a spravovat přihlašovací údaje aplikací, jako jsou tajné klíče, klíče a certifikáty, v centrálním a zabezpečeném cloudovém úložišti. Vaše aplikace se můžou ověřit, aby se v době spuštění načetly přihlašovací údaje, aby se Key Vault. 
 
-- Všechny prostředky nasazené prostřednictvím [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) musí být ve virtuální síti. Virtuální sítě a podsítě se vytvářejí v Azure Resource Manager pomocí existujících rozhraní API Azure Resource Manager a při nasazení Cloud Services (Rozšířená podpora) se bude muset v oddílu NetworkConfiguration v. cscfg vykázat.   
+- Všechny prostředky nasazené prostřednictvím [Azure Resource Manager](../azure-resource-manager/templates/overview.md) musí být ve virtuální síti. Virtuální sítě a podsítě se vytvářejí v Azure Resource Manager pomocí existujících rozhraní API Azure Resource Manager a při nasazení Cloud Services (Rozšířená podpora) se bude muset v oddílu NetworkConfiguration v. cscfg vykázat.   
 
 - Každá cloudová služba (Rozšířená podpora) je jediné nezávislé nasazení. Služba Cloud Services (Rozšířená podpora) nepodporuje více slotů v rámci jedné cloudové služby.  
     - Schopnost prohození virtuálních IP adres se dá <sup>*</sup> použít k prohození mezi dvěma Cloud Services (Rozšířená podpora). Chcete-li otestovat a připravit novou verzi cloudové služby, nasaďte cloudovou službu (rozšířenou podporu) a označte ji jako vyměnitelné VIP s jinou cloudovou službou (Rozšířená podpora).  
@@ -57,13 +57,13 @@ Hlavní rozdíly mezi Cloud Services (Classic) a Cloud Services (Rozšířená p
 
 ## <a name="migration-to-azure-resource-manager"></a>Migrace na Azure Resource Manager
 
-Cloud Services (Rozšířená podpora) poskytuje dvě cesty, které můžete migrovat z [Azure Service Manager](https://docs.microsoft.com/powershell/azure/servicemanagement/overview?view=azuresmps-4.0.0&preserve-view=true ) na [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview). 
+Cloud Services (Rozšířená podpora) poskytuje dvě cesty, které můžete migrovat z [Azure Service Manager](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) na [Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 1) Zákazníci nasadí cloudové služby přímo v Azure Resource Manager a pak odstraní starou cloudovou službu ve službě Azure Service Manager. 
 2) Místní migrace podporuje možnost migrace Cloud Services (Classic) s minimálním až žádným výpadkem do Cloud Services (Rozšířená podpora). 
 
 ### <a name="additional-migration-options"></a>Další možnosti migrace
 
-Při vyhodnocování plánů migrace z Cloud Services (Classic) na Cloud Services (Rozšířená podpora) můžete chtít prozkoumat další služby Azure, například: [Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview), [App Service](https://docs.microsoft.com/azure/app-service/overview), [azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)a [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview). Tyto služby budou i nadále používat další funkce, zatímco Cloud Services (Rozšířená podpora) bude primárně udržovat paritu funkcí s Cloud Services (Classic). 
+Při vyhodnocování plánů migrace z Cloud Services (Classic) na Cloud Services (Rozšířená podpora) můžete chtít prozkoumat další služby Azure, například: [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md), [App Service](../app-service/overview.md), [azure Kubernetes Service](../aks/intro-kubernetes.md)a [Azure Service Fabric](../service-fabric/service-fabric-overview.md). Tyto služby budou i nadále používat další funkce, zatímco Cloud Services (Rozšířená podpora) bude primárně udržovat paritu funkcí s Cloud Services (Classic). 
 
 V závislosti na aplikaci může Cloud Services (Rozšířená podpora) vyžadovat, aby se přechodem na Azure Resource Manager v porovnání s jinými možnostmi podstatně nerovnalo. Pokud se vaše aplikace nevyvíjí, Cloud Services (Rozšířená podpora) je možnost, která se dá vzít v úvahu, protože poskytuje cestu k rychlé migraci. Naopak, pokud se vaše aplikace neustále vyvíjí a potřebuje moderní sadu funkcí, Prozkoumejte další služby Azure, abyste lépe vyřešili vaše aktuální a budoucí požadavky. 
 

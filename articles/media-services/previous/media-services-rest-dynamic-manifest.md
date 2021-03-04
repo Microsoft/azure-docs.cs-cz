@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 04a9776ca2686aebbb7668c86f5afcd61f5f9238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0271edbbd119e1d60f30cc149ba7772fd0cfa9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730214"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů pomocí Azure Media Services REST API
 
@@ -32,7 +32,7 @@ ms.locfileid: "90530178"
 > 
 > 
 
-Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které může zařízení zákazníka zpracovat (místo všech verzí přidružených k assetu). Toto filtrování prostředků je archivováno prostřednictvím **dynamického manifestu**s, které jsou vytvořeny na základě požadavku zákazníka o streamování videa na základě zadaného filtru (ů).
+Počínaje verzí 2,17 Media Services umožňuje definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která zákazníkům umožňují vybrat, co dělají: přehrávání pouze části videa (místo přehrávání celého videa) nebo určení pouze podmnožiny zvukových a video verzí, které může zařízení zákazníka zpracovat (místo všech verzí přidružených k assetu). Toto filtrování prostředků je archivováno prostřednictvím **dynamického manifestu** s, které jsou vytvořeny na základě požadavku zákazníka o streamování videa na základě zadaného filtru (ů).
 
 Podrobnější informace týkající se filtrů a dynamického manifestu naleznete v tématu [Přehled dynamických manifestů](media-services-dynamic-manifest-overview.md).
 
@@ -174,7 +174,7 @@ HTTP/1.1 201 Created
 ```
 
 ## <a name="list-filters"></a>Seznam filtrů
-### <a name="get-all-global-filters-in-the-ams-account"></a>Načíst všechny globální **filtry**s v účtu AMS
+### <a name="get-all-global-filters-in-the-ams-account"></a>Načíst všechny globální **filtry** s v účtu AMS
 Chcete-li zobrazit seznam filtrů, použijte následující požadavky HTTP: 
 
 #### <a name="http-request"></a>Požadavek HTTP
@@ -190,7 +190,7 @@ x-ms-version: 2.19
 Host: media.windows.net 
 ```
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter**s přidruženou k assetu
+### <a name="get-assetfilters-associated-with-an-asset"></a>Získat **AssetFilter** s přidruženou k assetu
 #### <a name="http-request"></a>Požadavek HTTP
 
 ```console
@@ -363,7 +363,7 @@ Následující příklady ukazují, jak přidat filtry na adresy URL streamován
 
 **Technologie Smooth Streaming**
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
     
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

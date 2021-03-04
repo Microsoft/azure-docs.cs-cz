@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725845"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
 Protokoly platforem poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Generují se automaticky, přestože potřebujete nakonfigurovat některé protokoly platformy, které se mají přemístit do jednoho nebo více cílů, aby je bylo možné zachovat. Tento článek obsahuje přehled protokolů platforem, včetně informací, které poskytují, a o tom, jak je můžete nakonfigurovat pro shromažďování a analýzu.
@@ -22,7 +22,7 @@ V následující tabulce jsou uvedeny konkrétní protokoly platformy, které js
 
 | Protokol | Vrstva | Popis |
 |:---|:---|:---|
-| [Protokoly prostředků](../platform/resource-logs.md) | Prostředky Azure | Poskytněte přehled o operacích, které byly provedeny v rámci prostředku Azure ( *rovina dat*), například získání tajného kódu z Key Vault nebo vytvoření žádosti do databáze. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure.<br><br>*Protokoly prostředků se dřív odkazovaly na diagnostické protokoly.*  |
+| [Protokoly prostředků](./resource-logs.md) | Prostředky Azure | Poskytněte přehled o operacích, které byly provedeny v rámci prostředku Azure ( *rovina dat*), například získání tajného kódu z Key Vault nebo vytvoření žádosti do databáze. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure.<br><br>*Protokoly prostředků se dřív odkazovaly na diagnostické protokoly.*  |
 | [Protokol aktivit](../essentials/activity-log.md) | Předplatné Azure | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (*rovinu správy*) kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, _kdo_ a _kdy_ se u prostředků ve vašem předplatném mají _dělat_ operace zápisu (Put, post, DELETE). Pro každé předplatné Azure existuje jeden protokol aktivit. |
 | [Protokoly služby Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) | Tenant Azure |  Obsahuje historii přihlašovací aktivity a záznam pro audit změn provedených v Azure Active Directory pro konkrétního tenanta.   |
 
@@ -44,9 +44,9 @@ K dispozici jsou různé možnosti pro zobrazení a analýzu různých protokol�
 ## <a name="destinations"></a>Cíle
 Protokoly platforem můžete odesílat do jednoho nebo více cílů v následující tabulce v závislosti na požadavcích na monitorování. Nakonfigurujte cíle pro protokoly platforem [vytvořením nastavení diagnostiky](../essentials/diagnostic-settings.md).
 
-| Cíl | Description |
+| Cíl | Popis |
 |:---|:---|
-| Pracovní prostor služby Log Analytics | Analyzujte protokoly všech vašich prostředků Azure společně a využijte výhod všech funkcí, které jsou k dispozici pro [Azure monitor protokolů](../platform/data-platform-logs.md) , včetně [dotazů protokolu](../log-query/log-query-overview.md) a [výstrah protokolů](../alerts/alerts-log.md). Připněte výsledky dotazu protokolu na řídicí panel Azure nebo ho do sešitu zahrňte jako součást interaktivní sestavy. |  |
+| Pracovní prostor služby Log Analytics | Analyzujte protokoly všech vašich prostředků Azure společně a využijte výhod všech funkcí, které jsou k dispozici pro [Azure monitor protokolů](../logs/data-platform-logs.md) , včetně [dotazů protokolu](../logs/log-query-overview.md) a [výstrah protokolů](../alerts/alerts-log.md). Připněte výsledky dotazu protokolu na řídicí panel Azure nebo ho do sešitu zahrňte jako součást interaktivní sestavy. |  |
 | Centrum událostí | Odesílat data protokolu platformy mimo Azure, například pro SIEM nebo vlastní platformu telemetrie třetích stran.
 | Azure Storage | Archivujte protokoly pro audit nebo zálohování. |
 
@@ -61,5 +61,4 @@ Protokoly platforem můžete odesílat do jednoho nebo více cílů v následuj�
 ## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si další podrobnosti o protokolu aktivit.](../essentials/activity-log.md)
-* [Přečtěte si další podrobnosti o protokolech prostředků](../platform/resource-logs.md)
-
+* [Přečtěte si další podrobnosti o protokolech prostředků](./resource-logs.md)

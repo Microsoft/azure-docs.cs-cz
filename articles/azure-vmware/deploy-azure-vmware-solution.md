@@ -4,12 +4,12 @@ description: Naučte se používat informace shromážděné ve fázi plánován
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703850"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -62,7 +62,14 @@ V tomto příkladu byla během nasazení v síti 10.74.72.0/22 zadaná síť, kt
 
 Přihlaste se k poli odkazů, které jste vytvořili v předchozím kroku. Po přihlášení otevřete webový prohlížeč a přejděte do něj a přihlaste se do správce vCenter a NSX-T.  
 
-IP adresy a přihlašovací údaje konzoly správce NSX-T můžete identifikovat v Azure Portal.  Vyberte privátní cloud a potom v zobrazení **Přehled** vyberte **Identita > výchozí**. 
+IP adresy a přihlašovací údaje konzoly správce NSX-T můžete identifikovat v Azure Portal.  Vyberte svůj privátní cloud a pak **spravujte**  >  **identitu**.
+
+>[!TIP]
+>Pokud chcete vygenerovat nová hesla vCenter a NSX-T, vyberte **vytvořit nové heslo** .
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Vytvoření segmentu sítě v řešení VMware Azure
 

@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703762"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -64,7 +64,7 @@ Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na 
 1. V nabídce trezoru vyberte **zálohované položky**.
 2. V části **zálohované položky** vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak vyberte **Zálohovat nyní**.
 3. V části **Zálohovat nyní** vyberte typ zálohy, kterou chcete provést. Pak vyberte **OK**. Tato záloha se zachová v závislosti na zásadách přidružených k této zálohované položce.
-4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
+4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  . V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 Ve výchozím nastavení je uchovávání záloh na vyžádání 45 dní.
 
@@ -92,7 +92,7 @@ Pokud chcete použít místní zálohu (pomocí HANA Studio/řídicího panelu) 
 
 1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu nebo řídicím panelu.
 2. pro příslušnou databázi
-    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
+    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >    >  **vybrat databázový**  >  **filtr (protokol)**.
         * enable_auto_log_backup: ne
         * log_backup_using_backint: false
         * catalog_backup_using_backint: false
@@ -109,7 +109,7 @@ Pokud chcete katalog záloh upravit nebo vyčistit, postupujte následovně:
 
 1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu nebo řídicím panelu.
 2. pro příslušnou databázi
-    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
+    1. Zrušte nastavení parametrů backint. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >    >  **vybrat databázový**  >  **filtr (protokol)**.
         * enable_auto_log_backup: ne
         * log_backup_using_backint: false
         * catalog_backup_using_backint: false
@@ -149,8 +149,6 @@ U SAP HANA zálohované položky můžete změnit základní zásady.
 
 >[!NOTE]
 > Jakákoli změna v období uchování se použije zpět na všechny starší body obnovení kromě nových.
->
-> Zásady přírůstkového zálohování se nedají použít pro databáze SAP HANA. Přírůstkové zálohování není v současné době pro tyto databáze podporováno.
 
 ### <a name="modify-policy"></a>Upravit zásadu
 

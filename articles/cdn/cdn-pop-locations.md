@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 46fd9285f550b1a730b9040c46bacd7e34650b1e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7db905af85a6f4c157ee6d019e8e3a3feeeb4b4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722615"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Pokrytí Azure CDN podle linky Metro 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ V tomto článku jsou uvedené aktuální METROS, které obsahují umístění v
 > Vzhledem k tomu, že každý Azure CDN produkt má odlišný způsob, jak sestavovat své infrastruktury pro CDN, společnost Microsoft doporučuje, aby k rozhodování, který Azure CDN produkt používal, používala umístění POP. Místo toho zvažte jeho funkce a výkon koncového uživatele. Otestujte výkon u každého Azure CDN produktu, abyste si zvolili správný produkt pro vaše uživatele. 
 > 
 
-| Oblast | Partnerský vztah Microsoftu | Verizon | Akamai |
+| Oblast | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Severní Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexiko<br />San Juan, Portoriko<br />Ashburn, VA, USA<br />Brno, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Minneapolis, MN, USA<br />Chicago, IL, USA<br /> Praha, TX, USA<br />Denver, CO, USA<br />Honolulu, dobrý den, USA<br />Houstonu, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newyorském, NEWARKU, USA<br />Phoenix, AZ, USA<br />Portland nebo USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Praha, WA, USA | Guadalajara, Mexiko<br />Mexico City, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Brno, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Praha, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Praha, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Mexiko<br />USA |
 | Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Santiago de Chile, Chile<br />Bogotá, Kolumbie<br />Buenos Aires, Argentina | Buenos Aires, Argentina<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Valparaíso, Chile<br />Bogotá, Kolumbie<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ekvádor<br />Lima, Peru | Argentina<br />Brazílie<br />Chile<br />Kolumbie<br />Ekvádor<br />Peru<br />Uruguay |
@@ -49,4 +49,4 @@ V tomto článku jsou uvedené aktuální METROS, které obsahují umístění v
 
 
 ## <a name="next-steps"></a>Další kroky
-* Pokud chcete získat nejnovější IP adresy pro allowlisting, přečtěte si téma [rozhraní API pro uzly Azure CDN Edge](/rest/api/cdn/edgenodes).
+* Pokud chcete získat nejnovější IP adresy pro allowlisting, přečtěte si téma [rozhraní API pro uzly Azure CDN Edge](https://github.com/Azure/azure-docs-rest-apis/blob/master/docs-ref-autogen/cdn/cdn/EdgeNodes/).

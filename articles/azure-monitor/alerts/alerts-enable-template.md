@@ -4,19 +4,19 @@ description: Naučte se používat šablonu Správce prostředků k vytvoření 
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 418dde8311c2555f8df5929dd96ce72611422ee9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0923be317d497e471724b7611fe6b831a4be6f37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100611188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718042"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
 
 > [!WARNING]
-> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](../platform/alerts-overview.md). Klasické výstrahy jsou [vyřazené](../platform/monitoring-classic-retirement.md) pro uživatele veřejného cloudu, ale i v omezeném počtu použití pro prostředky, které ještě nepodporují nové výstrahy.
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazené](./monitoring-classic-retirement.md) pro uživatele veřejného cloudu, i když jsou omezeného využití do **31. května 2021**. Klasické výstrahy pro Azure Government Cloud a Azure Čína 21Vianet vybudou od **29. února 2024**.
 >
 
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat výstrahy metriky Azure Classic. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.
@@ -399,6 +399,6 @@ Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vy
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si další informace o výstrahách](../platform/alerts-overview.md)
-* [Přidání nastavení diagnostiky](../samples/resource-manager-diagnostic-settings.md) do šablony Správce prostředků
+* [Přečtěte si další informace o výstrahách](./alerts-overview.md)
+* [Přidání nastavení diagnostiky](../essentials/resource-manager-diagnostic-settings.md) do šablony Správce prostředků
 * Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) .

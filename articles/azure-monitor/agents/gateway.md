@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732016"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -89,7 +89,7 @@ Brána Log Analytics je dostupná v těchto jazycích:
 
 Brána Log Analytics podporuje pouze TLS (Transport Layer Security) 1,0, 1,1 a 1,2.  Nepodporuje SSL (Secure Sockets Layer) (SSL).  Aby se zajistila bezpečnost dat při přenosu do Log Analytics, nakonfigurujte bránu tak, aby používala aspoň protokol TLS 1,2. Jsou ohrožené starší verze TLS nebo SSL. I když v současné době umožňují zpětnou kompatibilitu, nepoužívejte je.  
 
-Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../platform/data-security.md#sending-data-securely-using-tls-12). 
+Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 

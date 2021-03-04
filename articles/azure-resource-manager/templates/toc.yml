@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Vytváření šablon – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Vytvoření bicep-VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: Vytvoření a nasazení specifikace šablony
       href: quickstart-create-template-specs.md
     - name: Služby Azure
@@ -141,7 +143,7 @@
             - name: Managed Applications
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Monitorování
-              href: ../../azure-monitor/learn/quick-collect-activity-log-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../azure-monitor/essentials/quick-collect-activity-log-arm.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: Zásada
               href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Portál
@@ -220,7 +222,7 @@
               href: ../../azure-signalr/signalr-quickstart-azure-signalr-service-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Kurzy
   items:
-    - name: Šablony pro začátečníky
+    - name: Šablony JSON pro začátečníky
       items:
         - name: 1. Vytvoření první šablony
           href: template-tutorial-create-first-template.md
@@ -242,6 +244,28 @@
           href: template-tutorial-add-tags.md
         - name: 10. Použití souboru parametrů
           href: template-tutorial-use-parameter-file.md
+    - name: Začátečník bicep
+      items:
+        - name: 1. Vytvoření první šablony
+          href: bicep-tutorial-create-first-bicep.md
+        - name: 2. Přidání parametrů
+          href: bicep-tutorial-add-parameters.md
+        - name: 3. Přidání funkcí šablon
+          href: bicep-tutorial-add-functions.md
+        - name: 4. Přidání proměnných
+          href: bicep-tutorial-add-variables.md
+        - name: 5. Přidání výstupů
+          href: bicep-tutorial-add-outputs.md
+        - name: 6 – použití exportované šablony
+          href: bicep-tutorial-export-template.md
+        - name: 7. použití šablony pro rychlé zprovoznění
+          href: bicep-tutorial-quickstart-template.md
+        - name: 8. Přidání značek
+          href: bicep-tutorial-add-tags.md
+        - name: 9 – použít soubor parametrů
+          href: bicep-tutorial-use-parameter-file.md
+        - name: 10 – přidat moduly
+          href: bicep-tutorial-add-modules.md
     - name: Nasazení
       items:
         - name: 1. Nasazení místní šablony
@@ -298,6 +322,12 @@
   items:
     - name: Osvědčené postupy pro šablony
       href: template-best-practices.md
+    - name: Bicep
+      items:
+        - name: Přehled
+          href: bicep-overview.md
+        - name: Návrat z formátu JSON na bicep
+          href: compare-template-syntax.md
     - name: Nejčastější dotazy
       href: frequently-asked-questions.md
     - name: Šablony pro konzistenci cloudu
@@ -333,6 +363,8 @@
           href: template-user-defined-functions.md
         - name: Zdroje a prostředky
           items:
+            - name: Deklarace prostředku
+              href: resource-declaration.md
             - name: Typ a název podřízeného prostředku
               href: child-resource-name-type.md
             - name: Podmíněné nasazení
@@ -491,6 +523,8 @@
       items:
         - name: Všechny funkce
           href: template-functions.md
+        - name: Libovolná funkce (bicep)
+          href: template-functions-any.md
         - name: Funkce pro práci s poli
           href: template-functions-array.md
         - name: Funkce porovnání

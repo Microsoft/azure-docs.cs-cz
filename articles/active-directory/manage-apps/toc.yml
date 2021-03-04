@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: Konfigurace samoobslužného přiřazení aplikace
           href: manage-self-service-access.md
-        - name: Zjišťování domovské sféry
+        - name: Vynutit automatické urychlení prostřednictvím zásad zjišťování domovské sféry
           href: configure-authentication-for-federated-users-portal.md
+        - name: Zabránění automatické akceleraci přihlašování pomocí zásad zjišťování domovské sféry
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Migrace správy identit do Azure AD
       items:
         - name: Prostředky migrace

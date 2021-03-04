@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Koncepty
       items:
-        - name: Komponenty Apache ve službě HDInsight
-          href: ./hdinsight-component-versioning.md
+        - name: Správa verzí
+          items:
+            - name: Úvod k verzím
+              href: ./hdinsight-overview-versioning.md
+            - name: Verze HDInsight
+              href: ./hdinsight-component-versioning.md
+            - name: 'HDInsight verze 4,0'
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight verze 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: Vyřazené verze HDInsight
+              href: ./hdinsight-retired-versions.md
         - name: Balíček zabezpečení podniku
           href: ./enterprise-security-package.md
         - name: Poznámky k verzi Hortonworks
@@ -650,7 +660,7 @@
             - name: Použití Apache Kafka se službou IoT Hub
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Registr schémat Confluent
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: Vytváření streamovacích kanálů
               items:
                 - name: 'Apache Spark, Apache Kafka a Azure Cosmos DB'
@@ -817,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Spravovat
           items:
+            - name: Kopírování tabulek podregistru mezi účty úložiště
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Migrace výchozích metastore Hive do externích metastore ve službě Azure HDInsight
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Migrace úloh Hive na HDInsight 4.0
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Optimalizace dotazů Apache Hive

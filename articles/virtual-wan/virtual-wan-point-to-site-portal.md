@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9d207e2ee0ddff49ab01094626b9af1c8505cb4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732478"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
 
@@ -50,7 +50,6 @@ Konfigurace Point-to-Site (P2S) definuje parametry pro připojení vzdálených 
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
-
 ## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> Zvolit fondy adres klienta P2S
 
 [!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
@@ -79,8 +78,6 @@ Po dokončení konfigurace klienta se můžete připojit.
 1. Přejděte na virtuální síť WAN.
 1. Na stránce **Přehled** představuje každý bod na mapě rozbočovač.
 1. V části **centra a připojení** můžete zobrazit stav centra, lokalitu, oblast, stav připojení VPN a v a v bajtech.
-
-
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
 

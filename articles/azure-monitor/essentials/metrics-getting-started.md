@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609811"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734413"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -29,7 +29,7 @@ Azure Monitor Průzkumník metrik je součástí portál Microsoft Azure, která
 
 Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení, otevřete kartu **metriky** a proveďte následující kroky:
 
-1. Klikněte na tlačítko Vybrat obor a otevřete tak výběr oboru prostředků. To vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, prostředek by se už měl naplnit. Pokud se chcete dozvědět, jak zobrazit metriky napříč více prostředky, [Přečtěte si tento článek](../platform/metrics-dynamic-scope.md).
+1. Klikněte na tlačítko Vybrat obor a otevřete tak výběr oboru prostředků. To vám umožní vybrat prostředky, pro které chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, prostředek by se už měl naplnit. Pokud se chcete dozvědět, jak zobrazit metriky napříč více prostředky, [Přečtěte si tento článek](./metrics-dynamic-scope.md).
     > ![Výběr prostředku](./media/metrics-getting-started/scope-picker.png)
 
 2. U některých prostředků je nutné vybrat obor názvů. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.
@@ -72,7 +72,7 @@ Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o rozšířených funkcích Průzkumník metrik](../essentials/metrics-charts.md)
-* [Zobrazení více prostředků v Průzkumník metrik](../platform/metrics-dynamic-scope.md)
+* [Zobrazení více prostředků v Průzkumník metrik](./metrics-dynamic-scope.md)
 * [Řešení potíží s Průzkumníkem metrik](metrics-troubleshoot.md)
-* [Seznam dostupných metrik pro služby Azure](../platform/metrics-supported.md)
+* [Seznam dostupných metrik pro služby Azure](./metrics-supported.md)
 * [Příklady nakonfigurovaných grafů](../essentials/metric-chart-samples.md)

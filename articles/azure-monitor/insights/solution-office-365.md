@@ -1,17 +1,16 @@
 ---
 title: Řešení pro správu Office 365 v Azure
 description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořených v Azure Monitor.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728632"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -462,7 +461,7 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizací shromážděné tímto řešením.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 | --- | --- |
 |Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; souhrnu počtu () podle operace |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; Shrnutí Count () pomocí řazení SiteUrl \| podle Count ASC|

@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712908"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita vyhledávání může načíst datovou sadu z libovolného zdroje dat podporovaného Azure Data Factory. Použijte ho v následujícím scénáři:
-- Dynamicky určit, na které objekty se má pracovat v následné aktivitě místo hardwarového kódování názvu objektu. Některé příklady objektů jsou soubory a tabulky.
+Aktivita vyhledávání může načíst datovou sadu z libovolného zdroje dat podporovaného Azure Data Factory. můžete ji použít k dynamickému určení toho, na které objekty se má pracovat v následné aktivitě namísto hardwarového kódování názvu objektu. Některé příklady objektů jsou soubory a tabulky.
 
-Aktivita vyhledávání načte a vrátí obsah konfiguračního souboru nebo tabulky. Vrátí také výsledek provedení dotazu nebo uložené procedury. Výstup aktivity vyhledávání se dá použít v následné aktivitě kopírování nebo transformace, pokud se jedná o hodnotu typu singleton. Výstup lze použít v aktivitě ForEach, pokud se jedná o pole atributů.
+Aktivita vyhledávání načte a vrátí obsah konfiguračního souboru nebo tabulky. Vrátí také výsledek provedení dotazu nebo uložené procedury. Výstupem může být hodnota singleton nebo pole atributů, které lze spotřebovat v následných aktivitách kopírování, transformace nebo toku řízení jako aktivita ForEach.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. 
+Všimněte si, že:
 
-Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků obsahuje víc záznamů, vrátí se prvních 5000 řádků. Výstup aktivity vyhledávání podporuje až přibližně 4 MB velikosti. Pokud velikost překročí limit, aktivita se nezdaří. V současné době je nejdelší doba trvání aktivity vyhledávání v poli časový limit 24 hodin.
+- Aktivita vyhledávání může vracet až **5000 řádků**. Pokud sada výsledků obsahuje víc záznamů, vrátí se prvních 5000 řádků.
+- Výstup aktivity vyhledávání podporuje až **4 MB** velikosti. Pokud velikost překročí limit, aktivita se nezdaří. 
+- Nejdelší doba trvání aktivity vyhledávání před vypršením časového limitu je **24 hodin**.
+- Když použijete dotaz nebo uloženou proceduru pro vyhledávání dat, nezapomeňte vrátit jednu a přesně jednu sadu výsledků. V opačném případě se aktivita vyhledávání nezdařila.
+
+Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -53,8 +57,8 @@ Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků o
 
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
-source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
+source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
 firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | No. Výchozí formát je `true`.
 
 > [!NOTE]
@@ -381,7 +385,7 @@ Tady jsou některá omezení aktivity vyhledávání a navrhovaná řešení.
 
 | Omezení | Alternativní řešení |
 |---|---|
-| Aktivita vyhledávání má maximálně 5 000 řádků a maximální velikost 2 MB. | Navrhněte kanál se dvěma úrovněmi, kde se vnější kanál opakuje přes vnitřní kanál, který načte data, která nepřekračují maximální počet řádků nebo velikost. |
+| Aktivita vyhledávání má maximálně 5 000 řádků a maximální velikost 4 MB. | Navrhněte kanál se dvěma úrovněmi, kde se vnější kanál opakuje přes vnitřní kanál, který načte data, která nepřekračují maximální počet řádků nebo velikost. |
 | | |
 
 ## <a name="next-steps"></a>Další kroky

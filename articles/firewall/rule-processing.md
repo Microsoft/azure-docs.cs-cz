@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741357"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurace pravidel Azure Firewall
 Pravidla překladu adres (NAT), pravidla sítě a aplikace můžete nakonfigurovat na Azure Firewall. Kolekce pravidel se zpracovávají podle typu pravidla v pořadí podle priority, nižších čísel od 100 do 65 000. Název kolekce pravidel může obsahovat jenom písmena, číslice, podtržítka, tečky nebo spojovníky. Musí začínat písmenem nebo číslicí a končit písmenem, číslicí nebo podtržítkem. Maximální délka názvu je 80 znaků.
@@ -38,7 +38,7 @@ Do 9. listopadu 2020 **všechny** určené **TCP**, **UDP** nebo **ICMP**. Proto
 
 ### <a name="nat-rules"></a>Pravidla překladu adres (NAT)
 
-Příchozí připojení k Internetu můžete povolit konfigurací překladu cílové sítě (DNAT), jak je popsáno v [kurzu: filtrování příchozího provozu pomocí Azure firewall DNAT pomocí Azure Portal](tutorial-firewall-dnat.md). Pravidla překladu adres (NAT) se aplikují přednostně před pravidly sítě. Pokud se najde shoda, přidá se implicitní odpovídající síťové pravidlo, které povolí přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu.
+Příchozí připojení k Internetu můžete povolit konfigurací překladu cílové sítě (DNAT), jak je popsáno v [kurzu: filtrování příchozího provozu pomocí Azure firewall DNAT pomocí Azure Portal](tutorial-firewall-dnat.md). Pravidla překladu adres (NAT) se aplikují přednostně před pravidly sítě. Pokud se najde shoda, přidá se implicitní odpovídající síťové pravidlo, které povolí přeložený provoz. Z bezpečnostních důvodů je doporučený postup přidat konkrétní internetový zdroj, který umožní DNAT přístup k síti a vyhnout se používání zástupných znaků.
 
 Pro příchozí připojení se nepoužijí pravidla aplikací. Takže pokud chcete filtrovat příchozí přenosy HTTP/S, měli byste použít Firewall webových aplikací (WAF). Další informace najdete v tématu [co je firewall webových aplikací Azure?](../web-application-firewall/overview.md)
 

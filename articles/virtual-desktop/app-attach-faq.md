@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591191"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738697"
 ---
 # <a name="msix-app-attach-faq"></a>DOTAZY k připojení aplikace MSIX
 
@@ -53,7 +53,7 @@ Aby dvě verze stejných aplikací MSIX běžely současně, musí být řada ba
 
 ## <a name="should-i-disable-auto-update-when-using-msix-app-attach"></a>Mám při použití aplikace MSIX připojit automatickou aktualizaci?
 
-Yes. Připojení aplikace MSIX nepodporuje automatické aktualizace pro aplikace MSIX.
+Ano. Připojení aplikace MSIX nepodporuje automatické aktualizace pro aplikace MSIX.
 
 ## <a name="how-do-permissions-work-with-msix-app-attach"></a>Jak fungují oprávnění s připojením aplikace MSIX?
 
@@ -61,15 +61,15 @@ Všechny virtuální počítače v hostitelském fondu, který používá připo
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Můžu použít připojení aplikace MSIX pro HTTP nebo HTTPs?
 
-Všechny virtuální počítače, které jsou součástí fondu hostitelů, který používá připojení aplikace MSIX, musí mít oprávnění ke čtení sdílené složky, kde jsou uložené image MSIX. Pokud se používají soubory Azure, musí být udělená oprávnění RBAC a NTFS.
+Používání aplikace MSIX připojit přes protokol HTTP nebo HTTPs není aktuálně podporováno.
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Můžu znovu připravit stejnou aplikaci MSIX?
 
-Yes. Můžete znovu připravit aplikace, které jste již znovu připravili, a nemělo by dojít k chybám.
+Ano. Můžete znovu připravit aplikace, které jste již znovu připravili, a nemělo by dojít k chybám.
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Podporuje aplikace MSIX připojení certifikátů podepsaných svým držitelem?
 
-Používání aplikace MSIX připojit přes protokol HTTP nebo HTTPs není aktuálně podporováno.
+Ano. Certifikát podepsaný svým držitelem je potřeba nainstalovat na všechny virtuální počítače hostitele relací, kde se pro hostování aplikace podepsané svým držitelem používá připojení aplikace MSIX.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e224faca3c384ee5b3df02b015199ac5eab403bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 03d83d96bb58ddaf9be4e46c4b62f10e2476e549
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370090"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750942"
 ---
 K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. na klíč instrumentace. Omezení závisí na zvoleném [cenovém plánu](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -21,7 +21,7 @@ K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. n
 | --- | --- | --- |
 | Celkem dat za den | 100 GB | Objem dat jde snížit nastavením limitu. Pokud potřebujete víc dat, můžete limit na portálu zvýšit, až 1 000 GB. Pro kapacitu větší než 1 000 GB odešlete e-mail na adresu AIDataCap@microsoft.com .
 | Throttling | události 32 000 za sekundu | Omezení se měří se po minutách.
-| Uchovávání dat | [30-730 dní](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Tento prostředek je pro funkce [Vyhledávání](../articles/azure-monitor/app/diagnostic-search.md), [Analýza](../articles/azure-monitor/log-query/log-query-overview.md) a [Průzkumník metrik](../articles/azure-monitor/platform/metrics-charts.md).
+| Uchovávání dat | [30-730 dní](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Tento prostředek je pro funkce [Vyhledávání](../articles/azure-monitor/app/diagnostic-search.md), [Analýza](../articles/azure-monitor/logs/log-query-overview.md) a [Průzkumník metrik](../articles/azure-monitor/essentials/metrics-charts.md).
 | [Vícekrokový test dostupnosti](../articles/azure-monitor/app/availability-multistep.md) – uchování podrobných výsledků | 90 dnů | Tento prostředek poskytuje podrobné výsledky každého kroku.
 | Maximální velikost události | 64 000 bajtů |
 | Délka názvu vlastnosti a metriky | 150 | Viz [schémata typů](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).

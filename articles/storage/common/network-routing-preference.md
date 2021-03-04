@@ -1,26 +1,26 @@
 ---
-title: Konfigurace předvolby směrování sítě (Preview)
+title: Priorita síťového směrování
 titleSuffix: Azure Storage
-description: Nakonfigurujte předvolby směrování sítě (Preview) pro váš účet služby Azure Storage, abyste určili, jak se bude směrovat síťový provoz na váš účet od klientů přes Internet.
+description: Priorita síťového směrování umožňuje určit, jak se má síťový provoz směrovat na váš účet, od klientů přes Internet.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726933"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurace předvolby směrování sítě pro Azure Storage (Preview)
+# <a name="network-routing-preference-for-azure-storage"></a>Priorita síťového směrování pro Azure Storage
 
-Můžete nakonfigurovat [Předvolby směrování](../../virtual-network/routing-preference-overview.md) sítě (Preview) pro účet služby Azure Storage, abyste určili, jak bude síťový provoz směrován do svého účtu z klientů přes Internet. Ve výchozím nastavení je provoz z Internetu směrován do veřejného koncového bodu účtu úložiště přes [globální síť Microsoft](../../networking/microsoft-global-network.md). Azure Storage poskytuje další možnosti pro konfiguraci způsobu směrování provozu do svého účtu úložiště.
+Můžete nakonfigurovat [Předvolby směrování](../../virtual-network/routing-preference-overview.md) sítě pro účet služby Azure Storage, abyste určili, jak se bude směrovat síťový provoz na váš účet od klientů přes Internet. Ve výchozím nastavení je provoz z Internetu směrován do veřejného koncového bodu účtu úložiště přes [globální síť Microsoft](../../networking/microsoft-global-network.md). Azure Storage poskytuje další možnosti pro konfiguraci způsobu směrování provozu do svého účtu úložiště.
 
 Při konfiguraci předvolby směrování získáte flexibilitu při optimalizaci provozu buď pro zvýšení výkonu sítě úrovně Premium, nebo pro náklady. Když nakonfigurujete předvolbu směrování, určíte, jak bude ve výchozím nastavení směrován z provozu na veřejný koncový bod vašeho účtu úložiště. Pro svůj účet úložiště můžete také publikovat koncové body specifické pro trasu.
 
@@ -37,9 +37,11 @@ Následující diagram znázorňuje, jak přenos toků mezi klientem a účtem �
 
 ![Přehled možností směrování pro Azure Storage](media/network-routing-preference/routing-options-diagram.png)
 
-Další informace o předvolbách směrování v Azure najdete v tématu [co je předvolby směrování (Preview)?](../../virtual-network/routing-preference-overview.md).
+Další informace o předvolbách směrování v Azure najdete v tématu [co je předvolby směrování?](../../virtual-network/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Konfigurace směrování
+
+Podrobné pokyny, které vám ukáže, jak nakonfigurovat předvolby směrování a koncové body specifické pro směrování, najdete v tématu [Konfigurace předvolby síťového směrování pro Azure Storage](configure-network-routing-preference.md).
 
 Jako výchozí předvolby směrování pro veřejný koncový bod vašeho účtu úložiště si můžete vybrat mezi globálním a internetovým směrováním od Microsoftu. Výchozí preference směrování se vztahuje na veškerý provoz od klientů mimo Azure a ovlivňuje koncové body Azure Data Lake Storage Gen2, BLOB Storage, souborů Azure a statických webů. Konfigurace předvoleb směrování není pro fronty Azure nebo tabulky Azure podporovaná.
 
@@ -65,7 +67,7 @@ Pokud máte účet úložiště s přístupem pro čtení (RA-GRS) nebo geografi
 
 Připojovací řetězce pro koncové body, které jsou specifické pro trasu, se dají kopírovat prostřednictvím [Azure Portal](https://portal.azure.com). Tyto připojovací řetězce lze použít pro autorizaci pomocí sdíleného klíče se všemi existujícími Azure Storage SDK a rozhraními API.
 
-## <a name="about-the-preview"></a>O verzi Preview
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Předvolby směrování pro Azure Storage jsou k dispozici v následujících oblastech:
 
@@ -100,16 +102,17 @@ Předvolby směrování pro Azure Storage jsou k dispozici v následujících ob
 - Austrálie – východ 
 - Austrálie – jihovýchod 
 
-Následující známé problémy mají vliv na verzi Preview předvolby směrování pro Azure Storage:
+Následující známé problémy mají vliv na Předvolby směrování pro Azure Storage:
 
 - Žádosti o přístup ke koncovému bodu specifického pro trasu pro globální síť Microsoft se nezdaří s chybou HTTP 404 nebo ekvivalentní. Směrování přes globální síť Microsoft funguje podle očekávání, pokud je nastavená jako výchozí priorita směrování pro veřejný koncový bod.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Podrobnosti o cenách a fakturaci najdete v části s **cenami** v tématu [co je to preference směrování (Preview)?](../../virtual-network/routing-preference-overview.md#pricing).
+Podrobnosti o cenách a fakturaci najdete v části s **cenami** v tématu [co je předvolby směrování?](../../virtual-network/routing-preference-overview.md#pricing).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je předvolby směrování (Preview)?](../../virtual-network/routing-preference-overview.md)
+- [Co je předvolba směrování?](../../virtual-network/routing-preference-overview.md)
+- [Konfigurace předvolby směrování sítě](configure-network-routing-preference.md)
 - [Konfigurace bran firewall Azure Storage a virtuálních sítí](storage-network-security.md)
 - [Doporučení zabezpečení pro úložiště objektů BLOB](../blobs/security-recommendations.md)

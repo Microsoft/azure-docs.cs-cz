@@ -4,15 +4,15 @@ description: Pochopte Synchronizace souborů Azure místní proxy a nastavení b
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673616"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729636"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Synchronizace souborů Azure propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -50,6 +50,30 @@ příkazů PowerShellu pro konfiguraci nastavení proxy serveru pro konkrétní 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
+Pokud například vaše proxy server vyžaduje ověřování pomocí uživatelského jména a hesla, spusťte následující příkazy PowerShellu:
+
+```powershell
+# IP address or name of the proxy server.
+$Address="127.0.0.1"  
+
+# The port to use for the connection to the proxy.
+$Port=8080
+
+# The user name for a proxy.
+$UserName="user_name" 
+
+# Please type or paste a string with a password for the proxy.
+$SecurePassword = Read-Host -AsSecureString
+
+$Creds = New-Object System.Management.Automation.PSCredential ($UserName, $SecurePassword)
+
+# Please verify that you have entered the password correctly.
+Write-Host $Creds.GetNetworkCredential().Password
+
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+
+Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
 ```
 **Nastavení proxy serveru pro celý počítač** jsou transparentní pro agenta synchronizace souborů Azure, protože celý provoz serveru je směrován přes proxy server.
 
@@ -99,8 +123,8 @@ V následující tabulce jsou popsány požadované domény pro komunikaci:
 | **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | Použijte adresu URL veřejného koncového bodu. | K této adrese URL má přístup Knihovna ověřování Active Directory, kterou používá uživatelské rozhraní pro registraci Synchronizace souborů Azure serveru pro přihlášení správce. |
 | **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Když server stáhne soubor, pak server při přímé komunikaci do sdílené složky Azure v účtu úložiště provede rychlejší přesun dat. Server má klíč SAS, který umožňuje jenom cílenému přístupu ke sdíleným složkám souborů. |
 | **Synchronizace souborů Azure** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | Po počáteční registraci serveru dostane Server místní adresu URL pro instanci služby Synchronizace souborů Azure Service v této oblasti. Server může adresu URL použít ke komunikaci přímo a efektivně s instancí, která zpracovává její synchronizaci. |
-| **Infrastruktura veřejných klíčů Microsoftu** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Po instalaci agenta Synchronizace souborů Azure se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Synchronizace souborů Azure a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
-| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Po instalaci agenta Synchronizace souborů Azure se Microsoft Update adresy URL používají ke stažení Synchronizace souborů Azure aktualizace agenta. |
+| **Infrastruktura veřejných klíčů Microsoftu** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | Po instalaci agenta Synchronizace souborů Azure se adresa URL PKI používá ke stažení zprostředkujících certifikátů potřebných ke komunikaci se službou Synchronizace souborů Azure a sdílenou složkou souborů Azure. Adresa URL protokolu OCSP slouží ke kontrole stavu certifikátu. |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;. ctldl.windowsupdate.com<br>&ast;. dl.delivery.mp.microsoft.com<br>&ast;. emdl.ws.microsoft.com | Po instalaci agenta Synchronizace souborů Azure se Microsoft Update adresy URL používají ke stažení Synchronizace souborů Azure aktualizace agenta. |
 
 > [!Important]
 > Při povolování provozu do &ast; . AFS.Azure.NET je přenos možné pouze do synchronizační služby. Tuto doménu nepoužívají žádné další služby společnosti Microsoft.
@@ -112,9 +136,9 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 
 | Cloud  | Oblast | Adresa URL primárního koncového bodu | Spárovaná oblast | Adresa URL zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Veřejná |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Australia Southeast | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
-| Veřejná |Australia Southeast | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
-| Veřejná | Brazil South | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
+| Veřejná |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Austrálie – jihovýchod | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
+| Veřejná |Austrálie – jihovýchod | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
+| Veřejná | Brazílie – jih | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
 | Veřejná | Střední Kanada | https: \/ /canadacentral01.AFS.Azure.NET<br>https: \/ /kailani-CAC.One.Microsoft.com | Kanada – východ | https: \/ /TM-canadacentral01.AFS.Azure.NET<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
 | Veřejná | Kanada – východ | https: \/ /canadaeast01.AFS.Azure.NET<br>https: \/ /kailani-CAE.One.Microsoft.com | Střední Kanada | https: \/ /TM-canadaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
 | Veřejná | Indie – střed | https: \/ /centralindia01.AFS.Azure.NET<br>https: \/ /kailani-CIN.One.Microsoft.com | Indie – jih | https: \/ /TM-centralindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-CIN.One.Microsoft.com |
@@ -124,8 +148,8 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 | Veřejná | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | USA – střed | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
 | Veřejná | Německo – sever | https: \/ /germanynorth01.AFS.Azure.NET | Německo – středozápad | https: \/ /TM-germanywestcentral01.AFS.Azure.NET |
 | Veřejná | Německo – středozápad | https: \/ /germanywestcentral01.AFS.Azure.NET | Německo – sever | https: \/ /TM-germanynorth01.AFS.Azure.NET |
-| Veřejná | Japan East | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
-| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japan East | https: \/ /TM-japanwest01.AFS.Azure.NET |
+| Veřejná | Japonsko – východ | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
+| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japonsko – východ | https: \/ /TM-japanwest01.AFS.Azure.NET |
 | Veřejná | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
 | Veřejná | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
 | Veřejná | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |

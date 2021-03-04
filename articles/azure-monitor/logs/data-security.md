@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: e8ad1cda8f80b1dbbdd56fb47bbf6c22aff82729
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 128a82fdc9b5a37258b5ca245a63bf52c050db26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609783"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713605"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
 Účelem tohoto dokumentu je poskytnout informace, které jsou specifické pro Log Analytics, což je funkce Azure Monitor, která doplní informace na [Centrum zabezpečení Azure](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -183,12 +183,12 @@ Pokud chcete získat přístup k pracovnímu prostoru Log Analytics, přihlaste 
 ## <a name="additional-security-features"></a>Další funkce zabezpečení
 Pomocí těchto dalších funkcí zabezpečení můžete dále zabezpečit vaše prostředí Azure Monitor/Log Analytics. Tyto funkce vyžadují větší správu správců. 
 - [Klíče spravované zákazníkem (zabezpečení)](../logs/customer-managed-keys.md) – pomocí klíčů spravovaných zákazníkem můžete šifrovat data odesílaná do vašich Log Analytics pracovních prostorů. Vyžaduje použití Azure Key Vault. 
-- [Soukromé/zákazníkem spravované úložiště](../platform/private-storage.md) – spravujte účet úložiště s vlastním šifrováním a sdělte Log Analytics, jak ho používat k ukládání dat monitorování. 
-- [Soukromé odkazy sítě](../platform/private-link-security.md) – privátní propojení Azure umožňuje zabezpečené propojení služeb Azure PaaS (včetně Azure monitor) do vaší virtuální sítě pomocí privátních koncových bodů. 
+- [Soukromé/zákazníkem spravované úložiště](./private-storage.md) – spravujte účet úložiště s vlastním šifrováním a sdělte Log Analytics, jak ho používat k ukládání dat monitorování. 
+- [Soukromé odkazy sítě](./private-link-security.md) – privátní propojení Azure umožňuje zabezpečené propojení služeb Azure PaaS (včetně Azure monitor) do vaší virtuální sítě pomocí privátních koncových bodů. 
 - [Bezpečnostní modul Azure pro zákazníky](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) – Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
 
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../learn/quick-collect-azurevm.md).  
+* Naučte se shromažďovat data pomocí Log Analytics pro virtuální počítače Azure po [rychlém startu virtuálního počítače Azure](../vm/quick-collect-azurevm.md).  
 
-*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../vm/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../learn/quick-collect-windows-computer.md) .
+*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů se systémem Windows nebo Linux ve vašem prostředí, přečtěte si [rychlý Start pro počítače](../vm/quick-collect-linux-computer.md) se systémem Linux nebo [rychlý Start pro počítače se systémem Windows](../vm/quick-collect-windows-computer.md) .

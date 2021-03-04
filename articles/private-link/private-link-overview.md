@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 34223298dbf0dad9d9214676a5190bef063a8228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712177"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -54,7 +54,7 @@ Privátní propojení Azure přináší následující výhody:
 |  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti     | Podporováno pro Pro obecné účely a paměťově optimalizované cenové úrovně | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Database for PostgreSQL.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti      |  | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Database for MySQL.](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti     |  | GA <br/> [Naučte se vytvořit privátní koncový bod pro Azure Database for MariaDB.](../mariadb/concepts-data-access-security-private-link.md)      |
-|  Azure Digital Twins         | Všechny veřejné oblasti podporované pomocí digitálních vláken Azure     |  | Preview <br/> [Naučte se vytvářet privátní koncový bod pro digitální vlákna Azure.](../digital-twins/how-to-enable-private-link.md)      |
+|  Azure Digital Twins         | Všechny veřejné oblasti podporované pomocí digitálních vláken Azure     |  | Preview <br/> [Naučte se vytvářet privátní koncový bod pro digitální vlákna Azure.](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      |  | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Key Vault.](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service – rozhraní API pro Kubernetes | Všechny veřejné oblasti      |  | GA   <br/> [Přečtěte si, jak vytvořit privátní koncový bod pro službu Azure Kubernetes.](../aks/private-clusters.md)   |
 |Azure Search | Všechny veřejné oblasti <br/> Všechny oblasti státní správy | Podporováno u služby v privátním režimu | GA   <br/> [Naučte se vytvořit privátní koncový bod pro Azure Search.](../search/service-create-private-endpoint.md)    |

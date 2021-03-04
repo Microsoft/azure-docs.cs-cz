@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 9fba5b7636bcef68b55528350ea63ce9d386bb16
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1e61d0b8eb8312c78acabbd087208bb64a2d0d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609831"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734447"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
-Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](../platform/metrics-supported.md). Jsou však omezené. 
+Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](./metrics-supported.md). Jsou však omezené. 
 
 Je možné, že budete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro firmy, které poskytují hlubší přehledy. Tyto **vlastní** metriky je možné shromažďovat prostřednictvím telemetrie aplikací, agenta, který běží na vašich prostředcích Azure, nebo i mimo monitorovací systém a přímo odeslat Azure monitor. Po publikování do Azure Monitor můžete procházet, dotazovat a upozorňovat na vlastní metriky pro vaše prostředky a aplikace Azure vedle sebe se standardními metrikami, které vysílá Azure.
 
@@ -75,7 +75,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
@@ -223,5 +223,3 @@ Použijte vlastní metriky z různých služeb:
  - [Virtuální počítač se systémem Linux pomocí agenta telegraf](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST API](./metrics-store-custom-rest-api.md)
  - [Klasický Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)
- 
-

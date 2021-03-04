@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091342"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693743"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak povolit vnořenou virtualizaci na virtuálním počítači Azure
 
@@ -22,11 +22,9 @@ Tento článek vás provede povolením technologie Hyper-V na VIRTUÁLNÍm poč�
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Vytvoření vnořování podporujícího virtuální počítač Azure
 
-Vytvořte nový virtuální počítač Azure s Windows serverem 2016. Úplný seznam velikostí virtuálních počítačů, které podporují vnořování, najdete v [článku výpočetní jednotky Azure](../acu.md).
+Vytvořte nový virtuální počítač Azure s Windows serverem 2016 nebo Windows serverem 2019 pro hostitele. Ujistěte se, že jste zvolili velikost pro váš virtuální počítač, který podporuje vnořování, a je dostatečně velký pro splnění požadavků hostovaných virtuálních počítačů. Seznam velikostí virtuálních počítačů, které podporují vnořování, najdete v článku [výpočetní jednotky Azure](../acu.md) .
 
-Nezapomeňte si vybrat velikost virtuálního počítače dostatečně velkou, aby se podporovaly požadavky hostovaného virtuálního počítače. V tomto příkladu používáme D4_v3 velikosti virtuálního počítače Azure. 
-
-Místní dostupnost virtuálních počítačů s Dv3 nebo Ev3 Series můžete zobrazit [zde](https://azure.microsoft.com/regions/services/).
+Místní dostupnost velikostí virtuálních počítačů můžete zobrazit na stránce [produkty dostupné v oblasti](https://azure.microsoft.com/regions/services/) .
 
 >[!NOTE]
 >
@@ -94,7 +92,7 @@ Vytvořte nový virtuální síťový adaptér pro hostovaný virtuální počí
 4. Vytvořte IP adresu pro bránu NAT.
     
 Aby bylo možné bránu nakonfigurovat, potřebujete nějaké informace o vaší síti:    
-  * IPAddress – IP adresa brány NAT Určuje adresu IPv4 nebo IPv6, která se má použít jako adresa výchozí brány pro podsíť virtuální sítě. Obecný formulář je a. b. c. 1 (například "192.168.0.1"). I když poslední pozice nemusí být 1, obvykle je (na základě délky předpony). Obvykle byste měli použít adresní prostor privátní sítě RFC 1918. 
+  * IP adresa – IP adresa brány NAT Určuje adresu protokolu IPv4 nebo IPv6, která se má použít jako adresa výchozí brány pro podsíť virtuální sítě. Obecný formulář je a. b. c. 1 (například "192.168.0.1"). I když poslední pozice nemusí být 1, obvykle je (na základě délky předpony). Obvykle byste měli použít adresní prostor privátní sítě RFC 1918. 
   * PrefixLength – délka předpony podsítě definuje velikost místní podsítě (maska podsítě). Délka předpony podsítě bude celočíselná hodnota mezi 0 a 32. 0 by namapoval celý Internet, 32 by povoloval jenom jednu namapovanou IP adresu. Rozsahy běžných hodnot od 24 do 12 v závislosti na tom, kolik IP adres je potřeba připojit k překladu adres (NAT). Běžná PrefixLength je 24 – jedná se o masku podsítě 255.255.255.0.
   * InterfaceIndex- **ifIndex** je index rozhraní virtuálního přepínače vytvořeného v předchozím kroku. 
 

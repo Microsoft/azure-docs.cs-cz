@@ -14,42 +14,70 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 9628e46281e267bd1c1fd8277a3a975bc338c6dc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724621"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k rozhraní Media Services V3 API – Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-V tomto článku se dozvíte, jak se připojit ke službě Azure Media Services V3 node.js SDK pomocí metody přihlašování instančního objektu.
+V tomto článku se dozvíte, jak se připojit ke službě Azure Media Services V3 node.js SDK pomocí metody přihlašování instančního objektu. Budete pracovat se soubory v úložišti ukázek *Media-Services-V3-Node-kurzy* . Ukázka *HelloWorld-ListAssets* obsahuje kód pro připojení a pak vypíše prostředky v účtu.
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Instalace Visual Studio Code.
 - Nainstalujte [Node.js](https://nodejs.org/en/download/).
 - Nainstalujte [TypeScript](https://www.typescriptlang.org/download).
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- Vytvořte instanční objekt pro vaši aplikaci. Viz [rozhraní API pro přístup](./access-api-howto.md).<br/>**Tip pro** Nechejte toto okno otevřené nebo zkopírujte všechno na kartě JSON do poznámkového bloku. 
+- Nezapomeňte získat nejnovější verzi sady [AZUREMEDIASERVICES SDK pro JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices).
 
 > [!IMPORTANT]
-> Přečtěte si Azure Media Services [konvence pojmenování](media-services-apis-overview.md#naming-conventions) a pochopte důležitá omezení pojmenování entit. 
+> Přečtěte si Azure Media Services [konvence pojmenování](media-services-apis-overview.md#naming-conventions) a pochopte důležitá omezení pojmenování entit.
 
-## <a name="reference-documentation-for-azurearm-mediaservices"></a>Referenční dokumentace pro @Azure/arm-mediaservices
-- [Referenční dokumentace k modulům Azure Media Services pro Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+## <a name="clone-the-nodejs-samples-repo"></a>Klonování úložiště ukázek Node.JS
 
-## <a name="more-developer-documentation-for-nodejs-on-azure"></a>Další dokumentaci pro vývojáře k Node.js v Azure
-- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
-- [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti centra Git](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Dokumentace k balíčku Azure pro vývojáře Node.js](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+V ukázkách Azure budete pracovat s některými soubory. Naklonujte úložiště ukázek Node.JS.
+
+```git
+git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
+```
 
 ## <a name="install-the-packages"></a>Nainstalovat balíčky
 
-1. Vytvořte package.jsv souboru pomocí oblíbeného editoru.
-1. Otevřete soubor a vložte následující kód:
+### <a name="install-azurearm-mediaservices"></a>Znovu @azure/arm-mediaservices
 
-   Nezapomeňte získat nejnovější verzi sady [AZUREMEDIASERVICES SDK pro JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices).
+```bash
+npm install @azure/arm-mediaservices
+```
+
+### <a name="install-azurems-rest-nodeauth"></a>Znovu @azure/ms-rest-nodeauth
+
+Nainstalujte prosím minimální verzi " @azure/ms-rest-nodeauth ": "^ 3.0.0".
+
+```bash
+npm install @azure/ms-rest-nodeauth@"^3.0.0"
+```
+
+V tomto příkladu použijete následující balíčky v `package.json` souboru.
+
+|Balíček|Popis|
+|---|---|
+|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Pokud chcete mít jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [instalaci @azure/arm-mediaservices npm ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
+|`@azure/ms-rest-nodeauth` | Vyžadováno pro ověřování AAD pomocí instančního objektu nebo spravované identity|
+|`@azure/storage-blob`|Sada SDK pro úložiště Používá se při nahrávání souborů do assetů.|
+|`@azure/ms-rest-js`| Slouží k přihlášení.|
+|`@azure/storage-blob` | Slouží k nahrání a stažení souborů do assetů v Azure Media Services pro kódování.|
+|`@azure/abort-controller`| Používá se společně s klientem úložiště k vypršení časového limitu dlouho spuštěných operací stahování.|
+
+### <a name="create-the-packagejson-file"></a>Vytvořit package.jsv souboru
+
+1. `package.json`Pomocí oblíbeného editoru vytvořte soubor.
+1. Otevřete soubor a vložte následující kód:
 
 ```json
 {
@@ -66,43 +94,18 @@ V tomto článku se dozvíte, jak se připojit ke službě Azure Media Services 
 }
 ```
 
-Je třeba zadat následující balíčky:
-
-|Balíček|Popis|
-|---|---|
-|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Pokud chcete mít jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [instalaci @azure/arm-mediaservices npm ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
-|`@azure/ms-rest-nodeauth` | Vyžadováno pro ověřování AAD pomocí instančního objektu nebo spravované identity|
-|`@azure/storage-blob`|Sada SDK pro úložiště Používá se při nahrávání souborů do assetů.|
-|`@azure/ms-rest-js`| Slouží k přihlášení.|
-|`@azure/storage-blob` | Slouží k nahrání a stažení souborů do assetů v Azure Media Services pro kódování.|
-|`@azure/abort-controller`| Používá se společně s klientem úložiště k vypršení časového limitu dlouho spuštěných operací stahování.|
-
-
-Abyste měli jistotu, že používáte nejnovější balíček, můžete spustit následující příkaz:
-
-### <a name="install-azurearm-mediaservices"></a>Znovu @azure/arm-mediaservices
-```
-npm install @azure/arm-mediaservices
-```
-
-### <a name="install-azurems-rest-nodeauth"></a>Znovu @azure/ms-rest-nodeauth
-
-Nainstalujte prosím minimální verzi " @azure/ms-rest-nodeauth ": "^ 3.0.0".
-
-```
-npm install @azure/ms-rest-nodeauth@"^3.0.0"
-```
-
 ## <a name="connect-to-nodejs-client-using-typescript"></a>Připojení k Node.js klienta pomocí TypeScriptu
 
-1. Pomocí oblíbeného editoru vytvořte soubor TypeScript. TS.
-1. Otevřete soubor a vložte následující kód.
-1. Vytvořte soubor. ENV a vyplňte podrobnosti z Azure Portal. Viz [rozhraní API pro přístup](./access-api-howto.md).
 
-### <a name="sample-env-file"></a>Ukázkový soubor. env
-```
-# copy the content of this file to a file named ".env". It should be stored at the root of the repo.
-# The values can be obtained from the API Access page for your Media Services account in the portal.
+
+### <a name="sample-env-file"></a>Ukázkový soubor *. env*
+
+Zkopírujte obsah tohoto souboru do souboru s názvem *. env*. Měl by být uložený v kořenovém adresáři pracovního úložiště. Jedná se o hodnoty, které jste získali ze stránky přístup k rozhraní API pro váš Media Services účet na portálu.
+
+Po vytvoření souboru *. env* můžete začít pracovat s ukázkami.
+
+```nodejs
+# Values from the API Access page in the portal
 AZURE_CLIENT_ID=""
 AZURE_CLIENT_SECRET= ""
 AZURE_TENANT_ID= ""
@@ -126,8 +129,42 @@ AZURE_ARM_ENDPOINT="https://management.azure.com"
 DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 ```
 
-## <a name="typescript---hello-world---list-assets"></a>TypeScript-Hello World – seznam prostředků
-V této ukázce se dozvíte, jak se připojit k klientovi Media Services pomocí instančního objektu a seznamu prostředků v účtu. Pokud používáte nový účet, seznam se vrátí jako prázdný. Pokud chcete zobrazit výsledky, můžete na portálu nahrát několik prostředků.
+## <a name="run-the-sample-application-helloworld-listassets"></a>Spuštění ukázkové aplikace *HelloWorld – ListAssets*
+
+1. Změnit adresář na složku *AMSv3Samples*
+
+```bash
+cd AMSv3Samples
+```
+
+2. Nainstaluje balíčky používané v *packages.js* souboru.
+
+```
+npm install 
+```
+
+3. Změňte adresář na složku *HelloWorld-ListAssets* .
+
+```bash
+cd HelloWorld-ListAssets
+```
+
+4. Spusťte Visual Studio Code ze složky AMSv3Samples. Tato možnost je nutná ke spuštění ze složky, kde se nachází složka ". VSCode" a tsconfig.jsv souborech.
+
+```dotnetcli
+cd ..
+code .
+```
+
+Otevřete složku pro *HelloWorld-ListAssets* a otevřete soubor *index. ts* v editoru Visual Studio Code.
+
+V souboru *index. TS* stisknutím klávesy F5 spusťte ladicí program. Pokud již máte prostředky v účtu, měl by se zobrazit seznam prostředků. Pokud je účet prázdný, zobrazí se prázdný seznam.  
+
+K rychlému zobrazení uvedených prostředků použijte portál k nahrání několika videosouborů. Assety se automaticky vytvoří každou z nich a znovu spustí tento skript a pak vrátí jejich názvy.
+
+### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>Podrobnější přehled o ukázce *HelloWorld-ListAssets*
+
+Ukázka *HelloWorld-ListAssets* vám ukáže, jak se připojit k Media Services klienta s objektem služby a vypsat prostředky v účtu. Podrobné vysvětlení toho, co dělá, najdete v komentářích v kódu.
 
 ```ts
 import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
@@ -174,38 +211,6 @@ main().catch((err) => {
 });
 ```
 
-## <a name="run-the-sample-application-helloworld-listassets"></a>Spusťte ukázkovou aplikaci HelloWorld-ListAssets
-
-Naklonujte úložiště pro ukázky Node.js.
-
-```git
-git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
-```
-
-Změnit adresář na složku AMSv3Samples
-```bash
-cd AMSv3Samples
-```
-
-Nainstalovat balíčky používané v packages.js
-```
-npm install 
-```
-
-Změnit adresář na složku HelloWorld-ListAssets
-```bash
-cd HelloWorld-ListAssets
-```
-
-Spusťte Visual Studio Code ze složky AMSv3Samples. Tato možnost je nutná ke spuštění ze složky, kde se nachází složka ". VSCode" a tsconfig.jsv souborech.
-```dotnetcli
-cd ..
-code .
-```
-
-Otevřete složku pro HelloWorld-ListAssets a otevřete soubor index. TS v editoru Visual Studio Code.
-V souboru index. TS stisknutím klávesy F5 spusťte ladicí program. Pokud již máte prostředky v účtu, měl by se zobrazit seznam prostředků. Pokud je účet prázdný, zobrazí se prázdný seznam.  Pokud si chcete zobrazit výsledky, nahrajte na portálu několik prostředků.
-
 ## <a name="more-samples"></a>Další ukázky
 
 V [úložišti](https://github.com/Azure-Samples/media-services-v3-node-tutorials) jsou k dispozici následující ukázky.
@@ -219,6 +224,10 @@ V [úložišti](https://github.com/Azure-Samples/media-services-v3-node-tutorial
 
 ## <a name="see-also"></a>Viz také
 
+- [Referenční dokumentace k modulům Azure Media Services pro Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti centra Git](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [Dokumentace k balíčku Azure pro vývojáře Node.js](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
 - [Media Services koncepty](concepts-overview.md)
 - [instalace npm @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)

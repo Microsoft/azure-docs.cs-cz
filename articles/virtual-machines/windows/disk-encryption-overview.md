@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357789"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694304"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption pro virtuální počítače s Windows 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption pro virtuální počítače s Windows
 
-Azure Disk Encryption přispívá k zabezpečení a ochraně vašich dat, aby byly splněny závazky organizace související se zabezpečením a dodržováním předpisů. Pomocí funkce [BitLocker](https://en.wikipedia.org/wiki/BitLocker) systému Windows poskytuje šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , které vám pomůžou řídit a spravovat klíče a tajné kódy disku. 
+Azure Disk Encryption přispívá k zabezpečení a ochraně vašich dat, aby byly splněny závazky organizace související se zabezpečením a dodržováním předpisů. Pomocí funkce [BitLocker](https://en.wikipedia.org/wiki/BitLocker) systému Windows poskytuje šifrování svazku pro operační systém a datové disky virtuálních počítačů Azure a je integrována s [Azure Key Vault](../../key-vault/index.yml) , které vám pomůžou řídit a spravovat klíče a tajné kódy disku.
+
+Azure Disk Encryption je odolný proti zóně stejným způsobem jako Virtual Machines. Podrobnosti najdete v tématu [služby Azure, které podporují zóny dostupnosti](../../availability-zones/az-region.md).
 
 Pokud používáte [Azure Security Center](../../security-center/index.yml), budete upozorněni v případě, že máte virtuální počítače, které nejsou šifrované. Výstrahy se zobrazují jako Vysoká závažnost a doporučení slouží k šifrování těchto virtuálních počítačů.
 
@@ -27,19 +29,15 @@ Pokud používáte [Azure Security Center](../../security-center/index.yml), bud
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md) . 
 > - Některá doporučení můžou zvýšit využití dat, sítě nebo výpočetních prostředků, což má za následek další licence nebo náklady na předplatné. Abyste mohli vytvářet prostředky v Azure v podporovaných oblastech, musíte mít platné aktivní předplatné Azure.
 
-Základní informace o Azure Disk Encryption pro Windows během několika minut se dozvíte v tématu [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure PowerShellu pro rychlý Start](disk-encryption-powershell-quickstart.md).
+Základní informace o Azure Disk Encryption pro Windows během několika minut se dozvíte v tématu [Vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače s Windows pomocí Průvodce rychlým startem Azure PowerShell](disk-encryption-powershell-quickstart.md).
 
 ## <a name="supported-vms-and-operating-systems"></a>Podporované virtuální počítače a operační systémy
 
 ### <a name="supported-vms"></a>Podporované virtuální počítače
 
-Virtuální počítače s Windows jsou dostupné v [různých velikostech](../sizes-general.md). Azure Disk Encryption není k dispozici pro virtuální počítače [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích s méně než 2 GB paměti.
+Virtuální počítače s Windows jsou dostupné v [různých velikostech](../sizes-general.md). Azure Disk Encryption se podporuje u virtuálních počítačů 1. generace a 2. generace. Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
 
-Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
-
-Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace](../generation-2.md#generation-1-vs-generation-2-capabilities). Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-windows.md#unsupported-scenarios).
-
-Azure Disk Encryption není k dispozici pro image virtuálních počítačů bez dočasných disků (dv4, Dsv4, Ev4 a Esv4).  Podívejte [se na velikost virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md).
+Azure Disk Encryption není k dispozici pro virtuální počítače [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)nebo na virtuálních počítačích s méně než 2 GB paměti.  Azure Disk Encryption není k dispozici také pro image virtuálních počítačů bez dočasných disků (dv4, Dsv4, Ev4 a Esv4).  Podívejte [se na velikost virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md).  Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -85,12 +83,11 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 | Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete poskytnout klíč chráněný modulem hardwarového zabezpečení (HSM) nebo klíč chráněný softwarem. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Rutiny prostředí PowerShell | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/). |
 
-
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI ](disk-encryption-cli-quickstart.md)
-- [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure PowerShellu](disk-encryption-powershell-quickstart.md)
+- [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows](disk-encryption-windows.md)
-- [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started)
+- [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started) 
 - [Skript prostředí PowerShell pro Azure Disk Encryption předpoklady](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption](disk-encryption-key-vault.md)

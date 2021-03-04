@@ -4,19 +4,21 @@ description: Ochrana dat benchmark v2 pro Azure Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735756"
 ---
 # <a name="security-control-v2-data-protection"></a>Řízení zabezpečení v2: Ochrana dat
 
 Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu. To zahrnuje zjišťování, klasifikaci, ochranu a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure.
+
+Pokud se chcete podívat na příslušný integrovaný Azure Policy, přečtěte si [Podrobnosti o integrované iniciativě dodržování předpisů Azure Security test legislativ: Ochrana dat](../../governance/policy/samples/azure-security-benchmark#data-protection)
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Zjišťování, klasifikace a označení citlivých dat
 
@@ -24,9 +26,9 @@ Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a 
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
-Zjišťování, klasifikace a označování citlivých dat, abyste mohli navrhovat příslušné ovládací prvky pro zajištění, že se citlivé informace ukládají, zpracovávají a bezpečně odesílají technologické systémy organizace. 
+Zjišťování, klasifikace a označování citlivých dat, abyste mohli navrhovat příslušné ovládací prvky pro zajištění, že se citlivé informace ukládají, zpracovávají a bezpečně odesílají technologické systémy organizace.
 
-V případě citlivých informací v rámci dokumentů Office v Azure, místním prostředí, Office 365 a dalších umístěních můžete využít službu Azure Information Protection (a přidružený nástroj pro zjišťování). 
+V případě citlivých informací v rámci dokumentů Office v Azure, místním prostředí, Office 365 a dalších umístěních můžete využít službu Azure Information Protection (a přidružený nástroj pro zjišťování).
 
 Služba Azure SQL Information Protection vám může pomoct s klasifikací a označováním informací uložených v databázích Azure SQL.
 
@@ -38,7 +40,7 @@ Služba Azure SQL Information Protection vám může pomoct s klasifikací a ozn
 
 **Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [Zabezpečení aplikací a DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Zabezpečení dat](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Azure Information Protection (AIP) nabízí funkce monitorování důvěrných a
 
 Pokud to v rámci ochrany před únikem informací vyžaduje dodržování předpisů, můžete k vynucování kontrolních mechanismů detekce a prevence za účelem zajištění ochrany před exfiltrací dat využít řešení ochrany před únikem informací na hostiteli.
 
-- [Povolení ochrany ATP pro Azure SQL](../../azure-sql/database/threat-detection-overview.md)
+- [Azure Defender for SQL](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Povolení ochrany ATP pro službu Azure Storage](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Azure Defender pro úložiště](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Odpovědnost:** Sdílené
 
@@ -102,13 +104,13 @@ Pokud to v rámci ochrany před únikem informací vyžaduje dodržování před
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| DP-4 | 14,4 | SC-8 |
+| DP-4 | 14.4 | SC-8 |
 
-Aby bylo možné doplňovat řízení přístupu, je třeba chránit data při přenosu proti útokům typu "vzdálené správy" (např. zachytávání přenosů) pomocí šifrování, aby útočníci mohli snadno číst nebo upravovat data. 
+Pro doplnění řízení přístupu by se data v přenosu měla chránit před útoky typu "vzdálené správy" (například zachytávání přenosů) pomocí šifrování, aby útočníci mohli snadno číst nebo upravovat data.
 
-I když je to pro přenosy v privátních sítích volitelné, je to pro provoz v externích i veřejných sítích velmi důležité. U přenosů HTTP zajistěte, aby všichni klienti připojující se k prostředkům Azure mohli vyjednávat TLS v 1.2 nebo vyšší verzi. Pro vzdálenou správu použijte místo nešifrovaného protokolu SSH (pro Linux) nebo RDP/TLS (pro Windows). Zastaralé verze a protokoly SSL, TLS a SSH a slabé šifry by měly být zakázané.  
+I když je to pro přenosy v privátních sítích volitelné, je to pro provoz v externích i veřejných sítích velmi důležité. U přenosů HTTP zajistěte, aby všichni klienti připojující se k prostředkům Azure mohli vyjednávat TLS v 1.2 nebo vyšší verzi. Pro vzdálenou správu použijte místo nešifrovaného protokolu SSH (pro Linux) nebo RDP/TLS (pro Windows). Zastaralé verze a protokoly SSL, TLS a SSH a slabé šifry by měly být zakázané.
 
-Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi datovými centry Azure. 
+Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi datovými centry Azure.
 
 - [Pochopení šifrování při přenosu pomocí Azure](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -132,7 +134,7 @@ Ve výchozím nastavení poskytuje Azure šifrování dat při přenosu mezi dat
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP 800-53 R4 ID (s) |
 |--|--|--|--|
-| DP-5 | 14,8 | SC-28, SC-12 |
+| DP-5 | 14.8 | SC-28, SC-12 |
 
 Pro doplnění řízení přístupu by měla být neaktivní data chráněná před útoky typu "vzdálené správy" (například přístup k základnímu úložišti) pomocí šifrování. To pomáhá zajistit, že útočníci nemohou snadno číst nebo upravovat data. 
 

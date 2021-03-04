@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ffea1e35cd457fc1fa350b1b234360d111fc911
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c750e34e8081cf5a8b3d41cc8c52584a4353a336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669261"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695154"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí prostředí PowerShell
 
@@ -165,7 +165,7 @@ Připravte virtuální počítače v cloudové službě pro migraci. Máte dvě 
     $validate.ValidationMessages
     ```
 
-    Následující příkaz zobrazí všechna upozornění a chyby, které blokují migraci. Pokud je ověření úspěšné, můžete přejít na krok příprava.
+    Následující příkaz zobrazí všechna upozornění a chyby, které blokují migraci. Pokud ověřovací zprávy neobsahují zprávu typu Chyba, můžete přejít na krok příprava.
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -189,7 +189,7 @@ Připravte virtuální počítače v cloudové službě pro migraci. Máte dvě 
     $validate.ValidationMessages
     ```
 
-    Následující příkaz zobrazí všechna upozornění a chyby, které blokují migraci. Pokud je ověření úspěšné, můžete pokračovat následujícím krokem přípravy:
+    Následující příkaz zobrazí všechna upozornění a chyby, které blokují migraci. Pokud ověřovací zprávy neobsahují chyby, můžete pokračovat následujícím krokem přípravy:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `

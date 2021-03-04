@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ef840b3d9db4e82eeecea37079a08ccb0858a77b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719266"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Správa úloh Kubernetes na zařízení Azure Stack Edge pro
 
@@ -54,6 +54,17 @@ Existují tři hlavní způsoby nasazení vašich úloh. Každá z těchto metod
 - **Nasazení Kubernetes s povoleným Azure ARC**: Kubernetes ARC Azure je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů Kubernetes. Připojíte se ke clusteru Kubernetes na zařízení Azure Stack Edge pro pomocí `azure-arc namespace` . Agenti nasazených v tomto oboru názvů zodpovídají za připojení k Azure. Konfiguraci nasazení použijete pomocí správy konfigurace založené na GitOps. 
     
     Služba Azure ARC s povoleným Kubernetes vám také umožní použít Azure Monitor pro kontejnery k zobrazení a monitorování clusteru. Další informace najdete v tom, [co je Azure ARC Enabled Kubernetes?](../azure-arc/kubernetes/overview.md).
+    
+    Od března 2021 bude Kubernetes s povoleným použitím Azure ARC všeobecně k dispozici pro uživatele a standardní poplatky za používání. Jako zákazník s vyhodnocenou verzí Preview bude pro Azure Stack hraničních zařízení k dispozici bezplatně Kubernetesý Azure ARC. Pokud chcete využít nabídku Preview, vytvořte [support Request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):
+
+    1. V seznamu **Typ problému** vyberte **Fakturace**.
+    2. V části **Předplatné** vyberte své předplatné.
+    3. V části **Služba** vyberte **moje služby** a pak vyberte **Azure Stack Edge**.
+    4. V části **prostředek** vyberte svůj prostředek.
+    5. V části **Souhrn** zadejte popis problému.
+    6. V části **typ problému** vyberte **neočekávané poplatky**.
+    7. V části **problémový typ** vyberte možnost **pomáhat mi při bezplatné zkušební verzi pochopit poplatky**.
+
 
 ## <a name="choose-the-deployment-type"></a>Zvolit typ nasazení
 

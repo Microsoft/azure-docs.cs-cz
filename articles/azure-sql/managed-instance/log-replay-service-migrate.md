@@ -7,24 +7,25 @@ ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
-ms.author: danil
 ms.reviewer: sstein
-ms.date: 02/23/2021
-ms.openlocfilehash: 73963763716d7e18b757b5ade8998f23cc589fdb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 03/01/2021
+ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690783"
 ---
-# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby opětovného přehrání protokolů
+# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby opětovného přehrání protokolů (Preview)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Tento článek vysvětluje, jak ručně nakonfigurovat migraci databáze z SQL Server 2008-2019 do spravované instance SQL pomocí služby log Replay (LRS). Toto je cloudová služba povolená pro spravovanou instanci na základě technologie SQL Serverho přenosu protokolů. LRS by se mělo použít v případech, kdy se služba Azure Data Migration Service (DMS) nedá použít, když je potřeba více ovládacích prvků, nebo když existuje nízká tolerance pro výpadky.
+Tento článek vysvětluje, jak ručně nakonfigurovat migraci databáze z SQL Server 2008-2019 do spravované instance SQL pomocí služby log Replay (LRS), která je aktuálně ve verzi Public Preview. Toto je cloudová služba povolená pro spravovanou instanci na základě technologie SQL Serverho přenosu protokolů. LRS by se mělo použít v případech, kdy existují složité vlastní migrace a hybridní architektury, pokud existuje větší tolerance pro výpadky nebo když se služba Azure Data Migration Service (DMS) nedá použít.
+
+DMS i LRS používají stejnou základní technologii migrace a stejná rozhraní API. S vydáním LRS ještě více umožníme komplexní vlastní migrace a hybridní architekturu mezi Prem. SQL Server a spravované instance SQL.
 
 ## <a name="when-to-use-log-replay-service"></a>Kdy použít službu opětovného přehrání protokolu
 
-V případech, kdy se [Azure DMS](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance) nedá použít pro migraci, se dá cloudová služba LRS použít přímo s PowerShellem, rutinami CLI nebo rozhraním API, aby bylo možné ručně vytvořit a orchestrovat migrace databáze do spravované instance SQL. 
+V případech, kdy se [Azure DMS](/azure/dms/tutorial-sql-server-to-managed-instance.md) nedá použít pro migraci, se dá cloudová služba LRS použít přímo s PowerShellem, rutinami CLI nebo rozhraním API, aby bylo možné ručně vytvořit a orchestrovat migrace databáze do spravované instance SQL. 
 
 Možná budete chtít zvážit použití cloudové služby LRS v některém z těchto případů:
 - Pro váš projekt migrace databáze je potřeba více ovládacích prvků.
@@ -33,6 +34,8 @@ Možná budete chtít zvážit použití cloudové služby LRS v některém z t�
 - Spustitelný soubor DMS nemá přístup k souborům pro zálohy databáze.
 - K dispozici není žádný přístup k hostitelskému operačnímu systému nebo žádná oprávnění správce.
 - Nepovedlo se otevřít síťové porty z vašeho prostředí do Azure.
+- Zálohy se ukládají přímo do Azure Blob Storage pomocí možnosti adresa URL.
+- Existuje potřeba použít rozdílové zálohy.
 
 > [!NOTE]
 > Doporučený automatizovaný způsob migrace databází z SQL Server do spravované instance SQL používá službu Azure DMS. Tato služba používá stejnou cloudovou službu LRS v back-endu s přenosem protokolů v režimu NORECOVERY. Měli byste zvážit ruční použití LRS k orchestraci migrace v případech, kdy Azure DMS neplně podporuje vaše scénáře.
@@ -45,7 +48,7 @@ Migrace se skládá z toho, aby se na SQL Server s povoleným KONTROLNÍm SOUČT
 
 LRS bude monitorovat službu Azure Blob Storage pro všechny nové rozdíly nebo zálohy protokolů přidané po obnovení úplného zálohování a automaticky obnoví všechny přidané nové soubory. Průběh zálohování zálohovaných souborů na spravované instanci SQL je možné monitorovat pomocí služby a proces může být v případě potřeby také přerušen.
 
-LRS nevyžaduje konkrétní konvenci pojmenování záložních souborů, protože kontroluje všechny soubory umístěné v Azure Blob Storage a vytvoří řetězec zálohování z čtení pouze hlaviček souboru. Databáze jsou ve stavu "obnovení" během procesu migrace, protože jsou obnoveny v režimu [NORECOVERY](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=sql-server-ver15#comparison-of-recovery-and-norecovery) a nelze je použít pro čtení nebo zápis do úplného dokončení procesu migrace. 
+LRS nevyžaduje konkrétní konvenci pojmenování záložních souborů, protože kontroluje všechny soubory umístěné v Azure Blob Storage a vytvoří řetězec zálohování z čtení pouze hlaviček souboru. Databáze jsou ve stavu "obnovení" během procesu migrace, protože jsou obnoveny v režimu [NORECOVERY](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql#comparison-of-recovery-and-norecovery) a nelze je použít pro čtení nebo zápis do úplného dokončení procesu migrace. 
 
 Při migraci několika databází je nutné zálohy pro každou databázi umístit do samostatné složky v Azure Blob Storage. LRS se musí spustit samostatně pro každou databázi a musí se zadat jiné cesty pro oddělené složky Azure Blob Storage. 
 
@@ -53,15 +56,15 @@ LRS lze spustit v režimu automatického dokončování nebo nepřetržitě. Po 
 
 Jakmile se LRS zastaví automaticky při automatickém dokončování nebo ručně v přímou migraci, proces obnovení se nedá obnovit pro databázi, která se napravila online na spravované instanci SQL. Aby bylo možné obnovit další záložní soubory po dokončení migrace prostřednictvím automatického dokončování, nebo ručně v přímou migraci, je nutné databázi odstranit a celý řetěz pro zálohování je nutné obnovit od nuly restartováním LRS.
 
-  ![Vysvětlení kroků orchestrace služby pro opětovné přehrání protokolu pro spravovanou instanci SQL](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
-
+![Vysvětlení kroků orchestrace služby pro opětovné přehrání protokolu pro spravovanou instanci SQL](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+    
 | Operace | Podrobnosti |
 | :----------------------------- | :------------------------- |
-| **1. Zkopírujte zálohy databáze z SQL Server do Azure Blob Storage**. | – Kopírování úplných, rozdílových a protokolových záloh z SQL Server do služby Azure Blob Storage Container pomocí [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). <br />– Použijte všechny názvy souborů, protože LRS nevyžaduje konkrétní konvenci pojmenovávání souborů.<br />– Při migraci několika databází se pro každou databázi vyžaduje samostatná složka. |
-| **2. Spusťte službu LRS v cloudu**. | -Služba může být spuštěná s volbou rutin: <br /> Spuštění PowerShellu [– azsqlinstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay) <br /> [Rutiny AZ_SQL_MIDB_LOG_REPLAY_START](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)CLI. <br /> – Spusťte LRS samostatně pro každou jinou databázi, která odkazuje na jinou složku zálohy v Azure Blob Storage. <br />-Po spuštění bude služba přebírat zálohy z kontejneru Azure Blob Storage a začne je obnovovat na spravované instanci SQL.<br /> -V případě, že LRS bylo spuštěno v nepřetržitém režimu, po obnovení všech původně nahraných záloh bude služba sledovat všechny nové soubory nahrané do složky a bude průběžně používat protokoly na základě řetězce LSN, dokud nebude služba zastavena. |
-| **2,1. Sledujte průběh operace**. | -Průběh operace obnovení je možné monitorovat pomocí volby rutiny nebo: <br /> PowerShell [Get – azsqlinstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay) <br /> [Rutiny AZ_SQL_MIDB_LOG_REPLAY_SHOW](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)CLI. |
-| **2,2. v případě potřeby Stop\abort operaci**. | – V případě, že je potřeba proces migrace přerušit, můžete operaci zastavit s volbou rutin: <br /> PowerShell [stop – azsqlinstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay) <br /> Rutiny [AZ_SQL_MIDB_LOG_REPLAY_STOP](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop) CLI. <br /><br />– To způsobí odstranění databáze, která se obnovuje na spravované instanci SQL. <br />-Po zastavení nelze LRS pro databázi obnovit. Proces migrace se musí od začátku restartovat. |
-| **3. přímou migraci do cloudu, když je připravený**. | – Jakmile se všechny zálohy obnovily do spravované instance SQL, dokončete přímou migraci tím, že zahájíte operaci LRS Complete s volbou rutin: <br />PowerShell [dokončen – azsqlinstancedatabaselogreplay](https://docs.microsoft.com/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay) <br /> Rutiny [AZ_SQL_MIDB_LOG_REPLAY_COMPLETE](https://docs.microsoft.com/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete) CLI. <br /><br />– To způsobí zastavení služby LRS a připojení databáze do režimu online pro čtení a zápis na spravované instanci SQL.<br /> -Přesměruje připojovací řetězec aplikace z SQL Server na spravovanou instanci SQL. |
+| **1. Zkopírujte zálohy databáze z SQL Server do Azure Blob Storage**. | – Kopírování úplných, rozdílových a protokolových záloh z SQL Server do služby Azure Blob Storage Container pomocí [AzCopy](/azure/storage/common/storage-use-azcopy-v10)nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). <br />– Použijte všechny názvy souborů, protože LRS nevyžaduje konkrétní konvenci pojmenovávání souborů.<br />– Při migraci několika databází se pro každou databázi vyžaduje samostatná složka. |
+| **2. Spusťte službu LRS v cloudu**. | -Služba může být spuštěná s volbou rutin: <br /> Spuštění PowerShellu [– azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay) <br /> [Rutiny AZ_SQL_MIDB_LOG_REPLAY_START](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)CLI. <br /> – Spusťte LRS samostatně pro každou jinou databázi, která odkazuje na jinou složku zálohy v Azure Blob Storage. <br />-Po spuštění bude služba přebírat zálohy z kontejneru Azure Blob Storage a začne je obnovovat na spravované instanci SQL.<br /> -V případě, že LRS bylo spuštěno v nepřetržitém režimu, po obnovení všech původně nahraných záloh bude služba sledovat všechny nové soubory nahrané do složky a bude průběžně používat protokoly na základě řetězce LSN, dokud nebude služba zastavena. |
+| **2,1. Sledujte průběh operace**. | -Průběh operace obnovení je možné monitorovat pomocí volby rutiny nebo: <br /> PowerShell [Get – azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay) <br /> [Rutiny AZ_SQL_MIDB_LOG_REPLAY_SHOW](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)CLI. |
+| **2,2. v případě potřeby Stop\abort operaci**. | – V případě, že je potřeba proces migrace přerušit, můžete operaci zastavit s volbou rutin: <br /> PowerShell [Stop-azsqlinstancedatabaselogreplay]/PowerShell/Module/AZ.SQL/stop-azsqlinstancedatabaselogreplay) <br /> Rutiny [AZ_SQL_MIDB_LOG_REPLAY_STOP](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop) CLI. <br /><br />– To způsobí odstranění databáze, která se obnovuje na spravované instanci SQL. <br />-Po zastavení nelze LRS pro databázi obnovit. Proces migrace se musí od začátku restartovat. |
+| **3. přímou migraci do cloudu, když je připravený**. | – Zastavte aplikaci a úlohu. Využijte poslední zálohu log-Tail a nahrajte ji do Azure Blob Storage.<br /> – Dokončete přímou migraci tak, že zahájíte operaci LRS Complete s volbou rutin: <br />PowerShell [dokončen – azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay) <br /> Rutiny [AZ_SQL_MIDB_LOG_REPLAY_COMPLETE](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete) CLI. <br /><br />– To způsobí zastavení služby LRS a připojení databáze do režimu online pro čtení a zápis na spravované instanci SQL.<br /> -Přesměruje připojovací řetězec aplikace z SQL Server na spravovanou instanci SQL. |
 
 ## <a name="requirements-for-getting-started"></a>Požadavky na Začínáme
 
@@ -73,8 +76,8 @@ Jakmile se LRS zastaví automaticky při automatickém dokončování nebo ručn
 - Pro zálohy **musí být povolený kontrolní součet** (povinné).
 
 ### <a name="azure-side"></a>Strana Azure
-- PowerShell AZ. SQL Module verze 2.16.0 nebo novější ([nainstalujte](https://www.powershellgallery.com/packages/Az.Sql/)nebo použijte Azure [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/))
-- Rozhraní CLI verze 2.19.0 nebo novější ([install](https://docs.microsoft.com/cli/azure/install-azure-cli))
+- PowerShell AZ. SQL Module verze 2.16.0 nebo novější ([nainstalujte](https://www.powershellgallery.com/packages/Az.Sql/)nebo použijte Azure [Cloud Shell](/azure/cloud-shell/))
+- Rozhraní CLI verze 2.19.0 nebo novější ([install](/cli/azure/install-azure-cli))
 - Zřízený kontejner Azure Blob Storage
 - Token zabezpečení SAS s oprávněními **jen pro čtení** a **seznamem** je vygenerovaný jenom pro kontejner úložiště objektů BLOB.
 
@@ -93,16 +96,16 @@ Provádění LRS prostřednictvím poskytnutých klientů vyžaduje jednu z nás
 ## <a name="best-practices"></a>Osvědčené postupy
 
 Následující doporučené postupy jsou velmi doporučené:
-- Spusťte [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) k ověření, jestli jsou vaše databáze připravené k migraci do spravované instance SQL. 
+- Spusťte [Data Migration Assistant](/sql/dma/dma-overview) k ověření, jestli jsou vaše databáze připravené k migraci do spravované instance SQL. 
 - Oddělte úplné a rozdílové zálohy na více souborů místo jediného souboru.
 - Povolte komprimaci zálohování.
 - Pomocí Cloud Shell můžete spouštět skripty, protože se vždycky aktualizují na nejnovější vydané rutiny.
 - Naplánujte dokončení migrace během 47 hodin od spuštění služby LRS. Toto je doba odkladu zabraňující softwarovým opravám spravovaným po spuštění LRS.
 
 > [!IMPORTANT]
-> - Databázi, která se obnovuje pomocí LRS, se nedá použít, dokud se proces migrace nedokončí. Je to proto, že základní technologie se obnoví v NORECOVERY režimu.
-> - Režim obnovení v POHOTOVOSTNÍm režimu umožňující přístup k databázím jen pro čtení v průběhu migrace není v LRS podporován z důvodu rozdílů verzí mezi spravovanou instancí SQL a místními servery SQL.
-> - Po dokončení migrace buď prostřednictvím automatického dokončování, nebo ručního přímou migraci, se proces migrace dokončuje, protože LRS nepodporuje obnovení obnovit.
+> - Databázi, která se obnovuje pomocí LRS, se nedá použít, dokud se proces migrace nedokončí.
+> - V LRS není podporován přístup k databázím jen pro čtení.
+> - Po dokončení migrace se proces migrace dokončuje, protože LRS obnovení nepodporuje.
 
 ## <a name="steps-to-execute"></a>Kroky ke spuštění
 
@@ -116,7 +119,7 @@ Zálohy na SQL Server lze provést pomocí některé z následujících dvou mo�
 Nastavte databáze, které chcete migrovat do režimu úplného obnovení, aby se povolily zálohy protokolů.
 
 ```SQL
--- To permit log backups, before the full database backup, modify the database to use the full recovery model.
+-- To permit log backups, before the full database backup, modify the database to use the full recovery
 USE master
 ALTER DATABASE SampleDB
 SET RECOVERY FULL
@@ -128,56 +131,107 @@ Chcete-li ručně vytvořit úplnou, rozdílovou a protokolovou zálohu databáz
 ```SQL
 -- Example on how to make full database backup to the local disk
 BACKUP DATABASE [SampleDB]
-TO DISK='C:\BACKUP\SampleDB_full_14_43.bak',
+TO DISK='C:\BACKUP\SampleDB_full.bak'
 WITH INIT, COMPRESSION, CHECKSUM
 GO
 
 -- Example on how to make differential database backup to the locak disk
 BACKUP DATABASE [SampleDB]
-TO DISK='C:\BACKUP\SampleDB_diff_14_44.bak',
+TO DISK='C:\BACKUP\SampleDB_diff.bak'
 WITH DIFFERENTIAL, COMPRESSION, CHECKSUM
 GO
 
--- Example on how to make the log backup
+-- Example on how to make the transactional log backup to the local disk
 BACKUP LOG [SampleDB]
-TO DISK='C:\BACKUP\SampleDB_log_14_45.bak',
-WITH CHECKSUM
+TO DISK='C:\BACKUP\SampleDB_log.trn'
+WITH COMPRESSION, CHECKSUM
 GO
 ```
 
-Soubory zálohované do místního úložiště se budou muset nahrát do Blob Storage Azure. V případě, že podniková zásada to umožňuje, můžete alternativní způsob, jak provádět zálohování přímo do Azure Blob Storage, zdokumentovat v následujícím kurzu: [použití služby Azure Blob Storage s SQL Server](https://docs.microsoft.com/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage). Pokud používáte tento alternativní přístup, zajistěte, aby se všechny zálohy vytvořily s povolenou možností KONTROLNÍho SOUČTu.
+### <a name="create-azure-blob-storage"></a>Vytvoření úložiště objektů BLOB v Azure
+
+Služba Azure Blob Storage slouží jako zprostředkující úložiště pro záložní soubory mezi SQL Server a SQL Managed instance. Pokud chcete vytvořit nový účet úložiště a kontejner objektů BLOB v účtu úložiště, postupujte podle těchto kroků:
+
+1. [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md?tabs=azure-portal)
+2. [Crete kontejneru objektů BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md) v účtu úložiště
 
 ### <a name="copy-backups-from-sql-server-to-azure-blob-storage"></a>Kopírování záloh z SQL Server do Azure Blob Storage
 
 Některé z následujících přístupů je možné využít k nahrávání záloh do úložiště objektů BLOB v části migrace databází do spravované instance pomocí LRS:
-- Použití funkce SQL Server nativního [zálohování na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) .
-- Pomocí [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer) nahrávání záloh do kontejneru objektů BLOB.
+- Pomocí [AzCopy](/azure/storage/common/storage-use-azcopy-v10)nebo [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer) nahrávání záloh do kontejneru objektů BLOB.
 - Použití Průzkumník služby Storage v Azure Portal.
 
-### <a name="create-azure-blob-and-sas-authentication-token"></a>Vytvoření ověřovacího tokenu Azure Blob a SAS
+### <a name="make-backups-from-sql-server-directly-to-azure-blob-storage"></a>Vytvoření zálohy z SQL Server přímo do Azure Blob Storage
 
-Služba Azure Blob Storage slouží jako zprostředkující úložiště pro záložní soubory mezi SQL Server a SQL Managed instance. Pomocí těchto kroků vytvořte kontejner služby Azure Blob Storage:
+V případě, že podniková a síťová zásada to umožňuje, je alternativním způsobem zálohování z SQL Server přímo do Azure Blob Storage pomocí možnosti SQL Server Nativní [zálohování na adresu URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . Pokud můžete tuto možnost využít, není nutné vytvářet zálohy v místním úložišti a odesílat je do služby Azure Blob Storage.
 
-1. [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)
-2. [Crete kontejneru objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) v účtu úložiště
+V prvním kroku tato operace vyžaduje, aby se vygeneroval ověřovací token SAS pro Azure Blob Storage, a token se musí naimportovat do SQL Server. Druhým krokem je udělat v T-SQL zálohy s možností "na adresu URL". Zajistěte, aby se všechny zálohy vytvořily s povolenou možností CHEKSUM.
 
-Po vytvoření kontejneru objektů BLOB vygenerujte ověřovací token SAS s oprávněním pro čtení a seznam pouze pomocí následujících kroků:
+Vzorový kód pro vytvoření zálohy do Azure Blob Storage je uvedený níže. Tento příklad neobsahuje pokyny k importu tokenu SAS. Podrobné pokyny, včetně toho, jak vygenerovat a importovat token SAS pro SQL Server, jsou uvedené v následujícím kurzu: [použití služby Azure Blob Storage s SQL Server](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage). 
 
-1. Přístup k účtu úložiště pomocí Azure Portal
-2. Přejít na Průzkumník služby Storage
-3. Rozbalit kontejnery objektů BLOB
-4. Klikněte pravým tlačítkem na kontejner objektů BLOB.
-5. Vybrat získání sdíleného přístupového podpisu
-6. Vyberte časový rámec vypršení platnosti tokenu. Zajistěte, aby byl token platný pro dobu trvání migrace.
-    - Všimněte si, že časové pásmo tokenu a vaše spravovaná instance SQL mohou nesouhlasí. Ujistěte se, že token SAS má patřičnou dobu platnosti, která bere v úvahu časová pásma. Pokud je to možné, nastavte časové pásmo na dřívější a pozdější čas plánovaného migračního okna.
-8. Ujistěte se, že jsou vybrána oprávnění jen pro čtení a seznam.
-9. Klikněte na vytvořit.
-10. Zkopírujte token za otazníkem "?" a dále. Token SAS se obvykle začíná řetězcem "sv = 2020-10" v identifikátoru URI pro použití ve vašem kódu.
+```SQL
+-- Example on how to make full database backup to URL
+BACKUP DATABASE [SampleDB]
+TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_full.bak'
+WITH INIT, COMPRESSION, CHECKSUM
+GO
+
+-- Example on how to make differential database backup to URL
+BACKUP DATABASE [SampleDB]
+TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_diff.bak'  
+WITH DIFFERENTIAL, COMPRESSION, CHECKSUM
+GO
+
+-- Example on how to make the transactional log backup to URL
+BACKUP LOG [SampleDB]
+TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_log.trn'  
+WITH COMPRESSION, CHECKSUM
+```
+
+### <a name="generate-azure-blob-storage-sas-authentication-for-lrs"></a>Vygenerovat ověřování Azure Blob Storage SAS pro LRS
+
+Služba Azure Blob Storage slouží jako zprostředkující úložiště pro záložní soubory mezi SQL Server a SQL Managed instance. Ověřovací token SAS s oprávněním list a jen pro čtení musí být vygenerován pro použití službou LRS. To umožní službě LRS přistupovat k Azure Blob Storage a pomocí záložních souborů je obnovit ve spravované instanci SQL. Pomocí těchto kroků vygenerujte ověřování SAS pro LRS použití:
+
+1. Přístup k Průzkumník služby Storage z Azure Portal
+2. Rozbalit kontejnery objektů BLOB
+3. Pravým tlačítkem myši klikněte na kontejner objektů BLOB a vyberte získat sdílený přístupový podpis  ![ protokol opětovného přehrání. generovat ověřovací token SAS](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+4. Vyberte časový rámec vypršení platnosti tokenu. Zajistěte, aby byl token platný pro dobu trvání migrace.
+5. Vyberte časové pásmo pro token – UTC nebo místní čas.
+    - Časové pásmo tokenu a vaše spravovaná instance SQL se můžou neshodovat. Ujistěte se, že token SAS má patřičnou dobu platnosti, která bere v úvahu časová pásma. Pokud je to možné, nastavte časové pásmo na dřívější a pozdější čas plánovaného migračního okna.
+6. Výběr pouze oprávnění jen pro čtení a seznam
+    - Není nutné vybrat žádná další oprávnění, jinak LRS nebude možné spustit. Tento požadavek zabezpečení je záměrné.
+7. Klikněte na tlačítko vytvořit  ![ službu opětovného přehrání protokolu pro vygenerování ověřovacího tokenu SAS.](./media/log-replay-service-migrate/lrs-sas-token-02.png)
+
+Ověřování pomocí SAS se vygeneruje s dobou platnosti, kterou jste zadali dříve. Budete potřebovat verzi identifikátoru URI generovaného tokenu, jak je znázorněno na snímku obrazovky níže.
+
+![Příklad identifikátoru URI ověřování SAS generovaných službou Log](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+
+### <a name="copy-parameters-from-sas-token-generated"></a>Kopírovat parametry z generovaného tokenu SAS
+
+Aby bylo možné správně použít token SAS ke spuštění LRS, musíme pochopit jeho strukturu. Identifikátor URI generovaného tokenu SAS se skládá ze dvou částí:
+- StorageContainerUri a 
+- StorageContainerSasToken, oddělený otazníkem (?), jak je znázorněno na obrázku níže.
+
+    ![Příklad identifikátoru URI ověřování SAS generovaných službou Log](./media/log-replay-service-migrate/lrs-token-structure.png)
+
+- První část začínající řetězcem "https://", dokud se nepoužije otazník (?) pro parametr StorageContainerURI, který je zadáván jako vstup do LRS. To poskytuje LRS informace o složce, ve které jsou uložené soubory zálohy databáze.
+- Druhá část, která začíná po otazníku (?), v příkladu "SP =" a všech způsobem až do konce řetězce je StorageContainerSasToken parametr. Toto je skutečný podepsaný ověřovací token platný po dobu určenou v čase. Tato součást nemusí nutně začínat na "SP =", jak je znázorněno, a že se váš případ může lišit.
+
+Parametry zkopírujte následujícím způsobem:
+
+1. Zkopírujte první část tokenu, která začíná https://, až do otazníku (?) a použijete ho jako parametr StorageContainerUri v PowerShellu nebo rozhraní příkazového řádku pro spuštění LRS, jak je znázorněno na snímku obrazovky níže.
+
+    ![StorageContainerUri parametr kopírování služby pro opětovné přehrání protokolu](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+
+2. Zkopírujte druhou část tokenu začínající otazníkem (?), a to až do konce řetězce, a použijte ho jako parametr StorageContainerSasToken v PowerShellu nebo CLI pro spuštění LRS, jak je znázorněno na snímku obrazovky níže.
+
+    ![StorageContainerSasToken parametr kopírování služby pro opětovné přehrání protokolu](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
 
 > [!IMPORTANT]
-> - Oprávnění pro token SAS pro Azure Blob Storage musí být jen pro čtení a seznam. V případě jakýchkoli dalších oprávnění udělených pro ověřovací token SAS se spuštění služby LRS nezdaří. Tyto požadavky na zabezpečení jsou záměrné.
-> - Token musí mít odpovídající dobu platnosti. Ujistěte se prosím, že se berou v úvahu časová pásma mezi tokenem a spravovanou instancí.
-> - Ujistěte se prosím, že se token zkopíroval od "sv = 2020-10..." až do konce řetězce.
+> - Oprávnění pro token SAS pro Azure Blob Storage musí být jen pro čtení a seznam. Pokud jsou pro ověřovací token SAS udělená jiná oprávnění, spuštění služby LRS se nezdaří. Tyto požadavky na zabezpečení jsou záměrné.
+> - Token musí mít odpovídající dobu platnosti. Zajistěte, aby časová pásma mezi tokenem a spravovanou instancí byla vzata v potaz.
+> - Zajistěte, aby byl parametr StorageContainerUri pro PowerShell nebo rozhraní příkazového řádku zkopírovaný z identifikátoru URI vygenerovaného tokenu, od https://, až po označení otázek (?). Nezahrnujte otazník.
+> Zajistěte, aby byl StorageContainerSasToken parametr PowerShellu pro rozhraní příkazového řádku zkopírovaný z identifikátoru URI vygenerovaného tokenu, od otazníku (?) až po konec řetězce. Nezahrnujte otazník.
 
 ### <a name="log-in-to-azure-and-select-subscription"></a>Přihlaste se k Azure a vyberte předplatné.
 
@@ -208,7 +262,7 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -InstanceName "ManagedInstance01" `
     -Name "ManagedDatabaseName" `
     -Collation "SQL_Latin1_General_CP1_CI_AS" `
-    -StorageContainerUri "https://test.blob.core.windows.net/testing" `
+    -StorageContainerUri "https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>" `
     -StorageContainerSasToken "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D" `
     -AutoCompleteRestore `
     -LastBackupName "last_backup.bak"
@@ -218,7 +272,7 @@ Spustit LRS v režimu automatického dokončování – příklad rozhraní př�
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb -a --last-bn "backup.bak"
-    --storage-uri "https://test.blob.core.windows.net/testing"
+    --storage-uri "https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>"
     --storage-sas "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
@@ -230,7 +284,7 @@ Spustit LRS v režimu průběžného čtení – příklad PowerShellu:
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -InstanceName "ManagedInstance01" `
     -Name "ManagedDatabaseName" `
-    -Collation "SQL_Latin1_General_CP1_CI_AS" -StorageContainerUri "https://test.blob.core.windows.net/testing" `
+    -Collation "SQL_Latin1_General_CP1_CI_AS" -StorageContainerUri "https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>" `
     -StorageContainerSasToken "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
@@ -238,8 +292,24 @@ Spusťte LRS v režimu průběžného čtení – příklad rozhraní příkazov
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb
-    --storage-uri "https://test.blob.core.windows.net/testing"
+    --storage-uri "https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>"
     --storage-sas "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
+```
+
+### <a name="scripting-lrs-start-in-continuous-mode"></a>LRS skriptování začíná v nepřetržitém režimu
+
+Klienti PowerShellu a rozhraní příkazového řádku pro spuštění LRS v nepřetržitém režimu jsou synchronní. To znamená, že klienti budou čekat na odpověď rozhraní API, aby nahlásila úspěch nebo neúspěšné spuštění úlohy. Během tohoto čekání příkaz nevrátí ovládací prvek zpět do příkazového řádku. V případě, že zadáváte prostředí migrace a vyžadujete, aby příkaz LRS Start ihned poskytoval kontrolu, abyste mohli pokračovat ve zbytku skriptu, můžete spustit PowerShell jako úlohu na pozadí s přepínačem-AsJob. Například:
+
+```PowerShell
+$lrsjob = Start-AzSqlInstanceDatabaseLogReplay <required parameters> -AsJob
+```
+
+Když zahájíte úlohu na pozadí, objekt úlohy se vrátí okamžitě, i když dokončení úlohy trvá delší dobu. V relaci můžete pokračovat v práci bez přerušení, zatímco úloha běží. Podrobnosti o spuštění PowerShellu jako úlohy na pozadí najdete v dokumentaci k [prostředí PowerShell Start-Job](/powershell/module/microsoft.powershell.core/start-job#description) .
+
+Podobně pokud chcete spustit příkaz CLI na platformě Linux jako proces na pozadí, použijte symbol ampersand (&) na konci příkazu LRS Start.
+
+```CLI
+az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
@@ -298,17 +368,29 @@ K dokončení procesu migrace v LRS nepřetržitém režimu použijte následuj�
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
 ```
 
+## <a name="functional-limitations"></a>Funkční omezení
+
+Funkční omezení služby LRS (log replay) jsou:
+- Obnovenou databázi nelze použít pro přístup jen pro čtení během procesu migrace.
+- Opravy softwaru spravované systémem se zablokují po dobu 47 hodin od spuštění LRS. Po vypršení tohoto časového intervalu se další aktualizace softwaru zastaví LRS. V takovém případě je potřeba restartovat LRS od začátku.
+- LRS vyžaduje, aby byly databáze na SQL Server zálohovány s povolenou možností KONTROLNÍho SOUČTu.
+- Token SAS pro použití v LRS musí být vygenerovaný pro celý kontejner Azure Blob Storage a musí mít jenom oprávnění číst a zobrazit seznam.
+- Záložní soubory pro různé databáze se musí umístit do samostatných složek v Azure Blob Storage.
+- LRS se musí spustit samostatně pro každou databázi, která odkazuje na samostatné složky se soubory zálohy na Azure Blob Storage.
+- LRS může podporovat až 100 simultánních procesů obnovení na jednu spravovanou instanci SQL.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Po spuštění LRS použijte rutiny monitorování (Get-azsqlinstancedatabaselogreplay nebo az_sql_midb_log_replay_show) a zobrazte stav operace. Pokud po určitém čase LRS nepovede s chybou, zkontrolujte prosím některé z nejběžnějších problémů:
+Po spuštění LRS použijte rutiny monitorování (Get-azsqlinstancedatabaselogreplay nebo az_sql_midb_log_replay_show) a zobrazte stav operace. Pokud po určitém čase LRS nepovede s chybou, vyhledejte některé z nejběžnějších problémů:
+- Již existuje databáze se stejným názvem na SQL MI, kterou se pokoušíte migrovat z SQL Server? Tento konflikt vyřešte přejmenováním jedné z databází.
 - Použila se záloha databáze u SQL Server pomocí možnosti **kontrolního součtu** ?
 - Mají oprávnění k **čtení** a **vypsání** tokenu SAS jenom pro službu LRS?
 - Byl token SAS pro LRS kopírovaný od otazníku "?" s obsahem, který začíná podobně jako hodnota "sv = 2020-02-10..."? 
-- Platí doba **platnosti tokenu** SAS pro časové období spuštění a dokončení migrace? Všimněte si, že by mohlo dojít k neshodě z důvodu různých **časových pásem** použitých pro SPRAVOVANOU instanci SQL a tokenu SAS. Zkuste znovu vygenerovat token SAS s rozšířením platnosti tokenu časového intervalu před a po aktuálním datu.
+- Platí doba **platnosti tokenu** SAS pro časové období spuštění a dokončení migrace? Je možné, že došlo k neshodě z důvodu různých **časových pásem** použitých pro SPRAVOVANOU instanci SQL a tokenu SAS. Zkuste znovu vygenerovat token SAS s rozšířením platnosti tokenu časového intervalu před a po aktuálním datu.
 - Jsou název databáze, název skupiny prostředků a název spravované instance zadány správně?
 - Pokud byl LRS spuštěn v režimu automatického dokončování, byl pro poslední zadaný soubor zálohy platný název souboru?
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [migraci SQL Server do spravované instance SQL](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 - Přečtěte si další informace o [rozdílech mezi SQL Server a službou Azure SQL Managed instance](transact-sql-tsql-differences-sql-server.md).
-- Přečtěte si další informace o [osvědčených postupech pro náklady a velikost úloh migrovaných do Azure](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs).
+- Přečtěte si další informace o [osvědčených postupech pro náklady a velikost úloh migrovaných do Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs).

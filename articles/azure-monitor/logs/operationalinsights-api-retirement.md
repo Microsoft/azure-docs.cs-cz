@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723108"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Vyřazení verze rozhraní API OperationalInsights
 Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a vyřadíme všechny starší verze API z 29. února 2024.
 
-Doporučujeme vám hned začít používat verzi 2020-08-01, abyste získali výhody nových funkcí, jako je například [vyhrazený cluster](../log-query/logs-dedicated-clusters.md), [klíče spravované zákazníky](../logs/customer-managed-keys.md), [soukromý odkaz](./private-link-security.md) a [Export dat](./logs-data-export.md). Nové funkce a funkce a optimalizace se navíc přidávají jenom do aktuálního rozhraní API.
+Doporučujeme vám hned začít používat verzi 2020-08-01, abyste získali výhody nových funkcí, jako je například [vyhrazený cluster](./logs-dedicated-clusters.md), [klíče spravované zákazníky](../logs/customer-managed-keys.md), [soukromý odkaz](./private-link-security.md) a [Export dat](./logs-data-export.md). Nové funkce a funkce a optimalizace se navíc přidávají jenom do aktuálního rozhraní API.
 
 Po 29. února 2024 Azure Monitor už nebude podporovat starší verze rozhraní API než 2020-08-01. Pokud nechcete upgradovat, požadavky odeslané z dřívějších verzí budou nadále obsluhovány službou Azure Monitor až do 29. února 2024.
 

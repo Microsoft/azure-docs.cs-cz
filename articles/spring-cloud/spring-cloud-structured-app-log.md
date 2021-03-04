@@ -4,15 +4,15 @@ description: Tento článek vysvětluje, jak vygenerovat a shromažďovat strukt
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/05/2021
 ms.author: brendanm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055771"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701939"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Strukturovaný aplikační protokol pro jarní cloud Azure
 
@@ -23,16 +23,16 @@ Pro zlepšení prostředí dotazů protokolu musí být protokol aplikace ve for
 
 **Požadavky na schéma JSON:**
 
-| Klíč JSON      | Typ hodnoty JSON|  Vyžadováno | Sloupec v Log Analytics| Description |
+| Klíč JSON      | Typ hodnoty JSON|  Vyžadováno | Sloupec v Log Analytics| Popis |
 | --------------| ------------|-----------|-----------------|--------------------------|
-| časové razítko     | řetězec      |     Yes   | AppTimestamp    | časové razítko ve formátu UTC  |
+| časové razítko     | řetězec      |     Ano   | AppTimestamp    | časové razítko ve formátu UTC  |
 | Nástroj        | řetězec      |     No    | Nástroj          | Nástroj                   |
 | úroveň         | řetězec      |     No    | CustomLevel     | úroveň protokolování                |
 | vlákno        | řetězec      |     No    | Thread          | vlákno                   |
 | zpráva       | řetězec      |     No    | Zpráva         | Zpráva protokolu              |
 | Trasování zásobníku    | řetězec      |     No    | Trasování zásobníku      | trasování zásobníku výjimek    |
 | exceptionClass| řetězec      |     No    | ExceptionClass  | název třídy výjimky     |
-| MDC           | vnořený kód JSON |     No    |                 | mapovaný kontext diagnostiky|
+| MDC           | vnořený kód JSON |     Ne    |                 | mapovaný kontext diagnostiky|
 | MDC. traceId   | řetězec      |     No    | TraceId         |ID trasování pro distribuované trasování|
 | MDC. spanId    | řetězec      |     No    | SpanId          |ID rozsahu pro distribuované trasování |
 |               |             |           |                 |                          |
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o dotazu protokolu najdete [v tématu Začínáme s dotazy protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* Další informace o dotazu protokolu najdete [v tématu Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/logs/get-started-queries.md)

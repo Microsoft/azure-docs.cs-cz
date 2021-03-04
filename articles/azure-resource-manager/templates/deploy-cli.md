@@ -1,18 +1,18 @@
 ---
 title: Nasazení prostředků pomocí Azure CLI a šablony
-description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
+description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/02/2021
+ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378668"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741119"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
-Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure s Azure Resource Manager šablon (šablon ARM) nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md).
+Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure s Azure Resource Manager šablon (šablon ARM) nebo souboru bicep nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md) nebo [bicep Overview](bicep-overview.md).
 
 Příkazy nasazení změněné v Azure CLI verze 2.2.0. Příklady v tomto článku vyžadují Azure CLI verze 2.2.0 nebo novější.
 
@@ -27,13 +27,13 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 * Pokud ho chcete nasadit do **skupiny prostředků**, použijte příkaz [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create):
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
 * K nasazení do **předplatného** použijte [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create):
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template>
+  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
@@ -41,7 +41,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 * Pokud ho chcete nasadit do **skupiny pro správu**, použijte příkaz [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template>
+  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
@@ -49,14 +49,14 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 * K nasazení do **tenanta** použijte [AZ Deployment tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create):
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template>
+  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
 
-Pro každý obor musí mít uživatel, který šablonu nasazuje, potřebná oprávnění k vytváření prostředků.
+Pro každý obor musí mít uživatel, který šablonu nasazuje, nebo soubor bicep potřebná oprávnění k vytváření prostředků.
 
-## <a name="deploy-local-template"></a>Nasazení místní šablony
+## <a name="deploy-local-template-or-bicep-file"></a>Nasadit místní šablonu nebo soubor bicep
 
 Šablonu můžete nasadit z místního počítače nebo z nějakého, který je uložen externě. Tato část popisuje nasazení místní šablony.
 
@@ -66,13 +66,13 @@ Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořt
 az group create --name ExampleGroup --location "Central US"
 ```
 
-K nasazení místní šablony použijte `--template-file` parametr v příkazu nasazení. Následující příklad také ukazuje, jak nastavit hodnotu parametru, který pochází ze šablony.
+K nasazení místní šablony nebo souboru bicep použijte `--template-file` parametr v příkazu nasazení. Následující příklad také ukazuje, jak nastavit hodnotu parametru.
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file azuredeploy.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,6 +83,9 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 ```
 
 ## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
+
+> [!NOTE]
+> V současné době Azure CLI nepodporuje nasazování odebrání souborů bicep.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
 
@@ -144,6 +147,9 @@ Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v histor
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
+> [!NOTE]
+> V současné době Azure CLI nepodporuje vytváření specifikací šablon poskytnutím souborů bicep. Můžete však vytvořit šablonu ARM nebo soubor bicep pomocí prostředku [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) pro nasazení specifikace šablony. Tady je [příklad](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+
 Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
 Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony.
@@ -186,7 +192,7 @@ Chcete-li předat vložené parametry, zadejte hodnoty v `parameters` . Napřík
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -197,7 +203,7 @@ Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -236,7 +242,7 @@ Použijte dvojité uvozovky kolem formátu JSON, který chcete předat objektu.
 
 ### <a name="parameter-files"></a>Soubory parametrů
 
-Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů musí být místní soubor. Soubory externích parametrů se v Azure CLI nepodporují.
+Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů musí být místní soubor. Soubory externích parametrů se v Azure CLI nepodporují. Šablona ARM i soubor bicep používají soubory parametrů JSON.
 
 Další informace o souboru parametrů najdete v tématu [Vytvoření souboru parametrů Resource Manageru](parameter-files.md).
 
@@ -252,7 +258,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Příklad:
+Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Například:
 
 ```json
 {
@@ -274,7 +280,7 @@ Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pom
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
-- Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
-- Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
-- Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
+* Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
+* Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
+* Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
+* Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).

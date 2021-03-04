@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730860"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
@@ -575,9 +575,7 @@ V tomto kroku vytvoříte propojenou službu pro účet Batch, který se použí
    d. Zadejte identifikátor URI dávky pro vlastnost **batchUri** JSON.
 
       > [!IMPORTANT]
-      > Adresa URL z okna **účtu Batch** má tento formát: \<accountname\> . \<region\> . batch.azure.com. Pro vlastnost **batchUri** ve skriptu JSON je nutné odebrat A88 "Account.". * * z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
-      >
-      >
+      > Adresa URL z okna **účtu Batch** je v následujícím formátu: `<accountname>.<region>.batch.azure.com` . Pro `batchUri` vlastnost ve skriptu JSON je nutné odebrat `<accountname>.` z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
 
       ![Okno účtu Batch](./media/data-factory-data-processing-using-batch/image9.png)
 

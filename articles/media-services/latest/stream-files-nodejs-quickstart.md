@@ -1,34 +1,37 @@
 ---
-title: Streamování videosouborů pomocí Azure Media Services-Node.js
-description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
+title: Postup při kódování a streamování videosouborů pomocí Node.JS
+description: Postup streamování videosouborů pomocí Node.JS Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
-keywords: azure media services, stream
+keywords: Azure Media Services, Stream, Node.JS
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-js
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0eb334111a8f5ffc63d0f858966e4e65f99d3b16
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 566a7a978a08bf7e37b6c4ab8b0609222b34e549
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095949"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724519"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu Node.js videa
+# <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Postup při kódování a streamování videosouborů pomocí Node.JS
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-V tomto kurzu se dozvíte, jak snadné je zakódovat a spustit streamování videí na nejrůznějších prohlížečích a zařízeních pomocí Azure Media Services. Vstupní videosoubor se dá zadat pomocí adres URL protokolu HTTPS, adres URL SAS nebo cest k souborům umístěným v úložišti objektů BLOB v Azure.
+Toto rychlé zprovoznění předvádí, jak je jednoduché kódovat a začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Vstupní videosoubor se dá zadat pomocí adres URL protokolu HTTPS, adres URL SAS nebo cest k souborům umístěným v úložišti objektů BLOB v Azure.
+
+Na konci tohoto rychlého startu budete znát:
+
+- Postup při kódování pomocí Node.JS
+- Postup při streamování pomocí Node.JS
+- Postup nahrání souboru z adresy URL HTTPS pomocí Node.JS
+- Použití HLS nebo PŘERUŠOVANého přehrávače klienta s Node.JS
 
 Ukázka v tomto článku zakóduje obsah, který zpřístupníte přes adresu URL HTTPS. Upozorňujeme, že AMS v3 v současné době nepodporuje blokového kódování přenosu prostřednictvím adresy URL HTTPS.
-
-Na konci kurzu budete znát způsob nahrávání, kódování a streamování videa pomocí HLS nebo PŘERUŠOVANého přehrávače klienta.
 
 ![Přehrávání videa](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -51,67 +54,67 @@ Naklonujte úložiště GitHub obsahující Node.js ukázka streamování do po�
 
 Ukázka se nachází ve složce [StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample) .
 
-Otevřete [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.ts) ve staženém projektu. Aktualizujte ukázkový soubor. ENV v kořenové složce s hodnotami a přihlašovacími údaji, které jste získali při [přístupu k rozhraním API](./access-api-howto.md). Přejmenujte vzorový soubor. env na. env. 
+Ve staženém projektu otevřete [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.ts) . Aktualizujte *ukázkový soubor. env* v kořenové složce s hodnotami a přihlašovacími údaji, které jste získali při [přístupu k rozhraním API](./access-api-howto.md). Přejmenujte *vzorový soubor. env* na *. env* (Ano, pouze rozšíření).
 
 Tato ukázka provede následující akce:
 
-1. Vytvoří **transformaci** (nejprve zkontroluje, zda zadaná transformace existuje). 
-2. Vytvoří výstupní **Asset** , který se používá jako výstup **úlohy** kódování.
+1. Vytvoří **transformaci** s [přednastaveným kódováním s podporou obsahu](./content-aware-encoding.md). Nejprve zkontroluje, zda zadaná transformace existuje.
+1. Vytvoří výstupní **prostředek** , který je používán **úlohou** kódování, aby obsahoval výstup.
 1. Volitelně nahraje místní soubor pomocí sady SDK pro úložiště objektů BLOB.
-1. Vytvoří vstup **úlohy**, který je založený na adrese URL HTTPS nebo nahraném souboru.
-1. Odešle **úlohu** kódování pomocí [přednastavení kódování s podporou obsahu](./content-aware-encoding.md), a to pomocí vstupu a výstupu, který byl vytvořen dříve.
-1. Zkontroluje stav úlohy.
+1. Vytvoří vstup **úlohy** , který je založen na adrese URL HTTPS nebo nahraném souboru.
+1. Odešle **úlohu** kódování pomocí vstupu a výstupu, který byl vytvořen dříve.
+1. Kontroluje stav úlohy.
 1. Stáhne výstup úlohy kódování do místní složky.
 1. Vytvoří **Lokátor streamování** , který se použije v přehrávači.
-1. Vytvoří adresy URL streamování pro HLS a POMLČKu.
-1. Přehraje obsah zpátky v aplikaci přehrávače – Azure Media Player.
+1. Vytvoří adresy URL streamování pro HLS a SPOJOVNÍKy.
+1. Přehraje obsah zpátky v aplikaci přehrávače – Azure Media Player
 
-## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
+## <a name="run-the-sample"></a>Spuštění ukázky
 
 1. Aplikace stáhne kódované soubory. Vytvořte složku, do které chcete výstupní soubory přejít, a aktualizujte hodnotu proměnné **outputFolder** v souboru [index. TS](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) . Ve výchozím nastavení je nastavená na tempo.
-1. Otevřete **příkazový řádek**, přejděte do adresáře ukázky a spusťte následující příkazy.
-1. Změnit adresář na složku AMSv3Samples
+1. Otevřete **příkazový řádek** a přejděte do adresáře ukázky.
+1. Změňte adresář na složku AMSv3Samples.
+
     ```bash
     cd AMSv3Samples
     ```
 
-1. Nainstalovat balíčky používané v packages.js
+1. Nainstaluje balíčky používané v *packages.js* souboru.
+
     ```bash
     npm install 
     ```
 
-1. Změnit adresář na složku StreamFilesSample
+1. Změňte adresář na složku *StreamFilesSample* .
+
     ```bash
     cd StreamFilesSample
     ```
 
-1. Spusťte Visual Studio Code ze složky AMSv3Samples. Tato možnost je nutná ke spuštění ze složky, kde se nachází složka ". VSCode" a tsconfig.jsv souborech.
+1. Spusťte Visual Studio Code ze složky *AMSv3Samples* . (To se vyžaduje pro spuštění ze složky, kde se nachází složka *. VSCode* a *tsconfig.jsv* souborech)
 
     ```bash
     cd ..
     code .
     ```
 
-Otevřete složku pro StreamFilesSample a otevřete soubor index. TS v editoru Visual Studio Code.
-V souboru index. TS stisknutím klávesy F5 spusťte ladicí program.
-
+Otevřete složku pro *StreamFilesSample* a otevřete soubor *index. ts* v editoru Visual Studio Code.
+V souboru *index. TS* stisknutím klávesy F5 spusťte ladicí program.
 
 ## <a name="test-with-azure-media-player"></a>Testování s Azure Media Playerem
 
-Tento článek používá k otestování streamu přehrávač Azure Media Player. Můžete také použít libovolný přehrávač kompatibilní s HLS nebo SPOJOVNÍKem, jako je Shaka Player, HLS.js, Dash.js nebo jiné.
+K otestování streamu použijte Azure Media Player. Můžete také použít libovolný přehrávač kompatibilní s HLS nebo SPOJOVNÍKem, jako je Shaka Player, HLS.js, Dash.js nebo jiné.
 
-Měli byste být schopni kliknout na odkaz generovaný v ukázce a spustit AMP Player s již načteným manifestem s POMLČKou.
+Měli byste být schopni kliknout na odkaz vygenerovaný v ukázce a spustit AMP Player s již načtený manifest s POMLČKou.
 
 > [!NOTE]
 > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
 
 1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
-2. Do pole **URL:** vložte jednu z hodnot adres URL pro streamování, které jste získali při spuštění aplikace. 
- 
-     Můžete vložit adresu URL ve formátu HLS, pomlčka nebo vyhlazení a Azure Media Player přepnout na příslušný protokol pro streamování pro přehrávání na zařízení automaticky.
+2. Do pole **Adresa URL:** vložte jednu z hodnot adresy URL streamování, které jste dostali při spuštění aplikace. Můžete vložit adresu URL ve formátu HLS, pomlčka nebo vyhlazení a Azure Media Player přepnout na příslušný protokol pro streamování pro přehrávání na zařízení automaticky.
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 
-Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí. 
+Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -124,6 +127,7 @@ az group delete --name amsResourceGroup
 ```
 
 ## <a name="more-developer-documentation-for-nodejs-on-azure"></a>Další dokumentaci pro vývojáře k Node.js v Azure
+
 - [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
 - [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti centra Git](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 - [Dokumentace k balíčku Azure pro vývojáře Node.js](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
@@ -137,5 +141,4 @@ az group delete --name amsResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
 > [Media Services koncepty](concepts-overview.md)

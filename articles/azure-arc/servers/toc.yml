@@ -31,6 +31,8 @@
       items:
         - name: Přehled agenta připojeného počítače
           href: agent-overview.md
+        - name: Plánování nasazení v měřítku
+          href: plan-at-scale-deployment.md
         - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
           href: onboard-portal.md
         - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu

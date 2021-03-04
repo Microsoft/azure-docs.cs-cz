@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706754"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -54,7 +54,7 @@ Vezměte v úvahu tento příklad projevy:
 |Chci získat počítač, jak na něj mám přejít?|
 |Kdy můžu počítač dělat?|
 
-Klíčové slovo "Computer" se neliší. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
+Základní pojem, *počítač*, není proměnlivý. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
 
 ## <a name="example-utterances-in-each-intent"></a>Příklad projevy v každém záměru
 
@@ -138,7 +138,7 @@ Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné
 
 Následující projevy `fair` je slovo homograf. Je pravopisné, ale má jiný význam:
 
-|Promluva|
+|Výrok|
 |--|
 |Jaký druh veletrhů se děje v oblasti Praha této léto?|
 |Je aktuální hodnocení pro Seattle na veletrzích?|

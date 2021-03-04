@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698208"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Odpovědnosti zákazníků při provozování jarního cloudu Azure ve virtuální síti
 Tento dokument obsahuje specifikace pro používání jarního cloudu Azure ve virtuální síti.
@@ -34,13 +34,13 @@ Níže je uveden seznam požadavků na prostředky pro služby Azure jaře Cloud
 
   | Cílový koncový bod | Port | Použití | Poznámka |
   |------|------|------|
-  | *: 1194 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Základní Správa clusteru Kubernetes. | |
-  | *: 443 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 443 | TCP: 443 | Správa služby jarní cloudová služba Azure | Informace o instanci služby "requiredTraffics" mohou být známy v datové části prostředků v části "networkProfile". |
-  | *: 9000 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Základní Správa clusteru Kubernetes. |
+  | *: 1194 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Základní Správa clusteru Kubernetes. | |
+  | *: 443 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 443 | TCP: 443 | Správa služby jarní cloudová služba Azure | Informace o instanci služby "requiredTraffics" mohou být známy v datové části prostředků v části "networkProfile". |
+  | *: 9000 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Základní Správa clusteru Kubernetes. |
   | *: 123 *nebo* NTP.Ubuntu.com:123 | UDP: 123 | Synchronizace času NTP na uzlech se systémem Linux. | |
-  | *. azure.io:443 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | Může být nahrazena povolením  [koncového bodu služby Azure Container Registry ve virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
-  | *. core.windows.net:443 a *. core.windows.net:445 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -Storage: 443 a Storage: 445 | TCP: 443, TCP: 445 | Azure File Storage | Může být nahrazena povolením  [koncového bodu služby Azure Storage ve virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
-  | *. servicebus.windows.net:443 *nebo* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) – EventHub: 443 | TCP: 443 | Centrum událostí Azure. | Dá se nahradit povolením  [koncového bodu služby Azure Event Hubs ve virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
+  | *. azure.io:443 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | Může být nahrazena povolením  [koncového bodu služby Azure Container Registry ve virtuální síti](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *. core.windows.net:443 a *. core.windows.net:445 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -Storage: 443 a Storage: 445 | TCP: 443, TCP: 445 | Azure File Storage | Může být nahrazena povolením  [koncového bodu služby Azure Storage ve virtuální síti](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *. servicebus.windows.net:443 *nebo* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – EventHub: 443 | TCP: 443 | Centrum událostí Azure. | Dá se nahradit povolením  [koncového bodu služby Azure Event Hubs ve virtuální síti](../virtual-network/virtual-network-service-endpoints-overview.md). |
   
 
 ## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Požadavky na plně kvalifikovaný název domény v cloudu Azure a pravidla pro aplikace
@@ -63,4 +63,4 @@ Azure Firewall poskytuje plně kvalifikovaný název domény (FQDN) **AzureKuber
 
 ## <a name="see-also"></a>Viz také
 * [Přístup k aplikaci v privátní síti](spring-cloud-access-app-virtual-network.md)
-* [Vystavení aplikací pomocí Application Gateway a Azure Firewall](spring-cloud-expose-apps-gateway-azure-firewall.md) 
+* [Vystavení aplikací pomocí Application Gateway a Azure Firewall](spring-cloud-expose-apps-gateway-azure-firewall.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2e54b8e58e8139c46639187957906790ffb0fe54
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791557"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727681"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
 
@@ -55,7 +55,7 @@ Před nasazením zařízení se ujistěte, že:
 * Hostitelský systém může pro zřízení virtuálního zařízení vyhradit následující prostředky:
 
   * Minimálně 4 jádra
-  * Minimálně 8 GB paměti RAM
+  * Minimálně 8 GB paměti RAM Důrazně doporučujeme aspoň 16 GB paměti RAM.
   * Jedno síťové rozhraní
   * 250 GB disku s operačním systémem.
   * Virtuální disk o dvou TB pro data.

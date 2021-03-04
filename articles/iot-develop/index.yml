@@ -1,27 +1,27 @@
 ### YamlMime:Landing
-title: Dokumentace pro vývoj zařízení a aplikací IoT
-summary: Prozkoumejte dokumentaci k Azure IoT pro vývoj integrovaných zařízení a vytváření cloudových aplikací s podporou zařízení.
+title: Dokumentace k vývoji zařízení IoT
+summary: Prozkoumejte dokumentaci k Azure IoT pro vývoj integrovaných zařízení a aplikací připojených ke cloudu.
 metadata:
-  title: Vývoj zařízení a aplikací IoT
-  description: Naučte se používat Azure IoT k provádění integrovaných vývojových zařízení a vytváření cloudových aplikací s podporou zařízení.
+  title: Vývoj zařízení IoT
+  description: Naučte se používat Azure IoT pro vývoj integrovaných zařízení a aplikací připojených ke cloudu.
   services: iot-develop
   ms.service: iot-develop
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
-  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/18/2021
-  ms.locfileid: "100656231"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721442"
 landingContent:
-- title: O vývoji zařízení a aplikací IoT
+- title: O vývoji zařízení IoT
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je vývoj aplikací a zařízení Azure IoT?
+    - text: Co je vývoj pro zařízení Azure IoT?
       url: about-iot-develop.md
     - text: Kterou sadu SDK mám použít?
       url: about-iot-sdks.md

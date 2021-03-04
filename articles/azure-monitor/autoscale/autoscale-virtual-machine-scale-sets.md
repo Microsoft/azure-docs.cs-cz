@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717736"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets
 Můžete škálovat a škálovat v Virtual Machine Scale Sets na základě prahových hodnot metriky výkonu, podle plánu opakování nebo podle konkrétního data. Můžete také nakonfigurovat oznámení e-mailu a Webhooku pro akce škálování. Tento názorný postup ukazuje příklad konfigurace všech těchto objektů pomocí Správce prostředků šablony v sadě škálování virtuálního počítače.
@@ -36,7 +36,7 @@ V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com
 
 3. Nyní můžete přidat další profily a pravidla na základě plánu nebo konkrétních požadavků. Vytvoříme nastavení automatického škálování se třemi profily. Pokud chcete pochopit profily a pravidla v automatickém škálování, Projděte si [osvědčené postupy pro automatické škálování](autoscale-best-practices.md).  
 
-    | Profily & pravidla | Description |
+    | Profily & pravidla | Popis |
     |--- | --- |
     | **Profil** |**Na základě výkonu nebo metriky** |
     | Pravidlo |Počet zpráv ve frontě Service Bus > x |
@@ -243,9 +243,9 @@ Pomocí těchto odkazů můžete získat další informace o automatickém šká
 
 [Osvědčené postupy pro automatické škálování Azure](autoscale-best-practices.md)
 
-[Správa automatického škálování pomocí PowerShellu](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[Správa automatického škálování pomocí PowerShellu](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Správa automatického škálování pomocí rozhraní příkazového řádku](../samples/cli-samples.md#autoscale)
+[Správa automatického škálování pomocí rozhraní příkazového řádku](../cli-samples.md#autoscale)
 
 [Nakonfigurovat Webhook & e-mailová oznámení pro automatické škálování](autoscale-webhook-email.md)
 

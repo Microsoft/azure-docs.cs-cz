@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714489"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -44,10 +44,10 @@ Funkce zálohování podporuje následující databázová řešení:
 * Funkce zálohování a obnovení vyžaduje, aby App Service plán byl v úrovni **Standard**, **Premium** nebo **Isolated** . Další informace o škálování plánu App Service pro použití vyšší úrovně najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md). Úrovně **Premium** a **izolované** umožňují větší počet denních zdrojů pro zálohování než úroveň **Standard** .
 * Potřebujete účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, kterou chcete zálohovat. Další informace o účtech Azure Storage najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md).
 * Zálohy můžou mít až 10 GB obsahu aplikace a databáze. Pokud velikost zálohy překročí tento limit, zobrazí se chyba.
-* Zálohy Azure Database for MySQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
-* Zálohy Azure Database for PostgreSQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
+* Zálohy Azure Database for MySQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, dojde k selhání zálohování.
+* Zálohy Azure Database for PostgreSQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, dojde k selhání zálohování.
 * Databáze MySQL v aplikaci se automaticky zálohují bez jakýchkoli konfigurací. Pokud ručně nastavíte nastavení pro databáze MySQL v aplikaci, například přidávání připojovacích řetězců, zálohování nemusí správně fungovat.
-* Použití účtu úložiště s povoleným bránou firewall, protože cíl pro zálohování není podporovaný. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
+* Použití účtu úložiště s povoleným bránou firewall, protože cíl pro zálohování není podporovaný. Pokud je nakonfigurované zálohování, dojde k selhání zálohování.
 
 
 <a name="manualbackup"></a>
@@ -70,18 +70,18 @@ Funkce zálohování podporuje následující databázová řešení:
 
 3. Na stránce **Konfigurace zálohování** klikněte na úložiště, které **není nakonfigurované** , aby se nakonfiguroval účet úložiště.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Snímek obrazovky s proužkovou zprávou pro upgrade App Service plánu pro přístup k funkci zálohování a obnovení":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Snímek obrazovky s oddílem úložiště zálohování s vybraným nastavením úložiště nebylo nakonfigurováno.":::
 
 4. Zvolte cíl zálohování a vyberte **účet úložiště** a **kontejner**. Účet úložiště musí patřit do stejného předplatného jako aplikace, kterou chcete zálohovat. Pokud chcete, můžete na příslušných stránkách vytvořit nový účet úložiště nebo nový kontejner. Až skončíte, klikněte na **Vybrat**.
 
 5. Na stránce **Konfigurace zálohování** , která je stále otevřená, můžete nakonfigurovat **záložní databázi**, pak vybrat databáze, které chcete zahrnout do záloh (SQL Database nebo MySQL), a pak kliknout na **OK**.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Snímek obrazovky s proužkovou zprávou pro upgrade App Service plánu pro přístup k funkci zálohování a obnovení":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Snímek obrazovky oddílu záložní databáze zobrazující zahrnutí do výběru zálohy.":::
 
     > [!NOTE]
     > Aby se databáze zobrazila v tomto seznamu, musí v části **připojovací řetězce** na stránce **nastavení aplikace** pro vaši aplikaci existovat připojovací řetězec. 
     >
-    > Databáze MySQL v aplikaci se automaticky zálohují bez jakýchkoli konfigurací. Pokud ručně nastavíte nastavení pro databáze MySQL v aplikaci, například přidávání připojovacích řetězců, zálohování nemusí správně fungovat.
+    > Databáze MySQL v aplikaci se automaticky zálohují bez jakýchkoli konfigurací. Pokud provedete nastavení pro databáze MySQL v aplikaci ručně, například přidávání připojovacích řetězců, zálohování nemusí správně fungovat.
     > 
     > 
 

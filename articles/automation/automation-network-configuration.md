@@ -4,12 +4,12 @@ description: Tento článek poskytuje podrobnosti o síťových informacích vy�
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 0add7eed6abbe6c137d423ee4a7ef5f0f60072e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900207"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708879"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Podrobnosti konfigurace Azure Automation sítě
 
@@ -26,7 +26,7 @@ Následující porty a adresy URL jsou vyžadovány pro Hybrid Runbook Worker a 
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>Plánování sítě pro Hybrid Runbook Worker
 
-Aby se mohl systém nebo uživatel Hybrid Runbook Worker připojit k Azure Automation a zaregistrovat se v ní, musí mít přístup k číslu portu a adresám URL popsaným v této části. Pracovní proces musí mít také přístup k [portům a adresám URL vyžadovaným pro Log Analytics agenta](../azure-monitor/platform/agent-windows.md) , aby se připojil k pracovnímu prostoru Azure monitor Log Analytics.
+Aby se mohl systém nebo uživatel Hybrid Runbook Worker připojit k Azure Automation a zaregistrovat se v ní, musí mít přístup k číslu portu a adresám URL popsaným v této části. Pracovní proces musí mít také přístup k [portům a adresám URL vyžadovaným pro Log Analytics agenta](../azure-monitor/agents/agent-windows.md) , aby se připojil k pracovnímu prostoru Azure monitor Log Analytics.
 
 Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete Hybrid Runbook Worker komunikaci omezit na příslušné oblastní datové centrum. Zkontrolujte [záznamy DNS používané Azure Automation](how-to/automation-region-dns-records.md) pro požadované záznamy DNS.
 

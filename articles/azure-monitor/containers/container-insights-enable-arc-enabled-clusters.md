@@ -1,28 +1,28 @@
 ---
-title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Monitor pro kontejnery | Microsoft Docs
-description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
+title: Konfigurace clusteru Kubernetes s povoleným kontejnerem Azure pomocí služby Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí služby Container Insights v clusterech Kubernetes s povoleným ARC Azure.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612358"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711293"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolení monitorování clusteru Kubernetes s podporou Azure Arc (Preview)
 
-Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure, které jsou povolené pomocí ARC Azure, abyste dosáhli podobných možností monitorování.
+Služba Container Insights poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure, které jsou povolené pomocí ARC Azure, abyste dosáhli podobných možností monitorování.
 
-Azure Monitor pro kontejnery lze povolit pro jedno nebo více existujících nasazení Kubernetes pomocí skriptu PowerShell nebo bash.
+Službu Container Insights můžete povolit pro jedno nebo více existujících nasazení Kubernetes pomocí skriptu PowerShellu nebo bash.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Azure Monitor for Containers podporuje monitorování Azure ARC s povoleným Kubernetes (Preview), jak je popsáno v článku [Přehled](container-insights-overview.md) , s výjimkou následujících funkcí:
+Container Insights podporuje monitorování Kubernetes s povoleným zobrazením Azure ARC (Preview), jak je popsáno v článku [Přehled](container-insights-overview.md) s výjimkou následujících funkcí:
 
 - Živá data (Preview)
 
-Následující je oficiálně podporovaná s Azure Monitor pro kontejnery:
+Pro službu Container Insights se oficiálně podporují tyto informace:
 
 - Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
 
@@ -36,15 +36,15 @@ Než začnete, ujistěte se, že máte následující:
 
 - Pracovní prostor služby Log Analytics.
 
-    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../samples/resource-manager-workspace.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
+    Služba Container Insights podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../logs/resource-manager-workspace.md), prostřednictvím [PowerShellu](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../logs/quick-create-workspace.md).
 
-- Pokud chcete povolit a přistupovat k funkcím v Azure Monitor pro kontejnery, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*přispěvatele Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics s nakonfigurovaným Azure monitor for Containers.
+- Aby bylo možné povolit a přistupovat k funkcím ve službě Container Insights, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*Log Analytics přispěvatel*](../logs/manage-access.md#manage-access-using-azure-permissions) pracovního prostoru Log Analytics, která je nakonfigurovaná pomocí služby Container Insights.
 
 - Jste členem role [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) v prostředku clusteru ARC Azure.
 
-- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtenář Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurovaným Azure monitor for Containers.
+- Chcete-li zobrazit data monitorování, jste členem oprávnění role [*čtenář Log Analytics*](../logs/manage-access.md#manage-access-using-azure-permissions) s pracovním prostorem Log Analytics nakonfigurovaným pomocí kontejneru Insights.
 
-- [Helm klientovi](https://helm.sh/docs/using_helm/) , aby se připojil diagram Azure monitor for Containers pro zadaný cluster Kubernetes.
+- [Helm Client](https://helm.sh/docs/using_helm/) , který zaregistruje graf služby Container Insights pro zadaný cluster Kubernetes.
 
 - Následující informace o konfiguraci proxy serveru a brány firewall jsou vyžadovány pro kontejnerové verze Log Analytics agenta pro Linux pro komunikaci s Azure Monitor:
 
@@ -154,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Příklad:
+Například:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -239,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Příklad:
+Například:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>Konfigurace koncového bodu proxy serveru
 
-Pomocí kontejnerového agenta pro Azure Monitor pro kontejnery můžete nakonfigurovat koncový bod proxy serveru tak, aby mohl komunikovat přes proxy server. Komunikace mezi kontejnerovým agentem a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
+Pomocí kontejnerového agenta pro službu Container Insights můžete nakonfigurovat koncový bod proxy serveru, aby mohl komunikovat prostřednictvím proxy server. Komunikace mezi kontejnerovým agentem a Azure Monitor může být proxy server HTTP nebo HTTPS a podporuje se anonymní i základní ověřování (uživatelské jméno a heslo).
 
 Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -268,7 +268,7 @@ Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabez
 
 ### <a name="configure-using-powershell"></a>Konfigurace prostřednictvím prostředí PowerShell
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Konfigurace pomocí bash
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>Další kroky
 
-- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru Kubernetes s povoleným obloukem a úlohám, které jsou na nich spuštěné, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků clusteru Kubernetes s povoleným obloukem a úlohám, které jsou na nich spuštěné, se naučíte, [Jak používat službu](container-insights-analyze.md) Container Insights.
 
 - Ve výchozím nastavení agent kontejnerů shromažďuje protokoly kontejnerů stdout/stderr všech kontejnerů spuštěných ve všech oborech názvů kromě Kube-System. Pokud chcete nakonfigurovat kolekci protokolů kontejnerů specificky pro konkrétní obory názvů nebo obory názvů, zkontrolujte [konfiguraci agenta služby Container Insights](container-insights-agent-config.md) a nakonfigurujte požadovaná nastavení shromažďování dat na váš soubor konfigurace ConfigMap.
 
 - Pokud si chcete vyřadit a analyzovat metriky Prometheus z clusteru, přečtěte si téma Konfigurace vyřazení [metrik Prometheus](container-insights-prometheus-integration.md) .
 
-- Informace o tom, jak zastavit monitorování clusteru Kubernetes s povoleným ARC pomocí Azure Monitor for Containers, najdete v tématu [Postup zastavení monitorování hybridního clusteru](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).
+- Informace o tom, jak zastavit monitorování clusteru Kubernetes s povoleným obloukem pomocí služby Container Insights, najdete v tématu [Postup zastavení monitorování hybridního clusteru](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).

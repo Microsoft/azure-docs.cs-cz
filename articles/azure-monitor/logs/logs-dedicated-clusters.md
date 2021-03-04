@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707638"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -34,7 +34,7 @@ Po vytvoření clusteru je možné ho nakonfigurovat a připojit k němu pracovn
 
 Data ingestovaná do vyhrazených clusterů se dvakrát šifrují – jednou na úrovni služby pomocí klíčů spravovaných Microsoftem nebo [klíče spravovaného zákazníkem](../logs/customer-managed-keys.md)a jednou na úrovni infrastruktury pomocí dvou různých šifrovacích algoritmů a dvou různých klíčů. [Dvojité šifrování](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) chrání proti scénáři, kdy může dojít k ohrožení jednoho z šifrovacích algoritmů nebo klíčů. V takovém případě bude další vrstva šifrování nadále chránit vaše data. Vyhrazený cluster také umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](../logs/customer-managed-keys.md#customer-lockbox-preview) .
 
-Všechny operace na úrovni clusteru vyžadují `Microsoft.OperationalInsights/clusters/write` oprávnění akce v clusteru. Toto oprávnění může být uděleno prostřednictvím vlastníka nebo přispěvatele, který obsahuje `*/write` akci nebo prostřednictvím role přispěvatele Log Analytics, která tuto `Microsoft.OperationalInsights/*` akci obsahuje. Další informace o oprávněních Log Analytics najdete [v tématu Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../platform/manage-access.md). 
+Všechny operace na úrovni clusteru vyžadují `Microsoft.OperationalInsights/clusters/write` oprávnění akce v clusteru. Toto oprávnění může být uděleno prostřednictvím vlastníka nebo přispěvatele, který obsahuje `*/write` akci nebo prostřednictvím role přispěvatele Log Analytics, která tuto `Microsoft.OperationalInsights/*` akci obsahuje. Další informace o oprávněních Log Analytics najdete [v tématu Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](./manage-access.md). 
 
 
 ## <a name="cluster-pricing-model"></a>Cenový model clusteru
@@ -77,7 +77,7 @@ Musí být zadány následující vlastnosti:
 - **Název_clusteru**: používá se pro účely správy. Uživatelé nejsou k tomuto názvu vystaveni.
 - **ResourceGroupName**: stejně jako u jakéhokoli prostředku Azure patří clustery do skupiny prostředků. Doporučujeme použít skupinu prostředků centrálního IT, protože clustery jsou obvykle sdíleny mnoha týmy v organizaci. Další informace o návrhu najdete v [návrhu nasazení Azure Monitorch protokolů](../logs/design-logs-deployment.md)
 - **Umístění**: cluster se nachází v konkrétní oblasti Azure. K tomuto clusteru lze propojit pouze pracovní prostory nacházející se v této oblasti.
-- **SkuCapacity**: při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 3 000 GB za den. V případě potřeby ji můžete aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 3 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . Další informace o nákladech clusteru najdete v tématu [Správa nákladů pro Log Analytics clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) .
+- **SkuCapacity**: při vytváření prostředku *clusteru* je nutné zadat úroveň *rezervace kapacity* (SKU). Úroveň *rezervace kapacity* může být v rozsahu 1 000 až 3 000 GB za den. V případě potřeby ji můžete aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 3 000 GB za den, kontaktujte nás na adrese LAIngestionRate@microsoft.com . Další informace o nákladech clusteru najdete v tématu [Správa nákladů pro Log Analytics clustery](./manage-cost-storage.md#log-analytics-dedicated-clusters) .
 
 Po vytvoření prostředku *clusteru* můžete upravit další vlastnosti, jako je *SKU*, * keyVaultProperties nebo *billingType*. Další podrobnosti najdete níže.
 
@@ -300,7 +300,7 @@ Po vytvoření prostředku *clusteru* a jeho úplné zřízení můžete na úro
 - **keyVaultProperties** – aktualizuje klíč v Azure Key Vault. Viz část [aktualizace clusteru s podrobnostmi identifikátoru klíče](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details). Obsahuje následující parametry: *KeyVaultUri*, KeyName, *verze* *klíče*. 
 - **billingType** – vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
   - **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
-  - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
+  - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](./manage-cost-storage.md#log-analytics-dedicated-clusters) . 
 
 > [!NOTE]
 > Vlastnost *billingType* není v prostředí PowerShell podporována.
@@ -573,5 +573,5 @@ Pomocí následujícího volání REST odstraňte cluster:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Log Analytics vyhrazeném účtování clusteru](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- Další informace o [Log Analytics vyhrazeném účtování clusteru](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 - Další informace o [správném návrhu pracovních prostorů Log Analytics](../logs/design-logs-deployment.md)

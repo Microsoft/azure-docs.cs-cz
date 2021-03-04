@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720133"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Kurz: použití Tvůrce (Preview) k vytvoření vnitřních map
 
@@ -116,6 +116,7 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
     >[!IMPORTANT]
     > Adresy URL rozhraní API v tomto dokumentu může být potřeba upravit podle umístění prostředku autora. Další podrobnosti najdete v tématu [přístup ke službě Creator Services (Preview) ](how-to-manage-creator.md#access-to-creator-services).
+    > Pokud se zobrazí chyba s kódem `"RequiresCreatorResource"` , ujistěte se, že jste v Azure Maps účtu [zřídili Azure Maps Resource Creator](how-to-manage-creator.md) .
 
 3. Klikněte na tlačítko **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi a vyhledejte klíč **umístění** . Zkopírujte hodnotu klíče **umístění** , který je `status URL` pro požadavek na převod. Tento postup použijete v dalším kroku.
 
@@ -314,7 +315,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle** zadejte níže styly, aby odrážely změny `occupied` `temperature` *stavů* a. Až skončíte, klikněte na **Odeslat**.
+3. V **záhlaví** žádosti **post** nastavte `Content-Type` na `application/json` . V **těle** poskytněte níže nezpracované styly JSON, aby odrážely změny `occupied` `temperature` *stavů* a. Až skončíte, klikněte na **Odeslat**.
 
     ```json
     {

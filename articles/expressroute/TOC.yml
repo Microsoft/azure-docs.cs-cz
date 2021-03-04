@@ -136,6 +136,12 @@
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
+    - name: Přidání podpory protokolu IPv6 pro privátní partnerské vztahy (Preview)
+      items:
+        - name: portál Azure
+          href: expressroute-howto-add-ipv6-portal.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-ipv6-powershell.md
     - name: Monitorování
       items:
         - name: 'Monitorování, metriky a výstrahy služby ExpressRoute'

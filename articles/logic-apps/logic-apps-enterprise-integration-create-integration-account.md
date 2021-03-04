@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705581"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a správa účtů integrace pro podnikové integrace B2B v Azure Logic Apps
 
@@ -21,21 +21,29 @@ Abyste mohli začít vytvářet [řešení podnikové integrace a B2B](../logic-
 
 Můžete například vytvářet, ukládat a spravovat artefakty B2B, jako jsou obchodní partneři, smlouvy, mapy, schémata, certifikáty a konfigurace služby Batch. Před tím, než aplikace logiky může s těmito artefakty pracovat a používat Logic Apps B2B konektory, je také nutné [propojit účet pro integraci](#link-account) s vaší aplikací logiky. Váš účet pro integraci i aplikace logiky musí existovat ve *stejném* umístění nebo oblasti.
 
-> [!TIP]
-> Pokud chcete vytvořit účet pro integraci v [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), přečtěte si téma [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
+> [!IMPORTANT]
+> Na základě typu účtu pro integraci, který vyberete, se vytvoří účet pro integraci s náklady. Další informace najdete v tématu [Logic Apps cen a modelech fakturace](logic-apps-pricing.md#integration-accounts) a v [Logic Apps cenách](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 V tomto tématu se dozvíte, jak provádět tyto úlohy:
 
 * Vytvořte účet pro integraci.
+
+  > [!TIP]
+  > Pokud chcete vytvořit účet pro integraci v [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), přečtěte si téma [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment).
+
 * Propojit účet pro integraci s aplikací logiky.
+
 * Změňte cenovou úroveň účtu pro integraci.
+
 * Odpojte účet pro integraci z aplikace logiky.
+
 * Přesuňte účet pro integraci do jiné skupiny prostředků nebo předplatného Azure.
+
 * Odstraňte účet pro integraci.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Vytvoření účtu integrace
 
@@ -59,12 +67,12 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Yes | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "Fabrikam-Integration". |
-   | **Předplatné** | Yes | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | Yes | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
-   | **Cenová úroveň** | Yes | <*úroveň cen*> | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>- [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Umístění** | Yes | <*Oblast Azure*> | Oblast, kam se mají ukládat metadata účtu pro integraci Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte své aplikace logiky ve stejném umístění jako váš účet pro integraci. V tomto příkladu použijte "Západní USA". <p>**Poznámka**: Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
-   | **Log Analytics** | No | Vypnuto, zapnuto | Pro tento příklad nechejte nastavení **vypnuto** . |
+   | **Název** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "Fabrikam-Integration". |
+   | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
+   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
+   | **Cenová úroveň** | Ano | <*úroveň cen*> | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>- [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Umístění** | Ano | <*Oblast Azure*> | Oblast, kam se mají ukládat metadata účtu pro integraci Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte své aplikace logiky ve stejném umístění jako váš účet pro integraci. V tomto příkladu použijte "Západní USA". <p>**Poznámka**: Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Log Analytics** | Ne | Vypnuto, zapnuto | Pro tento příklad nechejte nastavení **vypnuto** . |
    |||||
 
 1. Až budete hotovi, vyberte **vytvořit**.

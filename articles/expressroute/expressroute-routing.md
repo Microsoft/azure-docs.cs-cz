@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721833"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -30,13 +30,22 @@ Je nutné rezervovat několik bloků IP adres, abyste nakonfigurovali směrován
 ### <a name="ip-addresses-used-for-azure-private-peering"></a>IP adresy sloužící pro soukromý partnerský vztah Azure
 Ke konfiguraci partnerských vztahů můžete použít buď soukromé IP adresy, nebo veřejné IP adresy. Rozsah adres použitý ke konfiguraci tras se nesmí překrývat s rozsahy adres použitými k vytvoření virtuálních sítí v Azure. 
 
-* Pro rozhraní směrování musíte rezervovat podsíť /29 nebo dvě podsítě /30.
-* Podsítě pro směrování mohou obsahovat buď soukromé IP adresy, nebo veřejné IP adresy.
-* Podsítě nesmí být v konfliktu s rozsahem vyhrazeným zákazníkem pro použití v cloudu Microsoftu.
-* Pokud se použije podsíť /29, rozdělí se na dvě podsítě /30. 
-  * První podsíť /30 se používá pro primární propojení a druhá podsíť /30 se používá pro sekundární propojení.
-  * Pro každou z těchto podsítí /30 musíte ve směrovači použít první IP adresu podsítě /30. Microsoft používá druhou IP adresu podsítě /30 k nastavení relace protokolu BGP.
-  * Musíte nastavit obě relace protokolu BGP, aby naše [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/) byla platná.  
+* IPv4
+    * Pro rozhraní směrování musíte rezervovat podsíť /29 nebo dvě podsítě /30.
+    * Podsítě pro směrování mohou obsahovat buď soukromé IP adresy, nebo veřejné IP adresy.
+    * Podsítě nesmí být v konfliktu s rozsahem vyhrazeným zákazníkem pro použití v cloudu Microsoftu.
+    * Pokud se použije podsíť /29, rozdělí se na dvě podsítě /30. 
+      * První podsíť /30 se používá pro primární propojení a druhá podsíť /30 se používá pro sekundární propojení.
+      * Pro každou z těchto podsítí /30 musíte ve směrovači použít první IP adresu podsítě /30. Microsoft používá druhou IP adresu podsítě /30 k nastavení relace protokolu BGP.
+      * Musíte nastavit obě relace protokolu BGP, aby naše [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/) byla platná.
+* Protokolů
+    * Pro rozhraní směrování musíte rezervovat podsíť/125 nebo dvě podsítě/126.
+    * Podsítě pro směrování mohou obsahovat buď soukromé IP adresy, nebo veřejné IP adresy.
+    * Podsítě nesmí být v konfliktu s rozsahem vyhrazeným zákazníkem pro použití v cloudu Microsoftu.
+    * Pokud se použije podsíť /125, rozdělí se na dvě podsítě /126. 
+      * První podsíť/126 se používá pro primární propojení a druhá podsíť/30 se používá pro sekundární propojení.
+      * Pro každou z těchto podsítí /126 musíte ve směrovači použít první IP adresu podsítě /126. Microsoft používá druhou IP adresu podsítě /126 k nastavení relace protokolu BGP.
+      * Musíte nastavit obě relace protokolu BGP, aby naše [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/) byla platná.
 
 #### <a name="example-for-private-peering"></a>Příklad soukromého partnerského vztahu
 Pokud k nastavení partnerského vztahu zvolíte a.b.c.d/29, rozdělí se do dvou podsítí /30. V následujícím příkladu si všimněte, jak se používá podsíť a. b. c. d/29:
@@ -122,7 +131,7 @@ Microsoft pro veřejný partnerský vztah Azure, soukromý partnerský vztah Azu
 Nejsou žádné požadavky týkající se symetrie přenosu dat. Cesty vpřed a zpět můžou procházet různými dvojicemi směrovačů. Identické trasy musí být inzerovány z obou stran napříč páry okruhů, které patří vám. Metriky tras nemusejí být identické.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Agregace tras a omezení předpon
-Podporujeme až 4000 předpon, které jsou nám inzerované prostřednictvím soukromého partnerského vztahu Azure. To omezení může být zvýšeno až 10 000 předpon, pokud je povolen doplněk ExpressRoute Premium. Přijímáme až 200 předpon na každou relaci BGP pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu. 
+Podporujeme až 4000 předpon IPv4 a 100 předpon IPv6 oznamované prostřednictvím privátního partnerského vztahu Azure. To je možné zvýšit až 10 000 předpon IPv4, pokud je povolený doplněk ExpressRoute Premium. Přijímáme až 200 předpon na každou relaci BGP pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu. 
 
 Pokud počet předpon překročí toto omezení, relace BGP se ukončí. Budeme přijímat výchozí trasy jenom na propojeních soukromého partnerského vztahu. Poskytovatel musí odfiltrovat výchozí trasy a privátní IP adresy (RFC 1918) z cest pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu. 
 
@@ -163,11 +172,11 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | USA – středozápad | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA – středosever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | Středojižní USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| Střední USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| USA – střed | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Střední Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Jižní Amerika** | |
-| Brazil South | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
+| Brazílie – jih | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
 | **Evropa** | |
 | Severní Evropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
 | West Europe | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
@@ -185,11 +194,11 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Východní Asie | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
 | Southeast Asia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **Japonsko** | |
-| Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japonsko – východ | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | Japonsko – západ | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **Austrálie** | |
 | Austrálie – východ | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| Australia Southeast | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Austrálie – jihovýchod | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **Australská vláda** | |
 | Austrálie – střed | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | Austrálie – střed 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |

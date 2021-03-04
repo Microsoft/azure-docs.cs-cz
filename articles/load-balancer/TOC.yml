@@ -160,8 +160,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: Provoz back-endového fondu (virtuální počítač)
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: Běžné chyby nasazení
-          href: load-balancer-common-deployment-errors.md
         - name: Běžné problémy s odchozím připojením
           href: troubleshoot-outbound-connection.md
         - name: Potíže se stavem prostředků a příchozí dostupností
@@ -191,6 +189,8 @@
       displayName: ARM
     - name: Běžné kódy chyb pro Azure Instance Metadata Service (IMDS)
       href: troubleshoot-load-balancer-imds.md
+    - name: Běžné chyby nasazení
+      href: load-balancer-common-deployment-errors.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

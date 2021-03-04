@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/21/2021
+ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729386"
 ---
 # <a name="whats-new-in-azure-automation"></a>Co je nového v Azure Automation?
 
@@ -24,7 +24,55 @@ Azure Automation průběžně přijímá vylepšení. V tomto článku najdete i
 
 Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu navštěvovat.
 
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>Podpora pro automatizaci a konfiguraci stavu deklarovaný GA v oblasti Japonsko – západ
+
+**Zadejte:** Nová funkce
+
+Dostupnost konfigurace účtu a stavu služby Automation v oblasti Japonsko – západ Další informace najdete v tématu [oznámení](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/).
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>Zavedení vlastního Azure Policy dodržování předpisů pro vymáhání spuštění sady Runbook v Hybrid Worker
+
+**Zadejte:** Nová funkce
+
+Pomocí nového pravidla dodržování předpisů Azure Policy můžete vytvořit úlohy, Webhooky a plány úloh, které se spustí pouze v Hybrid Workerch skupinách.
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>Update Management dostupnost v oblastech Východní USA, Francie, střední a Severní Evropa
+
+**Zadejte:** Nová funkce
+
+Funkce automatizace Update Management je k dispozici v oblastech Východní USA, Francie – střed a Severní Evropa. Aktualizace dokumentace, která odráží tuto změnu, najdete v tématu [mapování podporovaných oblastí](how-to/region-mappings.md) .
+
 ## <a name="january-2021"></a>Leden 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>Podpora pro automatizaci a konfiguraci stavu s deklarací GA v Švýcarsko – západ
+
+**Zadejte:** Nová funkce
+
+Dostupnost účtu Automation a konfigurace stavu v oblasti Švýcarsko – západ. Pro další informace si přečtěte [oznámení](https://azure.microsoft.com/updates/azure-automation-in-switzerland-west-region/).
+
+### <a name="added-python-3-script-to-import-module-with-multiple-dependencies"></a>Přidání skriptu Python 3 pro import modulu s několika závislostmi
+
+**Zadejte:** Nová funkce
+
+Skript je k dispozici ke stažení z našeho [úložiště GitHub](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py). 
+ 
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Podpora rolí Hybrid Runbook Worker pro CentOS 8. x/RHEL 8. x/SLES 15
+
+**Textový.** Nová funkce
+
+Funkce Hybrid Runbook Worker podporuje distribuce CentOS 8. x, REHL 8. x a SLES 15 jenom pro automatizaci procesů na hybridních pracovních procesech Runbooku.  V části [podporované operační systémy](automation-linux-hrw-install.md#supported-linux-operating-systems) najdete aktualizace dokumentace, aby odrážely tyto změny.
+
+### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>Update Management & Change Tracking dostupnosti v oblastech Austrálie – východ, Východní Asie, Západní USA & střed USA oblasti
+
+**Zadejte:** Nová funkce
+
+Účet služby Automation, Change Tracking a inventář a Update Management jsou k dispozici v oblastech Austrálie – východ, Východní Asie Západní USA & Střed USA oblasti. 
+
+### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>Představená verze Public Preview sad Runbook Python 3 v cloudu pro státní správu USA
+
+**Zadejte:** Nová funkce Azure Automation zavádí podporu cloudového a hybridního spuštění Runbooku v Pythonu ve verzi Public Preview v oblastech cloudu USA.  Další informace najdete v [oznámení](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Automation Runbooky přesunuté z centra skriptů TechNet do GitHubu
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715432"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -68,7 +68,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Oblast           | Vyberte **(Evropa) západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -106,18 +106,19 @@ V této části vytvoříte virtuální síť a podsíť.
 
 ## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
-
-2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
+1. Vyberte **Vytvořit prostředek**. 
+2. Do vyhledávacího pole zadejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte **Nástroj pro vyrovnávání zatížení** .
+3. Na stránce **Vyrovnávání zatížení** vyberte **vytvořit**.
+4. Na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | Skladová položka           | Vybrat **Standard** |
+    | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -228,7 +229,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Oblast | Vyberte **západní Evropa** |
+    | Oblast | Vyberte **(Evropa) západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
@@ -266,7 +267,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Name |  **myVM2** | **myVM3** |
+    | Název |  **myVM2** | **myVM3** |
     | Zóna dostupnosti | **2** | **3** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG** |
 
@@ -303,7 +304,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **západní Evropa** |
+    | Oblast           | Vyberte **(Evropa) západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -349,10 +350,10 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | Skladová položka           | Vybrat **základní** |
+    | SKU           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -506,7 +507,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Name |  **myVM2** | **myVM3** |
+    | Název |  **myVM2** | **myVM3** |
     | Skupina dostupnosti | Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG** | Vybrat existující **myNSG** |
 

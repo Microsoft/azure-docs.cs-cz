@@ -7,24 +7,19 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: e2fe475b171a99ec27ed162511db289891066e00
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6863c492059ccee152ecf3d03a09e61793576bcb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715594"
 ---
-# <a name="configure-a-rule-set"></a>Konfigurace sady pravidel
+# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>Konfigurace sady pravidel pomocí Azure front-dveří Standard/Premium (Preview)
 
 > [!Note]
 > Tato dokumentace je určena pro Azure front-end Standard/Premium (Preview). Hledáte informace o frontách Azure na začátku? Podívejte se [sem](../front-door-overview.md).
 
-V tomto kurzu se dozvíte, jak vytvořit sadu pravidel a první sadu pravidel v Azure Portal. 
-
-V tomto kurzu se naučíte:
-> [!div class="checklist"]
-> - Nakonfigurujte sadu pravidel pomocí portálu.
-> - Odstranit sadu pravidel ze svého profilu AFD pomocí portálu
+Tento článek ukazuje, jak vytvořit sadu pravidel a první sadu pravidel v Azure Portal. Pak se dozvíte, jak přidružit sadu pravidel ke trase ze stránky sady pravidel nebo ze Správce koncových bodů.
 
 > [!IMPORTANT]
 > Služba Azure front-in standard/Premium (Preview) je aktuálně ve verzi Public Preview.
@@ -33,7 +28,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit frontu Azure na úrovni Standard/Premium. Další informace najdete v tématu [rychlý Start: vytvoření profilu služby Azure front-end Standard/Premium](create-front-door-portal.md).
+* Než budete moct nakonfigurovat sadu pravidel, musíte nejdřív vytvořit frontu Azure na úrovni Standard/Premium. Další informace najdete v tématu [rychlý Start: vytvoření profilu služby Azure front-end Standard/Premium](create-front-door-portal.md).
 
 ## <a name="configure-rule-set-in-azure-portal"></a>Konfigurovat sadu pravidel v Azure Portal
 
@@ -65,11 +60,11 @@ V tomto kurzu se naučíte:
     1. Vyberte *nepřidružený* odkaz.
      
 
-    1. Pak v okně **přidružení k trase** vyberte koncový bod a trasu, kterou chcete přidružit k sadě pravidel. 
+    1. Pak na stránce **přidružit trasu** vyberte koncový bod a trasu, kterou chcete přidružit k sadě pravidel. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set.png" alt-text="Snímek obrazovky s vytvořením stránky trasy":::    
         
-    1. Pokud je v rámci vybrané trasy více sad pravidel, klikněte na *Další* , aby se změnily objednávky sady pravidel. Sada pravidel se spustí shora dolů. Objednávky můžete změnit výběrem sady pravidel a přesunutím nahoru nebo dolů. Pak vyberte *přidružit*.
+    1. Pokud je v rámci vybrané trasy více sad pravidel, vyberte možnost *Další* pro změnu pořadí sad pravidel. Sada pravidel se spustí shora dolů. Objednávky můžete změnit výběrem sady pravidel a přesunutím nahoru nebo dolů. Pak vyberte *přidružit*.
     
         > [!Note]
         > K jedné trase na této stránce můžete přidružit jenom jednu sadu pravidel. Pokud chcete přidružit sadu pravidel s více trasami, použijte prosím správce koncových bodů.
@@ -86,15 +81,15 @@ V tomto kurzu se naučíte:
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="Snímek obrazovky s výběrem koncového bodu ve Správci koncových bodů" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
 
-    1. Klikněte na *Upravit koncový bod* .  
+    1. Vyberte *Upravit koncový bod*.  
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="Snímek obrazovky s výběrem možnosti upravit koncový bod ve Správci koncových bodů" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
 
-    1. Klikněte na trasu. 
+    1. Vyberte trasu. 
     
          :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="Snímek obrazovky s výběrem trasy":::
     
-    1. V okně *aktualizovat trasu* v části *pravidla* vyberte sady pravidel, které chcete přidružit k trase z rozevíracího seznamu. Pak můžete změnit objednávky přesunutím nastavení pravidla směrem nahoru a dolů. 
+    1. Na stránce *aktualizovat postup* vyberte v části *pravidla* sady pravidel, které chcete přidružit k trase z rozevíracího seznamu. Pak můžete změnit objednávky přesunutím nastavení pravidla směrem nahoru a dolů. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-4.png" alt-text="Snímek obrazovky aktualizace stránky trasy":::
     
@@ -106,7 +101,7 @@ V předchozích krocích jste nakonfigurovali a přidružili sadu pravidel ke sv
 
 1. Na **stránce sada pravidel** v části **Nastavení** zrušte přidružení sady pravidel ze všech přidružených tras.
 
-1. Rozbalte do trasy, klikněte na tři tečky vybrat *Upravit trasu*.
+1. Rozbalte cestu, vyberte tři tečky. Pak vyberte *Upravit trasu*.
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="Snímek obrazovky s trasou rozbalenou v sadě pravidel":::
 
@@ -126,13 +121,4 @@ V předchozích krocích jste nakonfigurovali a přidružili sadu pravidel ke sv
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-* Vytvoření sady pravidel
-* Přidružte sadu pravidel k trase AFD.
-* Odstranění sady pravidel z profilu AFD
-
-Pokud chcete zjistit, jak přidat záhlaví zabezpečení se sadou pravidel, přejděte k dalšímu kurzu.
-
-> [!div class="nextstepaction"]
-> [Záhlaví zabezpečení se sadou pravidel]()
+Přečtěte si, jak přidat [záhlaví zabezpečení se sadou pravidel](how-to-add-security-headers.md).

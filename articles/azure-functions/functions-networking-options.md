@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729228"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -87,7 +87,7 @@ Další informace najdete v tématu [koncové body služby virtuální sítě](.
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť 
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce aktuálně funguje jenom s plány Windows Premium.  Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce aktuálně funguje jenom pro všechny SKU podporované virtuální sítě, které zahrnují Standard a Premium, s výjimkou na pružných razítkách, kde je VNet dostupná jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
 
 1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
 1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.

@@ -1,18 +1,18 @@
 ---
-title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | Microsoft Docs
-description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
+title: Konfigurace shromažďování dat agenta Container Insights | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat agenta kontejnerového Insights pro řízení shromažďování protokolů stdout/stderr a proměnných prostředí.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612425"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708386"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro službu Azure Monitor pro kontejnery
+# <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurace shromažďování dat agenta pro službu Container Insights
 
-Azure Monitor pro kontejnery shromáždí z kontejnerového agenta prostředí stdout, stderr a environmentální proměnné z úloh kontejneru nasazených do spravovaných clusterů Kubernetes. Nastavení shromažďování dat agenta můžete nakonfigurovat vytvořením vlastního ConfigMaps Kubernetes pro řízení tohoto prostředí. 
+Ve službě Container Insights se shromažďují proměnné prostředí stdout, stderr a prostředí z kontejnerů nasazených do spravovaných clusterů Kubernetes z kontejnerového agenta. Nastavení shromažďování dat agenta můžete nakonfigurovat vytvořením vlastního ConfigMaps Kubernetes pro řízení tohoto prostředí. 
 
 Tento článek ukazuje, jak vytvořit ConfigMap a nakonfigurovat shromažďování dat podle vašich požadavků.
 
@@ -142,8 +142,8 @@ Ve výstupu se zobrazí zpráva podobná následující se schématy poznámky �
 
 ## <a name="next-steps"></a>Další kroky
 
-- Azure Monitor pro kontejnery neobsahují předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah výkonu s Azure monitor pro kontejnery](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit Doporučené výstrahy pro zajištění vysokého využití procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
+- Součástí kontejneru Insights není předdefinovaná sada výstrah. Podívejte se na téma [vytváření výstrah výkonu pomocí služby Container Insights](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit Doporučené výstrahy pro zajištění vysokého využití procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
 
-- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v AKS nebo hybridním clusteru a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.
+- Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v AKS nebo hybridním clusteru a úlohách, které se na nich běží, se naučíte, [Jak používat službu](container-insights-analyze.md) Container Insights.
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizace a analýzy clusterů.

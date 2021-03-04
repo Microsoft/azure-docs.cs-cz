@@ -1,22 +1,21 @@
 ---
 title: Připojení služby řešení Network Performance Monitor – Azure Log Analytics
 description: Pomocí možnosti monitorování připojení služby v Network Performance Monitor můžete monitorovat síťové připojení ke koncovému bodu, který má otevřený port TCP.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: a980c0987106a80751a98c48dfc5780708e6f889
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734158"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
 > [!IMPORTANT]
-> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) v Azure Network Watcher před 29. února 2024.
+> Od 1. července 2021 nebudete moci přidat nové testy do existujícího pracovního prostoru nebo povolit nový pracovní prostor v Network Performance Monitor. Můžete pokračovat v používání testů vytvořených před 1. července 2021. Pokud chcete minimalizovat přerušení služby na vaše aktuální úlohy, [migrujte testy z Network Performance Monitor na nové monitorování připojení](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) v Azure Network Watcher před 29. února 2024.
 
 Pomocí možnosti monitorování připojení služby v nástroji [Network Performance Monitor](network-performance-monitor.md) můžete monitorovat síťové připojení ke koncovému bodu, který má otevřený port TCP. K takovým koncovým bodům patří weby, aplikace SaaS, PaaS aplikace a databáze SQL. 
 
@@ -137,4 +136,3 @@ Pro oblast) – Virginia pro státní správu USA jsou integrované NPMy jenom a
 
 ## <a name="next-steps"></a>Další kroky
 V [protokolech hledání](../logs/log-query-overview.md) zobrazíte podrobné záznamy dat o výkonu sítě.
-

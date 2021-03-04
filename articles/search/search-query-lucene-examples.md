@@ -1,273 +1,356 @@
 ---
 title: Použít úplnou syntaxi dotazů Lucene
 titleSuffix: Azure Cognitive Search
-description: Syntaxe dotazů Lucene pro přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšování skóre termínů, hledání v regulárních výrazech a hledání pomocí zástupných znaků ve službě Azure Kognitivní hledání.
+description: Příklady dotazů, které demonstrují syntaxi dotazů Lucene pro přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšování skóre termínů, hledání regulárních výrazů a hledání pomocí zástupných znaků v indexu služby Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: df26cfc3b220f40a7e73ff1c750d2b2ae37e7625
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 6213efb6ba14052c6f957a6d999f48f55f65186c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401453"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693556"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Použít úplnou syntaxi hledání Lucene (rozšířené dotazy v Azure Kognitivní hledání)
 
-Při sestavování dotazů pro Azure Kognitivní hledání můžete nahradit výchozí [jednoduchý analyzátor dotazů](query-simple-syntax.md) výkonnějším [analyzátorem dotazů Lucene v Azure kognitivní hledání](query-lucene-syntax.md) a formulovat specializované a pokročilé definice dotazů. 
+Při sestavování dotazů pro Azure Kognitivní hledání můžete nahradit výchozí [jednoduchý analyzátor dotazů](query-simple-syntax.md) výkonnějším [analyzátorem dotazů Lucene](query-lucene-syntax.md) a formulovat specializované a pokročilé výrazy dotazů.
 
-Analyzátor Lucene podporuje složité konstrukce dotazů, jako jsou dotazy v oboru pole, přibližné vyhledávání, vpony a zástupné vyhledávání zástupných znaků, hledání blízkosti, zvyšování skóre a hledání v regulárních výrazech. Další napájení přináší dodatečné požadavky na zpracování, takže byste měli očekávat trochu delší dobu provádění. V tomto článku si můžete projít příklady, které demonstrují operace s dotazy na základě úplné syntaxe.
+Analyzátor Lucene podporuje složité formáty dotazů, jako jsou dotazy v oboru pole, přibližné vyhledávání, vpony a přípona zástupného znaku přípony, hledání blízkosti, zvyšování skóre a hledání v regulárních výrazech. Další napájení přináší dodatečné požadavky na zpracování, takže byste měli očekávat trochu delší dobu provádění. V tomto článku si můžete projít příklady, které demonstrují operace s dotazy na základě úplné syntaxe.
 
 > [!Note]
 > Mnohé z specializovaných konstrukcí dotazů, které jsou povolené prostřednictvím úplné syntaxe dotazů Lucene, nejsou [analyzovány textem](search-lucene-query-architecture.md#stage-2-lexical-analysis), které mohou být překvapivé, pokud očekáváte odvozování nebo lemmatizátor nebo předzpracování. Lexikální analýza je prováděna pouze za úplných podmínek (dotaz dotaz nebo fráze). Typy dotazů s neúplnými podmínkami (dotaz na předponu, dotaz se zástupnými znaky, regulární dotaz, nepřibližný dotaz) jsou přidány přímo do stromu dotazu a vycházejí z fáze analýzy. Jediná transformace prováděná na částečných výrazech dotazu je lowercasing. 
 >
 
-## <a name="nyc-jobs-examples"></a>Příklady úloh NYC
+## <a name="hotels-sample-index"></a>Vzorový index hotelů
 
-Následující příklady využívají [Index vyhledávání úloh NYC](https://azjobsdemo.azurewebsites.net/)  sestávající z úloh, které jsou k dispozici na základě datové sady poskytované [městem OpenData iniciativy z New Yorku](https://nycopendata.socrata.com/). Tato data by se neměla považovat za aktuální nebo kompletní. Index je ve službě izolovaného prostoru, kterou poskytuje Microsoft, což znamená, že k tomu, abyste tyto dotazy zkusili, nepotřebujete předplatné Azure ani Azure Kognitivní hledání.
+Následující dotazy jsou založené na pohostincích – vzorový index, který můžete vytvořit podle pokynů v tomto [rychlém](search-get-started-portal.md)startu.
 
-K tomu, co potřebujete, můžete využít nebo ekvivalentní nástroj pro vystavení požadavku HTTP při získání nebo zveřejnění. Pokud tyto nástroje neznáte, přečtěte si téma [rychlý Start: Prozkoumejte Azure Kognitivní hledání REST API](search-get-started-rest.md).
+Příklady dotazů jsou klouby pomocí REST API a POST. Můžete je vkládat a spouštět v nástroji [post](search-get-started-rest.md) nebo v [Visual Studio Code s rozšířením kognitivní hledání](search-get-started-vs-code.md).
 
-## <a name="set-up-the-request"></a>Nastavení žádosti
+Hlavičky požadavku musí mít následující hodnoty:
 
-1. Hlavičky požadavku musí mít následující hodnoty:
+| Klíč | Hodnota |
+|-----|-------|
+| Typ obsahu | application/json|
+| klíč rozhraní API  | `<your-search-service-api-key>`, buď dotaz, nebo klíč správce |
 
-   | Klíč | Hodnota |
-   |-----|-------|
-   | Typ obsahu | `application/json`|
-   | klíč rozhraní API  | `252044BE3886FE4A8E3BAA4F595114BB` </br> (Toto je skutečný klíč rozhraní API pro vyhledávací službu izolovaného prostoru (sandbox), která hostuje index úloh NYC.) |
-
-1. Nastavte operaci na **`GET`** .
-
-1. Nastavte adresu URL na **`https://azs-playground.search.windows.net/indexes/nycjobs/docs/search=*&api-version=2020-06-30&queryType=full`**
-
-   + Kolekce Documents v indexu obsahuje veškerý prohledávatelný obsah. Klíč rozhraní API pro dotaz zadaný v hlavičce požadavku funguje jenom pro operace čtení, které cílí na kolekci dokumentů.
-
-   + **`$count=true`** Vrátí počet dokumentů, které odpovídají kritériím hledání. U prázdného vyhledávacího řetězce bude počet všechny dokumenty v indexu (přibližně 2558 v případě úloh NYC).
-
-   + **`search=*`** je nespecifikovaný dotaz, který je ekvivalentní s hodnotou null nebo prázdným hledáním. Není to zvláště užitečné, ale je to nejjednodušší hledání, které můžete provést, a zobrazuje všechna pole, která lze načíst v indexu, včetně všech hodnot.
-
-   + **`queryType=full`** vyvolá úplný analyzátor Lucene.
-
-1. Jako krok ověření vložte následující žádost do pole získat a klikněte na **Odeslat**. Výsledky se vrátí jako podrobné dokumenty JSON.
-
-   ```http
-   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*&queryType=full
-   ```
-
-### <a name="how-to-invoke-full-lucene-parsing"></a>Postup volání úplné analýzy Lucene
-
-Přidejte **`queryType=full`** k vyvolání úplné syntaxe dotazu a přepsání výchozí jednoduché syntaxe dotazu. Všechny příklady v tomto článku určují **`queryType=full`** parametr Search, který označuje, že je úplná syntaxe zpracována analyzátorem dotazů Lucene. 
+Parametry identifikátoru URI musí zahrnovat koncový bod vyhledávací služby s názvem indexu, kolekcemi dokumentů, příkazem hledání a verzí rozhraní API, podobně jako v následujícím příkladu:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
-{
-    "queryType": "full"
-}
+https://{{service-name}}.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Příklad 1: určení oboru dotazu na seznam polí
+Text požadavku by měl být vytvořen jako platný kód JSON:
 
-Tento první příklad není specifický pro specifickou analýzu, ale zavedeme ho, aby zavedl první základní koncept dotazu: omezení. Tento příklad omezuje provádění dotazů a odpověď na pouze několik konkrétních polí. Znalost způsobu strukturování čitelné odpovědi JSON je důležitá, pokud je váš nástroj pro odesílání nebo hledání v Průzkumníku služby Search. 
-
-Tento dotaz cílí pouze na *business_title* v rámci **`searchFields`** parametru, **`select`** který určuje stejné pole v odpovědi.
-
-```http
-POST https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30
+```json
 {
-    "count": true,
-    "queryType": "full",
     "search": "*",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "queryType": "full",
+    "select": "HotelId, HotelName, Category, Tags, Description",
+    "count": true
 }
 ```
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
++ "hledání" nastavené na `*` je nespecifikovaný dotaz, který odpovídá hodnotě null nebo prázdné vyhledávání. Není to zvláště užitečné, ale je to nejjednodušší hledání, které můžete provést, a zobrazuje všechna pole, která lze načíst v indexu, včetně všech hodnot.
 
-  ![Ukázková odpověď po ukázce s výsledky](media/search-query-lucene-examples/postman-sample-results.png)
++ možnost "queryType" nastavenou na hodnotu Full vyvolá úplný analyzátor dotazů Lucene a je pro tuto syntaxi nutné.
 
-Možná jste si všimli skóre hledání v odpovědi. Rovnoměrné skóre **1** nastane, pokud neexistuje žádné pořadí, protože hledání nevrátilo fulltextové vyhledávání, nebo vzhledem k tomu, že nebyla zadána žádná kritéria. Pro prázdné hledání se řádky vrátí v libovolném pořadí. Pokud zahrnete skutečná kritéria, uvidíte, že výsledky hledání se budou vyvíjet na smysluplné hodnoty.
++ pro kompozici výsledků hledání je použita možnost vybrat jako seznam polí oddělených čárkami, včetně pouze těch polí, která jsou užitečná v kontextu výsledků hledání.
 
-## <a name="example-2-fielded-search"></a>Příklad 2: hledání v poli
++ možnost Count vrátí počet dokumentů, které odpovídají kritériím vyhledávání. U prázdného vyhledávacího řetězce bude počet všechny dokumenty v indexu (50 v případě hotelů-Sample-index).
 
-Úplná syntaxe Lucene podporuje určení oboru jednotlivých vyhledávacích výrazů do konkrétního pole. Tento příklad vyhledá obchodní tituly s termínem "na začátku", ale ne méně. Můžete zadat více polí pomocí a.
+## <a name="example-1-fielded-search"></a>Příklad 1: hledání v poli
+
+Jednotlivé obory vyhledávání v terénu, vložené vyhledávací výrazy do konkrétního pole. V tomto příkladu se vyhledá názvy hotelů s termínem "Hotel", ale ne "Motel". Můžete zadat více polí pomocí a. 
+
+Při použití této syntaxe dotazu můžete vynechat parametr "searchFields", pokud se pole, která chcete dotazovat, nachází ve výrazu hledání samotného. Pokud zahrnete "searchFields" s polem hledání, `fieldName:searchExpression` vždycky má přednost před "searchFields".
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "HotelName:(hotel NOT motel) AND Category:'Resort and Spa'",
     "queryType": "full",
-    "search": "business_title:(senior NOT junior) AND posting_type:external",
-    "searchFields": "business_title, posting_type",
-    "select": "business_title, posting_type"
+    "select": "HotelName, Category",
+    "count": true
 }
 ```
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky (posting_type není zobrazená).
+Odpověď na tento dotaz by měla vypadat podobně jako v následujícím příkladu, který je filtrovaný podle "možnosti" a hesla "a vrací hotely, které v názvu obsahují" Hotel "nebo" Motel ".
 
-  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Výraz pro hledání ukázkové odezvy po ukázce" border="false":::
+```json
+"@odata.count": 4,
+"value": [
+    {
+        "@search.score": 4.481559,
+        "HotelName": "Nova Hotel & Spa",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.4524608,
+        "HotelName": "King's Palace Hotel",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.3970203,
+        "HotelName": "Triple Landscape Hotel",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.2953436,
+        "HotelName": "Peaceful Market Hotel & Spa",
+        "Category": "Resort and Spa"
+    }
+]
+```
 
-Výraz hledání může být jedno slovo nebo fráze nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:
+Výraz hledání může být jediný výraz nebo fráze nebo složitější výraz v závorkách, volitelně s logickými operátory. Mezi příklady patří následující:
 
-+ `business_title:(senior NOT junior)`
-+ `state:("New York" OR "New Jersey")`
-+ `business_title:(senior NOT junior) AND posting_type:external`
++ `HotelName:(hotel NOT motel)`
++ `Address/StateProvince:("WA" OR "CA")`
++ `Tags:("free wifi" NOT "free parking") AND "coffee in lobby"`
 
-Nezapomeňte vložit více řetězců v uvozovkách, pokud chcete, aby byly oba řetězce vyhodnoceny jako jediná entita, jako v tomto případě vyhledávání dvou různých míst v `state` poli. V závislosti na nástroji může být nutné znak escape () označit uvozovkami ( `\` ). 
+Nezapomeňte umístit frázi v uvozovkách, pokud chcete, aby oba řetězce byly vyhodnoceny jako jediná entita, jako v tomto případě vyhledávání dvou různých míst v poli Adresa/StateProvince. V závislosti na klientovi možná budete muset řídicí znaky () označit uvozovkami ( `\` ).
 
-Pole zadané v poli **NázevPole: searchExpression** musí být vyhledávací pole. Podrobnosti o tom, jak se v definicích polí používají atributy indexu, najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](/rest/api/searchservice/create-index) .
+Pole zadané v `fieldName:searchExpression` musí být vyhledávací pole. Podrobnosti o tom, jak jsou atributy pole, naleznete v tématu [Create index (REST API)](/rest/api/searchservice/create-index) .
 
-> [!NOTE]
-> V předchozím příkladu **`searchFields`** je parametr vynechán, protože každá část dotazu má explicitně zadaný název pole. Přesto však můžete použít, **`searchFields`** Pokud má dotaz více částí (pomocí příkazů a). Dotaz by se například `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` shodoval pouze s `senior NOT junior` `business_title` polem, zatímco by odpovídal "externímu" s `posting_type` polem. Název pole `fieldName:searchExpression` , který je k dispozici vždy, má přednost před **`searchFields`** , což znamená, že v tomto příkladu můžete vynechat `business_title` **`searchFields`** .
+## <a name="example-2-fuzzy-search"></a>Příklad 2: hledání fuzzy
 
-## <a name="example-3-fuzzy-search"></a>Příklad 3: vyhledávání s fuzzy logikou
-
-Úplná syntaxe Lucene podporuje také přibližné vyhledávání, které se shoduje s výrazy, které mají podobnou konstrukci. Chcete-li provést hledání přibližné hodnoty, přidejte na `~` konci jednoho slova symbol tildy s volitelným parametrem, hodnotu mezi 0 a 2, která určuje vzdálenost úprav. Například `blue~` nebo `blue~1` by vrátil modrou, blues a glue.
+Přibližné shody hledání podle termínů, které jsou podobné, včetně nesprávně napsaných slov. Chcete-li provést hledání přibližné hodnoty, přidejte na `~` konci jednoho slova symbol tildy s volitelným parametrem, hodnotu mezi 0 a 2, která určuje vzdálenost úprav. Například `blue~` nebo `blue~1` by vrátil modrou, blues a glue.
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "Tags:conserge~",
     "queryType": "full",
-    "search": "business_title:asosiate~",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "select": "HotelName, Category, Tags",
+    "searchFields": "HotelName, Category, Tags",
+    "count": true
 }
 ```
 
-Fráze nejsou podporované přímo, ale můžete zadat přibližnou shodu pro každý termín fráze s více částmi, jako je například `search=business_title:asosiate~ AND comm~` .  Na snímku obrazovky níže odpověď obsahuje shodu s *přidružením komunity*.
+Odpověď na tento dotaz se přeloží na "concierge" ve vyhovujících dokumentech, které jsou oříznuté pro zkrácení:
 
-  :::image type="content" source="media/search-query-lucene-examples/fuzzysearch.png" alt-text="Odezva vyhledávání s fuzzy logikou" border="false":::
+```json
+"@odata.count": 12,
+"value": [
+    {
+        "@search.score": 1.1832147,
+        "HotelName": "Secret Point Motel",
+        "Category": "Boutique",
+        "Tags": [
+            "pool",
+            "air conditioning",
+            "concierge"
+        ]
+    },
+    {
+        "@search.score": 1.1819803,
+        "HotelName": "Twin Dome Motel",
+        "Category": "Boutique",
+        "Tags": [
+            "pool",
+            "free wifi",
+            "concierge"
+        ]
+    },
+    {
+        "@search.score": 1.1773309,
+        "HotelName": "Smile Hotel",
+        "Category": "Suite",
+        "Tags": [
+            "view",
+            "concierge",
+            "laundry service"
+        ]
+    },
+```
+
+Fráze nejsou podporované přímo, ale můžete zadat přibližnou shodu pro každý termín fráze s více částmi, jako je například `search=Tags:landy~ AND sevic~` .  Tento výraz dotazu najde 15 shod v "službě prádelní".
 
 > [!Note]
-> Fuzzy dotazy nejsou [analyzovány](search-lucene-query-architecture.md#stage-2-lexical-analysis). Typy dotazů s neúplnými podmínkami (dotaz na předponu, dotaz se zástupnými znaky, regulární dotaz, nepřibližný dotaz) jsou přidány přímo do stromu dotazu a vycházejí z fáze analýzy. Jediná transformace prováděná na částečných výrazech dotazu je lowercasing.
+> Fuzzy dotazy nejsou [analyzovány](search-lucene-query-architecture.md#stage-2-lexical-analysis). Typy dotazů s neúplnými podmínkami (dotaz na předponu, dotaz se zástupnými znaky, regulární dotaz, nepřibližný dotaz) jsou přidány přímo do stromu dotazu a vycházejí z fáze analýzy. Jediná transformace prováděná na částečných výrazech dotazu je menší velikost písmen.
 >
 
-## <a name="example-4-proximity-search"></a>Příklad 4: hledání blízkosti
+## <a name="example-3-proximity-search"></a>Příklad 3: hledání blízkosti
 
-Hledání v blízkosti se používá k vyhledání podmínek, které jsou poblíž sebe v dokumentu. Vložte symbol tildy "~" na konec fráze následovaný počtem slov, která vytvářejí hranice blízkosti. Například "hotelové letiště" ~ 5 vyhledá termíny Hotel a letiště v rámci 5 slov navzájem v dokumentu.
+Hledání v blízkosti vyhledává v dokumentu skoro stejné výrazy. Vložte symbol tildy "~" na konec fráze následovaný počtem slov, která vytvářejí hranice blízkosti.
 
-Tento dotaz vyhledá termíny "hlavní" a "analytika", kde je každý výraz oddělený maximálně jedním slovem, a uvozovky ( `\"` ) pro zachování fráze:
+Tento dotaz vyhledá termíny "Hotel" a "letiště" do 5 slov navzájem v dokumentu. Uvozovky jsou uvozeny řídicími znaky ( `\"` ), aby se zachovala fráze:
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "Description: \"hotel airport\"~5",
     "queryType": "full",
-    "search": "business_title:\"senior analyst\"~1",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "select": "HotelName, Description",
+    "searchFields": "HotelName, Description",
+    "count": true
 }
 ```
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky. 
+Odpověď pro tento dotaz by měla vypadat podobně jako v následujícím příkladu:
 
-  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Dotaz na Proximity" border="false":::
+```json
+"@odata.count": 2,
+"value": [
+    {
+        "@search.score": 0.6331726,
+        "HotelName": "Trails End Motel",
+        "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport."
+    },
+    {
+        "@search.score": 0.43032226,
+        "HotelName": "Catfish Creek Fishing Cabins",
+        "Description": "Brand new mattresses and pillows.  Free airport shuttle. Great hotel for your business needs. Comp WIFI, atrium lounge & restaurant, 1 mile from light rail."
+    }
+]
+```
 
-Zkuste to znovu a Eliminujte vzdálenost ( `~0` ) mezi slovy "vedoucí analytik". Všimněte si, že pro tento dotaz jsou vraceny 8 dokumentů na rozdíl od 10 pro předchozí dotaz.
+## <a name="example-4-term-boosting"></a>Příklad 4: zvyšování termínu
+
+Termín zvyšování skóre označuje, že dokument je vyšší, pokud obsahuje posílený termín vzhledem k dokumentům, které neobsahují termín. Chcete-li zvýšit výraz, použijte blikající kurzor, `^` symbol s faktorem zvýšení (číslo) na konci hledaného výrazu. Výchozí faktor zvyšování hodnot je 1 a i když musí být kladný, může být menší než 1 (například 0,2). Zvyšování termínů se liší od profilů vyhodnocování v tom, že profily vyhodnocování zvyšují určitá pole, nikoli konkrétní podmínky.
+
+V tomto dotazu "před" vyhledejte "" plážový Access "a Všimněte si, že na jednom nebo obou případech se shodují sedm dokumentů.
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "beach access",
     "queryType": "full",
-    "search": "business_title:\"senior analyst\"~0",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "select": "HotelName, Description, Tags",
+    "searchFields": "HotelName, Description, Tags",
+    "count": true
 }
 ```
 
-## <a name="example-5-term-boosting"></a>Příklad 5: posílení podmínek
+Ve skutečnosti existuje pouze jeden dokument, který odpovídá "Access" a protože se jedná o jedinou shodu, umístění je vysoké (druhé umístění), i když v dokumentu chybí termín "plážový".
 
-Termín zvyšování skóre označuje, že dokument je vyšší, pokud obsahuje posílený termín vzhledem k dokumentům, které neobsahují termín. Chcete-li zvýšit výraz, použijte blikající kurzor, `^` symbol s faktorem zvýšení (číslo) na konci hledaného výrazu.
-
-V tomto dotazu "před" vyhledejte úlohy pomocí programu *počítačový analytik* a Všimněte si, že se nevyskytly žádné výsledky s slovy *Computer* i *analytik*, ale v horní části výsledků se staly úlohy *počítačů* .
-
-```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "business_title:computer analyst",
-    "searchFields": "business_title",
-    "select": "business_title"
-}
+```json
+"@odata.count": 7,
+"value": [
+    {
+        "@search.score": 2.2723424,
+        "HotelName": "Nova Hotel & Spa",
+        "Description": "1 Mile from the airport.  Free WiFi, Outdoor Pool, Complimentary Airport Shuttle, 6 miles from the beach & 10 miles from downtown."
+    },
+    {
+        "@search.score": 1.5507699,
+        "HotelName": "Old Carrabelle Hotel",
+        "Description": "Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center."
+    },
+    {
+        "@search.score": 1.5358944,
+        "HotelName": "Whitefish Lodge & Suites",
+        "Description": "Located on in the heart of the forest. Enjoy Warm Weather, Beach Club Services, Natural Hot Springs, Airport Shuttle."
+    },
+    {
+        "@search.score": 1.3433652,
+        "HotelName": "Ocean Air Motel",
+        "Description": "Oceanfront hotel overlooking the beach features rooms with a private balcony and 2 indoor and outdoor pools. Various shops and art entertainment are on the boardwalk, just steps away."
+    },
 ```
 
-V případě dotazu "po" Opakujte hledání, tentokrát při zvyšování výsledků s výrazem *analytika* v termínu " *počítač* ", pokud obě slova neexistují. Verze dotazu pro humánní čtení je `search=business_title:computer analyst^2` . Pro funkční dotaz v příkazu post `^2` je zakódován jako `%5E2` .
+V dotazu "po" Opakujte hledání, tentokrát se posilováním výsledků s výrazem "plážový" v termínu "přístup". Verze dotazu pro humánní čtení je `search=Description:beach^2 access` . V závislosti na vašem klientovi možná budete muset vyjádřit `^2` jako `%5E2` .
 
-```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "business_title:computer analyst%5e2",
-    "searchFields": "business_title",
-    "select": "business_title"
-}
-```
+Po zvýšení termínu "plážový" se shoda na starém hotelu Carrabelle posune dolů na šest míst.
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
+<!-- Consider a scoring profile that boosts matches in a certain field, such as "genre" in a music app. Term boosting could be used to further boost certain search terms higher than others. For example, "rock^2 electronic" will boost documents that contain the search terms in the "genre" field higher than other searchable fields in the index. Furthermore, documents that contain the search term "rock" will be ranked higher than the other search term "electronic" as a result of the term boost value (2). -->
 
-  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Zvyšování termínu po" border="false":::
-
-Zvyšování termínů se liší od profilů vyhodnocování v tom, že profily vyhodnocování zvyšují určitá pole, nikoli konkrétní podmínky. Následující příklad pomáhá ilustrovat rozdíly.
-
-Vezměte v úvahu profil vyhodnocování, který zvyšuje shodu v určitém poli, jako je třeba **Žánr** v musicstoreindex příkladu. Za účelem dalšího zvýšení úrovně hledaného výrazu, který je vyšší než jiné, se dá použít zvyšování skóre termínu. Například "Rock ^ 2 Electronic" bude zvyšovat dokumenty, které obsahují hledané výrazy v poli **žánru** vyšším než ostatní hledaná pole v indexu. Kromě toho jsou dokumenty, které obsahují hledaný termín "Rock", seřazené vyšší než druhý hledaný výraz "elektronický" v důsledku hodnoty zvýšení termínu (2).
-
-Při nastavování úrovně faktoru čím vyšší je faktor zvýšení, tím důležitější je, že výraz bude relativní vzhledem k ostatním hledaným podmínkám. Ve výchozím nastavení je faktor zvýšení 1. I když faktor zvýšení musí být kladný, může být menší než 1 (například 0,2).
-
-## <a name="example-6-regex"></a>Příklad 6: regulární výraz
+## <a name="example-5-regex"></a>Příklad 5: Regex
 
 Hledání regulárního výrazu vyhledá shodu na základě obsahu mezi lomítky "/", jak je uvedeno ve [třídě RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "HotelName:/(Mo|Ho)tel/",
     "queryType": "full",
-    "search": "business_title:/(Sen|Jun)ior/",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "select": "HotelName",
+    "count": true
 }
 ```
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
+Odpověď pro tento dotaz by měla vypadat podobně jako v následujícím příkladu:
 
-  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Dotaz Regex" border="false":::
+```json
+    "@odata.count": 22,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelName": "Days Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Triple Landscape Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Smile Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Pelham Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Sublime Cliff Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Twin Dome Motel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Nova Hotel & Spa"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scarlet Harbor Hotel"
+        },
+```
 
 > [!Note]
-> Dotazy regulárního výrazu nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace prováděná na částečných výrazech dotazu je lowercasing.
+> Dotazy regulárního výrazu nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace prováděná na částečných výrazech dotazu je menší velikost písmen.
 >
 
-## <a name="example-7-wildcard-search"></a>Příklad 7: hledání pomocí zástupných znaků
+## <a name="example-6-wildcard-search"></a>Příklad 6: hledání pomocí zástupných znaků
 
-Můžete použít obecně rozpoznanou syntaxi pro \* hledání zástupných znaků více (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jedním výrazem a nikoli frází.
+Můžete použít obecně rozpoznanou syntaxi pro hledání zástupných znaků vícenásobného () `*` nebo Single ( `?` ). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jedním výrazem a nikoli frází.
 
-V tomto dotazu vyhledejte úlohy, které obsahují předponu "program", která by obsahovala obchodní tituly s výrazy programování a programátory. `*` `?` Jako první znak hledání nelze použít symbol nebo.
+V tomto dotazu vyhledejte názvy hotelu, které obsahují předponu ' SC '. `*` `?` Jako první znak hledání nelze použít symbol nebo.
 
 ```http
-POST /indexes/nycjobs/docs?api-version=2020-06-30
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
+    "search": "HotelName:sc*",
     "queryType": "full",
-    "search": "business_title:prog*",
-    "searchFields": "business_title",
-    "select": "business_title"
+    "select": "HotelName",
+    "count": true
 }
 ```
 
-Odpověď pro tento dotaz by měla vypadat podobně jako na následujícím snímku obrazovky.
+Odpověď pro tento dotaz by měla vypadat podobně jako v následujícím příkladu:
 
-  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Zástupný dotaz" border="false":::
+```json
+    "@odata.count": 2,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scarlet Harbor Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scottish Inn"
+        }
+    ]
+```
 
 > [!Note]
-> Dotazy se zástupnými znaky nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace prováděná na částečných výrazech dotazu je lowercasing.
+> Dotazy se zástupnými znaky nejsou [analyzovány](./search-lucene-query-architecture.md#stage-2-lexical-analysis). Jediná transformace prováděná na částečných výrazech dotazu je menší velikost písmen.
 >
 
 ## <a name="next-steps"></a>Další kroky

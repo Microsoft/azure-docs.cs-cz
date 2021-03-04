@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833091"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726406"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce nástroje Orchestrator
 
@@ -31,7 +31,7 @@ V následující tabulce jsou uvedeny příklady rozhraní API, se kterými byst
 | Kategorie rozhraní API | Důvod | Alternativní řešení |
 | ------------ | ------ | ---------- |
 | Data a časy  | Rozhraní API, která vrací aktuální datum nebo čas, jsou nedeterministické, protože vrácená hodnota je pro každé přehrání jiná. | Použijte vlastnost [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) v rozhraní .NET, `currentUtcDateTime` rozhraní API v JavaScriptu nebo `current_utc_datetime` rozhraní API v Pythonu, které je bezpečné pro opětovné přehrání. |
-| GUID a identifikátory UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Pomocí [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) v rozhraní .NET nebo `newGuid` v JavaScriptu bezpečně VYGENERUJTE náhodné identifikátory GUID. |
+| GUID a identifikátory UUID  | Rozhraní API, která vracejí náhodný identifikátor GUID nebo UUID, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Pomocí [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) můžete v prostředí .NET, `newGuid` v JavaScriptu a `new_guid` v Pythonu bezpečně Generovat náhodné identifikátory GUID. |
 | Náhodná čísla | Rozhraní API, která vrací náhodná čísla, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Použijte funkci aktivity k vrácení náhodných čísel do orchestrace. Vrácené hodnoty funkcí aktivity jsou pro opětovné přehrání vždy bezpečné. |
 | Vazby | Vstupní a výstupní vazby obvykle dělají vstupně-výstupní operace a jsou nedeterministické. Funkce Orchestrator nesmí přímo používat ani [klient orchestrace](durable-functions-bindings.md#orchestration-client) a vazby [klienta entit](durable-functions-bindings.md#entity-client) . | Použijte vstupní a výstupní vazby v rámci funkcí klienta nebo aktivity. |
 | Síť | Síťová volání zahrnují externí systémy a nedeterministické. | K zajištění síťových volání použijte funkce aktivity. Pokud potřebujete provést volání HTTP z funkce Orchestrator, můžete použít také [trvalá rozhraní API http](durable-functions-http-features.md#consuming-http-apis). |

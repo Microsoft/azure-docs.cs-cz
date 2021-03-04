@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734025"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -68,8 +68,8 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení         |
 |-----------------------------------------|-------------------------------|
-| nástroje pro vyrovnávání zatížení,                          | 1 000                         |
-| Pravidla na prostředek                      | 1 500                         |
+| Nástroje pro vyrovnávání zatížení                          | 1 000                         |
+| Pravidla (Load Balancer + příchozí NAT) na prostředek                      | 1 500                         |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
 | Velikost fondu back-endu                       | 1 000 konfigurace IP adres, jedna virtuální síť |
@@ -78,19 +78,21 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Odchozí pravidla na Load Balancer        | 600                           |
 | Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)   |
 
-<sup>1</sup> Limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a skupin umístění virtuálních počítačů.
+<sup>1</sup> limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a skupin umístění virtuálních počítačů.
 
 **Základní Load Balancer**
 
 | Prostředek                                | Omezení        |
 |-----------------------------------------|------------------------------|
-| nástroje pro vyrovnávání zatížení,                          | 1 000                        |
+| Nástroje pro vyrovnávání zatížení                          | 1 000                        |
 | Pravidla na prostředek                      | 250                          |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                          |
-| Konfigurace IP adresy front-endu              | 200                          |
+| Konfigurace IP adresy front-endu <sup> 2<sup>  | 200                          |
 | Velikost fondu back-endu                       | 300 konfigurace IP adres, jedna skupina dostupnosti |
 | Skupiny dostupnosti na Load Balancer     | 1                            |
 | Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)  |
+
+<sup>2</sup> omezení pro jeden diskrétní prostředek ve fondu back-end (samostatný virtuální počítač, Skupina dostupnosti nebo skupina umístění virtuálních počítačů) musí mít až 250 konfigurace IP adresy front-endu v rámci jednoho základního Load Balancer a základní interní Load Balancer.
 
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí jenom pro síťové prostředky spravované přes model nasazení **Classic** na předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 

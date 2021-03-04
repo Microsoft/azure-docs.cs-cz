@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e267682118c4ba6fe25c11a4ae5088916d0e6fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736980"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -141,4 +141,4 @@ Teď, když shromažďujete data o provozu a výkonu z virtuálních počítač�
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Zobrazení nebo analýza dat v Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Zobrazení nebo analýza dat v Log Analytics](../logs/log-analytics-tutorial.md)

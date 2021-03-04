@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713095"
 ---
 # <a name="what-is-custom-neural-voice"></a>Co je vlastní neuronové hlas?
 
-Custom neuronové Voice je funkce převodu [textu na mluvené slovo](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) (TTS), která umožňuje vytvořit pro vaše aplikace jeden vlastní přizpůsobený syntetický hlas tím, že jako ukázku poskytnete vlastní zvuková data. Převod textu na řeč funguje tak, že převede text na syntetické rozpoznávání řeči pomocí modelu strojového učení, který je podobný jako vybraný hlas. Pomocí [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)můžete vašim aplikacím povolit mluvit s [předem vytvořenými hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) nebo vlastními [hlasovými](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data) modely vyvinutými prostřednictvím vlastní funkce hlasu neuronové. Vlastní neuronové hlas je založený na technologii neuronové TTS, která vytváří přirozený zvukový hlas, který je v porovnání s lidským hlasem často nerozlišující.
+Custom neuronové Voice je funkce převodu [textu na mluvené slovo](./text-to-speech.md) (TTS), která umožňuje vytvořit pro vaše aplikace jeden vlastní přizpůsobený syntetický hlas tím, že jako ukázku poskytnete vlastní zvuková data. Převod textu na řeč funguje tak, že převede text na syntetické rozpoznávání řeči pomocí modelu strojového učení, který je podobný jako vybraný hlas. Pomocí [REST API](./rest-text-to-speech.md)můžete vašim aplikacím povolit mluvit s [předem vytvořenými hlasy](./language-support.md#neural-voices) nebo vlastními [hlasovými](./how-to-custom-voice-prepare-data.md) modely vyvinutými prostřednictvím vlastní funkce hlasu neuronové. Vlastní neuronové hlas je založený na technologii neuronové TTS, která vytváří přirozený zvukový hlas, který je v porovnání s lidským hlasem často nerozlišující.
 Reálný a přirozený hlas vlastního hlasu neuronové může představovat značky, personify počítače a umožňuje uživatelům interakci s aplikacemi přirozeným způsobem.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ V dalším kroku foném sekvence přejde do akustického modelu neuronové a př
 
 Hlasové modely neuronové TTS jsou vyškoleny pomocí neuronové sítí založených na vzorcích záznamu lidského hlasy. V tomto [blogu](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)popisujeme, jak neuronové TTS funguje se špičkovými modely syntézy neuronové řeči. Tento blog také vysvětluje, jak se dá univerzální základní model přizpůsobit s méně než 2 hodinami dat řeči (nebo menším počtem 2 000 zaznamenaných projevy) od cílového mluvčího a Naučte se mluvit do hlasu tohoto cílového mluvčího. Informace o tom, jak je neuronové vocoder, najdete v [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860).
 
-Díky funkci vlastního hlasu neuronové můžete přizpůsobit modul neuronové TTS, aby lépe vyhovoval vašim uživatelským scénářům. Pokud chcete vytvořit vlastní neuronové hlas, pomocí sady [Speech Studio](https://speech.microsoft.com/customvoice) nahrajte zaznamenaný zvuk a příslušné skripty, proveďte výuku modelu a nasaďte tento hlas do vlastního koncového bodu. V závislosti na případu použití se vlastní neuronové hlas dá použít k převodu textu na řeč v reálném čase (například ve inteligentním virtuálním Pomocníkovi) nebo k vygenerování zvukového obsahu offline (například používaného jako v zvukové knize nebo v pokynech v e-learningových aplikacích) s textovým vstupem, který zadal uživatel. Tato funkce je k dispozici prostřednictvím [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech), [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)nebo [webového portálu](https://speech.microsoft.com/audiocontentcreation).
+Díky funkci vlastního hlasu neuronové můžete přizpůsobit modul neuronové TTS, aby lépe vyhovoval vašim uživatelským scénářům. Pokud chcete vytvořit vlastní neuronové hlas, pomocí sady [Speech Studio](https://speech.microsoft.com/customvoice) nahrajte zaznamenaný zvuk a příslušné skripty, proveďte výuku modelu a nasaďte tento hlas do vlastního koncového bodu. V závislosti na případu použití se vlastní neuronové hlas dá použít k převodu textu na řeč v reálném čase (například ve inteligentním virtuálním Pomocníkovi) nebo k vygenerování zvukového obsahu offline (například používaného jako v zvukové knize nebo v pokynech v e-learningových aplikacích) s textovým vstupem, který zadal uživatel. Tato funkce je k dispozici prostřednictvím [REST API](./rest-text-to-speech.md), [sady Speech SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall)nebo [webového portálu](https://speech.microsoft.com/audiocontentcreation).
 
 ## <a name="terms-and-definitions"></a>Pojmy a definice
 

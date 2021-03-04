@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720269"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -136,3 +136,7 @@ Azure Lighthouse plně nepodporuje správu prostředí virtuálních ploch Windo
 Nemůžete použít také předplatná izolovaného prostoru (sandbox) s virtuálními počítači s Windows. Další informace najdete v tématu [integrace účtu izolovaného prostoru (sandbox)](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Nakonec, pokud jste povolili poskytovatele prostředků z účtu vlastníka CSP, účty zákazníků CSP nebudou moct měnit poskytovatele prostředků.
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Jak často mám svoje virtuální počítače zapnout, aby se zabránilo problémům s registrací?
+
+Po registraci virtuálního počítače do fondu hostitelů v rámci služby Virtual Desktop systému Windows Agent pravidelně aktualizuje token virtuálního počítače vždy, když je virtuální počítač aktivní. Certifikát pro registrační token je platný po dobu 90 dnů. Z důvodu tohoto limitu 90 doporučujeme spustit virtuální počítače každých 90 dnů. Zapnutím virtuálního počítače v rámci tohoto časového limitu zabráníte jeho registračnímu tokenu v vypršení platnosti nebo se stane neplatným. Pokud jste virtuální počítač spustili po 90 dnech a dochází k problémům s registrací, postupujte podle pokynů v [Průvodci odstraňováním potíží s agentem virtuálního počítače s Windows](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) a odeberte virtuální počítač z fondu hostitelů, přeinstalujte agenta a znovu ho zaregistrujte do fondu.

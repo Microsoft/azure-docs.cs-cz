@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094954"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732577"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Řešení běžných problémů s agentem virtuálních počítačů s Windows
 
@@ -22,11 +22,19 @@ Agent virtuálních počítačů s Windows může způsobovat problémy s připo
 
 Tento článek vás provede řešeními těchto běžných scénářů a postupem, jak řešit problémy s připojením.
 
+>[!NOTE]
+>Pro řešení potíží souvisejících s připojením relace a agentem virtuálního počítače s Windows doporučujeme zkontrolovat protokoly událostí v **Prohlížeč událostí**  >  **aplikace Windows logs**  >  . Vyhledejte události, které mají jeden z následujících zdrojů k identifikaci vašeho problému:
+>
+>- WVD-Agent
+>- WVD-agent – aktualizační program
+>- RDAgentBootLoader
+>- MsiInstaller
+
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>Chyba: zavaděč RDAgentBootLoader a/nebo program Agent pro vzdálenou plochu přestal běžet.
 
 Pokud vidíte některý z následujících problémů, znamená to, že zaváděcí program pro spouštění, který načte agenta, nemohl nainstalovat agenta správně a služba agenta neběží:
 - **RDAgentBootLoader** je buď zastavená, nebo nespuštěná.
-- Není k dispozici žádný stav **zavaděče agenta vzdálené plochy**.
+- Pro **zavaděč agenta vzdálené plochy** neexistuje žádný stav.
 
 Chcete-li tento problém vyřešit, spusťte zaváděcí program RDAgent boot:
 
@@ -63,9 +71,9 @@ Pokud chcete tento problém vyřešit, vytvořte platný registrační token:
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s registrem 1](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>Chyba: Agent se nemůže připojit ke zprostředkovateli pomocí INVALID_FORM nebo NOT_FOUND. URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>Chyba: Agent se nemůže připojit ke službě Broker pomocí INVALID_FORM
 
-Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3277, která říká **INVALID_FORM** nebo **NOT_FOUND. Adresa URL** v popisu, došlo k chybě při komunikaci mezi agentem a zprostředkovatelem. Agent se nemůže připojit ke zprostředkovateli a nemůže kontaktovat konkrétní adresu URL. Důvodem může být nastavení brány firewall nebo DNS.
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3277, která uvádí "INVALID_FORM" v popisu, došlo k chybě při komunikaci mezi agentem a zprostředkovatelem. Agent se nemůže připojit ke zprostředkovateli nebo získat konkrétní adresu URL z důvodu konkrétního nastavení brány firewall nebo DNS.
 
 Pokud chcete tento problém vyřešit, ověřte, že máte přístup k BrokerURI a BrokerURIGlobal:
 1. Otevřete Editor registru. 
@@ -100,13 +108,43 @@ Pokud chcete tento problém vyřešit, ověřte, že máte přístup k BrokerURI
 8. Pokud síť blokuje tyto adresy URL, budete muset odblokovat požadované adresy URL. Další informace najdete v tématu [požadovaný seznam adres URL](safe-url-list.md).
 9. Pokud se tím problém nevyřeší, ujistěte se, že nemáte žádné zásady skupiny s šiframi, které blokují agenta pro připojení k zprostředkovateli. Virtuální počítač s Windows používá stejné šifry TLS 1,2 jako [přední dveře Azure](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). Další informace najdete v tématu [zabezpečení připojení](network-connectivity.md#connection-security).
 
-## <a name="error-3703-or-3019"></a>Chyba: 3703 nebo 3019
+## <a name="error-3703"></a>Chyba: 3703
 
-Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3703, která uvádí **Brána VP adresa URL: není přístupná** nebo jakákoli událost s ID 3019 v popisu, Agent nemůže kontaktovat adresy URL brány ani adresy URL přenosu webového soketu. Chcete-li se úspěšně připojit k hostiteli relace a povolíte síťovému přenosu do těchto koncových bodů omezení, je nutné odblokovat adresy URL ze [seznamu požadované adresy URL](safe-url-list.md). Zajistěte také, aby nastavení brány firewall nebo proxy neblokovala tyto adresy URL. Odblokování těchto adres URL je nutné pro použití virtuálního klienta Windows.
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3703, která uvádí, že adresa Brána VP URL: není dostupná v popisu, Agent nemůže kontaktovat adresy URL brány. Chcete-li se úspěšně připojit k hostiteli relace a povolíte síťovému přenosu do těchto koncových bodů omezení, je nutné odblokovat adresy URL ze [seznamu požadované adresy URL](safe-url-list.md). Zajistěte také, aby nastavení brány firewall nebo proxy neblokovala tyto adresy URL. Odblokování těchto adres URL je nutné pro použití virtuálního klienta Windows.
 
 Pokud chcete tento problém vyřešit, ověřte, že nastavení brány firewall nebo DNS neblokují tyto adresy URL:
 1. [K ochraně nasazení virtuálních ploch Windows použijte Azure firewall](../firewall/protect-windows-virtual-desktop.md)..
 2. Nakonfigurujte [nastavení DNS Azure firewall](../firewall/dns-settings.md).
+
+## <a name="error-3019"></a>Chyba: 3019
+
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3019, znamená to, že agent se nemůže připojit k adresám URL přenosu webového soketu. Chcete-li se úspěšně připojit k hostiteli relace a dovolit v síťovém provozu obejít Tato omezení, musíte odblokovat adresy URL uvedené v [seznamu požadované adresy URL](safe-url-list.md). Pracujte s týmem sítě Azure a ujistěte se, že nastavení brány firewall, proxy serveru a DNS neblokují tyto adresy URL. V protokolech trasování sítě můžete také zjistit, kde je služba Windows Virtual Desktop blokovaná. Pokud otevřete žádost o podporu tohoto konkrétního problému, nezapomeňte připojit protokoly trasování sítě k žádosti.
+
+## <a name="error-installationhealthcheckfailedexception"></a>Chyba: InstallationHealthCheckFailedException
+
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3277, která v popisu říká "InstallationHealthCheckFailedException", znamená to, že naslouchací proces zásobníku nefunguje, protože terminálový server přepnul klíč registru pro naslouchací proces zásobníku.
+
+Řešení tohoto problému:
+1. Zkontrolujte, zda [naslouchací proces zásobníku pracuje](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+2. Pokud naslouchací proces zásobníku nefunguje, [ručně odinstalujte a znovu nainstalujte součást zásobníku](#error-vms-are-stuck-in-unavailable-or-upgrading-state).
+
+## <a name="error-endpoint_not_found"></a>Chyba: ENDPOINT_NOT_FOUND
+
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3277, která v popisu říká "ENDPOINT_NOT_FOUND", znamená to, že zprostředkovatel nemohl najít koncový bod pro navázání spojení. K tomuto problému s připojením může dojít z některého z následujících důvodů:
+
+- Ve fondu hostitelů nejsou žádné virtuální počítače.
+- Virtuální počítače ve fondu hostitelů nejsou aktivní.
+- Všechny virtuální počítače ve fondu hostitelů překročily maximální limit relace.
+- Žádný z virtuálních počítačů ve fondu hostitelů nemá spuštěnou službu agenta.
+
+Řešení tohoto problému:
+
+1. Ujistěte se, že virtuální počítač je zapnutý a nebyl odebraný z fondu hostitelů.
+2. Ujistěte se, že virtuální počítač nepřekročil maximální limit relace.
+3. Ujistěte se, že [je služba agenta spuštěná](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) a že [naslouchací proces zásobníku pracuje](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+4. Ujistěte [se, že se agent může připojit ke službě Broker](#error-agent-cannot-connect-to-broker-with-invalid_form).
+5. Ujistěte se, že [váš virtuální počítač má platný registrační token](#error-invalid_registration_token).
+6. Ujistěte [se, že token registrace virtuálního počítače nevypršel](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues). 
 
 ## <a name="error-installmsiexception"></a>Chyba: InstallMsiException
 
@@ -176,15 +214,21 @@ Na příkazovém řádku spusťte **qwinsta** a poznamenejte si číslo verze, k
 8. V části **ClusterSettings** vyhledejte **SessionDirectoryListener** a ujistěte se, že hodnota dat je **RDP-SxS..**..
 9. Pokud **SessionDirectoryListener** není nastavené na **RDP-SxS...**, budete muset postupovat podle kroků v části [odinstalace agenta a zaváděcího zavaděče](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) , abyste nejdřív odinstalovali agenta, zaváděcí program pro spouštění a komponenty stacku a pak [znovu přeinstalovali agenta a spouštěcí zavaděč](#step-4-reinstall-the-agent-and-boot-loader). Dojde k přeinstalování souběžného zásobníku.
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>Chyba: uživatelé udržují odpojení od hostitelů relací
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Chyba: potíže s prezenčním signálem, kdy uživatelé udržují odpojení od hostitelů relací
 
-Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 0, která říká **CheckSessionHostDomainIsReachableAsync** v popisu a/nebo se uživatelé budou moci stále odpojit od hostitelů relací, server nevybere prezenční signál ze služby Virtual Desktop systému Windows.
+Pokud váš server neumožňuje vyzvednutí prezenčního signálu ze služby Virtual Desktop systému Windows, bude nutné změnit prahovou hodnotu prezenčního signálu. Postupujte podle pokynů v této části, pokud se vám na vás vztahují některé z následujících scénářů:
 
-Chcete-li tento problém vyřešit, změňte prahovou hodnotu prezenčního signálu:
+- Zobrazuje se chyba **CheckSessionHostDomainIsReachableAsync**
+- Zobrazuje se chyba **ConnectionBrokenMissedHeartbeatThresholdExceeded**
+- Zobrazuje se chyba **ConnectionEstablished: UnexpectedNetworkDisconnect**
+- Klienti uživatelů udržují odpojení
+- Uživatelé budou mít pořád odpojeni od hostitelů relací.
+
+Postup změny prahové hodnoty prezenčního signálu:
 1. Otevřete příkazový řádek jako správce.
 2. Zadejte příkaz **qwinsta** a spusťte ho.
 3. Měly by se zobrazit dvě komponenty zásobníku: **RDP-TCP** a **RDP-SxS**. 
-   - V závislosti na verzi operačního systému, který používáte, může být **RDP-SxS** následováno číslem sestavení. Pokud je, nezapomeňte toto číslo napsat pro pozdější verzi.
+   - V závislosti na verzi operačního systému, který používáte, může být **RDP-SxS** následováno číslem sestavení. Pokud je, nezapomeňte toto číslo vypsat pro pozdější verzi.
 4. Otevřete Editor registru.
 5. Přejděte na **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. V části **WinStations** se může zobrazit několik složek pro různé verze zásobníku. Vyberte složku, která odpovídá číslu verze z kroku 3.
@@ -194,6 +238,9 @@ Chcete-li tento problém vyřešit, změňte prahovou hodnotu prezenčního sign
    - HeartbeatDropCount: 60 
 8. Restartujte virtuální počítač.
 
+>[!NOTE]
+>Pokud se při změně prahové hodnoty prezenčního signálu problém nevyřeší, může se stát, že budete mít základní problém se sítí, který budete muset kontaktovat od týmu sítě Azure.
+
 ## <a name="error-downloadmsiexception"></a>Chyba: DownloadMsiException
 
 Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3277, která říká **DownloadMsiException** v popisu, na disku není dost místa pro RDAgent.
@@ -201,6 +248,11 @@ Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. P
 Pokud chcete tento problém vyřešit, udělejte místo na disku:
    - Odstraňují se soubory, které už nejsou v uživatelském prostředí.
    - Zvýšení kapacity úložiště virtuálního počítače
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Chyba: Agent se nepodařilo aktualizovat pomocí MissingMethodException.
+
+Přejít na **Prohlížeč událostí**  >  **Windows logs**  >  **aplikace**. Pokud se zobrazí událost s ID 3389, která říká "MissingMethodException: metoda nebyla nalezena" v popisu, znamená to, že agent virtuálního počítače Windows se neaktualizoval úspěšně a vrátil se na dřívější verzi. Důvodem může být to, že číslo verze rozhraní .NET Framework, které je aktuálně nainstalované na virtuálních počítačích, je nižší než 4.7.2. Chcete-li tento problém vyřešit, je nutné upgradovat rozhraní .NET na verzi 4.7.2 nebo novější podle pokynů k instalaci v [dokumentaci .NET Framework](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Chyba: virtuální počítače jsou zablokované v nedostupném stavu nebo stav upgradu
 
@@ -210,7 +262,7 @@ Otevřete okno PowerShellu jako správce a spusťte následující rutinu:
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-Pokud stav uvedený pro hostitele relace nebo hostitelé ve fondu hostitelů vždy oznámí, že **není k dispozici** nebo je **upgrade**, instalace agenta nebo zásobníku se pravděpodobně nezdařila.
+Pokud stav uvedený pro hostitele relace nebo hostitelé ve fondu hostitelů vždycky říká "nedostupný" nebo "upgradování", agent nebo zásobník se nenainstaloval úspěšně.
 
 Pokud chcete tento problém vyřešit, přeinstalujte souběžný zásobník:
 1. Otevřete příkazový řádek jako správce.
@@ -253,7 +305,7 @@ Název vašeho virtuálního počítače je už zaregistrovaný a pravděpodobn�
 Řešení tohoto problému:
 1. Postupujte podle kroků v části [Odebrání hostitele relace z fondu hostitelů](#step-2-remove-the-session-host-from-the-host-pool) .
 2. [Vytvořte další virtuální počítač](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal). Ujistěte se, že pro tento virtuální počítač zvolíte jedinečný název.
-3. Přejít na Azure Portal] ( https://portal.azure.com) a otevřete stránku **Přehled** pro fond hostitelů, ve kterém je váš virtuální počítač. 
+3. Přejít na [Azure Portal](https://portal.azure.com) a otevřít stránku **Přehled** pro fond hostitelů, ve kterém byl váš virtuální počítač. 
 4. Otevřete kartu **hostitelé relace** a zkontrolujte, jestli jsou všichni hostitelé relace v daném fondu hostitelů.
 5. Počkejte, až 5-10 minut, než se stav hostitele relace vysloví jako **k dispozici**.
 
@@ -320,12 +372,12 @@ Musíte vygenerovat nový registrační klíč, který se použije k opětovné 
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>Krok 4: Přeinstalujte agenta a spouštěcí zavaděč.
 
 Po přeinstalaci aktualizované verze agenta a zaváděcího zavaděče se automaticky nainstaluje také souběžný zásobník a Agent monitorování Ženeva. Postup přeinstalace agenta a zaváděcího programu pro spouštění:
-1. Přihlaste se ke svému VIRTUÁLNÍmu počítači jako správce a postupujte podle pokynů v části [registrace virtuálních počítačů](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) ke stažení **agenta virtuálních** počítačů s Windows a **zaváděcího programu pro Windows Virtual Desktop agent**.
+1. Přihlaste se k VIRTUÁLNÍmu počítači jako správce a použijte správnou verzi instalačního programu agenta pro vaše nasazení v závislosti na tom, která verze systému Windows váš virtuální počítač běží. Pokud máte virtuální počítač s Windows 10, postupujte podle pokynů v části [registrace virtuálních počítačů](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) ke stažení **agenta virtuálních** počítačů s Windows a **zaváděcího programu pro Windows Virtual Desktop agent**. Pokud máte virtuální počítač s Windows 7, postupujte podle kroků 13-14 v části [registrace virtuálních počítačů](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) a Stáhněte si **agenta virtuálních** počítačů s Windows a **správce agenta virtuálních počítačů s Windows**.
 
    > [!div class="mx-imgBorder"]
    > ![Snímek stránky pro stažení agenta a zaváděcího programu pro spouštění](media/download-agent.png)
 
-2. Klikněte pravým tlačítkem na instalační programy agenta a spouštěcího zavaděče, které jste právě stáhli.
+2. Klikněte pravým tlačítkem na instalační programy agenta a spouštěcího zavaděče, které jste stáhli.
 3. Vyberte **Vlastnosti**.
 4. Vyberte **odblokovat**.
 5. Vyberte **OK**.

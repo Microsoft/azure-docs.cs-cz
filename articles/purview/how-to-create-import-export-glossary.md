@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551914"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694478"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Jak vytvářet, importovat a exportovat terminologie glosáře
 
@@ -88,6 +88,10 @@ Z glosáře byste měli být schopni exportovat podmínky, pokud vybrané podmí
 1. Když jste v glosáři, je ve výchozím nastavení tlačítko **exportovat** zakázané. Po výběru podmínek, které chcete exportovat, je tlačítko **exportovat** povoleno, pokud vybrané výrazy patří do stejné šablony.
 
 2. Vyberte **exportovat** a Stáhněte si vybrané výrazy.
+
+ > [!Important]
+   > Pokud podmínky v hierarchii patří do různých šablon termínů, je třeba je rozdělit na jiné. Soubory CSV pro import. Aktualizace nadřazeného termínu Term se také v současné době nepodporuje pomocí procesu importu.
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650069"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688565"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -234,6 +234,14 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 Další informace najdete v tématu [použití spravovaných identit ve službě Azure Kubernetes](../../aks/use-managed-identity.md).
 
+### <a name="azure-log-analytics-cluster"></a>Cluster Azure Log Analytics
+
+Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+| Přiřazená uživatelem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | ![K dispozici][check] |
+
+Další informace najdete v tématu [Princip fungování identity v Azure monitor](../../azure-monitor/logs/customer-managed-keys.md)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 

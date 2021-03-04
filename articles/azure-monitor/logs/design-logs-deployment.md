@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 482a0ba4051fb8b5d1705e0f951a9e075f40bbdb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609395"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717396"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -25,7 +25,7 @@ Pracovní prostor Log Analytics poskytuje:
 
 * Geografické umístění pro ukládání dat.
 * Izolace dat udělením přístupových práv k různým uživatelům podle jedné z našich doporučených strategií návrhu.
-* Obor pro konfiguraci nastavení, jako je [cenová úroveň](../platform/manage-cost-storage.md#changing-pricing-tier), [uchování](../platform/manage-cost-storage.md#change-the-data-retention-period)a [capping dat](../platform/manage-cost-storage.md#manage-your-maximum-daily-data-volume)
+* Obor pro konfiguraci nastavení, jako je [cenová úroveň](./manage-cost-storage.md#changing-pricing-tier), [uchování](./manage-cost-storage.md#change-the-data-retention-period)a [capping dat](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)
 
 Pracovní prostory jsou hostovány na fyzických clusterech. Ve výchozím nastavení systém vytváří a spravuje tyto clustery. Pro zákazníky, kteří ingestují víc než 4 TB/den, se očekává, že si pro své pracovní prostory vytvoří vlastní vyhrazená clustery – umožní jim lepší řízení a vyšší rychlost přijímání.
 
@@ -64,12 +64,12 @@ Díky řízení přístupu na základě role Azure (Azure RBAC) můžete uživat
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
-| Faktor | Description |
+| Faktor | Popis |
 |:---|:---|
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |
-| [Oprávnění](../platform/manage-access.md) | Oprávnění použitá pro jednotlivé nebo skupiny uživatelů pro pracovní prostor nebo prostředek. Definuje data, ke kterým má uživatel přístup. |
-| [Úroveň tabulky – Azure RBAC](../platform/manage-access.md#table-level-azure-rbac) | Volitelná podrobné oprávnění, která platí pro všechny uživatele bez ohledu na jejich režim přístupu nebo režim řízení přístupu. Definuje typy dat, ke kterým má uživatel přístup. |
+| [Oprávnění](./manage-access.md) | Oprávnění použitá pro jednotlivé nebo skupiny uživatelů pro pracovní prostor nebo prostředek. Definuje data, ke kterým má uživatel přístup. |
+| [Úroveň tabulky – Azure RBAC](./manage-access.md#table-level-azure-rbac) | Volitelná podrobné oprávnění, která platí pro všechny uživatele bez ohledu na jejich režim přístupu nebo režim řízení přístupu. Definuje typy dat, ke kterým má uživatel přístup. |
 
 ## <a name="access-mode"></a>Režim přístupu
 
@@ -91,7 +91,7 @@ Uživatelé mají dvě možnosti pro přístup k datům:
     > - Service Fabric
     > - Application Insights
     >
-    > Spuštěním dotazu a kontrolou záznamů, které vás zajímají, můžete otestovat, jestli jsou protokoly správně přidružené ke svým prostředkům. Pokud je ve vlastnosti [_ResourceId](../platform/log-standard-columns.md#_resourceid) správné ID prostředku, data jsou k dispozici pro dotazy orientované na prostředky.
+    > Spuštěním dotazu a kontrolou záznamů, které vás zajímají, můžete otestovat, jestli jsou protokoly správně přidružené ke svým prostředkům. Pokud je ve vlastnosti [_ResourceId](./log-standard-columns.md#_resourceid) správné ID prostředku, data jsou k dispozici pro dotazy orientované na prostředky.
 
 Azure Monitor automaticky určuje správný režim v závislosti na kontextu, ze kterého provádíte prohledávání protokolu. Obor je vždy zobrazen v levém horním oddílu Log Analytics.
 
@@ -102,8 +102,8 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 | Problém | Kontext pracovního prostoru | Kontext prostředku |
 |:---|:---|:---|
 | Pro koho je každý model určen? | Centrální správa. Správci, kteří potřebují nakonfigurovat shromažďování dat a uživatele, kteří potřebují přístup k nejrůznějším prostředkům. V současnosti se vyžaduje pro uživatele, kteří potřebují přístup k protokolům pro prostředky mimo Azure. | Týmy aplikace Správci prostředků Azure, které jsou monitorovány. |
-| Co uživatel potřebuje k zobrazení protokolů? | Oprávnění k pracovnímu prostoru. Oprávnění k pracovnímu prostoru najdete v tématu **oprávnění** [ke správě přístupu pomocí oprávnění pracovního prostoru](../platform/manage-access.md#manage-access-using-workspace-permissions). | Přístup pro čtení k prostředku. Podívejte se na téma **oprávnění prostředků** v tématu [Správa přístupu pomocí oprávnění Azure](../platform/manage-access.md#manage-access-using-azure-permissions). Oprávnění lze zdědit (například z obsahující skupiny prostředků) nebo přímo přiřadit prostředku. Automaticky se přiřadí oprávnění k protokolům pro daný prostředek. |
-| Jaký je rozsah oprávnění? | Stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](../platform/manage-access.md#table-level-azure-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
+| Co uživatel potřebuje k zobrazení protokolů? | Oprávnění k pracovnímu prostoru. Oprávnění k pracovnímu prostoru najdete v tématu **oprávnění** [ke správě přístupu pomocí oprávnění pracovního prostoru](./manage-access.md#manage-access-using-workspace-permissions). | Přístup pro čtení k prostředku. Podívejte se na téma **oprávnění prostředků** v tématu [Správa přístupu pomocí oprávnění Azure](./manage-access.md#manage-access-using-azure-permissions). Oprávnění lze zdědit (například z obsahující skupiny prostředků) nebo přímo přiřadit prostředku. Automaticky se přiřadí oprávnění k protokolům pro daný prostředek. |
+| Jaký je rozsah oprávnění? | Stejných. Uživatelé s přístupem k pracovnímu prostoru mohou dotazovat všechny protokoly v pracovním prostoru z tabulek, ke kterým mají oprávnění. Viz [řízení přístupu k tabulce](./manage-access.md#table-level-azure-rbac) | Prostředek Azure. Uživatel může zadat dotaz na protokoly pro konkrétní prostředky, skupiny prostředků nebo předplatné, ke kterým mají přístup z libovolného pracovního prostoru, ale nedokáže dotazovat protokoly na jiné prostředky. |
 | Jak můžou protokoly přístupu uživatele? | <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> | <ul><li>Spuštění **protokolů** z nabídky pro prostředek Azure</li></ul> <ul><li>Spusťte **protokoly** z nabídky **Azure monitor** .</li></ul> <ul><li>Spustí **protokoly** z **Log Analytics pracovní prostory**.</li></ul> <ul><li>Z Azure Monitor [sešitů](../visualizations.md#workbooks).</li></ul> |
 
 ## <a name="access-control-mode"></a>Režim řízení přístupu
@@ -125,7 +125,7 @@ Režimy přístupu jsou shrnuté v následující tabulce:
     > [!NOTE]
     > Pokud má uživatel pouze oprávnění k pracovnímu prostoru, má přístup k pracovnímu prostoru pouze pomocí režimu kontextu prostředků, předpokládá se, že režim přístupu k pracovnímu prostoru je nastaven na **používání prostředků nebo oprávnění v pracovním prostoru**.
 
-Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí PowerShellu nebo pomocí šablony Správce prostředků, najdete v tématu [Konfigurace režimu řízení přístupu](../platform/manage-access.md#configure-access-control-mode).
+Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí PowerShellu nebo pomocí šablony Správce prostředků, najdete v tématu [Konfigurace režimu řízení přístupu](./manage-access.md#configure-access-control-mode).
 
 ## <a name="scale-and-ingestion-volume-rate-limit"></a>Omezení rychlosti škálování a ingestování
 
@@ -133,7 +133,7 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Pokud chcete chránit a izolovat Azure Monitor zákazníky a jeho infrastrukturu back-endu, je k dispozici výchozí limit pro přijímání zpráv, který je určený k ochraně před špičkami a zahlcením. Výchozí hodnota omezení četnosti je **6 GB/min** a je navržena tak, aby umožňovala normální přijímání. Další podrobnosti o měřeních velikosti svazků pro přijímání najdete v tématu [omezení služby Azure monitor](../service-limits.md#data-ingestion-volume-rate).
 
-Zákazníci, kteří ingestují méně než 4 TB za den, obvykle tyto limity nebudou splňovat. Zákazníci, kteří ingestují větší objemy nebo mají špičky v rámci svých běžných operací, zvažte přechod na [vyhrazené clustery](../log-query/logs-dedicated-clusters.md) , u kterých by bylo možné vystavit omezení rychlosti příjmu.
+Zákazníci, kteří ingestují méně než 4 TB za den, obvykle tyto limity nebudou splňovat. Zákazníci, kteří ingestují větší objemy nebo mají špičky v rámci svých běžných operací, zvažte přechod na [vyhrazené clustery](./logs-dedicated-clusters.md) , u kterých by bylo možné vystavit omezení rychlosti příjmu.
 
 Když je povolený limit přenosové rychlosti příjmu nebo získá 80% prahové hodnoty, přidá se do tabulky *Operations* v pracovním prostoru událost. Doporučuje se ho monitorovat a vytvořit výstrahu. Další podrobnosti najdete v tématu [frekvence zpracování objemu dat](../service-limits.md#data-ingestion-volume-rate).
 
@@ -144,7 +144,7 @@ Když je povolený limit přenosové rychlosti příjmu nebo získá 80% prahov�
 
 Tento scénář pokrývá jeden návrh pracovního prostoru v rámci předplatného IT organizace, které není omezené na základě suverenity dat nebo dodržování předpisů nebo které musí namapovat na oblasti, ve kterých jsou nasazené prostředky. Umožňuje týmům zabezpečení a správců IT ve vaší organizaci využít vylepšenou integraci se správou přístupu k Azure a bezpečnějším řízením přístupu.
 
-Všechny prostředky, řešení monitorování a přehledy, jako Application Insights a Azure Monitor pro virtuální počítače, podporují infrastrukturu a aplikace udržované různými týmy, aby se jejich shromážděná data do centralizovaného sdíleného pracovního prostoru organizace IT nastavily. Uživatelům v každém týmu je udělen přístup k protokolům pro prostředky, kterým byl udělen přístup.
+Všechny prostředky, řešení monitorování a přehledy, jako jsou Application Insights a přehledy o virtuálních počítačích, podporují infrastrukturu a aplikace udržované různými týmy, nakonfigurují pro jejich shromážděná data protokolu do centralizovaného sdíleného pracovního prostoru IT organizace. Uživatelům v každém týmu je udělen přístup k protokolům pro prostředky, kterým byl udělen přístup.
 
 Jakmile nasadíte architekturu pracovního prostoru, můžete to vyhovět v prostředcích Azure pomocí [Azure Policy](../../governance/policy/overview.md). Poskytuje způsob, jak definovat zásady a zajistit kompatibilitu s prostředky Azure, aby odesílaly všechny své protokoly prostředků do konkrétního pracovního prostoru. Například u virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets můžete použít existující zásady, které vyhodnocují dodržování předpisů v pracovním prostoru a výsledky sestav, nebo přizpůsobit pro nápravu, pokud nedodržují předpisy.  
 
@@ -159,8 +159,8 @@ Při plánování migrace do tohoto modelu Vezměte v úvahu následující skut
 * Identifikujte přístup k prostředkům pro týmy vaší aplikace a otestujte ve vývojovém prostředí před implementací v produkčním prostředí.
 * Nakonfigurujte pracovní prostor tak, aby povoloval **používání oprávnění prostředku nebo pracovního prostoru**.
 * Odebere aplikační týmy oprávnění ke čtení a dotazování pracovního prostoru.
-* Povolte a nakonfigurujte jakákoli řešení monitorování, přehledy, jako je Azure Monitor pro kontejnery nebo Azure Monitor pro virtuální počítače, účty Automation a řešení pro správu, jako je například Update Management, spustit nebo zastavit virtuální počítače atd., které byly nasazeny v původním pracovním prostoru.
+* Povolte a nakonfigurujte jakákoli řešení monitorování, přehledy, jako je například kontejnerové přehledy nebo Azure Monitor pro virtuální počítače, účty Automation a řešení pro správu, jako je například Update Management, spuštění nebo zastavení virtuálních počítačů atd.), které byly nasazeny v původním pracovním prostoru.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li implementovat oprávnění zabezpečení a ovládací prvky doporučené v této příručce, přečtěte si téma [Správa přístupu k protokolům](../platform/manage-access.md).
+Chcete-li implementovat oprávnění zabezpečení a ovládací prvky doporučené v této příručce, přečtěte si téma [Správa přístupu k protokolům](./manage-access.md).

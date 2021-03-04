@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100610768"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713588"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -40,9 +40,11 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 - Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data, dokud není tabulka podporovaná. 
 - Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k chybě s chybou ```Table <tableName> does not exist in the workspace``` .
 - Pracovní prostor Log Analytics může být v libovolné oblasti s výjimkou následujících:
-  - Švýcarsko – sever
-  - Švýcarsko – západ
   - Oblasti Azure Government
+  - Japonsko – západ
+  - Brazílie – jihovýchod
+  - Norsko – východ
+  - Spojené arabské emiráty sever
 - V pracovním prostoru můžete vytvořit dvě pravidla exportu – v může být jedno pravidlo pro centrum událostí a jedno pravidlo k účtu úložiště.
 - Cílový účet úložiště nebo centrum událostí musí být ve stejné oblasti jako pracovní prostor Log Analytics.
 - Názvy tabulek, které mají být exportovány, nemohou být pro účet úložiště delší než 60 znaků a v centru událostí nejsou delší než 47 znaků. Tabulky s delšími názvy nebudou exportovány.
@@ -72,6 +74,9 @@ Export dat Log Analytics může zapisovat doplňovací objekty blob do neměnný
 
 ### <a name="event-hub"></a>Centrum událostí
 Data se odesílají do centra událostí téměř v reálném čase, protože dosáhne Azure Monitor. Centrum událostí se vytvoří pro každý datový typ, který exportujete s názvem, *za nímž následuje název tabulky* . Například tabulka *SecurityEvent* se odeslala do centra událostí s názvem *am-SecurityEvent*. Pokud chcete, aby se exportovaná data dostala na konkrétní centrum událostí, nebo pokud máte tabulku s názvem, který překračuje limit počtu znaků 47, můžete zadat vlastní název centra událostí a exportovat do něj všechna data pro definované tabulky.
+
+> [!IMPORTANT]
+> [Počet podporovaných Center událostí na obor názvů je 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). Pokud exportujete více než 10 tabulek, zadejte vlastní název centra událostí pro export všech tabulek do tohoto centra událostí. 
 
 Požadavky:
 1. SKU centra událostí úrovně Basic podporuje [omezení](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) velikosti menší události a některé protokoly v pracovním prostoru můžou přesáhnout a vyřadit. Jako cíl exportu doporučujeme použít centrum událostí Standard nebo vyhrazené.

@@ -4,12 +4,12 @@ description: Princip běžných schémat výstrah, proč byste ji měli použív
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609658"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737286"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -52,7 +52,7 @@ Pomocí skupin akcí na portálu i REST API můžete použít společné schéma
 > 1. Následující typy výstrah podporují standardně společné schéma (není nutné žádné výslovné povinné):
 >     * Výstrahy inteligentní detekce
 > 1. Následující typy výstrah aktuálně nepodporují společné schéma:
->     * Výstrahy generované [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)
+>     * Výstrahy generované službou [VM Insights](../vm/vminsights-overview.md)
 >     * Výstrahy generované [Azure cost management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
 
 ### <a name="through-the-azure-portal"></a>Prostřednictvím Azure Portal

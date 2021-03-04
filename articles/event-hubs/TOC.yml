@@ -214,7 +214,7 @@
         - name: Nastavení diagnostických protokolů
           href: event-hubs-diagnostic-logs.md
         - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
-          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
+          href: ../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md
         - name: Automatické škálování jednotek propustnosti
           href: event-hubs-auto-inflate.md
         - name: Knihovny pro správu Event Hubs

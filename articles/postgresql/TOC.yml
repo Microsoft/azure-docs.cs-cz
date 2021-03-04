@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Koncepty
       items:
         - name: Servery
@@ -572,14 +575,6 @@
         - name: Návrh řídicího panelu v reálném čase
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: ukázky
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Integrované služby Azure Policy
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: Koncepty
       items:
         - name: Distribuovaná data

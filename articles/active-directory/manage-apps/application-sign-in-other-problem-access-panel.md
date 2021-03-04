@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258842"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687620"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
@@ -141,14 +141,15 @@ Pokud chcete ověřit členství uživatele ve skupině, postupujte podle těcht
 7.  Vyberte **skupiny** , chcete-li zobrazit skupiny, kterých je uživatel členem.
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Zjistit, jestli má uživatel více než 999 přiřazení role aplikace
-Pokud má uživatel přiřazeno více než 999 přiřazení rolí aplikace, pak nemusí zobrazit všechny své aplikace v mých aplikacích.
+Pokud má uživatel více než 999 přiřazení role aplikace, nemusí zobrazit všechny své aplikace v mých aplikacích.
 
 Důvodem je to, že moje aplikace teď načtou až 999 přiřazení role aplikace a určí aplikace, ke kterým se uživatelé přiřazují. Pokud je uživatel přiřazený k více než 999 aplikacím, není možné řídit, které z těchto aplikací se budou zobrazovat na portálu moje aplikace.
 
-Pokud chcete zjistit počet přiřazení rolí aplikace udělených uživateli, postupujte podle těchto kroků:
+Pokud chcete zjistit, jestli má uživatel více než 999 přiřazení role aplikace, postupujte podle těchto kroků:
 1. Nainstalujte modul [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell.
-2. Spusťte `Connect-MgGraph -Scopes "Directory.Read.All"` a ověřte jako **globální správce.**
-3. Spuštěním nástroje `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` určíte počet přiřazení rolí aplikace, které uživatel aktuálně udělil.
+2. Spusťte `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"`.
+3. Spuštěním nástroje `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` určíte počet přiřazení rolí aplikace, které uživatel aktuálně udělil.
+4. Pokud je výsledkem 999, může mít uživatel více než 999 přiřazení aplikačních rolí.
 
 ### <a name="check-a-users-assigned-licenses"></a>Ověření licencí přiřazených uživateli
 Pokud chcete ověřit přiřazené licence uživatele, postupujte podle těchto kroků:

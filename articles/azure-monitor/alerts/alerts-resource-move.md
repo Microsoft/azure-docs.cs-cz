@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609587"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714200"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
-Tento článek popisuje, proč můžou být ovlivněná stávající pravidla a [pravidla](./alerts-action-rules.md) pro [výstrahy](../platform/alerts-overview.md) při přesunu dalších prostředků Azure mezi oblastmi a jak tyto problémy identifikovat a vyřešit. Podívejte se do dokumentace k hlavnímu [prostředku přesunutí](../../azure-resource-manager/management/move-region.md) , kde najdete další informace o tom, kdy se prostředek přesouvá mezi oblastmi, které jsou užitečné, a kontrolní seznam návrhu procesu přesunutí.
+Tento článek popisuje, proč můžou být ovlivněná stávající pravidla a [pravidla](./alerts-action-rules.md) pro [výstrahy](./alerts-overview.md) při přesunu dalších prostředků Azure mezi oblastmi a jak tyto problémy identifikovat a vyřešit. Podívejte se do dokumentace k hlavnímu [prostředku přesunutí](../../azure-resource-manager/management/move-region.md) , kde najdete další informace o tom, kdy se prostředek přesouvá mezi oblastmi, které jsou užitečné, a kontrolní seznam návrhu procesu přesunutí.
 
 ## <a name="why-the-problem-exists"></a>Proč existuje problém
 
@@ -48,7 +48,6 @@ Tento problém se týká těchto typů pravidel:
 
 - Pravidla upozornění protokolu aktivit
 - Pravidla akcí
-- Klasická upozornění
 - Upozornění na metriku – Další informace najdete v dalších částech [pravidla výstrahy na základě metrik](#alert-rules-based-on-metrics).
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak opravit jiné problémy s [upozorněními na výstrahy](alerts-troubleshoot.md), [upozorněními na metriky](alerts-troubleshoot-metric.md)a [výstrahami protokolu](alerts-troubleshoot-log.md). 
+Přečtěte si, jak opravit jiné problémy s [upozorněními na výstrahy](alerts-troubleshoot.md), [upozorněními na metriky](alerts-troubleshoot-metric.md)a [výstrahami protokolu](alerts-troubleshoot-log.md).

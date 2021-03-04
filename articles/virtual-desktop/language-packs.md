@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: dfedec85208ef9afaa58db2b200dc9f9988a845b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709236"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Přidání jazykových sad do bitové kopie Windows 10 s více relacemi
 
@@ -24,7 +24,7 @@ Existují dva způsoby, jak můžete přizpůsobit jazykovým potřebám uživat
 
 Druhá metoda je mnohem efektivnější a nákladově efektivní. Je ale na vás, abyste se rozhodli, kterou metodu nejlépe vyhovuje vašim potřebám. Tento článek vám ukáže, jak přizpůsobit jazyky pro image.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli přidat několik jazyků, budete potřebovat následující věci, abyste mohli přizpůsobit image Windows 10 Enterprise s více relacemi:
 
@@ -53,6 +53,7 @@ Abyste mohli přidat několik jazyků, budete potřebovat následující věci, 
           - [Windows 10, verze 2004 nebo 20H2 **9C** lxp ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10, verze 2004 nebo 20H2 **10C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10, verze 2004 nebo 20H2 **11c** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10, verze 2004 nebo 20H2 **1C** lxp ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
 
 - Sdílená složka služby soubory Azure nebo sdílená složka na virtuálním počítači souborového serveru systému Windows
 
@@ -168,9 +169,6 @@ $LanguageList = Get-WinUserLanguageList
 $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
-
->[!IMPORTANT]
->Windows 10 Enterprise verze 1903 a 1909 nevyžadují `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` soubor balíčku.
 
 Tento skript může chvíli trvat v závislosti na počtu jazyků, které potřebujete nainstalovat.
 

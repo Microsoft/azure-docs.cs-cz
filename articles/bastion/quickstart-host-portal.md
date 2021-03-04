@@ -6,20 +6,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 10/15/2020
+ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707138"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Rychlý Start: zabezpečené připojení k virtuálnímu počítači přes prohlížeč prostřednictvím privátní IP adresy
 
 Pomocí Azure Portal a Azure bastionu se můžete připojit k virtuálnímu počítači přes prohlížeč. V tomto článku rychlý Start se dozvíte, jak nakonfigurovat Azure bastionu na základě nastavení virtuálního počítače a pak se k VIRTUÁLNÍmu počítači připojit prostřednictvím portálu. Virtuální počítač nepotřebuje veřejnou IP adresu, klientský software, agenta nebo speciální konfiguraci. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
-## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereq"></a>Požadovaný
 
 * Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Abyste se mohli připojit k VIRTUÁLNÍmu počítači přes prohlížeč pomocí bastionu, musíte být schopni se přihlásit k Azure Portal.
 
@@ -46,21 +46,21 @@ Při vytváření této konfigurace můžete použít následující příklady 
 |**Název** | **Hodnota** |
 | --- | --- |
 | Virtuální počítač| TestVM |
-| Skupina prostředků | TestRG |
+| Skupina prostředků | TestRG1 |
 | Oblast | East US |
-| Virtuální síť | Virtuální sítě testvnet1 |
-| Adresní prostor | 10.0.0.0/16 |
-| Podsítě | Front-end: 10.0.0.0/24 |
+| Virtuální síť | VNet1 |
+| Adresní prostor | 10.1.0.0/16 |
+| Podsítě | Front-end: 10.1.0.0/24 |
 
 **Hodnoty bastionu Azure:**
 
 |**Název** | **Hodnota** |
 | --- | --- |
-| Name | Virtuální sítě testvnet1 – bastionu |
+| Název | VNet1 – bastionu |
 | + Název podsítě | AzureBastionSubnet |
-| AzureBastionSubnet adresy | Podsíť v adresním prostoru virtuální sítě s maskou podsítě/27. Například 10.0.1.0/27.  |
+| AzureBastionSubnet adresy | Podsíť v adresním prostoru virtuální sítě s maskou podsítě/27. Například 10.1.1.0/27.  |
 | Veřejná IP adresa |  Vytvořit nový |
-| Název veřejné IP adresy | VNet1BastionPIP  |
+| Název veřejné IP adresy | VNet1-IP  |
 | SKU veřejné IP adresy |  Standard  |
 | Přiřazení  | Static |
 
@@ -71,42 +71,42 @@ Existuje několik různých způsobů konfigurace hostitele bastionu. V následu
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte k virtuálnímu počítači, ke kterému se chcete připojit, a pak vyberte **připojit**.
 
-   :::image type="content" source="./media/quickstart-host-portal/vm-settings.png" alt-text="nastavení virtuálního počítače" lightbox="./media/quickstart-host-portal/vm-settings.png":::
+   :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="Snímek obrazovky s nastavením virtuálního počítače" lightbox="./media/quickstart-host-portal/vm-connect.png":::
 1. V rozevíracím seznamu vyberte možnost **bastionu**.
+
+   :::image type="content" source="./media/quickstart-host-portal/bastion.png" alt-text="Snímek obrazovky rozevíracího seznamu bastionu" lightbox="./media/quickstart-host-portal/bastion.png":::
 1. Na **TestVM | Stránka připojit** vyberte **použít bastionu**.
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Vybrat bastionu" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Snímek obrazovky s použitím bastionu":::
 
-1. Na stránce **bastionu** vyplňte následující pole nastavení:
+1. Na stránce **připojit pomocí Azure bastionu** nakonfigurujte hodnoty.
 
-   * **Název**: pojmenujte hostitele bastionu.
-   * **Podsíť**: Jedná se o adresní prostor virtuální sítě, na který se bastionu prostředek nasadí. Podsíť musí být vytvořená s názvem **AzureBastionSubnet**. Použijte podsíť alespoň/27 nebo větší (/27,/26,/25 atd.).
-   * Vyberte **spravovat konfiguraci podsítě**.
-1. Na stránce **podsítě** vyberte **+ podsíť**.
+   * **Krok 1:** Hodnoty jsou předem vyplněné, protože vytváříte hostitele bastionu přímo z virtuálního počítače.
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ Podsíť":::
-    
-1. Do polí **název** na stránce **Přidat podsíť** zadejte **AzureBastionSubnet**.
-   * V oblasti rozsah adres podsítě vyberte adresu podsítě, která se nachází v adresním prostoru virtuální sítě.
-   * Neupravujte žádná další nastavení. Vyberte **OK** a potvrďte a uložte změny podsítě.
+   * **Krok 2:** Adresní prostor je předem vyplněný navrhovaným adresním prostorem. AzureBastionSubnet musí mít adresní prostor/27 nebo větší (/26,/25 atd.).
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="Přidání podsítě":::
-1. Kliknutím na tlačítko zpět v prohlížeči přejděte zpět na stránku **bastionu** a pokračujte v zadávání hodnot.
-   * **Veřejná IP adresa**: ponechte jako **vytvořit nové**.
-   * **Název veřejné IP adresy**: název prostředku veřejné IP adresy.
-   * **Přiřazení**: výchozí hodnota je statická. Nemůžete použít dynamické přiřazení pro Azure bastionu.
+   :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Snímek obrazovky s vytvořením podsítě bastionu":::
+
+1. Kliknutím na **vytvořit podsíť** vytvořte AzureBastionSubnet.
+1. Po vytvoření podsítě se stránka automaticky přesune na **Krok 3**. V kroku 3 použijte následující hodnoty:
+
+   * **Název:** Pojmenujte hostitele bastionu.
+   * **Veřejná IP adresa:** Vyberte **Vytvořit novou**.
+   * **Název veřejné IP adresy:** Název prostředku veřejné IP adresy.
+   * **SKU veřejné IP adresy:** Předem nakonfigurováno jako **Standard**
+   * **Přiřazení:** Předem nakonfigurovaná na **statickou**. Nemůžete použít dynamické přiřazení pro Azure bastionu.
    * **Skupina prostředků**: stejná skupina prostředků jako virtuální počítač.
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="Vytvoření hostitele bastionu":::
-1. Vyberte **vytvořit** a vytvořte tak hostitele bastionu. Azure ověří vaše nastavení a pak vytvoří hostitele. Vytvoření a nasazení hostitele a jeho prostředků trvá asi 5 minut.
+   :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="Snímek obrazovky s krokem 3":::
+1. Po dokončení hodnot vyberte **vytvořit Azure bastionu pomocí výchozí hodnoty**. Azure ověří vaše nastavení a pak vytvoří hostitele. Vytvoření a nasazení hostitele a jeho prostředků trvá asi 5 minut.
 
-## <a name="connect"></a><a name="connect"></a>Připojit
+## <a name="connect"></a><a name="connect"></a>Síti
 
 Po nasazení bastionu do virtuální sítě se obrazovka změní na stránku připojit.
 
 1. Zadejte uživatelské jméno a heslo pro virtuální počítač. Pak vyberte **připojit**.
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="Snímek obrazovky se zobrazí v dialogovém okně připojit pomocí Azure bastionu.":::
+   :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="Snímek obrazovky se zobrazí v dialogovém okně připojit pomocí Azure bastionu.":::
 1. Připojení RDP k tomuto virtuálnímu počítači se otevře přímo v Azure Portal (přes HTML5) pomocí portu 443 a služby bastionu.
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="Připojení RDP":::

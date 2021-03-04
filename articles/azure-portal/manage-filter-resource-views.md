@@ -3,12 +3,12 @@ title: Zobrazení a filtrování informací o prostředcích Azure
 description: Filtrujte informace a používejte různá zobrazení k lepšímu pochopení vašich prostředků Azure.
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745889"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738629"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Zobrazení a filtrování informací o prostředcích Azure
 
@@ -49,6 +49,18 @@ Odstranění zobrazení:
 1. Vyberte **Spravovat zobrazení** a pak **Procházet všechna zobrazení**.
 
 1. V podokně **uložená zobrazení pro všechny prostředky** vyberte zobrazení a pak vyberte ikonu **Odstranit** ikona ![ Odstranit zobrazení ](media/manage-filter-resource-views/icon-delete.png) .
+
+## <a name="export-information-from-a-view"></a>Export informací ze zobrazení
+
+Informace o prostředku můžete exportovat ze zobrazení. Export informací ve formátu CSV:
+
+1. Vyberte **exportovat do sdíleného svazku clusteru**.
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="Snímek obrazovky exportu do formátu CSV":::
+
+1. Uložte soubor místně a pak ho otevřete v Excelu nebo v jiné aplikaci, která podporuje formát CSV. 
+
+Při pohybu na portálu uvidíte další oblasti, kde můžete exportovat informace, jako je například jednotlivé skupiny prostředků.
 
 ## <a name="summarize-resources-with-visuals"></a>Sumarizace prostředků pomocí vizuálů
 

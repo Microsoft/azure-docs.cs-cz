@@ -3,12 +3,12 @@ title: Azure Functions vyhrazené hostování
 description: Přečtěte si o výhodách spuštění Azure Functions ve vyhrazeném App Servicem plánu hostování.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704561"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Vyhrazené plány hostování pro Azure Functions
 
@@ -41,7 +41,7 @@ Pomocí App Serviceho plánu můžete ruční horizontální navýšení kapacit
 
 ## <a name="app-service-environments"></a>Prostředí App Service
 
-Spuštění v [App Service Environment](../app-service/environment/intro.md) (pomocného programu) vám umožní plně izolovat vaše funkce a využívat vyšší množství instancí než plán App Service. Informace o tom, jak začít, najdete v tématu.
+Spuštění v App Service Environment (pomocného programu) vám umožní plně izolovat vaše funkce a využívat vyšší množství instancí než plán App Service. Informace o tom, jak začít, najdete v tématu [Úvod do prostředí App Service](../app-service/environment/intro.md).
 
 Pokud chcete aplikaci Function App spustit jenom ve virtuální síti, můžete to udělat pomocí [plánu Premium](functions-premium-plan.md). Další informace najdete v tématu [vytvoření Azure Functions přístupu k privátní lokalitě](functions-create-private-site-access.md). 
 

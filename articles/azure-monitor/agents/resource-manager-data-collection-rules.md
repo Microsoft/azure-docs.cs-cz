@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627051"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737320"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Ukázky šablon Správce prostředků pro pravidla shromažďování dat v Azure Monitor
-Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](../platform/log-analytics-agent.md) a [rozšíření diagnostiky](../platform/diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
+Tento článek obsahuje ukázkové [Azure Resource Manager šablony](../../azure-resource-manager/templates/template-syntax.md) pro nasazení a konfiguraci [agenta Log Analytics](./log-analytics-agent.md) a [rozšíření diagnostiky](./diagnostics-extension-overview.md) pro virtuální počítače v Azure monitor. Každá ukázka obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ Následující ukázka vytvoří přidružení mezi serverem s podporou ARC Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte další ukázkové šablony pro Azure monitor](../samples/resource-manager-samples.md).
-* [Přečtěte si další informace o agentovi Log Analytics](../platform/log-analytics-agent.md).
-* [Přečtěte si další informace o diagnostickém rozšíření](../platform/diagnostics-extension-overview.md).
+* [Získejte další ukázkové šablony pro Azure monitor](../resource-manager-samples.md).
+* [Přečtěte si další informace o agentovi Log Analytics](./log-analytics-agent.md).
+* [Přečtěte si další informace o diagnostickém rozšíření](./diagnostics-extension-overview.md).

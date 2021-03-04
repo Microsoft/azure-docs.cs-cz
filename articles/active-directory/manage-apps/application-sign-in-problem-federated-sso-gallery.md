@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 97ce1fe43bc831661a8590921d8121a8a82ba7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430407"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687171"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím s nakonfigurovaným jednotným přihlašováním založeným na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
@@ -41,7 +41,8 @@ Pokud chcete otevřít stránku konfigurace jednotného přihlašování založe
 1. Vyberte Jednotné přihlašování založené na SAML.
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři.
-`Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
+
+`Error AADSTS70001: Application with Identifier 'https://contoso.com' was not found in the directory.`
 
 **Možná příčina**
 
@@ -69,7 +70,7 @@ Ověřte nebo aktualizujte hodnotu v textovém poli adresy URL odpovědi tak, ab
 Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnotě odeslané aplikací v žádosti SAML, byste měli být schopni se přihlásit k aplikaci.
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel nemá přiřazenou roli.
-`Error AADSTS50105: The signed in user 'brian\@contoso.com' is not assigned to a role for the application.`
+`Error AADSTS50105: The signed in user 'brian@contoso.com' is not assigned to a role for the application.`
 
 **Možná příčina**
 
@@ -147,7 +148,7 @@ Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Dire
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 
-Na stránce konfigurace jednotného přihlašování založeného na SAML v části **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například `https://127.0.0.1:444/applications/default.aspx`.
+Na stránce konfigurace jednotného přihlašování založeného na SAML v části **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování.

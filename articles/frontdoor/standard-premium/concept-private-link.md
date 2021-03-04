@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: dead60b9d8e0872f3d46b1f223ccf5e6697cbd90
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715509"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Zabezpečte svůj původ pomocí privátního odkazu v Azure front-Premium Standard/Premium (Preview).
 
@@ -30,7 +30,7 @@ ms.locfileid: "101099202"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-SKU služby Azure front-Premium se může připojit k vašemu zdroji pomocí služby privátního propojení. Vaše aplikace se můžou hostovat ve vaší privátní virtuální síti nebo za službou PaaS, takže nejsou přístupné z veřejného Internetu.
+SKU služby Azure front-end Premium se může připojit k původnímu webu za webovou aplikací a účtem úložiště pomocí služby privátního propojení a odebrat nutnost zpřístupnění vašeho zdroje veřejnosti.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Architektura privátních koncových bodů pro přední dvířka":::
 
@@ -38,7 +38,8 @@ Pokud povolíte privátní propojení s vaším zdrojem v konfiguraci služby Az
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="Povolit privátní koncový bod":::
 
-Přední vrátka Azure podporuje různé typy zdrojů. Pokud je váš zdroj hostovaný na sadě virtuálních počítačů v privátní síti, musíte nejdřív vytvořit interní nástroj pro vyrovnávání zatížení, povolit službu privátního propojení na standardní nástroj pro vyrovnávání zatížení a pak vybrat vlastní typ původu. V části konfigurace privátního propojení vyberte Microsoft. Network/PrivateLinkServices jako typ prostředku. U služeb PaaS Services, jako je webová aplikace Azure a účet úložiště, můžete nejdřív povolit službu privátních odkazů z odpovídajících služeb a vybrat Microsoft. Web/Web pro webovou aplikaci a Microsoft. Storage/StorageAccounts pro typy služeb privátního propojení pro účet úložiště.
+> [!NOTE]
+> Jakmile povolíte zdroj privátního odkazu a schválíte conenction privátního koncového bodu, bude navázání připojení trvat několik minut. Během této doby obdrží požadavky na počátek zprávu o chybě na frontě. Po navázání připojení zmizí chybová zpráva.
 
 ## <a name="limitations"></a>Omezení
 
@@ -50,6 +51,5 @@ Veřejné koncové body předních dveří Azure se spravují platformou a v rá
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete připojit frontu Premium Azure k Virtual Machines pomocí služby privátního propojení, přečtěte si téma [Vytvoření privátního koncového bodu](../../private-link/create-private-endpoint-portal.md).
 * Pokud chcete připojit frontu Premium Azure k webové aplikaci prostřednictvím služby privátního propojení, přečtěte si téma [připojení k webové aplikaci pomocí privátního koncového bodu](../../private-link/tutorial-private-endpoint-webapp-portal.md).
 * Pokud chcete připojit frontu Premium Azure k účtu úložiště prostřednictvím služby privátního propojení, přečtěte si téma [připojení k účtu úložiště pomocí privátního koncového bodu](../../private-link/tutorial-private-endpoint-storage-portal.md).

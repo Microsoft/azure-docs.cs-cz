@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 200c4c536df4a3e32b59945ae4ad97d7b770f269
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 38f5743e8a80af1ec824b07833f66ad50d67b91f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723295"
 ---
 # <a name="azure-activity-log"></a>Protokol aktivit Azure
-Protokol aktivit je [protokol platformy](../platform/platform-logs-overview.md) v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. Pro další funkce byste měli vytvořit nastavení diagnostiky, které odešle protokol aktivit do [Azure monitor protokolů](../platform/data-platform-logs.md), do Azure Event Hubs předat mimo Azure nebo do Azure Storage k archivaci. Tento článek poskytuje podrobné informace o zobrazení protokolu aktivit a jeho odeslání do různých cílů.
+Protokol aktivit je [protokol platformy](./platform-logs-overview.md) v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. Pro další funkce byste měli vytvořit nastavení diagnostiky, které odešle protokol aktivit do [Azure monitor protokolů](../logs/data-platform-logs.md), do Azure Event Hubs předat mimo Azure nebo do Azure Storage k archivaci. Tento článek poskytuje podrobné informace o zobrazení protokolu aktivit a jeho odeslání do různých cílů.
 
-Podrobnosti o vytvoření nastavení diagnostiky najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých cílů](../platform/diagnostic-settings.md) .
+Podrobnosti o vytvoření nastavení diagnostiky najdete v tématu [Vytvoření nastavení diagnostiky pro odesílání protokolů platforem a metrik do různých cílů](./diagnostic-settings.md) .
 
 > [!NOTE]
 > Položky v protokolu aktivit jsou generované systémem a není možné je změnit ani odstranit.
@@ -43,13 +43,13 @@ Pokud se s událostí nacházejí nějaké přidružené změny, zobrazí se sez
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>Další metody načtení událostí protokolu aktivit
 K událostem protokolu aktivit můžete také přistupovat pomocí následujících metod.
 
-- Pomocí rutiny [Get-AzLog](/powershell/module/az.monitor/get-azlog) načtěte protokol aktivit z PowerShellu. Podívejte se na [ukázky Azure monitor PowerShellu](../samples/powershell-samples.md#retrieve-activity-log).
-- Pomocí [AZ monitor Activity-log](/cli/azure/monitor/activity-log) načtěte protokol aktivit z CLI.  Viz [ukázky Azure monitor CLI](../samples/cli-samples.md#view-activity-log).
+- Pomocí rutiny [Get-AzLog](/powershell/module/az.monitor/get-azlog) načtěte protokol aktivit z PowerShellu. Podívejte se na [ukázky Azure monitor PowerShellu](../powershell-samples.md#retrieve-activity-log).
+- Pomocí [AZ monitor Activity-log](/cli/azure/monitor/activity-log) načtěte protokol aktivit z CLI.  Viz [ukázky Azure monitor CLI](../cli-samples.md#view-activity-log).
 - K načtení protokolu aktivit z klienta REST použijte [Azure Monitor REST API](/rest/api/monitor/) . 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Odeslání do pracovního prostoru služby Log Analytics
- Odešlete protokol aktivit do pracovního prostoru Log Analytics, abyste povolili funkce [Azure monitor protokolů](../platform/data-platform-logs.md) , které zahrnují následující:
+ Odešlete protokol aktivit do pracovního prostoru Log Analytics, abyste povolili funkce [Azure monitor protokolů](../logs/data-platform-logs.md) , které zahrnují následující:
 
 - Korelujte data protokolu aktivit s dalšími daty monitorování shromážděnými pomocí Azure Monitor.
 - Konsolidujte položky protokolu z několika předplatných Azure a klientů do jednoho umístění pro účely analýzy dohromady.
@@ -59,9 +59,9 @@ K událostem protokolu aktivit můžete také přistupovat pomocí následujíc�
 - Neúčtují se žádné poplatky za příjem dat protokolu aktivit uložené v pracovním prostoru Log Analytics.
 - Data protokolu aktivit uložená v Log Analytics pracovním prostoru neúčtují žádné poplatky za uchovávání dat do 90 dnů.
 
-[Vytvořte nastavení diagnostiky](../platform/diagnostic-settings.md) pro odeslání protokolu aktivit do pracovního prostoru Log Analytics. Protokol aktivit můžete odeslat z libovolného jednoho předplatného do pěti pracovních prostorů. Shromažďování protokolů napříč tenanty vyžaduje službu [Azure Lighthouse](../../lighthouse/index.yml).
+[Vytvořte nastavení diagnostiky](./diagnostic-settings.md) pro odeslání protokolu aktivit do pracovního prostoru Log Analytics. Protokol aktivit můžete odeslat z libovolného jednoho předplatného do pěti pracovních prostorů. Shromažďování protokolů napříč tenanty vyžaduje službu [Azure Lighthouse](../../lighthouse/index.yml).
 
-Data protokolu aktivit v Log Analytics pracovním prostoru se ukládají do tabulky s názvem *AzureActivity* , kterou můžete načíst pomocí [dotazu protokolu](../log-query/log-query-overview.md) v [Log Analytics](../log-query/log-analytics-tutorial.md). Struktura této tabulky se liší v závislosti na [kategorii záznamu protokolu](activity-log-schema.md). Popis vlastností tabulky najdete v [referenčních informacích o Azure monitor](/azure/azure-monitor/reference/tables/azureactivity).
+Data protokolu aktivit v Log Analytics pracovním prostoru se ukládají do tabulky s názvem *AzureActivity* , kterou můžete načíst pomocí [dotazu protokolu](../logs/log-query-overview.md) v [Log Analytics](../logs/log-analytics-tutorial.md). Struktura této tabulky se liší v závislosti na [kategorii záznamu protokolu](activity-log-schema.md). Popis vlastností tabulky najdete v [referenčních informacích o Azure monitor](/azure/azure-monitor/reference/tables/azureactivity).
 
 Chcete-li například zobrazit počet záznamů protokolu aktivit pro každou kategorii, použijte následující dotaz.
 
@@ -202,12 +202,12 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Povinné | Popis |
     | --- | --- | --- |
-    | Název |Yes |Název vašeho profilu protokolu. |
-    | StorageAccountId |No |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
-    | serviceBusRuleId |No |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Název |Ano |Název vašeho profilu protokolu. |
+    | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
+    | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
-    | RetentionInDays |Yes |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
-    | Kategorie |No |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_ a _Action_. |
+    | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
+    | Kategorie |Ne |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_ a _Action_. |
 
 ### <a name="example-script"></a>Ukázkový skript
 Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu protokolu aktivit, který zapisuje protokol aktivit do účtu úložiště i centra událostí.
@@ -245,12 +245,12 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Povinné | Popis |
     | --- | --- | --- |
-    | name |Yes |Název vašeho profilu protokolu. |
-    | úložiště – ID účtu |Yes |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | polohy |Yes |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
-    | denní |Yes |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |enabled | Yes |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Yes |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | name |Ano |Název vašeho profilu protokolu. |
+    | úložiště – ID účtu |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
+    | polohy |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
+    | denní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |enabled | Ano |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
@@ -400,6 +400,6 @@ V tuto chvíli už brzy nebude možné do předplatného přidat řešení Activ
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si přehled protokolů platforem](../platform/platform-logs-overview.md)
+* [Přečtěte si přehled protokolů platforem](./platform-logs-overview.md)
 * [Kontrola schématu událostí protokolu aktivit](activity-log-schema.md)
-* [Vytvoření nastavení diagnostiky pro odesílání protokolů aktivit do jiných cílů](../platform/diagnostic-settings.md)
+* [Vytvoření nastavení diagnostiky pro odesílání protokolů aktivit do jiných cílů](./diagnostic-settings.md)

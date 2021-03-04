@@ -3,14 +3,14 @@ title: Nasazení Hybrid Runbook Worker pro Linux v Azure Automation
 description: V tomto článku se dozvíte, jak nainstalovat Azure Automation Hybrid Runbook Worker ke spouštění Runbooků na počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708913"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -43,12 +43,15 @@ Role Hybrid Runbook Worker vyžaduje, aby byl pro podporovaný operační systé
 Funkce Hybrid Runbook Worker podporuje následující distribuce. Všechny operační systémy se považují za x64. Platforma x86 není podporována pro žádný operační systém.
 
 * Amazon Linux 2012,09 až 2015,09
-* CentOS Linux 5, 6 a 7
+* CentOS Linux 5, 6, 7 a 8
 * Oracle Linux 5, 6 a 7
-* Red Hat Enterprise Linux Server 5, 6 a 7
+* Red Hat Enterprise Linux Server 5, 6, 7 a 8
 * Debian GNU/Linux 6, 7 a 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS a 18,04 LTS
-* SUSE Linux Enterprise Server 12
+* SUSE Linux Enterprise Server 12 a 15
+
+> [!IMPORTANT]
+> Než povolíte funkci Update Managemente, která závisí na roli systému Hybrid Runbook Worker, potvrďte [níže](update-management/overview.md#supported-operating-systems)podporované distribuce.
 
 ### <a name="minimum-requirements"></a>Minimální požadavky
 
@@ -87,11 +90,11 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ano |
 |PowerShell |Ano<sup>1</sup> |
-|Pracovní postup PowerShellu |No |
-|Grafický |No |
-|Grafický pracovní postup PowerShellu |No |
+|Pracovní postup PowerShellu |Ne |
+|Grafický |Ne |
+|Grafický pracovní postup PowerShellu |Ne |
 
 <sup>1</sup> Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728106"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Předpoklady pro nasazení služby Azure Cloud Services (Rozšířená podpora)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Požadované aktualizace konfiguračního souboru služby (. cscfg)
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-Nasazení cloudové služby (Rozšířená podpora) se musí nacházet ve virtuální síti. Virtuální síť se dá vytvořit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [PowerShellu](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) nebo [šablony ARM](https://docs.microsoft.com/azure/virtual-network/quick-create-template). V konfiguraci služby (. cscfg) se musí v části [NetworkConfiguration](schema-cscfg-networkconfiguration.md) odkazovat taky na virtuální síť a podsítě. 
+Nasazení cloudové služby (Rozšířená podpora) se musí nacházet ve virtuální síti. Virtuální síť se dá vytvořit prostřednictvím [Azure Portal](../virtual-network/quick-create-portal.md), [PowerShellu](../virtual-network/quick-create-powershell.md), [Azure CLI](../virtual-network/quick-create-cli.md) nebo [šablony ARM](../virtual-network/quick-create-template.md). V konfiguraci služby (. cscfg) se musí v části [NetworkConfiguration](schema-cscfg-networkconfiguration.md) odkazovat taky na virtuální síť a podsítě. 
 
 Pro virtuální sítě, které patří do stejné skupiny prostředků jako cloudová služba, je pro vás stačit odkaz jenom na název virtuální sítě v souboru konfigurace služby (. cscfg). Pokud jsou virtuální síť a cloudová služba ve dvou různých skupinách prostředků, musí být v souboru konfigurace služby (. cscfg) zadaná úplná Azure Resource Manager ID virtuální sítě.
  
@@ -103,7 +103,7 @@ Následující velikosti jsou v Azure Resource Manager zastaralé. Pokud ale chc
  Například `<WorkerRole name="WorkerRole1" vmsize="Medium"` by se stala `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` .
  
 > [!NOTE]
-> Seznam dostupných velikostí najdete v článku [SKU prostředků – seznam](https://docs.microsoft.com/rest/api/compute/resourceskus/list) a použití následujících filtrů: <br>
+> Seznam dostupných velikostí najdete v článku [SKU prostředků – seznam](/rest/api/compute/resourceskus/list) a použití následujících filtrů: <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,7 +120,7 @@ Nasazení, která využila staré funkce plug-in vzdálené plochy, musí mít o
 
 ## <a name="key-vault-creation"></a>Vytváření Key Vault 
 
-Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Také je nutné povolit Key Vault pro příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl získat certifikát uložený jako tajné klíče z Key Vault. Key Vault lze vytvořit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)a  [prostředí PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell). Key Vault musí být vytvořená ve stejné oblasti a předplatném jako cloudová služba. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
+Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Také je nutné povolit Key Vault pro příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl získat certifikát uložený jako tajné klíče z Key Vault. Key Vault lze vytvořit prostřednictvím [Azure Portal](../key-vault/general/quick-create-portal.md)a  [prostředí PowerShell](../key-vault/general/quick-create-powershell.md). Key Vault musí být vytvořená ve stejné oblasti a předplatném jako cloudová služba. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Další kroky 
 - Přečtěte si [požadavky na nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora).

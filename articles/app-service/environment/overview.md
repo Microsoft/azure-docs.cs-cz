@@ -4,15 +4,15 @@ description: Přehled App Service Environment
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663620"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735093"
 ---
 # <a name="app-service-environment-overview"></a>Přehled App Service Environment 
 
@@ -25,7 +25,7 @@ Azure App Service Environment je funkce služby Azure App Service, která poskyt
 - Webové aplikace pro Windows
 - Webové aplikace pro Linux
 - Kontejnery Dockeru
-- Funkce
+- Functions
 
 Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které mají tyto požadavky:
 
@@ -53,7 +53,7 @@ App Service Environment má mnoho případů použití, včetně:
 K dispozici je řada funkcí sítě, které umožňují aplikacím ve více tenantůch App Service získat přístup k síťovým izolovaným prostředkům nebo se může stát izolací sítě. Tyto funkce jsou povolené na úrovni aplikace.  Pomocí pomocného mechanismu se v aplikacích žádná další konfigurace, které by měly být ve virtuální síti. Aplikace se nasadí do izolovaného prostředí sítě, které už je ve virtuální síti. Nad aplikacemi hostujícími izolované síťové služby se jedná i o jediný klientský systém. Pomocí pomocného mechanismu pro řízení neexistují žádní další zákazníci. Pokud opravdu potřebujete kompletní příběh pro izolaci, můžete taky získat svůj přístup k vašemu mechanismu pro nasazování na vyhrazený hardware. Mezi hostováním aplikace izolované od sítě, s jednou tenantů a možností 
 
 ## <a name="dedicated-environment"></a>Vyhrazené prostředí
-Pomocného mechanismu je vyhrazené výhradně pro jedno předplatné a může hostovat 200 App Service instancí plánu. Tento rozsah může zahrnovat 100 instancí v rámci jednoho plánu služby App Service, ale i 100 plánů služby App Service s jednou instancí a veškeré další kombinace.
+Pomocného mechanismu je vyhrazen výhradně pro jedno předplatné a může hostovat 200 celkových instancí App Service plánů napříč různými plány App Service. Slovo "instance" odkazuje na App Service naplánování horizontálního škálování. Každá instance je ekvivalentem role pracovního procesu. I když může mít pomocným mechanismem řízení 200 celkem instancí, může být jeden izolovaný plán v2 App Service obsahovat 100 instance. Pomocného programu může obsahovat dva plány App Service s 100 instancemi v 200 každém z plánů App Service s jednou instancí, nebo vše mezi nimi.
 
 Služba ASE se skládá z front-endů a pracovních procesů. Front-endy zodpovídají za ukončení protokolu HTTP/HTTPS a automatické vyrovnávání zatížení požadavků aplikací ve službě ASE. Front-endy se přidávají automaticky při horizontálním škálování plánů služby App Service ve službě ASE.
 
@@ -77,7 +77,7 @@ Aplikace také často potřebují přístup k firemním prostředkům, jako jsou
 ## <a name="preview"></a>Preview
 App Service Environment v3 je ve verzi Public Preview.  Během průběhu verze Preview se přidávají některé funkce. Aktuální omezení ASEv3 zahrnují:
 
-- Neschopnost škálovat plán App Service přesahující pět instancí
+- Neschopnost škálovat App Service plán nad rámec 50 instancí
 - Neschopnost získat kontejner z privátního registru
 - Neschopnost aktuálně nepodporovaných App Service funkcí přejít přes virtuální síť zákazníka
 - Žádný model externího nasazení s dostupným koncovým bodem Internetu

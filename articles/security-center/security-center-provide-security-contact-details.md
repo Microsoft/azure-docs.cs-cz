@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701973"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurace e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -61,7 +61,7 @@ Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
 ## <a name="customize-the-alerts-email-notifications-through-the-api"></a>Přizpůsobení e-mailových oznámení výstrah prostřednictvím rozhraní API
-E-mailová oznámení můžete spravovat také pomocí zadaných REST API. Úplné podrobnosti najdete v [dokumentaci k rozhraní SecurityContacts API](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+E-mailová oznámení můžete spravovat také pomocí zadaných REST API. Úplné podrobnosti najdete v [dokumentaci k rozhraní SecurityContacts API](/rest/api/securitycenter/securitycontacts).
 
 Toto je příklad těla žádosti o požadavek PUT při vytváření konfigurace kontaktu zabezpečení:
 

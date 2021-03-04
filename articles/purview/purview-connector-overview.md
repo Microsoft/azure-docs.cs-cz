@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "96780208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695766"
 ---
 # <a name="supported-data-stores"></a>Podporované zdroje dat
 
@@ -27,11 +27,15 @@ Dosah podporuje následující úložiště dat. Klikněte na jednotlivá úlož
 ||[Azure Data Explorer](register-scan-azure-data-explorer.md)|Ano| Ano| Ano| Ano| Ano| Ano|
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|Ano| Ano| Ano| Ano| Ano| Ano|
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|Ano| Ano| Ano| Ano| Ano| Ano|
-||[Azure SQL Database](register-scan-azure-sql-database.md)|Ano| Ano| No| Ano| Ano| Ano|
-||[Spravovaná instance Azure SQL Database](register-scan-azure-sql-database-managed-instance.md)|Ano| Ano| No| Ano| Ano| Ano|
-||[Azure Synapse Analytics (dříve SQL DW)](register-scan-azure-synapse-analytics.md)|Ano| Ano| No| Ano| Ano| Ano|
-|databáze|[SQL Server](register-scan-on-premises-sql-server.md)|Ano| Ano| No| Ano| Ano| Ano|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ano| Ano| No| No| No| Ano|
+||[Azure SQL Database](register-scan-azure-sql-database.md)|Ano| Ano| Ne| Ano| Ano| Ano|
+||[Azure SQL Database spravovaná instance](register-scan-azure-sql-database-managed-instance.md)|Ano| Ano| Ne| Ano| Ano| Ano|
+||[Azure Synapse Analytics (dříve SQL DW)](register-scan-azure-synapse-analytics.md)|Ano| Ano| Ne| Ano| Ano| Ano|
+|databáze|[Oracle DB](register-scan-oracle-source.md)|Ano| Ano| Ne| Ne| Ne| Ano|
+||[SQL Server](register-scan-on-premises-sql-server.md)|Ano| Ano| Ne| Ano| Ano| Ano|
+||[Teradata](register-scan-teradata-source.md)|Ano| Ano| Ne| Ne| Ne| Ano|
+|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ano| Ano| Ne| Ne| Ne| Ano|
+|Služby a aplikace|[SAP ECC](register-scan-sapecc-source.md)|Ano| Ano| Ne| Ano| Ano| Ano|
+||[SAP S4HANA](register-scan-saps4hana-source.md)|Ano| Ano| Ne| Ano| Ano| Ano|
 
 ## <a name="next-steps"></a>Další kroky
 

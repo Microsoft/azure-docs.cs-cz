@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: a2b39f25aa2a8847697df8a5097f5ffdc9cbd212
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945878"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715492"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -42,7 +42,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
     |`--workernode-count`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá proměnná `clusterSizeInNodes` jako hodnota předaná `--workernode-count` . |
     |`--version`| Verze clusteru HDInsight. V tomto článku se používá proměnná `clusterVersion` jako hodnota předaná `--version` . Viz také: [podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| Zadejte cluster HDInsight, například: Hadoop, interactivehive, HBA, Kafka,, Spark, Rserver, mlservices.  V tomto článku se používá proměnná `clusterType` jako hodnota předaná `--type` . Viz také: [typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá proměnná `componentVersion` jako hodnota předaná `--component-version` . Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
+    |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá proměnná `componentVersion` jako hodnota předaná `--component-version` . Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md).|
 
     Nahraďte `RESOURCEGROUPNAME` ,, `LOCATION` `CLUSTERNAME` , `STORAGEACCOUNTNAME` a `PASSWORD` požadovanými hodnotami. Změňte hodnoty pro ostatní proměnné podle potřeby. Pak zadejte příkazy rozhraní příkazového řádku.
 

@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: Ověření připojení brány VPN
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: Resetování brány VPN
+        - name: Resetování služby VPN Gateway nebo připojení
           href: reset-gateway.md
         - name: Odstranění brány VPN
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune – nasazení profilu klienta VPN
               href: vpn-profile-intune.md
+        - name: Více typů ověřování
+          items:
+            - name: portál Azure
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: Konfigurace typu tunelu OpenVPN
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: Diagnostika protokolu BGP
+          href: bgp-diagnostics.md
         - name: Konfigurace vynuceného tunelování
           items:
             - name: Azure PowerShell

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736844"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Podpora a možnosti pomoci pro Azure Cognitive Services
 
@@ -52,18 +52,18 @@ Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete
 * [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
 * [QnA Maker](/answers/topics/azure-qna-maker.html)
 * [Analýza textu](/answers/topics/azure-text-analytics.html)
-* [Překladač](/answers/topics/azure-translator.html)
+* [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
 
-* [Služba Speech](/answers/topics/azure-speech.html)
+* [Služba řeči](/answers/topics/azure-speech.html)
 
 
 **Rozhodnutí**
 
 * [Detektor anomálií](/answers/topics/azure-anomaly-detector.html) 
 * [Content Moderator](/answers/topics/azure-content-moderator.html)
-* [Metrics Advisor (Preview)]()
+* [Poradce pro metriky (Preview)]()
 * [Personalizace](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
@@ -92,17 +92,17 @@ Pokud odešlete novou otázku pro Stack Overflow, při vytváření otázky pros
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
 * [Analýza textu](https://stackoverflow.com/search?q=azure+text+analytics)
-* [Překladač](https://stackoverflow.com/search?q=azure+translator+text)
+* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Speech**
 
-* [Služba Speech](https://stackoverflow.com/search?q=azure+speech)
+* [Služba řeči](https://stackoverflow.com/search?q=azure+speech)
 
 **Rozhodnutí**
 
 * [Detektor anomálií](https://stackoverflow.com/search?q=azure+anomaly+detector) 
 * [Content Moderator](https://stackoverflow.com/search?q=azure+content+moderator)
-* [Metrics Advisor (Preview)](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [Poradce pro metriky (Preview)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Personalizace](https://stackoverflow.com/search?q=azure+personalizer)
 
 ## <a name="submit-feedback-on-user-voice"></a>Odeslat zpětnou vazbu na uživatelský hlas
@@ -113,23 +113,34 @@ Pokud odešlete novou otázku pro Stack Overflow, při vytváření otázky pros
 
 Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte své nápady, jak Cognitive Services a jaká rozhraní API fungují lépe pro aplikace, které vyvíjíte. 
 
-| Služba                       | Adresa URL Cognitive Services UserVoice |
-|-------------------------------|---------------|
-| Detektor anomálií              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
-| Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
-| Rozpoznávání formulářů               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Rozpoznávání rukopisu                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
-| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
-| Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
-| QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Hlasové služby               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Analýza textu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Překladač               | https://cognitive.uservoice.com/forums/558796-translator |
-| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+* [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
+
+**Obraz**
+
+* [Počítačové zpracování obrazu](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Custom Vision](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Rozpoznávání tváře](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Rozpoznávání formulářů](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+* [Video Indexer](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)
+
+**Jazyk**
+
+* [Asistivní čtečka](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Language Understanding (LUIS)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [QnA Maker](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Analýza textu](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+* [Translator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)
+
+**Speech**
+
+* [Služba řeči](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395740)
+
+**Rozhodnutí**
+
+* [Detektor anomálií](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
+* [Content Moderator](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Poradce pro metriky (Preview)](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [Personalizace](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 
 ## <a name="stay-informed"></a>Aktuální informace
 

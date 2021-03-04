@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100612832"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728973"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
 V tomto článku se dozvíte, jak nakonfigurovat připojení mezi produktem nebo službou IT Service Management (ITSM) pomocí zabezpečeného exportu.
 
-Zabezpečený export je aktualizovaná verze [konektoru IT Service Management Connector (ITSMC)](../platform/itsmc-overview.md). Obě verze umožňují vytvářet pracovní položky v nástroji ITSM, když Azure Monitor odesílá výstrahy. Mezi tyto funkce patří upozornění na metriky, protokoly a protokoly aktivit.
+Zabezpečený export je aktualizovaná verze [konektoru IT Service Management Connector (ITSMC)](./itsmc-overview.md). Obě verze umožňují vytvářet pracovní položky v nástroji ITSM, když Azure Monitor odesílá výstrahy. Mezi tyto funkce patří upozornění na metriky, protokoly a protokoly aktivit.
 
 ITSMC používá přihlašovací údaje uživatelského jména a hesla. Zabezpečený export má silnější ověřování, protože používá Azure Active Directory (Azure AD). Azure AD je cloudová služba Microsoftu, která slouží ke správě identit a přístupu. Pomůže uživatelům přihlašovat se k interním nebo externím prostředkům a přistupovat k nim. Použití Azure AD s ITSM pomáhá identifikovat výstrahy Azure (prostřednictvím ID aplikace Azure AD), které se poslaly do externího systému.
 
@@ -55,4 +55,4 @@ Hlavní výhodou integrace jsou tyto:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření pracovních položek ITSM z výstrah Azure](../platform/itsmc-overview.md)
+* [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-overview.md)

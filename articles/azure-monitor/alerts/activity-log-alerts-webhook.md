@@ -4,19 +4,19 @@ description: Přečtěte si o schématu JSON, které se pošle na adresu URL Web
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: bdac71655ca0c517624f8aa033ee5bc7fcc9d12a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9f5fbc6b0c7ae77181c8c5afdbaffb4e62dccd12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100609699"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701140"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
 
-Další informace o výstrahách protokolů aktivit najdete v tématu [vytvoření výstrah protokolu aktivit Azure](../platform/activity-log-alerts.md).
+Další informace o výstrahách protokolů aktivit najdete v tématu [vytvoření výstrah protokolu aktivit Azure](./activity-log-alerts.md).
 
-Informace o skupinách akcí najdete v tématu [Vytvoření skupin akcí](../platform/action-groups.md).
+Informace o skupinách akcí najdete v tématu [Vytvoření skupin akcí](./action-groups.md).
 
 > [!NOTE]
 > Můžete také použít [běžné schéma výstrah](./alerts-common-schema.md), které poskytuje pro integraci Webhooku jedinou rozšiřitelnou a jednotnou datovou část napříč všemi službami výstrahy v Azure monitor. [Přečtěte si o běžných definicích schémat výstrah.](./alerts-common-schema-definitions.md)
@@ -298,10 +298,10 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | status |Řetězec. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
 | subStatus |Obvykle zahrnuje stavový kód HTTP odpovídajícího volání REST. Může také obsahovat další řetězce, které popisují dílčí stav. Mezi běžné hodnoty substavu patří OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), nenalezen (kód stavu HTTP: 404), konflikt (Stavový kód HTTP: 409), interní chyba serveru (kód stavu HTTP: 500), nedostupná služba (Stavový kód http: 503) a časový limit brány (kód stavu http : 504). |
 
-Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu aktivit najdete v tématu [Přehled protokolu aktivit Azure](../platform/platform-logs-overview.md).
+Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu aktivit najdete v tématu [Přehled protokolu aktivit Azure](../essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si další informace o protokolu aktivit](../platform/platform-logs-overview.md).
+* [Přečtěte si další informace o protokolu aktivit](../essentials/platform-logs-overview.md).
 * [Spouštění skriptů Azure Automation (runbooky) na výstrahách Azure](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Pomocí aplikace logiky můžete poslat SMS přes Twilio z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
 * [Pomocí aplikace logiky odešlete zprávu o časové rezervě z výstrahy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Tento příklad je pro výstrahy metrik, ale dá se upravit tak, aby fungoval s upozorněním protokolu aktivit.
