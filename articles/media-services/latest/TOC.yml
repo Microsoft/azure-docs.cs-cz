@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: Nastavení Azure Cloud Shellu
           href: ../../cloud-shell/overview.md
-        - name: Vývoj s využitím REST
+        - name: Připojení ke službě Media Services
           items:
-            - name: Připojení s využitím Postmana
+            - name: Připojit se s REST a dodatečně
               href: media-rest-apis-with-postman.md
-        - name: Vývoj s využitím sad SDK
-          items:
             - name: Připojení s využitím Javy
               href: configure-connect-java-howto.md
             - name: Připojení s využitím .NET
@@ -51,6 +49,8 @@
       items:
         - name: Vytvoření účtu s využitím ARM
           href: quickstart-arm-template-account.md
+    - name: Základní rychlé zprovoznění kódování Pythonu
+      href: quickstart-basic-encoding-python.md
 - name: Kurzy
   items:
     - name: .NET

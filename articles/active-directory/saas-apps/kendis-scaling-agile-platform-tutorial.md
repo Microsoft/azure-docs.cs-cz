@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651548"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací Kendis-Azure AD
 
@@ -123,13 +123,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Nakonfigurovat jednotné přihlašování pro integraci Kendis-Azure AD
 
-1. V jiném okně webového prohlížeče se přihlaste ke svému webu integrace služby Azure AD Kendis jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci integrace Kendis-Azure AD, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-1. Přejít na **nastavení > konfigurace SAML**.
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit Kendis – integrace služby Azure AD** vás přesměruje do integrační aplikace Kendis-Azure AD. Odtud zadejte přihlašovací údaje správce, které se přihlásí k integraci Kendis-Azure AD. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit integraci Kendis-Azure AD ručně, v jiném okně webového prohlížeče se přihlaste ke svému webu Azure AD Integration Company jako správce.
+
+4. Přejít na **nastavení > konfigurace SAML**.
 
     ![nastavení pro konfigurace SAML](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. V dolní části stránky klikněte na tlačítko **Upravit** a proveďte následující kroky.
+5. V dolní části stránky klikněte na tlačítko **Upravit** a proveďte následující kroky.
 
     ![Konfigurace SAML](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Vytváření vlastních iniciativ a zásad zabezpečení
           href: custom-security-policies.md
-    - name: Chraňte své počítače pomocí Azure Defenderu pro servery
+    - name: Ochrana počítačů pomocí programu Defender pro servery
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Přehled služby Azure Defender pro servery
@@ -143,10 +143,10 @@
         - name: Použití integrované licence Microsoft Defenderu pro koncový bod
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Definování seznamů bezpečných aplikací pro vaše počítače
+        - name: Definování seznamů bezpečných aplikací pro počítače
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Sledování změn souborů a registrů pomocí monitorování integrity souborů
+        - name: Sledování změn souborů a registrů
           items:
             - name: Přehled monitorování integrity souborů
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: Porovnání směrných plánů pomocí monitorování integrity souborů
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Vylepšení stav zabezpečení sítě díky adaptivnímu posílení sítě
-          displayName: anh
+        - name: Vylepšení stav zabezpečení sítě
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: Posílení zabezpečení hostitelů Dockeru
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Přehled Azure Defenderu pro Key Vault
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Reakce na upozornění Azure Defenderu pro Key Vault
+        - name: Zpracování výstrah pro Key Vault v Defenderu
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: Monitorování operací správy prostředků
@@ -217,7 +217,7 @@
         - name: Přehled Azure Defenderu pro Správce prostředků
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Reakce na upozornění Azure Defenderu pro Resource Manager
+        - name: Zpracování výstrah pro Správce prostředků v Defenderu
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: Monitorování dotazů DNS z vašich prostředků Azure

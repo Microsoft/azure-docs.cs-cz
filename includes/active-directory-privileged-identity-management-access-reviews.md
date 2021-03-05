@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/07/2020
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842385"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102193650"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
 
@@ -27,7 +27,7 @@ ms.locfileid: "96842385"
 
     ![Počáteční datum, četnost, doba trvání, konec, počet a datum a čas ukončení](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
-1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně**, **jednou ročně** nebo **Semi-annually** po měsících. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
+1. Chcete-li provést opakované kontroly přístupu, změňte nastavení **frekvence** od **jednoho** na **týdně**, **měsíčně**, **čtvrtletně**, **jednou ročně** nebo po měsících. Pomocí posuvníku **Trvání** nebo textového pole můžete definovat, kolik dní bude každá revize opakujících se řad otevřená pro vstup od revidujících. Například maximální doba, kterou můžete nastavit pro měsíční revizi, je 27 dní, aby se předešlo překrývání recenzí.
 
 1. Pomocí nastavení **konec** určete, jak se má ukončit řada kontroly opakovaného přístupu. Série může končit třemi způsoby: průběžně spouští recenze na neomezenou dobu, až do konkrétního data nebo po dokončení definovaného počtu výskytů. Vy, jiný správce nebo jiný globální správce může série po vytvoření zastavit změnou data v **Nastavení**, takže skončí k tomuto datu.
 
@@ -53,7 +53,7 @@ ms.locfileid: "96842385"
 
     - **Vybraní uživatelé** – tuto možnost použijte, Pokud nevíte, kdo potřebuje přístup. Pomocí této možnosti můžete k dokončení této revize přiřadit vlastníka prostředku nebo správce skupin.
     - **Členové (vlastní)** – tuto možnost použijte, pokud chcete, aby uživatelé zkontrolovali vlastní přiřazení rolí.
-    - **Správce (Preview)** – tuto možnost použijte, pokud chcete, aby správce uživatele zkontroloval přiřazení role. Po výběru (Preview) správce budete mít také možnost určit záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce.
+    - **Správce** – tuto možnost použijte, pokud chcete, aby nadřízený uživatel zkontroloval přiřazení role. Po výběru manažera budete mít také možnost zadat záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce.
 
 ### <a name="upon-completion-settings"></a>Nastavení po dokončení
 
@@ -70,7 +70,7 @@ ms.locfileid: "96842385"
     - **Schválit přístup** – schválení přístupu uživatele
     - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
-### <a name="advanced-settings"></a>Pokročilá nastavení
+### <a name="advanced-settings"></a>Rozšířená nastavení
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
