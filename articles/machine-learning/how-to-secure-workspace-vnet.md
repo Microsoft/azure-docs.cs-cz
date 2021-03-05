@@ -11,17 +11,16 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 083d750db0db050265c93cc658d4f3b6556b850d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029528"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176208"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
 V tomto článku se dozvíte, jak zabezpečit Azure Machine Learning pracovní prostor a jeho přidružené prostředky ve virtuální síti.
-
 
 Tento článek je druhou částí série s pěti částmi, která vás provede zabezpečením Azure Machine Learningho pracovního postupu. Důrazně doporučujeme, abyste si přečetli [část One: VNet – přehled](how-to-network-security-overview.md) , abyste si nejdřív porozuměli celkové architektuře. 
 
@@ -296,7 +295,7 @@ Po splnění těchto požadavků můžete Azure Container Registry povolit pomoc
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek je součástí jedné z řad virtuální sítě se čtyřmi částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
+Tento článek je druhou částí z řady virtuálních sítí s pěti částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
 
 * [Část 1: Přehled virtuální sítě](how-to-network-security-overview.md)
 * [Část 3: zabezpečení školicího prostředí](how-to-secure-training-vnet.md)

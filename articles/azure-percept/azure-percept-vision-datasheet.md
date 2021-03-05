@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 54dae3341910bf863de7e2a2cef832ae670ca09a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097563"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177160"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Datový list Azure Percept Vision
 
@@ -26,7 +26,7 @@ Níže uvedené specifikace jsou pro zařízení Azure Percept Vision, které je
 |Podporovaný software a služby |[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) <br> [Modul runtime ONNX](https://www.onnxruntime.ai/) <br> [OpenVINO](https://docs.openvinotoolkit.org/latest/index.html) <br> Aktualizace zařízení Azure |
 |Akcelerace AI                 |Intel Movidius nesčetných X (MA2085) Vision Processing Unit (VPU) s integrovaným poskytovatelem internetových služeb Intel, 0,7 nahoru |
 |Senzory a vizuální indikátory   |Senzor kamery Sony IMX219 s 00 Lensem<br>Řešení: 8MP na 30FPS, distance: 50cm-Infinity<br>FoV: 120 stupňů dolů, barva: celosvětový dynamický rozsah, pevně zaostření – válcování|
-|Podpora kamery                  |RGB (aktuálně) a IR (v budoucnu) <br> 2 kamery můžou běžet souběžně. |
+|Podpora kamery                  |RGB <br> 2 kamery můžou běžet souběžně. |
 |Crypto-Controller zabezpečení      |ST-Micro STM32L462CE      |
 |Verze a komponenta ID       |64 – paměť EEPROM |
 |Memory (Paměť)                          |LPDDR4 2 GB     |

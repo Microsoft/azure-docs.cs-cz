@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386846"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174967"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -225,6 +225,9 @@ Pokud je typ ověřování nastaven na `ApiKeyHeader` , element **CryptographicK
 | --------- | -------- | ----------- |
 | Název hlavičky protokolu HTTP, například `x-functions-key` nebo `x-api-key` . | Ano | Klíč, který se používá k ověření. |
 
+> [!NOTE]
+> V tuto chvíli Azure AD B2C pro ověřování podporuje jenom jednu hlavičku HTTP. Pokud vaše volání RESTful vyžaduje více hlaviček, jako je ID klienta a tajný kód klienta, budete muset požadavek proxy nějakým způsobem vyzvat.
+
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -290,4 +293,3 @@ Příklady použití technického profilu RESTful najdete v následujících čl
 - [Návod: integrace REST APIch výměn deklarací identity v Azure AD B2C cestě uživatele jako ověření vstupu uživatele](custom-policy-rest-api-claims-validation.md)
 - [Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
 - [Zabezpečení služby REST API Services](secure-rest-api.md)
-

@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727953"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175868"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
@@ -168,7 +168,7 @@ Proces CI/CD byl vylepšen. Funkce **automatického publikování** přijímá, 
 
 #### <a name="issue"></a>Problém
 
-Nemůžete nasadit, protože jste dosáhli Azure Resource Manager limitu velikosti 4 MB pro celkovou velikost šablony. Po překročení limitu budete potřebovat řešení k nasazení. 
+Nasazení nemůžete nasadit, protože jste dosáhli Azure Resource Manager limitu velikosti 4 MB pro celkovou velikost šablony. Po překročení limitu budete potřebovat řešení k nasazení. 
 
 #### <a name="cause"></a>Příčina
 
@@ -190,7 +190,7 @@ Nenakonfigurovali jste OAuth pro ADF. Vaše adresa URL je chybně nakonfigurovan
 
 ##### <a name="resolution"></a>Řešení
 
-Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků, protože služba ADF se nejdřív pokusí https://hostname/api/v3/search/repositories?q=user%3 <customer credential> .... a selhání. Potom to zkusí a bude https://hostname/api/v3/orgs/ <vaorg> / <repo> úspěšný. 
+Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků. Například ADF se nejprve pokusí *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* a selže. Pak se to pokusí *https://hostname/api/v3/orgs/ <org> / <repo> ...* a úspěch. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Obnovení z odstraněné datové továrny
 
@@ -203,7 +203,8 @@ Data Factory lze obnovit pouze v případě, že zákazník má nakonfigurovanou
 
 Pokud není k dispozici Správa zdrojového kódu, není možné obnovit odstraněné Data Factory z back-endu, protože jakmile se příkaz dostanou, instance se odstraní a nebude uložena žádná záloha.
 
-#### <a name="resoloution"></a>Resoloution
+#### <a name="resolution"></a>Řešení
+
 Postup obnovení odstraněných Data Factory se správou zdrojových kódů najdete v následujících krocích:
 
  * Vytvoří nový Azure Data Factory.

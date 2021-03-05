@@ -1,23 +1,18 @@
 ---
 title: Používání programu Microsoft Defender pro licenci koncového bodu, který je součástí Azure Security Center
 description: Přečtěte si o programu Microsoft Defender pro koncové body a nasaďte ho z Azure Security Center.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 475c7671636d3aac036e3da1392fc2da9b0a001f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099076"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176463"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -43,10 +38,10 @@ Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpe
 | Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
 | Stanov                        | Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .                                                                                                                                                                                                                                             |
 | Podporované platformy:            |  • Počítače Azure s Windows<br> • Počítače s obloukem v Azure, na kterých běží Windows|
-| Podporované verze systému Windows:  |   • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy (evd)<br>Monitorování koncového bodu serveru pomocí těchto integrací bylo pro zákazníky Office 365 RSZ zakázané.|
+| Podporované verze systému Windows:  |  • **Obecná dostupnost (GA) –** detekce na Windows serveru 2016, 2012 R2 a 2008 R2 SP1<br> • Zjišťování **verze Preview** na windows serveru 2019, [Windows Virtual desktopu (WVD)](../virtual-desktop/overview.md)a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (dřív Enterprise pro virtuální plochy (evd)<br>Monitorování koncového bodu serveru pomocí těchto integrací bylo pro zákazníky Office 365 RSZ zakázané.|
 | Nepodporované operační systémy:  |  • Windows 10 (jiné než EVD nebo WVD)<br> • Linux|
 | Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného** nebo **přispěvatele předplatného**|
-| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure                                                        |
+| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender pro funkce koncového bodu v Security Center

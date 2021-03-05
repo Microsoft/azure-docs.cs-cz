@@ -5,25 +5,36 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8333745b802f41b5a1b3dc07663870299800e3f6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706296"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176135"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
 
 Tento článek poskytuje informace o tom, jak zobrazit jednotku a stav úlohy pro úlohy Azure import/export. Služba import/export Azure slouží k bezpečnému přenosu velkých objemů dat do objektů blob Azure a souborů Azure. Služba se používá také k exportu dat z úložiště objektů BLOB v Azure.  
 
 ## <a name="view-job-and-drive-status"></a>Zobrazení stavu úlohy a jednotky
-Stav úloh importu nebo exportu můžete sledovat z Azure Portal tak, že vyberete kartu **Import/export** . Na stránce se zobrazí seznam úloh.
+Stav úloh importu nebo exportu můžete sledovat na kartě **Import/export** v Azure Portal.
+1. Přihlaste se k https://portal.azure.com/ .
+2. Vyhledejte **úlohy import/export**.
 
-![Zobrazit stav úlohy](./media/storage-import-export-service/jobstate.png)
+    ![Vyhledat úlohy importu/exportu](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
+ 3. Na stránce se zobrazí seznam úloh import/export.
+
+    ![Zobrazit stav úlohy](./media/storage-import-export-view-drive-status/job-state.png)
+
+4. Pokud chcete zobrazit podrobnosti úlohy, vyberte úlohu a klikněte na ni.
+
+   ![Zobrazit podrobný stav úlohy](./media/storage-import-export-view-drive-status/job-detail.png)
+  
 ## <a name="view-job-status"></a>Zobrazení stavu úlohy
 
 V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
@@ -56,13 +67,13 @@ V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé 
 
 Tento obrázek z Azure Portal zobrazuje stav jednotky ukázkové úlohy:
 
-![Zobrazit stav jednotky](./media/storage-import-export-service/drivestate.png)
+![Zobrazit stav jednotky](./media/storage-import-export-view-drive-status/drive-state.png)
 
 Následující tabulka popisuje stavy selhání jednotek a akce prováděné pro jednotlivé stavy.
 
 | Stav jednotky | Událost | Řešení/další krok |
 |:--- |:--- |:--- |
-| NeverReceived | Jednotka označená jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy) přijde do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
+| Nikdy Nepřijato | Jednotka označená jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy) přijde do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
 | – | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka. Po dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
 
 ## <a name="time-to-process-job"></a>Čas zpracování úlohy

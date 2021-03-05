@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123084"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176412"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. 
@@ -61,10 +61,14 @@ Při provádění interaktivní analýzy dat nebo strojového učení často zji
 
 Balíčky s rozsahem relace umožňují uživatelům definovat závislosti balíčků na začátku relace. Při instalaci balíčku s rozsahem relace má přístup k určeným balíčkům pouze aktuální relace. V důsledku toho tyto balíčky s rozsahem relace nebudou mít vliv na ostatní relace nebo úlohy pomocí stejného fondu Apache Spark. Kromě toho jsou tyto knihovny nainstalovány nad základními balíčky modulu runtime a na úrovni fondu. 
 
+Tyto balíčky se automaticky přidají do vašeho prostředí Pythonu. Balíčky nesmí být zmíněné v souboru *requirements.txt* .
+
+Všimněte si, že tato metoda aktuálně suports jenom `*.whl` soubory. Do kontejneru nepřidávejte žádné `*.tar.gz` soubory.
+
 Další informace o tom, jak spravovat balíčky s rozsahem relace, najdete v následujících průvodcích:
 
 - [Balíčky relací Pythonu (Preview):](./apache-spark-manage-python-packages.md) Na začátku relace poskytněte *prostředí conda. yml* pro instalaci dalších balíčků Pythonu z oblíbených úložišť. 
-- [Balíčky relací Scala/Java: ](./apache-spark-manage-scala-packages.md) Na začátku relace zadejte seznam souborů JAR, které se mají nainstalovat pomocí nástroje ```%%configure``` .
+- [Balíčky relací Scala/Java: ](./apache-spark-manage-scala-packages.md) Na začátku relace zadejte seznam souborů JAR, které se mají nainstalovat pomocí nástroje `%%configure` .
 
 ## <a name="next-steps"></a>Další kroky
 - Zobrazení výchozích knihoven: [podpora Apache Spark verzí](apache-spark-version-support.md)

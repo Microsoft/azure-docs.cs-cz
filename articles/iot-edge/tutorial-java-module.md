@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177296"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu Java IoT Edge pro zařízení se systémem Linux
 
@@ -56,7 +56,7 @@ Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastaven�
 Pokud chcete vytvořit modul IoT Edge v jazyce Java, nainstalujte do vývojového počítače následující další požadavky: 
 
 * [Balíček rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) pro Visual Studio Code
-* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) s [nastavením proměnné prostředí `JAVA_HOME`](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na vaši instalaci JDK
+* [Java se Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support)a [nastavte `JAVA_HOME` proměnnou prostředí](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) tak, aby odkazovala na instalaci JDK.
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -115,7 +115,7 @@ V současné době Visual Studio Code může vyvíjet moduly Java pro zařízen�
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku vs Code otevřete **moduly**  >  **JavaModule**  >  **Src**  >  **Main**  >  **Java**  >  **com**  >  **edgemodule**  >  **App. Java**.
+1. V Průzkumníku vs Code otevřete **moduly**  >  **JavaModule**  >  **Src**  >  **Main**  >  **Java**  >    >  **edgemodule**  >  **App. Java**.
 
 2. Na začátek souboru přidejte následující kód k importování nových odkazovaných tříd.
 

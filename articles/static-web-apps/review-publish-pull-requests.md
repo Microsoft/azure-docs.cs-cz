@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 78d2f3b399e26ca0c6036fd74fa1fba49d1f21f4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042772"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172736"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Kontrola žádostí o přijetí změn v předprodukčních prostředích ve službě Azure Static Web Apps ve verzi Preview
 
@@ -109,7 +109,7 @@ Připravené verze vaší aplikace jsou aktuálně přístupné veřejně prost�
 > [!WARNING]
 > Buďte opatrní při publikování citlivého obsahu na připravené verze, protože přístup k předprodukčním prostředím není omezený.
 
-Počet předprodukčních prostředí dostupných pro každou aplikaci nasazenou se statickým Web Apps závisí na úrovni SKU, kterou používáte. Například u bezplatné úrovně můžete mít kromě produkčního prostředí 1 předprodukční prostředí.
+Počet předprodukčních prostředí dostupných pro každou aplikaci nasazenou se statickým Web Apps závisí na úrovni SKU, kterou používáte. Například u bezplatné úrovně můžete mít kromě produkčního prostředí tři předprodukční prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

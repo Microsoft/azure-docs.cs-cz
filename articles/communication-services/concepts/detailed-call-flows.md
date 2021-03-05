@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5ffc655cebb19b755b990171ab662576ac541793
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659303"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174287"
 ---
 # <a name="call-flow-topologies"></a>Topologie toků volání
 Tento článek popisuje topologie toků volání komunikačních služeb Azure. Jedná se o skvělý článek, který vám umožní zkontrolovat, jestli jste zákazníkem, který integruje komunikační služby v rámci sítě, kterou spravujete. Úvod do toků volání komunikačních služeb najdete v [Koncepční dokumentaci k tokům volání](./call-flows.md).
@@ -152,7 +152,7 @@ Signalizace mezi sítí VPN a zákaznickou sítí používá Flow 2 *. Signaliza
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>Uživatel VPN na interního uživatele (přímé médium)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Jeden k jednomu toku volání s VPN s přímým médiem":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Jeden k jednomu toku volání (interní uživatel) s VPN s přímým médiem":::
 
 *Obrázek 6 – uživatel sítě VPN pro interního uživatele (přímé médium)*
 
@@ -162,7 +162,7 @@ Přenos tohoto média je obousměrný. Směr toku 2 ke vzdálenému mobilnímu u
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>Uživatel VPN na externího uživatele (přímé médium)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Jeden k jednomu toku volání s VPN s přímým médiem":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Jeden do jednoho toku volání (externí uživatel) s VPN s přímým médiem":::
 
 *Obrázek 7 – uživatel VPN s externím uživatelem (přímé médium)*
 

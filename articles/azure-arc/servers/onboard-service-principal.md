@@ -1,36 +1,36 @@
 ---
 title: Připojení hybridních počítačů k Azure ve velkém měřítku
 description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí serverů s podporou ARC Azure pomocí instančního objektu.
-ms.date: 09/24/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9e0d3bd2bd5ea59e39ba2ebe33418b7d43b2de9b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096499"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175936"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Připojení hybridních počítačů k Azure ve velkém měřítku
 
-Můžete povolit servery s podporou ARC Azure pro více počítačů se systémem Windows nebo Linux ve vašem prostředí s několika flexibilními možnostmi v závislosti na vašich požadavcích. Pomocí skriptu šablony, který poskytujeme, můžete automatizovat všechny kroky instalace, včetně navázání připojení ke službě Azure ARC. Je ale potřeba, abyste tento skript mohli interaktivně spustit pomocí účtu, který má zvýšená oprávnění na cílovém počítači a v Azure. Pokud chcete počítače připojit k serverům s podporou ARC Azure, můžete místo používání privilegované identity použít [objekt služby](../../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory, abyste mohli [interaktivně připojit počítač](onboard-portal.md). Instanční objekt je speciální omezená identita pro správu, která je udělována jenom minimálním oprávněním, která jsou nutná pro připojení počítačů k Azure pomocí `azcmagent` příkazu. Je to bezpečnější než použití vyšší privilegovaného účtu, jako je Správce klienta, a postupuje podle osvědčených postupů zabezpečení řízení přístupu. Instanční objekt se používá jenom během připojování. nepoužívá se pro žádný jiný účel.  
+Můžete povolit servery s podporou ARC Azure pro více počítačů se systémem Windows nebo Linux ve vašem prostředí s několika flexibilními možnostmi v závislosti na vašich požadavcích. Pomocí skriptu šablony, který poskytujeme, můžete automatizovat všechny kroky instalace, včetně navázání připojení ke službě Azure ARC. Je ale potřeba, abyste tento skript mohli interaktivně spustit pomocí účtu, který má zvýšená oprávnění na cílovém počítači a v Azure.
+
+Pokud chcete počítače připojit k serverům s podporou ARC Azure, můžete místo používání privilegované identity použít [objekt služby](../../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory, abyste mohli [interaktivně připojit počítač](onboard-portal.md). Instanční objekt je speciální omezená identita pro správu, která je udělována jenom minimálním oprávněním, která jsou nutná pro připojení počítačů k Azure pomocí `azcmagent` příkazu. Je to bezpečnější než použití vyšší privilegovaného účtu, jako je Správce klienta, a postupuje podle osvědčených postupů zabezpečení řízení přístupu. Instanční objekt se používá jenom během připojování. nepoužívá se pro žádný jiný účel.  
 
 Metody instalace pro instalaci a konfiguraci agenta připojeného počítače vyžadují, aby automatizovaná metoda, kterou použijete, měla na počítačích oprávnění správce. V systému Linux pomocí kořenového účtu a ve Windows jako člen místní skupiny Administrators.
 
-Než začnete, zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky. Informace o podporovaných oblastech a dalších souvisejících aspektech najdete v tématu [podporované oblasti Azure](overview.md#supported-regions).
+Než začnete, zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky. Informace o podporovaných oblastech a dalších souvisejících aspektech najdete v tématu [podporované oblasti Azure](overview.md#supported-regions). Také si přečtěte náš [Průvodce plánováním v rámci škálování](plan-at-scale-deployment.md) , který vám pomůže pochopit kritéria návrhu a nasazení a také naše doporučení pro správu a monitorování.  
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-Na konci tohoto procesu se vaše hybridní počítače úspěšně připojí k serverům s podporou ARC Azure.
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Vytvoření instančního objektu pro registraci ve velkém měřítku
 
 K vytvoření instančního objektu pomocí rutiny [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) můžete použít službu [Azure PowerShell](/powershell/azure/install-az-ps) . Nebo můžete postupovat podle kroků uvedených v části [Vytvoření instančního objektu pomocí Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) k dokončení této úlohy.
 
 > [!NOTE]
-> Při vytváření instančního objektu musí být váš účet vlastníkem nebo správcem přístupu uživatele v rámci předplatného, které chcete použít pro registraci. Pokud nemáte dostatečná oprávnění k vytváření přiřazení rolí, může být objekt služby vytvořen, ale nebude moci připojit počítače.
+> Před vytvořením instančního objektu musí být váš účet členem role **Správce přístupu uživatelů nebo uživatelů** **v rámci** předplatného, které chcete použít pro registraci. Pokud nemáte dostatečná oprávnění ke konfiguraci přiřazení rolí, může být objekt služby vytvořen, ale nebude moci připojit počítače.
 >
 
-Pokud chcete vytvořit instanční objekt pomocí PowerShellu, udělejte toto:
+Pokud chcete vytvořit instanční objekt pomocí PowerShellu, proveďte následující kroky.
 
 1. Spusťte následující příkaz. Výstup rutiny je nutné uložit [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) do proměnné nebo nebudete moci načíst heslo potřebné v pozdějším kroku.
 
@@ -69,12 +69,46 @@ Hodnoty z následujících vlastností jsou použity s parametry předaných do 
 
 Role registrace **počítače připojeného k Azure** obsahuje jenom oprávnění potřebná k připojení počítače. Oprávnění instančního objektu můžete přiřadit, abyste umožnili jeho oboru zahrnutí skupiny prostředků nebo předplatného. Pokud chcete přidat přiřazení role, přečtěte si téma [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md) nebo [přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
+## <a name="generate-the-installation-script-from-the-azure-portal"></a>Vygenerujte instalační skript z Azure Portal
+
+Skript pro automatizaci stahování a instalace a navázání připojení pomocí ARC Azure je dostupný z Azure Portal. K dokončení procesu proveďte následující kroky:
+
+1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
+
+1. Na stránce **servery – ARC Azure** vyberte v levém horním rohu **Přidat** .
+
+1. Na stránce **Vyberte metodu** vyberte dlaždici **Přidat více serverů** a pak vyberte **vygenerovat skript**.
+
+1. Na stránce **vygenerovat skript** vyberte předplatné a skupinu prostředků, ve které chcete, aby se počítač spravoval v rámci Azure. Vyberte umístění Azure, kam se budou ukládat metadata počítače. Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků.
+
+1. Na stránce **požadované součásti** zkontrolujte informace a pak vyberte **Další: podrobnosti o prostředku**.
+
+1. Na stránce **Podrobnosti o prostředku** zadejte toto:
+
+    1. V rozevíracím seznamu **Skupina prostředků** vyberte skupinu prostředků, ze které se bude počítač spravovat.
+    1. V rozevíracím seznamu **oblast** vyberte oblast Azure, do které se budou ukládat metadata serverů.
+    1. V rozevíracím seznamu **operační systém** vyberte operační systém, na kterém je skript nakonfigurovaný ke spuštění.
+    1. Pokud počítač komunikuje prostřednictvím proxy server pro připojení k Internetu, zadejte IP adresu proxy server nebo název a číslo portu, které bude počítač používat ke komunikaci s proxy server. Zadejte hodnotu ve formátu `http://<proxyURL>:<proxyport>` .
+    1. Vyberte **Další: ověřování**.
+
+1. Na stránce **ověřování** v rozevíracím seznamu **instanční objekt** vyberte možnost **ARC-pro-servery**.  Pak vyberte, **Další: značky**.
+
+1. Na stránce **značky** zkontrolujte vybrané výchozí **značky fyzického umístění** a zadejte hodnotu nebo zadejte jednu nebo více **vlastních značek** pro podporu standardů.
+
+1. Vyberte **Další: Stáhněte a spusťte skript**.
+
+1. Na stránce **Stáhnout a spustit skript** zkontrolujte souhrnné informace a pak vyberte **Stáhnout**. Pokud stále potřebujete dělat změny, vyberte **Předchozí**.
+
+Pro Windows se zobrazí výzva k uložení `OnboardingScript.ps1` a pro Linux `OnboardingScript.sh` do vašeho počítače.
+
 ## <a name="install-the-agent-and-connect-to-azure"></a>Instalace agenta a připojení k Azure
 
-Následující postup nainstaluje a nakonfiguruje agenta připojeného počítače na hybridních počítačích pomocí šablony skriptu, která provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy navážete připojení ke službě Azure ARC pomocí příkazu, který `azcmagent` používá objekt služby.
+Když jste vytvořili šablonu skriptu dříve, můžete nainstalovat a nakonfigurovat agenta připojeného počítače na více hybridních počítačích se systémem Linux a Windows pomocí preferovaného nástroje pro automatizaci v organizacích. Skript provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy vytvoříte připojení k Arc Azure pomocí příkazu, který `azcmagent` používá instanční objekt.
 
 Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` příkaz pro použití instančního objektu.
 
+* `service-principal-id` : Jedinečný identifikátor (GUID), který představuje ID aplikace instančního objektu.
+* `service-principal-secret` | Heslo objektu služby
 * `tenant-id` : Jedinečný identifikátor (GUID), který představuje vaši vyhrazenou instanci služby Azure AD.
 * `subscription-id` : ID předplatného vašeho předplatného Azure, ve kterém chcete počítače.
 * `resource-group` : Název skupiny prostředků, do které chcete připojené počítače patřit.
@@ -83,55 +117,9 @@ Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` p�
 
 Další informace o `azcmagent` nástroji příkazového řádku najdete v [referenčních](./manage-agent.md)informacích k Azcmagent.
 
-### <a name="windows-installation-script"></a>Instalační skript Windows
-
-Následuje příklad skriptu připojeného agenta pro instalaci systému Windows, který byl změněn tak, aby používal instanční objekt k podpoře plně automatizované, neinteraktivní instalace agenta.
-
-```
- # Download the package
-function download() {$ProgressPreference="SilentlyContinue"; Invoke-WebRequest -Uri https://aka.ms/AzureConnectedMachineAgent -OutFile AzureConnectedMachineAgent.msi}
-download
-
-# Install the package
-msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-String
-
-# Run connect command
-& "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
-  --service-principal-id "{serviceprincipalAppID}" `
-  --service-principal-secret "{serviceprincipalPassword}" `
-  --resource-group "{ResourceGroupName}" `
-  --tenant-id "{tenantID}" `
-  --location "{resourceLocation}" `
-  --subscription-id "{subscriptionID}"
-```
-
 >[!NOTE]
->Skript podporuje běh jenom z 64 verze Windows PowerShellu.
+>Skript Windows PowerShellu podporuje jenom běh z 64 verze Windows PowerShellu.
 >
-
-### <a name="linux-installation-script"></a>Instalační skript pro Linux
-
-Následuje příklad instalačního skriptu připojeného počítače pro Linux, který byl změněn tak, aby používal instanční objekt k podpoře plně automatizované, neinteraktivní instalace agenta.
-
-```
-# Download the installation package
-wget https://aka.ms/azcmagent -O ~/install_linux_azcmagent.sh
-
-# Install the hybrid agent
-bash ~/install_linux_azcmagent.sh
-
-# Run connect command
-azcmagent connect \
-  --service-principal-id "{serviceprincipalAppID}" \
-  --service-principal-secret "{serviceprincipalPassword}" \
-  --resource-group "{ResourceGroupName}" \
-  --tenant-id "{tenantID}" \
-  --location "{resourceLocation}" \
-  --subscription-id "{subscriptionID}"
-```
-
->[!NOTE]
->Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
 Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou ARC Azure klikněte na Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
@@ -139,8 +127,8 @@ Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou AR
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o řešení potíží najdete v části [Poradce při potížích s agentem připojeného počítače](troubleshoot-agent-onboard.md).
+- Informace o řešení potíží najdete v části [Poradce při potížích s agentem připojeného počítače](troubleshoot-agent-onboard.md).
 
-- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/vm/vminsights-enable-policy.md)a mnohem víc.
+- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověřte, že počítač hlásí do očekávaného pracovního prostoru Log Analytics, umožní monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/vm/vminsights-enable-policy.md)a spoustu dalších věcí.
 
-- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/agents/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).
+- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/agents/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je vyžadován, pokud chcete shromažďovat data o monitorování operačního systému a úloh pomocí Azure Monitor pro virtuální počítače, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).

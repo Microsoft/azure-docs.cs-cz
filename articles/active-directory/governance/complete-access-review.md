@@ -16,12 +16,12 @@ ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e31b9ce115ebe0723a9d082aaddd8056e486ed27
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008193"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176973"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -59,7 +59,7 @@ Můžete sledovat průběh, když kontroloři dokončí revize.
     ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/all-company-group-results.png)
 
 
-    Pokud prohlížíte kontrolu přístupu, která kontroluje přístup hostů v rámci skupin Microsoft 365 (Preview), zobrazí se v okně Přehled každou skupinu v revizi. 
+    Pokud prohlížíte kontrolu přístupu, která kontroluje přístup hostů v rámci skupin Microsoft 365, zobrazí okno Přehled každou skupinu v recenzi. 
    
     ![Kontrola přístupu hostů mezi skupinami Microsoft 365](./media/complete-access-review/review-guest-access-across-365-groups.png)
 

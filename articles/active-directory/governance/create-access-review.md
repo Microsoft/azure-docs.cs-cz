@@ -2,7 +2,7 @@
 title: Vytvoření kontroly přístupu skupin & aplikací – Azure AD
 description: Naučte se, jak vytvořit kontrolu přístupu pro členy skupiny nebo přístup k aplikacím v Azure Active Directory kontroly přístupu.
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778533"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176871"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -32,7 +32,7 @@ Můžete se podívat na rychlé video s přehledem o povolení kontrol přístup
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
@@ -80,7 +80,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
     - **Vlastník skupiny** (k dispozici pouze při provádění kontroly pro tým nebo skupinu)
     - **Vybraní uživatelé nebo skupiny**
     - **Uživatelé kontrolují vlastní přístup**
-    - **Tisk Manažeři uživatelů.**
+    - **Manažeři uživatelů.**
     Pokud zvolíte buď **Správce uživatelů** , nebo **Vlastníci skupiny**  , máte také možnost zadat záložního kontrolora. Záložní revidující jsou vyzváni, aby provedli kontrolu v případě, že uživatel nemá žádného správce určeného v adresáři, nebo skupina nemá vlastníka.
 
     ![Nová kontrola přístupu](./media/create-access-review/new-access-review.png)

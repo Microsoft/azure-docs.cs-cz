@@ -1,5 +1,5 @@
 ---
-title: Skripty Azure CLI pomocí AZ Search Module
+title: Skripty Azure CLI pomocí modulu příkaz AZ Search
 titleSuffix: Azure Cognitive Search
 description: Vytvořte a nakonfigurujte službu Azure Kognitivní hledání pomocí rozhraní příkazového řádku Azure CLI. Službu můžete škálovat směrem nahoru nebo dolů, spravovat správce a dotazovat klíče rozhraní API a dotazovat se na systémové informace.
 manager: luisca
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032513"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176752"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Správa služby Azure Kognitivní hledání pomocí Azure CLI
 > [!div class="op_single_selector"]
@@ -41,48 +41,7 @@ V některých případech se otázky týkají úkolů, které *nejsou* uvedené 
 
 V rámci služby probíhá vytváření a Správa obsahu prostřednictvím [Search Service REST API](/rest/api/searchservice/) nebo [.NET SDK](/dotnet/api/overview/azure/search.documents-readme). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete psát skripty, které volají rozhraní REST API nebo rozhraní .NET API k vytváření a načítání indexů.
 
-<a name="check-versions-and-load"></a>
-
-## <a name="check-versions-and-upgrade"></a>Kontrolovat verze a upgradovat
-
-Příklady v tomto článku jsou interaktivní a vyžadují zvýšená oprávnění. Rozhraní příkazového řádku Azure musí být nainstalované. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-
-Azure CLI teď můžete spustit pomocí `az` příkazu buď z příkazového řádku Windows, PowerShellu, nebo z [Azure Cloud Shell](../cloud-shell/overview.md). PowerShell nabízí některé funkce dokončování pomocí tabulátoru, které příkazový řádek ve Windows neposkytuje. 
-
-### <a name="check-the-azure-cli-version"></a>Podívejte se na verzi Azure CLI.
-
-Pokud si nejste jistí, jestli je rozhraní příkazového řádku Azure nainstalované, spusťte následující příkaz jako ověřovací krok. 
-
-```azurecli-interactive
-az --version
-```
-Pokud tento příkaz nefunguje, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli) pro získání nainstalovaného rozhraní příkazového řádku Azure.
-
-Pokud máte verzi 2.11.0 nebo novější, můžete spuštěním `az upgrade` příkazu aktualizovat rozhraní příkazového řádku na nejnovější verzi.
-
-```azurecli-interactive
-az upgrade
-```
-
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Připojení k Azure pomocí přihlašovacího tokenu prohlížeče
-
-Přihlašovací údaje pro přihlášení na portál můžete použít pro připojení k předplatnému v Azure CLI. Případně můžete [bez interaktivně ověřit objekt služby](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal).
-
-```azurecli-interactive
-az login
-```
-
-Pokud máte více předplatných Azure, nastavte své předplatné Azure. Pokud chcete zobrazit seznam aktuálních předplatných, spusťte tento příkaz.
-
-```azurecli-interactive
-az account list --output table
-```
-
-Chcete-li zadat odběr, spusťte následující příkaz. V následujícím příkladu je název předplatného `ContosoSubscription` .
-
-```azurecli-interactive
-az account set --subscription "ContosoSubscription"
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 <a name="list-search-services"></a>
 
@@ -262,7 +221,7 @@ az network vnet subnet update \
 id=$(az search service show \
     --resource-group <resource-group-name> \
     --name <service-name> \
-    --query [id]' \
+    --query [id] \
     --output tsv)
 
 # Create the private endpoint

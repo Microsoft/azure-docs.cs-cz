@@ -7,12 +7,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: 0da38475c0e3c766cabbf765ea89dc5714a5b830
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747565"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173547"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>Synchronizovat nastavení serverů DNS virtuální sítě ve virtuálním clusteru spravované instance SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -21,7 +21,7 @@ Tento článek vysvětluje, kdy a jak synchronizovat nastavení serverů DNS vir
 
 ## <a name="when-to-synchronize-the-dns-setting"></a>Kdy synchronizovat nastavení DNS
 
-Existuje několik scénářů (například Databázová pošta nebo servery odkazované na jiné instance SQL Serveru ve vašem cloudovém nebo hybridním prostředí), které vyžadují překlad názvů privátních hostitelů ze služby SQL Managed Instance. V takovém případě musíte nakonfigurovat vlastní DNS v rámci Azure. Podrobnosti najdete v tématu [Konfigurace vlastního DNS pro spravovanou instanci SQL Azure](custom-dns-configure.md) .
+Existuje několik scénářů (například Databázová pošta nebo servery odkazované na jiné instance SQL Serveru ve vašem cloudovém nebo hybridním prostředí), které vyžadují překlad názvů privátních hostitelů ze služby SQL Managed Instance. V takovém případě musíte nakonfigurovat vlastní DNS v rámci Azure. Podrobnosti najdete v tématu [Konfigurace vlastního DNS pro službu Azure SQL Managed Instance](custom-dns-configure.md).
 
 Pokud se tato změna implementuje po vytvoření [virtuálního clusteru](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) , který je hostitelem spravované instance, budete muset synchronizovat nastavení serverů DNS ve virtuálním clusteru s konfigurací virtuální sítě.
 
@@ -66,7 +66,7 @@ virtualNetworkName="vnet-fog-eastus"
 virtualNetwork=$(az network vnet show -g $resourceGroup -n $virtualNetworkName --query "id" -otsv)
 ```
 
-Použijte příkaz Azure CLI [AZ Resource Invoke-Action](/cli/azure/resource?view=azure-cli-latest#az_resource_invoke_action) pro synchronizaci konfigurace serverů DNS pro všechny virtuální clustery v podsíti.
+Použijte příkaz Azure CLI [AZ Resource Invoke-Action](/cli/azure/resource#az_resource_invoke_action) pro synchronizaci konfigurace serverů DNS pro všechny virtuální clustery v podsíti.
 
 ```Azure CLI
 az sql virtual-cluster list --query "[? contains(subnetId,'$virtualNetwork')].id" -o tsv \

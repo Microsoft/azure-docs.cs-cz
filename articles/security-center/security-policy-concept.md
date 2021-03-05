@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/28/2021
-ms.openlocfilehash: a5aae4013067ba37334e3e85a9e7ef882efd1dd2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/04/2021
+ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107466"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176429"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Co jsou zásady zabezpečení, iniciativy a doporučení?
 
@@ -25,6 +25,7 @@ Definice zásad Azure vytvořená v Azure Policy je pravidlo týkající se konk
 
 Pokud chcete implementovat tyto definice zásad (ať už předdefinované, nebo vlastní), budete je muset přiřadit. Jakékoli z těchto zásad můžeme přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.
 
+V Azure Policy existují různé typy zásad. Security Center hlavně používá zásady auditu, které kontrolují konkrétní podmínky a konfigurace a pak hlásí dodržování předpisů. K dispozici jsou také zásady "vynutilit", které lze použít k aplikování zabezpečených nastavení.
 
 ## <a name="what-is-a-security-initiative"></a>Co je iniciativa zabezpečení?
 
@@ -38,7 +39,7 @@ Výchozí iniciativa automaticky přiřazená každému předplatnému v Azure S
 
 Security Center nabízí následující možnosti pro práci s iniciativami a zásadami zabezpečení:
 
-- **Zobrazit a upravit integrovanou výchozí iniciativu** – když povolíte Security Center, iniciativa s názvem "Azure Security test" se automaticky přiřadí všem Security Center registrovaným předplatným. Pokud chcete tento podnět přizpůsobit, můžete v něm povolit nebo zakázat jednotlivé zásady. V seznamu [integrovaných zásad zabezpečení](./policy-reference.md) se dozvíte, jaké možnosti jsou dostupné předem.
+- **Zobrazit a upravit integrovanou výchozí iniciativu** – když povolíte Security Center, iniciativa s názvem "Azure Security test" se automaticky přiřadí všem Security Center registrovaným předplatným. Pokud chcete tuto iniciativu přizpůsobit, můžete v ní povolit nebo zakázat jednotlivé zásady úpravou parametrů zásad. V seznamu [integrovaných zásad zabezpečení](./policy-reference.md) se dozvíte, jaké možnosti jsou dostupné předem.
 
 - **Přidejte vlastní iniciativy** – Pokud chcete přizpůsobit iniciativy zabezpečení použité pro vaše předplatné, můžete to udělat v rámci Security Center. Pak se dostanou doporučení, pokud vaše počítače nevyhovují vytvořeným zásadám. Pokyny k sestavování a přiřazování vlastních zásad najdete v tématu [použití vlastních iniciativ a zásad zabezpečení](custom-security-policies.md).
 
@@ -46,9 +47,9 @@ Security Center nabízí následující možnosti pro práci s iniciativami a z�
 
 ## <a name="what-is-a-security-recommendation"></a>Co je to doporučení zabezpečení?
 
-Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení k nápravě těchto chyb zabezpečení. Doporučení je výsledkem hodnocení vašich prostředků proti relevantním zásadám a identifikaci prostředků, které nesplňují vaše definované požadavky.
+Pomocí zásad Security Center pravidelně analyzují stav dodržování předpisů vašich prostředků, aby se identifikovaly potenciální slabá místa zabezpečení a slabé stránky. Pak vám poskytne doporučení k nápravě těchto problémů. Doporučení jsou výsledkem vyhodnocení prostředků proti relevantním zásadám a určení prostředků, které nesplňují vaše definované požadavky.
 
-Azure Security Center provádí doporučení zabezpečení na základě zvolených iniciativ. 
+Security Center provádí doporučení zabezpečení na základě zvolených iniciativ. Když se zásady z vaší iniciativy porovnají s vašimi prostředky a zjistíte, že jeden nebo více nedodržuje předpisy, zobrazí se jako doporučení v Security Center.
 
 Doporučení jsou akce, které můžete provést při zabezpečení a posílení zdrojů. Každé doporučení poskytuje následující informace:
 

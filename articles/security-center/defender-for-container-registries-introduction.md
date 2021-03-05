@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100708"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176633"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Úvod do Azure Defenderu pro registry kontejnerů
 
@@ -68,9 +68,9 @@ Níže je uvedený diagram vysoké úrovně komponent a výhod ochrany registrů
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Nejčastější dotazy k Azure Container Registry kontrole imagí
 
 ### <a name="how-does-security-center-scan-an-image"></a>Jak Security Center naskenovat obrázek?
-Bitová kopie je načítána z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
+Security Center načte image z registru a spustí ji v izolovaném prostoru izolovaného prostoru se skenerem Qualys. Skener extrahuje seznam známých chyb zabezpečení.
 
-Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
+Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že vás upozorní jenom v případě, že dojde k problémům, Security Center snižuje potenciál nevyžádaných informativních výstrah.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
 Ano. Výsledky jsou k dispozici v [rozhraní REST API pro dílčí posouzení](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
@@ -78,7 +78,7 @@ Ano. Výsledky jsou k dispozici v [rozhraní REST API pro dílčí posouzení](/
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Jaké typy registru jsou prohledávány? Jaké typy se účtují?
 Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](#availability).
 
-Pokud ke svému předplatnému Azure připojíte nepodporované Registry, nebudou se kontrolovat a nebudou se vám účtovat.
+Pokud k předplatnému Azure připojíte nepodporované Registry, Azure Defender je nebude kontrolovat a nebude vám je účtovat.
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Můžu přizpůsobit zjištění ze skeneru ohrožení zabezpečení?
 Ano. Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.

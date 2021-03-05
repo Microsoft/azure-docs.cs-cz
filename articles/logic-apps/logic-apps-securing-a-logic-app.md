@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/22/2021
+ms.openlocfilehash: 21edde3eba76b565332acb9c67225f3bbb0fe803
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702551"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177279"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -203,20 +203,24 @@ V [Azure Portal](https://portal.azure.com)přidejte do aplikace logiky jednu neb
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Název zásad** | Ano | Název, který chcete použít pro zásady autorizace |
-   | **Žádosti** | Ano | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Hodnota deklarace identity je omezená na [maximální počet znaků](logic-apps-limits-and-config.md#authentication-limits). Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (ID JSON web token) <p><p>Seznam **deklarací** musí obsahovat minimálně deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
+   | **Žádosti** | Ano | Typy a hodnoty deklarací, které vaše aplikace logiky přijímá při příchozích voláních. Hodnota deklarace identity je omezená na [maximální počet znaků](logic-apps-limits-and-config.md#authentication-limits). Tady jsou dostupné typy deklarací identity: <p><p>- **Stavil** <br>- **Osoby** <br>- **Závislosti** <br>- **ID JWT** (JSON web token identifikátor) <p><p>Seznam **deklarací** musí obsahovat minimálně deklaraci identity **vystavitele** , která má hodnotu začínající `https://sts.windows.net/` nebo `https://login.microsoftonline.com/` jako ID vystavitele Azure AD. Další informace o těchto typech deklarací identity najdete [v tématu deklarace identity v tokenech zabezpečení Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Můžete také zadat vlastní typ a hodnotu deklarace identity. |
    |||
 
 1. Pokud chcete přidat další deklaraci identity, vyberte si z těchto možností:
 
    * Pokud chcete přidat další typ deklarace identity, vyberte **Přidat standardní deklaraci identity**, vyberte typ deklarace a zadejte hodnotu deklarace identity.
 
-   * Pokud chcete přidat vlastní deklaraci identity, vyberte **Přidat vlastní deklaraci identity** a zadejte hodnotu vlastní deklarace identity.
+   * Pokud chcete přidat vlastní deklaraci identity, vyberte **Přidat vlastní deklaraci identity**. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci](../active-directory/develop/active-directory-optional-claims.md). Vaše vlastní deklarace identity se pak uloží jako součást ID JWT; například `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"` . 
 
 1. Pokud chcete přidat další zásady autorizace, vyberte **Přidat zásadu**. Zopakováním předchozích kroků zásadu nastavte.
 
 1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
 1. Chcete-li zahrnout `Authorization` hlavičku z přístupového tokenu v výstupech triggerů na základě požadavků, přečtěte si část [zahrnutí "autorizace" v výstupech triggeru žádosti](#include-auth-header).
+
+
+Vlastnosti pracovního postupu, jako jsou zásady, se nezobrazují v zobrazení kódu vaší aplikace logiky v Azure Portal. Chcete-li získat přístup k zásadám prostřednictvím kódu programu, zavolejte následující rozhraní API prostřednictvím Azure Resource Manager (ARM): `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820` . Ujistěte se, že nahradíte zástupné hodnoty pro ID předplatného Azure, název skupiny prostředků a název pracovního postupu.
+
 
 <a name="define-authorization-policy-template"></a>
 

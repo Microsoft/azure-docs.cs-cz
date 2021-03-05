@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125865"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172796"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -27,7 +27,7 @@ Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další inform
 Doplněk nasazuje dvě součásti: [kontroler][ingress] příchozího přenosu dat Kubernetes a externí řadič [DNS][external-dns] .
 
 - **Adaptér** příchozího přenosu dat: kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu Vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
-- **Externí kontroler DNS** : sleduje Kubernetes prostředky příchozího přenosu dat a vytváří záznamy DNS v zóně DNS specifické pro clustery.
+- **Externí kontroler DNS**: sleduje Kubernetes prostředky příchozího přenosu dat a vytváří záznamy DNS v zóně DNS specifické pro clustery.
 
 ## <a name="deploy-http-routing-cli"></a>Nasazení směrování HTTP: rozhraní příkazového řádku
 
@@ -78,7 +78,7 @@ Pokud používáte Azure Cloud Shell, `kubectl` je už nainstalovaný. Můžete 
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKSCluster* v *MyResourceGroup* :
+Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKSCluster* v *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 Informace o tom, jak nainstalovat řadič příchozího přenosu HTTPS v AKS, najdete v tématu https informing [on Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

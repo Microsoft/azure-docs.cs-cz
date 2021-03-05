@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: b15e39b55dfe49a3fb3c1e0e38798570efdf46bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592753"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176667"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z řady balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro posílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují *moduly* telemetrie a *Inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly a Inicializátory telemetrie a nastavit parametry pro některé z nich.
 
-Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml` , v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení, při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, se soubor ApplicationInsights.config vytvoří v kořenové složce projektu a při jeho splnění se zkopíruje do složky bin. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
+Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml` , v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení, při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, se soubor ApplicationInsights.config vytvoří v kořenové složce projektu a při zkopírování do složky bin. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
 
 Pro řízení [sady SDK na webové stránce][client]není k dispozici odpovídající soubor.
 

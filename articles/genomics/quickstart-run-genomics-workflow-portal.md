@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6daec7658c6db6c18bd198b9aff0b8993f27ac22
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787347"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177243"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics
 
@@ -144,4 +144,4 @@ Po dokončení pracovního postupu můžete zobrazit výstupní soubory v účtu
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste nahráli ukázková vstupní data do služby Azure Storage a odeslali jste pracovní postup službě Microsoft Genomics pomocí `msgen` klienta Pythonu. Další informace o dalších typech vstupních souborů, které se dají použít spolu s Microsoft Genomics službou, najdete na následujících stránkách: [spárované souborů fastq](quickstart-input-pair-FASTQ.md)  |  [BAMS](quickstart-input-BAM.md)  |  [Multiple souborů fastq nebo BAM](quickstart-input-multiple.md). Tento kurz můžete také prozkoumat pomocí našeho [Azure Notebooks příkladu](https://aka.ms/genomicsnotebook) stažením souboru "genomiky. ipynb" a pomocí čtečky poznámkového bloku, jako je [Jupyter](https://notebooks.azure.com) , otevřít soubor a spustit ho.
+V tomto článku jste nahráli ukázková vstupní data do služby Azure Storage a odeslali jste pracovní postup službě Microsoft Genomics pomocí `msgen` klienta Pythonu. Další informace o dalších typech vstupních souborů, které se dají použít spolu s Microsoft Genomics službou, najdete na následujících stránkách: [spárované souborů fastq](quickstart-input-pair-FASTQ.md)  |  [BAMS](quickstart-input-BAM.md)  |  [Multiple souborů fastq nebo BAM](quickstart-input-multiple.md). 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791168"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177194"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co jsou cílové výpočetní objekty ve službě Azure Machine Learning?
 
@@ -101,15 +101,21 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 | **Podporovaná řada virtuálních počítačů**  | **Omezení** |
 |------------|------------|
 | D | Žádné |
+| DDSv4 | Žádné |
 | Dv2 | Žádné |  
 | Dv3 | Žádné|
 | DSv2 | Žádné | 
 | DSv3 | Žádné|
+| EAv4 | Žádné |
+| Ev3 | Žádné |
 | FSv2 | Žádné | 
+| H | Žádné |
+| HB | Vyžaduje schválení. |
 | HBv2 | Vyžaduje schválení. |  
 | KLIENTOVI HCS | Vyžaduje schválení. |  
 | M | Vyžaduje schválení. |
-| NC | Žádné |    
+| NC | Žádné |  
+| Propagační akce síťového adaptéru | Žádné |
 | NCsv2 | Vyžaduje schválení. |
 | NCsv3 | Vyžaduje schválení. |  
 | NDs | Vyžaduje schválení. |

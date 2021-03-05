@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3bba9dbf40fe6893a06c21d7f6b5475cfa8552cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030881"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176650"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolování času pro příjem dat ve službě Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
 
 ## <a name="typical-latency"></a>Typická latence
-Latence odkazuje na čas, kdy jsou data v monitorovaném systému vytvořena, a čas, který je k dispozici pro analýzu v Azure Monitor. Obvyklá latence k ingestování dat protokolu je mezi 2 a 5 minutami. Konkrétní latence pro konkrétní data se bude lišit v závislosti na nejrůznějších faktorech, které jsou vysvětleny níže.
+Latence odkazuje na čas, kdy jsou data v monitorovaném systému vytvořena, a čas, který je k dispozici pro analýzu v Azure Monitor. Obvyklá latence k ingestování dat protokolu je mezi 20 sec a 3 minutami. Konkrétní latence pro konkrétní data se ale liší v závislosti na nejrůznějších faktorech, které jsou vysvětleny níže.
 
 
 ## <a name="factors-affecting-latency"></a>Faktory ovlivňující latenci
 Celková doba příjmu konkrétní sady dat může být rozdělena do následujících oblastí vysoké úrovně. 
 
-- Čas agenta – čas k odhalení události, její shromáždění a odeslání do Azure Monitor bod ingestování jako záznam protokolu. Ve většině případů tento proces zpracovává agent.
+- Čas agenta – čas k odhalení události, její shromáždění a odeslání do Azure Monitor protokol ingestování protokolů jako záznam protokolu. Ve většině případů tento proces zpracovává agent. V síti může být zavedena další latence.
 - Čas kanálu – doba, kterou kanálu příjmu dat trvá zpracovat záznam protokolu. To zahrnuje analýzu vlastností události a potenciálně Přidání počítaných informací.
 - Čas indexování – čas strávený přijímáním záznamu protokolu do Azure Monitor velkých objemů dat.
 
@@ -36,16 +36,17 @@ Agenti a řešení pro správu používají různé strategie ke shromažďován
 - Řešení replikace Active Directory provádí posouzení každých pět dní, zatímco Active Directory Assessment řešení provádí týdenní hodnocení infrastruktury služby Active Directory. Agent bude tyto protokoly shromažďovat až po dokončení posouzení.
 
 ### <a name="agent-upload-frequency"></a>Frekvence nahrávání agenta
-Chcete-li zajistit, aby byl agent Log Analytics odlehčený, Agent ukládá protokoly do vyrovnávací paměti a pravidelně je odesílá do Azure Monitor. Frekvence nahrávání se v závislosti na typu dat liší v rozmezí 30 sekund a 2 minut. Většina dat se nahrává za 1 minutu. Stav sítě může negativně ovlivnit latenci těchto dat, aby se dosáhlo Azure Monitor bodu pro přijímání.
+Chcete-li zajistit, aby byl agent Log Analytics odlehčený, Agent ukládá protokoly do vyrovnávací paměti a pravidelně je odesílá do Azure Monitor. Frekvence nahrávání se v závislosti na typu dat liší v rozmezí 30 sekund a 2 minut. Většina dat se nahrává za 1 minutu. 
+
+### <a name="network"></a>Síť
+Síťové podmínky můžou negativně ovlivnit latenci těchto dat, aby se dosáhlo Azure Monitor protokolu pro přijímání zpráv.
 
 ### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Protokoly aktivit Azure, protokoly prostředků a metriky
-Data Azure přidávají další čas, který je k dispozici na Log Analytics bod příjmu pro zpracování:
+Data Azure přidávají další čas, který je k dispozici na Azure Monitor protokoluje bod pro přijímání zpráv pro zpracování:
 
-- Data z protokolů prostředků zabírají 2-15 minut v závislosti na službě Azure. Podívejte se na [následující dotaz](#checking-ingestion-time) a prověřte tuto latenci ve vašem prostředí.
-- Metrika platformy Azure trvá 3 minuty, než se pošle Log Analytics bodu pro přijímání.
-- Data protokolu aktivit budou trvat přibližně 10-15 minut, než se pošle Log Analytics bodu pro přijímání.
-
-Jakmile budou data v bodu příjmu k dispozici, budou data pro dotazování trvat dalších 2-5 minut.
+- Protokoly prostředků obvykle přidávají 30-90 sekund v závislosti na službě Azure. Některé služby Azure (konkrétně Azure SQL Database a Azure Virtual Network) aktuálně hlásí své protokoly v intervalech 5 minut. Práce se ještě nezvyšuje. Podívejte se na [následující dotaz](#checking-ingestion-time) a prověřte tuto latenci ve vašem prostředí.
+- Metriky platformy Azure ještě déle 3 minuty budou exportovány do Azure Monitor protokoluje bod pro přijímání zpráv.
+- Pokud se používá starší verze integrace, data protokolu aktivit můžou trvat dalších 10-15 minut. Doporučujeme použít nastavení diagnostiky na úrovni předplatného k ingestování protokolů aktivit do protokolů Azure Monitor, což způsobí další latenci přibližně 30 sekund.
 
 ### <a name="management-solutions-collection"></a>Kolekce řešení pro správu
 Některá řešení neshromažďují svá data z agenta a můžou používat metodu shromažďování, která zavádí další latenci. Některá řešení shromažďují data v pravidelných intervalech bez pokusu o shromažďování téměř v reálném čase. Konkrétní příklady zahrnují následující:
@@ -56,6 +57,9 @@ Některá řešení neshromažďují svá data z agenta a můžou používat met
 Chcete-li zjistit četnost shromažďování dat, přečtěte si dokumentaci pro každé řešení.
 
 ### <a name="pipeline-process-time"></a>Kanál – čas procesu
+
+Jakmile budou data v bodu příjmu k dispozici, budou k dispozici další 30-60 sekund pro dotazování.
+
 Po ingestování záznamů protokolu do kanálu Azure Monitor (jak je identifikované vlastností [_TimeReceived](./log-standard-columns.md#_timereceived) ) se zapisují do dočasného úložiště, které zajistí izolaci tenanta a zajistěte, aby se data neztratila. Tento proces obvykle přidává 5-15 sekund. Některá řešení pro správu implementují těžší algoritmy pro agregaci dat a odvozují přehledy při streamování dat. Například monitorování výkonu sítě agreguje příchozí data v intervalech po dobu tří minut a efektivně přidá latenci na 3 minuty. Dalším procesem, který přidává latenci, je proces, který zpracovává vlastní protokoly. V některých případech může tento proces přidat několik minut latence do protokolů shromažďovaných ze souborů agentem.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nové zřizování vlastních datových typů

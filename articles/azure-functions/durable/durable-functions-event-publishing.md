@@ -3,12 +3,12 @@ title: Durable Functions publikování do Azure Event Grid (Preview)
 description: Naučte se konfigurovat automatické publikování Azure Event Grid pro Durable Functions.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081742"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175953"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
 
@@ -26,7 +26,7 @@ Tato funkce je užitečná v následujících situacích:
 
 * Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
 * Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) (jenom Windows) nebo použijte existující účet Azure Storage.
-* Instalace rozhraní příkazového [řádku Azure](/cli/azure/?view=azure-cli-latest) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Instalace rozhraní příkazového [řádku Azure](/cli/azure/) nebo použití [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Vytvoření vlastního Event Gridho tématu
 
@@ -126,17 +126,17 @@ Pomocí Azure Portal vytvořte další aplikaci Function App, která bude naslou
 
 ### <a name="create-an-event-grid-trigger-function"></a>Vytvoření funkce triggeru Event Grid
 
-1. Ve vaší aplikaci Function App vyberte **funkce**a pak vyberte **+ Přidat** . 
+1. Ve vaší aplikaci Function App vyberte **funkce** a pak vyberte **+ Přidat** . 
 
    :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
-1. Vyhledejte **Event Grid**a pak vyberte šablonu **triggeru Azure Event Grid** . 
+1. Vyhledejte **Event Grid** a pak vyberte šablonu **triggeru Azure Event Grid** . 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Vyberte šablonu triggeru Event gridu v Azure Portal." border="true":::
 
 1. Pojmenujte novou aktivační událost a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Pojmenujte Trigger Event gridu v Azure Portal." border="true":::
 
 
     Vytvoří se funkce s následujícím kódem:
@@ -172,11 +172,11 @@ Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste
 
 1. V nové funkci vyberte **integrace** a pak vyberte **Event Grid Trigger (eventGridEvent)**. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Vyberte odkaz Event Grid aktivační události." border="true":::
 
 1. Vyberte **vytvořit Event Grid popis**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Vytvořte předplatné Event Grid." border="true":::
 
 1. Pojmenujte své předplatné události a vyberte **Event Grid témata** typ tématu. 
 
@@ -184,7 +184,7 @@ Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Vytvoří odběr Event Gridu." border="true":::
 
 Teď jste připraveni přijímat události životního cyklu.
 

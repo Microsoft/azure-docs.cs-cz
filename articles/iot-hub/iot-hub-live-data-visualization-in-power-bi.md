@@ -1,5 +1,5 @@
 ---
-title: Vizualizace dat dat FRM Azure IoT Hub v reálném čase – Power BI
+title: Vizualizace dat v reálném čase z Azure IoT Hub – Power BI
 description: Použijte Power BI k vizualizaci dat o teplotě a vlhkosti shromažďovaných ze senzoru a odeslání do služby Azure IoT Hub.
 author: robinsh
 keywords: vizualizace dat v reálném čase, vizualizace živých dat, vizualizace dat senzorů
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146777"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177330"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat ze senzorů v reálném čase z Azure IoT Hub pomocí Power BI
 
@@ -72,7 +72,7 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 2. V části **Topologie úlohy** vyberte **Vstupy**.
 
-3. V podokně **vstupy** vyberte **Přidat vstup streamu**a pak v rozevíracím seznamu vyberte **IoT Hub** . V podokně nový vstup zadejte následující informace:
+3. V podokně **vstupy** vyberte **Přidat vstup streamu** a pak v rozevíracím seznamu vyberte **IoT Hub** . V podokně nový vstup zadejte následující informace:
 
    **Vstupní alias**: Zadejte jedinečný alias pro vstup.
 
@@ -134,7 +134,7 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V Stream Analytics úlohy vyberte **Přehled**a pak vyberte **Spustit**  >  **Now**  >  .**Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V Stream Analytics úlohy vyberte **Přehled** a pak vyberte **Spustit**  >    >  .**Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 ![Spuštění úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
@@ -187,7 +187,7 @@ Následující kroky ukazují, jak vytvořit a publikovat sestavu pomocí služb
     >
     > ![Obraťte se na oznámení správce.](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
 
-11. Vyberte **vytvořit kód pro vložení**a pak vyberte **publikovat**.
+11. Vyberte **vytvořit kód pro vložení** a pak vyberte **publikovat**.
 
 Máte odkaz na sestavu, který můžete sdílet s kýmkoli pro přístup k sestavám a fragment kódu, který můžete použít k integraci sestavy do svého blogu nebo webu.
 

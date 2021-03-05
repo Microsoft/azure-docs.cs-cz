@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: e3705be10cb540538464e6b1299d848bc9057c7c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039916"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175001"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -175,7 +175,7 @@ Další informace o požadovaných názvech domén a IP adresách najdete v tém
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek je součástí jedné z řad virtuální sítě se čtyřmi částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
+Tento článek je součástí jedné z řady virtuálních sítí s pěti částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
 
 * [Část 2: Přehled virtuální sítě](how-to-secure-workspace-vnet.md)
 * [Část 3: zabezpečení školicího prostředí](how-to-secure-training-vnet.md)

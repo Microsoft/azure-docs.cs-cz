@@ -4,12 +4,12 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686219"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175970"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -23,7 +23,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure. V současné době většina zásad konfigurace hostů nepoužívá konfigurace, Audituje pouze nastavení v rámci počítače. Pokud chcete pochopit náklady na používání zásad konfigurace Azure Policy hostů se servery s podporou ARC, přečtěte si téma [Cenová příručka](https://azure.microsoft.com/pricing/details/azure-policy/)Azure Policy.
 
-- Pomocí Azure Automation [Change Tracking a inventarizace](../../automation/change-tracking/overview.md)ohlaste změny konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démony Linux na monitorovaných serverech.
+- Nahlaste se o změnách konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů Windows a démonech Linux na monitorovaných serverech pomocí Azure Automation [Change Tracking a](../../automation/change-tracking/overview.md) [monitorování Integrity souborů a Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)pro servery, které jsou pro [Azure Defender pro servery](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction)povolené.
 
 - Monitorujte výkon hostovaného operačního systému a Prohlédněte si součásti aplikace a sledujte jejich procesy a závislosti s dalšími prostředky, které aplikace komunikuje pomocí [Azure monitor pro virtuální počítače](../../azure-monitor/vm/vminsights-overview.md).
 

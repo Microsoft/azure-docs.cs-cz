@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176616"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -34,7 +34,7 @@ Než začnete s tímto kurzem, ujistěte se, že splňujete následující poža
 
 * Pracovní prostor analýzy Azure synapse. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Analytics](../../machine-learning/how-to-manage-workspace.md).
 * Apache Spark fond bez serveru.
-* ADLS Gen2 účet úložiště. Musíte být **vlastníkem dat objektu BLOB úložiště** adls Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
+* ADLS Gen2 účet úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** , se kterým chcete pracovat adls Gen2 systému souborů. Pokud ne, budete muset oprávnění přidat ručně.
 * Pokud nechcete používat výchozí úložiště pracovního prostoru, propojte požadovaný účet úložiště ADLS Gen2 v synapse studiu. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Vytvoření definice úlohy Apache Spark pro PySpark (Python)
@@ -162,7 +162,7 @@ V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #)
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 
-Po vytvoření Apache Spark definice úlohy ji můžete odeslat do fondu Apache Spark. Ujistěte se, že jste **vlastníkem dat objektu BLOB úložiště** adls Gen2 systém souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
+Po vytvoření Apache Spark definice úlohy ji můžete odeslat do fondu Apache Spark. Ujistěte se, že jste **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Scénář 1: odeslání definice úlohy Apache Spark
  1. Otevřete okno Definice úlohy Apache Spark tak, že ho vyberete.

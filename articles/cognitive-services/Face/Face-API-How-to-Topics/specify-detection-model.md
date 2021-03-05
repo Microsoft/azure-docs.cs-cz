@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 04699890af2cfe835ecca6ee983808d7d8d002c8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913479"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174185"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
 
@@ -28,7 +28,7 @@ Přečtěte si, kde se dozvíte, jak určit model detekce obličeje v určitých
 
 Pokud si nejste jistí, jestli byste měli použít nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) a vyhodnoťte nový model a porovnejte výsledky pomocí aktuální datové sady.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Měli byste být obeznámeni s konceptem rozpoznávání obličeje AI. Pokud ne, přečtěte si koncepční Průvodce rozpoznáváním obličeje nebo průvodce postupy:
 
@@ -43,6 +43,7 @@ Když použijete rozhraní API [pro detekci obličeje] , můžete přiřadit ver
 
 * `detection_01`
 * `detection_02`
+* `detection_03`
 
 Adresa URL požadavku pro REST API pro [rozpoznávání tváře] bude vypadat takto:
 
@@ -52,7 +53,7 @@ Používáte-li knihovnu klienta, lze hodnotu přiřadit pro `detectionModel` p�
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_04", detectionModel: "detection_03");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Přidat obličej k osobě se zadaným modelem
@@ -62,17 +63,17 @@ Služba obličeje může z obrázku extrahovat data z obrázku a přidružit ho 
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
-// Create a PersonGroup and add a person with face detected by "detection_02" model
+// Create a PersonGroup and add a person with face detected by "detection_03" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
+await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_03");
 ```
 
-Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Pak přidá na tuto **osobu** tvář s použitím `detection_02` modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
+Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj **osobu** . Pak přidá na tuto **osobu** tvář s použitím `detection_03` modelu. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **Person** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **Person** (například v rozhraní API pro [identifikaci obličeje] ).
@@ -82,13 +83,13 @@ Tento kód vytvoří objekt **Person** s ID `mypersongroupid` a přidá do něj 
 Pokud přidáte plošku do existujícího objektu **FaceList** , můžete také určit model detekce. Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
+await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_03");
 ```
 
-Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s `detection_02` modelem. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
+Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na něj obličej s `detection_03` modelem. Pokud nezadáte parametr *detectionModel* , rozhraní API použije výchozí model, `detection_01` .
 
 > [!NOTE]
 > Nemusíte používat stejný model detekce pro všechny plošky v objektu **FaceList** a nemusíte používat stejný model detekce při zjišťování nových plošek pro porovnání s objektem **FaceList** .
@@ -97,14 +98,14 @@ Tento kód vytvoří **FaceList** s názvem `My face collection` a přidá na n�
 
 Různé modely detekce tváře jsou optimalizované pro různé úlohy. Přehled rozdílů najdete v následující tabulce.
 
-|**detection_01**  |**detection_02**  |
-|---------|---------|
-|Výchozí volba pro všechny operace detekce obličeje. | Vydaná v květnu 2019 a volitelně dostupná ve všech operacích detekce obličeje.
-|Není optimalizovaná pro malé, boční a rozmazanýé plošky.  | Vylepšená přesnost u malých, bočních a rozmazaných ploch. |
-|Vrátí atributy obličeje (pozice pozice, věk, emoce atd.), pokud jsou zadány ve volání metody Detect. |  Nevrací atributy obličeje.     |
-|Vrátí orientační vzhledy, pokud jsou zadány ve volání metody Detect.   | Nevrací orientační vzhledy.  |
+|**detection_01**  |**detection_02**  |**detection_03** 
+|---------|---------|---|
+|Výchozí volba pro všechny operace detekce obličeje. | Vydaná v květnu 2019 a volitelně dostupná ve všech operacích detekce obličeje. |  Vydaná v únoru 2021 a volitelně dostupná ve všech operacích detekce obličeje.
+|Není optimalizovaná pro malé, boční a rozmazanýé plošky.  | Vylepšená přesnost u malých, bočních a rozmazaných ploch. | Lepší přesnost, včetně menších plošek (64 × 64 pixelů) a otočených orientací obličeje.
+|Vrátí hlavní atributy Face (pozice, věk, emoce atd.), pokud jsou zadány ve volání metody Detect. |  Nevrací atributy obličeje.     | Vrátí atributy "faceMask" a "noseAndMouthCovered", pokud jsou zadány ve volání metody Detect.
+|Vrátí orientační vzhledy, pokud jsou zadány ve volání metody Detect.   | Nevrací orientační vzhledy.  | Nevrací orientační vzhledy.
 
-Nejlepším způsobem, jak porovnávat funkční způsobilost `detection_01` modelů a, `detection_02` je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [rozpoznávání tváře] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
+Nejlepším způsobem, jak porovnat funkční způsobilost modelů detekce, je použít je pro ukázkovou datovou sadu. Doporučujeme volat rozhraní API pro [rozpoznávání tváře] na celou řadu imagí, zejména obrázky mnoha plošek nebo ploch, které se obtížně zobrazují, a to pomocí každého modelu detekce. Věnujte pozornost počtu ploch, které vrátí každý model.
 
 ## <a name="next-steps"></a>Další kroky
 

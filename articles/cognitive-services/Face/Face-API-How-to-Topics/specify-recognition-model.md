@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706822"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174151"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -24,11 +24,11 @@ V této příručce se dozvíte, jak zadat model rozpoznávání obličeje pro r
 
 Služba obličeje používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu rozpoznávání obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
 
-Služba Azure Face má k dispozici tři modely rozpoznávání. _Recognition_01_ modelů (publikovaných 2017) a _recognition_02_ (publikovaných 2019) se průběžně podporují, aby se zajistila zpětná kompatibilita pro zákazníky, kteří používají FaceLists nebo **Person** s těmito modely. **FaceList** nebo **osoba** bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání se k tomuto modelu přiřadí nové plošky. Tuto změnu nelze po vytvoření změnit a zákazníci budou muset použít odpovídající model rozpoznávání s odpovídajícím **FaceList** nebo **osobou**.
+Služba Azure Face má k dispozici čtyři modely rozpoznávání. Modely _recognition_01_ (published 2017), _recognition_02_ (publikováno 2019) a _recognition_03_ (zveřejněné 2020), jsou neustále podporovány, aby se zajistila zpětná kompatibilita pro zákazníky, kteří používají FaceLists nebo **Person** s těmito modely. **FaceList** nebo **osoba** bude vždy používat model rozpoznávání, pomocí kterého byl vytvořen, a při jejich přidání se k tomuto modelu přiřadí nové plošky. Tuto změnu nelze po vytvoření změnit a zákazníci budou muset použít odpovídající model rozpoznávání s odpovídajícím **FaceList** nebo **osobou**.
 
 Můžete přejít na pozdější modely rozpoznávání, a to na vlastní pohodlí; budete ale muset vytvořit nové FaceLists a objektů persongroup s modelem rozpoznávání podle vašeho výběru.
 
-Model _recognition_03_ (publikovaný 2020) je nejpřesnější model, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. _Recognition_03_ zajistí lepší přesnost pro porovnání podobnosti a porovnávání porovnávání s osobami. Všimněte si, že každý model pracuje nezávisle na ostatních a prahová hodnota spolehlivosti pro jeden model není určena k porovnání napříč jinými modely rozpoznávání.
+Model _recognition_04_ (publikovaný 2021) je nejpřesnější model, který je aktuálně k dispozici. Pokud jste nový zákazník, doporučujeme použít tento model. _Recognition_04_ zajistí lepší přesnost pro porovnání podobnosti a porovnávání porovnávání s osobami. _Recognition_04_ zlepšuje rozpoznávání pro zaregistrované uživatele s příkroky s příN95m (chirurgická maska, masky pro, masky tkanin). Nyní můžete vytvářet bezpečná a bezproblémová prostředí uživatele, která používají nejnovější _detection_03_ model k detekci, zda zaregistrovaný uživatel má za starostm titulní stranu, a pak zjistí, kdo jsou s nejnovějším _recognition_04m_ modelem. Všimněte si, že každý model pracuje nezávisle na ostatních a prahová hodnota spolehlivosti pro jeden model není určena k porovnání napříč jinými modely rozpoznávání.
 
 Přečtěte si, kde se dozvíte, jak zadat vybraný model v různých operacích obličeje a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a chcete zjistit, jestli byste měli přejít na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
 
@@ -51,6 +51,7 @@ Při použití rozhraní API [pro detekci obličeje] přiřaďte verzi modelu s 
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 Volitelně můžete zadat parametr _returnRecognitionModel_ (výchozí **hodnota false**), který určuje, zda má být v odpovědi vráceno _recognitionModel_ . Adresa URL požadavku pro REST API pro [rozpoznávání tváře] by tedy vypadala takto:
@@ -91,10 +92,10 @@ Můžete také zadat model rozpoznávání pro hledání podle podobnosti. Verzi
 Podívejte se na následující příklad kódu pro klientskou knihovnu rozhraní .NET.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Tento kód vytvoří seznam obličeje s názvem `My face collection` pomocí _recognition_03ho_ modelu pro extrakci funkcí. Když vyhledáte tento seznam obličeje pro podobné plošky nově zjištěné plochy, je nutné, aby tato hlava byla detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_03_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
+Tento kód vytvoří seznam obličeje s názvem `My face collection` pomocí _recognition_04ho_ modelu pro extrakci funkcí. Když vyhledáte tento seznam obličeje pro podobné plošky nově zjištěné plochy, je nutné, aby tato hlava byla detekována ([rozpoznávání obličeje]) pomocí modelu _recognition_04_ . Jak je uvedeno v předchozí části, model musí být konzistentní.
 
 U [podobných] rozhraní API se nezměnila žádná změna. zadáváte pouze verzi modelu v detekci.
 
@@ -105,10 +106,10 @@ Rozhraní API pro [ověření tváře] kontroluje, jestli dvě plošky patří s
 ## <a name="evaluate-different-models"></a>Vyhodnotit různé modely
 
 Pokud chcete porovnat výkon různých modelů rozpoznávání na vlastních datech, budete potřebovat:
-1. Vytvořte tři objektů persongroup pomocí _recognition_01_, _recognition_02_ a _recognition_03_ .
-1. Použijte svá data obrázků k detekci plošek a zaregistrujte je **osobě** s v těchto třech **osobách**. 
+1. Vytvořte čtyři objektů persongroup pomocí _recognition_01_, _recognition_02_, _recognition_03_ a _recognition_04_ .
+1. Použijte svá data obrázků k detekci plošek a zaregistrujte je **osobě** s v těchto čtyřech **osobách**. 
 1. Objektů persongroup své služby pomocí rozhraní API person-vlak.
-1. Test pomocí obličeje – identifikujte všechny tři **osoby** a porovnejte výsledky.
+1. Test pomocí obličeje – identifikujte všechny čtyři **osoby** a porovnejte výsledky.
 
 
 Pokud obvykle zadáte prahovou hodnotu spolehlivosti (hodnota mezi 0 a 1, která určuje, jak jistotu musí model identifikovat obličej), možná budete muset pro různé modely použít jiné prahové hodnoty. Prahová hodnota pro jeden model není určena ke sdílení jiné a nebude nutně vracet stejné výsledky.

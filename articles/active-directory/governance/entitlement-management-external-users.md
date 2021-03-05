@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b356d5dff453b598eeb773af1a56fc50193e9e16
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746656"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176786"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -84,7 +84,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 - Pokud hostům umožníte pozvat ostatní hosty do vašeho adresáře, znamená to, že se pozvánky hostů můžou vyskytnout mimo správu nároků. Doporučujeme nastavit možnost **hostů může pozvat** na **ne** , aby bylo možné pouze správně řídit pozvánky.
 - Pokud používáte seznam povolených B2B, je nutné zajistit, aby se do seznamu přidala všechny domény, které chcete partnerům s použitím správy oprávnění použít. Případně, pokud používáte seznam s odepřenými seznamem B2B, je nutné zajistit, aby se do seznamu nepřidala žádná doména, se kterou chcete partnerovi přidružit.
 - Pokud vytvoříte zásadu správy nároků pro **všechny uživatele** (všechny připojené organizace a všichni noví uživatelé) a uživatel nepatří do připojené organizace ve vašem adresáři, při vyžádání balíčku se automaticky vytvoří připojená organizace. Nastavení seznamu povolených a zakázaných přihlášení B2B bude mít přednost. Proto nezapomeňte zahrnout domény, které chcete zahrnout do této zásady, do svého seznamu povolených použití, pokud používáte seznam pro odepření, a vyloučit je ze seznamu odepřených.
-- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla s jedním časem (Preview)](../external-identities/one-time-passcode.md).
+- Pokud chcete vytvořit zásadu správy nároků, která bude obsahovat **všechny uživatele** (všechny připojené organizace a všichni noví externí uživatelé), musíte nejdřív pro svůj adresář povolit jednorázové ověřování heslem e-Time. Další informace najdete v tématu [ověřování e-mailového hesla jednorázovým heslem](../external-identities/one-time-passcode.md).
 - Další informace o externích nastaveních spolupráce Azure AD B2B najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../external-identities/delegate-invitations.md).
 
     ![Nastavení externí spolupráce Azure AD](./media/entitlement-management-external-users/collaboration-settings.png)

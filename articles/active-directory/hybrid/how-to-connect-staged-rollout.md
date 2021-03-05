@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090594"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176854"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -184,7 +184,7 @@ Postupujte následovně:
 
    >[!NOTE]
    >Členové ve skupině jsou automaticky povoleni pro připravené zavedení. Vnořené a dynamické skupiny se pro připravené zavedení nepodporují.
-   >Při přidávání nové skupiny budou uživatelé v této skupině (až 200 uživatelů pro novou skupinu) aktualizováni tak, aby používali spravované ověřování immidiatly. Úprava skupiny (přidávání nebo odebírání uživatelů) může trvat až 24 hodin, než se změny projeví.
+   >Při přidávání nové skupiny se uživatelé ve skupině (až 200 uživatelů pro novou skupinu) aktualizují, aby používali spravované ověřování okamžitě. Úprava skupiny (přidávání nebo odebírání uživatelů) může trvat až 24 hodin, než se změny projeví.
    >Bezproblémové jednotné přihlašování se bude vztahovat jenom v případě, že jsou uživatelé ve skupině bezproblémové jednotné přihlašování a také v PTA nebo KOSMETICE.
 
 ## <a name="auditing"></a>Auditování

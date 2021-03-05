@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 0885870497ef3488d78fe899c96ee2a82a5b84fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696160"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175030"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Registrovat a kontrolovat Zdroj Teradata (Preview)
 
@@ -94,13 +94,13 @@ Pokud chcete vytvořit a spustit novou kontrolu, udělejte toto:
 
 6.  **Schema (schéma**): podmnožina schémat pro import vyjádřená jako seznam oddělený středníkem. například Schema1; schema2. Všechna schémata uživatelů jsou importována, pokud je tento seznam prázdný. Ve výchozím nastavení jsou všechna systémová schémata (například SysAdmin) a objekty ignorovány. Když je seznam prázdný, naimportují se všechna dostupná schémata.
 
-        Acceptable schema name patterns using SQL LIKE expressions syntax include using %, e.g. A%; %B; %C%; D
-        - start with A or    
-        - end with B or    
-        - contain C or    
-        - equal D
+    Přijatelné vzory názvů schémat pomocí syntaxe výrazů jako v jazyce SQL zahrnují použití%, např .%;. B % C%; Trojrozměrné
+    - Začněte s nebo    
+    - konec s B nebo    
+    - obsahuje C nebo    
+    - rovná se D
 
-        Usage of NOT and special characters are not acceptable
+    Použití Nea speciálních znaků není přijatelné.
 
 7.  **Umístění ovladače**: zadejte cestu k umístění ovladače JDBC ve vašem virtuálním počítači, kde je spuštěný modul runtime integrace na místním hostiteli. Mělo by se jednat o cestu k platnému umístění složky JAR.
 

@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2d64e85576b35caa2262ad1d635fc72fc7e2d2b8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120619"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175103"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace ve službě Azure Active Directory B2C
 
@@ -194,7 +194,7 @@ Chcete-li přidat zaškrtávací políčko políčko zůstat přihlášeni do p�
 
 ### <a name="configure-a-relying-party-file"></a>Konfigurace souboru předávající strany
 
-Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
+Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili. Parametr keepAliveInDays umožňuje nakonfigurovat, jak dlouho by měl uchovávat soubory cookie relace políčko zůstat přihlášeni (Keep on signed on). Pokud například nastavíte hodnotu na 30, pak se soubor cookie relace políčko zůstat přihlášeni uchová po dobu 30 dnů. Rozsah hodnoty je od 1 do 90 dnů.
 
 1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin.xml*.
 1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` do uzlu podřízený uzel `<RelyingParty>` . Musí být umístěn hned po `<DefaultUserJourney ReferenceId="User journey Id" />` , například: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .
