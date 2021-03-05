@@ -2,34 +2,34 @@
 title: Úložiště image kontejneru
 description: Podrobnosti o tom, jak se image kontejnerů a jiné artefakty ukládají v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4bdffd111273e00b796e45f4e09bfac9ba6713e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036006"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183263"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry
 
-Každá služba Azure Container Registry [Basic, Standard a Premium](container-registry-skus.md) přináší výhody pokročilých funkcí úložiště Azure, jako je šifrování v klidovém režimu pro zabezpečení dat imagí a geografická redundance pro ochranu imagí dat. V následujících částech najdete popis funkcí a omezení úložiště imagí v Azure Container Registry (ACR).
+Každá služba Azure Container Registry [Basic, Standard a Premium](container-registry-skus.md) přináší výhody pokročilých funkcí úložiště Azure, včetně šifrování v klidovém režimu. V následujících částech najdete popis funkcí a omezení úložiště imagí v Azure Container Registry (ACR).
 
 ## <a name="encryption-at-rest"></a>Šifrování v klidovém případě
 
 Všechny Image kontejnerů a jiné artefakty v registru jsou v klidovém stavu šifrované. Azure automaticky zašifruje image před uložením a dešifruje je průběžně, když se nebo vaše aplikace a služby vyžádají z image. Volitelně můžete použít dodatečnou vrstvu šifrování s [klíčem spravovaným zákazníkem](container-registry-customer-managed-keys.md).
 
-## <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
+## <a name="regional-storage"></a>Místní úložiště
 
-Pro Registry kontejnerů nasazené ve většině oblastí Azure používá geograficky redundantní schéma úložiště, které vám pomůžou chránit před ztrátou imagí kontejneru a dalších artefaktů. Azure Container Registry automaticky replikuje image kontejneru do několika geograficky vzdálených datových center a zabraňuje jejich ztrátě, pokud dojde k selhání místního úložiště.
+Azure Container Registry ukládá data v oblasti, ve které je registr vytvořený, aby zákazníci mohli splnit požadavky na zaregistrování dat a dodržování předpisů.
 
-> [!IMPORTANT]
-> * Pokud dojde k selhání místního úložiště, můžete obnovit data registru jenom kontaktováním podpory Azure. 
-> * S ohledem na požadavky na umístění dat v oblasti Brazílie – jih a jihovýchodní Asie se Azure Container Registry data v těchto oblastech ukládají [pouze do místního geografického](https://azure.microsoft.com/global-infrastructure/geographies/)umístění. V jihovýchodní Asie se všechna data ukládají v Singapuru. V oblasti Brazílie – jih jsou všechna data uložená v Brazílii. Když dojde ke ztrátě oblasti z důvodu významné havárie, Microsoft nebude moct obnovit data Azure Container Registry.
+V rámci ochrany před výpadky datového centra si některé oblasti nabízejí [redundanci zóny](zone-redundancy.md), kde se data replikují napříč více datacentry v konkrétní oblasti.
+
+Zákazníci, kteří chtějí mít svá data uložená ve více oblastech pro lepší výkon v různých geografických oblastech nebo kteří chtějí mít odolnost v případě regionu výpadku, by měly umožnit [geografickou replikaci](container-registry-geo-replication.md).
 
 ## <a name="geo-replication"></a>Geografická replikace
 
-V případě scénářů, které vyžadují ještě větší záruku na vysokou dostupnost, zvažte použití funkce [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium. Geografická replikace pomáhá chránit před ztrátou přístupu k vašemu registru v případě *celkové* regionální chyby, nikoli jenom při selhání úložiště. Geografická replikace poskytuje další výhody, jako je například úložiště imagí v síti, pro rychlejší nabízená oznámení a stahování v případě distribuovaných scénářů vývoje nebo nasazení.
+V případě scénářů vyžadujících zajištění vysoké dostupnosti zvažte použití funkce [geografické replikace](container-registry-geo-replication.md) pro Registry úrovně Premium. Geografická replikace pomáhá chránit před ztrátou přístupu k vašemu registru v případě regionálního selhání. Geografická replikace poskytuje další výhody, jako je například úložiště imagí v síti, pro rychlejší nabízená oznámení a stahování v případě distribuovaných scénářů vývoje nebo nasazení.
 
 ## <a name="zone-redundancy"></a>Zónová redundance
 

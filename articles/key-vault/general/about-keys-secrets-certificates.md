@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327079"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183926"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Přehled Azure Key Vault klíčů, tajných kódů a certifikátů
 
@@ -44,7 +44,7 @@ Klíče chráněné softwarem|/keys|Podporováno|Nepodporováno
 **Další typy objektů**||
 Tajné kódy|/secrets|Podporováno|Nepodporováno
 Certifikáty|/certificates|Podporováno|Nepodporováno
-Klíče účtu úložiště|/storageaccount|Podporováno|Nepodporováno
+Klíče účtu úložiště|/Storage|Podporováno|Nepodporováno
 |||
 - **Kryptografické klíče**: podporuje více typů klíčů a algoritmů a umožňuje použití klíčů chráněných softwarem a HSM. Další informace najdete v tématu [o klíčích](../keys/about-keys.md).
 - **Tajné** kódy: poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce. Další informace najdete v tématu [o tajných klíčích](../secrets/about-secrets.md).

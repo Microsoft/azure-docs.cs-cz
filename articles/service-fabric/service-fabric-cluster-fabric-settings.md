@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183399"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -130,7 +130,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |EnableTelemetry |Logická hodnota, výchozí hodnota je true. | Dynamická |Tím se povolí nebo zakáže telemetrie. |
 |FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je false. | Dynamická | Pokud je povoleno zachycení telemetrie HTTP; zachytávání pouze neúspěšných žádostí To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
 |HttpTelemetryCapturePercentage | int, výchozí hodnota je 50 | Dynamická | Pokud je povoleno zachycení telemetrie HTTP; zachytit jenom náhodné procento požadavků. To vám umožní snížit počet událostí vygenerovaných pro telemetrii. |
-|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamická |Disková kvóta v MB pro soubory protokolu Windows Fabric. |
+|MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamická |Disková kvóta v MB pro soubory protokolu prostředků infrastruktury Windows a Linux. |
 |ProducerInstances |Řetězec | Dynamická |Seznam instancí výrobců DCA. |
 
 ## <a name="dnsservice"></a>Služba DNSservice
@@ -321,7 +321,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |MaxPercentDeltaUnhealthyNodes|int, výchozí hodnota je 10.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílových uzlů, které nemají stav v pořádku, aby byl cluster v pořádku |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí hodnota je 15.|Static|Zásady hodnocení stavu upgradu clusteru: maximální procento rozdílu uzlů, které nejsou v pořádku, v upgradovací doméně povolené pro cluster v dobrém stavu |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Hostování
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |

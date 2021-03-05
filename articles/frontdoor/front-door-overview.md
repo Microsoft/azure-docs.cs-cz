@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282269"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183161"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
@@ -32,7 +32,7 @@ Přední dveře pracují ve vrstvě 7 (vrstva HTTP/HTTPS) pomocí protokolu libo
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. 
 > * Pokud chcete provést globální směrování na základě DNS **a nemáte požadavky** na ukončení protokolu TLS (Transport Layer Security) ("snižování zátěže SSL"), požadavky na protokol HTTP/HTTPS nebo zpracování aplikační vrstvy, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md)
+> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md).
 > * Pro vyrovnávání zatížení síťové vrstvy si přečtěte [Load Balancer](../load-balancer/load-balancer-overview.md). 
 > 
 > Vaše ucelené scénáře můžou v případě potřeby těžit z kombinace těchto řešení.
@@ -70,7 +70,7 @@ Klíčové funkce, které jsou součástí front-dveří:
 
 Informace o cenách najdete v tématu, které se věnuje [cenám služby Front Door](https://azure.microsoft.com/pricing/details/frontdoor/). Přečtěte si [smlouvu SLA pro přední dveře Azure](https://azure.microsoft.com/en-us/support/legal/sla/frontdoor/v1_0/).
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Přihlaste se k odběru informačního kanálu RSS a na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) si prohlédněte nejnovější aktualizace funkcí služby Azure front-dveří.
 

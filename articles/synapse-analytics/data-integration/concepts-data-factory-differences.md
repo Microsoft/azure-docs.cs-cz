@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387611"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183637"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 
@@ -34,8 +34,9 @@ Níže najdete níže uvedenou tabulku pro dostupnost funkcí:
 |                          | Podpora aktivity Power Query | ✓ | ✓ |
 | **Galerie šablon a centrum znalostí** | Šablony řešení | ✓<br><small>*Galerie šablon Azure Data Factory* | ✓<br><small>*Centrum znalostí pro synapse Workspace* |
 | **Integrace úložiště GIT** | Integrace GITU | ✓ | ✓ |
-| **Sledování**           | Monitorování úloh Sparku pro tok dat | ✗ | ✓<br><small>*Využijte fondy synapse Spark* |
+| **Monitorování**           | Monitorování úloh Sparku pro tok dat | ✗ | ✓<br><small>*Využijte fondy synapse Spark* |
 |                          | Integrace s Azure Monitor | ✓ | ✗ |
+| **Lineage** | Podporuje publikování dat v kanálu pro dosah.  | ✓ | ✗ |  
 
 > [!Note]
 > Hodnota **TTL (Time to Live** ) je Azure Integration Runtimeé nastavení, které umožňuje clusteru Spark *zabývat* po určitou dobu po spuštění toku dat.

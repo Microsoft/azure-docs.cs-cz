@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/04/2021
-ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101235"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183195"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurovat časový interval pro správu a údržbu (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,7 +178,7 @@ Při nastavování časového intervalu pro správu a údržbu má každá oblas
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Zjišťování oken údržby SQL Database a elastického fondu
 
-Následující příklad vrátí dostupná časová období údržby pro oblast *eastus2* pomocí příkazu [AZ Maintenance Public-Configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) . Pro databáze a elastické fondy nastavte `maintenanceScope` na `SQLDB` .
+Následující příklad vrátí dostupná časová období údržby pro oblast *eastus2* pomocí příkazu [AZ Maintenance Public-Configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) . Pro databáze a elastické fondy nastavte `maintenanceScope` na `SQLDB` .
 
    ```azurecli
    location="eastus2"
@@ -188,7 +188,7 @@ Následující příklad vrátí dostupná časová období údržby pro oblast 
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>Vyhledat okna údržby spravované instance SQL
 
-Následující příklad vrátí dostupná časová období údržby pro oblast *eastus2* pomocí příkazu [AZ Maintenance Public-Configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration?view=azure-cli-latest&preserve-view=true#ext_maintenance_az_maintenance_public_configuration_list) . U spravovaných instancí nastavte `maintenanceScope` na `SQLManagedInstance` .
+Následující příklad vrátí dostupná časová období údržby pro oblast *eastus2* pomocí příkazu [AZ Maintenance Public-Configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) . U spravovaných instancí nastavte `maintenanceScope` na `SQLManagedInstance` .
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

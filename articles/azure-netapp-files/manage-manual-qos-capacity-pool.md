@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581141"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183824"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Správa fondu ručně zřizovaného kapacity QoS
 
@@ -44,7 +44,7 @@ Funkce ručního typu QoS je aktuálně ve verzi Preview. Pokud tuto funkci pou�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Nastavení nového ručně vytvořeného fondu kapacity QoS 
 

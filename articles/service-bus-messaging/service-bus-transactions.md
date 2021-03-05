@@ -2,14 +2,14 @@
 title: Přehled zpracování transakcí v Azure Service Bus
 description: Tento článek poskytuje přehled zpracování transakcí a funkci Odeslat prostřednictvím v Azure Service Bus.
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684787"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183739"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Přehled zpracování Service Bus transakcí
 
@@ -42,6 +42,8 @@ Dispozice zprávy (dokončeno, opustit, nedoručená zpráva) pak probíhá v r�
 Pokud chcete povolit transakční předají dat z fronty nebo tématu do procesoru a následně do jiné fronty nebo tématu, Service Bus podporuje *přenosy*. Odesílatel v operaci přenosu nejprve pošle zprávu do *fronty nebo tématu přenosu* a fronta pro přenos nebo téma přesune zprávu do příslušné cílové fronty nebo tématu pomocí stejné implementace robustního přenosu, na které se funkce dodávají spoléhá. Zpráva se nikdy nezavazuje k tomu, aby se přihlásila do fronty přenosů, a to tak, jak se bude zobrazovat pro uživatele fronty přenosu nebo tématu.
 
 Výkon této transakční funkce se projeví i v případě, že je ve frontě přenosu nebo samotném tématu zdrojem vstupních zpráv odesílatele. Jinými slovy, Service Bus může přenést zprávu do cílové fronty nebo tématu prostřednictvím fronty nebo tématu přenosu, zatímco probíhá úplná (nebo odložená nebo nedoručená) operace na vstupní zprávě, a to vše v jedné atomické operaci. 
+
+Pokud potřebujete dostávat z předplatného tématu a potom ho odeslat do fronty nebo tématu ve stejné transakci, musí se jednat o téma přenosová entita. V tomto scénáři spusťte obor transakce v tématu, příjem z předplatného v oboru transakce a odešlete prostřednictvím tématu přenosu do fronty nebo cíle tématu. 
 
 ### <a name="see-it-in-code"></a>Zobrazit v kódu
 

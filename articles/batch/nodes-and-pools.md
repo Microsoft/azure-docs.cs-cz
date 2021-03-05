@@ -3,12 +3,12 @@ title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741770"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183654"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -74,6 +74,9 @@ Ve Batch jsou k dispozici dva typy konfigurací fondů.
 [Agent uzlu služby Batch](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Existují různé implementace agenta uzlu, označované jako SKU, pro různé operační systémy. Při vytváření fondu založeného na konfiguraci virtuálního počítače je nutné zadat nejen velikost uzlů a zdroj imagí použitých pro jejich vytvoření, ale také **referenční image virtuálního počítače** a **SKU agenta uzlu** služby Batch, které se budou na uzly instalovat. Další informace o zadávání těchto vlastností fondů najdete v článku [Zřízení linuxových výpočetních uzlů ve fondech Azure Batch](batch-linux-nodes.md) Volitelně můžete k virtuálním počítačům ve fondu vytvořeným z imagí z webu Marketplace připojit jeden nebo více prázdných datových disků nebo datové disky zahrnout do vlastních imagí používaných k vytvoření virtuálních počítačů. Při zahrnutí datových disků je potřeba připojit a naformátovat disky z virtuálního počítače, aby je bylo možné použít.
 
 ### <a name="cloud-services-configuration"></a>Konfigurace Cloud Services
+
+> [!WARNING]
+> Fondy konfigurace cloudové služby jsou zastaralé. Místo toho prosím použijte fondy konfigurací virtuálních počítačů.
 
 **Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje jenom výpočetní uzly Windows.
 

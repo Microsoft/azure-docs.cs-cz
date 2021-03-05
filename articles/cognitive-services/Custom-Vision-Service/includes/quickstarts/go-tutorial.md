@@ -2,25 +2,41 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 49b920ede2b0af306af00875a3368cffd853f89b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/25/2021
+ms.openlocfilehash: c2333b019d716b70ed995846f58b021e49371ae0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948678"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184259"
 ---
 Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro přejít k sestavení modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
 > [!NOTE]
 > Pokud chcete sestavit model klasifikace _bez_ psaní kódu, prostudujte si místo toho doprovodné materiály pro [prohlížeč](../../getting-started-build-a-classifier.md) .
 
+Pomocí klientské knihovny Custom Vision můžete přejít na:
+
+* Vytvoření nového projektu Custom Vision
+* Přidat do projektu značky
+* Nahrávání a označování obrázků
+* Výuka projektu
+* Publikovat aktuální iteraci
+* Testování koncového bodu předpovědi
+
+Referenční dokumentace [(školení)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [(předpověď)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [(předpověď)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
+
 ## <a name="prerequisites"></a>Požadavky
 
-- [Přejít 1.8 +](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* [Přejít 1.8 +](https://golang.org/doc/install)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
+## <a name="setting-up"></a>Nastavení
+
+### <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
 K napsání aplikace pro analýzu obrázků pomocí Custom Vision for přejít budete potřebovat klientskou knihovnu služby Custom Vision. V PowerShellu spusťte následující příkaz:
 
@@ -33,15 +49,13 @@ nebo pokud používáte `dep` , v rámci vašeho spuštění úložiště:
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>Přidání kódu
-
-Vytvořte nový soubor s názvem *Sample. přejít* do preferovaného adresáře projektu.
 
 ## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
+
+Vytvořte nový soubor s názvem *Sample. přejít* do vašeho preferovaného adresáře projektu a otevřete ho v preferovaném editoru kódu.
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 

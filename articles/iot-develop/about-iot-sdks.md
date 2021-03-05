@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e85cc9cdbb14c419e4bddb5ee659aa657b49a8c1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702670"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183535"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 
@@ -60,7 +60,7 @@ Vaše možnosti, jak začít, závisí na typu zařízení, které máte:
 Tyto sady SDK jsou specializované na spouštění na zařízeních s omezenými výpočetními nebo paměťovými prostředky. Další informace o běžných typech zařízení najdete v tématu [Přehled typů zařízení Azure IoT](concepts-iot-device-types.md).
 
 #### <a name="embedded-c-sdk"></a>Vložená sada C SDK
-* [Úložiště GitHub](https://github.com/Azure/azure-sdk-for-c/tree/1.0.0/sdk/docs/iot)
+* [Úložiště GitHub](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)
 * [ukázky](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/README.md)
 * [Referenční dokumentace](https://azure.github.io/azure-sdk-for-c/)
 * [Postup sestavení vložené sady C SDK](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
@@ -68,7 +68,7 @@ Tyto sady SDK jsou specializované na spouštění na zařízeních s omezenými
 
 #### <a name="azure-rtos-middleware"></a>Middleware Azure RTO
 
-* [Úložiště GitHub](https://github.com/azure-rtos/threadx)
+* [Úložiště GitHub](https://github.com/azure-rtos/netxduo/tree/master/addons/azure_iot)
 * [Začínáme příručky](https://github.com/azure-rtos/getting-started) a [Další ukázky](https://github.com/azure-rtos/samples)
 * [Referenční dokumentace](/azure/rtos/threadx/)
 

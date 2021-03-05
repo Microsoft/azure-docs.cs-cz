@@ -4,18 +4,18 @@ description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvo
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1234a932a732cdb6fda1c412a423ae0b1ea089e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106470"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184011"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
 Začněte s Azure Batch pomocí Azure Portal k vytvoření účtu Batch, fondu výpočetních uzlů (virtuálních počítačů) a úlohy, která spouští úlohy ve fondu. Po dokončení tohoto rychlého startu budete porozumět klíčovým konceptům služby Batch a budete připraveni vyzkoušet dávku s více realistickými úlohami ve větším měřítku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -69,7 +69,7 @@ Po několika minutách se stav přidělení změní na **ustáleno** a uzly se s
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
-Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly.
+Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha Batch je logická skupina jednoho nebo více úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly.
 
 1. V zobrazení účtu Batch vyberte **úlohy**  >  **Přidat**.
 

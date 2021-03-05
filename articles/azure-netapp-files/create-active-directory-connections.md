@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 756bf1cd7a7e9435130a3ad2d3b530b7f2e5b1b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183875"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Vytváření a Správa připojení ke službě Active Directory pro Azure NetApp Files
 
@@ -183,7 +183,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
     * **Podepisování LDAP**   
         Zaškrtnutím tohoto políčka povolíte podepisování LDAP. Tato funkce umožňuje zabezpečené vyhledávání LDAP mezi službou Azure NetApp Files a uživatelem zadanými [Active Directory Domain Services řadiči domény](/windows/win32/ad/active-directory-domain-services). Další informace najdete v tématu [ADV190023 | Návod Microsoftu pro povolení vazby kanálu LDAP a podepisování LDAP](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
@@ -205,7 +205,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
      * **Uživatelé zásad zálohování**  
         Můžete zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files.  
@@ -227,7 +227,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 

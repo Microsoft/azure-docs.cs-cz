@@ -4,14 +4,14 @@ description: Tento článek popisuje integraci partnerských serverů z více sn
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675940"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183790"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
@@ -89,7 +89,7 @@ access_token = token_response.get('access_token')
 
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API FarmBeats DataHub.
 
-**Hlaviček** | **Popis a příklad**
+**Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu  | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
 Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
@@ -138,10 +138,10 @@ Po tom, co partner získá přihlašovací údaje pro připojení k FarmBeats Da
 
 1.  Vytvořte nový rozšířený typ pro následující pole v souladu s typem ukládaného textu, který se má nahrát:
 
-    - **Zdroj scény** : například drone_partner_name
-    - **Typ scény** : například pomocí dronů
-    - **Typ souboru scény** : například index Chlorophyll
-    - **Typ obsahu souboru scény** : například Image/TIFF
+    - **Zdroj scény**: například drone_partner_name
+    - **Typ scény**: například pomocí dronů
+    - **Typ souboru scény**: například index Chlorophyll
+    - **Typ obsahu souboru scény**: například Image/TIFF
 
 2.  Voláním rozhraní/Farms API získáte seznam farem v rámci systému Azure FarmBeats.
 3.  Poskytněte zákazníkovi možnost zvolit jednu farmu ze seznamu Farm.
@@ -500,4 +500,4 @@ Po volání rozhraní/SceneFile API se vrátí adresa URL pro nahrání SAS, kte
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API podrobností integrace na základě REST API najdete v tématu [REST API](rest-api-in-azure-farmbeats.md).
+Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](rest-api-in-azure-farmbeats.md).

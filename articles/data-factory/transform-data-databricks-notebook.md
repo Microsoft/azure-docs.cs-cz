@@ -6,12 +6,12 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183484"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,13 +54,13 @@ Následující tabulka obsahuje popis vlastností JSON použitých v definici JS
 
 |Vlastnost|Popis|Vyžadováno|
 |---|---|---|
-|name|Název aktivity v kanálu.|Yes|
-|description|Text popisující, co aktivita dělá.|No|
-|typ|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Yes|
-|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .|Yes|
-|notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Yes|
-|baseParameters|Pole párů Key-Value. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|No|
-|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<string, object> .|No|
+|name|Název aktivity v kanálu.|Ano|
+|description|Text popisující, co aktivita dělá.|Ne|
+|typ|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .|Ano|
+|notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Ano|
+|baseParameters|Pole párů Key-Value. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Ne|
+|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<string, object> .|Ne|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
 
@@ -114,10 +114,10 @@ V některých případech je možné, že budete potřebovat předávat určité
 
 1. Ve vašem poznámkovém bloku můžete zavolat [dbutils. Poznámkový blok ("ReturnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) a odpovídající znak "ReturnValue" bude vrácen do objektu pro vytváření dat.
 
-2. Výstup ve službě Data Factory můžete využívat pomocí výrazu, jako je například `'@activity('databricks notebook activity name').output.runOutput'` .
+2. Výstup ve službě Data Factory můžete využívat pomocí výrazu, jako je například `@{activity('databricks notebook activity name').output.runOutput}` . 
 
    > [!IMPORTANT]
-   > Pokud předáváte objekt JSON, můžete načíst hodnoty připojením názvů vlastností. Příklad: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > Pokud předáváte objekt JSON, můžete načíst hodnoty připojením názvů vlastností. Příklad: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Postup nahrání knihovny v datacihlách
 
