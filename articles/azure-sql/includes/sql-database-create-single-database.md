@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682395"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178064"
 ---
 V tomto kroku vytvoříte [logický SQL Server](../database/logical-servers.md) a samostatnou [databázi](../database/single-database-overview.md) , která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek Azure Portal nebo pomocí skriptu Azure CLI nebo PowerShellu v Azure Cloud Shell.
 
@@ -151,11 +151,11 @@ Předchozí kód používá tyto příkazy rozhraní příkazového řádku Azur
 
 | Příkaz | Popis |
 |---|---|
-| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Nastaví předplatné jako aktuální aktivní předplatné. |
+| [AZ Account set](/cli/azure/account#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. |
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server, který je hostitelem databází a elastických fondů. |
 | [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Vytvoří pravidlo brány firewall na úrovni serveru. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Vytvoří databázi. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Vytvoří databázi. |
 
 Další Azure SQL Database ukázek rozhraní příkazového řádku Azure najdete v tématu [ukázky Azure CLI](../database/az-cli-script-samples-content-guide.md).
 

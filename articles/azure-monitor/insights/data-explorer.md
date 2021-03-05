@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582341"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179132"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor pro Azure Průzkumník dat (Preview)
 
@@ -103,10 +103,10 @@ Na kartě **klíčové metriky** se zobrazuje jednotný pohled na některé metr
 
 Karta **použití** umožňuje uživatelům hluboko podrobně výkon příkazů a dotazů clusteru. Na této stránce můžete:
  
- - Podívejte se, kteří uživatelé a aplikace odesílají nejvíc dotazů nebo využívají nejvíc procesorů a paměti (takže můžete pochopit, kteří uživatelé odesílají nejtěžší dotazy pro zpracování clusteru).
- - Identifikujte hlavní uživatele a aplikace podle neúspěšných dotazů.
- - Identifikujte nedávné změny v počtu dotazů v porovnání s historickým denním průměrem (za posledních 16 dní) podle uživatele a aplikace.
- - Identifikujte trendy a špičky v počtu dotazů, paměti a spotřeby procesoru podle uživatele, typu aplikace a příkazu.
+ - Podívejte se, které skupiny úloh, uživatelé a aplikace odesílají nejvíc dotazů nebo využívají nejvíc procesorů a paměti (takže můžete pochopit, které úlohy odesílají nejtěžší dotazy pro zpracování clusteru).
+ - Identifikujte nejdůležitější skupiny úloh, uživatele a aplikace podle neúspěšných dotazů.
+ - Identifikujte nedávné změny v počtu dotazů v porovnání s historickým denním průměrem (za posledních 16 dní) podle skupiny úloh, uživatele a aplikace.
+ - Identifikujte trendy a špičky v počtu dotazů, paměti a spotřeby procesoru podle skupin úloh, uživatelů, aplikací a typů příkazů.
 
 [![Snímek obrazovky s zobrazením operací s prstencovými grafy hlavní aplikace podle počtu příkazů a dotazů, hlavních objektů zabezpečení podle příkazů a počtu dotazů a hlavních příkazů podle typů příkazů](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

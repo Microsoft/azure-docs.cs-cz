@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cca8a93330e5ddd965d27532895ed1d6702c123
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881007"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179642"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat s použitím AzCopy a úložiště souborů 
 
@@ -125,7 +125,7 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-patter
 
 Soubory můžete také vyloučit pomocí `--exclude-pattern` Možnosti. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
 
-`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `–recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `–include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
+`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `--recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `--include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Nahrání souborů, které byly upraveny po datu a čase 
 
@@ -220,7 +220,7 @@ Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-patter
 
 Soubory můžete také vyloučit pomocí `--exclude-pattern` Možnosti. Další informace najdete v tématu [kopírování](storage-ref-azcopy-copy.md) referenčních dokumentů AzCopy.
 
-`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `–recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `–include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
+`--include-pattern`Možnosti a se `--exclude-pattern` vztahují pouze na názvy souborů, nikoli na cestu.  Chcete-li zkopírovat všechny textové soubory, které existují ve stromové struktuře, použijte `--recursive` možnost pro získání celého adresářového stromu a pak použijte příkaz `--include-pattern` a zadejte, `*.txt` Chcete-li získat všechny textové soubory.
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>Stáhnout soubory, které byly změněny po datu a čase 
 

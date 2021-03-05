@@ -2,13 +2,13 @@
 title: Azure Service Bus – automaticky aktualizovat jednotky zasílání zpráv
 description: V tomto článku se dozvíte, jak můžete používat automatické aktualizace jednotek zasílání zpráv Service Bus oboru názvů.
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720592"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177951"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Automaticky aktualizovat jednotky zasílání zpráv Azure Service Bus oboru názvů 
 Automatické škálování umožňuje mít ke zpracování zatížení vaší aplikace správné množství prostředků, na kterých běží. Umožňuje přidat prostředky pro zvýšení zátěže a také ušetřit peníze odebráním nečinných prostředků. Další informace o funkci automatického škálování Azure Monitor najdete [v tématu Přehled automatického škálování v Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) . 
@@ -136,8 +136,14 @@ V předchozí části se dozvíte, jak přidat výchozí podmínku pro nastaven�
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="škálovat na konkrétní jednotky zpráv – opakovat konkrétní dny":::
 
-> [!IMPORTANT]
-> Další informace o tom, jak nastavení automatického škálování funguje, zejména jak si vybírá profil nebo podmínku a vyhodnocuje více pravidel, najdete v tématu [Vysvětlení nastavení automatického škálování](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+    
+    Další informace o tom, jak nastavení automatického škálování funguje, zejména jak si vybírá profil nebo podmínku a vyhodnocuje více pravidel, najdete v tématu [Vysvětlení nastavení automatického škálování](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+
+    > [!NOTE]
+    > - Metriky, které jste provedli k rozhodnutí o automatickém škálování, můžou být 5-10 minut staré. Při práci s úlohami nárazové doporučujeme, abyste měli kratší dobu trvání pro horizontální navýšení nebo snížení kapacity (> 10 minut), abyste zajistili, že budete mít k dispozici dostatečný počet jednotek zasílání zpráv pro zpracování úloh nárazové. 
+    > 
+    > - Pokud se zobrazí chyby z důvodu nedostatku kapacity (nejsou k dispozici žádné jednotky zasílání zpráv), vyvolejte lístek podpory s námi.  
+
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o jednotkách zasílání zpráv najdete v tématu [zasílání zpráv](service-bus-premium-messaging.md) na úrovni Premium.

@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: a27fba6e426b72d72160a9a238f68cf8cef5c73b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948051"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180040"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -18,40 +18,23 @@ Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepiso
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rychlý Start JavaScriptu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) na GitHubu.
 
+Případně si přečtěte [ukázku reakce](https://github.com/Azure-Samples/AzureSpeechReactSample) a Naučte se používat sadu Speech SDK v prostředí založeném na prohlížeči.
+
 ## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK pro Node.js. Pokud chcete jenom nainstalovat název balíčku, spusťte příkaz `npm install microsoft-cognitiveservices-speech-sdk` . Pokyny k instalaci najdete v článku [Začínáme](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) .
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-
-V závislosti na cílovém prostředí navíc použijte jednu z následujících možností:
-
-# <a name="script"></a>[pravidel](#tab/script)
-
-Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">sadu Speech SDK pro <span class="docon docon-navigate-external x-hidden-focus"></span> JavaScript</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* soubor a umístěte ji do složky přístupné pro váš soubor HTML.
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> Pokud cílíte na webový prohlížeč a použijete `<script>` značku; `sdk` při odkazování na třídy není nutná předpona. `sdk`Předpona je alias použitý k pojmenování `require` modulu.
-
-# <a name="require"></a>[žádá](#tab/require)
+`require`K importu sady SDK použijte následující příkaz.
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">co je potřeba? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
-
----
+Další informace o naleznete v `require` [dokumentaci vyžadovat](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
@@ -72,52 +55,14 @@ Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig
 
 ## <a name="recognize-from-microphone-browser-only"></a>Rozpoznat z mikrofonu (jenom prohlížeč)
 
-Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `fromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) a, předejte své `speechConfig` a `audioConfig` .
+Rozpoznávání řeči pomocí mikrofonu není **v Node.jspodporováno** a je podporováno pouze v prostředí JavaScript založeném na prohlížeči. Pokud chcete zobrazit [Převod řeči na text z implementace mikrofonu](https://github.com/Azure-Samples/AzureSpeechReactSample/blob/main/src/App.js#L29), podívejte se na [ukázku reakce](https://github.com/Azure-Samples/AzureSpeechReactSample) na GitHubu.
 
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromMic() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    console.log('Speak into your microphone.');
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromMic();
-```
-
-Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
+> [!NOTE]
+> Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
 ## <a name="recognize-from-file"></a>Rozpoznat ze souboru 
 
-# <a name="browser"></a>[Prohlížeč](#tab/browser)
-
-Pro rozpoznávání řeči ze zvukového souboru v prostředí JavaScript založeném na prohlížeči použijte `fromWavFileInput()` funkci k vytvoření [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) . Funkce `fromWavFileInput()` očekává [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) jako parametr objekt JavaScript.
-
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromFile() {
-    // wavByteContent should be a byte array of the raw wav content
-    let file = new File([wavByteContent]);
-    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromFile();
-```
-
-# <a name="nodejs"></a>[Node.js](#tab/node)
-
-Pro rozpoznávání řeči ze zvukového souboru v Node.js musí být použit alternativní návrhový vzor pomocí datového proudu push, protože objekt jazyka JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nelze použít v modulu Node.js runtime. Následující kód:
+Pro rozpoznávání řeči ze zvukového souboru v Node.js musí být použit alternativní návrhový vzor pomocí datového proudu push, protože objekt jazyka JavaScript `File` nelze použít v modulu Node.js runtime. Následující kód:
 
 * Vytvoří Stream push pomocí. `createPushStream()`
 * Otevře `.wav` soubor vytvořením streamu pro čtení a zapíše ho do datového proudu push.
@@ -149,8 +94,6 @@ fromFile();
 
 Použití datového proudu push jako vstupu předpokládá, že zvuková data jsou nezpracované PCM, například přeskočení hlaviček.
 Rozhraní API bude v některých případech fungovat i v případě, že hlavička nebyla vynechána, ale pro dosažení nejlepších výsledků zvažte implementaci logiky, aby bylo možné číst hlavičky, takže `fs` začíná na *začátku zvukového data*.
-
----
 
 ## <a name="error-handling"></a>Zpracování chyb
 
@@ -190,7 +133,7 @@ Naopak se průběžné rozpoznávání používá, pokud chcete **určit** , kdy
 Začněte definováním vstupu a inicializací [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) :
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 Potom se přihlaste k odběru událostí odeslaných z [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) .

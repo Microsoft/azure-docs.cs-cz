@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727773"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177776"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Vytvoření triggeru, který spouští kanál v reakci na událost úložiště
 
@@ -26,7 +26,6 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > Integrace popsaná v tomto článku závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Musíte být schopni provést akci *Microsoft. EventGrid/eventSubscriptions/**. Tato akce je součástí předdefinované role EventGrid EventSubscription přispěvatele.
 
@@ -34,11 +33,11 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 V této části se dozvíte, jak vytvořit Trigger události úložiště v uživatelském rozhraní Azure Data Factory.
 
-1. Přejít na **plátno pro vytváření obsahu**
+1. Přepněte na kartu **Upravit** , která je zobrazená se symbolem tužky. 
 
-1. V levém dolním rohu klikněte na tlačítko **triggery** .
+1. V nabídce vyberte **aktivační událost** a pak vyberte **Nová/upravit**. 
 
-1. Klikněte na **+ Nový** . otevře se navigace vytvořit Trigger na straně.
+1. Na stránce **Přidat aktivační události** vyberte **zvolit aktivační událost...** a pak vyberte **+ Nová**. 
 
 1. Vyberte aktivační **událost typ události úložiště**
 
@@ -107,4 +106,5 @@ V této části najdete příklady nastavení triggeru události úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobné informace o aktivačních událostech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Podrobné informace o aktivačních událostech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Informace o tom, jak odkazovat na metadata triggeru v kanálu, najdete v tématu [metadata triggeru odkazů v běhu kanálu](how-to-use-trigger-parameterization.md) .

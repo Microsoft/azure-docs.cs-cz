@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810724"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179659"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
 
@@ -97,7 +97,7 @@ Při spuštění kódu postupujte takto:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už obor názvů a frontu nepotřebujete, odstraňte je. Uděláte to tak, že prostředky vyberete na portálu a kliknete na **Odstranit**.
+Pokud už je nepotřebujete, odstraňte obor názvů a téma. Uděláte to tak, že prostředky vyberete na portálu a kliknete na **Odstranit**.
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 

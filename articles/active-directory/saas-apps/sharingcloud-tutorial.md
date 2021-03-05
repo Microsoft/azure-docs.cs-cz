@@ -1,22 +1,22 @@
 ---
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s SharingCloud | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SharingCloud.
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a okamžitou sadou.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 09db59a00d1eec01356f2b24204cef1bd9086968
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7ae447a9577feba8b43b5b03a757ec4095ee2cb4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650562"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177891"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SharingCloud
 
@@ -26,11 +26,13 @@ V tomto kurzu se dozvíte, jak integrovat SharingCloud s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SharingCloud svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
+Pokud se chcete dozvědět víc o integraci aplikací SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * SharingCloud odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -44,19 +46,30 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci SharingCloud do služby Azure AD, musíte přidat SharingCloud z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+    
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
+    
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
+    
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **SharingCloud** .
+
+    ![SharingCloud v seznamu výsledků](common/search-new-app.png)
+    
 1. Na panelu výsledků vyberte **SharingCloud** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
-## <a name="configure-and-test-azure-ad-sso-for-sharingcloud"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SharingCloud
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sharingcloud"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SharingCloud
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SharingCloud pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SharingCloud.
 
-K nakonfigurování a testování jednotného přihlašování Azure AD pomocí SharingCloud postupujte takto:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SharingCloud, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
@@ -69,40 +82,47 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **SharingCloud** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SharingCloud** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+    
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
+
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu **Upravit** pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<CustomerName>.sharingcloud.net/adfs/<CustomerName>/saml/federation.xml`
+    Nahrajte soubor metadat se souborem XML, který poskytuje SharingCloud. Pokud chcete získat soubor, obraťte se na [tým podpory klienta SharingCloud](mailto:support@sharingcloud.com) .
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<CustomerName>.sharingcloud.net/social/complete/saml/`
+    ![image](common/upload-metadata.png)
+    
+    Vyberte poskytnutý soubor metadat a klikněte na **nahrát**.
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<CustomerName>.sharingcloud.net/accounts/login/`
-
-    > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SharingCloud](mailto:support@sharingcloud.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    ![image](common/browse-upload-metadata.png)
 
 1. SharingCloud aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/default-attributes.png)
+    ![image](common/edit_attribute.png)
 
-1. Kromě toho očekává aplikace SharingCloud několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
-    
-    | Název |  Zdrojový atribut|
-    | --------------- | --------- |
-    | urn: sharingcloud: SSO: email | uživatel. pošta |
+1. Kromě toho očekává aplikace SharingCloud několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
+
+    | Název | Zdrojový atribut|
+    | ---------------| --------- |
     | urn: sharingcloud: SSO: FirstName | User. křestní jméno |
     | urn: sharingcloud: SSO: LastName | User. příjmení |
+    | urn: sharingcloud: SSO: email | uživatel. pošta |
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na ikonu **Kopírovat** a zkopírujte **adresu URL federačních metadat** z daných možností dle vašeho požadavku.
 
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
+    ![Adresa URL metadat ke zkopírování](common/copy_metadataurl.png)
+
+## <a name="configure-sharingcloud-sso"></a>Konfigurace jednotného přihlašování SharingCloud
+
+Ke konfiguraci jednotného přihlašování na straně **SharingCloud** je potřeba odeslat zkopírovaná **Adresa URL federačních metadat** z Azure Portal do [týmu podpory SharingCloud](mailto:support@sharingcloud.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -123,36 +143,26 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **SharingCloud**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+   ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
-
-## <a name="configure-sharingcloud-sso"></a>Konfigurace jednotného přihlašování SharingCloud
-
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **SharingCloud** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory SharingCloud](mailto:support@sharingcloud.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-sharingcloud-test-user"></a>Vytvořit testovacího uživatele SharingCloud
 
-V této části se v SharingCloud vytvoří uživatel s názvem Britta Simon. SharingCloud podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v SharingCloud neexistuje, vytvoří se po ověření nový.
+V této části se v SharingCloud vytvoří uživatel s názvem Britta Simon. SharingCloud podporuje zřizování uživatelů jenom v čase, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v SharingCloud neexistuje, vytvoří se po ověření nový.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
-
-#### <a name="sp-initiated"></a>Zahájena SP:
-
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k SharingCloud, kde můžete spustit tok přihlášení.  
-
-* Přejít na adresu URL pro přihlášení k SharingCloud přímo a zahájit tok přihlášení.
-
-#### <a name="idp-initiated"></a>Iniciované IDP:
-
-* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k SharingCloud, pro které jste nastavili jednotné přihlašování. 
-
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SharingCloud v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k SharingCloud, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
-
+* Přejít na adresu URL SharingCloud přímo a zahájit tok přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
 Po nakonfigurování SharingCloud můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+

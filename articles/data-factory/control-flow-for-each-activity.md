@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385604"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177774"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,12 +68,12 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a ka
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity for-each. | Řetězec | Yes
-typ | Musí být nastaven na **foreach** | Řetězec | Yes
+name | Název aktivity for-each. | Řetězec | Ano
+typ | Musí být nastaven na **foreach** | Řetězec | Ano
 -Sekvenční | Určuje, zda má být smyčka provedena sekvenčně nebo paralelně.  Maximálně 20 iterací smyčky je možné spustit najednou paralelně. Například pokud máte aktivitu ForEach na iteraci s aktivitou kopírování s 10 různými datovými sadami zdroje a jímky s možností- **sekvenčním** nastavením na hodnotu false, všechny kopie se spustí najednou. Výchozí hodnota je false. <br/><br/> Pokud je "" "-sekvenční" nastaveno na hodnotu false, ujistěte se, že existuje správná konfigurace pro spouštění více spustitelných souborů. V opačném případě by tato vlastnost měla být použita s opatrností, aby nedocházelo ke konfliktům při zápisu. Další informace najdete v části [paralelní spuštění](#parallel-execution) . | Logická hodnota | No. Výchozí hodnota je false.
 batchCount | Počet dávek, který se má použít k řízení počtu paralelního spuštění (Pokud je vlastnost-sekvenční nastavená na hodnotu false). Toto je horní limit souběžnosti, ale pro-každou aktivitu se na tomto čísle nespustí vždy. | Celé číslo (maximum 50) | No. Výchozí hodnota je 20.
-Položky | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Yes
-Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Yes
+Položky | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Ano
+Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Ano
 
 ## <a name="parallel-execution"></a>Paralelní provádění
 Pokud je vlastnost- **sekvenční** nastavená na hodnotu false, aktivita se prochází paralelně s maximálně 20 souběžnými iteracemi. Toto nastavení by se mělo používat opatrně. Pokud souběžné iterace zapisují do stejné složky, ale do různých souborů, je tento přístup v pořádku. Pokud souběžné iterace zapisuje současně do stejného souboru, tento přístup pravděpodobně způsobí chybu. 
@@ -483,6 +483,7 @@ Tady jsou některá omezení aktivity ForEach a navrhovaná řešení.
 |---|---|
 | Nelze vnořit smyčku ForEach do jiné smyčky ForEach (nebo do smyčky do). | Navrhněte kanál se dvěma úrovněmi, kde vnější kanál s vnější smyčkou ForEach prochází přes vnitřní kanál s vnořenou smyčkou. |
 | Aktivita ForEach má maximálně `batchCount` 50 pro paralelní zpracování a maximálně 100 000 položek. | Navrhněte kanál se dvěma úrovněmi, kde vnější kanál s aktivitou ForEach prochází přes vnitřní kanál. |
+| SetVariable nelze použít v aktivitě ForEach, která běží paralelně, protože proměnné jsou globální pro celý kanál, nejsou vymezeny na ForEach nebo žádné jiné aktivity. | Zvažte použití sekvenčního příkazu ForEach nebo použití kanálu Execute uvnitř příkazu ForEach (proměnná/parametr zpracovávaný v podřízeném kanálu).|
 | | |
 
 ## <a name="next-steps"></a>Další kroky

@@ -262,8 +262,8 @@
           href: control-kubeconfig-access.md
         - name: Zabezpečení provozu podů s využitím zásad sítě
           href: use-network-policies.md
-        - name: Zabezpečené pody s využitím Azure Policy
-          href: use-pod-security-on-azure-policy.md
+        - name: Použití Azure Policy
+          href: use-azure-policy.md
         - name: Použití zásad zabezpečení podu (Preview)
           href: use-pod-security-policies.md
         - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API

@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429241"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178707"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Rychlý Start: nastavení ověření Azure pomocí Azure CLI
 
-Začínáme s [ověřováním Azure pomocí Azure CLI](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
+Začínáme s [ověřováním Azure pomocí Azure CLI](/cli/azure/ext/attestation/attestation).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,13 +69,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tady jsou příkazy, které můžete použít k vytvoření a správě poskytovatele ověření identity:
 
-1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity bez požadavku na podepsání zásad:
+1. Spuštěním příkazu [AZ Attestation Create Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) vytvořte poskytovatele ověření identity bez požadavku na podepsání zásad:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. Spuštěním příkazu [AZ atesting show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) načtěte vlastnosti poskytovatele ověření identity, jako je stav a AttestURI:
+1. Spuštěním příkazu [AZ atesting show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) načtěte vlastnosti poskytovatele ověření identity, jako je stav a AttestURI:
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Tady jsou příkazy, které můžete použít k vytvoření a správě poskytova
    TagsTable:
    ```
 
-Zprostředkovatele ověření identity můžete odstranit pomocí příkazu [AZ atesting Delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) :
+Zprostředkovatele ověření identity můžete odstranit pomocí příkazu [AZ atesting Delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) :
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 Pomocí příkazů popsaných tady můžete poskytovat správu zásad pro poskytovatele ověření identity – jeden typ ověření identity najednou.
 
-Příkaz [AZ Attestation Policy show show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) vrátí aktuální zásadu pro zadaný Tee:
+Příkaz [AZ Attestation Policy show show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) vrátí aktuální zásadu pro zadaný Tee:
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ Podporovány jsou následující typy TEE:
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-Pomocí příkazu [AZ attestationing Policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) nastavte novou zásadu pro zadaný typ ověření identity.
+Pomocí příkazu [AZ attestationing Policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) nastavte novou zásadu pro zadaný typ ověření identity.
 
 Nastavení zásad v textovém formátu pro daný druh typu ověřování pomocí cesty k souboru:
 

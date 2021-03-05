@@ -4,12 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252636"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180016"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -41,7 +41,7 @@ K ověřování ve službě Azure AD použijete tento koncový bod společně s 
 >
 > Koncový bod specifický pro klienta je při ověřování pomocí integrovaného ověřování volitelný, ale doporučuje se. Můžete ale použít i společný koncový bod Azure AD. Společný koncový bod poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když není k dispozici konkrétní tenant. Běžný koncový bod je `https://login.microsoftonline.com/common` .
 
-Další informace o koncových bodech Azure AD najdete v tématu [ověřování vs. Authorization]()... /active-directory/develop/authentication-vs-authorization.md).
+Další informace o koncových bodech Azure AD najdete v tématu [ověřování vs. Authorization](../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Koncový bod prostředku Batch
 

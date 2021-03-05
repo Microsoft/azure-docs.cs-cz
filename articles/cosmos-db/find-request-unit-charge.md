@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 9d0694a76bca832887d30601711894b953fe22e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3e61ca2cee6dd5a2c279b4297e84668729f4ccb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178741"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Vyhledá poplatky za jednotky žádosti pro operace spouštěné v Azure Cosmos DB SQL API.
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB podporuje mnoho rozhraní API, například SQL, MongoDB, Cassandra, Gremlin a Table. Každé rozhraní API má svou vlastní sadu databázových operací. Tyto operace jsou v rozsahu od jednoduchých čtení a zápisů do složitých dotazů. Každá databázová operace spotřebovává systémové prostředky na základě složitosti operace.
 
-Azure Cosmos DB normalizuje náklady na všechny databázové operace a vyjadřuje je v jednotkách žádostí (zkráceně RU). Ru si můžete představit jako měnu výkonu pro abstrakci systémových prostředků, jako jsou například CPU, IOPS a paměť, které jsou potřeba k provádění databázových operací, které Azure Cosmos DB podporuje. Bez ohledu na to, jaké rozhraní API používáte k interakci s kontejnerem Azure Cosmos, se náklady vždy měří v jednotkách RU. Bez ohledu na to, jestli je databázová operace zápis, čtení z bodu nebo dotazování, se náklady vždycky měří v ru. Další informace najdete v článku [o jednotkách žádosti a o jejich požadavcích](request-units.md) .
+Azure Cosmos DB normalizuje náklady na všechny databázové operace a vyjadřuje je v jednotkách žádostí (zkráceně RU). Ru si můžete představit jako měnu výkonu pro abstrakci systémových prostředků, jako jsou například CPU, IOPS a paměť, které jsou potřeba k provádění databázových operací, které Azure Cosmos DB podporuje. Bez ohledu na to, jaké rozhraní API používáte k interakci s kontejnerem Azure Cosmos, se náklady vždy měří v jednotkách RU. Bez ohledu na to, jestli je databázová operace zápis, čtení z bodu nebo dotazování, se náklady vždycky měří v ru. Další informace najdete v tématu [jednotky žádostí a jejich informace](request-units.md) .
 
 Tento článek popisuje různé způsoby, jak můžete najít spotřebu [jednotky žádosti](request-units.md) (ru) pro všechny operace provedené proti kontejneru v Azure Cosmos DB SQL API. Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro MongoDB](find-request-unit-charge-mongodb.md), [rozhraní API Cassandra](find-request-unit-charge-cassandra.md), [rozhraní Gremlin API](find-request-unit-charge-gremlin.md)a [rozhraní API pro tabulky](find-request-unit-charge-table.md) články, které vám pomohou najít poplatek za ru/s.
 
@@ -34,9 +34,9 @@ V současné době můžete tuto spotřebu změřit pouze pomocí Azure Portal n
 
 1. Otevřete podokno **Průzkumník dat** a pak vyberte kontejner, na kterém chcete pracovat.
 
-1. Vyberte **Nový dotaz SQL** .
+1. Vyberte **Nový dotaz SQL**.
 
-1. Zadejte platný dotaz a pak vyberte **Spustit dotaz** .
+1. Zadejte platný dotaz a pak vyberte **Spustit dotaz**.
 
 1. Vyberte možnost **statistiky dotazů** a zobrazte si skutečný poplatek za požadavek na vámi prováděnou žádost.
 

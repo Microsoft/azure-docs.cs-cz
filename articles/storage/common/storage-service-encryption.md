@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484596"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180356"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
-Azure Storage automaticky šifruje vaše data, když se trvale uloží do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
+Azure Storage používá šifrování na straně serveru (SSE) k automatickému šifrování vašich dat při trvalém ukládání do cloudu. Azure Storage šifrování chrání vaše data a umožňuje vám plnit závazky zabezpečení vaší organizace a dodržování předpisů.
 
 ## <a name="about-azure-storage-encryption"></a>O šifrování Azure Storage
 
@@ -32,7 +32,7 @@ Všechny objekty blob bloku, doplňovací objekty blob nebo objekty blob stránk
 
 Další informace o kryptografických modulech podkladových Azure Storage šifrování najdete v tématu [kryptografické rozhraní API: další generace](/windows/desktop/seccng/cng-portal).
 
-Informace o šifrování a správě klíčů pro Azure Managed disks najdete v tématu [šifrování Azure Managed](../../virtual-machines/disk-encryption.md) disks na straně serveru pro virtuální počítače s Windows nebo pro [šifrování na straně serveru Azure Managed disks](../../virtual-machines/disk-encryption.md) pro virtuální počítače se systémem Linux.
+Informace o šifrování a správě klíčů pro Azure Managed disks najdete v tématu [šifrování na straně serveru služby Azure Managed disks](../../virtual-machines/disk-encryption.md).
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
@@ -48,8 +48,8 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 | Operace šifrování a dešifrování | Azure | Azure | Azure |
 | Podporované služby Azure Storage Services | Vše | BLOB Storage, soubory Azure<sup>1, 2</sup> | Blob Storage |
 | Úložiště klíčů | Úložiště klíčů Microsoftu | Azure Key Vault nebo Key Vault HSM | Vlastní úložiště klíčů zákazníka |
-| Zodpovědnost za střídání klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
-| Řízení klíčů | Partnerský vztah Microsoftu | Zákazník | Zákazník |
+| Zodpovědnost za střídání klíčů | Microsoft | Zákazník | Zákazník |
+| Řízení klíčů | Microsoft | Zákazník | Zákazník |
 
 <sup>1</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s úložištěm Queue, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro fronty](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> informace o vytvoření účtu, který podporuje použití klíčů spravovaných zákazníkem s tabulkovým úložištěm, najdete v tématu [Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).

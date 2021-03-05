@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791439"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180237"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Osvědčené postupy pro Synchronizaci dat SQL Azure 
 
@@ -41,16 +41,20 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Účty databáze s minimálními požadovanými oprávněními
 
--   **Pro nastavení synchronizace** . Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvoří User-Defined typ.
+-   **Pro nastavení synchronizace**. Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvoří User-Defined typ.
 
--   **Pro průběžnou synchronizaci** . Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
+-   **Pro průběžnou synchronizaci**. Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
 
--   **Pro zrušení zřízení** . Upravit v tabulkách, které jsou součástí synchronizace; Vybrat/odstranit při synchronizaci tabulek metadat; Řízení pro tabulky sledování synchronizace, uložené procedury a uživatelsky definované typy.
+-   **Pro zrušení zřízení**. Upravit v tabulkách, které jsou součástí synchronizace; Vybrat/odstranit při synchronizaci tabulek metadat; Řízení pro tabulky sledování synchronizace, uložené procedury a uživatelsky definované typy.
 
 Azure SQL Database podporuje pouze jednu sadu přihlašovacích údajů. K provedení těchto úloh v rámci tohoto omezení Vezměte v úvahu následující možnosti:
 
 -   Změňte přihlašovací údaje pro různé fáze (například *credentials1* pro nastavení a *credentials2* pro průběžné).  
 -   Změňte oprávnění přihlašovacích údajů (to znamená změnit oprávnění po nastavení synchronizace).
+
+### <a name="auditing"></a>Auditování
+
+Doporučuje se povolit auditování na úrovni databází ve skupinách synchronizace. 
 
 ## <a name="setup"></a>Nastavení
 
@@ -168,7 +172,7 @@ Pravidelně monitorujte skupinu synchronizace a stav databáze prostřednictvím
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Vyhněte se neaktuálním databázím a skupinám synchronizace
 
-Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace **neaktuální** , přestane fungovat. Je-li stav databáze **zastaralá** , může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
+Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace **neaktuální**, přestane fungovat. Je-li stav databáze **zastaralá**, může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
 
 #### <a name="avoid-out-of-date-databases"></a>Vyhněte se zastaralým databázím
 
@@ -195,7 +199,7 @@ Chcete-li zabránit neaktuálním skupinám synchronizace:
 
 V některých případech může zrušení registrace databáze u agenta klienta způsobit selhání synchronizace.
 
-#### <a name="scenario"></a>Scénář
+#### <a name="scenario"></a>Scenario
 
 1. Skupina synchronizace A byla vytvořena pomocí instance SQL Database a databáze SQL Server, která je přidružena k místnímu agentovi 1.
 2. Stejná místní databáze je zaregistrovaná u místního agenta 2 (Tento agent není přidružený k žádné skupině synchronizace).

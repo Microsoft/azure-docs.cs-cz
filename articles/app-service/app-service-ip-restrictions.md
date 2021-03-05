@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1bcd0ea253db01d626ef1887ef0983d30ca794b9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 93fd682f252ac3f85c642633484a9c4eb6c2fb4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209944"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180849"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Nastavení omezení přístupu Azure App Service
 
@@ -166,14 +166,14 @@ Přenos z front Azure do vaší aplikace pochází z dobře známé sady rozsah�
 
 Omezení přístupu můžete přidat programově pomocí některého z následujících postupů: 
 
-* Použijte [rozhraní příkazového řádku Azure](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest&preserve-view=true). Příklad:
+* Použijte [rozhraní příkazového řádku Azure](/cli/azure/webapp/config/access-restriction). Například:
    
   ```azurecli-interactive
   az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
-* Použijte [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-5.2.0&preserve-view=true). Příklad:
+* Použijte [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-5.2.0&preserve-view=true). Například:
 
 
   ```azurepowershell-interactive

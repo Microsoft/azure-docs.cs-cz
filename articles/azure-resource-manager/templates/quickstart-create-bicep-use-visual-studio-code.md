@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: b959d471d290a58611787cf1916343c26abe8e69
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ab1d7b88321ce5959b99423ae2ca1332369ef691
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703557"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178957"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Rychlý Start: vytvoření souborů bicep pomocí Visual Studio Code
 
 Rozšíření bicep pro Visual Studio Code poskytuje jazykovou podporu a automatického dokončování prostředků. Tyto nástroje vám pomůžou vytvořit a ověřit soubory [bicep](./bicep-overview.md) . V tomto rychlém startu použijete rozšíření k vytvoření souboru bicep od začátku. V takovém případě se můžete setkat s funkcemi rozšíření, jako je ověřování a dokončování.
 
-K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [příponou bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) . Budete také potřebovat nejnovější rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest&preserve-view=true) nebo nejnovější nainstalovaný a ověřený [modul Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-3.7.0&preserve-view=true) .
+K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [příponou bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) . Budete také potřebovat nejnovější rozhraní příkazového [řádku Azure CLI](/cli/azure/) nebo nejnovější nainstalovaný a ověřený [modul Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-3.7.0&preserve-view=true) .
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 

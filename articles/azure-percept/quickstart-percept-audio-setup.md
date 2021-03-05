@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 588ebde85b6012ddbfb88ca8305fc735b7a0ba41
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097988"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179268"
 ---
 # <a name="azure-percept-audio-setup"></a>Nastavení služby Azure Percept audio
 
@@ -42,4 +42,4 @@ Azure Percept audio funguje se službou Azure Percept DK mimo box. Nevyžaduje s
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořte [řešení pro rozpoznávání řeči bez kódu](./tutorial-no-code-speech.md).
+Vytvořte v [Azure Percept studiu](https://go.microsoft.com/fwlink/?linkid=2135819) [řešení pro rozpoznávání řeči bez kódu](./tutorial-no-code-speech.md) .

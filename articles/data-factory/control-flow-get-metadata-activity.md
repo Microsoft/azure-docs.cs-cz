@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049980"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178537"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 
@@ -83,8 +83,14 @@ Můžete zadat následující typy metadat v seznamu pole získat aktivitu metad
 | Sloupců | Počet sloupců v souboru nebo relační tabulce |
 | neexistuje| Zda existuje soubor, složka nebo tabulka. Pokud `exists` je zadaný v seznamu pole získat metadata, aktivita se nezdařila ani v případě, že soubor, složka nebo tabulka neexistují. Místo toho `exists: false` se vrátí ve výstupu. |
 
->[!TIP]
->Pokud chcete ověřit, zda existuje soubor, složka nebo tabulka, zadejte `exists` v seznamu pole aktivity získat metadata. Pak můžete `exists: true/false` výsledek ověřit ve výstupu aktivity. Pokud `exists` není zadaný v seznamu polí, aktivita získat metadata se nezdaří, pokud se objekt nenajde.
+> [!TIP]
+> Pokud chcete ověřit, zda existuje soubor, složka nebo tabulka, zadejte `exists` v seznamu pole aktivity získat metadata. Pak můžete `exists: true/false` výsledek ověřit ve výstupu aktivity. Pokud `exists` není zadaný v seznamu polí, aktivita získat metadata se nezdaří, pokud se objekt nenajde.
+
+> [!NOTE]
+> Když získáte metadata z úložišť souborů a nakonfigurujete je `modifiedDatetimeStart` nebo `modifiedDatetimeEnd` , `childItems` obsahuje ve výstupu pouze soubory v zadané cestě, jejichž čas poslední změny se nachází v zadaném rozsahu. Položky v podsložkách nejsou zahrnuty.
+
+> [!NOTE]
+> Aby seznam polí **struktury** poskytoval skutečnou datovou strukturu pro datové sady s oddělovači textu a Excelu, musíte povolit `First Row as Header` vlastnost, která je podporovaná jenom pro tyto zdroje dat.
 
 ## <a name="syntax"></a>Syntax
 

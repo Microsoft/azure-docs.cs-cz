@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3b09253d779679e5a0c4ccd11b4cbd98ee386adc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098192"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179285"
 ---
 # <a name="introduction-to-azure-percept"></a>Seznámení s Azure Percept
 
@@ -38,7 +38,7 @@ Hlavní součásti Azure Percept jsou:
 
 3. Služby a pracovní postupy pro zrychlení modelu AI Edge a vývoje řešení.
 
-    - Vývojové pracovní postupy a předem připravené modely přístupné z Azure Percept studia.
+    - Vývojové pracovní postupy a předem připravené modely přístupné z [Azure Percept studia](https://go.microsoft.com/fwlink/?linkid=2135819).
     - Vývojové služby modelu.
     - Služby správy zařízení pro škálování.
     - Komplexní zabezpečení.

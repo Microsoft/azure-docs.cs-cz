@@ -4,21 +4,26 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371222"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180305"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
 > [!WARNING]
-> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 30. června, 2021** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 30. června, 2021** ve prospěch [Azure Policy pro AKS](use-azure-policy.md). Datum vyřazení bylo prodlouženo od předchozího dne 15. října 2020.
 >
 > Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
 >
-> Důrazně doporučujeme začít s testováním scénářů pomocí Azure Policy pro AKS, což nabízí integrované zásady pro zabezpečení lusků a integrovaných iniciativ, které se mapují na zásady zabezpečení pod. Kliknutím sem se dozvíte víc o [migraci na Azure Policy ze zásady zabezpečení (Preview)](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
+> Důrazně doporučujeme začít s testováním scénářů pomocí Azure Policy pro AKS, což nabízí integrované zásady pro zabezpečení lusků a integrovaných iniciativ, které se mapují na zásady zabezpečení pod. Chcete-li provést migraci ze zásad zabezpečení pod, je třeba provést následující akce v clusteru.
+> 
+> 1. [Zakázat zásadu zabezpečení pod](#clean-up-resources) v clusteru
+> 1. Povolení [doplňku Azure Policy][kubernetes-policy-reference]
+> 1. Povolit požadované zásady Azure z [dostupných integrovaných zásad][policy-samples]
+> 1. Kontrola [změn chování mezi zásadami zabezpečení a Azure Policy](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
 Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části je možné naplánovat. Lusky, které vyžadují prostředky, které nepovolíte, nejde spustit v clusteru AKS. Tento přístup definujete pomocí zásad zabezpečení pod. V tomto článku se dozvíte, jak používat zásady zabezpečení pod k omezení nasazení lusků v AKS.
 
@@ -77,6 +82,26 @@ Když v clusteru AKS zapnete zásadu zabezpečení pod, uplatní se některé v�
 * Povolení funkce zásady zabezpečení pod
 
 Pokud chcete zobrazit, jak výchozí zásady omezují podle nasazení, v tomto článku nejdřív povolíte funkci zásady zabezpečení pod a pak vytvoříte vlastní zásadu.
+
+### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>Změny chování mezi zásadami zabezpečení a Azure Policy
+
+Níže je souhrn změn chování mezi zásadami zabezpečení a Azure Policy.
+
+|Scenario| Zásady zabezpečení pod | Azure Policy |
+|---|---|---|
+|Instalace|Funkce zásady zabezpečení Povolit pod |Povolit Azure Policy doplněk
+|Nasadit zásady| Prostředek nasazení pod zásadou zabezpečení| Přiřaďte zásady Azure k oboru skupiny prostředků nebo předplatnému. Pro aplikace prostředků Kubernetes je vyžadován doplněk Azure Policy.
+| Výchozí zásady | Když je v AKS povolené zásady zabezpečení, aplikují se výchozí privilegované a neomezená zásada. | Povolením doplňku Azure Policy nepoužijete žádné výchozí zásady. Zásady musíte explicitně povolit v Azure Policy.
+| Kdo může vytvářet a přiřazovat zásady | Správce clusteru vytvoří prostředek zásad zabezpečení pod. | Uživatelé musí mít ve skupině prostředků clusteru AKS minimální roli oprávnění "vlastník" nebo "Přispěvatel zásad prostředků". -Prostřednictvím rozhraní API můžou uživatelé přiřazovat zásady v oboru prostředků clusteru AKS. Uživatel by měl mít minimálně oprávnění "vlastník" nebo "Přispěvatel zásad prostředků" na prostředku clusteru AKS. -V Azure Portal lze zásady přiřadit na úrovni skupiny pro správu nebo předplatného nebo skupiny prostředků.
+| Autorizace zásad| Uživatelé a účty služeb vyžadují explicitní oprávnění k používání zásad zabezpečení pod. | K autorizaci zásad není nutné žádné další přiřazení. Až se zásady přiřadí v Azure, můžou tyto zásady používat všichni uživatelé clusteru.
+| Použitelnost zásad | Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. | Všichni uživatelé (Správci & nepoužívají správce) uvidí stejné zásady. Na základě uživatelů neexistují žádná speciální velká písmena. Aplikaci zásad lze vyloučit na úrovni oboru názvů.
+| Rozsah zásad | Zásady zabezpečení pod oborem názvů nejsou. | Šablony omezení používané Azure Policy nejsou obor názvů.
+| Akce odepřít/audit/mutace | Zásady zabezpečení pod podporují jenom akce Deny. Mutace se dají udělat s výchozími hodnotami pro žádosti o vytvoření. Ověřování lze provést během požadavků na aktualizaci.| Azure Policy podporuje akce zakázat &. Mutace se ještě nepodporují, ale byly plánované.
+| Dodržování předpisů zásad zabezpečení pod | Neexistují žádné informace o dodržování předpisů lusky, které existovaly před povolením zásad zabezpečení. Neodpovídající lusky vytvořené po povolení zásad zabezpečení v případě odepření. | Neodpovídající lusky, které existovaly před použitím zásad Azure, se budou zobrazovat v porušení zásad. Neodpovídající lusky vytvořené po povolení zásad Azure se odepře, pokud jsou zásady nastavené s použitím efektu odepření.
+| Postup zobrazení zásad v clusteru | `kubectl get psp` | `kubectl get constrainttemplate` – Vrátí se všechny zásady.
+| Pod standardem zásady zabezpečení – privilegované | Při povolení této funkce se ve výchozím nastavení vytvoří prostředek zásad zabezpečení s oprávněním pod. | Privilegovaný režim nezahrnuje žádné omezení. Výsledkem je, že nemusíte mít žádné Azure Policy přiřazení.
+| [Standard zásad zabezpečení/Standardní – Standardní hodnota](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | Uživatel nainstaluje základní zdroj zásad zabezpečení. | Azure Policy poskytuje [integrovanou iniciativu podle směrného plánu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) , která se mapuje na základní zásady zabezpečení podle směrného plánu.
+| [V případě zásad zabezpečení s omezením úrovně Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | Uživatel nainstaluje prostředek pod omezením zásad zabezpečení. | Azure Policy poskytuje [integrovaný s omezenou iniciativou](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) , která se mapuje na zásadu zabezpečení s omezením pod.
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Povolit zásadu zabezpečení pod v clusteru AKS
 
@@ -453,3 +478,4 @@ Další informace o omezování síťového provozu najdete v tématu [zabezpeč
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035236"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179557"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 
@@ -158,7 +158,7 @@ Pomocí klávesové zkratky `Ctrl-C` v terminálu zastavte kód aplikace.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login

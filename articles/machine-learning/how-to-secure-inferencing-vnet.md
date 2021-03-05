@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981302"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178656"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -34,7 +34,6 @@ V tomto článku se dozvíte, jak zabezpečit následující Inferencing prostř
 > - Privátní cluster AKS
 > - Cluster AKS s privátním odkazem
 > - Azure Container Instances (ACI)
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +57,6 @@ Pokud chcete použít cluster AKS ve virtuální síti, musí být splněné ná
 > [!div class="checklist"]
 > * Postupujte podle požadavků v části [Konfigurace pokročilé sítě ve službě Azure Kubernetes Service (AKS)](../aks/configure-azure-cni.md#prerequisites).
 > * Instance AKS a virtuální síť musí být ve stejné oblasti. Pokud Zabezpečete Azure Storage účty používané pracovním prostorem ve virtuální síti, musí být ve stejné virtuální síti jako instance AKS.
-
 
 Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, použijte následující postup:
 
@@ -274,7 +272,7 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek je třetí částí v řadě virtuálních sítí se čtyřmi částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
+Tento článek je čtvrtou částí řady virtuálních sítí s pěti částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
 
 * [Část 1: Přehled virtuální sítě](how-to-network-security-overview.md)
 * [Část 2: zabezpečení prostředků pracovního prostoru](how-to-secure-workspace-vnet.md)

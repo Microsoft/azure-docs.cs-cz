@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178112"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Pomocí těchto osvědčených postupů můžete maximalizovat výkon a nákladově efektivní využití vaší instance Azure cache pro Redis.
@@ -51,7 +51,7 @@ Existuje několik věcí, které souvisí s využitím paměti v rámci instance
 ## <a name="client-library-specific-guidance"></a>Doprovodné materiály ke klientské knihovně
  * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Jak mám použít klienta Java?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -61,7 +61,7 @@ Existuje několik věcí, které souvisí s využitím paměti v rámci instance
 ## <a name="when-is-it-safe-to-retry"></a>Kdy je bezpečné to zkusit znovu?
 Bohužel neexistuje žádná jednoduchá odpověď.  Každá aplikace musí rozhodnout, jaké operace se můžou opakovat a které nemůžou.  Každá operace má jiné požadavky a závislosti mezi klíči.  Tady je několik věcí, které byste mohli zvážit:
 
- * Můžete získat chyby na straně klienta, i když Redis úspěšně spustil příkaz, který jste si vyžádali ke spuštění.  Příklad:
+ * Můžete získat chyby na straně klienta, i když Redis úspěšně spustil příkaz, který jste si vyžádali ke spuštění.  Například:
     - Časové limity jsou koncept na straně klienta.  Pokud operace dosáhla serveru, Server spustí příkaz i v případě, že klient čeká na vyčekání.  
     - Pokud dojde k chybě v připojení soketu, není možné zjistit, zda na serveru skutečně běžela operace.  Například Chyba připojení může nastat poté, co server zpracoval požadavek, ale předtím, než klient obdrží odpověď.
  * Jak aplikace reaguje, když omylem spustím stejnou operaci dvakrát?  Například, co když přeroste celé číslo dvakrát místo jedenkrát?  Zapisuje moje aplikace do stejného klíče z více míst?  Co když logika opakování přepíše hodnotu nastavenou některou jinou část mé aplikace?
@@ -73,6 +73,8 @@ Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažt
  * Virtuální počítač klienta, který se používá pro testování, by měl být **ve stejné oblasti** jako instance služby Redis Cache.
  * Pro vašeho klienta **doporučujeme používat pro Dv2 řadu virtuálních počítačů** , protože mají lepší hardware a poskytnou nejlepší výsledky.
  * Ujistěte se, že virtuální počítač klienta, který používáte, má při testování mezipaměti *aspoň tolik výpočetních a šířek pásma* . 
+ * **Otestujte podmínky převzetí služeb při selhání** v mezipaměti. Je důležité zajistit, aby se vaše mezipaměť netestoval jenom za ustálených stavových podmínek. Otestujte také v části podmínky převzetí služeb při selhání a změřte zatížení procesoru/serveru v mezipaměti během této doby. Převzetí služeb při selhání můžete iniciovat [restartováním primárního uzlu](cache-administration.md#reboot). To vám umožní zjistit, jak se vaše aplikace chová v podmínkách propustnosti a latence během podmínek převzetí služeb při selhání (probíhá během aktualizací a může nastat během neplánované události). V ideálním případě je třeba don't't zatížení procesoru nebo serveru na více než řekněme 80% i během převzetí služeb při selhání, protože může ovlivnit výkon.
+ * **Premium P2 a vyšší** jsou hostovány na virtuálních počítačích se 4 nebo více jádry. To je užitečné k distribuci úlohy šifrování/dešifrování TLS napříč více jádry, aby se celkové využití CPU využívalo.  [Podrobnosti o velikostech a jádrech virtuálních počítačů najdete tady.](cache-planning-faq.md#azure-cache-for-redis-performance)
  * Pokud pracujete v systému Windows, **Povolte VRSS** na klientském počítači.  [Podrobnosti najdete tady](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Ukázkový skript PowerShell:
      >PowerShell – ExecutionPolicy bez omezení Enable-NetAdapterRSS – název (Get-NetAdapter). Jméno 
 

@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072220"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180493"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -33,7 +33,7 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 + Využijte osvědčené postupy pro datové vědy
 + Zajištění agilních problémů – řešení potíží
 
-### <a name="classification"></a>Classification
+### <a name="classification"></a>Klasifikace
 
 Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-configure-auto-features.md#featurization) 
 
@@ -116,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Description |
+|&nbsp; & &nbsp; Zpracování škálování| Popis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -172,7 +172,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. 
 
-| Příznak                                                    | Vzdálené | Místní | 
+| Funkce                                                    | Vzdálené | Místní | 
 |------------------------------------------------------------|--------|-------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | 
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       |
@@ -275,7 +275,7 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
  + V **případě nedostatku nebo prostředí bez kódu** si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Příklad: 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
 
 + Konfigurovat nastavení pro automatické experimenty školení
     + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 

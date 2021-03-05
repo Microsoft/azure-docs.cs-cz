@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050388"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177915"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -67,6 +67,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 [Azure Backup](../../backup/index.yml):
 
 - Zálohujte a obnovujte zákaznická data [z místních úloh, virtuálních počítačů Azure, sdílených složek Azure a dalších](../..//backup/backup-overview.md#what-can-i-back-up)
+- Zobrazit data pro všechny prostředky delegovaných zákazníků v [centru záloh](../../backup/backup-center-overview.md)
 - Pomocí [Průzkumníka zálohování](../../backup/monitor-azure-backup-with-backup-explorer.md) si můžete zobrazit provozní informace o zálohovaných položkách (včetně prostředků Azure, které ještě nejsou nakonfigurované pro zálohování), a informace o monitorování (úlohy a výstrahy) pro delegované předplatné. Průzkumník zálohování je momentálně dostupný jenom pro data virtuálních počítačů Azure.
 - [Sestavy zálohování](../../backup/configure-reports.md) v rámci delegovaných předplatných vám umožní sledovat historické trendy, analyzovat spotřebu úložiště záloh a auditovat a obnovovat zálohy.
 

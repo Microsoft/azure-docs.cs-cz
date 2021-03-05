@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098328"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179370"
 ---
 # <a name="azure-percept-dk-overview"></a>Přehled Azure Percept DK
 
@@ -24,7 +24,7 @@ Azure Percept DK je špičková sada souborů AI a IoT Development Kit navržen�
 
 - **Možnost spouštět AI na hraničních** zařízeních. Integrovaná hardwarová akcelerace může spouštět modely aplikace Vision AI bez připojení ke cloudu.
 - **Kořenový adresář hardwaru integrovaného zabezpečení důvěryhodnosti**. Další podrobnosti najdete v tomto přehledu o [zabezpečení Azure Percept](./overview-percept-security.md) .
-- **Bezproblémová integrace se službou [Azure Percept Studio](./overview-azure-percept-studio.md)** a dalšími službami Azure. Například Azure IoT Hub, Azure Cognitive Services a [Live video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Bezproblémová integrace se službou [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** a dalšími službami Azure. Například Azure IoT Hub, Azure Cognitive Services a [Live video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
 - **Bezproblémová integrace s volitelným [zvukem Azure Percept](./overview-azure-percept-audio.md)**
 - **Podpora hlavních platforem AI**. Například ONNX a TensorFlow.
 - **Integrace se systémem 80/20 kolejnice**. Vytváření prototypů v produkčních prostředích usnadňuje. Přečtěte si další informace o [integraci 80/20](./overview-8020-integration.md).

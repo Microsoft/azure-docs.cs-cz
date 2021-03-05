@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557567"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179336"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšíření Azure IoT Central o vlastní pravidla s využitím služeb Stream Analytics, Azure Functions a SendGrid
 
@@ -119,26 +119,28 @@ IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali t
 
 Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky: 
 
-```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Snímek obrazovky s oborem názvů Event Hubs" border="false":::
 
-## Define the function
 
-This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
+## <a name="define-the-function"></a>Definovat funkci
 
-1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
-1. Select **+** to create a new function.
-1. Select **HTTP Trigger**.
-1. Select **Add**.
+Toto řešení používá aplikaci Azure Functions k odeslání e-mailového oznámení, když úloha Stream Analytics detekuje zastavené zařízení. Vytvoření aplikace Function App:
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
+1. V Azure Portal přejděte na instanci **App Service** ve skupině prostředků **DetectStoppedDevices** .
+1. Tuto možnost vyberte **+** , pokud chcete vytvořit novou funkci.
+1. Vyberte **Trigger http**.
+1. Vyberte **Přidat**.
 
-## Edit code for HTTP Trigger
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Obrázek výchozí funkce triggeru HTTP"::: 
 
-The portal creates a default function called **HttpTrigger1**:
+## <a name="edit-code-for-http-trigger"></a>Upravit kód pro Trigger HTTP
 
-```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+Portál vytvoří výchozí funkci nazvanou **HttpTrigger1**:
 
-1. Replace the C# code with the following code:
+:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Snímek obrazovky s funkcí upravit aktivační proceduru protokolu HTTP":::
+
+
+1. Kód jazyka C# nahraďte následujícím kódem:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +179,50 @@ The portal creates a default function called **HttpTrigger1**:
     }
     ```
 
-    You may see an error message until you save the new code.
-1. Select **Save** to save the function.
+    Může se zobrazit chybová zpráva, dokud neuložíte nový kód.
+1. Vyberte **Uložit** a funkci uložte.
 
-## Add SendGrid Key
+## <a name="add-sendgrid-key"></a>Přidat klíč SendGrid
 
-To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
+Pokud chcete přidat klíč rozhraní API SendGrid, musíte ho přidat k **klíčům funkcí** následujícím způsobem:
 
-1. Select **Function Keys**.
-1. Choose **+ New Function Key**.
-1. Enter the *Name* and *Value* of the API Key you created before.
-1. Click **OK.**
+1. Vyberte **klíče funkce**.
+1. Vyberte **+ nový klíč funkce**.
+1. Zadejte *název* a *hodnotu* klíče rozhraní API, který jste vytvořili dříve.
+1. Klikněte na tlačítko **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Snímek obrazovky s přidáním klíče Sangrid":::
 
 
-## Configure HttpTrigger function to use SendGrid
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>Konfigurace funkce HttpTrigger pro použití SendGrid
 
-To send emails with SendGrid, you need to configure the bindings for your function as follows:
+Pro posílání e-mailů pomocí SendGrid je nutné nakonfigurovat vazby pro funkci následujícím způsobem:
 
-1. Select **Integrate**.
-1. Choose **Add Output** under **HTTP ($return)**.
-1. Select **Delete.**
-1. Choose **+ New Output**.
-1. For Binding Type, then choose **SendGrid**.
-1. For SendGrid API Key Setting Type, click New.
-1. Enter the *Name* and *Value* of your SendGrid API key.
-1. Add the following information:
+1. Vyberte **Integrace**.
+1. V části **http ($Return)** vyberte **Přidat výstup** .
+1. Vyberte **Odstranit.**
+1. Vyberte **+ Nový výstup**.
+1. Pro typ vazby zvolte **SendGrid**.
+1. Pro typ nastavení klíč rozhraní SendGrid API klikněte na nový.
+1. Zadejte *název* a *hodnotu* klíče rozhraní API SendGrid.
+1. Přidejte následující informace:
 
-| Setting | Value |
+| Nastavení | Hodnota |
 | ------- | ----- |
-| Message parameter name | Choose your name |
-| To address | Choose the name of your To Address |
-| From address | Choose the name of your From Address |
-| Message subject | Enter your subject header |
-| Message text | Enter the message from your integration |
+| Název parametru zprávy | Zvolit jméno |
+| Na adresu | Vyberte název, který chcete adresovat. |
+| Z adresy | Vyberte jméno z adresy. |
+| Předmět zprávy | Zadejte hlavičku předmětu |
+| Text zprávy | Zadejte zprávu z integrace |
 
-1. Select **OK**.
+1. Vyberte **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Snímek obrazovky s přidáním výstupu SandGrid":::
 
 
-### Test the function works
+### <a name="test-the-function-works"></a>Testování funkce
 
-To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
+Chcete-li otestovat funkci na portálu, nejprve v dolní části editoru kódu vyberte možnost **protokoly** . Pak zvolte **test** napravo od editoru kódu. Jako **Text žádosti** použijte následující JSON:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +230,9 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 
 Zprávy protokolu funkcí se zobrazí na panelu **protokoly** :
 
-```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Výstup protokolu funkcí":::
 
-After a few minutes, the **To** email address receives an email with the following content:
+Po několika minutách **obdrží e-mailová** adresa e-mail s následujícím obsahem:
 
 ```txt
 The following device(s) have stopped sending telemetry:

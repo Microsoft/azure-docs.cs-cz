@@ -6,23 +6,24 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a655c8c145b4f3812dae9f1a4ec1e5eebbe44809
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348470"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180934"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů pomocí Azure CLI
 
 V tomto článku se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit a nakonfigurovat prostředky virtuální sítě a cluster AKS a pak povolit virtuální uzly.
 
-> [!NOTE]
-> [Tento článek](virtual-nodes.md) vám poskytne přehled o dostupnosti a omezeních oblasti pomocí virtuálních uzlů.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v Azure Container Instances (ACI) a clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí (Azure CNI). Ve výchozím nastavení se clustery AKS vytvářejí se *základními* sítěmi (kubenet). V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
+
+> [!IMPORTANT]
+> Před použitím virtuálních uzlů s AKS zkontrolujte [omezení virtuálních uzlů AKS][virtual-nodes-aks] a [omezení virtuální sítě ACI][virtual-nodes-networking-aci]. Tato omezení ovlivňují umístění, konfiguraci sítě a další podrobnosti o konfiguraci obou clusterů AKS a virtuálních uzlů.
 
 Pokud jste ACI ještě dřív nepoužívali, zaregistrujte poskytovatele služeb u svého předplatného. Stav registrace poskytovatele ACI můžete zjistit pomocí příkazu [AZ Provider list][az-provider-list] , jak je znázorněno v následujícím příkladu:
 
@@ -30,7 +31,7 @@ Pokud jste ACI ještě dřív nepoužívali, zaregistrujte poskytovatele služeb
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-Poskytovatel *Microsoft. ContainerInstance* by měl hlásit jako *zaregistrovaný* , jak je znázorněno v následujícím příkladu výstupu:
+Poskytovatel *Microsoft. ContainerInstance* by měl hlásit jako *zaregistrovaný*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -38,7 +39,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Pokud se zprostředkovatel zobrazí jako *NotRegistered* , zaregistrujte poskytovatele pomocí [registru AZ Provider][az-provider-register] , jak je znázorněno v následujícím příkladu:
+Pokud se zprostředkovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [registru AZ Provider][az-provider-register] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -48,7 +49,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
 
-Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat** , vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -62,7 +63,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí příkazu [AZ Network VNet Create][az-network-vnet-create] . Následující příklad vytvoří virtuální síť s názvem *myVnet* s předponou adresy *10.0.0.0/8* a podsítí s názvem *myAKSSubnet*. Předpona adresy této podsítě je standardně *10.240.0.0/16* :
+Vytvořte virtuální síť pomocí příkazu [AZ Network VNet Create][az-network-vnet-create] . Následující příklad vytvoří virtuální síť s názvem *myVnet* s předponou adresy *10.0.0.0/8* a podsítí s názvem *myAKSSubnet*. Předpona adresy této podsítě je standardně *10.240.0.0/16*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -175,7 +176,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje, že byl vytvořen jeden uzel virtuálního počítače a pak virtuální uzel pro Linux, *Virtual-Node-ACI-Linux* :
+Následující příklad výstupu ukazuje, že byl vytvořen jeden uzel virtuálního počítače a pak virtuální uzel pro Linux, *Virtual-Node-ACI-Linux*:
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -352,3 +353,5 @@ Virtuální uzly jsou často jednou součástí řešení škálování v AKS. D
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[virtual-nodes-aks]: virtual-nodes.md
+[virtual-nodes-networking-aci]: ../container-instances/container-instances-virtual-network-concepts.md

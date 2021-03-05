@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750550"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178319"
 ---
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
 
@@ -63,15 +63,14 @@ Podrobnosti o cenách a použití [cenové kalkulačky Azure](https://azure.micr
 
 Pro velikosti disků P20 a menší je k dispozici škálování na základě kreditu ve všech oblastech v cloudech veřejných, vládních a čínských Azure. Ve výchozím nastavení je pro všechna nová i existující nasazení podporovaných velikostí disků povolená možnost shlukování disku. Shlukování na úrovni virtuálních počítačů používá jenom kredity na základě kreditu.
 
-### <a name="virtual-machine-level-bursting"></a>Virtuální počítač na úrovni virtuálních počítačů
-Podpora rozšíření na úrovni virtuálních počítačů je povolená ve všech oblastech ve veřejném cloudu v těchto podporovaných velikostech: 
-- [Řada Lsv2](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>Virtuální počítač na úrovni virtuálních počítačů
 
-V Středozápadní USA je k dispozici také rozšíření na úrovni virtuálního počítače pro následující podporované velikosti:
+Pro shlukování na úrovni virtuálních počítačů se používá jenom model založený na kreditech pro roztržení, který je ve výchozím nastavení povolený pro všechny virtuální počítače, které ho podporují.
+
+Rozpínání na úrovni virtuálních počítačů je povolené ve všech oblastech ve veřejném cloudu Azure na těchto podporovaných velikostech: 
+- [Řada Lsv2](../articles/virtual-machines/lsv2-series.md)
 - [Řada Dv3 a DSv3](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Řada Ev3 a Esv3](../articles/virtual-machines/ev3-esv3-series.md)
-
-Ve výchozím nastavení je shluking povolen pro virtuální počítače, které ho podporují.
 
 ## <a name="bursting-flow"></a>Tok shlukování
 

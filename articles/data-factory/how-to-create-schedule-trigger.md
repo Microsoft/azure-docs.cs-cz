@@ -8,14 +8,15 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f10dac4e70a1edb05f2f2c02c48b9ae16c4f6823
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387576"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177806"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který bude spouštět kanál podle plánu
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek poskytuje informace o aktivační události plánovače a postupu pro vytvoření, spuštění a monitorování aktivační události plánovače. Další typy triggerů najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md).
@@ -25,6 +26,7 @@ Při vytváření aktivační události plánovače zadáte plán (datum zaháje
 V následujících částech jsou uvedeny kroky k vytvoření triggeru plánu různými způsoby. 
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
+
 Můžete vytvořit **aktivační událost plánovače** a naplánovat pravidelné spouštění kanálu (každou hodinu, každý den atd.). 
 
 > [!NOTE]
@@ -89,7 +91,7 @@ V této části se dozvíte, jak pomocí Azure PowerShell vytvořit, spustit a m
     > [!IMPORTANT]
     > Před uložením souboru JSON nastavte hodnotu elementu **StartTime** na aktuální čas UTC. Nastavte hodnotu elementu **čas_ukončení** na jednu hodinu po aktuálním čase UTC.
 
-    ```json   
+    ```json
     {
         "properties": {
             "name": "MyTrigger",
@@ -167,9 +169,8 @@ V této části se dozvíte, jak pomocí Azure PowerShell vytvořit, spustit a m
 
     Pokud chcete monitorovat spuštění triggerů a spuštění kanálu v Azure Portal, přečtěte si téma [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-
-
 ## <a name="net-sdk"></a>.NET SDK
+
 V této části se dozvíte, jak pomocí sady .NET SDK vytvořit, spustit a monitorovat Trigger. Pokud si chcete prohlédnout tuto ukázkovou práci, Projděte si nejprve kurz [rychlý Start: vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md). Potom do metody Main přidejte následující kód, který vytvoří a spustí aktivační událost Schedule, která se spouští každých 15 minut. Aktivační událost je přidružená k kanálu s názvem **Adfv2QuickStartPipeline** , který vytvoříte jako součást rychlého startu.
 
 Chcete-li vytvořit a spustit aktivační událost plánovače, která se spouští každých 15 minut, přidejte do metody Main následující kód:
@@ -258,8 +259,8 @@ Chcete-li monitorovat spuštění triggeru, přidejte následující kód před 
 
 Pokud chcete monitorovat spuštění triggerů a spuštění kanálu v Azure Portal, přečtěte si téma [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-
 ## <a name="python-sdk"></a>Python SDK
+
 V této části se dozvíte, jak pomocí sady Python SDK vytvořit, spustit a monitorovat Trigger. Pokud si chcete prohlédnout tuto ukázkovou práci, Projděte si nejprve kurz [rychlý Start: vytvoření datové továrny pomocí sady Python SDK](quickstart-create-data-factory-python.md). Pak přidejte následující blok kódu za "monitorovat blok kódu spuštění kanálu" ve skriptu Pythonu. Tento kód vytvoří aktivační událost plánovače, která se spouští každých 15 minut mezi zadaným počátečním a koncovým časem. Aktualizujte **start_time** proměnnou na aktuální čas utc a **end_time** proměnnou na jednu hodinu po aktuálním čase UTC.
 
 ```python
@@ -280,9 +281,11 @@ V této části se dozvíte, jak pomocí sady Python SDK vytvořit, spustit a mo
 Pokud chcete monitorovat spuštění triggerů a spuštění kanálu v Azure Portal, přečtěte si téma [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+
 K vytvoření triggeru můžete použít šablonu Azure Resource Manager. Podrobné pokyny najdete v tématu [Vytvoření datové továrny Azure pomocí šablony Správce prostředků](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Předání času spuštění triggeru do kanálu
+
 Azure Data Factory verze 1 podporuje čtení nebo zápis dělených dat pomocí systémových proměnných: **vlastnosti slicestart**, **SliceEnd**, **WindowStart** a **WindowEnd**. V aktuální verzi Azure Data Factory můžete dosáhnout tohoto chování pomocí parametru kanálu. Čas spuštění a naplánovaný čas pro aktivační událost se nastaví jako hodnota parametru kanálu. V následujícím příkladu je naplánovaný čas triggeru předán jako hodnota parametru **scheduledRunTime** kanálu:
 
 ```json
@@ -292,6 +295,7 @@ Azure Data Factory verze 1 podporuje čtení nebo zápis dělených dat pomocí 
 ```
 
 ## <a name="json-schema"></a>Schéma JSON
+
 Následující definice JSON ukazuje, jak vytvořit aktivační událost plánovače s plánováním a opakováním:
 
 ```json
@@ -343,9 +347,10 @@ Následující definice JSON ukazuje, jak vytvořit aktivační událost plánov
 
 
 ### <a name="schema-overview"></a>Přehled schématu
+
 Následující tabulka obsahuje přehled hlavních elementů schématu souvisejících s opakováním a plánováním aktivační události:
 
-| Vlastnost JSON | Description |
+| Vlastnost JSON | Popis |
 |:--- |:--- |
 | **Spuštění** | Hodnota data a času. V případě jednoduchých plánů se hodnota vlastnosti **startTime** vztahuje pouze na první výskyt. U složitějších plánů aktivační událost nezačíná dřív než v čas určený hodnotou **startTime**. <br> Pro časové pásmo UTC je formát `'yyyy-MM-ddTHH:mm:ssZ'` pro jiné časové pásmo formát `'yyyy-MM-ddTHH:mm:ss'` . |
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. Tato vlastnost je nepovinná.  <br> Pro časové pásmo UTC je formát `'yyyy-MM-ddTHH:mm:ssZ'` pro jiné časové pásmo formát `'yyyy-MM-ddTHH:mm:ss'` . |
@@ -364,12 +369,12 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 | Vlastnost JSON | Typ | Vyžadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **Spuštění** | Řetězec | Yes | Žádné | Data a časy podle normy ISO 8601 | pro časové pásmo UTC `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"2013-01-09T09:30:00-08:00"` |
-| **Údaj** | Řetězec | Yes | Žádné | [Hodnoty časového pásma](#time-zone-option)  | `"UTC"` |
-| **vzorec** | Objekt | Yes | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **doba** | Číslo | No | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | Řetězec | Yes | Žádné | Hodnota data a času představující čas v budoucnosti. | pro časové pásmo UTC `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"endTime" : "2013-02-09T09:30:00-08:00"`|
-| **CXL** | Objekt | No | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **Spuštění** | Řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | pro časové pásmo UTC `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"2013-01-09T09:30:00-08:00"` |
+| **Údaj** | Řetězec | Ano | Žádné | [Hodnoty časového pásma](#time-zone-option)  | `"UTC"` |
+| **vzorec** | Objekt | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **doba** | Číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | Řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti. | pro časové pásmo UTC `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **CXL** | Objekt | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>Možnost časového pásma
 
@@ -377,14 +382,14 @@ Tady jsou některá časová pásma podporovaná pro aktivační události plán
 
 | Časové pásmo | Časový posun UTC (nejedná se o letní) | Hodnota časového pásma | Sledování letního ukládání | Formát časového razítka |
 | :--- | :--- | :--- | :--- | :--- |
-| Koordinovaný světový čas | 0 | `UTC` | No | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| Tichomořského času (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední čas (CT) | -6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Východní čas (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední čas (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední Evropa (běžný čas) | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Indie (běžný čas) (TIS) | + 5:30 | `India Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
-| Čína (běžný čas) | + 8 | `China Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
+| Koordinovaný světový čas | 0 | `UTC` | Ne | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Tichomořského času (PT) | -8 | `Pacific Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední čas (CT) | -6 | `Central Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
+| Východní čas (ET) | -5 | `Eastern Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední čas (GMT) | 0 | `GMT Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední Evropa (běžný čas) | +1 | `W. Europe Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
+| Indie (běžný čas) (TIS) | + 5:30 | `India Standard Time` | Ne | `'yyyy-MM-ddTHH:mm:ss'` |
+| Čína (běžný čas) | + 8 | `China Standard Time` | Ne | `'yyyy-MM-ddTHH:mm:ss'` |
 
 Tento seznam je neúplný. Úplný seznam možností časového pásma najdete v části [Stránka pro vytváření aktivační události](#data-factory-ui) portálu Data Factory Portal.
 
@@ -405,6 +410,7 @@ První čas spuštění je stejný, i když má vlastnost **startTime** hodnotu 
 A nakonec, pokud v plánu aktivační události nejsou nastavené hodiny nebo minuty, jako výchozí hodnoty se použijí hodiny nebo minuty prvního spuštění.
 
 ### <a name="schedule-property"></a>Vlastnost schedule
+
 Na jedné straně může použití plánu omezit počet spuštění aktivační události. Pokud má například aktivační událost s měsíční frekvencí naplánované spouštění jenom v 31. den, tato aktivační událost se spustí jenom v měsících, které mají 31 dní.
 
 Na druhou stranu může plán způsobit také zvýšení počtu spuštění aktivační události. Například aktivační událost s měsíční frekvencí, která má naplánované spouštění na 1. a 2. den v měsíci se nespustí jednou za měsíc, ale v 1. i 2. den v měsíci.
@@ -413,8 +419,7 @@ Pokud je zadaných více elementů **schedule**, pořadí jejich vyhodnocování
 
 Následující tabulka obsahuje podrobný popis elementů **schedule**:
 
-
-| Element JSON | Description | Platné hodnoty |
+| Element JSON | Popis | Platné hodnoty |
 |:--- |:--- |:--- |
 | **minuty** | Minuty v hodině, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul>
 | **hodin** | Hodiny dne, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul> |
@@ -422,13 +427,13 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. | <ul><li>Pole objektů **monthlyOccurrence** : `{ "day": day,  "occurrence": occurrence }` .</li><li>Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.</li><li>Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.</li></ul> |
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. | <ul><li>Libovolná hodnota < = -1 a > =-31</li><li>Libovolná hodnota >= 1 a <= 31</li><li>Pole hodnot</li></ul> |
 
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Příklady plánů opakování aktivačních událostí
+
 Tato část obsahuje příklady plánů opakování se zaměřením na objekt **schedule** a jeho elementy.
 
 V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vlastnost **frequency** má správnou hodnotu s ohledem na definici plánu. Například nemůžete mít hodnotu **frekvence** "Day" a zároveň mají v objektu **Schedule** změnu "monthDays". Tato a podobná omezení jsou popsaná v tabulce v předchozí části.
 
-| Příklad | Description |
+| Příklad | Popis |
 |:--- |:--- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |
@@ -457,6 +462,7 @@ V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vla
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | Spuštění v poslední pátek v měsíci každých 15 minut. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Spuštění každou třetí středu v měsíci v 5:15, 5:45, 17:15 a 17:45. |
 
-
 ## <a name="next-steps"></a>Další kroky
-Podrobné informace o aktivačních událostech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution).
+
+- Podrobné informace o aktivačních událostech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md#trigger-execution).
+- Informace o tom, jak odkazovat na metadata triggeru v kanálu, najdete v tématu [metadata triggeru odkazů v běhu kanálu](how-to-use-trigger-parameterization.md) .

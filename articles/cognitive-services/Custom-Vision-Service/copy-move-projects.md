@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 363f0062d316b22019b864972d5a830e4a838b93
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616055"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178095"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopírování a přesun Custom Visionch projektů
 
@@ -31,6 +31,7 @@ Pokud vaše aplikace nebo firma závisí na použití Custom Vision projektu, do
 - Dva prostředky Azure Custom Vision. Pokud je nemáte, můžete přejít na Azure Portal a [vytvořit nový prostředek Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Školicí klíče a adresy URL koncových bodů vašich Custom Visionch prostředků. Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
 - Vytvořený Custom Vision projekt. Pokyny k tomu, jak to provést, najdete v tématu [sestavení třídění](./getting-started-build-a-classifier.md) .
+* [PowerShell verze 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)nebo podobný nástroj příkazového řádku.
 
 ## <a name="process-overview"></a>Přehled procesu
 
