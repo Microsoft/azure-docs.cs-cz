@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720307"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182566"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -308,10 +308,7 @@ Přejděte na názvy DNS, které jste nakonfigurovali dříve (například,, a `
 
 ## <a name="resolve-404-not-found"></a>Vyřešit 404 "Nenalezeno"
 
-Pokud se zobrazí chyba HTTP 404 (Nenalezeno), když přejdete na adresu URL vlastní domény, ověřte, že se vaše doména přeloží na IP adresu vaší aplikace pomocí <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.NET</a>. Pokud ne, může to být způsobeno jedním z následujících důvodů:
-
-- V konfiguraci vlastní domény chybí záznam A nebo záznam CNAME.
-- Prohlížeč uložil do mezipaměti starou IP adresu vaší domény. Vymažte mezipaměť a znovu otestujte překlad DNS. Na počítači s Windows můžete mezipaměť vymazat příkazem `ipconfig /flushdns`.
+Pokud se zobrazí chyba HTTP 404 (Nenalezeno), když přejdete na adresu URL vlastní domény, ověřte, že se vaše doména přeloží na IP adresu vaší aplikace pomocí <a href="https://www.nslookup.io/" target="_blank">nslookup.IO</a>. V takovém případě Ověřte, zda jsou záznamy A a CNAME správně nakonfigurovány pomocí stejné lokality. Pokud se IP adresa správně vyřeší, ale pořád se vám zobrazí 404, může váš prohlížeč Uložit starou IP adresu vaší domény do mezipaměti. Vymažte mezipaměť a znovu otestujte překlad DNS. Na počítači s Windows můžete mezipaměť vymazat příkazem `ipconfig /flushdns`.
 
 ## <a name="migrate-an-active-domain"></a>Migrace aktivní domény
 

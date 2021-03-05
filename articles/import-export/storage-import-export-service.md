@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181829"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure import/export?
 
@@ -79,7 +79,7 @@ V rámci vysoké úrovně úloha importu zahrnuje následující kroky:
 >
 > Pro zahraniční dodávky (mimo země/oblast datového centra) prosím nasdílejte mezinárodní účet dopravce.
 
- ![Obrázek 1: import toku úloh](./media/storage-import-export-service/importjob.png)
+ ![Obrázek 1: import toku úloh](./media/storage-import-export-service/import-job.png)
 
 Podrobné pokyny k importu dat najdete tady:
 
@@ -108,7 +108,7 @@ V nejvyšší úrovni úloha exportu zahrnuje následující kroky:
 >
 > Pro zahraniční dodávky (mimo země/oblast datového centra) prosím nasdílejte mezinárodní účet dopravce.
   
- ![Obrázek 2: Export toku úloh](./media/storage-import-export-service/exportjob.png)
+ ![Obrázek 2: Export toku úloh](./media/storage-import-export-service/export-job.png)
 
 Podrobné pokyny k exportu dat najdete v tématu [Export dat z objektů blob Azure](storage-import-export-data-from-blobs.md).
 

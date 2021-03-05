@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078947"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181121"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Přidání fondu spotových uzlů do clusteru služby Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ V tomto článku přidáte fond sekundárních uzlů do stávajícího clusteru 
 
 Tento článek předpokládá základní znalost konceptů Kubernetes a Azure Load Balancer. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -64,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Ve výchozím nastavení vytvoříte fond uzlů s *prioritou* *Regular* v clusteru AKS při vytváření clusteru s více fondy uzlů. Výše uvedený příkaz přidá pomocný fond uzlů do stávajícího clusteru AKS s *prioritou* *bodu* . *Priorita* *bodu* nastaví fond uzlů jako fond uzlů. Parametr *vyřazení-Policy* je v předchozím příkladu nastaven na hodnotu *Odstranit* , což je výchozí hodnota. Když nastavíte [zásadu vyřazení][eviction-policy] na hodnotu *Odstranit* , uzly v podkladové sadě škálování fondu uzlů budou při jejich vyřazení odstraněny. Můžete také nastavit zásadu vyřazení k *navrácení* . Když nastavíte zásadu vyřazení k uvolnění *, uzly* v podkladové sadě škálování budou po vyřazení nastaveny na stav zastaveno (přidělení zrušeno). Uzly v počtu zastavených a nepřidělených stavů oproti vaší kvótě COMPUTE a můžou způsobit problémy s škálováním nebo upgradem clusteru. Hodnoty zásad *priority* a *vyřazení* lze nastavit pouze během vytváření fondu uzlů. Tyto hodnoty se nedají aktualizovat později.
+Ve výchozím nastavení vytvoříte fond uzlů s *prioritou* *Regular* v clusteru AKS při vytváření clusteru s více fondy uzlů. Výše uvedený příkaz přidá pomocný fond uzlů do stávajícího clusteru AKS s *prioritou* *bodu*. *Priorita* *bodu* nastaví fond uzlů jako fond uzlů. Parametr *vyřazení-Policy* je v předchozím příkladu nastaven na hodnotu *Odstranit* , což je výchozí hodnota. Když nastavíte [zásadu vyřazení][eviction-policy] na hodnotu *Odstranit*, uzly v podkladové sadě škálování fondu uzlů budou při jejich vyřazení odstraněny. Můžete také nastavit zásadu vyřazení k *navrácení*. Když nastavíte zásadu vyřazení k uvolnění *, uzly* v podkladové sadě škálování budou po vyřazení nastaveny na stav zastaveno (přidělení zrušeno). Uzly v počtu zastavených a nepřidělených stavů oproti vaší kvótě COMPUTE a můžou způsobit problémy s škálováním nebo upgradem clusteru. Hodnoty zásad *priority* a *vyřazení* lze nastavit pouze během vytváření fondu uzlů. Tyto hodnoty se nedají aktualizovat později.
 
 Příkaz také umožňuje [Automatické škálování clusteru][cluster-autoscaler], které se doporučuje používat s fondy uzlů s přímým použitím. V závislosti na zatíženích spuštěných ve vašem clusteru škáluje automatické škálování clusteru a škáluje počet uzlů ve fondu uzlů. V případě fondů uzlů s přímým škálováním bude po vyřazení škálovat počet uzlů, pokud je potřeba další uzly. Pokud změníte maximální počet uzlů, které může fond uzlů mít, je také nutné upravit `maxCount` hodnotu přidruženou k automatickému škálování clusteru. Pokud automatické škálování clusteru nepoužíváte při vyřazení, fond na místě se nakonec sníží na nulu a bude vyžadovat ruční operaci pro příjem jakýchkoli dalších uzlů.
 
@@ -79,7 +79,7 @@ Pokud chcete ověřit, že fond uzlů byl přidán jako fond uzlů s přímým o
 az aks nodepool show --resource-group myResourceGroup --cluster-name myAKSCluster --name spotnodepool
 ```
 
-Potvrďte, že *scaleSetPriority* je na *místě* .
+Potvrďte, že *scaleSetPriority* je na *místě*.
 
 Chcete-li naplánovat spuštění pod uzlem na místě, přidejte tolerování, které odpovídá chuti, aplikovanému na váš uzel na místě. Následující příklad ukazuje část souboru YAML, která definuje tolerovánost, která odpovídá *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* chuti použité v předchozím kroku.
 
@@ -100,7 +100,7 @@ Když se nasadí uzel pod touto tolerování, může Kubernetes úspěšně napl
 ## <a name="max-price-for-a-spot-pool"></a>Maximální cena pro fond přímých adres
 [Ceny pro instance přímých instancí jsou proměnné][pricing-spot]na základě oblastí a SKU. Další informace najdete v tématu ceny pro [Linux][pricing-linux] a [Windows][pricing-windows].
 
-S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Například hodnota *0,98765* by byla maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu na hodnotu *-1* , instance nebude vyřazení na základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, podle toho, která je menší, pokud je dostupná kapacita a kvóta.
+S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Například hodnota *0,98765* by byla maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu na hodnotu *-1*, instance nebude vyřazení na základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, podle toho, která je menší, pokud je dostupná kapacita a kvóta.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -113,7 +113,7 @@ V tomto článku jste se naučili, jak přidat do clusteru AKS fond uzlů typu b
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

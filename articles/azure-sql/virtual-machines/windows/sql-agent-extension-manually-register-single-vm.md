@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964520"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181427"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrace SQL Server virtuálního počítače s rozšířením agenta SQL IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -197,7 +197,7 @@ SQL Server virtuálních počítačů, které mají rozšíření v *prostém* r
 
 Chcete-li upgradovat rozšíření na režim úplného použití Azure Portal, postupujte podle následujících kroků: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -240,7 +240,7 @@ Můžete ověřit, jestli se váš SQL Server virtuální počítač už zaregis
 
 Chcete-li ověřit stav registrace pomocí Azure Portal, postupujte podle následujících kroků: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](manage-sql-vm-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server váš virtuální počítač, pravděpodobně nebyl zaregistrován s rozšířením agenta SQL IaaS. 
 1. Zobrazit hodnotu v části **stav** Pokud  je stav **úspěšný**, je virtuální počítač SQL Server zaregistrovaný s rozšířením agenta SQL IaaS úspěšně. 
@@ -304,7 +304,7 @@ Chcete-li zrušit registraci SQL Serverho virtuálního počítače z rozšíře
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete zrušit registraci SQL Server virtuálního počítače z rozšíření pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) . Tím se odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
+Pokud chcete zrušit registraci SQL Server virtuálního počítače z rozšíření pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm#az-sql-vm-delete) . Tím se odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
 
 
 ```azurecli-interactive

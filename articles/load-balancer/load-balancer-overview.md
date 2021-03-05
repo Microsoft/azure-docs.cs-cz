@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 14e6990579f61b28c091f18b45a06d1ddcc00e89
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 51ceb72d53f78264edcadd2255e20c8fbdac2cae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097529"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181206"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -42,8 +42,8 @@ Další informace o jednotlivých součástech nástroje pro vyrovnávání zat�
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. 
 > * Pokud chcete provést globální směrování na základě DNS **a nemáte požadavky** na ukončení protokolu TLS (Transport Layer Security) ("snižování zátěže SSL"), požadavky na protokol HTTP/HTTPS nebo zpracování aplikační vrstvy, přečtěte si [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md)
-> * Pokud potřebujete optimalizovat globální směrování webového provozu a optimalizovat výkon a spolehlivost koncového uživatele nejvyšší úrovně prostřednictvím rychlého globálního převzetí služeb při selhání, přečtěte si [část přední dveře](../frontdoor/front-door-overview.md) .
+> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md).
+> * Pokud potřebujete optimalizovat globální směrování webového provozu a optimalizovat výkon a spolehlivost koncového uživatele nejvyšší úrovně prostřednictvím rychlého globálního převzetí služeb při selhání, přečtěte si část [přední dveře](../frontdoor/front-door-overview.md).
 > 
 > Vaše ucelené scénáře můžou v případě potřeby těžit z kombinace těchto řešení.
 > Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).

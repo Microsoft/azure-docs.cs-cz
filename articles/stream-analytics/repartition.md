@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak pomocí změny rozdělení na oddíly 
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014191"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182532"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Použití změny rozdělení na oddíly pro optimalizaci zpracování pomocí Azure Stream Analytics
 
@@ -23,25 +23,47 @@ Je možné, že nebudete moci použít [paralelní](stream-analytics-paralleliza
 * Neovládáte klíč oddílu pro vstupní datový proud.
 * Váš zdroj "se zastříká" ve více oddílech, které jsou později potřeba sloučit.
 
-Při zpracování dat v datovém proudu, který není horizontálně dělené podle přirozeného vstupního schématu, jako je například **PartitionID** pro Event Hubs, se vyžaduje přerozdělení na oddíly nebo přerozdělování. Když změníte oddíly, jednotlivé horizontálních oddílů se dají zpracovat nezávisle, což vám umožní lineárně škálovat kanál streamování.
+Při zpracování dat v datovém proudu, který není horizontálně dělené podle přirozeného vstupního schématu, jako je například **PartitionID** pro Event Hubs, se vyžaduje přerozdělení na oddíly nebo přerozdělování. Když změníte oddíly, jednotlivé horizontálních oddílů se dají zpracovat nezávisle, což vám umožní lineárně škálovat kanál streamování. 
 
 ## <a name="how-to-repartition"></a>Postup změny rozdělení
+Vstup můžete změnit na oddíly dvěma způsoby:
+1. Použijte samostatnou úlohu Stream Analytics, která provádí přerozdělení do oddílů.
+2. Použijte jednu úlohu, ale před vlastní analytickou logikou proveďte nejprve přerozdělení.
 
-Chcete-li změnit rozdělení na oddíly, použijte klíčové slovo **do** výrazu po příkazu **partition by** v dotazu. Následující příklad rozdělí data podle typu **DeviceID** na počet oddílů na hodnotu 10. Pomocí algoritmu hash typu **DeviceID** se určí, který oddíl bude akceptovat daný podproud. Data se vyprázdní nezávisle pro každý datový proud, za předpokladu, že výstup podporuje dělené zápisy a má 10 oddílů.
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>Vytvoření samostatné úlohy Stream Analytics pro opětovné rozdělení vstupu
+Pomocí klíče oddílu můžete vytvořit úlohu, která přečte vstup a zapíše výstup do centra událostí. Toto centrum událostí pak může sloužit jako vstup pro jinou Stream Analytics úlohu, kde implementujete analytickou logiku. Při konfiguraci výstupu centra událostí v úloze je nutné zadat klíč oddílu, podle kterého bude Stream Analytics přerozdělit data. 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>Přerozdělení vstupu v rámci jedné Stream Analytics úlohy
+Můžete také do dotazu začlenit krok, který nejprve přerozdělením vstup na oddíly a který pak může použít jiný postup v dotazu. Například pokud chcete přerozdělit vstup na základě **DeviceID**, dotaz by byl:
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 Následující příklad dotazu spojuje dva proudy přerozdělených dat. Při spojování dvou datových proudů předělených dat musí mít proudy stejný klíč oddílu a počet. Výsledkem je datový proud, který má stejné schéma oddílu.
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525377"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182753"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,9 +46,9 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|No |Yes|No|
-|**Azure CLI**|Yes |Yes |No|No|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure Portal**| Ano|Ne |Ano|Ne|
+|**Azure CLI**|Ano |Ano |Ne|Ne|
+|**PowerShell**| Ano|Ano |Ano|Ano|
 
 ## <a name="restore-an-existing-database"></a>Obnovení existující databáze
 
@@ -110,7 +110,7 @@ Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](/powershell/module
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud ještě nemáte nainstalované rozhraní příkazového řádku Azure, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud ještě nemáte nainstalované rozhraní příkazového řádku Azure, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud chcete obnovit databázi pomocí rozhraní příkazového řádku Azure, zadejte hodnoty pro parametry v následujícím příkazu. Pak spusťte příkaz:
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
+Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](/cli/azure/sql/midb#az-sql-midb-restore).
 
 ---
 

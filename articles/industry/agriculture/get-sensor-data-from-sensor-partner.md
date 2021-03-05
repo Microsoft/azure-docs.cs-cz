@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak získat data ze senzorů od partnerů.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168524"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182770"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -80,7 +80,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
     ```
 
-8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
+8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze   >  stránky s **přehledem** Azure Active Directory.
 
     ```azurepowershell-interactive
 
@@ -92,7 +92,7 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 > 1. Název koncového bodu rozhraní DataHub API musí být malými písmeny.
 > 2. Pokud kopírujete adresu URL názvu webu farmbeats pro koncový bod rozhraní API DataHub, ujistěte se, že neexistuje žádné koncové lomítko (/).
 
-9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta**a **připojovací řetězec EventHub**.
+9. Postupujte podle pokynů na obrazovce a zaznamenejte hodnoty pro **koncový bod rozhraní API**, **ID tenanta**, **ID klienta**, **tajný klíč klienta** a **připojovací řetězec EventHub**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrace dat zařízení pomocí generovaných přihlašovacích údajů
 

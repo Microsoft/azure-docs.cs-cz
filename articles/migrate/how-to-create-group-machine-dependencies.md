@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596704"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183059"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -22,14 +22,14 @@ Tento článek popisuje, jak nastavit analýzu závislostí založenou na agente
 - Projděte si požadavky na podporu a nasazení pro analýzu závislostí na základě agenta pro:
     - [Virtuální počítače VMware](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fyzické servery](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+    - [Virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - Ujistěte se, že:
     - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](./create-manage-projects.md) ho hned teď.
     - Ověřte, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
     - Nastavte [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování místních počítačů. Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. Nastavení zařízení pro:
-        - [VMware](how-to-set-up-appliance-vmware.md) Vztahuje.
-        - [Technologie Hyper-V](how-to-set-up-appliance-hyper-v.md) Vztahuje.
-        - [Fyzické servery](how-to-set-up-appliance-physical.md).
+        - [VMware](how-to-set-up-appliance-vmware.md) Vztahuje
+        - [Technologie Hyper-V](how-to-set-up-appliance-hyper-v.md) Vztahuje
+        - [Fyzické servery](how-to-set-up-appliance-physical.md)
 - Pokud chcete použít vizualizaci závislostí, přidružte [Log Analytics pracovní prostor](../azure-monitor/logs/manage-access.md) k projektu Azure Migrate:
     - Pracovní prostor můžete připojit až po nastavení zařízení Azure Migrate a zjišťování počítačů v projektu Azure Migrate.
     - Ujistěte se, že máte pracovní prostor v předplatném, které obsahuje Azure Migrate projektu.

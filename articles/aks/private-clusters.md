@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392795"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181223"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -134,8 +134,8 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 * V případě údržby na rovině ovládacího prvku se může vaše [IP adresa AKS](./limit-egress-traffic.md) změnit. V takovém případě musíte aktualizovat záznam A odkazující na server rozhraní API privátní IP adresu na svém vlastním serveru DNS a restartovat jakékoli vlastní lusky nebo nasazení pomocí hostNetwork.
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations

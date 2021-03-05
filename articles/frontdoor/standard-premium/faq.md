@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a42601b696f292e9d2a9da90070fea3662acae87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099112"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181019"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Nejčastější dotazy týkající se služby Azure front bran Standard/Premium (Preview)
 
@@ -85,7 +85,11 @@ Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu, přesměr
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Návody uzamknout přístup k back-endu jenom na přední vrátka Azure?
 
-Pokud chcete aplikaci uzamknout, aby přijímala jenom přenosy z vašich konkrétních front, musíte pro svůj back-end nastavit seznamy ACL pro IP adresu. Pak můžete omezit provoz back-endu na konkrétní hodnotu hlavičky X-Azure-FDID, kterou odesílají přední dveře. Tyto kroky jsou podrobně popsané níže:
+Nejlepším způsobem, jak aplikaci uzamknout, aby přijímala provoz jenom z vaší konkrétní instance front-dveří, je publikování aplikace prostřednictvím privátního koncového bodu. Síťový provoz mezi předními dveřmi a aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
+
+Přečtěte si další informace o tom, jak [zabezpečit zdroj pro přední dveře pomocí privátního propojení](concept-private-link.md).  
+
+Alternativní způsob, jak aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrétních front, budete muset pro svůj back-end nastavit seznamy ACL pro IP adresu. Pak můžete omezit provoz back-endu na konkrétní hodnotu hlavičky X-Azure-FDID, kterou odesílají přední dveře. Tyto kroky jsou podrobně popsané níže:
 
 * Nakonfigurujte IP funkce acling pro vaše back-endy pro příjem provozu z adresního prostoru IP adres back-endu na front-endu a Azure služby infrastruktury. Další informace o funkce acling back-endu najdete v podrobnostech o IP adrese:
  

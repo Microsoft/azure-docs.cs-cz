@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: Komprese
       href: how-to-compression.md
-    - name: Povolit privátní odkaz na webovou aplikaci
-      href: how-to-enable-private-link-web-app.md
+    - name: Povolit privátní propojení
+      items:
+        - name: Připojení k účtu úložiště
+          href: how-to-enable-private-link-storage-account.md
+        - name: Připojení k webové aplikaci
+          href: how-to-enable-private-link-web-app.md
     - name: protokolování
       href: how-to-logs.md
     - name: "Monitorování a\_upozornění"

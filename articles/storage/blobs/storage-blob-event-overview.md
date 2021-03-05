@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 31b2d562d4d0c53b23e8e3f454057b4e26e41ba9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875242"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181512"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 
@@ -29,7 +29,7 @@ Pokud chcete vyzkoušet události služby Blob Storage, podívejte se na někter
 
 |Pokud chcete použít tento nástroj:    |Viz tento článek: |
 |--|-|
-|Portál Azure Portal    |[Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|portál Azure    |[Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí PowerShellu](./storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí Azure CLI](./storage-blob-event-quickstart.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
@@ -98,7 +98,7 @@ Aplikace, které zpracovávají události služby Blob Storage, by měly dodržo
 > * Podobně ověřte, zda je typ eventType, který je připraven ke zpracování, a nepředpokládá se, že všechny události, které obdržíte, budou takové typy, které očekáváte.
 > * Jakmile se zprávy můžou dorazit po nějaké prodlevě, použijte pole ETag k pochopení, jestli jsou informace o objektech pořád aktuální. Informace o tom, jak používat pole ETag, najdete v tématu [Správa souběžnosti v úložišti objektů BLOB](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
 > * Vzhledem k tomu, že zprávy mohou docházet mimo pořadí, použijte pole Sequencer k pochopení pořadí událostí na konkrétním objektu. Pole Sequencer je řetězcová hodnota, která představuje logickou sekvenci událostí pro libovolný konkrétní název objektu BLOB. Standardní porovnání řetězců můžete použít k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB.
-> * Události úložiště zaručují, že se po doručení nejméně jednou doručí předplatitelům, což zajistí, aby byly všechny zprávy na výstupu. Kvůli opakování nebo dostupnosti předplatných ale může občas dojít k duplicitním zprávám. Pokud se chcete dozvědět víc o doručování zpráv a zkusit to znovu, přečtěte si téma [Event Grid doručování zpráv](../../event-grid/delivery-and-retry.md).
+> * Události úložiště zaručují, že se po doručení nejméně jednou doručí předplatitelům, což zajistí, aby byly všechny zprávy na výstupu. Vzhledem k tomu, že se jedná o opakování mezi back-end uzly a službami nebo dostupností předplatných, mohou nastat duplicitní zprávy. Pokud se chcete dozvědět víc o doručování zpráv a zkusit to znovu, přečtěte si téma [Event Grid doručování zpráv](../../event-grid/delivery-and-retry.md).
 > * Pomocí pole blobType můžete pochopit, jaký typ operací je u objektu BLOB povolený, a jaké typy klientských knihoven byste měli použít pro přístup k objektu BLOB. Platné hodnoty jsou buď `BlockBlob` nebo `PageBlob` . 
 > * Pro přístup k objektu BLOB použijte pole URL s `CloudBlockBlob` `CloudAppendBlob` konstruktory a.
 > * Ignorujte pole, která nerozumíte. Tento postup vám pomůže zajistit odolný přístup k novým funkcím, které se v budoucnu můžou přidat.

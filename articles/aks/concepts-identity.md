@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572690"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181444"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -42,6 +42,7 @@ Následující oprávnění používá identita clusteru AKS, která je vytvoře
 
 | Oprávnění | Důvod |
 |---|---|
+| Microsoft. ContainerService/managedClusters/*  <br/> | Vyžaduje se pro vytváření uživatelů a provoz clusteru.
 | Microsoft. Network/loadBalancers/DELETE <br/> Microsoft. Network/loadBalancers/Read <br/> Microsoft. Network/loadBalancers/Write | Vyžaduje se ke konfiguraci nástroje pro vyrovnávání zatížení pro službu Vyrovnávání zatížení. |
 | Microsoft. Network/publicIPAddresses/DELETE <br/> Microsoft. Network/publicIPAddresses/Read <br/> Microsoft. Network/publicIPAddresses/Write | Je nutné najít a nakonfigurovat veřejné IP adresy pro službu Vyrovnávání zatížení. |
 | Microsoft. Network/publicIPAddresses/JOIN/Action | Vyžaduje se pro konfiguraci veřejných IP adres pro službu Vyrovnávání zatížení. |
@@ -198,7 +199,7 @@ Tato tabulka shrnuje způsoby, kterými se uživatelé můžou Kubernetes ověř
 
 Udělená role, na kterou odkazuje druhý sloupec, je udělení role Azure RBAC zobrazené na kartě **Access Control** v Azure Portal. Skupina Azure AD pro správu clusteru se zobrazuje na kartě **Konfigurace** na portálu (nebo s názvem parametru `--aad-admin-group-object-ids` v Azure CLI).
 
-| Description        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
+| Popis        | Požadováno udělení role| Skupiny Azure AD pro správu clusteru | Kdy je použít |
 | -------------------|------------|----------------------------|-------------|
 | Starší přihlašovací údaje správce pomocí klientského certifikátu| **Role správce Azure Kubernetes**. Tato role umožňuje `az aks get-credentials` použití s `--admin` příznakem, který do uživatele stáhne [starší certifikát Správce clusteru (mimo Azure AD)](control-kubeconfig-access.md) `.kube/config` . Toto je jediný účel role správce Azure Kubernetes.|Není k dispozici|Pokud jste trvale zablokovali přístup k platné skupině Azure AD s přístupem k vašemu clusteru.| 
 | Azure AD s ručním (cluster) RoleBindings| **Role uživatele Azure Kubernetes**. Roli "uživatel" lze `az aks get-credentials` použít bez `--admin` příznaku. (Toto je jediný účel "role uživatele Azure Kubernetes".) Výsledkem je, že na clusteru s podporou Azure AD je stažení [prázdné položky](control-kubeconfig-access.md) do `.kube/config` , která aktivuje ověřování založené na prohlížeči při prvním použití nástrojem `kubectl` .| Uživatel není v žádné z těchto skupin. Vzhledem k tomu, že uživatel není ve všech skupinách správců clusteru, budou jeho práva řízena výhradně všemi RoleBindings nebo ClusterRoleBindings, které byly nastaveny pomocí Správce clusterů. (Cluster) RoleBindings je [navržený jako uživatelé Azure AD nebo skupiny Azure AD](azure-ad-rbac.md) `subjects` . Pokud žádné takové vazby nejsou nastavené, uživatel nebude moct excute žádné `kubectl` příkazy.|Pokud chcete jemně odstupňované řízení přístupu a nepoužíváte Azure RBAC pro autorizaci Kubernetes. Všimněte si, že uživatel, který nastavuje vazby, se musí přihlásit jednou z dalších metod uvedených v této tabulce.|

@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 4666f03e529c568177ff56a2db84e226bc906132
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963583"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182906"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace do služby Azure Virtual Network
 
 Tento článek popisuje funkci Integrace virtuální sítě Azure App Service a její nastavení s využitím aplikací v [Azure App Service](./overview.md). Pomocí služby [azure Virtual Network][VNETOverview] (virtuální sítě) můžete mnoho vašich prostředků Azure umístit do sítě, která není směrovatelný z Internetu. Funkce integrace virtuální sítě umožňuje aplikacím přistupovat k prostředkům v síti nebo prostřednictvím virtuální sítě. Integrace virtuální sítě neumožňuje, aby vaše aplikace byly dostupné soukromě.
 
@@ -243,5 +243,5 @@ U brány – požadovaná integrace virtuální sítě můžete App Service inte
 [creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
 [VNETRouteTables]: ../virtual-network/manage-route-table.md
-[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
+[installCLI]: /cli/azure/install-azure-cli
 [privateendpoints]: networking/private-endpoint.md

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575342"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183076"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Přehledy assetů na vašich datech v Azure dosah
 
@@ -25,7 +25,7 @@ V této příručce se dozvíte, jak:
 > * Získejte pohled na vaše data v pohledech na oči.
 > * Podrobnosti o dalších podrobnostech o počtu prostředků najdete v podrobnostech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
@@ -40,7 +40,7 @@ Další informace najdete v tématu [Správa zdrojů dat ve službě Azure dosah
 V Azure dosah můžete registrovat a kontrolovat zdrojové typy. Po dokončení kontroly si můžete prohlédnout distribuci assetů v Asset Insights, která vám oznamuje stav majetku podle klasifikace a sad prostředků. Také vás upozorní, pokud dojde ke změně velikosti dat.
 
 > [!NOTE]
-> Po prohledání vašich typů zdrojů poskytněte Asset Insights až hodinu, aby odrážela nové prostředky.
+> Po prohledání vašich typů zdrojů poskytněte Asset Insights 3-8 hodin, aby odrážely nové prostředky. Zpoždění může být způsobeno vysokým provozem v oblasti nasazení nebo velikostí vašich úloh. Pokud chcete získat další informace, obraťte se prosím na tým podpory pole.
 
 1. V Azure Portal přejděte do svého prostředku Azure dosah.
 
@@ -94,7 +94,7 @@ Další pár grafů v Asset Insights ukazuje distribuci typů zdrojů založený
 
 1. Vyberte cestu, pro kterou chcete zobrazit seznam assetů.
 
-Druhý graf v typech zdrojových souborů je **_soubory, které nejsou přidruženy k sadě prostředků_**. Pokud očekáváte, že se všechny soubory budou zavádět do sady prostředků, tento graf vám může porozumět tomu, které prostředky nebyly zahrnuty. Chybějící prostředky může být označením chybného vzoru souboru ve složce. Chcete-li zobrazit další podrobnosti o souborech, postupujte podle stejných kroků jako v jiných grafech.
+Druhý graf v typech zdrojových souborů je ***soubory, které nejsou přidruženy k sadě prostředků***. Pokud očekáváte, že se všechny soubory budou zavádět do sady prostředků, tento graf vám může porozumět tomu, které prostředky nebyly zahrnuty. Chybějící prostředky může být označením chybného vzoru souboru ve složce. Chcete-li zobrazit další podrobnosti o souborech, postupujte podle stejných kroků jako v jiných grafech.
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="Zobrazení prostředků založených na souborech":::  
 

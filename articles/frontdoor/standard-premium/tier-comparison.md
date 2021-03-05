@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 0f5ecef1716a503b7d27d0f5cdde15a4560c0e61
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1753f2bb649e73d7a5fe6c1cc32361a418ea7f63
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099277"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181801"
 ---
 # <a name="overview-of-azure-front-door-standardpremium-sku-preview"></a>Přehled služby Azure front-SKU Standard/Premium (Preview)
 
@@ -50,20 +50,20 @@ Přední dvířka Azure jsou nabízená pro 3 různé SKU, [přední dveře Azur
 
 | Funkce |      Standard      |  Premium |
 |----------|:-------------:|------:|
-| Vlastní domény | Yes | Yes |
-| Přesměrování zpracování SSL | Yes | Yes |
-| Ukládání do mezipaměti |  Yes  | Yes |
-| Komprese | Yes | Yes   |
-| Globální vyrovnávání zatížení | Yes  | Yes |
-| Směrování vrstvy 7 | Yes | Yes |
-| Přepsání adresy URL | Yes | Yes |
-| Stroj pravidel | Yes | Yes |
-| Soukromý původ (privátní odkaz) | No | Yes |
-| WAF | No | Yes |
-| Ochrana bot | No | Yes |
-| Vylepšené metriky a diagnostika | Yes | Yes |
-| Sestavy provozu | Yes | Yes |
-| Sestava zabezpečení | No | Ano | 
+| Vlastní domény | Ano | Ano |
+| Přesměrování zpracování SSL | Ano | Ano |
+| Ukládání do mezipaměti |  Ano  | Ano |
+| Komprese | Ano | Ano   |
+| Globální vyrovnávání zatížení | Ano  | Ano |
+| Směrování vrstvy 7 | Ano | Ano |
+| Přepsání adresy URL | Ano | Ano |
+| Stroj pravidel | Ano | Ano |
+| Soukromý původ (privátní odkaz) | Ne | Ano |
+| WAF | Pouze vlastní pravidla | Ano |
+| Ochrana bot | Ne | Ano |
+| Vylepšené metriky a diagnostika | Ano | Ano |
+| Sestava provozu | Ano | Ano |
+| Sestava zabezpečení | Ne | Ano | 
 
 ## <a name="next-steps"></a>Další kroky
 

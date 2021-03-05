@@ -4,13 +4,13 @@ description: Popisuje, jak nakonfigurovat pravidla a spravovat výstrahy v FarmB
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168541"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182923"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Konfigurace pravidel a správa upozornění
 
@@ -28,16 +28,16 @@ Azure FarmBeats umožňuje vytvářet pravidla založená na obchodní logice kr
 
     ![Snímek obrazovky, který zvýrazní oddíl podmínek.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. V části **podmínky**zadejte hodnoty pro **míry**, **operátor** a **hodnotu**.
+5. V části **podmínky** zadejte hodnoty pro **míry**, **operátor** a **hodnotu**.
 6. Do rozevírací nabídky **míra** zadejte název míry.
 7. Vyberte **+ Přidat podmínku** a přidejte do pravidla další podmínky.
 8. Vyberte **úroveň závažnosti**.
-9. V **akci**přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
+9. V **akci** přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
 
     ![Snímek obrazovky zobrazující možnost Povolit E-mail](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
 10. Zadejte e-mailové **adresy** , na které chcete e-mailové upozornění poslat, a také **Předmět e-mailu** a **Další poznámky**.  
-11. V poli **stav pravidla**přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
+11. V poli **stav pravidla** přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
     Můžete zobrazit počet zařízení, na která bude pravidlo ovlivněno.
 12. Pro vytvoření pravidla vyberte **použít** .
 
@@ -69,18 +69,18 @@ Pravidlo upravíte pomocí následujících kroků:
 
     ![Snímek obrazovky, na kterém se zobrazuje obrazovka upravit pravidlo](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. Změňte **název pravidla**a **Popis pravidla** a potom vyberte farmu z rozevírací nabídky **Vybrat farmu** .
+4. Změňte **název pravidla** a **Popis pravidla** a potom vyberte farmu z rozevírací nabídky **Vybrat farmu** .
 5. Zadáním názvu farmy vyberte farmu a **podmínky** se zobrazí ve stejném okně.  
-6. V **podmínkách**upravte **míru**, **operátor** a **hodnotu**.
+6. V **podmínkách** upravte **míru**, **operátor** a **hodnotu**.
 7. Do rozevírací nabídky **míra** zadejte název míry.
 8. Vyberte **+ Přidat podmínku** a přidejte nebo upravte podmínky pravidel.
 
     ![Snímek obrazovky, který zvýrazní tlačítko Přidat podmínku](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
 
 9.  Vyberte **úroveň závažnosti**.  
-10. V **akci**přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
+10. V **akci** přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
 11. Upravte e-mailové **adresy** , které chcete odeslat e-mailové upozornění, spolu s **subjektem E-mail** a **dalšími poznámkami**.  
-12. V poli **stav pravidla**přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
+12. V poli **stav pravidla** přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
 Můžete zobrazit počet zařízení, u kterých bude toto pravidlo ovlivněno.
 13. Pokud chcete pravidlo upravit, vyberte **použít** .
 

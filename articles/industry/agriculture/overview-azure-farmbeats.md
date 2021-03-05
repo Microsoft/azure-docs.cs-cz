@@ -4,13 +4,13 @@ description: Poskytuje přehled Azure FarmBeats
 author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: b08013e9d015d3c987c0032761bebccd4b57ec72
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: v-ummehabiba
+ms.openlocfilehash: f173dfb055f3d9c75ee63570cd413276ffb6ba37
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678036"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182821"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled služby Azure FarmBeats (Preview)
 
@@ -61,7 +61,7 @@ Správce může do Azure FarmBeats přidat několik partnerů jako zprostředkov
 | Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 | Partner s počasí * <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Azure FarmBeats se nabízí bez dalších poplatků a platíte jenom za prostředky Azure, které používáte. Pomocí níže uvedených prostředků můžete získat další informace o této nabídce:
 

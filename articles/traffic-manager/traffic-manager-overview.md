@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8c8897218b153c8584c89abab98934268ccd555d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624905"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182158"
 ---
 # <a name="what-is-traffic-manager"></a>Co je Traffic Manager?
 Azure Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz založený na DNS. Tato služba umožňuje distribuovat provoz do vašich veřejných aplikací napříč globálními oblastmi Azure. Traffic Manager taky poskytuje veřejné koncové body s vysokou dostupností a rychlou odezvou.
@@ -24,8 +24,12 @@ Azure Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz zalo
 Traffic Manager používá DNS k směrování požadavků klienta na příslušný koncový bod služby na základě metody směrování provozu. Traffic Manager také poskytuje monitorování stavu pro každý koncový bod. Koncovým bodem může být libovolná internetová služba hostovaná v systému Azure nebo mimo něj. Traffic Manager poskytuje celou řadu [metod směrování provozu](traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
 >[!NOTE]
-> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/overview.md). Pokud hledáte regionální vyrovnávání zatížení, přečtěte si [Load Balancer](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
->
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. 
+> * Pokud chcete vyrovnávat zatížení mezi servery v oblasti aplikační vrstvy, přečtěte si [Application Gateway](../application-gateway/overview.md).
+> * Pokud potřebujete optimalizovat globální směrování webového provozu a optimalizovat výkon a spolehlivost koncového uživatele nejvyšší úrovně prostřednictvím rychlého globálního převzetí služeb při selhání, přečtěte si část [přední dveře](../frontdoor/front-door-overview.md).
+> * Pro vyrovnávání zatížení síťové vrstvy si přečtěte [Load Balancer](../load-balancer/load-balancer-overview.md). 
+> 
+> Vaše ucelené scénáře můžou v případě potřeby těžit z kombinace těchto řešení.
 > Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager nabízí následující funkce:

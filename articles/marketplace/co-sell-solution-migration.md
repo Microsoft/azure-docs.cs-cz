@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/07/2020
-ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/04/2021
+ms.openlocfilehash: 92702f38b6143c5dac2111c57fadeba7d9142992
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120177"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181053"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrace řešení společného prodeje z OCP GTM na komerční tržiště
 
@@ -136,7 +136,7 @@ Podrobné pokyny týkající se informací, které je třeba zadat před publiko
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Karta nastavení přehledu nabídky v partnerském centru.":::
 
-3. Některé podrobnosti z prodejce Microsoftu jsme zkopírovali z řešení OCP GTM. Dokončete zbývající požadované informace na kartě **společný prodej s Microsoftem** , abyste mohli nabízet svůj nabízený prodej. Až budete hotovi, vyberte **zkontrolovat a publikovat**. Další informace najdete v tématu [odeslání materiálů společného prodeje do partnerského centra](marketplace-co-sell.md).
+3. Některé podrobnosti z prodejce Microsoftu jsme zkopírovali z řešení OCP GTM. Dokončete zbývající požadované informace na kartě **společný prodej s Microsoftem** , abyste mohli nabízet svůj nabízený prodej. Až budete hotovi, vyberte **zkontrolovat a publikovat**. Další informace najdete v tématu [Konfigurace společného prodeje pro nabídku komerčního tržiště](commercial-marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Karta spoluprodejní nabídka v partnerském centru.":::
 
@@ -154,5 +154,5 @@ Podrobné pokyny týkající se informací, které je třeba zadat před publiko
 ## <a name="next-steps"></a>Další kroky
 
 - [Prodej prostřednictvím partnerů CSP](cloud-solution-providers.md)
-- [Jak odeslat materiály pro spoluprodej v partnerském centru](marketplace-co-sell.md)
+- [Konfigurace společného prodeje pro komerční nabídku na webu Marketplace](commercial-marketplace-co-sell.md)
 - Zobrazit tyto [Nejčastější dotazy](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)

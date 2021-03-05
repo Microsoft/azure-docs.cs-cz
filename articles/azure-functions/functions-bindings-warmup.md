@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655854"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182243"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak pracovat s triggerem zahřívání v Azure Funct
 
 ## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
-Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze **3.0.5 nebo vyšší** . Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) . 
+Vyžaduje se balíček NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) , verze **3.0.5 nebo vyšší** . Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) . 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -230,9 +230,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **textový** | neuvedeno| Požadováno – musí být nastavené na `warmupTrigger` . |
-| **směr** | neuvedeno| Požadováno – musí být nastavené na `in` . |
-| **Jméno** | neuvedeno| Požadováno – název proměnné použitý v kódu funkce.|
+| **textový** | Není k dispozici| Požadováno – musí být nastavené na `warmupTrigger` . |
+| **směr** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
+| **Jméno** | Není k dispozici| Požadováno – název proměnné použitý v kódu funkce.|
 
 ## <a name="trigger---usage"></a>Aktivační událost – využití
 

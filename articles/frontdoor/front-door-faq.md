@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124053"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182889"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -86,6 +86,8 @@ Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesmě
 Trasy pro vaše přední dveře nejsou seřazené a na základě nejlepší shody se vybere konkrétní trasa. Přečtěte si další informace o [tom, jak přední dvířka odpovídají požadavkům na pravidlo směrování](front-door-route-matching.md).
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Návody uzamknout přístup k back-endu jenom na přední vrátka Azure?
+
+> [! OZNÁMENÍ] nová jednotka front-in SKU nabízí vhodnější způsob, jak aplikaci uzamknout prostřednictvím privátního koncového bodu. [Další informace o privátním koncovém bodu](./standard-premium/concept-private-link.md)
 
 Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrétních front, budete muset pro svůj back-end nastavit seznamy řízení přístupu (ACL) IP adres a potom omezit provoz back-endu na konkrétní hodnotu hlavičky X-Azure-FDID, kterou odesílají přední dveře. Tyto kroky jsou podrobně popsané níže:
 
