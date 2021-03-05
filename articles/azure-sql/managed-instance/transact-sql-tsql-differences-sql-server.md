@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691191"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212718"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ Některé vlastnosti souboru nejde nastavit nebo změnit:
 Ve výchozím nastavení jsou nastaveny následující možnosti a nelze je změnit:
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 Následující možnosti nelze upravit:
@@ -471,6 +471,10 @@ Služba Service Broker mezi instancemi není podporována:
 - `sys.routes`: Jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE`: Nemůžete použít `CREATE ROUTE` s `ADDRESS` jinými než `LOCAL` . Viz [vytvoření trasy](/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: Nemůžete použít `ALTER ROUTE` s `ADDRESS` jinými než `LOCAL` . Viz [ALTER Route](/sql/t-sql/statements/alter-route-transact-sql). 
+
+Služba Service Broker je ve výchozím nastavení povolena a nelze ji zakázat. Následující možnosti příkazu ALTER DATABASE nejsou podporovány:
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Uložené procedury, funkce a triggery
 

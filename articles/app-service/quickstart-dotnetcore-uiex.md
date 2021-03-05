@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180271"
+ms.locfileid: "102214231"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -31,10 +31,12 @@ Až budete hotovi, budete mít Azure <abbr title="Logický kontejner pro souvise
 
 <details>
 <summary>Již máte Visual Studio 2019?</summary>
-  Pokud jste již nainstalovali Visual Studio 2019:
+Pokud jste již nainstalovali Visual Studio 2019:
 
-  - **Nainstalujte nejnovější aktualizace** v aplikaci Visual Studio tak, že vyberete **nápovědu** vyhledat  >  **aktualizace**. Nejnovější aktualizace obsahují sadu .NET 5,0 SDK.
-  - **Přidejte úlohy** tak, že vyberete **nástroje**  >  **získat nástroje a funkce**.
+<ul>
+<li><strong>Nainstalujte nejnovější aktualizace</strong> v aplikaci Visual Studio tak, že vyberete <strong>nápovědu</strong> vyhledat &gt; <strong>aktualizace</strong>. Nejnovější aktualizace obsahují sadu .NET 5,0 SDK.</li>
+<li><strong>Přidejte úlohy</strong> tak, že vyberete <strong>nástroje</strong> &gt; <strong>získat nástroje a funkce</strong>.</li>
+</ul>
 </details>
 
 <hr/> 
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. **Spustit příkaz** `az webapp up` opětovné nasazení:
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary>Co <code>az webapp up</code> Tento čas dělá?</summary>
-Při prvním spuštění příkazu byl uložen název aplikace, skupina prostředků a plán App Service v souboru <i>. Azure/config</i> z kořenového adresáře projektu. Když ho znovu spustíte z kořenového adresáře projektu, používá hodnoty uložené v <i>souboru. Azure/config</i>, zjistí, že App Service prostředky již existují a provede nasazení souboru ZIP znovu.
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary>Co <code>az webapp up</code> Tento čas dělá?</summary>
+    Při prvním spuštění příkazu byl uložen název aplikace, skupina prostředků a plán App Service v souboru <i>. Azure/config</i> z kořenového adresáře projektu. Když ho znovu spustíte z kořenového adresáře projektu, používá hodnoty uložené v <i>souboru. Azure/config</i>, zjistí, že App Service prostředky již existují a provede nasazení souboru ZIP znovu.
+    </details>
+    
 1. Po dokončení nasazení klikněte na tlačítko **aktualizovat** v okně prohlížeče, které už bylo otevřeno.
 
-![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ Při prvním spuštění příkazu byl uložen název aplikace, skupina prostře
 
 1. Na stránce Přehled můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
 
-![Stránka služby App Service na webu Azure Portal](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![Stránka služby App Service na webu Azure Portal](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9. vyčištění prostředků

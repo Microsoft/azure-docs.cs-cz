@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 566a7a978a08bf7e37b6c4ab8b0609222b34e549
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724519"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212752"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Postup při kódování a streamování videosouborů pomocí Node.JS
 
@@ -128,15 +128,15 @@ az group delete --name amsResourceGroup
 
 ## <a name="more-developer-documentation-for-nodejs-on-azure"></a>Další dokumentaci pro vývojáře k Node.js v Azure
 
-- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure pro JavaScript & Node.js vývojáři](/azure/developer/javascript/)
 - [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti centra Git](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Dokumentace k balíčku Azure pro vývojáře Node.js](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [Dokumentace k balíčku Azure pro vývojáře Node.js](/javascript/api/overview/azure/)
 
 ## <a name="see-also"></a>Viz také
 
 - [Kódy chyb úlohy](/rest/api/media/jobs/get#joberrorcode).
 - [instalace npm @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure pro JavaScript & Node.js vývojáři](/azure/developer/javascript/)
 - [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>Další kroky

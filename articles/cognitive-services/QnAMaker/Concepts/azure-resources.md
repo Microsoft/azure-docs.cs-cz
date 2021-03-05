@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f5a248b8701c71b2dcf0415c6656b9b565535232
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096547"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214163"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -126,7 +126,7 @@ QnA Maker spravovaná je bezplatná služba a propustnost se momentálně omezen
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU a zkontroluje Kognitivní hledání vrstvu a [vytvoří kognitivní hledání repliky](../../../search/search-capacity-planning.md) .|Vaše znalostní báze potřebuje k obsluze více požadavků z klientské aplikace, jako je například robot pro chat.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Služba Azure Kognitivní hledání|Máte v plánu, abyste měli spoustu znalostní báze.|
 
-Pomocí [aktualizace App Service v Azure Portal](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)získáte nejnovější aktualizace modulu runtime.
+Pomocí [aktualizace App Service v Azure Portal](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)získáte nejnovější aktualizace modulu runtime.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
@@ -307,7 +307,7 @@ První znalostní báze vytvořená v prostředku QnA Maker slouží k určení 
 
 Pokud vytvoříte službu QnA a její závislosti (například vyhledávání) prostřednictvím portálu, vytvoří se vyhledávací služba pro vás a bude propojena s QnA Makerovou službou. Po vytvoření těchto prostředků můžete aktualizovat nastavení App Service tak, aby používalo dříve existující vyhledávací službu, a odebrat tu, kterou jste právě vytvořili.
 
-Naučte [se, jak nakonfigurovat](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA maker pro použití jiného prostředku služby rozpoznávání, než který je vytvořený jako součást procesu vytváření prostředků QnA maker.
+Naučte [se, jak nakonfigurovat](../How-To/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource) QnA maker pro použití jiného prostředku služby rozpoznávání, než který je vytvořený jako součást procesu vytváření prostředků QnA maker.
 
 ### <a name="app-service-and-app-service-plan"></a>Služba App Service a plán služby App Service
 

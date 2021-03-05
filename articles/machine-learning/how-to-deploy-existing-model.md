@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824595"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213126"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Nasazení stávajícího modelu pomocí Azure Machine Learning
 
@@ -34,7 +34,7 @@ Další informace o konceptech a pojmech v tomto článku najdete v tématu [Spr
 
 * [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
-* Rozšíření rozhraní příkazového řádku [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a [Machine Learning CLI](reference-azure-machine-learning-cli.md).
+* Rozšíření rozhraní příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) a [Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
 * Školený model. Model musí být trvale uložený na jeden nebo více souborů ve vývojovém prostředí. <br><br>V příkladu kódu v tomto článku se předvádí registrace vyškolených modelů, které používají modely z [projektu Paolo Ripamonti pro analýzu mínění pro Twitter](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Můžete také nastavit objekty Add `tags` a `properties` Dictionary na registrovaný model. Tyto hodnoty můžete použít později, abyste mohli identifikovat konkrétní model. Například použitý rámec, parametry školení atd.
 
-Další informace najdete v referenčních informacích k [registru AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) .
+Další informace najdete v referenčních informacích k [registru AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) .
 
 
 Další informace o registraci modelů obecně najdete v tématu [Správa, nasazení a monitorování modelů strojového učení](concept-model-management-and-deployment.md).
@@ -268,7 +268,7 @@ Chcete-li model nasadit z rozhraní příkazového řádku, použijte následuj�
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
 
 Další informace o nasazení najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 

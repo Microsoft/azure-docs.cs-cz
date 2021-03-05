@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656801"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215047"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Create](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) . Následující parametry tohoto příkazu lze použít k vytvoření pracovního prostoru s privátní sítí, ale vyžaduje existující virtuální síť:
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) . Následující parametry tohoto příkazu lze použít k vytvoření pracovního prostoru s privátní sítí, ale vyžaduje existující virtuální síť:
 
 * `--pe-name`: Název privátního koncového bodu, který je vytvořen.
 * `--pe-auto-approval`: Zda mají být připojení privátního koncového bodu k pracovnímu prostoru automaticky schválena.
@@ -116,7 +116,7 @@ Další informace o třídách a metodách, které se používají v tomto pří
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru přidat](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru přidat](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) . Chcete-li povolit veřejný přístup k pracovnímu prostoru, přidejte parametr `--allow-public-access true` .
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) . Chcete-li povolit veřejný přístup k pracovnímu prostoru, přidejte parametr `--allow-public-access true` .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

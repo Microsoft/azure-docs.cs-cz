@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 342ae2f590f4bf4ce88f64d6d545defff358ad72
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831719"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215217"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -92,7 +92,7 @@ AzureML-FE škáluje jak nahoru (vertikálně) tak, aby používal více jader, 
 
 Při horizontálním navýšení kapacity a při jejich zmenšování se používá využití procesoru. Pokud je dosaženo prahové hodnoty využití procesoru, bude nejprve horizontální navýšení kapacity na front-endu. Pokud využití procesoru klesne do prahové hodnoty škálování, dojde k operaci škálování. Horizontální navýšení kapacity a navýšení kapacity proběhne, jenom když je k dispozici dostatek prostředků clusteru.
 
-## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Principy požadavků na připojení ke clusteru AKS Inferencing
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Vysvětlení požadavků na připojení pro cluster AKS pro odvozování
 
 Když Azure Machine Learning vytvoří nebo připojí cluster AKS, cluster AKS se nasadí s jedním z následujících dvou síťových modelů:
 * Kubenet Networking – síťové prostředky se většinou vytvářejí a konfigurují, protože je nasazený cluster AKS.
@@ -184,7 +184,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -372,7 +372,7 @@ print(token)
 >
 > Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, a to i v případě, že se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k nedostupnosti ověřování na základě tokenů, dokud nebude oblast pracovního prostoru znovu dostupná. Navíc čím větší je vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 >
-> K načtení tokenu je nutné použít sadu SDK Azure Machine Learning nebo příkaz [AZ ml Service Get-Access-token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) .
+> K načtení tokenu je nutné použít sadu SDK Azure Machine Learning nebo příkaz [AZ ml Service Get-Access-token](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-get-access-token) .
 
 
 ### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení

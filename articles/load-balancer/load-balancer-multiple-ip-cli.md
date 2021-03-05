@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d928a86f958e54552f5cc8d030b0fb74fa3bd3c2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698355"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214503"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Vyrovnávání zatížení u více konfigurací IP pomocí Azure CLI
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak použít Azure Load Balancer s více IP adresami na
 
 Chcete-li dosáhnout scénáře popsaného v tomto článku, proveďte následující kroky:
 
-1. [Nainstalujte a nakonfigurujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se k účtu Azure.
+1. [Nainstalujte a nakonfigurujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli) podle kroků v propojeném článku a přihlaste se k účtu Azure.
 2. [Vytvořte skupinu prostředků s](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) názvem *contosofabrikam* následujícím způsobem:
 
     ```azurecli

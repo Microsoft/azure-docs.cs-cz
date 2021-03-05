@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 479daa9a94247ada30c54a9c5df3471035765087
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46d79de612a17c7b21e7cc51dcf4904209e1625d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908272"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212938"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Spuštění, zastavení a odstranění cloudové aplikace Azure pro jaře
 
@@ -27,12 +27,12 @@ Po nasazení aplikace můžete spustit, zastavit a odstranit pomocí Azure Porta
 1. V Azure Portal přejdete do své instance služby jarní cloudová služba Azure.
 1. Vyberte kartu **řídicí panel aplikace** .
 1. Vyberte aplikaci, jejíž stav chcete změnit.
-1. Na stránce **Přehled** této aplikace vyberte **Spustit/zastavit**, **restartovat**nebo **Odstranit**.
+1. Na stránce **Přehled** této aplikace vyberte **Spustit/zastavit**, **restartovat** nebo **Odstranit**.
 
 ## <a name="using-the-azure-cli"></a>Použití Azure CLI
 
 > [!NOTE]
-> Můžete použít volitelné parametry a nakonfigurovat výchozí nastavení pomocí Azure CLI. Další informace o rozhraní příkazového řádku Azure najdete v [naší referenční dokumentaci](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest&preserve-view=true).  
+> Můžete použít volitelné parametry a nakonfigurovat výchozí nastavení pomocí Azure CLI. Další informace o rozhraní příkazového řádku Azure najdete v [naší referenční dokumentaci](/cli/azure/ext/spring-cloud/spring-cloud).  
 
 Nejdřív nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure, a to následujícím způsobem:
 

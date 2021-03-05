@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 7e0d93d3fd179d672b49967c575bbfb9c0fc5de0
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495283"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213687"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Použití modelů IoT technologie Plug and Play v řešení IoT
 
@@ -40,10 +40,10 @@ IoT Hub upozorní řešení s ID modelu zařízení jako součást toku připoje
 
 ### <a name="get-device-twin-api"></a>Získat rozhraní API pro vyzdvojené zařízení
 
-Řešení může použít rozhraní API pro [získání](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+Řešení může použít rozhraní API pro [získání](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
 
 > [!TIP]
-> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable).
+> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin).
 
 V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 

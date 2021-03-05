@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825409"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214979"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití modelu Azure Machine Learning nasazeného jako webové služby
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využívání modelu služby Azure Machine Learning nasazeného jako webová služba
 
 
 Nasazením modelu služby Azure Machine Learning jako webové služby se vytvoří koncový bod rozhraní REST API. Do tohoto koncového bodu můžete odesílat data a přijímat z něj predikce vrácené modelem. V tomto dokumentu se naučíte vytvářet klienty pro webovou službu pomocí jazyků C#, cestách, Java a Python.
@@ -77,7 +77,7 @@ Existuje několik způsobů, jak načíst tyto informace pro nasazené webové s
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) :
+Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) :
 
 ```azurecli
 az ml service show -n <service-name>
@@ -677,7 +677,7 @@ Power BI podporuje využití webových služeb Azure Machine Learning k rozší�
 
 Pro vygenerování webové služby, která je podporována pro použití v Power BI, musí schéma podporovat formát vyžadovaný Power BI. [Naučte se vytvořit schéma podporované Power BI](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-Po nasazení webové služby je možné ji využívat v tocích dat Power BI. [Naučte se využívat Azure Machine Learning webové služby od Power BI](/power-bi/service-machine-learning-integration).
+Po nasazení webové služby je možné ji využívat v tocích dat Power BI. [Zjistěte, jak v Power BI využívat webovou službu Azure Machine Learning](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Další kroky
 

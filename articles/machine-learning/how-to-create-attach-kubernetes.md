@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4536f0dd40e1d0ee3a5ca75db9b111dcfa0ad6f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560460"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214894"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -93,7 +93,7 @@ Když **připojíte** existující cluster AKS, podporujeme všechny aktuálně 
 
 ### <a name="available-and-default-versions"></a>Dostupné a výchozí verze
 
-K vyhledání dostupných a výchozích verzí AKS použijte příkaz [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) [AZ AKS get-versions](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_versions). Například následující příkaz vrátí verze, které jsou k dispozici v Západní USA oblasti:
+K vyhledání dostupných a výchozích verzí AKS použijte příkaz [Azure CLI](/cli/azure/install-azure-cli) [AZ AKS get-versions](/cli/azure/aks#az_aks_get_versions). Například následující příkaz vrátí verze, které jsou k dispozici v Západní USA oblasti:
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
@@ -198,7 +198,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 az ml computetarget create aks -n myaks
 ```
 
-Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
+Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -223,8 +223,8 @@ Pokud už máte ve svém předplatném Azure cluster AKS, můžete ho použít v
 
 Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
-* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&preserve-view=true&toc=%2fazure%2faks%2fTOC.json&view=azure-cli-latest#az-aks-create)
-* [Vytvoření clusteru AKS (portál)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
+* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [Vytvoření clusteru AKS (portál)](../aks/kubernetes-walkthrough-portal.md)
 * [Vytvoření clusteru AKS (šablona ARM v šablonách rychlého startu Azure)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Následující příklad ukazuje, jak připojit existující cluster AKS k vašemu pracovnímu prostoru:
@@ -275,7 +275,7 @@ Pokud chcete připojit existující cluster k pracovnímu prostoru, použijte n�
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
+Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

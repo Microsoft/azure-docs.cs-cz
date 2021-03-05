@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikroprofile, Open-svoboda, WebSphere-svoboda, ARO, OpenShift, Red Hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633882"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212990"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Nasazení aplikace v jazyce Java s otevřeným nástrojem svobody/WebSphere Svoboda v clusteru Azure Red Hat OpenShift 4
 
@@ -31,7 +31,7 @@ K úspěšnému procházení tohoto průvodce dokončete následující požadav
 1. Nainstalujte implementaci Java SE systémem (například [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Nainstalujte [Maven](https://maven.apache.org/download.cgi) 3.5.0 nebo vyšší.
 1. Nainstalujte [Docker](https://docs.docker.com/get-docker/) pro váš operační systém.
-1. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 nebo novější.
+1. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) 2.0.75 nebo novější.
 1. Kontrolu a instalaci, [`envsubst`](https://command-not-found.com/envsubst) Pokud není předem nainstalován v operačním systému.
 1. Naklonujte kód pro tuto ukázku v místním systému. Ukázka je na [GitHubu](https://github.com/Azure-Samples/open-liberty-on-aro).
 1. Postupujte podle pokynů v tématu [Vytvoření clusteru Azure Red Hat OpenShift 4](./tutorial-create-cluster.md).
@@ -40,7 +40,7 @@ K úspěšnému procházení tohoto průvodce dokončete následující požadav
 
    Pokud máte v úmyslu spouštět aplikace náročné na paměť v clusteru, určete správnou velikost virtuálního počítače pro pracovní uzly pomocí `--worker-vm-size` parametru. Například `Standard_E4s_v3` minimální velikost virtuálního počítače pro instalaci operátoru Elasticsearch v clusteru. Další informace naleznete v tématu:
 
-   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Rozhraní příkazového řádku Azure pro vytvoření clusteru](/cli/azure/aro#az-aro-create)
    * [Podporované velikosti virtuálních počítačů pro paměťově optimalizované](./support-policies-v4.md#memory-optimized)
    * [Předpoklady pro instalaci operátoru Elasticsearch](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

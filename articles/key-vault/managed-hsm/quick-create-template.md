@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831748"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213262"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření spravovaného modulu HSM s Key Vault pomocí šablony Azure Resource Manager
 
@@ -43,7 +43,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, m�
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ## <a name="create-a-manage-hsm"></a>Vytvoření modulu pro správu HSM
 
@@ -55,13 +55,13 @@ Prostředek Azure definovaný v šabloně:
 
 Další ukázky šablon Azure Key Vault najdete [tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
 
-Šablona vyžaduje ID objektu přidruženého k vašemu účtu. Pokud ho chcete najít, použijte příkaz Azure CLI [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) a předejte e-mailovou adresu `--id` parametru. Výstup lze omezit pouze na ID objektu pouze s `--query` parametrem.
+Šablona vyžaduje ID objektu přidruženého k vašemu účtu. Pokud ho chcete najít, použijte příkaz Azure CLI [AZ AD User show](/cli/azure/ad/user#az_ad_user_show) a předejte e-mailovou adresu `--id` parametru. Výstup lze omezit pouze na ID objektu pouze s `--query` parametrem.
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-Možná budete potřebovat i ID tenanta. Pokud ho chcete najít, použijte příkaz Azure CLI [AZ AD User show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) . Výstup můžete omezit pouze na ID tenanta s `--query` parametrem.
+Možná budete potřebovat i ID tenanta. Pokud ho chcete najít, použijte příkaz Azure CLI [AZ AD User show](/cli/azure/account#az_account_show) . Výstup můžete omezit pouze na ID tenanta s `--query` parametrem.
 
  ```azurecli-interactive
  az account show --query "tenantId"

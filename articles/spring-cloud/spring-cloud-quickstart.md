@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035165"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214469"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -37,7 +37,7 @@ Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvoře
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
-* [Azure CLI verze 2.0.67 nebo novější](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Azure CLI verze 2.0.67 nebo novější](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Instalace rozšíření Azure CLI
@@ -338,9 +338,9 @@ V tomto rychlém startu se dozvíte, jak:
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Nainstalovat JDK 8](/java/azure/jdk/)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte Azure CLI verze 2.0.67 nebo vyšší](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a rozšíření Azure jaře cloudu pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte Azure CLI verze 2.0.67 nebo vyšší](/cli/azure/install-azure-cli) a rozšíření Azure jaře cloudu pomocí příkazu: `az extension add --name spring-cloud`
 * Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>Vygenerování jarního cloudového projektu

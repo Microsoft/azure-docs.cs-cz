@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033064"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212786"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Nasazení modelů ML na pole – programovatelné pole brány (FPGA) s Azure Machine Learning 
 
@@ -68,7 +68,7 @@ V tomto příkladu vytvoříte graf TensorFlow, abyste mohli předzpracovat vstu
  
 - Balíček pro hardwarové a akcelerované modely:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 
 - FPGA kvóta. Odešlete [žádost o kvótu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u), nebo spuštěním tohoto příkazu rozhraní příkazového řádku ověřte kvótu: 
 

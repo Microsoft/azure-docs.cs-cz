@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 080666c9857c1a3dc509ca980bc85b1dc11b5975
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214282"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatické opravy instancí pro škálovací sady virtuálních počítačů Azure
 
@@ -102,7 +102,7 @@ Následující kroky umožňují při vytváření nové sady škálování povo
 1. Vyhledejte část **stav** .
 1. Povolte možnost **monitorovat stav aplikace** .
 1. Vyhledejte oddíl **zásady automatických oprav** .
-1. Zapněte možnost **automatických oprav** . **On**
+1. Zapněte možnost **automatických oprav** . 
 1. V části lhůta **odkladu (min)** zadejte dobu odkladu v minutách, povolené hodnoty jsou mezi 30 a 90 minutami. 
 1. Až budete hotovi s vytvářením nové sady škálování, vyberte tlačítko **zkontrolovat + vytvořit** .
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)*. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
+Následující příklad povoluje zásadu automatické opravy při vytváření nové sady škálování pomocí funkce *[AZ VMSS Create](/cli/azure/vmss#az-vmss-create)*. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování s automatickými opravami doba odkladu, která je nastavená na 30 minut.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -172,7 +172,7 @@ Zásady automatických oprav existující sady škálování můžete upravit po
 1. V nabídce **Nastavení** vlevo vyberte **stav a opravit**.
 1. Povolte možnost **monitorovat stav aplikace** .
 1. Vyhledejte oddíl **zásady automatických oprav** .
-1. Zapněte možnost **automatických oprav** . **On**
+1. Zapněte možnost **automatických oprav** . 
 1. V části lhůta **odkladu (min)** zadejte dobu odkladu v minutách, povolené hodnoty jsou mezi 30 a 90 minutami. 
 1. Po dokončení vyberte **Uložit**. 
 
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*.
+Následuje příklad aktualizace zásad automatických oprav instancí existující sady škálování pomocí funkce *[AZ VMSS Update](/cli/azure/vmss#az-vmss-update)*.
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ Pro nastavení stavu automatických oprav použijte rozhraní API *setOrchestrat
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Pomocí rutiny [Get-instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) zobrazte *serviceState* pro automatické opravy instancí. 
+Pomocí rutiny [Get-instance-View](/cli/azure/vmss#az-vmss-get-instance-view) zobrazte *serviceState* pro automatické opravy instancí. 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-Pomocí rutiny [set-Orchestration-Service-State](/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) aktualizujte *serviceState* pro automatické opravy instancí. Až se sada škálování přiřadí do funkce Automatické opravy, můžete tuto rutinu použít k pozastavení nebo obnovení automatických oprav pro sadu škálování. 
+Pomocí rutiny [set-Orchestration-Service-State](/cli/azure/vmss#az-vmss-set-orchestration-service-state) aktualizujte *serviceState* pro automatické opravy instancí. Až se sada škálování přiřadí do funkce Automatické opravy, můžete tuto rutinu použít k pozastavení nebo obnovení automatických oprav pro sadu škálování. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \

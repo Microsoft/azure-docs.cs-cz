@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c72a305a7000052be4f11c9c24a76db94de47ace
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ecbb7ec503011d78c2f83a76cea921e1cf438ac1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650103"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215098"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -36,7 +36,11 @@ Pokud máte dotazy související s vývojem, možná budete moci najít odpově�
 
 ### <a name="scoped-search"></a>Hledání v oboru
 
+
+Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky [Microsoft Q&](https://docs.microsoft.com/answers/products/) dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
+
 Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky [Microsoft Q&](/answers/products/)dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
+
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)

@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729228"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215149"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -87,7 +87,7 @@ Další informace najdete v tématu [koncové body služby virtuální sítě](.
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť 
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce aktuálně funguje jenom pro všechny SKU podporované virtuální sítě, které zahrnují Standard a Premium, s výjimkou na pružných razítkách, kde je VNet dostupná jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu. Tato funkce aktuálně funguje pro všechny SKU podporované virtuální sítí, které zahrnují Standard a Premium, s výjimkou na pružných razítkách, kde jsou virtuální sítě dostupné jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
 
 1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
 1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.
@@ -96,7 +96,7 @@ Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s úč
 1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
     * Pokud používáte připojení privátního koncového bodu, bude účet úložiště potřebovat soukromý koncový bod `file` pro `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.
     * Pokud používáte koncové body služby, povolte pro účty úložiště podsíť vyhrazenou pro vaše aplikace Function App.
-1. Volitelné Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
+1. Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
 1. Zkopírujte připojovací řetězec pro tento účet úložiště.
 1. Aktualizujte **nastavení aplikace** v části **Konfigurace** pro aplikaci Function App na následující:
     - `AzureWebJobsStorage` do připojovacího řetězce pro zabezpečený účet úložiště.

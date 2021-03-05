@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534698"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212463"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečení přístupu k trezoru klíčů
 
@@ -36,7 +36,7 @@ Objekt zabezpečení je objekt, který představuje uživatele, skupinu, službu
 
 * Objekt zabezpečení **skupiny** identifikuje sadu uživatelů vytvořených v Azure Active Directory. Všechny role nebo oprávnění přiřazených ke skupině jsou udělena všem uživatelům v rámci dané skupiny.
 
-* **Instanční objekt** je typ instančního objektu, který slouží k identitě aplikace nebo služby, což znamená, že místo uživatele nebo skupiny říkáte část kódu. ID objektu instančního objektu se označuje jako jeho **ID klienta** a funguje jako jeho uživatelské jméno. **Tajný klíč klienta** instančního objektu nebo **certifikát** funguje jako heslo. Řada služeb Azure podporuje přiřazování [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md) pomocí automatizované správy **ID klienta** a **certifikátu**. Spravovaná identita představuje nejbezpečnější a doporučenou možnost ověřování v rámci Azure.
+* **Instanční objekt** je typ objektu zabezpečení, který identifikuje aplikaci nebo službu, což znamená, že je místo uživatele nebo skupiny slovní část kódu. ID objektu instančního objektu se označuje jako jeho **ID klienta** a funguje jako jeho uživatelské jméno. **Tajný klíč klienta** instančního objektu nebo **certifikát** funguje jako heslo. Řada služeb Azure podporuje přiřazování [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md) pomocí automatizované správy **ID klienta** a **certifikátu**. Spravovaná identita představuje nejbezpečnější a doporučenou možnost ověřování v rámci Azure.
 
 Další informace o ověřování pro Key Vault najdete v tématu [ověření pro Azure Key Vault](authentication.md)
 

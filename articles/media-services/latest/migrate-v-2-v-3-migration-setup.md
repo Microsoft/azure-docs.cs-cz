@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f3be34c6488b977a0b03237025ba0f0ab1af7ec
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705377"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214452"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Krok 3 – nastavení pro migraci na verzi V3 REST API nebo klientskou sadu SDK
 
@@ -50,8 +50,8 @@ Postupujte podle pokynů k rychlému zprovoznění a [nastavte své prostředí]
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Stažení klientské sady SDK podle vašeho výběru a nastavení prostředí
 
-- Sady SDK dostupné [pro .NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest), [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable), [Přejít](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md).
-- Rozhraní příkazového [řádku Azure](/cli/azure/ams?preserve-view=true&view=azure-cli-latest)   integrace pro podporu jednoduchého skriptování.
+- Sady SDK dostupné [pro .NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/mediaservices/management), [Přejít](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md).
+- Rozhraní příkazového [řádku Azure](/cli/azure/ams)   integrace pro podporu jednoduchého skriptování.
 
 > [!NOTE]
 > Sada SDK PHP pro komunitu už není dostupná pro Azure Media Services na v3. Pokud používáte PHP na v2, měli byste migrovat na REST API přímo v kódu.

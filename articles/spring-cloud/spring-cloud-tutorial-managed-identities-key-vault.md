@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8d10562c1499b9e6e8f287029173e1728abb75a0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7e02bfb295460797edf46eac57afa628cd1544be
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034094"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212922"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity pro připojení Key Vault k aplikaci pro jarní cloudovou službu Azure
 
@@ -25,18 +25,18 @@ Azure Key Vault můžete použít k bezpečnému ukládání a pečlivému říz
 ## <a name="prerequisites"></a>Požadavky
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli)
 * [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků, která bude obsahovat Key Vault i jarní Cloud, pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create):
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků, která bude obsahovat Key Vault i jarní Cloud, pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create):
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>Nastavení Key Vault
-Pokud chcete vytvořit Key Vault, použijte příkaz [AZ klíčů Create](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create):
+Pokud chcete vytvořit Key Vault, použijte příkaz [AZ klíčů Create](/cli/azure/keyvault#az-keyvault-create):
 
 > [!Important]
 > Každý Key Vault musí mít jedinečný název. V následujících příkladech nahraďte <název vašeho trezoru klíčů> názvem vaší Key Vault.
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Poznamenejte si vrácenou `vaultUri` hodnotu, která bude ve formátu "https://<vašeho trezoru klíčů – název>. Vault.Azure.NET". Bude použit v následujícím kroku.
 
-Tajný kód teď můžete do svého Key Vault umístit pomocí příkazu [AZ klíčů trezor tajná sada](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set):
+Tajný kód teď můžete do svého Key Vault umístit pomocí příkazu [AZ klíčů trezor tajná sada](/cli/azure/keyvault/secret#az-keyvault-secret-set):
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -169,7 +169,7 @@ Tato aplikace bude mít přístup k získání tajných kódů z Azure Key Vault
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Sestavit ukázkovou aplikaci pro spouštění pružin pomocí sady Java SDK
 
-Tato ukázka může nastavit a získat tajné kódy z Azure Key Vault. [Klientská knihovna Azure Key Vault tajných klíčů pro jazyk Java](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary) poskytuje podporu ověřování tokenů Azure Active Directory napříč sadou Azure SDK. Poskytuje sadu **TokenCredential** implementace, které se dají použít k sestavování klientů Azure SDK pro podporu ověřování pomocí tokenu AAD.
+Tato ukázka může nastavit a získat tajné kódy z Azure Key Vault. [Klientská knihovna Azure Key Vault tajných klíčů pro jazyk Java](/java/api/overview/azure/security-keyvault-secrets-readme) poskytuje podporu ověřování tokenů Azure Active Directory napříč sadou Azure SDK. Poskytuje sadu **TokenCredential** implementace, které se dají použít k sestavování klientů Azure SDK pro podporu ověřování pomocí tokenu AAD.
 
 Klientská knihovna Azure Key Vault tajných klíčů vám umožní bezpečně ukládat a řídit přístup k tokenům, heslům, klíčům rozhraní API a dalším tajným klíčům. Knihovna nabízí operace vytvoření, načtení, aktualizace, odstranění, vyprázdnění, zálohování, obnovení a výpisu tajných kódů a jejich verzí.
 
@@ -193,7 +193,7 @@ Klientská knihovna Azure Key Vault tajných klíčů vám umožní bezpečně u
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Zahrňte [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) k získání tokenu z Azure Active Directory a [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) pro nastavení nebo získání tajných kódů z Key Vault ve vašem kódu.
+3. Zahrňte [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder) k získání tokenu z Azure Active Directory a [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) pro nastavení nebo získání tajných kódů z Key Vault ve vašem kódu.
 
     Získejte příklad z [MainController. Java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) klonovaného ukázkového projektu.
 

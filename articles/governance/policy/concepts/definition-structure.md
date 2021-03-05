@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699415"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215064"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -150,7 +150,7 @@ Parametr má následující vlastnosti, které se používají v definici zásad
   - `assignPermissions`: (Volitelné) nastavte na _hodnotu true_ , pokud chcete, Azure Portal vytvořit přiřazení rolí během přiřazování zásad. Tato vlastnost je užitečná v případě, že chcete přiřadit oprávnění mimo rozsah přiřazení. Podle definice role v zásadě (nebo definice role v rámci všech zásad v iniciativě) existuje jedno přiřazení role. Hodnota parametru musí být platným prostředkem nebo oborem.
 - `defaultValue`: (Volitelné) nastaví hodnotu parametru v přiřazení, pokud není zadána žádná hodnota.
   Vyžaduje se při aktualizaci existující definice zásady, která je přiřazená.
-- `allowedValues`: (Volitelné) poskytuje pole hodnot, které parametr akceptuje během přiřazování.
+- `allowedValues`: (Volitelné) poskytuje pole hodnot, které parametr akceptuje během přiřazování. Porovnávání povolených hodnot rozlišuje velká a malá písmena. 
 
 Jako příklad můžete definovat definici zásady, která omezí umístění, kde mohou být prostředky nasazeny. Parametr této definice zásad může být **allowedLocations**. Tento parametr by se použil při každém přiřazení definice zásady, aby se omezily přijatelné hodnoty. Použití **strongType** poskytuje vylepšené prostředí při dokončování přiřazení prostřednictvím portálu:
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal, devx-track-azurecli
-ms.openlocfilehash: 07088ebfa5fde4c3c790bd554c1eba8d6844b7d1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f16cc83257dbf6419fc794f34e4cd6df033d3f8b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736067"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213959"
 ---
 # <a name="find-your-azure-subscription"></a>Vyhledání předplatného Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "92736067"
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nadpisu služby Azure vyberte předplatná. (Pokud nejsou uvedené žádné odběry, možná budete muset přepnout klienty Azure AD.) ID vašich předplatných jsou uvedená ve druhém sloupci.
 1. Zkopírujte ID předplatného a vložte ho do textového dokumentu podle vlastního výběru pro pozdější použití.
 
@@ -47,7 +47,7 @@ ms.locfileid: "92736067"
 
 ### <a name="see-also"></a>Viz také
 
-* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/ams)
 
 ---
 

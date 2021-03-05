@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 14bc7b6f45b04f230252e85cd10b7246529cb751
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095148"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213092"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -294,21 +294,21 @@ Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
 
 ## <a name="november-2018"></a>Listopad 2018
 
-Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50.
+Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams) – v 2.0.50.
 
 ### <a name="new-commands"></a>Nové příkazy
 
-- [AZ AMS Account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS streaming – Lokátor](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
-- [AZ AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
+- [AZ AMS Account](/cli/azure/ams/account)
+- [AZ AMS Account-Filter](/cli/azure/ams/account-filter)
+- [AZ AMS Asset](/cli/azure/ams/asset)
+- [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter)
+- [AZ AMS Content-Key-Policy](/cli/azure/ams/content-key-policy)
+- [AZ AMS Job](/cli/azure/ams/job)
+- [AZ AMS Live-Event](/cli/azure/ams/live-event)
+- [AZ AMS Live-Output](/cli/azure/ams/live-output)
+- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint)
+- [AZ AMS streaming – Lokátor](/cli/azure/ams/streaming-locator)
+- [AZ AMS Account MRU](/cli/azure/ams/account/mru) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nové funkce a zásadní změny
 

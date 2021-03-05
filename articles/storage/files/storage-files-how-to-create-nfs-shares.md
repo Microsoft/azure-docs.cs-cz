@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382119"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214418"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v cloudu živé. Tento článek popisuje vytvoření sdílené složky, která používá protokol NFS. Další informace o obou protokolech najdete v tématu [protokoly sdílení souborů Azure](storage-files-compare-protocols.md).
@@ -31,7 +31,7 @@ Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v 
     - [Nakonfigurujte síť VPN typu Site-to-site pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
     - Nakonfigurujte [ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](/cli/azure/install-azure-cli).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrace protokolu NFS 4,1
 Pokud používáte modul Azure PowerShell nebo rozhraní příkazového řádku Azure CLI, zaregistrujte svou funkci pomocí následujících příkazů:

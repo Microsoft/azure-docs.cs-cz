@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 055df9d2290ee445e2a7201acd374508a86e839f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520659"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213314"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
 
@@ -182,10 +182,10 @@ Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazeno
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Předplatné** | Yes | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
-   | **Skupina prostředků** | Yes | <*Azure-Resource-Group-Name*> | Název skupiny prostředků, která se má použít. Vytvořte novou skupinu nebo vyberte existující skupinu. Tento příklad vytvoří novou skupinu s názvem `fabrikam-managed-identities-RG` . |
-   | **Oblast** | Yes | <*Oblast Azure*> | Oblast Azure, ve které se mají ukládat informace o prostředku V tomto příkladu se používá "Západní USA". |
-   | **Název** | Yes | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. Tento příklad používá `Fabrikam-user-assigned-identity`. |
+   | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
+   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Název skupiny prostředků, která se má použít. Vytvořte novou skupinu nebo vyberte existující skupinu. Tento příklad vytvoří novou skupinu s názvem `fabrikam-managed-identities-RG` . |
+   | **Oblast** | Ano | <*Oblast Azure*> | Oblast Azure, ve které se mají ukládat informace o prostředku V tomto příkladu se používá "Západní USA". |
+   | **Název** | Ano | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. Tento příklad používá `Fabrikam-user-assigned-identity`. |
    |||||
 
    Po ověření těchto údajů Azure vytvoří spravovanou identitu. Nyní můžete do aplikace logiky přidat identitu přiřazenou uživatelem. Do aplikace logiky nemůžete přidat více než jednu identitu přiřazenou uživatelem.
@@ -307,7 +307,7 @@ Než budete moct použít spravovanou identitu vaší aplikace logiky k ověřov
 * [Azure Portal](#azure-portal-assign-access)
 * [Šablona Azure Resource Manageru](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-* Azure CLI ([AZ role Assignment Create](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+* Azure CLI ([AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create)) – Další informace najdete v tématu [Přidání přiřazení role pomocí Azure RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -458,11 +458,11 @@ Aktivační událost nebo akce HTTP může používat identitu přiřazenou syst
 
 | Vlastnost | Povinné | Popis |
 |----------|----------|-------------|
-| **Metoda** | Yes | Metoda HTTP, kterou používá operace, kterou chcete spustit |
-| **Identifikátor URI** | Yes | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
-| **Hlavičky** | No | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
-| **Dotazy** | No | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
-| **Authentication** | Yes | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
+| **Metoda** | Ano | Metoda HTTP, kterou používá operace, kterou chcete spustit |
+| **Identifikátor URI** | Ano | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
+| **Hlavičky** | Ne | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
+| **Dotazy** | Ne | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
+| **Authentication** | Ano | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
 ||||
 
 Jako konkrétní příklad Předpokládejme, že chcete spustit [operaci Snapshot BLOB](/rest/api/storageservices/snapshot-blob) u objektu BLOB v účtu Azure Storage, kde jste předtím nastavili přístup k vaší identitě. Ale [konektor Azure Blob Storage](/connectors/azureblob/) v současnosti tuto operaci nenabízí. Místo toho můžete tuto operaci spustit pomocí [akce http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) nebo jiné [operace REST API služby BLOB Service](/rest/api/storageservices/operations-on-blobs).
@@ -472,10 +472,10 @@ Jako konkrétní příklad Předpokládejme, že chcete spustit [operaci Snapsho
 
 Pokud chcete spustit [operaci objektu BLOB snímku](/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
 
-| Vlastnost | Požaduje se | Příklad hodnoty | Description |
+| Vlastnost | Požaduje se | Příklad hodnoty | Popis |
 |----------|----------|---------------|-------------|
-| **Metoda** | Yes | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
-| **Identifikátor URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
+| **Metoda** | Ano | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
+| **Identifikátor URI** | Ano | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
 | **Hlavičky** | Pro Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` Hodnoty hlaviček, a `x-ms-date` jsou požadovány pro operace Azure Storage. <p><p>**Důležité**: v odchozích triggerech http a požadavcích akcí pro Azure Storage hlavička vyžaduje `x-ms-version` vlastnost a verzi rozhraní API pro operaci, kterou chcete spustit. `x-ms-date`Musí být aktuální datum. V opačném případě vaše aplikace logiky selže s `403 FORBIDDEN` chybou. Chcete-li získat aktuální datum v požadovaném formátu, můžete použít výraz v příkladu hodnoty. <p>Další informace najdete v těchto tématech: <p><p>- [Hlavičky žádosti – objekt BLOB snímku](/rest/api/storageservices/snapshot-blob#request) <br>- [Správa verzí pro služby Azure Storage Services](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
 | **Dotazy** | Pouze pro operaci objektu BLOB snímku | `comp` = `snapshot` | Název a hodnota parametru dotazu pro operaci. |
 |||||

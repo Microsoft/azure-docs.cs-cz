@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214741"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -177,7 +177,7 @@ K dispozici jsou [dvě fáze hodnocení odpovědí](query-knowledge-base.md#how-
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-Použijte [nejnovější aktualizace modulu runtime](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) pro automatické spravování aktualizací služby.
+Použijte [nejnovější aktualizace modulu runtime](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) pro automatické spravování aktualizací služby.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
@@ -187,7 +187,7 @@ V QnA Maker spravovaném (ve verzi Preview) je modul runtime spravovaný pomocí
 
 ### <a name="scaling-throughput-and-resiliency"></a>Škálování, propustnost a odolnost
 
-Škálování, propustnost a odolnost proti chybám určují [prostředky Azure](../how-to/set-up-qnamaker-service-azure.md), jejich cenové úrovně a všechny okolní architektury, jako je [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager).
+Škálování, propustnost a odolnost proti chybám určují [prostředky Azure](../how-to/set-up-qnamaker-service-azure.md), jejich cenové úrovně a všechny okolní architektury, jako je [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager).
 
 ### <a name="analytics-with-application-insights"></a>Analýza pomocí Application Insights
 
