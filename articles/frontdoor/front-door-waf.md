@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279216"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201052"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
@@ -34,9 +34,9 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) , abyste mohli začít s Azure CLI.
+- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](/cli/azure/get-started-with-azure-cli) , abyste mohli začít s Azure CLI.
 
   > [!TIP] 
   > Snadný a rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](../cloud-shell/quickstart.md).
@@ -48,7 +48,7 @@ V tomto kurzu se naučíte:
    ```
 
 > [!NOTE] 
-> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
+> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](/cli/azure/ext/front-door).
 
 ## <a name="create-an-azure-front-door-resource"></a>Vytvoření prostředku front-dveří Azure
 
@@ -144,7 +144,7 @@ Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) :
+Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) :
 
 ```azurecli-interactive
   az group delete \

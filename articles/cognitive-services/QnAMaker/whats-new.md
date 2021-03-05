@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: afef6b0b868455d806b085a2e1f15f497e8c6799
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5d64ec925e1d88f8143a85393ceb18ae37c2b917
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706720"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202276"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -36,7 +36,7 @@ Přečtěte si, co je nového v QnA Maker.
 ### <a name="july-2020"></a>Červenec 2020
 
 * [Metadata: `OR` logická kombinace více párů metadat](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
-* [Postup](how-to/set-up-qnamaker-service-azure.md#recommended-settings-for-network-isolation) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
+* [Postup](how-to/network-isolation.md) konfigurace kognitivní hledáních koncových bodů jako soukromých, ale stále přístupná pro QnA maker.
 * Bezplatné Kognitivní hledání prostředky se po [90 dnech nečinnosti](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)odeberou.
 
 ### <a name="june-2020"></a>Červen 2020

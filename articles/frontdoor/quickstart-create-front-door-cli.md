@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0b82c11dcd615dfbdcfd70f5f90edd7ba41b4562
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201613"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rychlý Start: vytvoření přední dveře pro globální webovou aplikaci s vysokou dostupností pomocí Azure CLI
 
@@ -46,7 +46,7 @@ V Azure přidělíte související prostředky skupině prostředků. Můžete p
 
 Pro tento rychlý Start potřebujete dvě skupiny prostředků. Jednu v *střed USA* a druhý v *střed USA – jih*.
 
-Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true):
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create):
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Pokud ještě nemáte webovou aplikaci, použijte následující skript k nastav
 
 Než budete moct vytvořit webové aplikace, budete potřebovat dva plány služby App Service, jednu v *střed USA* a druhý v *střed USA – jih*.
 
-Vytvoření plánů služby App Service pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
+Vytvoření plánů služby App Service pomocí [AZ AppService Plan Create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true):
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Spuštěním následujících příkazů se v předchozím kroku vytvoří webová aplikace v každém z plánů služby App Service. Názvy webových aplikací musí být globálně jedinečné.
 
-Vytvoření webové aplikace pomocí [AZ WebApp Create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Vytvoření webové aplikace pomocí [AZ WebApp Create](/cli/azure/webapp#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Poznamenejte si výchozí název hostitele každé webové aplikace, abyste mohl
 
 Vytvořte základní front-dvířka s výchozím nastavením vyrovnávání zatížení, sondou stavu a pravidly směrování, a to spuštěním následujícího postupu:
 
-Vytvoření front-dveří pomocí [AZ Network front-dvířk Create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
+Vytvoření front-dveří pomocí [AZ Network front-dvířk Create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Otevřete webový prohlížeč a zadejte název hostitele, který se získá z p
 
 Když už nepotřebujete prostředky, které jste vytvořili v rámci front, odstraňte obě skupiny prostředků. Když odstraníte skupinu prostředků, odstraníte také přední dveře a všechny související prostředky. 
 
-Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](/cli/azure/group#az_group_delete&preserve-view=true):
 
 ```azurecli-interactive
 az group delete \

@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588790"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200042"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -153,7 +153,7 @@ Měl by se také zobrazit výstup v konzole, ve kterém se zobrazují zprávy, k
 
 [Funkce Web Apps v Azure App Service](../app-service/overview.md) poskytuje platformu jako službu (PaaS) pro hostování webových aplikací. Webové aplikace hostované ve službě Azure App Service můžou využívat výkonné funkce Azure, jako je další zabezpečení, Vyrovnávání zatížení a škálovatelnost, a také řešení Azure a partnerská řešení DevOps, jako je průběžné nasazování, Správa balíčků atd. Azure App Service podporuje webové aplikace vyvinuté v mnoha oblíbených jazycích a nasazené v infrastruktuře systému Windows nebo Linux.
 
-V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kód pomocí příkazů rozhraní příkazového řádku Azure CLI. Podrobnosti o příkazech, které se používají v dokumentaci [AZ WebApp](/cli/azure/webapp?view=azure-cli-latest) , najdete v části. Než začnete, ujistěte se, že jste dokončili kroky pro [Přidání skupiny prostředků do služby IoT Hub](#add-a-consumer-group-to-your-iot-hub), [získání připojovacího řetězce služby pro službu IoT Hub](#get-a-service-connection-string-for-your-iot-hub)a [Stažení webové aplikace z GitHubu](#download-the-web-app-from-github).
+V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kód pomocí příkazů rozhraní příkazového řádku Azure CLI. Podrobnosti o příkazech, které se používají v dokumentaci [AZ WebApp](/cli/azure/webapp) , najdete v části. Než začnete, ujistěte se, že jste dokončili kroky pro [Přidání skupiny prostředků do služby IoT Hub](#add-a-consumer-group-to-your-iot-hub), [získání připojovacího řetězce služby pro službu IoT Hub](#get-a-service-connection-string-for-your-iot-hub)a [Stažení webové aplikace z GitHubu](#download-the-web-app-from-github).
 
 1. [Plán App Service](../app-service/overview-hosting-plans.md) definuje sadu výpočetních prostředků pro aplikaci hostovanou v App Service, která se má spustit. V tomto kurzu používáme pro hostování webové aplikace úroveň vývojář/Free. S úrovní Free se vaše webová aplikace spouští na sdílených prostředcích Windows s jinými aplikacemi App Service, včetně aplikací jiných zákazníků. Azure také nabízí App Service plány pro nasazení webových aplikací do výpočetních prostředků Linux. Pokud již máte plán App Service, který chcete použít, můžete tento krok přeskočit.
 

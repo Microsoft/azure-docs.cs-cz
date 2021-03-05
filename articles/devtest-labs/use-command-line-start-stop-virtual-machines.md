@@ -3,12 +3,12 @@ title: Spuštění a zastavení virtuálních počítačů pomocí nástrojů p�
 description: Naučte se používat nástroje příkazového řádku ke spouštění a zastavování virtuálních počítačů v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476412"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201188"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Spuštění a zastavení Azure DevTest Labs virtuálních počítačů pomocí nástrojů příkazového řádku
 V tomto článku se dozvíte, jak pomocí Azure PowerShell nebo Azure CLI spouštět a zastavovat virtuální počítače v testovacím prostředí v Azure DevTest Labs. K automatizaci těchto operací můžete vytvořit skripty PowerShellu nebo rozhraní příkazového řádku. 
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-Rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) je dalším způsobem, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure CLI je možné [instalovat](/cli/azure/install-azure-cli?view=azure-cli-latest) v různých operačních systémech. Následující skript vám poskytne příkazy pro spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
+Rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) je dalším způsobem, jak automatizovat spouštění a zastavování virtuálních počítačů DevTest Labs. Rozhraní příkazového řádku Azure CLI je možné [instalovat](/cli/azure/install-azure-cli) v různých operačních systémech. Následující skript vám poskytne příkazy pro spouštění a zastavování virtuálních počítačů v testovacím prostředí. 
 
 ```azurecli
 # Sign in to Azure

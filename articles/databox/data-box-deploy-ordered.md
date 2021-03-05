@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797616"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201885"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -437,7 +437,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
-2. V příkazovém řádku možnosti volby nebo terminálu spusťte příkaz [AZ data box Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) a vytvořte tak Azure Data box objednávku.
+2. V příkazovém řádku možnosti volby nebo terminálu spusťte příkaz [AZ data box Create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) a vytvořte tak Azure Data box objednávku.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -605,7 +605,7 @@ Microsoft potom připraví a odešle vaše zařízení přes místní přepravn�
 
 ### <a name="track-a-single-order"></a>Sledovat jednu objednávku
 
-Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) . Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -646,7 +646,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spustit [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) pro zobrazení všech vašich Azure Data box objednávek. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spustit [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) pro zobrazení všech vašich Azure Data box objednávek. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurecli
@@ -765,7 +765,7 @@ Zrušení objednávky odstraníte tak, že přejdete na **Přehled** a na panelu
 
 ### <a name="cancel-an-order"></a>Zrušení objednávky
 
-Chcete-li zrušit Azure Data Box pořadí, spusťte příkaz [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Je nutné zadat důvod pro zrušení objednávky.
+Chcete-li zrušit Azure Data Box pořadí, spusťte příkaz [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) . Je nutné zadat důvod pro zrušení objednávky.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -802,7 +802,7 @@ Chcete-li zrušit Azure Data Box pořadí, spusťte příkaz [`az databox job ca
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji spustit, [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) abyste objednávku odstranili.
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji spustit, [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) abyste objednávku odstranili.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

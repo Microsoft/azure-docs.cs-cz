@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573033"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201426"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -64,7 +64,7 @@ Tento model čte přímo z místnosti místo zařízení IoT, což vám dává f
     >[!NOTE]
     >V současné době existuje **známý problém** v Cloud Shellu, který se týká těchto skupin příkazů: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Pokud chcete tento problém vyřešit, buď spusťte `az login` v Cloud Shellu před spuštěním příkazu, nebo místo Cloud Shellu použijte [místní rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Pokud chcete tento problém vyřešit, buď spusťte `az login` v Cloud Shellu před spuštěním příkazu, nebo místo Cloud Shellu použijte [místní rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli). Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"

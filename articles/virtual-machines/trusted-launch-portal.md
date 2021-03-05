@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fca11ce1cfa09fb680c2b288e40fa5f51337bdb8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124648"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200780"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Nasazení virtuálního počítače s povoleným důvěryhodným spouštěním (Preview)
 
@@ -37,7 +37,7 @@ Vytvořte virtuální počítač s povoleným důvěryhodným spuštěním.
 1. Na stránce **virtuální počítače** vyberte **Přidat** a potom vyberte **virtuální počítač**.
 1. V části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
 1. V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků nebo vyberte existující skupinu prostředků z rozevíracího seznamu.
-1. V části **Podrobnosti instance** zadejte název pro název virtuálního počítače a vyberte oblast, která podporuje důvěryhodné spuštění.
+1. V části **Podrobnosti instance** zadejte název pro název virtuálního počítače a vyberte oblast, která podporuje [důvěryhodné spuštění](trusted-launch.md#public-preview-limitations).
 1. V části **Obrázek** vyberte [obrázek, který podporuje důvěryhodné spuštění](trusted-launch.md#public-preview-limitations). Může se zobrazit jenom verze 1. generace obrázku, která je v pořádku, přejděte k dalšímu kroku.
 1. Přepněte na kartu **Upřesnit** tím, že ji vyberete v horní části stránky.
 1. Přejděte dolů k části **generování virtuálního počítače** a pak vyberte **Obecné 2**.
@@ -140,7 +140,7 @@ Pokud chcete získat doporučení pro vTPM a zabezpečené spouštění pro dův
 
 V některých případech může být nutné se přihlásit k zabezpečenému spouštění UEFI.  Například budete potřebovat [postup, jak se přihlašovat k zabezpečenému spouštění](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) pro Ubuntu. V těchto případech je potřeba zadat pro svůj virtuální počítač klíče pro zápis MOK Utility. K tomu je potřeba použít pro přístup k nástroji MOK službu sériového portu Azure.
 
-1. Povolte službu Azure Serial Console pro Linux.
+1. Povolte službu Azure Serial Console pro Linux. Další informace najdete v tématu [sériová Konzola pro Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **virtuální počítače** a ze seznamu vyberte svůj virtuální počítač.
 1. V nabídce vlevo v části **Podpora a řešení potíží** vyberte **sériová konzola**. Stránka se otevře napravo s použitím konzoly sériového portu.

@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: Zobrazení živých dat
           items:
-            - name: Přehled živých dat (Preview)
+            - name: Přehled živých dat
               href: containers/container-insights-livedata-overview.md
             - name: Nastavení
               href: containers/container-insights-livedata-setup.md

@@ -3,21 +3,25 @@ title: Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
 description: Konfigurace požadavků pro službu Azure VM Image Builder, včetně oprávnění a oprávnění pomocí Azure CLI
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695426"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201477"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
 
-Služba Azure image Builder vyžaduje před vytvořením image konfiguraci oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí Azure CLI.
+Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat a odstranit pracovní skupinu prostředků (IT_ *) a mít práva k přidávání prostředků do této služby, které jsou požadovány pro sestavení bitové kopie. K tomu slouží AIB hlavní název služby (SPN), který je ve vašem předplatném dostupný během úspěšné registrace.
+
+Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních nebo veřejných kontejnerů.
+
+Před vytvořením image musíte nastavit oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí Azure CLI.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
-ms.openlocfilehash: c3791a9049a3eab3ddd6fc70073629c38830dbc7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 78ac9ae4aa8611f50caa94c84d3e6c95e58fc91c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002260"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200729"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Použití kontejnerů služby Speech s Kubernetes a Helm
 
@@ -27,7 +27,7 @@ Před použitím kontejnerů řeči v místním prostředí použijte následuj�
 
 | Vyžadováno | Účel |
 |----------|---------|
-| Účet Azure | Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][free-azure-account], ještě než začnete. |
+| Účet Azure | Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][free-azure-account]. |
 | Přístup k Container Registry | Aby Kubernetes mohl načíst image Docker do clusteru, bude potřebovat přístup k registru kontejneru. |
 | Kubernetes CLI | [KUBERNETES CLI][kubernetes-cli] se vyžaduje pro správu sdílených přihlašovacích údajů z registru kontejneru. Kubernetes je také potřeba před Helm, což je správce balíčků Kubernetes. |
 | Helm CLI | Nainstalujte rozhraní příkazového [řádku Helm][helm-install], které se používá k instalaci grafu Helm (definice balíčku kontejneru). |
@@ -229,7 +229,7 @@ Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kuberne
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/intro/install/

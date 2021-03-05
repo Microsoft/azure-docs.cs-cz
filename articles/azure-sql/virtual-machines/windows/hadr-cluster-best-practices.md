@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358805"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201766"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,7 +47,7 @@ Konfigurace prostředku kvora umožní, aby cluster pokračoval online s pouze j
 V následující tabulce jsou uvedené možnosti kvora, které jsou k dispozici v pořadí doporučeném pro použití s virtuálním počítačem Azure, přičemž určující disk má upřednostňovanou volbu: 
 
 
-||[Disk s kopií clusteru](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Disk s kopií cloudu](/windows-server/failover-clustering/deploy-cloud-witness)  |[Určující sdílená složka](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
+||[Určující disk](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Disk s kopií cloudu](/windows-server/failover-clustering/deploy-cloud-witness)  |[Určující sdílená složka](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Podporovaný operační systém**| Vše |Windows Server 2016 +| Vše|
 
@@ -76,9 +76,7 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího cloud
 
 ### <a name="file-share-witness"></a>Určující sdílená složka
 
-Určující sdílená složka je sdílená složka SMB, která je obvykle nakonfigurovaná na souborovém serveru se systémem Windows Server. Udržuje informace o clusteringu v souboru. log, ale neukládá kopii databáze clusteru. V Azure můžete [sdílenou složku Azure](../../../storage/files/storage-how-to-create-file-share.md) nakonfigurovat tak, aby se používala jako určující sdílená složka, nebo můžete použít sdílenou složku na samostatném virtuálním počítači.
-
-Pokud budete používat sdílenou složku Azure, můžete ji připojit ke stejnému procesu, který jste použili k [připojení sdílené složky Premium](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Určující sdílená složka je sdílená složka SMB, která je obvykle nakonfigurovaná na souborovém serveru se systémem Windows Server. Udržuje informace o clusteringu v souboru. log, ale neukládá kopii databáze clusteru. V Azure můžete nakonfigurovat sdílenou složku na samostatném virtuálním počítači.
 
 Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílené složky](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 

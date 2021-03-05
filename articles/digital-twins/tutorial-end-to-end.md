@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "102036128"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201256"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -408,9 +408,9 @@ Po dokončení tohoto kurzu můžete zvolit prostředky, které chcete odebrat, 
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Pokud chcete dál používat instanci digitálních vláken Azure, kterou jste nastavili v tomto článku, ale vymažete některé nebo všechny jeho modely, vlákna a vztahy**, můžete k odstranění prvků, které chcete odebrat, použít příkazy [AZ dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI v [Azure Cloud Shell](https://shell.azure.com) okně.
+* **Pokud chcete dál používat instanci digitálních vláken Azure, kterou jste nastavili v tomto článku, ale vymažete některé nebo všechny jeho modely, vlákna a vztahy**, můžete k odstranění prvků, které chcete odebrat, použít příkazy [AZ dt](/cli/azure/ext/azure-iot/dt) CLI v [Azure Cloud Shell](https://shell.azure.com) okně.
 
-    Tato možnost neodebere žádný z dalších prostředků Azure vytvořených v tomto kurzu (IoT Hub, Azure Functions aplikace atd.). Můžete je odstranit jednotlivě pomocí [příkazů DT](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) vhodných pro každý typ prostředku.
+    Tato možnost neodebere žádný z dalších prostředků Azure vytvořených v tomto kurzu (IoT Hub, Azure Functions aplikace atd.). Můžete je odstranit jednotlivě pomocí [příkazů DT](/cli/azure/reference-index) vhodných pro každý typ prostředku.
 
 Je také možné, že budete chtít odstranit složku projektu z místního počítače.
 

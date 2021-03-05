@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219472"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202378"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "99219472"
         [![Rozhovor a ukázka Představujeme Synchronizace souborů Azure – kliknutím zahrajete.](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
     :::column-end:::
     :::column:::
-        Synchronizace souborů Azure je služba, která umožňuje ukládat do mezipaměti několik sdílených složek Azure v místním nebo cloudovém virtuálním počítači s Windows serverem. 
+        Synchronizace souborů Azure je služba, která umožňuje ukládat do mezipaměti několik sdílených složek Azure na místním nebo cloudovém virtuálním počítači s Windows serverem. 
         
         Tento článek vás seznámí s Synchronizace souborů Azure koncepty a funkcemi. Až budete s Synchronizace souborů Azure obeznámeni, zvažte použití [Průvodce nasazením synchronizace souborů Azure](storage-sync-files-deployment-guide.md) a vyzkoušejte si tuto službu.        
     :::column-end:::
@@ -52,16 +52,19 @@ Než budete moct vytvořit skupinu synchronizace v rámci služby synchronizace 
 Skupina synchronizace obsahuje jeden koncový bod cloudu nebo sdílenou složku Azure a nejméně jeden koncový bod serveru. Objekt koncového bodu serveru obsahuje nastavení, která konfigurují schopnost **vrstvení cloudu** , která poskytuje možnosti ukládání do mezipaměti synchronizace souborů Azure. Aby bylo možné synchronizovat se sdílenou složkou Azure, musí být účet úložiště obsahující sdílenou složku Azure ve stejné oblasti Azure jako služba synchronizace úložiště.
 
 > [!Important]  
-> Můžete provádět změny libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Synchronizace souborů Azure úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
+> Můžete provádět změny v oboru názvů libovolného koncového bodu cloudu nebo koncového bodu serveru ve skupině synchronizace a nechat soubory synchronizované s ostatními koncovými body ve skupině synchronizace. Pokud provedete přímo změnu koncového bodu cloudu (sdílená složka Azure), je třeba nejprve zjistit změny Synchronizace souborů Azure úlohy zjišťování změn. Úloha detekce změn se iniciuje pro koncový bod cloudu jenom jednou za 24 hodin. Další informace najdete v [nejčastějších dotazech k souborům Azure](storage-files-faq.md#afs-change-detection).
 
-### <a name="management-guidance"></a>Pokyny pro správu
-Při nasazování Synchronizace souborů Azure doporučujeme:
+### <a name="consider-the-count-of-storage-sync-services-needed"></a>Vezměte v úvahu počet potřebných služeb synchronizace úložiště.
+Předchozí část popisuje základní prostředek, který se má nakonfigurovat pro Synchronizace souborů Azure: *Služba synchronizace úložiště*. Systém Windows Server lze zaregistrovat pouze do jedné služby synchronizace úložiště. Proto je často nejlepší nasadit jenom jednu službu synchronizace úložiště a zaregistrovat všechny servery, na kterých se jedná. 
 
-- Nasazení sdílených složek Azure 1:1 se sdílenými složkami systému Windows. Objekt koncového bodu serveru poskytuje skvělou míru flexibility při nastavení topologie synchronizace na straně serveru relace synchronizace. Chcete-li zjednodušit správu, nastavte cestu koncového bodu serveru tak, aby odpovídala cestě sdílené složky systému Windows. 
+Více služeb synchronizace úložiště můžete vytvořit pouze v případě, že máte tyto služby:
+* různé sady serverů, které nesmí vzájemně vyměňovat data. V takovém případě budete chtít navrhnout systém tak, aby vyloučil některé sady serverů pro synchronizaci se sdílenou složkou Azure, která se už používá jako koncový bod cloudu ve skupině synchronizace v jiné službě synchronizace úložiště. Dalším způsobem, jak to sledovat, je, že Windows servery zaregistrované do jiné služby synchronizace úložiště se nedají synchronizovat se stejnou sdílenou složkou Azure.
+* musí mít více zaregistrovaných serverů nebo skupin synchronizace než jedna služba synchronizace úložiště, která může podporovat. Další podrobnosti najdete v části [cíle synchronizace souborů Azure škálování](storage-files-scale-targets.md#azure-file-sync-scale-targets) .
 
-- Použijte co nejmenší počet služeb synchronizace úložiště. Tím se zjednoduší Správa, pokud máte skupiny synchronizace, které obsahují více koncových bodů serveru, protože systém Windows Server lze zaregistrovat pouze do jedné služby synchronizace úložiště. 
+## <a name="plan-for-balanced-sync-topologies"></a>Plánování topologií s vyváženou synchronizací
+Než začnete s nasazením jakýchkoli prostředků, je důležité naplánovat, co budete synchronizovat na místním serveru, se kterou sdílenou složkou Azure. Naplánování vám pomůže určit, kolik účtů úložiště, sdílených složek Azure a prostředků synchronizace budete potřebovat. Tyto požadavky jsou stále relevantní, i když se data aktuálně nenacházejí na Windows serveru nebo na serveru, který chcete použít dlouhodobě. [Oddíl Migration (migrace](#migration) ) vám pomůže určit vhodné cesty migrace pro vaši situaci.
 
-- Při nasazování sdílených složek Azure věnujte pozornost omezením IOPS účtu úložiště. V ideálním případě byste namapovali sdílené složky 1:1 s účty úložiště. to ale nemusí být vždycky možné kvůli různým omezením a omezením, a to jak z vaší organizace, tak z Azure. Pokud není možné mít v jednom účtu úložiště nasazenou jenom jednu sdílenou složku, zvažte, které sdílené složky budou vysoce aktivní a které akcie budou méně aktivní, aby se zajistilo, že sdílené složky nejžhavějších se nebudou ukládat do stejného účtu úložiště společně.
+[!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
 ## <a name="windows-file-server-considerations"></a>Požadavky na souborový server systému Windows
 Pokud chcete povolit funkci synchronizace na Windows serveru, musíte nainstalovat Synchronizace souborů Azure agenta ke stažení. Agent Synchronizace souborů Azure poskytuje dvě hlavní součásti: `FileSyncSvc.exe` , službu systému Windows na pozadí, která je odpovědná za sledování změn v koncových bodech serveru a zahájení synchronizace relací, a `StorageSync.sys` , filtr systému souborů, který umožňuje vytvoření vrstvy cloudu a rychlé zotavení po havárii.  
@@ -203,7 +206,7 @@ Synchronizace souborů Azure nepodporuje odstranění duplicitních dat a vrstve
 - Pokud je odstranění duplicitních dat u svazku po povolení vrstvení cloudu povolené, bude úloha optimalizace prvotního odstranění duplicit optimalizovat soubory na svazku, které ještě nejsou vrstvené, a bude mít následující dopad na vrstvení cloudu:
     - Zásada volného místa bude pokračovat v souborech vrstev podle volného místa na svazku pomocí nástroje heatmapu.
     - Zásada data přeskočí vrstvení souborů, které mohly být jinak způsobilé pro vrstvení z důvodu úlohy optimalizace odstranění duplicitních dat při přístupu k souborům.
-- V případě probíhajících úloh optimalizace odstranění duplicit se vrstvení cloudu se zásadami data po nastavení [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) odstranění duplicitních dat zpozdí, pokud soubor ještě není vrstvený. 
+- V případě probíhajících úloh optimalizace odstranění duplicit se vrstvení cloudu se zásadami data po nastavení [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps&preserve-view=true) odstranění duplicitních dat zpozdí, pokud soubor ještě není vrstvený. 
     - Příklad: Pokud je nastavení MinimumFileAgeDays sedm dní a zásady pro datové vrstvy cloudu jsou nastavené na 30 dní, zásada data bude mít soubory na úrovni po 37 dnech.
     - Poznámka: když je soubor vrstvený Synchronizace souborů Azure, úloha optimalizace odstranění duplicit soubor přeskočí.
 - Pokud je server se systémem Windows Server 2012 R2 s nainstalovaným agentem Synchronizace souborů Azure upgradován na Windows Server 2016 nebo Windows Server 2019, je nutné provést následující kroky, aby bylo možné podporovat odstranění duplicitních dat a vrstvení cloudu na stejném svazku:  
@@ -320,15 +323,9 @@ Pokud chcete pro tyto oblasti požádat o přístup, postupujte podle kroků v [
 > Redundantní úložiště geograficky redundantních a geografických zón mají schopnost ručně převzetí služeb při selhání úložiště do sekundární oblasti. Doporučujeme, abyste to nepoužívali mimo případ havárie při použití Synchronizace souborů Azure z důvodu zvýšené pravděpodobnosti ztráty dat. V případě havárie, kde byste chtěli iniciovat ruční převzetí služeb při selhání, budete muset otevřít případ podpory s Microsoftem a získat Synchronizace souborů Azure pokračovat v synchronizaci se sekundárním koncovým bodem.
 
 ## <a name="migration"></a>Migrace
-Máte-li existující souborový server systému Windows, Synchronizace souborů Azure lze přímo nainstalovat na místě, aniž by bylo nutné přesunovat data na nový server. Pokud plánujete migrovat na nový souborový server Windows jako součást přijetí Synchronizace souborů Azure, je k dispozici několik možných přístupů k přesunu dat:
+Pokud máte existující souborový server s Windows 2012R2 nebo novější, Synchronizace souborů Azure se dá přímo nainstalovat, aniž byste museli přesunout data na nový server. Pokud plánujete migrovat na nový souborový server Windows jako součást přijetí Synchronizace souborů Azure, nebo pokud se vaše data nacházejí v současné době v úložišti připojené k síti (NAS), existuje několik možných způsobů migrace k použití Synchronizace souborů Azure s těmito daty. Jaký způsob migrace byste si měli vybrat, záleží na tom, kde se vaše data aktuálně nacházejí. 
 
-- Vytvořte koncové body serveru pro starou sdílenou složku a novou sdílenou složku a umožněte Synchronizace souborů Azure synchronizovat data mezi koncovými body serveru. Výhodou tohoto přístupu je, že se velmi snadno přestává odebírat úložiště na novém souborovém serveru, protože Synchronizace souborů Azure podporuje tvorbu cloudových vrstev. Až budete připraveni, můžete koncové uživatele vyjmout do sdílené složky na novém serveru a odebrat koncový bod serveru staré sdílené složky.
-
-- Vytvořte koncový bod serveru pouze na novém souborovém serveru a zkopírujte data do původní sdílené složky pomocí `robocopy` . V závislosti na topologii sdílených složek na novém serveru (kolik sdílených složek máte na každém svazku, jak uvolnit jednotlivé svazky atd.) možná budete muset dočasně zřídit další úložiště, protože se očekává, že `robocopy` z původního serveru na váš nový server v místním datovém centru se dokončí rychleji než synchronizace souborů Azure přesunou data do Azure.
-
-K migraci dat do nasazení Synchronizace souborů Azure je taky možné použít Data Box. Ve většině případů zákazníci chtějí použít Data Box k ingestování dat, protože mají za to, že budou zvyšovat rychlost nasazení, nebo protože bude pomáhat s omezeními s omezenou šířkou pásma. I když použití Data Box k ingestování dat do nasazení Synchronizace souborů Azure sníží využití šířky pásma, bude pravděpodobně rychlejší pro většinu scénářů, abyste mohli provádět online nahrávání dat prostřednictvím jedné z výše popsaných metod. Další informace o tom, jak pomocí Data Box ingestovat data do nasazení Synchronizace souborů Azure, najdete v tématu [migrace dat do synchronizace souborů Azure s Azure Data box](storage-sync-offline-data-transfer.md).
-
-Při migraci dat do nového nasazení Synchronizace souborů Azure vzdálení zákazníci se systémem Windows kopírují data přímo do sdílené složky Azure místo na jejich souborové servery. I když Synchronizace souborů Azure identifikuje všechny nové soubory ve sdílené složce Azure a synchronizuje je zpátky do sdílených složek Windows, je to všeobecně mnohem pomalejší než načítání dat prostřednictvím souborového serveru Windows. Při používání nástrojů pro kopírování Azure, jako je AzCopy, je důležité použít nejnovější verzi. V [tabulce nástroje pro kopírování souborů](storage-files-migration-overview.md#file-copy-tools) najdete přehled nástrojů pro kopírování v Azure, abyste měli jistotu, že můžete kopírovat všechna důležitá metadata souboru, jako jsou například časová razítka a seznamy ACL.
+Podívejte se na článek [přehled synchronizace souborů Azure a migrace sdílených složek Azure](storage-files-migration-overview.md) , kde najdete podrobné pokyny pro váš scénář.
 
 ## <a name="antivirus"></a>Antivirus
 Vzhledem k tomu, že antivirová práce funguje, hledá známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů, což má za následek vysoké náklady na výstup. Ve verzích 4,0 a vyšších Synchronizace souborů Azure agenta mají vrstvený soubor FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastaven atribut zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 
@@ -342,6 +339,9 @@ Interní antivirová řešení Microsoftu, Windows Defender a System Center Endp
 Pokud je zapnutá vrstva cloudu, neměla by se používat řešení, která přímo zálohují koncový bod serveru nebo virtuální počítač, na kterém je umístěný koncový bod serveru. Vrstvení cloudu způsobí, že se jenom podmnožina vašich dat uloží na koncový bod serveru s úplnou datovou sadou, která je umístěná ve sdílené složce Azure. V závislosti na použitém řešení zálohování se vrstvené soubory buď přeskočí a nezálohují (protože mají nastaven atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS), nebo se budou znovu volat na disk a výsledkem jsou poplatky za vysoké náklady na výstup. K přímému zálohování sdílené složky Azure doporučujeme použít řešení zálohování v cloudu. Další informace najdete v tématech [o zálohování sdílených složek Azure nebo o](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) tom, jak se obraťte na poskytovatele služby Backup, aby bylo možné zjistit, jestli podporují zálohování sdílených složek Azure.
 
 Pokud dáváte přednost použití místního řešení zálohování, měli byste zálohy provádět na serveru ve skupině synchronizace, která má zakázanou vrstvu v cloudu. Při provádění obnovení použijte možnosti obnovení na úrovni svazku nebo souboru. Soubory obnovené pomocí možnosti obnovení na úrovni souborů budou synchronizovány do všech koncových bodů ve skupině synchronizace a stávající soubory budou nahrazeny verzí obnovenou ze zálohy.  Obnovení na úrovni svazku nebude nahrazovat novější verze souborů ve sdílené složce Azure nebo v jiných koncových bodech serveru.
+
+> [!WARNING]
+> Příkaz Robocopy/B není u Synchronizace souborů Azure podporován. Použití přepínače Robocopy/B s koncovým bodem serveru Synchronizace souborů Azure jako zdroj může vést k poškození souboru.
 
 > [!Note]  
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.
