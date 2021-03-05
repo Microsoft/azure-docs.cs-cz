@@ -3,12 +3,12 @@ title: Povolit spravovanou identitu ve skupině kontejnerů
 description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a0d029e39122ca7bb858103f4d7f88e2536850d5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558942"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198315"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit se službou Azure Container Instances
 
@@ -53,13 +53,13 @@ Aby bylo možné používat spravovanou identitu, musí být identitě udělen p
 
 Příklady v tomto článku používají spravovanou identitu v Azure Container Instances pro přístup k tajnému kódu trezoru klíčů Azure. 
 
-Nejprve pomocí následujícího příkazu [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
+Nejprve pomocí následujícího příkazu [az group create](/cli/azure/group#az-group-create)vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Pomocí příkazu [AZ datatrezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) vytvořte Trezor klíčů. Nezapomeňte zadat jedinečný název trezoru klíčů. 
+Pomocí příkazu [AZ datatrezor Create](/cli/azure/keyvault#az-keyvault-create) vytvořte Trezor klíčů. Nezapomeňte zadat jedinečný název trezoru klíčů. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -68,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-Pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) uložte ukázkový tajný klíč do trezoru klíčů:
+Pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret#az-keyvault-secret-set) uložte ukázkový tajný klíč do trezoru klíčů:
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -83,7 +83,7 @@ Pokračujte následujícími příklady pro přístup k trezoru klíčů s použ
 
 ### <a name="create-an-identity"></a>Vytvoření identity
 
-Nejdřív v předplatném vytvořte identitu pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) . Můžete použít stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, nebo použít jinou.
+Nejdřív v předplatném vytvořte identitu pomocí příkazu [AZ identity Create](/cli/azure/identity#az-identity-create) . Můžete použít stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, nebo použít jinou.
 
 ```azurecli-interactive
 az identity create \
@@ -91,7 +91,7 @@ az identity create \
   --name myACIId
 ```
 
-Pokud chcete použít identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) uložte ID instančního objektu identity a ID prostředku do proměnných.
+Pokud chcete použít identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity#az-identity-show) uložte ID instančního objektu identity a ID prostředku do proměnných.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -109,7 +109,7 @@ resourceID=$(az identity show \
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Udělení přístupu k trezoru klíčů uživatelem přiřazeným identitám
 
-Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest) . Následující příklad umožňuje uživateli přiřazenou identitu k získání tajných kódů z trezoru klíčů:
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault) . Následující příklad umožňuje uživateli přiřazenou identitu k získání tajných kódů z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -121,7 +121,7 @@ Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následuj
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>Povolení uživatelsky přiřazené identity ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. V této části se používá jenom základní operační systém. Příklad použití rozhraní příkazového řádku Azure v kontejneru najdete v tématu [Povolení identity přiřazené systémem ve skupině kontejnerů](#enable-system-assigned-identity-on-a-container-group). 
+Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. V této části se používá jenom základní operační systém. Příklad použití rozhraní příkazového řádku Azure v kontejneru najdete v tématu [Povolení identity přiřazené systémem ve skupině kontejnerů](#enable-system-assigned-identity-on-a-container-group). 
 
 `--assign-identity`Parametr předá uživatelem přiřazenou spravovanou identitu do skupiny. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, ale můžete zadat jiný.
 
@@ -134,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Pomocí příkazu [AZ Container show](/cli/azure/container?view=azure-cli-latest#az-container-show) ověřte jeho stav.
+Během několika sekund byste měli dostat odpověď z rozhraní příkazového řádku Azure oznamující, že nasazení bylo dokončeno. Pomocí příkazu [AZ Container show](/cli/azure/container#az-container-show) ověřte jeho stav.
 
 ```azurecli-interactive
 az container show \
@@ -206,7 +206,7 @@ Odpověď vypadá podobně jako v následujícím příkladu, který zobrazuje t
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>Povolení identity přiřazené systémem ve skupině kontejnerů
 
-Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. 
+Spuštěním následujícího příkazu [AZ Container Create](/cli/azure/container#az-container-create) vytvořte instanci kontejneru založenou na `azure-cli` imagi Microsoftu. Tento příklad poskytuje skupinu s jedním kontejnerem, kterou můžete použít interaktivně, aby bylo možné spustit Azure CLI pro přístup k dalším službám Azure. 
 
 `--assign-identity`Parametr bez další hodnoty umožňuje pro skupinu spravovanou identitu přiřazenou systémem. Identita je vymezena pro skupinu prostředků ve skupině kontejnerů. Dlouho běžící příkaz udržuje kontejner spuštěný. Tento příklad používá stejnou skupinu prostředků, která se používá k vytvoření trezoru klíčů, který je v oboru identity.
 
@@ -255,7 +255,7 @@ spID=$(az container show \
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Udělení přístupu k trezoru klíčů skupině kontejnerů
 
-Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest) . Následující příklad umožňuje, aby identita spravovaná systémem získala tajné kódy z trezoru klíčů:
+Pokud chcete nastavit zásady přístupu pro Trezor klíčů, spusťte následující příkaz [AZ Key trezor set-Policy](/cli/azure/keyvault) . Následující příklad umožňuje, aby identita spravovaná systémem získala tajné kódy z trezoru klíčů:
 
 ```azurecli-interactive
  az keyvault set-policy \

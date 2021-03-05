@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122956"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199302"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
 
@@ -22,9 +22,9 @@ ms.locfileid: "92122956"
 
 Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zařízení odesílá IoT Central a sledujte změny v zařízení. Tento nástroj můžete použít k ladění a sledování připojení zařízení a diagnostikování problémů se zprávami zařízení, které nedosáhnou cloudu, nebo zařízení, která nereagují na zdvojené změny.
 
-[Další podrobnosti najdete v referenčních informacích k rozšířením Azure CLI.](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[Další podrobnosti najdete v referenčních informacích k rozšířením Azure CLI.](/cli/azure/ext/azure-iot/iot/central)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.7.0 nebo vyšší. Ověřte verzi rozhraní příkazového řádku Azure spuštěním `az --version` . Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](/cli/azure/install-azure-cli)
 + Pracovní nebo školní účet v Azure, který se přidal jako uživatel do aplikace IoT Central.
@@ -62,7 +62,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>Získání ID aplikace IoT Central aplikace
-V části **Správa/nastavení aplikace**zkopírujte **ID aplikace**. Tuto hodnotu použijete v pozdějších krocích.
+V části **Správa/nastavení aplikace** zkopírujte **ID aplikace**. Tuto hodnotu použijete v pozdějších krocích.
 
 ### <a name="monitor-messages"></a>Monitorovat zprávy
 Monitorujte zprávy, které se odesílají do vaší IoT Central aplikace z vašich zařízení. Výstup zahrnuje všechny hlavičky a poznámky.

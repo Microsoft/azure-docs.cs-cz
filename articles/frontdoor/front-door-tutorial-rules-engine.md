@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278118"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198859"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Kurz: Konfigurace modulu pravidel
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > - Nakonfigurujte modul pravidel pomocí portálu.
 > - Konfigurace modulu pravidel pomocí Azure CLI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
 
@@ -51,14 +51,14 @@ V tomto kurzu se naučíte:
 
 1. Po vytvoření jednoho nebo více pravidel stiskněte **Uložit**. Tato akce vytvoří konfiguraci modulu pravidel.
 
-1. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do **okna**  >  **pravidla směrování**na přední dveře. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do konfigurace modulu pravidla **podrobností o směrování**  >  **Rules engine configuration**a vyberte konfiguraci, kterou chcete přidružit.
+1. Po vytvoření jedné nebo více konfigurací přidružte konfiguraci modulu pravidel k pravidlu směrování. V případě, že je možné použít jednu konfiguraci pro mnoho pravidel směrování, pravidlo směrování může obsahovat pouze jednu konfiguraci modulu pravidel. Přidružení provedete tak, že přejdete do **okna**  >  **pravidla směrování** na přední dveře. Vyberte pravidlo směrování, do kterého chcete přidat konfiguraci modulu pravidel, přejít do konfigurace modulu pravidla **podrobností o směrování**  >  a vyberte konfiguraci, kterou chcete přidružit.
 
     ![Konfigurace pravidla směrování](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Konfigurace modulu pravidel v Azure CLI
 
-1. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). Přidat příponu "front-dveří":-AZ Extension add--name front-dveří. Pak Přihlaste se a přepněte do svého předplatného AZ Account set--Subscription <name_or_Id>.
+1. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Přidat příponu "front-dveří":-AZ Extension add--name front-dveří. Pak Přihlaste se a přepněte do svého předplatného AZ Account set--Subscription <name_or_Id>.
 
 1. Začněte vytvořením modulu pravidel – tento příklad ukazuje jedno pravidlo s jednou akcí založenou na hlavičkách a jednu podmínkou shody. 
 
@@ -96,7 +96,7 @@ V tomto kurzu se naučíte:
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-Další informace najdete tady: úplný seznam příkazů modulu pravidel AFD najdete [tady](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest).   
+Další informace najdete tady: úplný seznam příkazů modulu pravidel AFD najdete [tady](/cli/azure/ext/front-door/network/front-door/rules-engine).   
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -108,11 +108,11 @@ V předchozích krocích jste pro pravidla směrování nakonfigurovali a přidr
 
 1. Zrušte kontrolu všech pravidel směrování, ke kterým je tato konfigurace modulu pravidel přidružená, a klikněte na Uložit.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Přidružit pravidla směrování":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Přidružení pravidla směrování":::
 
 1. Nyní můžete z předních dveří odstranit konfiguraci modulu pravidel.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Přidružit pravidla směrování":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Odstranit konfiguraci modulu pravidel":::
 
 ## <a name="next-steps"></a>Další kroky
 

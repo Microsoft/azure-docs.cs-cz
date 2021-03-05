@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844450"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199488"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
 
@@ -42,7 +42,7 @@ Zařízení může také:
 
 * *Odmítněte* zprávu, což způsobí, že centrum IoT ho nastaví na *nedoručený* stav. Zařízení, která se připojují přes přenos telemetrie služby Řízení front zpráv (MQTT), nemůžou odmítat zprávy z cloudu na zařízení.
 
-* *Abandon* Zrušte zprávu, která způsobí, že centrum IoT vloží zprávu zpátky do fronty s stavem nastaveným na *zařazování* do fronty. Zařízení, která se připojují přes protokol MQTT, nemůžou opustit zprávy z cloudu na zařízení.
+*  Zrušte zprávu, která způsobí, že centrum IoT vloží zprávu zpátky do fronty s stavem nastaveným na *zařazování* do fronty. Zařízení, která se připojují přes protokol MQTT, nemůžou opustit zprávy z cloudu na zařízení.
 
 Vlákno se nepovedlo zpracovat zprávu bez upozorňování centra IoT. V takovém případě zprávy automaticky přecházejí z *neviditelného* stavu zpátky do *fronty* po vypršení časového limitu *viditelnosti* (nebo vypršení časového limitu *zámku* ). Hodnota časového limitu je jedna minuta a nedá se změnit.
 
@@ -97,7 +97,7 @@ Tělo je pole záznamů serializovaných ve formátu JSON, z nichž každá má 
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Časové razítko, které indikuje, kdy došlo k výsledku zprávy (například centrum přijalo zprávu o zpětné vazbě nebo původní zpráva vypršela) |
 | OriginalMessageId  | Parametr *MessageID* zprávy typu cloud-zařízení, na kterou se vztahují tyto informace o zpětné vazbě |
-| StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Nástup* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Zamítnuto* <br/> *Odstraněna* |
+| StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Success* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Zamítnuto* <br/> *Odstraněna* |
 | Popis        | Hodnoty řetězce pro *StatusCode* |
 | DeviceId           | *DeviceID* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 | DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
@@ -147,7 +147,7 @@ Možnosti konfigurace můžete nastavit jedním z následujících způsobů:
 
     ![Nastavení možností konfigurace pro zasílání zpráv z cloudu na zařízení na portálu](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: použijte příkaz [AZ IoT Hub Update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) :
+* **Azure CLI**: použijte příkaz [AZ IoT Hub Update](/cli/azure/iot/hub#az-iot-hub-update) :
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

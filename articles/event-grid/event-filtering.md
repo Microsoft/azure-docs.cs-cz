@@ -2,13 +2,13 @@
 title: Filtrování událostí pro Azure Event Grid
 description: Popisuje, jak filtrovat události při vytváření předplatného Azure Event Grid.
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197771"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
 
@@ -58,13 +58,27 @@ Chcete-li filtrovat podle hodnot v datových polích a zadat operátor porovnán
 * hodnoty – hodnota nebo hodnoty, které se mají porovnat s klíčem.
 
 ## <a name="key"></a>Klíč
-Klíč je pole v datech události, které používáte pro filtrování. Může to být číslo, logická hodnota, řetězec nebo pole. Pro události ve **schématu Event Grid** použijte následující hodnoty pro klíč: `ID` , `Topic` , `Subject` ,, `EventType` `DataVersion` nebo data události (například `data.key1` ).
+Klíč je pole v datech události, které používáte pro filtrování. Může to být jeden z následujících typů:
+
+- Číslo
+- Logická hodnota
+- Řetězec
+- Skupin. Chcete- `enableAdvancedFilteringOnArrays` li použít tuto funkci, je nutné nastavit vlastnost na hodnotu true. V současné době Azure Portal nepodporuje povolení této funkce. 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+Pro události ve **schématu Event Grid** použijte následující hodnoty pro klíč: `ID` , `Topic` , `Subject` ,, `EventType` `DataVersion` nebo data události (například `data.key1` ).
 
 Pro události v rámci **schématu cloudových událostí** použijte následující hodnoty pro klíč: `eventid` , `source` , `eventtype` , `eventtypeversion` nebo data události (například `data.key1` ).
 
-Pro **vlastní vstupní schéma** použijte datová pole události (například `data.key1` ).
-
-Chcete-li získat přístup k polím v části data, použijte `.` zápis (tečka). Například pro `data.sitename` přístup k `data.appEventTypeDetail.action` `sitename` `action` následující ukázkové události nebo pro ni.
+Pro **vlastní vstupní schéma** použijte datová pole události (například `data.key1` ). Chcete-li získat přístup k polím v části data, použijte `.` zápis (tečka). Například pro `data.sitename` přístup k `data.appEventTypeDetail.action` `sitename` `action` následující ukázkové události nebo pro ni.
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Chcete-li získat přístup k polím v části data, použijte `.` zápis (tečk
     },
 ```
 
-
 ## <a name="values"></a>Hodnoty
 Hodnoty mohou být: Number, String, Boolean nebo Array.
-
 
 ## <a name="operators"></a>Operátory
 

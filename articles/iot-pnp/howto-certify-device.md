@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 43a568149ccf85579b4f8190974fff872d6e09ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803965"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199641"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Certifikace zařízení IoT Plug and Play
 
@@ -51,13 +51,13 @@ Abyste splnili požadavky na certifikaci, vaše zařízení musí:
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testování s využitím rozhraní příkazového řádku pro rozšíření Azure CLI
 
-[Rozšíření Azure IoT CLI](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) umožňuje ověřit, že implementace zařízení odpovídá modelu předtím, než odešlete zařízení pro certifikaci prostřednictvím portálu zařízení s certifikací Azure.
+[Rozšíření Azure IoT CLI](/cli/azure/ext/azure-iot/iot/product) umožňuje ověřit, že implementace zařízení odpovídá modelu předtím, než odešlete zařízení pro certifikaci prostřednictvím portálu zařízení s certifikací Azure.
 
 Následující kroky ukazují, jak připravit a spustit ověřovací testy pomocí rozhraní příkazového řádku:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Instalace rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-Podívejte se na pokyny k instalaci a nastavte [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) ve vašem prostředí.
+Podívejte se na pokyny k instalaci a nastavte [Azure CLI](/cli/azure) ve vašem prostředí.
 
 Pokud chcete nainstalovat rozšíření Azure IoT, spusťte následující příkaz:
 
@@ -65,7 +65,7 @@ Pokud chcete nainstalovat rozšíření Azure IoT, spusťte následující pří
 az extension add --name azure-iot
 ```
 
-Další informace najdete v tématu [Azure CLI pro Azure IoT](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest).
+Další informace najdete v tématu [Azure CLI pro Azure IoT](/cli/azure/azure-cli-reference-for-iot).
 
 ### <a name="create-a-new-product-test"></a>Vytvořit nový test produktu
 
@@ -79,7 +79,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Když použijete rozhraní příkazového řádku, musíte se [Přihlásit](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) ke svému předplatnému.
+> Když použijete rozhraní příkazového řádku, musíte se [Přihlásit](/cli/azure/authenticate-azure-cli) ke svému předplatnému.
 
 Výstup JSON z příkazu obsahuje `primaryKey` , `registrationId` a, `scopeID` který se použije při připojení zařízení.
 

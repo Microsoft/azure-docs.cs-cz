@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624051"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199777"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -77,7 +77,7 @@ Pokud jste to ještě neudělali, otevřete [okno Azure Cloud Shell](https://she
 
 Tady jsou zdroje vytvořené skriptem. *Obohaceno* znamená, že prostředek je pro zprávy s obohacením. *Původní* znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Name | Hodnota |
+| Název | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | název kontejneru | původně  |
@@ -297,7 +297,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
    Tady jsou zdroje vytvořené pomocí načtení šablony. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny. Jedná se o stejné hodnoty, které se používají ve skriptu rozhraní příkazového řádku Azure CLI.
 
-   | Name | Hodnota |
+   | Název | Hodnota |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | název kontejneru | původně  |
@@ -386,7 +386,7 @@ Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu,
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Odvolání, které `$resourceGroup` bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group#az-group-delete). Odvolání, které `$resourceGroup` bylo nastaveno na **ContosoResourcesMsgEn** na začátku tohoto kurzu.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

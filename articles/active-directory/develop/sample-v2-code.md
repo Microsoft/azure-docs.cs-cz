@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 43a019c8bd3544b769a6b4346d8986bc8e01a4a1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560139"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198349"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -61,6 +61,7 @@ Následující ukázky ilustrují webové aplikace, které přihlásí uživatel
 | ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Kurz pro uživatele ASP.NET Core WebApp přihlašování uživatelů](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka v [ASP.NET Core volání webové aplikace Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fáze</p>Pokročilý ukázkový [přístup k mezipaměti tokenů pro přihlášeného uživatele z aplikací, rozhraní API a služeb na pozadí](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
 | ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS k migraci aplikací Azure AD PlayBook pro vývojáře](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) , kde se dozvíte, jak bezpečně a bezpečně migrovat aplikace integrované s Active Directory Federation Services (AD FS) (AD FS) do Azure Active Directory (Azure AD) | |
 | ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Rychlý Start ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet – s omezením admin-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph – školení – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |[Úvodní kurz k kapitole webové aplikace Java servlet – kapitola 1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Úvodní kurz k kapitole webové aplikace Java servlet – kapitola 2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
 | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |                   | [MS-identity – Java – WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  | [MS-identity-B2C-Java-servlet-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png)</p>Node.js (uzel MSAL) | [Kurz pro uživatele přihlašování k aplikaci Express Web App](https://github.com/Azure-Samples/ms-identity-node) | |

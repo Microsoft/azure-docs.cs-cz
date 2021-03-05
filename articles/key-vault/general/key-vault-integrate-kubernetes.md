@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: defe546c008f741040c78e639d5bc4b9c6e02fb8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd40ad41bda50d93943a514cd9cc3aeeab4ac948
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741442"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198876"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+* Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows).
 
 V tomto kurzu se předpokládá, že používáte službu Azure Kubernetes v uzlech systému Linux.
 

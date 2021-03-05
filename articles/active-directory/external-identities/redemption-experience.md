@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649307"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199624"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvánky ke spolupráci B2B v Azure Active Directory
 
@@ -35,6 +34,7 @@ Uživatelé typu Host se teď můžou přihlašovat k aplikacím pro více tenan
 ![Přihlášení ke společnému koncovému bodu](media/redemption-experience/common-endpoint-flow-small.png)
 
 Uživatel se pak přesměruje na koncový bod tenanta, kde se může přihlásit pomocí e-mailové adresy nebo vybrat zprostředkovatele identity, kterého jste nakonfigurovali.
+
 ## <a name="redemption-through-a-direct-link"></a>Uplatnění přes přímý odkaz
 
 Jako alternativu k e-mailu s pozvánkou nebo k běžné adrese URL aplikace můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) nebo [PowerShellu](./b2b-quickstart-invite-powershell.md). Pak můžete použít kterýkoli z [přizpůsobitelných způsobů, jak nasadit aplikace pro uživatele](../manage-apps/end-user-experiences.md), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
@@ -73,7 +73,7 @@ Když uživatel klikne na odkaz **přijmout pozvánku** v [e-mailu s pozvánkou]
 
 3. Pokud správce povolil [Google Federation](./google-federation.md), Azure AD zkontroluje, jestli je přípona domény uživatele gmail.com nebo googlemail.com, a přesměruje uživatele na Google.
 
-4. Proces uplatnění zkontroluje, jestli má uživatel existující osobní [účet Microsoft (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create).
+4. Proces uplatnění kontroluje, jestli má uživatel existující osobní [účet Microsoft (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) pro využití JIT (just-in-time), ale ne pro vyrovnávání e-mailových odkazů na pozvánky. Pokud už uživatel má existující MSA, přihlásí se pomocí svých stávajících MSA.
 
 5. Po identifikaci **domovského adresáře** uživatele se uživateli pošle odpovídající zprostředkovatel identity, aby se přihlásil.  
 

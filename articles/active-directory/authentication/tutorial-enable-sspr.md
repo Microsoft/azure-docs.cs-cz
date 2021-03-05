@@ -10,16 +10,16 @@ ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741061"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198485"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
-Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umožňuje uživatelům změnit nebo resetovat svoje heslo bez zásahu správce ani helpdesku. Pokud je účet uživatele uzamčený nebo zapomněl heslo, může postupovat podle výzev ke zrušení odblokování a opětovnému získání práce. Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci.
+Samoobslužné resetování hesla (SSPR) Azure Active Directory (Azure AD) umožňuje uživatelům změnit nebo resetovat svoje heslo bez zásahu správce ani helpdesku. Pokud je účet uživatele uzamčený nebo zapomněl heslo, může postupovat podle výzev ke zrušení odblokování a opětovnému získání práce. Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci. Tady je video o [tom, jak nakonfigurovat a povolit samoobslužné resetování hesla ve vašem tenantovi](https://www.youtube.com/watch?v=rA8TvhNcCvQ) (**doporučeno**). K dispozici je také video pro správce IT, které vám pomůžou [vyřešit šest nejběžnějších chybových zpráv koncových uživatelů pomocí SSPR](https://www.youtube.com/watch?v=9RPrNVLzT8I).
 
 > [!IMPORTANT]
 > V tomto kurzu se dozvíte správce, jak povolit samoobslužné resetování hesla. Pokud už jste koncoví uživatelé zaregistrovali pro Samoobslužné resetování hesla a potřebujete se zpátky do svého účtu, pokračujte na https://aka.ms/sspr .
@@ -33,7 +33,7 @@ Co se v tomto kurzu naučíte:
 > * Konfigurace metod ověřování a možností registrace
 > * Testování procesu SSPR jako uživatel
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -134,7 +134,7 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory** a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno* vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.

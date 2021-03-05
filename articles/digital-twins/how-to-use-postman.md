@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715696"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199658"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Jak používat metodu POST k posílání žádostí do rozhraní API digitálních vláken Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "101715696"
 
 Tento článek popisuje, jak nakonfigurovat [klienta post REST](https://www.getpostman.com/) pro interakci s rozhraními API digitálních vláken Azure pomocí následujících kroků:
 
-1. Pomocí [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) Získejte nosný token, který budete používat k provádění požadavků rozhraní API v post.
+1. Pomocí [Azure CLI](/cli/azure/install-azure-cli) Získejte nosný token, který budete používat k provádění požadavků rozhraní API v post.
 1. Nastavte si kolekci post a nakonfigurujte klienta post REST, aby k ověřování používal váš nosný token.
 1. Použijte nakonfigurovaného Poster k vytvoření a odeslání žádosti do rozhraní API digitálních vláken Azure.
 
@@ -41,9 +41,9 @@ Dále si stáhněte desktopovou verzi klienta. Přejděte na [*www.getpostman.co
 
 Teď, když jste nastavili post a instanci digitálních vláken Azure, budete muset získat nosný token, který můžou žádosti POST použít k autorizaci s rozhraními API digitálních vláken Azure.
 
-Existuje několik možných způsobů, jak tento token získat. Tento článek používá rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) k přihlášení k účtu Azure a získání tokenu tímto způsobem.
+Existuje několik možných způsobů, jak tento token získat. Tento článek používá rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) k přihlášení k účtu Azure a získání tokenu tímto způsobem.
 
-Pokud máte rozhraní příkazového řádku Azure [nainstalované lokálně](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true), můžete na svém počítači spustit příkazový řádek a spustit následující příkazy.
+Pokud máte rozhraní příkazového řádku Azure [nainstalované lokálně](/cli/azure/install-azure-cli), můžete na svém počítači spustit příkazový řádek a spustit následující příkazy.
 V opačném případě můžete otevřít okno [Azure Cloud Shell](https://shell.azure.com) v prohlížeči a spustit příkazy tam.
 
 1. Nejdřív se ujistěte, že jste se k Azure přihlásili pomocí příslušných přihlašovacích údajů, a to spuštěním tohoto příkazu:
@@ -52,7 +52,7 @@ V opačném případě můžete otevřít okno [Azure Cloud Shell](https://shell
     az login
     ```
 
-1. V dalším kroku pomocí příkazu [AZ Account Get-Access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) Získejte nosný token s přístupem ke službě digitálního vlákna Azure.
+1. V dalším kroku pomocí příkazu [AZ Account Get-Access-token](/cli/azure/account#az_account_get_access_token) Získejte nosný token s přístupem ke službě digitálního vlákna Azure.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

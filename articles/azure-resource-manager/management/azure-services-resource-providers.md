@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cc9793bfc0ca6cc0afbede241534453209685d94
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733783"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198927"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -35,7 +35,7 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. AutonomousSystems | [Autonomní systémy](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft. AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft. Azureactivedirectory selhala | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft. AzureArcData | Registr datových služeb s podporou ARC Azure |
+| Microsoft. AzureArcData | Datové služby s podporou služby Azure Arc |
 | Microsoft. AzureData | Registr SQL Server |
 | Microsoft. AzureStack | Core |
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
@@ -59,12 +59,12 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. Cognitiveservices Account | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce – [zaregistrováno](#registration) | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. spotřeba – [zaregistrováno](#registration) | [Cost Management](/azure/cost-management/) |
+| Microsoft. spotřeba – [zaregistrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement – [registrováno](#registration) | [Cost Management](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagement – [registrováno](#registration) | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Customer Lockbox pro Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -129,7 +129,7 @@ Poskytovatelé prostředků označených jako **registrované** jsou ve výchoz�
 | Microsoft. migruje | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtual WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtuální síť WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. poznámkové bloky | [Azure Notebooks](https://notebooks.azure.com/help/introduction) |
 | Microsoft. NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. ObjectStore | Úložiště objektů |

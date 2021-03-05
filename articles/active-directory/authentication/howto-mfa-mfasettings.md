@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651055"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198519"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurace nastavení Multi-Factor Authentication služby Azure AD
 
@@ -57,7 +57,7 @@ Chcete-li nakonfigurovat nastavení uzamčení účtů, proveďte následující
 
 ## <a name="block-and-unblock-users"></a>Blokování a odblokování uživatelů
 
-Pokud došlo ke ztrátě nebo odcizení zařízení uživatele, můžete pro příslušný účet blokovat službu Azure AD Multi-Factor Authentication pokusy. Všechny pokusy o Multi-Factor Authentication služby Azure AD pro blokované uživatele budou automaticky odepřeny. Uživatelé zůstanou zablokovaní po dobu 90 dnů od data zablokování.
+Pokud došlo ke ztrátě nebo odcizení zařízení uživatele, můžete pro příslušný účet blokovat službu Azure AD Multi-Factor Authentication pokusy. Všechny pokusy o Multi-Factor Authentication služby Azure AD pro blokované uživatele budou automaticky odepřeny. Uživatelé zůstanou zablokovaní po dobu 90 dnů od data zablokování. Publikovali jsme video o [tom, jak blokovat a odblokovat uživatele ve vašem tenantovi](https://www.youtube.com/watch?v=WdeE1On4S1o) , abychom vám ukázali, jak to udělat.
 
 ### <a name="block-a-user"></a>Blokování uživatele
 

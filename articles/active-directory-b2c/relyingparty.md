@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120585"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198434"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ Následující příklad ukazuje předávající stranu s [koncovým bodem UserI
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney`Prvek určuje odkaz na identifikátor cesty uživatele, který je obvykle definován v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
+`DefaultUserJourney`Element určuje odkaz na identifikátor cesty uživatele, která je definována v zásadách základní nebo rozšíření. Následující příklady znázorňují cestu k registraci nebo přihlašování uživatele určenou v elementu **RelyingParty** :
 
 Zásada *B2C_1A_signup_signin* :
 
@@ -219,6 +219,21 @@ Element **Protocol** obsahuje následující atribut:
 | --------- | -------- | ----------- |
 | Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
 
+### <a name="metadata"></a>Metadata
+
+Pokud je protokol `SAML` , element metadata obsahuje následující prvky. Další informace najdete v tématu [Možnosti registrace aplikace SAML v Azure AD B2C](saml-service-provider-options.md).
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Ne | Označuje, zda je podporován tok iniciované IDP. Možné hodnoty: `true` nebo `false` (výchozí). | 
+| XmlSignatureAlgorithm | Ne | Metoda, kterou Azure AD B2C používá k podepsání odpovědi SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Pokud chcete nakonfigurovat kontrolní výraz SAML, přečtěte si [metadata Technical profil vystavitele SAML](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Ne | Určuje metodu, kterou Azure AD B2C používá k šifrování dat pomocí algoritmu standard AES (Advanced Encryption Standard) (AES). Metadata řídí hodnotu `<EncryptedData>` prvku v odpovědi SAML. Možné hodnoty: `Aes256` (výchozí), `Aes192` , `Sha512` nebo ` Aes128` . |
+| KeyEncryptionMethod| Ne | Určuje metodu, kterou Azure AD B2C používá k zašifrování kopie klíče, který se použil k zašifrování dat. Metadata řídí hodnotu  `<EncryptedKey>` prvku v odpovědi SAML. Možné hodnoty: ` Rsa15` (výchozí) – algoritmus 1,5 PKCS (Public Key Cryptography Standard) standardu RSA ( ` RsaOaep` výplně OAEP) – optimální šifrování asymetrického šifrování (). |
+| UseDetachedKeys | Ne |  Možné hodnoty: `true` , nebo `false` (výchozí). Pokud je hodnota nastavena na `true` , Azure AD B2C změní formát šifrovaných kontrolních výrazů. Použití odpojených klíčů přidá šifrovaný kontrolní výraz jako podřízený objekt EncrytedAssertion, a to na rozdíl od EncryptedData. |
+| WantsSignedResponses| Ne | Určuje, zda Azure AD B2C podepíše `Response` oddíl odpovědi SAML. Možné hodnoty: `true` (výchozí) nebo `false` .  |
+| RemoveMillisecondsFromDateTime| Ne | Určuje, zda budou milisekundy odebrány z hodnot DateTime v rámci odpovědi SAML (patří mezi ně IssueInstant, NotBefore, NotOnOrAfter a AuthnInstant). Možné hodnoty: `false` (výchozí) nebo `true` .  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje následující element:
@@ -238,6 +253,7 @@ Element **OutputClaim** obsahuje následující atributy:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Pomocí elementu **SubjectNameingInfo** řídíte hodnotu předmětu tokenu:
+
 - **Token JWT** – `sub` deklarace identity Jedná se o objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k provádění bezpečných ověřovacích kontrol, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. Další informace najdete v tématu [Konfigurace tokenu, relace a jednotného přihlašování](session-behavior.md).
 - **Token SAML** – `<Subject><NameID>` element, který identifikuje prvek předmětu. Formát NameId lze upravit.
 

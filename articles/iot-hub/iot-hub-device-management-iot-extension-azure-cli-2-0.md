@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: aded49b5b9509a75e61612e44ffa19ff377d1712
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148330"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199522"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení IoT Hub Azure
 
@@ -23,13 +23,13 @@ ms.locfileid: "92148330"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](/cli/azure/overview?view=azure-cli-latest). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
+[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je open source rozšíření IoT, které přináší možnosti [Azure CLI](/cli/azure/overview). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úloha  |
+| Možnost správy          | Úkol  |
 |----------------------------|-----------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Vyplňování požadovaných vlastností    | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
@@ -61,7 +61,7 @@ Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi spr�
 
 * [Python 2.7 x nebo Python 3. x](https://www.python.org/downloads/)
 
-* Rozhraní příkazového řádku Azure Pokud ho potřebujete nainstalovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –version`.
+* Rozhraní příkazového řádku Azure Pokud ho potřebujete nainstalovat, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –version`.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

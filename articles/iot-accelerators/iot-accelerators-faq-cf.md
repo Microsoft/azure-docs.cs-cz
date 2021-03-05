@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995960"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198978"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
 
@@ -125,7 +125,7 @@ Případně se přihlaste k virtuálnímu počítači přes SSH a zkontrolujte s
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak se dá ověřit, jestli simulace odesílá data do cloudu?
 
-Pomocí příkazu monitorovat rozšíření Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer) nebo [Azure IoT CLI – události](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Pomocí příkazu monitorovat rozšíření Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer) nebo [Azure IoT CLI – události](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Zkontrolujte data odesílaná v jednom ze zařízení vydavatele:
 
@@ -194,6 +194,5 @@ Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené to
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Přehled akcelerátoru řešení prediktivní údržby](./iot-accelerators-predictive-walkthrough.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](../iot-fundamentals/iot-security-ground-up.md)

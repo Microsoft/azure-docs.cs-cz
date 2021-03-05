@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928937"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198604"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service (DPS) pomocí šablony ARM
 
@@ -136,13 +136,13 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Pokud chcete toto nasazení ověřit, spusťte následující [příkaz, který vypíše prostředky](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) a vyhledá novou službu zřizování a centrum IoT ve výstupu:
+1. Pokud chcete toto nasazení ověřit, spusťte následující [příkaz, který vypíše prostředky](/cli/azure/resource#az-resource-list) a vyhledá novou službu zřizování a centrum IoT ve výstupu:
 
     ```azurecli
      az resource list -g "${projectName}rg"
     ```
 
-2. Chcete-li ověřit, zda je rozbočovač již připojen k prostředku DPS, spusťte následující [příkaz pro rozšíření DPS](/cli/azure/iot/dps?view=azure-cli-latest#az_iot_dps_show&preserve-view=true).
+2. Chcete-li ověřit, zda je rozbočovač již připojen k prostředku DPS, spusťte následující [příkaz pro rozšíření DPS](/cli/azure/iot/dps#az_iot_dps_show).
 
     ```azurecli
      az iot dps show --name <Your provisioningServiceName>

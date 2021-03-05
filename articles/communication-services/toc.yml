@@ -38,6 +38,8 @@
       items:
         - name: Přidání hlasových hovorů do aplikace
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Přidání videa do vaší aplikace (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: Použití klientské knihovny pro hovory
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Připojení volající aplikace ke schůzce v Teams

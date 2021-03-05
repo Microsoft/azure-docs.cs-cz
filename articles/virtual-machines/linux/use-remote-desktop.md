@@ -7,21 +7,23 @@ ms.service: virtual-machines-linux
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0fecf9f16cd1069b140e61a019a43510b59e76e8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695171"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199139"
 ---
-# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Instalace a konfigurace xrdp pro použití vzdálené plochy s VIRTUÁLNÍm počítačem se systémem Linux
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Instalace a konfigurace xrdp pro používání vzdálené plochy s Ubuntu
 
-Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](http://xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
+Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](http://xrdp.org)) pro virtuální počítač Linux se systémem Ubuntu.
 
+Článek byl WRITEN a testován pomocí virtuálního počítače s Ubuntu 18,04. 
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
 - Rozhraní příkazového [řádku Azure](quick-create-cli.md)

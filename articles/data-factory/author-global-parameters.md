@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393815"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197840"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globální parametry v Azure Data Factory
 
@@ -21,7 +21,7 @@ Globální parametry jsou konstanty v rámci datové továrny, které mohou být
 
 ## <a name="creating-global-parameters"></a>Vytváření globálních parametrů
 
-Globální parametr vytvoříte tak, že přejdete na kartu *globální parametry* v části *Spravovat* . Výběrem **nové** otevřete stranu vytvoření – navigace.
+Globální parametr vytvoříte tak, že přejdete na kartu *globální parametry* v části **Spravovat** . Výběrem **nové** otevřete stranu vytvoření – navigace.
 
 ![Snímek obrazovky, který zvýrazní nové tlačítko, které vyberete k vytvoření globálních parametrů.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,10 @@ Existují dva způsoby, jak integrovat globální parametry do řešení pro kon
 * Zahrnutí globálních parametrů do šablony ARM
 * Nasazení globálních parametrů prostřednictvím skriptu PowerShellu
 
-Pro většinu případů použití se doporučuje zahrnout globální parametry do šablony ARM. Tato akce bude nativně integrována s řešením popsaným v [dokumentu CI/CD](continuous-integration-deployment.md). Globální parametry budou ve výchozím nastavení přidány jako parametr šablony ARM, protože se často mění z prostředí na prostředí. Můžete povolit zahrnutí globálních parametrů v šabloně ARM z centra pro správu.
+Pro většinu případů použití se doporučuje zahrnout globální parametry do šablony ARM. Tato akce bude nativně integrována s řešením popsaným v [dokumentu CI/CD](continuous-integration-deployment.md). Globální parametry budou ve výchozím nastavení přidány jako parametr šablony ARM, protože se často mění z prostředí na prostředí. V šabloně ARM můžete povolit zahrnutí globálních parametrů z centra pro **správu** .
+
+> [!NOTE]
+> **Zahrnutí v konfiguraci šablony ARM** je k dispozici pouze v režimu Git. V současné době je tato možnost zakázaná v režimu "živý režim" nebo "Data Factory".
 
 ![Zahrnout do šablony ARM](media/author-global-parameters/include-arm-template.png)
 

@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: df706a83c4892c15140e5d5c827a248156b66069
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 728014c53ab019f25bdc9b097c8b493411833aaa
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095679"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198842"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -81,11 +81,11 @@ Aby se zajistilo, že připojení typu klient/IoT Hub zůstane aktivní, služba
 
 |Jazyk  |Výchozí interval Keep-Alive  |Konfigurovatelné  |
 |---------|---------|---------|
-|Node.js     |   180 sekund      |     No    |
-|Java     |    230 sekund     |     No    |
+|Node.js     |   180 sekund      |     Ne    |
+|Java     |    230 sekund     |     Ne    |
 |C     | 240 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekund |  [Ano](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 sekund |  No   |
+|Python   | 60 sekund |  Ne   |
 
 Po [specifikaci MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)je interval časového limitu pro udržování připojení IoT Hub, což je 1,5 časů hodnoty Keep-Alive klienta. IoT Hub ale omezuje maximální časový limit na straně serveru na 29,45 minut (1767 sekund), protože všechny služby Azure jsou svázané s časovým limitem nečinnosti protokolu TCP pro vyrovnávání zatížení Azure, což je 29,45 minut. 
 
@@ -160,7 +160,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
   Další informace o tom, jak generovat tokeny SAS, najdete v části zařízení [použití tokenů zabezpečení IoT Hub](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app).
 
-  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token&preserve-view=true) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
+  Při testování můžete také použít [nástroje Azure IoT Tools pro různé platformy pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo rozšíření CLI. pomocí příkazu [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) můžete rychle vygenerovat token SAS, který můžete zkopírovat a vložit do vlastního kódu.
 
 ### <a name="for-azure-iot-tools"></a>Pro Azure IoT Tools
 
@@ -287,7 +287,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
 
-Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu** nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
+Po úspěšném připojení může zařízení posílat zprávy, které se IoT Hub pomocí `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` **názvu tématu** nebo. `{property_bag}`Prvek umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -317,7 +317,7 @@ IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/de
 
 V případě zpráv z cloudu na zařízení se hodnoty v kontejneru objektů a dat reprezentují jako v následující tabulce:
 
-| Hodnota vlastnosti | Obrázek | Description |
+| Hodnota vlastnosti | Obrázek | Popis |
 |----|----|----|
 | `null` | `key` | V kontejneru objektů a dat se zobrazí jenom klíč. |
 | prázdný řetězec | `key=` | Klíč následovaný rovnítkem bez hodnoty |
@@ -375,7 +375,7 @@ Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti 
 
 3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci vlastností v tématu `$iothub/twin/res/{status}/?$rid={request id}` . Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů, která `null` odstraní člena z objektu, který jej obsahuje. Příklad:
+Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů, která `null` odstraní člena z objektu, který jej obsahuje. Například:
 
 ```json
 {
@@ -413,7 +413,7 @@ Další informace najdete v příručce pro [vývojáře v zařízení](iot-hub-
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Příklad:
+Když je zařízení připojené, IoT Hub odesílá oznámení do tématu `$iothub/twin/PATCH/properties/desired/?$version={new version}` , které obsahuje obsah aktualizace provedené back-endu řešení. Například:
 
 ```json
 {

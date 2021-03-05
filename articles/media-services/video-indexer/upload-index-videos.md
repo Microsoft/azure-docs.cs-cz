@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994484"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199182"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -83,18 +83,22 @@ Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete 
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
+Tento parametr použijte k definování svazku AI, který chcete použít na svém zvukovém nebo videosouborovém souboru. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
 
-- `AudioOnly` – indexovat a extrahovat přehledy s využitím jenom zvuku (video se ignoruje)
+- `AudioOnly` – Indexujte a extrahujte přehledy jenom pomocí zvuku (ignoruje se video).
 - `VideoOnly` – Indexujte a extrahujte přehledy jenom pomocí videa (ignoruje zvuk).
-- `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
-- `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
+- `Default` – Indexujte a extrahujte přehledy pomocí zvukového souboru i videa.
+- `DefaultWithNoiseReduction` – Indexujte a extrahujte přehledy ze zvukového i obrazového zařízení a při použití algoritmu redukce hluku ve zvukovém streamu.
+
+    `DefaultWithNoiseReduction`Hodnota je nyní namapována na výchozí předvolbu (zastaralé).
+- `BasicAudio` – Indexujte a extrahujte přehledy jenom pomocí zvuku (ignoruje video), včetně jenom základních funkcí zvuku (přepis, překlad, formátování titulků a titulků).
+ - `AdvancedAudio` – Indexujte a extrahujte přehledy jenom pomocí zvuku (ignoruje video), včetně pokročilých zvukových funkcí (detekce zvukové události), a to spolu se standardní analýzou zvuku.
 
 > [!NOTE]
 > Video Indexer pokrývá až dvě stopy zvuku. Pokud je v souboru více zvukových stop, budou považovány za jednu stopu.<br/>
 Pokud chcete tyto stopy indexovat samostatně, budete si muset extrahovat relevantní zvukový soubor a indexovat ho jako `AudioOnly` .
 
-Cena závisí na vybrané možnosti indexování.  
+Cena závisí na vybrané možnosti indexování. Další informace najdete v tématu [Media Services ceny](https://azure.microsoft.com/pricing/details/media-services/).
 
 #### <a name="priority"></a>upřednostněn
 
@@ -135,7 +139,7 @@ Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva pa
 
     * Přejděte na adresu https://api-portal.videoindexer.ai/.
     * Přihlásit
-    * Přejít na **Products**  ->  **Authorization**  ->  **předplatné autorizační autorizace** na produkty
+    * Přejít na   ->    ->  **předplatné autorizační autorizace** na produkty
     * Zkopírování **primárního klíče**
 * Adresa URL videa – adresa URL videosouboru nebo zvukového souboru, který se má indexovat. Adresa URL musí odkazovat na soubor média (stránky HTML nejsou podporované). Soubor se dá chránit přístupovým tokenem poskytnutým jako součást identifikátoru URI a koncový bod poskytující soubor musí být zabezpečený pomocí protokolu TLS 1.2 nebo vyššího. Adresa URL musí být zakódovaná.
 
@@ -317,7 +321,7 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Stavový kód|ErrorType (v textu odpovědi)|Description|
+|Stavový kód|ErrorType (v textu odpovědi)|Popis|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|

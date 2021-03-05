@@ -13,7 +13,7 @@
   items:
     - name: Vytvoření datové továrny – uživatelské rozhraní
       href: quickstart-create-data-factory-portal.md
-    - name: Vytvoření datové továrny – nástroj pro kopírování dat
+    - name: Vytvoření datové továrny – Nástroj pro kopírování dat
       href: quickstart-create-data-factory-copy-data-tool.md
     - name: Vytvoření datové továrny – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -26,8 +26,6 @@
     - name: Vytvoření datové továrny – šablona ARM
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
-      href: enable-customer-managed-key.md
     - name: Vytvoření toku dat
       href: data-flow-create.md
 - name: Kurzy
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
-    - name: Zabezpečení
-      items:
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
     - name: Toky dat
       items:
         - name: Transformace dat s využitím toků dat mapování
@@ -433,11 +427,11 @@
           href: connector-zoho.md
     - name: Přesun dat
       items:
-        - name: Kopírování dat pomocí aktivit kopírování
+        - name: Kopírování dat pomocí aktivity kopírování
           href: copy-activity-overview.md
         - name: Monitorování aktivity kopírování
           href: copy-activity-monitoring.md
-        - name: Odstranění souborů pomocí aktivity odstranění
+        - name: Odstranění souborů pomocí aktivity odstranit
           href: delete-activity.md
         - name: Nástroj pro kopírování dat
           href: copy-data-tool.md
@@ -466,41 +460,41 @@
     - name: Transformace dat
       href: transform-data.md
       items:
-        - name: Aktivita spuštění toku dat
+        - name: Spustit aktivitu toku dat
           href: control-flow-execute-data-flow-activity.md
         - name: Spustit aktivitu Power Query
           href: control-flow-power-query-activity.md
-        - name: Aktivita funkcí Azure
+        - name: Aktivita funkce Azure
           href: control-flow-azure-function-activity.md
         - name: Vlastní aktivita
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Aktivita Databricks Jar
+        - name: Aktivita JAR pro datacihly
           href: transform-data-databricks-jar.md
-        - name: Aktivita poznámkového bloku Databricks
+        - name: Aktivita poznámkového bloku datacihly
           href: transform-data-databricks-notebook.md
-        - name: Aktivita Databricks Python
+        - name: Aktivita v Pythonu datacihly
           href: transform-data-databricks-python.md
-        - name: Aktivita Data Explorer Command
+        - name: Aktivita příkazu Průzkumník dat
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
         - name: Aktivita Data Lake U-SQL
           href: transform-data-using-data-lake-analytics.md
-        - name: Aktivita Hivu služby HDInsight
+        - name: Aktivita v podregistru HDInsight
           href: transform-data-using-hadoop-hive.md
-        - name: Aktivita MapReduce služby HDInsight
+        - name: Aktivita MapReduce HDInsight
           href: transform-data-using-hadoop-map-reduce.md
-        - name: Aktivita Pig služby HDInsight
+        - name: Aktivita prasete v HDInsight
           href: transform-data-using-hadoop-pig.md
-        - name: Aktivita Spark služby HDInsight
+        - name: Aktivita Spark HDInsight
           href: transform-data-using-spark.md
-        - name: Aktivita Streamování služby HDInsight
+        - name: Aktivita streamování HDInsight
           href: transform-data-using-hadoop-streaming.md
-        - name: Aktivita kanálu spuštění služby Machine Learning
+        - name: Aktivita spuštění kanálu Machine Learning
           href: transform-data-machine-learning-service.md
-        - name: Aktivita Provedení dávky služby Machine Learning Studio (classic)
+        - name: Aktivita spuštění dávky Machine Learning Studio (Classic)
           href: transform-data-using-machine-learning.md
-        - name: Aktivita Aktualizace prostředků služby Machine Learning Studio (classic)
+        - name: Aktivita aktualizace prostředku Machine Learning Studio (Classic)
           href: update-machine-learning-models.md
-        - name: Aktivita Uložená procedura
+        - name: Aktivita uložené procedury
           href: transform-data-using-stored-procedure.md
         - name: Propojené služby Compute
           href: compute-linked-services.md
@@ -510,29 +504,29 @@
           href: control-flow-append-variable-activity.md
         - name: Aktivita spuštění kanálu
           href: control-flow-execute-pipeline-activity.md
-        - name: Aktivita filtrování
+        - name: Aktivita filtru
           href: control-flow-filter-activity.md
-        - name: Aktivita For Each
+        - name: Pro každou aktivitu
           href: control-flow-for-each-activity.md
         - name: Aktivita získání metadat
           href: control-flow-get-metadata-activity.md
-        - name: Aktivita podmínky Když
+        - name: Aktivita podmínky if
           href: control-flow-if-condition-activity.md
         - name: Aktivita vyhledávání
           href: control-flow-lookup-activity.md
         - name: Aktivita nastavení proměnné
           href: control-flow-set-variable-activity.md
-        - name: Aktivita přepnutí
+        - name: Aktivita Switch
           href: control-flow-switch-activity.md
-        - name: Aktivita Until
+        - name: Do aktivity
           href: control-flow-until-activity.md
-        - name: Aktivita ověřování
+        - name: Ověřovací aktivita
           href: control-flow-validation-activity.md
-        - name: Aktivita Wait
+        - name: Aktivita čekání
           href: control-flow-wait-activity.md
         - name: Aktivita webu
           href: control-flow-web-activity.md
-        - name: Aktivita webhooku
+        - name: Aktivita Webhooku
           href: control-flow-webhook-activity.md
     - name: Transformace toku dat
       items:
@@ -598,7 +592,7 @@
           href: data-movement-security-considerations.md
         - name: Strategie přístupu k datům
           href: data-access-strategies.md
-        - name: ID adresy modulu Azure Integration Runtime
+        - name: IP adresy prostředí Azure Integration runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Uložení přihlašovacích údajů v Azure Key Vault
           href: store-credentials-in-key-vault.md
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Spravovaná identita pro Data Factory
           href: data-factory-service-identity.md
-        - name: Šifrování s využitím klíčů spravovaných zákazníkem
+        - name: Šifrování objektu pro vytváření dat pomocí spravovaného klíče zákazníka
           href: enable-customer-managed-key.md
-        - name: Spravované virtuální sítě
+        - name: Spravovaná virtuální síť
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure Private Link pro Data Factory
+        - name: Privátní odkaz Azure pro Data Factory
           href: data-factory-private-link.md
+        - name: Standardní hodnoty zabezpečení Azure
+          href: security-baseline.md
     - name: Monitorování a správa
       items:
         - name: Vizuální monitorování

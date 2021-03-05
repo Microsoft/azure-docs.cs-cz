@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285670"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198910"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage pomocí Azure Databricks a Azure Key Vault
 
@@ -29,11 +29,11 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows).
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB pomocí Azure CLI
 
-Abyste mohli objekty blob používat, musíte nejdřív vytvořit účet úložiště pro obecné účely. Pokud [skupinu prostředků](/cli/azure/group?view=azure-cli-latest#az-group-create)nemáte, vytvořte ji před spuštěním příkazu. Následující příkaz vytvoří a zobrazí metadata kontejneru úložiště. Zkopírujte **ID**.
+Abyste mohli objekty blob používat, musíte nejdřív vytvořit účet úložiště pro obecné účely. Pokud [skupinu prostředků](/cli/azure/group#az-group-create)nemáte, vytvořte ji před spuštěním příkazu. Následující příkaz vytvoří a zobrazí metadata kontejneru úložiště. Zkopírujte **ID**.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

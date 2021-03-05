@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593637"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199335"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reakce modulu plug-in pro Application Insights JavaScript SDK
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Konfigurace
 
-| Name    | Výchozí | Description                                                                                                    |
+| Název    | Výchozí | Popis                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historie | null    | Reagovat na historii směrovače. Další informace najdete v dokumentaci k balíčku s informacemi o [směrovači](https://reactrouter.com/web/api/history). Pokud se chcete dozvědět, jak přistupovat k objektu History mimo součásti, přečtěte si [Nejčastější dotazy k reakci – směrovač](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components) .    |
 
@@ -161,7 +161,11 @@ Bude fungovat podobně jako součást s vyšším pořadím, ale reaguje na zav�
 
 ### `useTrackEvent`
 
-Tento `useTrackEvent` zavěšení se používá ke sledování libovolné vlastní události, kterou může aplikace potřebovat sledovat, jako je například kliknutí na tlačítko nebo jiné volání rozhraní API. Používá dva argumenty, první je instance Application Insights (která se dá získat z `useAppInsightsContext` zavěšení) a název události.
+Tento `useTrackEvent` zavěšení se používá ke sledování libovolné vlastní události, kterou může aplikace potřebovat sledovat, jako je například kliknutí na tlačítko nebo jiné volání rozhraní API. Má čtyři argumenty:
+-   Instance Application Insights (kterou lze získat z `useAppInsightsContext` zavěšení).
+-   Název události
+-   Datový objekt události, který zapouzdří změny, které mají být sledovány.
+-   skipFirstRun (volitelný) příznak pro přeskočení volání `trackEvent` při inicializaci. Výchozí hodnota je nastavená na `true`.
 
 ```javascript
 import React, { useState, useEffect } from "react";

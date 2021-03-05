@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071694"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198536"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -48,7 +48,7 @@ V této části se dozvíte, jak tyto koncové body vytvořit pomocí rozhraní 
 
 ### <a name="create-the-endpoint"></a>Vytvoření koncového bodu
 
-Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady ukazují, jak vytvořit koncové body pomocí příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) pro rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
+Jakmile vytvoříte prostředky koncového bodu, můžete je použít pro koncový bod digitálních vláken Azure. Následující příklady ukazují, jak vytvořit koncové body pomocí příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md). Zástupné symboly v příkazech nahraďte podrobnostmi vašich vlastních prostředků.
 
 Vytvoření koncového bodu Event Grid:
 
@@ -119,7 +119,7 @@ Postupujte podle následujících kroků a nastavte tyto prostředky úložišt�
     
 #### <a name="create-the-dead-letter-endpoint"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
-Pokud chcete vytvořit koncový bod, který má povolené nedoručené zprávy, přidejte následující parametr nedoručených zpráv do příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Pokud chcete vytvořit koncový bod, který má povolené nedoručené zprávy, přidejte následující parametr nedoručených zpráv do příkazu [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) pro rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Hodnota parametru je **identifikátor URI SAS nedoručených zpráv** , který se skládá z názvu účtu úložiště, názvu kontejneru a tokenu SAS, který jste shromáždili v [předchozí části](#set-up-storage-resources). Tento parametr vytvoří koncový bod s ověřováním pomocí klíče.
 
@@ -204,7 +204,7 @@ Pokud název trasy neexistuje, žádné zprávy se nesměrují mimo digitální 
 
 Jedna trasa by měla umožňovat výběr více oznámení a typů událostí. 
 
-Trasy událostí je možné vytvořit pomocí [rozhraní API roviny dat služby Azure Digital **EventRoutess**](/rest/api/digital-twins/dataplane/eventroutes) a [příkazu **AZ DT Route** CLI](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true). Zbytek této části vás provede procesem vytváření.
+Trasy událostí je možné vytvořit pomocí [rozhraní API roviny dat služby Azure Digital **EventRoutess**](/rest/api/digital-twins/dataplane/eventroutes) a [příkazu **AZ DT Route** CLI](/cli/azure/ext/azure-iot/dt/route). Zbytek této části vás provede procesem vytváření.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Vytváření tras pomocí rozhraní API a sady C# SDK
 
@@ -225,7 +225,7 @@ Následující ukázková metoda ukazuje, jak vytvořit, vypsat a odstranit tras
 
 ### <a name="create-routes-with-the-cli"></a>Vytváření tras pomocí rozhraní příkazového řádku
 
-Trasy je taky možné spravovat pomocí příkazů [AZ DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) pro rozhraní příkazového řádku Azure Digital revlákens. 
+Trasy je taky možné spravovat pomocí příkazů [AZ DT Route](/cli/azure/ext/azure-iot/dt/route) pro rozhraní příkazového řádku Azure Digital revlákens. 
 
 Další informace o použití rozhraní příkazového řádku a příkazů, které jsou k dispozici, najdete v tématu [*Postup: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
 

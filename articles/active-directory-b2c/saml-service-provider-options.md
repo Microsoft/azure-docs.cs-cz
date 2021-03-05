@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b9a491b639cd1b960ffe3b7164a0940770792148
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107389"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198468"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Možnosti registrace aplikace SAML v Azure AD B2C
 
@@ -36,7 +36,7 @@ Tento článek popisuje možnosti konfigurace, které jsou k dispozici při při
 
 ## <a name="encrypted-saml-assertions"></a>Šifrované kontrolní výrazy SAML
 
-Pokud vaše aplikace očekává, že se kontrolní výrazy SAML nacházejí v šifrovaném formátu, je nutné zajistit, aby byla v zásadách Azure AD B2C povolena možnost šifrování.
+Když aplikace očekává, že by kontrolní výrazy SAML byly v šifrovaném formátu, je nutné zajistit, aby v zásadách Azure AD B2C bylo povolené šifrování.
 
 Azure AD B2C používá certifikát veřejného klíče poskytovatele služby k zašifrování kontrolního výrazu SAML. V koncovém bodu metadat aplikace SAML musí být veřejný klíč, s možností použít popisovač klíče nastavenou na hodnotu Encryption, jak je znázorněno v následujícím příkladu:
 
@@ -60,6 +60,54 @@ Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nast
     <Protocol Name="SAML2"/>
     <Metadata>
       <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+### <a name="encryption-method"></a>Metoda šifrování
+
+Pokud chcete nakonfigurovat metodu šifrování používanou k šifrování dat kontrolního výrazu SAML, nastavte `DataEncryptionMethod` klíč metadat v rámci předávající strany. Možné hodnoty jsou `Aes256` (výchozí), `Aes192` , `Sha512` nebo `Aes128` . Metadata řídí hodnotu `<EncryptedData>` prvku v odpovědi SAML.
+
+Pokud chcete nakonfigurovat metodu šifrování používanou k zašifrování kopie klíče, který se použil k zašifrování dat kontrolního výrazu SAML, nastavte `KeyEncryptionMethod` klíč metadat v rámci předávající strany. Možné hodnoty jsou `Rsa15` (výchozí) – algoritmus PKCS (Public Key Cryptography Standard) verze 1,5 a `RsaOaep` šifrovací algoritmus výplně OAEP (asymetrické šifrování RSA).  Metadata řídí hodnotu  `<EncryptedKey>` prvku v odpovědi SAML.
+
+Následující příklad ukazuje `EncryptedAssertion` oddíl kontrolního výrazu SAML. Metoda šifrovaných dat je `Aes128` a metoda šifrovaného klíče je `Rsa15` .
+
+```xml
+<saml:EncryptedAssertion>
+  <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+    <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <dsig:KeyInfo>
+      <xenc:EncryptedKey>
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+        <xenc:CipherData>
+          <xenc:CipherValue>...</xenc:CipherValue>
+        </xenc:CipherData>
+      </xenc:EncryptedKey>
+    </dsig:KeyInfo>
+    <xenc:CipherData>
+      <xenc:CipherValue>...</xenc:CipherValue>
+    </xenc:CipherData>
+  </xenc:EncryptedData>
+</saml:EncryptedAssertion>
+```
+
+Můžete změnit formát šifrovaných kontrolních výrazů. Chcete-li nakonfigurovat formát šifrování, nastavte `UseDetachedKeys` klíč metadat v rámci předávající strany. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud je hodnota nastavena na `true` , odpojené klíče přidají šifrovaný kontrolní výraz jako podřízený objekt na rozdíl od `EncrytedAssertion` `EncryptedData` .
+
+Nakonfigurujte metodu šifrování a formát použijte klíče metadat v rámci [technického profilu předávající strany](relyingparty.md#technicalprofile):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="DataEncryptionMethod">Aes128</Item>
+      <Item Key="KeyEncryptionMethod">Rsa15</Item>
+      <Item Key="UseDetachedKeys">false</Item>
     </Metadata>
    ..
   </TechnicalProfile>
@@ -114,7 +162,7 @@ Poskytujeme kompletní ukázkovou zásadu, kterou můžete použít pro testová
 
 Můžete nakonfigurovat algoritmus podpisu použitý k podepsání kontrolního výrazu SAML. Možné hodnoty jsou `Sha256` , `Sha384` , `Sha512` nebo `Sha1` . Zajistěte, aby technický profil a aplikace používaly stejný algoritmus podpisu. Používejte jenom algoritmus, který podporuje váš certifikát.
 
-Nakonfigurujte algoritmus podpisu pomocí `XmlSignatureAlgorithm` klíče metadat v uzlu metadat RelyingParty.
+Nakonfigurujte algoritmus podpisu pomocí `XmlSignatureAlgorithm` klíče metadat v rámci elementu metadat předávající strany.
 
 ```xml
 <RelyingParty>
@@ -132,7 +180,7 @@ Nakonfigurujte algoritmus podpisu pomocí `XmlSignatureAlgorithm` klíče metada
 
 ## <a name="saml-response-lifetime"></a>Doba životnosti odezvy SAML
 
-Můžete nastavit dobu, po kterou odpověď SAML zůstane platná. Nastavte dobu života pomocí `TokenLifeTimeInSeconds` položky metadat v rámci technického profilu vystavitele tokenu SAML. Tato hodnota je počet sekund, které mohou uplynout od `NotBefore` časového razítka vypočítaného v době vystavení tokenu. Automaticky je čas vybraný pro toto aktuální čas. Výchozí doba života je 300 sekund (5 minut).
+Můžete nastavit dobu, po kterou odpověď SAML zůstane platná. Nastavte dobu života pomocí `TokenLifeTimeInSeconds` položky metadat v rámci technického profilu vystavitele tokenu SAML. Tato hodnota je počet sekund, které mohou uplynout od `NotBefore` časového razítka vypočítaného v době vystavení tokenu. Výchozí doba života je 300 sekund (5 minut).
 
 ```xml
 <ClaimsProvider>
@@ -170,6 +218,26 @@ Například když `TokenNotBeforeSkewInSeconds` je nastavené na `120` sekund:
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <Item Key="TokenNotBeforeSkewInSeconds">120</Item>
+      </Metadata>
+      ...
+    </TechnicalProfile>
+```
+
+## <a name="remove-milliseconds-from-date-and-time"></a>Odebrat milisekundy z data a času
+
+Můžete určit, zda budou milisekundy odebrány z hodnot DateTime v rámci odpovědi SAML (patří mezi ně IssueInstant, NotBefore, NotOnOrAfter a AuthnInstant). Pokud chcete milisekundy odebrat, nastavte `RemoveMillisecondsFromDateTime
+` klíč metadat v rámci předávající strany. Možné hodnoty: `false` (výchozí) nebo `true` .
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      <Metadata>
+        <Item Key="RemoveMillisecondsFromDateTime">true</Item>
       </Metadata>
       ...
     </TechnicalProfile>

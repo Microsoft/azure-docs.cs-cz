@@ -3,12 +3,12 @@ title: Domény událostí v Azure Event Grid
 description: Tento článek popisuje, jak pomocí domén událostí spravovat tok vlastních událostí v různých obchodních organizacích, zákaznících nebo aplikacích.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328823"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198647"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Porozumění doménám událostí pro správu Event Grid témata
 
@@ -25,15 +25,8 @@ Doména události je nástroj pro správu velkého počtu Event Gridch témat t�
 
 Domény událostí zpřístupňují stejnou architekturu, kterou používají služby Azure (například úložiště a IoT Hub) k publikování jejich událostí. Umožňují publikovat události do tisíců témat. Domény také poskytují autorizaci a kontrolu ověřování pro jednotlivá témata, abyste mohli rozdělit klienty na oddíly.
 
-### <a name="example-use-case"></a>Příklad případu použití
-
-Domény událostí se nejsnadněji vysvětlí pomocí příkladu. Řekněme, že spouštíte výrobní stroj contoso, kde vytváříte traktory, prozkoumá vybavení a další těžká zařízení. V rámci provozu firmy zadáváte zákazníkům informace o údržbě zařízení, stavu systémů a aktualizacích smluv v reálném čase. Všechny tyto informace se přenášejí do různých koncových bodů, včetně vaší aplikace, koncových bodů zákazníka a jiné infrastruktury, kterou si zákazníci nastavili.
-
-Domény událostí umožňují modelovat strojová konstrukce společnosti Contoso jako jednu entitu událostí. Každý z vašich zákazníků je reprezentován jako téma v rámci domény. Ověřování a autorizace jsou zpracovávány pomocí Azure Active Directory. Každý z vašich zákazníků se může přihlásit k odběru svého tématu a získat jejich události do nich. Spravovaný přístup prostřednictvím domény události zajišťuje, že budou moct přistupovat jenom k jejich tématu.
-
-Poskytuje taky jeden koncový bod, na který můžete publikovat všechny události zákazníků. Event Grid se postará o to, aby každé téma bylo důležité pouze o událostech, které jsou vymezeny pro svého tenanta.
-
-![Příklad konstrukce contoso](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>Příklad případu použití
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>Správa přístupu
 
@@ -107,6 +100,8 @@ Pokud vám tato omezení neodpovídají, můžete se obrátit na produktového t
 Domény událostí používají stejné [ceny operací](https://azure.microsoft.com/pricing/details/event-grid/) jako u všech ostatních funkcí v Event Grid použít.
 
 Operace fungují v doménách událostí stejně jako v uživatelských tématech. Každá příchozí událost události do domény události je operace a každý pokus o doručení události je operace.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

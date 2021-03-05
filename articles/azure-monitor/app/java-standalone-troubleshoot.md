@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737053"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199607"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -45,7 +45,7 @@ Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou h
 
 Nejlepším způsobem, jak zjistit, jestli konkrétní příkaz protokolování splňuje prahovou hodnotu nakonfigurovaných protokolovacích rozhraní, je potvrzení, že se zobrazuje v normálním aplikačním protokolu (např. soubor nebo konzola).
 
-Všimněte si také, že pokud je do protokolovacího nástroje předána výjimka, zpráva protokolu (a výjimka) se zobrazí v Azure Portal v `exceptions` tabulce místo v `traces` tabulce.
+Všimněte si také, že pokud je objekt výjimky předán do protokolovacího nástroje, pak se zpráva protokolu (a podrobnosti objektu výjimky) zobrazí v Azure Portal v `exceptions` tabulce místo v `traces` tabulce.
 
 Další podrobnosti najdete v tématu [Automatická shromážděná konfigurace protokolování](./java-standalone-config.md#auto-collected-logging) .
 
