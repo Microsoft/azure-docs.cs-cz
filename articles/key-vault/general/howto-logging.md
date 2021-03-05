@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108734"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204010"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
@@ -34,7 +34,7 @@ Tyto příkazy průvodce jsou formátované pro [Cloud Shell](https://shell.azur
 
 Prvním krokem při nastavení protokolování klíčů je připojení k předplatnému, které obsahuje váš Trezor klíčů. To je obzvláště důležité, pokud máte k vašemu účtu k dispozici několik předplatných.
 
-Pomocí Azure CLI můžete zobrazit všechna Vaše předplatná pomocí příkazu [AZ Account list](/cli/azure/account?view=azure-cli-latest#az_account_list) a pak se k němu připojit pomocí příkazu [AZ Account set](/cli/azure/account?view=azure-cli-latest#az_account_set):
+Pomocí Azure CLI můžete zobrazit všechna Vaše předplatná pomocí příkazu [AZ Account list](/cli/azure/account#az_account_list) a pak se k němu připojit pomocí příkazu [AZ Account set](/cli/azure/account#az_account_set):
 
 ```azurecli-interactive
 az account list
@@ -58,7 +58,7 @@ Pro další snadné řízení používáme také stejnou skupinu prostředků ja
 
 Bude také potřeba zadat název účtu úložiště. Názvy účtů úložiště musí být jedinečné, musí být dlouhé 3 až 24 znaků a obsahovat jenom číslice a malá písmena.  Nakonec vytvoříme účet úložiště pro SKU "Standard_LRS".
 
-Pomocí Azure CLI použijte příkaz [AZ Storage Account Create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) .
+Pomocí Azure CLI použijte příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) .
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -84,9 +84,9 @@ ID účtu úložiště bude ve formátu "/Subscriptions/<identifikátorem-ID př
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Získání ID prostředku trezoru klíčů
 
-V [rychlém startu CLI](quick-create-cli.md) a [rychlém startu PowerShellu](quick-create-powershell.md)jste vytvořili klíč s jedinečným názvem.  Znovu použijte tento název v následujících krocích.  Pokud si název vašeho trezoru klíčů nepamatujete, můžete k jejich vypsání použít příkaz Azure CLI [AZ Key trezor list](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_list) nebo rutina Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) .
+V [rychlém startu CLI](quick-create-cli.md) a [rychlém startu PowerShellu](quick-create-powershell.md)jste vytvořili klíč s jedinečným názvem.  Znovu použijte tento název v následujících krocích.  Pokud si název vašeho trezoru klíčů nepamatujete, můžete k jejich vypsání použít příkaz Azure CLI [AZ Key trezor list](/cli/azure/keyvault#az_keyvault_list) nebo rutina Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) .
 
-K vyhledání ID prostředku použijte název trezoru klíčů.  Pomocí Azure CLI použijte příkaz [AZ klíčů trezor show](/cli/azure/keyvault?view=azure-cli-latest#az_keyvault_show) .
+K vyhledání ID prostředku použijte název trezoru klíčů.  Pomocí Azure CLI použijte příkaz [AZ klíčů trezor show](/cli/azure/keyvault#az_keyvault_show) .
 
 ```azurecli-interactive
 az keyvault show --name "<your-unique-keyvault-name>"
@@ -102,7 +102,7 @@ ID prostředku vašeho trezoru klíčů bude ve formátu "/Subscriptions/<your-s
 
 ## <a name="enable-logging-using-azure-powershell"></a>Povolit protokolování pomocí Azure PowerShell
 
-Pokud chcete povolit protokolování pro Key Vault, použijeme příkaz Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest) nebo rutinu [set-AZDIAGNOSTICSETTING](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
+Pokud chcete povolit protokolování pro Key Vault, použijeme příkaz Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) nebo rutinu [set-AZDIAGNOSTICSETTING](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 Volitelně můžete nastavit zásady uchovávání informací pro vaše protokoly, aby se starší protokoly automaticky odstranily po uplynutí určité doby. Například můžete nastavit zásady uchovávání informací, které automaticky odstraní protokoly starší než 90 dní.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_update) command. 
+<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
 
 ```azurecli-interactive
 az monitor diagnostic-settings update 
@@ -143,7 +143,7 @@ Co je protokolováno:
 
 Protokoly Key Vault se ukládají do kontejneru "Insights-logs-auditevent" v účtu úložiště, který jste zadali. Chcete-li zobrazit protokoly, je nutné stáhnout objekty blob.
 
-Nejprve vypíšete seznam všech objektů BLOB v kontejneru.  Pomocí Azure CLI použijte příkaz [AZ Storage BLOB list](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_list) .
+Nejprve vypíšete seznam všech objektů BLOB v kontejneru.  Pomocí Azure CLI použijte příkaz [AZ Storage BLOB list](/cli/azure/storage/blob#az_storage_blob_list) .
 
 ```azurecli-interactive
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
@@ -159,7 +159,7 @@ Jak uvidíte z výstupu příkazu rozhraní příkazového řádku Azure CLI neb
 
 Vzhledem k tomu, že ke shromažďování protokolů pro více prostředků můžete použít stejný účet úložiště, úplné ID prostředku v názvu objektu BLOB je užitečné pro přístup k objektům blob, které potřebujete, nebo ke stažení jenom. Ale předtím se podíváme na to, jak stáhnout všechny objekty blob.
 
-Pomocí Azure CLI použijte příkaz [AZ Storage BLOB Download](/cli/azure/storage/blob?view=azure-cli-latest#az_storage_blob_download) , předejte mu názvy objektů BLOB a cestu k souboru, do kterého chcete výsledky uložit.
+Pomocí Azure CLI použijte příkaz [AZ Storage BLOB Download](/cli/azure/storage/blob#az_storage_blob_download) , předejte mu názvy objektů BLOB a cestu k souboru, do kterého chcete výsledky uložit.
 
 ```azurecli-interactive
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715152"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203721"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,12 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="march-2021"></a>Březen 2021
+
+Analýza zvuku je teď k dispozici v dalším novém balíčku zvukových funkcí v jiném cenovém bodě. Nová předvolba **základní analýzy zvuku** nabízí možnost nedostatku pouze k extrakci popisků a titulků výstupů řeči, překladu a formátování. V předplatném se **základní zvuk** vytvoří ve vyúčtování dva samostatné měřiče, včetně řádku pro přepis a samostatného řádku pro formátování titulků a titulků. Další informace o cenách najdete na stránce s [cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/) .
+
+Nově přidaný svazek je k dispozici při indexování nebo opětovném indexování souboru tak, že vyberete **možnost Rozšířená volba**  ->  **základní zvukové** Předvolby (v rozevíracím seznamu **video a zvuk** ).
 
 ## <a name="february-2021"></a>Únor 2021
 

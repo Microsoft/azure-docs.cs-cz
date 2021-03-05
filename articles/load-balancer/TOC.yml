@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: ukázky
   items:
     - name: Azure CLI

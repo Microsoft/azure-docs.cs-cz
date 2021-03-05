@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576780"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202497"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -42,7 +42,7 @@ Metriky pro Synchronizace souborů Azure jsou ve výchozím nastavení povolené
 
 V Azure Monitor jsou k dispozici následující metriky pro Synchronizace souborů Azure:
 
-| Název metriky | Description |
+| Název metriky | Popis |
 |-|-|
 | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka**: Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru |
@@ -111,14 +111,14 @@ Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte d
 
 - Aktivita **stav koncového bodu serveru** a **synchronizace** na portálu je založena na událostech synchronizace, které jsou zaznamenány do protokolu událostí TELEMETRIE na serveru (ID 9102 a 9302). Pokud relace synchronizace selže kvůli přechodné chybě, například k chybě, bude koncový bod **serveru na portálu** stále zobrazen, pokud aktuální relace synchronizace probíhá (soubory jsou aplikovány). Událost s ID 9302 je událost průběhu synchronizace a ID události 9102 se protokoluje po dokončení relace synchronizace.  Další informace najdete v tématu [synchronizace stavu](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) a [průběhu synchronizace](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Pokud stav koncového bodu serveru zobrazuje **chybu** nebo **žádná aktivita**, přečtěte si pokyny v [dokumentaci k řešení potíží](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) .
 - Počet **souborů, které nejsou synchronizované** na portálu, vychází z ID události 9121, které se zaznamená do protokolu událostí telemetrie na serveru. Tato událost se zaznamená do protokolu pro každou položku chyby, jakmile se relace synchronizace dokončí. Chcete-li vyřešit chyby jednotlivých položek, přečtěte si téma [návody v tématu, zda existují konkrétní soubory nebo složky, které se nesynchronizují?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
-- Pokud chcete na portálu zobrazit **efektivitu vrstev cloudu** , přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . Data poskytnutá pro efektivitu vrstvení cloudu vycházejí z ID události 9071, které se zaznamená do protokolu událostí telemetrie na serveru. Další informace najdete v tématu [Přehled vrstvení cloudu](./storage-sync-cloud-tiering.md).
+- Pokud chcete na portálu zobrazit **efektivitu vrstev cloudu** , přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . Data poskytnutá pro efektivitu vrstvení cloudu vycházejí z ID události 9071, které se zaznamená do protokolu událostí telemetrie na serveru. Další informace najdete v tématu [monitorování vrstvení cloudu](./storage-sync-monitor-cloud-tiering.md).
 - Pokud chcete zobrazit soubory, které **nejsou vrstvení** a **navrácení chyb** na portálu, přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . **Soubory, které nejsou vrstvení** , jsou založené na id události 9003, které se zaznamená do protokolu událostí telemetrie na serveru, a **chyby odvolání** vycházejí z ID události 9006. Chcete-li prozkoumat soubory, které se nedaří navrátit do vrstvy nebo se odvolat, přečtěte si téma [Postup řešení potíží se soubory, které se nepodařilo](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) [vyzvat a jak řešit problémy se selháním](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Grafy metrik
 
 - Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
-  | Název metriky | Description | Název okna |
+  | Název metriky | Popis | Název okna |
   |-|-|-|
   | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
   | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
@@ -178,7 +178,7 @@ Chcete-li zobrazit Synchronizace souborů Azure čítače výkonu na serveru, sp
 
 V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Synchronizace souborů Azure:
 
-| Název Object\Counter výkonu | Description |
+| Název Object\Counter výkonu | Popis |
 |-|-|
 | Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
 | Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |

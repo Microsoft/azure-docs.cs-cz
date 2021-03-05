@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654503"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204027"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -161,7 +161,7 @@ Pomocí rozevíracího selektoru vyberte nový model využití. Kliknutím na tl
 
 [Nastavte Azure CLI pro mezipaměť HPC Azure](./az-cli-prerequisites.md).
 
-Použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) .
+Použijte příkaz [AZ HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) .
 
 Příkaz Update je skoro stejný jako příkaz, který používáte k přidání cíle úložiště systému souborů NFS. Podrobnosti a příklady najdete v tématu [Vytvoření cíle úložiště NFS](hpc-cache-add-storage.md#create-an-nfs-storage-target) .
 

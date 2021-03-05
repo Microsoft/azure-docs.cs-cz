@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879978"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202684"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace ze systému Linux na nasazení do hybridního cloudu pomocí Synchronizace souborů Azure
 
@@ -39,7 +39,7 @@ Pokud na serveru Linux nepoužíváte službu Samba a místo toho chcete migrova
 * Vytvořte instanci Windows serveru 2019 jako virtuální počítač nebo fyzický server. Minimálním požadavkem je Windows Server 2012 R2. Podporuje se i cluster s podporou převzetí služeb při selhání se systémem Windows Server.
 * Zřídit nebo přidat přímo připojené úložiště (DAS). Úložiště připojené k síti (NAS) není podporováno.
 
-  Velikost úložiště, kterou zřídíte, může být menší než v současnosti na serveru Linux Samba, pokud používáte funkci Synchronizace souborů Azureho [cloudového vrstvení](storage-sync-cloud-tiering.md) . Když ale kopírujete soubory z většího prostoru serveru Linux Samba na menší svazek Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
+  Velikost úložiště, kterou zřídíte, může být menší než v současnosti na serveru Linux Samba, pokud používáte funkci Synchronizace souborů Azureho [cloudového vrstvení](storage-sync-cloud-tiering-overview.md) . Když ale kopírujete soubory z většího prostoru serveru Linux Samba na menší svazek Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
 
   1. Přesuňte sadu souborů, které se vejdou na disk.
   2. Umožněte synchronizaci souborů a vrstvení cloudu.
@@ -98,7 +98,7 @@ Spusťte první místní kopii do cílové složky Windows serveru:
 
 Následující příkaz Robocopy zkopíruje soubory ze svého úložiště serveru Linux Samba do cílové složky Windows serveru. Windows Server ho synchronizuje se sdílenými složkami Azure. 
 
-Pokud jste v instanci Windows serveru zřídili méně úložiště, než vaše soubory zabírají na serveru Linux Samba, nakonfigurujete tak cloudovou vrstvu. Vzhledem k to, že místní svazek Windows serveru se stane plným, budou se [vrstvy cloudu](storage-sync-cloud-tiering.md) spouštět a soubory vrstev, které se úspěšně synchronizovaly, už. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie ze serveru Linux Samba. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli zásad 99 procent volného místa pro svazek.
+Pokud jste v instanci Windows serveru zřídili méně úložiště, než vaše soubory zabírají na serveru Linux Samba, nakonfigurujete tak cloudovou vrstvu. Vzhledem k to, že místní svazek Windows serveru se stane plným, budou se [vrstvy cloudu](storage-sync-cloud-tiering-overview.md) spouštět a soubory vrstev, které se úspěšně synchronizovaly, už. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie ze serveru Linux Samba. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli zásad 99 procent volného místa pro svazek.
 
 Je možné, že Robocopy přesouvá soubory rychleji, než je můžete synchronizovat s cloudem a vrstvou místně, což způsobí, že dojde místo na místním disku. Příkaz Robocopy se pak nezdaří. Doporučujeme, abyste ve svých sdílených složkách pracovali v sekvenci, která brání problému. Zvažte například, že nebudete spouštět úlohy nástroje Robocopy pro všechny sdílené složky ve stejnou dobu. Nebo zvažte přesunutí sdílených složek, které odpovídají aktuálnímu množství volného místa v instanci systému Windows Server. Pokud úloha Robocopy selže, můžete příkaz kdykoli znovu spustit, pokud použijete následující možnost zrcadlení nebo mazání:
 

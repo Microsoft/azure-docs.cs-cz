@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203228"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Sémantické vyhledávání v Azure Kognitivní hledání
 
@@ -27,7 +27,7 @@ Základní technologie využívá investice z Bingu a Microsoft Research a je in
 
 Mezi funkce veřejné verze Preview patří:
 
-+ Algoritmus sémantického hodnocení, který načte relevantní dokumenty na základě kontextu nebo sémantického významu termínů vyhledávacího dotazu
++ Model sémantického hodnocení, který vyhodnotí výsledky na základě kontextu nebo sémantického významu termínů vyhledávacího dotazu
 + Sémantické titulky, které zvýrazňují relevantní pasáže
 + Sémantické odpovědi na dotaz, které se také formulují z výsledků
 + Kontrola pravopisu, která opraví překlepy před tím, než se vyhledají výrazy dotazu pro vyhledávací modul
@@ -44,7 +44,9 @@ Chcete-li vytvořit titulky a odpovědi, používá modely reprezentace jazyka. 
 
 ## <a name="availability-and-pricing"></a>Dostupnost a ceny
 
-Sémantické hodnocení je dostupné prostřednictvím [registrace registrace](https://aka.ms/SemanticSearchPreviewSignup), a to u vyhledávacích služeb vytvořených na úrovni Standard (S1, S2, S3), které se nacházejí v jedné z těchto oblastí: Střed USA – sever, Západní USA, Západní USA 2, Východní USA 2, Severní Evropa, západní Evropa. Oprava pravopisu je k dispozici ve stejných oblastech, ale nemá žádná omezení vrstvy. Máte-li existující službu, která splňuje kritéria pro úroveň a oblast, je vyžadována pouze registrace.
+Sémantické hodnocení je dostupné prostřednictvím [registrace registrace](https://aka.ms/SemanticSearchPreviewSignup), a to u vyhledávacích služeb vytvořených na úrovni Standard (S1, S2, S3), které se nacházejí v jedné z těchto oblastí: Střed USA – sever, Západní USA, Západní USA 2, Východní USA 2, Severní Evropa, západní Evropa. Existující vyhledávací služba na S1 nebo vyšší v uvedených oblastech je pro verzi Preview platná (není nutné vytvářet novou službu).
+
+Oprava pravopisu je k dispozici ve stejných oblastech, ale nemá žádná omezení na úrovni a nevyžaduje žádné požadavky na registraci. 
 
 V období od 1. dubna se v rámci verze Preview spustí Oprava pravopisu a sémantické hodnocení bez poplatků. Od 1. dubna se výpočetní náklady na spuštění této funkce stanou fakturovatelnými událostmi. Očekávané náklady jsou přibližně USD $500 měsíčně za dotazy 250 000. Podrobné informace o nákladech, které jsou popsány na [stránce s cenami kognitivní hledání](https://azure.microsoft.com/pricing/details/search/) , najdete v části [odhad a Správa nákladů](search-sku-manage-costs.md).
 

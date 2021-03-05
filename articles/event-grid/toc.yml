@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: Metriky
           href: metrics.md
+    - name: Případy použití
+      items:
+        - name: Případy použití pro domény
+          href: event-domains-use-cases.md
 - name: Návody
   items:
     - name: 'Vytvoření, zobrazení a správa systémových témat'

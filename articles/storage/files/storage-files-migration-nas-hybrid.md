@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882259"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202667"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace z úložiště připojení k síti (NAS) do hybridního nasazení v cloudu pomocí Synchronizace souborů Azure
 
@@ -45,7 +45,7 @@ Jak je uvedeno v [článku Přehled migrace](storage-files-migration-overview.md
 * Vytvořte Windows Server 2019 – minimálně 2012R2 jako virtuální počítač nebo fyzický server. Podporuje se taky cluster Windows serveru s podporou převzetí služeb při selhání.
 * Zřídit nebo přidat přímo připojené úložiště (DAS ve srovnání se serverem NAS, který není podporován).
 
-    Velikost úložiště, kterou zřídíte, může být menší než vaše zařízení, které aktuálně používáte, v případě, že použijete funkci [cloudové vrstvy](storage-sync-cloud-tiering.md) Azure File Sync.
+    Velikost úložiště, kterou zřídíte, může být menší než vaše zařízení, které aktuálně používáte, v případě, že použijete funkci [cloudové vrstvy](storage-sync-cloud-tiering-overview.md) Azure File Sync.
     Když ale kopírujete soubory z většího prostoru NAS do menšího svazku Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
 
     1. Přesunutí sady souborů, které se vejdou na disk
@@ -105,7 +105,7 @@ Spusťte první místní kopii do cílové složky Windows serveru:
 
 Následující příkaz Robocopy zkopíruje soubory z úložiště NAS do cílové složky Windows serveru. Systém Windows Server provede synchronizaci se sdílenými složkami Azure. 
 
-Pokud jste na Windows serveru zřídili méně úložiště, než vaše soubory zabírají na zařízení NAS, pak jste nakonfigurovali vrstvu cloudu. Vzhledem k plnémumu místnímu svazku Windows serveru se [vrstvení cloudu](storage-sync-cloud-tiering.md) zahájí v souborech a vrstvách, které se už úspěšně synchronizovaly. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie ze zařízení NAS. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli volného místa na 99% svazku.
+Pokud jste na Windows serveru zřídili méně úložiště, než vaše soubory zabírají na zařízení NAS, pak jste nakonfigurovali vrstvu cloudu. Vzhledem k plnémumu místnímu svazku Windows serveru se [vrstvení cloudu](storage-sync-cloud-tiering-overview.md) zahájí v souborech a vrstvách, které se už úspěšně synchronizovaly. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie ze zařízení NAS. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli volného místa na 99% svazku.
 Je možné, že Robocopy přesouvá soubory rychleji, než je můžete synchronizovat s cloudem a vrstvou místně, takže na místním disku dochází místo. Příkaz Robocopy se nezdaří. Doporučujeme, abyste procházeli prostřednictvím sdílených složek v sekvenci, která to brání. Například nespouštíte úlohy Robocopy pro všechny sdílené složky ve stejnou dobu nebo pouze přesunutím sdílených složek, které odpovídají aktuálnímu volnému místu na Windows serveru, abyste si vyuváděli pár.
 
 ```console
@@ -208,13 +208,13 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do složky ***všechny** skupiny synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu na něco lépe využívaného pro využití mezipaměti, řekněme, že 20%. 
+> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka využívaný, archivní data a vy znovu zachováte zbývající část prostoru úložiště pro jiný scénář.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s názvem "svazek je plný" *. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje. Jeho cílem je dosáhnout 99% volného místa na svazku.
+Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje. Jeho cílem je dosáhnout 99% volného místa na svazku.
 
 Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disku. Můžete si všimnout, že v Průzkumníkovi souborů na vašem Windows serveru.
 

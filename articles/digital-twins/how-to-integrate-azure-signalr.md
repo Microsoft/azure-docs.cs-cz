@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041497"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203891"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -88,7 +88,7 @@ Dále nakonfigurujte funkce tak, aby komunikovaly s vaší instancí služby Azu
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje stránku klíčů pro instanci signalizace. Zvýrazní se ikona kopírovat do schránky vedle primárního PŘIPOJOVACÍho řetězce." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. Nakonec přidejte **připojovací řetězec** služby Azure Signal do nastavení aplikace funkce pomocí následujícího příkazu rozhraní příkazového řádku Azure CLI. V rámci tohoto [kurzu](how-to-integrate-azure-signalr.md#prerequisites)Nahraďte zástupné symboly svou skupinou prostředků a názvem aplikace App Service/Function App. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)rozhraní příkazového řádku Azure:
+1. Nakonec přidejte **připojovací řetězec** služby Azure Signal do nastavení aplikace funkce pomocí následujícího příkazu rozhraní příkazového řádku Azure CLI. V rámci tohoto [kurzu](how-to-integrate-azure-signalr.md#prerequisites)Nahraďte zástupné symboly svou skupinou prostředků a názvem aplikace App Service/Function App. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](/cli/azure/install-azure-cli)rozhraní příkazového řádku Azure:
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -189,7 +189,7 @@ Tím se otevře okno prohlížeče, ve kterém je spuštěná ukázková aplikac
 
 Pokud už prostředky vytvořené v tomto článku nepotřebujete, odstraňte je pomocí těchto kroků. 
 
-Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) . Odebrání skupiny prostředků se také odebere...
+Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) . Odebrání skupiny prostředků se také odebere...
 * instance digitálních vláken Azure (z kompletního kurzu)
 * služby IoT Hub a registrace zařízení centra (z kompletního kurzu)
 * téma Event gridu a související odběry

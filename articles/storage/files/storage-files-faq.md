@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737609"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202633"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Synchronizace souborů Azure pro rychlý přístup blízko místa, kde se data používají.
@@ -119,26 +119,38 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="sizeondisk-versus-size"></a>
   **Proč velikost vlastnosti *disku* pro soubor neodpovídá vlastnosti *size* po použití synchronizace souborů Azure?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  Přečtěte si téma [principy synchronizace souborů Azureho vrstvení cloudu](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
 
 * <a id="is-my-file-tiered"></a>
   **Jak zjistím, jestli byl soubor vrstvený?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**Soubor, který chcete použít, byl vrstven. Jak mohu soubor odvolat na disk a použít ho místně?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#afs-recall-file).
+  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Návody vynutit vrstvení souboru nebo adresáře?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#afs-force-tiering).
+  Další informace najdete v tématu [správa synchronizace souborů Azure vrstvených souborů](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Jak se interpretuje *volné místo na svazku* , když mám na svazku více koncových bodů serveru?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  Podívejte se na téma [výběr synchronizace souborů Azure zásad clouding](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Mám zakázanou vrstvu cloudu, proč jsou v umístění koncového bodu serveru umístěny soubory?**  
-  Podívejte se na téma [Principy vrstvení cloudu](storage-sync-cloud-tiering.md#afs-tiering-disabled).
+    Existují dva důvody, proč v umístění koncového bodu serveru mohou existovat vrstvené soubory:
+
+    - Pokud při přidávání nového koncového bodu serveru do existující skupiny synchronizace zvolíte buď možnost u oboru názvů pro odvolání první možnost, nebo pro režim počátečního stahování možnost pouze odvolat pouze obor názvů, soubory se budou zobrazovat tak, aby byly v místním režimu staženy. Pokud tomu chcete předejít, vyberte možnost Nepoužívat soubory pro režim prvotního stahování. K ručnímu odvolání souborů použijte rutinu [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) .
+
+    - Pokud byla na koncovém bodu serveru povolená vrstva cloudu a pak se zakázala, soubory zůstanou vrstveny, dokud nebudou přístupné.
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **Proč mé vrstvené soubory neobsahují miniatury nebo náhledy v Průzkumníkovi Windows?**  
+    V případě vrstvených souborů se miniatury a verze Preview nebudou zobrazovat na koncovém bodu serveru. Toto chování je očekávané, protože funkce mezipaměti miniatur ve Windows záměrně přeskočí čtení souborů s atributem offline. Díky povoleným vrstvám cloudu by čtení přes vrstvených souborů způsobilo stažení (vráceno).
+
+    Toto chování není specifické pro Synchronizace souborů Azure, Průzkumník Windows zobrazuje "šedou X" pro všechny soubory, které mají nastaven atribut offline. Při přístupu k souborům přes SMB se zobrazí ikona X. Podrobné vysvětlení tohoto chování najdete v tématu. [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+    Otázky týkající se správy vrstvených souborů najdete v tématu [Správa vrstvených souborů](storage-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Které soubory nebo složky jsou automaticky vyloučeny pomocí Synchronizace souborů Azure?**  
@@ -274,7 +286,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     2.  Otevřete konzolu domény a vztahy důvěryhodnosti služby Active Directory.
     3.  Klikněte pravým tlačítkem na doménu, ke které chcete získat přístup ke sdílené složce, a pak klikněte na kartu důvěry a vyberte doménu doménové struktury B z odchozích vztahů důvěryhodnosti. Pokud jste nenakonfigurovali důvěryhodnost mezi dvěma doménovými strukturami, musíte nejdřív nastavit vztah důvěryhodnosti.
     4.  Klikněte na vlastnosti... pak "Směrování přípon názvů"
-    5.  Ověřte, zda se zobrazuje "*. file.core.windows.net" surffix. Pokud ne, klikněte na aktualizovat.
+    5.  Ověřte, jestli se nezobrazuje přípona *. file.core.windows.net. Pokud ne, klikněte na aktualizovat.
     6.  Vyberte *. file.core.windows.net a pak klikněte na povolit a použít.
 
 * <a id=""></a>

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184096"
+ms.locfileid: "102203687"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Jak používat Apache Spark (s technologií Azure synapse Analytics) v kanálu Machine Learning (Preview)
 
@@ -90,8 +90,6 @@ Prvním krokem je konfigurace `SynapseCompute` . `linked_service`Argument je `Li
 Jakmile je konfigurace vytvořená, vytvoříte strojové učení `ComputeTarget` předáním do `Workspace` , `ComputeTargetAttachConfiguration` a názvem, který byste chtěli odkazovat na výpočetní prostředky v pracovním prostoru Machine Learning. Volání `ComputeTarget.attach()` je asynchronní, takže ukázka blokuje až do dokončení volání.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>Vytvoření `SynapseSparkStep` , které používá propojený fond Apache Spark
-
-Ukázková úloha Spark poznámkového bloku [v rámci fondu Apache Spark](https://github.com/azure/machinelearningnotebooks) definuje jednoduchý kanál strojového učení. Jako první Poznámkový blok definuje krok přípravy dat, který je `synapse_compute` určen definovaným v předchozím kroku. Poznámkový blok pak definuje krok školení, který využívá výpočetní cíl, který je vhodnější pro školení. Ukázkový Poznámkový blok používá záchrannou databázi Titanic k předvedení vstupu a výstupu dat; ve skutečnosti data nečistí ani nevytváří prediktivní model. Vzhledem k tomu, že v této ukázce není žádné reálné školení, krok školení využívá levné výpočetní prostředky založené na procesoru.
 
 Data se natoků do kanálu strojového učení pomocí `DatasetConsumptionConfig` objektů, které mohou obsahovat tabulková data nebo sady souborů. Data často pocházejí ze souborů v úložišti objektů BLOB v úložišti dat v pracovním prostoru. Následující kód ukazuje typický kód pro vytvoření vstupu do kanálu strojového učení:
 
@@ -228,7 +226,7 @@ Pokud je to nutné, kód uvedený výše vytvoří nový výpočetní prostřede
 
 Po definování všech svých kroků můžete vytvořit a spustit svůj kanál. 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])

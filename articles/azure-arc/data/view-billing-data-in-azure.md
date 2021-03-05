@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687528"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202650"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal
 
 > [!IMPORTANT] 
->  V období Preview se za použití datových služeb s podporou Azure ARC neúčtují žádné náklady. I když fakturační systém funguje na konci, je měřič účtování nastavený na $0.  Pokud budete postupovat podle tohoto scénáře, zobrazí se položky ve vaší fakturaci za službu, která je aktuálně pojmenována do **služby Hybrid Data Services** , a pro prostředky typu s názvem **Microsoft. AzureData/ `<resource type>`**. Budete moct zobrazit záznam pro každou datovou službu – Azure ARC, který vytvoříte, ale každý záznam se bude účtovat $0.
+>  V období Preview se za použití datových služeb s podporou Azure ARC neúčtují žádné náklady. I když fakturační systém funguje na konci, je měřič účtování nastavený na $0.  Pokud budete postupovat podle tohoto scénáře, zobrazí se položky ve vaší fakturaci za službu, která je aktuálně pojmenována jako služba **Hybrid Data Services** , a pro prostředky typu s názvem **`<resource type>` Microsoft. AzureArcData/**. Budete moct zobrazit záznam pro každou datovou službu – Azure ARC, který vytvoříte, ale každý záznam se bude účtovat $0.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ Pomocí těchto kroků můžete zobrazit fakturační údaje v Azure Portal:
 1. Ujistěte se, že je váš obor nastavený na předplatné, ve kterém se vytvořily prostředky datové služby.
 1. Vyberte **náklady podle prostředku** v rozevíracím seznamu zobrazení vedle volič oboru v horní části zobrazení.
 1. Ujistěte se, že je filtr data nastavený na **Tento měsíc** , nebo na jiný časový rozsah, který dává smysl při vytváření prostředků datové služby.
-1. Klikněte na **Přidat filtr** a přidejte filtr podle **typu prostředku** ,  =  `microsoft.azuredata/<data service type>` Pokud chcete filtrovat dolů pouze jeden typ datové služby s podporou ARC Azure.
+1. Klikněte na **Přidat filtr** a přidejte filtr podle **typu prostředku** ,  =  `Microsoft.AzureArcData/<data service type>` Pokud chcete filtrovat dolů pouze jeden typ datové služby s podporou ARC Azure.
 1. Teď se zobrazí seznam všech prostředků, které se vytvořily a nahrály do Azure. Vzhledem k tomu, že je měřič pro účtování $0, vidíte, že náklady budou vždy $0.
 
 ## <a name="download-billing-data"></a>Stažení fakturačních údajů
@@ -159,5 +159,5 @@ Můžete ověřit soubory s fakturačními daty v Azure Portal.
 7. Přejděte k podrobnostem o vygenerovaných složkách a souborech a klikněte na jeden ze vygenerovaných souborů. csv.
 8. Klikněte na tlačítko **Stáhnout** , které uloží soubor do místní složky Stažené soubory.
 9. Otevřete soubor pomocí prohlížeče souborů. csv, jako je Excel.
-10. Vyfiltruje výsledky tak, aby se zobrazily pouze řádky s **typem prostředku**  =  `Microsoft.AzureData/<data service resource type` .
+10. Vyfiltruje výsledky tak, aby se zobrazily pouze řádky s **typem prostředku**  =  `Microsoft.AzureArcData/<data service resource type` .
 11. Zobrazí se počet hodin, po které se instance použila v aktuální 24hodinové období ve sloupci UsageQuantity.

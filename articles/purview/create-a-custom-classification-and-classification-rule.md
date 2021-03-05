@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988374"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202753"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Vlastní klasifikace v Azure dosah 
 
@@ -91,24 +91,50 @@ Vytvoření vlastního pravidla klasifikace:
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Přidat nové pravidlo klasifikace" border="true":::
 
-5. Otevře se dialogové okno **nové pravidlo klasifikace** . Vyplňte informace o konfiguraci nového pravidla.
+5. Otevře se dialogové okno **nové pravidlo klasifikace** . Vyplňte pole a rozhodněte se, jestli chcete vytvořit **pravidlo regulárního výrazu** nebo **pravidlo slovníku**.
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="Vytvořit nové pravidlo klasifikace" border="true":::
+    |Pole     |Popis  |
+    |---------|---------|
+    |Název   |    Povinná hodnota. Maximální počet je 100 znaků.    |
+    |Popis      |Nepovinný parametr. Maximální počet je 256 znaků.    |
+    |Název klasifikace    | Povinná hodnota. V rozevíracím seznamu vyberte název klasifikace a sdělte tak, že se bude používat, pokud se najde shoda.        |
+    |State   |  Povinná hodnota. Možnosti jsou povoleny nebo zakázány. Výchozí hodnota je Enabled.    |
 
-|Pole     |Popis  |
-|---------|---------|
-|Název   |    Povinná hodnota. Maximální počet je 100 znaků.    |
-|Description      |Nepovinný parametr. Maximální počet je 256 znaků.    |
-|Název klasifikace    | Povinná hodnota. V rozevíracím seznamu vyberte název klasifikace a sdělte tak, že se bude používat, pokud se najde shoda.        |
-|State   |  Povinná hodnota. Možnosti jsou povoleny nebo zakázány. Výchozí hodnota je Enabled.    |
-|Datový vzor    |Nepovinný parametr. Regulární výraz, který představuje data uložená v datovém poli. Limit je velmi velký. V předchozím příkladu vzorce dat testují ID zaměstnance, který je doslova slovem `Employee{GUID}` .  |
-|Vzor sloupce    |Nepovinný parametr. Regulární výraz, který představuje názvy sloupců, které chcete vyhledat. Limit je velmi velký.          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Vytvořit nové pravidlo klasifikace" border="true":::
 
-V části **datový vzor** jsou k dispozici dvě možnosti:
+### <a name="creating-a-regular-expression-rule"></a>Vytvoření pravidla regulárního výrazu
 
-- **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Navrhovaná hodnota je 8. Tuto hodnotu lze ručně upravit v rozsahu od 2 do 32. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
+1. Při vytváření pravidla regulárního výrazu se zobrazí následující obrazovka. Volitelně můžete nahrát soubor, který se použije ke **generování navržených vzorů regulárního výrazu** pro pravidlo.
 
-- **Minimální prahová hodnota shody**: pomocí tohoto nastavení můžete nastavit minimální procento shody hodnot dat ve sloupci, který musí skener najít, aby se klasifikace použila. Navrhovaná hodnota je 60%. Musíte být opatrní s tímto nastavením. Pokud snížíte úroveň nižší než 60%, můžete do katalogu uvést falešně pozitivní klasifikace. Pokud zadáte více vzorů dat, je toto nastavení zakázáno a hodnota je opravena na 60%.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Vytvořit nové pravidlo regulárního výrazu" border="true":::
+
+1. Pokud se rozhodnete vygenerovat navrhovaný vzor regulárního výrazu, po nahrání souboru vyberte jeden z navrhovaných vzorů a kliknutím na tlačítko **Přidat ke vzorům** použijte navrhovaná data a vzorce sloupců. Navrhované vzory můžete upravit nebo můžete také zadat vlastní vzory bez odeslání souboru.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Generovat navrhovaný regulární výraz" border="true":::
+
+    |Pole     |Popis  |
+    |---------|---------|
+    |Datový vzor    |Nepovinný parametr. Regulární výraz, který představuje data uložená v datovém poli. Limit je velmi velký. V předchozím příkladu vzorce dat testují ID zaměstnance, který je doslova slovem `Employee{GUID}` .  |
+    |Vzor sloupce    |Nepovinný parametr. Regulární výraz, který představuje názvy sloupců, které chcete vyhledat. Limit je velmi velký.          |
+
+1. V části **datový vzor** existují dva prahové hodnoty, které můžete nastavit:
+
+    - **Rozdílová prahová hodnota shody**: celkový počet jedinečných datových hodnot, které musí být ve sloupci nalezeny předtím, než skener spustí datový vzor. Navrhovaná hodnota je 8. Tuto hodnotu lze ručně upravit v rozsahu od 2 do 32. Tato hodnota vyžaduje, aby tento sloupec obsahoval dostatek dat, aby ho mohl přesně klasifikovat skener. Například sloupec, který obsahuje více řádků, které obsahují hodnotu 1, nebude klasifikován. Sloupce, které obsahují jeden řádek s hodnotou a zbytek řádků, obsahují hodnoty null ani nebudou klasifikovány. Pokud zadáte více vzorů, bude tato hodnota platit pro každý z nich.
+
+    - **Minimální prahová hodnota shody**: pomocí tohoto nastavení můžete nastavit minimální procento rozdílných hodnot dat ve sloupci, který musí skener najít, aby se klasifikace použila. Navrhovaná hodnota je 60%. Musíte být opatrní s tímto nastavením. Pokud snížíte úroveň nižší než 60%, můžete do katalogu uvést falešně pozitivní klasifikace. Pokud zadáte více vzorů dat, je toto nastavení zakázáno a hodnota je opravena na 60%.
+
+1. Nyní můžete ověřit pravidlo a **vytvořit** ho.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Před vytvořením ověřit pravidlo" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>Vytvoření pravidla slovníku
+
+1.  Při vytváření pravidla slovníku se zobrazí následující obrazovka. Nahrajte soubor, který obsahuje všechny možné hodnoty pro klasifikaci, kterou vytváříte v jednom sloupci.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Vytvořit pravidlo slovníku" border="true":::
+
+1.  Po vygenerování slovníku můžete upravit jedinečnou shodu a prahovou hodnotu minimální shody a pravidlo odeslat.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Vytvořit pravidlo slovníku" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

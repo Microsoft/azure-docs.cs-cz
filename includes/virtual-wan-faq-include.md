@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624861"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102205982"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 
@@ -302,3 +302,8 @@ No. Virtuální síť WAN neukládá žádná zákaznická data.
 ### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Existují všichni poskytovatelé spravovaných služeb, kteří můžou spravovat virtuální síť WAN pro uživatele jako službu?
 
 Ano. Seznam řešení pro poskytovatele spravované služby (MSP) povolený prostřednictvím Azure Marketplace najdete v tématu [Azure Marketplace nabídky Azure Networking MSP partner](../articles/networking/networking-partners-msp.md#msp).
+
+### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Jak se liší směrování virtuálních sítí WAN z směrovacího serveru Azure ve virtuální síti?
+
+Azure Route Server poskytuje službu partnerského vztahu služby Border Gateway Protocol (BGP), kterou může síťové virtuální zařízení (síťové virtuální zařízení) využít k tomu, abyste se dozvěděli o trasách od serveru směrování ve virtuální síti centra SVÉPOMOCNÁ. Služba Virtual WAN nabízí více možností, včetně virtuální sítě pro směrování tranzitní sítě, vlastní směrování, přidružení vlastních tras a šíření a plně připojenou službu rozbočovače s možností připojení ExpressRoute, Site VPN, Remote User/large P2S VPN a zabezpečeného centra (Azure Firewall). Když vytváříte partnerský vztah Border Gateway Protocol (BGP) mezi serverem služby síťové virtuální zařízení a serverem Azure router, můžete inzerovat IP adresy z vaší síťové virtuální zařízení do vaší virtuální sítě. Pro všechny pokročilé možnosti směrování, jako je směrování přenosu, vlastní směrování atd., můžete použít směrování Virtual WAN.
+

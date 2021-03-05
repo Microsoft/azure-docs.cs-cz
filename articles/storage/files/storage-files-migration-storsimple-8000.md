@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366222"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202718"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Synchronizace souborů Azure
 
@@ -637,6 +637,6 @@ Migrace je hotová.
 ## <a name="next-steps"></a>Další kroky
 
 * Získejte více znalostí [synchronizace souborů Azure: aka.MS/AFS](./storage-sync-files-planning.md).
-* Seznamte se s flexibilitou zásad [cloudových vrstev](storage-sync-cloud-tiering.md) .
+* Seznamte se s flexibilitou zásad [cloudových vrstev](storage-sync-cloud-tiering-overview.md) .
 * [Povolením Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) ve sdílených složkách Azure naplánujete snímky a definujete plány uchovávání záloh.
 * Pokud se zobrazí v Azure Portal, že některé soubory se trvale nesynchronizují, přečtěte si [Průvodce řešením potíží](storage-sync-files-troubleshoot.md) , kde najdete postup řešení těchto problémů.

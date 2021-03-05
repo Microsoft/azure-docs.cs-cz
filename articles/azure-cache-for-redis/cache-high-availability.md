@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653843"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203296"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Vysoká dostupnost pro Azure cache pro Redis
 
@@ -23,7 +23,7 @@ Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuál
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standardní replikace](#standard-replication)| Konfigurace replikovaných dvou uzlů v jednom datovém centru s automatickým převzetím služeb při selhání | 99,9 % |✔|✔|-|
 | [Zónová redundance](#zone-redundancy) | Konfigurace replikovaného více uzlů v rámci AZs s automatickým převzetím služeb při selhání | 99,95% (úroveň Premium), 99,99% (úrovně Enterprise) |-|Preview|Preview|
-| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | 99,999% (úroveň Enterprise) |-|✔|-|
+| [Geografická replikace](#geo-replication) | Propojené instance mezipaměti ve dvou oblastech s převzetím služeb při selhání řízených uživatelem | 99,999% (úroveň Enterprise) |-|✔|Preview|
 
 ## <a name="standard-replication"></a>Standardní replikace
 

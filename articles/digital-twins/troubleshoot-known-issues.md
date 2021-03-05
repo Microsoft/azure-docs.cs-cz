@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545679"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203143"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -24,7 +24,7 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 | Týká se to mi? | Příčina | Řešení |
 | --- | --- | --- |
-| V &nbsp; &nbsp; rámci digitálních &nbsp; vláken Azure to ovlivní následující skupiny příkazů:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Toto je výsledek známého problému v Cloud Shell: [*získání tokenu z Cloud Shell přerušovaně se nezdařilo s 400 chybou klienta: Chybný požadavek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>To představuje problém s tokeny ověřování instance Azure Digital prokážed a výchozím spravovaným ověřováním založeným na [identitách](../active-directory/managed-identities-azure-resources/overview.md) Cloud Shell. <br><br>To nemá vliv na příkazy v digitálních událostech Azure `az dt` ze `az dt endpoint` skupin příkazů nebo, protože používají jiný typ ověřovacího tokenu (na základě Azure Resource Manager), který nemá problém s ověřováním spravované identity Cloud Shell. | Jedním ze způsobů, jak tento problém vyřešit, je spustit `az login` příkaz v Cloud Shell a dokončit následné přihlašovací kroky. Tím dojde k přepnutí vaší relace ze spravovaného ověřování identity. tím se vyhnete potížím s kořenovým adresářem. Za tímto účelem byste měli být schopni spustit příkaz znovu.<br><br>Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cloud Shell práci.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Obrázek ikony Cloud Shell na panelu ikon Azure Portal" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká. |
+| V &nbsp; &nbsp; rámci digitálních &nbsp; vláken Azure to ovlivní následující skupiny příkazů:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Toto je výsledek známého problému v Cloud Shell: [*získání tokenu z Cloud Shell přerušovaně se nezdařilo s 400 chybou klienta: Chybný požadavek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>To představuje problém s tokeny ověřování instance Azure Digital prokážed a výchozím spravovaným ověřováním založeným na [identitách](../active-directory/managed-identities-azure-resources/overview.md) Cloud Shell. <br><br>To nemá vliv na příkazy v digitálních událostech Azure `az dt` ze `az dt endpoint` skupin příkazů nebo, protože používají jiný typ ověřovacího tokenu (na základě Azure Resource Manager), který nemá problém s ověřováním spravované identity Cloud Shell. | Jedním ze způsobů, jak tento problém vyřešit, je spustit `az login` příkaz v Cloud Shell a dokončit následné přihlašovací kroky. Tím dojde k přepnutí vaší relace ze spravovaného ověřování identity. tím se vyhnete potížím s kořenovým adresářem. Za tímto účelem byste měli být schopni spustit příkaz znovu.<br><br>Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cloud Shell práci.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Obrázek ikony Cloud Shell na panelu ikon Azure Portal" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká. |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Chybějící přiřazení role po skriptovém nastavení

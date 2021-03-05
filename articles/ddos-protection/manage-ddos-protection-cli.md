@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814155"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203772"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 V Azure přidělíte související prostředky skupině prostředků. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou.
 
-Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
+Chcete-li vytvořit skupinu prostředků, použijte příkaz [AZ Group Create](/cli/azure/group#az-group-create). V tomto příkladu pojmenujte naši skupinu prostředků _MyResourceGroup_ a použijeme _východní USA_ umístění:
 
 ```azurecli-interactive
 az group create \
@@ -67,6 +67,7 @@ az network vnet create \
     --name MyVnet \
     --location eastus \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
@@ -83,7 +84,7 @@ az group create \
 az network ddos-protection create \
     --resource-group MyResourceGroup \
     --name MyDdosProtectionPlan
-    --vnet MyVnet
+    --vnets MyVnet
 ```
 
 Alternativně můžete povolit ochranu DDoS pro danou virtuální síť:
@@ -91,8 +92,9 @@ Alternativně můžete povolit ochranu DDoS pro danou virtuální síť:
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 ## <a name="validate-and-test"></a>Ověřit a otestovat
@@ -111,7 +113,7 @@ Ověřte, že příkaz vrací správné podrobnosti vašeho plánu DDoS Protecti
 
 Své prostředky můžete uchovávat pro další kurz. Pokud už je nepotřebujete, odstraňte skupinu prostředků _MyResourceGroup_ . Když odstraníte skupinu prostředků, odstraní se i plán DDoS Protection a všechny související prostředky. 
 
-Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete):
+Pokud chcete odstranit skupinu prostředků, použijte [AZ Group Delete](/cli/azure/group#az_group_delete):
 
 ```azurecli-interactive
 az group delete \
@@ -123,8 +125,9 @@ Aktualizace dané virtuální sítě, aby se zakázala ochrana DDoS:
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection false
+    --ddos-protection-plan ""
 ```
 
 Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit všechny virtuální sítě. 

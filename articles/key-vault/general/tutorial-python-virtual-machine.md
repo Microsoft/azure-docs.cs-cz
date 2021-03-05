@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203534"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v Pythonu
 
@@ -34,7 +34,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
@@ -66,7 +66,7 @@ Vytvořte virtuální počítač s názvem **myVM** pomocí jedné z následují
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Pokud chcete vytvořit virtuální počítač se systémem Linux pomocí Azure CLI, použijte příkaz [AZ VM Create](/cli/azure/vm) .  Následující příklad přidá uživatelský účet s názvem *azureuser*. `--generate-ssh-keys`Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh* ). 
+Pokud chcete vytvořit virtuální počítač se systémem Linux pomocí Azure CLI, použijte příkaz [AZ VM Create](/cli/azure/vm) .  Následující příklad přidá uživatelský účet s názvem *azureuser*. `--generate-ssh-keys`Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče (*~/.ssh*). 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ Všimněte si hodnoty `publicIpAddress` ve výstupu.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
-Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu Azure CLI [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

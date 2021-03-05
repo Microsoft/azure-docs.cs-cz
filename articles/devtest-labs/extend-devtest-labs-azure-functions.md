@@ -3,12 +3,12 @@ title: Rozšíří Azure DevTest Labs pomocí Azure Functions | Microsoft Docs
 description: Naučte se, jak můžete Azure DevTest Labs pomocí Azure Functions roztáhnout.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476304"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203670"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Rozšíření DevTest Labs s využitím služby Azure Functions
 Azure Functions můžete použít k podpoře dalších scénářů nad rámec těch, které už podporuje DevTest Labs. Azure Functions můžete použít k rozšiřování integrovaných funkcí služby, aby splňovaly potřeby vaší firmy. Následující seznam uvádí některé z možných scénářů. V tomto článku se dozvíte, jak implementovat jeden z těchto ukázkových scénářů.
@@ -44,9 +44,9 @@ K dispozici je další akce, kterou je možné provést pro všechny virtuální
 V této části najdete podrobné pokyny k nastavení prostředků Azure potřebných k aktualizaci stránky **interní podpory** . Tento návod poskytuje jeden příklad rozšíření DevTest Labs. Tento model můžete použít pro jiné scénáře.
 
 ### <a name="step-1-create-a-service-principal"></a>Krok 1: Vytvoření instančního objektu 
-Prvním krokem je získání instančního objektu s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování na základě hesla. Můžete to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)nebo [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již používáte instanční objekt, můžete tento krok přeskočit.
+Prvním krokem je získání instančního objektu s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování na základě hesla. Můžete to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)nebo [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již používáte instanční objekt, můžete tento krok přeskočit.
 
-Poznamenejte si **ID aplikace**, **klíč**a **ID tenanta** objektu služby. Budete je potřebovat později v tomto návodu. 
+Poznamenejte si **ID aplikace**, **klíč** a **ID tenanta** objektu služby. Budete je potřebovat později v tomto návodu. 
 
 ### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>Krok 2: Stáhněte si ukázku a otevřete ji v aplikaci Visual Studio 2019
 Stáhněte si kopii [ukázky Azure Functions v C#](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) místně (buď klonováním úložiště, nebo stažením úložiště z [tohoto místa](https://github.com/Azure/azure-devtestlab/archive/master.zip)).  
@@ -78,7 +78,7 @@ Také budete potřebovat další informace o instančním objektu, jako je ID ap
 
 
 ### <a name="step-5--update-application-settings"></a>Krok 5: aktualizace nastavení aplikace
-V aplikaci Visual Studio po publikování funkce Azure vyberte v části **Akce**možnost **Upravit Azure App Service nastavení** . Aktualizujte následující nastavení aplikace (vzdálené):
+V aplikaci Visual Studio po publikování funkce Azure vyberte v části **Akce** možnost **Upravit Azure App Service nastavení** . Aktualizujte následující nastavení aplikace (vzdálené):
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage

@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844331"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202990"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programové vytváření předplatných Azure pomocí rozhraní API ve verzi Preview
 
@@ -198,7 +198,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Nejdřív spuštěním příkazu `az extension add --name subscription` nainstalujte rozšíření ve verzi Preview.
 
-Spusťte následující příkaz [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create&preserve-view=true) a nahraďte přitom `<enrollmentAccountObjectId>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Pokud chcete zadat vlastníky, podívejte se, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
+Spusťte následující příkaz [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) a nahraďte přitom `<enrollmentAccountObjectId>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Pokud chcete zadat vlastníky, podívejte se, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `owner-object-id`.|
 | `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
 
-Úplný seznam všech parametrů najdete u příkazu [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create&preserve-view=true).
+Úplný seznam všech parametrů najdete u příkazu [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create).
 
 ---
 
