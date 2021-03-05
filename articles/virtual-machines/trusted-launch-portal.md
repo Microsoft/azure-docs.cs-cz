@@ -9,12 +9,12 @@ ms.subservice: security
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694117"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124648"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Nasazení virtuálního počítače s povoleným důvěryhodným spouštěním (Preview)
 
@@ -140,7 +140,7 @@ Pokud chcete získat doporučení pro vTPM a zabezpečené spouštění pro dův
 
 V některých případech může být nutné se přihlásit k zabezpečenému spouštění UEFI.  Například budete potřebovat [postup, jak se přihlašovat k zabezpečenému spouštění](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) pro Ubuntu. V těchto případech je potřeba zadat pro svůj virtuální počítač klíče pro zápis MOK Utility. K tomu je potřeba použít pro přístup k nástroji MOK službu sériového portu Azure.
 
-1. Povolte službu Azure Serial Console pro Linux. Další informace najdete v tématu [sériová Konzola pro Linux](serial-console-linux.md).
+1. Povolte službu Azure Serial Console pro Linux.
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **virtuální počítače** a ze seznamu vyberte svůj virtuální počítač.
 1. V nabídce vlevo v části **Podpora a řešení potíží** vyberte **sériová konzola**. Stránka se otevře napravo s použitím konzoly sériového portu.

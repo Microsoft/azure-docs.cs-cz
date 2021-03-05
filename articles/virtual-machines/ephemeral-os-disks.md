@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684555"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124682"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -40,7 +40,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | **Trvalost dat**            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |
 | **Stav zastavení a zrušení přidělení**      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
-| **Specializovaná podpora disků s operačním systémem** | Yes                                                                                          | No                                                                                 |
+| **Specializovaná podpora disků s operačním systémem** | Ano                                                                                          | Ne                                                                                 |
 | **Změna velikosti disku s operačním systémem**              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
 | **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.       
 | **Umístění stránkovacího souboru**   | Pro Windows je stránkovací soubor uložený na disku prostředků.                                              | Pro Windows je stránkovací soubor uložený na disku s operačním systémem.   |
@@ -244,6 +244,11 @@ Odpověď: dočasné disky nepodporují:
 - Azure Backup
 - Azure Site Recovery  
 - Prohození disku s operačním systémem 
+
+> [!NOTE]
+> 
+> Dočasný disk nebude přístupný prostřednictvím portálu. Při přístupu k dočasnému disku se může zobrazit chyba "prostředek nebyl nalezen" nebo "404".
+> 
  
 ## <a name="next-steps"></a>Další kroky
 Virtuální počítač s dočasným diskem s operačním systémem můžete vytvořit pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/vm#az-vm-create).
