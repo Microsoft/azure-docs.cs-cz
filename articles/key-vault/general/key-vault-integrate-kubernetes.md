@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: fd40ad41bda50d93943a514cd9cc3aeeab4ac948
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198876"
+ms.locfileid: "102216492"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -107,7 +107,7 @@ Pokud chcete vytvořit vlastní Trezor klíčů a nastavit tajné kódy, postupu
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Vytvoření vlastního objektu SecretProviderClass
 
-Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickými pro konkrétního zprostředkovatele pro ovladač pro úložiště tajných klíčů, [použijte tuto šablonu](https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/examples/pod-identity/v1alpha1_secretproviderclass_pod_identity.yaml). Tento objekt zajistí přístup k identitě vašeho trezoru klíčů.
+Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickými pro konkrétního zprostředkovatele pro ovladač pro úložiště tajných klíčů, [použijte tuto šablonu](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/service-principal/v1alpha1_secretproviderclass_service_principal.yaml). Tento objekt zajistí přístup k identitě vašeho trezoru klíčů.
 
 V ukázkovém souboru SecretProviderClass YAML vyplňte chybějící parametry. Jsou vyžadovány následující parametry:
 

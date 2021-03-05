@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 471ccd6176bd8821ce7e40fde6d961bd9bcf7f0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13cf315291cdf788951e352e430976851b30ce0c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702143"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216713"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Upgrade hlavní verze v Azure Database for MySQL jednom serveru
 
@@ -59,7 +59,7 @@ Postupujte podle těchto kroků, abyste provedli upgrade hlavní verze Azure Dat
  
    Tento upgrade vyžaduje verzi Azure CLI 2.16.0 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná. Spuštěním příkazu az version zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte az upgrade.
 
-2. Po přihlášení spusťte příkaz [AZ MySQL server upgrade](/cli/azure/mysql/server?preserve-view=true&view=azure-cli-latest#az_mysql_server_upgrade) :
+2. Po přihlášení spusťte příkaz [AZ MySQL server upgrade](/cli/azure/mysql/server#az_mysql_server_upgrade) :
 
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"

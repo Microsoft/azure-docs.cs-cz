@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762776"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215540"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
 
@@ -28,7 +28,7 @@ Služba [konverze modelu](model-conversion.md) vyžaduje přístup k Azure Blob 
 Vytváření účtů úložiště a kontejnerů objektů BLOB se dá udělat jedním z následujících nástrojů:
 
 - [Azure Portal](https://portal.azure.com)
-- [AZ Command line](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ Command line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Sady SDK (C#, Python...)
 
@@ -52,7 +52,7 @@ Identifikátor URI SAS může být vygenerován pomocí jednoho z těchto:
 
 - AZ PowerShell Module
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
-- [AZ Command line](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [AZ Command line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - Klikněte pravým tlačítkem na kontejner získat sdílený přístupový podpis (číst, vypsat přístup pro vstupní kontejner, oprávnění k zápisu pro kontejner výstupu).
 - Sady SDK (C#, Python...)

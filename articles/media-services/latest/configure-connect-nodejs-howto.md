@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724621"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216424"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k rozhraní Media Services V3 API – Node.js
 
@@ -224,13 +224,13 @@ V [úložišti](https://github.com/Azure-Samples/media-services-v3-node-tutorial
 
 ## <a name="see-also"></a>Viz také
 
-- [Referenční dokumentace k modulům Azure Media Services pro Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
-- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Referenční dokumentace k modulům Azure Media Services pro Node.js](/javascript/api/overview/azure/media-services)
+- [Azure pro JavaScript & Node.js vývojáři](/azure/developer/javascript/)
 - [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti centra Git](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Dokumentace k balíčku Azure pro vývojáře Node.js](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [Dokumentace k balíčku Azure pro vývojáře Node.js](/javascript/api/overview/azure/)
 - [Media Services koncepty](concepts-overview.md)
 - [instalace npm @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [Azure pro JavaScript & Node.js vývojáři](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure pro JavaScript & Node.js vývojáři](/azure/developer/javascript/)
 - [Media Services zdrojový kód v @azure/azure-sdk-for-js úložišti](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>Další kroky

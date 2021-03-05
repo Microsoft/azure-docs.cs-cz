@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fba7fd9faed9a587aebc198c7038b13e26d2ceac
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692449"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218260"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
 
 
-K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](/cli/azure/?preserve-view=true&view=azure-cli-latest)nebo [sadu Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
+K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](/cli/azure)nebo [sadu Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
 V tomto článku získáte informace o těchto tématech:
 

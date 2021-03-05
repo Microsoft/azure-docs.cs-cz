@@ -10,18 +10,20 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ebe0ac1151f3a1f43072f2832e2f433182ccc82d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633958"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215353"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Co je Azure IoT Edge pro Linux ve Windows (Preview)
 
 Azure IoT Edge pro Linux ve Windows umožňuje spouštět v nasazeních Windows IoT úlohy s kontejnery pro Linux spolu s aplikacemi pro Windows. Firmy, které využívají Windows IoT k napájení svých hraničních zařízení, teď můžou využívat výhod řešení pro nativní cloudové analýzy, která jsou sestavená v systému Linux.
 
 IoT Edge pro Linux ve Windows funguje spuštěním virtuálního počítače se systémem Linux na zařízení se systémem Windows. Virtuální počítač se systémem Linux je dodáván předem s modulem runtime IoT Edge. Všechny IoT Edge moduly nasazené do zařízení běží ve virtuálním počítači. Aplikace systému Windows, které běží na hostitelském zařízení s Windows, můžou komunikovat s moduly běžícími na virtuálním počítači se systémem Linux.
+
+[Začněte s Preview](how-to-install-iot-edge-on-windows.md) ještě dnes.
 
 >[!NOTE]
 >Vezměte prosím v úvahu náš [průzkum produktů](https://aka.ms/AzEFLOW-Registration) , abychom vám pomohli vylepšit Azure IoT Edge pro Linux ve Windows na základě vašich IoT Edge na pozadí a cílech. Tento průzkum můžete použít také k registraci do budoucích Azure IoT Edge pro Linux v oznámeních systému Windows.

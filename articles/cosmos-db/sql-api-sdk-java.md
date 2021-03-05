@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 96640e55d1ad71bc0e448976b2c9f1fa85b2ab62
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696283"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216594"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,7 +50,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](./create-sql-api-java.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
@@ -109,7 +109,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 * Opravená chyba v globálním správci koncových bodů pro vynucení aktualizace.
 * Opravená chyba pro upsertuje s předběžnými podmínkami v přímém režimu.
 
-### <a name="211"></a><a name="2.1.1"></a>bodů
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Opravená chyba v mezipaměti adres brány
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -294,7 +294,7 @@ Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 mě
 | [2.2.0](#2.2.0) |27. března 2019 |--- |
 | [2.1.3](#2.1.3) |13. března 2019 |--- |
 | [2.1.2](#2.1.2) |9. března 2019 |--- |
-| [bodů](#2.1.1) |DEC 13, 2018 |--- |
+| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |Září 21, 2018 |--- |
 | [1.16.4](#1.16.4) |Září 10, 2018 |30. května 2020 |

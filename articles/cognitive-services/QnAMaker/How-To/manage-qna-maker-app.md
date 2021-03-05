@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987936"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217325"
 ---
 # <a name="manage-qna-maker-app"></a>Správa aplikace QnA Maker
 
@@ -29,7 +29,7 @@ V QnA Maker službě nemůžete sdílet konkrétní znalostní bázi. Pokud chce
 
 ### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Přidat uživatelský účet do prostředku QnA Maker
 
-V následujících krocích se používá role spolupracovníka, ale kterákoli z [rolí](../reference-role-based-access-control.md) se dá přidat pomocí těchto kroků.
+V následujících krocích se používá role spolupracovníka, ale kterákoli z rolí se dá přidat pomocí těchto kroků.
 
 1. Přihlaste se k webu [Azure](https://portal.azure.com/) Portal a Projděte si prostředek QnA maker.
 

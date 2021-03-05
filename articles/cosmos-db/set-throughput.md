@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: 74addd691e3a6c42f48100292542cfd3563b5c3a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d39ade2536b96bf5e665ecfc01e81232f2fec075
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797577"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217937"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo 
 
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru" border="false":::
 
-## <a name="set-throughput-on-a-database"></a>Nastavení propustnosti pro databázi
+## <a name="set-throughput-on-a-database"></a>Nastavení propustnosti databáze
 
 Při zřizování propustnosti v databázi Azure Cosmos se propustnost sdílí ve všech kontejnerech (nazývaných sdílené databázové kontejnery) v databázi. Výjimkou je, pokud některým kontejnerům v databázi nastavíte zřízenou propustnost. Sdílení zřízené propustnosti databáze mezi kontejnery je podobné jako hostování databáze na clusteru počítačů. Vzhledem k tomu, že všechny kontejnery v rámci databáze sdílejí prostředky dostupné v počítači, přirozeně nedosáhnete předvídatelného výkonu u žádného konkrétního kontejneru. Informace o tom, jak nakonfigurovat zřízenou propustnost v databázi, najdete v tématu [Konfigurace zřízené propustnosti v databázi Azure Cosmos](how-to-provision-database-throughput.md). Informace o tom, jak nakonfigurovat propustnost automatického škálování v databázi, najdete v tématu [zřizování propustnosti automatického škálování](how-to-provision-autoscale-throughput.md).
 
@@ -69,7 +69,7 @@ Kontejnery v databázi se sdílenou propustností sdílí propustnost (RU/s) př
 
 > [!NOTE]
 > V únoru 2020 jsme představili změnu, která vám umožní mít ve sdílené databázi propustnosti maximálně 25 kontejnerů, což lépe umožňuje sdílení propustnosti v kontejnerech. Po prvních 25 kontejnerech můžete do databáze přidat další kontejnery pouze v případě, že jsou [zřízeny s vyhrazenou propustností](#set-throughput-on-a-database-and-a-container), která je oddělená od sdílené propustnosti databáze.<br>
-Pokud váš Azure Cosmos DB účet už obsahuje sdílenou databázi propustnosti s >= 25 kontejnerů, účet a všechny ostatní účty ve stejném předplatném Azure se z této změny nevztahují. Pokud máte svůj názor nebo dotazy, obraťte se prosím na [podporu produktu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . 
+Pokud váš účet služby Azure Cosmos DB již obsahuje databázi se sdílenou propustností a 25 nebo více kontejnery, tato změna na něj ani na jakékoli jiné účty ve stejném předplatném Azure nemá vliv. Pokud máte svůj názor nebo dotazy, obraťte se prosím na [podporu produktu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . 
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 
@@ -99,12 +99,12 @@ Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zř�
 Zřízenou propustnost kontejneru nebo databáze můžete načíst v Azure Portal nebo pomocí sad SDK:
 
 * [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
-* [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+* [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput) v sadě Java SDK.
 
 Reakce těchto metod také obsahuje [minimální zřízenou propustnost](concepts-limits.md#storage-and-database-operations) pro kontejner nebo databázi:
 
 * [ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
-* [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+* [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput) v sadě Java SDK.
 
 Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Obecně se ale jedná o maximum:
 
@@ -117,7 +117,7 @@ Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeh
 Zřízenou propustnost kontejneru nebo databáze můžete škálovat prostřednictvím Azure Portal nebo pomocí sad SDK:
 
 * [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
-* [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+* [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput) v sadě Java SDK.
 
 Pokud **snižujete zřízenou propustnost**, budete ji moci provést až na [minimum](#current-provisioned-throughput).
 
@@ -129,7 +129,7 @@ Pokud **zvýšíte zřízenou propustnost**, většinou je operace okamžitá. E
 Průběh škálování můžete programově ověřit načtením [aktuální zřízené propustnosti](#current-provisioned-throughput) a použitím:
 
 * [ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
-* [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+* [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending) v sadě Java SDK.
 
 Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.
 

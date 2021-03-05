@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 476a88e41382842d91859d319a571784bd6e9b49
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748090"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216526"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -27,6 +27,8 @@ V tomto kurzu se naučíte:
 > * Mapování domény se zástupnými znaky pomocí záznamu CNAME.
 > * Přesměrujte výchozí adresu URL na vlastní adresář.
 
+<hr/> 
+
 ## <a name="1-prepare-your-environment"></a>1. Příprava prostředí
 
 * [Vytvořit plán služby App Service](./index.yml) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
@@ -34,18 +36,20 @@ V tomto kurzu se naučíte:
 
     <details>
         <summary>Co potřebuji k úpravě záznamů DNS?</summary>
-        Vyžaduje přístup k registru DNS vašeho poskytovatele domény, například GoDaddy. Pokud například chcete přidat záznamy DNS pro contoso.com a www.contoso.com, musíte být schopni nakonfigurovat nastavení DNS pro kořenovou doménu contoso.com.
+        Vyžaduje přístup k registru DNS vašeho poskytovatele domény, například GoDaddy. Abyste například mohli přidat záznamy DNS pro <code>contoso.com</code> a <code>www.contoso.com</code>, musíte mít možnost konfigurovat nastavení DNS pro kořenovou doménu <code>contoso.com</code>.
     </details>
+
+<hr/> 
 
 ## <a name="2-prepare-the-app"></a>2. Příprava aplikace
 
 K namapování vlastního názvu DNS na aplikaci aplikace <abbr title="Určuje umístění, velikost a funkce webové serverové farmy, která je hostitelem vaší aplikace.">Plán služby App Service</abbr> musí se jednat o placenou úroveň (ne <abbr title="Azure App Service vrstva, ve které vaše aplikace běží na stejných virtuálních počítačích jako jiné aplikace, včetně aplikací jiných zákazníků. Tato úroveň je určená pro vývoj a testování.">**Zdarma (F1)**</abbr>). Další informace najdete v tématu [Přehled plánu Azure App Service](overview-hosting-plans.md).
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+#### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Otevřete [Azure Portal](https://portal.azure.com)a přihlaste se pomocí svého účtu Azure.
 
-### <a name="select-the-app-in-the-azure-portal"></a>Výběr aplikace v Azure Portal
+#### <a name="select-the-app-in-the-azure-portal"></a>Výběr aplikace v Azure Portal
 
 1. Vyhledejte a vyberte **App Services**.
 
@@ -59,7 +63,7 @@ Otevřete [Azure Portal](https://portal.azure.com)a přihlaste se pomocí svého
 
 <a name="checkpricing" aria-hidden="true"></a>
 
-### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
+#### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
 1. V levém podokně stránky aplikace přejděte do části **Nastavení** a vyberte **horizontální navýšení kapacity (App Service plán)**.
 
@@ -73,7 +77,7 @@ Otevřete [Azure Portal](https://portal.azure.com)a přihlaste se pomocí svého
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
+#### <a name="scale-up-the-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
 1. Vyberte některou z placených úrovní (**D1**, **B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti **zobrazíte výběrem možnosti Zobrazit další možnosti**.
 
@@ -84,6 +88,8 @@ Otevřete [Azure Portal](https://portal.azure.com)a přihlaste se pomocí svého
    Až se zobrazí následující oznámení, operace škálování je dokončená.
 
    ![Snímek obrazovky, který ukazuje potvrzení operace škálování.](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+
+<hr/> 
 
 <a name="cname" aria-hidden="true"></a>
 
@@ -98,14 +104,16 @@ Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví
 
     <details>
         <summary>Proč to potřebuji?</summary>
-        Přidání identifikátorů ověřování domény do vlastní domény může zabránit tomu, aby se dangling záznamy DNS a usnadnily převzetí subdomény. U vlastních domén, které jste dříve nakonfigurovali bez tohoto ID ověření, byste je měli chránit před stejným rizikem přidáním ID ověření do záznamu DNS. Další informace o této společné hrozbě s vysokou závažností najdete v tématu [převzetí subdomény](../security/fundamentals/subdomain-takeover.md).
+        Přidání identifikátorů ověřování domény do vlastní domény může zabránit tomu, aby se dangling záznamy DNS a usnadnily převzetí subdomény. U vlastních domén, které jste dříve nakonfigurovali bez tohoto ID ověření, byste je měli chránit před stejným rizikem přidáním ID ověření do záznamu DNS. Další informace o této společné hrozbě s vysokou závažností najdete v tématu <a href="/azure/security/fundamentals/subdomain-takeover">převzetí subdomény</a>.
     </details>
     
 <a name="info"></a>
 
-3. * * (Pouze záznam) * * pro mapování <abbr title="Záznam adresy ve službě DNS mapuje název hostitele na IP adresu.">Záznam A</abbr>potřebujete externí IP adresu aplikace. Na stránce **vlastní domény** Zkopírujte hodnotu **IP adresa**.
+3. **(Pouze záznam)** Mapování <abbr title="Záznam adresy ve službě DNS mapuje název hostitele na IP adresu.">Záznam A</abbr>potřebujete externí IP adresu aplikace. Na stránce **vlastní domény** Zkopírujte hodnotu **IP adresa**.
 
    ![Snímek obrazovky, který zobrazuje navigaci na portálu do aplikace Azure](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+<hr/> 
 
 ## <a name="4-create-the-dns-records"></a>4. vytvoření záznamů DNS
 
@@ -148,52 +156,71 @@ Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví
 
 V případě subdomény `www` , jako v `www.contoso.com` , vytvořte dva záznamy podle následující tabulky:
 
-    | Typ záznamu | Hostitel | Hodnota | Komentáře |
-    | - | - | - |
-    | CNAME | `<subdomain>` (například `www` ) | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
-    | TXT | `asuid.<subdomain>` (například `asuid.www` ) | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid.<subdomain>` záznamu TXT a ověří vlastnictví vlastní domény. |
-    
-    ![Screenshot that shows the portal navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
+| - | - | - |
+| CNAME | `<subdomain>` (například `www` ) | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
+| TXT | `asuid.<subdomain>` (například `asuid.www` ) | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid.<subdomain>` záznamu TXT a ověří vlastnictví vlastní domény. |
+
+![Snímek obrazovky zobrazující navigaci na portálu do aplikace Azure](./media/app-service-web-tutorial-custom-domain/cname-record.png)
     
 # <a name="a"></a>[A](#tab/a)
 
 Pro kořenovou doménu jako `contoso.com` Vytvořte dva záznamy podle následující tabulky:
 
-    | Typ záznamu | Hostitel | Hodnota | Komentáře |
-    | - | - | - |
-    | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#3-get-a-domain-verification-id) | Samotné mapování domény ( `@` obvykle představuje kořenovou doménu). |
-    | TXT | `asuid` | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid.<subdomain>` záznamu TXT a ověří vlastnictví vlastní domény. Pro kořenovou doménu použijte `asuid` . |
-    
-    ![Screenshot that shows a DNS records page.](./media/app-service-web-tutorial-custom-domain/a-record.png)
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
+| - | - | - |
+| A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#3-get-a-domain-verification-id) | Samotné mapování domény ( `@` obvykle představuje kořenovou doménu). |
+| TXT | `asuid` | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid.<subdomain>` záznamu TXT a ověří vlastnictví vlastní domény. Pro kořenovou doménu použijte `asuid` . |
 
-    <details>
-    <summary>What if I want to map a subdomain with an A record?</summary>
-    To map a subdomain like `www.contoso.com` with an A record instead of a recommended CNAME record, your A record and TXT record should look like the following table instead:
+![Snímek obrazovky zobrazující stránku záznamů DNS](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-    | Typ záznamu | Hostitel | Hodnota |
-    | - | - | - |
-    | A | `<subdomain>` (například `www` ) | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-    | TXT | `asuid.<subdomain>` (například `asuid.www` ) | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) |
-    </details>
-    
+<details>
+<summary>Co když chci namapovat subdoménu na záznam A?</summary>
+Chcete-li namapovat subdoménu podobný záznamu a `www.contoso.com` místo doporučeného záznamu CNAME, měl by váš záznam a záznam TXT vypadat jako v následující tabulce:
+
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Tabulka 3</caption>
+<thead>
+<tr>
+<th>Typ záznamu</th>
+<th>Hostitel</th>
+<th>Hodnota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>&lt;subdomain&gt;</code> (například <code>www</code> )</td>
+<td>IP adresa z části <a href="#info" data-linktype="self-bookmark">Zkopírování IP adresy aplikace</a></td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>asuid.&lt;subdomain&gt;</code> (například <code>asuid.www</code> )</td>
+<td><a href="#3-get-a-domain-verification-id" data-linktype="self-bookmark">ID ověření, které jste získali dříve</a></td>
+</tr>
+</tbody>
+</table></div>
+</details>
+
 # <a name="wildcard-cname"></a>[Zástupný znak (CNAME)](#tab/wildcard)
 
 Pro zástupný název, jako `*` v `*.contoso.com` , vytvořte dva záznamy podle následující tabulky:
 
-    | Typ záznamu | Hostitel | Hodnota | Komentáře |
-    | - | - | - |
-    | CNAME | `*` | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
-    | TXT | `asuid` | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid` záznamu TXT a ověří vlastnictví vlastní domény. |
-    
-    ![Screenshot that shows the navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
-    
----
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
+| TXT | `asuid` | [ID ověření, které jste získali dříve](#3-get-a-domain-verification-id) | App Service přistupuje k `asuid` záznamu TXT a ověří vlastnictví vlastní domény. |
 
-    <details>
-        <summary>My changes are erased after I leave the page.</summary>
-        For certain providers, such as GoDaddy, changes to DNS records don't become effective until you select a separate **Save Changes** link.
-    </details>
+![Snímek obrazovky, který zobrazuje navigaci na aplikaci Azure](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
     
+-----
+
+<details>
+<summary>Moje změny se po opuštění stránky vymažou.</summary>
+<p>U určitých poskytovatelů, jako je například GoDaddy, se změny záznamů DNS neprojeví, dokud nevyberete samostatný odkaz <strong>Save Changes</strong> (Uložit změny).</p>
+</details>
+
+<hr/>
+
 ## <a name="5-enable-the-mapping-in-your-app"></a>5. povolení mapování ve vaší aplikaci
 
 1. V levém podokně stránky aplikace v Azure Portal vyberte **vlastní domény**.
@@ -273,8 +300,10 @@ Pro zástupný název, jako `*` v `*.contoso.com` , vytvořte dva záznamy podle
         Označení upozornění pro vaši vlastní doménu znamená, že ještě není vázané na certifikát TLS/SSL. Jakýkoli požadavek HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Pokud chcete přidat vazbu TLS, přečtěte si téma <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service</a>.
     </details>
 
----
-    
+-----
+
+<hr/> 
+
 ## <a name="6-test-in-a-browser"></a>6. test v prohlížeči
 
 Přejděte na názvy DNS, které jste nakonfigurovali dříve.
@@ -290,9 +319,13 @@ Přejděte na názvy DNS, které jste nakonfigurovali dříve.
 </ul>
 </details>
 
+<hr/> 
+
 ## <a name="migrate-an-active-domain"></a>Migrace aktivní domény
 
 Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS bez výpadku, přečtěte si článek o [migraci aktivního názvu DNS do služby Azure App Service](manage-custom-dns-migrate-domain.md).
+
+<hr/> 
 
 <a name="virtualdir" aria-hidden="true"></a>
 
@@ -313,11 +346,13 @@ I když se jedná o běžný scénář, neznamená to, že nezahrnuje vlastní m
 
 1. Po dokončení operace ověřte, že v prohlížeči přejdete na kořenovou cestu vaší aplikace (například `http://contoso.com` nebo `http://<app-name>.azurewebsites.net` ).
 
+<hr/> 
+
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
 Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/)můžete automatizovat správu vlastních domén pomocí skriptů.
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastní název DNS.
 
@@ -330,7 +365,7 @@ az webapp config hostname add \
 
 Další informace najdete v tématu [Mapování vlastní domény na webovou aplikaci](scripts/cli-configure-custom-domain.md).
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -344,6 +379,8 @@ Set-AzWebApp `
 ```
 
 Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/powershell-configure-custom-domain.md).
+
+<hr/> 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5c85095e767c0e92c22410054ac4f8fc5267660
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1f78d7185415b66445c78f3b4cdb54ed0d63cb0a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097137"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216611"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v2 pro Core (SQL) API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,14 +55,14 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 > * [Jarní Gremliny dat pomocí Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Chcete se rychle dostat do budoucna?
-> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), abyste mohli použít sadu SDK.
+> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8](/java/azure/jdk/), abyste mohli použít sadu SDK.
 > 2. Pomocí [počátečního startu](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)Vytvořte Azure Cosmos DBovou datovou aplikaci. Je to snadné!
 > 3. Projděte si [příručku pro vývojáře Azure Cosmos DB na jaře](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), která vás provede základními požadavky Azure Cosmos DB.
 >
 > Pomocí [jarních Initializr](https://start.spring.io/)můžete rychle aktivovat aplikace na jaře Boot Starter.
 >
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 | Prostředek | Odkaz |
 |---|---|
@@ -201,7 +201,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
 * Oprava chyby a zmírnění závad.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

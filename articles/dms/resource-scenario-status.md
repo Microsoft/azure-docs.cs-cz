@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183977"
+ms.locfileid: "102215336"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
 
@@ -83,9 +83,12 @@ Následující tabulka uvádí Azure Database Migration Service podporu pro onli
 | **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | ✔ | GA |
 |   | Azure DB pro PostgreSQL – jeden server | ✔ | GA |
 |   | PostgreSQL RDS | ✔ | GA |
-|   | Oracle | ✔ | Verze Public Preview |
+|   | Oracle | ✔ | Verze Public Preview (aby byla zastaralá od 1. května 2021) |
 | **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | ✔ | GA |
 |   | PostgreSQL RDS | ✔ | GA |
+
+> [!IMPORTANT]
+> Scénář migrace "Oracle to Azure Database for PostgreSQL" (aktuálně ve verzi Preview) už nebude k dispozici po 1.2021. května. Budeme dál poskytovat podporu prostřednictvím alternativních nástrojů (například Ora2pg) a poskytněte nejlepší možnosti migrace pro Oracle pro PostgreSQL migrace. Osvědčené postupy pro migraci najdete v tématu Průvodce migrací pro Oracle do Azure Database for PostgreSQL] ( https://aka.ms/OracletoPGguide) .
 
 
 ## <a name="next-steps"></a>Další kroky

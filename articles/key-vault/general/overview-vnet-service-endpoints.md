@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f615ed44594379c79f179a467888652c597e286
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371018"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217172"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
@@ -43,7 +43,6 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 | --- | --- |
 |Služba pro nasazení služby Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|SKU Azure Application Gateway v2|[Ukončení šifrování TLS s využitím certifikátů služby Key Vault](../../application-gateway/key-vault-certs.md)|
 |Služba šifrování svazků Azure Disk Encryption|Povolte přístup k klíči nástroje BitLocker (Windows VM) nebo k přístupovému heslu DM (virtuální počítač Linux) a šifrovacímu klíči během nasazování virtuálního počítače. To umožňuje [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Povolí zálohování a obnovení důležitých klíčů a tajných kódů během zálohování Azure Virtual Machines pomocí [Azure Backup](../../backup/backup-overview.md).|
 |Exchange Online & SharePoint Online|Povolí přístup ke klíči zákazníka pro šifrování Azure Storage služby s [klíčem zákazníka](/microsoft-365/compliance/customer-key-overview).|

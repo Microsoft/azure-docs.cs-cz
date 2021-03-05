@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740719"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218039"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Ukázkový skript Azure CLI – vytvoření aplikace logiky
 
-Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic?view=azure-cli-latest)( `az logic` ). Podrobný průvodce vytvářením a správou Logic Apps prostřednictvím rozhraní příkazového řádku Azure najdete v tématu [rychlý start Logic Apps pro rozhraní](quickstart-logic-apps-azure-cli.md)příkazového řádku Azure CLI.
+Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic)( `az logic` ). Podrobný průvodce vytvářením a správou Logic Apps prostřednictvím rozhraní příkazového řádku Azure najdete v tématu [rychlý start Logic Apps pro rozhraní](quickstart-logic-apps-azure-cli.md)příkazového řádku Azure CLI.
 
 > [!WARNING]
-> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou* . Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
+> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované na místním počítači.
-* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz: `az extension add --name logic`
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nainstalované na místním počítači.
+* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz: `az extension add --name logic`
 * [Definice pracovního postupu](quickstart-logic-apps-azure-cli.md#workflow-definition) pro aplikaci logiky Tento soubor JSON musí splňovat [schéma jazyka definice pracovního postupu](logic-apps-workflow-definition-language.md).
 * Připojení rozhraní API k e-mailovému účtu prostřednictvím podporovaného [konektoru Logic Apps](../connectors/apis-list.md) ve stejné skupině prostředků jako vaše aplikace logiky. V tomto příkladu se používá konektor [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) , ale můžete použít i jiné konektory, jako je [Outlook.com](../connectors/connectors-create-api-outlook.md).
 
@@ -35,9 +35,9 @@ Než začnete, ověřte si prostředí:
 
 * Přihlaste se k Azure Portal a ověřte, že je vaše předplatné aktivní spuštěním `az login` .
 
-* Podívejte se na verzi rozhraní příkazového řádku Azure CLI v terminálu nebo příkazovém okně spuštěním příkazu `az --version` . Nejnovější verzi najdete v [poznámkách k nejnovější verzi](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest).
+* Podívejte se na verzi rozhraní příkazového řádku Azure CLI v terminálu nebo příkazovém okně spuštěním příkazu `az --version` . Nejnovější verzi najdete v [poznámkách k nejnovější verzi](/cli/azure/release-notes-azure-cli).
 
-  * Pokud nemáte nejnovější verzi, aktualizujte instalaci pomocí [instalační příručky pro váš operační systém nebo platformu](/cli/azure/install-azure-cli?view=azure-cli-latest).
+  * Pokud nemáte nejnovější verzi, aktualizujte instalaci pomocí [instalační příručky pro váš operační systém nebo platformu](/cli/azure/install-azure-cli).
 
 ### <a name="sample-workflow-explanation"></a>Vysvětlení ukázkového pracovního postupu
 
@@ -197,12 +197,12 @@ Tento ukázkový skript používá následující příkazy k vytvoření nové 
 
 | Příkaz | Poznámky |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které jsou uložené prostředky aplikace logiky. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Vytvoří aplikaci logiky na základě pracovního postupu definovaného v parametru `--definition` . |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Odstraní skupinu prostředků a všechny její vnořené prostředky. |
+| [`az group create`](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které jsou uložené prostředky aplikace logiky. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Vytvoří aplikaci logiky na základě pracovního postupu definovaného v parametru `--definition` . |
+| [`az group delete`](/cli/azure/vm/extension) | Odstraní skupinu prostředků a všechny její vnořené prostředky. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest).
+Další informace o Azure CLI najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/).
 
 Logic Apps Další ukázkové skripty rozhraní příkazového řádku najdete v [prohlížeči ukázek kódu Microsoftu](/samples/browse/?products=azure-logic-apps).

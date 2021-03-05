@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2396973170762bf98be63b998a87c8a47ce3226d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737490"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217648"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -248,7 +248,7 @@ Tady je postup, který se změnil v srpnu 2020:
 
 - Azure Advisor je teď součástí virtuálního klienta Windows. Při přístupu k virtuálnímu klientovi Windows prostřednictvím Azure Portal můžete zobrazit doporučení pro optimalizaci prostředí virtuálních počítačů s Windows. Další informace najdete na [Azure Advisor](azure-advisor.md).
 
-- Azure CLI teď podporuje virtuální počítače s Windows ( `az desktopvirtualization` ), které vám pomůžou automatizovat nasazení virtuálních počítačů s Windows. Seznam příkazů rozšíření najdete v [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) .
+- Azure CLI teď podporuje virtuální počítače s Windows ( `az desktopvirtualization` ), které vám pomůžou automatizovat nasazení virtuálních počítačů s Windows. Seznam příkazů rozšíření najdete v [desktopvirtualization](/cli/azure/ext/desktopvirtualization/) .
 
 - Aktualizovali jsme naše šablony nasazení tak, aby byly plně kompatibilní s rozhraními Azure Resource Manager virtuálních počítačů s Windows. Šablony můžete najít na [GitHubu](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 

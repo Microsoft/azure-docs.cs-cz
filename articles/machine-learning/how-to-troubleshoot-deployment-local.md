@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 225cb8d7bc35491ceefe444664afe175c7f7ea01
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954931"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215744"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Řešení potíží s nasazením místního modelu
 
@@ -29,7 +29,7 @@ Zkuste místní nasazení modelu jako první krok při řešení potíží s nas
    * Pracovní prostor Azure Machine Learning s [výpočetní instancí](how-to-deploy-local-container-notebook-vm.md) spuštěnou
 * Možnost B – ladění lokálně na výpočetní úrovni
    * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
-   * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+   * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
    * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
    * Mít v místním systému fungující instalaci Docker. 
    * K ověření instalace Docker použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Docker nebo odstraňování potíží s chybami Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).

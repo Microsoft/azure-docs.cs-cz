@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 42174ce094242a6e7412deea0bf1f0eed0f3b6ea
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5dac16e5cc1e88d833bf6d3c2660570fcf8b8e9e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013171"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216951"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>Použití dalšího směrování
 
-Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Pokud chcete testovat směrování z virtuálního počítače, použijte [příkaz AZ Network sledovacího procesu show-Next-Hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) a určete další směrování směrování, když je provoz určený pro konkrétní adresu.
+Azure automaticky vytváří trasy pro výchozí cíle. Můžete vytvořit vlastní trasy, které přepíšou ty výchozí. Někdy můžou vlastní trasy způsobit selhání komunikace. Pokud chcete testovat směrování z virtuálního počítače, použijte [příkaz AZ Network sledovacího procesu show-Next-Hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) a určete další směrování směrování, když je provoz určený pro konkrétní adresu.
 
 Otestujte odchozí komunikaci z virtuálního počítače na jednu z IP adres stránky www.bing.com:
 

@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 2a02dc94c0dc0939e6c1eef624fc6fe65fb98ac6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3529361cacf0890b7c4752bbd745a9240020b4f3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147019"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217818"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -41,7 +41,7 @@ Tyto soubory jsou obvykle dávkově zpracovávány v cloudu pomocí nástrojů, 
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
-* **simulovaná**verze aplikace vytvořená v kurzu [posílání zpráv z cloudu na zařízení pomocí IoT Hub]. Tato aplikace nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
+* **simulovaná** verze aplikace vytvořená v kurzu [posílání zpráv z cloudu na zařízení pomocí IoT Hub]. Tato aplikace nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
 
 * **čtení-soubor-nahrávání-oznámení**, které přijímá oznámení o nahrání souborů ze služby IoT Hub.
 
@@ -50,9 +50,9 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Java se Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

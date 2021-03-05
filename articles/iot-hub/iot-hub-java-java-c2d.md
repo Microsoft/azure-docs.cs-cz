@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 763b9e05adc07c02265dbb511c073b42df44ea95
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ae1850add94d83278b0fe1905dfa6e53c71fc8e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146868"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217886"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Java)
 
@@ -34,7 +34,7 @@ Tento kurz sestaví na [odeslání telemetrie ze zařízení do služby IoT Hub]
 
 * Příjem zpráv typu cloud-zařízení na zařízení.
 
-* Z back-endu vašeho řešení požadavek na doručení zpráv*feedback*odesílaných do zařízení z IoT Hub.
+* Z back-endu vašeho řešení požadavek na doručení zprávodesílaných do zařízení z IoT Hub.
 
 Další informace o [zprávách z cloudu na zařízení najdete v příručce pro vývojáře IoT Hub](iot-hub-devguide-messaging.md).
 
@@ -42,16 +42,16 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 
 * **simulované zařízení –** upravená verze aplikace vytvořená v [rámci odesílání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-java.md), která se připojuje ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
 
-* **Send-C2D-Messages**odesílá zprávu typu cloud-zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
+* **Send-C2D-Messages** odesílá zprávu typu cloud-zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
 
 > [!NOTE]
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní pracovní verze z zařízení k rychlému zprovoznění služby [IoT Hub](quickstart-send-telemetry-java.md) nebo ke [konfiguraci směrování zpráv pomocí IoT Hub](tutorial-routing.md) kurzu.
 
-* [Java se Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+* [Java se Development Kit 8](/java/azure/jdk/). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 

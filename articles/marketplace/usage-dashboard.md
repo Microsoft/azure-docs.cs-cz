@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934401"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215727"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
@@ -154,9 +154,9 @@ _**Tabulka 1: slovník datových podmínek**_
 | NormalizedUsage | Normalizované využití | Celkový počet normalizovaných jednotek využití spotřebovaných Assetem, který je nasazen zákazníkem.<br>Normalizované hodiny používání jsou definovány jako hodiny využití normalizované na účet pro počet jader virtuálních počítačů ([počet jader virtuálních počítačů] × [hodiny nezpracovaného využití]). Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů]. |
 | MeteredUsage | Měření využití | Celkové jednotky využití spotřebované měřiči, které jsou nakonfigurovány s nabídkou, která je nasazena zákazníkem. |
 | RawUsage | Nezpracované využití | Celkový počet nezpracovaných jednotek využití spotřebovaných Assetem, který je nasazený zákazníkem.<br>Nezpracované hodiny využití se definují jako doba, po kterou jsou virtuální počítače spuštěné z hlediska jednotek využití. |
-| Odhadované rozšířené poplatky (CC) | Odhadované rozšířené náklady v měně zákazníka | Označuje poplatky spojené s využitím. Sloupec je produktem ceny (CC) a množství využití. |
-| Odhadované rozšířené poplatky (PC) | Odhadované rozšířené poplatky v měně pro výběr | Označuje poplatky spojené s využitím. Sloupec je součinem odhadovaného cenového (POČÍTAČového) a množství využití. |
-||||
+| Odhadované rozšířené poplatky (CC) | Odhadované rozšířené náklady v měně zákazníka | Označuje poplatky spojené s využitím. Sloupec je produktem ceny (CC) a nezpracované využití. |
+| Odhadované rozšířené poplatky (PC) | Odhadované rozšířené poplatky v měně pro výběr | Označuje poplatky spojené s využitím. Sloupec je součinem odhadovaného cenového (POČÍTAČového) a nezpracovaného využití. |
+|
 
 ### <a name="usage-page-filters"></a>Filtry stránek využití
 

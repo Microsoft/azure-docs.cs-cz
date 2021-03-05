@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591534"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215574"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -22,12 +22,8 @@ Každý zabezpečený požadavek na účet Azure Storage musí být autorizovan�
 
 Pokud zakážete autorizaci sdíleného klíče pro účet úložiště, Azure Storage zamítne všechny následné požadavky na tento účet, které jsou autorizované pomocí přístupových klíčů účtu. Úspěšné budou jenom zabezpečené žádosti, které jsou autorizované se službou Azure AD. Další informace o používání služby Azure AD najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](storage-auth-aad.md).
 
-> [!WARNING]
-> Azure Storage podporuje autorizaci Azure AD jenom pro požadavky na úložiště objektů BLOB a front. Pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, požadavky na soubory Azure nebo úložiště tabulek, které používají autorizaci pomocí sdíleného klíče, se nezdaří. Vzhledem k tomu, že Azure Portal vždy používá autorizaci pomocí sdíleného klíče pro přístup k datům souborů a tabulek, pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, nebudete mít přístup k datům souborů nebo tabulek v Azure Portal.
->
-> Společnost Microsoft doporučuje, abyste buď migrujete jakákoli data služby soubory Azure nebo úložiště tabulek do samostatného účtu úložiště, předtím, než zakážete přístup k účtu přes sdílený klíč, nebo že toto nastavení nepoužijete pro účty úložiště, které podporují úlohy Azure Files nebo Table Storage.
->
-> Nepovolený přístup ke sdíleným klíčům pro účet úložiště nemá vliv na připojení SMB ke službě soubory Azure.
+> [!IMPORTANT]
+> Zakázaná autorizace sdíleného klíče je momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
 Tento článek popisuje, jak zjišťovat požadavky odeslané pomocí autorizace pomocí sdíleného klíče a jak napravit autorizaci sdíleného klíče pro váš účet úložiště. Informace o tom, jak se zaregistrovat ve verzi Preview, najdete v tématu [o verzi Preview](#about-the-preview).
 
@@ -133,11 +129,23 @@ Pokud chcete zakázat autorizaci sdíleného klíče pro účet úložiště v A
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Snímek obrazovky ukazující, jak zakázat přístup ke sdíleným klíčům pro účet":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Pokud chcete zakázat autorizaci sdíleného klíče pro účet úložiště pomocí PowerShellu, nainstalujte [modul PowerShellu AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage)verze 3.4.0 nebo novější. Dále nakonfigurujte vlastnost **AllowSharedKeyAccess** pro nový nebo existující účet úložiště.
+
+Následující příklad ukazuje, jak zakázat přístup se sdíleným klíčem pro existující účet úložiště pomocí PowerShellu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete zakázat autorizaci sdíleného klíče pro účet úložiště pomocí Azure CLI, nainstalujte Azure CLI verze 2.9.1 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Dále nakonfigurujte vlastnost **allowSharedKeyAccess** pro nový nebo existující účet úložiště.
 
-Následující příklad ukazuje, jak nastavit vlastnost **allowSharedKeyAccess** pomocí Azure CLI. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující příklad ukazuje, jak zakázat přístup se sdíleným klíčem pro existující účet úložiště pomocí Azure CLI. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -236,12 +244,17 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 | Azure IoT Hub | Podporuje se. Další informace najdete v tématu [podpora IoT Hub pro virtuální sítě](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste jim pro tyto účty udělili potřebná oprávnění prostřednictvím Azure RBAC. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Přechod úloh služby Azure Files a Table Storage
+
+Azure Storage podporuje autorizaci Azure AD jenom pro požadavky na úložiště objektů BLOB a front. Pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, požadavky na soubory Azure nebo úložiště tabulek, které používají autorizaci pomocí sdíleného klíče, se nezdaří. Vzhledem k tomu, že Azure Portal vždy používá autorizaci pomocí sdíleného klíče pro přístup k datům souborů a tabulek, pokud zakážete autorizaci se sdíleným klíčem pro účet úložiště, nebudete mít přístup k datům souborů nebo tabulek v Azure Portal.
+
+Společnost Microsoft doporučuje, abyste buď migrujete jakákoli data služby soubory Azure nebo úložiště tabulek do samostatného účtu úložiště, předtím, než zakážete přístup k účtu přes sdílený klíč, nebo že toto nastavení nepoužijete pro účty úložiště, které podporují úlohy Azure Files nebo Table Storage.
+
+Nepovolený přístup ke sdíleným klíčům pro účet úložiště nemá vliv na připojení SMB ke službě soubory Azure.
+
 ## <a name="about-the-preview"></a>O verzi Preview
 
 Verze Preview pro povolení autorizace sdíleného klíče je dostupná ve veřejném cloudu Azure. Podporuje se jenom pro účty úložiště, které používají model nasazení Azure Resource Manager. Informace o tom, které účty úložiště používají model nasazení Azure Resource Manager, najdete v tématu [typy účtů úložiště](storage-account-overview.md#types-of-storage-accounts).
-
-> [!IMPORTANT]
-> Tato verze Preview je určená jenom pro neprodukční použití.
 
 Verze Preview obsahuje omezení popsaná v následujících částech.
 

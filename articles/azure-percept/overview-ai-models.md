@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098362"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218158"
 ---
 # <a name="azure-percept-ai-models"></a>Modely AI pro Azure Percept
 
@@ -29,9 +29,9 @@ Azure Percept Studio obsahuje ukázkové modely pro následující aplikace:
 
 S předem vyškolenými modely není nutné vytvářet žádné kódování ani školicí shromažďování dat. Jednoduše nasaďte požadovaný model do Azure Percept DK z portálu a otevřete Stream videa DevKit, abyste viděli model Inferencing v akci. K Inferencing telemetrie se dá dostat taky prostřednictvím nástroje [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) .
 
-## <a name="pre-built-solutions"></a>Předem připravená řešení
+## <a name="reference-solutions"></a>Referenční řešení
 
-K dispozici je také [předem připravené řešení pro zjišťování prostorových analýz pro lidi](https://github.com/george-moore/Santa-Cruz-AI-App) . Předem připravené řešení je open source aplikace AI, která poskytuje hraniční uživatele s událostmi vstupu a výstupu zóny definované uživatelem. Výstup videa a AI z místního hraničního zařízení je z provozu [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/)s uživatelským rozhraním, které běží jako web Azure. Inferencing AI poskytuje Open Source model AI pro detekci osob.
+K dispozici je také [řešení pro počítání odkazů lidí](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) . Toto referenční řešení je open source aplikace AI, která poskytuje hraniční uživatele s událostmi vstupu a výstupu zóny definované uživatelem. Výstup videa a AI z místního hraničního zařízení je z provozu [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/)s uživatelským rozhraním, které běží jako web Azure. Inferencing AI poskytuje Open Source model AI pro detekci osob.
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="Předem připravené soubory GIF řešení prostorových analýz":::
 

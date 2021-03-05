@@ -6,17 +6,54 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731948"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217410"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
 Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží.
 
 Může existovat mnoho různých důvodů, proč se snímky negenerují. Můžete začít spuštěním kontroly stavu snímku a identifikovat některé z možných běžných příčin.
+
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Ujistěte se, že používáte příslušný koncový bod Snapshot Debugger
+
+V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
+
+Pro App Service a aplikace pomocí sady Application Insights SDK musíte aktualizovat připojovací řetězec pomocí podporovaných přepsání pro Snapshot Debugger, jak je definováno níže:
+
+|Vlastnost připojovacího řetězce    | Cloud pro státní správu USA | Čína – Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Další informace o dalších přepsáních připojení najdete v tématu [Application Insights dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+
+V případě Function App je třeba aktualizovat `host.json` pomocí podporovaných přepsání níže:
+
+|Vlastnost    | Cloud pro státní správu USA | Čína – Cloud |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Níže je uveden příklad `host.json` aktualizace s koncovým bodem cloudového agenta státní správy USA:
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
 
 ## <a name="use-the-snapshot-health-check"></a>Použít kontrolu stavu snímku
 Výsledkem některých běžných problémů je, že se nezobrazují snímky otevření ladicího programu. Použití zastaralých Snapshot Collector například; dosáhnete denního limitu nahrávání; nebo možná budete muset snímek jenom prodloužit. K odstraňování běžných problémů použijte kontrolu stavu snímku.

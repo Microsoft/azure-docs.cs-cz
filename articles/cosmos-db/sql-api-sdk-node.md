@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 7f101097945e5f345bae351ef5ca2a23a3e14be6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8408cdada40bd3595f9bf7cf2c6a2de90040ec0b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217257"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "93091153"
 |Prostředek  |Odkaz  |
 |---------|---------|
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
+|Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](/javascript/api/%40azure/cosmos/)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-sdk-for-js)
 |Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [ Ukázky kóduNode.js](sql-api-nodejs-samples.md)
@@ -237,7 +237,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Oprava chyby v signatuře typu executeNext ()
 * Opravy překlepu
 
-### <a name="211"></a><a name="2.1.1"></a>bodů
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Restrukturalizace sestavení Umožňuje vystavení verze sady SDK v době sestavení.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -428,7 +428,7 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | [2.1.4](#2.1.4) |15. března 2019 |--- |
 | [2.1.3](#2.1.3) |8. března 2019 |--- |
 | [2.1.2](#2.1.2) |28. ledna 2019 |--- |
-| [bodů](#2.1.1) |5. prosince 2018 |--- |
+| [2.1.1](#2.1.1) |5. prosince 2018 |--- |
 | [2.1.0](#2.1.0) |4. prosince 2018 |--- |
 | [2.0.5](#2.0.5) |7. listopadu 2018 |--- |
 | [2.0.4](#2.0.4) |30. října 2018 |--- |

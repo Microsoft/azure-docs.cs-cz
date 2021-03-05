@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095013"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215455"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -306,7 +306,7 @@ Ceny Zobrazení přenosů jsou založené na počtu datových bodů použitých 
 
 Použití koncových bodů z více předplatných není možné u Azure Web Apps. Azure Web Apps vyžaduje, aby se vlastní název domény používaný pro Web Apps používal jenom v rámci jednoho předplatného. Není možné použít Web Apps z více předplatných se stejným názvem domény.
 
-U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Koncové body z jiných předplatných je možné přidat pomocí [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
+U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Koncové body z jiných předplatných je možné přidat pomocí [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžu použít Traffic Manager s testovacími sloty cloudové služby?
 

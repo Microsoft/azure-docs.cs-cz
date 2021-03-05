@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515740"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215948"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí pří
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa* , pokud ještě neexistují. K jednotlivým instancím virtuálních počítačů je připojen datový disk 32 GB a [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-linux.md) Azure slouží k přípravě datových disků pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension):
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa*, pokud ještě neexistují. K jednotlivým instancím virtuálních počítačů je připojen datový disk 32 GB a [rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-linux.md) Azure slouží k přípravě datových disků pomocí [AZ VMSS Extension set](/cli/azure/vmss/extension):
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Spuštění procesu šifrování může trvat minutu nebo dvě.
 
-V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky* , instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances).
+V případě, že je nastavena zásada upgradu v sadě škálování vytvořené v předchozím kroku na hodnotu *automaticky*, instance virtuálních počítačů spustí proces šifrování automaticky. V části sady škálování, na kterých je zásada upgradu nastavena na ruční, spusťte zásadu šifrování na instancích virtuálních počítačů pomocí [AZ VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances).
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolení šifrování pomocí KEK k zabalení klíče
 
@@ -137,7 +137,7 @@ Pokud chcete zjistit stav šifrování disku, použijte příkaz [AZ VMSS Encryp
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-Když jsou instance virtuálních počítačů šifrované, stavový kód hlásí *EncryptionState/Encrypted* , jak je znázorněno v následujícím příkladu výstupu:
+Když jsou instance virtuálních počítačů šifrované, stavový kód hlásí *EncryptionState/Encrypted*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 [
@@ -166,7 +166,7 @@ Když jsou instance virtuálních počítačů šifrované, stavový kód hlás�
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) následujícím způsobem:
+Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete šifrování zakázat pomocí příkazu [AZ VMSS Encryption Disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) následujícím způsobem:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
