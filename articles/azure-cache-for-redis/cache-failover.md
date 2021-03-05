@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093081"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210729"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Převzetí služeb při selhání a opravy pro Azure cache pro Redis
 
@@ -72,6 +72,10 @@ Většina klientských knihoven se pokusí o opětovné připojení k mezipamět
 Vzhledem k tomu, že se nedaří převzetí služeb při selhání úplně zabránit, napište klientské aplikace tak, aby odolné proti chybám připojení a neúspěšné I když se většina klientských knihoven automaticky znovu připojí ke koncovému bodu mezipaměti, několik z nich se pokusí opakovat neúspěšné požadavky. V závislosti na scénáři aplikace může být vhodné použít logiku opakování v omezení rychlosti.
 
 Chcete-li otestovat odolnost klientské aplikace, použijte [restart](cache-administration.md#reboot) jako ruční Trigger pro přerušení připojení. Kromě toho doporučujeme [naplánovat aktualizace](cache-administration.md#schedule-updates) v mezipaměti. Sdělte službě správy pokyn, aby během určených týdenních oken použili opravy modulu runtime Redis. Tato okna jsou obvykle období, kdy jsou přenosy klientských aplikací nízké, aby nedocházelo k potenciálním incidentům.
+
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Můžu se mi předem informovat o plánované údržbě?
+
+Azure cache for Redis nyní publikuje oznámení na kanálu pro publikování a odběr s názvem [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) přibližně 30 sekund před plánovanými aktualizacemi. Jedná se o běhová oznámení, která jsou vytvořená hlavně pro aplikace, které mohou používat nárazníky okruhů k obcházení příkazů mezipaměti nebo vyrovnávací paměti, například během plánovaných aktualizací. Nejedná se o mechanismus, který vám může předem sdělit dny nebo hodiny.
 
 ### <a name="client-network-configuration-changes"></a>Klientská síť – změny konfigurace
 

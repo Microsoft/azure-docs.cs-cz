@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521029"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212038"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Správa spravovaného modulu HSM pomocí Azure CLI
 
@@ -24,7 +24,7 @@ Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 
@@ -42,7 +42,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, m�
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 > [!NOTE]
 > Všechny níže uvedené příkazy zobrazují dvě metody použití. Jeden s parametrem **--HSM-Name** a **--Name** (pro název klíče) a další parametr **--ID** , kde můžete zadat celou adresu URL včetně názvu klíče, kde je to vhodné. Druhá metoda je užitečná v případě, že volající (uživatel nebo aplikace) nemá přístup pro čtení na rovině ovládacího prvku a pouze omezený přístup k rovině dat.

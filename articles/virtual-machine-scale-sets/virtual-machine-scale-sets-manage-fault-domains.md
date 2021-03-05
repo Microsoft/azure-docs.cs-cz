@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4df340fa80ac4b9c4ff2a5e560580e09e01237e1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5a71a6bce6d0e1a41201e0d7395110a6ac64db8c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745934"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209743"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Výběr správného počtu domén selhání pro škálovací sadu virtuálních počítačů
 Služba Virtual Machine Scale Sets se ve výchozím nastavení vytváří s pěti doménami selhání v oblastech Azure bez zón. Pro oblasti, které podporují nasazení geografických sad virtuálních počítačů a tuto možnost, je výchozí hodnota počtu domén selhání 1 pro každou z těchto zón. FD = 1 v tomto případě předpokládá, že instance virtuálních počítačů patřící do sady škálování budou rozloženy mezi mnoho skříní na nejvyšší úrovni.
@@ -25,7 +25,7 @@ Můžete také zvážit zarovnání domén selhání sady škálování s počte
 Vlastnost lze nastavit na hodnotu `properties.platformFaultDomainCount` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Další [informace najdete v dokumentaci k REST API.](/rest/api/compute/virtualmachinescalesets/createorupdate)
 
 ## <a name="azure-cli"></a>Azure CLI
-Parametr lze nastavit na hodnotu `--platform-fault-domain-count` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Informace najdete [tady](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)v dokumentaci k Azure CLI.
+Parametr lze nastavit na hodnotu `--platform-fault-domain-count` 1, 2 nebo 3 (výchozí hodnota je 3, pokud není zadána). Informace najdete [tady](/cli/azure/vmss#az-vmss-create)v dokumentaci k Azure CLI.
 
 ```azurecli-interactive
 az vmss create \

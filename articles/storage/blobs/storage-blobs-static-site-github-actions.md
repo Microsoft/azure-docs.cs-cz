@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 8e5bb7bffddaedbf6349611c17e8d9cbec3c4139
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2192cdb3072edba2e5597a697feef99ba4d2070d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172676"
+ms.locfileid: "102210253"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
 
@@ -37,7 +37,7 @@ Předplatné Azure a účet GitHubu.
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
-[Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
+[Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
 Zástupný symbol nahraďte `myStaticSite` názvem vaší lokality hostované v Azure Storage. 
 

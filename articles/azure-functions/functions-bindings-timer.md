@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210702"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions
 
@@ -342,7 +342,7 @@ Vyjádřeno jako řetězec, `TimeSpan` formát je, `hh:mm:ss` Pokud `hh` je men�
 |--------------|----------------|
 | "01:00:00"   | každou hodinu     |
 | "00:01:00"   | každou minutu   |
-| "24:00:00"   | každých 24 dní  |
+| "25:00:00"   | každých 25 dní  |
 | "1,00:00:00" | Každý den      |
 
 ## <a name="scale-out"></a>Škálování na více instancí

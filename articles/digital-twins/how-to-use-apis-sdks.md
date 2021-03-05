@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4a2667e4876682a6b0aa6d6b7a8cf67eaee376cc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3724586ae9773e135905cddd2a9a33a3a6803ce5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683663"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211775"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -32,7 +32,7 @@ Chcete-li použít rozhraní API plochy ovládacího prvku:
 * Rozhraní API můžete volat přímo odkazem na nejnovější složku Swagger v [úložišti Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable). Tato složka obsahuje také složku příkladů, které ukazují použití.
 * V tuto chvíli můžete přistupovat k sadám SDK pro řídicí rozhraní API v...
   - [**.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([odkaz [automaticky generované]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))
+  - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([odkaz [automaticky generovaný]](/java/api/overview/azure/digitaltwins)) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [**Přejít**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -60,11 +60,11 @@ Použití rozhraní API roviny dat:
    - Podrobné informace a příklady použití můžete zobrazit tak, že v tomto článku budete pokračovat v části [*.NET (C#) SDK (rovina dat)*](#net-c-sdk-data-plane) .
 * Můžete použít **sadu Java SDK**. Použití sady Java SDK...
    - Balíček můžete zobrazit a nainstalovat z Maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - můžete zobrazit [referenční dokumentaci k sadě SDK](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable) .
+   - můžete zobrazit [referenční dokumentaci k sadě SDK](/java/api/overview/azure/digitaltwins/client) .
    - zdroj sady SDK najdete na webu GitHub: [Klientská knihovna Azure IoT je nevlákenná pro jazyk Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Můžete použít **sadu JavaScript SDK**. Použití sady JavaScript SDK...
    - balíček si můžete zobrazit a nainstalovat z npm: [Azure Azure Digital nezákladní Klientská knihovna pro JavaScript](https://www.npmjs.com/package/@azure/digital-twins-core).
-   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true).
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/javascript/api/@azure/digital-twins-core/).
    - zdroj sady SDK můžete najít na webu GitHub: [Azure Azure Digital nezákladní Klientská knihovna pro JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Můžete použít **sadu Python SDK**. Chcete-li použít sadu Python SDK...
    - Balíček můžete zobrazit a nainstalovat z PyPi: [Azure Azure Digital Core Client Library for Python](https://pypi.org/project/azure-digitaltwins-core/).

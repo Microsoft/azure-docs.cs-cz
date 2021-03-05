@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201412"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211324"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Přepsání podsítě Traffic Manager pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Pokud chcete vytvořit přepsání podsítě Traffic Manager, můžete pomocí A
 - Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Aktualizujte Traffic Manager koncový bod pomocí přepsání podsítě.
-Pomocí Azure CLI aktualizujte koncový bod pomocí [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
+Pomocí Azure CLI aktualizujte koncový bod pomocí [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update).
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Rozsahy IP adres můžete odebrat spuštěním příkazu [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) s možností **--Remove** .
+Rozsahy IP adres můžete odebrat spuštěním příkazu [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) s možností **--Remove** .
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027250"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210814"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
 
@@ -54,7 +54,7 @@ Pokud chcete použít instanční objekt (SP), musíte nejdřív vytvořit SP a 
 >
 > Důvodem pro udělení minimálního přístupu je, že instanční objekt používá k ověření heslo a heslo může být uloženo jako součást skriptu automatizace. Pokud je heslo nedostupné, má minimální přístup vyžadovaný pro konkrétní úkoly minimalizovat škodlivé použití SP.
 
-Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovnímu prostoru, je použití [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). K vytvoření instančního objektu a udělení přístupu k vašemu pracovnímu prostoru použijte následující postup:
+Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovnímu prostoru, je použití [Azure CLI](/cli/azure/install-azure-cli). K vytvoření instančního objektu a udělení přístupu k vašemu pracovnímu prostoru použijte následující postup:
 
 > [!NOTE]
 > K provedení všech těchto kroků musíte být správcem předplatného.
@@ -67,9 +67,9 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
     Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
 
-    Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+    Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Nainstalujte Azure Machine Learning rozšíření:
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Použití instančního objektu ze služby Azure CLI
 
-Pro příkazy rozhraní příkazového řádku Azure můžete použít instanční objekt. Další informace najdete v tématu [přihlášení pomocí instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
+Pro příkazy rozhraní příkazového řádku Azure můžete použít instanční objekt. Další informace najdete v tématu [přihlášení pomocí instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Použití instančního objektu s REST API (Preview)
 

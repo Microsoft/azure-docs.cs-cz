@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 1c1d438f0322942a1e68c0af74de8d5e2d77c77a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: be6de283ed230a6e6a6b4986abb0a36386e36925
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555072"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211987"
 ---
 Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní příkazového [řádku Azure](/cli/azure) a [Azure PowerShell](/powershell/azure/new-azureps-module-az). K tomu je potřeba nainstalovat nástroje místně a připojit se k předplatnému Azure.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2,0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je navržené k flexibilnímu dotazování dat, podpoře dlouhotrvajících operací jako neblokujících procesů a snadného skriptování. Můžete ji nainstalovat místně pomocí postupu v části [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+[Azure CLI 2,0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je navržené k flexibilnímu dotazování dat, podpoře dlouhotrvajících operací jako neblokujících procesů a snadného skriptování. Můžete ji nainstalovat místně pomocí postupu v části [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure CLI](/cli/azure/authenticate-azure-cli), použijte příkaz [AZ Login](/cli/azure/reference-index?view=azure-cli-latest#az-login) .
+Pokud se chcete [přihlásit ke svému účtu Azure pomocí Azure CLI](/cli/azure/authenticate-azure-cli), použijte příkaz [AZ Login](/cli/azure/reference-index#az-login) .
 
 ```azurecli
 az login

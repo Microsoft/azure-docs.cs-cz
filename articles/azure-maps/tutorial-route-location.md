@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624979"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210573"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Kurz: jak zobrazit směry tras pomocí služby Azure Maps Route Service a mapového ovládacího prvku
 
@@ -170,7 +170,7 @@ V tomto kurzu vykreslíme trasu pomocí čárové vrstvy. Počáteční a koncov
 
     Tento kód vytvoří dva [objekty typu bodový kód](https://en.wikipedia.org/wiki/GeoJSON) pro zobrazení dat, které představují počáteční a koncové body, které jsou poté přidány do zdroje dat. 
 
-    Poslední blok kódu nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu. Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Je přidáno odsazení, které umožňuje kompenzovat rozměry ikon symbolů v pixelech. Další informace o vlastnosti setCamera mapového ovládacího prvku naleznete v tématu [setCamera (CameraOptions | Vlastnost CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) .
+    Poslední blok kódu nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu. Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Je přidáno odsazení, které umožňuje kompenzovat rozměry ikon symbolů v pixelech. Další informace o vlastnosti setCamera mapového ovládacího prvku naleznete v tématu [setCamera (CameraOptions | Vlastnost CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) .
 
 3. Uložte **MapRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle. Modrý kód pro 15kolíkový označí počáteční bod. Kulatě modrý kód PIN označuje koncový bod.
 

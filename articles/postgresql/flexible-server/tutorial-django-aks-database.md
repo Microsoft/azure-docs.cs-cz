@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880891"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211273"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Kurz: nasazení aplikace Django v AKS s Azure Database for PostgreSQLm flexibilním serverem
 
@@ -67,7 +67,7 @@ Následující příklad výstupu ukazuje, že skupina prostředků byla úspě�
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí příkazu [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této akce bude trvat několik minut.
+Pomocí příkazu [az aks create](/cli/azure/aks#az-aks-create) vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Dokončení této akce bude trvat několik minut.
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -80,13 +80,13 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve f
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete nainstalovat `kubectl` místně, použijte příkaz [AZ AKS Install-CLI](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) :
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/). Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete nainstalovat `kubectl` místně, použijte příkaz [AZ AKS Install-CLI](/cli/azure/aks#az-aks-install-cli) :
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pomocí příkazu [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>Vytvoření Azure Database for PostgreSQLho flexibilního serveru
-Pomocí příkazu [AZ postgreSQL flexibilního serveru Create](./index.yml?preserve-view=true&view=azure-cli-latest)vytvořte flexibilní Server. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z místního kontextu rozhraní příkazového řádku Azure.
+Pomocí příkazu [AZ postgreSQL flexibilního serveru Create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create)vytvořte flexibilní Server. Následující příkaz vytvoří server pomocí výchozího nastavení služby a hodnot z místního kontextu rozhraní příkazového řádku Azure.
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>Vyčištění prostředků
 
-Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete).
+Abyste se vyhnuli poplatkům za Azure, měli byste vyčistit nepotřebné prostředky.  Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete](/cli/azure/group&preserve-view=true#az_group_delete).
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: ee691d4809a68a0ba60f60a2240b76a1e53104bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9571d13537b504b4d48685e879a379b08df3110d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171569"
+ms.locfileid: "102211477"
 ---
 # <a name="use-managed-identities-net"></a>Použití spravovaných identit (.NET)
 
@@ -24,8 +24,9 @@ V tomto rychlém startu se dozvíte, jak autorizovat přístup k klientským kni
 
 ## <a name="prerequisites"></a>Požadavky
 
- - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free)
+ - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free).
  - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](./create-communication-resource.md?pivots=platform-azp&tabs=windows).
+ -  Spravovaná identita. [Vytvořte spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -59,10 +60,9 @@ Pokud chcete přiřadit role a oprávnění pomocí PowerShellu, přečtěte si 
 ### <a name="install-the-client-library-packages"></a>Instalace balíčků klientské knihovny
 
 ```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Azure.Communication.Configuration
-dotnet add package Azure.Communication.Sms
 dotnet add package Azure.Identity
+dotnet add package Azure.Communication.Identity
+dotnet add package Azure.Communication.Sms
 ```
 
 ### <a name="use-the-client-library-packages"></a>Použití balíčků klientské knihovny
@@ -70,9 +70,11 @@ dotnet add package Azure.Identity
 Přidejte následující `using` direktivy do kódu, abyste mohli použít klientské knihovny Azure identity a Azure Storage.
 
 ```csharp
+using Azure;
+using Azure.Core;
 using Azure.Identity;
+using Azure.Communication;
 using Azure.Communication.Identity;
-using Azure.Communication.Configuration;
 using Azure.Communication.Sms;
 ```
 
@@ -89,6 +91,7 @@ Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby s A
      
           var client = new CommunicationIdentityClient(resourceEndpoint, credential);
           var identityResponse = await client.CreateUserAsync();
+          var identity = identityResponse.Value;
      
           var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 
@@ -101,7 +104,6 @@ Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby s A
 Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby s Azure Active Directory tokeny a pak pomocí klienta odeslat zprávu SMS:
 
 ```csharp
-
      public async Task SendSmsAsync(Uri resourceEndpoint, PhoneNumber from, PhoneNumber to, string message)
      {
           TokenCredential credential = new DefaultAzureCredential();

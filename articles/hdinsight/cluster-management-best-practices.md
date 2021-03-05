@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d326dfe3a44e5d9e9b55a888762f3878cd418850
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933707"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210950"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Osvědčené postupy pro správu clusteru HDInsight
 
@@ -24,11 +24,11 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 | Šablona vlastního Správce prostředků | [Vytváření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Šablony pro rychlý start | [Šablony pro rychlý Start HDInsight](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | ukázek Azure | [Ukázky HDInsight Azure](/samples/browse/?products=azure-hdinsight) |
-| Portál Azure Portal | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
+| portál Azure | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Vytváření clusterů Apache Hadoop pomocí Azure REST API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| Sady SDK (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Přejít](./hdinsight-go-sdk-overview.md) |
+| Sady SDK (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight), [Přejít](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Pokud vytváříte cluster a znovu použijete název clusteru z dříve vytvořeného clusteru, před vytvořením clusteru počkejte, než se dokončí předchozí odstranění clusteru.

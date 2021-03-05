@@ -8,23 +8,23 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6f25c4172b384abd487d2084f31981d16e73ee93
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742704"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209879"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Rychlý Start: zřízení služby pro jarní cloudovou službu Azure
 
 ::: zone pivot="programming-language-csharp"
 V tomto rychlém startu pomocí Azure CLI zřídíte instanci služby pružinového cloudu Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
-* [Verze Azure CLI 2.0.67 nebo vyšší](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Verze Azure CLI 2.0.67 nebo vyšší](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Instalace rozšíření Azure CLI
@@ -88,11 +88,11 @@ az extension add --name spring-cloud
 
 ::: zone pivot="programming-language-java"
 Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete vytvořit instanci Azure pružinového cloudu.  Obě metody jsou vysvětleny v následujících postupech.
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Nainstalovat JDK 8](/java/azure/jdk/)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
 * Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Zřízení instance Azure jarního cloudu
@@ -103,25 +103,25 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
 
 1. Na nové kartě otevřete [Azure Portal](https://ms.portal.azure.com/). 
 
-2. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud** .
+2. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud**.
 
 3. Z výsledků vyberte **Azure jaře Cloud** .
 
     ![Ikona ASC – začátek](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Na stránce jarní cloud Azure klikněte na **+ Přidat** .
+4. Na stránce jarní cloud Azure klikněte na **+ Přidat**.
 
     ![Ikona ASC přidat](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
-    - **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
-    - **Skupina prostředků** : vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Všimněte si, že se použije v pozdějších krocích jako **\<resource group name\>** .
-    - **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-    - **Umístění** : vyberte umístění pro instanci služby.
+5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Zvažte následující pokyny:
+    - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
+    - **Skupina prostředků**: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Všimněte si, že se použije v pozdějších krocích jako **\<resource group name\>** .
+    - **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+    - **Umístění**: vyberte umístění pro instanci služby.
 
     ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klikněte na **Zkontrolovat a vytvořit** .
+6. Klikněte na **Zkontrolovat a vytvořit**.
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

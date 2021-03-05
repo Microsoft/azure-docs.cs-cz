@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746758"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211664"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
 
@@ -64,7 +64,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Vlastní pravidlo":::
 
-   Vyberte **Add** (Přidat).
+   Vyberte **Přidat**.
 6. Vyberte **Další: přidružení**.
 7. Vyberte **Přidat hostitele front-end**.
 8. V případě **hostitele s front-endu** vyberte hostitele front-end a vyberte **Přidat**.
@@ -95,7 +95,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ### <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-Vytvořte zásadu WAF pomocí příkazu [AZ Network front-dvířke WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) . V následujícím příkladu nahraďte název zásady *IPAllowPolicyExampleCLI* jedinečným názvem zásady.
+Vytvořte zásadu WAF pomocí příkazu [AZ Network front-dvířke WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) . V následujícím příkladu nahraďte název zásady *IPAllowPolicyExampleCLI* jedinečným názvem zásady.
 
 ```azurecli-interactive 
 az network front-door waf-policy create \
@@ -105,7 +105,7 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Přidat vlastní pravidlo řízení přístupu IP
 
-K přidání vlastního pravidla řízení přístupu IP pro zásadu WAF, kterou jste právě vytvořili, použijte příkaz [AZ Network front-dvířkes WAF-Policy Create-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) .
+K přidání vlastního pravidla řízení přístupu IP pro zásadu WAF, kterou jste právě vytvořili, použijte příkaz [AZ Network front-dvířkes WAF-Policy Create-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) .
 
 V následujících příkladech:
 -  Nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
@@ -138,7 +138,7 @@ az network front-door waf-policy rule match-condition add \
   ```
                                                    
 ### <a name="find-the-id-of-a-waf-policy"></a>Najít ID zásady WAF 
-ID zásady WAF najdete pomocí příkazu [AZ Network front-dvířke WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) . V následujícím příkladu nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
+ID zásady WAF najdete pomocí příkazu [AZ Network front-dvířke WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) . V následujícím příkladu nahraďte *IPAllowPolicyExampleCLI* jedinečnými zásadami, které jste vytvořili dříve.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -148,7 +148,7 @@ ID zásady WAF najdete pomocí příkazu [AZ Network front-dvířke WAF-Policy s
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>Propojení zásady WAF s front-end hostitelem front-endu Azure
 
-Pomocí příkazu [AZ Network front-dvířk Update](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext-front-door-az-network-front-door-update) nastavte *WebApplicationFirewallPolicyLink* ID služby Azure front-dveří na ID zásad. Nahraďte *IPAllowPolicyExampleCLI* vašimi jedinečnými zásadami, které jste vytvořili dříve.
+Pomocí příkazu [AZ Network front-dvířk Update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) nastavte *WebApplicationFirewallPolicyLink* ID služby Azure front-dveří na ID zásad. Nahraďte *IPAllowPolicyExampleCLI* vašimi jedinečnými zásadami, které jste vytvořili dříve.
 
    ```azurecli
    az network front-door update \

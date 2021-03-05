@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 594dd2fd154b37eed49c069cef1b539e13ca6876
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094238"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209556"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
@@ -46,7 +46,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, m�
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ## <a name="create-a-new-role-assignment"></a>Vytvořit nové přiřazení role
 

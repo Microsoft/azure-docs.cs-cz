@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8c2ea69d38f354455b7957ddc7b6ff41da30100b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381490"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210763"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -351,7 +351,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `QueueTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr**| Není k dispozici | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -407,7 +407,7 @@ Příklady použití těchto typů najdete v [úložišti GitHub pro rozšířen
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger) anotace poskytuje přístup ke zprávě fronty, která funkci aktivovala.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -427,7 +427,7 @@ Přístup ke zprávě fronty prostřednictvím parametru zadaného jako [QueueMe
 
 Aktivační událost fronty poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Vlastnosti jsou členy třídy [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Vlastnost|Typ|Description|
+|Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem `name` vlastností v *function.js*.|
 |`DequeueCount`|`int`|Počet, kolikrát byla tato zpráva odstraněna z fronty.|

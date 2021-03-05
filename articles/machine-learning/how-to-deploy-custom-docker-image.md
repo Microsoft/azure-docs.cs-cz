@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695346"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209461"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -39,11 +39,11 @@ Tento dokument je rozdělen do dvou částí:
 * Vytvoření vlastní základní Image: poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
 * Nasazení modelu pomocí vlastní základní Image: poskytuje informace pro odborníky na data a inženýry DevOps/ML na používání vlastních imagí při nasazení vyučeného modelu ze sady Python SDK nebo ML CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](../container-registry/index.yml) nebo jiný registr Docker, který je přístupný na internetu.
 * Kroky v tomto dokumentu předpokládají, že máte zkušenosti s vytvářením a používáním objektu __Konfigurace odvození__ jako součást nasazení modelu. Další informace najdete v tématu [kam nasadit a jak](how-to-deploy-and-where.md).

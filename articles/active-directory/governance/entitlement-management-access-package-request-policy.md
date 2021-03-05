@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449976"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211647"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu pro balíček přístupu v Azure AD – Správa nároků
 
@@ -39,7 +39,7 @@ Například jedna zásada se nedá použít k přiřazení interních a externí
 
 ### <a name="how-many-policies-will-i-need"></a>Kolik zásad budu potřebovat?
 
-| Scénář | Počet zásad |
+| Scenario | Počet zásad |
 | --- | --- |
 | Chci, aby všichni uživatelé v adresáři měli stejné nastavení požadavků a schvalování pro balíček pro přístup | Jednu |
 | Chci, aby všichni uživatelé v některých připojených organizacích mohli žádat o přístup k balíčku | Jednu |
@@ -197,8 +197,6 @@ Chcete-li změnit nastavení žádosti a schválení pro balíček pro přístup
     ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. Klikněte na **Next** (Další).
-
-1. Pokud chcete, aby žadatelé při žádosti o přístup k balíčku pro přístup požádali o poskytnutí dalších informací, použijte postup v části []() Konfigurace informací o žadateli (Preview).
 
 1. Nakonfigurujte nastavení životního cyklu.
 

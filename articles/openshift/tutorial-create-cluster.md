@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da76dab360e0e17afc9e2024358d4a935c6b7336
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653036"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209811"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -23,7 +23,7 @@ V tomto kurzu, který je první částí tři, připravíte své prostředí, ab
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pro vytvoření a spuštění clusteru OpenShift vyžaduje Azure Red Hat OpenShift minimálně 40 jader. Výchozí kvóta prostředků Azure pro nové předplatné Azure nesplňuje tento požadavek. Pokud chcete požádat o zvýšení limitu prostředků, přečtěte si část [standardní kvóta: zvýšení limitů podle řady virtuálních počítačů](../azure-portal/supportability/per-vm-quota-requests.md).
 
@@ -106,7 +106,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
 2. **Vytvořte skupinu prostředků.**
 
-   Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků a v případě, že při vytváření prostředků nezadáte jinou oblast, tam, kde se vaše prostředky spouštějí v Azure. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) .
+   Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků a v případě, že při vytváření prostředků nezadáte jinou oblast, tam, kde se vaše prostředky spouštějí v Azure. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
     
    > [!NOTE] 
    > Azure Red Hat OpenShift není k dispozici ve všech oblastech, kde je možné vytvořit skupinu prostředků Azure. Informace o tom, kde se podporuje Azure Red Hat OpenShift, najdete v části [dostupné oblasti](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift) .

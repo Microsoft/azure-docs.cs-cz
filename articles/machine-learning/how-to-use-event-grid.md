@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc7c0a476f57048c7caefb6001918d314c991ee
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655713"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209692"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -59,7 +59,7 @@ Tyto události jsou publikovány prostřednictvím Azure Event Grid. Pomocí Azu
 
 Při nastavování událostí můžete použít filtry, aby se aktivovaly jenom pro konkrétní data událostí. V následujícím příkladu můžete pro události změny stavu spuštění filtrovat podle typů spuštění. Událost se aktivuje pouze v případě, že jsou splněna kritéria. Další informace o datech událostí, která můžete filtrovat podle, najdete v tématu [schéma Event gridu Azure Machine Learning](../event-grid/event-schema-machine-learning.md) . 
 
-Předplatná pro Azure Machine Learning události jsou chráněná řízením přístupu na základě role Azure (Azure RBAC). Jenom [Přispěvatel nebo vlastník](how-to-assign-roles.md#default-roles) pracovního prostoru můžou vytvářet, aktualizovat a odstraňovat odběry událostí.  Filtry lze použít na odběry událostí při [vytváření](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) odběru události nebo později. 
+Předplatná pro Azure Machine Learning události jsou chráněná řízením přístupu na základě role Azure (Azure RBAC). Jenom [Přispěvatel nebo vlastník](how-to-assign-roles.md#default-roles) pracovního prostoru můžou vytvářet, aktualizovat a odstraňovat odběry událostí.  Filtry lze použít na odběry událostí při [vytváření](/cli/azure/eventgrid/event-subscription) odběru události nebo později. 
 
 
 1. Přejít na Azure Portal, vyberte nové předplatné nebo existující. 
@@ -130,7 +130,7 @@ Po potvrzení výběru klikněte na __vytvořit__. Po dokončení konfigurace bu
 
 ### <a name="set-up-with-the-cli"></a>Nastavení pomocí rozhraní příkazového řádku
 
-Můžete buď nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest), nebo použít Azure Cloud Shell poskytované jako součást předplatného Azure.
+Můžete buď nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli), nebo použít Azure Cloud Shell poskytované jako součást předplatného Azure.
 
 Pokud chcete nainstalovat rozšíření Event Grid, použijte z rozhraní příkazového řádku následující příkaz:
 

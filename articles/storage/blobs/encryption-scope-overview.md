@@ -4,17 +4,17 @@ description: Obory šifrování poskytují možnost správy šifrování na úro
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/22/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017385"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211358"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Obory šifrování pro úložiště objektů BLOB (Preview)
 
@@ -26,15 +26,14 @@ Pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazní
 
 Po vytvoření oboru šifrování můžete zadat obor šifrování pro požadavek na vytvoření kontejneru nebo objektu BLOB. Další informace o tom, jak vytvořit rozsah šifrování, najdete v tématu [Vytvoření a Správa oborů šifrování (Preview)](encryption-scope-manage.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+> Obory šifrování jsou momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+>
+> Chcete-li se vyhnout neočekávaným nákladům, je nutné zakázat všechny obory šifrování, které aktuálně nepotřebujete.
+>
 > U geograficky redundantního úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS) ve verzi Preview se obory šifrování nepodporují.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> Obory šifrování ve verzi Preview jsou určené jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
->
-> Chcete-li se vyhnout neočekávaným nákladům, je nutné zakázat všechny obory šifrování, které aktuálně nepotřebujete.
 
 ## <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Vytvoření kontejneru nebo objektu BLOB s rozsahem šifrování
 

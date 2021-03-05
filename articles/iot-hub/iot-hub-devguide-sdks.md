@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 173e6e125387ba7d2755d9fff9387af0be21fffc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 13598925702aeca4a06135a910e3be540083a2b6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095245"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211749"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Principy a použití sad SDK služby Azure IoT Hub.
 
@@ -78,14 +78,14 @@ Sada Azure IoT Hub Device SDK pro jazyk Java:
 * Přidat do projektu [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-java)
 * [Referenční materiály k rozhraní API](/java/api/com.microsoft.azure.sdk.iot.device)
-* [Odkaz na modul](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable&preserve-view=true)
+* [Odkaz na modul](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)
 
 Sada SDK pro zařízení Azure IoT Hub pro Node.js:
 
 * Instalace z [npm](https://www.npmjs.com/package/azure-iot-device)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-node)
 * [Referenční materiály k rozhraní API](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
-* [Odkaz na modul](/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest&preserve-view=true)
+* [Odkaz na modul](/javascript/api/azure-iot-device/moduleclient)
 
 Sada SDK pro zařízení Azure IoT Hub pro Python:
 
@@ -165,12 +165,12 @@ Sady SDK pro zařízení a služby pro zřizování v Azure pro Java:
 
 * Přidat do projektu [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
-* [Referenční materiály k rozhraní API](/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable&preserve-view=true)
+* [Referenční materiály k rozhraní API](/java/api/com.microsoft.azure.sdk.iot.provisioning.device)
 
 Sady SDK pro zařízení a služby pro zřizování Azure pro Node.js:
 
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
-* [Referenční materiály k rozhraní API](/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest&preserve-view=true)
+* [Referenční materiály k rozhraní API](/javascript/api/overview/azure/iothubdeviceprovisioning)
 * Stažení [sady SDK pro zařízení](https://badge.fury.io/js/azure-iot-provisioning-device) a [sady SDK služby](https://badge.fury.io/js/azure-iot-provisioning-service) z npm
 
 Sady SDK pro zařízení a služby pro Python pro zřizování Azure:

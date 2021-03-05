@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035131"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210304"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
@@ -187,9 +187,9 @@ Před nasazením pomocí Azure CLI nebo Maven dokončete příklady, které [zř
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [Nainstalovat JDK 8](/java/azure/jdk/)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
 * Volitelné [Nainstalujte Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlaste](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) se.
 
 ## <a name="deployment-procedures"></a>Postupy nasazení

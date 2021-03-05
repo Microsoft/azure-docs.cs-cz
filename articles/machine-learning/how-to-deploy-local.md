@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8f22f1af04d59b4c1fb7f19a3d6815b61cac5fbd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600349"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211223"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Nasazení modelů vyškolených pomocí Azure Machine Learning na místních počítačích 
 
@@ -185,8 +185,8 @@ Použití Docker k nasazení modelu jako webové služby je nejběžnější mo�
 Můžete si stáhnout model:  
 
 - Na portálu vyberte kartu **modely** , vyberte požadovaný model a na stránce **Podrobnosti** vyberte **Stáhnout**.
-- Z příkazového řádku pomocí `az ml model download` . (Viz [stažení modelu.](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false))
-- Pomocí metody Python SDK `Model.download()` . (Viz [třída modelu.](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false))
+- Z příkazového řádku pomocí `az ml model download` . (Viz [stažení modelu.](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download))
+- Pomocí metody Python SDK `Model.download()` . (Viz [třída modelu.](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-))
 
 Model Azure je jeden nebo víc serializovaných objektů Pythonu, které se zabalí jako soubor s rozevíracími seznamy Pythonu (přípona. pkl). Obsah souboru rozevíracího seznamu závisí na knihovně strojového učení nebo na technice, která se používá pro výuku modelu. Například pokud používáte model z kurzu, můžete model načíst pomocí:
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209675"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Výstupní vazby služby Azure Table Storage pro Azure Functions
 
@@ -395,7 +395,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastaven na hodnotu `out` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` odkaz na návratovou hodnotu funkce.| 
-|**tableName** |**Tabulky** | Název tabulky| 
+|**Tabulky** |**TableName** | Název tabulky| 
 |**partitionKey** |**PartitionKey** | Klíč oddílu entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#usage) .| 
 |**rowKey** |**RowKey** | Klíč řádku entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#usage) .| 
 |**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .|
@@ -418,7 +418,7 @@ Alternativně můžete použít `CloudTable` parametr metody k zápisu do tabulk
 
 # <a name="java"></a>[Java](#tab/java)
 
-K dispozici jsou dvě možnosti pro výstup řádku úložiště tabulky z funkce pomocí anotace [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) :
+K dispozici jsou dvě možnosti pro výstup řádku úložiště tabulky z funkce pomocí anotace [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) :
 
 - **Návratová hodnota**: použitím poznámky k samotné funkci je návratová hodnota funkce trvalá jako řádek úložiště tabulky.
 
@@ -444,7 +444,7 @@ K dispozici jsou dvě možnosti pro výstup zprávy řádku úložiště tabulky
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Reference |
 |---|---|
 | Tabulka | [Kódy chyb tabulky](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Objekt blob, tabulka, fronta | [Kódy chyb úložiště](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

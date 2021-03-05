@@ -9,21 +9,21 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000663"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211766"
 ---
 # <a name="managed-hsm-logging"></a>Spravované protokolování HSM 
 
 Po vytvoření jednoho nebo více spravovaných HSM budete pravděpodobně chtít monitorovat, jak a kdy k HSMss máte pøístup a kým. To můžete provést tak, že povolíte protokolování, které ukládá informace v účtu úložiště Azure, který poskytnete. Pro zadaný účet úložiště se automaticky vytvoří nový kontejner s názvem **Insights-logs-auditevent** . Stejný účet úložiště můžete použít pro shromažďování protokolů pro více spravovaných HSM.
 
-Po spravované operaci HSM máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů v účtu úložiště je pouze na vás:
+Po spravované operaci HSM máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů ve vašem účtu úložiště záleží na vás:
 
-* Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
-* Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
+* Protokoly můžete zabezpečit, když k nim omezíte přístup pomocí standardních metod pro řízení přístupu Azure.
+* Odstraňujte protokoly, které už nechcete uchovávat v účtu úložiště.
 
 Tento kurz vám umožní začít se spravovaným protokolováním HSM. Vytvoříte účet úložiště, povolíte protokolování a interpretují shromážděné informace protokolu.  
 
@@ -48,7 +48,7 @@ Prvním krokem při nastavení protokolování klíčů je Ukázat Azure CLI na 
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku si můžete prohlédnout v části [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku si můžete prohlédnout v části [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 Možná budete muset zadat předplatné, které jste použili k vytvoření spravovaného modulu HSM. Zadáním následujícího příkazu zobrazíte odběry pro váš účet:
 
@@ -65,7 +65,7 @@ Pokud chcete povolit protokolování pro spravovaný modul HSM, použijte přík
 
 Tento výstup potvrdí, že protokolování je teď povolené pro váš spravovaný modul HSM, a uloží informace do svého účtu úložiště.
 
-Volitelně můžete pro své protokoly nastavit zásady uchovávání informací tak, aby se starší protokoly automaticky odstranily. Nastavte například zásady uchovávání informací nastavením příznaku **-RetentionEnabled** na **$true**a nastavte parametr **-RetentionInDays** na **90** tak, aby se automaticky odstranily protokoly starší než 90 dní.
+Volitelně můžete pro své protokoly nastavit zásady uchovávání informací tak, aby se starší protokoly automaticky odstranily. Nastavte například zásady uchovávání informací nastavením příznaku **-RetentionEnabled** na **$true** a nastavte parametr **-RetentionInDays** na **90** tak, aby se automaticky odstranily protokoly starší než 90 dní.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource $hsmresource --logs '[{"category": "AuditEvent","enabled": true}]' --storage-account $storageresource

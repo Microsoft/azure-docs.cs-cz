@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376050"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212106"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Import klíčů chráněných HSM do spravovaného HSM (BYOK)
 
@@ -56,7 +56,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, m�
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku si můžete prohlédnout v části [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku si můžete prohlédnout v části [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ## <a name="supported-hsms"></a>Podporované HSM
 
@@ -76,7 +76,7 @@ Další informace o možnostech přihlášení prostřednictvím rozhraní pří
 
 ## <a name="supported-key-types"></a>Podporované typy klíčů
 
-|Název klíče|Typ klíče|Velikost nebo křivka klíče|Zdroj|Description|
+|Název klíče|Typ klíče|Velikost nebo křivka klíče|Zdroj|Popis|
 |---|---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Managed HSM|Pár klíčů RSA zálohovaný modulem HSM generovaný ve spravovaném modulu HSM|
 |Cílový klíč|
@@ -105,7 +105,7 @@ KEK musí být:
 > [!NOTE]
 > KEK musí mít ' import ' jako jedinou povolenou operaci klíče. Import se vzájemně vylučuje se všemi ostatními klíčovými operacemi.
 
-Pomocí příkazu [AZ Key trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) vytvořte KEK, který má klíčové operace nastavené na `import` . Poznamenejte si identifikátor klíče ( `kid` ) vrácený z následujícího příkazu. ( `kid` V [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)použijete hodnotu.)
+Pomocí příkazu [AZ Key trezor Key Create](/cli/azure/keyvault/key#az-keyvault-key-create) vytvořte KEK, který má klíčové operace nastavené na `import` . Poznamenejte si identifikátor klíče ( `kid` ) vrácený z následujícího příkazu. ( `kid` V [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)použijete hodnotu.)
 
 ```azurecli-interactive
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --hsm-name ContosoKeyVaultHSM
@@ -115,7 +115,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>Krok 2: stažení veřejného klíče KEK
 
-K stažení veřejného klíče KEK do souboru. pem použijte [AZ Key trezor Key Download](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) . Cílový klíč, který importujete, je zašifrovaný pomocí veřejného klíče KEK.
+K stažení veřejného klíče KEK do souboru. pem použijte [AZ Key trezor Key Download](/cli/azure/keyvault/key#az-keyvault-key-download) . Cílový klíč, který importujete, je zašifrovaný pomocí veřejného klíče KEK.
 
 ```azurecli-interactive
 az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -137,7 +137,7 @@ Přeneste soubor BYOK do připojeného počítače.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>Krok 4: přenos klíče do spravovaného modulu HSM
 
-Pokud chcete dokončit import klíče, přeneste balíček přenosu klíčů (soubor BYOK) z odpojeného počítače na počítač připojený k Internetu. Pomocí příkazu [AZ Key trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) nahrajte soubor BYOK do spravovaného HSM.
+Pokud chcete dokončit import klíče, přeneste balíček přenosu klíčů (soubor BYOK) z odpojeného počítače na počítač připojený k Internetu. Pomocí příkazu [AZ Key trezor Key import](/cli/azure/keyvault/key#az-keyvault-key-import) nahrajte soubor BYOK do spravovaného HSM.
 
 ```azurecli-interactive
 az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok

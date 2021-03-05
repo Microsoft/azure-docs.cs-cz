@@ -215,7 +215,7 @@
     - name: Doprovodné materiály k určení velikosti virtuálního počítače
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Rozhraní příkazového řádku Azure (CLI)
-      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+      href: /cli/azure/ext/desktopvirtualization/
     - name: Ukázkové scénáře Azure
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: Zjišťování e-mailů
