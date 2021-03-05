@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da12955606062e6cfc0e6bf17eeedcaed0aac1ff
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171680"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -90,7 +90,7 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
 
 1. Jako **ID klienta** zadejte ID aplikace, které jste si poznamenali dříve.
 1. Jako **tajný klíč klienta** zadejte tajný klíč klienta, který jste předtím nahráli.
-1. Pro **Rozsah** zadejte `openid profile` .
+1. Jako **obor** zadejte `openid profile` .
 1. Ponechte výchozí hodnoty pro **typ odpovědi** a **režim odezvy**.
 1. Volitelné Jako **nápovědu k doméně** zadejte `contoso.com` . Další informace najdete v tématu [Nastavení přímého přihlašování pomocí Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. V části **mapování deklarací identity zprostředkovatele identity** vyberte následující deklarace identity:

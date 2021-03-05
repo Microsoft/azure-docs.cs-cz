@@ -4,13 +4,13 @@ description: Popisuje, jak ve službě Azure FarmBeats generovat heatmapu vlhkos
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165549"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173779"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
 
@@ -67,8 +67,8 @@ V tomto kroku se vytvoří úloha nebo dlouhodobá operace, která bude generova
 3.  Na stránce **Podrobnosti o farmě** vyberte možnost **Generovat mapu přesnosti**.
 4.  V rozevírací nabídce vyberte **vlhkost půdy**.
 5.  V okně **vlhkosti půdy** vyberte **Tento týden**.
-6.  V části **Vybrat míru vlhkosti půdního** **senzoru**zadejte míru, kterou chcete pro mapu použít.
-    Pokud chcete zjistit míru snímače, vyberte v **senzorech**jakýkoliv senzor vlhkosti půdy. Ve **vlastnostech senzoru**použijte hodnotu **Název míry** .
+6.  V části **Vybrat míru vlhkosti půdního** **senzoru** zadejte míru, kterou chcete pro mapu použít.
+    Pokud chcete zjistit míru snímače, vyberte v **senzorech** jakýkoliv senzor vlhkosti půdy. Ve **vlastnostech senzoru** použijte hodnotu **Název míry** .
 
     ![Snímek obrazovky, který ukazuje obrazovku vlhkosti půdy.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
@@ -84,7 +84,7 @@ V tomto kroku se vytvoří úloha nebo dlouhodobá operace, která bude generova
 Použijte k tomu následující postup:
 
 1. Na stránce **úlohy** ověřte **stav úlohy** pro úlohu, kterou jste vytvořili v posledním postupu.
-2. Po **úspěšném**zobrazení stavu úlohy vyberte v nabídce možnost **mapy** .
+2. Po **úspěšném** zobrazení stavu úlohy vyberte v nabídce možnost **mapy** .
 3. Vyhledejte mapu podle dne vytvoření ve formátu <půdní-moisture_MyFarm_YYYY-MM-DD>.
 4. Vyberte mapu ve sloupci **název** , zobrazí se automaticky otevírané okno s náhledem vybrané mapy.
 5. Vyberte **Stáhnout**. Mapa se stáhne a uloží do místní složky vašeho počítače.
@@ -93,4 +93,4 @@ Použijte k tomu následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste úspěšně vygenerovali heatmapu vlhkosti půdy, se naučíte, jak [vygenerovat senzory umístění](generate-maps-in-azure-farmbeats.md#sensor-placement-map) a ingestovat [historická data telemetrie](ingest-historical-telemetry-data-in-azure-farmbeats.md). 
+Teď, když jste úspěšně vygenerovali heatmapu vlhkosti půdy, se naučíte, jak [vygenerovat senzory umístění](generate-maps-in-azure-farmbeats.md#sensor-placement-map) a ingestovat [historická data telemetrie](ingest-historical-telemetry-data-in-azure-farmbeats.md). 

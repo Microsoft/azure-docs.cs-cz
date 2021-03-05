@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327236"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172405"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -127,7 +127,7 @@ Všechny sloty se škálují na stejný počet pracovních procesů jako produk�
 
 ## <a name="add-a-slot"></a>Přidat slot
 
-Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
+Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) nebo prostřednictvím portálu. Následující kroky ukazují, jak vytvořit novou patici na portálu:
 
 1. Přejděte do aplikace Function App.
 
@@ -141,7 +141,7 @@ Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/
 
 ## <a name="swap-slots"></a>Prohození slotů
 
-Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
+Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) nebo prostřednictvím portálu. Následující kroky ukazují, jak odkládací sloty na portálu:
 
 1. Přejděte do aplikace Function App.
 1. Vyberte možnost **sloty nasazení** a pak vyberte **swap**.
@@ -160,7 +160,7 @@ Pokud dojde k chybě zahození nebo pokud chcete jednoduše vrátit zpět změny
 
 ## <a name="remove-a-slot"></a>Odebrat slot
 
-Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
+Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) nebo prostřednictvím portálu. Následující kroky ukazují, jak odebrat slot na portálu:
 
 1. V aplikaci Function App přejděte na **sloty nasazení** a potom vyberte název slotu.
 
@@ -180,13 +180,13 @@ Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functi
 
 ## <a name="automate-slot-management"></a>Automatizace správy slotů
 
-Pomocí [Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)můžete pro slot automatizovat následující akce:
+Pomocí [Azure CLI](/cli/azure/functionapp/deployment/slot)můžete pro slot automatizovat následující akce:
 
-- [vytvořeny](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [adresu](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [Automatické prohození](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [vytvořeny](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
+- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
+- [adresu](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
+- [Automatické prohození](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Změnit plán App Service
 

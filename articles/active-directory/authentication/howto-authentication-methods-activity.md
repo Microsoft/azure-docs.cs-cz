@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe69967d84777091aec0bbbf1626b98f5018d0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693076"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175307"
 ---
 # <a name="authentication-methods-activity"></a>Aktivita Metody ověřování 
 
@@ -26,10 +26,17 @@ Nový řídicí panel aktivity metody ověřování umožňuje správcům monito
 
 ## <a name="permissions-and-licenses"></a>Oprávnění a licence
 
-K využití a přehledům můžou získat přístup následující role:
+Integrované a vlastní role s následujícími oprávněními mají přístup k oknu aktivity metody ověřování a k rozhraním API:
+
+- Microsoft. Directory/auditLogs/allProperties/Read
+- Microsoft. Directory/signInReports/allProperties/Read
+
+Požadovaná oprávnění jsou k dispozici v následujících rolích:
 
 - Čtečka sestav
 - Čtenář zabezpečení
+- Globální čtenář
+- Operátor zabezpečení
 - Správce zabezpečení
 - Globální správce
 
@@ -122,11 +129,12 @@ Sestava Podrobnosti o registraci zobrazuje pro každého uživatele následujíc
 - Stav (úspěch, selhání)
 - Důvod selhání (vysvětlení)
 
-  ![Snímek obrazovky se stránkou použití](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![Snímek obrazovky s událostmi registrace a resetování](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>Omezení
 
-Dočasné přístupy k předávání (klepnutím) se na kartě registrace v sestavě neprojeví, protože jsou platné jenom pro krátkou dobu.
+- Data v sestavě se v reálném čase neaktualizují a můžou odrážet latenci až po několik hodin.
+- Dočasné registrace předávacího přístupu se na kartě registrace v sestavě neprojeví, protože jsou platné jenom pro krátkou dobu.
 
 ## <a name="next-steps"></a>Další kroky
 

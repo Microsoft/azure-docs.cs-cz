@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289671"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175749"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Pokyny k omezování služby Azure Key Vault
 
@@ -24,7 +24,7 @@ Omezení omezování se liší v závislosti na scénáři. Pokud například pr
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Jak Key Vault zpracovává své limity?
 
-Omezení služby v Key Vault zabrání zneužití prostředků a zajišťují kvalitní službu pro všechny klienty Key Vault. Pokud dojde k překročení prahové hodnoty služby, Key Vault omezí další požadavky klienta na určitou dobu, vrátí stavový kód HTTP 429 (příliš mnoho požadavků) a požadavek se nezdařil. Neúspěšné požadavky, které vracejí 429 počtu směrem k limitům omezení sledovaných pomocí Key Vault. 
+Omezení služby v Key Vault zabrání zneužití prostředků a zajišťují kvalitní službu pro všechny klienty Key Vault. Pokud dojde k překročení prahové hodnoty služby, Key Vault omezí další požadavky klienta na určitou dobu, vrátí stavový kód HTTP 429 (příliš mnoho požadavků) a požadavek se nezdařil. Neúspěšné požadavky, které vracejí 429, se nepočítají do limitů omezení sledovaných pomocí Key Vault. 
 
 Key Vault byla původně navržena tak, aby se používala k ukládání a načítání tajných klíčů v době nasazení.  Svět se vyvinul a Key Vault se používá za běhu k ukládání a načítání tajných klíčů a často aplikace a služby chtějí používat Key Vault jako databázi.  Aktuální limity nepodporují vysoké míry propustnosti.
 
@@ -47,8 +47,8 @@ Pokud zjistíte, že výše uvedené pořád ještě nesplňuje vaše požadavky
 
 Pokud je další kapacita schválena, pamatujte na to, že v důsledku zvýšení kapacity se zvyšuje následující:
 1. Změny modelu konzistence dat. Jakmile je trezor povolený v seznamu s další kapacitou propustnosti, konzistence dat Key Vault služby garantuje změny (nutné pro splnění vyššího objemu RPS, protože základní Azure Storage služba nemůže zůstat zapnutá).  V kostce:
-  1. **Bez povoleného výpisu** : služba Key Vault bude odpovídat výsledkům operace zápisu (např. SecretSet, CreateKey) hned v následných voláních (např. SecretGet, symbol.
-  1. **Při povoleném výpisu** : služba Key Vault odráží výsledky operace zápisu (např. SecretSet, CreateKey) během následujících volání během 60 sekund (např. SecretGet, symbol.
+  1. **Bez povoleného výpisu**: služba Key Vault bude odpovídat výsledkům operace zápisu (např. SecretSet, CreateKey) hned v následných voláních (např. SecretGet, symbol.
+  1. **Při povoleném výpisu**: služba Key Vault odráží výsledky operace zápisu (např. SecretSet, CreateKey) během následujících volání během 60 sekund (např. SecretGet, symbol.
 1. Kód klienta musí dodržovat zásady pro obnovení po 429 opakování. Klientský kód, který volá službu Key Vault, nesmí okamžitě opakovat Key Vault žádosti, když obdrží kód odpovědi 429.  Průvodce omezením Azure Key Vault publikovaný tady doporučuje použití exponenciálního omezení rychlostiu při příjmu kódu odpovědi HTTP 429.
 
 Pokud máte platný obchodní případ pro omezení s vyšším omezením, kontaktujte nás prosím.
@@ -96,6 +96,6 @@ V kódu chyby HTTP 429 začněte omezovat klienta pomocí exponenciálního př�
 
 V tuto chvíli byste neměli získávat kódy odpovědí HTTP 429.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](/azure/architecture/patterns/throttling).

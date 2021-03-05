@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: acebc75b579b13ebb2cfad0e18057245781165ad
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006102"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175273"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Vytvoření aplikace App Service a nasazení privátního koncového bodu pomocí Azure CLI
 
@@ -52,7 +52,7 @@ az appservice plan create \
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 Teď, když máte plán App Service, můžete nasadit webovou aplikaci.
-Vytvořte webovou aplikaci pomocí [az AppService Plan Create] (/CLI/Azure/WebApp? View = Azure-CLI-nejnovějších # AZ-WebApp-Create.
+Vytvořte webovou aplikaci pomocí [az AppService Plan Create] (/CLI/Azure/WebApp # AZ-WebApp-Create.
 Tento příklad vytvoří webovou aplikaci s názvem *mySiteName* v plánu s názvem *myAppServicePlan*
 
 ```azurecli-interactive

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320253"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172316"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Instalace klientských nástrojů pro nasazování a správu datových služeb s podporou služby Azure Arc
 
@@ -36,7 +36,7 @@ Následující tabulka obsahuje seznam běžných nástrojů vyžadovaných k vy
 | [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] rozšíření pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které se nainstaluje, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Pokud ho ještě nemáte.| Instalace z galerie rozšíření v Azure Data Studio.|
 | Rozšíření Azure ARC pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které poskytuje prostředí pro správu datových služeb s podporou ARC Azure. Existuje závislost na [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] rozšíření pro Azure Data Studio. | Instalace z galerie rozšíření v Azure Data Studio.|
 | Rozšíření PostgreSQL v Azure Data Studio | Ne | Rozšíření PostgreSQL pro Azure Data Studio, které poskytuje možnosti správy pro PostgreSQL. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Instalace z galerie rozšíření v Azure Data Studio.|
-| Azure CLI (AZ)<sup>1</sup> | Ano | Moderní rozhraní příkazového řádku pro správu služeb Azure. Používá se s AKS nasazeními a k nahrání inventáře datových služeb s povoleným ARC Azure a fakturační data do Azure. ([Další informace](/cli/azure/?view=azure-cli-latest&preserve-view=true)). | [Instalace](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
+| Azure CLI (AZ)<sup>1</sup> | Ano | Moderní rozhraní příkazového řádku pro správu služeb Azure. Používá se s AKS nasazeními a k nahrání inventáře datových služeb s povoleným ARC Azure a fakturační data do Azure. ([Další informace](/cli/azure/)). | [Instalace](/cli/azure/install-azure-cli) |
 | Kubernetes CLI (kubectl)<sup>2</sup> | Ano | Nástroj příkazového řádku pro správu clusteru Kubernetes ([Další informace](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) | [Systém Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
 | kudrlinkou <sup>3</sup> | Vyžaduje se pro některé ukázkové skripty. | Nástroj příkazového řádku pro přenos dat s adresami URL. | [Systém Windows](https://curl.haxx.se/windows/) \| Linux: instalace balíčku s kudrlinkou |
 | součet | Vyžaduje se pro nasazení Red Hat OpenShift a Azure RedHat OpenShift. |`oc` je otevřené rozhraní příkazového řádku (CLI) příkazu Shift. | [Instalace rozhraní příkazového řádku](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)

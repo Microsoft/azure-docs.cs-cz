@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519486"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175664"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -115,9 +115,9 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
-| Podporované verze | 1.2.0 (Ubuntu 16,04); 1.4.0 (Ubuntu 18,04, Windows 2019) |
+| Podporované verze | 1.2.0 (Ubuntu 16,04); 1.7.1 (Ubuntu 18,04, Windows 2019) |
 | Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Nainstalováno v [pythonu 3,5](dsvm-tools-languages.md#python-linux-edition). Obsahuje ukázky Jupyter poznámkových bloků a ukázky jsou v/dsvm/Samples/pytorch.. |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Instaluje se v [pythonu 3,7](dsvm-tools-languages.md#python-linux-edition) v prostředí py37_pytorch conda. Obsahuje ukázky Jupyter poznámkových bloků a ukázky jsou v/dsvm/Samples/pytorch.. |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a pak spusťte Python.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Připojte se a otevřete adresář PyTorch pro ukázky.  |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)

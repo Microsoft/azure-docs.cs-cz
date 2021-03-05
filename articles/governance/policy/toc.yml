@@ -138,9 +138,9 @@
         - name: Azure Policy pro Kubernetes
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Zabezpečené pody s využitím Azure Policy
+        - name: Zabezpečení AKS pomocí Azure Policy
           displayName: 'aks, psp, rego, opa'
-          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../aks/use-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Auditování virtuálních počítačů s konfigurací hosta
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

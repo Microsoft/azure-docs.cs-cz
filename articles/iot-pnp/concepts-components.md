@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: eef8179567d83e3727c3ab949eef2706ce2a9b16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329998"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175800"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Komponenty technologie IoT Plug and Play v modelech
 
@@ -56,7 +56,7 @@ Následující příklad ukazuje část jednoduchého modelu, který nepoužív�
 ...
 ```
 
-I když model explicitně nedefinuje komponentu, chová se jako v případě, že existuje jediná _výchozí komponenta_se všemi definicemi telemetrie, vlastností a příkazů.
+I když model explicitně nedefinuje komponentu, chová se jako v případě, že existuje jediná _výchozí komponenta_ se všemi definicemi telemetrie, vlastností a příkazů.
 
 Následující snímek obrazovky ukazuje, jak se model zobrazuje v nástroji Azure IoT Explorer:
 
@@ -64,7 +64,7 @@ Následující snímek obrazovky ukazuje, jak se model zobrazuje v nástroji Azu
 
 ID modelu je uloženo ve vlastnosti vlákna zařízení, jak ukazuje následující snímek obrazovky:
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Výchozí součást v Azure IoT Exploreru":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="ID modelu ve vlastnosti digitálního vlákna":::
 
 Model DTDL bez komponent je užitečné zjednodušení pro zařízení nebo IoT Edge modul s jedinou sadou telemetrie, vlastností a příkazů. Model, který nepoužívá komponenty, usnadňuje migraci stávajícího zařízení nebo modulu technologie Plug and Play zařízení nebo modul IoT – vytvoříte model DTDL, který popisuje vaše skutečné zařízení nebo modul, aniž by bylo potřeba definovat nějaké součásti.
 
@@ -75,7 +75,7 @@ Model DTDL bez komponent je užitečné zjednodušení pro zařízení nebo IoT 
 
 Komponenty umožňují vytvořit model rozhraní jako sestavení jiných rozhraní.
 
-Například rozhraní [termostatu](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) je definováno jako model. Toto rozhraní můžete začlenit jako jednu nebo více součástí při definování [modelu teplotního adaptéru](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json). V následujícím příkladu jsou tyto komponenty volány `thermostat1` a `thermostat2` .
+Například rozhraní [termostatu](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) je definováno jako model. Můžete začlenit toto rozhraní jako jednu nebo více součástí při definování [modelu teplotního adaptéru](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json). V následujícím příkladu jsou tyto komponenty volány `thermostat1` a `thermostat2` .
 
 Pro model DTDL s více komponentami je k dispozici nejméně dva oddíly součásti. Každý oddíl má `@type` nastavenou hodnotu `Component` a explicitně odkazuje na schéma, jak je znázorněno v následujícím fragmentu kódu:
 

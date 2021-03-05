@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f63d7aed75b14f5f008a639d667d8806b233b9fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653248"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174594"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Podpora ověřování bez hesla s FIDO2 klíči v aplikacích, které vyvíjíte
 
@@ -52,7 +52,7 @@ Doporučené možnosti pro implementaci ověřování jsou v uvedeném pořadí:
 
 ### <a name="mobile"></a>Mobilní
 
-Od února 2020 se FIDO2 v současné době nepodporuje pro nativní aplikace pro iOS nebo Android, ale je ve vývoji.
+Od února 2021 se FIDO2 v současné době nepodporuje pro nativní aplikace pro iOS nebo Android, ale je ve vývoji.
 
 Aby bylo možné připravit aplikace na její dostupnost a jako obecné osvědčené postupy by měly aplikace pro iOS a Android používat MSAL s výchozí konfigurací webového prohlížeče systému.
 

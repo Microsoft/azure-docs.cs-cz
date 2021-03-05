@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e01f44d363d038bd2ea4b985e12c9afc200f2c20
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c587705041b8fb3d37e02142fa10ae5a1d73f9f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046428"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173843"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -284,8 +284,8 @@ Rozšířené zásady s podporou klauzule WHERE pro další filtrování:
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-- [Správa zásad auditování serveru](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
-- [Správa zásad auditování databáze](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
+- [Správa zásad auditování serveru](/cli/azure/sql/server/audit-policy)
+- [Správa zásad auditování databáze](/cli/azure/sql/db/audit-policy)
 
 ### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 

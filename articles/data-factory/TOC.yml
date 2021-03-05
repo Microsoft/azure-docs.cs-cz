@@ -704,6 +704,8 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Vytvoření závislosti aktivační události pro přeskakující okno
           href: tumbling-window-trigger-dependency.md
+        - name: Metadata triggeru reference v kanálu
+          href: how-to-use-trigger-parameterization.md
     - name: Data Catalog a zásady správného řízení
       items:
         - name: Připojení Data Factory k Azure Purview

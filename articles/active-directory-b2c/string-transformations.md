@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/03/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175086"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -127,7 +127,7 @@ Vytvoří deklaraci řetězce ze zadaného vstupního parametru v transformaci.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
+| InputParameter | hodnota | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
 | OutputClaim | createdClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
 Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType typu String.
@@ -149,6 +149,42 @@ Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType t
     - **hodnota**: podmínka služby contoso...
 - Deklarace výstupů:
     - **createdClaim**: služba TOS ClaimType obsahuje "podmínkami služby společnosti Contoso..." osa.
+
+## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
+
+Hodnotu deklarace identity zkopírujte na jinou, pokud hodnota vstupní deklarace odpovídá predikátu výstupních deklarací. 
+
+| Položka | TransformationClaimType | Typ dat | Poznámky |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | řetězec | Typ deklarace, který má být zkopírován. |
+| OutputClaim | outputClaim | řetězec | Typ deklarace identity, který je vytvořen po vyvolání této transformace deklarací. Hodnota vstupní deklarace identity je porovnána s tímto predikátem deklarace identity. |
+
+V následujícím příkladu se zkopíruje hodnota deklarace identity signInName do deklarace phoneNumber, jenom pokud je signInName telefonní číslo. Úplnou ukázku najdete v tématu Zásady pro [telefonní číslo nebo e-mailové přihlašovací](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml) informace pro úvodní sadu.
+
+```xml
+<ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="signInName" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example-1"></a>Příklad 1
+
+- Vstupní deklarace identity:
+    - **inputClaim**: bob@contoso.com
+- Deklarace výstupů:
+    - **outputClaim**: deklarace výstupu se nezměnila z původní hodnoty.
+
+### <a name="example-2"></a>Příklad 2
+
+- Vstupní deklarace identity:
+    - **inputClaim**: + 11234567890
+- Deklarace výstupů:
+    - **outputClaim**: + 11234567890
 
 ## <a name="compareclaims"></a>CompareClaims
 

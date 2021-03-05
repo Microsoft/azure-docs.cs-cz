@@ -1,23 +1,18 @@
 ---
 title: Poznámky k verzi pro Azure Security Center
 description: Popis toho, co je nového a co se změnilo v Azure Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/18/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 327103df21dd34347439a833d7ac4b8a21dc66b4
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6c69e5923e2b65bab0feca04d10fa67f49df3616
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099841"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174451"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -29,6 +24,96 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 
 > [!TIP]
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
+
+
+
+## <a name="march-2021"></a>Březen 2021
+
+Aktualizace v březnu zahrnují:
+
+- [Správa Azure Firewall integrovaná do Security Center](#azure-firewall-management-integrated-into-security-center)
+- [Posouzení ohrožení zabezpečení SQL teď zahrnuje možnosti "zakázat pravidlo" (Preview).](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
+- [Azure Monitor sešitů integrovaných do Security Center a tří dodaných šablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
+- [Řídicí panel dodržování předpisů teď zahrnuje sestavy služby Azure audit (Preview).](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [Aktualizace zásad pro nasazení automatizace pracovního postupu](#updates-to-the-policies-for-deploying-workflow-automation)
+
+
+### <a name="azure-firewall-management-integrated-into-security-center"></a>Správa Azure Firewall integrovaná do Security Center
+
+Když otevřete Azure Security Center, na první stránce se zobrazí stránka přehled. 
+
+Tento interaktivní řídicí panel poskytuje jednotný pohled na stav zabezpečení vašich hybridních cloudových úloh. Kromě toho zobrazuje výstrahy zabezpečení, informace o pokrytí a další.
+
+V rámci snazšího zobrazení stavu zabezpečení z centrálního prostředí jsme do tohoto řídicího panelu zavedli nástroj Azure Firewall Manager. Nyní můžete zkontrolovat stav pokrytí brány firewall ve všech sítích a centrálně spravovat Azure Firewall zásady od Security Center.
+
+Další informace o tomto řídicím panelu najdete na [stránce s přehledem Azure Security Center](overview-page.md).
+
+:::image type="content" source="media/release-notes/overview-dashboard-firewall-manager.png" alt-text="Řídicí panel s přehledem Security Center s dlaždicí pro Azure Firewall":::
+
+
+### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>Posouzení ohrožení zabezpečení SQL teď zahrnuje možnosti "zakázat pravidlo" (Preview).
+
+Security Center obsahuje integrovanou kontrolu ohrožení zabezpečení, která vám umožní zjišťovat, sledovat a opravovat potenciální ohrožení zabezpečení databáze. Zjištění z vašich kontrol najdete v přehledu o stavu zabezpečení počítačů s SQL a podrobnostech o všech zjištěních zabezpečení.
+
+Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.
+
+Další informace najdete v [zakažte konkrétní zjištění](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview).
+
+
+
+### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>Azure Monitor sešitů integrovaných do Security Center a tří dodaných šablon
+
+V rámci Ignite pružiny 2021 jsme v Security Center oznámili integrované prostředí Azure Monitor sešitům.
+
+Novou integraci můžete využít k zahájení použití předem připravených šablon z Galerie Security Center. Pomocí šablon sešitu můžete získat přístup k dynamickým a vizuálním sestavám, abyste mohli sledovat stav zabezpečení vaší organizace. Kromě toho můžete vytvářet nové sešity na základě Security Centerch dat nebo jiných podporovaných datových typů a rychle nasazovat sešity komunity ze Security Center komunity GitHubu.
+
+K dispozici jsou tři sestavy šablon:
+
+- **Zabezpečení skóre v čase** – sledování skóre předplatných a změn doporučení pro vaše prostředky
+- **Aktualizace systému** – zobrazení chybějících aktualizací systému podle prostředků, operačního systému, závažnosti a dalších
+- **Zjištění ohrožení zabezpečení** – zobrazení výsledků kontroly ohrožení zabezpečení vašich prostředků Azure
+
+Seznamte se s používáním těchto sestav nebo vytvářením vlastních [interaktivních sestav Security Centerch dat](custom-dashboards-azure-workbooks.md)s možností vytváření.
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Sestava zabezpečeného skóre v čase":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>Řídicí panel dodržování předpisů teď zahrnuje sestavy služby Azure audit (Preview).
+
+Na panelu nástrojů řídicího panelu pro dodržování předpisů si teď můžete stáhnout sestavy certifikace pro Azure a Dynamics. 
+
+:::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="Panel nástrojů řídicí panel dodržování předpisů v legislativě":::
+
+Můžete vybrat kartu pro příslušné typy sestav (PCI, SOC, ISO a další) a pomocí filtrů najít konkrétní sestavy, které potřebujete.
+
+Přečtěte si další informace o [správě standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md).
+
+:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Filtrování seznamu dostupných sestav služby Azure audit":::
+
+
+
+### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>Aktualizace zásad pro nasazení automatizace pracovního postupu
+
+Automatizace procesů monitorování a reakce na incidenty vaší organizace může výrazně zlepšit dobu potřebnou k prošetření a zmírnění incidentů zabezpečení.
+
+Poskytujeme tři Azure Policy zásady DeployIfNotExist, které vytvoří a nakonfigurují postupy automatizace pracovních postupů, abyste mohli automatizovat své automatizace ve vaší organizaci:
+
+|Cíl  |Zásady  |ID zásady  |
+|---------|---------|---------|
+|Automatizace pracovního postupu pro výstrahy zabezpečení|[Nasazení automatizace pracovních postupů pro upozornění služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|Automatizace pracovního postupu pro doporučení zabezpečení|[Nasazení automatizace pracovních postupů pro doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+|Automatizace pracovního postupu pro změny dodržování předpisů v legislativě|[Nasazení automatizace pracovních postupů pro Azure Security Center dodržování předpisů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+||||
+
+K funkcím těchto zásad jsou k dispozici dvě aktualizace:
+
+- Po přiřazení zůstanou povolené vynucením.
+- Nyní můžete tyto zásady přizpůsobit a aktualizovat libovolné parametry, i když již byly nasazeny. Pokud například chce uživatel přidat další klíč hodnocení nebo upravit existující klíč hodnocení, může to provést.
+
+Začínáme se [šablonami automatizace pracovních postupů](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+Přečtěte si další informace o tom, jak [automatizovat odpovědi na triggery Security Center](workflow-automation.md).
+
 
 
 ## <a name="february-2021"></a>Únor 2021
@@ -777,221 +862,3 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 Další informace najdete na následujících odkazech:
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource Graphu](../governance/resource-graph/first-query-portal.md)
 - [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)
-
-
-## <a name="september-2020"></a>Září 2020
-
-Aktualizace v září zahrnují:
-- [Security Center získá nový vzhled.](#security-center-gets-a-new-look)
-- [Vydaný Azure Defender](#azure-defender-released)
-- [Azure Defender pro Key Vault je všeobecně dostupný](#azure-defender-for-key-vault-is-generally-available)
-- [Azure Defender pro ochranu úložiště souborů a ADLS Gen2 je všeobecně dostupný](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
-- [Nástroje inventáře prostředků jsou teď všeobecně dostupné.](#asset-inventory-tools-are-now-generally-available)
-- [Zakázání konkrétní chyby zabezpečení při hledání registrů kontejnerů a virtuálních počítačů](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
-- [Vyloučení prostředku z doporučení](#exempt-a-resource-from-a-recommendation)
-- [Konektory AWS a GCP v Security Center přinášejí prostředí pro více cloudů](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
-- [Sada doporučení pro ochranu úloh Kubernetes](#kubernetes-workload-protection-recommendation-bundle)
-- [Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
-- [Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
-- [Vylepšení doporučení skupiny zabezpečení sítě](#network-security-group-recommendations-improved)
-- [Doporučení AKS inverze Preview "pod" zásady zabezpečení by měly být definované v Kubernetes Services "](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
-- [Vylepšená e-mailová oznámení z Azure Security Center](#email-notifications-from-azure-security-center-improved)
-- [Zabezpečené skóre nezahrnuje doporučení pro verzi Preview.](#secure-score-doesnt-include-preview-recommendations)
-- [Doporučení nyní obsahují indikátor závažnosti a interval aktuálnosti.](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
-
-
-### <a name="security-center-gets-a-new-look"></a>Security Center získá nový vzhled.
-
-Vydali jsme aktualizované uživatelské rozhraní pro stránky portálu Security Center. Nové stránky obsahují novou stránku Přehled a řídicí panely pro bezpečné skóre, inventář prostředků a Azure Defender.
-
-Stránka s přehledem přepracování teď obsahuje dlaždici pro přístup k zabezpečenému skóre, inventáři prostředků a řídicím panelům Azure Defenderu. Obsahuje také dlaždici, která odkazuje na řídicí panel dodržování předpisů.
-
-Přečtěte si další informace o [stránce Přehled](overview-page.md).
-
-
-### <a name="azure-defender-released"></a>Vydaný Azure Defender
-
-**Azure Defender** je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní a chráněnou službu Azure a hybridní úlohy. Nahradí možnost standardní cenové úrovně v Security Center. 
-
-Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Center, jsou všechny tyto plány Defenderu povolené současně a poskytují komplexní ochranu pro výpočetní, datovou a provozní vrstvu vašeho prostředí:
-
-- [Azure Defender pro servery](defender-for-servers-introduction.md)
-- [Azure Defender pro App Service](defender-for-app-service-introduction.md)
-- [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
-- [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
-- [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
-- [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
-
-Každý z těchto plánů je vysvětlen samostatně v dokumentaci Security Center.
-
-Díky jeho vyhrazenému řídicímu panelu poskytuje Azure Defender výstrahy zabezpečení a pokročilou ochranu před internetovými útoky pro virtuální počítače, databáze SQL, kontejnery, webové aplikace, síť a další.
-
-[Další informace o Azure Defenderu](azure-defender.md)
-
-### <a name="azure-defender-for-key-vault-is-generally-available"></a>Azure Defender pro Key Vault je všeobecně dostupný
-
-Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. 
-
-**Azure Defender pro Key Vault** poskytuje rozšířenou ochranu před internetovými útoky azure pro Azure Key Vault a poskytuje další vrstvu funkcí Security Intelligence. V důsledku rozšíření používá Azure Defender pro Key Vault ochranu mnoha prostředků závislých na vašich Key Vault účtech.
-
-Volitelný plán je teď GA. Tato funkce je ve verzi Preview jako rozšířená ochrana před internetovými útoky pro Azure Key Vault.
-
-Key Vault stránky v Azure Portal nyní obsahují vyhrazenou **bezpečnostní** stránku pro **Security Center** doporučení a upozornění.
-
-Další informace najdete v tomto [Key Vault v Azure Defenderu](defender-for-key-vault-introduction.md).
-
-
-### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Azure Defender pro ochranu úložiště souborů a ADLS Gen2 je všeobecně dostupný 
-
-**Azure Defender pro úložiště** detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
-
-Podpora pro [soubory](../storage/files/storage-files-introduction.md) a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) Azure je teď všeobecně dostupná.
-
-Od 1. října 2020 začneme účtovat za ochranu prostředků u těchto služeb.
-
-Další informace najdete v [Azure Defenderu pro úložiště](defender-for-storage-introduction.md).
-
-
-### <a name="asset-inventory-tools-are-now-generally-available"></a>Nástroje inventáře prostředků jsou teď všeobecně dostupné.
-
-Stránka inventáře assetů Azure Security Center poskytuje jednu stránku pro zobrazení stav zabezpečení prostředků, ke kterým jste se připojili Security Center.
-
-Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby se identifikovaly potenciální ohrožení zabezpečení. Pak vám poskytne doporučení k nápravě těchto chyb zabezpečení.
-
-Pokud některý z prostředků obsahuje nevyřízená doporučení, zobrazí se v inventáři.
-
-Další informace najdete v informacích o [prozkoumání a správě vašich prostředků pomocí inventáře assetů](asset-inventory.md).
-
-
-
-### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>Zakázání konkrétní chyby zabezpečení při hledání registrů kontejnerů a virtuálních počítačů
-
-Azure Defender obsahuje skenery ohrožení zabezpečení pro skenování imagí ve vašich Azure Container Registry a virtuálních počítačích.
-
-Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.
-
-Pokud hledání odpovídá kritériím, která jste definovali v pravidlech vypnutí, nezobrazí se v seznamu zjištění.
-
-Tato možnost je k dispozici na stránkách s podrobnostmi doporučení pro:
-
-- **Ohrožení zabezpečení v Azure Container Registrych imagí by mělo být opraveno**
-- **Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**
-
-Další informace najdete v [zakažte konkrétní zjištění imagí kontejneru](defender-for-container-registries-usage.md#disable-specific-findings-preview) a [zakažte konkrétní zjištění pro vaše virtuální počítače](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview).
-
-
-### <a name="exempt-a-resource-from-a-recommendation"></a>Vyloučení prostředku z doporučení
-
-V některých případech se prostředek bude zobrazovat jako špatný v souvislosti s konkrétním doporučením (a tím se sníží vaše zabezpečené skóre), i když byste to ještě neměli. Mohl by být opraven procesem, který není sledován nástrojem Security Center. Nebo možná vaše organizace rozhodla přijmout riziko pro konkrétní prostředek. 
-
-V takových případech můžete vytvořit pravidlo výjimky a zajistit, aby prostředek nebyl v budoucnu uvedený v seznamu prostředků, které nejsou v pořádku. Tato pravidla mohou zahrnovat popsaná odůvodnění, jak je popsáno níže.
-
-Další informace najdete v informacích [o vyloučení prostředků z doporučení a zabezpečeného skóre](exempt-resource.md).
-
-
-### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>Konektory AWS a GCP v Security Center přinášejí prostředí pro více cloudů
-
-Cloudové úlohy běžně pokrývá několik cloudových platforem, ale cloudové služby zabezpečení musí provádět stejné.
-
-Azure Security Center nyní chrání úlohy v Azure, Amazon Web Services (AWS) a Google Cloud Platform (GCP).
-
-Při připojování účtů AWS a GCP do Security Center se integruje AWS Security hub, GCP Security a Azure Security Center. 
-
-Další informace najdete v informacích o [připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md) a [připojení účtů GCP k Azure Security Center](quickstart-onboard-gcp.md).
-
-
-### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Sada doporučení pro ochranu úloh Kubernetes
-
-Aby se zajistilo, že Kubernetes úlohy jsou zabezpečené ve výchozím nastavení, Security Center přidávají doporučení pro posílení úrovně Kubernetes, včetně možností vynucení s řízením přístupu Kubernetes.
-
-Když jste nainstalovali doplněk Azure Policy pro Kubernetes do clusteru AKS, všechny požadavky na server rozhraní Kubernetes API se budou monitorovat proti předdefinované sadě osvědčených postupů předtím, než se trvale uloží do clusteru. Pak můžete nakonfigurovat, aby vynutil osvědčené postupy a nakonfigurovaly je pro budoucí úlohy.
-
-Můžete například stanovit, že by se neměly vytvářet privilegované kontejnery a všechny budoucí požadavky tak budou zablokovány.
-
-Další informace najdete v článku [osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
-
-
-### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu
-
-Používejte průběžný export ke streamování výstrah a doporučení v reálném čase do služby Azure Event Hubs, Log Analytics pracovních prostorů nebo Azure Monitor. Odtud můžete tato data integrovat s systémů Siem (například Azure Sentinel, Power BI, Azure Průzkumník dat a dalšími.
-
-Nástroje pro posouzení ohrožení zabezpečení Security Center v rámci "nadřazených" doporučení vracet informace o vašich prostředcích jako užitečná doporučení, jako je třeba ohrožení zabezpečení ve virtuálních počítačích. 
-
-Výsledky zabezpečení jsou nyní k dispozici pro export prostřednictvím průběžného exportu, když vyberete možnost doporučení a povolíte možnost **Zahrnout zjištění zabezpečení** .
-
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu" :::
-
-Související stránky:
-
-- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro virtuální počítače Azure](deploy-vulnerability-assessment-vm.md)
-- [Integrované řešení posouzení ohrožení zabezpečení Security Center pro bitové kopie Azure Container Registry](defender-for-container-registries-usage.md)
-- [Průběžný export](continuous-export.md)
-
-### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků
-
-Nezabezpečené konfigurace zabezpečení představují hlavní příčinu incidentů zabezpečení. Security Center má teď možnost pomáhat *zabránit* neúspěšně se konfigurací nových prostředků s ohledem na konkrétní doporučení. 
-
-Tato funkce vám může přispět k zabezpečení vašich úloh a ke stabilizaci zabezpečeného skóre.
-
-Vynucování zabezpečené konfigurace na základě konkrétního doporučení se nabízí ve dvou režimech:
-
-- Pomocí efektu **odepření** Azure Policy můžete zastavit vytváření špatných prostředků.
-
-- Pomocí možnosti **Vynutilit** můžete využít **DeployIfNotExist** efektu zásad Azure a automaticky opravovat prostředky, které nedodržují předpisy při tvorbě.
- 
-Tato možnost je k dispozici pro vybraná doporučení zabezpečení a nachází se v horní části stránky s podrobnostmi o prostředku.
-
-Další informace o tom, jak [zabránit v neoprávněných konfiguracích s doporučeními pro vymáhání](prevent-misconfigurations.md)
-
-###  <a name="network-security-group-recommendations-improved"></a>Vylepšení doporučení skupiny zabezpečení sítě
-
-Byla vylepšena následující doporučení zabezpečení související se skupinami zabezpečení sítě, aby se snížily některé výskyty falešně pozitivních hodnot.
-
-- Všechny síťové porty by se měly omezit na NSG přidružených k vašemu VIRTUÁLNÍmu počítači.
-- Porty pro správu by měly být uzavřeny na virtuálních počítačích
-- Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě
-- Podsítě by měly být přidružené ke skupině zabezpečení sítě.
-
-
-### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Doporučení AKS inverze Preview "pod" zásady zabezpečení by měly být definované v Kubernetes Services "
-
-Doporučení pro verzi Preview "pod zásadou zabezpečení by se měly definovat na Kubernetes Services", jak je popsáno v dokumentaci ke [službě Azure Kubernetes](../aks/use-pod-security-policies.md) .
-
-Funkce zásady zabezpečení pod (Preview) je nastavená pro vyřazení a nebude už dostupná po 15. říjnu 2020 ve prospěch Azure Policy pro AKS.
-
-Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
-
-
-### <a name="email-notifications-from-azure-security-center-improved"></a>Vylepšená e-mailová oznámení z Azure Security Center
-
-Vylepšili jsme následující oblasti e-mailů týkajících se výstrah zabezpečení: 
-
-- Přidání možnosti odesílání e-mailových oznámení o výstrahách pro všechny úrovně závažnosti
-- Přidali jsme možnost informovat uživatele o různých rolích Azure v rámci předplatného.
-- Ve výchozím nastavení oznamujeme, že vlastníci předplatného budou upozorňováni na výstrahy s vysokou závažností (s vysokou pravděpodobností, že se jedná o pravé porušení předpisů).
-- Odebrali jsme pole telefonní číslo ze stránky Konfigurace e-mailových oznámení.
-
-Další informace najdete v [Nastavení e-mailových oznámení pro výstrahy zabezpečení](security-center-provide-security-contact-details.md).
-
-
-### <a name="secure-score-doesnt-include-preview-recommendations"></a>Zabezpečené skóre nezahrnuje doporučení pro verzi Preview. 
-
-Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika.
-
-Nově zjištěné hrozby jsou v Security Center k dispozici nové Rady zabezpečení prostřednictvím nových doporučení. Pokud se chcete vyhnout nedarovaným změnám v zabezpečeném skóre a poskytnout období odkladu, ve kterém můžete prozkoumat nová doporučení předtím, než budou mít dopad na vaše skóre, doporučení označená jako **verze Preview** už nejsou zahrnutá do výpočtů zabezpečeného skóre. Měly by se pořád opravit všude, kde je to možné, takže po skončení období Preview budou přispět ke svému skóre.
-
-Doporučení **verze Preview** navíc nevykreslují prostředek "není v pořádku".
-
-Příklad doporučení verze Preview:
-
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
-
-[Přečtěte si další informace o zabezpečeném skóre](secure-score-security-controls.md).
-
-
-### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>Doporučení nyní obsahují indikátor závažnosti a interval aktuálnosti.
-
-Stránka s podrobnostmi pro doporučení nyní obsahuje indikátor intervalu aktuálnosti (kdykoli je to relevantní) a jasné zobrazení závažnosti doporučení.
-
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Stránka s doporučeními ukazující aktuálnost a závažnost":::

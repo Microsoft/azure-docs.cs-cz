@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649219"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175341"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -187,6 +187,7 @@ Pokud například obdržíte kód chyby "AADSTS50058", proveďte hledání [http
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp – použitá aplikace není schválenou aplikací pro podmíněný přístup. Aby uživatel mohl získat přístup, musí použít jednu z aplikací ze seznamu schválených aplikací. |
 | AADSTS53003 | BlockedByConditionalAccess – zásady podmíněného přístupu zablokovaly přístup. Zásady přístupu nepovolují vystavení tokenu. |
 | AADSTS53004 | ProofUpBlockedDueToRisk – uživatel musí před přístupem k tomuto obsahu dokončit proces registrace Multi-Factor Authentication. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování. |
+| AADSTS53011 | Uživatel zablokoval kvůli riziku pro domácího tenanta. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – uživatel nebo správce nesouhlasí s používáním aplikace s ID X. odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent – uživatel odmítl udělit souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|

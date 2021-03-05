@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752649"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174576"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
 
@@ -34,6 +34,7 @@ Platforma Microsoft identity podporuje [udělení přihlašovacích údajů pro 
 > * Účty, které nemají hesla, se nemůžou přihlásit přes ROPC. Pro tento scénář doporučujeme místo toho použít jiný tok pro aplikaci.
 > * Pokud uživatelé potřebují k přihlášení k aplikaci použít [vícefaktorové ověřování (MFA)](../authentication/concept-mfa-howitworks.md) , místo toho se zablokují.
 > * ROPC se ve scénářích [federace hybridních identit](../hybrid/whatis-fed.md) nepodporují (například Azure AD a ADFS používané k ověřování místních účtů). Pokud jsou uživatelé na celé stránce přesměrováni na místní zprostředkovatele identity, Azure AD nemůže testovat uživatelské jméno a heslo proti tomuto zprostředkovateli identity. [Předávací ověřování](../hybrid/how-to-connect-pta.md) je však podporováno v ROPC.
+> * Výjimkou scénáře federace hybridních identit by byl následující: zásady zjišťování domovské sféry s AllowCloudPasswordValidation nastavenou na hodnotu TRUE umožní, aby tok ROPC fungoval pro federované uživatele, když se místní heslo synchronizuje do cloudu. Další informace najdete v tématu [Povolení přímého ověřování ROPC pro federované uživatele pro starší verze aplikací](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 

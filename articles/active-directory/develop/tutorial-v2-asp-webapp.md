@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 03ffea7688207b56a683d3afcbe49bf95ea00708
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 38def2b5af3a5f0f9a32c2b681bd0ee95ca44086
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103120"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174678"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -141,8 +141,8 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
                     Scope = OpenIdConnectScope.OpenIdProfile,
-                    // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseType.IdToken,
+                    // ResponseType is set to request the code id_token - which contains basic information about the signed-in user
+                    ResponseType = OpenIdConnectResponseType.CodeIdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter

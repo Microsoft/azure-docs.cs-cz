@@ -139,7 +139,7 @@
     - name: Konfigurace
       items:
         - name: Azure CLI
-          href: /cli/azure/appconfig?view=azure-cli-latest
+          href: /cli/azure/appconfig
         - name: Poskytovatel .NET Core
           href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: Tvůrce .NET Frameworku

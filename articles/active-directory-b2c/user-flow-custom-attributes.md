@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661200"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174814"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "98661200"
 
 V článku [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad](configure-user-input.md) se dozvíte, jak používat předdefinované [atributy profilů uživatelů](user-profile-attributes.md). V tomto článku povolíte vlastní atribut v adresáři Azure Active Directory B2C (Azure AD B2C). Později můžete použít nový atribut jako vlastní deklaraci identity v [uživatelských tocích](user-flow-overview.md) nebo ve [vlastních zásadách](custom-policy-get-started.md) současně.
 
-Adresář Azure AD B2C obsahuje [integrovanou sadu atributů](user-profile-attributes.md). Často je však potřeba vytvořit vlastní atributy pro správu konkrétního scénáře, například když:
+Součástí vašeho adresáře Azure AD B2C je [předdefinovaná sada atributů](user-profile-attributes.md). Často je však potřeba vytvořit vlastní atributy pro správu konkrétního scénáře, například když:
 
 * Zákaznická aplikace musí zachovat atribut **LoyaltyId** .
 * Zprostředkovatel identity má jedinečný identifikátor uživatele **uniqueUserGUID**, který musí být trvale uložený.
@@ -97,22 +97,27 @@ Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a *
 
 1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element ClaimsProviders. Přidejte nový ClaimsProvider do elementu ClaimsProviders.
-1. Nahraďte `ApplicationObjectId` ID objektu, který jste předtím nahráli. Potom nahraďte `ClientId` ID aplikace, které jste předtím nahráli v níže uvedeném fragmentu kódu.
+1. Vložte **ID aplikace** , které jste dříve nahráli, mezi otevírací `<Item Key="ClientId">` a ukončovací `</Item>` prvky.
+1. Vložte **identifikátor objektu aplikace** , který jste nahráli dříve, mezi otevírací `<Item Key="ApplicationObjectId">` a ukončovací `</Item>` prvky.
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Azure Active Directory</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="AAD-Common">
-          <Metadata>
-            <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
-            <Item Key="ClientId"></Item>
-            <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
-            <Item Key="ApplicationObjectId"></Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles> 
-    </ClaimsProvider>
+    <!-- 
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="AAD-Common">
+            <Metadata>
+              <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
+              <Item Key="ClientId"></Item>
+              <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
+              <Item Key="ApplicationObjectId"></Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles> 
+      </ClaimsProvider>
+    <!-- 
+    </ClaimsProviders> -->
     ```
 
 ## <a name="upload-your-custom-policy"></a>Nahrání vlastních zásad
@@ -132,7 +137,7 @@ Mezi integrovanými a vlastními zásadami se sdílí stejné atributy rozšíř
 
 Tyto atributy můžete vytvořit pomocí uživatelského rozhraní portálu před nebo po jejich použití ve vlastních zásadách. Když vytvoříte atribut **loyaltyId** na portálu, je nutné na něj odkazovat následujícím způsobem:
 
-|Name     |Použito v |
+|Název     |Použito v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|

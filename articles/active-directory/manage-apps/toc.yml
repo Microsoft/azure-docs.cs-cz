@@ -34,7 +34,13 @@
       href: application-proxy-add-on-premises-application.md
 - name: ukázky
   items:
-    - name: Ukázky Azure PowerShellu pro proxy aplikací
+    - name: Ukázky prostředí PowerShell pro správu aplikací
+      items:
+        - name: Přehled ukázek správy aplikací
+          href: app-management-powershell-samples.md
+        - name: 'Export všech registrací, tajných kódů a certifikátů aplikací'
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: Ukázky PowerShellu proxy aplikací
       href: application-proxy-powershell-samples.md
 - name: Koncepty
   expanded: true

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120738"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174661"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -119,18 +119,23 @@ Element **Conditions** obsahuje následující element:
 
 #### <a name="precondition"></a>Předběžná podmínka
 
+Kroky orchestrace můžou být podmíněně spouštěny na základě předběžných podmínek definovaných v kroku orchestrace. Existují dva typy předběžných podmínek:
+ 
+- **Existují deklarace identity** – určuje, jestli se mají dělat akce, pokud zadané deklarace identity existují v aktuálním kontejneru deklarací identity uživatele.
+- **Deklarace identity Equals** – určuje, že akce by se měly provádět, pokud existuje zadaná deklarace identity a její hodnota je rovna zadané hodnotě. Tato kontrolu provádí ordinální porovnávání rozlišující velká a malá písmena. Při kontrole typu logické deklarace identity použijte `True` nebo `False` .
+
 Prvek **předběžné podmínky** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro tuto podmínku. Hodnota může být **ClaimsExist**, která určuje, jestli se mají akce provádět, pokud zadané deklarace identity existují v aktuální sadě deklarací identity nebo **ClaimEquals**, která určuje, jestli se mají akce provádět, pokud existuje zadaná deklarace identity a její hodnota se rovná zadané hodnotě. |
-| `ExecuteActionsIf` | Ano | Použijte test true nebo false a rozhodněte se, zda by měly být provedeny akce v předběžné podmínce. |
+| `ExecuteActionsIf` | Ano | Použijte `true` test nebo a `false` Rozhodněte se, zda by měly být provedeny akce v předběžné podmínce. |
 
 Prvky **předběžné podmínky** obsahují následující prvky:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Hodnota | 1: n | ClaimTypeReferenceId, pro který se má dotazovat. Další element Value obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
+| Hodnota | 1:2 | Identifikátor typu deklarace. Deklarace identity už je definovaná v části schématu deklarací v souboru zásad nebo v nadřazeném souboru zásad. Pokud je předběžnou podmínkou typ `ClaimEquals` , druhý `Value` prvek obsahuje hodnotu, která má být kontrolována. |
 | Akce | 1:1 | Akce, která má být provedena, pokud je splněna kontrolní podmínka v kroku orchestrace. Pokud `Action` je hodnota nastavená na `SkipThisOrchestrationStep` , přidružený `OrchestrationStep` by neměl být proveden. |
 
 #### <a name="preconditions-examples"></a>Příklady předběžných podmínek
@@ -189,7 +194,7 @@ Předběžné podmínky mohou kontrolovat více předběžných podmínek. Násl
 </OrchestrationStep>
 ```
 
-## <a name="identity-provider-selection"></a>Výběr zprostředkovatele identity
+## <a name="claims-provider-selection"></a>Výběr zprostředkovatele deklarací identity
 
 Výběr zprostředkovatele identity umožňuje uživatelům vybrat akci ze seznamu možností. Výběr zprostředkovatele identity se skládá z páru dvou kroků orchestrace: 
 
@@ -215,7 +220,7 @@ Element **claimsproviderselection.** obsahuje následující atributy:
 | TargetClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v dalším kroku orchestrace výběru zprostředkovatele deklarací. Tento atribut nebo atribut ValidationClaimsExchangeId musí být zadán, ale ne oba. |
 | ValidationClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v aktuálním kroku Orchestration pro ověření výběru zprostředkovatele deklarací identity. Tento atribut nebo atribut TargetClaimsExchangeId musí být zadán, ale ne oba. |
 
-### <a name="claimsproviderselection-example"></a>Příklad Claimsproviderselection.
+### <a name="claims-provider-selection-example"></a>Příklad výběru zprostředkovatele deklarací identity
 
 V následujícím kroku orchestrace se uživatel může přihlásit přes Facebook, LinkedIn, Twitter, Google nebo místní účet. Pokud uživatel vybere jednoho ze zprostředkovatelů sociálních identit, spustí se druhý krok orchestrace s vybraným výměnou deklarací identity zadaným v `TargetClaimsExchangeId` atributu. Druhý krok orchestrace přesměruje uživatele na zprostředkovatele sociální identity, aby dokončil proces přihlášení. Pokud se uživatel rozhodne přihlásit pomocí místního účtu, Azure AD B2C zůstane na stejném kroku orchestrace (stejná přihlašovací stránka nebo přihlašovací stránka) a přeskočí druhý krok Orchestration.
 

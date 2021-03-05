@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039dd8b6fa0769b6798630e666bfbf6de48ccf14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649236"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175364"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Podpora prohlížeče pro FIDO2 ověřování s nehesly
 
@@ -26,12 +26,14 @@ Azure Active Directory povoluje použití [klíčů zabezpečení FIDO2](./conce
 
 Tato tabulka ukazuje podporu ověřování Azure Active Directory (Azure AD) a účtů Microsoft (MSA). Účty Microsoft vytváří uživatelé pro služby, jako je Xbox, Skype nebo Outlook.com. Mezi podporované typy zařízení patří **USB**, bezkontaktní komunikace (**NFC**) a Bluetooth s nízkou spotřebou (v **poli).**
 
-|  | Chrome |  |  | Edge |  |  | Firefox |  |  |
+| Operační systém | Chrome | Chrome  | Chrome | Edge | Edge | Edge | Firefox | Firefox | Firefox |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | | USB | NFC | Bulk | USB | NFC | Bulk | USB | NFC | Bulk |
 | **Windows**  | ![Chrome podporuje rozhraní USB ve Windows pro účty AAD.][y] | ![Chrome podporuje NFC ve Windows pro účty AAD.][y] | ![Chrome podporuje tabulku v systému Windows pro účty AAD.][y] | ![Edge podporuje USB ve Windows pro účty AAD.][y] | ![Edge podporuje NFC v systému Windows pro účty AAD.][y] | ![Edge podporuje tabulku v systému Windows pro účty AAD.][y] | ![Firefox podporuje USB ve Windows pro účty AAD.][y] | ![Firefox podporuje NFC ve Windows pro účty AAD.][y] | ![Firefox podporuje tabulku ve Windows pro účty AAD.][y] |
 | **macOS**  | ![Chrome podporuje rozhraní USB v macOS pro účty AAD.][y] | ![Chrome nepodporuje NFC v macOS pro účty AAD.][n] | ![Chrome nepodporuje tabulku macOS pro účty AAD.][n] | ![Edge podporuje USB v macOS pro účty AAD.][y] | ![Edge nepodporuje NFC v macOS pro účty AAD.][n] | ![Edge nepodporuje tabulku macOS pro účty AAD.][n] | ![Firefox nepodporuje USB v macOS pro účty AAD.][n] | ![Firefox nepodporuje NFC v macOS pro účty AAD.][n] | ![Firefox nepodporuje tabulku macOS pro účty AAD.][n] |
 | **Linux**  | ![Chrome podporuje rozhraní USB v systému Linux pro účty AAD.][y] | ![Chrome nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Chrome nepodporuje tabulku v systému Linux pro účty AAD.][n] | ![Edge nepodporuje pro účty AAD služby USB v systému Linux.][n] | ![Edge nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Edge nepodporuje tabulku v systému Linux pro účty AAD.][n] | ![Firefox nepodporuje pro účty AAD služby USB v systému Linux.][n] | ![Firefox nepodporuje NFC v systémech Linux pro účty AAD.][n] | ![Firefox nepodporuje tabulku v systému Linux pro účty AAD.][n] |
+
+
 
 ## <a name="unsupported-browsers"></a>Nepodporované prohlížeče
 

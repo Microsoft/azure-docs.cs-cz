@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558424"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175154"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -231,7 +231,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
     Nahraďte `<app-name>` názvem použitým dříve v `az webapp up` příkazu.
 
-    Pomocí příkazu se můžete střídavě připojit k relaci SSH [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . V systému Windows tento příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.18.0 nebo vyšší.
+    Pomocí příkazu se můžete střídavě připojit k relaci SSH [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) . V systému Windows tento příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.18.0 nebo vyšší.
 
     Pokud se nemůžete připojit k relaci SSH, aplikaci se nepovedlo spustit. Podrobnosti [najdete v diagnostických protokolech](#6-stream-diagnostic-logs) . Pokud jste například v předchozí části nevytvořili potřebná nastavení aplikace, budou tyto protokoly označovat `KeyError: 'DBNAME'` .
 

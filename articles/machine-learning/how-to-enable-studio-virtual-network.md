@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559535"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171540"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -39,8 +39,7 @@ Podívejte se na další články v této sérii:
 > [!IMPORTANT]
 > Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__, například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) a seznamte se s běžnými scénáři a architekturou virtuální sítě.
 
@@ -107,7 +106,6 @@ V následující tabulce jsou popsány důvody, proč je nutné povolit spravova
 >
 > Pokud chcete tento problém vyřešit, odeberte účet úložiště z virtuální sítě a pak ho přidejte zpátky do virtuální sítě.
 
-
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Udělení přístupu ke spravované identitě spravovanému pracovnímu __prostoru k__ privátnímu odkazu na úložiště
 
 Pokud váš účet úložiště Azure používá privátní koncový bod, musíte tomuto pracovnímu prostoru udělit přístup ke **čtečce** identit spravovanému pracovním prostorem. Další informace najdete v předdefinované roli [čtenáře](../role-based-access-control/built-in-roles.md#reader) . 
@@ -162,7 +160,7 @@ Měli byste taky [Povolit spravované ověřování identity](#configure-datasto
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek je volitelnou součástí řady virtuálních sítí se čtyřmi částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
+Tento článek je 5. část řady virtuálních sítí s pěti částmi. Další informace o tom, jak zabezpečit virtuální síť, najdete v dalších článcích:
 
 * [Část 1: Přehled virtuální sítě](how-to-network-security-overview.md)
 * [Část 2: zabezpečení prostředků pracovního prostoru](how-to-secure-workspace-vnet.md)

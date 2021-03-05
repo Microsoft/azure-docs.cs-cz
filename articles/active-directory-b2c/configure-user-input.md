@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb7cba1de280793a1ca98687c71355c1ea702d4c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e76fe1c26f428403a79a3605b7a41f761fe2a4bb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585220"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171616"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Přidání atributů uživatele a přizpůsobení uživatelského vstupu v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "97585220"
 
 V tomto článku shromáždíte nový atribut během cesty pro registraci v Azure Active Directory B2C (Azure AD B2C). Získáte město uživatele, nakonfigurujete ho jako rozevírací seznam a definujete, jestli je potřeba poskytnout.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -198,7 +198,7 @@ Chcete-li shromáždit deklaraci identity města během registrace, je nutné ji
 </ClaimsProvider>
 ```
 
-Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` technického profilu. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do technického profilu výstupní deklaraci identity `SelfAsserted-ProfileUpdate` . Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
+Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` technického profilu. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do technického profilu deklarace vstupů a výstupů `SelfAsserted-ProfileUpdate` . Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
 
 ```xml
 <ClaimsProvider>
@@ -206,6 +206,9 @@ Pokud chcete po počátečním přihlášení ke federovanému účtu shromážd
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
     <TechnicalProfile Id="SelfAsserted-Social">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName"/>
@@ -215,6 +218,9 @@ Pokud chcete po počátečním přihlášení ke federovanému účtu shromážd
     </TechnicalProfile>
     <!--Edit profile page-->
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />

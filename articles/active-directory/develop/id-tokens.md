@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755920"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175384"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -55,7 +55,7 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 |-----|--------|-------------|
 |`typ` | Řetězec – vždycky "JWT" | Označuje, že token je token JWT.|
 |`alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
-|`kid` | Řetězec | Kryptografický otisk veřejného klíče, který se používá k podepsání tohoto tokenu. Vygenerováno v 1.0 i v 2.0 `id_tokens` . |
+|`kid` | Řetězec | Kryptografický otisk veřejného klíče, který slouží k ověření tohoto tokenu. Vygenerováno v 1.0 i v 2.0 `id_tokens` . |
 |`x5t` | Řetězec | Stejné (používá se a hodnota) jako `kid` . Toto je však starší deklarace identity vygenerované pouze v 1.0 `id_tokens` pro účely kompatibility. |
 
 ### <a name="payload-claims"></a>Deklarace datové části

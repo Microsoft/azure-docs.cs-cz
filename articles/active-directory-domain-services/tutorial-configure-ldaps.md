@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256538"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174715"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -110,7 +110,7 @@ Aby bylo možné používat zabezpečený protokol LDAP, je síťový provoz za�
 * **Privátní** klíč se použije ve spravované doméně.
     * Tento privátní klíč se používá k *dešifrování* zabezpečeného provozu LDAP. Privátní klíč by měl být použit pouze pro spravovanou doménu a není široce distribuován do klientských počítačů.
     * Certifikát, který obsahuje privátní klíč, používá *.* Formát souboru PFX.
-    * Šifrovací algoritmus pro certifikát musí být *TripleDES-SHA1*.
+    * Při exportování certifikátu je nutné zadat šifrovací algoritmus *TripleDES-SHA1* . To platí jenom pro soubor. pfx a nemá vliv na algoritmus používaný samotným certifikátem. Všimněte si, že možnost *TripleDES-SHA1* je k dispozici pouze od verze Windows Server 2016.
 * **Veřejný** klíč se použije pro klientské počítače.
     * Tento veřejný klíč slouží k *šifrování* zabezpečeného přenosu LDAP. Veřejný klíč lze distribuovat do klientských počítačů.
     * Certifikáty bez privátního klíče používají *.* Formát souboru CER.
@@ -151,6 +151,11 @@ Předtím, než budete moci použít digitální certifikát vytvořený v před
 1. Vzhledem k tomu, že tento certifikát slouží k dešifrování dat, byste měli pečlivě řídit přístup. K ochraně použití certifikátu lze použít heslo. Bez správného hesla se certifikát nedá použít na službu.
 
     Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *.* Soubor certifikátu PFX. Šifrovací algoritmus musí být *TripleDES-SHA1*. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
+
+    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
+
+    ![Snímek obrazovky s šifrováním hesla](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. Na stránce **soubor k exportu** zadejte název souboru a umístění, kam chcete certifikát exportovat, například *C:\Users\accountname\azure-AD-DS.pfx*. Poznamenejte si heslo a umístění *. Soubor PFX* jako tyto informace by byl nutný v následujících krocích.
 1. Na stránce Kontrola vyberte **Dokončit** a exportujte certifikát do *.* Soubor certifikátu PFX. Po úspěšném exportu certifikátu se zobrazí potvrzovací dialogové okno.
 1. Konzolu MMC nechte otevřenou pro použití v následující části.
@@ -240,7 +245,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     | Protokol                          | TCP          |
     | Akce                            | Povolit        |
     | Priorita                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Název                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647434"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175426"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -40,7 +40,8 @@ Při vytváření registrace aplikace postupujte podle těchto kroků:
 1. Máte-li přístup k více klientům, použijte v horní nabídce možnost **adresář + filtr předplatného** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
-1. Zadejte **název** vaší aplikace. Uživatelé vaší aplikace můžou tento název zobrazit. Později ji můžete změnit.
+1. Zadejte zobrazovaný **název** vaší aplikace. Uživatelé vaší aplikace se můžou při používání aplikace zobrazit zobrazované jméno, například během přihlašování.
+    Zobrazovaný název můžete kdykoli změnit a několik registrací aplikací může sdílet stejný název. Automatické vygenerované ID aplikace (klienta) registrace aplikace, ne jeho zobrazované jméno, jednoznačně identifikuje vaši aplikaci v rámci platformy identity.
 1. Určete, kdo může používat aplikaci, někdy označovanou jako *přihlášená cílová skupina*.
 
     | Podporované typy účtu | Popis |

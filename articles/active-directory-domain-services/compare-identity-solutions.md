@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: justinha
-ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620184"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174627"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -78,7 +78,7 @@ Následující tabulka popisuje některé funkce, které možná budete potřebo
 | **Zabezpečený LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **Čtení protokolu LDAP**                                     | **&#x2713;** | **&#x2713;** |
 | **Zápis LDAP**                                    | **&#x2713;** (ve spravované doméně) | **&#x2713;** |
-| **Geograficky distribuovaná nasazení**                   | **&#x2715;** | **&#x2713;** |
+| **Geograficky distribuovaná nasazení**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure služba AD DS a Azure AD
 
@@ -110,7 +110,7 @@ U zařízení připojených k Azure služba AD DS můžou aplikace používat pr
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Zařízení, které ovládá            | Azure AD                                            | Spravovaná doména Azure služba AD DS                                                |
 | Reprezentace v adresáři | Objekty zařízení v adresáři služby Azure AD            | Objekty počítače ve spravované doméně Azure služba AD DS                        |
-| Ověřování                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
+| Authentication                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
 | Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
 | Sítě                      | Funguje přes Internet                             | Musí být připojen k virtuální síti, ve které je nasazena spravovaná doména, nebo s partnerským vztahem. |
 | Skvělé pro...                    | Mobilní zařízení koncových uživatelů nebo stolních počítačů                  | Serverové virtuální počítače nasazené v Azure                                              |

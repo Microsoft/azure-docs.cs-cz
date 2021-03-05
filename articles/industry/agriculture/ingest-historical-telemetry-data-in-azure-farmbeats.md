@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak ingestovat historická data telemetrie
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656780"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173745"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -19,7 +19,7 @@ Tento článek popisuje, jak ingestovat historická data ze senzorů do Azure Fa
 
 Běžným scénářem v FarmBeats je příjem historických dat z prostředků Internet věcí (IoT), jako jsou zařízení a senzory. Můžete vytvářet metadata pro zařízení a senzory a následně ingestovat historická data do FarmBeats v kanonickém formátu.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než budete pokračovat v tomto článku, ujistěte se, že jste nainstalovali FarmBeats a shromáždili historická data ze svých zařízení IoT. Musíte taky povolit partnerský přístup, jak je uvedeno v následujících krocích.
 

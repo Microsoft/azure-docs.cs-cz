@@ -4,20 +4,20 @@ description: Tento článek popisuje, jak vygenerovat mapy v Azure FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709058"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173860"
 ---
 # <a name="generate-maps"></a>Generování map
 
 Pomocí Azure FarmBeats můžete vygenerovat následující mapy pomocí satelitních snímků a datových vstupů ze senzorů. Pomocí map se můžete podívat na zeměpisnou polohu vaší farmy a určit vhodné umístění pro vaše zařízení.
 
   - **Mapa umístění senzoru**: poskytuje doporučení, kolik senzorů se má použít a kam je umístit na farmu.
-  - **Mapa satelitních**indexů: zobrazuje index vegetativní a vodní index pro farmu.
+  - **Mapa satelitních** indexů: zobrazuje index vegetativní a vodní index pro farmu.
   - **Heatmapu vlhkosti půdy**: zobrazuje distribuci vlhkosti půdy nezavádějícími satelitní data a data senzorů.
 
 ## <a name="sensor-placement-map"></a>Mapa umístění senzoru
@@ -54,11 +54,11 @@ Tato část podrobně popisuje postupy pro vytváření map umístění senzorů
 Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
-2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **umístění snímače** .
+2. Vyberte **vytvořit mapy** a v rozevírací nabídce vyberte **umístění snímače** .
 
     ![Vybrat umístění senzoru](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
 
-3. Po výběru **umístění senzoru**se zobrazí okno **umístění senzoru** .
+3. Po výběru **umístění senzoru** se zobrazí okno **umístění senzoru** .
 
     ![Okno umístění senzorů](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
 
@@ -86,11 +86,11 @@ Postupujte takto:
 
     ![Okno filtru](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
+3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum** a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
   Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
 4. Procházejte seznamem map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
 5. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
-6. Vyberte **Stáhnout**a Stáhněte soubor. JSON pro souřadnice snímače.
+6. Vyberte **Stáhnout** a Stáhněte soubor. JSON pro souřadnice snímače.
 
     ![Náhled mapy umístění senzorů](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
 
@@ -113,11 +113,11 @@ FarmBeats poskytuje možnost generovat NDVI, Enhanced vegetativní index (EVI) a
 Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky.
-2. Vyberte **vytvořit mapy**a v rozevírací nabídce vyberte **satelitové indexy** .
+2. Vyberte **vytvořit mapy** a v rozevírací nabídce vyberte **satelitové indexy** .
 
     ![Výběr satelitních indexů z rozevírací nabídky](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
 
-3. Po výběru **satelitních indexů**se zobrazí okno **satelitní indexy** .
+3. Po výběru **satelitních indexů** se zobrazí okno **satelitní indexy** .
 
     ![Okno satelitních indexů](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
 
@@ -146,7 +146,7 @@ Postupujte takto:
 
     ![Okno filtru zobrazuje kritéria hledání.](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
+3. Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum** a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit.
   Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
 
 4. Procházejte seznamem map, které jsou k dispozici, pomocí navigačních panelů na konci stránky.
@@ -178,18 +178,18 @@ Před pokusem o vygenerování heatmapu vlhkosti v půdě splnění následujíc
 Postupujte takto:
 
 1. Na domovské stránce přejděte na **mapy** z levé navigační nabídky a zobrazte stránku **mapy** .
-2. Vyberte **vytvořit mapy**a z rozevírací nabídky vyberte **vlhkost v půdě** .
+2. Vyberte **vytvořit mapy** a z rozevírací nabídky vyberte **vlhkost v půdě** .
 
     ![Výběr vlhkosti půdy z rozevírací nabídky](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
 
-3. Po výběru **vlhkosti půdy**se zobrazí okno **vlhkosti půdy** .
+3. Po výběru **vlhkosti půdy** se zobrazí okno **vlhkosti půdy** .
 
     ![Okno vlhkosti půdy](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 4. Vyberte farmu z rozevírací nabídky **farma** .
    Chcete-li vyhledat a vybrat farmu, můžete buď přejít z rozevíracího seznamu, nebo zadat název farmy v rozevírací nabídce **Vybrat farmu** .
 5. V rozevírací nabídce **Vybrat měření snímače vlhkosti** vyberte míru vlhkosti půdního senzoru (hloubku), pro kterou chcete vytvořit mapu.
-Pokud chcete najít míru senzoru, přečtěte si **snímače**a vyberte jakýkoliv senzor vlhkosti půdy. Pak v části **vlastnosti senzoru** použijte hodnotu v poli **Název míry**.
+Pokud chcete najít míru senzoru, přečtěte si **snímače** a vyberte jakýkoliv senzor vlhkosti půdy. Pak v části **vlastnosti senzoru** použijte hodnotu v poli **Název míry**.
 6. Pokud chcete vygenerovat mapu pro **dnešek** nebo **Tento týden**, vyberte jednu z možností.
 7. Chcete-li vygenerovat mapu pro vlastní rozsah dat, vyberte možnost **Vybrat rozsah kalendářních dat**. Zadejte počáteční a koncové datum, pro které chcete vygenerovat heatmapu vlhkosti půdy.
 8. Vyberte **Generovat mapy**.
@@ -213,8 +213,8 @@ Postupujte takto:
 
     ![Výběr filtru z levé navigační části](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum**a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit. Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
-4. Vyberte ikonu **řazení** vedle záhlaví tabulky, která se mají seřadit podle **farmy**, **data**, **Vytvoření**, **ID úlohy**a **typu úlohy**.
+3.  Z rozevíracích nabídek vyberte hodnoty **typ**, **Datum** a **název** . Pak vyberte **použít** a vyhledejte mapu, kterou chcete zobrazit. Datum, kdy byla úloha vytvořena, se zobrazí ve formátu type_farmname_YYYY-MM-DD.
+4. Vyberte ikonu **řazení** vedle záhlaví tabulky, která se mají seřadit podle **farmy**, **data**, **Vytvoření**, **ID úlohy** a **typu úlohy**.
 5. Procházejte seznamem map dostupných pomocí navigačních tlačítek na konci stránky.
 6. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
 7. V rozevírací nabídce vyberte **Stáhnout** a vyberte formát pro stažení. Mapa se stáhne a uloží do zadané složky.

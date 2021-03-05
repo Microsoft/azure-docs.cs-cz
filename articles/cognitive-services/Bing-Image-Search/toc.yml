@@ -69,7 +69,7 @@
     - name: Referenční informace k Azure PowerShellu
       href: /powershell/module/azurerm.cognitiveservices/
     - name: Referenční informace k Azure CLI
-      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
     - name: Sady SDK
       items:
         - name: .NET

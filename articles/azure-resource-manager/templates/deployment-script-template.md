@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175647"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -141,7 +141,7 @@ Podrobnosti hodnoty vlastnosti:
 - `azPowerShellVersion`/`azCliVersion`: Zadejte verzi modulu, která se má použít. Podívejte se na seznam [podporovaných verzí Azure PowerShell](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Podívejte se na seznam [podporovaných verzí rozhraní příkazového řádku Azure CLI](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
-  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s podporovanými verzemi.
+  > Skript nasazení používá dostupné image CLI z Microsoft Container Registry (MCR). K certifikaci bitové kopie rozhraní příkazového řádku pro skript nasazení trvá zhruba jeden měsíc. Nepoužívejte verze rozhraní příkazového řádku, které byly vydány do 30 dnů. Data vydání imagí najdete v [poznámkách k verzi Azure CLI](/cli/azure/release-notes-azure-cli). Pokud se používá Nepodporovaná verze, zobrazí se chybová zpráva s podporovanými verzemi.
 
 - `arguments`: Zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 Pomocí Azure CLI můžete spravovat skripty pro nasazení v rámci předplatného nebo oboru skupiny prostředků:
 
-- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete): odstranění skriptu nasazení.
-- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list): vypíše všechny skripty nasazení.
-- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show): načtení skriptu nasazení.
-- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log): zobrazí protokoly skriptu nasazení.
+- [AZ Deployment-Scripts Delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete): odstranění skriptu nasazení.
+- [AZ Deployment-Scripting list](/cli/azure/deployment-scripts#az-deployment-scripts-list): vypíše všechny skripty nasazení.
+- [AZ Deployment-Scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show): načtení skriptu nasazení.
+- [AZ Deployment-skripty show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): zobrazí protokoly skriptu nasazení.
 
 Výstup příkazu list je podobný následujícímu:
 

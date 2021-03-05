@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: c83a1050035fc40912d0242a9c5fe2498b299ebd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 56aa7c41934506c7de0c8d5cebe84eb5a6bc2164
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k mému IBISWorld
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat IBISWorld s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -83,26 +83,26 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://my.ibisworld.com/account/login`
+   * Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , vyžádejte si adresu URL z IBISWorld a pak do textového pole **přihlašovací adresa URL** zadejte adresu URL.
+   
+   * Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte do textového pole **stav přenosu** adresu URL `RPID=http://fedlogin.ibisworld.com` . Textové pole pro **přihlašovací adresu URL** nechte prázdné.
 
 1. Klikněte na **Uložit**.
 
 1. Moje aplikace IBISWorld očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. Kromě výše očekává moje aplikace IBISWorld několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
-    | --------------- | --------- |
-    | Oddělení | User. Department |
-    | language | User. preferredlanguage |
-    | Android | User. telephoneNumber |
-    | title | User. jobtitle |
-    | UserID | User. ČísloZaměstnance |
-    | country | uživatel. Country |
+   | Název | Zdrojový atribut|
+   | --------------- | --------- |
+   | Oddělení | User. Department |
+   | language | User. preferredlanguage |
+   | Android | User. telephoneNumber |
+   | title | User. jobtitle |
+   | UserID | User. ČísloZaměstnance |
+   | country | uživatel. Country |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -111,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -123,13 +123,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k mému IBISWorld.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Moje IBISWorld**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -151,7 +151,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici IBISWorld, měli byste se automaticky přihlásit k mému IBISWorld, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

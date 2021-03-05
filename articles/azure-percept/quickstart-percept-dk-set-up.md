@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098243"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175817"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Nastavte si Azure Percept DK a nasaďte svůj první model AI.
 
@@ -182,7 +182,7 @@ Pokud chcete vytvořit nové předplatné, postupujte podle [těchto kroků](htt
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Zobrazení zařízení v Azure Percept studiu a nasazení běžných předem připravených ukázkových aplikací
 
-1. Zobrazte si seznam zařízení na stránce s přehledem Azure Percept. Stránka s přehledem Azure Percept je váš bod spuštění pro přístup k mnoha různým pracovním postupům pro počáteční i pokročilý model a vývoj řešení AI.
+1. Zobrazte si seznam zařízení na stránce s přehledem [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) . Stránka s přehledem Azure Percept je váš bod spuštění pro přístup k mnoha různým pracovním postupům pro počáteční i pokročilý model a vývoj řešení AI.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Zobrazte si seznam zařízení.":::
     
