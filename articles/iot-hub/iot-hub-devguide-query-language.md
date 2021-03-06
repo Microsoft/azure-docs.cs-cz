@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218362"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
 
@@ -160,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Moduly s dvojitými dotazy
 
-Dotazování na vlákna modulu je podobné jako dotazování na vlákna zařízení, ale použití jiné kolekce nebo oboru názvů. místo ze **zařízení**se můžete dotazovat ze **zařízení. moduly**:
+Dotazování na vlákna modulu je podobné jako dotazování na vlákna zařízení, ale použití jiné kolekce nebo oboru názvů. místo ze **zařízení** se můžete dotazovat ze **zařízení. moduly**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -234,7 +234,7 @@ Objekt dotazu zpřístupňuje více **dalších** hodnot v závislosti na možno
 ### <a name="limitations"></a>Omezení
 
 > [!IMPORTANT]
-> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> Výsledkem dotazu může být několik minut zpoždění s ohledem na nejnovější hodnoty v nevlákenách zařízení. Pokud se dotazuje jednotlivé zařízení na základě ID, použijte [REST API získat dvojitou](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin). Toto rozhraní API vždycky vrátí nejnovější hodnoty a má vyšší omezení omezování. REST API můžete vystavit přímo nebo použít ekvivalentní funkce v jedné ze [sad SDK služby Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
 V současné době jsou porovnání podporovány pouze mezi primitivními typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporována pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
 
@@ -316,7 +316,7 @@ V současné době dotazy na **Devices.Jobs** nepodporují:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Základy dotazu IoT Hub
 
-Každý IoT Hub dotaz se skládá z klauzulí SELECT a FROM s volitelnými klauzulemi WHERE a GROUP BY. Každý dotaz se spouští na kolekci dokumentů JSON, například na vlákna zařízení. Klauzule FROM označuje kolekci dokumentů, na které se má iterovat (**zařízení**, **zařízení. moduly**nebo **Devices.Jobs**). Pak je použit filtr v klauzuli WHERE. U agregací jsou výsledky tohoto kroku seskupené podle zadání v klauzuli GROUP BY. Pro každou skupinu se vygeneruje řádek, jak je uvedeno v klauzuli SELECT.
+Každý IoT Hub dotaz se skládá z klauzulí SELECT a FROM s volitelnými klauzulemi WHERE a GROUP BY. Každý dotaz se spouští na kolekci dokumentů JSON, například na vlákna zařízení. Klauzule FROM označuje kolekci dokumentů, na které se má iterovat (**zařízení**, **zařízení. moduly** nebo **Devices.Jobs**). Pak je použit filtr v klauzuli WHERE. U agregací jsou výsledky tohoto kroku seskupené podle zadání v klauzuli GROUP BY. Pro každou skupinu se vygeneruje řádek, jak je uvedeno v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>

@@ -25,7 +25,7 @@
     - name: Řešení potíží se službou Internet Analyzer
       href: troubleshoot.md
     - name: Referenční informace k CLI služby Internet Analyzer
-      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog

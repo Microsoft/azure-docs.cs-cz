@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182855"
+ms.locfileid: "102218481"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -130,9 +130,11 @@ Zatížení může vyžadovat rozdělení uzlů clusteru do samostatných fondů
 #### <a name="limitations"></a>Omezení
 
 * Všechny podsítě přiřazené k nodepools musí patřit do stejné virtuální sítě.
-* Systémové lusky musí mít přístup ke všem uzlům v clusteru, aby poskytovaly důležité funkce, jako je například překlad DNS prostřednictvím coreDNS.
-* Přiřazení jedinečné podsítě na jeden fond uzlů je ve verzi Preview omezené na Azure CNI.
-* Použití zásad sítě s jedinečnou podsítí na jeden fond uzlů není ve verzi Preview podporováno.
+* Systémové lusky musí mít přístup ke všem uzlům a luskům v clusteru, aby poskytovaly důležité funkce, jako je například rozlišení DNS a tunelování kubectl log/exec/reported proxy.
+* Pokud po vytvoření clusteru rozšíříte virtuální síť, musíte aktualizovat svůj cluster (provádět všechny spravované operace clster, ale operace fondu uzlů se nepočítají) před přidáním podsítě mimo původní CIDR. AKS se v tomto fondu agentů zobrazí chyba, přestože jsme ho původně povolili. Pokud si nejste jisti, jak sjednotit soubor clusteru a lístek podpory. 
+* Zásady sítě Calico se nepodporují. 
+* Zásady sítě Azure se nepodporují.
+* Kube-proxy očekává jeden souvislý CIDR a použije ho pro tři optmizations. Zobrazit tento [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) a--cluster-CIDR [sem zobrazíte](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) podrobnosti. V Azure CNI se vaše podsíť prvního fondu uzlů dostane k Kube-proxy. 
 
 Pokud chcete vytvořit fond uzlů s vyhrazenou podsítí, předejte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
 

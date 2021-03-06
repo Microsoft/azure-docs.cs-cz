@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696859"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218889"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI
 
@@ -58,7 +58,7 @@ Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonf
 
 V tomto příkladu spustíte nástroje rozhraní příkazového řádku Azure CLI v příkazovém okně PowerShellu. Pro zlepšení čitelnosti a opakovaného použití využívají skriptovací možnosti prostředí PowerShell, nikoli rutiny Azure PowerShell.
 
-1. [Nainstalujte a nakonfigurujte Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) podle kroků v propojeném článku a přihlaste se ke svému účtu Azure.
+1. [Nainstalujte a nakonfigurujte Azure CLI](/cli/azure/install-azure-cli) podle kroků v propojeném článku a přihlaste se ke svému účtu Azure.
 
 2. Nastavení proměnných PowerShellu pro použití s příkazy Azure CLI:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721306"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218719"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Aktualizace nebo odstranění nástroje pro vyrovnávání zatížení používaného službou Virtual Machine Scale Sets
 
@@ -30,7 +30,7 @@ Když pracujete se sadami škálování virtuálních počítačů a instancí A
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Nastavení nástroje pro vyrovnávání zatížení pro škálování služby Virtual Machine Scale Sets
 
-Ujistěte se, že je v instanci Azure Load Balancer nastaven [fond příchozích adres NAT](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) a že sada škálování virtuálního počítače je vložená do back-endu fondu nástroje pro vyrovnávání zatížení. Když se do sady škálování virtuálního počítače přidají nové instance virtuálních počítačů, Load Balancer se automaticky vytvoří nová pravidla příchozího překladu adres (NAT) ve fondu příchozích překladů adres (NAT).
+Ujistěte se, že je v instanci Azure Load Balancer nastaven [fond příchozích adres NAT](/cli/azure/network/lb/inbound-nat-pool) a že sada škálování virtuálního počítače je vložená do back-endu fondu nástroje pro vyrovnávání zatížení. Když se do sady škálování virtuálního počítače přidají nové instance virtuálních počítačů, Load Balancer se automaticky vytvoří nová pravidla příchozího překladu adres (NAT) ve fondu příchozích překladů adres (NAT).
 
 Chcete-li ověřit, zda je příchozí fond NAT správně nastavený:
 
@@ -44,7 +44,7 @@ Jednotlivá příchozí pravidla překladu adres (NAT) se nedají přidat. Můž
 
 Pokud chcete pro sadu škálování virtuálního počítače přidat celou sadu pravidel příchozího překladu adres (NAT), v nástroji pro vyrovnávání zatížení nejprve vytvořte fond příchozího překladu adres (NAT). Pak na příchozí fond NAT odkázat ze síťového profilu sady škálování virtuálních počítačů. Zobrazí se úplný příklad použití rozhraní příkazového řádku.
 
-Nový fond příchozího překladu adres (NAT) by neměl mít překrývající se rozsah portů front-endu se stávajícími příchozími fondy NAT. Pokud chcete zobrazit existující příchozí fondy NAT, které jsou nastavené, použijte tento [příkaz rozhraní příkazového řádku](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list):
+Nový fond příchozího překladu adres (NAT) by neměl mít překrývající se rozsah portů front-endu se stávajícími příchozími fondy NAT. Pokud chcete zobrazit existující příchozí fondy NAT, které jsou nastavené, použijte tento [příkaz rozhraní příkazového řádku](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list):
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

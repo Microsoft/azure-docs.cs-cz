@@ -268,11 +268,11 @@
             - name: Migrace z azure-eventhubs na azure-messaging-eventhubs
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
             - name: azure-messaging-eventhubs (nejnovější)
-              href: /java/api/overview/azure/messaging-eventhubs-readme?view=azure-java-stable
+              href: /java/api/overview/azure/messaging-eventhubs-readme
             - name: azure-eventhubs (starší verze)
               href: /java/api/overview/azure/eventhubs/client?view=azure-java-legacy
         - name: Knihovna správy
-          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.eventhub
     - name: Python
       items:
         - name: Klientská knihovna
@@ -282,9 +282,9 @@
     - name: JavaScript
       items:
         - name: Klientská knihovna
-          href: /javascript/api/overview/azure/event-hubs-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/event-hubs-readme
         - name: Knihovna správy
-          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+          href: /javascript/api/@azure/arm-eventhub/
     - name: Přejít
       items:
         - name: Klientská knihovna

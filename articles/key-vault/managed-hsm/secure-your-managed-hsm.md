@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218396"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Zabezpečený přístup ke spravovaným HSM
 
@@ -22,7 +22,7 @@ Azure Key Vault spravovaný modul HSM je cloudová služba, která chrání šif
 
 V tomto kurzu se seznámíte s jednoduchým příkladem, který vám ukáže, jak dosáhnout oddělení povinností a řízení přístupu pomocí Azure RBAC a spravované místní RBAC (HSM). Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 
@@ -40,7 +40,7 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, m�
 az login
 ```
 
-Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) .
+Další informace o možnostech přihlášení prostřednictvím rozhraní příkazového řádku najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
 
 ## <a name="example"></a>Příklad
 
@@ -48,9 +48,9 @@ V tomto příkladu vyvíjíme aplikaci, která pro operace podepisování použ�
 
 Identifikovali jsme následující role, které spravují, nasazují a auditují naši aplikaci:
 
-- **Bezpečnostní tým** : zaměstnanci oddělení IT od kanceláře CSO (hlavní bezpečnostní důstojník) nebo podobné přispěvatelé. Bezpečnostní tým je zodpovědný za správné úschovy klíčů. Klíče RSA nebo ES pro podepisování a klíče RSA nebo AES pro šifrování dat.
-- **Vývojáři a operátoři** : zaměstnanci, kteří aplikaci vyvíjejí a nasazují v Azure. Členové tohoto týmu nejsou součástí bezpečnostních pracovníků. Nemají přístup k citlivým datům, jako jsou klíče RSA. K těmto citlivým datům by měli mít přístup jenom aplikace, kterou nasazuje.
-- **Auditori** : Tato role je určena pro přispěvatele, kteří nejsou členy vývoje nebo obecných zaměstnanců IT. Kontrolují použití a údržbu certifikátů, klíčů a tajných klíčů, aby bylo zajištěno dodržování standardů zabezpečení.
+- **Bezpečnostní tým**: zaměstnanci oddělení IT od kanceláře CSO (hlavní bezpečnostní důstojník) nebo podobné přispěvatelé. Bezpečnostní tým je zodpovědný za správné úschovy klíčů. Klíče RSA nebo ES pro podepisování a klíče RSA nebo AES pro šifrování dat.
+- **Vývojáři a operátoři**: zaměstnanci, kteří aplikaci vyvíjejí a nasazují v Azure. Členové tohoto týmu nejsou součástí bezpečnostních pracovníků. Nemají přístup k citlivým datům, jako jsou klíče RSA. K těmto citlivým datům by měli mít přístup jenom aplikace, kterou nasazuje.
+- **Auditori**: Tato role je určena pro přispěvatele, kteří nejsou členy vývoje nebo obecných zaměstnanců IT. Kontrolují použití a údržbu certifikátů, klíčů a tajných klíčů, aby bylo zajištěno dodržování standardů zabezpečení.
 
 Existuje jiná role, která je mimo rozsah naší aplikace: Správce předplatného (nebo skupiny prostředků). Správce předplatného nastavuje počáteční přístupová oprávnění pro bezpečnostní tým. Poskytují přístup k bezpečnostnímu týmu pomocí skupiny prostředků, která má prostředky požadované aplikací.
 
@@ -132,7 +132,7 @@ V tomto kurzu se zobrazí pouze akce týkající se řízení přístupu pro vě
 
 Náš příklad popisuje jednoduchý scénář. Scénáře reálného života můžou být složitější. V závislosti na vašich potřebách můžete upravit oprávnění k vašemu trezoru klíčů. Předpokládali jsme, že tým zabezpečení poskytuje klíče a tajné odkazy (identifikátory URI a kryptografické otisky), které jsou používány DevOps zaměstnanci ve svých aplikacích. Vývojáři a operátoři nevyžadují přístup k rovině dat. Zaměřili jsme se na to, jak váš Trezor klíčů zabezpečit. Při zabezpečování [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/security/), [účtů úložiště](../../storage/blobs/security-recommendations.md)a dalších prostředků Azure dejte k podobným pozornost.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 - [Dokumentace ke službě Azure RBAC](../../role-based-access-control/overview.md)
 - [Azure RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)

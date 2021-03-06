@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652161"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218838"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -36,7 +36,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
-* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/?view=azure-ml-py) **nebo** rozšíření [Azure CLI](/cli/azure/?view=azure-cli-latest) a [Machine Learning](reference-azure-machine-learning-cli.md).
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/?view=azure-ml-py) **nebo** rozšíření [Azure CLI](/cli/azure/) a [Machine Learning](reference-azure-machine-learning-cli.md).
 * Pracovní instalace Docker pro místní testování. Informace o instalaci a ověření Docker najdete v dokumentaci k Docker [v dokumentaci k instalaci.](https://docs.docker.com/get-started/)
 
 ## <a name="architectural-overview"></a>Přehled architektury
@@ -331,7 +331,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
+Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
 
 Informace o tom, jak vytvořit klienta, který odesílá požadavky na odvození do identifikátoru URI pro vyhodnocování, najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md).
 
