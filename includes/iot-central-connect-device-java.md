@@ -4,19 +4,19 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 75533a49c72f13bb9e1e62c160a63ef0606bee23
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033828"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244619"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 * Aplikace Azure IoT Central vytvořená pomocí šablony **vlastní aplikace** . Další informace najdete v [rychlém startu k vytvoření aplikace](../articles/iot-central/core/quick-deploy-iot-central.md). Aplikace musí být vytvořená na základě 14. července 2020 nebo po ní.
-* Vývojový počítač s Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)v části **Dlouhodobá podpora** vyberte **Java 8**.
+* Vývojový počítač s Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/)v části **Dlouhodobá podpora** vyberte **Java 8**.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 * Místní kopie [Microsoft Azure IoT SDK pro](https://github.com/Azure/azure-iot-sdk-java) úložiště GitHub Java, která obsahuje vzorový kód. Pomocí tohoto odkazu si stáhněte kopii úložiště: [Stáhnout ZIP](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip). Pak soubor rozbalte do vhodného umístění v místním počítači.
 

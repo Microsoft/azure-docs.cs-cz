@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: c3c1b814b357a2e4b724590261657e485852f99c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575673"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244754"
 ---
-* **Pokud nepotřebujete žádné prostředky, které jste vytvořili v tomto kurzu**, můžete odstranit instanci digitálních vláken Azure a všechny další prostředky z tohoto článku pomocí příkazu [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Tím se odstraní všechny prostředky Azure ve skupině prostředků i v samotné skupině prostředků.
+* **Pokud nepotřebujete žádné prostředky, které jste vytvořili v tomto kurzu**, můžete odstranit instanci digitálních vláken Azure a všechny další prostředky z tohoto článku pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) . Tím se odstraní všechny prostředky Azure ve skupině prostředků i v samotné skupině prostředků.
     
     > [!IMPORTANT]
     > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky.

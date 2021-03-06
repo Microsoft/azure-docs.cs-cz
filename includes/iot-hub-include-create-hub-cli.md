@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: ab17b12913630774c4fe6d99a4830080de02e541
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712572"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244703"
 ---
 V následujících částech jste nastavili terminál a pomocí Azure CLI vytvoříte službu IoT Hub. Pokud chcete nakonfigurovat terminál, který spouští příkazy rozhraní příkazového řádku Azure, můžete buď použít Azure Cloud Shell na základě prohlížeče, nebo použít místní terminál.
 * Pokud chcete použít Cloud Shell, přečtěte si další část: [spuštění Cloud Shell](#launch-the-cloud-shell). 
@@ -41,7 +41,7 @@ Spuštění Cloud Shell:
 Pokud jste se rozhodli použít místo Cloud Shell místní terminál, dokončete tuto část.  
 
 1. Otevřete místní terminál.
-1. Spusťte příkaz [AZ Login](/cli/azure/reference-index?preserve-view=true&view=azure-cli-latest#az_login) :
+1. Spusťte příkaz [AZ Login](/cli/azure/reference-index#az_login) :
 
    ```azurecli
    az login
@@ -65,7 +65,7 @@ V této části nainstalujete Microsoft Azure rozšíření IoT pro Azure CLI do
 > [!IMPORTANT]
 > Příkazy terminálu ve zbývající části tohoto rychlého startu fungují stejně jako v Cloud Shell nebo v místním terminálu. Pokud chcete spustit příkaz, vyberte **Kopírovat** a zkopírujte blok kódu v tomto rychlém startu. Pak ho vložte do prostředí CLI a spusťte ho.
 
-Spusťte příkaz [AZ Extension Add](/cli/azure/extension?preserve-view=true&view=azure-cli-latest#az-extension-add) . 
+Spusťte příkaz [AZ Extension Add](/cli/azure/extension#az-extension-add) . 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ V této části použijete Azure CLI k vytvoření centra IoT a skupiny prostře
 
 Vytvoření centra IoT a skupiny prostředků:
 
-1. Spuštěním příkazu [AZ Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
+1. Spuštěním příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte skupinu prostředků. Následující příkaz vytvoří skupinu prostředků s názvem *MyResourceGroup* v umístění *eastus* . 
     >[!NOTE]
     > Volitelně můžete nastavit alternativní umístění. Chcete-li zobrazit dostupná umístění, spusťte příkaz `az account list-locations` . V tomto kurzu se používá *eastus* , jak je znázorněno v příkladu příkazu. 
 
@@ -85,7 +85,7 @@ Vytvoření centra IoT a skupiny prostředků:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Spuštěním příkazu [AZ IoT Hub Create](/cli/azure/iot/hub?preserve-view=true&view=azure-cli-latest#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
+1. Spuštěním příkazu [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
 
     *YourIotHubName*. Nahraďte tento zástupný text a okolní závorky v následujícím příkazu pomocí názvu, který jste zvolili pro Centrum IoT. Název centra IoT musí být v Azure globálně jedinečný. Pokud vidíte zástupný symbol, použijte název služby IoT Hub ve zbývající části tohoto rychlého startu.
 
@@ -97,7 +97,7 @@ Vytvoření centra IoT a skupiny prostředků:
 V této části vytvoříte simulované zařízení IoT, které je připojené ke službě IoT Hub. 
 
 Postup vytvoření simulovaného zařízení:
-1. Spusťte příkaz [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) v prostředí CLI. Tím se vytvoří simulovaná identita zařízení. 
+1. Spusťte příkaz [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) v prostředí CLI. Tím se vytvoří simulovaná identita zařízení. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -107,7 +107,7 @@ Postup vytvoření simulovaného zařízení:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Spusťte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?preserve-view=true&view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) . 
+1.  Spusťte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) . 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

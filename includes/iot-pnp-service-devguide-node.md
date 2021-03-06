@@ -4,16 +4,16 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 7bf32de017a5f8ad19eb044ae7dbcdc2eaa96ca5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dfeeb451912dd32770a6ae92d73de83851d9d8f6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521368"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244482"
 ---
 K dispozici jsou také tyto prostředky:
 
-- [ Referenční dokumentace k saděNode.js SDK](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest)
+- [ Referenční dokumentace k saděNode.js SDK](/javascript/api/azure-iothub)
 - [Ukázky klienta služby](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)
 - [Vzorky digitálních vláken](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js)
 

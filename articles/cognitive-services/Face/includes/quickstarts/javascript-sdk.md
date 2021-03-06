@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 16797a5bdb5ef5f2b5660a33e1788b8824f1ad8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722551"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244661"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Rychlý Start: Klientská knihovna pro tvář pro JavaScript
 
@@ -27,7 +27,7 @@ Pomocí klientské knihovny obličeje pro JavaScript:
 * [Vytvořit skupinu osob](#create-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
 
-[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-face/?view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Ukázky](/samples/browse/?products=azure&term=face&languages=javascript)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-face/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Ukázky](/samples/browse/?products=azure&term=face&languages=javascript)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -92,12 +92,12 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce klien
 
 |Název|Popis|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
-|[Rozpoznávání tváře](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
-|[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)|Tato třída reprezentuje všechna data, která byla zjištěna z jedné plošky v obrázku. Můžete ji použít k získání podrobných informací o tváři.|
-|[FaceList](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/facelist?view=azure-node-latest)|Tato třída spravuje **FaceList** konstrukce uložené v cloudu, které ukládají roztříděné sady ploch. |
-|[PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest)| Tato třída spravuje konstrukce cloudových uložených **osob** , které ukládají sadu plošek, které patří jedné osobě.|
-|[PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)| Tato třída spravuje konstrukce cloudových uložených **osob** , které ukládají sadu objektů pro řazení **osob** . |
+|[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
+|[Rozpoznávání tváře](/javascript/api/@azure/cognitiveservices-face/face)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
+|[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)|Tato třída reprezentuje všechna data, která byla zjištěna z jedné plošky v obrázku. Můžete ji použít k získání podrobných informací o tváři.|
+|[FaceList](/javascript/api/@azure/cognitiveservices-face/facelist)|Tato třída spravuje **FaceList** konstrukce uložené v cloudu, které ukládají roztříděné sady ploch. |
+|[PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson)| Tato třída spravuje konstrukce cloudových uložených **osob** , které ukládají sadu plošek, které patří jedné osobě.|
+|[PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)| Tato třída spravuje konstrukce cloudových uložených **osob** , které ukládají sadu objektů pro řazení **osob** . |
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -114,7 +114,7 @@ Níže uvedené fragmenty kódu ukazují, jak provádět následující úlohy p
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest)** .
+Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** .
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -134,14 +134,14 @@ Pomocí následující funkce můžete počkat na dokončení školení osoby ve
 
 ### <a name="get-detected-face-objects"></a>Získat zjištěné objekty Face
 
-Vytvořte novou metodu pro detekci plošek. `DetectFaceExtract`Metoda zpracuje tři obrázky na dané adrese URL a vytvoří seznam objektů **[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)** v paměti pro programy. Seznam hodnot **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** určuje, které funkce se mají extrahovat. 
+Vytvořte novou metodu pro detekci plošek. `DetectFaceExtract`Metoda zpracuje tři obrázky na dané adrese URL a vytvoří seznam objektů **[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)** v paměti pro programy. Seznam hodnot **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** určuje, které funkce se mají extrahovat. 
 
-`DetectFaceExtract`Metoda pak analyzuje a tiskne data atributů pro každou zjištěnou plochu. Každý atribut se musí zadat samostatně v původním volání rozhraní API pro detekci obličeje (v seznamu **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** ). Následující kód zpracuje každý atribut, ale bude pravděpodobně nutné použít pouze jeden nebo několik.
+`DetectFaceExtract`Metoda pak analyzuje a tiskne data atributů pro každou zjištěnou plochu. Každý atribut se musí zadat samostatně v původním volání rozhraní API pro detekci obličeje (v seznamu **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** ). Následující kód zpracuje každý atribut, ale bude pravděpodobně nutné použít pouze jeden nebo několik.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="detect":::
 
 > [!TIP]
-> Můžete také detekovat plošky v místní imagi. Podívejte se na metody [obličeje](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest) , jako je [DetectWithStreamAsync](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
+> Můžete také detekovat plošky v místní imagi. Podívejte se na metody [obličeje](/javascript/api/@azure/cognitiveservices-face/face) , jako je [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -161,11 +161,11 @@ Následující metoda detekuje plošky v sadě cílových imagí a v jediné zdr
 
 ## <a name="identify-a-face"></a>Identifikace obličeje
 
-Operace [Identifikace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s [osobou](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest), databázi různých objektů [osob](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/person?view=azure-node-latest) , jejichž funkce obličeje jsou známy. Aby bylo možné operaci identifikace provést, musíte nejprve vytvořit a naučit objekt [Person](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest).
+Operace [Identifikace](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) přebírá obrázek osoby (nebo více lidí) a hledá identitu každé plošky v imagi (vyhledávání rozpoznávání obličeje). Porovnává každou zjištěnou plochu s [osobou](/javascript/api/@azure/cognitiveservices-face/persongroup), databázi různých objektů [osob](/javascript/api/@azure/cognitiveservices-face/person) , jejichž funkce obličeje jsou známy. Aby bylo možné operaci identifikace provést, musíte nejprve vytvořit a naučit objekt [Person](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 ### <a name="add-faces-to-person-group"></a>Přidat plošky do skupiny osob
 
-Vytvořte následující funkci, která přidá obličeje do pole [Person](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest).
+Vytvořte následující funkci, která přidá obličeje do pole [Person](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
@@ -178,7 +178,7 @@ Vytvořte následující pomocnou funkci, která čeká na dokončení školení
 ### <a name="create-a-person-group"></a>Vytvořit skupinu osob
 
 Následující kód:
-- Vytvoří objekt [Person](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest) .
+- Vytvoří objekt [Person](/javascript/api/@azure/cognitiveservices-face/persongroup) .
 - Přidá obličeje do skupiny person voláním `AddFacesToPersonGroup` , které jste definovali dříve.
 - Navlakuje skupinu osob.
 - Identifikuje plošky ve skupině Person.
@@ -188,7 +188,7 @@ Tato skupina **uživatelů** a její přidružené objekty **osoby** jsou teď p
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
 > [!TIP]
-> Můžete také vytvořit objekt **Person** z místních imagí. Podívejte se na metody [PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest) , jako je [AddFaceFromStream](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
+> Můžete také vytvořit objekt **Person** z místních imagí. Podívejte se na metody [PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) , jako je [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
 
 ## <a name="main"></a>Hlavní
 

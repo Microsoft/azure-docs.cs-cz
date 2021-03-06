@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d2b655e80f5b9694fb1948b136aac918312ca9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70032353"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102245046"
 ---
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -23,7 +23,7 @@ Před spuštěním skriptu aktualizujte `ACR_NAME` proměnnou názvem registru k
 
 `--role`V případě, že chcete udělit různá oprávnění, můžete volitelně upravit hodnotu v příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Úplný seznam rolí najdete v tématu [ACR role a oprávnění](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
 
-Po spuštění skriptu si poznamenejte **ID** a **heslo**instančního objektu. Jakmile budete mít své přihlašovací údaje, můžete nakonfigurovat své aplikace a služby pro ověřování v registru kontejneru jako instanční objekt.
+Po spuštění skriptu si poznamenejte **ID** a **heslo** instančního objektu. Jakmile budete mít své přihlašovací údaje, můžete nakonfigurovat své aplikace a služby pro ověřování v registru kontejneru jako instanční objekt.
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
 [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
@@ -39,5 +39,5 @@ Následující skript pomocí příkazu [AZ role Assignment Create][az-role-assi
 [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
