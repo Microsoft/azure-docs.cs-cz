@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693641"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432940"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
 
@@ -21,6 +21,8 @@ ms.locfileid: "101693641"
 > Sémantický typ dotazu je ve verzi Public Preview, který je k dispozici ve verzi Preview REST API a Azure Portal. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Během úvodního spuštění Preview se neúčtují žádné poplatky za sémantické vyhledávání. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
 V tomto článku se dozvíte, jak formulovat požadavek hledání, který používá sémantické hodnocení, a vytváří sémantické titulky a odpovědi.
+
+Sémantické dotazy obvykle fungují nejlépe na indexech vyhledávání, které jsou vybudovány s velkým obsahem textu, jako jsou soubory PDF nebo dokumenty s velkými bloky textu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +40,7 @@ V tomto článku se dozvíte, jak formulovat požadavek hledání, který použ�
 
 ## <a name="whats-a-semantic-query"></a>Co je sémantický dotaz?
 
-V Kognitivní hledání dotaz je parametrizovaná žádost, která určuje zpracování dotazů a tvar odpovědi. *Sémantický dotaz* přidává parametry, které vyvolávají algoritmus sémantického přeřazení, který může vyhodnotit kontext a význam odpovídajících výsledků a propagovat relevantnější shody na nejvyšší úrovni.
+V Kognitivní hledání dotaz je parametrizovaná žádost, která určuje zpracování dotazů a tvar odpovědi. *Sémantický dotaz* přidává parametry, které vyvolávají model pro sémantické přeřazení, který může vyhodnotit kontext a význam odpovídajících výsledků, zvýšit relevantnější shody na začátek a vracet sémantické odpovědi a popisky.
 
 Následující žádost je zástupcem základního sémantického dotazu (bez odpovědí).
 
@@ -48,7 +50,7 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
     "search": " Where was Alan Turing born?",    
     "queryType": "semantic",  
     "searchFields": "title,url,body",  
-    "queryLanguage": "en-us",  
+    "queryLanguage": "en-us"  
 }
 ```
 
@@ -60,7 +62,7 @@ Pouze prvních 50 shod od počátečních výsledků lze sémanticky seřadit a 
 
 Úplnou specifikaci REST API najdete v [dokumentu hledání (REST Preview)](/rest/api/searchservice/preview-api/search-documents).
 
-Sémantické dotazy jsou určené pro otevřené otázky, jako je například "Co je nejlepší rostlina pro pollinators" nebo "How to SRJ a". Pokud chcete, aby odpověď zahrnovala odpovědi, můžete do žádosti přidat volitelný **`answer`** parametr.
+Sémantické dotazy poskytují popisky a zvýrazňování automaticky. Pokud chcete, aby odpověď zahrnovala odpovědi, můžete do žádosti přidat volitelný **`answer`** parametr. Tento parametr plus konstrukce samotného řetězce dotazu vytvoří odpověď v odpovědi.
 
 V následujícím příkladu se k vytvoření žádosti sémantického dotazu se sémantickými odpověďmi a popisky používá pohostines-Sample-index:
 
@@ -82,37 +84,66 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>Formulování žádosti
 
-1. Nastavte **`"queryType"`** na "sémantické" a **`"queryLanguage"`** na "en-US". Oba parametry jsou povinné.
+Tato část popisuje parametry dotazů, které jsou nezbytné pro sémantické vyhledávání.
 
-   QueryLanguage musí být konzistentní s jakýmkoli [analyzátorem jazyka](index-add-language-analyzers.md) přiřazeným k definicím polí ve schématu indexu. Pokud queryLanguage je "en-US", musí být všechny analyzátory jazyka také anglické variantou ("en. Microsoft" nebo "en. Lucene"). Žádné nezávislá analyzátory jazyka, jako je klíčové slovo nebo jednoduchá, nemají žádné konflikty s hodnotami queryLanguage.
+#### <a name="step-1-set-querytype-and-querylanguage"></a>Krok 1: nastavení queryType a queryLanguage
 
-   Pokud v žádosti o dotaz používáte také [korekci pravopisu](speller-how-to-add.md), nastavení queryLanguage se použije stejně jako pravopisné, odpovědi a titulky. Pro jednotlivé části neexistuje žádné přepsání. 
+Do Rest přidejte následující parametry. Oba parametry jsou povinné.
 
-   Obsah ve vyhledávacím indexu může být tvořen v několika jazycích, takže vstup dotazu je pravděpodobně v jednom. Vyhledávací web nekontroluje kompatibilitu queryLanguage, Language Analyzer a jazyka, ve kterém se obsah skládá, a nezapomeňte jim zajistit jejich obor, aby nedocházelo k nesprávným výsledkům.
+```json
+"queryType": "semantic",
+"queryLanguage": "en-us",
+```
+
+QueryLanguage musí být konzistentní s jakýmkoli [analyzátorem jazyka](index-add-language-analyzers.md) přiřazeným k definicím polí ve schématu indexu. Pokud queryLanguage je "en-US", musí být všechny analyzátory jazyka také anglické variantou ("en. Microsoft" nebo "en. Lucene"). Žádné nezávislá analyzátory jazyka, jako je klíčové slovo nebo jednoduchá, nemají žádné konflikty s hodnotami queryLanguage.
+
+Pokud v žádosti o dotaz používáte také [korekci pravopisu](speller-how-to-add.md), nastavení queryLanguage se použije stejně jako pravopisné, odpovědi a titulky. Pro jednotlivé části neexistuje žádné přepsání. 
+
+Obsah ve vyhledávacím indexu může být tvořen v několika jazycích, takže vstup dotazu je pravděpodobně v jednom. Vyhledávací web nekontroluje kompatibilitu queryLanguage, Language Analyzer a jazyka, ve kterém se obsah skládá, a nezapomeňte jim zajistit jejich obor, aby nedocházelo k nesprávným výsledkům.
 
 <a name="searchfields"></a>
 
-1. Set **`"searchFields"`** (volitelné, ale doporučené).
+#### <a name="step-2-set-searchfields"></a>Krok 2: nastavení searchFields
 
-   V sémantickém dotazu pořadí polí v "searchFields" odráží prioritu nebo relativní důležitost pole v sémantickém hodnocení. Budou použita pouze pole řetězců nejvyšší úrovně (samostatné nebo v kolekci). Vzhledem k tomu, že searchFields obsahuje jiné chování v jednoduchých a úplných dotazech Lucene (kde není k dispozici žádný předpokládaný způsob priority), neobsahovaná pole a podpole nebudou mít za následek chybu, ale také se nepoužijí v sémantickém hodnocení.
+Tento parametr je nepovinný v tom, že není k dispozici žádná chyba, pokud ho necháte, ale pro titulky a odpovědi se důrazně doporučuje zobrazit uspořádaný seznam polí.
 
-   Při zadávání searchFields postupujte podle těchto pokynů:
+Parametr searchFields slouží k identifikaci pasáží pro vyhodnocení "sémantické podobnosti" dotazem. V rámci verze Preview nedoporučujeme ponechání searchFields prázdné, protože model vyžaduje doporučení, která pole jsou pro zpracování nejdůležitější.
 
-   + Stručná pole, jako je název hotelu nebo název, by měla předcházet podrobným polím jako Description.
+Pořadí searchFields je kritické. Pokud už používáte searchFields v existujících jednoduchých nebo úplných dotazech na Lucene, nezapomeňte při přechodu na sémantický typ dotazu přejít na tento parametr znovu.
 
-   + Pokud má váš index pole adresy URL, které je text (lidské čitelnost, jako je například `www.domain.com/name-of-the-document-and-other-details` a ne počítač zaměřený na například `www.domain.com/?id=23463&param=eis` ), umístěte ho v seznamu za druhý (Pokud není k dispozici pole stručného názvu).
+Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při zadání dvou nebo více searchFields:
 
-   + Pokud je zadáno pouze jedno pole, bude považováno za popisné pole pro sémantické hodnocení dokumentů.  
++ V kolekcích zahrňte pouze pole řetězců a pole řetězců nejvyšší úrovně. Pokud se rozhodnete zahrnout neřetězcová pole nebo pole nižší úrovně v kolekci, nebude k dispozici žádná chyba, ale tato pole se nepoužijí v sémantickém hodnocení.
 
-   + Pokud nejsou zadaná žádná pole, budou se všechna hledaná pole považovat za sémantické hodnocení dokumentů. To se ale nedoporučuje, protože nemusí vracet optimální výsledky z indexu vyhledávání.
++ První pole by mělo být vždy stručné (například název nebo název), a to v ideálním 25 slovem.
 
-1. Odeberte **`"orderBy"`** klauzule, pokud existují v existující žádosti. Sémantické skóre se používá k seřazení výsledků a pokud zahrnete explicitní logiku řazení, vrátí se chyba HTTP 400.
++ Pokud má index pole Adresa URL, která je text (lidské čtení, jako je například `www.domain.com/name-of-the-document-and-other-details` a ne počítač zaměřený na například `www.domain.com/?id=23463&param=eis` ), umístěte ho do tohoto seznamu (nebo nejdřív, pokud neexistuje pole stručného názvu).
 
-1. Volitelně můžete přidat **`"answers"`** nastavení na "extrahovatelné" a zadat počet odpovědí, pokud potřebujete více než 1.
++ Použijte tato pole podle popisných polí, kde můžete najít odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu.
 
-1. Volitelně můžete přizpůsobit styl zvýraznění aplikovaný na titulky. Popisky použijí formátování zvýraznění u klíčových pasáží v dokumentu, které shrnují odpověď. Výchozí formát je `<em>`. Pokud chcete určit typ formátování (například žluté pozadí), můžete nastavit highlightPreTag a highlightPostTag.
+Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah.
 
-1. Zadejte všechny další parametry, které chcete v žádosti. Parametry, jako je třeba [Kontrola pravopisu](speller-how-to-add.md), [Výběr](search-query-odata-select.md)a počet, zlepšují kvalitu žádosti a čitelnosti odpovědi.
+#### <a name="step-3-remove-orderby-clauses"></a>Krok 3: odebrání klauzulí orderBy
+
+Odeberte jakékoli klauzule orderBy, pokud existují v existující žádosti. Sémantické skóre se používá k seřazení výsledků a pokud zahrnete explicitní logiku řazení, vrátí se chyba HTTP 400.
+
+#### <a name="step-4-add-answers"></a>Krok 4: Přidání odpovědí
+
+Volitelně můžete přidat odpovědi, pokud chcete zahrnout další zpracování, které poskytuje odpověď. Odpovědi (a titulky) jsou formulované z pasáží nalezených v polích uvedených v searchFields. Nezapomeňte do searchFields zahrnout pole s bohatým obsahem, abyste získali nejlepší odpovědi a popisy v odpovědi.
+
+K dispozici jsou explicitní a implicitní podmínky, které vytváří odpovědi. 
+
++ Mezi explicitní podmínky patří přidání "odpovědi = extrakce". Kromě toho můžete zadat počet odpovědí vrácených v celkové odpovědi a přidat "počet" následovaný číslem: `"answers=extractive|count=3"` .  Výchozí hodnota je jedna. Maximum je pět.
+
++ Mezi implicitní podmínky patří konstrukce řetězce dotazu, který sám o sobě zavolá odpověď. Dotaz tvořený "jaký Hotel má zelenou místnost", je pravděpodobnější, že se jedná o "zodpovězení", než dotaz složený z příkazu, jako je hotel s ozdobným vnitřním obsahem. Jak můžete očekávat, dotaz nemůže být nezadaný nebo mít hodnotu null.
+
+Důležité je Ukázat, že pokud dotaz nevypadá jako otázka, zpracování odpovědi se přeskočí, i když je nastaven parametr odpovědi.
+
+#### <a name="step-5-add-other-parameters"></a>Krok 5: Přidání dalších parametrů
+
+Nastavte všechny další parametry, které chcete v žádosti. Parametry, jako je třeba [Kontrola pravopisu](speller-how-to-add.md), [Výběr](search-query-odata-select.md)a počet, zlepšují kvalitu žádosti a čitelnosti odpovědi.
+
+Volitelně můžete přizpůsobit styl zvýraznění aplikovaný na titulky. Popisky použijí formátování zvýraznění u klíčových pasáží v dokumentu, které shrnují odpověď. Výchozí formát je `<em>`. Pokud chcete určit typ formátování (například žluté pozadí), můžete nastavit highlightPreTag a highlightPostTag.
 
 ### <a name="review-the-response"></a>Zkontrolovat odpověď
 

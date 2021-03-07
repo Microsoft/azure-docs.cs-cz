@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Resource Manager
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Resource Manager. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 910dce52752d9cce3dbf369658302c184e5c61c4
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: e65c616834056ace7c3ec011c66c6ce7080fe168
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094032"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432825"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Azure Policy předdefinované definice pro Azure Resource Manager
 

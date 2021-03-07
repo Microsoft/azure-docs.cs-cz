@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce8aa5108b6998424b35e3f4ecac6b51e78f276b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173932"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424117"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
@@ -64,7 +64,7 @@ Pokud chcete porovnat edice a funkce a povolit skupinu nebo uživatele licencov�
 
 Další informace o cenách najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -78,6 +78,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 | Videa| [Poskytněte uživatelům lepší škálovatelnost IT](https://youtu.be/g9RpRnylxS8) 
 | |[Co je samoobslužné resetování hesla?](https://youtu.be/hc97Yx5PJiM)|
 | |[Nasazení samoobslužného resetování hesla](https://www.youtube.com/watch?v=Pa0eyqjEjvQ&index=18&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0)|
+| |[Jak povolit a nakonfigurovat SSPR ve službě Azure AD](https://www.youtube.com/watch?v=rA8TvhNcCvQ)|
 | |[Jak nakonfigurovat Samoobslužné resetování hesla pro uživatele ve službě Azure AD?](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[Postupy [Příprava uživatelů na] registrace [jejich] informací o zabezpečení pro Azure Active Directory](https://youtu.be/gXuh0XS18wA) |
 | Online kurzy|[Správa identit v Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Využijte SSPR a poskytněte uživatelům moderní a chráněné prostředí. Viz téma "[správa Azure Active Directory uživatelů a skupin](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)". |
@@ -149,7 +150,7 @@ Chcete-li vytvořit skupinu, přečtěte si téma [Vytvoření skupiny a přidá
 
 K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nastavení.
 
-| Oblast | Nastavení | Hodnota |
+| Plošný | Nastavení | Hodnota |
 | --- | --- | --- |
 | **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |

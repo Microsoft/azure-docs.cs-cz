@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: dce309b955882f6236f285ee6bd20a79201e43fb
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831242"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429931"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +63,7 @@ Pokud sada SDK služby Cosmos DB umožňuje opakování, při každém selhání
 
 ## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 
-| Stavový kód | Description | 
+| Stavový kód | Popis | 
 |----------|-------------|
 | 400 | Chybný požadavek (závisí na chybové zprávě)| 
 | 401 | [Neautorizováno](troubleshoot-unauthorized.md) | 
@@ -91,7 +91,7 @@ Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adr
 * Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
-Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) v sadě v2 SDK nebo v [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
+Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v sadě v2 SDK nebo v [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
 Pokud nejsou k dispozici žádné [časové limity](troubleshoot-dot-net-sdk-request-timeout.md) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
 

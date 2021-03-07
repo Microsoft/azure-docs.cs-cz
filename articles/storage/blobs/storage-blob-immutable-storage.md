@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581438"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430934"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů blob s využitím neměnného úložiště
 
@@ -44,13 +44,13 @@ Neměnné úložiště podporuje následující funkce:
 
 - **Podpora všech úrovní objektů blob:** Zásady WORM jsou nezávislé na úrovni služby Azure Blob Storage a platí pro všechny úrovně: horkou, studenou i archivní. Uživatelé mohou přesouvat data na úroveň, která je optimální z hlediska nákladů, a přitom zachovat jejich neměnnost.
 
-- **Konfigurace na úrovni kontejneru**: uživatelé můžou na úrovni kontejneru nakonfigurovat zásady uchovávání informací založené na čase a značky právního blokování. Uživatelé mohou s využitím jednoduchých nastavení na úrovni kontejneru vytvořit a uzamknout zásady uchovávání informací podle času, prodloužit intervaly uchovávání informací, nastavit nebo zrušit blokování z právních důvodů atd. Tyto zásady platí pro všechny stávající i nové objekty blob v kontejneru.
+- **Konfigurace na úrovni kontejneru**: uživatelé můžou na úrovni kontejneru nakonfigurovat zásady uchovávání informací založené na čase a značky právního blokování. Uživatelé mohou s využitím jednoduchých nastavení na úrovni kontejneru vytvořit a uzamknout zásady uchovávání informací podle času, prodloužit intervaly uchovávání informací, nastavit nebo zrušit blokování z právních důvodů atd. Tyto zásady platí pro všechny stávající i nové objekty blob v kontejneru. V případě účtu s povoleným rozhraním HNS platí tyto zásady také pro všechny adresáře v kontejneru.
 
 - **Podpora protokolování auditu**: každý kontejner zahrnuje protokol auditu zásad. Zobrazuje až sedm příkazů pro uchovávání informací na základě času pro uzamčené zásady uchovávání informací podle času a obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání. V případě blokování z právních důvodů obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se zachovává po dobu života zásady, v souladu s pravidly pro legislativní SEK – 17a (f). [Protokol aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) zobrazuje komplexnější protokol všech aktivit řídicích rovin; Při povolování [protokolů prostředků Azure](../../azure-monitor/essentials/platform-logs-overview.md) se uchovávají a zobrazují operace roviny dat. Uživatel je zodpovědný za trvalé uchování těchto protokolů, protože se mohou vyžadovat pro legislativní nebo jiné účely.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Funkce Immutable Storage pro úložiště Azure Blob Storage podporuje dva typy zásad WORM neboli zásad neměnnosti: uchovávání informací podle času a blokování z právních důvodů. Pokud je na kontejneru použita zásada uchovávání informací založená na čase nebo právní blokování, všechny existující objekty BLOB se přesunou do neměnného stavu ČERVa za méně než 30 sekund. Všechny nové objekty blob nahrané do tohoto kontejneru chráněného zásadami se také přesunou do neměnného stavu. Jakmile jsou všechny objekty BLOB v neměnném stavu, jsou potvrzeny neměnné zásady a všechny operace přepsání nebo odstranění v neměnitelném kontejneru nejsou povoleny.
+Funkce Immutable Storage pro úložiště Azure Blob Storage podporuje dva typy zásad WORM neboli zásad neměnnosti: uchovávání informací podle času a blokování z právních důvodů. Pokud je na kontejneru použita zásada uchovávání informací založená na čase nebo právní blokování, všechny existující objekty BLOB se přesunou do neměnného stavu ČERVa za méně než 30 sekund. Všechny nové objekty blob nahrané do tohoto kontejneru chráněného zásadami se také přesunou do neměnného stavu. Jakmile jsou všechny objekty BLOB v neměnném stavu, jsou potvrzeny neměnné zásady a všechny operace přepsání nebo odstranění v neměnitelném kontejneru nejsou povoleny. V případě účtu s povoleným rozhraním HNS nelze objekty blob přejmenovat ani přesunout do jiného adresáře.
 
 Odstranění kontejneru a účtu úložiště se taky nepovoluje, pokud v kontejneru existují objekty blob, které jsou chráněné právním blokováním nebo uzamčenou časovou zásadou. Zásady právního blokování budou chránit před odstraněním objektu blob, kontejneru a účtu úložiště. Odemčené i uzamčené zásady založené na čase budou chránit před odstraněním objektu BLOB po určenou dobu. Odemčené i uzamčené zásady založené na čase se budou chránit proti odstranění kontejneru jenom v případě, že v kontejneru existuje aspoň jeden objekt BLOB. Jenom kontejner s *uzamčenou* zásadou založenou na čase se bude chránit před odstraňováním účtů úložiště. kontejnery s odemknutými časovými zásadami nenabízejí ochranu před odstraněním účtu úložiště ani dodržování předpisů.
 
@@ -175,6 +175,9 @@ Ano. Když se poprvé vytvoří zásady uchovávání informací založené na �
 **Můžu použít obnovitelné odstranění společně se zásadami neproměnlivého objektu BLOB?**
 
 Ano, pokud vaše požadavky na dodržování předpisů umožňují povolit obnovitelné odstranění. [Obnovitelné odstranění pro úložiště objektů BLOB v Azure](./soft-delete-blob-overview.md) platí pro všechny kontejnery v rámci účtu úložiště bez ohledu na to, jakou dobu zablokují nebo zásady uchovávání informací podle času. Před použitím a potvrzením jakýchkoli neměnitelných zásad WORM doporučujeme povolit obnovitelné odstranění pro další ochranu.
+
+**V případě účtu s povoleným rozhraním HNS lze objekt BLOB přejmenovat nebo přesunout, pokud je objekt BLOB v neměnném stavu?**
+Ne, název i struktura adresáře jsou považovány za důležitá data na úrovni kontejneru, která nelze upravovat, jakmile je zavedena neměnná zásada. Přejmenování a přesun jsou k dispozici pouze pro účty s podporou HNS.
 
 ## <a name="next-steps"></a>Další kroky
 

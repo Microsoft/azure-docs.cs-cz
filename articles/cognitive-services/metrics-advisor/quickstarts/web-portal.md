@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348632"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432294"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rychlý Start: monitorování první metriky pomocí webového portálu
 
@@ -30,7 +30,7 @@ Při zřizování instance služby Advisor metriky můžete použít rozhraní A
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
+* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
 
     
 > [!TIP]
@@ -91,8 +91,8 @@ Po načtení schématu dat a zobrazení jako níže vyberte příslušná pole.
 
 |Výběr  |Popis  |Poznámky  |
 |---------|---------|---------|
-|**Timestamp**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
-|**Míra**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
+|**Časové razítko**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
+|**Measure**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
 |**Rozměr**     | Kategorií hodnoty. Kombinace různých hodnot identifikuje konkrétní časovou řadu s jednou dimenzí, například: Country (země), Language (tenant). Jako rozměry můžete vybrat žádný nebo libovolný počet sloupců. Poznámka: Pokud jako dimenzi vybíráte sloupec, který není typu řetězec, buďte opatrní při rozbalení dimenze. | Nepovinný parametr.        |
 |**Ohled**     | Ignoruje vybraný sloupec.        |         |
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be8f4ba8552521d25992d7c3a405dc2628fbbb85
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560807"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433246"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
-Můžete spravovat [modely](concepts-models.md) , které vaše instance digitálního vlákna Azure ví o používání [**rozhraní DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models), [sady SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo [digitálních vláken Azure](how-to-use-cli.md). 
+Můžete spravovat [modely](concepts-models.md) , které vaše instance digitálního vlákna Azure ví o používání [**rozhraní DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models), [sady SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client)nebo [digitálních vláken Azure](how-to-use-cli.md). 
 
 Mezi operace správy patří nahrávání, ověřování, načítání a odstraňování modelů. 
 
@@ -61,7 +61,7 @@ Všimněte si, že `CreateModels` Metoda přijímá více souborů v jedné tran
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

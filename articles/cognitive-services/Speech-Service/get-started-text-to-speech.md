@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: převod textu na řeč
-ms.openlocfilehash: c3f1db836ce028b6881efe0b2fa90e9ac19caac8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058229"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428179"
 ---
 # <a name="get-started-with-text-to-speech"></a>Začínáme s převodem textu na řeč
 
@@ -53,6 +53,20 @@ ms.locfileid: "92058229"
 ::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
+
+## <a name="get-position-information"></a>Získat informace o pozici
+
+Váš projekt může potřebovat znát, když je slovo mluvené řeči mluveným textem, aby bylo možné provést konkrétní akci na základě tohoto časování. Pokud byste například chtěli Zvýrazňovat slova při jejich mluveném, měli byste znát, co je třeba zvýraznit, kdy je zvýraznit a jak dlouho je zvýraznit.
+
+To můžete provést pomocí `WordBoundary` události dostupné v rámci `SpeechSynthesizer` . Tato událost se vyvolá na začátku každého nového mluveného slova a v rámci vstupní výzvy vám poskytne časový posun v rámci mluveného vysílání a také posun textu.
+
+* `AudioOffset` hlásí uplynulý čas výstupu mezi začátkem syntézy a začátkem následujícího slova. To se měří v jednotkách se stovkami (HNS) s 10 000, který odpovídá 1 milisekundu.
+* `WordOffset` oznamuje pozici znaku ve vstupním řetězci (původní text nebo [SSML](speech-synthesis-markup.md)) těsně před slovem, který se má vymluvené.
+
+> [!NOTE]
+> `WordBoundary` události jsou vyvolány, protože výstupní zvuková data budou k dispozici, což bude rychlejší než přehrávání do výstupního zařízení. Správné synchronizace časování datového proudu do "reálného času" musí být provedeno volajícím.
+
+Příklady použití najdete `WordBoundary` v [ukázkách převodu textu na řeč](https://aka.ms/csspeech/samples) na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 

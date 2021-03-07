@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: dac59fb5262cc55acfbabedd304913fc7ac57751
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748525"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430764"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Rychlý Start: Konfigurace hybridního clusteru se spravovanou instancí Azure pro Apache Cassandra (Preview)
 
@@ -39,20 +39,14 @@ Tento rychlý Start ukazuje použití příkazů Azure CLI ke konfiguraci hybrid
    :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Přidejte novou podsíť do svého Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Teď budeme u virtuální sítě a podsítě, které Cassandra Managed instance vyžaduje, použít několik zvláštních oprávnění pomocí Azure CLI. Nejdřív musíme najít `Resource ID` pro vaši stávající virtuální síť. Zkopírujte výstup hodnoty z tohoto příkazu pro pozdější verzi `Resource ID` .
+1. Teď budeme u virtuální sítě a podsítě, které Cassandra Managed instance vyžaduje, použít několik zvláštních oprávnění pomocí Azure CLI. Použijte `az role assignment create` příkaz, nahraďte `<subscription ID>` , `<resource group name>` , `<VNet name>` a `<subnet name>` s příslušnými hodnotami:
 
    ```azurecli-interactive
-    # discover the vnet id
-    az network vnet show -n <your VNet name> -g <Resource Group Name> --query "id" --output tsv
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
-1. Teď použijeme speciální oprávnění a projdeme výstup předchozího příkazu jako parametr oboru:
-
-   ```azurecli-interactive
-    az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
-   ```
-    > [!NOTE]
-    > `assignee` `role` Výše uvedené hodnoty a jsou pevné zásady služby a identifikátory rolí v uvedeném pořadí. 
+   > [!NOTE]
+   > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné zásady služby a identifikátory rolí v uvedeném pořadí.
 
 1. Dále nakonfigurujeme prostředky pro náš hybridní cluster. Vzhledem k tomu, že už máte cluster, název clusteru tady bude jenom logickým prostředkem, který identifikuje název vašeho existujícího clusteru. Při definování `clusterName` a `clusterNameOverride` proměnných v následujícím skriptu nezapomeňte použít název vašeho existujícího clusteru.
 

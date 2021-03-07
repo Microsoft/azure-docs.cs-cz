@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539090"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433790"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Vytváření indexů vyhledávání v Azure Kognitivní hledání
 
@@ -61,7 +61,7 @@ Další prvky jsou sbaleny pro zkrácení, ale následující odkazy mohou posky
 
 ## <a name="choose-a-client"></a>Zvolit klienta
 
-Existuje několik metodik pro vytvoření indexu vyhledávání. Pro prvotní vývoj a testování testování konceptů doporučujeme Azure Portal nebo rozhraní REST API.
+Existuje několik způsobů, jak vytvořit index vyhledávání. Pro prvotní vývoj a testování testování konceptů doporučujeme Azure Portal nebo sady SDK.
 
 Během vývoje si naplánujte časté časté sestavování. Vzhledem k tomu, že se ve službě vytvářejí fyzické struktury, je nutné vyřadit [a znovu vytvořit indexy](search-howto-reindex.md) pro většinu úprav existující definice pole. Můžete uvažovat o práci s podmnožinou vašich dat, aby bylo možné znovu sestavit nové sestavení.
 
@@ -110,7 +110,7 @@ Pro Kognitivní hledání sady SDK Azure implementují všeobecně dostupné fun
 
 Dokument hledání je definován `fields` kolekcí. Budete potřebovat pole pro dotazy a klíče. Možná budete také potřebovat pole pro podporu filtrů, omezujících vlastností a řazení. Můžete také potřebovat pole pro data, která uživatel nikdy nevidí, například možná budete potřebovat pole pro ziskové marže nebo marketingové propagační akce, které můžete použít k úpravě pořadí hledání.
 
-Jedno pole typu EDM. String musí být určeno jako klíč dokumentu. Slouží k jednoznačné identifikaci každého dokumentu hledání. K naplnění stránky podrobností můžete načíst dokument pomocí jeho klíče.  
+Jedno pole typu EDM. String musí být určeno jako klíč dokumentu. Slouží k jednoznačné identifikaci každého dokumentu vyhledávání a rozlišuje velká a malá písmena. K naplnění stránky podrobností můžete načíst dokument pomocí jeho klíče.
 
 Pokud jsou příchozí data hierarchicky v podstatě, přiřaďte datový typ [komplexní typ](search-howto-complex-data-types.md) , který bude představovat vnořené struktury. Integrovaná Ukázková sada dat, hotely, znázorňuje komplexní typy pomocí adresy (obsahuje několik dílčích polí), které mají vztah 1:1 s každým hotelem, a prostorově komplexní kolekci, kde je k jednotlivým hotelům přidruženo více místností. 
 

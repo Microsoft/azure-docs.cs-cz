@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690528"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430186"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,18 @@ Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Da
 ## <a name="status-updates"></a>Aktualizace stavu
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>Duben 2021
+Nové brány SQL se přidávají do následujících oblastí:
+- Norsko – východ: 51.120.96.33
+- Jižní Východní Asie: 13.67.16.193
+- Jižní Afrika sever: 102.133.152.32
+- Korea – jih: 52.231.151.96
+- Střed USA – sever: US 52.162.105.9
+- Austrálie – jihovýchod: 13.77.49.32 
+
+Tyto brány SQL začnou přijímat provoz zákazníků 5. dubna 2021.
+
 ## <a name="march-2021"></a>Březen 2021
 Probíhá deaktivace následujících bran SQL v několika oblastech:
 

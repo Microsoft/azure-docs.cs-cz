@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198536"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433297"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198536"
 
 V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. K tomu je potřeba nejprve nastavit **koncové body**, které mohou události přijímat. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
 
-Tento článek vás provede procesem vytváření koncových bodů a tras pomocí [rozhraní REST API](/rest/api/azure-digitaltwins/), [sady .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)a rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Tento článek vás provede procesem vytváření koncových bodů a tras pomocí [rozhraní REST API](/rest/api/azure-digitaltwins/), [sady .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)a rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Alternativně můžete také spravovat koncové body a trasy pomocí [Azure Portal](https://portal.azure.com). Verzi tohoto článku, která místo toho používá portál, najdete v tématu [*How to: Manage Endpoints and Routes (portál)*](how-to-manage-routes-portal.md).
 
@@ -208,7 +208,7 @@ Trasy událostí je možné vytvořit pomocí [rozhraní API roviny dat služby 
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Vytváření tras pomocí rozhraní API a sady C# SDK
 
-Jedním ze způsobů, jak definovat trasy událostí, je s [rozhraními API roviny dat](how-to-use-apis-sdks.md#overview-data-plane-apis). Ukázky v této části používají [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+Jedním ze způsobů, jak definovat trasy událostí, je s [rozhraními API roviny dat](how-to-use-apis-sdks.md#overview-data-plane-apis). Ukázky v této části používají [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client).
 
 `CreateOrReplaceEventRouteAsync` je volání sady SDK, které se používá k přidání trasy události. Tady je příklad jeho použití:
 

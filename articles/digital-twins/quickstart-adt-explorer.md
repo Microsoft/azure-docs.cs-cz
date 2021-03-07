@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203976"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434198"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka digitálních vláken Azure
 
@@ -55,7 +55,7 @@ Zbytek této části vás provede následujícími kroky.
 
 ### <a name="set-up-local-azure-credentials"></a>Nastavit místní přihlašovací údaje Azure
 
-Aplikace Průzkumník digitálních vláken Azure používá [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (součást `Azure.Identity` knihovny) k ověřování uživatelů s instancí digitálních vláken Azure, když ji spustíte na místním počítači. Další informace o různých způsobech, jak se klientská aplikace může ověřit pomocí digitálních vláken Azure, najdete v tématu [zápis ověřovacího kódu aplikace](how-to-authenticate-client.md).
+Aplikace Průzkumník digitálních vláken Azure používá [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) (součást `Azure.Identity` knihovny) k ověřování uživatelů s instancí digitálních vláken Azure, když ji spustíte na místním počítači. Další informace o různých způsobech, jak se klientská aplikace může ověřit pomocí digitálních vláken Azure, najdete v tématu [zápis ověřovacího kódu aplikace](how-to-authenticate-client.md).
 
 V případě tohoto typu ověřování bude Průzkumník digitálních vláken Azure Hledat přihlašovací údaje v rámci místního prostředí, jako je například přihlášení Azure v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo v sadě Visual Studio nebo Visual Studio Code. Z tohoto důvodu byste se měli *k Azure přihlašovat místně* prostřednictvím jednoho z těchto mechanismů, abyste nastavili přihlašovací údaje pro aplikaci Průzkumník digitálních vláken Azure.
 

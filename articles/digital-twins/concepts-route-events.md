@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050511"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430917"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -73,7 +73,7 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
  
 Pokud chcete vytvořit trasu události, můžete použít rozhraní REST API služby Azure Digital revláken [, příkazy CLI](how-to-manage-routes-apis-cli.md#create-an-event-route)nebo [Azure Portal](how-to-manage-routes-portal.md#create-an-event-route).
 
-Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateOrReplaceEventRouteAsync` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) : 
+Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateOrReplaceEventRouteAsync` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) : 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 

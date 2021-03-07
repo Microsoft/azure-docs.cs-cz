@@ -4,18 +4,30 @@ description: Přečtěte si, jak implementovat monitorování stavu pomocí roz�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028416"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431070"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
 Model monitorování odkazuje na flexibilní *opakovaný* proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>Požadavky
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [Dokončení článku rychlý Start](durable-functions-create-first-csharp.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [Dokončení článku rychlý Start](quickstart-js-vscode.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
@@ -72,9 +84,6 @@ Zde je kód, který implementuje funkci:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
-
 ---
 
 Tato funkce Orchestrator provádí následující akce:
@@ -105,9 +114,6 @@ A zde je implementace.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
-
 ---
 
 ### <a name="e3_sendgoodweatheralert-activity-function"></a>Funkce aktivity E3_SendGoodWeatherAlert
@@ -130,9 +136,6 @@ Jeho *function.jsv systému* je jednoduchý:
 A zde je kód, který odesílá zprávu SMS:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
-
-# <a name="python"></a>[Python](#tab/python)
-Pro vzor monitorování v Pythonu máme jiný kurz, jak ho prosím najdete [tady](durable-functions-monitor-python.md).
 
 ---
 

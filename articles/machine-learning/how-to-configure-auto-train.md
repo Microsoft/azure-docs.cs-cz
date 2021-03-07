@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 98260b909514febf80ea6a1a33b0f9e3d2d1446b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526462"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431886"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -257,7 +257,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Description |
+|Konfigurace Featurization | Popis |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
@@ -412,111 +412,6 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
 > [!NOTE]
 > ForecastTCN model není aktuálně podporován klientem vysvětlení. Tento model nevrátí řídicí panel vysvětlení, pokud je vrácen jako nejlepší model, a nepodporuje spuštění vysvětlení na vyžádání.
 
-## <a name="troubleshooting"></a>Řešení potíží
-
-* **Nedávná aktualizace `AutoML` závislostí na novější verze bude mít za následek porušení kompatibility**: od verze 1.13.0 sady SDK se modely nenačte do starších sad SDK z důvodu nekompatibility mezi staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějšími verzemi, které teď zapnete. Zobrazí se chyba, například:
-  * Modul nebyl nalezen: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
-  * Chyby importu: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
-  * Chyby atributů: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
-  
-  Pokud chcete tento problém obejít, proveďte jeden z následujících dvou kroků v závislosti na `AutoML` verzi školení pro sadu SDK:
-    * Pokud `AutoML` je vaše verze školení SDK větší než 1.13.0, budete potřebovat `pandas == 0.25.1` a `scikit-learn==0.22.1` . Pokud dojde k neshodě verzí, upgradujte scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
-      
-      ```bash
-         pip install --upgrade pandas==0.25.1
-         pip install --upgrade scikit-learn==0.22.1
-      ```
-      
-    * Pokud `AutoML` je vaše verze školení SDK menší nebo rovna 1.12.0, budete potřebovat `pandas == 0.23.4` a `sckit-learn==0.20.3` . Pokud se neshoduje verze, downgrade scikit-učí nebo PANDAS na správnou verzi, jak je znázorněno níže:
-  
-      ```bash
-        pip install --upgrade pandas==0.23.4
-        pip install --upgrade scikit-learn==0.20.3
-      ```
-
-* **Nasazení se nezdařilo**: pro verze <= 1.18.0 sady SDK, může základní image vytvořená pro nasazení selhat s následující chybou: "Chyba při importu: nelze importovat název `cached_property` z `werkzeug` ". 
-
-  Problém můžete vyřešit podle následujících kroků:
-  1. Stažení balíčku modelu
-  2. Rozbalit balíček
-  3. Nasazení pomocí prostředků unzip
-
-* **Předpověď na pozici R2 je vždycky nulová**: k tomuto problému dochází, pokud mají poskytnuté školicí údaje časovou řadu, která obsahuje stejnou hodnotu pro poslední `n_cv_splits`  +  `forecasting_horizon` datové body. Pokud je tento model očekáván v časové řadě, můžete přepínat primární metriku na normalizovaný základní průměrnou chybu.
- 
-* **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
- 
-   ```python
-   from azureml.core.runconfig import RunConfiguration
-   from azureml.core.conda_dependencies import CondaDependencies
-   run_config = RunConfiguration()
-   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
-  ```
-
-* **Grafy experimentů**: binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání atd.) zobrazené v automatizovaných iteracích experimentu se nevykreslují správně v uživatelském rozhraní od 4/12. V grafu jsou v současné době zobrazeny inverzní výsledky, kde je lepší provádět modely s nižšími výsledky. Řešení je v šetření.
-
-* **Datacihly ruší automatizované spuštění strojového učení**: když v Azure Databricks používáte automatizované funkce machine learningu, ke zrušení spuštění a spuštění nového experimentu restartujte cluster Azure Databricks.
-
-* **Datacihly >10 iterací pro automatizované strojové učení**: v případě automatizovaného nastavení strojového učení, pokud máte více než 10 iterací, nastavte `show_output` na hodnotu `False` při odeslání běhu.
-
-* **Widget datacihly pro sadu Azure Machine Learning SDK a automatizované Machine Learning**: pomůcka SDK pro Azure Machine Learning není v poznámkovém bloku datacihly podporovaná, protože poznámkové bloky nemůžou analyzovat widgety HTML. Widget můžete zobrazit na portálu pomocí tohoto kódu Pythonu v buňce s Azure Databricksm poznámkového bloku:
-
-    ```
-    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
-    ```
-* **automl_setup se nezdařila**: 
-    * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pomocí tohoto odkazu [nainstalujete Miniconda](https://docs.conda.io/en/latest/miniconda.html).
-    * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
-    * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
-    * Linux `gcc: error trying to exec 'cc1plus'`
-      *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu `sudo apt-get install build-essential` .
-      * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
-      
-* **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
-  1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z Azure Portal tím, že vyberete virtuální počítač a kliknete na sítě.
-  2. Spusťte příkaz: `sudo apt-get update`
-  3. Spusťte příkaz: `sudo apt-get install build-essential --fix-missing`
-  4. Spustit `automl_setup_linux.sh` znovu
-
-* **konfigurace. ipynb se nezdařila**:
-  * V případě místních conda nejdříve zajistěte, aby byl úspěšně spuštěn automl_setup.
-  * Ujistěte se, že je subscription_id správná. Subscription_id v Azure Portal Najděte tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
-  * Zajistěte přístup k předplatnému pro přispěvatele nebo vlastníka.
-  * Ověřte, zda je oblast jednou z podporovaných oblastí: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
-  * Ověřte přístup k oblasti pomocí Azure Portal.
-  
-* nepovedlo **`import AutoMLConfig` se: ve** verzi automatizovaného strojového učení pro 1.0.76 byly provedeny změny balíčků, které před aktualizací na novou verzi vyžadují odinstalaci předchozí verze. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
-
-* **Workspace.from_config** Chyba: Pokud volání ws = Workspace.from_config () selhává –
-  1. Ujistěte se, že Poznámkový blok Configuration. ipynb byl úspěšně spuštěn.
-  2. Pokud se Poznámkový blok spouští ze složky, která není ve složce, ve které `configuration.ipynb` bylo spuštěno, zkopírujte aml_config složky a config.jssouboru, který obsahuje do nové složky. Workspace.from_config přečte config.jspro složku poznámkového bloku nebo její nadřazenou složku.
-  3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
-  4. Pokud chcete změnit oblast, změňte pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create` pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
-  
-* **Ukázkový Poznámkový blok se nezdařil**: Pokud ukázkový Poznámkový blok selhává s chybou, že vlastnost, metoda nebo knihovna neexistuje:
-  * Ujistěte se, že je v Jupyter Notebook vybraná správná jádro. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Jádro se uloží jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
-      * V případě Azure Notebooks by měl být Python 3,6. 
-      * V místních prostředích conda by měl být název prostředí Conda, který jste zadali v automl_setup.
-  * Zajistěte, aby byl Poznámkový blok pro verzi sady SDK, kterou používáte. Verzi sady SDK můžete kontrolovat vykonáním `azureml.core.VERSION` Jupyter notebook buňky. Předchozí verzi ukázkových poznámkových bloků můžete stáhnout z GitHubu tak, že kliknete na `Branch` tlačítko, vyberete `Tags` kartu a pak vyberete verzi.
-
-* **`import numpy` v systému Windows** došlo k chybě. v některých prostředích systému Windows se zobrazí chyba při načítání numpy s nejnovější verzí jazyka Python 3.6.8. Pokud se tento problém zobrazí, vyzkoušejte Python verze 3.6.7.
-
-* nepovedlo **`import numpy` se: Podívejte** se na verzi TensorFlow v prostředí automatizovaného conda ml. Podporované verze jsou < 1,13. Pokud je verze >= 1,13, odinstalujte TensorFlow z prostředí. Můžete si ověřit verzi TensorFlow a odinstalovat následujícím způsobem:
-  1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
-  2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
-  3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.
-  
- * **Spuštění selhalo `jwt.exceptions.DecodeError` s**: přesná chybová zpráva: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` .
-
-    U verzí <= 1.17.0 sady SDK může instalace způsobit nepodporovanou verzi PyJWT. Ověřte verzi PyJWT v prostředí automatizovaného conda ml. Podporované verze jsou < 2.0.0. Verzi PyJWT můžete ověřit následujícím způsobem:
-    1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
-    2. Zadejte `pip freeze` a vyhledejte `PyJWT` , pokud se nachází, uvedená verze by měla být < 2.0.0
-
-    Pokud uvedená verze není podporovanou verzí:
-    1. Zvažte upgrade na nejnovější verzi sady AutoML SDK: `pip install -U azureml-sdk[automl]` .
-    2. Pokud to není životaschopné, odinstalujte PyJWT z prostředí a nainstalujte správnou verzi následujícím způsobem:
-        - `pip uninstall PyJWT` v příkazovém prostředí a zadejte `y` pro potvrzení.
-        - Nainstalujte pomocí `pip install 'PyJWT<2.0.0'` .
-
 ## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si další informace o [tom, jak a kde model nasadit](how-to-deploy-and-where.md).
@@ -524,3 +419,5 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
 + Přečtěte si další informace o [tom, jak vytvořit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [jak pomocí automatizovaného strojového učení na vzdáleném prostředku vyškolit](how-to-auto-train-remote.md).
 
 + Naučte se, jak proškolit několik modelů pomocí AutoML v [mnoha akcelerátorech řešení modelů](https://aka.ms/many-models).
+
++ [Řešení automatických experimentů ml](how-to-troubleshoot-auto-ml.md) 

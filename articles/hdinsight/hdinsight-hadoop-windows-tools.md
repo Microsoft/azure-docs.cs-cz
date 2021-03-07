@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: d0d389e8d9458cd6b43b50e24cec030baca740af
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceb83c8c1754f0bc298290f522a8ae532db32140
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945326"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434606"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v Apache Hadoop ekosystému ve službě HDInsight z počítače s Windows
 
@@ -55,7 +55,7 @@ Příklady úloh, které můžete provádět pomocí sady Visual Studio a Data L
 Sadu Visual Studio se sadou .NET SDK můžete použít ke správě clusterů a vývoji aplikací pro velké objemy dat. Můžete použít další prostředí pro následující úkoly, ale příklady jsou uvedeny v aplikaci Visual Studio.
 
 Příklady úloh, které můžete provádět s .NET SDK v sadě Visual Studio:
-* [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)
+* [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight)
 * [Spouštějte Apache Hive dotazy pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Pomocí uživatelem definovaných funkcí jazyka C# se Apache Hive a Apache vepřovým proudem v Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 

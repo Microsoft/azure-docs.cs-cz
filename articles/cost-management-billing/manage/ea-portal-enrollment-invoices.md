@@ -3,18 +3,18 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598067"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430801"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -98,29 +98,41 @@ Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Ab
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Změna čísla nákupní objednávky pro chystanou fakturu za nadlimitní využití
 
-Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní objednávky, pokud podnikový správce nenastavil před datem faktury jiné číslo. Podnikový správce může číslo nákupní objednávky aktualizovat až sedm dnů od přijetí automatického e-mailu s oznámením o faktuře.
+Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní objednávky, pokud podnikový správce nenastavil před datem faktury jiné číslo. Podnikový správce může číslo nákupní objednávky aktualizovat až sedm dnů od přijetí automatického e-mailu s oznámením o faktuře. 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>Aktualizace čísla nákupní objednávky služeb Azure:
+Chcete-li zabránit automatické generaci čísel nákupních objednávek každý měsíc, můžete číslo nákupní objednávky uzamknout. Viz [číslo pro zámek](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles).
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Aktualizace čísla nákupní objednávky služeb Azure
 
 1. Na portálu Azure Enterprise Portal vyberte **Report** (Sestava) > **Usage Summary** (Souhrn využití).
 1. V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
 1. Vyberte přepínač **Služby Azure**.
 1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
-
    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
 1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky na Azure Marketplace:
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Aktualizace čísla nákupní objednávky Azure Marketplace
 
 1. Na portálu Azure Enterprise Portal vyberte **Report** (Sestava) > **Usage Summary** (Souhrn využití).
 1. V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
 1. Vyberte přepínač **Marketplace**.
-1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.
-
-   Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
+1. V rozevírací nabídce pro výběr rozsahu dat vyberte **Fakturační období**.  
+    Číslo nákupní objednávky můžete upravit během období 7 dnů po přijetí oznámení o faktuře, musí to ale být dříve, než fakturu uhradíte.
 1. Do pole **Číslo objednávky** zadejte nové číslo nákupní objednávky.
 1. Pokud chcete změnu odeslat, vyberte **Uložit**.
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>Umožňuje uzamknout číslo a zabránit automatické aktualizaci v nadcházejících fakturačních cyklech.
+
+Po uzamknutí čísla No zůstane tato hodnota uzamčená pro všechny nové faktury a nemusíte aktualizovat číslo No.
+
+1.  Na portálu Azure Enterprise vyberte   >  **Souhrn využití** sestav.
+2.  V pravém horním rohu vyberte **Edit PO Numbers** (Upravit čísla nákupních objednávek).
+3.  Do pole **číslo nákupní objednávky** zadejte nové číslo objednávky.
+4.  Vyberte pole **zámek pro číslo objednávky** .
+5.  Pokud chcete změnu odeslat, vyberte **Uložit**.  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="Snímek obrazovky s polem Zobrazit/upravit čísla objednávek" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Četnost fakturace Azure Enterprise
 

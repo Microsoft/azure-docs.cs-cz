@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808248"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427160"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -28,7 +28,7 @@ Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpozn�
 
 ##  <a name="prerequisites"></a>Požadavky
 
-1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
 
 
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>Běžné chyby
 
-|Chybová|Řešení|
+|Chyba|Řešení|
 |:--|:--|
 | 400/Chybný požadavek s `"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>Běžné chyby
 
-|Chybová|Řešení|
+|Chyba|Řešení|
 |:--|:--|
 |"chyby": [{"Code": "AuthorizationError";<br>zpráva: "Chyba autorizace z důvodu <br>chybějící nebo neplatné deklarace identity autorizace. "}]   | Nastane, pokud se `copyAuthorization` datová část nebo obsah upraví z toho, co vrátilo `copyAuthorization` rozhraní API. Ujistěte se, že datová část je stejný přesný obsah, který byl vrácen z předchozího `copyAuthorization` volání.|
 |"chyby": [{"Code": "AuthorizationError";<br>zpráva: nepovedlo se načíst autorizaci. <br>mezipaměť. Pokud s tím budou dál problémy používat jiné <br>cílový model, do kterého se mají kopírovat. "}] | Indikuje, že se `copyAuthorization` datová část znovu používá s požadavkem Copy. Požadavek Copy, který je úspěšný, neumožní žádné další požadavky, které používají stejnou `copyAuthorization` datovou část. Pokud vyvoláte samostatnou chybu (například ty, které jsou uvedené níže), a pak znovu spustíte kopii se stejnou datovou částí autorizace, vyvolá se tato chyba. Řešením je vygenerovat novou `copyAuthorization` datovou část a pak znovu vystavit požadavek na kopírování.|

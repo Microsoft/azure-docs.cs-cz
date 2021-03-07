@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9b092c3c7382c984e8555125820c7c34d91f5e87
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048925"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434062"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -78,7 +78,7 @@ Metriky, které je potřeba provést s fakturací:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Operace s rozhraním API pro fakturaci | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | Meter ID |
 | BillingMessagesProcessed | Zpracované účtovací zprávy | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů.<br><br>Aby bylo možné považovat za jednu zprávu pro účely účtování, datová část nesmí být větší než 1 KB. Datové části větší než tato se budou počítat jako další zprávy v přírůstcích po 1 KB (takže zpráva mezi 1 a 2 KB se bude počítat jako 2 zprávy, mezi 2 a 3 KB budou 3 zprávy atd.).<br>Toto omezení platí také pro odpovědi, takže volání, které vrátí 1,5 KB v těle odpovědi, se například bude účtovat jako 2 operace. | Meter ID |
-| BillingQueryUnits | Jednotky dotazů fakturace | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet) | Meter ID |
+| BillingQueryUnits | Jednotky dotazů fakturace | Počet | Celkem | Počet jednotek dotazu, interně vypočtené míry využití prostředků služby, spotřebované pro provádění dotazů. K dispozici je také pomocné rozhraní API pro měření jednotek dotazu: [Třída QueryChargeHelper](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Meter ID |
 
 Další podrobnosti o tom, jak se účtují digitální vlákna Azure, najdete v tématu [*ceny za digitální vlákna*](https://azure.microsoft.com/pricing/details/digital-twins/)Azure.
 

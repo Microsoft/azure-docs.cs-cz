@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4cc5063f72ff3f0db62cde79f7908add86166e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944496"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434488"
 ---
 :::row:::
     :::column span="3":::
@@ -26,11 +26,11 @@ ms.locfileid: "88944496"
 
 ### <a name="system-requirements"></a>Požadavky na systém
 
-Sada Speech SDK ve Windows vyžaduje <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ distribuovatelné pro Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v systému.
+Sada Speech SDK ve Windows vyžaduje <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ distribuovatelné pro Visual Studio 2019 </a> v systému.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Instalace pro x86 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Instalace pro x64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Nainstalovat pro ARMx64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Instalace pro x86 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Instalace pro x64 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Nainstalovat pro ARMx64 </a>
 
 ### <a name="c"></a>C#
 
@@ -40,7 +40,7 @@ V případě vstupu přes mikrofon musí být nainstalovány knihovny Media Foun
 
 Požadované soubory sady Speech SDK lze nasadit do stejného adresáře jako vaše aplikace. Tímto způsobem může aplikace získat přímý přístup ke knihovnám. Ujistěte se, že jste vybrali správnou verzi (x86/x64), která odpovídá vaší aplikaci.
 
-| Name                                            | Funkce                                             |
+| Název                                            | Funkce                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Základní sada SDK požadovaná pro nativní a spravované nasazení |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Požadováno pro spravované nasazení                      |

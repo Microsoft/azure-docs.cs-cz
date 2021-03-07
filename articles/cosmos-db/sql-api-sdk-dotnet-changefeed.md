@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: ff861b5a58de4f108e49e52e6f09c71d7dd678ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 43ad7a91719430798d93c4883027cb4c58fd3442
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097188"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423840"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK .NET s procesorem kanálu změn: Stažení a poznámky k verzi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "93097188"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API knihovny procesoru kanálu změn](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet&preserve-view=true)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní API knihovny procesoru kanálu změn](/dotnet/api/microsoft.azure.documents.changefeedprocessor)|
 |**Začínáme**|[Začínáme se sadou SDK .NET s procesorem kanálu změn](change-feed.md)|
 |**Aktuální podporovaná architektura**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
@@ -189,7 +189,7 @@ ms.locfileid: "93097188"
 
 ## <a name="release--retirement-dates"></a>Data vydání a vyřazení z provozu
 
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
 > Od 31. srpna 2022 už Azure Cosmos DB nebude provádět opravy chyb, přidávat nové funkce ani poskytovat podporu pro verze 1.x sad SDK Azure Cosmos DB .NET nebo .NET Core pro rozraní SQL API. Pokud nechcete provést upgrade, služba Azure Cosmos DB bude dál zpracovávat požadavky odeslané z verze 1.x sady SDK.

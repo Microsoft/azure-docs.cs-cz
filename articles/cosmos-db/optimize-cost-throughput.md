@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0c95fc9e416399b5c8fe032e0d3af0c3b7f9cf6e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296535"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433569"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,13 +59,13 @@ Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní A
 |----|----|----|
 |SQL API|databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
-|Rozhraní Cassandra API|Prostor klíčů|Table|
+|Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|
-|Rozhraní Table API|Databázový účet|Table|
+|Rozhraní Table API|Databázový účet|Tabulka|
 
 Díky zajištění propustnosti na různých úrovních můžete optimalizovat náklady na základě charakteristik vašich úloh. Jak bylo zmíněno dříve, můžete programově a kdykoli zvětšit nebo zmenšit zřízenou propustnost pro jednotlivé kontejnery nebo souhrnně napříč sadou kontejnerů. Díky elastickému škálování propustnosti při změnách zatížení platíte jenom za propustnost, kterou jste nakonfigurovali. Pokud je váš kontejner nebo sada kontejnerů distribuován napříč několika oblastmi, je zaručená propustnost, kterou nakonfigurujete na kontejneru nebo sadě kontejnerů, ve všech oblastech.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizace pomocí hodnocení – omezení vašich požadavků
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizace s využitím omezování rychlosti požadavků
 
 Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server bude žádost bez jakýchkoli požadavků `RequestRateTooLarge` (kód stavu HTTP 429) a vrátí `x-ms-retry-after-ms` hlavičku udávající, jak dlouho (v milisekundách) musí uživatel čekat, než bude požadavek opakovat. 
 
@@ -81,7 +81,7 @@ Nativní sady SDK (.NET/.NET Core, Java, Node.js a Python) implicitně zachytí 
 
 Pokud máte více než jednoho klienta, který se v současné době průběžně pracuje konzistentně nad rámec požadavků, výchozí počet opakování, který je aktuálně nastavený na 9, nemusí být dostatečný. V takových případech klient vyvolá `RequestRateTooLargeException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením v `RetryOptions` instanci ConnectionPolicy. Ve výchozím nastavení se `RequestRateTooLargeException` stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
-[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -99,7 +99,7 @@ Dobrá strategie vytváření oddílů je důležitá pro optimalizaci nákladů
 
 * Vyberte klíč oddílu, který má velký rozsah hodnot. 
 
-Základní nápad je rozprostřít data a aktivity ve vašem kontejneru napříč sadou logických oddílů, aby bylo možné distribuovat prostředky pro ukládání a propustnost dat napříč logickými oddíly. Kandidáti na klíče oddílů můžou zahrnovat vlastnosti, které se v dotazech často zobrazují jako filtr. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru. Díky takové strategii dělení bude optimalizace zřízené propustností mnohem jednodušší. 
+Základní nápad je rozprostřít data a aktivity ve vašem kontejneru napříč sadou logických oddílů, aby bylo možné distribuovat prostředky pro ukládání a propustnost dat napříč logickými oddíly. Kandidáti na klíče oddílů můžou zahrnovat vlastnosti, které se v dotazech často zobrazují jako filtr. Zahrnutím klíče oddílu do predikátu filtru můžete zajistit efektivní směrování dotazů. Díky takové strategii dělení bude optimalizace zřízené propustností mnohem jednodušší. 
 
 ### <a name="design-smaller-items-for-higher-throughput"></a>Návrh menších položek pro vyšší propustnost 
 
