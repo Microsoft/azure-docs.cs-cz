@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996691"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426820"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -74,6 +74,9 @@ Pokud máte prostředí s Azure Active Directory (Cloud) i se službou Windows S
 
 Existující uživatele můžete odstranit pomocí portálu Azure Active Directory.
 
+>[!Note]
+>Abyste mohli odstraňovat uživatele ve vaší organizaci, musíte mít přiřazenou roli globálního správce nebo Správce uživatelů. Globální správci můžou odstranit všechny uživatele, včetně jiných správců. Správci uživatelů mohou odstranit všechny uživatele, kteří nejsou správci, helpdesk a další Správce uživatelů. Další informace najdete v tématu [oprávnění role správce v Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+
 Pokud chcete uživatele odstranit, postupujte podle těchto kroků:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce uživatele pro organizaci.
@@ -91,7 +94,7 @@ Uživatel se odstraní a už se nezobrazí na stránce **Uživatelé – všichn
 Po odstranění uživatele budou k dispozici všechny licence spotřebované uživatelem pro ostatní uživatele.
 
 >[!Note]
->K aktualizaci identity, kontaktních informací nebo informací o úlohách pro uživatele, jejichž zdroj oprávnění je Windows Server Active Directory, musíte použít Windows Server Active Directory. Po dokončení aktualizace musíte počkat na dokončení dalšího cyklu synchronizace, než se změny projeví.
+>Chcete-li aktualizovat identitu, kontaktní informace nebo informace o úlohách pro uživatele, jejichž zdrojovou autoritou je služba Windows Server Active Directory, je nutné použít službu Windows Server Active Directory. Po dokončení aktualizace musíte počkat na dokončení dalšího cyklu synchronizace, než se změny projeví.
 
 ## <a name="next-steps"></a>Další kroky
 

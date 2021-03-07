@@ -8,16 +8,18 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f6e4218290de6ef41ef6eedc78b3b0b55ee322e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656189"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438553"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
-Komunikační služby Azure se zavazují, aby naši zákazníci mohli splnit požadavky na ochranu osobních údajů a osobní údaje. Jako vývojář, který používá komunikační služby s přímým vztahem na lidi, kteří používají aplikaci, jste si potenciálně kontrolují svá data. Vzhledem k tomu, že služba Azure Communication Services ukládá tato data vaším jménem, máme pravděpodobně procesor těchto dat. Tato stránka shrnuje, jak služba uchovává data a jak můžete tato data identifikovat, exportovat a odstranit.
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Komunikační služby Azure se zavazují, aby naši zákazníci mohli splnit požadavky na ochranu osobních údajů a osobní údaje. Jako vývojář, který používá komunikační služby s přímým vztahem na lidi, kteří používají aplikaci, jste si potenciálně kontrolují svá data. Vzhledem k tomu, že služba Azure Communication Services ukládá a šifruje tato data v klidovém znění, je nejpravděpodobnější procesor těchto dat. Tato stránka shrnuje, jak služba uchovává data a jak můžete tato data identifikovat, exportovat a odstranit.
 
 ## <a name="data-residency"></a>Rezidence dat
 
@@ -63,7 +65,7 @@ Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 
 
 ### <a name="sms"></a>SMS
 
-Odeslané a přijaté zprávy SMS jsou ephemerally zpracovávány službou a neuchovávají se.
+Odeslané a přijaté zprávy SMS jsou ephemerally zpracovávány službou a neuchovávají se. 
 
 ### <a name="pstn-voice-calling"></a>Volání hlasu veřejné telefonní sítě
 

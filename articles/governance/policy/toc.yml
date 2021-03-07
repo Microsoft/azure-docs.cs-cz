@@ -87,6 +87,8 @@
           href: ./samples/azure-security-benchmark.md
         - name: Srovnávací test zabezpečení Azure v1
           href: ./samples/azure-security-benchmarkv1.md
+        - name: CI Microsoft Azure – 1.3.0 Foundation – srovnávací test
+          href: ./samples/cis-azure-1-3-0.md
         - name: Srovnávací test CIS Microsoft Azure Foundations 1.1.0
           href: ./samples/cis-azure-1-1-0.md
         - name: CMMC úrovně 3

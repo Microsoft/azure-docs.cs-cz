@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a9ef3fb009cfb91b20ac7492be193286e2f0410
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965892"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432532"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
 
@@ -35,10 +35,10 @@ Tyto funkce nabízí následující možnosti:
 - **Možnost 1**: analýza vymezená v oboru – analýza pouze zadaného modelu
 - **Možnost 2**: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí [taxonomie 86-Categories](../Category-Taxonomy.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Adresa URL obrázku nebo cesta k místně uložené imagi
@@ -177,12 +177,12 @@ Tady je příklad:
 }
 ```
 
-Pole | Typ | Obsah
+Pole | Typ | Content
 ------|------|------|
 Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
 tags[].Name | `string`    | Klíčové slovo z třídění značek.
 tags[].Score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
-Popis     | `object`    | Objekt nejvyšší úrovně pro popis.
+description     | `object`    | Objekt nejvyšší úrovně pro popis.
 description.tags[] |    `string`    | Seznam značek.  Pokud není dostatečná důvěra v možnosti vytvoření titulku, mohou být značky jedinou informací, které jsou k dispozici volajícímu.
 description.captions[].text    | `string`    | Výraz, který popisuje obrázek.
 description.captions[].confidence    | `number`    | Skóre spolehlivosti fráze.
@@ -239,7 +239,7 @@ U modelů specifických pro doménu pomocí možnosti 2 (vylepšená analýza) j
 
 Pole kategorie je seznam jednoho nebo více [kategorií 86](../Category-Taxonomy.md) v původní taxonomii. Kategorie, které končí podtržítkem, odpovídají této kategorii a jejím dětem (například "people_" nebo "people_group" pro model celebrit).
 
-Pole    | Typ    | Obsah
+Pole    | Typ    | Content
 ------|------|------|
 categories | `object`    | Objekt nejvyšší úrovně.
 categories[].name     | `string`    | Název ze seznamu taxonomie 86-Category.

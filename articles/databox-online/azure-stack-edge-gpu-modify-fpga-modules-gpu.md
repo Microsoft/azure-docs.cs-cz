@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 660fbf7cc4dd28c800d8f49fd5d990c99f97c4c8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550214"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442991"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Spouštět existující IoT Edge moduly ze zařízení Azure Stack Edge pro FPGA na zařízení s grafickým procesorem Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Tento článek podrobně popisuje změny potřebné pro modul IoT Edge založený na Docker, který běží na Azure Stack Edge pro FPGA, takže ho můžete spustit na platformě IoT Edge založenou na Kubernetes na zařízení GPU Azure Stack Edge pro. 
 

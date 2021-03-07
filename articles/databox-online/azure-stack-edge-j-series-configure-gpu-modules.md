@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dfae1a9b02db7e7b9577acdb47a1ba089f1609e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935548"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439047"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurace a spuštění modulu na GPU na zařízení Azure Stack Edge pro
 
-Vaše zařízení Azure Stack Edge pro obsahuje jednu nebo více grafických procesorů (GPU). GPU je oblíbená volba pro výpočty AI, protože nabízí možnosti paralelního zpracování a jsou rychlejší při vykreslování obrázků než procesory středního zpracování. Další informace o GPU obsaženém v zařízení Azure Stack Edge pro najdete v části [technické specifikace pro zařízení Azure Stack Edge pro](azure-stack-edge-gpu-technical-specifications-compliance.md).
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
+
+Vaše zařízení Azure Stack Edge pro obsahuje jednu nebo více grafických procesorů (GPU). GPU jsou oblíbenou volbou pro výpočty AI, protože nabízejí možnosti paralelního zpracování a rychlejší vykreslování obrázků než procesory (CPU). Další informace o GPU obsaženém v zařízení Azure Stack Edge pro najdete v části [technické specifikace pro zařízení Azure Stack Edge pro](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
 Tento článek popisuje, jak nakonfigurovat a spustit modul na GPU na zařízení Azure Stack Edge pro. V tomto článku použijete veřejně dostupná **čísla** kontejnerů, která se napíší pro grafické procesory NVIDIA T4. Tento postup můžete použít ke konfiguraci jakýchkoli dalších modulů publikovaných pomocí NVIDIA pro tyto GPU.
 
@@ -102,7 +104,7 @@ Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack E
        Další informace o proměnných prostředí, které můžete použít s grafickým procesorem NVIDIA, najdete v části [modul runtime kontejneru NVIDIA](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
 
     > [!NOTE]
-    > GPU se dá mapovat jenom na jeden modul. Modul může ale používat jeden nebo žádné GPU.
+    > GPU je možné namapovat pouze na jeden modul. Modul může ale používat jeden nebo žádné GPU.
 
 12. Zadejte název svého modulu. V tomto okamžiku se můžete rozhodnout, že chcete poskytnout možnost vytvoření kontejneru a upravit nastavení s dvojitým použitím modulu, nebo pokud je dokončený, vyberte **Přidat**. 
 

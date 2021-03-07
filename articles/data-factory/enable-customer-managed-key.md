@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 4e30ac2e6836b40ab0c0c2915eae48266cb4845c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199202"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443864"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Šifrování Azure Data Factory pomocí klíčů spravovaných zákazníkem
 
@@ -102,9 +102,9 @@ Další informace o spravované identitě přiřazené uživateli najdete v tém
 1. Ujistěte se, že uživatelem přiřazená identita (UA-MI) má oprávnění _získat_, _Rozbalit klíč_ a _zabalit klíč_ , aby Key Vault
 
 1. Na kartě __Upřesnit__ zaškrtněte políčko _Povolit šifrování pomocí obrazovky se spravovaným klíčem zákazníka_ na 
-   :::image type="content" source="media/enable-customer-managed-key/06-uami-cmk.png" alt-text="kartě Upřesnit pro prostředí vytváření datových továrn v Azure Portal.":::
+   :::image type="content" source="media/enable-customer-managed-key/06-user-assigned-managed-identity.png" alt-text="kartě Upřesnit pro prostředí vytváření datových továrn v Azure Portal.":::
 
-1. Zadejte adresu URL pro Key Vault
+1. Zadejte adresu URL pro spravovaný klíč zákazníka uloženou v Key Vault
 
 1. Pro ověření pomocí Key Vault vyberte příslušnou spravovanou identitu přiřazenou uživatelem.
 

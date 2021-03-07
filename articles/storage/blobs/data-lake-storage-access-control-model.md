@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650384"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439285"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Model řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -106,7 +106,7 @@ V následující tabulce se dozvíte, jak kombinovat role Azure a položky sezna
 
 
 > [!NOTE] 
-> Chcete-li zobrazit obsah kontejneru v Průzkumník služby Azure Storage, musí se objekty zabezpečení [přihlašovat k Průzkumník služby Storage pomocí Azure AD](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)a (minimálně) mít oprávnění ke čtení (R--) do kořenové složky ( `\` ) kontejneru. Tato úroveň oprávnění jim dává možnost vypisovat obsah kořenové složky. Pokud nechcete, aby se obsah kořenové složky zobrazil, můžete jim přiřadit roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) . S touto rolí budou moci zobrazit kontejnery v účtu, ale ne obsah kontejneru. Přístup ke konkrétním adresářům a souborům pak můžete udělit pomocí seznamů řízení přístupu (ACL).   
+> Chcete-li zobrazit obsah kontejneru v Průzkumník služby Azure Storage, musí se objekty zabezpečení [přihlašovat k Průzkumník služby Storage pomocí Azure AD](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource)a (minimálně) mít oprávnění ke čtení (R--) do kořenové složky ( `\` ) kontejneru. Tato úroveň oprávnění jim dává možnost vypisovat obsah kořenové složky. Pokud nechcete, aby se obsah kořenové složky zobrazil, můžete jim přiřadit roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) . S touto rolí budou moci zobrazit kontejnery v účtu, ale ne obsah kontejneru. Přístup ke konkrétním adresářům a souborům pak můžete udělit pomocí seznamů řízení přístupu (ACL).   
 
 ## <a name="security-groups"></a>Skupiny zabezpečení
 

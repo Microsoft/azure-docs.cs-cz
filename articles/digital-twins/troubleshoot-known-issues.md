@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203143"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434096"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -37,7 +37,7 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Problémy s ověřováním pomocí interaktivního prohlížeče v Azure. identity 1.2.0
 
-**Popis problému:** Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) . Tato možnost představuje při pokusu o ověření v okně prohlížeče jako odpověď na chybu "Azure. identity. AuthenticationFailedException". Může se stát, že se okno prohlížeče zcela nespustí nebo se zobrazí ověření uživatele úspěšně, zatímco klientská aplikace se přesto nezdaří s chybou.
+**Popis problému:** Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity)** může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) . Tato možnost představuje při pokusu o ověření v okně prohlížeče jako odpověď na chybu "Azure. identity. AuthenticationFailedException". Může se stát, že se okno prohlížeče zcela nespustí nebo se zobrazí ověření uživatele úspěšně, zatímco klientská aplikace se přesto nezdaří s chybou.
 
 | Týká se to mi? | Příčina | Řešení |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problém s výchozím ověřováním přihlašovacích údajů Azure v Azure. identity 1.3.0
 
-**Popis problému:** Při psaní ověřovacího kódu pomocí **1.3.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** mají někteří uživatelé problémy s metodou [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) použitou v mnoha ukázkách v těchto dokumentech digitálních vláken Azure. To představuje chybovou odpověď "Azure. identity. AuthenticationFailedException: ověřování SharedTokenCacheCredential se nezdařilo", když se kód pokusí ověřit.
+**Popis problému:** Při psaní ověřovacího kódu pomocí **1.3.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity)** mají někteří uživatelé problémy s metodou [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) použitou v mnoha ukázkách v těchto dokumentech digitálních vláken Azure. To představuje chybovou odpověď "Azure. identity. AuthenticationFailedException: ověřování SharedTokenCacheCredential se nezdařilo", když se kód pokusí ověřit.
 
 | Týká se to mi? | Příčina | Řešení |
 | --- | --- | --- |

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896185"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437753"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stack Edge pro pomocí prostředí Windows PowerShell
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Řešení Azure Stack Edge pro umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge pro. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
@@ -121,7 +123,7 @@ Pokud je v zařízení nakonfigurovaná výpočetní role, můžete získat výp
     - `FullLogCollection`: Tento parametr zajišťuje, že balíček protokolu bude obsahovat všechny protokoly výpočtů. Ve výchozím nastavení obsahuje balíček protokolu pouze podmnožinu protokolů.
 
 
-## <a name="change-kubernetes-pod-and-service-subnets"></a>Změna Kubernetes pod a podsítí služby
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Změna podsítí podu a služby Kubernetes
 
 Ve výchozím nastavení Kubernetes Azure Stack na zařízení Edge používá podsítě 172.27.0.0/16 a 172.28.0.0/16 pro pod a službu. Pokud se tyto podsítě už ve vaší síti používají, můžete spuštěním `Set-HcsKubeClusterNetworkInfo` rutiny tyto podsítě změnit.
 

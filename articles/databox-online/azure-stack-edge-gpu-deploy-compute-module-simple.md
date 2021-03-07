@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550988"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440135"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>Kurz: spuštění výpočetních úloh s modulem IoT Edge v GPU pro procesor Azure Stack Edge pro
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 V tomto kurzu se dozvíte, jak spustit výpočetní úlohy pomocí modulu IoT Edge na zařízení GPU Azure Stack Edge pro. Po konfiguraci výpočetní služby bude zařízení data transformovat, než je odešle do Azure.
 
@@ -75,7 +75,7 @@ Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složk
 
     `rsync <source file path> < destination file path>`
 
-    Další informace o tomto `rsync` příkazu najdete v dokumentaci k [rsync](https://www.computerhope.com/unix/rsync.htm).
+    Další informace o tomto `rsync` příkazu najdete v [ `Rsync` dokumentaci](https://www.computerhope.com/unix/rsync.htm).
  
 3. Pokud chcete zobrazit aktualizovaný seznam sdílených složek, přejděte do **brány cloudového úložiště > sdílené složky** .
 

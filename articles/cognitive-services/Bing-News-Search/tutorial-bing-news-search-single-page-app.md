@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: c3d486a32f4a926ed42f3d67a1fa96d3da397beb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cb9e68efd27deb3bf66d3c286c0cd7a128d8bf59
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351210"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430577"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové aplikace s jednou stránkou
 
@@ -51,7 +51,7 @@ Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, �
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API. Pokud je nemáte, budete je muset vytvořit:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 ## <a name="app-components"></a>Komponenty aplikace
 Stejně jako každá jednostránková webová aplikace i tato aplikace zahrnuje tři části:

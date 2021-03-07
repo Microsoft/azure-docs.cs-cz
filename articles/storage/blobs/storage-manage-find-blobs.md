@@ -3,18 +3,18 @@ title: Správa a hledání dat objektů BLOB v Azure pomocí značek indexu obje
 description: Naučte se používat značky indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523276"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431750"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)
 
@@ -29,6 +29,9 @@ Značky indexu objektů BLOB umožňují:
 
 Vezměte v úvahu scénář, ve kterém máte v účtu úložiště miliony objektů blob, ke kterým má přistup řada různých aplikací. Chcete najít všechna související data z jednoho projektu. Nejste si jistí, co je v oboru, protože data je možné rozdělit do několika kontejnerů s různými konvencemi vytváření názvů. Vaše aplikace ale nahrávají všechna data pomocí značek na základě jejich projektu. Místo vyhledávání v milionech objektů BLOB a porovnávání názvů a vlastností můžete použít `Project = Contoso` jako kritéria vyhledávání. Index objektu BLOB filtruje všechny kontejnery napříč celým účtem úložiště, aby bylo možné rychle vyhledat a vrátit jenom sadu objektů BLOB 50 z `Project = Contoso` .
 
+> [!IMPORTANT]
+> Značky indexu objektu BLOB jsou momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+
 Pokud chcete začít s příklady použití indexu objektů blob, přečtěte si téma [použití značek indexu objektů BLOB ke správě a hledání dat](storage-blob-index-how-to.md).
 
 ## <a name="blob-index-tags-and-data-management"></a>Značky indexu objektů BLOB a správa dat
@@ -42,7 +45,6 @@ Vezměte v úvahu následující pět objektů BLOB v účtu úložiště:
 - *fotky/bannerphoto.png*
 - *archivy/dokončené/2019review.pdf*
 - *protokoly/2020/01/01/logfile.txt*
-
 
 Tyto objekty BLOB se oddělují pomocí předpony *kontejneru/virtuální složky nebo názvu objektu BLOB*. Můžete nastavit atribut značky indexu `Project = Contoso` u těchto pěti objektů blob, aby je bylo možné kategorizovat společně a přitom zachovat aktuální předponu organizace. Přidávání indexových značek eliminuje nutnost přesunu dat vyplněním schopnosti filtrovat a vyhledávat data pomocí indexu.
 
@@ -334,7 +336,7 @@ Tato část popisuje známé problémy a podmínky ve verzi Public Preview znač
 - `Copy Blob` (Asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Použijte `Copy Blob` z adresy URL (Synchronization Copy).
 - Značky jsou při vytváření snímku trvalé. Zvýšení úrovně snímku ale není podporované a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB?**
 

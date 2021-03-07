@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509815"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431376"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Rychlý Start: vytvoření libovolné konfigurace pomocí šablony ARM
 
@@ -125,13 +125,7 @@ Chcete-li tuto šablonu nasadit správně, je nutné použít tlačítko k nasaz
 
 Když už nepotřebujete prostředky, které jste vytvořili, odstraňte je. Některé virtuální prostředky sítě WAN je potřeba z důvodu závislostí odstranit v určitém pořadí. Dokončení odstranění může trvat přibližně 30 minut.
 
-1. Otevřete virtuální síť WAN, kterou jste vytvořili.
-1. Výběrem virtuálního rozbočovače přidruženého k virtuální síti WAN otevřete stránku centra.
-1. Klikněte na **Odstranit**. Odstraňte všechny entity (připojení, brány atd.) v centru. Dokončení tohoto může trvat 30 minut.
-1. Můžete buď odstranit centrum v tomto okamžiku, nebo ho odstranit později při odstraňování skupiny prostředků.
-1. Opakujte pro všechna centra přidružená k virtuální síti WAN.
-1. Přejděte do skupiny prostředků v Azure Portal.
-1. Vyberte **Odstranit skupinu prostředků**. Tím se odstraní vše ve skupině prostředků, včetně Center a virtuální sítě WAN.
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

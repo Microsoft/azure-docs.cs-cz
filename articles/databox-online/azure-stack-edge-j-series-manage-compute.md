@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99068a68c5d35bc6a501c5860d0bbc9ea3e3f368
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733410"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436961"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Správa výpočetních prostředků na GPU Azure Stack Edge pro
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak spravovat výpočetní prostředky prostřednictvím služby IoT Edge na zařízení GPU Azure Stack Edge pro. Výpočetní prostředky můžete spravovat prostřednictvím Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete spravovat moduly, triggery a konfiguraci IoT Edge a místní webové uživatelské rozhraní pro správu výpočetních nastavení sítě.
 
@@ -37,7 +37,7 @@ Pokud chcete vytvořit Trigger, proveďte následující kroky v Azure Portal.
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **IoT Edge**. Přejít na **triggery** a na panelu příkazů vyberte **+ Přidat Trigger** .
 
-    ![Vyberte Přidat aktivační událost.](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
+    ![Vyberte Přidat aktivační událost.](media/azure-stack-edge-j-series-manage-compute/add-trigger-1-m.png)
 
 2. V okně **Přidat aktivační událost** zadejte jedinečný název aktivační události.
     

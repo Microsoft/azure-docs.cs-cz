@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6c69e5923e2b65bab0feca04d10fa67f49df3616
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174451"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439625"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -53,7 +53,7 @@ Další informace o tomto řídicím panelu najdete na [stránce s přehledem Az
 
 ### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>Posouzení ohrožení zabezpečení SQL teď zahrnuje možnosti "zakázat pravidlo" (Preview).
 
-Security Center obsahuje integrovanou kontrolu ohrožení zabezpečení, která vám umožní zjišťovat, sledovat a opravovat potenciální ohrožení zabezpečení databáze. Zjištění z vašich kontrol najdete v přehledu o stavu zabezpečení počítačů s SQL a podrobnostech o všech zjištěních zabezpečení.
+Security Center obsahuje integrovanou kontrolu ohrožení zabezpečení, která vám umožní zjišťovat, sledovat a opravovat potenciální ohrožení zabezpečení databáze. Výsledky prověřování hodnocení vám poskytnou přehled o stavu zabezpečení počítačů s SQL a podrobností o všech zjištěních zabezpečení.
 
 Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.
 

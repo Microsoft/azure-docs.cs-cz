@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710494"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424491"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -55,7 +55,7 @@ Při učení nového modelu začněte s [souvisejícím textem](#related-text-da
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor. zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
 > [!TIP]
-> Pokud chcete rychle začít, zvažte použití ukázkových dat. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Ukázková Custom Speechová data <span class="docon docon-navigate-external x-hidden-focus"></span> </a> najdete v tomto úložišti GitHubu.
+> Pokud chcete rychle začít, zvažte použití ukázkových dat. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">Ukázková Custom Speechová data</a> najdete v tomto úložišti GitHubu.
 
 > [!NOTE]
 > Ne všechny základní modely podporují školení se zvukem. Pokud základní model ho nepodporuje, služba řeči bude používat jenom text z přepisů a zvuk bude ignorovat. Seznam základních modelů, které podporují školení se zvukovými daty, najdete v tématu [jazyková podpora](language-support.md#speech-to-text) . I v případě, že základní model podporuje školení se zvukovými daty, může služba použít jenom část zvuku. Pořád bude používat všechny přepisy.
@@ -69,7 +69,7 @@ Soubory by měly být seskupené podle typu do datové sady a nahrané jako soub
 
 ## <a name="upload-data"></a>Nahrání dat
 
-Pokud chcete nahrát data, přejděte do sady <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
+Pokud chcete nahrát data, přejděte do sady <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
 ![Snímek obrazovky, který zvýrazní možnost nahrávání zvuku z portálu pro rozpoznávání řeči.](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -101,7 +101,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 > [!TIP]
 > Při nahrávání školicích a testovacích dat nemůže být velikost souboru ZIP větší než 2 GB. Pokud potřebujete další data pro školení, rozdělte je do několika souborů zip a nahrajte je samostatně. Později můžete zvolit výuku z *více* datových sad. Můžete však testovat pouze z *jedné* datové sady.
 
-Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
+Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
 | Aktivita | Popis | SoX – příkaz |
 |----------|-------------|-------------|
@@ -146,7 +146,7 @@ speech03.wav    the lazy dog was not amused
 
 Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existují však některé důležité normalizace, které je nutné provést před odesláním dat do sady Speech Studio. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
 
-Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním do <a href="https://speech.microsoft.com/customspeech" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> studia pro rozpoznávání řeči </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
+Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním do <a href="https://speech.microsoft.com/customspeech" target="_blank">studia pro rozpoznávání řeči </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
 
 > [!div class="mx-imgBorder"]
 > ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -164,7 +164,7 @@ Názvy produktů nebo funkce, které jsou jedinečné, by měly obsahovat souvis
 | Věty (projevy) | Zvyšte přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Zlepšení výslovnosti neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
 
-Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát do <a href="https://speech.microsoft.com/customspeech" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> studia pro rozpoznávání řeči </a>.
+Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát do <a href="https://speech.microsoft.com/customspeech" target="_blank">studia pro rozpoznávání řeči </a>.
 
 Školení se souvisejícím textem obvykle dokončí během několika minut.
 

@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211647"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426956"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu pro balíček přístupu v Azure AD – Správa nároků
 
@@ -197,6 +197,8 @@ Chcete-li změnit nastavení žádosti a schválení pro balíček pro přístup
     ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. Klikněte na **Next** (Další).
+
+1. Pokud chcete, aby žadatelé při žádosti o přístup k balíčku pro přístup mohli poskytnout další informace, použijte postup v [nastavení změnit schválení a informace o žadateli (Preview) pro balíček přístupu ve službě Azure AD – Správa nároků](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) na konfiguraci informací o žadateli (Preview).
 
 1. Nakonfigurujte nastavení životního cyklu.
 
