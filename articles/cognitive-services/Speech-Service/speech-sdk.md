@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601822"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434456"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -58,13 +58,14 @@ Převod [textu na řeč](text-to-speech.md) (označovaný také jako *syntéza �
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 
-[Hlasové asistenti](voice-assistants.md) , kteří používají sadu Speech SDK, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá pro dokončení úkolu přímý linkový kanál rozhraní bot Framework nebo službu integrovaných vlastních příkazů. Kromě toho můžou asistenti hlasu použít vlastní hlasy vytvořené na [vlastním hlasovém portálu](https://aka.ms/customvoice) a přidat tak jedinečné prostředí pro hlasové výstupy.
+[Hlasové asistenti](voice-assistants.md) , kteří používají sadu Speech SDK, vám umožní vytvořit pro vaše aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Sada Speech SDK poskytuje rychlou a spolehlivou interakci, která zahrnuje převod řeči na text, převod textu na řeč a konverzační data v jednom připojení. Vaše implementace může pro dokončení úkolu použít kanál s přímým řádkem řeči rozhraní bot Framework nebo službu integrovaných vlastních příkazů. Kromě toho můžou asistenti hlasu použít vlastní hlasy vytvořené na [vlastním hlasovém portálu](https://aka.ms/customvoice) a přidat tak jedinečné prostředí pro hlasové výstupy.
 
-**Hlasové asistenti** jsou k dispozici na následujících platformách:
+Podpora **hlasového asistenta** je k dispozici na následujících platformách:
 
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>Klíčové slovo hledání
 
@@ -113,7 +114,7 @@ Sadu Speech SDK lze použít pro scénáře zdlouhavého přepisováního centra
 
 ### <a name="codec-compressed-audio-input"></a>Komprimovaný zvukový vstup kodeku
 
-Několik programovacích jazyků pro sadu Speech SDK podporuje kodeky komprimované zvukové vstupní proudy. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">použití komprimovaných formátů <span class="docon docon-navigate-external x-hidden-focus"></span> zvukového vstupu </a>.
+Několik programovacích jazyků pro sadu Speech SDK podporuje kodeky komprimované zvukové vstupní proudy. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">použití komprimovaných formátů zvukového vstupu </a>.
 
 **Komprimovaný zvukový vstup kodeku** je k dispozici na následujících platformách:
 

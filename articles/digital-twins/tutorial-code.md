@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576257"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424457"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
-Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
 
 > [!div class="checklist"]
 > * Nastavit projekt
@@ -57,7 +57,7 @@ Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *pr
 
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 
-V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
+V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core

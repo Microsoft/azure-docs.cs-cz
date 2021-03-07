@@ -3,21 +3,25 @@ title: Konfigurace oprávnění služby Azure image Builder pomocí PowerShellu
 description: Konfigurace požadavků pro službu Azure VM Image Builder, včetně oprávnění a oprávnění, pomocí PowerShellu
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b9cf3ffdb1fc6db9604098e8e5782317a8eb431
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695392"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440203"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>Konfigurace oprávnění služby Azure image Builder pomocí PowerShellu
 
-Služba Azure image Builder vyžaduje před vytvořením image konfiguraci oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí prostředí PowerShell.
+Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat a odstranit pracovní skupinu prostředků (IT_ *) a mít práva k přidávání prostředků do této služby, které jsou požadovány pro sestavení bitové kopie. K tomu slouží AIB hlavní název služby (SPN), který je ve vašem předplatném dostupný během úspěšné registrace.
+
+Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních nebo veřejných kontejnerů.
+
+Před vytvořením image musíte nastavit oprávnění a oprávnění. Následující části podrobně popisují, jak nakonfigurovat možné scénáře pomocí prostředí PowerShell.
 
 > [!IMPORTANT]
 > Azure image Builder je momentálně ve verzi Public Preview.

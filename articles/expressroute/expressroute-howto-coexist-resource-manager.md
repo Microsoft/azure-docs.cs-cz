@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122608"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440084"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace současně existujících připojení mezi ExpressRoute a mezi lokalitami pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -36,17 +36,18 @@ V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se 
 >
 
 ## <a name="limits-and-limitations"></a>Omezení
-* **Směrování provozu není podporováno.** Nemůžete provádět směrování (přes Azure) mezi místní sítí připojenou prostřednictvím sítě VPN typu site-to-site a místní sítí připojenou přes ExpressRoute.
-* **Základní brána SKU není podporována.** Pro [bránu ExpressRoute](expressroute-about-virtual-network-gateways.md) a [bránu VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) je nutné použít jinou než základní bránu SKU.
 * **Podporována je pouze brána VPN na základě tras.** Je nutné použít [bránu sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)založenou na trasách. Můžete také použít bránu sítě VPN založenou na trasách s připojením VPN nakonfigurovaným pro "selektory provozu na základě zásad", jak je popsáno v tématu [připojení k několika zařízením VPN založeným na zásadách](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
-* **Pro vaši bránu VPN by měla být nakonfigurována statická trasa.** Pokud je vaše místní síť připojená k ExpressRoute a síti VPN typu site-to-site, musíte mít v místní síti konfigurovanou statickou trasu, abyste mohli směrovat připojení VPN typu site-to-site do veřejného internetu.
-* **Pokud není zadaný, VPN Gateway ve výchozím nastavení číslo ASN 65515.** Azure VPN Gateway podporuje směrovací protokol BGP. Můžete zadat číslo ASN (jako číslo) pro virtuální síť přidáním přepínače-ASN. Pokud tento parametr nezadáte, výchozí hodnota je 65515. Můžete použít jakékoli číslo ASN pro konfiguraci, ale pokud vyberete jinou hodnotu než 65515, musíte resetovat bránu, aby se nastavení projevilo.
+* **ASN Azure VPN Gateway musí být nastavené na 65515.** Azure VPN Gateway podporuje směrovací protokol BGP. Aby ExpressRoute a Azure VPN fungovaly společně, musíte zachovat číslo autonomního systému vaší brány Azure VPN Gateway na výchozí hodnotě 65515. Pokud jste dříve vybrali číslo ASN jiné než 65515 a změníte nastavení na 65515, musíte resetovat bránu VPN, aby se nastavení projevilo.
 * **Podsíť brány musí být/27 nebo kratší předpona**(například/26,/25), nebo když přidáte bránu virtuální sítě ExpressRoute, zobrazí se chybová zpráva.
 * **Koexistence ve virtuální síti s více zásobníky není podporovaná.** Pokud používáte podporu protokolu IPv6 ExpressRoute a ExpressRoute bránu se dvěma zásobníky, koexistence s VPN Gateway nebude možná.
 
 ## <a name="configuration-designs"></a>Návrhy konfigurace
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurace VPN typu site-to-site jako cesty převzetí služeb při selhání pro ExpressRoute
 Můžete nakonfigurovat připojení VPN typu site-to-site jako záložní pro ExpressRoute. Toto připojení platí jenom pro virtuální sítě, které jsou propojené s cestou soukromého partnerského vztahu Azure. Řešení převzetí služeb při selhání založené na VPN pro služby, které jsou přístupné prostřednictvím partnerského vztahu Azure nebo partnerského vztahu Microsoftu, neexistuje. Okruh ExpressRoute je vždy primárním propojením. Data prochází cestou VPN typu Site-to-Site jenom v případě, že okruh ExpressRoute selže. Vaše místní síťová konfigurace by také měla před VPN typu Site-to-Site preferovat okruh ExpressRoute, abyste se vyhnuli asymetrickému směrování. Cestu ExpressRoute můžete preferovat nastavením vyšší místní předvolby pro trasy přijímané přes ExpressRoute. 
+
+>[!NOTE]
+> Pokud jste ExpressRoute partnerský vztah Microsoftu povolený, můžete na připojení ExpressRoute získat veřejnou IP adresu vaší brány Azure VPN. Pokud chcete nastavit připojení VPN typu Site-to-site jako zálohu, musíte nakonfigurovat místní síť tak, aby připojení VPN bylo směrované na Internet.
+>
 
 > [!NOTE]
 > I když v případě, že jsou obě trasy stejné, je okruh ExpressRoute upřednostněný před VPN typu Site-to-Site, Azure k výběru trasy směrem k cíli paketu použije nejdelší shodu předpony.
@@ -261,6 +262,9 @@ Pomocí následujících kroků můžete přidat konfiguraci Point-to-site k br�
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>Umožnění směrování přenosu mezi ExpressRoute a Azure VPN
+Pokud chcete povolit připojení mezi jednou z vaší místní sítě, která je připojená k ExpressRoute a jiné z vaší místní sítě, která je připojená k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
 
 Další informace o VPN typu point-to-site najdete v tématu [Konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 

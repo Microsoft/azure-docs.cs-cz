@@ -3,16 +3,16 @@ title: Jak cílit na verze modulu runtime Azure Functions
 description: Azure Functions podporuje více verzí modulu runtime. Naučte se, jak určit běhovou verzi aplikace Function App hostované v Azure.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 46bf7849888033b2bbb7e9b9669ee3eae4de10e9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e9aa5546b5f07b724fe22bc1e20a2e97feb2aec2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916520"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435558"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak cílit na verze modulu runtime Azure Functions
 
-Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Existují tři hlavní verze: [1. x, 2. x a 3. x](functions-versions.md). Ve výchozím nastavení se aplikace Function App vytvoří ve verzi 3. x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci Function App v Azure tak, aby běžela na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, naleznete v tématu [Code and test Azure Functions lokálně](functions-run-local.md).
+Aplikace Function App běží na konkrétní verzi Azure Functions runtime. Existují tři hlavní verze: [3. x, 2. x a 1. x](functions-versions.md). Ve výchozím nastavení se aplikace Function App vytvoří ve verzi 3. x modulu runtime. Tento článek vysvětluje, jak nakonfigurovat aplikaci Function App v Azure tak, aby běžela na zvolené verzi. Informace o tom, jak nakonfigurovat místní vývojové prostředí pro konkrétní verzi, naleznete v tématu [Code and test Azure Functions lokálně](functions-run-local.md).
 
 Postup ručního cílení na konkrétní verzi závisí na tom, zda používáte systém Windows nebo Linux.
 
@@ -22,7 +22,7 @@ _Tato část se nevztahuje na spuštění aplikace Function App [v systému Linu
 
 Azure Functions umožňuje cílit na konkrétní verzi modulu runtime ve Windows pomocí `FUNCTIONS_EXTENSION_VERSION` nastavení aplikace ve Function App. Aplikace Function App je udržována v zadané hlavní verzi, dokud nebudete explicitně chtít přejít na novou verzi. Pokud zadáte pouze hlavní verzi, aplikace Function App se automaticky aktualizuje na nové podverze modulu runtime, jakmile budou k dispozici. Nové podverze by neměly zavádět podstatné změny. 
 
-Pokud zadáte vedlejší verzi (například "2.0.12345"), aplikace Function App se přiřadí k dané konkrétní verzi, dokud ji explicitně nezměníte. Starší dílčí verze se pravidelně odstraňují z produkčního prostředí. V takovém případě funguje aplikace Function App na nejnovější verzi namísto sady verzí v nástroji `FUNCTIONS_EXTENSION_VERSION` . Z tohoto důvodu byste měli rychle vyřešit všechny problémy s aplikací Function App, které vyžadují konkrétní dílčí verzi, takže můžete cílit na hlavní verzi. Odebrání podverze jsou oznámeny v [App Service oznámení](https://github.com/Azure/app-service-announcements/issues).
+Pokud zadáte vedlejší verzi (například "2.0.12345"), aplikace Function App se přiřadí k dané konkrétní verzi, dokud ji explicitně nezměníte. Starší dílčí verze se pravidelně odstraňují z produkčního prostředí. Pokud se vaše podverze odebere, vaše aplikace Function App se vrátí k běhu na nejnovější verzi místo v sadě verzí v `FUNCTIONS_EXTENSION_VERSION` . V takovém případě byste měli rychle vyřešit všechny problémy s aplikací Function App, které vyžadují konkrétní dílčí verzi. Pak se můžete vrátit k cílení na hlavní verzi. Odebrání podverze jsou oznámeny v [App Service oznámení](https://github.com/Azure/app-service-announcements/issues).
 
 > [!NOTE]
 > Pokud připnete k určité hlavní verzi Azure Functions a potom se pokusíte publikovat do Azure pomocí sady Visual Studio, zobrazí se dialogové okno s výzvou k aktualizaci na nejnovější verzi nebo zrušení publikování. Pokud se tomu chcete vyhnout, přidejte `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` do `.csproj` souboru vlastnost.
@@ -39,6 +39,9 @@ V následující tabulce jsou uvedeny `FUNCTIONS_EXTENSION_VERSION` hodnoty pro 
 
 Změna verze modulu runtime způsobuje restartování aplikace Function App.
 
+>[!NOTE]
+>Aplikace funkcí .NET připnuté pro `~2.0` výslovný souhlas s automatickým upgradem na .NET Core 3,1. Další informace najdete v tématu [informace o funkcích v2. x](functions-dotnet-class-library.md#functions-v2x-considerations).  
+
 ## <a name="view-and-update-the-current-runtime-version"></a>Zobrazení a aktualizace aktuální verze modulu runtime
 
 _Tato část se nevztahuje na spuštění aplikace Function App [v systému Linux](#manual-version-updates-on-linux)._
@@ -46,7 +49,7 @@ _Tato část se nevztahuje na spuštění aplikace Function App [v systému Linu
 Můžete změnit verzi modulu runtime, kterou používá aplikace Function App. Z důvodu potenciálních změn můžete změnit pouze verzi modulu runtime ještě před vytvořením funkcí ve vaší aplikaci Function App. 
 
 > [!IMPORTANT]
-> I když je verze modulu runtime určena `FUNCTIONS_EXTENSION_VERSION` nastavením, měli byste tuto změnu provést v Azure Portal a nikoli změnou nastavení přímo. Důvodem je to, že portál ověří vaše změny a v případě potřeby provede další související změny.
+> I když je verze modulu runtime určena `FUNCTIONS_EXTENSION_VERSION` nastavením, je třeba tuto změnu provést pouze v Azure Portal a nikoli změnou nastavení přímo. Důvodem je to, že portál ověří vaše změny a v případě potřeby provede další související změny.
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
@@ -103,7 +106,7 @@ az functionapp config appsettings set --name <FUNCTION_APP> \
 
 Nahraďte `<FUNCTION_APP>` názvem vaší aplikace Function App. Nahraďte také `<RESOURCE_GROUP>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<VERSION>` buď konkrétní verzí, nebo `~3` , `~2` nebo `~1` .
 
-Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
+Výběrem možnosti **vyzkoušet** v předchozím příkladu kódu spusťte příkaz v [Azure Cloud Shell](../cloud-shell/overview.md). K provedení tohoto příkazu můžete také spustit [Azure CLI místně](/cli/azure/install-azure-cli) . Pokud používáte místně, musíte nejdřív spustit příkaz [AZ Login](/cli/azure/reference-index#az-login) , abyste se přihlásili.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -135,38 +138,24 @@ Pro **Linux App Service nebo elastické aplikace úrovně Premium** – nastavte
 
 Pro **aplikace pro Linux spotřeby** – `LinuxFxVersion` nastavte `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` na.
 
+# <a name="portal"></a>[Azure Portal](#tab/portal)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-linux)
+Zobrazení a úprava nastavení konfigurace webu pro aplikace Function app není v Azure Portal podporována. Místo toho použijte Azure CLI.
 
-Z Azure CLI můžete zobrazit a nastavit `LinuxFxVersion` .  
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Pomocí Azure CLI zobrazte aktuální verzi modulu runtime pomocí příkazu [AZ functionapp config show](/cli/azure/functionapp/config) .
+Pomocí rozhraní příkazového řádku Azure můžete zobrazit a nastavit `LinuxFxVersion` .  
+
+Aktuální verzi modulu runtime zobrazíte pomocí příkazu [AZ functionapp config show](/cli/azure/functionapp/config) .
 
 ```azurecli-interactive
 az functionapp config show --name <function_app> \
---resource-group <my_resource_group>
+--resource-group <my_resource_group> --query 'linuxFxVersion' -o tsv
 ```
 
-V tomto kódu nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace Function App. 
+V tomto kódu nahraďte `<function_app>` názvem vaší aplikace Function App. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace Function App. Aktuální hodnota `linuxFxVersion` je vrácena.
 
-Zobrazí se `linuxFxVersion` následující výstup, který byl zkrácen pro přehlednost:
-
-```output
-{
-  ...
-
-  "kind": null,
-  "limits": null,
-  "linuxFxVersion": <LINUX_FX_VERSION>,
-  "loadBalancing": "LeastRequests",
-  "localMySqlEnabled": false,
-  "location": "West US",
-  "logsDirectorySizeLimit": 35,
-   ...
-}
-```
-
-`linuxFxVersion`Nastavení v aplikaci Function App můžete aktualizovat pomocí příkazu [AZ functionapp config set](/cli/azure/functionapp/config) .
+Pokud chcete aktualizovat `linuxFxVersion` nastavení v aplikaci Function App, použijte příkaz [AZ functionapp config set](/cli/azure/functionapp/config) .
 
 ```azurecli-interactive
 az functionapp config set --name <FUNCTION_APP> \
@@ -174,17 +163,20 @@ az functionapp config set --name <FUNCTION_APP> \
 --linux-fx-version <LINUX_FX_VERSION>
 ```
 
-Nahraďte `<FUNCTION_APP>` názvem vaší aplikace Function App. Nahraďte také `<RESOURCE_GROUP>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<LINUX_FX_VERSION>` hodnotami, které jsou vysvětleny výše.
+Nahraďte `<FUNCTION_APP>` názvem vaší aplikace Function App. Nahraďte také `<RESOURCE_GROUP>` názvem skupiny prostředků vaší aplikace Function App. Nahraďte také `<LINUX_FX_VERSION>` hodnotou konkrétního obrázku, jak je popsáno výše.
 
 Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](/cli/azure/reference-index#az-login) pro přihlášení.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Podobně bude aplikace Function App restartována po provedení změny v konfiguraci lokality.
-
-> [!NOTE]
-> Všimněte si, že nastavení `LinuxFxVersion` na adresu URL obrázku přímo pro aplikace pro spotřebu se odsouhlasí se zástupnými symboly a dalšími optimalizacemi pro studený start.
+Azure PowerShell nelze použít k nastavení v `linuxFxVersion` tuto chvíli. Místo toho použijte Azure CLI.
 
 ---
+
+Aplikace Function App se restartuje po provedení změny v konfiguraci lokality.
+
+> [!NOTE]
+> Pro aplikace spuštěné v plánu spotřeby `LinuxFxVersion` může nastavení na konkrétní obrázek prodloužit dobu studených časů spuštění. Důvodem je to, že připnutí na konkrétní obrázek zabraňuje funkcím v používání některých optimalizací spuštění. 
 
 ## <a name="next-steps"></a>Další kroky
 

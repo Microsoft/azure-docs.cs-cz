@@ -6,17 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 9e56e37135c2ff73fb64d8afd5a852fd757f3e21
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 3ff07c773a2976a296d13510a3ddd7b41217aaa2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989331"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437617"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení Azure Data Services na zařízení GPU pro Azure Stack Edge pro
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje proces vytvoření řadiče dat ARC Azure a následné nasazení Azure Data Services na zařízení GPU Azure Stack Edge pro. 
 

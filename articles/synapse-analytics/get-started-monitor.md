@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209810"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426036"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Monitorování pracovního prostoru synapse
 
@@ -30,7 +30,7 @@ Otevřete synapse Studio a přejděte do centra **monitorování** . Tady vidít
 
 ## <a name="integration"></a>Integrace
 
-1. Přejděte do **kanálu integrace >**. V tomto zobrazení můžete zobrazit pokaždé, když se v pracovním prostoru spustí kanál. 
+1. Přejděte ke **spuštění kanálu integrace >**. V tomto zobrazení můžete zobrazit pokaždé, když se v pracovním prostoru spustí kanál. 
 1. Vyhledejte kanál, který jste spustili v předchozím kroku, a kliknutím na jeho **název** zobrazte podrobnosti.
 1. Klikněte na **panel s popisem cesty** v horní části synapse studia, klikněte na **všechna spuštění kanálu** a vraťte se k předchozímu zobrazení.
 
@@ -45,8 +45,7 @@ Otevřete synapse Studio a přejděte do centra **monitorování** . Tady vidít
 1. Přejděte na **aktivity > požadavky SQL**.
 1. V tomto zobrazení si můžete prohlédnout požadavky SQL.
 1. Vyberte **fond** , který chcete monitorovat z filtru **fondu** . Nyní můžete zobrazit všechny požadavky SQL spuštěné nebo spuštěné ve vašem pracovním prostoru ve fondu.
-1. Najděte konkrétní požadavek SQL a najeďte myší na tuto položku. Po najetí myší se zobrazí ikona skriptu SQL.
-1. Pokud chcete zobrazit úplný text požadavku SQL, klikněte na ikonu skriptu SQL.
+1. Najděte konkrétní požadavek SQL a kliknutím na odkaz **Další** zobrazte úplný text žádosti SQL.
 
     > [!NOTE] 
     > Žádosti SQL odeslané prostřednictvím synapse studia v pracovním prostoru vyhrazeného fondu SQL (dříve SQL DW) se dají zobrazit v centru monitorování. Pro všechny ostatní monitorovací aktivity můžete přejít na Azure Portal vyhrazeného fondu SQL (dříve SQL DW).

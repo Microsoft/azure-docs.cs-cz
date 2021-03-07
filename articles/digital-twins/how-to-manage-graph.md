@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050932"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433314"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
 Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) , který představuje celé prostředí. Neřízený graf se skládá z jednotlivých digitálních vláken propojených prostřednictvím **vztahů**. 
 
-Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-portal.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-portal.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [*Postup: Správa digitálních vláken*](how-to-manage-twin.md).
 
@@ -97,7 +97,7 @@ Načtené relace můžete použít k přechodu na další vlákna v grafu. Prove
 Digitální vlákna Azure také obsahuje rozhraní API pro vyhledání všech **příchozích** vztahů k danému vlákna. To je často užitečné pro zpětnou navigaci nebo při odstraňování vlákna.
 
 >[!NOTE]
-> `IncomingRelationship` volání nevrátí úplný text vztahu. Další informace o `IncomingRelationship` třídě naleznete v příslušné [referenční dokumentaci](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true).
+> `IncomingRelationship` volání nevrátí úplný text vztahu. Další informace o `IncomingRelationship` třídě naleznete v příslušné [referenční dokumentaci](/dotnet/api/azure.digitaltwins.core.incomingrelationship).
 
 Ukázka kódu v předchozí části se zaměřuje na hledání odchozích relací z vlákna. Následující příklad je strukturován podobně, ale místo toho najde *příchozí* relace na vlákna. Tento příklad také používá volání sady SDK (zvýrazněno) v rámci vlastní metody, která se může objevit v kontextu většího programu.
 
@@ -157,7 +157,7 @@ Fragment kódu používá [*Room.jsv*](https://github.com/Azure-Samples/digital-
 Než spustíte ukázku, udělejte toto:
 1. Stáhněte si soubory modelu, umístěte je do projektu a nahraďte `<path-to>` zástupné symboly v následujícím kódu a sdělte tak programu, kde se mají najít.
 2. Zástupný symbol nahraďte `<your-instance-hostname>` názvem hostitele instance digitálního vlákna Azure.
-3. Přidejte do projektu dvě závislosti, které budete potřebovat pro práci s digitálními úkoly Azure. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
+3. Přidejte do projektu dvě závislosti, které budete potřebovat pro práci s digitálními úkoly Azure. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

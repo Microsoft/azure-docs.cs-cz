@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ad1f153c03575c0a6a72ca52a1aa63e9a2ae5f13
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256499"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434466"
 ---
 :::row:::
     :::column span="3":::
-        Sada C++ Speech SDK je k dispozici v systémech Windows, Linux a macOS. Další informace najdete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. cognitiveservices Account. Speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+        Sada C++ Speech SDK je k dispozici v systémech Windows, Linux a macOS. Další informace najdete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. cognitiveservices Account. Speech </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -33,4 +33,4 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="additional-resources"></a>Další zdroje informací
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Zdrojový kód v rychlém startu pro Windows, Linux a macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Zdrojový kód v rychlém startu pro Windows, Linux a macOS </a>

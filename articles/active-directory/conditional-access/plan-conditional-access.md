@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682134"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427177"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -72,6 +72,7 @@ V případě, že se seznámíte s podmíněným přístupem, můžou být užit
 * [Co je podmíněný přístup?](https://youtu.be/ffMAw2IVO7A)
 * [Jak nasadit podmíněný přístup?](https://youtu.be/c_izIRNJNuk)
 * [Jak zavést zásady podmíněného přístupu pro koncové uživatele?](https://youtu.be/0_Fze7Zpyvc)
+* [Jak zahrnout nebo vyloučit uživatele ze zásad podmíněného přístupu](https://youtu.be/5DsW1hB3Jqs)
 * [Podmíněný přístup pomocí ovládacích prvků zařízení](https://youtu.be/NcONUf-jeS4)
 * [Podmíněný přístup s Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Podmíněný přístup v Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)

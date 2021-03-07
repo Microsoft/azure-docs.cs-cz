@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094858"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424134"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
 
@@ -286,7 +286,11 @@ Na webu Azure Portal přejít na **Azure Active Directory-> podnikové aplikace*
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen1 dědění seznamů ACL?
 
-Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.  
+Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>Jaká jsou omezení pro položky seznamu ACL pro soubory a složky?
+
+32 seznamů řízení přístupu (ACL) lze nastavit na jeden soubor a na adresář. Přístup a výchozí seznamy ACL mají svůj vlastní limit počtu položek seznamu řízení přístupu (ACL) 32. Pokud je to možné, použijte skupiny zabezpečení pro přiřazení seznamu ACL. Když použijete skupiny, budete méně pravděpodobně překročit maximální počet položek seznamu ACL na soubor nebo adresář.
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 

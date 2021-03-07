@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: aceb26604d67f42cdbbe1395e3a4b08675d70ea1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4c552e6ac195555990cdbbab44f16be32b7930c8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078522"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425307"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý Start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,9 +37,9 @@ Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhran
 * Vytváření dotazů na data 
 * Odstranění databáze
 
-[Referenční dokumentace k](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet&preserve-view=true)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[Referenční dokumentace k](/dotnet/api/microsoft.azure.cosmos)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
@@ -50,7 +50,7 @@ V této části se seznámíte s vytvořením účtu Azure Cosmos a nastavením 
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
-Pokud k vytvoření účtu Azure Cosmos použijete možnost [vyzkoušet Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) , je nutné vytvořit účet Azure Cosmos DB typu **SQL API** . Pro vás už je vytvořený testovací účet Azure Cosmos DB. Účet není nutné vytvářet explicitně, takže můžete tuto část přeskočit a přejít k další části.
+Pokud k vytvoření účtu Azure Cosmos použijete možnost [vyzkoušet Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) , je nutné vytvořit účet Azure Cosmos DB typu **SQL API**. Pro vás už je vytvořený testovací účet Azure Cosmos DB. Účet není nutné vytvářet explicitně, takže můžete tuto část přeskočit a přejít k další části.
 
 Pokud máte vlastní předplatné Azure nebo jste předplatné vytvořili zdarma, měli byste účet Azure Cosmos vytvořit explicitně. Následující kód vytvoří účet Azure Cosmos s konzistencí relací. Účet je replikován v `South Central US` a `North Central US` .  
 
@@ -168,18 +168,18 @@ Než začnete sestavovat aplikaci, Podívejme se na hierarchii prostředků v Az
 
 Další informace o hierarchii různých entit najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](account-databases-containers-items.md) článku. K interakci s těmito prostředky použijete následující třídy .NET:
 
-* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet) – Tato třída poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos DB. Objekt klienta se používá ke konfiguraci a provádění požadavků na službu.
+* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) – Tato třída poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos DB. Objekt klienta se používá ke konfiguraci a provádění požadavků na službu.
 
-* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true) – Tato metoda vytvoří (Pokud neexistuje) nebo získá (Pokud již existuje) databázový prostředek jako asynchronní operaci. 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) – Tato metoda vytvoří (Pokud neexistuje) nebo získá (Pokud již existuje) databázový prostředek jako asynchronní operaci. 
 
-* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true)– Tato metoda vytvoří (Pokud neexistuje) nebo získá (Pokud již existuje) kontejner jako asynchronní operace. Můžete zjistit stavový kód z odpovědi, abyste zjistili, zda byl kontejner nově vytvořen (201) nebo byl vrácen existující kontejner (200). 
-* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true) – Tato metoda vytvoří položku v rámci kontejneru. 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync)– Tato metoda vytvoří (Pokud neexistuje) nebo získá (Pokud již existuje) kontejner jako asynchronní operace. Můžete zjistit stavový kód z odpovědi, abyste zjistili, zda byl kontejner nově vytvořen (201) nebo byl vrácen existující kontejner (200). 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) – Tato metoda vytvoří položku v rámci kontejneru. 
 
-* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet&preserve-view=true) – Tato metoda vytvoří položku v rámci kontejneru, pokud ještě neexistuje, nebo ji nahradí, pokud již existuje. 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync) – Tato metoda vytvoří položku v rámci kontejneru, pokud ještě neexistuje, nebo ji nahradí, pokud již existuje. 
 
-* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet&preserve-view=true) – Tato metoda vytvoří dotaz na položky v rámci kontejneru v databázi Azure Cosmos pomocí příkazu jazyka SQL s parametrizovanými hodnotami. 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator) – Tato metoda vytvoří dotaz na položky v rámci kontejneru v databázi Azure Cosmos pomocí příkazu jazyka SQL s parametrizovanými hodnotami. 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet&preserve-view=true) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync` Metoda odstraní pouze databázi. K `Cosmosclient` disDeleteDatabaseAndCleanupAsync instance by se mělo provádět samostatně (to dělá v metodě). 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync` Metoda odstraní pouze databázi. K `Cosmosclient` disDeleteDatabaseAndCleanupAsync instance by se mělo provádět samostatně (to dělá v metodě). 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Příklady kódu
 
@@ -332,7 +332,7 @@ private async Task CreateContainerAsync()
 }
 ```
 
-### <a name="create-an-item"></a>Vytvořit položku
+### <a name="create-an-item"></a>Vytvoření položky
 
 Vytvořte položku rodiny přidáním `AddItemsToContainerAsync` metody s následujícím kódem. Pomocí `CreateItemAsync` metod nebo můžete `UpsertItemAsync` vytvořit položku:
 

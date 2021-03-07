@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc75ada87db6fdbb3861c2e4e495f93147513421
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940101"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440560"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře kódování
 
@@ -58,7 +58,9 @@ Chcete-li zobrazit větší verzi, klikněte na obrázek níže.
 
 ### <a name="v3-encoding-workflow"></a>Verze v3 – pracovní postup kódování
 
-[![Pracovní postup kódování pro v3 ](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
+<Token>
+<object data="./media/migration-guide/v3-pretty2.svg" width="80%"></object>
+</Token>
 
 1. Nastavení
     1. Vytvořte Asset nebo použijte existující Asset. Pokud používáte nový Asset, nahrajte do tohoto prostředku obsah. Pokud používáte existující Asset, měli byste použít kódování souborů, které již existují v assetu. *Do tohoto prostředku byste neměli nahrávat další obsah.*
@@ -84,17 +86,6 @@ Chcete-li zobrazit větší verzi, klikněte na obrázek níže.
 Pokud váš kód v2 volal standardní kodér s vlastní předvolbumi, před odesláním úlohy nejdřív musíte vytvořit novou transformaci s vlastním přednastaveným standardem kodéru.
 
 Vlastní přednastavení jsou nyní JSON a již nejsou založená na formátu XML. Znovu vytvořte přednastavení ve formátu JSON podle vlastního přednastaveného schématu, jak je definované v dokumentaci k [transformaci Open API (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json) .
-
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
 
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>Vstupní a výstupní soubory metadat z úlohy kódování
 

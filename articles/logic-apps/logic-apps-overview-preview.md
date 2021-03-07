@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715203"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442736"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -118,9 +118,13 @@ Tato tabulka určuje chování podřízeného pracovního postupu na základě t
 
 Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, například:
 
-* Vytvářejte aplikace logiky a jejich pracovní postupy z [390 + konektorů](/connectors/connector-reference/connector-reference-logicapps-connectors) pro aplikace typu software jako služba (SaaS) a PaaS (Platform-as-a-Service) a konektory pro místní systémy.
+* Vytvářejte aplikace logiky a jejich pracovní postupy ze [400 + konektorů](/connectors/connector-reference/connector-reference-logicapps-connectors) pro aplikace typu software jako služba (SaaS) a PaaS (Platform-as-a-Service) a konektory pro místní systémy.
 
-  * Některé spravované konektory, například Azure Service Bus, Azure Event Hubs a SQL Server, se spouštějí podobně jako integrované triggery a akce, které jsou nativní pro modul runtime Azure Logic Apps Preview, například Trigger žádosti a akce HTTP. Další informace najdete v tématu [Azure Logic Apps spouštění odkudkoli a integrovaných rozšíření konektorů](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
+  * Některé spravované konektory, například Azure Service Bus, Azure Event Hubs, SQL Server a MQ, se spouštějí podobně jako integrované triggery a akce, které jsou nativní pro modul runtime Azure Logic Apps Preview, například Trigger žádosti a akce HTTP.
+
+  * Vytvořte si vlastní integrované konektory pro libovolnou službu, kterou potřebujete, pomocí [rozhraní pro rozšiřitelnost verze Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). Podobně jako u integrovaných konektorů, jako jsou Azure Service Bus a SQL Server, ale na rozdíl od [vlastních konektorů](../connectors/apis-list.md#custom-apis-and-connectors) , které se v současné době nepodporují pro verzi Preview, poskytují tyto konektory vyšší propustnost, nízkou latenci, místní připojení a nativně spouštějí v rámci stejného procesu jako modul runtime verze Preview.
+
+    Funkce pro vytváření obsahu je aktuálně dostupná jenom v Visual Studio Code, ale ve výchozím nastavení není povolená. Chcete-li vytvořit tyto konektory, [Přepněte projekt z rozšíření na základě sady prostředků (Node.js) na balíček NuGet (.NET)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Další informace najdete v tématu [Azure Logic Apps spouštění odkudkoli a integrovaných rozšíření konektorů](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
   * Akce B2B můžete použít pro likvidní operace a operace XML bez účtu pro integraci. Chcete-li použít tyto akce, je nutné mít mapy kapalin, XML map nebo schémata XML, které lze nahrát prostřednictvím příslušných akcí v Azure Portal nebo přidat do složky **artefakty** Visual Studio Code projektu pomocí příslušných složek **map** a **schémat** .
 
@@ -148,7 +152,7 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 * Znovu vygenerujte přístupové klíče pro spravovaná připojení používaná jednotlivými pracovními postupy v prostředku **Aplikace logiky (Preview)** . Pro tuto úlohu [použijte stejný postup jako u prostředku **Logic Apps** , ale na úrovni jednotlivých pracovních postupů](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nikoli na úrovni prostředků aplikace logiky.
 
 * Pomocí stejných kroků jako v Návrháři bez náhledu přidejte do nového návrháře paralelní větve.
- 
+
 Další informace najdete v tématu [Změna, omezené, nedostupné a nepodporované funkce](#limited-unavailable-unsupported) a [Stránka Logic Apps Public Preview známých problémů na GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
@@ -193,8 +197,6 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
     * [ *Aktivační události* místních bran dat](../connectors/apis-list.md#on-premises-connectors) nejsou k dispozici, ale *jsou* k dispozici akce brány.
 
-    * [Vlastní konektory](../connectors/apis-list.md#custom-apis-and-connectors) nejsou k dispozici.
-
     * Vestavěná akce, [Azure Functions – vyberte funkci Azure Functions](logic-apps-azure-functions.md) je teď funkce Azure **Functions – volejte funkci Azure Functions**. Tato akce teď funguje jenom pro funkce, které jsou vytvořené ze šablony **triggeru http** .
 
       V Azure Portal můžete vybrat funkci triggeru HTTP, kde máte přístup vytvořením připojení prostřednictvím uživatelského prostředí. Pokud provedete kontrolu definice JSON akce funkce v zobrazení kódu nebo **workflow.jsv** souboru, akce odkazuje na funkci pomocí `connectionName` odkazu. Tato verze vyabstrakce informace o funkci jako připojení, které můžete najít v **connections.jsprojektu v** souboru, který je k dispozici po vytvoření připojení.
@@ -217,6 +219,8 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
     * Některé [integrované aktivační události B2B a akce pro účty pro integraci](../connectors/apis-list.md#integration-account-connectors) nejsou k dispozici, například akce kódování a dekódování **plochého souboru** .
 
     * Integrovaná akce, [Azure Logic Apps – vybrat pracovní postup aplikace logiky](logic-apps-http-endpoint.md) je teď **operace pracovního postupu – vyvolat pracovní postup v této aplikaci pracovního postupu**.
+
+* [Vlastní konektory](../connectors/apis-list.md#custom-apis-and-connectors) se v současné době ve verzi Preview nepodporují.
 
 * **Dostupnost plánu hostování**: ať už vytvoříte nový typ prostředku **Aplikace logiky (Preview)** v Azure Portal nebo nasadíte z Visual Studio Code, můžete v Azure použít jenom plán hostování Premium nebo App Service. Plány hostování spotřeby nejsou k dispozici a nejsou podporovány pro nasazení tohoto typu prostředku. Můžete nasadit z Visual Studio Code do kontejneru Docker, ale ne do [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 

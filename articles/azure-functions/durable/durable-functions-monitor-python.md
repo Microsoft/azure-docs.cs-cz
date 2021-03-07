@@ -5,18 +5,22 @@ author: davidmrdavid
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 9083821fa03c09949daaf3166367489248a4d7d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029171"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434759"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Scénář monitorování ve Durable Functions – ukázka monitorování problémů na GitHubu
 
 Model monitorování odkazuje na flexibilní opakovaný proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá Durable Functions k implementaci monitorování.
 
-[! ZAHRNOUT trvalé funkce – předpoklady]
+## <a name="prerequisites"></a>Požadavky
+
+* [Dokončení článku rychlý Start](quickstart-python-vscode.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
@@ -45,7 +49,6 @@ Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor funkce Orchestrator
 
-# <a name="python"></a>[Python](#tab/python)
 
 Funkce **E3_Monitor** používá standardní *function.js* pro funkce nástroje Orchestrator.
 
@@ -55,7 +58,6 @@ Zde je kód, který implementuje funkci:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_Monitor/\_\_init\_\_.py)]
 
----
 
 Tato funkce Orchestrator provádí následující akce:
 
@@ -73,7 +75,6 @@ Více instancí nástroje Orchestrator lze spustit současně voláním funkce O
 
 Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají `activityTrigger` vazbu triggeru. Funkce **E3_TooManyOpenIssues** načte seznam aktuálně otevřených problémů v úložišti a určí, zda jsou příliš mnoho z nich: více než 3 jako na naši ukázku.
 
-# <a name="python"></a>[Python](#tab/python)
 
 *function.jsv* je definován následujícím způsobem:
 
@@ -83,13 +84,11 @@ A zde je implementace.
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_TooManyOpenIssues/\_\_init\_\_.py)]
 
----
 
 ### <a name="e3_sendalert-activity-function"></a>Funkce aktivity E3_SendAlert
 
 Funkce **E3_SendAlert** používá vazbu Twilio k odeslání zprávy SMS s upozorněním na koncového uživatele, že nejméně 3 otevřené problémy čekají na vyřešení.
 
-# <a name="python"></a>[Python](#tab/python)
 
 Jeho *function.jsv systému* je jednoduchý:
 
@@ -99,7 +98,6 @@ A zde je kód, který odesílá zprávu SMS:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_SendAlert/\_\_init\_\_.py)]
 
----
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 

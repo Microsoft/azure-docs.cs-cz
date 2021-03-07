@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a951a74563710bbc5f703821df7077e88823c077
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 36c4449e52aa597da109ccc1d95f32f44d603cc9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092405"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429333"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Přidání značky do skupin prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |Přidá zadanou značku a hodnotu, pokud u kterékoli skupiny prostředků chybí Tato značka, která je vytvořena nebo aktualizována. Stávající skupiny prostředků je možné opravit aktivací úlohy nápravy. Pokud značka existuje s jinou hodnotou, nebude změněna. |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[Přidání značky k prostředkům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |Přidá zadanou značku a hodnotu, pokud některý z prostředků chybějící tato značka vytvoří nebo aktualizuje. Stávající prostředky je možné napravit aktivací úlohy nápravy. Pokud značka existuje s jinou hodnotou, nebude změněna. Značky ve skupinách prostředků se neupravují. |modify (úprava) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |

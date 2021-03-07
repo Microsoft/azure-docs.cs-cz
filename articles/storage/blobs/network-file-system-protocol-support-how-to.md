@@ -9,16 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878574"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428639"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
-Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure (VM) se systémem Windows nebo Linux nebo z systému Windows nebo Linux, který běží místně pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
+Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure se systémem Linux nebo z operačního systému Linux, který je místně spuštěný pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Krok 1: registrace funkce protokolu NFS 3,0 v rámci vašeho předplatného
 
@@ -97,7 +97,7 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|Nástroje|Sady SDK|
+|nástroje|Sady SDK|
 |---|---|
 |[Azure Portal](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|
@@ -107,9 +107,7 @@ Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů
 
 ## <a name="step-7-mount-the-container"></a>Krok 7: připojení kontejneru
 
-Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v účtu úložiště.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Vytvořte v systému Linux adresář a pak připojte kontejner v účtu úložiště.
 
 1. V systému Linux vytvořte adresář.
 
@@ -126,32 +124,6 @@ Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v ú
    - `<storage-account-name>`Zástupný symbol, který se zobrazí v tomto příkazu, nahraďte názvem vašeho účtu úložiště.  
 
    - `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. Otevřete dialogové okno **funkce systému Windows** a potom zapněte funkci **klient pro systém souborů NFS** . 
-
-   ![Funkce Client for Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Otevřete okno **příkazového řádku** (cmd.exe). Pak připojte kontejner pomocí příkazu [Mount](/windows-server/administration/windows-commands/mount) .
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
-   ```
-
-   - `<storage-account-name>`Zástupný symbol, který se zobrazí v tomto příkazu, nahraďte názvem vašeho účtu úložiště.  
-
-   - `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
-
-3. Pokud potřebujete oprávnění k zápisu, možná budete muset změnit výchozí UID a GID, které Windows používá pro připojení ke sdílené složce. Provedete to tak, že spustíte následující příkazy PowerShellu jako správce:
-
-   ```
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
-   ```
-   
-   - Po provedení této změny restartujte službu Klient systému souborů NFS nebo restartujte server.
 
 ---
 

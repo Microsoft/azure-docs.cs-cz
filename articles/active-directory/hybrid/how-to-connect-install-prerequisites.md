@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000b91529b3b02f2c7d03b50ddc841c68625dada
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644799"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426786"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -102,6 +102,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 
 ### <a name="connectivity"></a>Připojení
 * Azure AD Connect server potřebuje překlad DNS pro intranet i Internet. Server DNS musí být schopný přeložit názvy do vaší místní služby Active Directory a koncových bodů Azure AD.
+* Azure AD Connect vyžaduje síťové připojení ke všem konfigurovaným doménám.
 * Pokud máte v intranetu brány firewall a potřebujete otevřít porty mezi Azure AD Connect servery a řadiči domény, přečtěte si další informace v tématu [Azure AD Connect porty](reference-connect-ports.md) .
 * Pokud váš proxy server nebo brána firewall omezují pøístup k adresám URL, musí se otevřít adresy URL dokumentované v [adresách URL Office 365 a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) . Viz také [Safelist adresy url Azure Portal v bráně firewall nebo proxy server](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Pokud používáte Cloud Microsoftu v Německu nebo Microsoft Azure Government cloudu, přečtěte si téma [informace o Azure AD Connect synchronizace instancí služby](reference-connect-instances.md) pro adresy URL.

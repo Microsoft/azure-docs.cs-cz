@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182481"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423709"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -38,7 +38,7 @@ V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat 
     display(df.limit(10))
     ```
 1. V poznámkovém bloku vyberte v nabídce **připojit k** **Spark1** fond Spark bez serveru, který jsme vytvořili dříve.
-1. Vyberte v buňce **Spustit** .
+1. V buňce vyberte **Spustit** . Synapse spustí novou relaci Spark a v případě potřeby tuto buňku spustí. Pokud potřebujete novou relaci Sparku, intially bude trvat přibližně dva sekundy. 
 1. Pokud chcete pouze zobrazit schéma pro datový rámec, spusťte buňku s následujícím kódem:
     ```
 

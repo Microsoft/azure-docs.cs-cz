@@ -1,6 +1,6 @@
 ---
 title: Podpora systému souborů sítě 3,0 ve službě Azure Blob Storage (Preview) | Microsoft Docs
-description: BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům Windows a Linux připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo z počítače, který běží místně.
+description: BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům Linux připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo z počítače, který běží místně.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718487"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428435"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
-BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora zajišťuje kompatibilitu systému souborů Linux v rozsahu úložiště a cenách objektů a umožňuje klientům Windows nebo Linux připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo místního počítače. 
+BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora zajišťuje kompatibilitu systému souborů Linux v rozsahu úložiště a cenách objektů a umožňuje klientům Linux připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo místního počítače. 
 
 > [!NOTE]
 > Podpora protokolu NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview. Podporuje GPV2 účty úložiště s výkonem úrovně Standard v následujících oblastech: Austrálie – východ, Korea – střed a Střed USA – jih. Verze Preview také podporuje objekty blob bloku s úrovní výkonu Premium ve všech veřejných oblastech.
@@ -46,7 +46,7 @@ Když vaše aplikace odešle požadavek pomocí protokolu NFS 3,0, tento požada
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Obecný pracovní postup: připojení kontejneru účtu úložiště
 
-Klienti se systémem Windows nebo Linux mohou připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo místního počítače. Pokud chcete připojit kontejner účtu úložiště, musíte provést tyto akce.
+Klienti se systémem Linux mohou připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo místního počítače. Pokud chcete připojit kontejner účtu úložiště, musíte provést tyto akce.
 
 1. Zaregistrujte funkci protokolu NFS 3,0 v rámci vašeho předplatného.
 

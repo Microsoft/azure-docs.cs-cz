@@ -6,17 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944949"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436528"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure Portal
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Můžete vytvářet a spravovat virtuální počítače na Azure Stack hraničním zařízení pomocí Azure Portal, šablon, Azure PowerShell rutin a prostřednictvím skriptů Azure CLI/Python. Tento článek popisuje, jak vytvořit a spravovat virtuální počítač na zařízení Azure Stack Edge pomocí Azure Portal. 
 

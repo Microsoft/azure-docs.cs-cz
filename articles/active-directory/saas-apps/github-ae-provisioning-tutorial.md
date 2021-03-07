@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651568"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427007"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu AE pro Automatické zřizování uživatelů
 
@@ -32,6 +32,7 @@ Tento kurz popisuje kroky, které je třeba provést v GitHubu AE i Azure Active
 > * Vytváření uživatelů v GitHubu AE
 > * Odebrat uživatele v GitHubu AE, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a GitHubem AE
+> * Zřizování skupin a členství ve skupinách v GitHubu AE
 > * Jednotné přihlašování do [GitHubu AE](./github-ae-tutorial.md) (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
@@ -59,7 +60,7 @@ Přidejte GitHub AE z Galerie aplikací Azure AD a začněte spravovat zřizová
 
 Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů nebo skupin do aplikace použít následující [kroky](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Při přiřazování uživatelů k GitHubu AE musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
+* Při přiřazování uživatelů a skupin do GitHubu AE musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
 
 * Začněte v malém. Před vstupem na všechny se můžete pokusit s malým počtem uživatelů a/nebo skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele nebo skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin do aplikace. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 

@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d3378b08ace73b2bc9a10286abf5a48f3063ba7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ea8709af33510b1848d0c031d513e4af7a352d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743501"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436545"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě účtů hraničního úložiště na Azure Stack Edge pro
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Správa účtů úložiště Edge na zařízení Azure Stack Edge Pro pomocí webu Azure Portal
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak spravovat hraniční účty úložiště na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. K přidání nebo odstranění hraničních účtů úložiště v zařízení použijte Azure Portal.
 

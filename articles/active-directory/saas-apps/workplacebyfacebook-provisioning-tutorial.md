@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e690a761efcd16428f9da8fe53e5dd8d26e9ff79
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 98a151c9f740c3ab2f1471f98c7fab83cc848a28
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181278"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438400"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést na pracovišti na Facebooku
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -40,6 +40,9 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 > [!NOTE]
 > K otestování kroků v tomto kurzu nedoporučujeme používat produkční prostředí.
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporučení:
 
