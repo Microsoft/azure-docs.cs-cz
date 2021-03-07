@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653342"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433263"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
-Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins), [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
+Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins), [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [*Postup: Správa nefunkčního grafu s relacemi*](how-to-manage-graph.md).
 
@@ -72,7 +72,7 @@ Pomocná třída `BasicDigitalTwin` umožňuje ukládat pole vlastností přímo
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Příklad:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -160,7 +160,7 @@ Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty  vlastnost
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Můžete vytvářet opravy pomocí [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true)sady Azure .NET SDK. Zde je příklad.
+Můžete vytvářet opravy pomocí [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument)sady Azure .NET SDK. Zde je příklad.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -227,7 +227,7 @@ Fragment kódu používá [Room.jsv](https://github.com/Azure-Samples/digital-tw
 Než spustíte ukázku, udělejte toto:
 1. Stáhněte si soubor modelu, umístěte ho do projektu a nahraďte `<path-to>` zástupný symbol v následujícím kódu a sdělte tak programu, kde se má najít.
 2. Zástupný symbol nahraďte `<your-instance-hostname>` názvem hostitele instance digitálního vlákna Azure.
-3. Přidejte do projektu dvě závislosti, které budete potřebovat pro práci s digitálními úkoly Azure. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
+3. Přidejte do projektu dvě závislosti, které budete potřebovat pro práci s digitálními úkoly Azure. První je balíček pro [sadu Azure Digital prokážed SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client), druhá nabízí nástroje, které vám pomůžou s ověřováním v Azure.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

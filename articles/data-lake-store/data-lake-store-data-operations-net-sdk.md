@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109234"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431733"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak provádět operace systému souborů na Data L
 
 Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů pro data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Visual Studio 2013 nebo vyšší**. Pokyny v tomto článku používají Visual Studio 2019.
 
@@ -40,9 +40,9 @@ Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí 
 
 Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted), vás provede procesem vytvoření souborů v úložišti, zřetězení souborů, stažení souboru a nakonec odstranění některých souborů v úložišti. Tato část článku vás provede hlavními částmi kódu.
 
-1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
+1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový** a poté **projekt**.
 1. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-1. Do **název projektu**zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
+1. Do **název projektu** zadejte `CreateADLApplication` a pak vyberte **vytvořit**.
 1. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
@@ -202,7 +202,7 @@ Tady je několik ukázek, které ukazují, jak používat sadu SDK Data Lake Sto
 ## <a name="see-also"></a>Viz také
 
 * [Operace správy účtů při Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>Další kroky
 

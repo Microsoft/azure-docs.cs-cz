@@ -4,17 +4,17 @@ description: Přečtěte si, jak diagnostikovat a opravit výjimky pro časový 
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340494"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439999"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DBmi výjimkami časového limitu požadavku .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,6 +41,22 @@ Následující seznam obsahuje známé příčiny a řešení pro výjimky časo
 
 ### <a name="high-cpu-utilization"></a>Vysoké využití procesoru
 Vysoké využití procesoru je nejběžnější případ. Pro zajištění optimální latence by využití CPU mělo zhruba 40 procent. Použijte 10 sekund jako interval pro monitorování maximálního (neprůměrného) využití procesoru. Špičky procesoru jsou běžnější u dotazů mezi oddíly, kde může provádět více připojení pro jeden dotaz.
+
+Pokud chyba obsahuje `TransportException` informace, může obsahovat také `CPU History` :
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* Pokud jsou měření CPU větší než 70%, může to být způsobeno vyčerpáním procesoru. V takovém případě je řešením zjistit zdroj vysokého využití procesoru a snížit toto využití nebo škálovat počítač na větší velikost prostředků.
+* Pokud k měření využití procesoru nedochází každých 10 sekund (např. mezery nebo doby měření značí delší dobu mezi měřeními), příčinou je nedostatek vláken. V takovém případě je řešením zjistit zdroj nedostatku vláken (potenciálně uzamčených vláken) nebo škálovat počítač na větší velikost prostředků.
 
 #### <a name="solution"></a>Řešení:
 Klientská aplikace, která používá sadu SDK, by se měla škálovat nahoru nebo dolů.

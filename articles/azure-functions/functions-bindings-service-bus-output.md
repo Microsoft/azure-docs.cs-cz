@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788566"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425579"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -387,7 +387,7 @@ Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Reference |
 |---|---|
 | Service Bus | [Kódy chyb Service Bus](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Omezení Service Bus](../service-bus-messaging/service-bus-quotas.md) |
@@ -429,7 +429,7 @@ Pokud jste `isSessionsEnabled` nastavili na `true` , `sessionHandlerOptions` bud
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
-|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
+|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.<br><br>Nastavení na `false` je podporováno pouze v jazyce C#.<br><br>Je-li nastavena na hodnotu `true` , aktivační událost automaticky dokončí zprávu, pokud se provádění funkce dokončí úspěšně a zpráva se v opačném případě opustí.<br><br>Když nastavíte `false` , zodpovídáte za volání metod [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) k dokončení, zrušení nebo nedoručené zprávě. Pokud je vyvolána výjimka (a není volána žádná z `MessageReceiver` metod), zůstane zámek. Po vypršení platnosti zámku se zpráva znovu zařadí do fronty s `DeliveryCount` přírůstkem a automaticky se obnoví zámek.<br><br>Ve funkcích, které nejsou v jazyce C #, výsledkem výjimek ve funkci jsou volání za běhu `abandonAsync` na pozadí. Pokud nedojde k žádné výjimce, `completeAsync` je volána na pozadí. |
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo pumpa zpráv iniciovat na úrovni instance. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně.|
 |maxConcurrentSessions|2000|Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
 

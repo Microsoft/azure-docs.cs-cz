@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032010"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433655"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -172,7 +172,7 @@ Paralelní dotazy poskytují dva parametry, které můžete ladit podle svých p
 
 Během testování výkonu byste měli zvýšit zatížení, dokud se neomezí malá míra požadavků. Pokud jsou požadavky omezené, klientská aplikace by měla pro interval opakování zadaného serveru obnovit omezení. Respektování omezení rychlosti vám pomůže zajistit, že budete věnovat minimální dobu čekání mezi opakovanými pokusy. 
 
-Další informace najdete v tématu [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Další informace najdete v tématu [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Existuje mechanismus pro protokolování dalších diagnostických informací a problémů s latencí při odstraňování potíží, jak je znázorněno v následující ukázce. Můžete protokolovat řetězec diagnostiky pro požadavky, které mají vyšší latenci čtení. Zachycený řetězec diagnostiky vám pomůže pochopit, kolikrát se vám pro daný požadavek zobrazila chyba *429* .
 
@@ -213,7 +213,7 @@ Náklady spojené s jednotlivými operacemi se liší v závislosti na procesoru
 
 Propustnost se zřizuje na základě počtu [jednotek žádostí](request-units.md) nastavených pro každý kontejner. Spotřeba jednotky požadavku se vyhodnocuje jako sazba jednotek za sekundu. Aplikace, které překračují sazbu jednotky zřízené žádosti pro svůj kontejner, jsou omezené, dokud sazba neklesne pod zřízenou úroveň kontejneru. Pokud vaše aplikace vyžaduje vyšší úroveň propustnosti, můžete zvýšit svou propustnost tím, že zřizujete další jednotky žádostí.
 
-Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet souborů UDF a velikost zdrojové datové sady ovlivňují náklady na operace dotazů.
+Složitost dotazů ovlivňuje, kolik jednotek žádostí se pro operace spotřebuje. Počet predikátů, povaha predikátů, počet souborů UDF a velikost zdrojové datové sady ovlivňují náklady na operace dotazů.
 
 Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte záhlaví [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní `RequestCharge` vlastnost v `ResourceResponse\<T>` `FeedResponse\<T>` sadě SDK sady .NET) a změřte tak počet jednotek žádostí spotřebovaných operacemi:
 
