@@ -3,27 +3,29 @@ title: Použití značek indexu objektů BLOB ke správě a hledání dat v Azur
 description: Podívejte se na příklady použití značek indexu objektů BLOB ke kategorizaci, správě a dotazování objektů BLOB.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541245"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430866"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v Azure Blob Storage
 
 Rejstříky objektů BLOB kategorizují data v účtu úložiště pomocí atributů značek klíč-hodnota. Tyto značky jsou automaticky indexovány a zpřístupněny jako prohledávatelný multidimenzionální index umožňující snadno najít data. V tomto článku se dozvíte, jak pomocí značek indexu objektů BLOB nastavit, získat a najít data.
 
-> [!NOTE]
-> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+> [!IMPORTANT]
+> Značky indexu objektů BLOB jsou momentálně ve **verzi Preview** a jsou dostupné v oblastech **Kanada – střed**, Kanada – **východ**, **Francie – střed** a **Francie – jih** . Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
-## <a name="prerequisites"></a>Předpoklady
+Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat objektů BLOB v Azure pomocí značek indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

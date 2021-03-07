@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4f615ed44594379c79f179a467888652c597e286
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 36a94f780fa5c196e28730c051e161633ed3ee3d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217172"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431053"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby Azure Key Vault pro virtuální síť
 
@@ -27,7 +27,7 @@ Toto omezení má jednu důležitou výjimku. Pokud se uživatel rozhodl Povolit
 Ve výchozím nastavení můžete nakonfigurovat [Key Vault brány firewall a virtuální sítě](network-security.md) tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 > [!NOTE]
-> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](secure-your-key-vault.md#data-plane-access-control) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidel virtuální sítě).
+> Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na [rovinu dat](secure-your-key-vault.md#data-plane-access-control) Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidla virtuální sítě a nasazení tajných klíčů nebo klíčů prostřednictvím šablon ARM).
 
 Tady je několik příkladů použití koncových bodů služby:
 

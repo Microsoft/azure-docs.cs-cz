@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006196"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430594"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 * [Předplatné Azure](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií </a> v Azure Portal, abyste získali svůj klíč a koncový bod.
     * K připojení aplikace k rozhraní API detektoru anomálií budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
