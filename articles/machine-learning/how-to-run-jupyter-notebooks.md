@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171462"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423981"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
@@ -273,7 +273,7 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 
 * Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 
-* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro <název instance>. <region> . instances.azureml.ms s privátní IP adresou privátního koncového bodu v pracovním prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
+* Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se [k ní dostat jenom z virtuální sítě](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro < název instance >. < oblasti >. instances.azureml.ms s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md?tabs=azure-cli) .
     
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 895632e4a65f942b61389ffd6ebc8a49d79b5244
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804904"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440016"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s PersistentVolume na zařízení Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v Kubernetes pomocí PersistentVolume (PV) a nasazení. Nasazení používá `kubectl` příkazy v existujícím clusteru Kubernetes a nasadí aplikaci MySQL. 
 
@@ -343,7 +345,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```
 
-Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte následovně:
+Souč_hod již není vázán na okruh PVC, protože byl odstraněn okruh PVC. Vzhledem k tom, že byla tato PV vytvořena, bude nutné sdílenou složku odstranit. Postupujte takto:
 
 1. Odpojte sdílenou složku. V Azure Portal přejděte na **prostředek Azure Stack Edge > sdílené složky** a vyberte a klikněte na sdílenou složku, kterou chcete odpojit. Vyberte **Odpojit** a potvrďte operaci. Počkejte, než se sdílená složka odpojí. Odpojování uvolní sdílenou složku (a tudíž přidruženou PersistentVolume) z clusteru Kubernetes. 
 

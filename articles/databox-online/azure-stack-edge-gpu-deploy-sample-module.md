@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899726"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438195"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>Nasazení modulu IoT s povoleným GPU na zařízení s grafickým procesorem Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Tento článek popisuje, jak nasadit modul IoT Edge s povoleným grafickým procesorem na zařízení GPU Azure Stack Edge pro. 
 
@@ -35,7 +37,7 @@ Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow 
 
 Než začnete, ujistěte se, že máte následující:
 
-- Máte přístup k zařízení s povoleným grafickým procesorem s jedním uzlem Azure Stack Edge pro. Toto zařízení je aktivované pomocí prostředku v Azure. Viz [Aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
+- Máte přístup k zařízení s povoleným grafickým procesorem s jedním uzlem Azure Stack Edge pro. Toto zařízení se aktivuje pomocí prostředku v Azure. Viz [Aktivace zařízení](azure-stack-edge-gpu-deploy-activate.md).
 - Na tomto zařízení jste nakonfigurovali výpočetní výkon. Postupujte podle kroků v [kurzu: Konfigurace výpočetních prostředků na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-compute.md).
 - Azure Container Registry (ACR). Přejděte do okna **přístupové klíče** a poznamenejte si přihlašovací server ACR, uživatelské jméno a heslo. Další informace najdete na stránce [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure Portal](../container-registry/container-registry-get-started-portal.md#create-a-container-registry).
 - Následující prostředky pro vývoj na klientovi Windows:
@@ -146,7 +148,7 @@ Než začnete, ujistěte se, že máte následující:
 
 2. Zvolte předplatné a centrum IoT obsahující zařízení IoT Edge, které chcete nakonfigurovat. V takovém případě vyberte předplatné, které se používá k nasazení Azure Stack Edge pro zařízení, a vyberte IoT Edge zařízení, které jste vytvořili pro zařízení Azure Stack Edge pro. K tomu dochází při konfiguraci výpočetní kapacity prostřednictvím Azure Portal v předchozích krocích.
 
-3. V Průzkumníku VS Code rozbalte část Azure IoT Hub. V části **zařízení**by se mělo zobrazit zařízení IoT Edge odpovídající vašemu zařízení Azure Stack Edge pro. 
+3. V Průzkumníku VS Code rozbalte část Azure IoT Hub. V části **zařízení** by se mělo zobrazit zařízení IoT Edge odpovídající vašemu zařízení Azure Stack Edge pro. 
 
     1. Vyberte toto zařízení, klikněte pravým tlačítkem myši a vyberte možnost **Spustit sledování vestavěného koncového bodu události**.
   

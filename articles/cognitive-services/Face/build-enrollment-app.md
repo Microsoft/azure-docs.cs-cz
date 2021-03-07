@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350360"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428265"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Sestavení registrační aplikace pro Android s použitím reakce
 
@@ -28,7 +28,7 @@ Ukázková registrační aplikace je napsaná pomocí JavaScriptu a nativního r
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).  
 * Jakmile budete mít předplatné Azure, vytvořte na Azure Portal [prostředek pro vytváření obličeje](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) a Získejte svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.  
-  * Pro připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který jste vytvořili.  
+  * Pro připojení aplikace k rozhraní API pro rozpoznávání tváře budete potřebovat klíč a koncový bod z prostředku, který jste vytvořili.  
   * Pro místní vývoj a testování můžete vložit klíč rozhraní API a koncový bod do konfiguračního souboru. Pro konečné nasazení uložte klíč rozhraní API do zabezpečeného umístění a nikdy v kódu.  
 
 > [!IMPORTANT]
@@ -37,9 +37,9 @@ Ukázková registrační aplikace je napsaná pomocí JavaScriptu a nativního r
 ## <a name="set-up-the-development-environment"></a>Nastavení vývojového prostředí
 
 1. Naklonujte úložiště Git pro [ukázkovou registrační aplikaci](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
-1. Chcete-li nastavit vývojové prostředí, použijte nativní dokumentaci reagující na <a href="https://reactnative.dev/docs/environment-setup"  title=" reakci nativní dokumentace "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Jako vývojový operační systém vyberte možnost **reagovat nativním rychlým startem CLI** a jako cílový operační systém vyberte **Android** . Dokončete části **instalace závislostí** a **vývojového prostředí Android**.
-1. Otevřete env.jsv souboru v upřednostňovaném textovém editoru, jako je například [Visual Studio Code](https://code.visualstudio.com/), a přidejte svůj koncový bod a klíč. Svůj koncový bod a klíč můžete získat na Azure Portal na kartě **Přehled** daného prostředku. Tento krok je jenom pro účely místního testování &mdash; . váš Face API klíč nevraťte se do vzdáleného úložiště.
-1. Spusťte aplikaci pomocí emulátoru virtuálního zařízení s Androidem z Android Studio nebo vlastního zařízení s Androidem. Chcete-li otestovat aplikaci na fyzickém zařízení, postupujte podle příslušné <a href="https://reactnative.dev/docs/running-on-device"  title=" reakce nativní dokumentace k reakci v dokumentaci "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
+1. Chcete-li nastavit vývojové prostředí, použijte nativní dokumentaci reagující na <a href="https://reactnative.dev/docs/environment-setup"  title=" reakci nativní dokumentace "  target="_blank"> </a> . Jako vývojový operační systém vyberte možnost **reagovat nativním rychlým startem CLI** a jako cílový operační systém vyberte **Android** . Dokončete části **instalace závislostí** a **vývojového prostředí Android**.
+1. Otevřete env.jsv souboru v upřednostňovaném textovém editoru, jako je například [Visual Studio Code](https://code.visualstudio.com/), a přidejte svůj koncový bod a klíč. Svůj koncový bod a klíč můžete získat na Azure Portal na kartě **Přehled** daného prostředku. Tento krok je jenom pro účely místního testování &mdash; . váš rozhraní API pro rozpoznávání tváře klíč nevraťte se do vzdáleného úložiště.
+1. Spusťte aplikaci pomocí emulátoru virtuálního zařízení s Androidem z Android Studio nebo vlastního zařízení s Androidem. Chcete-li otestovat aplikaci na fyzickém zařízení, postupujte podle příslušné <a href="https://reactnative.dev/docs/running-on-device"  title=" reakce nativní dokumentace k reakci v dokumentaci "  target="_blank"> </a> .  
 
 
 ## <a name="create-an-enrollment-experience"></a>Vytvoření prostředí pro registraci  
@@ -51,7 +51,7 @@ Například můžete chtít přidat informace specifické pro konkrétní situac
 > [!div class="mx-imgBorder"]
 > ![Stránka pro vyjádření souhlasu aplikace](./media/enrollment-app/1-consent-1.jpg)
 
-Služba poskytuje kontroly kvality obrazu, které vám pomůžou vybrat, jestli má image dostatečnou kvalitu k registraci zákazníka nebo pokusu o rozpoznávání obličeje. Tato aplikace ukazuje, jak získat přístup k snímkům z kamery zařízení, vybrat nejvyšší kvalitu snímků a zaregistrovat zjištěnou plochu do služby Face API. 
+Služba poskytuje kontroly kvality obrazu, které vám pomůžou vybrat, jestli má image dostatečnou kvalitu k registraci zákazníka nebo pokusu o rozpoznávání obličeje. Tato aplikace ukazuje, jak získat přístup k snímkům z kamery zařízení, vybrat nejvyšší kvalitu snímků a zaregistrovat zjištěnou plochu do služby rozhraní API pro rozpoznávání tváře. 
 
 Mnoho problémů s rozpoznáváním tváře je způsobeno nekvalitními referenčními obrázky. Mezi faktory, které můžou snížit výkon modelu, patří:
 * Velikost obličeje (plošky, které jsou od kamery vzdálená)
@@ -78,10 +78,10 @@ Nejdřív se ujistěte, že je vaše aplikace připravená na produkční nasaze
 
 Až budete připraveni uvolnit aplikaci pro produkční prostředí, vygenerujete soubor APK připravený pro vydání, což je formát souboru balíčku pro aplikace pro Android. Tento soubor APK musí být podepsán pomocí privátního klíče. Pomocí tohoto buildu verze můžete začít distribuovat aplikaci přímo do svých zařízení. 
 
-V <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" dokumentaci Příprava na vydání verze "  target="_blank"> Příprava na vydání <span class="docon docon-navigate-external x-hidden-focus"></span> </a> se dozvíte, jak vygenerovat privátní klíč, podepsat svoji aplikaci a vygenerovat APK vydání.  
+V <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" dokumentaci Příprava na vydání verze "  target="_blank"> Příprava na vydání </a> se dozvíte, jak vygenerovat privátní klíč, podepsat svoji aplikaci a vygenerovat APK vydání.  
 
-Po vytvoření podepsaného APK si přečtěte dokumentaci k publikování vaší aplikace, <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> kde najdete <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Další informace o tom, jak aplikaci uvolnit.
+Po vytvoření podepsaného APK si přečtěte dokumentaci k publikování vaší aplikace, <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> kde najdete </a> Další informace o tom, jak aplikaci uvolnit.
 
 ## <a name="next-steps"></a>Další kroky  
 
-V této příručce jste zjistili, jak nastavit vývojové prostředí a začít s ukázkovou registrační aplikací. Pokud s dalšími možnostmi reagujete na nativní, můžete si přečíst svoje [dokumenty Začínáme](https://reactnative.dev/docs/getting-started) a získat další informace na pozadí. Také může být užitečné se seznámit s [Face API](Overview.md). Než začnete s vývojem, přečtěte si další části v dokumentaci k aplikaci pro registraci.
+V této příručce jste zjistili, jak nastavit vývojové prostředí a začít s ukázkovou registrační aplikací. Pokud s dalšími možnostmi reagujete na nativní, můžete si přečíst svoje [dokumenty Začínáme](https://reactnative.dev/docs/getting-started) a získat další informace na pozadí. Také může být užitečné se seznámit s [rozhraní API pro rozpoznávání tváře](Overview.md). Než začnete s vývojem, přečtěte si další části v dokumentaci k aplikaci pro registraci.

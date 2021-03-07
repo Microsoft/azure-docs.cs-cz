@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner, analýza mínění, zpracování přirozeného jazyka
-ms.openlocfilehash: fb924f955e46058420e645cdf1e76e6c06e91646
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050133"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432056"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
@@ -32,7 +32,7 @@ Kontejnery umožňují spouštět rozhraní API Analýzy textu ve vlastním pros
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
-> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom  <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span></a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
+> Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom  <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně</a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
 
 ## <a name="prerequisites"></a>Požadavky
 

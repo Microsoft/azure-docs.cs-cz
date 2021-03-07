@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799834"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442753"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -35,8 +35,6 @@ Jenom uživatel s právy pro správu Azure AD může vytvořit nebo povolit uži
 > Při nastavování správce se do serveru Azure Database for MySQL, který má oprávnění správce s úplnými oprávněními, přidá nový uživatel.
 
 Pro každý server MySQL se dá vytvořit jenom jeden správce Azure AD a výběr jiného serveru přepíše stávajícího správce Azure AD nakonfigurovaného pro server.
-
-V budoucí verzi budeme podporovat zadání skupiny Azure AD, ne jednotlivého uživatele, aby měli více správců, ale tato akce se ale v tuto chvíli nepodporuje.
 
 Po nakonfigurování správce se teď můžete přihlásit:
 

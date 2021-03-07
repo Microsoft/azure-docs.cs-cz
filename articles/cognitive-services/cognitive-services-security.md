@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368776"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425290"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -29,13 +29,13 @@ Všechny koncové body Cognitive Services vystavené přes protokol HTTP vynutil
 * Jazyk (a platforma), který se používá k provedení volání HTTP, musí jako součást žádosti zadat TLS 1,2.
   * V závislosti na jazyku a platformě se protokol TLS provádí implicitně nebo explicitně.
 
-Pro uživatele rozhraní .NET zvažte <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">osvědčené postupy <span class="docon docon-navigate-external x-hidden-focus"></span> zabezpečení transportní vrstvy </a>.
+Pro uživatele rozhraní .NET zvažte <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">osvědčené postupy zabezpečení transportní vrstvy </a>.
 
 ## <a name="authentication"></a>Authentication
 
-Při projednávání ověřování je k dispozici několik běžných konceptů. Ověřování a autorizace jsou často mezi sebou zaměňovány. Identita je také hlavní součástí zabezpečení. Identita je kolekce informací o <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">objektu zabezpečení <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Zprostředkovatelé identity (IdP) poskytují identity službám ověřování. Ověřování je aktem, který ověřuje identitu uživatele. Autorizace je specifikace přístupových práv a oprávnění k prostředkům pro danou identitu. Mezi některé z Cognitive Services nabídek patří řízení přístupu na základě role Azure (Azure RBAC). Azure RBAC se dá využít ke zjednodušení některých proceduryů, které se podílejí na ruční správě objektů zabezpečení. Další podrobnosti najdete v tématu [řízení přístupu na základě role v Azure pro prostředky Azure](../role-based-access-control/overview.md).
+Při projednávání ověřování je k dispozici několik běžných konceptů. Ověřování a autorizace jsou často mezi sebou zaměňovány. Identita je také hlavní součástí zabezpečení. Identita je kolekce informací o <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">objektu zabezpečení </a>. Zprostředkovatelé identity (IdP) poskytují identity službám ověřování. Ověřování je aktem, který ověřuje identitu uživatele. Autorizace je specifikace přístupových práv a oprávnění k prostředkům pro danou identitu. Mezi některé z Cognitive Services nabídek patří řízení přístupu na základě role Azure (Azure RBAC). Azure RBAC se dá využít ke zjednodušení některých proceduryů, které se podílejí na ruční správě objektů zabezpečení. Další podrobnosti najdete v tématu [řízení přístupu na základě role v Azure pro prostředky Azure](../role-based-access-control/overview.md).
 
-Další informace o ověřování pomocí klíčů předplatného, přístupových tokenů a Azure Active Directory (AAD) najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">ověření <span class="docon docon-navigate-external x-hidden-focus"></span> požadavků do Azure Cognitive Services</a>.
+Další informace o ověřování pomocí klíčů předplatného, přístupových tokenů a Azure Active Directory (AAD) najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">ověření požadavků do Azure Cognitive Services</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Proměnné prostředí a konfigurace aplikace
 
@@ -113,7 +113,7 @@ Chcete-li získat proměnnou prostředí, musí být načtena do paměti. V záv
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Další informace najdete na webu <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Další informace najdete na webu <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` </a>.
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Další informace najdete na webu <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` </a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Další informace najdete na webu <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` </a>.
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Další informace najdete na webu <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Další informace najdete v tématu <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` </a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -201,12 +201,12 @@ NSString* value =
 
 Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 
-* Překladač
+* Translator
 
 Pro následující služby nebudou Microsoft technici přistupovat k žádným zákaznickým datům ve vrstvě E0: 
 
 * Language Understanding
-* Tvář
+* Rozpoznávání tváře
 * Content Moderator
 * Personalizace
 

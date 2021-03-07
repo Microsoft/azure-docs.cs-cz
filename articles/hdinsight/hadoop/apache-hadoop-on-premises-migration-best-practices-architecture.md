@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946454"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435405"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
 
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny různé metody, které lze použít k vytv
 |[Rozhraní příkazového řádku Azure (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||×|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
-|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||×|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight)||||×|
 |[Python SDK](/python/api/overview/azure/hdinsight)||||×|
 |[Java SDK](/java/api/overview/azure/hdinsight)||||×|
 |[Šablony Azure Resource Manageru](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||×|||
@@ -101,7 +101,7 @@ Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 - Pravidelně zálohujte vlastní metastore.
 - Udržujte cluster metastore a HDInsight ve stejné oblasti.
 - Monitorujte metastore o výkonu a dostupnosti pomocí nástrojů pro monitorování Azure SQL Database, jako jsou protokoly Azure Portal nebo Azure Monitor.
-- Spusťte `ANALYZE TABLE` příkaz podle potřeby a vygenerujte statistiku pro tabulky a sloupce. Například `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Spusťte `ANALYZE TABLE` příkaz podle potřeby a vygenerujte statistiku pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 

@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: Konfigurační soubor aktualizace zařízení
       href: device-update-configuration-file.md
-    - name: Manifest aktualizace zařízení
+    - name: Aktualizovat manifest
       href: update-manifest.md
     - name: Jak je aktualizace zařízení zabezpečená
       href: device-update-security.md

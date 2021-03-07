@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: d39ade2536b96bf5e665ecfc01e81232f2fec075
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217937"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433926"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -98,12 +98,12 @@ Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zř�
 
 Zřízenou propustnost kontejneru nebo databáze můžete načíst v Azure Portal nebo pomocí sad SDK:
 
-* [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync) v sadě .NET SDK.
 * [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput) v sadě Java SDK.
 
 Reakce těchto metod také obsahuje [minimální zřízenou propustnost](concepts-limits.md#storage-and-database-operations) pro kontejner nebo databázi:
 
-* [ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput) v sadě .NET SDK.
 * [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput) v sadě Java SDK.
 
 Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Obecně se ale jedná o maximum:
@@ -116,7 +116,7 @@ Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeh
 
 Zřízenou propustnost kontejneru nebo databáze můžete škálovat prostřednictvím Azure Portal nebo pomocí sad SDK:
 
-* [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync) v sadě .NET SDK.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput) v sadě Java SDK.
 
 Pokud **snižujete zřízenou propustnost**, budete ji moci provést až na [minimum](#current-provisioned-throughput).
@@ -128,7 +128,7 @@ Pokud **zvýšíte zřízenou propustnost**, většinou je operace okamžitá. E
 
 Průběh škálování můžete programově ověřit načtením [aktuální zřízené propustnosti](#current-provisioned-throughput) a použitím:
 
-* [ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending) v sadě .NET SDK.
 * [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending) v sadě Java SDK.
 
 Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.

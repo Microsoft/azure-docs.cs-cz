@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030728"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442940"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
-Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub.
+Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,9 +59,9 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
     | --------- | ----------- |
     | deviceManufacturer | Výrobce zařízení, ke kterému je aktualizace kompatibilní, například contoso
     | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zpráva
-    | updateProvider | Část poskytovatele identity aktualizace, například Fabrikam
-    | aktualizovat | Název součásti identity aktualizace, například ImageUpdate
-    | updateVersion | Verze aktualizace, například 2,0
+    | updateProvider | Entita, která vytváří nebo přímo zodpovídá za aktualizaci. Často se jedná o název společnosti.
+    | aktualizovat | Identifikátor pro třídu aktualizací. Třída může být cokoliv, co zvolíte. Často se jedná o název zařízení nebo modelu.
+    | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Může nebo nemusí odpovídat verzi jednotlivé součásti softwaru na zařízení.
     | Typ aktualizace | <ul><li>Zadat `microsoft/swupdate:1` pro aktualizaci obrázku</li><li>Zadat `microsoft/apt:1` pro aktualizaci balíčku</li></ul>
     | installedCriteria | <ul><li>Zadejte hodnotu SWVersion pro `microsoft/swupdate:1` typ aktualizace.</li><li>Zadejte doporučenou hodnotu pro `microsoft/apt:1` typ aktualizace.
     | updateFilePath (celkem) | Cesta k souborům aktualizací v počítači

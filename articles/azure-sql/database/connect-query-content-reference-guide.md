@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693479"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440390"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují, ja
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlý start | Popis |
+| Rychlé zprovoznění | Popis |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Tento rychlý Start ukazuje použití SSMS pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
@@ -85,10 +85,10 @@ K připojení k Azure SQL Database nebo spravované instanci SQL Azure můžete 
 
 Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je používat v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database, spravované instanci SQL Azure a analýzám Azure synapse.
 
-| Jazyk | Platforma | Další zdroje | Stáhnout | Začínáme |
+| Jazyk | Platforma | Další zdroje informací | Stáhnout | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Stáhnout](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Stáhnout](/sql/connect/php/download-drivers-php-sql-server) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js ovladače pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Instalace](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Ovladač Python SQL](/sql/connect/python/python-driver-for-sql-server/) | Možnosti instalace: <br/> \*[pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \*[pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)

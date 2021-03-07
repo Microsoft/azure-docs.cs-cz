@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737966"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433212"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -220,11 +220,11 @@ Jakmile se rozhodnete pro řetězec dotazu, provedete to tak, že zavoláte [**r
 
 Můžete zavolat rozhraní API přímo nebo použít jednu ze [sad SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) dostupných pro digitální vlákna Azure.
 
-Následující fragment kódu ilustruje volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) z klientské aplikace:
+Následující fragment kódu ilustruje volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) z klientské aplikace:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Dotaz použitý v tomto volání vrátí seznam digitálních vláken, které výše uvedený příklad představuje s [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) objekty. Návratový typ dat pro každý dotaz bude záviset na tom, jaké výrazy určíte pomocí `SELECT` příkazu:
+Dotaz použitý v tomto volání vrátí seznam digitálních vláken, které výše uvedený příklad představuje s [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) objekty. Návratový typ dat pro každý dotaz bude záviset na tom, jaké výrazy určíte pomocí `SELECT` příkazu:
 * Dotazy, které začínají `SELECT * FROM ...` na, vrátí seznam digitálních vláken (které mohou být serializovány jako `BasicDigitalTwin` objekty nebo jiné vlastní digitální typy vláken, které jste pravděpodobně vytvořili).
 * Dotazy, které začínají ve formátu, `SELECT <A>, <B>, <C> FROM ...` vrátí slovník s klíči `<A>` , `<B>` a `<C>` .
 * Další formáty `SELECT` příkazů mohou být vytvořené pro vrácení vlastních dat. Můžete zvážit vytvoření vlastních tříd pro zpracování velmi přizpůsobených sad výsledků. 

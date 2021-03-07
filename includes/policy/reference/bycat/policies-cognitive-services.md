@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dce1b2c9667b3928b79a5eb3a2245401961660ea
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c23faeab63d34ade6c70c71a4a7b1f455132e55e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100088"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429060"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Cognitive Services účty by měly povolit šifrování dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Tato zásada Audituje libovolný účet Cognitive Services nepoužívá šifrování dat. U každého účtu Cognitive Services s úložištěm by se mělo povolit šifrování dat buď s spravovaným zákazníkem, nebo s použitím spravovaného klíče Microsoftu. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |
-|[Cognitive Services účty by měly povolit šifrování dat pomocí klíče spravovaného zákazníkem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Klíče spravované zákazníkem jsou obvykle vyžadovány pro splnění standardů dodržování předpisů právními předpisy. Klíče spravované zákazníkem umožňují šifrovat data uložená v Cognitive Services pomocí klíče Azure Key Vault vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Přečtěte si další informace o šifrování klíčů spravovaného zákazníkem na adrese [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) . |Audit, zamítnutí, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |
+|[Cognitive Services účty by měly povolit šifrování dat pomocí klíče spravovaného zákazníkem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Klíče spravované zákazníkem jsou obvykle vyžadovány pro splnění standardů dodržování předpisů právními předpisy. Klíče spravované zákazníkem umožňují šifrovat data uložená v Cognitive Services pomocí klíče Azure Key Vault vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Přečtěte si další informace o klíčích spravovaných zákazníkem na adrese [https://go.microsoft.com/fwlink/?linkid=2121321](https://go.microsoft.com/fwlink/?linkid=2121321) . |Audit, zamítnutí, zakázáno |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |
 |[Účty Cognitive Services by měly omezovat přístup k síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F037eea7a-bd0a-46c5-9a66-03aea78705d3) |Přístup k síti pro účty Cognitive Services by měl být omezený. Nakonfigurujte Síťová pravidla, aby k účtu Cognitive Services měly přístup jenom aplikace z povolených sítí. Aby bylo možné připojení z konkrétního Internetu nebo místních klientů, můžete přístup udělit přenosům z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných internetových IP adres. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_NetworkAcls_Audit.json) |
 |[Účty Cognitive Services by měly používat úložiště vlastněné zákazníkem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F46aa9b05-0e60-4eae-a88b-1e9d374fa515) |Tato zásada Audituje libovolný účet Cognitive Services nepoužívá úložiště vlastněné zákazníkem. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_UserOwnedStorage_Audit.json) |
 |[Účty Cognitive Services by měly používat úložiště vlastněné zákazníkem nebo povolit šifrování dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11566b39-f7f7-4b82-ab06-68d8700eb0a4) |Tato zásada Audituje libovolný účet Cognitive Services nepoužívá úložiště vlastněné zákazníkem ani šifrování dat. Pro každý účet Cognitive Services s úložištěm použijte buď úložiště vlastněné zákazníkem, nebo povolte šifrování dat. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_BYOX_Audit.json) |

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320825"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443042"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Použití řídicího panelu Kubernetes k monitorování zařízení GPU Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak získat přístup k řídicímu panelu Kubernetes Edge pro a použít ho k monitorování vašeho zařízení GPU pro Azure Stack. Chcete-li monitorovat své zařízení, můžete použít grafy v Azure Portal, zobrazit řídicí panel Kubernetes nebo spustit `kubectl` příkazy prostřednictvím rozhraní PowerShell zařízení. 
 
@@ -33,7 +35,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="about-kubernetes-dashboard"></a>O řídicím panelu Kubernetes
 
-Řídicí panel Kubernetes je webové uživatelské rozhraní, které můžete použít k řešení problémů vašich kontejnerových aplikací. Řídicí panel Kubernetes je alternativa založená na uživatelském rozhraní k `kubectl` příkazovému řádku Kubernetes. Další informace najdete v tématu [řídicí panel Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
+Řídicí panel Kubernetes je webové uživatelské rozhraní, ve kterém můžete řešit potíže s kontejnerizovanými aplikacemi. Řídicí panel Kubernetes je alternativa založená na uživatelském rozhraní k `kubectl` příkazovému řádku Kubernetes. Další informace najdete v tématu věnovaném [řídicímu panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
 Na zařízení Azure Stack Edge pro můžete pomocí řídicího panelu Kubernetes v režimu jen *pro čtení* získat přehled o aplikacích spuštěných v zařízení Azure Stack Edge pro, zobrazit stav prostředků clusteru Kubernetes a zobrazit všechny chyby, ke kterým došlo v zařízení.
 

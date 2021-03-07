@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518891"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440305"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolů systému souborů SMB a NFS. Tento článek popisuje škálovatelnost a výkonnostní cíle pro Azure Files a Synchronizace souborů Azure.
@@ -83,17 +83,17 @@ Následující tabulka uvádí hranice testování Microsoftu a také uvádí, k
 
 | Prostředek | Cíl | Omezení pevné velikosti |
 |----------|--------------|------------|
-| Služby synchronizace úložiště na oblast | 100 služby synchronizace úložiště | Yes |
-| Skupiny synchronizace na službu synchronizace úložiště | skupiny synchronizace 200 | Yes |
-| Registrované servery na službu synchronizace úložiště | servery 99 | Yes |
-| Cloudové koncové body na skupinu synchronizace | 1 koncový bod cloudu | Yes |
-| Koncové body serveru na skupinu synchronizace | koncové body serveru 100 | Yes |
-| Koncové body serveru na server | 30 koncových bodů serveru | Yes |
-| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 100 000 000 | No |
-| Maximální počet objektů systému souborů (adresářů a souborů) v adresáři | objekty 5 000 000 | Yes |
-| Maximální velikost popisovače zabezpečení objektů (adresářů a souborů) | 64 KiB | Yes |
-| Velikost souboru | 100 GiB | No |
-| Minimální velikost souboru, který se má převrstvený | V9 a novější: na základě velikosti clusteru systému souborů (velikost clusteru systému souborů Double). Pokud je například velikost clusteru systému souborů 4 KiB, minimální velikost souboru bude 8 KiB.<br> V8 a starší verze: 64 KiB  | Yes |
+| Služby synchronizace úložiště na oblast | 100 služby synchronizace úložiště | Ano |
+| Skupiny synchronizace na službu synchronizace úložiště | skupiny synchronizace 200 | Ano |
+| Registrované servery na službu synchronizace úložiště | servery 99 | Ano |
+| Cloudové koncové body na skupinu synchronizace | 1 koncový bod cloudu | Ano |
+| Koncové body serveru na skupinu synchronizace | koncové body serveru 100 | Ano |
+| Koncové body serveru na server | 30 koncových bodů serveru | Ano |
+| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 100 000 000 | Ne |
+| Maximální počet objektů systému souborů (adresářů a souborů) v adresáři | objekty 5 000 000 | Ano |
+| Maximální velikost popisovače zabezpečení objektů (adresářů a souborů) | 64 KiB | Ano |
+| Velikost souboru | 100 GiB | Ne |
+| Minimální velikost souboru, který se má převrstvený | V9 a novější: na základě velikosti clusteru systému souborů (velikost clusteru systému souborů Double). Pokud je například velikost clusteru systému souborů 4 KiB, minimální velikost souboru bude 8 KiB.<br> V8 a starší verze: 64 KiB  | Ano |
 
 > [!Note]  
 > Koncový bod Synchronizace souborů Azure může škálovat až na velikost sdílené složky Azure. Pokud je dosaženo limitu velikosti sdílené složky Azure, nebude synchronizace moct fungovat.
@@ -126,10 +126,21 @@ Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsle
 | Propustnost stahování oboru názvů | 400 objektů za sekundu |
 
 ### <a name="initial-one-time-provisioning"></a>Prvotní zřízení v jednom čase
+
 **Počáteční výčet změn v cloudu**: když se vytvoří nová skupina synchronizace, bude první krok, který se spustí, počáteční výčet změn v cloudu. V tomto procesu bude systém vypsat všechny položky ve sdílené složce Azure. Během tohoto procesu nebude žádná aktivita synchronizace, tj. žádné položky nebudou staženy z koncového bodu cloudu do koncového bodu serveru a žádné položky nebudou odeslány z koncového bodu serveru do koncového bodu cloudu. Po dokončení počátečního výčtu změn v cloudu bude aktivita synchronizace pokračovat.
 Míra výkonu je 20 objektů za sekundu. Zákazníci si můžou odhadnout čas, který bude trvat, aby dokončili počáteční výčet změn v cloudu tím, že určí počet položek ve sdílené složce cloudu a pomocí následujících vzorců Získá čas ve dnech. 
 
    **Čas (ve dnech) počátečního výčtu cloudu = (počet objektů v koncovém bodu cloudu)/(20 × 60 × 60 × 24)**
+
+**Počáteční synchronizace dat ze systému Windows Server do sdílené složky Azure**: mnoho nasazení synchronizace souborů Azure začínat prázdnou sdílenou složkou Azure, protože všechna data jsou na Windows serveru. V těchto případech je počáteční výčet změn v cloudu rychlý a většina času stráví synchronizaci změn z Windows serveru až po sdílené složky Azure. 
+
+Zatímco synchronizace nahrává data do sdílené složky Azure, na místním souborovém serveru nedochází k výpadkům a správci můžou [nastavit omezení sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) , aby se omezila šířka pásma využitá pro nahrání dat na pozadí.
+
+Počáteční synchronizace se obvykle omezí na počáteční rychlost nahrávání 20 souborů za sekundu na skupinu synchronizace. Zákazníci můžou odhadnout čas nahrávání všech svých dat do Azure pomocí následujícího vzorce a získat tak dobu ve dnech:  
+
+   **Čas (ve dnech) při nahrávání souborů do skupiny synchronizace = (počet objektů v koncovém bodu cloudu)/(20 × 60 × 60 × 24)**
+
+Rozdělení dat do více koncových bodů serveru a skupin synchronizace může zrychlit toto počáteční nahrání dat, protože nahrávání je možné provést paralelně pro více skupin synchronizace rychlostí 20 položek za sekundu. To znamená, že dvě skupiny synchronizace budou spuštěné v kombinované sazbě 40 položek za sekundu. Celkový čas dokončení by představoval časový odhad pro skupinu synchronizace s nejvíce synchronizovanými soubory.
 
 **Propustnost stahování oboru názvů** Při přidání nového koncového bodu serveru do existující skupiny synchronizace agent Synchronizace souborů Azure nestáhne žádný obsah souboru z koncového bodu cloudu. Nejprve synchronizuje celý obor názvů a potom aktivuje odvolání na pozadí pro stažení souborů, a to buď v celém rozsahu, nebo v případě, že je povolená vrstva cloudu, do zásady clouding nastavené na koncovém bodu serveru.
 

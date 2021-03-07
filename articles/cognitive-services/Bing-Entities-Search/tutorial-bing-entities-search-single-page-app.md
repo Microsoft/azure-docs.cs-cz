@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366529"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426803"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
@@ -68,8 +68,8 @@ Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného 
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -262,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Dotaz rozhraní API Bingu pro vyhledávání entit vyžaduje společně se zeměpisnou šířkou a délkou také *poloměr* , který určuje přesnost informací o poloze. Poloměr počítáme pomocí *ohraničujícího rámečku* , který poskytla odpověď Map Bing. Ohraničující rámeček je obdélník, který ohraničuje celé umístění. Když například uživatel zadá `NYC`, výsledkem budou zhruba souřadnice středu města New York a ohraničující rámeček, který město obklopuje. 
+Dotaz rozhraní API Bingu pro vyhledávání entit vyžaduje společně se zeměpisnou šířkou a délkou také *poloměr*, který určuje přesnost informací o poloze. Poloměr počítáme pomocí *ohraničujícího rámečku*, který poskytla odpověď Map Bing. Ohraničující rámeček je obdélník, který ohraničuje celé umístění. Když například uživatel zadá `NYC`, výsledkem budou zhruba souřadnice středu města New York a ohraničující rámeček, který město obklopuje. 
 
 Nejprve spočítáme vzdálenosti primárních souřadnic od všech čtyř rohů ohraničujícího rámečku pomocí funkce `haversineDistance()` (neukázáno). Největší z těchto čtyř vzdáleností použijeme jako poloměr. Nejmenší velikost poloměru je jeden kilometr. Tato hodnota je zároveň použitá jako výchozí, když v odpovědi není ohraničující rámeček.
 

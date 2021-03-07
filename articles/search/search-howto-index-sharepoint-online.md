@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22adccfc4adbb7f8b1c72d8b5705ec8fcdb9a375
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679336"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441087"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Jak nakonfigurovat indexování SharePointu Online v Kognitivní hledání (Preview)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101679336"
 > Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 > Tato funkce poskytuje [REST API verze 2020-06-30-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora portálu nebo sady SDK.
+
+> [!NOTE]
+> SharePoint Online podporuje model podrobného autorizace, který určuje přístup pro jednotlivé uživatele na úrovni dokumentu. Indexer služby SharePoint Online nezískává tato oprávnění do indexu vyhledávání a Kognitivní hledání nepodporuje autorizaci na úrovni dokumentu. Když je dokument indexován ze SharePointu Online do vyhledávací služby, je obsah k dispozici všem uživatelům, kteří mají k indexu přístup pro čtení. Pokud požadujete oprávnění na úrovni dokumentu, měli byste prozkoumat filtry zabezpečení a oříznout výsledky neoprávněného obsahu. Další informace najdete v tématu [oříznutí zabezpečení pomocí identit služby Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
 Tento článek popisuje, jak použít Azure Kognitivní hledání k indexování dokumentů (například souborů PDF, systém Microsoft Office dokumentů a několika dalších běžných formátů) uložených v knihovnách dokumentů SharePointu Online do indexu služby Azure Kognitivní hledání. Nejprve vysvětluje základy nastavení a konfigurace indexeru. Potom nabízí hlubší průzkum chování a scénářů, se kterými se pravděpodobně setkáte.
 

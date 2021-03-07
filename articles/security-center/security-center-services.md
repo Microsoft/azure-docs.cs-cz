@@ -1,24 +1,18 @@
 ---
 title: Funkce Azure Security Center v závislosti na operačním systému, typu počítače a cloudu
 description: Přečtěte si, které Azure Security Center funkce jsou dostupné podle jejich operačního systému, typu a cloudového nasazení.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 1ba030ea42d3e865021aa52c651cd72eead9f1a1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 070f35dc3efea4a3f05ec36cc3860fa589aa87e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100266"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437906"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 

@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040341"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425698"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -159,11 +159,11 @@ Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "ReadOnl
 
 ## <a name="functions_extension_version"></a>\_verze rozšíření Functions \_
 
-Verze modulu runtime Functions, který má být použit v této aplikaci Function App. Vlnovka s hlavní verzí znamená použití nejnovější verze této hlavní verze (například ~ 2). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, automaticky se nainstalují do aplikace Function App. Pokud chcete aplikaci připnout na konkrétní verzi, použijte úplné číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` PIN vaší aplikace na verzi 1. x modulu runtime.
+Verze modulu runtime Functions, který hostuje vaši aplikaci Function App. Znak tilda ( `~` ) s hlavní verzí znamená použít nejnovější verzi této hlavní verze (například "~ 3"). Pokud jsou k dispozici nové verze pro stejnou hlavní verzi, automaticky se nainstalují do aplikace Function App. Pokud chcete aplikaci připnout na konkrétní verzi, použijte úplné číslo verze (například "3.0.12345"). Výchozí hodnota je "~ 3". Hodnota `~1` PIN vaší aplikace na verzi 1. x modulu runtime. Další informace najdete v tématu [Přehled verzí modulu runtime Azure Functions](functions-versions.md).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|\_verze rozšíření Functions \_|~ 2|
+|\_verze rozšíření Functions \_|~ 3|
 
 ## <a name="functions_v2_compatibility_mode"></a>\_ \_ Režim kompatibility Functions v2 \_
 

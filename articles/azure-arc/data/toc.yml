@@ -152,7 +152,7 @@
           items:
             - name: Migrace dat PostgreSQL do skupiny serverů hyperškálování Postgres
               href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: Obnovení ukázkové databáze AdventureWorks
+            - name: Import ukázkové databáze AdventureWorks
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: Řešení potíží
           href: troubleshoot-postgresql-hyperscale-server-group.md

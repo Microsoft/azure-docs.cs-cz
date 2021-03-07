@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 03/05/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
-ms.translationtype: HT
+ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122785"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440713"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Začínáme s Azure Data Boxem pro import dat do Azure
 
@@ -39,7 +39,7 @@ Tato příručka popisuje, jak nasadit Azure Data Box pro import pomocí webu Az
 Než začnete:
 
 - Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
-    - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Smlouva Microsoft Customer Agreement (MCA) pro nové předplatné nebo Microsoft smlouva Enterprise (EA) pro stávající předplatná. Přečtěte si další informace o [MCA pro nové předplatné](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) a [předplatná EA](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 

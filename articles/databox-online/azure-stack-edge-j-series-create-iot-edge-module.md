@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7836e791f8515c2df89228c81419738adf27e47f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952195"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438911"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Vývoj modulu C# IoT Edge pro přesun souborů v Azure Stack Edge pro
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak vytvořit modul IoT Edge pro nasazení s vaším zařízením Azure Stack Edge pro. Azure Stack Edge pro je řešení úložiště, které umožňuje zpracovávat data a odesílat je přes síť do Azure.
 
@@ -42,7 +42,7 @@ Vaše zařízení Azure Stack Edge pro může nasazovat a spouštět IoT Edge mo
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -126,7 +126,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
 1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program.cs**.
-2. V horní části **oboru názvů FileCopyModule**přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
+2. V horní části **oboru názvů FileCopyModule** přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
 
     ```
     namespace FileCopyModule
@@ -160,7 +160,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-5. V **metodě Init**kód vytvoří a nakonfiguruje objekt **ModuleClient** . Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Modul runtime IoT Edge poskytne modulu připojovací řetězec používaný metodou Init. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** . **Metodu init** nahraďte následujícím kódem.
+5. V **metodě Init** kód vytvoří a nakonfiguruje objekt **ModuleClient** . Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Modul runtime IoT Edge poskytne modulu připojovací řetězec používaný metodou Init. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** . **Metodu init** nahraďte následujícím kódem.
 
     ```
     /// <summary>

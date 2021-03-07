@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: d85aa1b66170acb25bd88435b83b1d28cda954f0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed1277df0ebfa42d6ee95d58fa568241b291656b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093584"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434674"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů
 
@@ -125,7 +125,7 @@ Skripty akcí skriptů lze použít prostřednictvím následujících nástroj�
 
 HDInsight poskytuje skripty pro instalaci následujících komponent do clusterů HDInsight:
 
-| Name | Skript |
+| Název | Skript |
 | --- | --- |
 | Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Viz [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md). |
 | Nainstalovat odstín |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Viz [instalace a použití odstínu v clusterech HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
@@ -150,7 +150,7 @@ V této části jsou vysvětleny různé způsoby, jak můžete při vytvářen�
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte jeden ze zadaných skriptů. |
-    | Name |Zadejte název akce skriptu. |
+    | Název |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/ZooKeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker** nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |
@@ -198,7 +198,7 @@ Může to trvat několik minut, než se cluster vytvoří.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>Použití akce skriptu během vytváření clusteru ze sady HDInsight .NET SDK
 
-Sada HDInsight .NET SDK poskytuje klientské knihovny, které usnadňují práci s HDInsight z aplikace .NET. Ukázku kódu naleznete v tématu [akce skriptu](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true#script-actions).
+Sada HDInsight .NET SDK poskytuje klientské knihovny, které usnadňují práci s HDInsight z aplikace .NET. Ukázku kódu naleznete v tématu [akce skriptu](/dotnet/api/overview/azure/hdinsight#script-actions).
 
 ## <a name="script-action-to-a-running-cluster"></a>Akce skriptu na běžícím clusteru
 
@@ -223,7 +223,7 @@ V této části se dozvíte, jak aplikovat akce skriptů na běžícím clusteru
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vybrat skript | Chcete-li použít vlastní skript, vyberte možnost __vlastní__. V opačném případě vyberte poskytnutý skript. |
-    | Name |Zadejte název akce skriptu. |
+    | Název |Zadejte název akce skriptu. |
     | Identifikátor URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | Vedoucí/pracovní proces/Zookeeper |Zadejte uzly, na kterých je spuštěn skript: **head**, **Worker** nebo **Zookeeper**. |
     | Parametry |Zadejte parametry, pokud to skript vyžaduje. |

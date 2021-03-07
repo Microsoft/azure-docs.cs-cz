@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 34aef5bd880e3ef080676fb9e90e62796d499e7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96019952"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429812"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ V současné době je knihovna hromadných prováděcích modulů podporována p
 
 * Pokud ještě nemáte nainstalovanou aktualizaci Visual Studio 2019, můžete si stáhnout a použít [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit "vývoj pro Azure".
 
-* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](./local-emulator.md) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticate-requests).
 
@@ -94,7 +94,7 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně je importuj
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Aplikace vyvolá rozhraní BulkImportAsync API. Knihovna .NET poskytuje dvě přetížení rozhraní API hromadného importu – jeden, který přijímá seznam serializovaných dokumentů JSON a druhý, který přijímá seznam rekonstruovaných dokumentů POCO. Další informace o definicích těchto přetížených metod najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true).
+5. Aplikace vyvolá rozhraní BulkImportAsync API. Knihovna .NET poskytuje dvě přetížení rozhraní API hromadného importu – jeden, který přijímá seznam serializovaných dokumentů JSON a druhý, který přijímá seznam rekonstruovaných dokumentů POCO. Další informace o definicích těchto přetížených metod najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync).
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -126,11 +126,11 @@ Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně je importuj
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Hromadná aktualizace dat ve vašem účtu Azure Cosmos
 
-Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync API. V tomto příkladu nastavíte `Name` pole na novou hodnotu a odeberete `Description` pole z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true).
+Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync API. V tomto příkladu nastavíte `Name` pole na novou hodnotu a odeberete `Description` pole z existujících dokumentů. Úplnou sadu podporovaných operací aktualizace najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate).
 
 1. Přejděte do složky "BulkUpdateSample" a otevřete soubor "BulkUpdateSample. sln".  
 
-2. Definujte položky aktualizace společně s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete `SetUpdateOperation` k aktualizaci `Name` pole a `UnsetUpdateOperation` k odebrání `Description` pole ze všech dokumentů. Můžete také provádět jiné operace, jako je například zvýšení pole dokumentu konkrétní hodnotou, zadání specifických hodnot do pole pole nebo odebrání konkrétní hodnoty z pole Array. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true).
+2. Definujte položky aktualizace společně s odpovídajícími operacemi aktualizace polí. V tomto příkladu použijete `SetUpdateOperation` k aktualizaci `Name` pole a `UnsetUpdateOperation` k odebrání `Description` pole ze všech dokumentů. Můžete také provádět jiné operace, jako je například zvýšení pole dokumentu konkrétní hodnotou, zadání specifických hodnot do pole pole nebo odebrání konkrétní hodnoty z pole Array. Další informace o různých metodách, které poskytuje rozhraní API pro hromadnou aktualizaci, najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -147,7 +147,7 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
    }
    ```
 
-3. Aplikace vyvolá rozhraní BulkUpdateAsync API. Další informace o definici metody BulkUpdateAsync najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true).  
+3. Aplikace vyvolá rozhraní BulkUpdateAsync API. Další informace o definici metody BulkUpdateAsync najdete v [dokumentaci k rozhraní API](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync).  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
