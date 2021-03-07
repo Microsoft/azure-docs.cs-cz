@@ -3,13 +3,13 @@ title: Vytvoření privátního clusteru služby Azure Kubernetes
 description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 7/17/2020
-ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/5/2021
+ms.openlocfilehash: d5f39460ad821265aed2c21d7426aa894f7cc933
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181223"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425103"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -70,19 +70,26 @@ Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster.
 
 Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 
-1. Výchozí hodnota je "System". Pokud je argument--Private-DNS-Zone vynechán, AKS vytvoří zónu Privátní DNS ve skupině prostředků uzlu.
-2. Možnost None znamená, že AKS nevytvoří zónu Privátní DNS.  To vyžaduje, abyste zanesli vlastní server DNS a nakonfigurovali překlad DNS pro privátní plně kvalifikovaný název domény.  Pokud neprovedete konfiguraci překladu DNS, dá se služba DNS přeložit jenom v rámci uzlů agentů a po nasazení způsobí problémy s clusterem.
-3. Vlastní privátní název zóny DNS by měl být v tomto formátu pro globální cloud Azure: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku této zóny Privátní DNS.  Navíc budete potřebovat identitu přiřazenou uživateli nebo instanční objekt s alespoň `private dns zone contributor` rolí k vlastní privátní zóně DNS.
+- Výchozí hodnota je "System". Pokud je argument--Private-DNS-Zone vynechán, AKS vytvoří zónu Privátní DNS ve skupině prostředků uzlu.
+- Možnost None znamená, že AKS nevytvoří zónu Privátní DNS.  To vyžaduje, abyste zanesli vlastní server DNS a nakonfigurovali překlad DNS pro privátní plně kvalifikovaný název domény.  Pokud neprovedete konfiguraci překladu DNS, dá se služba DNS přeložit jenom v rámci uzlů agentů a po nasazení způsobí problémy s clusterem. 
+- CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID vyžaduje, abyste v tomto formátu pro globální cloud Azure vytvořili zónu Privátní DNS: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku, které Privátní DNS zóna dopředá.  Navíc budete potřebovat identitu přiřazenou uživatelem nebo instanční objekt s alespoň `private dns zone contributor` rolí.
+- "plně kvalifikovaný název domény (FQDN) lze využít s" CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID "pouze k poskytnutí možností subdomény `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Verze Preview verze AKS 0.4.71 nebo novější
+* Verze Preview verze AKS 0.5.3 nebo novější
 * Rozhraní API verze 2020-11-01 nebo novější
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Vytvoření privátního clusteru AKS s využitím zóny Privátní DNS (Preview)
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
+```
+
+### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone-preview"></a>Vytvoření privátního clusteru AKS s vlastní zónou Privátní DNS (Preview)
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Možnosti připojení k privátnímu clusteru
 

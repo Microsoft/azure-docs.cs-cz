@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943432"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426259"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -69,7 +69,7 @@ Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
 Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služeb Azure. Aby se snížila doba odezvy pro odpovědi z bot, měli byste se ujistit, že tyto služby jsou umístěné ve stejné oblasti Azure. V této části vytvoříte skupinu prostředků v oblasti **západní USA** . Tato skupina prostředků se bude používat při vytváření individuálních prostředků pro rozhraní bot, kanálu pro přímý vstup řeči a službu pro rozpoznávání řeči.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Vytvoření skupiny prostředků <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Vytvoření skupiny prostředků </a>
 1. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * Zadejte název vaší **skupiny prostředků**. Doporučujeme **SpeechEchoBotTutorial-Resource**.
@@ -95,7 +95,7 @@ Teď, když máte skupinu prostředků v podporované oblasti, je dalším kroke
 
 Pomocí těchto pokynů vytvořte prostředek řeči:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku služby Speech <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku služby Speech </a>
 4. Zobrazí se výzva k zadání některých informací:
    * Zadejte **název** prostředku. Doporučujeme **SpeechEchoBotTutorial** řeč.
    * U **předplatného** se ujistěte, že je vybraná možnost **bezplatná zkušební verze** .
@@ -115,7 +115,7 @@ V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-re
 
 Dalším krokem je vytvoření plánu App Service. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Vytvoření plánu Azure App Service <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Vytvoření plánu Azure App Service </a>
 4. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * V případě **skupiny prostředků** vyberte **SpeechEchoBotTutorial-Resource**.
@@ -167,7 +167,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor**  ->  **Otevřete robot**.
-3. Zadejte adresu URL pro robota. Příklad:
+3. Zadejte adresu URL pro robota. Například:
 
    ```
    http://localhost:3978/api/messages
@@ -236,7 +236,7 @@ Budete muset udělat malou změnu konfigurace, aby robot mohl komunikovat s př�
 
 Teď, když jste vytvořili Azure App Service pro hostování robota, je dalším krokem vytvoření **registrace kanálů robota**. Vytvoření registrace kanálu je předpokladem pro registraci robota s kanály pro bot Framework, včetně kanálu Direct line Speech. Pokud se chcete dozvědět víc o tom, jak roboty používají kanály, přečtěte si téma [připojení robota k kanálům](/azure/bot-service/bot-service-manage-channels).
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot </a>
 2. Zobrazí se výzva k zadání některých informací:
    * Jako **popisovač robota** zadejte **SpeechEchoBotTutorial-BotRegistration-# # # #** a nahraďte **####** je číslem podle vaší volby. Poznámka: popisovač robota musí být globálně jedinečný. Pokud zadáte popisovač robota, ale zobrazí se chybová zpráva _požadované ID robota není k dispozici_, vyberte jiné číslo. V níže uvedených příkladech jsme použili 8726.
    * V případě **předplatného** vyberte **bezplatná zkušební verze**.

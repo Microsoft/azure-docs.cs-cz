@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b0dfd1156e9cc46914f1cc72ce4975ab655855cb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: daca619affa0f5f177ccddbc08f26e73bd5086e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203078"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439982"
 ---
 # <a name="hc-series"></a>Řada HC
 
@@ -27,8 +27,9 @@ Virtuální počítače s funkcí HC-Series 100 GB/s Mellanox EDR InfiniBand. Ty
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
-[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporováno (další[informace](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) o výkonu a potenciálních problémech) <br>
-[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+[Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
+
 <br>
 
 | Velikost | Virtuální procesory | Procesor | Paměť (GiB) | Propustnost paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Frekvence s jedním jádrem (GHz, špička) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GiB) | Max. datových disků | Maximální počet ethernetových virtuální síťové adaptéry |

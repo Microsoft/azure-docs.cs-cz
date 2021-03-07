@@ -2,16 +2,16 @@
 title: Detekce anomálií v Azure Stream Analytics
 description: Tento článek popisuje, jak používat Azure Stream Analytics a Azure Machine Learning společně ke zjištění anomálií.
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: jseb225
+ms.author: jeanb
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 78730b011e508f98779b9e00624882466d6a03a0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ec37ea6cbb1c1c6693aab1f6855948d32b85e95b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178487"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441189"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -128,7 +128,7 @@ Při dělení funkce podle deviceId přidejte "PARTITION BY deviceId" do volán�
 ### <a name="observations"></a>Výsledky
 Následující tabulka obsahuje pozorování propustnosti pro jeden uzel (6 SU) pro případ bez oddílů:
 
-| Velikost historie (události) | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
+| Velikost historie (události)    | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
 | --------------------- | -------------------- | -------------------------- |
 | 60 | 55 | 2 200 |
 | 600 | 728 | 1 650 |

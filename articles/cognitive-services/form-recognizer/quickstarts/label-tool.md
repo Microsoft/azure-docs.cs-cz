@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: 3814eb9d71f38406533d0bcecf594bbdcd42d5b7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f07e3b6142ad99ba3b9e64e4733109a7e5ae04f9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095807"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425728"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -33,7 +33,7 @@ V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s u
 K dokončení tohoto rychlého startu musíte mít:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
   * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
   * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip*). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
@@ -263,7 +263,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 >
 > Je nutné zadat formát ( `dmy` , `mdy` , `ymd` ) pro práci formátování data.
 >
-> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
+> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Například:
 >
 > * 01, 01, 2020
 > * 01-01-2020

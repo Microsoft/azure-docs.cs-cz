@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 9f2a28c9acf2287c70bedad305ee1c143868c59d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 566a439b2b25a4c8a0a09ca190e79c2cf1dc10a9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100070"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429052"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
@@ -77,7 +77,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-cognitive-services](../../../../includes/policy/reference/bycat/policies-cognitive-services.md)]
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní prostředky
 
 [!INCLUDE [azure-policy-reference-policies-compute](../../../../includes/policy/reference/bycat/policies-compute.md)]
 
@@ -153,7 +153,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 [!INCLUDE [azure-policy-reference-policies-monitoring](../../../../includes/policy/reference/bycat/policies-monitoring.md)]
 

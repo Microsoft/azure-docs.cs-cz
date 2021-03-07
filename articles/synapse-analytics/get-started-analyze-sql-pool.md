@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219528"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426157"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -77,11 +77,12 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Prozkoumat data taxislužby NYC ve vyhrazeném fondu SQL
 
 1. V synapse studiu přejdete do centra **dat** .
+1. Měla by se zobrazit databáze s názvem **SQLPOOL1**. Pokud ji nevidíte, klikněte na **aktualizovat**.
 1. Přejít na   >  **tabulky** SQLPOOL1. 
-1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
-1. Počkejte, než se vytvoří a spustí nový skript SQL.
-1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLPOOL1**.
-1. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
+3. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL**  >  **Vyberte horní 100 řádků**.
+4. Počkejte, než se vytvoří a spustí nový skript SQL.
+5. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem **SQLPOOL1**.
+6. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
 
     ```sql
     SELECT PassengerCount,

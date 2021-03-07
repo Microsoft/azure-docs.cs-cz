@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555817"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425885"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -111,11 +111,11 @@ Aktualizace [verze 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Managem
 
 Aktualizujte na [verzi 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) nebo novější v sadě HDInsight SDK pro .NET. Pokud používáte metodu ovlivněnou těmito změnami, může být nutné provést minimální změny kódu:
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
-    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte příkaz [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) pokračovat dál.Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
-    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) . 
-- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) je nyní zastaralý a byl nahrazen [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) . 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) a [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get)**už nebude vracet citlivé parametry** , jako jsou klíče úložiště (Core-site) nebo přihlašovací údaje http (brána).
+    - Pokud chcete načíst všechny konfigurace, včetně citlivých parametrů, použijte příkaz [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list) pokračovat dál.Všimněte si, že uživatelé s rolí čtenář nebudou moct tuto metodu použít. To umožňuje detailní kontrolu nad tím, kteří uživatelé budou mít přístup k citlivým informacím v clusteru. 
+    - Pokud chcete načíst jenom přihlašovací údaje brány HTTP, použijte [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings) . 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update) je nyní zastaralý a byl nahrazen [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings) . 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp) a [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp) jsou nyní zastaralé. Protokol HTTP je nyní vždy povolen, takže tyto metody již nejsou potřeba.
 
 ### <a name="sdk-for-python"></a>SDK pro Python
 
@@ -184,7 +184,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 Alternativně můžete použít Azure Portal k přidání přiřazení role operátora clusteru HDInsight uživateli. Projděte si dokumentaci, [přiřaďte role Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Proč se po aktualizaci požadavků rozhraní API nebo nástroje zobrazuje odpověď 403 (Zakázáno)?
 

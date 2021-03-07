@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bc8270bde06a337cc183d0f26cbee2de5d393876
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: db0034467646e4b6476db278dbcae7e88e59970b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096106"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442468"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -70,7 +70,7 @@ Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny s
 |Obnovení dat |9,1 |Zajištění běžných automatických záloh |[Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd38fc420-0735-4ef3-ac11-c806f651a570) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_SQLDatabase_AuditIfNotExists.json) |
 |Obnovení dat |9.2 |Proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka. |[Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd38fc420-0735-4ef3-ac11-c806f651a570) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_SQLDatabase_AuditIfNotExists.json) |
 
-## <a name="cis-microsoft-azure-foundations-benchmark"></a>Srovnávací test CIS Microsoft Azure Foundations
+## <a name="cis-microsoft-azure-foundations-benchmark-110"></a>Srovnávací test CIS Microsoft Azure Foundations 1.1.0
 
 Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – CIS Microsoft Azure Foundation 1.1.0 Foundation](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md).
 Další informace o tomto standardu dodržování předpisů najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
@@ -88,6 +88,25 @@ Další informace o tomto standardu dodržování předpisů najdete v článku 
 |Databázové služby |4,9 |Zajistěte, aby bylo šifrování dat u SQL Database nastaveno na zapnuto. |[Je třeba povolit transparentní šifrování dat databází SQL.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |Databázové služby |4,10 |Zajistěte, aby ochrana TDE systému SQL Server byla zašifrovaná pomocí BYOK (použijte vlastní klíč). |[Spravované instance SQL by měly používat klíče spravované zákazníkem k šifrování neaktivních dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F048248b0-55cd-46da-b1ff-39efd52db260) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
 |Databázové služby |4,10 |Zajistěte, aby ochrana TDE systému SQL Server byla zašifrovaná pomocí BYOK (použijte vlastní klíč). |[SQL servery by se měly používat pro šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d134df8-db83-46fb-ad72-fe0c9428c8dd) |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>CI Microsoft Azure – 1.3.0 Foundation – srovnávací test
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – CIS Microsoft Azure Foundation 1.3.0 Foundation](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md).
+Další informace o tomto standardu dodržování předpisů najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Databázové služby |bodech |Zajistěte, aby bylo auditování nastaveno na zapnuto. |[Auditování na SQL serveru by mělo být povolené.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
+|Databázové služby |bodu |Zajistěte, aby bylo šifrování dat u SQL Database nastaveno na zapnuto. |[Je třeba povolit transparentní šifrování dat databází SQL.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|Databázové služby |4.1.3 |Zajistěte, aby uchování auditování bylo větší než 90 dní. |[SQL servery by měly být nakonfigurované s uchováním dat 90 dní nebo vyšší.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|Databázové služby |4.2.1 |Zajistěte, aby byla rozšířená ochrana před internetovými útoky (ATP) na SQL serveru nastavená na povoleno. |[V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb7388-5bf4-4ad7-ba99-2cd2f41cebb9) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_AdvancedDataSecurity_Audit.json) |
+|Databázové služby |4.2.1 |Zajistěte, aby byla rozšířená ochrana před internetovými útoky (ATP) na SQL serveru nastavená na povoleno. |[Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fabfb4388-5bf4-4ad7-ba82-2cd2f41ceae9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_AdvancedDataSecurity_Audit.json) |
+|Databázové služby |4.2.2 |Zajistěte, aby bylo na SQL serveru povolené posouzení ohrožení zabezpečení (VA) nastavením účtu úložiště. |[Posouzení ohrožení zabezpečení by mělo být povoleno na spravované instanci SQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1b7aa243-30e4-4c9e-bca8-d0d3022b634a) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnManagedInstance_Audit.json) |
+|Databázové služby |4.2.2 |Zajistěte, aby bylo na SQL serveru povolené posouzení ohrožení zabezpečení (VA) nastavením účtu úložiště. |[Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef2a8f2a-b3d9-49cd-a8a8-9a3aaaf647d9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/VulnerabilityAssessmentOnServer_Audit.json) |
+|Databázové služby |4.2.4 |Ujistěte se, že nastavení VA Odeslat sestavy pro kontrolu je nakonfigurované pro SQL Server. |[Nastavení posouzení ohrožení zabezpečení pro SQL Server by mělo obsahovat e-mailovou adresu pro příjem sestav kontroly.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057d6cfe-9c4f-4a6d-bc60-14420ea1f1a9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_VulnerabilityAssessmentEmails_Audit.json) |
+|Databázové služby |4.4 |Ujistěte se, že je nakonfigurovaný správce Azure Active Directory. |[Pro SQL servery by se měl zřídit správce Azure Active Directory.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f314764-cb73-4fc9-b863-8eca98ac36e9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SQL_DB_AuditServerADAdmins_Audit.json) |
+|Databázové služby |4.5 |Zajistěte, aby ochrana TDE systému SQL Server byla zašifrovaná pomocí klíče spravovaného zákazníkem. |[Spravované instance SQL by měly používat klíče spravované zákazníkem k šifrování neaktivních dat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F048248b0-55cd-46da-b1ff-39efd52db260) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
+|Databázové služby |4.5 |Zajistěte, aby ochrana TDE systému SQL Server byla zašifrovaná pomocí klíče spravovaného zákazníkem. |[SQL servery by se měly používat pro šifrování neaktivních dat pomocí klíčů spravovaných zákazníkem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d134df8-db83-46fb-ad72-fe0c9428c8dd) |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>CMMC úrovně 3
 
@@ -195,10 +214,10 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Zabezpečení provozu |12.4.4 |Synchronizace hodin |[Auditování na SQL serveru by mělo být povolené.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |Zabezpečení provozu |12.6.1 |Správa technických ohrožení zabezpečení |[Ohrožení zabezpečení vašich databází SQL by mělo být opraveno](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |
 
-## <a name="new-zealand-ism"></a>Nový Zéland ISM
+## <a name="new-zealand-ism-restricted"></a>Nový Zéland s omezením pro ISM
 
-Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy legislativní dodržování předpisů – Nový Zéland informace Security Security Manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
-Další informace o tomto standardu dodržování předpisů najdete v tématu [Příručka k informacím o Novém Zélandu pro zabezpečení](https://www.nzism.gcsb.govt.nz/).
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [dodržování předpisů Azure Policy zákonem – Nový Zéland ISM](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [omezení na Novém Zélandu ISM](https://www.nzism.gcsb.govt.nz/).
 
 |Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
 |---|---|---|---|---|

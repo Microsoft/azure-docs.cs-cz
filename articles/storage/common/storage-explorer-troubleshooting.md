@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875732"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439455"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -58,14 +58,22 @@ Pokud nemáte roli, která uděluje žádná oprávnění vrstvy správy, Průzk
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mi nejde získat oprávnění pro vrstvu správy, které potřebuji od správce?
 
-Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můžete k těmto prostředkům připojit pomocí vašich přihlašovacích údajů Azure.
+Pokud chcete získat přístup k kontejnerům objektů blob, ADLS Gen2 kontejnerů nebo adresářů nebo front, můžete k těmto prostředkům připojit pomocí svých přihlašovacích údajů Azure.
 
 1. Otevřete dialogové okno připojit.
-2. Vyberte Přidat prostředek prostřednictvím Azure Active Directory (Azure AD). Vyberte Další.
-3. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Vyberte Další.
-4. Vyberte typ prostředku, zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Vyberte další a pak připojit.
+1. Vyberte typ prostředku, ke kterému se chcete připojit.
+1. Vyberte **Přihlásit se pomocí Azure Active Directory (Azure AD)**. Vyberte **Další**.
+1. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Vyberte **Další**.
+1. Zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Vyberte **Další** a pak **připojit**.
 
-U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
+U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Alternativním řešením je, že si můžete vyžádat adresu URL SAS a pak se připojit k prostředku pomocí následujících kroků:
+
+1. Otevřete dialogové okno připojit.
+1. Vyberte typ prostředku, ke kterému se chcete připojit.
+1. Vyberte **sdílený přístupový podpis (SAS)**. Vyberte **Další**.
+1. Zadejte adresu URL SAS, kterou jste dostali, a zadejte jedinečný zobrazovaný název pro připojení. Vyberte **Další** a pak **připojit**.
+ 
+Další informace o připojení k prostředkům najdete v tématu věnovaném [připojení k individuálnímu prostředku](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 

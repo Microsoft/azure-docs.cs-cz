@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: aa543b32efcd1897eb0ee7d8b477742705095ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200053"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430730"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Podpora aktivní služby FTP Azure Firewall
 
@@ -20,8 +20,6 @@ S aktivním PROTOKOLem FTP iniciuje server FTP datové připojení k určenému 
 
 Ve výchozím nastavení je aktivní podpora FTP na Azure Firewall zakázaná a chrání proti útokům na vrácení FTP pomocí `PORT` příkazu FTP. Můžete ale povolit aktivní FTP při nasazení pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo šablony Azure ARM.
 
-> [!NOTE]
-> V současné době je aktivní FTP podporováno pouze pro brány firewall nasazené ve virtuální síti. Podpora virtuální sítě WAN se přidá později.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

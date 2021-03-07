@@ -3,18 +3,18 @@ title: Diagnostika a řešení potíží při používání sady .NET SDK služb
 description: K identifikaci, diagnostice a řešení potíží s Azure Cosmos DB při použití sady .NET SDK použijte funkce, jako je protokolování na straně klienta a další nástroje třetích stran.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: dce309b955882f6236f285ee6bd20a79201e43fb
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429931"
+ms.locfileid: "102442192"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,12 +93,47 @@ Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adr
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
 Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v sadě v2 SDK nebo v [Diagnostics](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
-Pokud nejsou k dispozici žádné [časové limity](troubleshoot-dot-net-sdk-request-timeout.md) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
+Pokud nejsou k dispozici žádné [časové limity](troubleshoot-dot-net-sdk-request-timeout.md) a diagnostika zobrazí jednotlivé požadavky, kde je zřejmá latence.
+
+# <a name="v3-sdk"></a>[SADA V3 SDK](#tab/diagnostics-v3)
+
+Diagnostiku lze získat z libovolného `ResponseMessage` , `ItemResponse` , `FeedResponse` nebo `CosmosException` pomocí `Diagnostics` vlastnosti:
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+Interakce sítě v diagnostice bude například:
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+Kde `duration in milliseconds` by se zobrazila latence.
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+Diagnostika je k dispozici, když je klient nakonfigurován v [přímém režimu](sql-sdk-connection-modes.md), prostřednictvím `RequestDiagnosticsString` vlastnosti:
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+A latence by byla na rozdíl mezi `ResponseTime` a `RequestStartTime` :
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 Tato latence může mít několik příčin:
 

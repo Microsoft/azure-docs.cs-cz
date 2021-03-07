@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 064af116112f0b530ac0cc9b5755dcec2cf0bd07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722058"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443008"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Proaktivní shromažďování protokolů na zařízení Azure Stack Edge
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Proaktivní shromažďování protokolů shromažďuje indikátory stavu systému na Azure Stack hraničních zařízeních, které vám pomůžou efektivně řešit problémy se zařízením. Ve výchozím nastavení je povoleno shromažďování proaktivního protokolu. Tento článek popisuje, co je zaznamenáno, jak Microsoft zpracovává data a jak zakázat nebo povolit shromažďování dat v aktivním protokolu. 
 

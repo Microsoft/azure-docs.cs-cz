@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039831"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437157"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Co je Azure Route Server (Preview)? 
 
@@ -37,7 +37,7 @@ Azure Route Server zjednodušuje konfiguraci, správu a nasazení vašich síťo
 
 * [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md) už nemusíte ručně aktualizovat, kdykoli síťové virtuální zařízení oznamuje nové trasy nebo odejmou staré. 
 
-* Už nemusíte konfigurovat nástroj pro vyrovnávání zatížení před síťové virtuální zařízení k zajištění odolnosti nebo výkonu. Když máte partnerský server Azure pro partnery více instancí síťové virtuální zařízení, můžete nakonfigurovat atributy protokolu BGP ve svých síťové virtuální zařízení. Tyto atributy protokolu BGP umožní, aby byl server Azure Route, který síťové virtuální zařízení instance, aktivní nebo pasivní. 
+* S využitím služby Azure Route Server můžete vytvořit partnerský vztah více instancí síťové virtuální zařízení. V síťové virtuální zařízení můžete nakonfigurovat atributy protokolu BGP a v závislosti na návrhu (například aktivní – aktivní pro výkon nebo aktivní – pasivní pro odolnost) Povolit službě Azure Route Server, která instance síťové virtuální zařízení je aktivní, nebo která je pasivní. 
 
 * Rozhraní mezi síťové virtuální zařízení a serverem Azure Route je založené na společném standardním protokolu. Pokud váš síťové virtuální zařízení podporuje protokol BGP, můžete ho navázat na server Azure Route. Další informace najdete v tématu [podporované směrovací protokoly pro server tras](route-server-faq.md#protocol).
 

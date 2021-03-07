@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899523"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438059"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>Použití modulu IoT Edge ke spuštění bezstavové aplikace Kubernetes na zařízení GPU Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak můžete použít modul IoT Edge k nasazení bezstavové aplikace na zařízení Azure Stack Edge pro.
 
@@ -47,7 +49,7 @@ Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pr
 
     ![Vybrat IoT Edge zařízení](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 
-1. Vyberte **Set modules** (Nastavit moduly). V **Nastavení moduly na zařízení**vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
+1. Vyberte **Set modules** (Nastavit moduly). V **Nastavení moduly na zařízení** vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
 
     ![Vybrat IoT Edge modul](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-module-1.png)
 
@@ -82,7 +84,7 @@ Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pr
 
 ## <a name="verify-module-access"></a>Ověřit přístup k modulu
 
-1. Ověřte, že je modul úspěšně nasazený a běží. Na kartě **moduly** by měl být **spuštěn**běhový stav modulu.  
+1. Ověřte, že je modul úspěšně nasazený a běží. Na kartě **moduly** by měl být **spuštěn** běhový stav modulu.  
 
     ![Ověřte, že je spuštěný stav modulu.](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 

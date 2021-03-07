@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8b68aa5263a95a7efc15f76289a62a4cbec23ee3
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 838cdd645ad25a52a7e0553ac8e79c1fd10c97da
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093896"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438881"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -31,6 +31,15 @@ Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny s
 |Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
 |---|---|---|---|---|
 |Protokolování a monitorování |2.3 |Povolení protokolování auditu pro prostředky Azure |[Měly by být povolené protokoly prostředků v Azure Data Lake Store.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057ef27e-665e-4328-8ea3-04b3122bd9fb) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeStore_AuditDiagnosticLog_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>CI Microsoft Azure – 1.3.0 Foundation – srovnávací test
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – CIS Microsoft Azure Foundation 1.3.0 Foundation](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md).
+Další informace o tomto standardu dodržování předpisů najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
+|Protokolování a monitorování |5.3 |Zajistěte, aby byly diagnostické protokoly povolené pro všechny služby, které je podporují. |[Měly by být povolené protokoly prostředků v Azure Data Lake Store.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057ef27e-665e-4328-8ea3-04b3122bd9fb) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeStore_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>CMMC úrovně 3
 

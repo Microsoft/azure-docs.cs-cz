@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: aca6981e2214b9dbd03e6808e77c26fcd67c13cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 21ca30b24c4824a2d303d02f3df712328885e199
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711565"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435201"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB vstupní vazby pro Azure Functions 2. x a vyšší
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která načte seznam dokumentů. Funkce je aktivována požadavkem HTTP. Kód používá `DocumentClient` instanci poskytnutou Azure Cosmos DB vazbou ke čtení seznamu dokumentů. `DocumentClient`Instanci lze také použít pro operace zápisu.
 
 > [!NOTE]
-> K usnadnění testování můžete také použít rozhraní [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) .
+> K usnadnění testování můžete také použít rozhraní [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient) .
 
 ```cs
 using Microsoft.AspNetCore.Http;

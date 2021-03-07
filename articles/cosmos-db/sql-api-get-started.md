@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098718"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423947"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ Nemáte čas? Ale žádný strach. Úplné řešení je k dispozici na [GitHubu]
 
 Můžeme začít!
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -62,16 +62,16 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>Krok 2: nastavení projektu sady Visual Studio
 
-1. Otevřete Visual Studio a vyberte **vytvořit nový projekt** .
-1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další** .
-1. Pojmenujte projekt *CosmosGettingStartedTutorial* a pak vyberte **vytvořit** .
+1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další**.
+1. Pojmenujte projekt *CosmosGettingStartedTutorial* a pak vyberte **vytvořit**.
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="Konfigurace projektu":::
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na novou konzolovou aplikaci, která je v rámci řešení sady Visual Studio, a vyberte možnost **Spravovat balíčky NuGet** .
-1. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte *Microsoft. Azure. Cosmos* . Zvolte **Microsoft. Azure. Cosmos** a vyberte **nainstalovat** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na novou konzolovou aplikaci, která je v rámci řešení sady Visual Studio, a vyberte možnost **Spravovat balíčky NuGet**.
+1. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte *Microsoft. Azure. Cosmos*. Zvolte **Microsoft. Azure. Cosmos** a vyberte **nainstalovat**.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Konfigurace projektu":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Instalace NuGet pro Azure Cosmos DB klientská sada SDK":::
 
    ID balíčku s klientskou knihovnou rozhraní Azure Cosmos DB SQL API je [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
@@ -118,15 +118,15 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
     ```
 
    > [!NOTE]
-   > Pokud jste obeznámeni s předchozí verzí sady .NET SDK, můžete být obeznámeni se *shromažďováním* a *dokumentem* s podmínkami. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, verze 3,0 sady .NET SDK používá obecný pojem *kontejner* a *položka* . *Kontejner* může být kolekce, graf nebo tabulka. *Položka* může být dokument, okraj, vrchol nebo řádek a je obsahem uvnitř kontejneru. Další informace najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](account-databases-containers-items.md).
+   > Pokud jste obeznámeni s předchozí verzí sady .NET SDK, můžete být obeznámeni se *shromažďováním* a *dokumentem* s podmínkami. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, verze 3,0 sady .NET SDK používá obecný pojem *kontejner* a *položka*. *Kontejner* může být kolekce, graf nebo tabulka. *Položka* může být dokument, okraj, vrchol nebo řádek a je obsahem uvnitř kontejneru. Další informace najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](account-databases-containers-items.md).
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče** .
+1. Otevřete [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Konfigurace projektu":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Získat Azure Cosmos DB klíče z Azure Portal":::
 
-1. V *program.cs* nahraďte `<your endpoint URL>` hodnotou **identifikátoru URI** . Nahraďte `<your primary key>` hodnotou **primárního klíče** .
+1. V *program.cs* nahraďte `<your endpoint URL>` hodnotou **identifikátoru URI**. Nahraďte `<your primary key>` hodnotou **primárního klíče**.
 
-1. Pod metodou **Main** přidejte novou asynchronní úlohu s názvem **GetStartedDemoAsync** , která vytvoří instanci našeho nového `CosmosClient` .
+1. Pod metodou **Main** přidejte novou asynchronní úlohu s názvem **GetStartedDemoAsync**, která vytvoří instanci našeho nového `CosmosClient` .
 
     ```csharp
     public static async Task Main(string[] args)
@@ -279,7 +279,7 @@ Gratulujeme! Úspěšně jste vytvořili databázi Azure Cosmos.
 >
 >
 
-Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) nebo [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) ve `CosmosDatabase` třídě. Kontejner se skládá z položek (dokumenty JSON, pokud je SQL API) a přidružená aplikační logika na straně serveru v JavaScriptu, například uložené procedury, uživatelsky definované funkce a triggery.
+Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) nebo [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) ve `CosmosDatabase` třídě. Kontejner se skládá z položek (dokumenty JSON, pokud je SQL API) a přidružená aplikační logika na straně serveru v JavaScriptu, například uložené procedury, uživatelsky definované funkce a triggery.
 
 1. Zkopírujte a vložte `CreateContainerAsync` metodu pod vaší `CreateDatabaseAsync` metodou. `CreateContainerAsync`  Vytvoří nový kontejner s ID `FamilyContainer` , pokud ještě neexistuje, pomocí ID zadaného v `containerId` poli děleného `LastName` vlastností.
 
@@ -305,13 +305,13 @@ Gratulujeme! Úspěšně jste vytvořili kontejner Azure Cosmos.
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>Krok 6: Přidání položek do kontejneru
 
-Metoda [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) `CosmosContainer` třídy může vytvořit položku. Při použití rozhraní SQL API se položky procházejí jako dokumenty, což je uživatelsky definovaný libovolný obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos.
+Metoda [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) `CosmosContainer` třídy může vytvořit položku. Při použití rozhraní SQL API se položky procházejí jako dokumenty, což je uživatelsky definovaný libovolný obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos.
 
 Nejprve vytvoříme `Family` třídu, která představuje objekty uložené v rámci Azure Cosmos DB v této ukázce. Vytvoříme také `Parent` `Child` `Pet` `Address` podtřídy, které jsou použity v rámci `Family` . Položka musí mít `Id` serializovanou vlastnost jako `id` ve formátu JSON.
 
-1. Kliknutím na Ctrl + Shift + A otevřete **Přidat novou položku** . Přidejte `Family.cs` do projektu novou třídu.
+1. Kliknutím na Ctrl + Shift + A otevřete **Přidat novou položku**. Přidejte `Family.cs` do projektu novou třídu.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Konfigurace projektu":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Snímek obrazovky s přidáním nové třídy Family.cs do projektu":::
 
 1. Zkopírujte a vložte `Family` třídu, `Parent` ,, a `Child` `Pet` `Address` do `Family.cs` .
 
@@ -323,7 +323,7 @@ Nejprve vytvoříme `Family` třídu, která představuje objekty uložené v r�
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
-    Kód zkontroluje, že položka se stejným ID ještě neexistuje. Vložíme dvě položky, jednu z nich pro *rodinu Andersen* a *rodinu wakefieldů* .
+    Kód zkontroluje, že položka se stejným ID ještě neexistuje. Vložíme dvě položky, jednu z nich pro *rodinu Andersen* a *rodinu wakefieldů*.
 
 1. Do metody přidejte volání `AddItemsToContainerAsync` `GetStartedDemoAsync` .
 
@@ -490,7 +490,7 @@ K sestavení `GetStarted` řešení potřebujete následující požadavky:
 * [Účet služby Azure Cosmos DB][cosmos-db-create-account].
 * Řešení [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) dostupné na GitHubu
 
-Chcete-li obnovit odkazy na sadu Azure Cosmos DB .NET SDK v aplikaci Visual Studio, klikněte pravým tlačítkem na řešení v **Průzkumník řešení** a potom vyberte možnost **obnovit balíčky NuGet** . Dále v souboru *App.config* aktualizujte `EndPointUri` hodnoty a, jak je `PrimaryKey` popsáno v [kroku 3: připojení k účtu Azure Cosmos DB](#Connect).
+Chcete-li obnovit odkazy na sadu Azure Cosmos DB .NET SDK v aplikaci Visual Studio, klikněte pravým tlačítkem na řešení v **Průzkumník řešení** a potom vyberte možnost **obnovit balíčky NuGet**. Dále v souboru *App.config* aktualizujte `EndPointUri` hodnoty a, jak je `PrimaryKey` popsáno v [kroku 3: připojení k účtu Azure Cosmos DB](#Connect).
 
 To je to, jak ho sestavit a vy budete vy.
 

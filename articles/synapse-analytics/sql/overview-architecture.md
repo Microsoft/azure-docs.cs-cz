@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679614"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441886"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Architektura Azure Synapse SQL 
 
@@ -35,7 +35,7 @@ Synapse SQL používá architekturu založenou na uzlech. Aplikace připojují a
 
 Řídicí uzel SQL Azure synapse využívá distribuovaný modul dotazů k optimalizaci dotazů na paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně. 
 
-Uzel řízení fondu SQL bez serveru využívá modul DQP (Distributed Query Processing) k optimalizaci a orchestraci distribuovaného spouštění dotazů uživatele rozdělením na menší dotazy, které se spustí na výpočetních uzlech. Každý malý dotaz se nazývá Task a představuje distribuovanou jednotku spuštění. Čte soubory z úložiště, spojuje výsledky z jiných úkolů, skupin nebo objednávek načtených z jiných úloh. 
+Uzel řízení fondu SQL bez serveru využívá modul DQP (Distributed Query Processing) k optimalizaci a orchestraci distribuovaného spouštění dotazů uživatele rozdělením na menší dotazy, které se spustí na výpočetních uzlech. Každý malý dotaz se nazývá Task a představuje distribuovanou jednotku spuštění. Čte soubory ze služby Storage, spojuje výsledky jiných úkolů, skupin nebo objednávek načtených z jiných úloh. 
 
 Výpočetní uzly ukládají veškerá data uživatelů ve službě Azure Storage a spouští paralelní dotazy. DMS (Data Movement Service) je interní služba na úrovni systému, která podle potřeby přesunuje data mezi uzly, aby bylo možné spouštět dotazy paralelně a získat přesné výsledky. 
 
@@ -49,7 +49,7 @@ Díky oddělenému úložišti a výpočetnímu prostředí může při použit�
 
 Synapse SQL využívá Azure Storage k zabezpečení vašich uživatelských dat. Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. 
 
-Fond SQL bez serveru vám umožní dotazovat se na soubory v Data Lake způsobem jen pro čtení, zatímco fond SQL umožňuje také ingestovat data. Když se data ingestují do vyhrazeného fondu SQL, data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Při definování tabulky můžete zvolit, který model horizontálního dělení se má pro distribuci dat použít. Jsou podporovány tyto horizontálního dělení vzory:
+Fond SQL bez serveru umožňuje dotazování souborů Data Lake, zatímco vyhrazený fond SQL umožňuje dotazování a ingestování dat ze souborů Data Lake. Když se data ingestují do vyhrazeného fondu SQL, data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Při definování tabulky můžete zvolit, který model horizontálního dělení se má pro distribuci dat použít. Jsou podporovány tyto horizontálního dělení vzory:
 
 * Hodnoty hash
 * Kruhové dotazování
@@ -107,7 +107,7 @@ Distribuovaná tabulka s kruhovým dotazováním distribuuje data v tabulce rovn
 ## <a name="replicated-tables"></a>Replikované tabulky
 Replikovaná tabulka poskytuje nejrychlejší výkon dotazů u malých tabulek.
 
-Replikovaná tabulka ukládá do mezipaměti úplnou kopii tabulky na každém výpočetním uzlu. V důsledku toho při replikaci tabulky odpadne nutnost před propojením nebo agregací přenášet data mezi výpočetními uzly. Replikované tabulky jsou nejlépe využitelné u malých tabulek. Dodatečné úložiště je potřeba a existuje další režie, která vzniká při psaní dat, což je nepraktické pro velké tabulky. 
+Replikovaná tabulka ukládá do mezipaměti úplnou kopii tabulky na každém výpočetním uzlu. Replikování tabulky proto odstraní nutnost přenosu dat mezi výpočetními uzly před spojením nebo agregací. Replikované tabulky jsou nejlépe využitelné u malých tabulek. Dodatečné úložiště je potřeba a existuje další režie, která vzniká při psaní dat, což je nepraktické pro velké tabulky. 
 
 Následující diagram znázorňuje replikovanou tabulku uloženou v mezipaměti při první distribuci na každém výpočetním uzlu. 
 
@@ -115,4 +115,4 @@ Následující diagram znázorňuje replikovanou tabulku uloženou v mezipaměti
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte o synapse SQL, se dozvíte, jak rychle [vytvořit vyhrazený fond SQL](../quickstart-create-sql-pool-portal.md) a [načíst ukázková data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-databases.MD). Nebo můžete začít [používat fond SQL bez serveru](../quickstart-sql-on-demand.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md), kde najdete potřebnou terminologii. 
+Teď, když víte o synapse SQL, se dozvíte, jak rychle [vytvořit vyhrazený fond SQL](../quickstart-create-sql-pool-portal.md) a [načíst ukázková data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-databases.MD). Nebo začněte [používat fond SQL bez serveru](../quickstart-sql-on-demand.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md), kde najdete potřebnou terminologii. 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5521b1785bb38e6985e4619e1eec22cb19da151d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214775"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430560"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -283,7 +283,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Spíše než dotazování jedné instance orchestrace v čase, může být efektivnější dotazování na ně.
 
-Můžete použít metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) nebo `get_status_all` (Python) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí seznam objektů, které reprezentují instance orchestrace odpovídající parametrům dotazu.
+Můžete použít metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) nebo `get_status_all` (Python) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí seznam objektů, které reprezentují instance orchestrace odpovídající parametrům dotazu.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -366,7 +366,7 @@ func durable get-instances
 
 Co když opravdu nepotřebujete všechny informace, které může dotaz standardní instance poskytnout? Například co když hledáte jenom čas vytvoření orchestrace, nebo běhový stav orchestrace? Dotaz můžete zúžit použitím filtrů.
 
-Použijte metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) nebo [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
+Použijte metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) nebo [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
 
 # <a name="c"></a>[C#](#tab/csharp)
 

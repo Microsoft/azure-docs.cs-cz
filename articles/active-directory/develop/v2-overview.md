@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752568"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426837"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
@@ -38,6 +38,8 @@ Platforma Microsoft Identity Platform tvoří několik součástí:
 Pro vývojáře nabízí platforma Microsoft Identity Platform integraci moderních inovací v rámci identity a prostoru zabezpečení, jako je ověřování bez hesla, podrobné ověřování a podmíněný přístup. Nemusíte tyto funkce implementovat sami: aplikace integrované s Microsoft Identity platformou nativně využívají takové inovace.
 
 S platformou Microsoft Identity můžete napsat kód jenom jednou a oslovit každého uživatele. Můžete vytvořit aplikaci jednou a nechat ji pracovat na celé řadě platforem nebo vytvořit aplikaci, která funguje jako klient a také jako aplikace prostředků (API).
+
+Video s přehledem platformy a ukázku možností ověřování najdete v tématu [co je platforma pro identity Microsoftu pro vývojáře?](https://youtu.be/uDU1QTSw7Ps).
 
 ## <a name="getting-started"></a>Začínáme
 

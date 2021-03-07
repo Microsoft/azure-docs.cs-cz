@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661014"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443569"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -78,20 +78,23 @@ Když použijete **ScriptRunConfig**, můžete použít ```run.wait_for_completi
 
 <a id="queryrunmetrics"></a>
 
-### <a name="logging-run-metrics"></a>Protokolování spuštění metrik 
+## <a name="view-run-metrics"></a>Zobrazit metriky spuštění
 
-Pomocí následujících metod v rozhraních API protokolování můžete ovlivnit vizualizace metrik. Poznamenejte si [omezení služby](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) pro tyto protokolované metriky. 
+## <a name="via-the-sdk"></a>Přes sadu SDK
+Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()``` . Viz následující příklad. 
 
-|Hodnota protokolu|Příklad kódu| Formátování na portálu|
-|----|----|----|
-|Protokolování pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Spojnicový graf s jednou proměnnou|
-|Zaprotokoluje jednu číselnou hodnotu se stejným názvem metriky, který se opakovaně používá (například v rámci smyčky for).| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Spojnicový graf s jednou proměnnou|
-|Opakované zaznamenání řádku se dvěma číselnými sloupci|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Spojnicový graf se dvěma proměnnými|
-|Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
 
-## <a name="query-run-metrics"></a>Metriky spuštění dotazu
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
 
-Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()``` . Můžete ho například použít s výše uvedeným příkladem k určení nejlepšího modelu tím, že vyhledáte model s nejnižší hodnotou čtverce chyby (MSE).
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 

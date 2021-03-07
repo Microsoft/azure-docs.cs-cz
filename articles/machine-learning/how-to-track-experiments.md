@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625073"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441070"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Povolit protokolování zkušebních běhů v ML
 
@@ -38,6 +38,37 @@ Protokoly vám pomohou při diagnostice chyb a upozornění a také při sledov�
 ## <a name="data-types"></a>Typy dat
 
 Můžete protokolovat různé datové typy, včetně skalárních hodnot, seznamů, tabulek, obrázků, adresářů a dalších prvků. Další informace a ukázky kódu v Pythonu pro různé datové typy najdete na [referenční stránce k třídě Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py).
+
+### <a name="logging-run-metrics"></a>Protokolování spuštění metrik 
+
+Pomocí následujících metod v rozhraních API protokolování můžete ovlivnit vizualizace metrik. Poznamenejte si [omezení služby](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) pro tyto protokolované metriky. 
+
+|Hodnota protokolu|Příklad kódu| Formátování na portálu|
+|----|----|----|
+|Protokolování pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Spojnicový graf s jednou proměnnou|
+|Zaprotokoluje jednu číselnou hodnotu se stejným názvem metriky, který se opakovaně používá (například v rámci smyčky for).| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Spojnicový graf s jednou proměnnou|
+|Opakované zaznamenání řádku se dvěma číselnými sloupci|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Spojnicový graf se dvěma proměnnými|
+|Tabulka protokolu se dvěma číselnými sloupci|`run.log_table(name='Sine Wave', value=sines)`|Spojnicový graf se dvěma proměnnými|
+|Obrázek protokolu|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|Tuto metodu použijte k zaznamenání souboru obrázku nebo matplotlib vykreslení do běhu. Tyto obrázky budou viditelné a srovnatelné v záznamu spuštění.|
+
+### <a name="logging-with-mlflow"></a>Protokolování pomocí MLflow
+Pomocí MLFlowLogger můžete protokolovat metriky.
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>Interaktivní relace protokolování
 

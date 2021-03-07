@@ -4,12 +4,12 @@ description: Naučte se používat jazyk C# k vývoji a publikování kódu, kte
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 748b4a2a6af1c0183e28af8da732bc90531bee29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041191"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428385"
 ---
 # <a name="develop-c-functions-using-azure-functions"></a>Vývoj funkcí jazyka C# pomocí Azure Functions
 
@@ -23,24 +23,40 @@ Tento článek je Úvod k vývoji Azure Functions pomocí jazyka C# v knihovnác
 Jako vývojář v jazyce C# může být také zajímat některé z následujících článků:
 
 | Začínáme | Koncepty| Učení s asistencí/ukázky |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[Pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Používání nástroje Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Používání nástrojů příkazového řádku](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li><li>[Vývoj sady Visual Studio](functions-develop-vs.md)</li><li>[Injektáž závislostí](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Ukázky C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions podporuje programovací jazyky C# a C#. Pokud hledáte pokyny k [používání jazyka C# v Azure Portal](functions-create-function-app-portal.md), přečtěte si téma [referenční informace pro vývojáře skriptu jazyka c# (. csx)](functions-reference-csharp.md).
 
 ## <a name="supported-versions"></a>Podporované verze
 
-Verze běhových funkcí fungují s konkrétními verzemi .NET. Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core a .NET Framework a .NET Core, které lze použít s určitou verzí funkcí v projektu. 
+Verze běhových funkcí fungují s konkrétními verzemi .NET. Další informace o verzích funkcí najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
+
+Následující tabulka ukazuje nejvyšší úroveň rozhraní .NET Core nebo .NET Framework, kterou lze použít s určitou verzí funkcí. 
 
 | Verze modulu runtime Functions | Maximální verze .NET |
 | ---- | ---- |
-| Funkce 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
-| Functions 2.x | .NET Core 2.2 |
+| Funkce 3. x | .NET Core 3.1<br/>.NET 5,0<sup>1</sup> |
+| Functions 2.x | .NET Core 2,2<sup>2</sup> |
 | Functions 1.x |  .NET Framework 4.7 |
 
-<sup>*</sup> Musí běžet [mimo proces](dotnet-isolated-process-guide.md).
+<sup>1</sup> musí běžet [mimo proces](dotnet-isolated-process-guide.md).  
+<sup>2</sup> podrobnosti najdete v tématu [informace o funkcích v2. x](#functions-v2x-considerations).   
 
-Další informace najdete v tématu [Přehled verzí Azure Functions runtime](functions-versions.md) .
+Nejnovější novinky o Azure Functions verzích, včetně odebrání určitých starších podverzí, najdete v části [Azure App Service oznámení](https://github.com/Azure/app-service-announcements/issues).
+
+### <a name="functions-v2x-considerations"></a>Pokyny k funkcím v2. x
+
+Aplikace Function App, které cílí na nejnovější verzi 2. x ( `~2` ), se automaticky upgradují tak, aby běžely v .NET Core 3,1. Vzhledem k zásadním změnám mezi verzemi .NET Core, ne všechny aplikace vyvíjené a zkompilované pro .NET Core 2,2, se dají bezpečně upgradovat na .NET Core 3,1. Tento upgrade můžete odhlásit připnutím aplikace Function App `~2.0` . Funkce také zjišťují nekompatibilní rozhraní API a můžou aplikaci připnout, aby `~2.0` nedocházelo k nesprávnému provádění .NET Core 3,1. 
+
+>[!NOTE]
+>Pokud je vaše aplikace Functions připnutá `~2.0` a změníte cílovou verzi na `~2` , vaše aplikace Function App může poškodit. Pokud nasadíte pomocí šablon ARM, Projděte si verzi v šablonách. Pokud k tomu dojde, změňte verzi zpátky na cílovou `~2.0` a opravte problémy s kompatibilitou. 
+
+Aplikace Function App, které cílí na `~2.0` běh i nadále pracují v .NET Core 2,2. Tato verze .NET Core už nepřijímá zabezpečení a další aktualizace údržby. Další informace najdete na [této stránce oznámení](https://github.com/Azure/app-service-announcements/issues/266). 
+
+Měli byste pracovat, aby byly funkce kompatibilní s .NET Core 3,1 co nejdříve. Po vyřešení těchto problémů změňte verzi na `~2` nebo upgradujte na `~3` . Další informace o cílení verzí modulu runtime Functions najdete v tématu [jak cílit na verze Azure Functions runtime](set-runtime-version.md).
+
+Při spuštění v systému Linux v plánu Premium nebo vyhrazený (App Service) připnete místo toho svou verzi tím, že nastavíte nastavení `linuxFxVersion` Konfigurace lokality tak `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` , aby se zjistilo, jak je nastavit `linuxFxVersion` , v tématu [Ruční aktualizace verzí na Linux](set-runtime-version.md#manual-version-updates-on-linux).
 
 ## <a name="functions-class-library-project"></a>Projekt knihovny tříd Functions
 
@@ -90,7 +106,7 @@ Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. 
 
 ## <a name="method-signature-parameters"></a>Parametry signatury metody
 
-Signatura metody může obsahovat parametry jiné než ta, která se používá s atributem triggeru. Tady je několik dalších parametrů, které můžete zahrnout:
+Signatura metody může obsahovat parametry jiné než ta, která se používá s atributem triggeru. Tady jsou některé z dalších parametrů, které můžete použít:
 
 * [Vstupní a výstupní vazby](functions-triggers-bindings.md) označeny jako upravení s atributy.  
 * `ILogger`Parametr nebo `TraceWriter` ([pouze verze 1. x](functions-versions.md#creating-1x-apps)) pro [protokolování](#logging).
@@ -147,7 +163,7 @@ public static class BindingExpressionsExample
 
 Proces sestavení vytvoří *function.js* v souboru ve složce funkce ve složce sestavení. Jak bylo uvedeno dříve, tento soubor není určen k úpravám přímo. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. 
 
-Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](event-driven-scaling.md). Z tohoto důvodu má soubor pouze aktivační událost, nikoli vstupní nebo výstupní vazby.
+Účelem tohoto souboru je poskytnout informace pro kontroler škálování pro použití při [rozhodování o škálování podle plánu spotřeby](event-driven-scaling.md). Z tohoto důvodu soubor má pouze aktivační údaje, nikoli vstupní/výstupní vazby.
 
 Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, která určuje, že modul runtime bude používat pro vazby atributy .NET namísto *function.jsv* konfiguraci. Tady je příklad:
 
@@ -172,7 +188,7 @@ Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, k
 
 *function.jspři* generování souboru provádí balíček NuGet [ \. funkce Microsoft .NET \. SDK \.](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní a stejný `Sdk` balíček:
+Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní se stejným `Sdk` balíčkem:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -625,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definuje vstupní nebo výstupní vazbu [objektu BLOB úložiště](functions-bindings-storage-blob.md) a [TextWriter](/dotnet/api/system.io.textwriter) je podporovaný výstupní typ vazby.
 
-### <a name="multiple-attribute-example"></a>Příklad více atributů
+### <a name="multiple-attributes-example"></a>Příklad více atributů
 
 Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
 

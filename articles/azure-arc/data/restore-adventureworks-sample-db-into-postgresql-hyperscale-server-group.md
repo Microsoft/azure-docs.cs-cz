@@ -1,5 +1,5 @@
 ---
-title: Obnovení ukázkové databáze AdventureWorks do PostgreSQL s povoleným rozšířením Azure ARC
+title: Import ukázkové databáze AdventureWorks do PostgreSQL s povoleným rozšířením Azure ARC
 description: Obnovení ukázkové databáze AdventureWorks do PostgreSQL s povoleným rozšířením Azure ARC
 services: azure-arc
 ms.service: azure-arc
@@ -9,14 +9,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b1ee779be118fcafd0efa2bd2718ece1c34c50d1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: a9efa17fb782d5a913493907b66973272e4e0356
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954324"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441784"
 ---
-# <a name="restore-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>Obnovení ukázkové databáze AdventureWorks do PostgreSQL s povoleným rozšířením Azure ARC
+# <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>Import ukázkové databáze AdventureWorks do PostgreSQL s povoleným rozšířením Azure ARC
 
 [AdventureWorks](/sql/samples/adventureworks-install-configure) je ukázková databáze obsahující databázi OLTP, která se používá v kurzech, a příklady. Společnost Microsoft je poskytována a spravována jako součást [úložiště GitHub SQL Server Samples](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases).
 
@@ -24,7 +24,7 @@ Open source projekt převedl databázi AdventureWorks, aby byla kompatibilní s 
 - [Původní projekt](https://github.com/lorint/AdventureWorks-for-Postgres)
 - [Sledujte na projektu, který předem převede soubory CSV, aby byly kompatibilní s PostgreSQL.](https://github.com/NorfolkDataSci/adventure-works-postgres)
 
-Tento dokument popisuje jednoduchý proces, který načte ukázkovou databázi AdventureWorks do PostgreSQL skupiny serverů s vlastním škálováním.
+Tento dokument popisuje jednoduchý proces, který načte ukázkovou databázi AdventureWorks do skupiny serverů PostgreSQL s vlastním škálováním.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -38,7 +38,7 @@ Spusťte příkaz podobný tomuto: ke stažení souborů nahraďte hodnotu názv
 >  Aby váš kontejner mohl stáhnout soubor z GitHubu, bude nutné, abyste měli k dispozici připojení k internetu přes 443.
 
 > [!NOTE]
->  Použijte název pod uzlu koordinátora Postgres skupiny serverů s rozšířením. Jeho název je <server group name> -0.  Pokud si nejste jisti názvem pod, spusťte příkaz. `kubectl get pod`
+>  Použijte název pod uzlu koordinátora Postgres skupiny serverů s rozšířením. Jeho název je <server group name> c-0 (například postgres01c-0, kde c představuje uzel koordinátora).  Pokud si nejste jisti názvem pod, spusťte příkaz. `kubectl get pod`
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"
@@ -47,7 +47,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash
 #kubectl exec postgres02-0 -n arc -c postgres -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"
 ```
 
-## <a name="step-2-restore-the-adventureworks-database"></a>Krok 2: obnovení databáze AdventureWorks
+## <a name="step-2-import-the-adventureworks-database"></a>Krok 2: Import databáze AdventureWorks
 
 Podobně můžete spustit příkaz kubectl exec pro použití nástroje psql CLI, který je součástí kontejnerů skupiny serverů PostgreSQL s možností škálování pro vytvoření a načtení databáze.
 
@@ -60,7 +60,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 #kubectl exec postgres02-0 -n arc -c postgres -- psql --username postgres -c 'CREATE DATABASE "adventureworks";'
 ```
 
-Pak spusťte příkaz podobný tomuto, aby obnovil databázi, která nahradí hodnotu názvu pod a název oboru názvů před spuštěním.
+Pak spusťte příkaz podobný tomuto, abyste importovali databázi, která nahradí hodnotu názvu pod a název oboru názvů před spuštěním.
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --username postgres -d adventureworks -f /tmp/AdventureWorks.sql

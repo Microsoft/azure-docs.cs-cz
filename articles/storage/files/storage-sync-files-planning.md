@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 171e858ef06228f2bf5ef5dea662de00143a0567
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202378"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441937"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -242,6 +242,16 @@ Pokud je na koncovém bodu serveru povolené vrstvení cloudu, soubory, které j
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Další řešení pro správu hierarchických úložišť (HSM)
 S Synchronizace souborů Azure by se neměla používat žádná další řešení HSM.
+
+## <a name="performance-and-scalability"></a>Výkon a škálovatelnost
+
+Vzhledem k tomu, že agent Synchronizace souborů Azure běží na počítači s Windows serverem, který se připojuje ke sdíleným složkám Azure, výkon efektivní synchronizace závisí na několika faktorech v infrastruktuře: Windows Server a základní konfigurace disku, Šířka pásma sítě mezi serverem a úložištěm Azure, velikost souboru, celková velikost datové sady a aktivita v datové sadě. Vzhledem k tomu, že Synchronizace souborů Azure pracuje na úrovni souboru, jsou výkonnostní charakteristiky řešení založeného na Synchronizace souborů Azure lépe měřeny v počtu objektů (souborů a adresářů) zpracovaných za sekundu.
+
+Změny provedené ve sdílené složce Azure pomocí Azure Portal nebo SMB se hned nedetekuje a replikují jako změny koncového bodu serveru. Soubory Azure ještě nemají oznámení o změnách ani deníky, takže neexistuje způsob, jak automaticky iniciovat relaci synchronizace při změně souborů. V systému Windows Server Synchronizace souborů Azure používá [Deník USN systému Windows](https://docs.microsoft.com/windows/win32/fileio/change-journals) k automatickému zahájení relace synchronizace při změně souborů
+
+Pokud chcete zjistit změny sdílené složky Azure, Synchronizace souborů Azure má naplánovanou úlohu s názvem úloha detekce změn. Úloha detekce změn vytvoří výčet všech souborů ve sdílené složce a pak ji porovná s verzí synchronizace pro daný soubor. Když úloha zjišťování změn zjistí, že se soubory změnily, Synchronizace souborů Azure zahájí relaci synchronizace. Úloha zjišťování změn je zahájena každých 24 hodin. Vzhledem k tomu, že úloha zjišťování změn funguje při vytváření výčtu všech souborů ve sdílené složce Azure, zjišťování změn trvá déle než v menších oborech názvů. Pro velké obory názvů může trvat déle než jednou za 24 hodin, abyste zjistili, které soubory se změnily.
+
+Další informace najdete v tématu [synchronizace souborů Azure metriky výkonu](storage-files-scale-targets.md#azure-file-sync-performance-metrics) a [cíle synchronizace souborů Azure škálování](storage-files-scale-targets.md#azure-file-sync-scale-targets) .
 
 ## <a name="identity"></a>Identita
 Synchronizace souborů Azure pracuje se standardní identitou založenou na službě AD bez jakéhokoli speciálního nastavení nad rámec nastavení synchronizace. Pokud používáte Synchronizace souborů Azure, obecně se předpokládá, že většina přístupů projde servery Synchronizace souborů Azure pro ukládání do mezipaměti, nikoli prostřednictvím sdílené složky Azure. Vzhledem k tomu, že se koncové body serveru nacházejí v systému Windows Server a systém Windows Server podporuje seznamy řízení přístupu (ACL) ve stylu služby AD a systému Windows po dlouhou dobu, není nic nutné, než zajistíte, aby souborové servery systému Windows zaregistrované ve službě synchronizace úložiště byly připojeny Synchronizace souborů Azure budou ukládat do souborů ve sdílené složce Azure seznamy ACL a budou se replikovat do všech koncových bodů serveru.

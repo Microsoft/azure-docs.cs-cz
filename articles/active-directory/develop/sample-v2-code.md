@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198349"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436494"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -61,13 +61,24 @@ Následující ukázky ilustrují webové aplikace, které přihlásí uživatel
 | ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Kurz pro uživatele ASP.NET Core WebApp přihlašování uživatelů](https://aka.ms/aspnetcore-webapp-sign-in) | Stejná ukázka v [ASP.NET Core volání webové aplikace Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fáze</p>Pokročilý ukázkový [přístup k mezipaměti tokenů pro přihlášeného uživatele z aplikací, rozhraní API a služeb na pozadí](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
 | ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS k migraci aplikací Azure AD PlayBook pro vývojáře](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) , kde se dozvíte, jak bezpečně a bezpečně migrovat aplikace integrované s Active Directory Federation Services (AD FS) (AD FS) do Azure Active Directory (Azure AD) | |
 | ![Tento obrázek ukazuje logo rozhraní ASP.NET Framework.](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Rychlý Start ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet – s omezením admin-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph – školení – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |[Úvodní kurz k kapitole webové aplikace Java servlet – kapitola 1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Úvodní kurz k kapitole webové aplikace Java servlet – kapitola 2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
-| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |                   | [MS-identity – Java – WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |[Kurz Java servlet – kapitola 1,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Přihlášení pomocí AAD| |
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |[Kurz Java servlet – kapitola 1,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Přihlaste se pomocí B2C |
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  | | [Kurz Java servlet – kapitola 2,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Přihlaste se pomocí AAD a grafu volání.|
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  |[Kurz Java servlet – kapitola 3,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Přihlaste se pomocí AAD a řízení přístupu pomocí deklarace identity rolí.| |
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  | | [Kurz Java servlet – kapitola 3,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Přihlaste se pomocí AAD a řízení přístupu pomocí deklarací skupin|
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png) | |[Kurz Java servlet – kapitola 4,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Nasadit do Azure App Service|
+| ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  | | [MS-identity – Java – WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Tento obrázek ukazuje logo Java.](media/sample-v2-code/logo_java.png)  | [MS-identity-B2C-Java-servlet-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Tento obrázek ukazuje logo Node.js.](media/sample-v2-code/logo_nodejs.png)</p>Node.js (uzel MSAL) | [Kurz pro uživatele přihlašování k aplikaci Express Web App](https://github.com/Azure-Samples/ms-identity-node) | |
-| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [MS-identity-Python-baněk-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-identity – Python – WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
-| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | Kurz přihlašování uživatelů [webové aplikace v Pythonu](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)                   | [Webová aplikace v baňce Python](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) přihlašování uživatelů a volání – kurz grafu |
-| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [Webová aplikace v baňce Python](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) přihlašování uživatelů pomocí B2C                    |  |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [Kurz na baňce Python – kapitola 1,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Přihlášení pomocí AAD  |  |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [Kurz na baňce Python – kapitola 1,2](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Přihlaste se pomocí B2C                    |  |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | | [Kurz na baňce Python – kapitola 2,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Přihlaste se pomocí AAD a grafu volání. |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | |[Kurz na baňce Python – kapitola 3,1](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Nasadit do Azure App Service  |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [Kurz Python Django – kapitola 1,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)   Přihlášení pomocí AAD  | |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | [Kurz Python Django – kapitola 1,2](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Přihlaste se pomocí B2C                    |  |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | | [Kurz Python Django – kapitola 2,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)  Přihlaste se pomocí AAD a grafu volání.|
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | | [Kurz Python Django – kapitola 3,1](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Nasadit do Azure App Service                    |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)  | | [Webová aplikace Python Flask](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Tento obrázek ukazuje logo Ruby](media/sample-v2-code/logo_ruby.png) |                   | [MSGraph – školení – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 | ![Na tomto obrázku vidíte logo Blazor](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [Kurz přihlašování k aplikacím Blazor Server App-in Users](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [Microsoft Graph volání aplikace serveru Blazor](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Kurz k Chapterwise: [aplikace Blazor serveru pro přihlašování uživatelů a volání rozhraní API pomocí Azure Active Directory](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 

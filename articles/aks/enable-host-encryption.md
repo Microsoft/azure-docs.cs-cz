@@ -4,12 +4,12 @@ description: Naučte se konfigurovat šifrování založené na hostiteli v clus
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039729"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430151"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -48,7 +48,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>Omezení
 
-- Dá se povolit jenom pro nové fondy uzlů nebo nové clustery.
+- Dá se povolit jenom pro nové fondy uzlů.
 - Dá se povolit jenom v [oblastech Azure][supported-regions] , které podporují šifrování Azure Managed disks na straně serveru a jenom s konkrétními [podporovanými velikostmi virtuálních počítačů][supported-sizes].
 - Vyžaduje cluster AKS a fond uzlů v závislosti na Virtual Machine Scale Sets (VMSS) jako *typ sady virtuálních počítačů*.
 

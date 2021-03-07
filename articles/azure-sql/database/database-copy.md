@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 10/30/2020
-ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b112506acead01e8dc2bbe72b0d52f47ada326a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035134"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440407"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -194,7 +194,7 @@ Pomocí dotazu na zobrazení [Sys. databases](/sql/relational-databases/system-c
 > [!IMPORTANT]
 > Pokud potřebujete vytvořit kopii s podstatně menším cílem služby, než má zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání aplikace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení Azure SQL Database pomocí záloh databáze](recovery-using-backups.md#geo-restore) .
 
-## <a name="azure-roles-to-manage-database-copy"></a>Role Azure pro správu kopie databáze
+## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Role a oprávnění Azure RBAC pro správu kopie databáze
 
 Chcete-li vytvořit kopii databáze, budete muset být v následujících rolích.
 

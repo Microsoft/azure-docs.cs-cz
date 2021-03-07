@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: bc6da7a2db3fcdf9ef5a2ea9f58ba4220066ad0c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091278"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436923"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -49,7 +49,7 @@ Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny s
 |Zabezpečení sítě |1.4 |Odepřít komunikaci se známými škodlivými IP adresami |[Měla by být povolená Azure DDoS Protection Standard.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 |Zabezpečení sítě |1.5 |Záznam síťových paketů a protokolů toků |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="cis-microsoft-azure-foundations-benchmark"></a>Srovnávací test CIS Microsoft Azure Foundations
+## <a name="cis-microsoft-azure-foundations-benchmark-110"></a>Srovnávací test CIS Microsoft Azure Foundations 1.1.0
 
 Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – CIS Microsoft Azure Foundation 1.1.0 Foundation](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md).
 Další informace o tomto standardu dodržování předpisů najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
@@ -57,6 +57,17 @@ Další informace o tomto standardu dodržování předpisů najdete v článku 
 |Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
 |---|---|---|---|---|
 |Security Center |2.9 |Zajistěte, aby nastavení výchozí zásady ASC "povolit bránu firewall nové generace (NGFW)" nebylo zakázané " |[Podsítě by měly být přidružené ke skupině zabezpečení sítě.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe71308d3-144b-4262-b144-efdc3cc90517) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnSubnets_Audit.json) |
+|Sítě |6.1 |Zajistěte, aby byl přístup protokolu RDP omezen z Internetu. |[Přístup RDP z Internetu by měl být blokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe372f825-a257-4fb8-9175-797a8a8627d6) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_RDPAccess_Audit.json) |
+|Sítě |6,2 |Zajistěte, aby přístup přes protokol SSH byl omezen z Internetu. |[Přístup přes SSH z Internetu by měl být zablokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
+|Sítě |6.5 |Ujistěte se, že Network Watcher je povolené. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>CI Microsoft Azure – 1.3.0 Foundation – srovnávací test
+
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy dodržování předpisů – CIS Microsoft Azure Foundation 1.3.0 Foundation](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md).
+Další informace o tomto standardu dodržování předpisů najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
+
+|Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
+|---|---|---|---|---|
 |Sítě |6.1 |Zajistěte, aby byl přístup protokolu RDP omezen z Internetu. |[Přístup RDP z Internetu by měl být blokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe372f825-a257-4fb8-9175-797a8a8627d6) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_RDPAccess_Audit.json) |
 |Sítě |6,2 |Zajistěte, aby přístup přes protokol SSH byl omezen z Internetu. |[Přístup přes SSH z Internetu by měl být zablokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 |Sítě |6.5 |Ujistěte se, že Network Watcher je povolené. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
@@ -148,10 +159,10 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Zabezpečení Network Services |0886.09 n2Organizational. 4 – 09. n |Organizace zaměstnává a dokumentuje v rámci formální smlouvy nebo jiného dokumentu, a to i) Allow-all, Deny-by-Exception nebo II) Deny-All, Permit-by-Exception (upřednostňovaná), zásady, které umožní konkrétním informačním systémům připojit se k externím informačním systémům. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Zabezpečení Network Services |0888.09 n2Organizational. 6 – 09. n |Smlouva s externím/nezdrojovým poskytovatelem služeb zahrnuje specifikaci, kterou poskytovatel služeb zodpovídá za ochranu zahrnutých informací, které jsou sdílené. |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
-## <a name="new-zealand-ism"></a>Nový Zéland ISM
+## <a name="new-zealand-ism-restricted"></a>Nový Zéland s omezením pro ISM
 
-Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy legislativní dodržování předpisů – Nový Zéland informace Security Security Manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
-Další informace o tomto standardu dodržování předpisů najdete v tématu [Příručka k informacím o Novém Zélandu pro zabezpečení](https://www.nzism.gcsb.govt.nz/).
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [dodržování předpisů Azure Policy zákonem – Nový Zéland ISM](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [omezení na Novém Zélandu ISM](https://www.nzism.gcsb.govt.nz/).
 
 |Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
 |---|---|---|---|---|

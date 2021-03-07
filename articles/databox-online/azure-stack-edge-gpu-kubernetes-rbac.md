@@ -6,17 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1b38a9807e05385a378fa6103710fb6b393c7b1f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635836"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443144"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes řízení přístupu na základě role na zařízení GPU Azure Stack Edge pro
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Když nakonfigurujete výpočetní roli na zařízení Azure Stack Edge pro, vytvoří se cluster Kubernetes. Pomocí Kubernetes řízení přístupu založeného na rolích (Kubernetes RBAC) můžete omezit přístup k prostředkům clusteru v zařízení.
 
@@ -39,13 +40,13 @@ Vaše zařízení Azure Stack Edge pro má následující obory názvů:
 - **Obor názvů System** – tento obor názvů tam, kde existují základní prostředky, jako jsou například síťové funkce jako DNS a proxy nebo řídicí panel Kubernetes. Do tohoto oboru názvů obvykle nesadíte vlastní aplikace. Tento obor názvů použijte k ladění všech problémů clusteru Kubernetes. 
 
     V zařízení existuje několik oborů názvů systému a názvy odpovídající těmto oborům názvů systému jsou rezervované. Tady je seznam rezervovaných oborů názvů systému: 
-    - Kube – systém
+    - kube-system
     - metallb – systém
     - DBE – obor názvů
     - default
     - Kubernetes – řídicí panel
     - Kube-Node-zapůjčení
-    - Kube – veřejný
+    - kube-public
 
 
     Ujistěte se, že nepoužíváte žádné rezervované názvy pro uživatelské obory názvů, které vytvoříte. 
@@ -61,15 +62,15 @@ Vaše zařízení Azure Stack Edge pro má následující obory názvů:
 
 V reálném světě je důležité rozdělit cluster na více oborů názvů. 
 
-- **Více uživatelů** : Pokud máte více uživatelů, pak více oborů názvů umožní těmto uživatelům nasazovat své aplikace a služby v jejich specifických oborech názvů v izolaci od sebe. 
-- **Jeden uživatel** : i když existuje jeden uživatel, více oborů názvů umožní, aby tento uživatel spouštěl více verzí aplikací ve stejném clusteru Kubernetes.
+- **Více uživatelů**: Pokud máte více uživatelů, pak více oborů názvů umožní těmto uživatelům nasazovat své aplikace a služby v jejich specifických oborech názvů v izolaci od sebe. 
+- **Jeden uživatel**: i když existuje jeden uživatel, více oborů názvů umožní, aby tento uživatel spouštěl více verzí aplikací ve stejném clusteru Kubernetes.
 
 ### <a name="roles-and-rolebindings"></a>Role a RoleBindings
 
 Kubernetes má koncept vazby role a role, který umožňuje udělit oprávnění uživateli nebo prostředkům na úrovni oboru názvů a na úrovni clusteru. 
 
-- **Role** : můžete definovat oprávnění pro uživatele jako **roli** a potom použít **role** k udělení oprávnění v rámci oboru názvů. 
-- **RoleBindings** : Pokud jste definovali role, můžete k přiřazení rolí pro daný obor názvů použít **RoleBindings** . 
+- **Role**: můžete definovat oprávnění pro uživatele jako **roli** a potom použít **role** k udělení oprávnění v rámci oboru názvů. 
+- **RoleBindings**: Pokud jste definovali role, můžete k přiřazení rolí pro daný obor názvů použít **RoleBindings** . 
 
 Tento přístup umožňuje logicky oddělit jeden Kubernetes cluster s uživateli, kteří mají jenom přístup k prostředkům aplikace v jejich přiřazeném oboru názvů. 
 

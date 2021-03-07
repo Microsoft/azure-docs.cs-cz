@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102472"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426603"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Změna velikosti brány
 > * Inzerování výchozí trasy
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -86,7 +86,7 @@ Bránu můžete vytvořit také v existujícím centru úpravou.
 
 ### <a name="to-view-a-gateway"></a>Zobrazení brány
 
-Jakmile vytvoříte bránu ExpressRoute, můžete zobrazit podrobnosti o bráně. Přejděte do centra, vyberte **ExpressRoute**a podívejte se na bránu.
+Jakmile vytvoříte bránu ExpressRoute, můžete zobrazit podrobnosti o bráně. Přejděte do centra, vyberte **ExpressRoute** a podívejte se na bránu.
 
 ![Zobrazit bránu](./media/virtual-wan-expressroute-portal/viewgw.png "Zobrazit bránu")
 
@@ -155,11 +155,9 @@ Pokud chcete, aby virtuální rozbočovač Azure inzeroval výchozí trasu 0.0.0
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
 
-Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte je. Některé virtuální prostředky sítě WAN je potřeba z důvodu závislostí odstranit v určitém pořadí. Dokončení odstranění může trvat přibližně 30 minut.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
