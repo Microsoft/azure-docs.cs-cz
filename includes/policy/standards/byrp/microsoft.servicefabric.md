@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3d79c7454dedbc5aad38d15360d68aa152fd2d2a
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 6f0caaa83ff15bce606bad69ac5fa20a75f4f04a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099386"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440682"
 ---
 ## <a name="azure-security-benchmark"></a>Srovnávací test zabezpečení Azure
 
@@ -54,10 +54,10 @@ Další informace o tomto standardu dodržování předpisů najdete v tématu [
 |Řízení přístupu |9.2.3 |Správa privilegovaných přístupových práv |[Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 |Kryptografie |10.1.1 |Zásady používání kryptografických ovládacích prvků |[Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
 
-## <a name="new-zealand-ism"></a>Nový Zéland ISM
+## <a name="new-zealand-ism-restricted"></a>Nový Zéland s omezením pro ISM
 
-Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [Azure Policy legislativní dodržování předpisů – Nový Zéland informace Security Security Manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
-Další informace o tomto standardu dodržování předpisů najdete v tématu [Příručka k informacím o Novém Zélandu pro zabezpečení](https://www.nzism.gcsb.govt.nz/).
+Pokud chcete zjistit, jak jsou dostupné Azure Policy vestavěné pro všechny služby Azure namapovány na tento standard dodržování předpisů, přečtěte si téma [dodržování předpisů Azure Policy zákonem – Nový Zéland ISM](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Další informace o tomto standardu dodržování předpisů najdete v tématu [omezení na Novém Zélandu ISM](https://www.nzism.gcsb.govt.nz/).
 
 |Doména |ID ovládacího prvku |Název ovládacího prvku |Zásady<br /><sub>(Azure Portal)</sub> |Verze zásady<br /><sub>GitHubu</sub>  |
 |---|---|---|---|---|

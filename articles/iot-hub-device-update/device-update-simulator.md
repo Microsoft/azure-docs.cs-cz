@@ -1,17 +1,17 @@
 ---
 title: Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta pro reference na simulátor Ubuntu (18,04 x64) | Microsoft Docs
 description: Začínáme s aktualizací zařízení pro Azure IoT Hub pomocí referenčního agenta simulátoru Ubuntu (18,04 x64).
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8ca9d03fbeadfaaca06dac49acc7a08f0dd0566d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664748"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443807"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta pro reference na simulátor Ubuntu (18,04 x64)
 
@@ -163,29 +163,30 @@ Agent running. [main]
 
 ## <a name="import-update"></a>Importovat aktualizaci
 
-1. V levém navigačním panelu vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
+1. Podle těchto [pokynů](import-update.md)vytvořte manifest importu.
+2. V levém navigačním panelu vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
 
-2. Vyberte kartu aktualizace.
+3. Vyberte kartu aktualizace.
 
-3. Vyberte + Importovat novou aktualizaci.
+4. Vyberte + Importovat novou aktualizaci.
 
-4. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte importovaný manifest, který jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte soubor aktualizace manifestu apt, který jste předtím stáhli.
-   
+5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte manifest importu, který jste vytvořili výše.  Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte bitovou kopii aktualizace Ubuntu, kterou jste si stáhli dříve. 
+
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Snímek obrazovky znázorňující výběr aktualizačního souboru" lightbox="media/import-update/select-update-files.png":::
 
-5. V části vyberte kontejner úložiště vyberte ikonu složky nebo textové pole. Pak vyberte příslušný účet úložiště.
+6. V části vyberte kontejner úložiště vyberte ikonu složky nebo textové pole. Pak vyberte příslušný účet úložiště.
 
-6. Pokud jste už kontejner vytvořili, můžete ho znovu použít. (Jinak vyberte + kontejner a vytvořte nový kontejner úložiště pro aktualizace.).  Vyberte kontejner, který chcete použít, a klikněte na vybrat.
+7. Pokud jste už kontejner vytvořili, můžete ho znovu použít. (Jinak vyberte + kontejner a vytvořte nový kontejner úložiště pro aktualizace.).  Vyberte kontejner, který chcete použít, a klikněte na vybrat.
   
   :::image type="content" source="media/import-update/container.png" alt-text="Snímek obrazovky znázorňující výběr kontejneru" lightbox="media/import-update/container.png":::
 
-7. Kliknutím na Odeslat spusťte proces importu.
+8. Kliknutím na Odeslat spusťte proces importu.
 
-8. Spustí se proces importu a obrazovka se změní v části Historie importu. Pokud chcete zobrazit průběh až do dokončení procesu importu, vyberte aktualizovat. V závislosti na velikosti aktualizace to může trvat několik minut, ale může trvat delší dobu.
+9. Spustí se proces importu a obrazovka se změní v části Historie importu. Pokud chcete zobrazit průběh až do dokončení procesu importu, vyberte aktualizovat. V závislosti na velikosti aktualizace to může trvat několik minut, ale může trvat delší dobu.
    
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Snímek obrazovky znázorňující sekvenci importu aktualizace" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-9. Když sloupec status (stav) indikuje, že import proběhl úspěšně, vyberte hlavičku připraveno k nasazení. V seznamu by se teď měla zobrazit vaše importovaná aktualizace.
+10. Když sloupec status (stav) indikuje, že import proběhl úspěšně, vyberte hlavičku připraveno k nasazení. V seznamu by se teď měla zobrazit vaše importovaná aktualizace.
 
 [Přečtěte si další informace](import-update.md) o importu aktualizací.
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 71ba3d99ceee89464dafdf5bf4c16e70df146bef
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209368"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426072"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
 
@@ -45,7 +45,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 Můžete analyzovat data ve výchozím účtu ADLS Gen2 v pracovním prostoru nebo můžete k pracovnímu prostoru propojit účet ADLS Gen2 nebo úložiště objektů BLOB pomocí možnosti "**Spravovat**" > "**propojené služby**" > "**New**" (následující postup bude odkazovat na primární adls Gen2 účet).
 
 1. V synapse studiu otevřete centrum **dat** a pak vyberte **propojit**.
-1. Přejít na **účty úložiště**  >  **MyWorkspace (Primary-contosolake)**.
+1. Přejít na **Azure Data Lake Storage Gen2**  >  **MyWorkspace (Primary-contosolake)**.
 1. Vyberte možnost **Uživatelé (primární)**. Měla by se zobrazit složka **NYCTaxi** . Uvnitř byste měli vidět dvě složky s názvem **PassengerCountStats_csvformat** a **PassengerCountStats_parquetformat**.
 1. Otevřete složku **PassengerCountStats_parquetformat** . Uvnitř se zobrazí soubor Parquet s názvem, jako je `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
 1. Klikněte pravým tlačítkem myši na **. Parquet**, vyberte **Nový Poznámkový blok** a pak vyberte **načíst do datového rámce**. Vytvoří se nový Poznámkový blok s buňkou, jako je tato:

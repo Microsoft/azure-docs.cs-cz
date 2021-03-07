@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff805b758dce05a66764ab1ff08e53378c946362
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730707"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438178"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Virtuální počítače GPU pro zařízení Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Tento článek poskytuje přehled virtuálních počítačů GPU (VM) na zařízení Azure Stack Edge pro. Tento článek popisuje, jak vytvořit virtuální počítač GPU a pak nainstalovat rozšíření ovladače GPU pro instalaci příslušných ovladačů NVIDIA. Pomocí šablon Azure Resource Manager vytvořte virtuální počítač GPU a nainstalujte rozšíření ovladače GPU. 
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfc19700d24ca51d6e28aa511197c1c9e79e521
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645529"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428178"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -67,7 +67,7 @@ Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro roz
 
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznávání řeči do kontejneru Docker:
 
-1. <a href="https://www.docker.com/get-started" target="_blank">Nainstalovat Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> </a> pro vaši platformu, pokud ještě není nainstalovaná.
+1. <a href="https://www.docker.com/get-started" target="_blank">Nainstalujte Docker Desktop</a> pro vaši platformu, pokud ještě není nainstalovaná.
 2. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:
    ```console   
    docker pull msftspeech/spx

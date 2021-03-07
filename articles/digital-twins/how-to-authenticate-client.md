@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6a0676418e951b84c9b973bd93c2750e410392d1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 22e07726ca71cc28e9536bb24cde580d4232f237
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212807"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433416"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -20,7 +20,7 @@ Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-
 
 Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). K ověření vaší sady SDK budete muset získat nosný token se správnými oprávněními pro digitální vlákna Azure a předat ho spolu s vaším voláním rozhraní API. 
 
-Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
+Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,16 +32,16 @@ Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve které
 
 `Azure.Identity` je Klientská knihovna, která poskytuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a k ověření pomocí sady SDK. I když tento článek obsahuje příklady v jazyce C#, můžete si ho prohlédnout v `Azure.Identity` několika jazycích, včetně...
 
-* [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
+* [.NET (C#)](/dotnet/api/azure.identity)
 * [Java](/java/api/overview/azure/identity-readme)
 * [JavaScript](/javascript/api/overview/azure/identity-readme)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Tři běžné metody získávání přihlašovacích údajů v nástroji `Azure.Identity` :
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**. Dá se taky povolit, aby se vyzkoušely další dvě metody doporučené v tomto článku. zalomí `ManagedIdentityCredential` a má přístup k `InteractiveBrowserCredential` konfigurační proměnné.
-* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md), a je vhodným kandidátem na práci s Azure functions a nasazením do služeb Azure.
-* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) je určený pro interaktivní aplikace a dá se použít k vytvoření ověřeného klienta SDK.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**. Dá se taky povolit, aby se vyzkoušely další dvě metody doporučené v tomto článku. zalomí `ManagedIdentityCredential` a má přístup k `InteractiveBrowserCredential` konfigurační proměnné.
+* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md), a je vhodným kandidátem na práci s Azure functions a nasazením do služeb Azure.
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) je určený pro interaktivní aplikace a dá se použít k vytvoření ověřeného klienta SDK.
 
 Následující příklad ukazuje, jak použít každou z nich v sadě .NET (C#) SDK.
 
@@ -59,7 +59,7 @@ Pak přidejte kód pro získání přihlašovacích údajů pomocí jedné z met
 
 ### <a name="defaultazurecredential-method"></a>Metoda DefaultAzureCredential
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**.
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**.
 
 Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat adresu URL instance digitálního vlákna Azure ([pokyny, které se mají najít](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
@@ -73,7 +73,7 @@ Zde je ukázka kódu pro přidání do `DefaultAzureCredential` projektu:
 
 ### <a name="managedidentitycredential-method"></a>Metoda ManagedIdentityCredential
 
-Metoda [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md)– například při práci s Azure Functions.
+Metoda [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md)– například při práci s Azure Functions.
 
 To znamená, že můžete použít `ManagedIdentityCredential` ve stejném projektu jako `DefaultAzureCredential` nebo `InteractiveBrowserCredential` , chcete-li ověřit jinou součást projektu.
 
@@ -85,7 +85,7 @@ Ve funkci Azure můžete použít přihlašovací údaje spravované identity po
 
 ### <a name="interactivebrowsercredential-method"></a>Metoda InteractiveBrowserCredential
 
-Metoda [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování. Místo toho můžete použít `DefaultAzureCredential` interaktivní ověřování v případech.
+Metoda [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování. Místo toho můžete použít `DefaultAzureCredential` interaktivní ověřování v případech.
 
 Pokud chcete použít přihlašovací údaje interaktivního prohlížeče, budete potřebovat **registraci aplikace** , která má oprávnění k rozhraním API pro digitální vlákna Azure. Postup nastavení registrace této aplikace najdete v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md). Po nastavení registrace aplikace budete potřebovat...
 * *ID aplikace (klienta)* registrace aplikace ([pokyny, které se mají najít](how-to-create-app-registration.md#collect-client-id-and-tenant-id))

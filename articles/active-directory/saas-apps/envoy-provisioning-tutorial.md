@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7e63b0af2c5b9bd39f755c39adc296b3a8c4a049
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b18ec2531b26574357f56c11558f2afd84467495
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180958"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437685"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Kurz: Konfigurace zástupné pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v zástupné i Azure Active
 > * Zřizování skupin a členství ve skupinách v zástupné
 > * [Jednotné přihlašování](./envoy-tutorial.md) k zástupné (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -39,6 +39,9 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 * Uživatelský účet v Azure AD s [oprávněním](../roles/permissions-reference.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * [Tenant zástupné](https://envoy.com/pricing/)
 * Uživatelský účet v zástupné s oprávněními správce.
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
 1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).

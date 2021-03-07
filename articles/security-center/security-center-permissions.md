@@ -1,24 +1,18 @@
 ---
 title: Oprávnění v Azure Security Center | Microsoft Docs
 description: Tento článek vysvětluje, jak Azure Security Center používá řízení přístupu na základě rolí k přiřazování oprávnění uživatelům a identifikaci povolených akcí pro jednotlivé role.
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099178"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443756"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -39,15 +33,15 @@ Kromě těchto rolí existují ve službě Security Center dvě specifické role
 
 V následující tabulce jsou uvedeny role a povolené akce v Security Center.
 
-|Akce|Čtecí modul zabezpečení/ <br> Čtenář |Správce zabezpečení  |Přispěvatel skupiny prostředků/ <br> Vlastník skupiny prostředků  |Přispěvatel předplatného  |Vlastník předplatného  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|Upravit zásady zabezpečení|-|✔|-|-|✔|
-|Přidat nebo přiřadit iniciativy (včetně) standardů dodržování předpisů v legislativě|-|-|-|-|✔|
-|Povolit nebo zakázat Azure Defender|-|✔|-|-|✔|
-|Povolit nebo zakázat Automatické zřizování|-|✔|-|✔|✔|
-|Použití doporučení zabezpečení pro prostředek</br> (a použijte [rychlou opravu!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
-|Zavřít výstrahy|-|✔|-|✔|✔|
-|Zobrazit výstrahy a doporučení|✔|✔|✔|✔|✔|
+| Akce                                                                                                                                        | Čtecí modul zabezpečení/ <br> Čtenář | Správce zabezpečení | Přispěvatel skupiny prostředků/ <br> Vlastník skupiny prostředků | Přispěvatel předplatného | Vlastník předplatného |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| Upravit zásady zabezpečení                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Přidat nebo přiřadit iniciativy (včetně) standardů dodržování předpisů v legislativě                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Povolit nebo zakázat Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Povolit nebo zakázat Automatické zřizování                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Použití doporučení zabezpečení pro prostředek</br> (a použijte [rychlou opravu!](security-center-remediate-recommendations.md#quick-fix-remediation)) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Zavřít výstrahy                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Zobrazit výstrahy a doporučení                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > Doporučujeme přiřadit uživatelům tu nejvíc omezenou roli, kterou ke své práci potřebují. Přiřaďte například roli Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale neprovádějí akci, jako je třeba použití doporučení nebo úprav zásad.

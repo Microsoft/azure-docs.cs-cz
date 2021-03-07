@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205982"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431532"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
 
@@ -93,7 +93,7 @@ Existují dvě možnosti, jak přidat servery DNS pro klienty P2S. První způso
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Pro uživatele VPN (Point-to-site) – kolik klientů se podporuje?
 
-Každá Brána VPN P2S pro uživatele má dvě instance a každá instance podporuje až určitých uživatelů při změně jednotky škálování. Škálování jednotka 1-3 podporuje připojení 500, škálování jednotka 4-6 podporuje 1000 připojení, jednotka škálování 7-12 podporuje 5000 připojení a jednotky škálování 13-18 podporuje až 10 000 připojení.
+Každá Brána VPN P2S pro uživatele má dvě instance. Každá instance podporuje při změně jednotky škálování až určitý počet připojení. Škálování jednotka 1-3 podporuje připojení 500, škálování jednotka 4-6 podporuje 1000 připojení, jednotka škálování 7-12 podporuje 5000 připojení a škálování jednotky 13-18 podporuje až 10 000 připojení.
 
 Řekněme například, že uživatel zvolí 1 jednotku škálování. Každá jednotka škálování by znamenala, že je nasazená brána aktivní-aktivní a každá z instancí (v tomto případě 2) by podporovala až 500 připojení. Vzhledem k tomu, že můžete získat připojení 500 × 2 na bránu, neznamená to, že pro tuto jednotku škálování naplánujete 1000 místo 500. V případě, že se překročí doporučený počet připojení, může být nutné obsluhovat instance, aby připojení k nadbytečnému 500 mohlo být přerušeno. Nezapomeňte také naplánovat prostoje v případě, že se rozhodnete škálovat nebo snížit velikost jednotky škálování nebo změnit konfiguraci Point-to-site v bráně VPN.
 
@@ -125,7 +125,7 @@ No. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje po�
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Jak partneři pro Virtual WAN automatizují možnosti připojení s využitím Azure Virtual WAN?
 
-Softwarově definovaná řešení možností připojení obvykle spravují svá pobočková zařízení s využitím kontroleru nebo centra pro zřizování zařízení. Kontroler může k automatizaci připojení k Azure Virtual WAN využívat rozhraní API Azure. Automatizace zahrnuje odesílání informací o větvích, stahování konfigurace Azure, nastavování tunelů IPSec na virtuální rozbočovače Azure a automatické nastavení připojení k vytvoření připojení k virtuální síti WAN na Azure. Když máte stovky větví, připojení pomocí virtuálních sítí WAN CPE je snadné, protože možnosti registrace neberou v platnost nutnost nastavovat, konfigurovat a spravovat rozsáhlé připojení IPsec. Další informace najdete v tématu věnovaném [automatizaci partnerů pro Virtual WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
+Softwarově definovaná řešení možností připojení obvykle spravují svá pobočková zařízení s využitím kontroleru nebo centra pro zřizování zařízení. Kontroler může k automatizaci připojení k Azure Virtual WAN využívat rozhraní API Azure. Automatizace zahrnuje odesílání informací o větvích, stahování konfigurace Azure, nastavování tunelů IPsec na virtuální rozbočovače Azure a automatické nastavení připojení k vytvoření připojení k virtuální síti WAN na Azure. Když máte stovky větví, připojení pomocí virtuálních sítí WAN CPE je snadné, protože možnosti registrace neberou v platnost nutnost nastavovat, konfigurovat a spravovat rozsáhlé připojení IPsec. Další informace najdete v tématu věnovaném [automatizaci partnerů pro Virtual WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co když zařízení, které používám, není v seznamu partnerů virtuální sítě WAN? Můžu ho I nadále používat pro připojení k síti VPN Azure Virtual WAN?
 
@@ -133,7 +133,7 @@ Ano, pokud zařízení podporuje protokol IPsec IKEv1 nebo IKEv2. Virtuální pa
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
 
-Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Pokud chcete posoudit technickou proveditelnost, přečtěte si dokumentaci k [virtuálním partnerům sítě WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) . Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec. Jakmile společnost dokončí službu automatizace pro svoje zařízení CPE na základě výše uvedených pokynů pro automatizaci, můžete se na azurevirtualwan@microsoft.com Toto místo připojit [přes partnery]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Pokud jste zákazníkem, který by měl být uveden jako virtuální partner sítě WAN, obraťte se na virtuální síť WAN odesláním e-mailu společnosti azurevirtualwan@microsoft.com .
+Všechna rozhraní API Virtual WAN jsou otevřená rozhraní API. Pokud chcete posoudit technickou proveditelnost, přečtěte si dokumentaci k [virtuálním partnerům sítě WAN](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) . Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec. Jakmile společnost dokončí službu automatizace pro svoje zařízení CPE na základě výše uvedených pokynů pro automatizaci, můžete se na azurevirtualwan@microsoft.com Toto místo připojit [přes partnery]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Pokud jste zákazníkem, který by měl být uveden jako virtuální partner sítě WAN, musí společnost kontaktovat virtuální síť WAN odesláním e-mailu na adresu azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak virtuální síť WAN podporuje zařízení SD-WAN?
 
@@ -149,7 +149,7 @@ Připojení z větve nebo zařízení VPN do Azure Virtual WAN je připojení VP
 
 ### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Co se stane, když místní zařízení VPN má pro bránu VPN Azure Virtual WAN jenom 1 tunel?
 
-Připojení k virtuální síti WAN Azure se skládá ze dvou tunelů. Virtuální síť WAN VPN Gateway je nasazená ve virtuálním rozbočovači v režimu aktivní-aktivní, což znamená, že v místních zařízeních končí samostatná tunelová propojení z různých instancí. Toto je doporučení pro všechny uživatele. Pokud se však uživatel rozhodne pouze o 1 tunelu na jednu z instancí služby VPN Gateway virtuální sítě WAN, pokud z nějakého důvodu (údržba, opravy atd.) byla instance brány přepnuta do stavu offline, tunel bude přesunut do sekundární aktivní instance a uživatel se může setkat s opětovným připojením. Relace protokolu BGP se nepřesunou mezi instancemi.
+Připojení k virtuální síti WAN Azure se skládá ze dvou tunelů. Virtuální síť WAN VPN Gateway je nasazená ve virtuálním rozbočovači v režimu aktivní-aktivní, což znamená, že v místních zařízeních končí samostatná tunelová propojení z různých instancí. Toto je doporučení pro všechny uživatele. Pokud se však uživatel rozhodne pouze o 1 tunelu na jednu z instancí služby VPN Gateway virtuální sítě WAN, pokud z nějakého důvodu (údržba, opravy atd.) je instance brány přepnuta do režimu offline, bude tunel přesunut do sekundární aktivní instance a uživatel se může setkat s opětovným připojením. Relace protokolu BGP se nepřesunou mezi instancemi.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Může se místní zařízení VPN připojit k více rozbočovačům?
 
@@ -213,7 +213,7 @@ Celková propustnost sítě VPN rozbočovače je až 20 GB/s na základě zvolen
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Můžu na mých připojeních k síti VPN použít překlad adres (NAT-T)?
 
-Ano, podporuje se procházení NAT (NAT-T). Virtuální síť WAN VPN Gateway nebude provádět žádné funkce podobné překladu adres (NAT) na vnitřních paketech a z tunelů IPsec. V této konfiguraci zajistěte, aby místní zařízení spouštěla tunel IPSec.
+Ano, podporuje se procházení NAT (NAT-T). Virtuální síť WAN VPN Gateway nebude provádět žádné funkce podobné překladu adres (NAT) na vnitřních paketech a z tunelů IPsec. V této konfiguraci zajistěte, aby místní zařízení spouštěla tunel IPsec.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Nevidím nastavení 20 GB/s pro virtuální rozbočovač na portálu. Návody nakonfigurovat?
 
@@ -305,5 +305,4 @@ Ano. Seznam řešení pro poskytovatele spravované služby (MSP) povolený pros
 
 ### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Jak se liší směrování virtuálních sítí WAN z směrovacího serveru Azure ve virtuální síti?
 
-Azure Route Server poskytuje službu partnerského vztahu služby Border Gateway Protocol (BGP), kterou může síťové virtuální zařízení (síťové virtuální zařízení) využít k tomu, abyste se dozvěděli o trasách od serveru směrování ve virtuální síti centra SVÉPOMOCNÁ. Služba Virtual WAN nabízí více možností, včetně virtuální sítě pro směrování tranzitní sítě, vlastní směrování, přidružení vlastních tras a šíření a plně připojenou službu rozbočovače s možností připojení ExpressRoute, Site VPN, Remote User/large P2S VPN a zabezpečeného centra (Azure Firewall). Když vytváříte partnerský vztah Border Gateway Protocol (BGP) mezi serverem služby síťové virtuální zařízení a serverem Azure router, můžete inzerovat IP adresy z vaší síťové virtuální zařízení do vaší virtuální sítě. Pro všechny pokročilé možnosti směrování, jako je směrování přenosu, vlastní směrování atd., můžete použít směrování Virtual WAN.
-
+Azure Route Server poskytuje službu partnerského vztahu služby Border Gateway Protocol (BGP), kterou může síťová virtuální zařízení (síťové virtuální zařízení) použít k získání tras od serveru tras ve virtuální síti centra SVÉPOMOCNÁ. Služba směrování virtuálních sítí WAN nabízí více funkcí, včetně směrování provozu typu VNet-to-VNet, vlastního směrování, přiřazování a šíření tras a plně funkčních rozbočovačů s připojením ExpressRoute, sítě VPN, vzdáleného uživatele/velkého škálování P2S VPN a zabezpečeného centra (Azure Firewall). Při navázání partnerského vztahu protokolu BGP mezi vaším síťové virtuální zařízení a serverem Azure Route můžete inzerovat IP adresy z vaší síťové virtuální zařízení do vaší virtuální sítě. Pro všechny pokročilé možnosti směrování, jako je směrování přenosu, vlastní směrování atd., můžete použít směrování Virtual WAN.

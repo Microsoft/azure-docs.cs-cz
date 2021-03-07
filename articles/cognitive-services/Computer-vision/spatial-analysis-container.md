@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: af028499d84a767ccb2a888ec7e7f92c80dbdd36
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0316850788a4f762680be91c8ecd86b3aa8bf6bc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710562"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433603"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -24,7 +24,7 @@ Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> pro úroveň Standard S1 v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> počítačové zpracování obrazu </a> pro úroveň Standard S1 v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * Ke spuštění kontejneru prostorové analýzy budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod budete používat později.
 
 

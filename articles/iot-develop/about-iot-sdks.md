@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: fc30515f4b5ca0a763bf9f40de6a03356b88e500
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214605"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435490"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 
@@ -91,8 +91,8 @@ Tyto sady SDK můžete spustit na jakémkoli zařízení, které může podporov
 * [Úložiště GitHub](https://github.com/Azure/azure-iot-sdk-csharp)
 * [ukázky](https://github.com/Azure/azure-iot-sdk-csharp#samples)
 * [Balíček](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-* [Referenční dokumentace](/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true)
-* [Referenční dokumentace modulu Edge](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet&preserve-view=true)
+* [Referenční dokumentace](/dotnet/api/microsoft.azure.devices)
+* [Referenční dokumentace modulu Edge](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 #### <a name="java-device-sdk"></a>Sada SDK pro zařízení Java
 
@@ -141,7 +141,7 @@ Digitální vlákna Azure je nabídka typu platforma jako služba (PaaS), která
 
 [**Další informace o digitálních zdvojeních Azure**](https://azure.microsoft.com/services/digital-twins/)  |  [ **Kódování aplikace ADT**](../digital-twins/tutorial-code.md)
 
-**Sada SDK služby C# ADT**: [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [Referenční dokumentace](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) ukázek balíčku úložiště GitHubu
+**Sada SDK služby C# ADT**: [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [Referenční dokumentace](/dotnet/api/overview/azure/digitaltwins/client) ukázek balíčku úložiště GitHubu
 
 **Java ADT Service SDK**: ukázky balíčku [úložiště GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)–  |  [](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)  |  [](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core/src/samples)  |  [Referenční dokumentace](/java/api/overview/azure/digitaltwins/client)
 
@@ -155,7 +155,7 @@ IoT Hub Device Provisioning Service (DPS) je pomocná služba pro IoT Hub, kter�
 
 [**Další informace o službě Device Provisioning Service**](../iot-dps/index.yml)  |  [ **Zkuste vytvořit registraci skupiny pro zařízení X. 509** .](../iot-dps/quick-enroll-device-x509-csharp.md)
 
-**Sada SDK služby Device Provisioning v C#**: [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [Referenční dokumentace](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true) ukázek balíčku úložiště GitHubu
+**Sada SDK služby Device Provisioning v C#**: [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [Referenční dokumentace](/dotnet/api/microsoft.azure.devices.provisioning.service) ukázek balíčku úložiště GitHubu
 
 **Sada SDK služby Device Provisioning pro zařízení Java**: [](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src)  |  [](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client)  |  [](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client)  |  [Referenční dokumentace](/java/api/com.microsoft.azure.sdk.iot.provisioning.service) ukázek balíčku úložiště GitHubu
 

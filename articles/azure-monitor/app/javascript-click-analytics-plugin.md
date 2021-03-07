@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593629"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429846"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klikněte na Analytics modul plug-in pro automatické shromažďování pro Application Insights JavaScript SDK
 
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>Konfigurace
 
-| Název                  | Typ                               | Výchozí | Description                                                                                                                              |
+| Název                  | Typ                               | Výchozí | Popis                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autocapture           | boolean                            | true    | Automatická konfigurace zachycení.                                                                                                         |
 | onCuePoint              | [IValueCallback](#ivaluecallback)  | null    | Konfigurace zpětných volání.                                                                                                                 |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Název                      | Typ    | Výchozí   | Výchozí značka pro použití v HTML |   Description                                                                                |
+| Název                      | Typ    | Výchozí   | Výchozí značka pro použití v HTML |   Popis                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | useDefaultContentNameOrId | boolean | false (nepravda)     | –         |Shromažďuje standardní atribut HTML pro obsah atributu Attribute, pokud konkrétní element není označený jako výchozí customDataPrefix nebo pokud uživatel neposkytuje customDataPrefix. |
 | customDataPrefix          | řetězec  | `data-`   | `data-*`| Název automatického zachycení obsahu a hodnotu prvků, které jsou označeny poskytnutou předponou. Například `data-*-id` `data-<yourcustomattribute>` lze použít v HTML značek.   |
@@ -115,7 +115,7 @@ appInsights.loadAppInsights();
 
 Funkce behaviorValidator automaticky kontroluje, zda je označení chování v kódu v souladu s předem definovaným seznamem. Tím se zajistí, že se v rámci zavedené taxonomie vaší firmy budou mít označená chování. Není nutné ani očekávat, že většina Azure Monitor zákazníci tuto službu použijí, ale jsou k dispozici pro pokročilé scénáře. V rámci tohoto rozšíření jsou k dispozici tři různé funkce zpětného volání behaviorValidator. Uživatelé ale můžou použít vlastní funkce zpětného volání, pokud vystavené funkce nevyřeší váš požadavek. Záměrem je využít vlastní strukturu dat chování, modul plug-in používá tuto funkci validátoru při extrakci chování z datových značek.
 
-| Název                   | Description                                                                        |
+| Název                   | Popis                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
 | BehaviorValueValidator | Tuto funkci zpětného volání použijte v případě, že struktura dat chování je pole řetězců.|
 | BehaviorMapValidator   | Tuto funkci zpětného volání použijte v případě, že struktura dat chování je slovník.       |
@@ -315,4 +315,4 @@ appInsights.loadAppInsights();
 - Podívejte se na [úložiště GitHub](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) a [balíček npm](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) pro modul plug-in automatických kolekcí pro analýzu.
 - [Analýza událostí v prostředí používání](usage-segmentation.md) slouží k analýze horních kliknutí a řezů podle dostupných dimenzí.
 - V poli customDimensions v tabulce CustomEvents v [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query)klikněte na data v oblasti obsah v části atribut. Další pokyny najdete v [ukázkové aplikaci](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Sestavte [sešit](../visualize/workbooks-overview.md) , abyste mohli vytvářet vlastní vizualizace kliknutí na data.
+- Sestavte [sešit](../visualize/workbooks-overview.md) nebo [exportujte Power BI](../logs/log-powerbi.md#integrating-queries) a vytvořte tak vlastní vizualizace kliknutí na data.

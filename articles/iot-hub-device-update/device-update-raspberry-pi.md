@@ -1,17 +1,17 @@
 ---
 title: Kurz aktualizace zařízení pro Azure IoT Hub pomocí Image Yocto malin 3 B + Referenční dokumentace k imagi | Microsoft Docs
 description: Začínáme s aktualizací zařízení pro Azure IoT Hub pomocí referenční image Yocto Malina 3 B +.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664680"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443450"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí referenční image Malina 3 B +
 
@@ -143,13 +143,11 @@ V níže uvedeném kroku import aktualizace použijte číslo verze.
 
 ## <a name="import-update"></a>Importovat aktualizaci
 
-1. V levém navigačním panelu vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
-
-2. Vyberte kartu aktualizace.
-
-3. Vyberte + Importovat novou aktualizaci.
-
-4. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte importovaný manifest, který jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte soubor aktualizace manifestu apt, který jste předtím stáhli.
+1. Podle těchto [pokynů](import-update.md)vytvořte manifest importu.
+2. V levém navigačním panelu vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
+3. Vyberte kartu aktualizace.
+4. Vyberte + Importovat novou aktualizaci.
+5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte manifest importu, který jste vytvořili výše.  Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte soubor aktualizace, který chcete nasadit do zařízení IoT.
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Snímek obrazovky znázorňující výběr aktualizačního souboru" lightbox="media/import-update/select-update-files.png":::
 

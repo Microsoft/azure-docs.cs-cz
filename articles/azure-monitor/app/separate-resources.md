@@ -3,12 +3,12 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589525"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424661"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
@@ -32,6 +32,9 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 -   Pokud nepotřebujete, aby se fakturace a kvóty spravovaly různě mezi komponentami.
 -   Pokud je v pořádku, aby měl klíč rozhraní API stejný přístup k datům ze všech komponent. A 10 klíčů rozhraní API stačí pro potřeby napříč všemi nimi.
 -   Pokud má být v pořádku stejné nastavení integrace inteligentní detekce a pracovní položky napříč všemi rolemi.
+
+> [!NOTE]
+> Pokud chcete konsolidovat více prostředků Application Insights, můžete existující součásti aplikace Ukázat na nový, konsolidovaný prostředek Application Insights. Telemetrii uložená ve starém prostředku se nepřenáší do nového prostředku, takže odstraňte jenom starý prostředek, jenom když budete mít k dispozici dostatek telemetrie v novém zdroji pro provozní kontinuitu.
 
 ### <a name="other-things-to-keep-in-mind"></a>Další věci, které je potřeba vzít v úvahu
 

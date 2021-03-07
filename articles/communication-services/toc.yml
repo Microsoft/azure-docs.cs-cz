@@ -88,40 +88,40 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Koncepce hlasových hovorů a videohovorů
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Toky volání
+          href: concepts/call-flows.md
+        - name: Topologie toků volání
+          href: concepts/detailed-call-flows.md
     - name: Architektura uživatelského rozhraní
       items:
         - name: Přehled rozhraní .NET Framework
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Možnosti architektury uživatelského rozhraní
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Interoperabilita Teams
-      href: concepts/teams-interop.md
+    - name: Data a operace
+      items:
+        - name: Události služby (EventGrid)
+          href: concepts/event-handling.md
+        - name: Protokolování a diagnostika
+          href: concepts/logging-and-diagnostics.md
+        - name: Metriky
+          href: concepts/metrics.md
+        - name: Řešení potíží
+          href: concepts/troubleshooting-info.md
+    - name: Sady SDK a rozhraní REST API
+      href: concepts/sdk-options.md
     - name: Klientská a serverová architektura
       href: concepts/client-and-server-architecture.md
-    - name: Toky volání
-      href: concepts/call-flows.md
-    - name: Topologie toků volání
-      href: concepts/detailed-call-flows.md
-    - name: Klientské knihovny a rozhraní REST API
-      href: concepts/sdk-options.md
-    - name: Cenový model
-      href: concepts/pricing.md
-    - name: Ochrana osobních údajů
-      href: concepts/privacy.md
     - name: Model identit
       href: concepts/identity-model.md
     - name: Authentication
       href: concepts/authentication.md
-    - name: Zpracování událostí
-      href: concepts/event-handling.md
-    - name: Oznámení
+    - name: Ochrana osobních údajů
+      href: concepts/privacy.md
+    - name: Nabízená oznámení
       href: concepts/notifications.md
-    - name: Protokolování a diagnostika
-      href: concepts/logging-and-diagnostics.md
-    - name: Metriky
-      href: concepts/metrics.md
-    - name: Řešení potíží
-      href: concepts/troubleshooting-info.md
+    - name: Interoperabilita Teams
+      href: concepts/teams-interop.md
     - name: Známé problémy
       href: concepts/known-issues.md
 - name: Ukázky

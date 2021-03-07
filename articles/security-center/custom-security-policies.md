@@ -1,7 +1,6 @@
 ---
 title: Vytváření vlastních zásad zabezpečení v Azure Security Center | Microsoft Docs
 description: Definice vlastních zásad Azure monitorují Azure Security Center.
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -9,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100861"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441053"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Vytváření vlastních iniciativ a zásad zabezpečení
 
@@ -23,6 +22,9 @@ Kvůli lepšímu zabezpečení systémů a prostředí Azure Security Center vyg
 Pomocí této funkce můžete přidat *vlastní iniciativy.* Pak dostanete doporučení, pokud vaše prostředí nedodržuje zásady, které vytvoříte. Všechny vlastní iniciativy, které vytvoříte, se zobrazí společně s integrovanou iniciativou na řídicím panelu dodržování předpisů, jak je popsáno v kurzu [zlepšení dodržování předpisů](security-center-compliance-dashboard.md).
 
 Jak je popsáno v [dokumentaci k Azure Policy](../governance/policy/concepts/definition-structure.md#definition-location), když zadáte umístění pro vlastní iniciativu, musí se jednat o skupinu pro správu nebo o předplatné. 
+
+> [!TIP]
+> Přehled klíčových konceptů této stránky najdete v tématu [co jsou zásady zabezpečení, iniciativy a doporučení?](security-policy-concept.md).
 
 ::: zone pivot="azure-portal"
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/05/2021
+ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050235"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440881"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -280,6 +280,7 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
    1. Nahraďte `AzureWebJobsStorage` hodnotu vlastnosti připojovacím řetězcem účtu úložiště, který jste předtím uložili, například:
 
       Před:
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +292,7 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
       ```
 
       Po:
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +304,22 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
       ```
 
    1. Až budete hotovi, nezapomeňte změny uložit.
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>Povolit vytváření vestavěných konektorů
+
+Můžete vytvořit vlastní integrované konektory pro libovolnou službu, kterou potřebujete, pomocí [rozhraní pro rozšiřitelnost verze Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). Podobně jako u integrovaných konektorů, jako jsou Azure Service Bus a SQL Server, tyto konektory poskytují vyšší propustnost, nízkou latenci, místní připojení a spouštění nativně ve stejném procesu jako modul runtime verze Preview.
+
+Funkce pro vytváření obsahu je aktuálně dostupná jenom v Visual Studio Code, ale ve výchozím nastavení není povolená. Chcete-li vytvořit tyto konektory, je nutné nejprve převést projekt ze sady rozšíření (Node.js) na základě balíčku NuGet (.NET).
+
+1. V podokně Průzkumník v kořenovém adresáři vašeho projektu přesuňte ukazatel myši do libovolné prázdné oblasti pod všemi ostatními soubory a složkami, otevřete místní nabídku a vyberte možnost **převést na projekt aplikace logiky založené na NuGet**.
+
+   ![Snímek obrazovky zobrazující podokno Průzkumníka s místní nabídkou projektu otevřený z prázdné oblasti okna projektu](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. Po zobrazení výzvy potvrďte převod projektu.
+
+1. Chcete-li pokračovat, přečtěte si postup v článku a postupujte podle pokynů v tématu [Azure Logic Apps spuštění odkudkoli integrovaných rozšíření konektoru](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -1348,6 +1366,7 @@ Když se pokusíte spustit relaci ladění, zobrazí se chyba **"po spuštění 
 1. V následujícím úkolu odstraňte řádek, `"dependsOn: "generateDebugSymbols"` včetně čárky, která končí předchozím řádkem, například:
 
    Před:
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1378,7 @@ Když se pokusíte spustit relaci ladění, zobrazí se chyba **"po spuštění 
    ```
 
    Po:
+
    ```json
     {
       "type": "func",

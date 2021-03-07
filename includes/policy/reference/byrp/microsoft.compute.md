@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f02874a54332519cbad53c74fafa61bcc71f7d08
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: de3f234d6698efb51e0f86fdab7983de5368fd05
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090895"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424907"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[\[Nasazení nástroje ASC Private Preview \] – Konfigurace spravované identity přiřazené systémem pro povolení Azure monitor přiřazení na virtuálních počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC Private Preview] Nakonfigurujte spravovanou identitu přiřazenou systémem na virtuální počítače hostované v Azure, které jsou podporované Azure Monitor, které nemají spravovanou identitu přiřazenou systémem. Spravovaná identita přiřazená systémem je předpokladem pro všechna Azure Monitor přiřazení a musí se do počítačů přidat předtím, než použijete rozšíření Azure Monitor. Cílové virtuální počítače musí být v podporovaném umístění. |modify (úprava) |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[\[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |Hlásí virtuální počítače jako nevyhovující, pokud image virtuálního počítače (OS) není v seznamu definovaném a Agent není nainstalovaný. Seznam imagí operačního systému se v průběhu času aktualizuje, protože se podpora aktualizuje. |auditIfNotExists |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |

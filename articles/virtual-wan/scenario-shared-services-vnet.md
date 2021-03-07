@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461460"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442957"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scénář: Route to Shared Services virtuální sítě
 
@@ -30,9 +30,9 @@ K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení
 
 | Z             | Do:   |*Izolované virtuální sítě*|*Sdílená virtuální síť*|*Větve*|
 |---|---|---|---|---|
-|**Izolované virtuální sítě**|&#8594;|        | Direct | Direct |
-|**Sdílené virtuální sítě**  |&#8594;| Direct | Direct | Direct |
-|**Větve**      |&#8594;| Direct | Direct | Direct |
+|**Izolované virtuální sítě**| ->|        | Direct | Direct |
+|**Sdílené virtuální sítě**  |->| Direct | Direct | Direct |
+|**Větve**      |->| Direct | Direct | Direct |
 
 Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) komunikuje s cílem (strana "do" toku, záhlaví sloupců jsou kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace toků přímo přes virtuální síť WAN (tedy slovo "Direct" v tabulce).
 
@@ -65,17 +65,17 @@ Při konfiguraci scénáře Vezměte v úvahu následující postup:
 2. Vytvořte vlastní směrovací tabulku. V tomto příkladu odkazujeme na tabulku směrování jako na **RT_SHARED**. Postup vytvoření směrovací tabulky najdete v tématu [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md). Jako vodítko použijte následující hodnoty:
 
    * **Řídí**
-     * Pro **virtuální sítě *s výjimkou* virtuální sítě sdílených služeb**vyberte virtuální sítě, který chcete izolovat. To znamená, že všechny tyto virtuální sítě (s výjimkou virtuální sítě sdílené služby) budou mít přístup k cíli na základě tras RT_SHARED směrovací tabulky.
+     * Pro **virtuální sítě *s výjimkou* virtuální sítě sdílených služeb** vyberte virtuální sítě, který chcete izolovat. To znamená, že všechny tyto virtuální sítě (s výjimkou virtuální sítě sdílené služby) budou mít přístup k cíli na základě tras RT_SHARED směrovací tabulky.
 
    * **Šíření**
-      * V případě **větví**šíří trasy do této směrovací tabulky kromě dalších směrovacích tabulek, které jste už vybrali. Z důvodu tohoto kroku se v tabulce směrování v RT_SHARED dozvíte o trasách ze všech připojení větví (VPN/ER/User VPN).
-      * Pro **virtuální sítě**vyberte **virtuální síť sdílených služeb**. Z důvodu tohoto kroku se RT_SHARED směrovací tabulce dozvíte o trasách z připojení virtuální sítě Shared Services.
+      * V případě **větví** šíří trasy do této směrovací tabulky kromě dalších směrovacích tabulek, které jste už vybrali. Z důvodu tohoto kroku se v tabulce směrování v RT_SHARED dozvíte o trasách ze všech připojení větví (VPN/ER/User VPN).
+      * Pro **virtuální sítě** vyberte **virtuální síť sdílených služeb**. Z důvodu tohoto kroku se RT_SHARED směrovací tabulce dozvíte o trasách z připojení virtuální sítě Shared Services.
 
 Výsledkem bude konfigurace směrování, která je znázorněna na následujícím obrázku:
 
-   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Virtuální síť sdílených služeb" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
+   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Diagram virtuální sítě sdílených služeb" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o virtuální síti WAN najdete v části [Nejčastější dotazy](virtual-wan-faq.md).
+* Informace o konfiguraci pomocí šablony ARM najdete v tématu [rychlý Start: směrování na sdílené služby virtuální sítě pomocí šablony ARM](quickstart-route-shared-services-vnet-template.md).
 * Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).

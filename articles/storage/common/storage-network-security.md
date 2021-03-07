@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714744"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430883"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 
@@ -136,7 +136,7 @@ Při plánování zotavení po havárii během regionálního výpadku byste mě
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Potřebná oprávnění se *připojují ke službě do podsítě* a jsou součástí předdefinované role *přispěvatele účtu úložiště* . Dá se taky přidat k definicím vlastních rolí.
+Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Používání pravidla může provést [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) nebo uživatel, kterému bylo uděleno oprávnění k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [operaci poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) prostřednictvím vlastní role Azure.
 
 Účet úložiště a udělený přístup k virtuálním sítím můžou být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
 

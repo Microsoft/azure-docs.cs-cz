@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/04/2021
-ms.openlocfilehash: 8b63565457498663250eb6ab5dc1361e43bbffaf
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 03/04/2021
+ms.openlocfilehash: ec1ea7d727278076944b8cc11f47a1af587e6591
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585003"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440152"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat
 
@@ -1196,7 +1196,74 @@ ___
 
 ## <a name="conversion-functions"></a>Převodní funkce
 
-Převodní funkce se používají k převodu dat a datových typů.
+Převodní funkce slouží k převodu dat a testování datových typů.
+
+<code>isBoolean</code>
+<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+Kontroluje, zda je řetězcová hodnota logická hodnota podle pravidel ``toBoolean()``
+* ``isBoolean('true') -> true``
+* ``isBoolean('no') -> true``
+* ``isBoolean('microsoft') -> false``
+
+<code>isByte</code>
+<code><b>isByte(<value1> : string) => boolean</b></code><br/><br/>
+Kontroluje, zda je hodnota řetězce hodnota v bajtech, která odpovídá volitelnému formátu podle pravidel ``toByte()``
+* ``isByte('123') -> true``
+* ``isByte('chocolate') -> false``
+
+<code>isDate</code>
+<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Zkontroluje, zda je řetězec vstupního data kalendářní datum pomocí volitelného formátu vstupního data. Pro dostupné formáty se podívejte na SimpleDateFormat Java. Pokud je formát vstupního data vynechán, je výchozí formát ``yyyy-[M]M-[d]d`` . Přijaté formáty jsou ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
+* ``isDate('2012-8-18') -> true``
+* ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
+
+<code>isShort</code>
+<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroly řetězcové hodnoty jsou krátkou hodnotou podle pravidel ``toShort()``
+* ``isShort('123') -> true``
+* ``isShort('$123' -> '$###') -> true``
+* ``isShort('microsoft') -> false``
+
+<code>isInteger</code>
+<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je celočíselná hodnota daného volitelného formátu podle pravidel ``toInteger()``
+* ``isInteger('123') -> true``
+* ``isInteger('$123' -> '$###') -> true``
+* ``isInteger('microsoft') -> false``
+
+<code>isLong</code>
+<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je dlouhodobá hodnota pro volitelný formát podle pravidel ``toLong()``
+* ``isLong('123') -> true``
+* ``isLong('$123' -> '$###') -> true``
+* ``isLong('gunchus') -> false``
+
+<code>isFloat</code>
+<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je hodnota typu float, která přechází z volitelného formátu podle pravidel ``toFloat()``
+* ``isFloat('123') -> true``
+* ``isFloat('$123.45' -> '$###.00') -> true``
+* ``isFloat('icecream') -> false``
+
+<code>isDouble</code>
+<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je dvojitá hodnota, která má v souladu s pravidly ``toDouble()``
+* ``isDouble('123') -> true``
+* ``isDouble('$123.45' -> '$###.00') -> true``
+* ``isDouble('icecream') -> false``
+
+<code>isDecimal</code>
+<code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
+Kontrola řetězcové hodnoty je desítková hodnota, která má formát podle pravidel ``toDecimal()``
+* ``isDecimal('123.45') -> true``
+* ``isDecimal('12/12/2000') -> false``
+
+<code>isTimestamp</code>
+<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+Kontroluje, zda je řetězec vstupního data časovou známkou pomocí volitelného vstupního formátu časového razítka. Dostupné formáty najdete v SimpleDateFormat Java. Pokud je časové razítko vynecháno, použije se výchozí vzor ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` . Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Časové razítko podporuje přesnost až milisekund s hodnotou 999. informace o dostupných formátech najdete v SimpleDateFormat Java.
+* ``isTimestamp('2016-12-31 00:12:00') -> true``
+* ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
+* ``isTimestamp('2012-8222.18') -> false``
 
 ### <code>toBase64</code>
 <code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>

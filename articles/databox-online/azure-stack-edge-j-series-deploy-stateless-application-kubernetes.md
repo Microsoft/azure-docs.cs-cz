@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc8d14f3d4621a41c2d2845802313033d0809b4b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804843"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442124"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Tento článek popisuje, jak nasadit bezstavovou aplikaci pomocí příkazů kubectl v existujícím clusteru Kubernetes. Tento článek vás také provede procesem vytvoření a nastavení lusků v bezstavových aplikacích.
 

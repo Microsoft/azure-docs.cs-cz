@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040902"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423892"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Kurz: hromadné extrakce dat formuláře pomocí Azure Data Factory
 
@@ -43,10 +43,11 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
-* Až budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení prostředku vyberte **Přejít k prostředku**.
+* Až budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení prostředku vyberte **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Do kódu později v tomto rychlém startu vložíte svůj klíč a koncový bod.
     * Službu můžete vyzkoušet pomocí bezplatné cenové úrovně (F0). Pak můžete upgradovat později na placenou úroveň pro produkční prostředí.
 * Sada alespoň pěti forem stejného typu. V ideálním případě má tento pracovní postup podporovat velké sady dokumentů. Tipy a možnosti pro vložení datové sady školení najdete v tématu [Vytvoření školicí datové sady](./build-training-data-set.md) . Pro účely tohoto kurzu můžete použít soubory ve složce výuka [ukázkové datové sady](https://go.microsoft.com/fwlink/?linkid=2128080).
+
 
 ## <a name="project-architecture"></a>Architektura projektu 
 

@@ -10,21 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ba8a6b530f3f3650959eac90bba5b05e3ac0643
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215404"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430407"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Typy telefonních čísel v komunikačních službách Azure
+
+
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
-> Dostupnost telefonního čísla se v současné době omezuje na předplatná Azure, která mají fakturační adresu v USA. Další informace najdete v části [nárok na odběr](#azure-subscriptions-eligibility) v tomto dokumentu.
+> Dostupnost telefonního čísla je v současné době omezená na placená předplatná Azure, která mají fakturační adresu v prostředcích USA a komunikačních služeb, které mají umístění dat USA. Telefonní čísla nejdou získat na zkušebních účtech ani pomocí bezplatného kreditu Azure. Další informace najdete v části [nárok na odběr](#azure-subscriptions-eligibility) v tomto dokumentu.
+
 
 Komunikační služby Azure umožňují používat telefonní čísla k provádění hlasových hovorů a posílání zpráv SMS pomocí veřejné telefonní sítě (PSTN). V tomto dokumentu si probereme typ telefonního čísla, možnosti konfigurace a dostupnost oblasti pro plánování telefonního subsystému a řešení SMS pomocí komunikačních služeb.
+
+## <a name="azure-subscriptions-eligibility"></a>Způsobilost k předplatným Azure
+
+Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Telefonní čísla nejdou získat na zkušebních účtech ani na bezplatné kredity Azure. 
+
+Dostupnost telefonního čísla se v současné době omezuje na předplatná Azure, která mají fakturační adresu v USA a zdrojích komunikačních služeb, které mají umístění dat US.
+
 
 ## <a name="number-types-and-features"></a>Typy a funkce čísel
 Komunikační služby nabízí dva typy telefonních čísel: **místní** a **bez poplatků**. 
@@ -72,11 +82,6 @@ Následující tabulka uvádí, kde můžete získat různé typy telefonních �
 
 * Další podrobnosti o cílech volání a cenách najdete na [stránce s cenami](../pricing.md).
 
-## <a name="azure-subscriptions-eligibility"></a>Způsobilost k předplatným Azure
-
-Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Telefonní čísla nejdou získat na zkušebních účtech ani na bezplatné kredity Azure. 
-
-V současné době je dostupnost telefonního čísla omezená na předplatná Azure, která mají fakturační adresu v USA.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,17 +12,17 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Převod řeči na text, převod řeči na textový software
-ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499641"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434304"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
 V tomto přehledu se dozvíte o výhodách a funkcích služby Speech-to-text.
-Převod řeči na text, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových streamů v reálném čase na text. Vaše aplikace, nástroje nebo zařízení můžou používat, zobrazovat a provádět na tomto textu akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office. Bez problémů funguje s nabídkami služeb pro <a href="./speech-translation.md" target="_blank">převod a převod <span class="docon docon-navigate-external x-hidden-focus"></span> </a> <a href="./text-to-speech.md" target="_blank">textu na <span class="docon docon-navigate-external x-hidden-focus"></span> řeč</a> . Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
+Převod řeči na text, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových streamů v reálném čase na text. Vaše aplikace, nástroje nebo zařízení můžou používat, zobrazovat a provádět na tomto textu akce jako vstup příkazu. Tato služba využívá stejnou technologii rozpoznávání, kterou Microsoft používá pro Cortana a produkty Office. Bez problémů funguje s nabídkami služeb pro <a href="./speech-translation.md" target="_blank">převod a převod </a> <a href="./text-to-speech.md" target="_blank">textu na řeč </a> . Úplný seznam dostupných jazyků pro převod řeči na text najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
 
 Služba převod řeči na text standardně používá univerzální jazykový model. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Při použití převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvořit a naučit vlastní modely akustického, jazyka a výslovnosti. Přizpůsobení je užitečné pro řešení hlučného hluku nebo slovníku specifického pro konkrétní odvětví.
 

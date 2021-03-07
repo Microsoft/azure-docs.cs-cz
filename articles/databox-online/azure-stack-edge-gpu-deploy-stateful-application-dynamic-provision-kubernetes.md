@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ea316205e7dfb4069c41987e785881512735a4d6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804919"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438026"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s StorageClass na zařízení GPU Azure Stack Edge pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v Kubernetes pomocí StorageClass k dynamickému zřízení úložiště a nasazení. Nasazení používá `kubectl` příkazy v existujícím clusteru Kubernetes a nasadí aplikaci MySQL. 
 

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 03/03/2021
-ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049504"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439557"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – flexibilní Server
 
@@ -90,7 +90,7 @@ Flexibilní serverová služba je vybavená integrovanými funkcemi pro monitoro
 
 Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server je k dispozici v dnešní době v následujících oblastech Azure:
 
-| Oblast | Dostupnost | Redundantní HA zóny | 
+| Oblast | Dostupnost | Zóna – redundantní HA | 
 | --- | --- | --- |
 | West Europe | :heavy_check_mark: | :heavy_check_mark: |
 | Severní Evropa | :heavy_check_mark: | :heavy_check_mark: |
@@ -102,7 +102,7 @@ Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Serv
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
 | Japonsko – východ | :heavy_check_mark: | :heavy_check_mark: | 
 
-Dál se přidávají nové oblasti. 
+Dál přidáváme další oblasti pro flexibilní Server.
 
 ## <a name="migration"></a>Migrace
 
@@ -110,6 +110,16 @@ Služba spouští komunitní verze PostgreSQL. To umožňuje úplnou kompatibili
 
 - **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je pg_dump, a pg_restore můžou poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](../howto-migrate-using-dump-and-restore.md) .
 - **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace do flexibilního serveru s minimálními prostoji je možné využít Azure Database Migration Service. Viz [DMS prostřednictvím portálu](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) a [DMS prostřednictvím](../../dms/tutorial-postgresql-azure-postgresql-online.md)rozhraní příkazového řádku. Z Azure Database for PostgreSQL můžete migrovat z jednoho serveru do flexibilního serveru. Podrobnosti najdete v tomto [článku o DMS](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
+
+## <a name="contacts"></a>Kontakty
+V případě jakýchkoli otázek nebo návrhů, které byste mohli mít Azure Database for PostgreSQL flexibilní Server, pošlete e-mail týmu Azure Database for PostgreSQL ([ @Ask Azure DB pro PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Upozorňujeme, že tato e-mailová adresa není alias technické podpory.
+
+Můžete také využít tyto komunikační kanály:
+
+- Pro podporu Azure [vytvořte lístek podpory na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+  
 
 ## <a name="next-steps"></a>Další kroky
 

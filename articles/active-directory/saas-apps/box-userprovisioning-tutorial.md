@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: df4031a590eb4547d4327cebe96ccbe63d21785a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358146"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437804"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace boxu pro Automatické zřizování uživatelů
 
@@ -36,6 +36,9 @@ Ke konfiguraci integrace služby Azure AD s polem budete potřebovat následují
 
 > [!NOTE]
 > Aplikace musí být nejprve povolené v aplikaci box.
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 K otestování kroků v tomto kurzu použijte tato doporučení:
 

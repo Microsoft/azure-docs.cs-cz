@@ -7,15 +7,17 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 02/14/2021
-ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e72e312e932e71d4dac8532983c2c96ba105ba3b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099099"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439472"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Povolený Azure Security Center zdarma vs Azure Defender
 Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
+
+Můžete upgradovat ze stránky **Nastavení cenové &** , jak je popsáno v tématu [rychlý Start: povolení programu Azure Defender](enable-azure-defender.md). Podrobnosti o cenách v měně zvolené a podle vaší oblasti najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Jaké jsou výhody povolení programu Azure Defender?
 
@@ -70,14 +72,14 @@ Security Center má dvě nabídky:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Jak pro předplatné povolím Azure Defender? 
 Pro povolení služby Azure Defender pro vaše předplatné můžete použít některý z následujících způsobů: 
 
-|Metoda  |Pokyny  |
-|---------|---------|
-|Azure Security Center stránky Azure Portal|[Povolení Azure Defenderu](enable-azure-defender.md)|
-|REST API|[Rozhraní API pro ceny](/rest/api/securitycenter/pricings)|
-|Azure CLI|[AZ Security Price](/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure Policy|[Ceny sady prostředků](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| Metoda                                          | Pokyny                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Security Center stránky Azure Portal | [Povolení Azure Defenderu](enable-azure-defender.md)                                                                                                  |
+| REST API                                        | [Rozhraní API pro ceny](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [AZ Security Price](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy                                    | [Ceny sady prostředků](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
 No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 

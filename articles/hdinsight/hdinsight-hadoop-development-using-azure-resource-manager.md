@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945770"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434657"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na vývojové nástroje založené na Azure Resource Manager pro clustery HDInsight
 
@@ -238,7 +238,7 @@ V této části najdete odkazy na Další informace o tom, jak provádět určit
 
 | Jak... používání sady HDInsight SDK založené na Správce prostředků | Odkazy |
 | --- | --- |
-| Sada Azure HDInsight SDK pro .NET|Viz [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
+| Sada Azure HDInsight SDK pro .NET|Viz [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight) |
 | Interaktivní ověřování aplikací pomocí Azure Active Directory se sadou .NET SDK |Viz [spustit Apache Hive dotazy pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Fragment kódu v tomto článku používá interaktivní přístup pro ověřování. |
 | Ověřování aplikací, které nejsou interaktivní pomocí Azure Active Directory se sadou .NET SDK |Viz [Vytvoření neinteraktivních aplikací pro HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Odeslání úlohy Apache Hive pomocí sady .NET SDK |Viz [odeslání Apache Hive úloh](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

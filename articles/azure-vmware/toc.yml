@@ -4,6 +4,8 @@
   items:
     - name: Informace o službě Azure VMware Solution
       href: introduction.md
+    - name: Aktualizace platformy
+      href: azure-vmware-solution-platform-updates.md
 - name: Rychlý start
   items:
     - name: 0. Naplánování nasazení
