@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 02/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 1054bec0daee55bac8892869a5f928b600e84d1e
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101102882"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444544"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -27,7 +27,7 @@ ms.locfileid: "101102882"
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
   * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
   * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -258,7 +258,7 @@ Chcete-li analyzovat faktury z adresy URL, použijte `StartRecognizeInvoicesFrom
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeInvoices**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou fakturu v odeslaném dokumentu. Následující kód zpracuje fakturu na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -491,7 +491,7 @@ K analýze potvrzení z adresy URL použijte `StartRecognizeReceiptsFromUri` met
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeReceipts**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedReceipt` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -557,7 +557,7 @@ K analýze obchodních karet z adresy URL použijte `StartRecognizeBusinessCards
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet&preserve-view=true) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) , jako je například **StartRecognizeBusinessCards**. Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou kartu v dokumentu. Následující kód zpracuje vizitku na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 

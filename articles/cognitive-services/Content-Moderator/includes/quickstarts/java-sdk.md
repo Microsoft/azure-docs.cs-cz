@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 147985ce5aff54f3784363720a576b7e46d6e647
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 17acd11b6ebb651be170135ab9789f788d4d8077
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947186"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444169"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Java. Pomocí těchto kroků nainstalujete balíček Maven a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -34,7 +34,7 @@ Pomocí klientské knihovny Content Moderator pro jazyk Java:
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" vytvořte prostředek Content moderator vytvoření prostředku "  target="_blank"> Content Moderator <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" vytvořte prostředek Content moderator vytvoření prostředku "  target="_blank"> Content Moderator </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
     * K připojení aplikace k Content Moderator budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 

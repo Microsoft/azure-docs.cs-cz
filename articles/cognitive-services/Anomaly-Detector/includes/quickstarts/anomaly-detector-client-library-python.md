@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: f6206ad2f88983396fa7d0be323daad327e4d235
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 216c45bf097718f6a696e64c8bd9c8718fc0185e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947501"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444751"
 ---
 Začněte s klientskou knihovnou anomálií pro Python. Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
 
@@ -30,7 +30,7 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 * [Python 3.x](https://www.python.org/)
 * [Knihovna analýzy dat PANDAS](https://pandas.pydata.org/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
     * K připojení aplikace k rozhraní API detektoru anomálií budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -52,7 +52,7 @@ from azure.core.credentials import AzureKeyCredential
 import pandas as pd
 ```
 
-Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění Azure vašeho předplatného. Například `westus2`.
+Vytvořte proměnné pro klíč jako proměnnou prostředí, cestu k datovému souboru časové řady a umístění Azure vašeho předplatného. Například, `westus2`.
 
 ```python
 SUBSCRIPTION_KEY = os.environ["ANOMALY_DETECTOR_KEY"]
@@ -112,7 +112,7 @@ for index, row in data_file.iterrows():
     series.append(TimeSeriesPoint(timestamp=row[0], value=row[1]))
 ```
 
-Vytvořte `DetectRequest` objekt s časovou řadou a `TimeGranularity` (nebo periodicitou) svých datových bodů. Například `TimeGranularity.daily`.
+Vytvořte `DetectRequest` objekt s časovou řadou a `TimeGranularity` (nebo periodicitou) svých datových bodů. Například, `TimeGranularity.daily`.
 
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)

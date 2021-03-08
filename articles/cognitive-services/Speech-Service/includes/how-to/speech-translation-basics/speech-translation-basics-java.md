@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 9c0178ab1361d6a683aef606ccf1e3cac85620e4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 891276f7a37bfb2397101388f430a297bdca0a21
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99244869"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445676"
 ---
 Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
 
@@ -28,7 +28,7 @@ V tomto článku se předpokládá, že máte účet Azure a předplatné služb
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> tématu _o sadě Speech SDK_ .
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK</a> tématu _o sadě Speech SDK_ .
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 

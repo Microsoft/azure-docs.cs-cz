@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 12/01/2020
 ms.author: aahi
-ms.openlocfilehash: 31ad1c9c8429becf57358cb14683e69ab2b3d236
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 17c24e19068c3d084da8a3c888729c2f78185c17
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505808"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444968"
 ---
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -27,10 +27,10 @@ ms.locfileid: "97505808"
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktuální verze sady [kudrlinkou](https://curl.haxx.se/).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 

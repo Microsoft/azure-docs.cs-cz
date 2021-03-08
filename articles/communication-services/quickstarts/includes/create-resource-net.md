@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886094"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445458"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
-- Získejte nejnovější verzi [klientské knihovny .NET identity](/dotnet/api/azure.identity?view=azure-dotnet).
+- Získejte nejnovější verzi [klientské knihovny .NET identity](/dotnet/api/azure.identity).
 - Získejte nejnovější verzi [klientské knihovny pro správu .NET](../../concepts/sdk-options.md).
 
 ## <a name="installing-the-client-library"></a>Instalace klientské knihovny

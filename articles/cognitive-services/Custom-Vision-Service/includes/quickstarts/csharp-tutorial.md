@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f29bacb60ce71257e8ace266df0a524125e457f8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 269e4252aabeff0c7a1c4a12d24191cef5b6dc49
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105632"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445807"
 ---
 Začněte s klientskou knihovnou Custom Vision pro .NET. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -32,7 +32,7 @@ Pomocí klientské knihovny Custom Vision pro .NET:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
     * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -106,7 +106,7 @@ V metodě **Main** aplikace přidejte volání metod používaných v rámci toh
 
 ## <a name="object-model"></a>Objektový model
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
 |[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Tato třída zpracovává dotazování vašich modelů pro klasifikaci imagí předpovědi.|

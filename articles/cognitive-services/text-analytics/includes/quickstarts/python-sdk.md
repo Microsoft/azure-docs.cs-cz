@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: a4c38b7ad92ebc1e42db31ea0c6e478bcfab50b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74e657ba8934057d5720eef47bc5ffe11a3a5ece
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750129"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444164"
 ---
 <a name="HOLTop"></a>
 
@@ -28,7 +28,7 @@ ms.locfileid: "101750129"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Pokud chcete použít funkci analyzovat, budete potřebovat prostředek Analýza textu s cenovou úrovní Standard (y).

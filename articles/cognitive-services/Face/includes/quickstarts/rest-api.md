@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 1d5a596efca2b1818a6d4ed4995904707a03dba0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9bdc153d88dceec37ae62bdcc6b38b32b4bc7787
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193828"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444326"
 ---
 Začněte s rozpoznáváním obličeje pomocí REST API obličeje. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -29,7 +29,7 @@ REST API obličej použijte k těmto akcím:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání tváře budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * [PowerShell verze 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)nebo podobná aplikace příkazového řádku.

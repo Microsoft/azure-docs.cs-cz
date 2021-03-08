@@ -6,18 +6,18 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 08679bac77121ee2d276f3d2854e0b119c769582
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: b4c6591911137441bec7411dc697ed63212fbbc2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109490"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445543"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt</a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 

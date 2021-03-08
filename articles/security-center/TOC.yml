@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Vytváření vlastních iniciativ a zásad zabezpečení
           href: custom-security-policies.md
-    - name: Ochrana počítačů pomocí programu Defender pro servery
+    - name: Ochrana počítačů
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Přehled služby Azure Defender pro servery

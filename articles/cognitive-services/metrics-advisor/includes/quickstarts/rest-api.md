@@ -9,17 +9,17 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3269d771c43e6233459b9c194c1bab4f3602728
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96231476"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444857"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
+* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
 * Aktuální verze sady [kudrlinkou](https://curl.haxx.se/). V tomto článku se používá několik přepínačů příkazového řádku, které jsou uvedeny v [dokumentaci k kudrlinkou](https://curl.haxx.se/docs/manpage.html).
     * Následující příklady BASH používají znak pro `\` pokračování řádku. Pokud konzola nebo terminál používá jiný znak pro pokračování řádku, použijte tento znak.
 

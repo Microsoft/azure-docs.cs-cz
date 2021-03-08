@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 12838eb2cd8437b2c3b3c225651b51991625fd78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6fc7b347dfc12f1dd7758ccc2a2d1c58f11debad
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750436"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444729"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ ms.locfileid: "101750436"
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Referenční dokumentace V3](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v3 [balíček V3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referenční dokumentace V3](/dotnet/api/azure.ai.textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v3 [balíček V3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 ---
 
@@ -32,7 +32,7 @@ ms.locfileid: "101750436"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod.  Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu </a> v Azure Portal, abyste získali svůj klíč a koncový bod.  Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Pokud chcete použít funkci analyzovat, budete potřebovat prostředek Analýza textu s cenovou úrovní Standard (y).

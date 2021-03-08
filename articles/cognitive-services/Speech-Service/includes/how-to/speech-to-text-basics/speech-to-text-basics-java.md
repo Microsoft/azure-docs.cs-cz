@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 07d118073a73f539df8ea9c5428562a8cdd26db3
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fcb2ee164a7e574ed470c8daf33cab9c9defcf00
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912254"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444908"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -18,7 +18,7 @@ Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepiso
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre) na GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -26,8 +26,8 @@ V tomto článku se předpokládá, že máte účet Azure a předplatné služb
 
 Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle následujících pokynů:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java Runtime <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Svém <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java Runtime </a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Svém </a>
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 

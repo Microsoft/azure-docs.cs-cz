@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 65f7af56e7f0042b8d4c312d17641a537f5fd908
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999320"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445431"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro funkci přejít. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -31,8 +31,8 @@ Použijte klientskou knihovnu služby FACET k přechodu na:
 
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
-    * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k rozhraní API pro rozpoznávání tváře budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Po získání klíče a koncového bodu [vytvořte proměnné prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro klíč a koncový bod s názvem `FACE_SUBSCRIPTION_KEY` a v `FACE_ENDPOINT` uvedeném pořadí.
 
@@ -89,7 +89,7 @@ V dalším kroku začnete přidávat kód pro provádění různých operací sl
 
 Následující třídy a rozhraní zpracovávají některé z hlavních funkcí služby Face Service přejít do klientské knihovny.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[Klient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
@@ -195,7 +195,7 @@ Jakmile budete mít k plošky, provedete tuto **osobu** , aby bylo možné ident
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_pg_train)]
 
 > [!TIP]
-> Face API běží na sadě předem sestavených modelů, které jsou statické podle povahy (výkon modelu nebude znovu fungovat ani se nevylepšit při spuštění služby). Výsledky, které model vytvoří, se můžou změnit, pokud Microsoft aktualizuje back-end modelu bez migrace na zcela novou verzi modelu. Aby bylo možné využít novější verzi modelu, můžete přeškolit svoji **osobu** a zadat novější model jako parametr se stejnými registračními kopiemi.
+> Rozhraní API pro rozpoznávání tváře běží na sadě předem sestavených modelů, které jsou statické podle povahy (výkon modelu nebude znovu fungovat ani se nevylepšit při spuštění služby). Výsledky, které model vytvoří, se můžou změnit, pokud Microsoft aktualizuje back-end modelu bez migrace na zcela novou verzi modelu. Aby bylo možné využít novější verzi modelu, můžete přeškolit svoji **osobu** a zadat novější model jako parametr se stejnými registračními kopiemi.
 
 ## <a name="identify-a-face"></a>Identifikace obličeje
 
@@ -275,7 +275,7 @@ Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstra
 V tomto rychlém startu jste zjistili, jak použít klientské knihovny pro tvář k přechodu na základní úkoly rozpoznávání obličeje. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
 > [!div class="nextstepaction"]
-> [Odkaz na Face API (Přejít)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)
+> [Odkaz na rozhraní API pro rozpoznávání tváře (Přejít)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)
 
 * [Co je služba Rozpoznávání tváře?](../../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/Face/FaceQuickstart.go).

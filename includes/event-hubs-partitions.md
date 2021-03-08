@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f6bd0c13d5cbad802613e2bdea8fd6002f4deea2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955636"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444631"
 ---
 Centrum událostí uspořádá sekvence událostí do jednoho nebo více oddílů. Jakmile přijdete o novější události, přidají se na konec této sekvence. Oddíl si lze představit jako „protokol transakcí“.
 
@@ -57,4 +57,3 @@ Nastavení počtu oddílů na maximální povolenou hodnotu se měří, ale vžd
 
 Oddíly lze odesílat přímo, a proto se nedoporučuje. Místo toho můžete použít konstrukce vyšší úrovně, které jsou představené v části [vydavatelé událostí](../articles/event-hubs/event-hubs-features.md#event-publishers) . 
 
-Další informace o oddílech a kompromisu mezi dostupností a spolehlivostí najdete v tématech [Průvodce programováním pro službu Event Hubs](../articles/event-hubs/event-hubs-programming-guide.md#partition-key) a [Dostupnost a konzistence ve službě Event Hubs](../articles/event-hubs/event-hubs-availability-and-consistency.md).

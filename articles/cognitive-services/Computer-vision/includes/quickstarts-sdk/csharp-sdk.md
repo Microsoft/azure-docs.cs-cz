@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a78d3d23a167eb0d3c254e079f807ea150fa68f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e2c4da612d937488817af3b81d3b99e13cce1d41
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102193746"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444852"
 ---
 <a name="HOLTop"></a>
 
@@ -30,7 +30,7 @@ Pomocí klientské knihovny Počítačové zpracování obrazu můžete:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -131,7 +131,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 > [!NOTE]
 > V tomto rychlém startu se předpokládá, že jste pro svůj Počítačové zpracování obrazu klíč a koncový bod [vytvořili proměnné prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
-V nové metodě ve třídě **program** vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** .
+V nové metodě ve třídě **program** vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)** .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 

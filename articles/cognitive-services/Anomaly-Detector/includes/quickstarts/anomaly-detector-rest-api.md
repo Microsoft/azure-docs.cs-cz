@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2020
 ms.author: mbullwin
-ms.openlocfilehash: a75962105a7640f4a3c73df80f5ba516565c7076
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a7579bb53f82dfdfe82c4eba64d2c6984152c875
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705029"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445192"
 ---
 V tomto rychlém startu se dozvíte, jak detekovat anomálie v dávce dat časových řad pomocí služby detektoru anomálií a kudrlinkou.
 
@@ -18,7 +18,7 @@ Základní informace o konceptech detektoru anomálií najdete v článku [Přeh
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-- Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a vyberte tlačítko **Přejít k prostředku** .
+- Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a vyberte tlačítko **Přejít k prostředku** .
     - K použití REST API budete potřebovat adresu klíče a koncového bodu z prostředku, který vytvoříte. 
     K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 

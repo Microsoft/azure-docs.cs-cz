@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 42dc7eb1a74bf2e376f834ee3198ad6a492226e9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81421781"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444491"
 ---
 K dokončení rychlého startu pro rozpoznávání záměrů budete muset vytvořit účet LUIS a projekt pomocí portálu LUIS Preview. Tento rychlý Start vyžaduje jenom předplatné LUIS. Předplatné služby Speech *není* vyžadováno.
 
@@ -18,7 +18,7 @@ První věc, kterou je potřeba udělat, je vytvořit účet LUIS a aplikaci pom
 
 Pokud chcete vytvořit aplikaci LUIS, postupujte podle těchto pokynů:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Rychlý Start: sestavení předem sestavené doménové aplikace <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Rychlý Start: sestavení předem sestavené doménové aplikace </a>
 
 Až budete hotovi, budete potřebovat čtyři věci:
 
@@ -39,7 +39,7 @@ Tyto informace můžete najít na [portálu Luis Preview](https://preview.luis.a
     > [!div class="mx-imgBorder"]
     > ![Publikování LUIS do koncového bodu](../../../media/luis/publish-app-popup.png)
 
-3. Na portálu LUIS Preview vyberte **Spravovat**a pak vyberte **prostředky Azure**. Na této stránce najdete LUIS klíč a umístění (někdy označované jako _oblast_).
+3. Na portálu LUIS Preview vyberte **Spravovat** a pak vyberte **prostředky Azure**. Na této stránce najdete LUIS klíč a umístění (někdy označované jako _oblast_).
 
    > [!div class="mx-imgBorder"]
    > ![LUIS klíč a umístění](../../../media/luis/luis-key-region.png)

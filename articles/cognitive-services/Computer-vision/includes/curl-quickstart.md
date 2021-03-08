@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/02/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bfd062da44e32061e191361011c0001373488cde
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: c8221a15ddd92276c105f1e441c8da722655d576
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96739204"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444322"
 ---
 REST API Počítačové zpracování obrazu použijte k těmto akcím:
 
@@ -27,10 +27,10 @@ REST API Počítačové zpracování obrazu použijte k těmto akcím:
 > [!NOTE]
 > V tomto rychlém startu se pomocí oblé příkazy zavolá REST API. REST API můžete volat také pomocí programovacího jazyka. Příklady najdete v ukázkách v [jazycích C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), [Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST), [Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST), [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)a [Přejít](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST)na ukázky GitHubu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) . 
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
   * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
   * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * nainstalovaná [složená](https://curl.haxx.se/) závorka

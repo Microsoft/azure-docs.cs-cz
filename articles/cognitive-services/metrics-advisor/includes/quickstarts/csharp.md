@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: c0f2c9a6a9b17ce1979143840b0647e9af2183e7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 31cdb1529ce06906aef2f546ab1c173361e7d779
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356388"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445408"
 ---
 [Referenční dokumentace](/dotnet/api/overview/azure/ai.metricsadvisor-readme-pre)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
@@ -22,7 +22,7 @@ ms.locfileid: "96356388"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
+* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
 * Vaše vlastní databáze SQL s daty časových řad.
    
 > [!TIP]
