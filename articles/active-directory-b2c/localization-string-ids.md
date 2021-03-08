@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108667"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448640"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -357,7 +357,7 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 | ID | Výchozí hodnota |
 | -- | ------------- |
 |intro_msg| Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat.|
-|success_send_code_msg | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání.|
+|success_send_code_msg | Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání.|
 |failure_send_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu.|
 |success_verify_code_msg | E-mailová adresa byla ověřena. Nyní můžete pokračovat.|
 |failure_verify_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zkuste to prosím znovu.|

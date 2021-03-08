@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 98d59ec4b37238005e89051064a60fa6a4407394
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522508"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449828"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivace a nastavení senzoru
 
@@ -142,7 +142,7 @@ Zpočátku se tato aktivita provádí v výukovém režimu, který dává vašem
 
 Zkontrolujte nastavení systému senzoru a ujistěte se, že je senzor nakonfigurovaný tak, aby optimálně zjišťoval a upozornil.
 
-Definujte nastavení systému senzoru. Příklad:
+Definujte nastavení systému senzoru. Například:
 
 - Definujte ICS (nebo IoT) a oddělené podsítě.
 
@@ -214,9 +214,9 @@ Přístup k nástrojům konzoly získáte z vedlejší nabídky.
 |----|---|---|
 | Podpora | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Požádejte o nápovědu [Podpora Microsoftu](https://support.microsoft.com/) . |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
-[Připojení snímače](getting-started.md#4-onboard-a-sensor)
+[Připojení snímače](getting-started.md#onboard-a-sensor)
 
 [Spravovat aktivační soubory senzorů](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 

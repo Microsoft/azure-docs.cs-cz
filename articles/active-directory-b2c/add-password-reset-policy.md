@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171650"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447924"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Nastavení toku resetování hesla v Azure Active Directory B2C
 
@@ -203,6 +203,24 @@ Na cestě uživatele můžete vyjádřit cestu k zapomenutému heslu jako **clai
     ```xml
     <ClaimsExchange Id="ForgotPasswordExchange" TechnicalProfileReferenceId="ForgotPassword" />
     ```
+    
+1. Přidejte následující krok orchestrace mezi aktuální krok a další krok. Nový krok orchestrace, který přidáte, zkontroluje, jestli `isForgotPassword` existuje deklarace identity. Pokud tato deklarace identity existuje, vyvolá [podřízenou cestu resetování hesla](#add-the-password-reset-sub-journey). 
+
+    ```xml
+    <OrchestrationStep Order="3" Type="InvokeSubJourney">
+      <Preconditions>
+        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+          <Value>isForgotPassword</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <JourneyList>
+        <Candidate SubJourneyReferenceId="PasswordReset" />
+      </JourneyList>
+    </OrchestrationStep>
+    ```
+    
+1. Po přidání nového kroku orchestrace znovu načíslování kroků bez přeskakování všech celých čísel od 1 do N.
 
 ### <a name="set-the-user-journey-to-be-executed"></a>Nastavte cestu uživatele, která se má spustit.
 
@@ -262,7 +280,7 @@ V následujícím diagramu:
 1. Uživatel vybere odkaz **zapomenuté heslo?** . Azure AD B2C vrátí kód chyby AADB2C90118 do aplikace.
 1. Aplikace zpracovává kód chyby a Inicializuje novou žádost o autorizaci. Žádost o autorizaci Určuje název zásady resetování hesla, například **B2C_1_pwd_reset**.
 
-![Tok resetování hesla](./media/add-password-reset-policy/password-reset-flow-legacy.png)
+![Starší tok uživatele pro resetování hesla](./media/add-password-reset-policy/password-reset-flow-legacy.png)
 
 Příklad zobrazíte tak, že se podíváte na [jednoduchou ukázku ASP.NET](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI), která ukazuje propojení toků uživatelů.
 

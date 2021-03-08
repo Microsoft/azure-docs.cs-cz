@@ -1,6 +1,6 @@
 ---
-title: Přehled agentů zabezpečení
-description: Pochopení architektury agenta zabezpečení pro agenty používané ve službě Azure Defender pro IoT Service.
+title: 'Rychlý Start: Přehled agentů zabezpečení'
+description: V tomto rychlém startu se naučíte pochopit architekturu agenta zabezpečení pro agenty používané ve službě Azure Defender pro službu IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -8,19 +8,19 @@ author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820649"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449233"
 ---
-# <a name="security-agent-reference-architecture"></a>Referenční architektura agenta zabezpečení
+# <a name="quickstart-security-agent-reference-architecture"></a>Rychlý Start: Referenční architektura agenta zabezpečení
 
 Azure Defender pro IoT poskytuje referenční architekturu pro agenty zabezpečení, které protokolují, zpracovávají, agreguje a odesílají data zabezpečení prostřednictvím IoT Hub.
 
@@ -41,6 +41,10 @@ Agenti zabezpečení služby IoT pro IoT se vyvíjeli jako open source projekty 
 - [Defender pro agenta založeného na IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender pro agenta založeného na systému IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
+## <a name="prerequisites"></a>Požadavky
+
+Žádné
+
 ## <a name="agent-supported-platforms"></a>Podporované platformy agenta
 
 Defender for IoT nabízí různé agenty instalačního programu pro 32 bitových a 64 bitů a totéž jako pro 32 bitových 64 a 16bitových systémů Linux. Ujistěte se, že máte pro každé zařízení správný instalační program agentů podle následující tabulky:
@@ -57,8 +61,5 @@ V tomto článku získáte základní přehled o programu Defender pro architekt
 
 Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, postupujte podle následujících článků:
 
-- Porozumění [metodám ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
-- Výběr a nasazení [agenta zabezpečení](how-to-deploy-agent.md)
-- Přečtěte si téma Defender for IoT – [požadavky na systém](quickstart-system-prerequisites.md)
-- Naučte se, jak [ve IoT Hub povolit Defender pro službu IoT](quickstart-onboard-iot-hub.md) .
-- Další informace o službě najdete v tématu [Nejčastější dotazy k programu Defender pro IoT](resources-frequently-asked-questions.md) .
+> [!div class="nextstepaction"]
+> [metody ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)

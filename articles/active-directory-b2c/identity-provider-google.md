@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c89e7e948b8a48c7e8d43950ffc2748efff6f51b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: a3b0be062025681af2b03dfd2e57f1af2d99d701
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953865"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448349"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C
 
@@ -72,7 +72,10 @@ Zadejte **název** vaší aplikace. V části **autorizované domény** zadejte 
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Google** , abyste se mohli přihlásit pomocí účtu Google.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -88,7 +91,7 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti** vyberte možnost `Manual` .
-7. Zadejte **název** klíče zásad. Například `GoogleSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. Například, `GoogleSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Do **tajného klíče** zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
@@ -170,7 +173,14 @@ Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu Google, mu
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Google** , abyste se mohli přihlásit pomocí účtu Google.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521641"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449165"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
 
@@ -26,9 +26,8 @@ V tomto článku se dozvíte o různých metodách ověřování, které můžet
 
 Pro každé zařízení, které je připojené k programu Defender pro IoT v IoT Hub, se vyžaduje modul zabezpečení. K ověření zařízení může Defender pro IoT používat jednu ze dvou metod. Vyberte metodu, která funguje nejlépe pro vaše stávající řešení IoT.
 
-> [!div class="checklist"]
-> * SecurityModule – možnost
-> * Možnost zařízení
+- SecurityModule – možnost
+- Možnost zařízení
 
 ## <a name="authentication-methods"></a>Metody ověřování
 
@@ -101,7 +100,8 @@ Upravte _LocalConfiguration.js_ s následujícími parametry:
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>Další kroky
+
+## <a name="see-also"></a>Viz také
 
 - [Přehled agentů zabezpečení](security-agent-architecture.md)
 - [Nasadit agenta zabezpečení](how-to-deploy-agent.md)

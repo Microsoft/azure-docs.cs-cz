@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 4d99cdbb2f50d04eff790cdfe675d0f8031c48a9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: a4223dbc913b7b46cf73c0ed99f607fff67b7e67
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517174"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448060"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Nasazení programu Defender pro agenta zabezpečení na bázi IoT C# pro Windows
 
@@ -27,11 +27,10 @@ Tato příručka vysvětluje, jak nainstalovat Defender pro agenta zabezpečení
 
 V této příručce se naučíte:
 
-> [!div class="checklist"]
-> * Instalace
-> * Ověření nasazení
-> * Odinstalace agenta
-> * Řešení potíží
+- Instalace
+- Ověření nasazení
+- Odinstalace agenta
+- Řešení potíží
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +61,7 @@ Chcete-li nainstalovat agenta zabezpečení, použijte následující pracovní 
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Příklad:
+    Například:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store

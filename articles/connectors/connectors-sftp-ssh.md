@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016758"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449624"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -55,15 +55,15 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
   | **Vytvořit soubor** | Ano | Ano |
-  | **Vytvořit složku** | Není | Není |
-  | **Odstranit dlaždici** | Není | Není |
-  | **Extrakce archivu do složky** | Není | Není |
+  | **Vytvořit složku** | Nelze použít | Nelze použít |
+  | **Odstranit soubor** | Nelze použít | Nelze použít |
+  | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
   | **Získat obsah souboru** | Ano | Ano |
   | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
-  | **Získat metadata souboru** | Není | Není |
-  | **Získat metadata souboru pomocí cesty** | Není | Není |
-  | **Zobrazit seznam souborů ve složce** | Není | Není |
-  | **Přejmenovat soubor** | Není | Není |
+  | **Získat metadata souboru** | Nelze použít | Nelze použít |
+  | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
+  | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
+  | **Přejmenovat soubor** | Nelze použít | Nelze použít |
   | **Aktualizovat soubor** | Ne | Nelze použít |
   ||||
 
@@ -103,10 +103,10 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
   >
   > * **Otisk prstu**: MD5
   >
-  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Pokud pro toto připojení zadáte privátní klíč SSH, **_ručně nezadejte ani neupravujte klíč_* _, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte _*_zkopírovat klíč_*_ ze souboru privátního klíče SSH a _*_Vložit_*_ tento klíč do podrobností o připojení. 
+  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Když pro toto připojení zadáte privátní klíč SSH, ***nemusíte ručně zadávat ani upravovat klíč***, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte ***zkopírovat klíč*** ze souboru privátního klíče SSH a ***Vložit*** tento klíč do podrobností o připojení. 
   > Další informace najdete v části [připojení k SFTP s](#connect) protokolem SSH dále v tomto článku.
 
-_ Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Aplikace logiky, ke které chcete získat přístup k vašemu účtu SFTP. Pokud chcete začít s triggerem SFTP-SSH, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci SFTP-SSH, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
@@ -170,7 +170,15 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 ## <a name="considerations"></a>Požadavky
 
-Tato část popisuje pokyny ke kontrole triggerů a akcí tohoto konektoru.
+V této části jsou popsány požadavky na kontrolu při použití triggerů a akcí tohoto konektoru.
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>Pro nahrávání a zpracování souborů použít jiné složky protokolu SFTP
+
+Na serveru SFTP se ujistěte, že používáte samostatné složky, kam ukládáte nahrané soubory a kde Trigger monitoruje tyto soubory ke zpracování, což znamená, že potřebujete způsob, jak přesouvat soubory mezi těmito složkami. V opačném případě se Trigger neaktivuje a nebude se chovat nepředvídatelné, například přeskočení náhodného počtu souborů, které aktivační událost zpracovává.
+
+Pokud k tomuto problému dojde, odeberte soubory ze složky, kterou aktivační událost monitoruje, a k uložení nahraných souborů použijte jinou složku.
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
    1. Vyberte **Upravit**  >  **kopii**.
 
-   1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  *Ujistěte se, *_že jste vložili_* klíč. _*_Klíč nezadejte ručně ani neupravujte_*_.
+   1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  Ujistěte se, **_že jste vložili_*klíč _. _* tento _klíč nemusíte zadávat ani upravovat ručně_**.
 
-1. Po dokončení zadávání podrobností o připojení vyberte _ * vytvořit * *.
+1. Po dokončení zadávání podrobností o připojení vyberte **vytvořit**.
 
 1. Teď zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 

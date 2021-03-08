@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953848"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448264"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
@@ -69,7 +69,10 @@ Pokud chcete povolit přihlášení uživatelům s účtem LinkedIn v Azure Acti
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **LinkedIn** a přihlaste se pomocí účtu LinkedIn.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -85,7 +88,7 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti** vyberte možnost `Manual` .
-7. Zadejte **název** klíče zásad. Například `LinkedInSecret`. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. Například, `LinkedInSecret`. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
 8. Do pole **tajný kód** zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
@@ -96,8 +99,8 @@ Pokud chcete uživatelům povolit, aby se přihlásili pomocí účtu LinkedInu,
 
 Definujte účet LinkedIn jako zprostředkovatele deklarací, a to tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
-1. V editoru otevřete soubor * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _. Tento soubor se nachází v [úvodním balíčku vlastní zásady][starter-pack] , který jste stáhli jako součást jednoho z požadovaných součástí.
-1. Vyhledejte element _ *ClaimsProviders**. Pokud neexistuje, přidejte jej pod kořenový element.
+1. V editoru otevřete soubor *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** *. Tento soubor se nachází v [úvodním balíčku vlastní zásady][starter-pack] , který jste stáhli jako součást jednoho z požadovaných součástí.
+1. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
 1. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
@@ -213,7 +216,14 @@ Přidejte element **BuildingBlocks** v horní části souboru *TrustFrameworkExt
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **LinkedIn** a přihlaste se pomocí účtu LinkedIn.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ## <a name="migration-from-v10-to-v20"></a>Migrace z verze 1.0 do verze 2.0
 

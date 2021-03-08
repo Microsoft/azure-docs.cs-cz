@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 3b658a0dd2522b1ca1ad2d46b5f778351b271a27
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e025b1681306a3bb837a338655dc561e897226c2
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212416"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449250"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -295,10 +295,10 @@ Místní virtuální počítače replikované do Azure musí splňovat požadavk
 --- | --- | ---
 Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines) pro replikované počítače. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Velikost disku s operačním systémem | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Velikost disku s operačním systémem | Až 2 048 GB pro počítače generace 1. <br> Až 4 095 GB pro počítače generace 2. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet disků s operačním systémem | 1 </br> spouštěcí a systémový oddíl na různých discích není podporovaný. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Velikost datového disku | Až 8 192 GB při replikaci na spravovaný disk (9,26 verze a vyšší)<br> Až 4 095 GB při replikaci do účtu úložiště </br> Minimální požadavek na velikost disku – minimálně 1024 MB| Pokud je tato operace Nepodporovaná, ověřte chybu.
+Velikost datového disku | Až 32 767 GB při replikaci na spravovaný disk (9,41 verze a vyšší)<br> Až 4 095 GB při replikaci do účtu úložiště </br> Minimální požadavek na velikost disku – minimálně 1024 MB| Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
 Sdílený virtuální pevný disk | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Disk FC | Nepodporováno | Pokud je tato operace Nepodporovaná, ověřte chybu.

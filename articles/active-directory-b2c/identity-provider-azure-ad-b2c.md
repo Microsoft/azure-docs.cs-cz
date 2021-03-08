@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953916"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448485"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Nastavení registrace a přihlášení pomocí účtu Azure AD B2C z jiného tenanta Azure AD B2C
 
@@ -62,7 +62,7 @@ K vytvoření aplikace.
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Například `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+    Například, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
 1. V části oprávnění zaškrtněte políčko **udělit souhlas správcům oprávnění OpenID a offline_access** .
 1. Vyberte **Zaregistrovat**.
@@ -90,7 +90,7 @@ K vytvoření aplikace.
     https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration
     ```
 
-    Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.
+    Například, `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.
 
 1. Jako **ID klienta** zadejte ID aplikace, které jste si poznamenali dříve.
 1. Jako **tajný klíč klienta** zadejte tajný klíč klienta, který jste předtím nahráli.
@@ -115,8 +115,10 @@ K vytvoření aplikace.
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
-1. Na stránce registrace nebo přihlášení vyberte *Fabrikam* pro přihlášení k druhému tenantovi Azure AD B2C.
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na stránce registrace nebo přihlášení vyberte **Fabrikam** pro přihlášení k druhému tenantovi Azure AD B2C.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -131,7 +133,7 @@ Je potřeba uložit klíč aplikace, který jste vytvořili dříve v tenantovi 
 1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. Pro **Možnosti** vyberte možnost `Manual` .
-1. Zadejte **název** klíče zásad. Například `FabrikamAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_FabrikamAppSecret*.
+1. Zadejte **název** klíče zásad. Například, `FabrikamAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_FabrikamAppSecret*.
 1. Do **tajného klíče** zadejte tajný klíč klienta, který jste si poznamenali dříve.
 1. Pro **použití klíče** vyberte `Signature` .
 1. Vyberte **Vytvořit**.
@@ -195,8 +197,8 @@ Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním A
     |ClaimsProvider\Domain  | Název domény, který se používá pro [přímé přihlášení](direct-signin.md?pivots=b2c-custom-policy#redirect-sign-in-to-a-social-provider). Zadejte název domény, který chcete použít v přímém přihlášení. Například *fabrikam.com*. |
     |TechnicalProfile\DisplayName|Tato hodnota se zobrazí na tlačítku pro přihlášení na přihlašovací obrazovce. Například *Fabrikam*. |
     |Metadata \ client_id|Identifikátor aplikace zprostředkovatele identity Aktualizujte ID klienta s ID aplikace, které jste vytvořili dříve v druhém tenantovi Azure AD B2C.|
-    |Metadata\METADATA|Adresa URL, která odkazuje na dokument konfigurace zprostředkovatele identity OpenID Connect, který se taky označuje jako OpenID dobře známý koncový bod konfigurace. Zadejte následující adresu URL, která nahrazuje `{tenant}` název domény druhého tenanta Azure AD B2C (Fabrikam). Nahraďte `{tenant}` názvem zásady, který nakonfigurujete v druhém tenantovi, a `{policy]` názvem zásady: `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` . Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.|
-    |CryptographicKeys| Aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například `B2C_1A_FabrikamAppSecret`.| 
+    |Metadata\METADATA|Adresa URL, která odkazuje na dokument konfigurace zprostředkovatele identity OpenID Connect, který se taky označuje jako OpenID dobře známý koncový bod konfigurace. Zadejte následující adresu URL, která nahrazuje `{tenant}` název domény druhého tenanta Azure AD B2C (Fabrikam). Nahraďte `{tenant}` názvem zásady, který nakonfigurujete v druhém tenantovi, a `{policy]` názvem zásady: `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` . Například, `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration`.|
+    |CryptographicKeys| Aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například, `B2C_1A_FabrikamAppSecret`.| 
     
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
@@ -221,7 +223,15 @@ Azure AD B2C můžete definovat jako zprostředkovatele deklarací přidáním A
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na stránce registrace nebo přihlášení vyberte **Fabrikam** pro přihlášení k druhému tenantovi Azure AD B2C.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 

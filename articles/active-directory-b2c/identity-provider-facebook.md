@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952670"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448417"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
@@ -79,7 +79,11 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Facebook v Azure Ac
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Facebook** pro přihlášení pomocí účtu Facebook.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
+
 
 ::: zone-end
 
@@ -95,7 +99,7 @@ Je potřeba uložit tajný klíč aplikace, který jste předtím nahráli ve sv
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti** vyberte možnost `Manual` .
-7. Zadejte **název** klíče zásad. Například `FacebookSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. Například, `FacebookSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Do **tajného klíče** zadejte tajný kód aplikace, který jste předtím nahráli.
 9. Pro **použití klíče** vyberte `Signature` .
 10. Klikněte na **Vytvořit**.
@@ -118,7 +122,10 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
 1. Nahrajte soubor *TrustFrameworkExtensions.xml* do svého tenanta.
 1. V části **vlastní zásady** vyberte **B2C_1A_signup_signin**.
 1. V části **Vybrat aplikaci** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte **spustit hned** a vyberte Facebook pro přihlášení pomocí Facebooku a otestujte vlastní zásady.
+1. Vyberte tlačítko **Spustit** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Facebook** pro přihlášení pomocí účtu Facebook.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 

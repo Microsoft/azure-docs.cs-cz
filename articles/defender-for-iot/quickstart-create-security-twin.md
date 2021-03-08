@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vlákna modulu zabezpečení
+title: 'Rychlý Start: vytvoření vlákna modulu zabezpečení'
 description: V tomto rychlém startu se dozvíte, jak vytvořit Defender pro modul IoT pro použití s Azure Defenderem pro IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523256"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449692"
 ---
-# <a name="create-an-azureiotsecurity-module-twin"></a>Vytvoření vlákna modulu azureiotsecurity
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
 
 V tomto rychlém startu se dozvíte, jak vytvořit jednotlivé _azureiotsecurityy_ modulu pro nová zařízení a vytvořit z něj vlákna pro všechna zařízení v IoT Hub.
+
+## <a name="prerequisites"></a>Požadavky
+
+Žádné
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>Principy vláken modulu azureiotsecurity
 

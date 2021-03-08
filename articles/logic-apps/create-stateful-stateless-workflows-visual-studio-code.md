@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 941d866fbdea0efc5775bccd08e0235b1629fae0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440881"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449726"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -312,6 +312,9 @@ Než budete moct vytvořit aplikaci logiky, vytvořte místní projekt, abyste m
 Můžete vytvořit vlastní integrované konektory pro libovolnou službu, kterou potřebujete, pomocí [rozhraní pro rozšiřitelnost verze Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). Podobně jako u integrovaných konektorů, jako jsou Azure Service Bus a SQL Server, tyto konektory poskytují vyšší propustnost, nízkou latenci, místní připojení a spouštění nativně ve stejném procesu jako modul runtime verze Preview.
 
 Funkce pro vytváření obsahu je aktuálně dostupná jenom v Visual Studio Code, ale ve výchozím nastavení není povolená. Chcete-li vytvořit tyto konektory, je nutné nejprve převést projekt ze sady rozšíření (Node.js) na základě balíčku NuGet (.NET).
+
+> [!IMPORTANT]
+> Tato akce je jednosměrná operace, kterou nelze vrátit zpět.
 
 1. V podokně Průzkumník v kořenovém adresáři vašeho projektu přesuňte ukazatel myši do libovolné prázdné oblasti pod všemi ostatními soubory a složkami, otevřete místní nabídku a vyberte možnost **převést na projekt aplikace logiky založené na NuGet**.
 

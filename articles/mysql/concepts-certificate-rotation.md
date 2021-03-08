@@ -6,18 +6,20 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 9ad2566188256dd23b0f479c2576636750e33b02
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23fa3e93565066ce4b897bffe63164486efc179e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715101"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449879"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Porozumění změnám v kořenové CA změna pro Azure Database for MySQL jeden server
 
 Azure Database for MySQL jeden server úspěšně dokončil změnu kořenového certifikátu od **15. února 2021 (02/15/2021)** jako součást standardní údržby a osvědčených postupů zabezpečení. Tento článek obsahuje podrobné informace o změnách, ovlivněných zdrojích a krocích potřebných k tomu, aby vaše aplikace zachovala připojení k databázovému serveru.
 
 > [!NOTE]
+> Tento článek se týká jenom [Azure Database for MySQL – jenom pro jeden server](single-server-overview.md) . Pro [Azure Database for MySQL-flexibilní Server](flexible-server/overview.md)je certifikát potřebný pro komunikaci přes SSL [DigiCert globální kořenovou certifikační autoritou](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) .
+> 
 > Tento článek obsahuje odkazy na _podřízený_ termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 >
 

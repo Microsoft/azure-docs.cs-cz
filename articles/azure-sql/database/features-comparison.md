@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691905"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447465"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Porovnání funkcí: Azure SQL Database a Azure SQL Managed instance
 
@@ -30,7 +30,11 @@ Azure SQL Database a spravovaná instance SQL sdílejí společný základ kódu
 - Funkce zabezpečení – [aplikační role](/sql/relational-databases/security/authentication-access/application-roles), [Maskování dynamických dat](/sql/relational-databases/security/dynamic-data-masking) ([viz příručka Začínáme](dynamic-data-masking-overview.md)), [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)a detekce hrozeb – viz příručky Začínáme pro [SQL Database](threat-detection-configure.md) a [SQL Managed instance](../managed-instance/threat-detection-configure.md).
 - Možnosti více modelů – [zpracování grafů](/sql/relational-databases/graphs/sql-graph-overview), [data JSON](/sql/relational-databases/json/json-data-sql-server) ([Další informace najdete v příručce Začínáme](json-features.md)), [dokumentu OPENXML](/sql/t-sql/functions/openxml-transact-sql), [prostorových](/sql/relational-databases/spatial/spatial-data-sql-server), [OPENJSON](/sql/t-sql/functions/openjson-transact-sql)a [XML indexech](/sql/t-sql/statements/create-xml-index-transact-sql).
 
-Azure spravuje vaše databáze a zaručuje jejich vysokou dostupnost. Některé funkce, které mohou mít vliv na vysokou dostupnost nebo se nedají použít na PaaS World, mají omezené funkce v SQL Database a SQL Managed instance. Tyto funkce jsou popsány v následujících tabulkách. Pokud potřebujete další podrobnosti o rozdílech, můžete je najít na samostatných stránkách pro [Azure SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md) nebo [Azure SQL Managed instance](../managed-instance/transact-sql-tsql-differences-sql-server.md).
+Azure spravuje vaše databáze a zaručuje jejich vysokou dostupnost. Některé funkce, které mohou mít vliv na vysokou dostupnost nebo se nedají použít na PaaS World, mají omezené funkce v SQL Database a SQL Managed instance. Tyto funkce jsou popsány v následujících tabulkách.
+
+Pokud potřebujete další podrobnosti o rozdílech, můžete je najít na samostatných stránkách:
+- [Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
+- [Spravovaná instance Azure SQL](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Funkce SQL Database a SQL Managed instance
 
