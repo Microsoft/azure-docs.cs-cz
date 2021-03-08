@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: Co je nového?
-      href: release-notes.md
     - name: Architektura řešení bez agentů
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: Architektura řešení založená na agentech
       href: architecture-agent-based.md
+- name: Co je nového?
+  href: release-notes.md
 - name: Rychlé starty
   expanded: true
   items:

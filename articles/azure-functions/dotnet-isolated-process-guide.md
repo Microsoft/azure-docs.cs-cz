@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: d6db6c366ae51dbdc5bf062e79358f752e4a05f5
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425902"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449454"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
@@ -63,18 +63,18 @@ Následující balíčky jsou požadovány ke spuštění funkcí .NET v izolova
 Vzhledem k tomu, že funkce, které jsou spuštěny v izolovaném procesu .NET, používají jiné typy vazeb, vyžadují jedinečnou sadu balíčků rozšíření vazby. 
 
 Tyto balíčky rozšíření najdete v části [Microsoft. Azure. Functions. Worker. Extensions](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions).
- 
+
 ## <a name="start-up-and-configuration"></a>Spuštění a konfigurace 
 
 Při použití izolovaných funkcí .NET máte přístup ke spuštění aplikace Function App, která je obvykle v Program.cs. Zodpovídáte za vytvoření a spuštění vlastní instance hostitele. V takovém případě máte také přímý přístup ke konfiguračnímu kanálu vaší aplikace. Můžete mnohem snadněji vložit závislosti a spustit middleware při spuštění mimo proces. 
 
 Následující kód ukazuje příklad `HostBuilder` kanálu:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="20-33":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
 `HostBuilder`Používá se k sestavení a vrácení plně inicializované `IHost` instance, která se spouští asynchronně, aby se spustila aplikace Function App. 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="35":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
 ### <a name="configuration"></a>Konfigurace
 
@@ -82,9 +82,9 @@ Přístup k kanálu tvůrce hostitele znamená, že při inicializaci můžete n
 
 Následující příklad ukazuje, jak přidat konfiguraci `args` , která je načítána jako argumenty příkazového řádku: 
  
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="21-24" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-`ConfigureAppConfiguration`Metoda se používá ke konfiguraci zbytku procesu sestavení a aplikace. V tomto příkladu se používá také [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), což usnadňuje přidávání více položek konfigurace. Vzhledem `ConfigureAppConfiguration` k tomu, že vrací stejnou instanci [`IConfiguration `](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , můžete ji také jednoduše volat několikrát, chcete-li přidat více položek konfigurace. Můžete získat přístup k úplné sadě konfigurací z i [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+`ConfigureAppConfiguration`Metoda se používá ke konfiguraci zbytku procesu sestavení a aplikace. V tomto příkladu se používá také [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), což usnadňuje přidávání více položek konfigurace. Vzhledem `ConfigureAppConfiguration` k tomu, že vrací stejnou instanci [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , můžete ji také jednoduše volat několikrát, chcete-li přidat více položek konfigurace. Můžete získat přístup k úplné sadě konfigurací z i [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 Další informace o konfiguraci najdete v tématu [konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
 
@@ -94,7 +94,7 @@ Vkládání závislostí je zjednodušené, v porovnání s knihovnami tříd .N
 
 Následující příklad vloží závislost služby typu Singleton:  
  
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="29-32" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
 Další informace najdete v tématu [vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
@@ -104,7 +104,7 @@ Rozhraní .NET izolované také podporuje registraci middlewaru pomocí modelu p
 
 I když plná registrační sada rozhraní API pro middleware ještě není vystavená, podporuje se registrace middlewaru a do této ukázkové aplikace jsme přidali příklad do složky middlewaru.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" range="25-28" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
 
 ## <a name="execution-context"></a>Kontext spuštění
 
@@ -114,7 +114,7 @@ Rozhraní .NET izolované předá `FunctionContext` objekt vašim metodám funkc
 
 Vazby jsou definovány pomocí atributů v metodách, parametrech a návratových typech. Metoda Function je metoda s `Function` atributem a triggerem použitým pro vstupní parametr, jak je znázorněno v následujícím příkladu:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-14" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. Předchozí ukázková funkce je aktivována zprávou fronty a zpráva fronty je předána metodě v `myQueueItem` parametru.
 
@@ -132,13 +132,13 @@ Funkce může mít nula nebo více vstupních vazeb, které mohou předat data f
 
 Chcete-li zapisovat do výstupní vazby, je nutné použít výstupní vazbu atributu na metodu funkce, která definuje, jak zapisovat do vázané služby. Hodnota vrácená metodou je zapsána do výstupní vazby. Například následující příklad zapíše řetězcovou hodnotu do fronty zpráv s názvem `functiontesting2` pomocí výstupní vazby:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" range="11-21" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Více výstupních vazeb
 
 Data zapsaná do výstupní vazby jsou vždy návratovou hodnotou funkce. Pokud potřebujete zapisovat do více než jedné výstupní vazby, je nutné vytvořit vlastní návratový typ. Tento návratový typ musí mít atribut výstupní vazby použit pro jednu nebo více vlastností třídy. Následující příklad zapisuje do odpovědi HTTP a výstupní vazby fronty:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" range="14-33":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
 
 ### <a name="http-trigger"></a>HTTP trigger
 
@@ -148,7 +148,7 @@ Podobně funkce vrátí `HttpReponseData` objekt, který poskytuje data použit�
 
 Následující kód je Trigger HTTP. 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="13-27" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>protokolování
 
@@ -156,7 +156,7 @@ V izolovaném rozhraní .NET můžete zapisovat do protokolů pomocí [`ILogger`
 
 Následující příklad ukazuje, jak získat `ILogger` protokoly a zapsat je uvnitř funkce:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" range="17-18" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 Použijte různé metody `ILogger` pro zápis různých úrovní protokolu, například `LogWarning` nebo `LogError` . Další informace o úrovních protokolu naleznete v [článku monitorování](functions-monitoring.md#log-levels-and-categories).
 
@@ -174,7 +174,7 @@ Tato část popisuje aktuální stav rozdílů funkčního a chování, které b
 | protokolování | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) předáno do funkce | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) získáno z `FunctionContext` |
 | Tokeny zrušení | [Podporováno](functions-dotnet-class-library.md#cancellation-tokens) | Nepodporováno |
 | Výstupní vazby | Výstupní parametry | Vrácené hodnoty |
-| Typy výstupních vazeb |  `IAsyncCollector`, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient), [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)a jiné typy specifické pro klienta | Jednoduché typy, Serializovatelné typy JSON a pole. |
+| Typy výstupních vazeb |  `IAsyncCollector`, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true), [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)a jiné typy specifické pro klienta | Jednoduché typy, Serializovatelné typy JSON a pole. |
 | Více výstupních vazeb | Podporováno | [Podporováno](#multiple-output-bindings) |
 | HTTP trigger | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
 | Odolná služba Functions | [Podporováno](durable/durable-functions-overview.md) | Nepodporováno | 

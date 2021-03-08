@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: b52d61c2828ddf5c04ab943d73964d236c9017c1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098838"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448779"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replikace dat přes ExpressRoute pomocí Azure Migrate: Migrace serveru
 
@@ -72,6 +72,7 @@ Vytvoření a vyhledání účtu úložiště:
 ![Zobrazení skupiny prostředků](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
+>  
 > Pokud máte ve skupině prostředků více než jeden účet úložiště s předponou **"LSA"** , můžete účet úložiště ověřit tak, že přejdete do nabídky nastavení replikace a cílová konfigurace pro kterýkoli z replikačních virtuálních počítačů v projektu. <br/> 
 > ![Přehled nastavení replikace](./media/replicate-using-expressroute/storage-account.png)
 
@@ -125,8 +126,9 @@ Pokud jste nevybrali možnost integrace s privátní zónou DNS v době vytvář
 
     ![createprivatedns](./media/replicate-using-expressroute/create-private-dns.png)
 
-    a.  Na stránce **privátní DNS zóny** vyberte tlačítko **+ Přidat** a začněte vytvářet novou zónu.  
-    b.  Na stránce **Vytvoření privátní zóny DNS** vyplňte požadované podrobnosti. Jako _privatelink_. blob.Core.Windows.NET zadejte název privátní zóny DNS. c. Pokračujte na kartu **Revize + vytvořit** pro kontrolu a vytvoření zóny DNS.
+    a. Na stránce **privátní DNS zóny** vyberte tlačítko **+ Přidat** a začněte vytvářet novou zónu.  
+    b. Na stránce **Vytvoření privátní zóny DNS** vyplňte požadované podrobnosti. Jako _privatelink_. blob.Core.Windows.NET zadejte název privátní zóny DNS.  
+    c. Pokračujte na kartu **Revize + vytvořit** pro kontrolu a vytvoření zóny DNS.   
 
 2. Propojit privátní zónu DNS s vaší virtuální sítí.  
 

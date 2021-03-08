@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789343"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449862"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -40,9 +40,9 @@ Podrobnosti o cenách najdete v [podrobnostech](https://azure.microsoft.com/pric
 
 Ano, Šířka pásma okruhu ExpressRoute je duplexní. Pokud například zakoupíte okruh 200 MB/s ExpressRoute, nakupujete 200 MB/s pro příchozí přenos dat a 200 MB/s pro odchozí přenosy.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, musí mít připojení k síti VPN, které zakoupíte od poskytovatele síťové služby, stejnou rychlost?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, musí být u privátního připojení od poskytovatele síťových služeb stejná rychlost?
 
-Ne. Připojení k síti VPN libovolné rychlosti můžete koupit od svého poskytovatele služeb. Připojení k Azure je ale omezené na šířku pásma okruhu ExpressRoute, kterou si koupíte.
+No. Soukromé připojení libovolné rychlosti od svého poskytovatele služeb si můžete koupit. Připojení k Azure je ale omezené na šířku pásma okruhu ExpressRoute, kterou si koupíte.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Pokud platíte za okruh ExpressRoute dané šířky pásma, mám možnost použít více než mi vyřízenou šířku pásma?
 
@@ -97,7 +97,7 @@ Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můž
 * Veřejné IP adresy Azure pro IaaS (Virtual Machines, Virtual Network brány, nástroje pro vyrovnávání zatížení atd.)  
 * Podporuje se i většina ostatních služeb Azure. Podívejte se prosím přímo na službu, kterou chcete použít k ověření podpory.
 
-**Nepodporuje se:**
+**Nepodporováno:**
 
 * CDN
 * Azure Front Door
@@ -186,7 +186,7 @@ Pokud poskytovatel služeb může navázat dva virtuální okruhy sítě Etherne
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Můžu do Azure roztáhnout jednu z těchto sítí VLAN pomocí ExpressRoute?
 
-Ne. Do Azure nepodporujeme rozšíření pro připojení vrstvy 2.
+No. Do Azure nepodporujeme rozšíření pro připojení vrstvy 2.
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>Můžu ve svém předplatném více než jeden okruh ExpressRoute?
 
@@ -235,7 +235,7 @@ Další informace najdete v tématu [sdílení okruhu ExpressRoute napříč ně
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Jsou virtuální sítě připojené ke stejnému okruhu izolované od sebe?
 
-Ne. Z perspektivy směrování jsou všechny virtuální sítě propojené se stejným okruhem ExpressRoute součástí stejné domény směrování a nejsou od sebe vzájemně izolované. Pokud potřebujete izolaci tras, je nutné vytvořit samostatný okruh ExpressRoute.
+No. Z perspektivy směrování jsou všechny virtuální sítě propojené se stejným okruhem ExpressRoute součástí stejné domény směrování a nejsou od sebe vzájemně izolované. Pokud potřebujete izolaci tras, je nutné vytvořit samostatný okruh ExpressRoute.
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Můžu mít jednu virtuální síť připojenou k více než jednomu okruhu ExpressRoute?
 
@@ -258,9 +258,13 @@ Pokud budete inzerovat výchozí trasy, vynutíme provoz na služby nabízené p
 
 Ano. Virtuální počítače nasazené ve virtuálních sítích, které jsou připojené ke stejnému okruhu ExpressRoute, můžou vzájemně komunikovat. Pro usnadnění této komunikace doporučujeme nastavit [partnerský vztah virtuálních sítí](../virtual-network/virtual-network-peering-overview.md) .
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Můžu v kombinaci s ExpressRoute používat připojení Site-to-site pro virtuální sítě?
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>Můžu v kombinaci s ExpressRoute nastavit připojení VPN typu Site-to-site k virtuální síti?
 
 Ano. ExpressRoute může existovat společně s sítěmi VPN typu Site-to-site. Přečtěte si téma [Konfigurace ExpressRoute a připojení mezi lokalitami](expressroute-howto-coexist-resource-manager.md).
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Návody povolit směrování mezi připojeními VPN typu Site-to-site a my ExpressRoute?
+
+Pokud chcete povolit směrování mezi vaší větví připojenou k Expressoute a vaší větví připojenou k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč je ve virtuální síti přidružená veřejná IP adresa k bráně ExpressRoute?
 
@@ -326,7 +330,7 @@ ExpressRoute Premium můžete zakázat voláním rutiny REST API nebo PowerShell
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Můžu si vybrat požadované funkce ze sady funkcí Premium?
 
-Ne. Nemůžete si vybrat tyto funkce. Když zapnete ExpressRoute Premium, povolíme všechny funkce.
+No. Nemůžete si vybrat tyto funkce. Když zapnete ExpressRoute Premium, povolíme všechny funkce.
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>Kolik stojí ExpressRoute Premium?
 
@@ -428,4 +432,4 @@ Stávající okruh bude pokračovat ve inzerci prefixů pro Microsoft 365. Pokud
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>Ukládá služba ExpressRoute údaje o zákaznících?
 
-Ne.
+No.

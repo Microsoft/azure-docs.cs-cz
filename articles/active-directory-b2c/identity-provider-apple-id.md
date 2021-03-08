@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dc6801de858c72a703317805d00f8e50cae69bbe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 072bb7841db10351bd1a98f4bc7a1d57e67f6c24
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054567"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448536"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Nastavení registrace a přihlášení pomocí Apple ID pomocí Azure Active Directory B2C (Preview)
 
@@ -104,7 +104,10 @@ Pokud chcete uživatelům povolit, aby se přihlásili pomocí Apple ID, musíte
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Vyberte **Spustit tok uživatele**.
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na stránce registrace nebo přihlášení vyberte **Apple** a přihlaste se pomocí Apple ID.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -244,6 +247,13 @@ Apple ID můžete definovat jako zprostředkovatele deklarací, a to tak, že ho
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na stránce registrace nebo přihlášení vyberte **Apple** a přihlaste se pomocí Apple ID.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end

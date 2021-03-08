@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1f4aea472988555047a736e6a248fa5690e42a23
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645846"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448213"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
@@ -75,7 +75,10 @@ Pokud chcete povolit přihlášení pro uživatele s účet Microsoft v Azure Ac
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Microsoft** , abyste se přihlásili pomocí účet Microsoft.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -188,6 +191,13 @@ Nyní jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikova
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **Microsoft** , abyste se přihlásili pomocí účet Microsoft.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end

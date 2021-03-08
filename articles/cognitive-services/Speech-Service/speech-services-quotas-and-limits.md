@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/24/2021
 ms.author: alexeyo
-ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699976"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449845"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -30,7 +30,9 @@ V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny
 
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
-| **Limit souběžných požadavků (základní a vlastní modely)** | 1 | 20 (výchozí hodnota) |
+| **Limit souběžných požadavků – základní model** | 1 | 100 (výchozí hodnota) |
+| Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
+| **Limit souběžných požadavků – vlastní model** | 1 | 20 (výchozí hodnota) |
 | Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>Přepis Batch

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545830"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448077"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -76,7 +76,10 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Weibo v Azure Activ
 1. Vyberte **Uložit**.
 1. Pokud chcete zásady testovat, vyberte **Spustit tok uživatele**.
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *testapp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele** .
+1. Vyberte tlačítko **tok spuštění uživatele** .
+1. Na stránce registrace nebo přihlášení vyberte **Weibo** , abyste se přihlásili pomocí účtu Weibo.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end
 
@@ -205,6 +208,13 @@ Technický profil GitHub vyžaduje, aby byly transformace deklarací **CreateIss
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na stránce registrace nebo přihlášení vyberte **Weibo** , abyste se přihlásili pomocí účtu Weibo.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ::: zone-end

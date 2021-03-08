@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 70f54fc111bfd9443f988619cb2b86303fd3f07b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 0d3a593e51dd2bc84d816c8c46bf7769fd9cfe24
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443382"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449590"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – flexibilní Server
 
@@ -61,7 +61,6 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | Projděte si informace o viditelnosti (VM) a viditelnost na úrovni stránky.|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | kryptografické funkce|
-> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | Logická replikace PostgreSQL|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | Zobrazit informace o uzamykání na úrovni řádků|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | Zobrazit statistiky na úrovni řazené kolekce členů|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | Procedurální jazyk PL/pgSQL|
@@ -112,7 +111,6 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | Projděte si informace o viditelnosti (VM) a viditelnost na úrovni stránky.|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | poskytuje funkce auditování|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | kryptografické funkce|
-> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | Logická replikace PostgreSQL|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Zobrazit informace o uzamykání na úrovni řádků|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | Zobrazit statistiky na úrovni řazené kolekce členů|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | Procedurální jazyk PL/pgSQL|
@@ -134,6 +132,27 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 
 Pokud plánujete použít tato dvě rozšíření, doporučujeme servery nasadit pomocí [Integrace virtuální](concepts-networking.md) sítě. Ve výchozím nastavení Integration VNet umožňuje připojení mezi servery ve virtuální síti. Můžete také použít [skupiny zabezpečení sítě VNet](../../virtual-network/manage-network-security-group.md) k přizpůsobení přístupu.
 
+## <a name="pg_cron"></a>pg_cron
+
+[pg_cron](https://github.com/citusdata/pg_cron) je jednoduchý cron Plánovač úloh pro PostgreSQL, který běží uvnitř databáze jako rozšíření. Pomocí rozšíření pg_cron lze spouštět úlohy naplánované údržby v rámci databáze PostgreSQL. Například můžete spustit pravidelný podtlak tabulky nebo odebrat staré datové úlohy.
+
+`pg_cron` může spustit více úloh paralelně, ale současně se spustí současně s jednou instancí úlohy. Pokud se má druhý běh spustit před tím, než se poprvé dokončí, druhý běh se zařadí do fronty a spustí se hned po dokončení prvního spuštění. Tím se zajistí, že se úlohy spouštějí přesně stejně jako naplánované a neběží souběžně s sebou.
+
+Několik příkladů:
+
+Odstranění starých dat v sobotu v 3:10:30 (GMT)
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+Spuštění vaku každý den v 10:10:00 (GMT)
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+Postup pro odplánování všech úloh z pg_cron
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

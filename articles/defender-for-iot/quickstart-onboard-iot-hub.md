@@ -1,6 +1,6 @@
 ---
-title: Připojit Defender pro IoT do řešení založeného na agentovi
-description: Naučte se integrovat a povolit službu Defender for IoT Security ve vašem Azure IoT Hub.
+title: 'Rychlý Start: připojení Defenderu pro IoT do řešení založeného na agentovi'
+description: V tomto rychlém startu se naučíte, jak připojit a povolit službu Defender for IoT Security ve vašem IoT Hub Azure.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 62ea7b95609f9e1f896852da5c10244d1bd16ce1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049919"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449675"
 ---
-# <a name="onboard-defender-for-iot-to-an-agent-based-solution"></a>Připojit Defender pro IoT do řešení založeného na agentovi
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Rychlý Start: připojení Defenderu pro IoT do řešení založeného na agentovi
 
 Tento článek vysvětluje, jak ve stávající IoT Hub povolit službu Defender for IoT. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
 
@@ -34,6 +34,10 @@ Zabezpečení IoT můžete spravovat prostřednictvím IoT Hub v programu Defend
 
 > [!NOTE]
 > Defender pro IoT aktuálně podporuje jenom centra IoT úrovně Standard.
+
+## <a name="prerequisites"></a>Požadavky
+
+Žádné
 
 ## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>Připojení Defenderu pro IoT k IoT Hub
 

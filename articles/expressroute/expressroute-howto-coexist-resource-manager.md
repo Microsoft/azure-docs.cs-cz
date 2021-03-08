@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 15ec8417ba5e2858b45176f0a214f6126209f942
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440084"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449743"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace současně existujících připojení mezi ExpressRoute a mezi lokalitami pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -262,11 +262,11 @@ Pomocí následujících kroků můžete přidat konfiguraci Point-to-site k br�
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+Další informace o VPN typu point-to-site najdete v tématu [Konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>Umožnění směrování přenosu mezi ExpressRoute a Azure VPN
 Pokud chcete povolit připojení mezi jednou z vaší místní sítě, která je připojená k ExpressRoute a jiné z vaší místní sítě, která je připojená k připojení VPN typu Site-to-site, budete muset nastavit [Server směrování Azure](../route-server/expressroute-vpn-support.md).
 
-Další informace o VPN typu point-to-site najdete v tématu [Konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md).

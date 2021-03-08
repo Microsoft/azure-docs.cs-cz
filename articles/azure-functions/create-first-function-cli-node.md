@@ -4,12 +4,12 @@ description: Naučte se vytvořit funkci JavaScriptu z příkazového řádku a 
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937242"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447312"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce JavaScriptu v Azure z příkazového řádku
 
@@ -96,7 +96,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Odpověď je definována jako `res` v *function.jsna* a lze k ní přistupovat pomocí `context.res` . Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
 
 #### <a name="functionjson"></a>function.json
 

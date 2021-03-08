@@ -265,10 +265,10 @@
           href: livestream.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md
-    - name: Implementace rozšířených RBAC
-      items: null
 - name: Reference
   items:
+    - name: Nejčastější sešity Sentinel Azure
+      href: top-workbooks.md
     - name: Role Azure RBAC
       items:
         - name: Všechny role Azure

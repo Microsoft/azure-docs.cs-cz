@@ -7,21 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846394266b981c14788148be465912b14bc1fb3e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201255"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447907"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Zprostředkovatel deklarací obsahuje sadu [technických profilů](technicalprofiles.md). Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací podporuje více protokolů, různé koncové body s různými možnostmi nebo uvolňuje různé nároky na různé úrovně záruky. Může být přijatelné vydávat citlivé deklarace identity na jednu cestu uživatele, ale ne v jiném.
+Deklarace identity poskytují rozhraní pro komunikaci s různými typy stran prostřednictvím svých [technických profilů](technicalprofiles.md). Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací podporuje více protokolů, různé koncové body s různými možnostmi nebo uvolňuje různé nároky na různé úrovně záruky. Může být přijatelné vydávat citlivé deklarace identity na jednu cestu uživatele, ale ne v jiném.
+
+Cesta uživatele kombinuje volání technických profilů prostřednictvím kroků orchestrace k definování obchodní logiky. 
 
 ```xml
 <ClaimsProviders>

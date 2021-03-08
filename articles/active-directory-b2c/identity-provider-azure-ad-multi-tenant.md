@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c2b97d1848450ecda2e83d5ba12469d7c61d8f9
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f6e932cb6a6086e4cea6f474f296ca086e48c75e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952734"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448451"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory používání vlastních zásad v Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Azure AD v Azure Ac
 1. Ujistěte se, že používáte adresář, který obsahuje váš tenant organizace Azure AD (například contoso.com). V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
-1. Zadejte **název** vaší aplikace. Například `Azure AD B2C App`.
+1. Zadejte **název** vaší aplikace. Například, `Azure AD B2C App`.
 1. Pro tuto aplikaci vyberte **účty v libovolné organizační složce (libovolný adresář služby Azure AD – víceklientské)** .
 1. Pro **identifikátor URI přesměrování** přijměte hodnotu **Web** a zadejte následující adresu URL na všechna malá písmena, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C.
 
@@ -55,7 +55,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Azure AD v Azure Ac
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
+    Například, `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
 
 1. Vyberte **Zaregistrovat**. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
 1. Vyberte **certifikáty & tajných** kódů a pak vyberte **nový tajný klíč klienta**.
@@ -83,7 +83,7 @@ Je potřeba uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD
 1. V části **zásady** vyberte **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. Pro **Možnosti** vyberte možnost `Manual` .
-1. Zadejte **název** klíče zásad. Například `AADAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_AADAppSecret*.
+1. Zadejte **název** klíče zásad. Například, `AADAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_AADAppSecret*.
 1. Do **tajného klíče** zadejte tajný klíč klienta, který jste si poznamenali dříve.
 1. Pro **použití klíče** vyberte `Signature` .
 1. Vyberte **Vytvořit**.
@@ -149,13 +149,13 @@ Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidán�
 1. V rámci elementu **ClaimsProvider** aktualizujte hodnotu pro **doménu** na jedinečnou hodnotu, která se dá použít k odlišení od jiných zprostředkovatelů identity.
 1. V rámci elementu **TechnicalProfile** aktualizujte hodnotu **DisplayName**, například `Contoso Employee` . Tato hodnota se zobrazí na přihlašovací stránce na tlačítku pro přihlášení.
 1. Nastavte **client_id** na ID aplikace víceklientské aplikace Azure AD, kterou jste si zaregistrovali dříve.
-1. V části **CryptographicKeys** aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například `B2C_1A_AADAppSecret`.
+1. V části **CryptographicKeys** aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například, `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Omezení přístupu
 
 Použití `https://login.microsoftonline.com/` jako hodnota **ValidTokenIssuerPrefixes** umožňuje všem uživatelům Azure AD přihlašovat se k vaší aplikaci. Aktualizujte seznam platných vystavitelů tokenů a omezte přístup ke konkrétnímu seznamu uživatelů klienta služby Azure AD, kteří se můžou přihlásit.
 
-Pokud chcete získat hodnoty, podívejte se na metadata zjišťování OpenID Connect pro každé klienty Azure AD, ze kterých se chcete přihlašovat pomocí uživatelů. Formát adresy URL metadat je podobný `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` , kde `your-tenant` je název vašeho TENANTA Azure AD. Příklad:
+Pokud chcete získat hodnoty, podívejte se na metadata zjišťování OpenID Connect pro každé klienty Azure AD, ze kterých se chcete přihlašovat pomocí uživatelů. Formát adresy URL metadat je podobný `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` , kde `your-tenant` je název vašeho TENANTA Azure AD. Například:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
@@ -186,9 +186,16 @@ U každého tenanta Azure AD, který by se měl použít k přihlášení, prove
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Testování vlastních zásad
+
+1. Vyberte třeba zásady předávající strany `B2C_1A_signup_signin` .
+1. V případě **aplikace** vyberte webovou aplikaci, kterou jste [předtím zaregistrovali](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte tlačítko **Spustit** .
+1. Na přihlašovací stránce nebo na přihlašovací stránce vyberte **běžné AAD** pro přihlášení pomocí účtu Azure AD.
 
 Pokud chcete otestovat možnost přihlašování s více klienty, proveďte poslední dva kroky pomocí přihlašovacích údajů uživatele, který existuje v jiném tenantovi služby Azure AD. Zkopírujte **koncový bod spustit nyní** a otevřete ho v privátním okně prohlížeče, například v anonymním režimu v Google Chrome nebo v okně InPrivate na Microsoft Edge. Otevření v privátním okně prohlížeče vám umožní testovat celou cestu uživatele, protože nepoužívá žádná z aktuálně uložených přihlašovacích údajů Azure AD.
+
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms` , který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
 

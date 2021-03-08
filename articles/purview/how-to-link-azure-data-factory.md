@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/03/2021
-ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049368"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449607"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
 
@@ -123,12 +123,12 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 | Azure SQL Database \* | Ano | 
 | Spravovaná instance Azure SQL \* | Ano | 
 | Azure synapse Analytics \* | Ano | 
-| Table Storage Azure \* | Ano |
-| SQL Server \* | Ano | 
+| Azure Table Storage | Ano |
 | Amazon S3 | Ano | 
 | Úlů \* | Ano | 
 | SAP ECC \* | Ano |
-| Tabulka SAP \* | Ano |
+| Tabulka SAP | Ano |
+| SQL Server \* | Ano | 
 | Teradata \* | Ano |
 
 *\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
@@ -144,6 +144,7 @@ V současné době platí, že pokud použijete následující funkce kopírová
 - Zkopírujte data do služby Azure synapse Analytics pomocí příkazu Base nebo COPY.
 - Nastavení komprese pro binární, oddělený text, Excel, JSON a soubory XML
 - Možnosti zdrojového oddílu pro Azure SQL Database, Azure SQL Managed instance, Azure synapse Analytics, SQL Server a SAP TABLE.
+- Možnost zjišťování zdrojového oddílu pro úložiště na základě souborů.
 - Kopírování dat do jímky založené na souborech s nastavením maximálního počtu řádků na soubor.
 - Přidat další sloupce během kopírování.
 

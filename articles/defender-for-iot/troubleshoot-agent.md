@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522949"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449216"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Průvodce odstraňováním potíží s agenty zabezpečení (Linux)
 
@@ -28,10 +28,9 @@ Azure Defender pro IoT Agent se spouští okamžitě po instalaci. Proces spušt
 
 V tomto průvodci odstraňováním potíží se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Ověřit, zda je spuštěn Agent zabezpečení
-> * Získat chyby agenta zabezpečení
-> * Pochopení a náprava chyb agenta zabezpečení
+- Ověřit, zda je spuštěn Agent zabezpečení
+- Získat chyby agenta zabezpečení
+- Pochopení a náprava chyb agenta zabezpečení
 
 ## <a name="validate-if-the-security-agent-is-running"></a>Ověřit, zda je spuštěn Agent zabezpečení
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si téma [Přehled](overview.md) služby Defender [for IoT.](architecture.md) Další informace o programu Defender for IoT najdete v tématu [věnovaném](resources-frequently-asked-questions.md) programu Defender [for IoT,](quickstart-onboard-iot-hub.md) jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md) , [jak pochopit](concept-recommendations.md) [výstrahy](concept-security-alerts.md) zabezpečení.
+- Přečtěte si téma [Přehled](overview.md) služby Defender for IoT.
+- Další informace o programu Defender pro [architekturu](architecture.md) IoT
+- Povolení služby Defender pro IoT [Service](quickstart-onboard-iot-hub.md)
+- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) ke službě Defender for IoT
+- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
+- Vysvětlení [doporučení](concept-recommendations.md)
+- Vysvětlení [výstrah](concept-security-alerts.md) zabezpečení
