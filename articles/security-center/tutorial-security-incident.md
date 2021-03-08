@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635570"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453440"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: Určování priorit podle dostupnosti zdrojů, prošetřování a reakce na upozornění zabezpečení
 Security Center průběžně analyzuje úlohy hybridního cloudu pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciálně škodlivé aktivity v cloudových prostředcích. Do Security Center také můžete integrovat výstrahy z dalších produktů a služeb zabezpečení. Po vyvolání výstrahy je potřeba k prozkoumání a nápravě potenciálního problému se zabezpečením použít akci SWIFT. 
@@ -112,7 +112,7 @@ Pokud pokračovat nechcete, nebo pokud chcete zakázat některou z těchto funkc
 1. Vyberte příslušné předplatné.
 1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto**.
 1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto**.
-4. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
 >[!NOTE]
 > Zakázání automatického zřizování neodebere agenta Log Analytics z virtuálních počítačů Azure, které už mají agenta. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.

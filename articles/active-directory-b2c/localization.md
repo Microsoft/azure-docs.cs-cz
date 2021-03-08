@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: c12a171faaf069cc81aa5f467642dba6616a866f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033720"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453117"
 ---
 # <a name="localization-element"></a>Element Localization
 
@@ -147,7 +147,7 @@ Element **LocalizedString** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Ano | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
+| Deklarován | Ano | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [FormatLocalizedStringTransformationClaimType](#formatlocalizedstringtransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
 | ElementId | Ano | Pokud je typ **ElementType** nastaven na `ClaimType` , `Predicate` nebo `InputValidation` , obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
 | StringId | Ano | Pokud je vlastnost **ElementType** nastavena na `ClaimType` , tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName` , `AdminHelpText` , nebo `PatternHelpText` . `DisplayName`Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText`Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText`Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement` , tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage` , tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) `UxElement` .|
 
@@ -232,6 +232,31 @@ Následující příklad ukazuje, jak lokalizovat chybovou zprávu UserMessageIf
 
 ```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="formatlocalizedstringtransformationclaimtype"></a>FormatLocalizedStringTransformationClaimType
+
+Hodnota FormatLocalizedStringTransformationClaimType slouží k formátování deklarací do lokalizovaného řetězce. Další informace najdete v tématu [transformace deklarací identity FormatLocalizedString](string-transformations.md#formatlocalizedstring) .
+
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+Následující příklad ukazuje, jak lokalizovat formát řetězce transformace FormatLocalizedStringTransformationClaimType deklarací identity.
+
+```xml
+<LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
 ```
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType

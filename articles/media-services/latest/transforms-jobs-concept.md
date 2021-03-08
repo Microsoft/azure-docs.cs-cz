@@ -45,7 +45,7 @@ Pomocí **transformací** můžete nakonfigurovat běžné úlohy pro kódován�
 
 ### <a name="viewing-schema"></a>Zobrazení schématu
 
-V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)nebo v jiné Media Services V3.
+V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v referenční dokumentaci k sadě sdk pro [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset)nebo v jiné Media Services V3.
 
 ### <a name="creating-transforms"></a>Vytváření transformací
 

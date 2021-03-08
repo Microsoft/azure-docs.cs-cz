@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577867"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453032"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, jako je `Connect-AzAccount –Subscription $subs[0].id` . Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-).
+Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, jako je `Connect-AzAccount –Subscription $subs[0].id` . Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Pokud máte v tomto předplatném více Log Analytics pracovních prostorů, rutina [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) vrátí seznam pracovních prostorů. Pak můžete najít tu, která má protokoly služby Azure AD. `CustomerId`Pole vrácené touto rutinou je stejné jako hodnota "ID pracovního prostoru", která se zobrazuje v Azure Portal v tématu Přehled pracovního prostoru Log Analytics.
  

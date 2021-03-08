@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56eedda7f79fedce1e34ad837c92006e5cd8f191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d27ad1f15e9f46f0bc67e62b79606828efb85e6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998267"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453151"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Postupy: odesílání plánovaných oznámení
 
@@ -31,7 +31,7 @@ Máte-li scénář, ve kterém chcete později odeslat oznámení, ale nemáte s
 
 
 ## <a name="schedule-your-notifications"></a>Naplánování oznámení
-Při odesílání oznámení jednoduše použijte [ `ScheduledNotification` třídu](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification?view=azure-dotnet#microsoft_azure_notificationhubs_schedulednotification) v sadě Notification Hubs SDK, jak je znázorněno v následujícím příkladu:
+Při odesílání oznámení jednoduše použijte [ `ScheduledNotification` třídu](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification#microsoft_azure_notificationhubs_schedulednotification) v sadě Notification Hubs SDK, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");

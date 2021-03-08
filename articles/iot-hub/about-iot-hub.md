@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095262"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454766"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -30,7 +30,7 @@ Možnosti služby IoT Hub vám pomůžou vytvářet škálovatelná řešení Io
 
 ## <a name="scale-your-solution"></a>Škálování vlastního řešení
 
-IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Další informace o škálování IoT Hub najdete v tématu [IoT Hub škálování](iot-hub-scaling.md?branch=release-iotbasic). Pokud chcete získat další informace o různých úrovních služby, které nabízí IoT Hub a co nejlépe vyhovuje vašim potřebám škálovatelnosti, podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Další informace o škálování IoT Hub najdete v tématu [IoT Hub škálování](iot-hub-scaling.md). Pokud chcete získat další informace o různých úrovních služby, které nabízí IoT Hub a co nejlépe vyhovuje vašim potřebám škálovatelnosti, podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpečení komunikace
 

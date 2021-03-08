@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 2820fe9d885187071924386ef71eb12fd42bbf01
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426446"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454222"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -30,7 +30,7 @@ Tento článek vysvětluje, jak můžete získat přístup k prostředkům SAP z
 
     * Pokud spouštíte aplikaci logiky ve více tenantů Azure, přečtěte si téma [požadavky pro více tenantů](#multi-tenant-azure-prerequisites).
 
-    * Pokud spouštíte aplikaci logiky v[ prostředí ISE (Premium-Level Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), přečtěte si část [požadavky ISE](#ise-prerequisites).
+    * Pokud spouštíte aplikaci logiky v [prostředí ISE (Premium-Level Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), přečtěte si část [požadavky ISE](#ise-prerequisites).
 
 * [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) , ze kterého chcete získat přístup Logic Apps. Informace o tom, jaké servery SAP a akce SAP můžete s konektorem používat, najdete v tématu [Kompatibilita SAP](#sap-compatibility).
 
@@ -633,6 +633,14 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
     * Jako **cíl RFC** zadejte název.
     
     * Na kartě **technické nastavení** pro **typ aktivace** vyberte **registrovaný serverový program**. Jako **ID programu** zadejte hodnotu. V SAP se Trigger vaší aplikace logiky zaregistruje pomocí tohoto identifikátoru.
+
+    > [!IMPORTANT]
+    > V **ID programu** SAP se rozlišují malá a velká písmena. Při konfiguraci aplikace logiky a serveru SAP nezapomeňte konzistentně používat stejný formát případu pro vaše **ID programu** . V opačném případě se může při pokusu o odeslání IDoc do SAP zobrazit následující chyby v monitoru tRFC (T-Code SM58):
+    >
+    > * **Funkce IDOC_INBOUND_ASYNCHRONOUS nenalezena**
+    > * **Klient RFC bez ABAP (typ partnera) se nepodporuje.**
+    >
+    > Další informace ze SAP najdete v následujících poznámkách (vyžaduje se přihlášení) <https://launchpad.support.sap.com/#/notes/2399329> a <https://launchpad.support.sap.com/#/notes/353597> .
     
     * Na kartě **Unicode** pro **typ komunikace s cílovým systémem** vyberte **Unicode**.
 
@@ -745,6 +753,14 @@ Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/vi
 Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-message-from-sap).
+
+    > [!IMPORTANT]
+    > V **ID programu** SAP se rozlišují malá a velká písmena. Při konfiguraci aplikace logiky a serveru SAP nezapomeňte konzistentně používat stejný formát případu pro vaše **ID programu** . V opačném případě se může při pokusu o odeslání IDoc do SAP zobrazit následující chyby v monitoru tRFC (T-Code SM58):
+    >
+    > * **Funkce IDOC_INBOUND_ASYNCHRONOUS nenalezena**
+    > * **Klient RFC bez ABAP (typ partnera) se nepodporuje.**
+    >
+    > Další informace ze SAP najdete v následujících poznámkách (vyžaduje se přihlášení) <https://launchpad.support.sap.com/#/notes/2399329> a <https://launchpad.support.sap.com/#/notes/353597> .
 
    Například:
 
@@ -1313,11 +1329,18 @@ Pokud dojde k potížím s duplicitními IDocs, které se odesílají do SAP z a
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Tady jsou aktuálně známé problémy a omezení pro spravovaný konektor SAP (bez ISE):
+Tady jsou aktuálně známé problémy a omezení pro spravovaný konektor SAP (bez ISE): 
 
-* Aktivační událost SAP nepodporuje clustery brány dat. V některých případech převzetí služeb při selhání se uzel brány dat, který komunikuje se systémem SAP, může lišit od aktivního uzlu, což vede k neočekávanému chování. Pro scénáře odeslání se podporují clustery služby data Gateway.
+* Obecně platí, že aktivační událost SAP nepodporuje clustery brány dat. V některých případech převzetí služeb při selhání se uzel brány dat, který komunikuje se systémem SAP, může lišit od aktivního uzlu, což vede k neočekávanému chování.
+
+  * V případě scénářů odesílání se podporují clustery služby data Gateway v režimu převzetí služeb při selhání. 
+
+  * Clustery brány dat v režimu Vyrovnávání zatížení nejsou podporovány stavovým akcí SAP. Mezi tyto akce patří **Vytvoření stavové relace**, **potvrzení transakce BAPI**, **vrácení transakce BAPI**, **ukončení stavové relace** a všechny akce, které určují hodnotu **ID relace** . Stavová komunikace musí zůstat na stejném uzlu clusteru brány dat. 
+
+  * U stavových akcí SAP použijte bránu dat buď v režimu bez clusteru, nebo v clusteru, který je nastavený jenom pro převzetí služeb při selhání.
 
 * Konektor SAP aktuálně nepodporuje řetězce směrovače SAP. Místní brána dat musí existovat ve stejné síti LAN jako systém SAP, který chcete připojit.
+
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

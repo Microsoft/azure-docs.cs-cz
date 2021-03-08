@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 58f71ddc470c06e17ff73dd5681cd343bcf8ac7b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516511"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451893"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Omezení Azure Database for PostgreSQL – flexibilní Server
 
@@ -68,7 +68,7 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 
 ### <a name="storage"></a>Storage
 
-- Po nakonfigurování nejde velikost úložiště zmenšit.
+- Po nakonfigurování nejde velikost úložiště zmenšit. Museli byste vytvořit nový server s požadovanou velikostí úložiště a provést ruční výpis paměti a procesu obnovení pro migraci databází.
 - Funkce automatického růstu úložiště v současné době není k dispozici. Monitorujte prosím využití a zvětšete úložiště na vyšší velikost. 
 - Když využití úložiště dosáhne 95% nebo pokud je dostupná kapacita menší než 5 GiB, server se automaticky přepne do **režimu jen pro čtení** , aby se předešlo chybám přidruženým k plným diskovým situacím. 
 - Doporučujeme, abyste nastavili pravidla upozornění pro `storage used` nebo, `storage percent` Pokud překročí určité prahové hodnoty, takže můžete proaktivně provádět akce, jako je například zvýšení velikosti úložiště. Můžete například nastavit výstrahu v případě, že procento úložiště překračuje 80% využití.

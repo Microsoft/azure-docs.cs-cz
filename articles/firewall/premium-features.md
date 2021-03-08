@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715560"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453423"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -39,9 +39,8 @@ Azure Firewall Premium Preview obsahuje následující funkce:
 - **Filtrování adresy URL** – rozšiřuje schopnost filtrování plně kvalifikovaného názvu domény Azure firewall, aby bylo možné zvážit celou adresu URL. Například `www.contoso.com/a/c` místo `www.contoso.com` .
 - **Webové kategorie** – správci můžou povolit nebo odepřít přístup uživatelům k kategoriím webu, jako jsou weby hazardních her, weby sociálních médií a další.
 
-## <a name="features"></a>Funkce
 
-### <a name="tls-inspection"></a>Kontrola TLS
+## <a name="tls-inspection"></a>Kontrola TLS
 
 Azure Firewall Premium ukončuje odchozí připojení a připojení k východnímu západnímu TLS. [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) podporuje příchozí kontrolu TLS, která umožňuje komplexní šifrování. Azure Firewall provede požadovaná hodnota zabezpečení a znovu zašifruje provoz odeslaný do původního cíle.
 
@@ -50,23 +49,30 @@ Azure Firewall Premium ukončuje odchozí připojení a připojení k východní
 
 Další informace o požadavcích na certifikát zprostředkující certifikační autority ve verzi Preview Azure Firewall Premium najdete v článku [certifikáty Azure firewall Premium Preview](premium-certificates.md).
 
-### <a name="idps"></a>ZPROSTŘEDKOVATELŮ identity
+## <a name="idps"></a>ZPROSTŘEDKOVATELŮ identity
 
 Systém zjišťování a prevence vniknutí k síti (zprostředkovatelů identity) umožňuje monitorovat síť pro škodlivou aktivitu, protokolovat informace o této aktivitě, nahlásit je a volitelně se pokusit o její blokování. 
 
 Azure Firewall Premium Preview poskytuje zprostředkovatelů IDENTITYům založenou na podpisech, které umožňují rychlou detekci útoků hledáním specifických vzorů, jako je například sekvence bajtů v síťovém provozu nebo známých škodlivých sekvencí instrukcí používaných malwarem. Signatury zprostředkovatelů identity jsou plně spravované a průběžné aktualizace.
 
+Azure Firewall signatury/RuleSets zahrnují:
+- Důraz na otisky prstů skutečného malwaru, příkazu a řízení, zneužití sad a v případě nebezpečných škodlivých aktivit vyvolaných tradičními metodami prevence.
+- Více než 35 000 pravidel ve více než 50 kategoriích.
+    - Mezi tyto kategorie patří příkazy a řízení malwaru, útoky DoS, botnety, informativní události, zneužití, chyby zabezpečení, síťové protokoly SCADA, aktivita zneužití sady a další.
+- každý den se uvolní 20 až 40 dalších nových pravidel.
+- Pozitivní hodnocení s nízkým falešnou hodnotou pomocí špičkového izolovaného prostoru pro malware a smyčky zpětné vazby ze sítě globálního senzoru.
+
 ZPROSTŘEDKOVATELŮ identity umožňuje detekci útoků ve všech portech a protokolech pro nešifrovaný provoz. Když ale potřebujete zkontrolovat provoz HTTPS, Azure Firewall můžou použít jeho schopnost kontroly TLS k dešifrování provozu a lepší detekci škodlivých aktivit.  
 
-Seznam obcházení zprostředkovatelů identity vám umožňuje Nefiltrovat provoz do žádné IP adresy, rozsahů a podsítí zadaných v seznamu pro obejití.  
+Seznam obcházení zprostředkovatelů identity vám umožňuje Nefiltrovat provoz do žádné IP adresy, rozsahů a podsítí zadaných v seznamu pro obejití. 
 
-### <a name="url-filtering"></a>Filtrování adres URL
+## <a name="url-filtering"></a>Filtrování adres URL
 
 Filtrování adres URL rozšiřuje schopnost filtrování plně kvalifikovaného názvu domény Azure Firewall, aby bylo možné zvážit celou adresu URL. Například `www.contoso.com/a/c` místo `www.contoso.com` .  
 
 Filtrování adres URL lze použít jak u přenosu HTTP, tak i přes HTTPS. Po kontrole provozu pomocí protokolu HTTPS může Azure Firewall Premium Preview použít jeho schopnost kontroly TLS k dešifrování provozu a extrakci cílové adresy URL pro ověření, jestli je povolený přístup. Kontrola TLS vyžaduje výslovný souhlas na úrovni pravidla aplikace. Po povolení můžete použít adresy URL pro filtrování pomocí protokolu HTTPS. 
 
-### <a name="web-categories"></a>Webové kategorie
+## <a name="web-categories"></a>Webové kategorie
 
 Webové kategorie správcům umožňují povolit nebo odepřít přístup uživatelů k kategoriím webu, jako jsou například weby hazardních her, weby sociálních médií a další. Webové kategorie budou také zahrnuty ve Azure Firewall Standard, ale budou lépe vyladěny v Azure Firewall Premium Preview. Na rozdíl od možností kategorií webu ve standardní SKU, které odpovídají kategorii na základě plně kvalifikovaného názvu domény, skladová položka Premium odpovídá kategorii podle celé adresy URL pro přenos HTTP i HTTPS. 
 
@@ -78,11 +84,11 @@ Pokud například Azure Firewall zachytí požadavek HTTPS pro `www.google.com/n
 
 Kategorie jsou seřazené na základě závažnosti v oblasti **zodpovědnosti**, **vysoké šířky pásma**, **používání firmy**, **ztráty produktivity**, **Obecné procházení** a **Nezařazeno do kategorie**.
 
-#### <a name="category-exceptions"></a>Výjimky kategorie
+### <a name="category-exceptions"></a>Výjimky kategorie
 
 Můžete vytvořit výjimky pro pravidla vaší webové kategorie. Vytvořte samostatnou kolekci pravidel povolení nebo odepření s vyšší prioritou v rámci skupiny kolekce pravidel. Můžete například nakonfigurovat kolekci pravidel, která umožňuje `www.linkedin.com` s prioritou 100, s kolekcí pravidel, která zakazuje **sociální sítě** s prioritou 200. Tím se vytvoří výjimka pro předdefinovanou webovou kategorii **sítě pro sociální sítě** .
 
-#### <a name="categorization-change"></a>Změna kategorizace
+### <a name="categorization-change"></a>Změna kategorizace
 
 Změnu kategorizace si můžete vyžádat v těchto případech:
 

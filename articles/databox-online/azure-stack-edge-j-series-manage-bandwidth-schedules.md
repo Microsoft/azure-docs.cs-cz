@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b3ae2986b49cf6854e0d9a6b99aabdfc2dd6b713
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 29ac6976b6248f066f18f0ffcc8e03061ee74f77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436647"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454411"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Použití Azure Portal ke správě plánů šířky pásma na procesorovém GPU Azure Stack Edge pro 
 
@@ -44,7 +44,7 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
 
    1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění** a **čas ukončení** plánu.
    2. Pokud má být tento plán běžet celý den, ověřte možnost **všechny dny** .
-   3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Zadejte číslo mezi 20 a 2 147 483 647 pro toto pole.
+   3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Zadejte pro toto pole číslo mezi 64 a 2 147 483 647.
    4. Vyberte **neomezenou šířku pásma** , pokud nechcete omezit nahrávání a stahování data.
    5. Vyberte **Přidat**.
 

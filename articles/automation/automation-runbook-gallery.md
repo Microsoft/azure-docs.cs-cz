@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: afa782df8666413356fa334bf4e9dcb989b87c2f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441327"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452777"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerii prostředí PowerShell
 
@@ -55,7 +55,7 @@ Níže uvedený seznam obsahuje několik sad Runbook, které podporují běžné
 
 1. Pokud chcete položku importovat, klikněte v okně podrobností na **importovat** .
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Zobrazit podrobnosti položky Galerie runbooků" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Zobrazí podrobnosti položky Galerie runbooků." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
 1. Volitelně můžete změnit název Runbooku a pak kliknutím na **OK** sadu Runbook naimportovat.
 1. Sada Runbook se zobrazí na kartě **Runbooky** pro účet Automation.
@@ -67,11 +67,11 @@ Níže uvedený seznam obsahuje několik sad Runbook, které podporují běžné
 1. Vyberte **Zdroj: GitHub**.
 1. Filtry nad seznamem můžete použít k zúžení zobrazení podle vydavatele, typu a řazení. Vyhledejte položku galerie, kterou chcete, a vyberte ji, abyste zobrazili její podrobnosti.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Procházení Galerie GitHub" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Procházení Galerie GitHub." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
 
 1. Pokud chcete položku importovat, klikněte v okně podrobností na **importovat** .
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Podrobné zobrazení Runbooku z Galerie GitHubu" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Podrobné zobrazení Runbooku z Galerie GitHubu." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
 
 1. Volitelně můžete změnit název Runbooku a pak kliknutím na **OK** sadu Runbook naimportovat.
 1. Sada Runbook se zobrazí na kartě **Runbooky** pro účet Automation.
@@ -99,7 +99,7 @@ Microsoft doporučuje přidat Runbooky do Galerie prostředí PowerShell, které
 
    Když přejdete k určitému modulu, můžete zobrazit další informace. Tyto informace zahrnují odkaz zpátky na Galerie prostředí PowerShell, všechny požadované závislosti a všechny rutiny nebo prostředky DSC, které modul obsahuje.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Podrobné zobrazení modulu z Galerie" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Podrobné zobrazení modulu z galerie." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
 1. Pokud chcete modul nainstalovat přímo do Azure Automation, klikněte na **importovat**.
 1. V podokně import můžete zobrazit název modulu, který se má importovat. Pokud jsou všechny závislosti nainstalovány, je aktivováno tlačítko **OK** . Pokud postrádáte závislosti, musíte tyto závislosti před importem tohoto modulu naimportovat.

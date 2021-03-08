@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory obchodních na zákazníky (B2C)
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory B2C (Business-to-zákazníka).
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,28 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: c4561780a20bb2dfdef39269a49ebf8cb2a29fff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593006"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454613"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: co je nového
 
 Vítá vás novinky v Azure Active Directory B2C dokumentaci. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě B2C, najdete v tématu [novinky v Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="new-articles"></a>Nové články
+
+- [Zabezpečení vícefaktorového ověřování Multi-Factor Authentication (MFA)](phone-based-mfa.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Ukázky kódu pro Azure Active Directory B2C](code-samples.md)
+- [Sledovat chování uživatele v Azure AD B2C pomocí Application Insights](analytics-with-application-insights.md)
+- [Konfigurace chování relace ve službě Azure Active Directory B2C](session-behavior.md)
 
 ## <a name="january-2021"></a>Leden 2021
 

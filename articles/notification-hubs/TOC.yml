@@ -120,7 +120,7 @@
     - name: Vytvoření centra oznámení pomocí SDK
       items:
         - name: Vytvoření centra oznámení – .NET
-          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+          href: /dotnet/api/overview/azure/notification-hubs
         - name: Vytvoření centra oznámení – Node.js
           href: notification-hubs-nodejs-push-notification-tutorial.md
         - name: Vytvoření centra oznámení – Java

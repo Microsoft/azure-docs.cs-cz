@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787260"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452369"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Základní hodnoty zabezpečení Azure pro Azure Stack Edge
 
@@ -308,7 +308,7 @@ Mějte na paměti, že k získání přehledu o úlohách a službách může b�
 
 **Doprovodné** materiály: můžete přenést vlastní aplikace, které se budou spouštět na všech místně vytvořených virtuálních počítačích. K vytvoření místních výpočetních virtuálních počítačů na hraničním zařízení zásobníku použijte PowerShellové skripty. Důrazně doporučujeme, abyste v místních virtuálních počítačích spouštěli jenom důvěryhodné aplikace, které by běžely. 
 
-- [Řízení spouštění skriptu PowerShellu v prostředí Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
+- [Řízení spouštění skriptu PowerShellu v prostředí Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

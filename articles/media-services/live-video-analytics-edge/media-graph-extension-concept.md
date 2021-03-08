@@ -3,12 +3,12 @@ title: Co je rozšíření Media graphu – Azure
 description: Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím uzlu rozšíření grafu.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401113"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455835"
 ---
 # <a name="media-graph-extension"></a>Rozšíření grafu médií
 
@@ -19,11 +19,11 @@ Live video Analytics podporuje dva druhy procesorů rozšíření pro Media Grap
 * [Procesor rozšíření HTTP](media-graph-concept.md#http-extension-processor)
 * [procesor rozšíření gRPC](media-graph-concept.md#grpc-extension-processor)
 
-Uzel rozšíření grafu očekává, že modul plug-in analytického rozšíření vrátí výsledky ve formátu JSON. V ideálním případě by měly výsledky následovat po [objektovém modelu schématu metadat odvození](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update).
+Uzel rozšíření grafu očekává, že modul plug-in analytického rozšíření vrátí výsledky ve formátu JSON. V ideálním případě by měly výsledky následovat po [objektovém modelu schématu metadat odvození](/azure/media-services/live-video-analytics-edge/inference-metadata-schema).
 
 ## <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
-Procesor rozšíření HTTP umožňuje scénáře rozšiřitelnosti pomocí [protokolu HTTP](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update), kde výkon nebo optimální využití prostředků nejsou primárním problémem. Vlastní AI můžete vystavit do mediálního grafu prostřednictvím koncového bodu HTTP REST. 
+Procesor rozšíření HTTP umožňuje scénáře rozšiřitelnosti pomocí [protokolu HTTP](/azure/media-services/live-video-analytics-edge/http-extension-protocol), kde výkon nebo optimální využití prostředků nejsou primárním problémem. Vlastní AI můžete vystavit do mediálního grafu prostřednictvím koncového bodu HTTP REST. 
 
 Uzel procesoru rozšíření HTTP použijte v těchto případech:
 
@@ -33,7 +33,7 @@ Uzel procesoru rozšíření HTTP použijte v těchto případech:
 
 ## <a name="grpc-extension-processor"></a>procesor rozšíření gRPC
 
-procesor rozšíření gRPC umožňuje scénáře rozšiřitelnosti pomocí gRPC, vysoce výkonného [strukturovaného protokolu](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update). Je ideální pro scénáře, kde je výkon nebo optimální využití prostředků prioritou. Procesor rozšíření gRPC vám umožňuje získat kompletní výhody definic strukturovaných dat. gRPC nabízí vysoký výkon přenosu obsahu pomocí:
+procesor rozšíření gRPC umožňuje scénáře rozšiřitelnosti pomocí gRPC, vysoce výkonného [strukturovaného protokolu](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol). Je ideální pro scénáře, kde je výkon nebo optimální využití prostředků prioritou. Procesor rozšíření gRPC vám umožňuje získat kompletní výhody definic strukturovaných dat. gRPC nabízí vysoký výkon přenosu obsahu pomocí:
 
 * [sdílená paměť v krabicích](https://en.wikipedia.org/wiki/Shared_memory) nebo 
 * přímý vkládání obsahu do textu zpráv gRPC 
@@ -57,7 +57,7 @@ Následující diagram znázorňuje tok dat vysoké úrovně:
 
 ## <a name="samples"></a>ukázky
 
-Můžete začít s jedním z našich rychlých startů, které znázorňují živé video analýzy pomocí předem připravené služby rozšíření s [procesorem rozšíření http](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) nebo s vysokými kmitočty s [procesorem rozšíření gRPC](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) .
+Můžete začít s jedním z našich rychlých startů, které znázorňují živé video analýzy pomocí předem připravené služby rozšíření s [procesorem rozšíření http](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp) nebo s vysokými kmitočty s [procesorem rozšíření gRPC](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp) .
 
 Pro pokročilé uživatele můžete rezervovat některé ukázky [Jupyter poznámkových bloků](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) pro Live video Analytics. Tyto poznámkové bloky vám poskytnou podrobné pokyny pro **rozšíření grafu multimédií** na těchto místech:
 

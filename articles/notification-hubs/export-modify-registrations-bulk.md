@@ -14,12 +14,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018174"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452335"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Hromadné export a import registrací Azure Notification Hubs
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak provést velký počet operací v centru oznáme
 
 Podpora služby Batch je navržená tak, aby podporovala dlouhodobě běžící úlohy, které zahrnují miliony registrací. Pro dosažení tohoto škálování podpora dávky používá Azure Storage k ukládání podrobností a výstupu úlohy. Pro operace hromadné aktualizace musí uživatel vytvořit soubor v kontejneru objektů blob, jehož obsah je seznam operací aktualizace registrace. Při spuštění úlohy uživatel poskytne adresu URL vstupního objektu BLOB společně s adresou URL pro výstupní adresář (také v kontejneru objektů BLOB). Po zahájení úlohy může uživatel zjistit stav pomocí dotazu na umístění adresy URL zadané na začátku úlohy. Konkrétní úloha může provádět pouze operace určitého druhu (vytvoří, aktualizuje nebo odstraní). Operace exportu se provádějí obdobně.
 
-## <a name="import"></a>Importovat
+## <a name="import"></a>Import
 
 ### <a name="set-up"></a>Nastavení
 
@@ -127,7 +127,7 @@ Kromě vstupních a výstupních adres URL tento příklad vytvoří `Notificati
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Až se volání dokončí, úloha bude pokračovat centrem oznámení a můžete zjistit jeho stav voláním [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
+Až se volání dokončí, úloha bude pokračovat centrem oznámení a můžete zjistit jeho stav voláním [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync).
 
 Po dokončení úlohy můžete zkontrolovat výsledky zobrazením následujících souborů ve výstupním adresáři:
 

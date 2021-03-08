@@ -3,12 +3,12 @@ title: Použití Azure Lab Services pro Hackathon
 description: Tento článek popisuje, jak používat Azure Lab Services pro vytváření testovacích prostředí, která můžete použít ke spuštění hackathony.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602576"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452726"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Použít Azure Lab Services pro další Hackathon
 Azure Lab Services je navržená tak, aby byla nenáročná a snadno použitelná, takže můžete rychle vymezit nové prostředí virtuálních počítačů (VM) pro vaši Hackathon.  Pomocí následujícího kontrolního seznamu zajistěte, aby váš Hackathon byl co nejrychleji. Tento kontrolní seznam by měl dokončit vaše IT oddělení nebo vyučující, kteří zodpovídají za vytváření a správu testovacího prostředí Hackathon. 
@@ -83,7 +83,7 @@ Tato část popisuje kroky pro dokončení dne vašeho hackathonu.
     - Přihlašovací údaje, které by měly být použity pro připojení k počítači. Tento krok se vztahuje pouze v případě, že testovací prostředí používá bitovou kopii systému Windows a Vy jste nakonfigurovali všechny virtuální počítače, aby používaly stejné heslo.
     - Pokyny, jak účastníci SSH and\or RDP ke svým počítačům.
 
-        Další informace najdete v tématu Návod, [Jak odesílat pozvánky uživatelům](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) a [připojovat se k virtuálním počítačům se systémem Linux](how-to-use-remote-desktop-linux-student.md?branch=master). 
+        Další informace najdete v tématu Návod, [Jak odesílat pozvánky uživatelům](how-to-configure-student-usage.md#send-invitations-to-users) a [připojovat se k virtuálním počítačům se systémem Linux](how-to-use-remote-desktop-linux-student.md). 
 
 ## <a name="next-steps"></a>Další kroky
 Začněte vytvořením účtu testovacího prostředí v cvičení podle pokynů v článku [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
