@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209675"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452998"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Výstupní vazby služby Azure Table Storage pro Azure Functions
 
@@ -438,7 +438,7 @@ K dispozici jsou dvě možnosti pro výstup zprávy řádku úložiště tabulky
 
 - **Návratová hodnota**: nastavte `name` vlastnost v *function.jsna* `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako řádek tabulkového úložiště.
 
-- **Imperativní**: předejte hodnotu metodě [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) parametru deklarovaného jako typ [out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) . Předaná hodnota `set` je trvalá jako zpráva centra událostí.
+- **Imperativní**: předejte hodnotu metodě [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) parametru deklarovaného jako typ [out](/python/api/azure-functions/azure.functions.out) . Předaná hodnota `set` je trvalá jako zpráva centra událostí.
 
 ---
 

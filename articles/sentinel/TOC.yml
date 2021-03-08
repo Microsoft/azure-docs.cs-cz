@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: Koncepty
   items:
+    - name: Klasifikace dat pomocí entit
+      href: entities-in-azure-sentinel.md
     - name: Správa přístupu
       items:
         - name: Oprávnění ve službě Azure Sentinel
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: Pokročilá detekce útoků s více fázemi
       href: fusion.md
-    - name: Použití vlastní platformy strojového učení
-      href: bring-your-own-ml.md
-    - name: Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: Identifikace pokročilých hrozeb pomocí UEBA
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Import analýzy hrozeb do Azure Sentinelu
       href: import-threat-intelligence.md
+    - name: Použití vlastní platformy strojového učení
+      href: bring-your-own-ml.md
     - name: Integrace Microsoft 365 Defenderu s využitím Azure Sentinel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Použití externích dat s využitím seznamů ke zhlédnutí
       href: watchlists.md
+    - name: Přiřazení oprávnění s využitím rolí
+      href: roles.md
+    - name: Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: Normalizace data napříč tabulkami
       href: normalization.md
     - name: Zabezpečení
@@ -84,7 +88,7 @@
               href: connect-office-365-advanced-threat-protection.md
             - name: Upozornění Azure Defenderu z ASC
               href: connect-azure-security-center.md
-            - name: Azure Defender (dříve ASC) pro IoT
+            - name: Defender pro IoT (dříve ASC pro IoT)
               href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
@@ -242,12 +246,16 @@
           href: monitor-data-connector-health.md
     - name: Povolit analýzu chování uživatelů a entit
       href: enable-entity-behavior-analytics.md
+    - name: Mapování datových polí na entity
+      href: map-data-fields-to-entities.md
     - name: Správa několika tenantů (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Práce s incidenty ve více pracovních prostorech
       href: multiple-workspace-view.md
     - name: Nastavení klíčů spravovaných zákazníkem (CMK)
       href: customer-managed-keys.md
+    - name: Vlastní podrobnosti o ploše v upozorněních
+      href: surface-custom-details-in-alerts.md
     - name: Vytváření incidentů z upozornění
       href: create-incidents-from-alerts.md
     - name: Lepší správa SOC s využitím metrik pro incidenty
@@ -285,6 +293,8 @@
           href: watchlist-with-rest-api.md
     - name: Konektor Azure Sentinel Logic Apps
       href: /connectors/azuresentinel/
+    - name: Odkazy na entity
+      href: entities-reference.md
     - name: Schéma normalizace sítě
       href: normalization-schema.md
     - name: Referenční dokumentace schématu zdroje dat

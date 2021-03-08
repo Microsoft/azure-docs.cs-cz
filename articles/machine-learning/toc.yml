@@ -258,6 +258,8 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
+        - name: Odkaz na pracovní prostor Azure synapse Analytics
+          href: how-to-link-synapse-ml-workspaces.md
     - name: Vytváření a správa výpočetních prostředků
       items:
         - name: Instance služby Compute

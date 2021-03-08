@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d94625e3eb121e556b28038cf59626be1332966
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381507"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455801"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Výstupní vazby Azure Queue Storage pro Azure Functions
 
@@ -392,7 +392,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Queue` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `queue` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastaven na hodnotu `out` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -480,7 +480,7 @@ K dispozici jsou dvě možnosti pro výstup zprávy fronty z funkce:
 
 - **Návratová hodnota**: nastavte `name` vlastnost v *function.jsna* `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako zpráva úložiště fronty.
 
-- **Imperativní**: předejte hodnotu metodě [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) parametru deklarovaného jako typ [out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) . Předaná hodnota `set` je trvalá jako zpráva úložiště fronty.
+- **Imperativní**: předejte hodnotu metodě [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) parametru deklarovaného jako typ [out](/python/api/azure-functions/azure.functions.out) . Předaná hodnota `set` je trvalá jako zpráva úložiště fronty.
 
 ---
 

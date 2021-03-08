@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 9ef45e804b593f36171907395c564c8c6058c286
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954475"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453729"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Přehled šablon licencí Media Services V3 with Widevine
 
@@ -67,7 +67,7 @@ Azure Media Services vám umožní šifrovat obsah pomocí **Google Widevine**. 
 
 ## <a name="json-message"></a>Zpráva JSON
 
-| Name | Hodnota | Popis |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | payload |Řetězec s kódováním base64 |Žádost o licenci odeslanou klientem |
 | content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type. |
@@ -85,7 +85,7 @@ Pokud existují existující zásady, není nutné zadávat žádné hodnoty ve 
 
 Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohledu na možnost use_policy_overrides_exclusively. 
 
-| Name | Hodnota | Popis |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | content_key_specs. track_type |řetězec |Název typu stopy. Je-li v žádosti o licenci zadán content_key_specs, nezapomeňte explicitně zadat všechny typy sledování. V důsledku tohoto selhání dojde k selhání při přehrání posledních 10 sekund. |
 | content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na odolnost klienta pro přehrávání. <br/> – Vyžaduje se softwarově vycházející kryptografický modul s prázdným polem. <br/> – Vyžaduje se softwarová kryptografie a zakódováný dekodér. <br/> – Operace klíčového materiálu a kryptografie se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním. <br/> – Kryptografie a dekódování obsahu se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním.  <br/> – Kryptografie, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) se musí zpracovat v rámci důvěryhodného spouštěcího prostředí pro hardware. |
@@ -94,7 +94,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | content_key_specs content_key_specs.Key_ID |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
-| Name | Hodnota | Popis |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |Logická hodnota, true nebo false |Indikuje, že přehrávání obsahu je povolené. Výchozí hodnota je false. |
 | policy_overrides&#46;can_persist |Logická hodnota, true nebo false |Označuje, že licence může být trvalá pro nestálé úložiště pro použití v offline režimu. Výchozí hodnota je false. |
@@ -109,7 +109,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | policy_overrides&#46;renew_with_usage |Logická hodnota, true nebo false |Indikuje, že licence se posílá k obnovení při zahájení používání. Toto pole se používá pouze v případě, že je can_renew true. |
 
 ## <a name="session-initialization"></a>Inicializace relace
-| Name | Hodnota | Popis |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | provider_session_token |Řetězec s kódováním base64 |Tento token relace se předává zpátky v licenci a existuje v následných obnoveních. Token relace není po relacích zachován. |
 | provider_client_token |Řetězec s kódováním base64 |Token klienta k odeslání zpět v odpovědi na licenci Pokud žádost o licenci obsahuje token klienta, tato hodnota se ignoruje. Token klienta přetrvá nad rámec licenčních relací. |
@@ -117,7 +117,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 
 ## <a name="configure-your-widevine-license-with-net"></a>Konfigurace licence Widevine pomocí .NET 
 
-Media Services poskytuje třídu, která vám umožní nakonfigurovat licenci Widevine. Pokud chcete sestavit licenci, předejte JSON do [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
+Media Services poskytuje třídu, která vám umožní nakonfigurovat licenci Widevine. Pokud chcete sestavit licenci, předejte JSON do [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
 
 Chcete-li nakonfigurovat šablonu, můžete:
 
@@ -263,7 +263,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>Konfigurace licence
 
-Použijte třídy definované v předchozí části k vytvoření formátu JSON, který se používá ke konfiguraci [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate):
+Použijte třídy definované v předchozí části k vytvoření formátu JSON, který se používá ke konfiguraci [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate):
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()

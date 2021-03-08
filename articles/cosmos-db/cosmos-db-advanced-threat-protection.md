@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334408"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455582"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,9 +34,9 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. V současné době může aktivovat následující výstrahy:
 
-- **Přístup z neobvyklých umístění** : Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu Azure Cosmos, kde se někdo připojil k Azure Cosmos DB koncovému bodu z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci, což znamená, že nová aplikace nebo operace údržby vývojářů. V jiných případech výstraha detekuje škodlivou akci od bývalého zaměstnance, externího útočníka atd.
+- **Přístup z neobvyklých umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu Azure Cosmos, kde se někdo připojil k Azure Cosmos DB koncovému bodu z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci, což znamená, že nová aplikace nebo operace údržby vývojářů. V jiných případech výstraha detekuje škodlivou akci od bývalého zaměstnance, externího útočníka atd.
 
-- **Neobvyklé extrakce dat** : Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
+- **Neobvyklé extrakce dat**: Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
 
 
 
@@ -68,9 +68,9 @@ Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo zís
 
 Použijte následující rutiny PowerShellu:
 
-* [Povolení Rozšířené ochrany před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Povolení Rozšířené ochrany před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[Šablona ARM](#tab/arm-template)
 

@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044251"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455412"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -51,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) pro svázání vstupu a výstupů s vašimi metodami.
+Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions) pro svázání vstupu a výstupů s vašimi metodami.
 
 ## <a name="alternate-entry-point"></a>Alternativní vstupní bod
 
@@ -199,7 +199,7 @@ Výstup může být vyjádřen v návratové hodnotě i v parametrech Output. Po
 
 Chcete-li použít vrácenou hodnotu funkce jako hodnotu výstupní vazby, `name` vlastnost vazby by měla být nastavena na hodnotu `$return` v `function.json` .
 
-Chcete-li vytvořit více výstupů, použijte `set()` metodu poskytnutou [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) rozhraním pro přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
+Chcete-li vytvořit více výstupů, použijte `set()` metodu poskytnutou [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) rozhraním pro přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
 
 ```json
 {
@@ -306,7 +306,7 @@ Postup pro škálování a osvědčené postupy pro aplikace funkcí Pythonu naj
 
 ## <a name="context"></a>Kontext
 
-Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) do jejího podpisu argument.
+Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context) do jejího podpisu argument.
 
 Například:
 
@@ -319,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) má následující atributy řetězce:
+Třída [**Context**](/python/api/azure-functions/azure.functions.context) má následující atributy řetězce:
 
 `function_directory` Adresář, ve kterém je funkce spuštěná.
 
@@ -640,7 +640,7 @@ Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu 
 
 Další informace naleznete v následujících zdrojích:
 
-* [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Vazby úložiště objektů BLOB](functions-bindings-storage-blob.md)
@@ -651,5 +651,5 @@ Další informace naleznete v následujících zdrojích:
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

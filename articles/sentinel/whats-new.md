@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048178"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453797"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,9 +32,26 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="february-2021"></a>Únor 2021
 
+- [Sešit certifikace kyberbezpečnosti (CMMC) modelu splatnosti](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Datové konektory třetích stran](#third-party-data-connectors)
 - [UEBA Insights na stránce entity](#ueba-insights-in-the-entity-page)
 - [Vylepšené vyhledávání incidentů](#improved-incident-search)
+
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Sešit certifikace kyberbezpečnosti (CMMC) modelu splatnosti
+
+Sešit Azure Sentinel CMMC poskytuje mechanismus pro zobrazení dotazů protokolu zarovnaných k CMMC ovládacím prvkům v portfoliu Microsoftu, včetně nabídek zabezpečení Microsoftu, Office 365, týmů, Intune, virtuálního klienta Windows a spousty dalších.
+
+Sešit CMMC umožňuje architektům zabezpečení, inženýrům, analytikům v oblasti zabezpečení, manažerům a odborníkům na IT získat přehled o tom, jaké informace jsou pro zabezpečení cloudových úloh stav. K dispozici jsou také doporučení pro výběr, návrh, nasazení a konfiguraci nabídek Microsoftu pro sbližování s příslušnými požadavky a postupy CMMC.
+
+I v případě, že nepotřebujete dodržovat CMMC, je sešit CMMC užitečný při vytváření Center pro provozní centra, vývoji výstrah, vizualizaci hrozeb a poskytování povědomí o úlohách v situaci.
+
+Přístup k sešitu CMMC v oblasti **sešitů** Sentinel Azure Vyberte **šablonu** a pak vyhledejte **CMMC**.
+
+Další informace naleznete v tématu:
+
+- [Sešit certifikace modelu splatnosti Azure Sentinel kyberbezpečnosti (CMMC)](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
+- [Kurz: Vizualizace a monitorování dat](tutorial-monitor-your-data.md)
+
 
 ### <a name="third-party-data-connectors"></a>Datové konektory třetích stran
 

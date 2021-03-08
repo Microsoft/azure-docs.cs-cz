@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710205"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451723"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -39,7 +39,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
             - Uvnitř stejné virtuální sítě jako spravovaná instance s **jinou podsítí**.
             - Uvnitř jiné virtuální sítě, než je spravovaná instance, prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálních partnerských vztahů) nebo připojení virtuální sítě k virtuální síti.
 
-            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Nakonfigurujte virtuální síť](#configure-virtual-network).
 

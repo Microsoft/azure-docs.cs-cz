@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 8de819fc5444146f40a6a052cd51e6164cdfb230
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 03/05/2021
+ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653053"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454274"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Zásady podpory Azure Red Hat OpenShift
 
@@ -23,7 +23,7 @@ Některé konfigurace pro clustery Azure Red Hat OpenShift 4 můžou ovlivnit mo
 ## <a name="cluster-configuration-requirements"></a>Požadavky na konfiguraci clusteru
 
 * Všechny obsluhy clusteru OpenShift musí zůstat ve spravovaném stavu. Seznam operátorů clusteru lze vrátit spuštěním `oc get clusteroperators` .
-* Cluster musí mít minimálně dva pracovní uzly. Nemáte žádné příchuti, které brání naplánování komponent OpenShift. Neměňte škálu pracovních procesů clusteru na nulu nebo se pokuste o bezproblémové vypnutí clusteru.
+* Cluster musí mít minimálně tři pracovní uzly a tři uzly správce. Nemáte žádné příchuti, které brání naplánování komponent OpenShift. Neměňte škálu pracovních procesů clusteru na nulu nebo se pokuste o bezproblémové vypnutí clusteru.
 * Neodstraňujte ani neměňte cluster Prometheus a služby Alertmanager.
 * Neodstraňujte pravidla Alertmanager služby.
 * Neodstraňujte ani neměňte skupiny zabezpečení sítě.

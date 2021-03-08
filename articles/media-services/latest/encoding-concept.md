@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 159336d3e8949739cb00dbe66ed82fa90256dcfd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897896"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455276"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
@@ -137,7 +137,7 @@ Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, ab
 
 ## <a name="preset-schema"></a>Předdefinované schéma
 
-V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (nebo v jiné referenční dokumentaci sady Media Services V3 SDK).
+V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Definici "schématu" těchto objektů najdete v tématu [Open API Specification (nebo Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Přednastavené definice (například **StandardEncoderPreset**) můžete zobrazit také v [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (nebo v jiné referenční dokumentaci sady Media Services V3 SDK).
 
 ## <a name="scaling-encoding-in-v3"></a>Škálování kódování ve verzi 3
 

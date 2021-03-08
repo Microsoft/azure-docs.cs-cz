@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6b2134ffd414aed3ed6561fb34544094eb52baa0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844723"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452471"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 
@@ -22,7 +22,7 @@ Služba DNS (Domain Name Service) je technika pro ukládání názvů síťovýc
 
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
 * Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
@@ -104,7 +104,7 @@ Než naimportujete certifikát, musíte pro svůj Trezor klíčů udělit přís
 
 | Oprávnění tajného kódu | Oprávnění certifikátu | Vybrat objekt zabezpečení |
 |--|--|--|
-| Získat, seznam | Získat, seznam | Domain-Management Azure jaře Cloud |
+| Get (získat), List (vypsat) | Get (získat), List (vypsat) | Domain-Management Azure jaře Cloud |
 
 ![Importovat certifikát 2](./media/custom-dns-tutorial/import-certificate-b.png)
 
@@ -156,7 +156,7 @@ Přejít na poskytovatele DNS a přidat záznam CNAME pro mapování domény na 
 ![Stránka záznamů DNS](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Mapování vlastní domény na jarní cloudovou aplikaci Azure
-Pokud nemáte aplikaci v Azure jaře cloudu, postupujte podle pokynů v části [rychlý Start: spuštění stávající aplikace Azure jaře cloudu pomocí Azure Portal](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master).
+Pokud nemáte aplikaci v Azure jaře cloudu, postupujte podle pokynů v části [rychlý Start: spuštění stávající aplikace Azure jaře cloudu pomocí Azure Portal](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal).
 
 #### <a name="portal"></a>[Azure Portal](#tab/Azure-portal)
 Přejít na stránku aplikace

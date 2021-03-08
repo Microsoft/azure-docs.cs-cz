@@ -1,7 +1,7 @@
 ---
-title: Příprava dat s využitím fondů Apache Spark (Preview)
+title: Data tahání s fondy Apache Spark (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak připojit fondy Apache Spark pro přípravu dat pomocí Azure synapse Analytics a Azure Machine Learning
+description: Naučte se, jak připojit a spustit fondy Apache Spark pro data tahání pomocí Azure synapse Analytics a Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,24 +10,24 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 22945cdaff2696a15d5b119bd0f32fd0a179ebf7
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: 242fd57cbdbc9ef01ba28bea25d1aad4c6a17377
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202089"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453372"
 ---
-# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro přípravu dat (Preview)
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
-V tomto článku se dozvíte, jak připojit a spustit fond Apache Spark, který využívá [Azure synapse Analytics](/synapse-analytics/overview-what-is.md) pro přípravu dat. 
+V tomto článku se dozvíte, jak připojit a spustit fond Apache Spark s využitím [Azure synapse Analytics](/synapse-analytics/overview-what-is.md) pro data tahání ve velkém měřítku. 
 
 >[!IMPORTANT]
 > Integrace analýzy Azure Machine Learning a Azure synapse je ve verzi Preview. Možnosti uvedené v tomto článku používají `azureml-synapse` balíček, který obsahuje [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkce verze Preview, které se můžou kdykoli změnit.
 
 ## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Integrace s Azure Machine Learning a Azure synapse Analytics (Preview)
 
-Integrace služby Azure synapse Analytics s Azure Machine Learning (Preview) umožňuje připojit fond Apache Spark s Azure synapse pro interaktivní zkoumání a přípravu dat. Díky této integraci můžete mít vyhrazené výpočetní prostředky pro přípravu dat ve velkém měřítku, a to vše v rámci stejného poznámkového bloku Pythonu, který používáte pro školení vašich modelů strojového učení.
+Integrace služby Azure synapse Analytics s Azure Machine Learning (Preview) umožňuje připojit fond Apache Spark s Azure synapse pro interaktivní zkoumání a přípravu dat. Díky této integraci můžete mít vyhrazenou výpočetní kapacitu pro data tahání ve velkém měřítku, a to vše v rámci stejného poznámkového bloku Pythonu, který používáte pro školení vašich modelů strojového učení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,109 +37,41 @@ Integrace služby Azure synapse Analytics s Azure Machine Learning (Preview) umo
 
 * [Vytvoření fondu Apache Spark pomocí Azure Portal, webových nástrojů nebo synapse studia](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* [Nainstalujte sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) , která obsahuje `azureml-synapse` balíček (Preview). 
+* [Nainstalujte sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která zahrnuje `azureml-synapse` balíček (Preview). 
     * Můžete ji také nainstalovat sami, ale je kompatibilní pouze s SDK verze 1,20 nebo vyšší. 
         ```python
         pip install azureml-synapse
         ```
 
-## <a name="link-machine-learning-workspace-and-synapse-analytics-assets"></a>Propojení pracovního prostoru Machine Learning a Asset Analytics synapse
-
-Než budete moci připojit fond synapse Spark pro přípravu dat, musí být váš pracovní prostor Azure Machine Learning propojený s vaším pracovním prostorem Azure synapse Analytics. 
-
-Pracovní prostor služby Machine Learning a synapse Analytics můžete propojit pomocí [sady Python SDK](#link-sdk) nebo [Azure Machine Learning studia](#link-studio). 
-
-> [!IMPORTANT]
-> Pokud chcete úspěšně propojit pracovní prostor analýzy Azure synapse, musíte mít přidělenou roli **vlastníka** pracovního prostoru Azure synapse Analytics. Ověřte přístup v [Azure Portal](https://ms.portal.azure.com/).
->
-> Pokud nejste **vlastníkem** pracovního prostoru Azure synapse Analytics, ale chcete použít existující propojenou službu, přečtěte si téma [získání existující propojené služby](#get-an-existing-linked-service).
-
-
-<a name="link-sdk"></a>
-### <a name="link-workspaces-with-the-python-sdk"></a>Propojení pracovních prostorů se sadou Python SDK
-
-Následující kód využívá [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) třídy a k, 
-
-* Propojte Azure Machine Learning pracovní prostor `ws` s vaším pracovním prostorem Azure synapse Analytics. 
-* Zaregistrujte svůj pracovní prostor Azure synapse Analytics s Azure Machine Learning jako propojenou službu.
-
-``` python
-import datetime  
-from azureml.core import Workspace, LinkedService, SynapseWorkspaceLinkedServiceConfiguration
-
-# Azure Machine Learning workspace
-ws = Workspace.from_config()
-
-#link configuration 
-synapse_link_config = SynapseWorkspaceLinkedServiceConfiguration(
-    subscription_id=ws.subscription_id,
-    resource_group= 'your resource group',
-    name='mySynapseWorkspaceName')
-
-# Link workspaces and register Synapse workspace in Azure Machine Learning
-linked_service = LinkedService.register(workspace = ws,              
-                                            name = 'synapselink1',    
-                                            linked_service_config = synapse_link_config)
-```
-> [!IMPORTANT] 
-> `system_assigned_identity_principal_id`Pro každou propojenou službu se vytvoří spravovaná identita. Této spravované identitě musí být role **správce Synapse Apache Spark** pracovního prostoru Azure synapse Analytics udělená předtím, než začnete relaci Apache Spark. [Přiřaďte roli správce Synapse Apache Spark ke spravované identitě v synapse studiu](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md).
->
-> Chcete-li najít `system_assigned_identity_principal_id` konkrétní propojenou službu, použijte `LinkedService.get('<your-mlworkspace-name>', '<linked-service-name>')` .
-
-<a name="link-studio"></a>
-### <a name="link-workspaces-via-studio"></a>Propojení pracovních prostorů přes Studio
-
-Pomocí nástroje Azure Machine Learning Studio Propojte svůj pracovní prostor Azure Machine Learning a pracovní prostor služby Azure synapse Analytics a proveďte následující kroky: 
-
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
-1. V levém podokně vyberte **propojené služby** v části **Správa** .
-1. Vyberte **Přidat integraci**.
-1. Na formuláři **pracovního prostoru propojení** vyplňte pole.
-
-   |Pole| Popis    
-   |---|---
-   |Název| Zadejte název propojené služby. Tento název se použije pro odkaz na tuto konkrétní propojenou službu.
-   |Název předplatného | Vyberte název vašeho předplatného, které je přidružené k pracovnímu prostoru Machine Learning. 
-   |Pracovní prostor synapse | Vyberte pracovní prostor synapse, ke kterému se chcete připojit. 
-   
-1. Výběrem **Další** otevřete formulář **Vybrat fondy Spark (volitelné)** . V tomto formuláři vyberete, který Apache Spark fond synapse připojit k vašemu pracovnímu prostoru.
-
-1. Výběrem možnosti **Další** otevřete formulář **Revize** a zkontrolujte výběr. 
-1. Vyberte **vytvořit** k dokončení procesu vytváření propojené služby.
+* [Propojte Azure Machine Learning pracovní prostor a pracovní prostor Azure synapse Analytics](how-to-link-synapse-ml-workspaces.md).
 
 ## <a name="get-an-existing-linked-service"></a>Získat existující propojenou službu
+Než budete moct připojit vyhrazené výpočetní prostředí pro data tahání, musíte mít pracovní prostor ML propojený s pracovním prostorem Azure synapse Analytics, který se označuje jako propojená služba. 
 
 Pokud chcete načíst a použít existující propojenou službu, musíte mít oprávnění **uživatele nebo přispěvatele** k pracovnímu prostoru Azure synapse Analytics.
-
-Tento příklad načte existující propojenou službu `synapselink1` z pracovního prostoru `ws` s [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) metodou.
-```python
-linked_service = LinkedService.get(ws, 'synapselink1')
-```
-
-### <a name="manage-linked-services"></a>Správa propojených služeb
-
-Pokud chcete odpojit své pracovní prostory, použijte `unregister()` metodu.
-
-``` python
-linked_service.unregister()
-```
 
 Zobrazení všech propojených služeb přidružených k pracovnímu prostoru Machine Learning. 
 
 ```python
 LinkedService.list(ws)
 ```
+
+Tento příklad načte existující propojenou službu `synapselink1` z pracovního prostoru `ws` s [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) metodou.
+```python
+linked_service = LinkedService.get(ws, 'synapselink1')
+```
  
 ## <a name="attach-synapse-spark-pool-as-a-compute"></a>Připojit fond synapse Spark jako výpočetní výkon
 
-Jakmile jsou pracovní prostory propojené, připojte fond Apache Spark synapse jako vyhrazený výpočetní prostředek pro úkoly přípravy dat. 
+Jakmile nanačtete propojenou službu, připojte fond Apache Spark synapse jako vyhrazený výpočetní prostředek pro úlohy tahání dat. 
 
 Fondy Apache Spark můžete připojit prostřednictvím,
 * Azure Machine Learning Studio
 * [Šablony Azure Resource Manageru (ARM)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
 * Sada Python SDK 
 
-Postupujte podle těchto kroků a připojte Apache Spark fond pomocí studia. 
+### <a name="attach-a-pool-via-the-studio"></a>Připojení fondu přes Studio
+Postupujte takto: 
 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně vyberte **propojené služby** v části **Správa** .
@@ -151,6 +83,7 @@ Postupujte podle těchto kroků a připojte Apache Spark fond pomocí studia.
     1. Pokud chcete vytvořit nový fond synapse Spark, přečtěte si téma [Vytvoření fondu Apache Spark pomocí synapse studia](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) .
 1. Vyberte **připojit vybrané**. 
 
+### <a name="attach-a-pool-with-the-python-sdk"></a>Připojení fondu k sadě Python SDK
 
 Můžete také použít **sadu Python SDK** pro připojení Apache Sparkho fondu. 
 
@@ -209,10 +142,10 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Pokud chcete začít přípravu dat pomocí Apache Spark fondu Spark, zadejte název Apache Spark fondu a zadejte ID předplatného, skupinu prostředků pracovního prostoru Machine Learning, název pracovního prostoru Machine Learning a prostředí, které chcete použít během relace Apache Spark. 
+Pokud chcete zahájit přípravu dat pomocí fondu Apache Spark, zadejte název Apache Spark fondu a zadejte ID předplatného, skupinu prostředků pracovního prostoru Machine Learning, název pracovního prostoru Machine Learning a prostředí, které chcete použít během relace Apache Spark. 
 
 > [!IMPORTANT]
-> Pokud chcete pokračovat v používání Apache Sparkho fondu, musíte určit, který výpočetní prostředek se má použít v rámci svých úkolů přípravy dat `%synapse` pro jednotlivé řádky kódu a `%%synapse` pro více řádků. 
+> Pokud chcete pokračovat v používání Apache Sparkho fondu, musíte určit, který výpočetní prostředek se má použít v rámci svých úloh datových tahání `%synapse` , s jedním řádkem kódu a `%%synapse` více řádky. 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
@@ -302,9 +235,9 @@ dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
 ```
 
-## <a name="perform-data-preparation-tasks"></a>Provádění úkolů přípravy dat
+## <a name="perform-data-wrangling-tasks"></a>Provádění úloh tahání dat
 
-Po načtení a prozkoumání dat můžete provádět úkoly přípravy dat.
+Po načtení a prozkoumání dat můžete provádět úlohy tahání dat.
 
 Následující kód se rozšíří na příklad HDFS v předchozí části a filtruje data v datovém Sparku Spark, na `df` základě sloupce a skupin, které  mají seznam podle **věku** .
 

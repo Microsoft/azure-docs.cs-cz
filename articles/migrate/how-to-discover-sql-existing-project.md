@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 3dc9b178b9aa22991230f4cc6a9d54b44cf09b4e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ca0052eebd8d3c8e80943ca8c0e0346216436800
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098804"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452760"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>Zjištění instancí SQL Server v existujícím projektu 
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak zjistit SQL Server instance a databáze v projektu 
 Zjišťování SQL Server instancí a databází, které běží na místních počítačích, pomáhá identifikovat a přizpůsobit cestu migrace do Azure SQL. Zařízení Azure Migrate provádí toto zjišťování pomocí přihlašovacích údajů domény nebo přihlašovacích údajů SQL Server ověřování, které mají přístup k instancím SQL Server a databázím spuštěným na cílových serverech. Tento proces zjišťování je bez agentů, tj. na cílových serverech není nic nainstalováno.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste dokončili [**požadavky**](how-to-discover-sql-existing-project.md) v tomto článku.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste dokončili [**požadavky**](how-to-discover-sql-existing-project.md) v tomto článku.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -44,7 +44,7 @@ Zjišťování SQL Server instancí a databází, které běží na místních p
     - Ověřte, že se služby běžící na zařízení aktualizují na nejnovější verze. Provedete to tak, že na serveru zařízení spustíte Správce konfigurace zařízení a na panelu nastavit požadované součásti vyberete Zobrazit služby zařízení.
         - Zařízení a jeho součásti se automaticky aktualizují. :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="Podívejte se na verzi zařízení"::: .
     - Na panelu Správa přihlašovacích údajů a zdrojů zjišťování ve Správci konfigurace zařízení přidejte přihlašovací údaje k doméně nebo SQL Server, které mají přístup sysadmin ke zjištění instance SQL Server a databází. 
-    Můžete využít funkci automatického mapování přihlašovacích údajů zařízení nebo ručně namapovat přihlašovací údaje na příslušný server, jak je zvýrazněné [tady](https://review.docs.microsoft.com/azure/migrate/tutorial-discover-vmware?branch=release-migrate-sql-scenario#start-continuous-discovery).
+    Můžete využít funkci automatického mapování přihlašovacích údajů zařízení nebo ručně namapovat přihlašovací údaje na příslušný server, jak je zvýrazněné [tady](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery).
         
     Poznámka:
     - Ujistěte se prosím, že inventář softwaru je už povolený, nebo pokud chcete povolit stejné oprávnění, zadejte doménu nebo přihlašovací údaje k doméně nebo jiné doméně. Aby bylo možné zjišťovat SQL Server instance, je nutné provést inventář softwaru.

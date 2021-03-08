@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844314"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455378"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
@@ -27,7 +27,7 @@ ms.locfileid: "94844314"
 
 V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .NET SDK pomocí metody Login objektu služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services
 - Nainstalujte nástroj, který byste chtěli použít pro vývoj pro .NET. Postup v tomto článku ukazuje, jak používat [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, viz [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít jiný Editor kódu.
@@ -249,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Viz také
 
-* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
+* [Reference k .NET](/dotnet/api/overview/azure/mediaservices/management)
 * Další příklady kódu naleznete v tématu úložiště [ukázek sady .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) .

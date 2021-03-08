@@ -2,14 +2,14 @@
 title: Volba velikostí a imagí virtuálních počítačů pro fondy
 description: Jak vybrat dostupné velikosti virtuálních počítačů a verze operačního systému pro výpočetní uzly ve fondech Azure Batch
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576697"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455191"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Volba velikosti a obrázku virtuálního počítače pro výpočetní uzly ve fondu Azure Batch
 
@@ -35,13 +35,11 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | DC | Nepodporováno |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
-| Dav4 | Všechny velikosti |
-| Dasv4 | Všechny velikosti |
+| Dav4, Dasv4 | Všechny velikosti |
 | Ddv4, Ddsv4 |  Všechny velikosti |
 | Dv4, Dsv4 | Nepodporováno |
 | Ev3, Esv3 | Všechny velikosti kromě E64is_v3 |
-| Eav4 | Všechny velikosti |
-| Easv4 | Všechny velikosti |
+| Eav4, Easv4 | Všechny velikosti |
 | Edv4, Edsv4 |  Všechny velikosti |
 | Ev4, Esv4 | Nepodporováno |
 | F, FS | Všechny velikosti |
@@ -58,7 +56,7 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | NC | Všechny velikosti |
 | NCv2 | Všechny velikosti |
 | NCv3 | Všechny velikosti |
-| NCasT4_v3 | Žádný – zatím není k dispozici |
+| NCasT4_v3 | Všechny velikosti |
 | ND | Všechny velikosti |
 | NDv2 | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |

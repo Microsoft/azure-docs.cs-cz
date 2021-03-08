@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175086"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452233"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -326,6 +326,77 @@ Následující příklad generuje celočíselnou náhodnou hodnotu mezi 0 a 1000
     - **outputClaim**: OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+Formátujte více deklarací podle zadaného lokalizovaného formátu řetězce. Tato transformace používá metodu jazyka C# `String.Format` .
+
+
+| Položka | TransformationClaimType | Typ dat | Poznámky |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaims |  |řetězec | Kolekce vstupních deklarací identity, které fungují jako formát řetězce {0} , {1} {2} parametry. |
+| InputParameter | stringFormatId | řetězec |  `StringId` [Lokalizovaný řetězec](localization.md).   |
+| OutputClaim | outputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+
+> [!NOTE]
+> Maximální povolená velikost formátu řetězce je 4000.
+
+Použití transformace deklarací FormatLocalizedString:
+
+1. Definujte [řetězec lokalizace](localization.md)a přidružte ho k [vlastním kontrolnímu profilu](self-asserted-technical-profile.md).
+1. `ElementType` `LocalizedString` Prvek elementu musí být nastaven na hodnotu `FormatLocalizedStringTransformationClaimType` .
+1. `StringId`Je jedinečný identifikátor, který definujete, a později ho použijte v transformaci deklarací `stringFormatId` .
+1. V transformaci deklarací identity zadejte seznam deklarací, které mají být nastaveny s lokalizovaným řetězcem. Pak nastavte na `stringFormatId` `StringId` lokalizovaný element řetězce. 
+1. V [technickém profilu s vlastním](self-asserted-technical-profile.md)výkonem nebo na transformaci [vstupních nebo](display-controls.md) výstupních deklarací identity vytvořte odkaz na transformaci deklarací identity.
+
+
+Následující příklad vygeneruje chybovou zprávu, pokud je účet již v adresáři. Příklad definuje lokalizované řetězce pro angličtinu (výchozí) a španělštinu.
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Transformace deklarací vytvoří zprávu odpovědi na základě lokalizovaného řetězce. Zpráva obsahuje e-mailovou adresu uživatele vloženou do lokalizované Sting *ResponseMessge_EmailExists*.
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Příklad
+
+- Vstupní deklarace identity:
+    - **inputClaim**: sarah@contoso.com
+- Vstupní parametry:
+    - **StringFormat –**: ResponseMessge_EmailExists
+- Deklarace výstupů:
+  - **outputClaim**: e-mail ' sarah@contoso.com ' je již v této organizaci účtem. Klikněte na tlačítko Další, abyste se přihlásili pomocí tohoto účtu.
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 Naformátuje deklaraci identity podle poskytnutého formátovacího řetězce. Tato transformace používá metodu jazyka C# `String.Format` .
@@ -335,6 +406,9 @@ Naformátuje deklaraci identity podle poskytnutého formátovacího řetězce. T
 | InputClaim | inputClaim |řetězec |Deklarace ClaimType, která funguje jako parametr formátu řetězce {0} . |
 | InputParameter | StringFormat – | řetězec | Formát řetězce, včetně {0}  parametru. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions).  |
 | OutputClaim | outputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+
+> [!NOTE]
+> Maximální povolená velikost formátu řetězce je 4000.
 
 Tuto transformaci deklarací použijte k formátování libovolného řetězce s jedním parametrem {0} . V následujícím příkladu je vytvořena hodnota **userPrincipalName**. Všechny technické profily zprostředkovatele sociální identity, jako je například `Facebook-OAUTH` volání **CreateUserPrincipalName** pro generování třídy **userPrincipalName**.
 
@@ -371,6 +445,9 @@ Formátujte dvě deklarace podle poskytnutého formátovacího řetězce. Tato t
 | InputClaim | inputClaim | řetězec | Deklarace ClaimType, která funguje jako parametr formátu řetězce {1} . |
 | InputParameter | StringFormat – | řetězec | Formát řetězce včetně {0} {1} parametrů a. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions).   |
 | OutputClaim | outputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
+
+> [!NOTE]
+> Maximální povolená velikost formátu řetězce je 4000.
 
 Tuto transformaci deklarací použijte k formátování řetězce se dvěma parametry, {0} a {1} . Následující příklad vytvoří **DisplayName** se zadaným formátem:
 

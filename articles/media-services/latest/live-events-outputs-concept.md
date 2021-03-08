@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7a74eca129ce273bd96ea8962ed9ddf2907ea100
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216169"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454783"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
 
@@ -149,7 +149,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
     |---|---|---|
     |REST|[Properties. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |Rozhraní příkazového řádku|[--individuální-URL](/cli/azure/ams/live-event#az-ams-live-event-create)|[--Access-token](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[Livestream. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[Livestream. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání
 

@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ebc12982bcc05c2d07f91fbc4d85afc170adf075
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429088"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453389"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rychlý Start: nastavení ověření Azure pomocí Azure PowerShell
 
-Pomocí následujících kroků vytvořte a nakonfigurujte poskytovatele ověření identity pomocí Azure PowerShell. Informace o tom, jak nainstalovat a spustit Azure PowerShell, najdete v tématu [přehled Azure PowerShell](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0) .
+Pomocí následujících kroků vytvořte a nakonfigurujte poskytovatele ověření identity pomocí Azure PowerShell. Informace o tom, jak nainstalovat a spustit Azure PowerShell, najdete v tématu [přehled Azure PowerShell](/powershell/azure/) .
 
 Upozorňujeme, že Galerie prostředí PowerShell má zastaralé verze protokolu TLS (Transport Layer Security) 1,0 a 1,1. Doporučuje se protokol TLS 1,2 nebo novější verze. Proto se můžete setkat s následujícími chybami:
 

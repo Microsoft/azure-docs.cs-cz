@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d6f1746eee101a1dcf030e980c8a6469147a0166
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362195"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453695"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro .NET (SDK v4)
 
@@ -21,7 +21,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro .NET [A
 
 Prostředky klientské knihovny Key Vault:
 
-[Referenční dokumentace k](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[Referenční dokumentace k](/dotnet/api/azure.security.keyvault.secrets)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 Další informace o Key Vault a tajných klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)

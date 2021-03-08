@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8fd64023b9c07e8dd426b2b51916db4515a5405a
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736301"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451502"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Zálohování a obnovení ve vyhrazeném fondu SQL ve službě Azure synapse
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 
-Tato funkce umožňuje ručně aktivovat snímky pro vytváření bodů obnovení datového skladu před a po velkých změnách. Tato možnost zajistí, že body obnovení jsou logicky konzistentní, což poskytuje dodatečnou ochranu dat v případě přerušení úloh nebo chyby uživatelů pro dobu rychlého obnovení. Uživatelem definované body obnovení jsou k dispozici po dobu sedmi dnů a jsou automaticky odstraněny vaším jménem. Dobu uchování uživatelem definovaných bodů obnovení nelze změnit. **42 uživatelem definované body obnovení** jsou zaručeny v jakémkoli okamžiku, aby je bylo nutné před vytvořením dalšího bodu obnovení [Odstranit](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint?viewFallbackFrom=azurermps-6.2.0) . Snímky můžete aktivovat pro vytváření uživatelem definovaných bodů obnovení prostřednictvím [PowerShellu](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) nebo Azure Portal.
+Tato funkce umožňuje ručně aktivovat snímky pro vytváření bodů obnovení datového skladu před a po velkých změnách. Tato možnost zajistí, že body obnovení jsou logicky konzistentní, což poskytuje dodatečnou ochranu dat v případě přerušení úloh nebo chyby uživatelů pro dobu rychlého obnovení. Uživatelem definované body obnovení jsou k dispozici po dobu sedmi dnů a jsou automaticky odstraněny vaším jménem. Dobu uchování uživatelem definovaných bodů obnovení nelze změnit. **42 uživatelem definované body obnovení** jsou zaručeny v jakémkoli okamžiku, aby je bylo nutné před vytvořením dalšího bodu obnovení [Odstranit](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint) . Snímky můžete aktivovat pro vytváření uživatelem definovaných bodů obnovení prostřednictvím [PowerShellu](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) nebo Azure Portal.
 
 > [!NOTE]
 > Pokud potřebujete body obnovení delší než 7 dní, Hlasujte prosím tuto funkci [tady](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Můžete také vytvořit uživatelem definovaný bod obnovení a obnovit ho z nově vytvořeného bodu obnovení do nového datového skladu. Po obnovení máte vyhrazený fond SQL online a můžete ho pozastavit nekonečně, aby se ušetřily náklady na výpočetní výkon. Pozastavená databáze má za následek poplatky za úložiště za Premium Storageou sazbu za Azure. Pokud potřebujete aktivní kopii obnoveného datového skladu, můžete pokračovat, což by mělo trvat jen několik minut.

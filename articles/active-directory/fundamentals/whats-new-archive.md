@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e342adee715bfd1f178557268b9f4515572f0e9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177211"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453015"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -348,18 +348,6 @@ V červenci 2020 jsme do Galerie aplikací přidali následující 55 nových ap
 Dokumentaci pro všechny aplikace můžete také najít tady. https://aka.ms/AppsTutorial
 
 Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, přečtěte si prosím podrobnosti. https://aka.ms/AzureADAppRequest
-
----
-
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Nové zřizovací konektory v galerii aplikací Azure AD – červenec 2020
-
-**Zadejte:** Nová funkce  
-**Kategorie služby:** Zřizování aplikací  
-**Schopnost produktu:** integrace třetích stran
-
-Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživatelských účtů pro nově integrovanou [výuku LinkedInu](../saas-apps/linkedin-learning-provisioning-tutorial.md)aplikace.
-
-Další informace o tom, jak lépe zabezpečit vaši organizaci pomocí automatizovaného zřizování uživatelských účtů, najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
 
 ---
 
@@ -938,7 +926,7 @@ V okně [Podrobnosti o nové zásadě](../conditional-access/troubleshoot-condit
 
 V dubnu 2020 jsme do Galerie aplikací přidali tyto 31 nových aplikací s podporou federace: 
 
-[SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [iwt Suite Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO pro JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 stěhovací](https://app.mover.io/login), [mluvčí zapojení](https://speakerengage.com/login.php), [upřímně](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 lidé](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [harmonie](../saas-apps/harmony-tutorial.md), Timetabling [, SynchroNet](../saas-apps/synchronet-click-tutorial.md), [](https://www.made-in-office.com/en/) [litmus, GroupTalk](../saas-apps/timetabling-solutions-tutorial.md) [, Frontify](../saas-apps/mongodb-cloud-tutorial.md) [, MongoDB,](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [TickitLMS](../saas-apps/nitro-productivity-suite-tutorial.md), [díky Coco, nitro](../saas-apps/litmus-tutorial.md) [, TMWS](https://recorder.grouptalk.com/) [,](../saas-apps/frontify-tutorial.md)( [](../saas-apps/tickitlms-learn-tutorial.md) [)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial) [](../saas-apps/fortes-change-cloud-tutorial.md)
+[SincroPool Apps](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [iwt Suite Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO pro JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 stěhovací](https://app.mover.io/login), [mluvčí zapojení](https://speakerengage.com/login.php), [upřímně](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 lidé](../saas-apps/gr8-people-tutorial.md), [Pendo](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [harmonie](../saas-apps/harmony-tutorial.md), Timetabling [, SynchroNet](../saas-apps/synchronet-click-tutorial.md), [](https://www.made-in-office.com/en/) [litmus, GroupTalk](../saas-apps/timetabling-solutions-tutorial.md) [, Frontify](../saas-apps/mongodb-cloud-tutorial.md) [, MongoDB,](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [TickitLMS](../saas-apps/nitro-productivity-suite-tutorial.md), [díky Coco, nitro](../saas-apps/litmus-tutorial.md) [, TMWS](https://recorder.grouptalk.com/) [,](../saas-apps/frontify-tutorial.md)( [](../saas-apps/tickitlms-learn-tutorial.md) [)](/azure/active-directory/saas-apps/trend-micro-tutorial) [](../saas-apps/fortes-change-cloud-tutorial.md)
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../develop/v2-howto-app-gallery-listing.md).
 

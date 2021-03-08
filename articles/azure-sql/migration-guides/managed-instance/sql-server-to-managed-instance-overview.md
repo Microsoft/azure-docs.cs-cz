@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690409"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455225"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Některé obecné pokyny, které vám pomůžou zvolit správnou úroveň služb
 Můžete zvolit výpočetní prostředky a prostředky úložiště během nasazování a pak je po použití [Azure Portal](../../database/scale-resources.md) změnit, aniž by došlo k výpadku vaší aplikace. 
 
 > [!IMPORTANT]
-> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   sítí. 
+> Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md)   sítí. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternativní virtuální počítač SQL Server
 

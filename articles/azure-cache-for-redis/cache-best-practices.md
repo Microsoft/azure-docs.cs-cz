@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178112"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454732"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Pomocí těchto osvědčených postupů můžete maximalizovat výkon a nákladově efektivní využití vaší instance Azure cache pro Redis.
@@ -74,7 +74,7 @@ Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažt
  * Pro vašeho klienta **doporučujeme používat pro Dv2 řadu virtuálních počítačů** , protože mají lepší hardware a poskytnou nejlepší výsledky.
  * Ujistěte se, že virtuální počítač klienta, který používáte, má při testování mezipaměti *aspoň tolik výpočetních a šířek pásma* . 
  * **Otestujte podmínky převzetí služeb při selhání** v mezipaměti. Je důležité zajistit, aby se vaše mezipaměť netestoval jenom za ustálených stavových podmínek. Otestujte také v části podmínky převzetí služeb při selhání a změřte zatížení procesoru/serveru v mezipaměti během této doby. Převzetí služeb při selhání můžete iniciovat [restartováním primárního uzlu](cache-administration.md#reboot). To vám umožní zjistit, jak se vaše aplikace chová v podmínkách propustnosti a latence během podmínek převzetí služeb při selhání (probíhá během aktualizací a může nastat během neplánované události). V ideálním případě je třeba don't't zatížení procesoru nebo serveru na více než řekněme 80% i během převzetí služeb při selhání, protože může ovlivnit výkon.
- * **Premium P2 a vyšší** jsou hostovány na virtuálních počítačích se 4 nebo více jádry. To je užitečné k distribuci úlohy šifrování/dešifrování TLS napříč více jádry, aby se celkové využití CPU využívalo.  [Podrobnosti o velikostech a jádrech virtuálních počítačů najdete tady.](cache-planning-faq.md#azure-cache-for-redis-performance)
+ * **Některé velikosti mezipaměti** se hostují na virtuálních počítačích se 4 nebo více jádry. To je užitečné pro distribuci šifrování/dešifrování TLS a také úlohy připojení a odpojení TLS napříč více jádry, aby se celkové využití CPU na virtuálních počítačích mezipaměti nepřineslo.  [Podrobnosti o velikostech a jádrech virtuálních počítačů najdete tady.](cache-planning-faq.md#azure-cache-for-redis-performance)
  * Pokud pracujete v systému Windows, **Povolte VRSS** na klientském počítači.  [Podrobnosti najdete tady](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Ukázkový skript PowerShell:
      >PowerShell – ExecutionPolicy bez omezení Enable-NetAdapterRSS – název (Get-NetAdapter). Jméno 
 

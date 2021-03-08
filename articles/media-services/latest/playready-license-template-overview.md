@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955180"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455429"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 se šablonou licence PlayReady
 
@@ -65,7 +65,7 @@ XML odpovídá schématu XML šablony licence PlayReady definované v oddílu [s
 
 Media Services poskytuje typy, které můžete použít ke konfiguraci šablony licencí PlayReady. 
 
-Následující fragment kódu používá Media Services třídy .NET ke konfiguraci šablony licence PlayReady. Třídy jsou definovány v oboru názvů [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Fragment kódu konfiguruje PlayRight licence PlayReady. PlayRight uděluje uživateli možnost přehrávání obsahu v závislosti na všech omezeních nakonfigurovaných v licenci a na PlayRight samotného (pro zásady specifické pro přehrávání). Většina zásad na PlayRight se týká omezení výstupu, které řídí typy výstupů, přes které lze obsah přehrát. Zahrnuje také omezení, která musí být zavedena při použití daného výstupu. Pokud je například povoleno DigitalVideoOnlyContentRestriction, modul runtime DRM umožňuje zobrazit pouze video přes digitální výstupy. (Výstupy analogového videa neumožňují předání obsahu.)
+Následující fragment kódu používá Media Services třídy .NET ke konfiguraci šablony licence PlayReady. Třídy jsou definovány v oboru názvů [Microsoft. Azure. Management. Media. Models](/dotnet/api/microsoft.azure.management.media.models) . Fragment kódu konfiguruje PlayRight licence PlayReady. PlayRight uděluje uživateli možnost přehrávání obsahu v závislosti na všech omezeních nakonfigurovaných v licenci a na PlayRight samotného (pro zásady specifické pro přehrávání). Většina zásad na PlayRight se týká omezení výstupu, které řídí typy výstupů, přes které lze obsah přehrát. Zahrnuje také omezení, která musí být zavedena při použití daného výstupu. Pokud je například povoleno DigitalVideoOnlyContentRestriction, modul runtime DRM umožňuje zobrazit pouze video přes digitální výstupy. (Výstupy analogového videa neumožňují předání obsahu.)
 
 > [!IMPORTANT]
 > Licence PlayReady má efektivní omezení. Pokud jsou ochrana výstupu příliš omezující, může být obsah pro některé klienty nezobrazitelný. Další informace najdete v článku [pravidla dodržování předpisů PlayReady](https://www.microsoft.com/playready/licensing/compliance/).

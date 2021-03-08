@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049232"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452250"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -134,19 +134,17 @@ Pokud chcete streamovat protokoly v [Azure Portal](https://portal.azure.com), p�
 
 Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overview.md), použijte následující příkaz:
 
+> [!IMPORTANT]
+> Tento příkaz nemusí fungovat s webovými aplikacemi hostovanými v plánu služby App Service pro Linux.
+
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--Provider** . Například:
 
 ```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --filter Error
-```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
-
-```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --path http
+az webapp log tail --name appname --resource-group myResourceGroup --provider http
 ```
 
 ### <a name="in-local-terminal"></a>V místním terminálu

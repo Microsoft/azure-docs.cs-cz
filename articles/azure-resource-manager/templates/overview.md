@@ -2,13 +2,13 @@
 title: Přehled šablon
 description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046376"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455731"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -111,6 +111,15 @@ REQUEST BODY
 ```
 
 Všimněte si, že **apiVersion** , který jste nastavili v šabloně pro prostředek, se používá jako verze rozhraní API pro operaci REST. Šablonu můžete opakovaně nasadit a mít jistotu, že bude fungovat i nadále. Pomocí stejné verze rozhraní API se nemusíte starat o zásadní změny, které by mohly být představené v novějších verzích.
+
+K nasazení šablony použijte některou z následujících možností:
+
+* [Azure Portal](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [Tlačítko v úložišti GitHub](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Návrh šablony
 

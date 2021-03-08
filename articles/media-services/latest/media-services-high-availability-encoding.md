@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955847"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456007"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
 
@@ -36,7 +36,7 @@ K dispozici je ukázka, kterou můžete použít k seznámení s vysokou dostupn
 
 Mezi služby použité v tomto příkladu architektury patří:
 
-| Ikona | Název | Description |
+| Ikona | Název | Popis |
 | :--: | ---- | ----------- |
 |![Toto je ikona účtu Media Services.](media/media-services-high-availability-encoding/azure-media-services.svg)| Účet Media Services | **Popis:**<br>Media Services účet je výchozím bodem pro správu, šifrování, kódování, analýzu a streamování mediálního obsahu v Azure. Je spojen s prostředkem účtu Azure Storage. Účet a všechny přidružené úložiště musí být ve stejném předplatném Azure.<br><br>**VOD použít:**<br>Jedná se o služby, které používáte ke kódování a doručování videí a zvukových prostředků.  Pro zajištění vysoké dostupnosti byste nastavili aspoň dva Media Services účty, z nichž každá je v jiné oblasti. [Přečtěte si další informace o Azure Media Services](media-services-overview.md). |
 |![Toto je ikona účtu úložiště.](media/media-services-high-availability-encoding/storage-account.svg)| Účet úložiště | **Popis:**<br>Účet úložiště Azure obsahuje všechny datové objekty Azure Storage: objekty blob, soubory, fronty, tabulky a disky. Data jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS.<br><br>Každý Media Services účet by měl v každé oblasti účet úložiště ve stejné oblasti.<br><br>**VOD použít:**<br>Vstupní a výstupní data můžete ukládat pro zpracování VOD a streamování. [Přečtěte si další informace o Azure Storage](../../storage/common/storage-introduction.md). |
@@ -59,23 +59,23 @@ Tento diagram vysoké úrovně ukazuje architekturu ukázky, která vám umožn�
 
 ### <a name="regions"></a>Oblasti
 
-* [Vytvořte](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to) dva (nebo více) Azure Media Services účty. Tyto dva účty se musí nacházet v různých oblastech. Další informace najdete v tématu [oblasti, ve kterých je nainstalovaná služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
-* Nahrajte médium do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak spustit kódování, najdete v tématu [Vytvoření vstupu úlohy z adresy URL https](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to) nebo [Vytvoření vstupu úlohy z místního souboru](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to).
-* Pokud budete později potřebovat [úlohu](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) znovu odeslat do jiné oblasti, můžete ji použít `JobInputHttp` nebo použít `Copy-Blob` ke kopírování dat z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
+* [Vytvořte](/azure/media-services/latest/create-account-cli-how-to) dva (nebo více) Azure Media Services účty. Tyto dva účty se musí nacházet v různých oblastech. Další informace najdete v tématu [oblasti, ve kterých je nainstalovaná služba Azure Media Services](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
+* Nahrajte médium do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak spustit kódování, najdete v tématu [Vytvoření vstupu úlohy z adresy URL https](/azure/media-services/latest/job-input-from-http-how-to) nebo [Vytvoření vstupu úlohy z místního souboru](/azure/media-services/latest/job-input-from-local-file-how-to).
+* Pokud budete později potřebovat [úlohu](/azure/media-services/latest/transforms-jobs-concept) znovu odeslat do jiné oblasti, můžete ji použít `JobInputHttp` nebo použít `Copy-Blob` ke kopírování dat z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 * Přihlášení k odběru `JobStateChange` zpráv v každém účtu prostřednictvím Azure Event Grid.
-    * [Zaregistrujte se na události](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) prostřednictvím Azure Portal nebo rozhraní příkazového řádku (můžete to provést také pomocí sady Event Grid Management SDK).
+    * [Zaregistrujte se na události](/azure/media-services/latest/reacting-to-media-services-events) prostřednictvím Azure Portal nebo rozhraní příkazového řádku (můžete to provést také pomocí sady Event Grid Management SDK).
     * Použijte [sadu Microsoft. Azure. EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) (která v nativním režimu podporuje události Media Services).
     * Můžete také spotřebovávat Event Grid události prostřednictvím Azure Functions.
 
     Další informace najdete tady:
 
-    * Podívejte se na [ukázku audio Analytics](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept) , kde se dozvíte, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání záložního pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
-    * Podívejte se na [Azure Event Grid schémat pro Media Services události](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas).
+    * Podívejte se na [ukázku audio Analytics](/azure/media-services/latest/transforms-jobs-concept) , kde se dozvíte, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání záložního pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
+    * Podívejte se na [Azure Event Grid schémat pro Media Services události](/azure/media-services/latest/media-services-event-schemas).
 
-* Při vytváření [úlohy](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept):
+* Při vytváření [úlohy](/azure/media-services/latest/transforms-jobs-concept):
     * Náhodně vyberte účet ze seznamu aktuálně používaných účtů (Tento seznam bude normálně obsahovat oba účty, ale pokud se zjistí problémy, může obsahovat jenom jeden účet). Pokud je seznam prázdný, vyvolejte výstrahu, aby mohl operátor prozkoumat.
     * Vytvořte záznam, který bude sledovat každou úlohu inletu a použitou oblast nebo účet.
 * Když `JobStateChange` obslužná rutina získá oznámení, že úloha dosáhla naplánovaného stavu, zaznamenejte čas, který vstoupí do plánovaného stavu, a na oblast nebo účet, který jste použili.

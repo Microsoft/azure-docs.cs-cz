@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 584d73acf36d22f59fbbcb6dff8b2f53cbc7437d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bee6e5547ad78554467f23968230721ba029aba6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014174"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451758"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus výstup témat z Azure Stream Analytics
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 
 Počet oddílů je [založený na Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.
 
-## <a name="partitioning"></a>Dělení na oddíly
+## <a name="partitioning"></a>Dělení
 
 Automaticky se zvolí dělení. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl. Počet výstupních zapisovačí je stejný jako počet oddílů v tématu výstup.
 
@@ -64,7 +64,7 @@ Následující obrázek má očekávané vlastnosti výstupní zprávy, které b
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 
-Sloupce dotazu můžete připojit jako [systémové vlastnosti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) do odchozí fronty služby Service Bus nebo do zpráv tématu. Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) hodnotami sloupce dotazu.
+Sloupce dotazu můžete připojit jako [systémové vlastnosti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) do odchozí fronty služby Service Bus nebo do zpráv tématu. Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) hodnotami sloupce dotazu.
 Tyto vlastnosti systému jsou podporovány – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Řetězcové hodnoty těchto sloupců se analyzují jako odpovídající typ hodnoty vlastnosti systému a jakékoli selhání při analýze se považují za chyby dat.

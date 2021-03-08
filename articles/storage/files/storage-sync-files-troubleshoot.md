@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820700"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453270"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -74,8 +74,8 @@ Pokud chcete nainstalovat modul AZ nebo AzureRM do PowerShellu 5,1, proveďte n�
 
 1. Do příkazového řádku se zvýšenými oprávněními zadejte **PowerShell** a stiskněte ENTER.
 2. Pomocí dokumentace k instalaci nejnovějšího modulu AZ nebo AzureRM postupujte následovně:
-    - [AZ Module (vyžaduje .NET 4.7.2)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [Modul AzureRM]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [AZ Module (vyžaduje .NET 4.7.2)](/powershell/azure/install-az-ps)
+    - [Modul AzureRM](https://go.microsoft.com/fwlink/?linkid=856959)
 3. Spusťte ServerRegistration.exe a dokončete průvodce k registraci serveru pomocí služby synchronizace úložiště.
 
 <a id="server-already-registered"></a>**Při registraci serveru se zobrazí následující zpráva: "Tento server je již zaregistrován"** 

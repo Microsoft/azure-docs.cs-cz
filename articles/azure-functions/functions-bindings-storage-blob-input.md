@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381681"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455869"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Vstupní vazba Azure Blob Storage pro Azure Functions
 
@@ -343,7 +343,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Blob` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `blob` . |
 |**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Výjimky jsou uvedeny v části [použití](#usage) . |
@@ -379,7 +379,7 @@ Přístup k datům objektu BLOB prostřednictvím parametru, který odpovídá n
 
 # <a name="python"></a>[Python](#tab/python)
 
-Přístup k datům objektů BLOB prostřednictvím parametru zadaného jako [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true). Podrobnosti najdete v [příkladu vstupu](#example) .
+Přístup k datům objektů BLOB prostřednictvím parametru zadaného jako [InputStream](/python/api/azure-functions/azure.functions.inputstream). Podrobnosti najdete v [příkladu vstupu](#example) .
 
 ---
 

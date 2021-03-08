@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943659"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452097"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
 
@@ -248,7 +248,7 @@ Protokol BGP může také povolit směrování přenosu mezi více sítěmi tím
 
 Pokud chcete nakonfigurovat připojení VPN, které používá protokol BGP, přečtěte si téma [Postup konfigurace protokolu BGP u bran Azure VPN pomocí PowerShellu](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Povolte protokol BGP v bráně virtuální sítě vytvořením autonomního systému (AS) pro něj. Základní brány nepodporují protokol BGP. Chcete-li zjistit SKLADOVOU položku brány, v Azure Portal v okně **VPN Gateway** v části **Přehled** . Pokud je vaše SKU **základní**, musíte změnit skladovou položku (viz [Změna velikosti brány](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) na **VpnGw1**. 
+Povolte protokol BGP v bráně virtuální sítě vytvořením autonomního systému (AS) pro něj. Základní brány nepodporují protokol BGP. Chcete-li zjistit SKLADOVOU položku brány, v Azure Portal v okně **VPN Gateway** v části **Přehled** . Pokud je vaše SKU **základní**, musíte změnit skladovou položku (viz [Změna velikosti brány](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)) na **VpnGw1**. 
 
 Kontrola SKU bude trvat 20 až 30 minut výpadků. Jakmile brána obsahuje správnou SKLADOVOU položku, můžete přidat jako číslo pomocí rutiny [set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) prostředí PowerShell rutiny. Po nakonfigurování AS Number bude pro bránu automaticky poskytována IP adresa partnerského uzlu protokolu BGP.
 
@@ -258,7 +258,7 @@ Objekt připojení musí mít povolený protokol BGP. Hodnotu můžete nastavit 
 
 ### <a name="validate-the-bgp-configuration"></a>Ověření konfigurace protokolu BGP
 
-Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete spustit rutinu `get-AzureRmVirtualNetworkGateway` a `get-AzureRmLocalNetworkGateway` rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP v `BgpSettingsText` části. Příklad:
+Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete spustit rutinu `get-AzureRmVirtualNetworkGateway` a `get-AzureRmLocalNetworkGateway` rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP v `BgpSettingsText` části. Například:
 
 ```
 {

@@ -16,8 +16,6 @@
   items:
     - name: Vizualizace anomálií jako dávky s využitím Power BI
       href: tutorials/batch-anomaly-detection-powerbi.md
-    - name: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
-      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: Návody
   items:
     - name: Zjištění anomálií ve vašich datech

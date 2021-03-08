@@ -10,16 +10,16 @@ ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 zone_pivot_groups: app-service-webjob
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4737f0f19acf199190df02386ecb2ece65fa571e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d49323e2bc3c0522b1fb9ad49ffcc14f476e2dc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744865"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452794"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
-Koncept úloh Runn na [pozadí](./webjobs-create-ieux-conceptual.md) v Azure je k dispozici s webovými úlohami Azure App Service. Postup nasazení <abbr title="Program nebo skript ve stejné instanci jako webová aplikace, aplikace API nebo mobilní aplikace.">WebJobs</abbr> pomocí [Azure Portal](https://portal.azure.com) nahrát spustitelný soubor nebo skript. 
+Koncept spouštění úloh na [pozadí](./webjobs-create-ieux-conceptual.md) v Azure je k dispozici s webovými úlohami Azure App Service. Postup nasazení <abbr title="Program nebo skript ve stejné instanci jako webová aplikace, aplikace API nebo mobilní aplikace.">WebJobs</abbr> pomocí [Azure Portal](https://portal.azure.com) nahrát spustitelný soubor nebo skript. 
 
 Mezi tři podporované webové úlohy patří:
 

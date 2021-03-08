@@ -3,12 +3,12 @@ title: Nepřetržité nahrávání videa – Azure
 description: Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Toto téma popisuje, co je CVR.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566686"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453746"
 ---
 # <a name="continuous-video-recording"></a>Nepřetržité nahrávání videa  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566686"
 
 ## <a name="overview"></a>Přehled
 
-Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Live video Analytics na IoT Edge podporuje nepřetržité nahrávání videa z kamery CCTV prostřednictvím [mediálního grafu](media-graph-concept.md) , který se skládá ze zdrojového uzlu RTSP a uzlu jímky assetu. Následující diagram znázorňuje grafické znázornění takového grafu médií. Obrázek JSON [topologie grafu](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) takového mediálního grafu najdete [tady](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
+Záznam průběžného nahrávání videa (CVR) označuje proces průběžného zaznamenávání videa ze zdroje videa. Live video Analytics na IoT Edge podporuje nepřetržité nahrávání videa z kamery CCTV prostřednictvím [mediálního grafu](media-graph-concept.md) , který se skládá ze zdrojového uzlu RTSP a uzlu jímky assetu. Následující diagram znázorňuje grafické znázornění takového grafu médií. Obrázek JSON [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances) takového mediálního grafu najdete [tady](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset).
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Nepřetržité nahrávání videa":::

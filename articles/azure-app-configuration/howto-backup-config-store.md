@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095507"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454239"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Zálohování úložišť konfigurací aplikací automaticky
 
@@ -137,7 +137,7 @@ Aby bylo snazší začít zálohovat vaše data, [otestovali a publikovali jsme 
 
 Pokud ukázkový kód uvedený dříve nesplňuje vaše požadavky, můžete také vytvořit vlastní funkci. Aby bylo možné dokončit zálohování, musí být funkce schopna provádět následující úlohy:
 - Pravidelně si načtěte obsah vaší fronty, abyste viděli, jestli obsahují oznámení z Event Grid. Podrobnosti o implementaci najdete v [sadě SDK pro frontu úložiště](../storage/queues/storage-quickstart-queues-dotnet.md) .
-- Pokud vaše fronta obsahuje [oznámení o událostech z Event Grid](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema), Extrahujte všechny jedinečné `<key, label>` informace ze zpráv událostí. Kombinací klíčového a popisku je jedinečný identifikátor pro změny klíč-hodnota v primárním úložišti.
+- Pokud vaše fronta obsahuje [oznámení o událostech z Event Grid](./concept-app-configuration-event.md#event-schema), Extrahujte všechny jedinečné `<key, label>` informace ze zpráv událostí. Kombinací klíčového a popisku je jedinečný identifikátor pro změny klíč-hodnota v primárním úložišti.
 - Načte všechna nastavení z primárního úložiště. Aktualizuje jenom ta nastavení v sekundárním úložišti, která mají odpovídající událost ve frontě. Odstraňte všechna nastavení ze sekundárního úložiště, která byla přítomna ve frontě, ale ne v primárním úložišti. [Sadu App Configuration SDK](https://github.com/Azure/AppConfiguration#sdks) můžete použít pro přístup k úložištím konfigurace prostřednictvím kódu programu.
 - Odstraní zprávy z fronty, pokud během zpracování nebyly žádné výjimky.
 - Implementujte zpracování chyb podle vašich potřeb. Další informace o běžných výjimkách, které byste mohli chtít zpracovat, najdete v předchozím příkladu kódu.

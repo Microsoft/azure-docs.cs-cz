@@ -3,16 +3,16 @@ title: protokol rozšíření gRPC – Azure
 description: V tomto článku se dozvíte o použití protokolu rozšíření gRPC k odesílání zpráv mezi modulem Live video Analytics a vlastním rozšířením AI nebo CV.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401623"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455852"
 ---
 # <a name="grpc-extension-protocol"></a>Protokol rozšíření gRPC
 
-Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím [uzlu rozšíření grafu](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update). Pokud používáte jako uzel rozšíření procesor rozšíření gRPC, pak je komunikace mezi modulem Live video Analytics a vaším modulem AI nebo CV přes gRPC, vysoce výkonného strukturovaného protokolu.
+Live video Analytics na IoT Edge umožňuje rozšířit možnosti zpracování mediálního grafu prostřednictvím [uzlu rozšíření grafu](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept). Pokud používáte jako uzel rozšíření procesor rozšíření gRPC, pak je komunikace mezi modulem Live video Analytics a vaším modulem AI nebo CV přes gRPC, vysoce výkonného strukturovaného protokolu.
 
 V tomto článku se dozvíte o použití protokolu rozšíření gRPC k odesílání zpráv mezi modulem Live video Analytics a vlastním rozšířením AI nebo CV.
 
@@ -25,7 +25,7 @@ Relace gRPC je jediné připojení od klienta gRPC k serveru gRPC přes port TCP
 
 V jedné relaci: klient pošle popisovač streamování médií následovaný snímky videa na server jako zprávu [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) prostřednictvím relace gRPC streamu. Server ověří popisovač streamu, analyzuje snímek videa a vrátí výsledky odvození jako protobuf zprávu. 
 
-Důrazně doporučujeme, aby se odpovědi vracely pomocí platných dokumentů JSON po předem zavedeném schématu definovaném podle [modelu objektu schématu pro odvození metadat](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update). To zajistí lepší spolupráci s ostatními komponentami a možné budoucí možnosti přidané do modulu Live video Analytics.
+Důrazně doporučujeme, aby se odpovědi vracely pomocí platných dokumentů JSON po předem zavedeném schématu definovaném podle [modelu objektu schématu pro odvození metadat](/azure/media-services/live-video-analytics-edge/inference-metadata-schema). To zajistí lepší spolupráci s ostatními komponentami a možné budoucí možnosti přidané do modulu Live video Analytics.
 
 ![kontrakt rozšíření gRPC](./media/grpc-extension-protocol/grpc.png)
 

@@ -10,7 +10,7 @@ MS. Service: Media-Services MS. rebavování: Media ms.tgt_pltfrm: na MS. devlan
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
 Media Services můžete použít k doručování HTTP Live Streaming (HLS), MPEG-POMLČKy a Smooth Streaming šifrovaných pomocí AES pomocí 128 bitových šifrovacích klíčů. Media Services taky poskytuje službu pro doručování klíčů, která poskytuje šifrovací klíče autorizovaným uživatelům. Pokud chcete, aby Media Services dynamicky zašifroval vaše video, přiřadíte šifrovací klíč k lokátoru streamování a také nakonfigurujete zásady klíče obsahu. Když hráč vyžádá datový proud, Media Services použije zadaný klíč k dynamickému šifrování vašeho obsahu pomocí AES-128. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. K tomu, aby služba zjistila, jestli má daný uživatel povolené získání klíče, vyhodnocuje zásadu symetrického klíče, kterou jste pro klíč určili.
 

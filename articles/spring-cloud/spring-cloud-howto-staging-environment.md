@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 39420afbd2b1dd8a4e239b814c73e17bb258663c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 403cfe72a4c5b6dbaea7e4eb93c37f687970443c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035199"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451927"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
@@ -172,4 +172,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>Další kroky
 
-* [CI/CD pro jarní cloud Azure](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)
+* [CI/CD pro jarní cloud Azure](/azure/spring-cloud/spring-cloud-howto-cicd?pivots=programming-language-java)

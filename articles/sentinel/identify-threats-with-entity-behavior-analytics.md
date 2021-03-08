@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807559"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455497"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
@@ -68,41 +68,9 @@ Každá aktivita je hodnocena jako "skóre priority šetření" – což určuje
 
 Příklad toho, jak to funguje, najdete v tématu Jak se používá analýza chování v [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) .
 
-## <a name="entities-in-azure-sentinel"></a>Entity ve službě Azure Sentinel
+## <a name="entity-pages"></a>Stránky entit
 
-### <a name="entity-identifiers"></a>Identifikátory entit
-
-Když se výstrahy odesílají do Azure Sentinel, obsahují datové prvky, které Azure Sentinel identifikuje a klasifikuje jako entity, například uživatelské účty, hostitele, IP adresy a další. V některých případech může být tato identifikace výzvou, pokud výstraha neobsahuje dostatečné informace o entitě.
-
-Uživatelské účty je například možné identifikovat více než jedním způsobem: pomocí číselného identifikátoru (GUID) účtu Azure AD nebo jeho hodnoty hlavní název uživatele (UPN) nebo případně pomocí kombinace uživatelského jména a názvu domény NT. Různé zdroje dat mohou identifikovat stejného uživatele různými způsoby. Proto pokud je to možné, Azure Sentinel tyto identifikátory sloučí do jedné entity, aby mohla být správně identifikována.
-
-Může k tomu dojít, když některý z poskytovatelů prostředků vytvoří výstrahu, ve které není entita dostatečně identifikovaná – například uživatelské jméno bez kontextu názvu domény. V takovém případě nemůže být entita uživatele sloučena s jinými instancemi stejného uživatelského účtu, který by byl identifikován jako samostatná entita, a tyto dvě entity by zůstaly oddělené místo sjednocení.
-
-Abyste minimalizovali riziko tohoto problému, měli byste ověřit, že všichni poskytovatelé výstrah správně identifikují entity v upozorněních, které vydávají. Synchronizace entit uživatelských účtů pomocí Azure Active Directory může navíc vytvořit sjednocený adresář, který bude moci sloučit entity uživatelských účtů.
-
-V systému Azure Sentinel jsou v tuto chvíli identifikované následující typy entit:
-
-- Uživatelský účet (účet)
-- Hostitel
-- IP adresa (IP)
-- Malware
-- Soubor
-- Proces
-- Cloudová aplikace (CloudApplication)
-- Název domény (DNS)
-- Prostředek Azure
-- File (hash)
-- Klíč registru
-- Hodnota registru
-- Skupina zabezpečení
-- URL
-- Zařízení IoT
-- Mailbox
-- Poštovní cluster
-- Poštovní zpráva
-- Odeslaná pošta
-
-### <a name="entity-pages"></a>Stránky entit
+Přečtěte si další informace o [entitách v Sentinel Azure](entities-in-azure-sentinel.md) a podívejte se na úplný seznam [podporovaných entit a identifikátorů](entities-reference.md).
 
 Když narazíte na libovolnou entitu (v současné době omezené na uživatele a hostitele), můžete vybrat entitu a provést ji na **stránce entity**, datový list, který je plný z užitečných informací o této entitě. Typy informací, které na této stránce najdete, zahrnují základní fakta o entitě, časovou osu důležitých událostí souvisejících s touto entitou a přehled o chování entity.
  
@@ -131,26 +99,29 @@ Můžete zvolit **časový rozsah** mezi několika možnostmi přednastavených 
  
 ### <a name="entity-insights"></a>Přehledy entit
  
-Entity Insights jsou dotazy definované výzkumníky zabezpečení Microsoftu, které vašim analytikům pomůžou efektivněji a efektivně prozkoumat. Přehledy se zobrazují jako součást stránky entity a poskytují cenné informace o zabezpečení pro hostitele a uživatele ve formě tabulkových dat a grafů. Tady jsou informace, které vám to znamená, že nemusíte Log Analytics. Přehledy zahrnují data týkající se přihlášení, přidání skupin, události neobvyklé a další a zahrnují pokročilé algoritmy ML pro detekci chování neobvyklé. Přehledy jsou založené na následujících datových typech:
-- Syslog
-- SecurityEvent
-- Protokoly auditu
-- Protokoly přihlášení
-- Aktivita Office
-- BehaviorAnalytics (UEBA) 
- 
+Entity Insights jsou dotazy definované výzkumníky zabezpečení Microsoftu, které vašim analytikům pomůžou efektivněji a efektivně prozkoumat. Přehledy se zobrazují jako součást stránky entity a poskytují cenné informace o zabezpečení pro hostitele a uživatele ve formě tabulkových dat a grafů. Tady jsou informace, které vám to znamená, že nemusíte Log Analytics. Přehledy zahrnují data týkající se přihlášení, přidání skupin, události neobvyklé a další a zahrnují pokročilé algoritmy ML pro detekci chování neobvyklé. 
+
+Přehledy jsou založené na následujících zdrojích dat:
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- SigninLogs (Azure AD)
+- OfficeActivity (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Prezenční signál (agent Azure Monitor)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>Jak používat stránky entit
 
 Stránky entit jsou navržené tak, aby byly součástí více scénářů použití, a je možné k nim získat přístup ze správy incidentů, grafu šetření, záložek nebo přímo na stránce vyhledávání entit v části **Analýza chování entit** v hlavní nabídce Azure Sentinel.
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Případy použití stránky entity":::
 
-
 ## <a name="data-schema"></a>Schéma dat
 
 ### <a name="behavior-analytics-table"></a>Tabulka analýzy chování
 
-| Pole                     | Description                                                         |
+| Pole                     | Popis                                                         |
 |---------------------------|---------------------------------------------------------------------|
 | TenantId                  | jedinečné ID pro tenanta                                      |
 | SourceRecordId            | jedinečné číslo ID události EBA                                   |

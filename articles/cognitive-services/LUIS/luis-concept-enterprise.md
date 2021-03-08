@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 2e2165b81c7cd634fe79ec4438a550ad365f5a30
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b8110323afda2ad445ffe279030ee7f3035e2b71
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019173"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455395"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikaci pro LUIS
 Projděte si tyto strategie návrhu pro podnikovou aplikaci.
@@ -48,10 +48,10 @@ Pokud má vaše aplikace předpověď široké škály uživatelských projevy, 
 Naplánujte pravidelnou [kontrolu koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) pro aktivní učení, třeba každé dva týdny, a pak znovu Projděte a znovu publikujte. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Pokud potřebujete mít více než 500 záměrů
-Předpokládejme, že vyvíjíte pomocníka Office, který má více než 500 záměrů. Pokud se 200 záměrů vztahujících se na schůzky plánování, 200 se o připomenutích, 200 se dozvíte o získání informací o kolegech a 200 jsou pro posílání e-mailů, záměrů skupin tak, aby každá skupina byla v jedné aplikaci, a pak vytvořila aplikaci nejvyšší úrovně obsahující jednotlivé záměry. Použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně. Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0). 
+Předpokládejme, že vyvíjíte pomocníka Office, který má více než 500 záměrů. Pokud se 200 záměrů vztahujících se na schůzky plánování, 200 se o připomenutích, 200 se dozvíte o získání informací o kolegech a 200 jsou pro posílání e-mailů, záměrů skupin tak, aby každá skupina byla v jedné aplikaci, a pak vytvořila aplikaci nejvyšší úrovně obsahující jednotlivé záměry. Použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně. Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0). 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Pokud potřebujete zkombinovat několik aplikací LUIS a QnA maker
-Pokud máte několik aplikací LUIS a QnA maker, které potřebují reagovat na robota, použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně.  Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0). 
+Pokud máte několik aplikací LUIS a QnA maker, které potřebují reagovat na robota, použijte [model odeslání](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně.  Pak změňte robota na použití kaskádového volání, jak je znázorněno v [kurzu modelu odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0). 
 
 ## <a name="dispatch-tool-and-model"></a>Nástroj pro expedici a model
 Použijte nástroj příkazového řádku [Dispatch][dispatch-tool] , který se nachází v [BotBuilder-Tools](https://github.com/Microsoft/botbuilder-tools) pro kombinování více LUIS a/nebo QnA maker aplikací do nadřazené aplikace Luis. Tento přístup umožňuje mít nadřazenou doménu včetně všech předmětů a různých podřízených domén subjektu v samostatných aplikacích. 
@@ -62,7 +62,7 @@ Nadřazená doména je zaznamenána v LUIS s verzí pojmenovanou `Dispatch` v se
 
 Robot pro chat obdrží utterance a pak pošle nadřazené aplikaci v LUIS k předpovědi. Nejvyšší předpovězený záměr z nadřazené aplikace určuje, která podřízená aplikace LUIS se nazývá Next. Robot pro chat pošle utterance do podřízené aplikace a podrobnější předpověď.
 
-Pochopte, jak se tato hierarchie volání provádí z [dispečera bot Builder v4 – Application-tutorial](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0).  
+Pochopte, jak se tato hierarchie volání provádí z [dispečera bot Builder v4 – Application-tutorial](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0).  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Omezení záměrů v modelu odeslání
 Expediční aplikace má 500 zdrojů odeslání, které odpovídají 500 záměrů. 
@@ -70,7 +70,7 @@ Expediční aplikace má 500 zdrojů odeslání, které odpovídají 500 záměr
 ## <a name="more-information"></a>Další informace
 
 * [Sada robot Framework SDK](https://github.com/Microsoft/botframework)
-* [Kurz pro model odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)
+* [Kurz pro model odeslání](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)
 * [Rozhraní příkazového řádku pro odesílání](https://github.com/Microsoft/botbuilder-tools)
 * Ukázka robota modelu odeslání – [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
@@ -78,5 +78,5 @@ Expediční aplikace má 500 zdrojů odeslání, které odpovídají 500 záměr
 
 * Postup [testování dávky](luis-how-to-batch-test.md)
 
-[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch?branch=master
+[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool
