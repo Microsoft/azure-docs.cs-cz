@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 55d110501d5e0273ebf8cbc666920cacb87cf5cf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434980"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501987"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB přílohy
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB přílohy jsou speciální položky, které obsahují odkazy na přidružená metadata s externím objektem BLOB nebo mediálním souborem.
 
@@ -40,6 +40,11 @@ Spravované přílohy Azure Cosmos DB se liší od podpory standardních polože
 - Přílohy nejsou podporovány ve všech verzích sad SDK Azure Cosmos DB.
 - Spravované přílohy jsou omezené na 2 GB úložiště na jeden databázový účet.
 - Spravované přílohy nejsou kompatibilní s globální distribucí Azure Cosmos DB a nereplikují se do různých oblastí.
+
+> [!NOTE]
+> Rozhraní Azure Cosmos DB API pro MongoDB verze 3,2 využívá spravované přílohy pro GridFS, na které se proto vztahují stejná omezení jako na spravované přílohy Azure Cosmos DB.
+>
+> Doporučujeme vývojářům, kteří používají sadu funkcí MongoDB GridFS, k upgradu na rozhraní Azure Cosmos DB API pro MongoDB verze 3,6 nebo vyšší, která je oddělená od příloh a nabízí silnější a robustnější prostředí. Vývojáři, kteří používají sadu funkcí MongoDB GridFS, by taky měli zvážit použití Azure Blob Storage – což je účel sestavený pro ukládání obsahu objektů BLOB a nabízí rozšířené funkce s nižšími náklady v porovnání s GridFS.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Migrace příloh do Azure Blob Storage
 

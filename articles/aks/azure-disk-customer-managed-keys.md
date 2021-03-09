@@ -4,12 +4,12 @@ description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačníh
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728131"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499199"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
@@ -93,7 +93,7 @@ Když se do clusteru vytvořeného výše přidá nové fondy uzlů, klíč spra
 Šifrovací klíč disku s operačním systémem se použije k zašifrování datového disku, pokud se pro datový disk z 1.17.2 neposkytne klíč, a můžete taky šifrovat datové disky AKS s ostatními klíči.
 
 > [!IMPORTANT]
-> Ujistěte se, že máte správné přihlašovací údaje AKS. Instanční objekt bude muset mít přístup přispěvatele ke skupině prostředků, ve které je nasazená služba diskencryptionset. V opačném případě se zobrazí chyba naznačující, že objekt služby nemá oprávnění.
+> Ujistěte se, že máte správné přihlašovací údaje AKS. Spravovaná identita bude potřebovat přístup přispěvatele ke skupině prostředků, ve které je nasazený diskencryptionset. V opačném případě se zobrazí chyba naznačující, že spravovaná identita nemá oprávnění.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below

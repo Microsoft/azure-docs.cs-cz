@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 130cb1d63da27010012c22dc2cdb40c3d8f03273
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178554"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501035"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurace geografické replikace pro Redis instance Premium Azure cache
 
@@ -170,7 +170,7 @@ Chcete-li získat bod obnovení, [exportujte](cache-how-to-import-export-data.md
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Můžu pomocí PowerShellu nebo Azure CLI spravovat geografickou replikaci?
 
-Ano, geografickou replikaci je možné spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace najdete v dokumentaci k [prostředí PowerShell](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) nebo v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/redis/server-link).
+Ano, geografickou replikaci je možné spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace najdete v dokumentaci k [prostředí PowerShell](/powershell/module/az.rediscache/#redis_cache) nebo v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/redis/server-link).
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Kolik stojí za replikaci dat napříč oblastmi Azure?
 

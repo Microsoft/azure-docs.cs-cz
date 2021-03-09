@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 47082bd6a441bc857022c960abe3169995074dde
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 445fdea4cb92ed8080528a41cf19ad774751b9ce
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444721"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510759"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -187,7 +187,7 @@ V této části se dozvíte, jak pomocí předem připraveného modelu analyzova
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky faktury. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_invoices` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -335,7 +335,7 @@ V této části se dozvíte, jak pomocí předem připraveného příjmového mo
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -368,7 +368,7 @@ Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extr
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+> Můžete také analyzovat image místních obchodních karet. Podívejte se na metody [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) , jako je například `begin_recognize_business_cards` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 

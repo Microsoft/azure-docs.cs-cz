@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571343"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499352"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Doporučení zabezpečení pro virtuální počítače v Azure
 
@@ -33,7 +33,7 @@ Obecné informace o Azure Security Center najdete v tématu [co je Azure Securit
 | Při vytváření vlastních imagí virtuálních počítačů použijte nejnovější aktualizace. | Před vytvořením imagí nainstalujte nejnovější aktualizace pro operační systém a pro všechny aplikace, které budou součástí vaší image.  | - |
 | Udržujte své virtuální počítače v aktuálním prostředí. | Řešení [Update Management](../automation/update-management/overview.md) v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače se systémem Windows a Linux v Azure. | [Ano](../security-center/asset-inventory.md) |
 | Zálohujte své virtuální počítače. | [Azure Backup](../backup/backup-overview.md) pomáhá chránit data aplikací a má minimální provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské chyby můžou do vašich aplikací zavádět chyby. Azure Backup chrání vaše virtuální počítače se systémem Windows a Linux. | - |
-| Pro zajištění vyšší odolnosti a dostupnosti použijte více virtuálních počítačů. | Pokud váš virtuální počítač spouští aplikace, které musí být vysoce dostupné, použijte několik virtuálních počítačů nebo [skupin dostupnosti](./manage-availability.md). | - |
+| Pro zajištění vyšší odolnosti a dostupnosti použijte více virtuálních počítačů. | Pokud váš virtuální počítač spouští aplikace, které musí být vysoce dostupné, použijte několik virtuálních počítačů nebo [skupin dostupnosti](./availability.md). | - |
 | Proveďte strategii pro provozní kontinuitu a zotavení po havárii (BCDR). | Azure Site Recovery vám umožní vybírat z různých možností, které jsou navržené pro podporu kontinuity podnikových služeb. Podporuje různé scénáře replikace a převzetí služeb při selhání. Další informace najdete v tématu  [o Site Recovery](../site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Zabezpečení dat
@@ -52,7 +52,7 @@ Obecné informace o Azure Security Center najdete v tématu [co je Azure Securit
 |-|----|--|
 | Centralizace ověřování virtuálních počítačů. | Ověřování virtuálních počítačů s Windows a Linuxem můžete centralizovat pomocí [Azure Active Directory ověřování](../active-directory/develop/authentication-vs-authorization.md). | - |
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|

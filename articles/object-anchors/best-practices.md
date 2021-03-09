@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745045"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503041"
 ---
 # <a name="best-practices"></a>Osvědčené postupy
 
@@ -28,6 +28,8 @@ Pro dosažení nejlepších výsledků doporučujeme vyzkoušet některé z těc
 - Služba převodů modelů může trvat dlouhou dobu, než se zpracuje velký model vysokého LOD (úrovně podrobností). V případě účinnosti můžete 3D model předzpracovat, aby se odstranily vnitřní obličeje.
 
 ## <a name="detection"></a>Detekce
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - Poskytovaná sada runtime SDK vyžaduje, aby uživatelem zadaná oblast vyhledávání hledala a zjišťovala fyzické objekty. Oblast hledání může být ohraničovací rámeček, koule, zobrazení frustum nebo libovolná kombinace. Chcete-li se vyhnout nepravdivé detekci, je vhodnější nastavit oblast hledání dostatečně velká pro pokrytí objektu. Při použití poskytovaných ukázkových aplikací můžete na jedné straně objektu stát asi 2 měřiče od nejbližšího povrchu a spustit aplikaci.
 - Před spuštěním aplikace kotvy objektů na zařízení s HoloLens 2 odstraňte hologramy v okolí svého pracoviště, a to pomocí ***Nastavení->systémových >ch hologramů*** .

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: bb9eb2e91fb29849f27e7aba9bc4794698bf0b0b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f49485d00379f5845569976e793f06d56a8967d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570045"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506816"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Monitorování Queue Storage Azure
 
@@ -108,6 +108,8 @@ Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za obj
    > ![Archivní úložiště stránky nastavení diagnostiky](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
 2. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete archivovat protokoly, klikněte na tlačítko **OK** a pak vyberte tlačítko **Uložit** .
+ 
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
    > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) a pochopení požadavků v účtu úložiště.
@@ -153,12 +155,14 @@ Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za obj
 Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
 `<storage-service-resource--id>`V tomto fragmentu kódu nahraďte zástupný symbol ID prostředku fronty. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
 
 Můžete použít `StorageRead` , `StorageWrite` a `StorageDelete` pro hodnotu parametru **kategorie** .
+
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
 Tady je příklad:
 
@@ -215,16 +219,18 @@ Pokud se rozhodnete archivovat protokoly do účtu úložiště, platíte za obj
 Protokol povolte pomocí [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkazu.
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
 ```
 
 `<storage-service-resource--id>`V tomto fragmentu kódu nahraďte zástupný symbol ID prostředku fronty. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
 
 Můžete použít `StorageRead` , `StorageWrite` a `StorageDelete` pro hodnotu `category` parametru.
 
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
 Tady je příklad:
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true}]'`
 
 Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 

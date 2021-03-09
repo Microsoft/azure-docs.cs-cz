@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6d8402f5e8a1a9af1f84ff6beff7324d1675e441
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3abca397186572cabb4f7ae99edae8688ea4d9a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214401"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499505"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -99,7 +99,7 @@ Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování p
 
 Pokud chcete povolit ověřování Azure služba AD DS přes protokol SMB s Azure PowerShell, nainstalujte nejnovější modul AZ Module (2,4 nebo novější) nebo modul AZ. Storage (1,5 nebo novější). Další informace o instalaci PowerShellu najdete v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](/powershell/azure/install-Az-ps).
 
-Pokud chcete vytvořit nový účet úložiště, zavolejte [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)a pak nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, parametr pro povolení funkce je **EnableAzureFilesAadIntegrationForSMB**.)
+Pokud chcete vytvořit nový účet úložiště, zavolejte [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)a pak nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, parametr pro povolení funkce je **EnableAzureFilesAadIntegrationForSMB**.)
 
 ```powershell
 # Create a new storage account

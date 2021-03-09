@@ -4,19 +4,19 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 190da8fc98f3a03499188ab173f058d15cd2dafe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4983c1e1e7f235fa7a5b748a0ce5b1c79176c849
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025767"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510630"
 ---
-Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
+Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [AciWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
 | Entita JSON | Parametr metody | Description |
 | ----- | ----- | ----- |
-| `computeType` | Není k dispozici | Cílové výpočetní prostředí. Pro ACI musí být hodnota `ACI` . |
-| `containerResourceRequirements` | Není k dispozici | Kontejner pro entity CPU a paměti |
+| `computeType` | NA | Cílové výpočetní prostředí. Pro ACI musí být hodnota `ACI` . |
+| `containerResourceRequirements` | NA | Kontejner pro entity CPU a paměti |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit. Upravovaný `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí `0.5` |
 | `location` | `location` | Oblast Azure, do které se má tato webová služba nasadit Pokud není zadáno, bude použito umístění pracovního prostoru. Další podrobnosti o dostupných oblastech najdete tady: [ACI oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |

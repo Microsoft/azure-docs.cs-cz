@@ -10,12 +10,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071217"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508006"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -160,7 +160,7 @@ Služba Azure ML poskytuje možnost sledovat kompletní záznam auditu všech pr
 > [!TIP]
 > I když jsou některé informace o modelech a datových sadách automaticky zachyceny, můžete přidat další informace pomocí __značek__. Při hledání registrovaných modelů a datových sad v pracovním prostoru můžete použít značky jako filtr.
 >
-> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) Class reference.
+> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](/python/api/azureml-core/azureml.core.model%28class%29) Class reference.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML

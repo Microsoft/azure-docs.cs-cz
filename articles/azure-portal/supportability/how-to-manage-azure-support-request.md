@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653845"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502514"
 ---
 # <a name="manage-an-azure-support-request"></a>Správa žádosti o podporu Azure
 
@@ -88,34 +88,34 @@ Při použití možnosti nahrávání souborů postupujte podle těchto pokynů:
 * Soubory nemohou být větší než 4 MB.
 * Všechny soubory musí mít příponu názvu souboru, například *. docx* nebo *. xlsx*. Následující tabulka uvádí přípony názvů souborů, které jsou povoleny pro nahrání.
 
-| 0-9, A-C     | D – G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9, A-C    | D – G   | H-N         | O-Q   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | . dat  | . har        | . ODX  | . rar     | .tdb       | .xlam   |
-| . a          | . DB   | .hwl        | . oft  | . RDL     | .tdf       | .xlr    |
-| . ABC        | . DMP  | . ICS        | . old  | . rdlc    | . text      | .xls    |
-| . adm        | .do_  | . ini        | . One  | .re_     | .thmx      | .xlsb   |
-| . aspx       | .doc  | .java       | . OSD  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | .jpg        | . MIMO  | . Remove  | . trc       | .xlsx   |
-| . b          | .docx | . LDF        | . P1   | . Ren     | . TTD       | .xlt    |
-| .ba_        | .dotm | . hlavičkový formát | .pcap | . rename  | .tx_       | .xltx   |
-| . bak        | .dotx | . lnk        | soubor. pdb  | .rft     | .txt       | .xml    |
-| .bat        | .dtsx | .lo_        | .pdf  | . rpt     | .uccapilog | . XMLA   |
-| . blg        | . EDS  | . log        | .piz  | .rte     | .uccplog   | .xps    |
-| .CA_        | . EMF  | .lpk        | .pmls | .rtf     | .udcx      | . xsd    |
-| . SOUBORŮ        | . eml  | . manifest   | .png  | . Run     | .vb_       | . xsn    |
-| . Cap        | .emz  | . Master     | .potx | .saz     | .vbs_      | . xxx    |
-| .catx       | . err  | . mdmp       | .ppt  | SQL     | . vcf       | .z_     |
-| . Priorita        | . ETL  | . mof        | .pptm | .sqlplan | . vsd       | .z01    |
-| . komprimovaná | . evt  | . mp3        | .pptx | . STP     | . wdb       | .z02    |
-| . Konfigurace     | .evtx | . mpg        | . prn  | .svclog  | . WKS       | . Zi     |
-| .cpk        | . DODATEČNÉ   | .ms_        | . PSV  | -        | . WMA       | .zi_    |
-| . cpp        | .ex_  | . msg        | PST  | -        | . wmv       | .zip    |
-| .cs         | .ex0  | .msi        | . pub  | -        | . WMZ       | .zip_   |
-| . Formát        | . FRD  | soubor. mso        | -     | -        | . WPS       | .zipp   |
-| .cvr        | .gif  | . msu        | -     | -        | .wpt       | . zip |
-| -           | identifikátor. GUID | . nfo        | -     | -        | . WSDL      | .zippy  |
-| -           | . gz   | -           | -     | -        | . wsp       | .zipx   |
-| -           | -     | -           | -     | -        | .wtl       | .zit    |
+| .7z         | . dat  | . har        | . ODX  | . rar     | .uccapilog | .xlam   |
+| . a          | . DB   | .hwl        | . oft  | . RDL     | .uccplog   | .xlr    |
+| . ABC        | . DMP  | . ICS        | . old  | . rdlc    | .udcx      | .xls    |
+| . adm        | .do_  | . ini        | . One  | .re_     | .vb_       | .xlsb   |
+| . aspx       | .doc  | .java       | . OSD  | . Remove  | .vbs_      | .xlsm   |
+| . ATF        | .docm | .jpg        | . MIMO  | . Ren     | . vcf       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . rename  | . vsd       | .xlt    |
+| .ba_        | .dotm | . hlavičkový formát | .pcap | .rft     | . wdb       | .xltx   |
+| . bak        | .dotx | .lo_        | soubor. pdb  | . rpt     | . WKS       | .xml    |
+| . blg        | .dtsx | . log        | .pdf  | .rte     | . WMA       | . XMLA   |
+| .CA_        | . EDS  | .lpk        | .piz  | .rtf     | . wmv       | .xps    |
+| . SOUBORŮ        | . EMF  | . manifest   | .pmls | . Run     | . WMZ       | . xsd    |
+| . Cap        | . eml  | . Master     | .png  | .saz     | . WPS       | . xsn    |
+| .catx       | .emz  | . mdmp       | .potx | SQL     | .wpt       | . xxx    |
+| . Priorita        | . err  | . mof        | .ppt  | .sqlplan | . WSDL      | .z_     |
+| . komprimovaná | . ETL  | . mp3        | .pptm | . STP     | . wsp       | .z01    |
+| . Konfigurace     | . evt  | . mpg        | .pptx | .svclog  | .wtl       | .z02    |
+| .cpk        | .evtx | .ms_        | . prn  | .tdb     | -          | . Zi     |
+| . cpp        | . DODATEČNÉ   | . msg        | . PSV  | .tdf     | -          | .zi_    |
+| .cs         | .ex_  | soubor. mso        | PST  | . text    | -          | .zip    |
+| . Formát        | .ex0  | . msu        | . pub  | .thmx    | -          | .zip_   |
+| .cvr        | . FRD  | . nfo        | -     | .tif     | -          | .zipp   |
+| -           | .gif  | -           | -     | . trc     | -          | . zip |
+| -           | identifikátor. GUID | -           | -     | . TTD     | -          | .zippy  |
+| -           | . gz   | -           | -     | .tx_     | -          | .zipx   |
+| -           | -     | -           | -     | .txt     | -          | .zit    |
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . zzz    |
 

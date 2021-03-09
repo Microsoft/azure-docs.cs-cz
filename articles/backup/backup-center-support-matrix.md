@@ -3,12 +3,12 @@ title: Matice podpory pro centrum zálohování
 description: Tento článek shrnuje scénáře, které centrum zálohování podporuje pro jednotlivé typy úloh.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: aedf2d071c4f38d2d873383409c11abdf3c0c72d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700231"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504503"
 ---
 # <a name="support-matrix-for-backup-center"></a>Matice podpory pro centrum zálohování
 
@@ -18,10 +18,10 @@ Centrum zálohování poskytuje samostatné podokno skla pro podniky, které umo
 
 | **Kategorie** | **Scénář**  | **Podporované úlohy**  | **Omezení** |
 | -------------| ------------- | ----------------------- |------------|
-| Sledování   | Zobrazit všechny úlohy | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | <li> za 7 dní vyprší množství úloh, které jsou k dispozici v poli. <br> <li> Každý filtr nebo rozevírací seznam podporuje maximálně 1000 položek. Proto je možné pomocí centra zálohování monitorovat maximálně 1000 odběrů a 1000 trezorů napříč klienty. |
-| Sledování | Zobrazit všechny instance zálohování | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
-| Sledování | Zobrazit všechny zásady zálohování | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
-| Sledování | Zobrazit všechny trezory | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
+| Monitorování   | Zobrazit všechny úlohy | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | <li> za 7 dní vyprší množství úloh, které jsou k dispozici v poli. <br> <li> Každý filtr nebo rozevírací seznam podporuje maximálně 1000 položek. Proto je možné pomocí centra zálohování monitorovat maximálně 1000 odběrů a 1000 trezorů napříč klienty. |
+| Monitorování | Zobrazit všechny instance zálohování | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
+| Monitorování | Zobrazit všechny zásady zálohování | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
+| Monitorování | Zobrazit všechny trezory | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Stejný jako výše uvedený |
 | Akce | Konfigurace zálohování | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Další informace najdete v tématu Podpora matic pro [zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md) a [Zálohování serveru Azure Database for PostgreSQL](backup-azure-database-postgresql.md#support-matrix) . |
 | Akce | Obnovit instanci zálohy | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Další informace najdete v tématu Podpora matic pro [zálohování virtuálních počítačů Azure](./backup-support-matrix-iaas.md) a [Zálohování serveru Azure Database for PostgreSQL](backup-azure-database-postgresql.md#support-matrix) . |
 | Akce | Vytvořit trezor | <li> Virtuální počítač Azure <br><br> <li> Server Azure Database for PostgreSQL <br><br> <li> SQL na virtuálním počítači Azure <br><br> <li> SAP HANA na virtuálním počítači Azure <br><br> <li> Azure Files<br/><br/> <li>Objekty blob Azure<br/><br/> <li>Spravované disky Azure | Další informace o maticích pro [úložiště Recovery Services](./backup-support-matrix.md#vault-support) najdete v tématu Podpora. |
@@ -36,7 +36,7 @@ Centrum zálohování poskytuje samostatné podokno skla pro podniky, které umo
 
 | **Kategorie** | **Scénář**  |
 |--------------|---------------|
-| Sledování | Zobrazit výstrahy ve velkém měřítku |
+| Monitorování | Zobrazit výstrahy ve velkém měřítku |
 | Akce | Konfigurace nastavení trezoru ve velkém měřítku |
 | Akce | Spustit úlohu obnovení mezi oblastmi ze služby Backup Center |
 

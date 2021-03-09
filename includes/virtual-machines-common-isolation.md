@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: styli365
+author: rishabv90
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/05/2020
-ms.author: sttsinar
+ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102473833"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510878"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti fungují v reálném čase a pracují na konkrétní generaci hardwaru a při vyřazení hardwaru budou zastaralé.
 
@@ -42,12 +42,12 @@ Velikost izolovaného virtuálního počítače má omezený životnost hardwaru
 
 | Velikost | Datum vyřazení izolace | 
 | --- | --- |
-| Standard_DS15_v2 | 15. května 2020 |
-| Standard_D15_v2  | 15. května 2020 |
-| Standard_G5  | 15. února 2021 |
-| Standard_GS5  | 15. února 2021 |
-| Standard_E64i_v3  | 15. února 2021 |
-| Standard_E64is_v3  | 15. února 2021 |
+| Standard_DS15_v2 | 15. května 2021 |
+| Standard_D15_v2  | 15. května 2021 |
+| Standard_G5  | 15. února 2022 |
+| Standard_GS5  | 15. února 2022 |
+| Standard_E64i_v3  | 15. února 2022 |
+| Standard_E64is_v3  | 15. února 2022 |
 
 
 ## <a name="faq"></a>Časté otázky
@@ -71,8 +71,8 @@ Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/serv
  
 | Date (Datum) | Akce |
 |---|---| 
-| 15. května 2019<sup>1</sup> | Oznámení o vyřazení z izolaci D/DS15_v2| 
-| 15. května 2020 | Odebrání záruky izolace D/DS15_v2| 
+| 15. května 2020<sup>1</sup> | Oznámení o vyřazení z izolaci D/DS15_v2| 
+| 15. května 2021 | Odebrání záruky izolace D/DS15_v2| 
 
 <sup>1</sup> stávající zákazník používající tyto velikosti dostane e-mail s oznámením s podrobnými pokyny k dalšímu postupu.  
 
@@ -81,8 +81,8 @@ Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/serv
  
 | Date (Datum) | Akce |
 |---|---|
-| 15. února 2020<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 oznámení o vyřazení izolace |
-| 15. února 2021 | Odebrání záruky izolace/GS5/E64i_v3/E64is_v3 |
+| 15. února 2021<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 oznámení o vyřazení izolace |
+| 15. února 2022 | Odebrání záruky izolace/GS5/E64i_v3/E64is_v3 |
 
 <sup>1</sup> stávající zákazník používající tyto velikosti dostane e-mail s oznámením s podrobnými pokyny k dalšímu postupu.  
 

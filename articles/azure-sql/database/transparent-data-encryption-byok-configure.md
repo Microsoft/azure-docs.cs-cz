@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 610f0a9692c18afbd7bb446959b09bac14d6f629
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461836"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507615"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -37,8 +37,8 @@ Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro
     - Trezor klíčů musí mít následující vlastnost, která se má použít pro TDE:
   - [obnovitelné odstraňování](../../key-vault/general/soft-delete-overview.md) a mazání ochrany
 - Klíč musí mít následující atributy, které se mají použít pro TDE:
-  - Žádné datum vypršení platnosti
-  - Nezakázáno
+  - Nesmí mít žádné datum ukončení platnosti.
+  - Nesmí být zakázaný.
   - Může provádět operace *Get*, *Wrap Key*, *rozbalení klíčových* operací.
 - **(Ve verzi Preview)** Pokud chcete použít spravovaný klíč HSM, postupujte podle pokynů k [Vytvoření a aktivaci spravovaného modulu HSM pomocí Azure CLI](../../key-vault/managed-hsm/quick-create-cli.md) .
 
@@ -79,7 +79,7 @@ Pokud chcete na server přidat oprávnění na spravovaném modulu HSM, přidejt
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Přidejte Key Vault klíč k serveru a nastavte ochranu TDE.
 
-- Načtení ID klíče z trezoru klíčů pomocí rutiny [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0)
+- Načtení ID klíče z trezoru klíčů pomocí rutiny [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey)
 - K přidání klíče z Key Vault na server použijte rutinu [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) .
 - Pomocí rutiny [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) nastavte klíč jako ochranu TDE pro všechny prostředky serveru.
 - Pomocí rutiny [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) ověřte, že ochrana TDE byla nakonfigurovaná tak, jak má.

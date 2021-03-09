@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d2d3d04bdb8066db263c608bb1d42acca303a656
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433824"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507224"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -68,7 +68,7 @@ Použití rozhraní API roviny dat:
    - zdroj sady SDK můžete najít na webu GitHub: [Azure Azure Digital nezákladní Klientská knihovna pro JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Můžete použít **sadu Python SDK**. Chcete-li použít sadu Python SDK...
    - Balíček můžete zobrazit a nainstalovat z PyPi: [Azure Azure Digital Core Client Library for Python](https://pypi.org/project/azure-digitaltwins-core/).
-   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/python/api/azure-digitaltwins-core/azure.digitaltwins.core).
    - zdroj sady SDK můžete najít na webu GitHub: [Azure Azure Digital Core Client Library for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 

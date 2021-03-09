@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969700"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507902"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
 
@@ -48,7 +48,7 @@ Z důvodu této architektury dosáhla Azure jednotnou odolnost na IaaS discích 
 
 V případě lokalizovaných hardwarových chyb na výpočetním hostiteli nebo na platformě úložiště může někdy docházet k dočasné nedostupnosti virtuálního počítače, který je pokrytý smlouvou [SLA Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) pro dostupnost virtuálních počítačů. Azure také poskytuje špičkovou smlouvu SLA pro jednotlivé instance virtuálních počítačů, které používají Azure Premium SSD.
 
-K ochraně aplikačních úloh před výpadky kvůli dočasné nedostupnosti disku nebo virtuálního počítače můžou zákazníci používat [skupiny dostupnosti](./manage-availability.md). Dva nebo víc virtuálních počítačů v rámci skupiny dostupnosti zajišťují redundanci aplikace. Azure potom vytvoří tyto virtuální počítače a disky v samostatných doménách selhání s různými součástmi napájení, sítě a serveru.
+K ochraně aplikačních úloh před výpadky kvůli dočasné nedostupnosti disku nebo virtuálního počítače můžou zákazníci používat [skupiny dostupnosti](./availability.md). Dva nebo víc virtuálních počítačů v rámci skupiny dostupnosti zajišťují redundanci aplikace. Azure potom vytvoří tyto virtuální počítače a disky v samostatných doménách selhání s různými součástmi napájení, sítě a serveru.
 
 Vzhledem k těmto samostatným doménám selhání neovlivní lokalizovaná hardwarová selhání obvykle více virtuálních počítačů v sadě ve stejnou dobu. Samostatné domény selhání poskytují vysokou dostupnost vaší aplikace. Je vhodné použít skupiny dostupnosti, pokud je potřeba vysoká dostupnost. V další části se dozvíte o aspektech zotavení po havárii.
 
@@ -62,7 +62,7 @@ Aby se chránily vaše úlohy IaaS před výpadky, měli byste naplánovat redun
 
 Vaše aspekty zotavení po havárii mohou zahrnovat následující aspekty:
 
-- Vysoká dostupnost: schopnost aplikace pokračovat v dobrém stavu, aniž by došlo k výraznému výpadku. V *dobrém stavu*tento stav znamená, že aplikace reaguje a uživatelé se mohou připojit k aplikaci a pracovat s ní. Některé klíčové aplikace a databáze mohou být nutné vždy k dispozici, i když dojde k selhání platformy. Pro tyto úlohy možná budete muset naplánovat redundanci aplikace i data.
+- Vysoká dostupnost: schopnost aplikace pokračovat v dobrém stavu, aniž by došlo k výraznému výpadku. V *dobrém stavu* tento stav znamená, že aplikace reaguje a uživatelé se mohou připojit k aplikaci a pracovat s ní. Některé klíčové aplikace a databáze mohou být nutné vždy k dispozici, i když dojde k selhání platformy. Pro tyto úlohy možná budete muset naplánovat redundanci aplikace i data.
 
 - Odolnost dat: v některých případech hlavní aspekt zajišťuje, aby se data zachovala, pokud dojde k havárii. Proto může být nutné zálohovat data v jiné lokalitě. Pro takové úlohy možná nebudete pro aplikaci potřebovat úplnou redundanci, ale pouze běžné zálohy disků.
 
@@ -108,7 +108,7 @@ U nespravovaných disků můžete pro disky IaaS použít místně redundantní 
 
  Následující tabulka představuje souhrn řešení, která jsou k dispozici pro zotavení po havárii.
 
-| Scénář | Automatická replikace | Řešení zotavení po havárii |
+| Scenario | Automatická replikace | Řešení zotavení po havárii |
 | --- | --- | --- |
 | Disky SSD úrovně Premium | Místní ([místně redundantní úložiště](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Spravované disky | Místní ([místně redundantní úložiště](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
@@ -120,7 +120,7 @@ Vysoká dostupnost se nejlépe splní pomocí spravovaných disků v sadě dostu
 
 Vaše volby pro vysokou dostupnost, zálohování a zotavení po havárii na úrovni aplikace nebo infrastruktury můžou být reprezentovány takto:
 
-| Úroveň |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
+| Level |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
 | --- | --- | --- |
 | Aplikace | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Skupina dostupnosti  | Geograficky redundantní úložiště s konzistentními snímky |

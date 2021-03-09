@@ -11,6 +11,10 @@
   items:
     - name: Vytvoření front-dveří Standard/Premium – portál
       href: create-front-door-portal.md
+- name: ukázky
+  items:
+    - name: Šablony Resource Manageru
+      href: resource-manager-template-samples.md
 - name: Koncepty
   items:
     - name: Nejčastější dotazy ke službě Front Door

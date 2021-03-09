@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049528"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502442"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatické označování dat ve službě Azure dosah
 
@@ -114,6 +114,14 @@ Například:
 Jakmile rozšíříte popisky na prostředky v Azure dosah, můžete vybrat popisky, které mají být v dosah dostupné. Další informace najdete v tématech [vytváření nových popisků citlivosti nebo změna stávajících popisků](#creating-new-sensitivity-labels-or-modifying-existing-labels).
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>Vytváření nových popisků citlivosti nebo změna stávajících popisků
 
+Když použijete popisky citlivosti pro aplikace Office v systémech Windows, macOS, iOS a Android, uživatelé uvidí nové štítky do čtyř hodin a do jedné hodiny pro Office na webu. Umožněte ale, aby se změny replikují na všechny aplikace a služby, a to až 24 hodin.
+
+> [!IMPORTANT]
+> Neodstraňujte popisek, pokud nerozumíte dopadu pro uživatele. Další informace najdete v tématu [Odebrání a odstranění popisků](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) v dokumentaci k Microsoft 365.
+>
+
+**Chcete-li vytvořit nové popisky citlivosti nebo upravit existující popisky**:
+
 1. Otevřete [Centrum zabezpečení Microsoft 365 a dodržování předpisů](https://protection.office.com/homepage). 
 
 1. V části **řešení** vyberte **ochrana informací** a pak vyberte **vytvořit popisek**. 
@@ -152,10 +160,6 @@ Jakmile rozšíříte popisky na prostředky v Azure dosah, můžete vybrat popi
 
     Další informace najdete v tématu [Priorita popisku (záležitosti pořadí)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) v dokumentaci Microsoft 365.
 
-> [!IMPORTANT]
-> Neodstraňujte popisek, pokud nerozumíte dopadu pro uživatele. 
->
-> Další informace najdete v tématu [Odebrání a odstranění popisků](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) v dokumentaci k Microsoft 365.
 
 Pokračujte tím, že zkontrolujete [data a použijete popisky automaticky](#scan-your-data-to-apply-labels-automatically)a potom:
 

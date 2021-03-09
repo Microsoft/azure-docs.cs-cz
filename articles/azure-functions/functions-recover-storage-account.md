@@ -3,12 +3,12 @@ title: 'Chyba řešení potíží: Modul runtime služby Azure Functions je nedo
 description: Přečtěte si, jak řešit potíže s neplatným účtem úložiště.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217290"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499624"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Chyba řešení potíží: "Modul runtime služby Azure Functions je nedosažitelný"
 
@@ -36,7 +36,7 @@ Pokud v předchozím kroku nemůžete najít připojovací řetězec účtu úlo
 
 * Požadovanou
     * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
-* Vyžaduje se pro funkce plánu využití a Premium:
+* Vyžaduje se pro funkce plánu Premium:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
     * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 

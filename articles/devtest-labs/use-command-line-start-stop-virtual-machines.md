@@ -3,12 +3,12 @@ title: Spuštění a zastavení virtuálních počítačů pomocí nástrojů p�
 description: Naučte se používat nástroje příkazového řádku ke spouštění a zastavování virtuálních počítačů v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201188"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499539"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Spuštění a zastavení Azure DevTest Labs virtuálních počítačů pomocí nástrojů příkazového řádku
 V tomto článku se dozvíte, jak pomocí Azure PowerShell nebo Azure CLI spouštět a zastavovat virtuální počítače v testovacím prostředí v Azure DevTest Labs. K automatizaci těchto operací můžete vytvořit skripty PowerShellu nebo rozhraní příkazového řádku. 
@@ -29,7 +29,7 @@ V některých scénářích ale můžete chtít automatizovat spouštění a zas
 > [!NOTE]
 > Následující skript používá Azure PowerShell AZ Module. 
 
-Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) je pro tento skript primárním fokusem. Parametr **ResourceID** je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. Parametr **Action** je, kde jsou nastaveny možnosti **Spustit** nebo **zastavit** v závislosti na tom, co je potřeba.
+Následující skript prostředí PowerShell spustí virtuální počítač v testovacím prostředí. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) je pro tento skript primárním fokusem. Parametr **ResourceID** je plně kvalifikované ID prostředku pro virtuální počítač v testovacím prostředí. Parametr **Action** je, kde jsou nastaveny možnosti **Spustit** nebo **zastavit** v závislosti na tom, co je potřeba.
 
 ```powershell
 # The id of the subscription

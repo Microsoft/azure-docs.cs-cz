@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661031"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501573"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurace dělení dat a křížového ověřování v rámci automatizovaného strojového učení
 
@@ -24,7 +24,7 @@ V tomto článku se seznámíte s různými možnostmi konfigurace školicích d
 
 Při použití automatizovaného ML v Azure Machine Learning k sestavení více modelů ML musí každý podřízený běh ověřit související model výpočtem metrik kvality pro daný model, jako je přesnost nebo AUC vážená. Tyto metriky se vypočtou porovnáním předpovědi vytvořených s každým modelem a skutečnými popisky z minulých pozorování v datech ověřování. [Přečtěte si další informace o tom, jak se počítají metriky na základě typu ověřování](#metric-calculation-for-cross-validation-in-machine-learning). 
 
-Automatizované experimenty ML provádí ověření modelu automaticky. Následující části popisují, jak můžete upravit nastavení ověřování pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
+Automatizované experimenty ML provádí ověření modelu automaticky. Následující části popisují, jak můžete upravit nastavení ověřování pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/). 
 
 Informace o prostředí s nízkým kódováním nebo bez kódu najdete [v tématu Vytvoření automatizovaných experimentů strojového učení v Azure Machine Learning Studiu](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
 
@@ -47,7 +47,7 @@ Pro tento článek potřebujete,
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Výchozí rozdělená data a křížové ověřování ve strojovém učení
 
-Pomocí objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) definujte nastavení experimentů a školení. V následujícím fragmentu kódu si všimněte, že jsou definovány pouze požadované parametry, které jsou parametry pro `n_cross_validation` nebo nejsou `validation_ data` zahrnuty  .
+Pomocí objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) definujte nastavení experimentů a školení. V následujícím fragmentu kódu si všimněte, že jsou definovány pouze požadované parametry, které jsou parametry pro `n_cross_validation` nebo nejsou `validation_ data` zahrnuty  .
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

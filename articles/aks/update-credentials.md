@@ -5,16 +5,16 @@ description: Přečtěte si, jak aktualizovat nebo resetovat přihlašovací úd
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389004"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501171"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualizace nebo otočení přihlašovacích údajů pro službu Azure Kubernetes (AKS)
 
-Ve výchozím nastavení se clustery AKS vytvářejí s instančním objektem, který má dobu platnosti v jednom roce. Až se blížíte k datu vypršení platnosti, můžete resetovat přihlašovací údaje, aby se instanční objekt po dalších časových obdobích rozšířil. Přihlašovací údaje můžete také aktualizovat nebo otočit v rámci definovaných zásad zabezpečení. Tento článek podrobně popisuje, jak aktualizovat tyto přihlašovací údaje pro cluster AKS.
+Clustery AKS vytvořené s instančním objektem mají jednoroční dobu platnosti. Až se blížíte k datu vypršení platnosti, můžete resetovat přihlašovací údaje, aby se instanční objekt po dalších časových obdobích rozšířil. Přihlašovací údaje můžete také aktualizovat nebo otočit v rámci definovaných zásad zabezpečení. Tento článek podrobně popisuje, jak aktualizovat tyto přihlašovací údaje pro cluster AKS.
 
 Cluster AKS můžete také [integrovat s Azure Active Directory][aad-integration]a použít ho jako poskytovatele ověřování pro váš cluster. V takovém případě budete mít pro svůj cluster vytvořenou 2 více identit, aplikaci AAD Server a klientskou aplikaci AAD, můžete také resetovat tato pověření.
 

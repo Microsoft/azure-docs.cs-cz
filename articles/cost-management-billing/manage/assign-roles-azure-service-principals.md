@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: banders
-ms.openlocfilehash: 0f30c90bf81a837b1e78ca5f91450cf085cc91bc
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102495071"
+ms.locfileid: "102508516"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Přiřazení rolí k hlavním názvům služeb Azure smlouva Enterprise
 
@@ -23,7 +23,7 @@ Registraci smlouva Enterprise (EA) můžete spravovat na [portálu Azure Enterpr
 Než začnete, ujistěte se, že máte zkušenosti s následujícími články:
 
 - [Role smlouvy Enterprise](understand-ea-roles.md)
-- [Přihlášení pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps?view=azps-5.5.0&preserve-view=true)
+- [Přihlášení pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps)
 - [Volání rozhraní REST API pomocí metody post](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
 ## <a name="create-and-authenticate-your-service-principal"></a>Vytvoření a ověření objektu služby
@@ -89,7 +89,7 @@ Parametr je ID fakturačního účtu. V Azure Portal najdete na stránce Přehle
 
 **billingRoleAssignmentName**
 
-Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell.
+Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell.
 
 Nebo můžete k vygenerování jedinečného identifikátoru GUID použít web [GUID a generátor identifikátoru UUID online](https://guidgenerator.com/) .
 
@@ -141,7 +141,7 @@ Toto je ID fakturačního účtu. V Azure Portal najdete na stránce Přehled Co
 
 **billingRoleAssignmentName**
 
-Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell.
+Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell.
 
 Nebo můžete k vygenerování jedinečného identifikátoru GUID použít web [GUID a generátor identifikátoru UUID online](https://guidgenerator.com/) .
 
@@ -199,7 +199,7 @@ Parametr je ID fakturačního účtu. V Azure Portal najdete na stránce Přehle
 
 **billingRoleAssignmentName**
 
-Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) PowerShell.
+Parametr je jedinečný identifikátor GUID, který je třeba zadat. Identifikátor GUID můžete vygenerovat pomocí příkazu [New-GUID](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell.
 
 Nebo můžete k vygenerování jedinečného identifikátoru GUID použít web [GUID a generátor identifikátoru UUID online](https://guidgenerator.com/) .
 **enrollmentAccountName**

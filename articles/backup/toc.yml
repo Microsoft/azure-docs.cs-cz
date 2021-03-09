@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Použití webu Azure Portal
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Pomocí Azure Monitoru
+        - name: Použití protokolů Azure Monitor
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Sestavy
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Konfigurace sestav Azure Backup
               href: configure-reports.md
+            - name: Sestavy Azure Backup e-mailu
+              href: backup-reports-email.md
         - name: Konfigurace diagnostických událostí pro trezory služby Recovery Services
           items:
             - name: Použití nastavení diagnostiky pro trezory služby Recovery Services
               href: backup-azure-diagnostic-events.md
+            - name: Použití systémových funkcí
+              href: backup-reports-system-functions.md
             - name: Datový model Log Analytics pro diagnostické události specifické pro prostředek
               href: backup-azure-reports-data-model.md
             - name: Datový model Log Analytics pro Azure Backup (režim Azure Diagnostics)

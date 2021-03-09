@@ -220,10 +220,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: Schémata diagnostických protokolů
           href: media-services-diagnostic-logs-schema.md
-    - name: Přehrávač médií Azure
+    - name: Kompatibilní přehrávače
       items:
-        - name: Přehled Azure Media Playeru
-          href: ../azure-media-player/azure-media-player-overview.md
+        - name: Přehrávače médií pro Media Services
+          href: media-players-overview.md
     - name: Vývoj s využitím rozhraní API v3
       items:
         - name: Přehled

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6c0cc1c8da6fddfad6d3f70c88860ddcdd35a11a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182413"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504248"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -24,10 +24,9 @@ V tomto článku se dozvíte, jak pomocí sítě *Azure CNI* vytvořit a použí
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Clustery AKS nemůžou `169.254.0.0/16` používat `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` Rozsah adres služby Kubernetes pod rozsahem adres nebo rozsah adres virtuálních sítí clusteru.
-* Instanční objekt používaný clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
+* Identita clusteru používaná clusterem AKS musí mít alespoň oprávnění [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) v podsíti v rámci vaší virtuální sítě. Pokud chcete místo používání předdefinované role přispěvatele sítě definovat [vlastní roli](../role-based-access-control/custom-roles.md) , vyžadují se následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* Místo instančního objektu můžete pro oprávnění použít spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 * Podsíť přiřazená ke fondu uzlů AKS nemůže být [delegovaná podsíť](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Naplánování IP adres pro cluster
@@ -64,7 +63,7 @@ Maximální počet lusků na uzel v clusteru AKS je 250. *Výchozí* maximální
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ano (až 250) |
 | Šablona Resource Manageru | 110 | 30 | Ano (až 250) |
-| Portál | 110 | 110 (nakonfigurováno na kartě fondy uzlů) | Ne |
+| Portál | 110 | 110 (nakonfigurováno na kartě fondy uzlů) | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurace maximálního počtu nových clusterů
 

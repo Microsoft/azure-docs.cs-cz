@@ -1,22 +1,22 @@
 ---
-title: Kurz – vysoká dostupnost pro virtuální počítače s Windows v Azure
-description: V tomto kurzu zjistíte, jak používat Azure PowerShell k nasazení vysoce dostupných virtuálních počítačů ve skupinách dostupnosti
+title: Nasazení virtuálních počítačů ve skupině dostupnosti pomocí Azure PowerShell
+description: Naučte se používat Azure PowerShell k nasazení virtuálních počítačů s vysokou dostupností do skupin dostupnosti.
 services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 90f57e48ef8cd2f71eea7a5c2b98fda83f282203
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736648"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509094"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů v Azure PowerShellu
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Vytvoření a nasazení virtuálních počítačů ve skupině dostupnosti pomocí Azure PowerShell
 
 V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost vašich Virtual Machines (virtuálních počítačů) pomocí skupin dostupnosti. Skupiny dostupnosti zajišťují, že virtuální počítače, které nasazujete v Azure, jsou distribuované napříč několika izolovanými hardwarovými uzly v clusteru. 
 
@@ -28,14 +28,6 @@ V tomto kurzu se naučíte:
 > * Kontrola dostupných velikostí virtuálních počítačů
 > * Kontrola Azure Advisoru
 
-
-## <a name="availability-set-overview"></a>Přehled skupiny dostupnosti
-
-Skupina dostupnosti je logická možnost seskupení pro izolaci prostředků virtuálních počítačů při jejich nasazení. Azure zajišťuje, aby virtuální počítače, které umístíte do skupiny dostupnosti, běžely na několika fyzických serverech, výpočetních skříních, jednotkách úložiště a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru, bude ovlivněna pouze podmnožina virtuálních počítačů a vaše celkové řešení zůstane v provozu. Skupiny dostupnosti jsou zásadní pro vytváření spolehlivých cloudových řešení.
-
-Představte si běžné řešení založené na virtuálních počítačích, ve kterém máte čtyři front-endové webové servery a dva back-endové virtuální počítače. S Azure budete chtít před nasazením virtuálních počítačů definovat dvě skupiny dostupnosti: jednu pro webovou vrstvu a jednu pro úroveň back. Když vytváříte nový virtuální počítač, zadáváte skupinu dostupnosti jako parametr. Azure zajišťuje izolaci virtuálních počítačů napříč několika fyzickými hardwarovými prostředky. Pokud má fyzický hardware, na kterém je spuštěný některý z vašich serverů, víte, že ostatní instance vašich serverů budou pořád spuštěné, protože jsou na jiném hardwaru.
-
-Skupiny dostupnosti použijte v případě, že chcete v Azure nasadit spolehlivá řešení založená na virtuálních počítačích.
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 

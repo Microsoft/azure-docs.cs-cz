@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3ba69a6ddf38083e5665e20081f5f909b7100024
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420865"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508482"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
 
@@ -35,18 +35,18 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
 
 2. Připojte ho ke všem modulům, které výstupují datovou sadu.   
 
-    Pokud jsou data [tabulková](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
+    Pokud jsou data [tabulková](/python/api/azureml-core/azureml.data.tabulardataset), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
 
 3.  V rozevíracím seznamu **Akce** určete, zda chcete provést čištění dat před uložením datové sady:  
   
-    - **Žádné** : použijte data tak, jak je.  
+    - **Žádné**: použijte data tak, jak je.  
   
-    - **SetMissingValue** : nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost  **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu** , všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
+    - **SetMissingValue**: nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost  **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu**, všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
   
-    - **ReplaceValues** : tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
+    - **ReplaceValues**: tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
 
-      - **Chybějící** : tuto možnost vyberte, pokud chcete nahradit chybějící hodnoty vstupní datovou sadou. V poli **Nová hodnota** zadejte hodnotu pro nahrazení chybějících hodnot.
-      - **Vlastní** : tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota** zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte `obs` . Pro **novou hodnotu** zadejte novou hodnotu, kterou má původní řetězec nahradit.
+      - **Chybějící**: tuto možnost vyberte, pokud chcete nahradit chybějící hodnoty vstupní datovou sadou. V poli **Nová hodnota** zadejte hodnotu pro nahrazení chybějících hodnot.
+      - **Vlastní**: tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota** zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte `obs` . Pro **novou hodnotu** zadejte novou hodnotu, kterou má původní řetězec nahradit.
   
     Všimněte si, že operace **ReplaceValues** se vztahuje pouze na přesné shody. Například tyto řetězce nebudou ovlivněny: `obs.` , `obsolete` .  
  

@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 58cda3f2bfc76f00deaa85347c059040e39f9ef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729009"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506561"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*. Další informace najdete v tématu [použití statické veřejné IP adresy a popisku DNS s nástrojem AKS Load Balancer][aks-static-ip].
+> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že identita clusteru používaná clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*. Další informace najdete v tématu [použití statické veřejné IP adresy a popisku DNS s nástrojem AKS Load Balancer][aks-static-ip].
 
 Teď nasaďte *Nginx a vstupní* graf s Helm. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Pokud chcete mít v clusteru AKS k dispozici více než jeden uzel, zajistěte, aby bylo možné plně využít více uzlů.
 

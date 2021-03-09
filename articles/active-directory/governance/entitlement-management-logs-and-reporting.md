@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453032"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501698"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -130,7 +130,7 @@ Chcete-li nastavit přiřazení role a vytvořit dotaz, proveďte následující
 
 ### <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
-Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps?view=azps-3.3.0) (Pokud jste to ještě neudělali), a to tak, že zadáte:
+Jakmile budete mít příslušné přiřazení role, spusťte PowerShell a [nainstalujte Azure PowerShell modul](/powershell/azure/install-az-ps) (Pokud jste to ještě neudělali), a to tak, že zadáte:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -168,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Odeslat dotaz do pracovního prostoru Log Analytics
-Nakonec, když máte identifikovaný pracovní prostor, můžete k odeslání dotazu Kusto do tohoto pracovního prostoru použít [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](/azure/kusto/query/).
+Nakonec, když máte identifikovaný pracovní prostor, můžete k odeslání dotazu Kusto do tohoto pracovního prostoru použít [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) . Tyto dotazy jsou napsané v [jazyce dotazů Kusto](/azure/kusto/query/).
  
 Můžete například načíst rozsah dat záznamů událostí auditu z pracovního prostoru Log Analytics a pomocí rutin prostředí PowerShell odeslat dotaz jako:
  
