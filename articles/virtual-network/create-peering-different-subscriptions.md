@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f8b7162787e870337918794f353ab8dc94c1965
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694950"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518241"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků, různých předplatných a klientů Azure Active Directory
 
@@ -276,7 +276,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
    }
    ```
 
-3. Přihlaste se k Azure jako UserA a nasaďte šablonu pomocí [portálu](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShellu](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)nebo rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Zadejte název souboru, do kterého jste uložili ukázkový text JSON v kroku 2.
+3. Přihlaste se k Azure jako UserA a nasaďte šablonu pomocí [portálu](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShellu](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)nebo rozhraní příkazového [řádku Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Zadejte název souboru, do kterého jste uložili ukázkový text JSON v kroku 2.
 4. Zkopírujte vzorový kód JSON z kroku 2 do souboru ve vašem počítači a udělejte změny v řádcích, které začínají na:
    - **název**: změňte *myVnetA/myVnetAToMyVnetB* na *myVnetB/myVnetBToMyVnetA*.
    - **ID**: NAHRAĎte `<subscription ID>` ID předplatného UserB a změňte *myVnetB* na *myVnetA*.
@@ -296,7 +296,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
 5. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 6. Proveďte kroky 2-4 pro myResourceGroupB.
 
-### <a name="azure-cli"></a><a name="delete-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. Přihlaste se k Azure jako UserA a spusťte následující příkaz:
 
@@ -311,7 +311,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>Prostředí
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. Přihlaste se k Azure jako UserA a spusťte následující příkaz:
 

@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: dbfb4ea729b8360c7065d75cb3efbaf42b82c0da
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662458"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520009"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>Připojení k úložišti pomocí přístupu k datům založeným na identitě (Preview)
 
 >[!IMPORTANT]
-> Funkce uvedené v tomto článku jsou ve verzi Preview a měly by se považovat za [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkce ve verzi Preview, které se můžou kdykoli změnit.
+> Funkce uvedené v tomto článku jsou ve verzi Preview a měly by se považovat za [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkce ve verzi Preview, které se můžou kdykoli změnit.
 
-V tomto článku se dozvíte, jak se připojit ke službám úložiště v Azure s přístupem k datům založeným na identitě a Azure Machine Learning úložišti dat pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).  
+V tomto článku se dozvíte, jak se připojit ke službám úložiště v Azure s přístupem k datům založeným na identitě a Azure Machine Learning úložišti dat pomocí [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro).  
 
 Úložiště dat obvykle používá přístup k datům na základě přihlašovacích údajů k potvrzení, že máte oprávnění pro přístup ke službě úložiště. Udržují informace o připojení, například ID předplatného a autorizaci tokenu, ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) , který je přidružený k pracovnímu prostoru. Když vytvoříte úložiště dat, které používá přístup k datům založeným na identitě, k potvrzení, že máte oprávnění pro přístup ke službě úložiště, se použije vaše přihlášení k Azure ([Azure Active Directory token](../active-directory/fundamentals/active-directory-whatis.md)). V tomto scénáři se neukládají žádné přihlašovací údaje pro ověřování a v úložišti dat jsou uložené jenom informace o účtu úložiště. 
 
@@ -67,7 +67,7 @@ Některé scénáře strojového učení zahrnují školicí modely s privátní
     - [Azure Data Lake Gen 2](../storage/blobs/data-lake-storage-introduction.md)
     - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
 
-- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install).
 
 - Pracovní prostor služby Azure Machine Learning.
   
@@ -105,7 +105,7 @@ V následujícím kódu si všimněte nepřítomnosti parametrů ověřování, 
 
 ### <a name="azure-blob-container"></a>Kontejner objektů blob Azure
 
-Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Následující kód vytvoří a zaregistruje `credentialless_blob` úložiště dat do `ws` pracovního prostoru a přiřadí ho proměnné, `blob_datastore` . Toto úložiště dat přistupuje k `my_container_name` kontejneru objektů BLOB v `my-account-name` účtu úložiště.
 
@@ -119,7 +119,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-1"></a>Azure Data Lake Storage generace 1
 
-Pro úložiště dat Azure Data Lake Storage generace 1 (ADLS fin 1) použijte [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) k registraci úložiště dat, které se připojuje k úložišti Azure datalake generace 1.
+Pro úložiště dat Azure Data Lake Storage generace 1 (ADLS fin 1) použijte [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) k registraci úložiště dat, které se připojuje k úložišti Azure datalake generace 1.
 
 Následující kód vytvoří a zaregistruje `credentialless_adls1` úložiště dat do `workspace` pracovního prostoru a přiřadí ho proměnné, `adls_dstore` . Toto úložiště dat přistupuje k `adls_storage` účtu úložiště Azure Data Lake Store.
 
@@ -133,7 +133,7 @@ adls_dstore = Datastore.register_azure_data_lake(workspace = workspace,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generace 2
 
-Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat, které se připojuje k úložišti Azure datalake Gen 2.
+Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat, které se připojuje k úložišti Azure datalake Gen 2.
 
 Následující kód vytvoří a zaregistruje `credentialless_adls2` úložiště dat do `ws` pracovního prostoru a přiřadí ho proměnné, `adls2_dstore` . Toto úložiště dat přistupuje k systému souborů `tabular` v `myadls2` účtu úložiště.  
 

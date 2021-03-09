@@ -9,18 +9,49 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502344"
+ms.locfileid: "102521199"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro) .
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-03-08"></a>2021-03-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Sada SDK Azure Machine Learning pro Python v 1.24.0
++ **Nové funkce**
+  + **azureml-automl-core**
+    + Odebrání zpětně kompatibilních importů z `azureml.automl.core.shared` . Chyba modulu nenalezena v `azureml.automl.core.shared` oboru názvů může být vyřešena importem z `azureml.automl.runtime.shared` .
+  + **AzureML-contrib-automl-DNN-Vision**
+    + Model Yolo pro detekci vydaných objektů.
+  + **azureml-contrib-dataset**
+    + Přidání funkce pro filtrování tabulkových datových sad podle hodnot sloupců a datových sad souborů podle metadat.
+  + **azureml-contrib-fairness**
+    + Zahrnout schéma JSON do kolečka pro `azureml-contrib-fairness`
+  + **AzureML-contrib-k8s**
+    + Nyní musí místo skupiny prostředků a názvu clusteru poskytovat resource_id pro připojení.
+  + **AzureML-contrib-Mir**
+    + Při nastavení show_output na hodnotu true při nasazení modelů bude před odesláním požadavku na server přehrána konfigurace nasazení a nasazení.
+  + **azureml-core**
+    + Přidání funkce pro filtrování tabulkových datových sad podle hodnot sloupců a datových sad souborů podle metadat.
+    + Dřív bylo možné, že uživatelé vytvořili zřizování konfigurací pro ComputeTarget, které nesplňovaly požadavky na sílu hesla pro `admin_user_password` pole (tj. že musí obsahovat aspoň 3 z následujících znaků: 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak z následující sady: ``\`~!@#$%^&*()=+_[]{}|;:./'",<>?`` ). Pokud uživatel vytvořil konfiguraci se slabým heslem a spustil úlohu pomocí této konfigurace, úloha by za běhu neproběhla. Nyní volání vyvolá `AmlCompute.provisioning_configuration` `ComputeTargetException` zprávu s doprovodnou chybovou zprávou vysvětlující požadavky na sílu hesla. 
+    + Kromě toho je také možné v některých případech zadat konfiguraci s negativním počtem maximálních uzlů. Už to není možné. Nyní `AmlCompute.provisioning_configuration` vyvolá výjimku, `ComputeTargetException` Pokud `max_nodes` je argument záporné celé číslo.
+    + Při nastavení show_output na hodnotu true při nasazení modelů se zobrazí odvozená konfigurace a konfigurace nasazení.
+    + Při nastavení show_output na hodnotu true při čekání na dokončení nasazení modelu se zobrazí průběh operace nasazení.
+    + Povolte zákazníkovi zadání konfiguračního adresáře AzureML auth prostřednictvím proměnné prostředí: AZUREML_AUTH_CONFIG_DIR
+    + Dřív bylo možné vytvořit konfiguraci zřizování s minimálním počtem uzlů menším, než je maximální počet uzlů. Úloha se spustí, ale za běhu selže. Tato chyba byla nyní opravena. Pokud se teď pokusíte vytvořit konfiguraci zřizování pomocí `min_nodes < max_nodes` sady SDK, vyvolá se `ComputeTargetException` .
+  + **azureml-interpret**
+    + Oprava řídicího panelu vysvětlení nezobrazuje významy agregované funkce pro vysvětlení s zhuštěnými inženýry
+    + optimalizované využití paměti ExplanationClient v balíčku AzureML-interpretace
+  + **azureml-train-automl-client**
+    +  Pevná show_output = false pro vrácení řízení uživateli při spuštění pomocí Sparku.
 
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Prostředí poznámkových bloků Azure Machine Learning Studio (Únorová aktualizace)
@@ -39,6 +70,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
   + Vylepšená rychlost a spolehlivost jádra
   + Přidání rotujícího kolečka pro zobrazení průběhu všech probíhajících [operací výpočetních instancí](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators).
   + Klikněte pravým tlačítkem myši v Průzkumníkovi souborů. Kliknutím pravým tlačítkem na libovolný soubor se teď otevřou souborové operace. 
+
 
 ## <a name="2021-02-16"></a>2021-02-16
 

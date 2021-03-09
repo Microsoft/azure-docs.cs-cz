@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690205"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522032"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 
@@ -39,7 +39,7 @@ Povolení funkce vysvětlení modelu strojového učení je důležité během d
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Třídy interpretace modelu jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
+Třídy interpretace modelu jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](/python/api/overview/azure/ml/install))
 
 * `azureml.interpret`obsahuje funkce podporované Microsoftem.
 

@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a4adb5bff80f1ab216a39fa773e027670b9e6509
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212684"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519108"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
 
@@ -242,7 +242,7 @@ Spravujte výpočetní instance.  Ve všech níže uvedených příkladech je n�
     > [!TIP]
     > `az ml folder attach`Příkaz vytvoří `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig. 
     >
-    > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
+    > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
     >
     > Úplné schéma RunConfig lze nalézt v tomto [souboru JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). Schéma slouží k samoobslužnému dokumentování prostřednictvím `description` klíče každého objektu. Kromě toho existují výčty pro možné hodnoty a fragment šablony na konci.
 
@@ -362,7 +362,7 @@ Následující příkazy ukazují, jak vytvořit, zaregistrovat a vypsat Azure M
 
 ### <a name="environment-configuration-schema"></a>Schéma konfigurace prostředí
 
-Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje `azureml_environment.json` soubor šablony, který lze upravit a použít k vytvoření vlastních konfigurací prostředí pomocí rozhraní příkazového řádku. Objekt nejvyšší úrovně se [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) v sadě Python SDK volně mapuje na třídu. 
+Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje `azureml_environment.json` soubor šablony, který lze upravit a použít k vytvoření vlastních konfigurací prostředí pomocí rozhraní příkazového řádku. Objekt nejvyšší úrovně se [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) v sadě Python SDK volně mapuje na třídu. 
 
 ```json
 {
@@ -406,17 +406,17 @@ Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje `azureml_e
 }
 ```
 
-Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například `environmentVariables` pole je mapováno na `environment_variables` proměnnou ve [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) třídě.
+Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například `environmentVariables` pole je mapováno na `environment_variables` proměnnou ve [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) třídě.
 
-| Pole JSON | Typ | Popis |
+| Pole JSON | Typ | Description |
 |---|---|---|
 | `name` | `string` | Název prostředí. Nespouštějte jméno pomocí **Microsoft** nebo **AzureML**. |
 | `version` | `string` | Verze prostředí. |
 | `environmentVariables` | `{string: string}` | Mapa hodnoty hash názvů a hodnot proměnných prostředí. |
-| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)Hat definuje prostředí a překladač Pythonu, které se mají použít u cílového výpočetního prostředku. |
-| `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection?preserve-view=true&view=azure-ml-py) | Definuje nastavení pro přizpůsobení image Docker sestavené do specifikací prostředí. |
-| `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection?preserve-view=true&view=azure-ml-py) | Oddíl nakonfiguruje nastavení Sparku. Používá se jenom v případě, že je architektura nastavená na PySpark. |
-| `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection?preserve-view=true&view=azure-ml-py) | Konfiguruje závislosti knihoven datacihly. |
+| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection)Hat definuje prostředí a překladač Pythonu, které se mají použít u cílového výpočetního prostředku. |
+| `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) | Definuje nastavení pro přizpůsobení image Docker sestavené do specifikací prostředí. |
+| `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection) | Oddíl nakonfiguruje nastavení Sparku. Používá se jenom v případě, že je architektura nastavená na PySpark. |
+| `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection) | Konfiguruje závislosti knihoven datacihly. |
 | `inferencingStackVersion` | `string` | Určuje verzi zásobníku Inferencing přidanou k imagi. Chcete-li se vyhnout přidání zásobníku Inferencing, nechte toto pole `null` . Platná hodnota: "poslední". |
 
 ## <a name="ml-pipeline-management"></a>Správa kanálu ML

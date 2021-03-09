@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 527f8d63f2a2fd5c44e187c00c0651300eb4ad9f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373721"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517629"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rychlé zprovoznění: Vytvoření datové továrny Azure a kanálu pomocí rozhraní REST API
 
@@ -300,7 +300,7 @@ Zde je ukázkový výstup:
 V tomto příkladu tento kanál obsahuje jednu aktivitu kopírování. Aktivita kopírování odkazuje na "InputDataset" a "OutputDataset" vytvořená v předchozím kroku jako vstup a výstup.
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",

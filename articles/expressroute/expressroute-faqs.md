@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 7819aaa1af588b0a74bb960cf47ea1feeeff8b3b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449862"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522287"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -60,7 +60,7 @@ Brána ExpressRoute bude inzerovat *adresní prostory* virtuální sítě Azure 
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Kolik předpon lze inzerovat z virtuální sítě do místní sítě v ExpressRoute privátního partnerského vztahu?
 
-K jednomu ExpressRoute připojení nebo prostřednictvím partnerského vztahu virtuálních sítí s využitím přenosu brány se může inzerovat maximálně 200 předpon. Pokud máte třeba 199 adresních prostorů v jedné virtuální síti připojené k okruhu ExpressRoute, všechny 199 těchto předpon se budou inzerovat místně. Případně, pokud máte povolenou virtuální síť, která povoluje přenos brány s jedním adresním prostorem a 150-virtuální sítě paprsků povolených pomocí možnosti Povolit vzdálenou bránu, bude virtuální síť nasazená s bránou inzerovat 151 předpony místně.
+K jednomu ExpressRoute připojení nebo prostřednictvím partnerského vztahu virtuálních sítí s využitím přenosu brány se může inzerovat maximálně 1000 předpon. Pokud máte třeba 199 adresních prostorů v jedné virtuální síti připojené k okruhu ExpressRoute, všechny 199 těchto předpon se budou inzerovat místně. Případně, pokud máte povolenou virtuální síť, která povoluje přenos brány s jedním adresním prostorem a 150-virtuální sítě paprsků povolených pomocí možnosti Povolit vzdálenou bránu, bude virtuální síť nasazená s bránou inzerovat 151 předpony místně.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Co se stane, když překročím limit předpony u připojení ExpressRoute?
 

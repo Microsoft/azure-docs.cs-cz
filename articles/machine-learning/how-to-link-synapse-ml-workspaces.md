@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 8941a7f7a27f6ffe58cda3f0bf2c6833ec226783
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456236"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519992"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Propojení Azure synapse Analytics a Azure Machine Learning pracovních prostorů (Preview)
 
@@ -29,7 +29,7 @@ Pracovní prostor ML a pracovní prostor synapse můžete propojit pomocí [sady
 Pracovní prostory můžete také propojit a připojit fond synapse Spark s jednou [šablonou Azure Resource Manager (ARM)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json).
 
 >[!IMPORTANT]
-> Integrace Azure Machine Learning a Azure synapse je ve verzi Public Preview. Funkce prezentované z `azureml-synapse` balíčku jsou [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkce verze Preview a můžou se kdykoli změnit.
+> Integrace Azure Machine Learning a Azure synapse je ve verzi Public Preview. Funkce prezentované z `azureml-synapse` balíčku jsou [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkce verze Preview a můžou se kdykoli změnit.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +39,7 @@ Pracovní prostory můžete také propojit a připojit fond synapse Spark s jedn
 
 * [Vytvoření fondu Apache Spark pomocí Azure Portal, webových nástrojů nebo synapse studia](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* Instalace [sady Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+* Instalace [sady Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)
 
 * Přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -51,7 +51,7 @@ Pracovní prostory můžete také propojit a připojit fond synapse Spark s jedn
 >
 > Pokud nejste **vlastníkem** a máte jenom **přispěvatele** k pracovnímu prostoru synapse, můžete použít jenom existující propojené služby. Přečtěte si [, jak načíst a použít existující propojenou službu](how-to-data-prep-synapse-spark-pool.md#get-an-existing-linked-service).
 
-Následující kód využívá [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) třídy a k,
+Následující kód využívá [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice) [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration) třídy a k,
 
 * Propojte pracovní prostor Machine Learning `ws` s vaším pracovním prostorem Azure synapse.
 * Zaregistrujte svůj pracovní prostor synapse s Azure Machine Learning jako propojenou službu.

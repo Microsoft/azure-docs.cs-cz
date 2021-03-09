@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881682"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521777"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
 
-V tomto článku se dozvíte, jak pracovat s [Azure Machine Learningmi datovými sadami](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a naučit modely strojového učení.  V místním nebo vzdáleném výpočetním cíli můžete použít datové sady, aniž byste se museli starat o připojovací řetězce nebo cesty k datům. 
+V tomto článku se dozvíte, jak pracovat s [Azure Machine Learningmi datovými sadami](/python/api/azureml-core/azureml.core.dataset%28class%29) a naučit modely strojového učení.  V místním nebo vzdáleném výpočetním cíli můžete použít datové sady, aniž byste se museli starat o připojovací řetězce nebo cesty k datům. 
 
-Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) a [Azure Machine Learning kanály](./how-to-create-machine-learning-pipelines.md).
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími funkcemi, jako jsou [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig), [Hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive) a [Azure Machine Learning kanály](./how-to-create-machine-learning-pipelines.md).
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
@@ -35,16 +35,16 @@ K vytváření a školení s datovými sadami potřebujete:
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
-* [Sada Azure Machine Learning SDK pro Python je nainstalovaná](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), která obsahuje `azureml-datasets` balíček.
+* [Sada Azure Machine Learning SDK pro Python je nainstalovaná](/python/api/overview/azure/ml/install) (>= 1.13.0), která obsahuje `azureml-datasets` balíček.
 
 > [!Note]
-> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
+> Některé třídy DataSet mají závislosti na balíčku [AzureML-dataprep](/python/api/azureml-dataprep/) . Pro uživatele systému Linux jsou tyto třídy podporovány pouze v následujících distribucích: Red Hat Enterprise Linux, Ubuntu, Fedora a CentOS.
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Využívání datových sad v školicích skriptech pro Machine Learning
 
 Pokud máte strukturovaná data, která ještě nejsou registrovaná jako datová sada, vytvořte TabularDataset a použijte ji přímo ve školicím skriptu pro svůj místní nebo vzdálený experiment.
 
-V tomto příkladu vytvoříte neregistrovanou [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) a zadáte ho jako argument skriptu v objektu ScriptRunConfig pro školení. Pokud chcete tento TabularDataset znovu použít s dalšími experimenty v pracovním prostoru, přečtěte si téma [jak zaregistrovat datové sady do pracovního prostoru](how-to-create-register-datasets.md#register-datasets).
+V tomto příkladu vytvoříte neregistrovanou [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) a zadáte ho jako argument skriptu v objektu ScriptRunConfig pro školení. Pokud chcete tento TabularDataset znovu použít s dalšími experimenty v pracovním prostoru, přečtěte si téma [jak zaregistrovat datové sady do pracovního prostoru](how-to-create-register-datasets.md#register-datasets).
 
 ### <a name="create-a-tabulardataset"></a>Vytvoření TabularDataset
 
@@ -90,7 +90,7 @@ df = dataset.to_pandas_dataframe()
 
 ### <a name="configure-the-training-run"></a>Konfigurace spuštění školení
 
-Objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) se používá ke konfiguraci a odeslání školicího běhu.
+Objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun) se používá ke konfiguraci a odeslání školicího běhu.
 
 Tento kód vytvoří objekt ScriptRunConfig, `src` který určuje
 
@@ -117,7 +117,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="mount-files-to-remote-compute-targets"></a>Připojit soubory ke vzdáleným výpočetním cílům
 
-Pokud máte nestrukturovaná data, vytvořte [datovou sadu](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) souborů a buď připojte nebo Stáhněte své datové soubory, aby byly k dispozici pro váš vzdálený výpočetní cíl pro školení. Další informace o tom, kdy se ke vzdáleným pokusům školení používat [připojení vs. ke stažení](#mount-vs-download) 
+Pokud máte nestrukturovaná data, vytvořte [datovou sadu](/python/api/azureml-core/azureml.data.filedataset) souborů a buď připojte nebo Stáhněte své datové soubory, aby byly k dispozici pro váš vzdálený výpočetní cíl pro školení. Další informace o tom, kdy se ke vzdáleným pokusům školení používat [připojení vs. ke stažení](#mount-vs-download) 
 
 Následující příklad vytvoří datovou sadu a připojí datovou sadu k cíli služby COMPUTE předáním jako argumentu do školicího skriptu. 
 
@@ -225,7 +225,7 @@ print (mounted_path)
 
 ## <a name="get-datasets-in-machine-learning-scripts"></a>Získání datových sad ve skriptech Machine Learning
 
-Registrované datové sady jsou přístupné místně i vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód pro přístup k pracovnímu prostoru a získejte datovou sadu, která byla použita v předchozím odeslaném běhu. Ve výchozím nastavení [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) metoda na `Dataset` třídě vrátí nejnovější verzi datové sady, která je zaregistrována v pracovním prostoru.
+Registrované datové sady jsou přístupné místně i vzdáleně na výpočetních clusterech, jako je Azure Machine Learning Compute. Chcete-li získat přístup k zadané datové sadě mezi experimenty, použijte následující kód pro přístup k pracovnímu prostoru a získejte datovou sadu, která byla použita v předchozím odeslaném běhu. Ve výchozím nastavení [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) metoda na `Dataset` třídě vrátí nejnovější verzi datové sady, která je zaregistrována v pracovním prostoru.
 
 ```Python
 %%writefile $script_folder/train.py

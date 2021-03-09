@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 71ddb1217be7fe3e1254e0d49e1f40c43a55a3f0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502412"
+ms.locfileid: "102521743"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -102,33 +102,33 @@ Následující tabulka porovnává flexibilní režim orchestrace, jednotný re�
 |         Typ virtuálního počítače  | Standardní virtuální počítač Azure IaaS (Microsoft. COMPUTE/VirtualMachines)  | Nastavit škálování pro konkrétní virtuální počítače (Microsoft. COMPUTE/virtualmachinescalesets/VirtualMachines)  | Standardní virtuální počítač Azure IaaS (Microsoft. COMPUTE/VirtualMachines)  |
 |         Podporované SKU  |            D Series, E série, F Series, série, B Series, Intel, AMD  |            Všechny SKU  |            Všechny SKU  |
 |         Zóny dostupnosti  |            Volitelně můžete zadat všechny instance půdy v jedné zóně dostupnosti. |            Určení instancí v rámci 1, 2 nebo 3 zón dostupnosti  |            Nepodporováno  |
-|         Úplná kontrola nad virtuálními počítači, síťovými kartami a disky  |            Ano  |            Omezené řízení pomocí rozhraní API VM Virtual Machine Scale Sets  |            Ano  |
-|         Automatické škálování  |            No  |            Ano  |            No  |
-|         Přiřazení virtuálního počítače ke konkrétní doméně selhání  |            Ano  |             No   |            No  |
-|         Odebrání síťových karet a disků při odstraňování instancí virtuálních počítačů  |            No  |            Ano  |            No  |
+|         Úplná kontrola nad virtuálními počítači, síťovými kartami a disky  |            Yes  |            Omezené řízení pomocí rozhraní API VM Virtual Machine Scale Sets  |            Yes  |
+|         Automatické škálování  |            No  |            Yes  |            No  |
+|         Přiřazení virtuálního počítače ke konkrétní doméně selhání  |            Yes  |             No   |            No  |
+|         Odebrání síťových karet a disků při odstraňování instancí virtuálních počítačů  |            No  |            Yes  |            No  |
 |         Zásady upgradu (VM Scale Sets) |            No  |            Automatické, vracení, ruční  |            –  |
-|         Automatické aktualizace operačního systému (VM Scale Sets) |            No  |            Ano  |            –  |
-|         Oprava zabezpečení hosta  |            Ano  |            No  |            Ano  |
-|         Ukončení oznámení (VM Scale Sets) |            No  |            Ano  |            –  |
-|         Oprava instance (VM Scale Sets) |            No  |            Ano   |            –  |
-|         Urychlení sítě  |            Ano  |            Ano  |            Ano  |
+|         Automatické aktualizace operačního systému (VM Scale Sets) |            No  |            Yes  |            –  |
+|         Oprava zabezpečení hosta  |            Yes  |            No  |            Yes  |
+|         Ukončení oznámení (VM Scale Sets) |            No  |            Yes  |            –  |
+|         Oprava instance (VM Scale Sets) |            No  |            Yes   |            –  |
+|         Urychlení sítě  |            Yes  |            Yes  |            Yes  |
 |         Přímé instance a ceny   |            Ano, můžete mít instance obou přímých i běžných priorit.  |            Ano, instance musí být buď všechny přímé, nebo všechny běžné.  |            Ne, jenom instance běžné priority  |
 |         Kombinace operačních systémů  |            Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |            Ne, instance se shodují s operačním systémem.  |               Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |
 |         Monitorovat stav aplikace  |            Rozšíření stavu aplikace  |            Test stavu aplikace nebo služba Azure Load Balancer  |            Rozšíření stavu aplikace  |
-|         UltraSSD disky   |            Ano  |            Ano, pouze pro oblast nasazení  |            No  |
-|         InfiniBand   |            No  |            Ano, pouze jedna skupina umístění  |            Ano  |
-|         Akcelerátor zápisu   |            No  |            Ano  |            Ano  |
-|         Skupiny umístění blízkosti   |            Ano  |            Ano  |            Ano  |
-|         Vyhrazení hostitelé Azure   |            No  |            Ano  |            Ano  |
-|         Základní SLB   |            No  |            Ano  |            Ano  |
-|         SKU Azure Load Balancer Standard |            Ano  |            Ano  |            Ano  |
-|         Application Gateway  |            No  |            Ano  |            Ano  |
-|         Řízení údržby   |            No  |            Ano  |            Ano  |
-|         Vypsat virtuální počítače v sadě  |            Ano  |            Ano  |            Ano, vypsat virtuální počítače v AvSet  |
-|         Výstrahy Azure  |            No  |            Ano  |            Ano  |
-|         Přehledy virtuálních počítačů  |            No  |            Ano  |            Ano  |
-|         Azure Backup  |            Ano  |            Ano  |            Ano  |
-|         Azure Site Recovery  |            Ano, pouze PowerShell  |            Ano  |            Ano  |
+|         UltraSSD disky   |            Yes  |            Ano, pouze pro oblast nasazení  |            No  |
+|         InfiniBand   |            No  |            Ano, pouze jedna skupina umístění  |            Yes  |
+|         Akcelerátor zápisu   |            No  |            Yes  |            Yes  |
+|         Skupiny umístění blízkosti   |            Yes  |            Yes  |            Yes  |
+|         Vyhrazení hostitelé Azure   |            No  |            Yes  |            Yes  |
+|         Základní SLB   |            No  |            Yes  |            Yes  |
+|         SKU Azure Load Balancer Standard |            Yes  |            Yes  |            Yes  |
+|         Application Gateway  |            No  |            Yes  |            Yes  |
+|         Řízení údržby   |            No  |            Yes  |            Yes  |
+|         Vypsat virtuální počítače v sadě  |            Yes  |            Yes  |            Ano, vypsat virtuální počítače v AvSet  |
+|         Výstrahy Azure  |            No  |            Yes  |            Yes  |
+|         Přehledy virtuálních počítačů  |            No  |            Yes  |            Yes  |
+|         Azure Backup  |            Yes  |            Yes  |            Yes  |
+|         Azure Site Recovery  |            No  |            No  |            Yes  |
 |         Přidat nebo odebrat existující virtuální počítač do skupiny  |            No  |            No  |            No  | 
 
 
@@ -299,7 +299,7 @@ Do sady škálování v flexibilním režimu orchestrace můžete přidat až 10
 
 |   | Flexibilní orchestrace  | Jednotná orchestrace  | Skupiny dostupnosti  |
 |-|-|-|-|
-| Nasazení napříč zónami dostupnosti  | No  | Ano  | No  |
+| Nasazení napříč zónami dostupnosti  | No  | Yes  | No  |
 | Záruky dostupnosti domén selhání v rámci oblasti  | Ano, maximálně 1000 instancí se dá rozdělit do až tří domén selhání v oblasti. Maximální počet domén selhání se liší podle oblasti.  | Ano, až 100 instancí  | Ano, až 200 instancí  |
 | Skupiny umístění  | Flexibilní režim vždycky používá více skupin umístění (singlePlacementGroup = false).  | Můžete zvolit jednu skupinu umístění nebo více skupin umístění. | –  |
 | Aktualizační domény  | Žádná, údržba nebo aktualizace hostitele jsou v doméně selhání v doméně selhání.  | Až 5 aktualizačních domén  | Až 20 aktualizačních domén  |

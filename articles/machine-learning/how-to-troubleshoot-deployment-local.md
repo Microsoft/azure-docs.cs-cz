@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215744"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519618"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Řešení potíží s nasazením místního modelu
 
@@ -28,7 +28,7 @@ Zkuste místní nasazení modelu jako první krok při řešení potíží s nas
 * Option A (**doporučeno**) – místní ladění na Azure Machine Learning výpočetní instanci
    * Pracovní prostor Azure Machine Learning s [výpočetní instancí](how-to-deploy-local-container-notebook-vm.md) spuštěnou
 * Možnost B – ladění lokálně na výpočetní úrovni
-   * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+   * [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
    * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
    * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
    * Mít v místním systému fungující instalaci Docker. 
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Skript se znovu načte z umístění zadaného `InferenceConfig` objektem, který služba používá.
 
-Chcete-li změnit model, závislosti conda nebo konfiguraci nasazení, použijte [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-). Následující příklad aktualizuje model používaný službou:
+Chcete-li změnit model, závislosti conda nebo konfiguraci nasazení, použijte [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-). Následující příklad aktualizuje model používaný službou:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Odstranit službu
 
-Pokud chcete službu odstranit, použijte [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Pokud chcete službu odstranit, použijte [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Kontrola protokolu Docker
 

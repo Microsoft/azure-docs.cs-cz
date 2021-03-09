@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aaa7dbf2ae7c8acb3b3beeb3e9098c5058af26a7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918123"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517476"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>Nasazení modelů MLflow jako webových služeb Azure (Preview)
 
@@ -44,14 +44,14 @@ Následující diagram znázorňuje, že s rozhraním API a Azure Machine Learni
 * Model strojového učení. Pokud nemáte školený model, Najděte si příklad poznámkového bloku, který nejlépe vyhovuje vašemu výpočetnímu scénáři v [tomto úložišti](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) , a postupujte podle pokynů. 
 * [Pro připojení Azure Machine Learning nastavte identifikátor URI pro sledování MLflow](how-to-use-mlflow.md#track-local-runs).
 * Nainstalujte balíček `azureml-mlflow`. 
-    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
 * Podívejte se, která [přístupová oprávnění potřebujete k provádění operací MLflow s vaším pracovním prostorem](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-azure-container-instance-aci"></a>Nasazení do služby Azure Container instance (ACI)
 
 Pro nasazení modelu MLflow do webové služby Azure Machine Learning musí být váš model nastaven s [identifikátorem URI sledování MLflow pro připojení k Azure Machine Learning](how-to-use-mlflow.md). 
 
-Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
+Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -84,7 +84,7 @@ webservice.wait_for_deployment(show_output=True)
 
 Pro nasazení modelu MLflow do webové služby Azure Machine Learning musí být váš model nastaven s [identifikátorem URI sledování MLflow pro připojení k Azure Machine Learning](how-to-use-mlflow.md). 
 
-K nasazení na AKS nejprve vytvořte cluster AKS. Vytvořte cluster AKS pomocí metody [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) . Vytvoření nového clusteru může trvat 20-25 minut.
+K nasazení na AKS nejprve vytvořte cluster AKS. Vytvořte cluster AKS pomocí metody [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget#create-workspace--name--provisioning-configuration-) . Vytvoření nového clusteru může trvat 20-25 minut.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -104,7 +104,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
+Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -139,7 +139,7 @@ Nasazení služby může trvat několik minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud neplánujete použít nasazenou webovou službu, použijte `service.delete()` ji k odstranění z poznámkového bloku.  Další informace najdete v dokumentaci k [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Pokud neplánujete použít nasazenou webovou službu, použijte `service.delete()` ji k odstranění z poznámkového bloku.  Další informace najdete v dokumentaci k [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--).
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
 

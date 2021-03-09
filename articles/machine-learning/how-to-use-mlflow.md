@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912950"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520961"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Analýza a sledování modelů ML pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -46,7 +46,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
  Následující tabulka shrnuje různé klienty, kteří můžou použít Azure Machine Learning a jejich příslušné funkce.
 
- MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+ MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)
 
 | Schopnost | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Rozhraní CLI služby Azure Machine Learning | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte balíček `azureml-mlflow`. 
-    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
     * Podívejte se, která [přístupová oprávnění potřebujete k provádění operací MLflow s vaším pracovním prostorem](how-to-assign-roles.md#mlflow-operations).
 
@@ -71,7 +71,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
 MLflow sledování pomocí Azure Machine Learning umožňuje ukládat protokolované metriky a artefakty z místních běhů do pracovního prostoru Azure Machine Learning.
 
-Importujte `mlflow` třídy a a [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Získejte přístup k identifikátoru URI sledování MLflow a nakonfigurujte svůj pracovní prostor.
+Importujte `mlflow` třídy a a [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) Získejte přístup k identifikátoru URI sledování MLflow a nakonfigurujte svůj pracovní prostor.
 
 V následujícím kódu `get_mlflow_tracking_uri()` metoda přiřadí k pracovnímu prostoru jedinečnou adresu identifikátoru URI sledování `ws` a `set_tracking_uri()` odkazuje na adresu URI sledování MLflow na tuto adresu.
 
@@ -118,7 +118,7 @@ dependencies:
     - numpy
 ```
 
-Ve svém skriptu nakonfigurujte výpočetní prostředí a prostředí pro výukové spuštění pomocí [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) třídy. Pak se  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) pomocí vzdálených výpočtů vystavíte jako cíl výpočtů.
+Ve svém skriptu nakonfigurujte výpočetní prostředí a prostředí pro výukové spuštění pomocí [`Environment`](/python/api/azureml-core/azureml.core.environment.environment) třídy. Pak se  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) pomocí vzdálených výpočtů vystavíte jako cíl výpočtů.
 
 ```Python
 import mlflow
@@ -145,7 +145,7 @@ Nainstalujte `azureml-mlflow` balíček pro použití sledování MLflow s Azure
 pip install azureml-mlflow
 ```
 
-Importujte `mlflow` třídy a a [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Získejte přístup k identifikátoru URI sledování MLflow a nakonfigurujte svůj pracovní prostor.
+Importujte `mlflow` třídy a a [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) Získejte přístup k identifikátoru URI sledování MLflow a nakonfigurujte svůj pracovní prostor.
 
 ```Python
 import mlflow

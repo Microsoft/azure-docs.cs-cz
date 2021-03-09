@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bfeab990c841f6b65e665b4a8aabdfd8b251da60
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e2b5a3322f633ca8301357c2186d78d3ac437ae2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323911"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521964"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
 
@@ -26,23 +26,23 @@ Následující tabulka uvádí, co je a není aktuálně podporováno při defin
 
 | Typ kroku | Podporované? |
 | ----- | :-----: |
-| PythonScriptStep | Ano |
-| ParallelRunStep | Ano |
-| AdlaStep | Ano |
-| AzureBatchStep | Ano |
-| DatabricksStep | Ano |
-| DataTransferStep | Ano |
-| AutoMLStep | Ne |
-| HyperDriveStep | Ne |
-| ModuleStep | Ano |
-| MPIStep | Ne |
-| EstimatorStep | Ne |
+| PythonScriptStep | Yes |
+| ParallelRunStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
+| AutoMLStep | No |
+| HyperDriveStep | No |
+| ModuleStep | Yes |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Definice kanálu
 
-Definice kanálu používá následující klíče, které odpovídají třídě [kanálů](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?preserve-view=true&view=azure-ml-py) :
+Definice kanálu používá následující klíče, které odpovídají třídě [kanálů](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline) :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `name` | Popis kanálu |
 | `parameters` | Parametry kanálu. |
@@ -52,9 +52,9 @@ Definice kanálu používá následující klíče, které odpovídají třídě
 
 ## <a name="parameters"></a>Parametry
 
-`parameters`Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py) :
+`parameters`Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter) :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ---- | ---- |
 | `type` | Typ hodnoty parametru. Platné typy jsou `string` , `int` , `float` , `bool` nebo `datapath` . |
 | `default` | Výchozí hodnota. |
@@ -80,9 +80,9 @@ pipeline:
 
 ## <a name="data-reference"></a>Reference pro data
 
-`data_references`Oddíl používá následující klíče, které odpovídají [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference?preserve-view=true&view=azure-ml-py):
+`data_references`Oddíl používá následující klíče, které odpovídají [DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference):
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `datastore` | Úložiště dat, na které se má odkazovat |
 | `path_on_datastore` | Relativní cesta v úložišti zálohování pro datový odkaz. |
@@ -106,24 +106,24 @@ pipeline:
 
 Kroky definují výpočetní prostředí spolu se soubory, které se mají spustit v prostředí. Chcete-li definovat typ kroku, použijte `type` klíč:
 
-| Typ kroku | Popis |
+| Typ kroku | Description |
 | ----- | ----- |
-| `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?preserve-view=true&view=azure-ml-py) . |
-| `AzureBatchStep` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?preserve-view=true&view=azure-ml-py) . |
-| `DatabricsStep` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?preserve-view=true&view=azure-ml-py) . |
-| `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) . |
-| `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py) . |
-| `ParallelRunStep` | Spustí skript Pythonu pro asynchronní zpracování velkých objemů dat a souběžně. Odpovídá třídě [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) . |
+| `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep) . |
+| `AzureBatchStep` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) . |
+| `DatabricsStep` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep) . |
+| `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) . |
+| `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep) . |
+| `ParallelRunStep` | Spustí skript Pythonu pro asynchronní zpracování velkých objemů dat a souběžně. Odpovídá třídě [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) . |
 
 ### <a name="adla-step"></a>Krok ADLA
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `script_name` | Název skriptu U-SQL (relativně k `source_directory` příponě). |
 | `compute_target` | Výpočetní cíl Azure Data Lake, který se má použít pro tento krok. |
 | `parameters` | [Parametry](#parameters) kanálu. |
-| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `source_directory` | Adresář, který obsahuje skript, sestavení atd. |
 | `priority` | Hodnota priority, která se má použít pro aktuální úlohu. |
 | `params` | Slovník párů název-hodnota. |
@@ -168,11 +168,11 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch krok
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute_target` | Výpočetní cíl Azure Batch, který se má použít pro tento krok. |
-| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `source_directory` | Adresář, který obsahuje binární soubory modulu, spustitelný soubor, sestavení atd. |
 | `executable` | Název příkazu nebo spustitelného souboru, který bude spuštěn jako součást této úlohy. |
 | `create_pool` | Logický příznak, který označuje, zda se má před spuštěním úlohy vytvořit fond. |
@@ -222,15 +222,15 @@ pipeline:
 
 ### <a name="databricks-step"></a>Krok datacihly
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute_target` | Výpočetní cíl Azure Databricks, který se má použít pro tento krok. |
-| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `run_name` | Název v datacihlách pro tento běh. |
 | `source_directory` | Adresář, který obsahuje skript a další soubory. |
 | `num_workers` | Statický počet pracovníků pro spuštění clusteru datacihly. |
-| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) . Další informace o struktuře tohoto souboru najdete v tématu [runconfigschema.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) . Další informace o struktuře tohoto souboru najdete v tématu [runconfigschema.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok datacihly:
@@ -276,11 +276,11 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>Krok přenosu dat
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `compute_target` | Výpočetní cíl Azure Data Factory, který se má použít pro tento krok. |
-| `source_data_reference` | Vstupní připojení, které slouží jako zdroj operací přenosu dat. Podporované hodnoty jsou [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `destination_data_reference` | Vstupní připojení, které slouží jako cíl operací přenosu dat. Podporované hodnoty jsou [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) a [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `source_data_reference` | Vstupní připojení, které slouží jako zdroj operací přenosu dat. Podporované hodnoty jsou [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `destination_data_reference` | Vstupní připojení, které slouží jako cíl operací přenosu dat. Podporované hodnoty jsou [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) a [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok přenosu dat:
@@ -320,13 +320,13 @@ pipeline:
 
 ### <a name="python-script-step"></a>Krok skriptu Pythonu
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
-| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `inputs` | Vstupy můžou být [InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding), [DataReference](#data-reference), [PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference), [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata), [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory` ) |
 | `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
-| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) . Další informace o struktuře tohoto souboru najdete v tématu [runconfig.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) . Další informace o struktuře tohoto souboru najdete v tématu [runconfig.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok skriptu Pythonu:
@@ -367,13 +367,13 @@ pipeline:
 
 ### <a name="parallel-run-step"></a>Krok paralelního spuštění
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
-| `inputs` | Vstupy můžou být [datová sada](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py). |
-| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py). |
+| `inputs` | Vstupy můžou být [datová sada](/python/api/azureml-core/azureml.core.dataset%28class%29), [DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)nebo [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset). |
+| `outputs` | Výstupy můžou být buď [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) nebo [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding). |
 | `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory` ) |
 | `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
-| `parallel_run_config` | Cesta k `parallel_run_config.yml` souboru Tento soubor je YAML reprezentace třídy [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py) . |
+| `parallel_run_config` | Cesta k `parallel_run_config.yml` souboru Tento soubor je YAML reprezentace třídy [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) . |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok paralelního spuštění:
@@ -419,7 +419,7 @@ pipeline:
 
 ### <a name="pipeline-with-multiple-steps"></a>Kanál s více kroky 
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `steps` | Sekvence jedné nebo více definicí PipelineStep. Všimněte si, že `destination` klíče jednoho kroku `outputs` se stanou `source` klíči pro `inputs` Další krok.| 
 
@@ -480,7 +480,7 @@ pipeline:
 
 Při definování plánu pro kanál může to být buď úložiště dat, aktivované nebo opakované v závislosti na časovém intervalu. Níže jsou uvedené klíče, které slouží k definování plánu:
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `description` | Popis plánu |
 | `recurrence` | Obsahuje nastavení opakování, pokud se plán opakuje. |
@@ -511,7 +511,7 @@ Schedule:
 
 Při definování **opakovaného plánu** použijte následující klíče `recurrence` :
 
-| YAML klíč | Popis |
+| YAML klíč | Description |
 | ----- | ----- |
 | `frequency` | Jak často se plán opakuje. Platné hodnoty jsou `"Minute"` , `"Hour"` , `"Day"` , `"Week"` nebo `"Month"` . |
 | `interval` | Jak často je plán aktivován. Celočíselná hodnota představuje počet časových jednotek, které se mají počkat, dokud se plán znovu neaktivuje. |

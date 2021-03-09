@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501987"
+ms.locfileid: "102521216"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB přílohy
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
@@ -42,9 +42,9 @@ Spravované přílohy Azure Cosmos DB se liší od podpory standardních polože
 - Spravované přílohy nejsou kompatibilní s globální distribucí Azure Cosmos DB a nereplikují se do různých oblastí.
 
 > [!NOTE]
-> Rozhraní Azure Cosmos DB API pro MongoDB verze 3,2 využívá spravované přílohy pro GridFS, na které se proto vztahují stejná omezení jako na spravované přílohy Azure Cosmos DB.
+> Rozhraní Azure Cosmos DB API pro MongoDB verze 3,2 používá spravované přílohy pro GridFS a podléhá stejným omezením.
 >
-> Doporučujeme vývojářům, kteří používají sadu funkcí MongoDB GridFS, k upgradu na rozhraní Azure Cosmos DB API pro MongoDB verze 3,6 nebo vyšší, která je oddělená od příloh a nabízí silnější a robustnější prostředí. Vývojáři, kteří používají sadu funkcí MongoDB GridFS, by taky měli zvážit použití Azure Blob Storage – což je účel sestavený pro ukládání obsahu objektů BLOB a nabízí rozšířené funkce s nižšími náklady v porovnání s GridFS.
+> Doporučujeme vývojářům, kteří používají sadu funkcí MongoDB GridFS, k upgradu na rozhraní Azure Cosmos DB API pro MongoDB verze 3,6 nebo vyšší, která je oddělená od příloh a poskytuje lepší prostředí. Vývojáři, kteří používají sadu funkcí MongoDB GridFS, by taky měli zvážit použití Azure Blob Storage – což je účel sestavený pro ukládání obsahu objektů BLOB a nabízí rozšířené funkce s nižšími náklady v porovnání s GridFS.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Migrace příloh do Azure Blob Storage
 

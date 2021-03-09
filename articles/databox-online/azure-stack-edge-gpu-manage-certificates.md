@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 4193e58c28b481297df38bca8f18d2ea766ce886
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443127"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519006"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Použití certifikátů se zařízením Azure Stack Edge pro GPU
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Tento článek popisuje typy certifikátů, které je možné nainstalovat na zařízení Azure Stack Edge pro. Článek obsahuje také podrobnosti o jednotlivých typech certifikátů spolu s postupem instalace a určení data vypršení platnosti. 
+Tento článek popisuje typy certifikátů, které je možné nainstalovat na zařízení Azure Stack Edge pro. Článek obsahuje také podrobnosti o jednotlivých typech certifikátů spolu s postupem instalace a určení data vypršení platnosti.  
 
 ## <a name="about-certificates"></a>Informace o certifikátech
 
@@ -400,7 +400,7 @@ Záloha souboru. pfx se teď uloží do umístění, které jste vybrali a kter�
 
 ## <a name="supported-certificate-algorithms"></a>Podporované algoritmy certifikátů
 
- U zařízení Azure Stack Edge pro se podporují jenom certifikáty Rivest – Shamir – Adleman (RSA). Pokud se používají certifikáty ECDSA (s algoritmem eliptické křivky digitálního podpisu), je chování zařízení neurčité.
+ U zařízení Azure Stack Edge pro se podporují jenom certifikáty Rivest – Shamir – Adleman (RSA). Certifikáty ECDSA (eliptický zakřivený Digital Signature Algorithm) nejsou podporovány.
 
  Certifikáty, které obsahují veřejný klíč RSA, se označují jako certifikáty RSA. Certifikáty, které obsahují veřejný klíč kryptografických rozhraní s eliptickou křivkou (ECC), jsou označovány jako ECDSA (s algoritmem eliptické křivky digitálního podpisu). 
 

@@ -12,16 +12,16 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e3aa5d5b97342d81562b3296b71a5a58a3ffadf5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218231"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520332"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
-[Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody pro monitorování, organizování a správu vašich běhů pro školení a experimentování.
+[Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody pro monitorování, organizování a správu vašich běhů pro školení a experimentování.
 
 Tento článek ukazuje příklady následujících úloh:
 
@@ -42,7 +42,7 @@ Budete potřebovat následující položky:
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
-* Sada SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější). Chcete-li nainstalovat nebo aktualizovat nejnovější verzi sady SDK, přečtěte si téma [instalace nebo aktualizace sady SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* Sada SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější). Chcete-li nainstalovat nebo aktualizovat nejnovější verzi sady SDK, přečtěte si téma [instalace nebo aktualizace sady SDK](/python/api/overview/azure/ml/install).
 
     Chcete-li zjistit verzi sady Azure Machine Learning SDK, použijte následující kód:
 
@@ -58,7 +58,7 @@ Budete potřebovat následující položky:
 
     # <a name="python"></a>[Python](#tab/python)
     
-    1. Nastavte experiment tak, že naimportujete třídy [pracovní prostor](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py), [experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py), [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) z balíčku [AzureML. Core](/python/api/azureml-core/azureml.core?preserve-view=true&view=azure-ml-py) .
+    1. Nastavte experiment tak, že naimportujete třídy [pracovní prostor](/python/api/azureml-core/azureml.core.workspace.workspace), [experiment](/python/api/azureml-core/azureml.core.experiment.experiment), [Run](/python/api/azureml-core/azureml.core.run%28class%29)a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) z balíčku [AzureML. Core](/python/api/azureml-core/azureml.core) .
     
         ```python
         import azureml.core
@@ -69,7 +69,7 @@ Budete potřebovat následující položky:
         exp = Experiment(workspace=ws, name="explore-runs")
         ```
     
-    1. Spusťte běh a jeho proces protokolování s [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metodou.
+    1. Spusťte běh a jeho proces protokolování s [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) metodou.
     
         ```python
         notebook_run = exp.start_logging()
@@ -107,7 +107,7 @@ Budete potřebovat následující položky:
         > [!TIP]
         > `az ml folder attach`Příkaz vytvořil `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig.
         >
-        > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
+        > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
         >
         > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
@@ -123,19 +123,19 @@ Budete potřebovat následující položky:
 
     # <a name="python"></a>[Python](#tab/python)
     
-    * Získejte stav spuštění s [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-status--) metodou.
+    * Získejte stav spuštění s [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29#get-status--) metodou.
     
         ```python
         print(notebook_run.get_status())
         ```
     
-    * Chcete-li získat ID spuštění, dobu provádění a další podrobnosti o spuštění, použijte [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metodu.
+    * Chcete-li získat ID spuštění, dobu provádění a další podrobnosti o spuštění, použijte [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) metodu.
     
         ```python
         print(notebook_run.get_details())
         ```
     
-    * Po úspěšném dokončení spuštění použijte [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metodu k označení jako dokončenou.
+    * Po úspěšném dokončení spuštění použijte [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) metodu k označení jako dokončenou.
     
         ```python
         notebook_run.complete()
@@ -209,7 +209,7 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
 
     # <a name="python"></a>[Python](#tab/python)
     
-    Chcete-li přidat hledaná metadata k vašim běhům, použijte [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metodu. Například následující kód přidá `"author"` vlastnost do běhu:
+    Chcete-li přidat hledaná metadata k vašim běhům, použijte [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29#add-properties-properties-) metodu. Například následující kód přidá `"author"` vlastnost do běhu:
     
     ```Python
     local_run.add_properties({"author":"azureml-user"})
@@ -225,7 +225,7 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
         print(e)
     ```
     
-    Na rozdíl od vlastností jsou značky proměnlivé. K přidání prohledávatelných a smysluplných informací pro uživatele experimentu použijte [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) metodu.
+    Na rozdíl od vlastností jsou značky proměnlivé. K přidání prohledávatelných a smysluplných informací pro uživatele experimentu použijte [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29#tag-key--value-none-) metodu.
     
     ```Python
     local_run.tag("quality", "great run")
@@ -304,7 +304,7 @@ Pokud si všimnete omylem nebo pokud dokončení běhu trvá příliš dlouho, m
 
 # <a name="python"></a>[Python](#tab/python)
 
-Chcete-li zrušit běh pomocí sady SDK, použijte [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecancel--) metodu:
+Chcete-li zrušit běh pomocí sady SDK, použijte [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29#cancel--) metodu:
 
 ```python
 src = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -352,7 +352,7 @@ Vytvoření podřízených běhů pro seskupení souvisejících běhů, napří
 > [!NOTE]
 > Podřízená spuštění lze vytvořit pouze pomocí sady SDK.
 
-Tento příklad kódu používá `hello_with_children.py` skript k vytvoření dávky pěti podřízených spuštění v rámci odeslaného běhu pomocí [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) metody:
+Tento příklad kódu používá `hello_with_children.py` skript k vytvoření dávky pěti podřízených spuštění v rámci odeslaného běhu pomocí [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29#child-run-name-none--run-id-none--outputs-none-) metody:
 
 ```python
 !more hello_with_children.py
@@ -371,7 +371,7 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Při přesunu z oboru jsou podřízená spuštění automaticky označena jako dokončená.
 
-Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
+Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
 
 ### <a name="submit-child-runs"></a>Odeslat podřízená spuštění
 
@@ -407,7 +407,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Chcete-li vytvořit mnoho podřízených spuštění se stejnou konfigurací, argumenty a vstupy efektivně, použijte [`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
+Chcete-li vytvořit mnoho podřízených spuštění se stejnou konfigurací, argumenty a vstupy efektivně, použijte [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
 
 V rámci podřízeného spuštění můžete zobrazit ID nadřazeného spuštění:
 
@@ -419,7 +419,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Dotaz na podřízená spuštění
 
-Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného objektu, použijte [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metodu. ``recursive = True``Argument slouží k dotazování vnořené stromové struktury podřízených a podřízené.
+Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného objektu, použijte [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metodu. ``recursive = True``Argument slouží k dotazování vnořené stromové struktury podřízených a podřízené.
 
 ```python
 print(parent_run.get_children())

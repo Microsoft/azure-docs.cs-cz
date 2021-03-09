@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b93da1e252357830578783c8f3ab5ca02f5a3e5b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349014"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520740"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Použití tajných kódů přihlašovacích údajů v Azure Machine Learningch školicích běhů
 
@@ -33,7 +33,7 @@ Standardní tok pro používání tajných klíčů je:
 
 ## <a name="set-secrets"></a>Nastavení tajných kódů
 
-V Azure Machine Learning třída [trezoru](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py) klíčů obsahuje metody pro nastavení tajných kódů. V místní relaci Pythonu nejprve získejte odkaz na váš pracovní prostor Key Vault a pak použijte [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secret-name--value-) metodu pro nastavení tajného klíče podle názvu a hodnoty. Metoda __set_secret__ aktualizuje tajnou hodnotu, pokud název již existuje.
+V Azure Machine Learning třída [trezoru](/python/api/azureml-core/azureml.core.keyvault.keyvault) klíčů obsahuje metody pro nastavení tajných kódů. V místní relaci Pythonu nejprve získejte odkaz na váš pracovní prostor Key Vault a pak použijte [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secret-name--value-) metodu pro nastavení tajného klíče podle názvu a hodnoty. Metoda __set_secret__ aktualizuje tajnou hodnotu, pokud název již existuje.
 
 ```python
 from azureml.core import Workspace
@@ -49,13 +49,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Neumísťujte tajnou hodnotu do kódu Pythonu, protože je nezabezpečený pro uložení v souboru jako nešifrovaný text. Místo toho Získejte tajnou hodnotu z proměnné prostředí, například tajného kódu sestavení Azure DevOps nebo interaktivního uživatelského vstupu.
 
-Pomocí metody můžete vytvořit seznam tajných názvů [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=truelist-secrets--) a také dávkovou verzi[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secrets-secrets-batch-) , která umožňuje nastavit více tajných klíčů současně.
+Pomocí metody můžete vytvořit seznam tajných názvů [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) a také dávkovou verzi[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-) , která umožňuje nastavit více tajných klíčů současně.
 
 ## <a name="get-secrets"></a>Získání tajných kódů
 
-V místním kódu můžete pomocí [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) metody získat tajnou hodnotu podle názvu.
+V místním kódu můžete pomocí [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#get-secret-name-) metody získat tajnou hodnotu podle názvu.
 
-Pro spuštění [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)  , použijte [`get_secret()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) metodu s [`Run`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) třídou. Vzhledem k tomu, že odeslaný běh ví o svém pracovním prostoru, tato metoda vytvoří instanci pracovního prostoru a vrátí tajnou hodnotu přímo.
+Pro spuštění [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment#submit-config--tags-none----kwargs-)  , použijte [`get_secret()`](/python/api/azureml-core/azureml.core.run.run#get-secret-name-) metodu s [`Run`](/python/api/azureml-core/azureml.core.run%28class%29) třídou. Vzhledem k tomu, že odeslaný běh ví o svém pracovním prostoru, tato metoda vytvoří instanci pracovního prostoru a vrátí tajnou hodnotu přímo.
 
 ```python
 # Code in submitted run
@@ -67,7 +67,7 @@ secret_value = run.get_secret(name="mysecret")
 
 Dejte pozor, abyste tajnou hodnotu nezveřejnili zápisem nebo tiskem.
 
-K dispozici je také verze dávky [get_secrets ()](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) pro přístup k více tajným klíčům najednou.
+K dispozici je také verze dávky [get_secrets ()](/python/api/azureml-core/azureml.core.run.run#get-secrets-secrets-) pro přístup k více tajným klíčům najednou.
 
 ## <a name="next-steps"></a>Další kroky
 

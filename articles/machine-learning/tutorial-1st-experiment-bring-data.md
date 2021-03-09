@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377991"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522355"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
@@ -200,7 +200,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [Datová sada](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) se používá k odkazování na data, která jste nahráli do Azure Blob Storage. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
+      [Datová sada](/python/api/azureml-core/azureml.core.dataset.dataset) se používá k odkazování na data, která jste nahráli do Azure Blob Storage. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) se upraví tak, aby zahrnoval seznam argumentů, které se budou předávat do `train.py` . `dataset.as_named_input('input').as_mount()`Argument znamená, že zadaný adresář bude _připojen_ k cíli služby Compute.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) se upraví tak, aby zahrnoval seznam argumentů, které se budou předávat do `train.py` . `dataset.as_named_input('input').as_mount()`Argument znamená, že zadaný adresář bude _připojen_ k cíli služby Compute.
    :::column-end:::
 :::row-end:::
 

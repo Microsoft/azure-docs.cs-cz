@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d48cd8f95ecaf3e537a5221d766af150a51aa31
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657102"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517680"
 ---
 # <a name="more-details-about-features-in-preview"></a>Další podrobnosti o funkcích ve verzi Preview
 Toto téma popisuje, jak používat funkce, které jsou aktuálně ve verzi Preview.
 
-## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
+## <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2
 
-Nasadili jsme nový koncový bod (API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje i synchronizaci skupin s až 250 tisíc členy. Použití tohoto koncového bodu vám taky umožní zapisovat Microsoft 365 sjednocené skupiny bez omezení maximálního počtu členů na místní službu Active Directory, když je povolený zpětný zápis skupin. Další informace najdete v tématu [Azure AD Connect Sync v2 Endpoint API (Public Preview)](how-to-connect-sync-endpoint-api-v2.md).
+Nasadili jsme nový koncový bod (API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje i synchronizaci skupin s až 250 tisíc členy. Použití tohoto koncového bodu vám taky umožní zapisovat Microsoft 365 sjednocené skupiny bez omezení maximálního počtu členů na místní službu Active Directory, když je povolený zpětný zápis skupin. Další informace najdete v tématu [Azure AD Connect Sync rozhraní API koncového bodu v2](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Zpětný zápis uživatele
 > [!IMPORTANT]

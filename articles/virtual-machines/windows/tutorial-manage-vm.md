@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3e52a808b187e3823acfee2c260986518f2f6f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b9b7fee32ec8d844452cfcb5eba29859467105e4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977999"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520757"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
 
@@ -50,7 +50,7 @@ Skupinu prostředků je třeba zadat při vytváření nebo úpravách virtuáln
 
 Při vytváření virtuálního počítače je k dispozici několik možností, jako jsou image operačního systému, konfigurace sítě a přihlašovací údaje pro správu. Tento příklad vytvoří virtuální počítač *myVM* s výchozí verzí Windows Serveru 2016 Datacenter.
 
-Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6):
+Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -173,7 +173,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| Type                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované pro výpočty](../sizes-compute.md)   | Fsv2          | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -234,7 +234,7 @@ Start-AzVM `
 Virtuální počítač Azure může mít jeden z mnoha stavů napájení. 
 
 
-| Stav napájení | Popis
+| Stav napájení | Description
 |----|----|
 | Spouštění | Virtuální počítač se právě spouští. |
 | Spuštěno | Virtuální počítač je spuštěný. |

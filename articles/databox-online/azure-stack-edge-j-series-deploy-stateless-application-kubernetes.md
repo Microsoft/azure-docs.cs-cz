@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: bc8d14f3d4621a41c2d2845802313033d0809b4b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 40065189f3c1dd52f462985aef344e9cbeb12f0b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442124"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522372"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení bezstavové aplikace Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
@@ -27,7 +27,7 @@ Než budete moct vytvořit cluster Kubernetes a použít `kubectl` Nástroj př�
 
 - Máte přihlašovací údaje pro přihlášení k zařízení Azure Stack Edge pro s jedním uzlem.
 
-- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
+- Prostředí Windows PowerShell 5,0 nebo novější je nainstalováno v klientském systému Windows pro přístup k zařízení Azure Stack Edge pro. Můžete mít i jiné klienty s podporovaným operačním systémem. Tento článek popisuje postup při použití klienta systému Windows. Pokud si chcete stáhnout nejnovější verzi Windows PowerShellu, přečtěte si část [instalace Windows PowerShellu](/powershell/scripting/install/installing-windows-powershell).
 
 - Na zařízení Azure Stack Edge pro je povolené výpočetní prostředky. Pokud chcete povolit výpočetní prostředky, v místním uživatelském rozhraní zařízení se dostanete na stránku **COMPUTE** . Pak vyberte síťové rozhraní, které chcete povolit pro výpočetní prostředky. Vyberte **Povolit**. Povolení výpočetních výsledků při vytváření virtuálního přepínače na zařízení v tomto síťovém rozhraní. Další informace najdete v tématu [Povolení služby COMPUTE Network na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 

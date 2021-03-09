@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660997"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518377"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
 
@@ -36,7 +36,7 @@ Spusťte tento kód v jednom z těchto prostředí:
     - Ve složce s ukázkami hloubkového učení na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok přechodem do tohoto adresáře: How-to-pytorch------ **> ml-framework > > výuka – pytorch** . 
  
  - Váš vlastní server Jupyter Notebook
-    - [Nainstalujte sadu Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0).
+    - [Nainstalujte sadu Azure Machine Learning SDK](/python/api/overview/azure/ml/install) (>= 1.15.0).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - [Stažení ukázkových souborů skriptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -64,7 +64,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) objektu.
 
 Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
@@ -181,7 +181,7 @@ Další informace o vytváření a používání prostředí najdete v tématu [
 
 ### <a name="create-a-scriptrunconfig"></a>Vytvoření ScriptRunConfig
 
-Vytvořte objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Jakékoli argumenty školicího skriptu budou předány prostřednictvím příkazového řádku, pokud je zadáno v `arguments` parametru. 
+Vytvořte objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Jakékoli argumenty školicího skriptu budou předány prostřednictvím příkazového řádku, pokud je zadáno v `arguments` parametru. 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -203,7 +203,7 @@ Další informace o konfiguraci úloh pomocí ScriptRunConfig najdete v tématu 
 
 ## <a name="submit-your-run"></a>Odeslat běh
 
-[Objekt Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
+[Objekt Run](/python/api/azureml-core/azureml.core.run%28class%29) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
 
 ```Python
 run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
@@ -267,7 +267,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Aby bylo možné spustit distribuovanou úlohu pomocí MPI/Horovod v Azure ML, je nutné zadat [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Níže uvedený kód nakonfiguruje distribuovanou úlohu se dvěma uzly se spuštěným jedním procesem na jeden uzel. Pokud chcete spustit více procesů na jeden uzel (tj. Pokud má SKU clusteru více GPU), zadejte také `process_count_per_node` parametr v MpiConfiguration (výchozí nastavení je `1` ).
+Aby bylo možné spustit distribuovanou úlohu pomocí MPI/Horovod v Azure ML, je nutné zadat [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Níže uvedený kód nakonfiguruje distribuovanou úlohu se dvěma uzly se spuštěným jedním procesem na jeden uzel. Pokud chcete spustit více procesů na jeden uzel (tj. Pokud má SKU clusteru více GPU), zadejte také `process_count_per_node` parametr v MpiConfiguration (výchozí nastavení je `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -294,7 +294,7 @@ Mezi možnostmi spuštění neexistují žádné zásadní rozdíly. je v podsta
 #### <a name="per-process-launch"></a>Spuštění pro jednotlivé procesy
 Pokud chcete tuto možnost použít ke spuštění distribuované úlohy PyTorch, postupujte takto:
 1. Zadat školicí skript a argumenty
-2. Vytvořte [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a zadejte a `process_count` také `node_count` . `process_count`Odpovídá celkovému počtu procesů, které chcete pro vaši úlohu spustit. Hodnota by se obvykle rovnala počtu GPU na uzel vynásobeným počtem uzlů. Pokud `process_count` parametr není zadán, bude služba Azure ml ve výchozím nastavení spouštět jeden proces na uzel.
+2. Vytvořte [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) a zadejte a `process_count` také `node_count` . `process_count`Odpovídá celkovému počtu procesů, které chcete pro vaši úlohu spustit. Hodnota by se obvykle rovnala počtu GPU na uzel vynásobeným počtem uzlů. Pokud `process_count` parametr není zadán, bude služba Azure ml ve výchozím nastavení spouštět jeden proces na uzel.
 
 V Azure ML se nastaví následující proměnné prostředí:
 * `MASTER_ADDR` -IP adresa počítače, který bude hostitelem procesu s pořadím 0.

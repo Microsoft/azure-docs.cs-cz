@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605594"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521539"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravovaných identit v Azure API Management
 
@@ -29,7 +29,7 @@ API Management instanci můžete udělit dva typy identit:
 
 ## <a name="create-a-system-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené systémem
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete nastavit spravovanou identitu v Azure Portal, vytvoříte nejprve instanci API Management a pak tuto funkci povolíte.
 
@@ -264,12 +264,25 @@ Následující příklad ukazuje šablonu Azure Resource Manager, která obsahuj
 
 Identitu přiřazenou systémem můžete použít k ověření do back-endu prostřednictvím zásad [ověřování spravované-identity](api-management-authentication-policies.md#ManagedIdentity) .
 
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Připojení k prostředkům Azure za branou firewall protokolu IP pomocí spravované identity přiřazené systémem
+
+
+API Management je důvěryhodná služba Microsoftu pro následující prostředky. To umožňuje službě připojit se k následujícím prostředkům za bránou firewall. Po explicitním přiřazení příslušné role Azure k [spravované identitě přiřazené systémem](../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku bude rozsah přístupu instance odpovídat roli Azure přiřazené spravované identitě.
+
+
+|Služba Azure | Odkaz|
+|---|---|
+|Azure Storage | [Trusted – přístup k Azure-Storage](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Trusted – přístup k Azure-Service-Bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Trused-přístup-k-Azure – centrum událostí](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
+
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
 > [!NOTE]
 > Instanci API Management můžete přidružit až 10 spravovaných identit přiřazených uživatelem.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte instanci API Management a pak tuto funkci povolte.
 

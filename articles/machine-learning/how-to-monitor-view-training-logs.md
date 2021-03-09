@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443569"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518734"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -39,7 +39,7 @@ Obecné informace o tom, jak spravovat experimenty, najdete v tématu [spuštěn
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Monitorování běhů pomocí widgetu pro Poznámkový blok Jupyter
 
-Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
+Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
 Zobrazit widget Jupyter při čekání na dokončení běhu.
     
@@ -127,7 +127,7 @@ Níže uvedené tabulky zobrazují obsah souborů protokolu ve složkách, kter�
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` složky
 
-|Soubor  |Popis  |
+|Soubor  |Description  |
 |---------|---------|
 |20_image_build_log.txt     | Protokol pro vytváření imagí Docker pro školicí prostředí, volitelně, jeden za běhu. Platí pouze při aktualizaci vašeho prostředí. V opačném případě AML znovu použije obrázek uložený v mezipaměti. V případě úspěchu obsahuje podrobnosti o bitové kopii registru pro odpovídající obrázek.         |
 |55_azureml-Execution-<node_id # C1.txt     | stdout/stderr protokol hostitelského nástroje, jeden pro každý uzel. Vyžádá si image do cílového výpočetního prostředí. Poznámka: Tento protokol se zobrazí jenom tehdy, když máte zabezpečené výpočetní prostředky.         |
@@ -140,7 +140,7 @@ Níže uvedené tabulky zobrazují obsah souborů protokolu ve složkách, kter�
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` složky
 
-|Soubor  |Popis  |
+|Soubor  |Description  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   systémový protokol pro přípravu úlohy        |
@@ -150,7 +150,7 @@ Níže uvedené tabulky zobrazují obsah souborů protokolu ve složkách, kter�
 
 Když je povolený postranní vozík, skripty pro přípravu úlohy a uvolnění úlohy se spustí v rámci kontejneru na vozíku.  Pro každý uzel existuje jedna složka. 
 
-|Soubor  |Popis  |
+|Soubor  |Description  |
 |---------|---------|
 |start_cms.txt     |  Protokol procesu, který se spustí při spuštění kontejneru postranního vozíku       |
 |prep_cmd.txt      |   Protokol pro ContextManagers zadaný při `job_prep.py` spuštění (některé z nich budou streamované do `azureml-logs/65-job_prep` )       |
