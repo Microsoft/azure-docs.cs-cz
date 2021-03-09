@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514943"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473833"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti fungují v reálném čase a pracují na konkrétní generaci hardwaru a při vyřazení hardwaru budou zastaralé.
 
@@ -42,24 +42,26 @@ Velikost izolovaného virtuálního počítače má omezený životnost hardwaru
 
 | Velikost | Datum vyřazení izolace | 
 | --- | --- |
-| Standard_DS15_v2<sup>1</sup> | 15. května 2020 |
-| Standard_D15_v2<sup>1</sup>  | 15. května 2020 |
-
-<sup>1</sup>  podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
+| Standard_DS15_v2 | 15. května 2020 |
+| Standard_D15_v2  | 15. května 2020 |
+| Standard_G5  | 15. února 2021 |
+| Standard_GS5  | 15. února 2021 |
+| Standard_E64i_v3  | 15. února 2021 |
+| Standard_E64is_v3  | 15. února 2021 |
 
 
 ## <a name="faq"></a>Časté otázky
 ### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>Otázka: má být vyřazení z provozu nebo pouze funkce izolace?
-Odpověď **: Pokud** velikost virtuálního počítače nemá dolní index "i", bude vyřazena pouze funkce izolace. Pokud není potřeba izolaci, nebude provedena žádná akce a virtuální počítač bude i nadále fungovat podle očekávání. Mezi příklady patří Standard_DS15_v2, Standard_D15_v2, Standard_M128ms atd. Pokud velikost virtuálního počítače zahrnuje i "i" dolní index, je tato velikost vyřazení.
+Odpověď **: v** současné době je vyřazena pouze funkce izolace velikosti virtuálního počítače. Zastaralé izolované velikosti budou nadále existovat v neizolovaném stavu. Pokud není potřeba izolaci, nebude provedena žádná akce a virtuální počítač bude i nadále fungovat podle očekávání.
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Otázka: dojde k výpadku, když je můj virtuální počítač na neizolovaný hardware?
-Odpověď **: Pokud** nepotřebujete izolaci, není nutné provádět žádnou akci a nedojde k žádnému výpadku.
+Odpověď **: Pokud** nepotřebujete izolaci, není nutné provádět žádnou akci a nedojde k žádnému výpadku. V opačném případě, pokud je potřeba izolace, bude naše oznámení zahrnovat doporučenou velikost nahrazení. Výběr velikosti nahrazení bude vyžadovat, aby naši zákazníci změnili velikost svých virtuálních počítačů.  
 
 ### <a name="q-is-there-any-cost-delta-for-moving-to-a-non-isolated-virtual-machine"></a>Otázka: je pro přechod na neizolovaný virtuální počítač k dispozici cenová Delta?
 Odpověď **: ne**
 
 ### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>Otázka: kdy jsou jiné izolované velikosti vyřazení?
-Odpověď: zadáte připomenutí 12 měsíců předem od oficiálního vyřazení izolované velikosti.
+Odpověď: zadáte připomenutí 12 měsíců předem od oficiálního vyřazení izolované velikosti. Naše nejnovější oznámení zahrnuje funkci izolace Standard_G5, Standard_GS5, Standard_E64i_v3 a Standard_E64i_v3.  
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>Otázka: jsem zákazníkem Service Fabric Azure, který se spoléhá na úroveň odolnosti stříbrného nebo zlata. Má tato změna vliv?
 Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric budou i nadále fungovat i po této změně. Pokud požadujete izolaci fyzického hardwaru z jiných důvodů, možná budete muset provést jednu z výše uvedených akcí. 
@@ -69,11 +71,20 @@ Odpověď **: ne**. Záruky poskytované [úrovněmi odolnosti](../articles/serv
  
 | Date (Datum) | Akce |
 |---|---| 
-| 18. listopadu 2019 | Dostupnost D/DS15i_v2 (PAYG, 1-year) | 
-| 14. května 2020 | Poslední den nákupu D/DS15i_v2 1-Year | 
-| 15. května 2020 | Odebrání záruky izolace D/DS15_v2 | 
-| 15. května 2021 | Vyřazení D/DS15i_v2 (všichni zákazníci s výjimkou zakoupených 3 DS15_v2 let a více než 18. listopadu 2019)| 
-| 17. listopadu 2022 | Vyřazení D/DS15i_v2, když se dokončí 3 roky služby RIs (pro zákazníky, kteří koupili 3 roky rezervované instance u D/DS15_v2 do 18. listopadu 2019) |
+| 15. května 2019<sup>1</sup> | Oznámení o vyřazení z izolaci D/DS15_v2| 
+| 15. května 2020 | Odebrání záruky izolace D/DS15_v2| 
+
+<sup>1</sup> stávající zákazník používající tyto velikosti dostane e-mail s oznámením s podrobnými pokyny k dalšímu postupu.  
+
+### <a name="q-what-are-the-milestones-for-g5-gs5-e64i_v3-and-e64is_v3-isolation-retirement"></a>Otázka: Jaké jsou milníky pro G5, Gs5, E64i_v3 a E64is_v3 vyřazení z izolaci? 
+**A**: 
+ 
+| Date (Datum) | Akce |
+|---|---|
+| 15. února 2020<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 oznámení o vyřazení izolace |
+| 15. února 2021 | Odebrání záruky izolace/GS5/E64i_v3/E64is_v3 |
+
+<sup>1</sup> stávající zákazník používající tyto velikosti dostane e-mail s oznámením s podrobnými pokyny k dalšímu postupu.  
 
 ## <a name="next-steps"></a>Další kroky
 

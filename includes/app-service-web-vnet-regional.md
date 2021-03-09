@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a4eb22320a15cc76a7543c25583003d57ea4e538
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98225309"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473829"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -38,6 +38,8 @@ Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší 
 
 > [!NOTE]
 > Pokud budete směrovat veškerý odchozí provoz do vaší virtuální sítě, bude se jednat o skupin zabezpečení sítě a udr, které se vztahují k vaší podsíti integrace. Při směrování veškerého odchozího provozu do virtuální sítě jsou vaše odchozí adresy stále výstupními adresami, které jsou uvedené ve vlastnostech vaší aplikace, pokud nezadáte trasy k odeslání provozu jinde.
+> 
+> Místní integrace virtuální sítě nemůže používat port 25.
 
 Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
@@ -79,7 +81,7 @@ Místní integrace virtuální sítě umožňuje používat koncové body služb
 1. Konfigurace místní integrace virtuální sítě pomocí webové aplikace
 1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti používané pro integraci
 
-### <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
 Skupiny zabezpečení sítě můžete použít k blokování příchozího a odchozího provozu do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může používat [skupinu zabezpečení sítě][VNETnsg] k blokování odchozího provozu do prostředků ve vaší virtuální síti nebo v Internetu. Chcete-li zablokovat provoz na veřejné adresy, je nutné, aby nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastaveno na hodnotu 1. Příchozí pravidla ve NSG se nevztahují na vaši aplikaci, protože integrace virtuální sítě má vliv jenom na odchozí přenosy z vaší aplikace.
 
