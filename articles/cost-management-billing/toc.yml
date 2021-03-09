@@ -292,6 +292,8 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: Migrace z rozhraní API EA na MCA
           href: costs/migrate-cost-management-api.md
+        - name: Přiřazení rolí k SPN
+          href: manage/assign-roles-azure-service-principals.md
     - name: Nákup a správa rezervací
       items:
         - name: 'Určení, co koupit'

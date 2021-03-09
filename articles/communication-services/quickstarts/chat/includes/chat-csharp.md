@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 70287a837b17268f2cddebfb2cf3344a8fe66ffe
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b4f058d9829a23748b8ef61daea5b3f12ce5fedf
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445696"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489690"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
-- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
+- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset zaznamenat **koncový bod** prostředku.
 - [Přístupový token uživatele](../../access-tokens.md). Ujistěte se, že jste nastavili obor na "chat" a poznamenali jste řetězec tokenu a také řetězec userId.
 
@@ -47,7 +47,7 @@ Instalace klientské knihovny služby Azure Communications chat pro .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-``` 
+```
 
 ## <a name="object-model"></a>Objektový model
 
@@ -60,7 +60,7 @@ Následující třídy zpracovávají některé z hlavních funkcí služby Azur
 
 ## <a name="create-a-chat-client"></a>Vytvoření chatového klienta
 
-Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` `Administration` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny.
+Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikačních služeb a přístupový token, který byl vygenerován jako součást požadovaných kroků. Chcete-li `CommunicationIdentityClient` vytvořit uživatele a vystavit token, který bude předat klientovi chat, je nutné použít třídu z klientské knihovny identity.
 
 Přečtěte si další informace o [tokenech přístupu uživatele](../../access-tokens.md).
 
@@ -95,7 +95,7 @@ Pomocí `createChatThread` metody v chatClient vytvořte vlákno chatu.
 - Použijte `topic` k poskytnutí tématu tomuto chatu; Téma lze aktualizovat poté, co je vlákno konverzace vytvořeno pomocí `UpdateTopic` funkce.
 - Pomocí `participants` vlastnosti můžete předat seznam `ChatParticipant` objektů, které mají být přidány do konverzačního vlákna. `ChatParticipant`Objekt je inicializován s `CommunicationIdentifier` objektem. `CommunicationIdentifier` může být typu `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` nebo `PhoneNumberIdentifier` . Například pro získání `CommunicationIdentifier` objektu budete muset předat ID přístupu, které jste vytvořili pomocí pokynů pro [Vytvoření uživatele](../../access-tokens.md#create-an-identity) .
 
-Objekt Response z metody createChatThread obsahuje podrobnosti o chatThread. Chcete-li pracovat s operacemi vlákna chatu, jako je například přidání účastníků, odeslání zprávy, odstranění zprávy atd., je nutné instanci klienta chatThreadClient vytvořit pomocí metody GetChatThreadClient v klientovi ChatClient. 
+Objekt Response z `createChatThread` metody obsahuje `chatThread` Podrobnosti. Pro interakci s operacemi vlákna chatu, jako je přidání účastníků, odeslání zprávy, odstranění zprávy atd. `chatThreadClient` instance klienta musí být vytvořena pomocí `GetChatThreadClient` metody v `ChatClient` klientovi.
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))

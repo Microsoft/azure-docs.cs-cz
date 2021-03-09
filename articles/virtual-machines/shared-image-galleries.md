@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 9a5bc0620468980da68e1b92f758d5f3862ac7d3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091886"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487249"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
@@ -104,7 +104,7 @@ Specializované virtuální počítače neprošly procesem odebrání informací
 
 ## <a name="regional-support"></a>Místní podpora
 
-Všechny veřejné oblasti můžou být cílové oblasti, ale replikovat do Austrálie Central a Austrálie – střed 2 potřebujete, aby bylo vaše předplatné přidané do seznamu povolených. Chcete-li požádat o přidání předplatných do seznamu povolených, použijte následující: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Všechny veřejné oblasti můžou být cílové oblasti, ale replikovat do Austrálie Central a Austrálie – střed 2 potřebujete, aby bylo vaše předplatné přidané do seznamu povolených. Chcete-li požádat o přidání předplatných do seznamu povolených, použijte následující: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
 
 ## <a name="limits"></a>Omezení 
 
@@ -150,8 +150,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
-| Definice image     | No                   | Yes          | Yes                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
+| Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o službě Azure RBAC najdete v tématu [přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md).
 
@@ -170,12 +170,12 @@ Za používání služby Galerie sdílených imagí se neúčtují žádné dal�
 Po vytvoření můžete provést některé změny v prostředcích Galerie imagí. Jsou omezeny na:
  
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:
@@ -325,4 +325,3 @@ Kromě toho můžete svoji otázku publikovat a označit ji `azure-virtual-machi
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se nasazovat sdílené Image pomocí [Azure CLI](shared-images-cli.md) nebo [PowerShellu](shared-images-powershell.md).
-

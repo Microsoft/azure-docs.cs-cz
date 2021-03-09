@@ -74,6 +74,8 @@
       href: public-ip-usage.md
     - name: Vytvoření tunelu IPSec
       href: create-ipsec-tunnel.md
+    - name: Cluster s podporou převzetí služeb při selhání Windows serveru
+      href: windows-server-failover-cluster.md
     - name: Nativní integrace Azure
       items:
         - name: API Management

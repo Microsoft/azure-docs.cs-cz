@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e0247560afa8229f4fa5c25ec7dfbbca4f7defb2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362790"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486094"
 ---
 # <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
@@ -133,17 +133,17 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 ```
 
 ## <a name="natural-reading-order-output-latin-only"></a>Výstup přirozeného pořadí čtení (jenom Latin)
-Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `readingOrder` parametrem dotazu. Použijte `natural` pro více uživatelsky přívětivého výstupu pořadí čtení, jak je znázorněno v následujícím příkladu. Tato funkce je podporována pouze v jazycích Latin.
+Pomocí [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)určete pořadí, ve kterém jsou textové řádky ve výstupu s `readingOrder` parametrem dotazu. Použijte `natural` pro více uživatelsky přívětivého výstupu pořadí čtení, jak je znázorněno v následujícím příkladu. Tato funkce je podporována pouze v jazycích Latin.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Příklad pořadí čtení v OCR":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Ručně psaná klasifikace pro textové řádky (jenom latinku)
-Odpověď [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) zahrnuje klasifikaci, jestli každý textový řádek má styl rukopisu, nebo ne, spolu s hodnocením spolehlivosti. Tato funkce je podporována pouze v jazycích Latin. Následující příklad ukazuje ručně vytvořenou klasifikaci textu v obrázku.
+Odpověď [rozhraní API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005) zahrnuje klasifikaci, jestli každý textový řádek má styl rukopisu, nebo ne, spolu s hodnocením spolehlivosti. Tato funkce je podporována pouze v jazycích Latin. Následující příklad ukazuje ručně vytvořenou klasifikaci textu v obrázku.
 
 :::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Příklad klasifikace rukopisu OCR":::
 
 ## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Vybrat stránky nebo rozsahy stránek pro extrakci textu
-S [rozhraním API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty použijte `pages` parametr dotazu, který určuje čísla stránek nebo rozsahy stránek k extrakci textu pouze z těchto stránek. Následující příklad ukazuje dokument s 10 stránkami a text extrahovaný pro oba případy – všechny stránky (1-10) a vybrané stránky (3-6).
+S [rozhraním API pro čtení 3,2 Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty použijte `pages` parametr dotazu, který určuje čísla stránek nebo rozsahy stránek k extrakci textu pouze z těchto stránek. Následující příklad ukazuje dokument s 10 stránkami a text extrahovaný pro oba případy – všechny stránky (1-10) a vybrané stránky (3-6).
 
 :::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Výstup vybraných stránek":::
 
@@ -166,4 +166,4 @@ Pro místní nasazení vám [kontejner pro čtení Docker (Preview)](./computer-
 
 - Začněte s [Počítačové zpracování obrazu REST API nebo se šablonou rychlý Start knihovny klienta](./quickstarts-sdk/client-library.md).
 - Přečtěte si o [REST API pro čtení 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
-- Přečtěte si o [REST API verze Public Preview pro čtení 3,2](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) s podporou celkem 73 jazyků.
+- Přečtěte si o [REST API verze Public Preview pro čtení 3,2](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005) s podporou celkem 73 jazyků.

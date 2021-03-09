@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: b471e113a7e5ae2277e275d53ff8ac8ca9187d1d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731215"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486127"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s SaaSem PrinterLogic
 
@@ -37,10 +37,10 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* PrinterLogic SaaS podporuje **SP a IDP** iniciované jednotné přihlašování.
-* PrinterLogic SaaS podporuje zřizování uživatelů **jenom v čase**
+* PrinterLogic SaaS podporuje **SP a IDP** iniciované jednotného přihlašování.
+* PrinterLogic SaaS podporuje **jenom při** zřizování uživatelů.
 
-## <a name="adding-printerlogic-saas-from-the-gallery"></a>Přidání PrinterLogic SaaS z Galerie
+## <a name="add-printerlogic-saas-from-the-gallery"></a>Přidání PrinterLogic SaaS z Galerie
 
 Pokud chcete nakonfigurovat integraci PrinterLogic SaaS do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat PrinterLogic SaaS z galerie.
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace PrinterLogic SaaS očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------| ------------ |
     | Role | User. assignedroles |
 
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -146,17 +146,16 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 #### <a name="sp-initiated"></a>Zahájena SP:
 
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k AskYourTeam, kde můžete spustit tok přihlášení.  
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL PrinterLogic SaaS, kde můžete spustit tok přihlášení.  
 
-* Přejít na adresu URL pro přihlášení k AskYourTeam přímo a zahájit tok přihlášení.
+* Přejít přímo na adresu URL pro přihlášení k PrinterLogic SaaS a zahajte tok přihlášení.
 
 #### <a name="idp-initiated"></a>Iniciované IDP:
 
-* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k AskYourTeam, pro které jste nastavili jednotné přihlašování. 
+* Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k SaaSu PrinterLogic, pro kterou jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici AskYourTeam v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k AskYourTeam, pro které jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
-
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici PrinterLogic SaaS v nabídce Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k SaaS PrinterLogic, pro který jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování PrinterLogic SaaS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování PrinterLogic SaaS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

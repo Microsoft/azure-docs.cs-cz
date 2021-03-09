@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726763"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487874"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -30,7 +30,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 | ---------------------- | ---------------------------------------- |
 | Nevyřízené události vstupu       | Počet nevyřízených vstupních událostí. Nenulová hodnota této metriky znamená, že vaše úloha nebude moci udržovat počet příchozích událostí. Pokud je tato hodnota pomalá nebo stále nenulová, měli byste škálovat svou úlohu. Další informace najdete v tématu [pochopení a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
 | Chyby převodu dat | Počet výstupních událostí, které nebylo možné převést na očekávané výstupní schéma. Chcete-li odstranit události, které se vyskytnou v tomto scénáři, můžete změnit zásady chyb na možnost drop. |
-| Využití procesoru v% (Preview)       | Procento využití procesoru vaší úlohou Pokud je tato metrika konzistentně vyšší než 80%, může to znamenat, že je vaše úloha v kritickém využití procesoru, a pravděpodobně způsobí, že se vstupní události vrátí do protokolu. Můžete zvýšit počet služby SUs přidělené vaší úloze a zmírnit tak takové problémy. |
+| Využití procesoru v% (Preview)       | Procento využití procesoru vaší úlohou I v případě, že je tato hodnota velmi vysoká (90% nebo vyšší), neměli byste zvýšit počet služby SUs na základě této metriky. Pokud se zvýší počet nevyřízených událostí vstupu nebo zpoždění meze, můžete tuto metriku využití CPU% použít k určení, jestli je procesor kritický. Je možné, že tato metrika má přerušované špičky. Doporučuje se provést testy škálování a určit horní mez úlohy, po jejímž uplynutí se vstupy dostanou do protokolu nebo se zpoždění vodoznaku zvyšuje kvůli kritickým hodnotám procesoru. |
 | Události předčasného vstupu       | Události, jejichž časové razítko aplikace je dřívější než doba jejich příchodu, o více než 5 minut. |
 | Neúspěšné žádosti o funkce | Počet neúspěšných volání funkce Azure Machine Learning (Pokud je k dispozici). |
 | Události funkcí        | Počet událostí odeslaných do funkce Azure Machine Learning (Pokud je k dispozici). |

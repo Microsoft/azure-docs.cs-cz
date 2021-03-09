@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: cf05d5f93180db91658d0e94a23359edd5b0f7ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662662"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489425"
 ---
 # <a name="device-update-security-model"></a>Model zabezpečení aktualizace zařízení
 
@@ -54,7 +54,7 @@ Kořenový a podpisový klíč umožňuje Microsoftu pravidelně převádět pod
 
 ### <a name="json-web-signature-jws"></a>Webový podpis JSON (JWS)
 
-`updateManifestSignature`Slouží k zajištění, že informace obsažené v rámci nebyly `updateManifest` úmyslně poškozeny. `updateManifestSignature`Je vytvořen pomocí webové signatury JSON s webovými klíči JSON, což umožňuje ověření zdroje. Signatura je Base64Url kódovaný řetězec se třemi oddíly, které jsou odděleny znakem ".".  Informace o analýze a ověřování klíčů a tokenů JSON najdete v pomocných metodách jws_util. h.
+`updateManifestSignature`Slouží k zajištění, že informace obsažené v rámci nebyly `updateManifest` úmyslně poškozeny. `updateManifestSignature`Je vytvořen pomocí webové signatury JSON s webovými klíči JSON, což umožňuje ověření zdroje. Signatura je Base64Url kódovaný řetězec se třemi oddíly, které jsou odděleny znakem ".".  Informace o analýze a ověřování klíčů a tokenů JSON najdete v [pomocných metodách jws_util. h](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) .
 
 Webový podpis JSON je široce využívaný [Navrhovaný standard IETF](https://tools.ietf.org/html/rfc7515) pro podepisování obsahu pomocí datových struktur založených na formátu JSON. Je to způsob, jak zajistit integritu dat ověřením podpisu dat. Další informace najdete v [dokumentu RFC 7515](https://www.rfc-editor.org/info/rfc7515)pro webový podpis JSON (JWS).
 

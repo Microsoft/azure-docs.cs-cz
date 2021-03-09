@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455225"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488201"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -88,6 +88,7 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 
 |Technologie | Popis|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Azure Migrate pro Azure SQL vám umožní zjišťovat a hodnotit vaše datové úložiště SQL ve velkém měřítku, pokud je na VMware, a poskytuje doporučení pro nasazení SQL Azure, cílovou velikost a měsíční odhady. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Služba Azure první strany, která podporuje migraci v režimu offline pro aplikace, které můžou během procesu migrace dovolit výpadky. Na rozdíl od nepřetržité migrace v online režimu spustí migrace offline režimu jednorázové obnovení úplné zálohy databáze ze zdroje do cíle. | 
 |[Nativní zálohování a obnovení](../../managed-instance/restore-sample-database-quickstart.md) | Spravovaná instance SQL podporuje obnovení nativních záloh databáze SQL Server (soubory. bak), což usnadňuje možnost migrace pro zákazníky, kteří můžou poskytovat úplné zálohy databází do Azure Storage. Úplné a rozdílové zálohy se také podporují a zdokumentují v [části assety migrace](#migration-assets) dále v tomto článku.| 
 |[Služba pro opětovné přehrání protokolů (LRS)](../../managed-instance/log-replay-service-migrate.md) | Toto je cloudová služba povolená pro spravovanou instanci založenou na technologii SQL Server přenosů protokolů. díky tomu je možnost migrace pro zákazníky, kteří můžou poskytovat úplné, rozdílové a zaprotokolované zálohy databáze do služby Azure Storage. LRS se používá k obnovení záložních souborů z Azure Blob Storage do spravované instance SQL.| 

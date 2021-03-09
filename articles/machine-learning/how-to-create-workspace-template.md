@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f8ceacf88968d884de666b764c1037db9e63450f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214911"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488065"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -285,7 +285,7 @@ Nastavením `vnetOption` hodnoty parametru na buď `new` nebo `existing` můžet
 Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem. To se dá udělat pro nové i existující pracovní prostory. Když aktualizujete existující pracovní prostor, vyplňte parametry šablony informacemi z existujícího pracovního prostoru.
 
 > [!IMPORTANT]
-> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
+> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není v oblastech Azure Government k dispozici.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

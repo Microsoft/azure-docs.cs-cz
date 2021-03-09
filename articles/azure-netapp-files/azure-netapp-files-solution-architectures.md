@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 6041e863f6c887af35aa070f13e1406462ffc5b3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041565"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489017"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -34,9 +34,9 @@ V této části najdete odkazy na řešení pro aplikace a databáze se systéme
 
 ### <a name="oracle"></a>Oracle
 
-* [Výkon databází Oracle na jednoduchých svazcích Azure NetApp Files](performance-oracle-single-volumes.md)
 * [Průvodce nasazením Oracle v Azure v praxi pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: možnosti konfigurace sdíleného úložiště](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
+* [Výkon databází Oracle na jednoduchých svazcích Azure NetApp Files](performance-oracle-single-volumes.md)
 * [Výhody použití Azure NetApp Files s Oracle Database](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ### <a name="machine-learning"></a>Machine Learning
@@ -77,10 +77,12 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 * [Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [SAP HANA škálování s využitím HSR a Pacemaker v RHEL – Azure Virtual Machines](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
+* [Nasazení Oracle Azure Virtual Machines DBMS pro úlohy SAP – Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [Nasazení SAP AnyDB (Oracle 19c) pomocí Azure NetApp Files](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
 
 ### <a name="sap-iq-nls"></a>SAP SWEETIQ – NLS

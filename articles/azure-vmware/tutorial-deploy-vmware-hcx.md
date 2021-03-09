@@ -3,21 +3,21 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728225"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488292"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
 V tomto článku se dozvíte, jak nasadit a nakonfigurovat místní konektor VMware HCX pro privátní cloud řešení Azure VMware. Pomocí VMware HCX můžete migrovat úlohy VMware do řešení Azure VMware a dalších připojených lokalit prostřednictvím různých typů migrace. Protože řešení Azure VMware nasazuje a konfiguruje správce cloudu HCX, musíte si stáhnout, aktivovat a nakonfigurovat konektor HCX v místním datacentru VMware.
 
-VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
+VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) .  
 
 >[!TIP]
->I když nástroj maximální konfigurace VMware popisuje páry webů, které jsou maximálně 25 mezi on-premises Connectorem a správcem cloudu, tato licence omezuje tyto možnosti na tři pro rozšířené a 10 pro Enterprise Edition.
+>I když nástroj maximální konfigurace VMware popisuje páry webů, které jsou maximálně 25 mezi on-premises Connectorem a správcem cloudu, tato licence omezuje tyto možnosti na tři pro HCX Advanced a 10 pro HCX Enterprise Edition.
 
 >[!NOTE]
 >VMware HCX Enterprise je k dispozici s řešením Azure VMware jako službou ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je podniková služba VMware HCX Enterprise všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Neexistuje žádná jednoduchá cesta k downgradu z VMware HCX Enterprise na VMware HCX Advanced. Pokud se rozhodnete downgradovat, budete muset znovu nasadit a nasazovat výpadky.
@@ -58,9 +58,9 @@ Ujistěte se, že vaše místní prostředí vSphere (zdrojové prostředí) spl
 
 ### <a name="network-and-ports"></a>Síť a porty
 
-* [Azure ExpressRoute Global REACH](tutorial-expressroute-global-reach-private-cloud.md) je nakonfigurovaný mezi místními a SDDC ExpressRoutemi okruhy Azure VMware.
+* [Azure ExpressRoute Global REACH](tutorial-expressroute-global-reach-private-cloud.md) je nakonfigurovaný mezi místními a ExpressRoutemi okruhy privátního cloudu řešení Azure VMware.
 
-* [Všechny požadované porty](https://ports.vmware.com/home/VMware-HCX) jsou otevřené pro komunikaci mezi místními komponentami a Azure VMware Solution SDDC.
+* [Všechny požadované porty](https://ports.vmware.com/home/VMware-HCX) jsou otevřené pro komunikaci mezi místními komponentami a s privátním řešením Azure VMware.
 
 ### <a name="ip-addresses"></a>IP adresy
 
@@ -169,7 +169,7 @@ Po restartování služeb se na obrazovce, která se zobrazí, zobrazí položka
 Ucelený přehled tohoto postupu najdete v [Řešení Azure VMware: Aktivace HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) videa.
 
    > [!IMPORTANT]
-   > Bez ohledu na to, jestli používáte VMware HCX Advanced nebo VMware HCX Enterprise, budete možná muset nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro systém 81558. 
+   > Bez ohledu na to, jestli používáte HCX Advanced nebo HCX Enterprise, budete možná muset nainstalovat opravu z [článku znalostní báze](https://kb.vmware.com/s/article/81558)VMware pro 81558. 
 
 ## <a name="configure-the-vmware-hcx-connector"></a>Konfigurace konektoru VMware HCX
 
@@ -282,7 +282,7 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 ### <a name="create-a-service-mesh"></a>Vytvoření sítě služby
 
-Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
+Teď je čas nakonfigurovat síť mezi místním a privátním cloudem řešení VMware Azure.
 
 
 
@@ -369,7 +369,7 @@ Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: v
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud je stav tunelového propojení zařízení **zapnutý a zelený** , můžete migrovat a chránit virtuální počítače s řešeními Azure VMware pomocí VMware HCX. Řešení Azure VMware podporuje migrace úloh (s rozšířením sítě nebo bez něj). I nadále můžete migrovat úlohy ve svém prostředí vSphere spolu s místními vytvářením sítí a nasazením virtuálních počítačů do těchto sítí.  
+Pokud je stav tunelového propojení HCX a zelený, můžete **migrovat a chránit** virtuální počítače řešení VMware Azure pomocí VMware HCX. Řešení Azure VMware podporuje migrace úloh (s rozšířením sítě nebo bez něj). I nadále můžete migrovat úlohy ve svém prostředí vSphere spolu s místními vytvářením sítí a nasazením virtuálních počítačů do těchto sítí.  
 
 Další informace o použití HCX najdete v technické dokumentaci k VMware:
 

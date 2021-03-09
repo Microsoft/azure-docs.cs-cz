@@ -4,15 +4,15 @@ description: Služby pro uvedení na trh – prostředky společnosti Microsoft,
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246243"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489455"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -38,7 +38,7 @@ Získáte podporu při porozumění dostupným prostředkům a při implementaci
 
 Podrobné popisy všech výhod programu najdete v této [prezentaci programu Marketplace](https://aka.ms/marketplacerewards).
 
-Začínáme je snadné:
+## <a name="getting-started-is-easy"></a>Začínáme je snadné:
 
 1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
 2. Projděte si [ceny na webu Marketplace](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) v partnerském centru a vyberte možnost **registrovat v programu Marketplace**.
@@ -49,19 +49,19 @@ Začínáme je snadné:
     1. Zadejte kontaktní telefon a upřednostňovaný jazyk této kontaktní osoby pro marketing. Po zadání těchto informací vyberte **Přiřadit uživatele**.
     1. Po aktualizaci marketingového kontaktu vyberte možnost **aktivovat** pro zvýhodnění, které chcete začít používat. Po aktivaci výhody bude vaši kontaktní osobu pro marketing do týdne kontaktovat člen týmu programu Rewards.
 
-### <a name="technical-benefits"></a>Technické výhody
+> [!NOTE]
+> Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky.
 
-1. Své technické výhody můžete využít k vyžádání technické pomoci během fází předprodejní, návrhu, nasazení a vývoje aplikací v cloudových a hybridních řešeních. Pokud chcete požádat o pomoc, vyplňte formulář žádosti a pak vyberte **Odeslat žádost**.
-2. Používání výhod sponzorství Azure bude při odemčení těchto výhod sdíleno prostřednictvím e-mailu.
-
->[!NOTE]
->Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky.<br><br>Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://aka.ms/marketplacepublishersupport).
+Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://aka.ms/marketplacepublishersupport).
 
 Rozsah aktivit, které jsou k dispozici, se zvětšuje při zvětšování nabídek na komerčním webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.
 
 ## <a name="list-trial-and-consulting-benefits"></a>Výhody pro seznam, zkušební verze a konzultace
 
-Pokud publikujete zkušební nebo konzultační kontrolu konceptu, implementace nebo služby dílny, budete mít k manažera Engagement po dobu tří měsíců, která vám pomůže s úspěšným plánem pro uvedení na trh. Tento tříměsíční závazek můžete opakovat pokaždé, když publikujete novou nabídku, a získáte tak, že se všechny nové nabídky spustí s úspěchem.
+Pokaždé, když publikujete Microsoft AppSource nebo Azure Marketplace, budete mít přístup k nové sadě výhod. Jakmile vaše nabídka začne fungovat, přejdete do [partnerského centra](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) a aktivujete své opravňující marketingové, prodejní a technické výhody.
+
+> [!NOTE]
+> Všechny výhody zkušební verze a konzultace vyprší po 3 měsících.
 
 Následující tabulka shrnuje požadavky na způsobilost pro seznamy, zkušební verze a konzultační nabídky:
 

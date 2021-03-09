@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
-ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447465"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489765"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Porovnání funkcí: Azure SQL Database a Azure SQL Managed instance
 
@@ -33,8 +33,8 @@ Azure SQL Database a spravovaná instance SQL sdílejí společný základ kódu
 Azure spravuje vaše databáze a zaručuje jejich vysokou dostupnost. Některé funkce, které mohou mít vliv na vysokou dostupnost nebo se nedají použít na PaaS World, mají omezené funkce v SQL Database a SQL Managed instance. Tyto funkce jsou popsány v následujících tabulkách.
 
 Pokud potřebujete další podrobnosti o rozdílech, můžete je najít na samostatných stránkách:
-- [Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
-- [Spravovaná instance Azure SQL](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+- [Rozdíly v Azure SQL Database vs. SQL Server](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL Managed instance vs. SQL Server rozdíly](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>Funkce SQL Database a SQL Managed instance
 

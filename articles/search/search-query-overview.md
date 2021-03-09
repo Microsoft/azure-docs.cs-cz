@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043010"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487113"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Dotazování v Azure Kognitivní hledání
 
@@ -24,10 +24,11 @@ V Kognitivní hledání je dotaz kompletní specifikací operace Round-Trip **`s
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ Mezi parametry používané při provádění dotazu patří:
 
 + **`queryType`** Nastaví analyzátor, což je buď [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) , který se používá pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližná a zástupné vyhledávání, pro pojmenování několika.
 
++ **`searchMode`** Určuje, zda jsou shody založené na kritériích "All" nebo "any" ve výrazu. Výchozí hodnota je.
+
 + **`search`** poskytuje kritéria shody, obvykle celé podmínky nebo fráze s operátory nebo bez. Každé pole, které je s atributy *prohledávatelné* ve schématu indexu, je kandidátem pro tento parametr.
 
-+ **`searchFields`** omezuje provádění dotazů na konkrétní hledaná pole.
++ **`searchFields`** omezuje provádění dotazů na konkrétní hledaná pole. Během vývoje je vhodné použít pro příkaz SELECT a Search stejný seznam polí. V opačném případě může být shoda založena na hodnotách pole, které ve výsledcích nevidíte, a vytvořit nejistotu, co byl dokument vrácen.
 
 Parametry použité k tvarování odpovědi:
 
@@ -114,4 +117,4 @@ Pro bližší pohled na implementaci dotazu si Projděte příklady jednotlivýc
 
 + [Příklady jednoduchých dotazů](search-query-simple-examples.md)
 + [Příklady dotazů syntaxe Lucene pro vytváření pokročilých dotazů](search-query-lucene-examples.md)
-+ [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Jak funguje úplné hledání textu v Azure kognitivní hledání](search-lucene-query-architecture.md)Git

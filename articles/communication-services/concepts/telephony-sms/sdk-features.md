@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e4518fb41c839d83c59cd245b39c547ddb02b68e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ec468f070b5dd418772aeea8760b5d0b270e093a
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658210"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487504"
 ---
 # <a name="sms-client-library-overview"></a>Přehled klientských knihoven pro SMS
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
@@ -36,7 +39,7 @@ Následující seznam uvádí sadu funkcí, které jsou aktuálně k dispozici v
 | Události            | Použití Event Grid ke konfiguraci webhooků pro příjem příchozích zpráv a zpráv o doručení | ✔️   | ✔️    | ✔️    | ✔️      |
 | Telefonní číslo      | Toll-Free čísla                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Řídící        | Zpracování Opt-Out                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
-| Sledování        | Monitorování využití odesílaných a přijatých zpráv                                          | ✔️   | ✔️    | ✔️    | ✔️      |
+| Monitorování        | Monitorování využití odesílaných a přijatých zpráv                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 | Volání do veřejné telefonní sítě      | Přidání schopností volání přes telefonní číslo do bezplatného čísla s povoleným serverem SMS                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Další kroky

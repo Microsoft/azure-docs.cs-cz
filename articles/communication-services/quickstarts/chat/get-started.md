@@ -10,14 +10,17 @@ ms.date: 09/30/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: d8b2edff432bdcbd21afdf81ffea2617b22b0452
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2e0ab3170779234c1a1d0b2676632022b9dfcd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661621"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489691"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>Rychlý Start: Přidání chatu do aplikace
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications chat k přidání chatu do aplikace v reálném čase. V tomto rychlém startu budeme pomocí klientské knihovny chatu vytvářet vlákna chatu, která uživatelům umožňují vzájemnou konverzaci. Další informace o konceptech chatu najdete v [Koncepční dokumentaci k chatu](../../concepts/chat/concepts.md).
 

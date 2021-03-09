@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0225c948fddf65b9312c689144ecc567a70aa27e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e83203e937d794451dfb91fe0403117df72c8c0
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750420"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489689"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
 
-- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Instalace [Pythonu](https://www.python.org/downloads/)
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../create-communication-resource.md). Pro tento rychlý Start budete muset nahrát **koncový bod** prostředku.
 - [Přístupový token uživatele](../../access-tokens.md). Ujistěte se, že jste nastavili obor na "chat" a poznamenali jste řetězec tokenu a také řetězec userId.
@@ -73,7 +73,7 @@ Chcete-li vytvořit chatovacího klienta, použijte koncový bod komunikační s
 V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu tokenů pro aplikaci Chat, i když se doporučuje. Další informace o [architektuře chatu](../../../concepts/chat/concepts.md) najdete v následující dokumentaci.
 
 ```console
-pip install azure-communication-administration
+pip install azure-communication-identity
 ```
 
 ```python

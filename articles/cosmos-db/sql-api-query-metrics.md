@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097222"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488082"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -143,7 +143,6 @@ Níže jsou uvedené nejběžnější faktory, které mají vliv na Azure Cosmos
 | Zřízená propustnost | Změřte RU na dotaz a ujistěte se, že máte požadovanou zřízenou propustnost pro vaše dotazy. | 
 | Dělení a klíče oddílů | Upřednostnit dotazy s hodnotou klíče oddílu v klauzuli Filter pro nízkou latenci. |
 | Sada SDK a možnosti dotazu | Dodržujte osvědčené postupy sady SDK, jako je přímé připojení, a vylaďte možnosti spouštění dotazů na straně klienta. |
-| Latence sítě | Účet pro měření režie sítě a použití rozhraní API pro více domovských míst ke čtení z nejbližší oblasti. |
 | Zásady indexování | Ujistěte se, že máte pro dotaz požadované cesty k indexování nebo zásady. |
 | Metriky spuštění dotazu | Analyzujte metriky spouštění dotazů a Identifikujte potenciální přepis datových tvarů dotazů a dat.  |
 
@@ -239,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Description | 
+| Metric | Jednotka | Popis | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -261,7 +260,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Description | 
+| Dotaz | Ukázková metrika | Popis | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 

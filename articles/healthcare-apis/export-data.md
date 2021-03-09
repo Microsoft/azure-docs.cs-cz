@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712690"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487215"
 ---
 # <a name="how-to-export-fhir-data"></a>Jak exportovat FHIR data
 
@@ -38,6 +38,13 @@ Při exportu dat se vytvoří samostatný soubor pro každý typ prostředku. Ab
 
 Kromě toho se při zrušení aktuální úlohy exportu kontroluje stav exportu prostřednictvím adresy URL vrácené hlavičkou umístění v rámci služby Řízení front.
 
+### <a name="exporting-fhir-data-to-adls-gen2"></a>Export dat FHIR do ADLS Gen2
+
+V současné době podporujeme $export pro ADLS Gen2 s povolenými účty úložiště s následujícím omezením:
+
+- Uživatel zatím nemůže využít výhod [hierarchických oborů názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) ; neexistuje způsob, jak cílit na export do konkrétního podadresáře v rámci kontejneru. Nabízíme možnost cílit jenom na konkrétní kontejner (kde vytvoříme novou složku pro každý export).
+
+- Po dokončení exportu nikdy neexportujte do této složky nic, protože další exporty do stejného kontejneru budou uvnitř nově vytvořené složky.
 
 
 ## <a name="settings-and-parameters"></a>Nastavení a parametry

@@ -5,13 +5,13 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738153"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486654"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
@@ -19,27 +19,27 @@ ms.locfileid: "101738153"
 
 ## <a name="prerequisites"></a>Požadavky
 
+> [!NOTE]
+> Obecně platí, že při vytváření prostředku služby vnímání v Azure Portal máte možnost vytvořit klíč předplatného s více službami nebo klíč předplatného s jednou službou. Překlad dokumentů se ale v současné době podporuje jenom v prostředku překladatele (s jednou službou) a **není** zahrnutý do prostředku Cognitive Services (Multi-Service).
+
 Abyste mohli začít, budete potřebovat:
 
 * Aktivní [**účet Azure**](https://azure.microsoft.com/free/cognitive-services/).  Pokud ho nemáte, můžete si [**vytvořit bezplatný účet**](https://azure.microsoft.com/free/).
 
-* Prostředek služby [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) **(nejedná se** o prostředek Cognitive Services). 
+* Prostředek služby [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) **(nejedná se** o prostředek Cognitive Services).
 
-* [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Veškerý přístup k Azure Storage probíhá prostřednictvím účtu úložiště.
+* [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Vytvoříte kontejnery pro ukládání a uspořádání dat objektů BLOB v rámci svého účtu úložiště.
 
 * Formulář dokončeného [**překladu dokumentů (Preview)**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , který umožní vašemu předplatnému Azure používat novou funkci překladu dokumentů.
-
-> [!NOTE]
-> Překlad dokumentu se v současné době podporuje jenom v prostředku překladatele (s jednou službou), **nikoli** v Cognitive Services (Multi-Service) prostředku.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Získání vlastního názvu domény a klíče předplatného
 
 > [!IMPORTANT]
 >
-> * Koncový bod, který se nachází na vašich Azure Portal _klíčů prostředků a koncových_ bodech globálního překladatele, nemůžete použít `api.cognitive.microsofttranslator.com` k převedení požadavků HTTP na překlad dokumentů.
+> * Koncový bod nebudete používat na vašich Azure Portal _klíčech prostředků a na stránce koncového_ bodu globálního překladatele – `api.cognitive.microsofttranslator.com` , aby se požadavky HTTP převedly na překlad dokumentů.
 > * **Všechny požadavky rozhraní API na službu překladu dokumentů vyžadují vlastní koncový bod domény**.
 
-### <a name="what-is-the-custom-domain-endpoint"></a>Jaký je vlastní koncový bod domény? 
+### <a name="what-is-the-custom-domain-endpoint"></a>Jaký je vlastní koncový bod domény?
 
 Vlastní koncový bod domény je adresa URL formátovaná pomocí názvu prostředku, názvu hostitele a podadresářů překladatele:
 
@@ -72,9 +72,9 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 * **Cílový kontejner** Do tohoto kontejneru se budou ukládat přeložené soubory (povinné).  
 * **Kontejner glosáře**. Do tohoto kontejneru se nahrávají soubory glosáře (volitelné).  
 
-*Viz* **vytvoření přístupových tokenů SAS pro překlad dokumentu**
+### <a name="create-sas-access-tokens-for-document-translation"></a>**Vytvoření přístupových tokenů SAS pro překlad dokumentu**
 
-`sourceUrl` `targetUrl` Nepovinné `glossaryUrl` musí zahrnovat token sdíleného přístupového podpisu (SAS), připojený jako řetězec dotazu. Token se dá přiřadit ke kontejneru nebo konkrétním objektům blob.
+`sourceUrl` `targetUrl` Nepovinné `glossaryUrl` musí zahrnovat token sdíleného přístupového podpisu (SAS), připojený jako řetězec dotazu. Token se dá přiřadit ke kontejneru nebo konkrétním objektům blob. *Viz* [**Vytvoření tokenů SAS pro proces překladu dokumentu**](create-sas-tokens.md).
 
 * **Zdrojový** kontejner nebo objekt BLOB musí mít určený přístup **pro čtení** a **seznam** .
 * **Cílový** kontejner nebo objekt BLOB musí mít určený přístup pro **zápis** a přístup k **seznamu** .
@@ -271,7 +271,9 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 
 > [!IMPORTANT]
 >
-> Pro ukázky kódu níže může být nutné aktualizovat následující pole v závislosti na operaci:
+> Pro níže uvedené ukázky kódu budete mít pevný kód a koncový bod, kde je uvedeno. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
+>
+> V závislosti na této operaci možná budete muset aktualizovat následující pole:
 >>>
 >> * `endpoint`
 >> * `subscriptionKey`
@@ -280,13 +282,18 @@ Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následuj�
 >> * `glossaryURL`
 >> * `id`  (ID úlohy)
 >>
-> Místo, kde má být nalezena `id` hodnota:
-> * Úlohu můžete najít `id`  v `Operation-Location`  hodnotě adresy URL hlavičky odpovědi metody post. Posledním parametrem adresy URL je úloha operace **`id`** .  
-> * Můžete také použít požadavek GET Jobs k načtení úlohy `id`  pro operaci překladu dokumentu.
+
+#### <a name="locating--the-id-value"></a>Vyhledání `id` hodnoty
+
+* Úlohu najdete `id`  v `Operation-Location`  hodnotě adresy URL hlavičky odpovědi metody post. Posledním parametrem adresy URL je úloha operace **`id`** :
+
+|**Hlavička odpovědi**|**Adresa URL výsledku**|
+|-----------------------|----------------|
+Operation-Location   | https://<<span>název-zdroje>. cognitiveservices.Azure.com/Translator/text/Batch/v1.0-Preview.1/Batches/9dce0aa9-78dc-41ba-8cae-2e2f3c2ff8ec</span>
+
+* K načtení úlohy překladu dokumentu můžete použít taky požadavek **Get Jobs (získat úlohy** ) `id` .
+
 >
-> Pro níže uvedené ukázky kódu budete mít pevný kód a koncový bod, kde je uvedeno. Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit.  
->
-> Způsoby, jak bezpečně ukládat a přistupovat k vašim přihlašovacím údajům, najdete v tématu [zabezpečení Azure Cognitive Services](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) .
 
 ## <a name="_post-document-translation_-request"></a>_Odeslat požadavek na posunutí dokumentu_
 

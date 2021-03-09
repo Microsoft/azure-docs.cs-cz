@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287684"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487181"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Obnovení certifikátů Azure Key Vault
 
@@ -73,7 +73,10 @@ Další informace o tom, jak vytvořit nového CSR, najdete [v tématu Vytvořen
 Azure Key Vault také zpracovává automatické obnovení certifikátů podepsaných svým držitelem. Další informace o změně zásad vystavování a aktualizaci atributů životního cyklu certifikátu najdete v tématu [Konfigurace automatické rotace certifikátů v Key Vault](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate).
 
 ## <a name="troubleshoot"></a>Řešení potíží
-Pokud je vystavený certifikát v *neaktivním* stavu na Azure Portal, podívejte se na **operaci certifikátu** a zobrazí se chybová zpráva certifikátu.
+* Pokud je vystavený certifikát v *neaktivním* stavu na Azure Portal, podívejte se na **operaci certifikátu** a zobrazí se chybová zpráva certifikátu.
+* Typ chyby: CSR použitý k získání certifikátu již byl použit. Zkuste prosím vygenerovat nový certifikát s novým CSR. "
+  V části certifikát klikněte na rozšířená zásada a ověřte, jestli je vypnutá možnost **znovu použít klíč při obnovení** .
+
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

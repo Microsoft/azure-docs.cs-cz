@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 380792db21932ed2c6cffb4227df09b27f0cdf5e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430407"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487474"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Typy telefonních čísel v komunikačních službách Azure
 
@@ -37,10 +37,10 @@ Dostupnost telefonního čísla se v současné době omezuje na předplatná Az
 
 
 ## <a name="number-types-and-features"></a>Typy a funkce čísel
-Komunikační služby nabízí dva typy telefonních čísel: **místní** a **bez poplatků**. 
+Komunikační služby nabízí dva typy telefonních čísel: **místní** a **bez poplatků**.
 
 ### <a name="local-numbers"></a>Místní čísla
-Místní (geografické) čísla jsou telefonní čísla tvořená 10 číslicemi, která se skládají z kódů místních oblastí v USA. Například `+1 (206) XXX-XXXX` je místní číslo s kódem oblasti `206` . Tento kód oblasti je přiřazen města Seattle. Tato telefonní čísla obecně používají jednotlivci a místní firmy. Služba Azure Communication Services nabízí místní čísla v USA. Tato čísla lze použít k uskutečnění telefonních hovorů, ale ne k odesílání zpráv SMS. 
+Místní (geografické) čísla jsou telefonní čísla tvořená 10 číslicemi, která se skládají z kódů místních oblastí v USA. Například `+1 (206) XXX-XXXX` je místní číslo s kódem oblasti `206` . Tento kód oblasti je přiřazen města Seattle. Tato telefonní čísla obecně používají jednotlivci a místní firmy. Služba Azure Communication Services nabízí místní čísla v USA. Tato čísla lze použít k uskutečnění telefonních hovorů, ale ne k odesílání zpráv SMS.
 
 ### <a name="toll-free-numbers"></a>Bezplatné telefonní číslo
 Bezplatné telefonní číslo je 10 číslic telefonního čísla s jedinečnými kódy oblastí, které je možné volat z libovolného telefonního čísla zdarma. Například `+1 (800) XXX-XXXX` je číslo bezplatné linky v oblasti Severní Amerika. Tato telefonní čísla se obecně používají pro účely služeb zákazníkům. Služba Azure Communication Services nabízí bezplatné telefonní údaje ve Spojených státech. Tato čísla lze použít k umístění telefonních hovorů a k zasílání zpráv SMS. Čísla s bezplatnými čísly nemůžou používat lidé a dají se jim přiřadit jenom aplikace.
@@ -49,9 +49,9 @@ Bezplatné telefonní číslo je 10 číslic telefonního čísla s jedinečným
 
 Pokud bude vaše telefonní číslo používáno aplikací (například při volání nebo posílání zpráv jménem vaší služby), můžete vybrat číslo bezplatné linky nebo místní (geografické) číslo. Pokud vaše aplikace posílá zprávy SMS nebo volají volání, můžete vybrat bezplatné telefonní číslo.
 
-Pokud vaše telefonní číslo používá osoba (například uživatel vaší volající aplikace), musí se použít místní (geografické) telefonní číslo. 
+Pokud vaše telefonní číslo používá osoba (například uživatel vaší volající aplikace), musí se použít místní (geografické) telefonní číslo.
 
-Následující tabulka shrnuje tyto typy telefonních čísel: 
+Následující tabulka shrnuje tyto typy telefonních čísel:
 
 | Typ telefonního čísla | Příklad                              | Dostupnost země    | Možnost telefonního čísla |Běžný případ použití                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Následující tabulka shrnuje tyto typy telefonních čísel:
 | Toll-Free         | + 1 ( *kód* oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure 
+### <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -67,7 +67,7 @@ U většiny telefonních čísel vám umožníme nakonfigurovat sadu funkcí "a 
 
 Funkce, které jsou vám k dispozici, závisí na zemi, ve které pracujete, v případu použití a na typu telefonního čísla, který jste vybrali. Tyto funkce se v jednotlivých zemích liší podle zákonných požadavků. Služba Azure Communication Services nabízí následující funkce telefonního čísla:
 
-- **Jednosměrný odchozí SMS** Tato možnost umožňuje odesílat uživatelům zprávy SMS. To může být užitečné v případě oznámení a scénářů se dvěma faktory ověřování. 
+- **Jednosměrný odchozí SMS** Tato možnost umožňuje odesílat uživatelům zprávy SMS. To může být užitečné v případě oznámení a scénářů se dvěma faktory ověřování.
 - **Obousměrný příchozí a odchozí SMS** Tato možnost umožňuje odesílat a přijímat zprávy od uživatelů pomocí telefonních čísel. To může být užitečné ve scénářích služeb zákazníkům.
 - **Jednosměrné odchozí telefonní volání** Tato možnost umožňuje volat uživatele a nakonfigurovat ID volajícího pro odchozí volání, která jsou umístěna ve vaší službě. To může být užitečné ve scénářích služeb zákazníkům a hlasových oznámení.
 

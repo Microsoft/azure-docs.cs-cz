@@ -3,14 +3,14 @@ title: Správa předzálohovacích a pozálohovacích skriptů v nasazení Updat
 description: V tomto článku se dozvíte, jak nakonfigurovat a spravovat předzálohovací skripty a následné skripty pro nasazení aktualizací.
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701497"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485533"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -19,6 +19,8 @@ Předzálohovací a pozálohovací skripty jsou Runbooky, které se mají spusti
 ## <a name="pre-script-and-post-script-requirements"></a>Požadavky na předchozí skript a pozálohovací skript
 
 Aby se sada Runbook použila jako předzálohovací nebo pozálohovací skript, musíte ji naimportovat do svého účtu Automation a [sadu Runbook publikovat](../manage-runbooks.md#publish-a-runbook).
+
+V současné době jsou podporovány pouze Runbooky PowerShell a Python 2 jako skripty spouštěné před prodejem. Jiné typy runbooků, jako je Python 3, Graphics, PowerShell Workflow, grafický pracovní postup PowerShellu, se v tuto chvíli nepodporují jako předzálohovací skripty.
 
 ## <a name="pre-script-and-post-script-parameters"></a>Parametry před skriptem a po skriptu
 
@@ -91,9 +93,6 @@ V následujícím příkladu je řetězec formátu JSON předaný parametru **So
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext`Objekt může obsahovat duplicitní položky pro počítače. To může způsobit, že se ve stejném počítači několikrát spouští předběžné skripty a pozálohovací skripty. Pokud chcete toto chování obejít, použijte `Sort-Object -Unique` k výběru jenom jedinečných názvů virtuálních počítačů.
 
-> [!NOTE]
-> V současné době jsou podporovány pouze Runbooky PowerShellu jako předzálohovací skripty. Jiné typy runbooků, jako je Python, grafický, PowerShellový pracovní postup, se v tuto chvíli nepodporují jako předzálohovací skripty.
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Použití předzálohovacího skriptu nebo pozálohovacího skriptu v nasazení
 
 Pokud chcete použít předzálohovací skript nebo pozálohovací skript v nasazení aktualizace, začněte tím, že vytvoříte nasazení aktualizace. Vyberte **pre-Scripts + post-Scripts**. Tato akce otevře stránku **Vybrat před skripty a po skriptu** .
@@ -120,7 +119,7 @@ Když vyberete nasazení aktualizace, zobrazí se další podrobnosti o předbě
 
 ## <a name="stop-a-deployment"></a>Zastavení nasazení
 
-Pokud chcete zastavit nasazení na základě předzálohovacího skriptu, je nutné [vyvolat](../automation-runbook-execution.md#throw) výjimku. Pokud to neuděláte, nasazení a pozálohovací skript se pořád spustí. Následující fragment kódu ukazuje, jak vyvolat výjimku.
+Pokud chcete zastavit nasazení na základě předzálohovacího skriptu, je nutné [vyvolat](../automation-runbook-execution.md#throw) výjimku. Pokud to neuděláte, nasazení a pozálohovací skript se pořád spustí. Následující fragment kódu ukazuje, jak vyvolat výjimku pomocí PowerShellu.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+V Pythonu 2 je zpracování výjimek spravováno v bloku [Try](https://www.python-course.eu/exception_handling.php) .
 
 ## <a name="interact-with-machines"></a>Interakce s počítači
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+Pokud v Pythonu 2 Chcete při výskytu určité podmínky vyvolat chybu, použijte příkaz [vyvolat](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) .
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>ukázky

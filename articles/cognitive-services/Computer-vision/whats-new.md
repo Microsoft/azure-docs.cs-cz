@@ -10,16 +10,25 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738221"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487096"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
 Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Tuto stránku můžete označit tak, aby byla stále aktuální se službou.
+
+## <a name="march-2021"></a>Březen 2021
+
+### <a name="computer-vision-32-public-preview-update"></a>Aktualizace Počítačové zpracování obrazu 3,2 Public Preview
+
+Verze Public Preview pro rozhraní API pro počítačové zpracování obrazu v 3.2 byla aktualizována. Verze Preview obsahuje všechny funkce Počítačové zpracování obrazu společně s aktualizovanými rozhraními API pro čtení a analýzu.
+
+> [!div class="nextstepaction"]
+> [Viz Počítačové zpracování obrazu v 3.2 Public Preview 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -34,7 +43,7 @@ Počítačové zpracování obrazu Read API verze 3.2 Public Preview, který je 
 [Přečtěte si další informace](concept-recognizing-text.md) o rozhraní API pro čtení.
 
 > [!div class="nextstepaction"]
-> [Použijte rozhraní Read API v 3.2 Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+> [Použijte rozhraní Read API v 3.2 Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>Leden 2021

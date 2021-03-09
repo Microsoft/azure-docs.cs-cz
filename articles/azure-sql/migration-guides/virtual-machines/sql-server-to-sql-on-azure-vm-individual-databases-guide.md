@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797876"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488222"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Průvodce migrací: SQL Server SQL Server na virtuálních počítačích Azure 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Další nástroje pro zjišťování najdete v tématu [služby a nástroje](../
 
 
 ### <a name="assess"></a>Posouzení
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Po zjištění všech zdrojů dat použijte [Data Migration Assistant (DMA)](/sql/dma/dma-overview) k vyhodnocení místních instancí SQL Server migrace na instanci SQL Server na virtuálním počítači Azure, abyste pochopili mezery mezi zdrojovou a cílovou instancí. 
 
@@ -123,7 +125,7 @@ K provedení standardní migrace pomocí zálohování a obnovení použijte ná
 1. Pozastavte nebo zastavte všechny aplikace, které používají databáze určené k migraci. 
 1. Zajistěte, aby byly uživatelské databáze neaktivní pomocí [režimu Single User](/sql/relational-databases/databases/set-a-database-to-single-user-mode). 
 1. Proveďte úplnou zálohu databáze do místního umístění.
-1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/azure/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučeno zálohování > 2 TB).
+1. Zkopírujte místní záložní soubory do virtuálního počítače pomocí funkce Vzdálená plocha, [Azure Průzkumník dat](/azure/data-explorer/data-explorer-overview)nebo [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md) (doporučuje se > 2-TB zálohování).
 1. Obnovte úplné zálohy databáze na SQL Server na virtuálním počítači Azure.
 
 ### <a name="log-shipping--minimize-downtime"></a>Přesouvání protokolu (minimalizace výpadků)

@@ -1,25 +1,25 @@
 ---
 title: 'Kurz: ochrana nových prostředků pomocí zámků'
 description: V tomto kurzu použijete možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915403"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485737"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
-Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Azure Resource Manager (ARM Template).
+Pomocí [zámků prostředků](../concepts/resource-locking.md)Azure modrotisky můžete chránit nově nasazené prostředky proti poškození, a to i pomocí účtu s rolí _vlastníka_ . Tuto ochranu můžete přidat v definicích podrobného plánu prostředků vytvořených artefaktem šablony Azure Resource Manager (ARM Template). Zámek prostředků podrobného plánu se nastavuje během přiřazení podrobného plánu.
 
 V tomto kurzu provedete tyto kroky:
 
 > [!div class="checklist"]
 > - Vytvořit definici podrobného plánu
 > - Označení definice podrobného plánu jako **publikované**
-> - Přiřazení definice podrobného plánu k existujícímu předplatnému
+> - Přiřazení definice podrobného plánu k existujícímu předplatnému (**nastavení zámků prostředků**)
 > - Kontrola nové skupiny prostředků
 > - Zrušení přiřazení podrobného plánu k odebrání zámků
 
@@ -56,6 +56,9 @@ Nejprve vytvořte definici podrobného plánu.
    1. V položce **RGtoLock** vyberte řádek **Přidat artefakt** .
    1. V části **Typ artefaktu** vyberte **šablonu Azure Resource Manager** , nastavte **Zobrazovaný název artefaktu** na **StorageAccount** a nechejte **Popis** prázdný.
    1. Na kartě **Šablona** vložte do pole Editor následující šablonu ARM. Po vložení do šablony vyberte **Přidat** a přidejte artefakt do podrobného plánu.
+
+      > [!NOTE]
+      > Tento krok definuje prostředky, které mají být nasazeny, které jsou uzamčeny zámkem prostředků podrobného plánu, ale nezahrnují zámky prostředků podrobného plánu. Zámky prostředků podrobného plánu jsou nastaveny jako parametr přiřazení podrobného plánu.
 
    ```json
    {
@@ -143,6 +146,9 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      Vyberte režim zámku **podrobného** plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
+     > [!NOTE]
+     > Tento krok nakonfiguruje zámek prostředků podrobného plánu u nově nasazených prostředků.
+
    - **Spravovaná identita**
 
      Použijte výchozí možnost: **přiřazený systém**. Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
@@ -153,7 +159,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 

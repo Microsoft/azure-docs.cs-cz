@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370814"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487742"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -37,6 +37,21 @@ Pokud platnost vaší licence vyprší, proxy aplikace se automaticky zakáže. 
 Ujistěte se, že máte alespoň Azure AD Premium licenci P1 nebo P2 a že je nainstalovaný konektor Azure Proxy aplikací služby AD. Po úspěšné instalaci prvního konektoru se služba Azure Proxy aplikací služby AD povolí automaticky.
 
 ## <a name="connector-configuration"></a>Konfigurace konektoru
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Proč můj konektor stále používá starší verzi a neautomaticky upgradoval na nejnovější verzi?
+
+Důvodem může být to, že služba aktualizace nepracuje správně nebo pokud nejsou k dispozici žádné nové aktualizace, které by mohla služba nainstalovat.
+
+Služba aktualizace je v pořádku, pokud je spuštěná a v protokolu událostí nejsou zaznamenány žádné chyby (protokoly aplikací a služeb – > Microsoft-> AadApplicationProxy-> aktualizace – > správce). 
+
+> [!IMPORTANT]
+> Pro automatický upgrade jsou vydané jenom hlavní verze. Doporučujeme, abyste konektor aktualizovali ručně podle pravidelného plánu. Další informace o nových verzích, typu vydání (stažení, automatický upgrade), opravách chyb a nových funkcích najdete v tématu [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
+
+Postup ručního upgradu konektoru:
+
+-  Stáhněte si nejnovější verzi konektoru. (Najdete ho v části proxy aplikace na webu Azure Portal. Odkaz můžete najít také v [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
+-   Instalační program restartuje služby Azure Proxy aplikací služby AD Connectoru. V některých případech může být vyžadováno restartování serveru, pokud instalační program nemůže nahradit všechny soubory. Proto doporučujeme před zahájením upgradu zavřít všechny aplikace (tj. Prohlížeč událostí).
+-   Spusťte instalační program. Proces upgradu je rychlý a nevyžaduje zadání přihlašovacích údajů a konektor se znovu neregistruje.
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Můžou služby Application proxy Connector běžet v jiném uživatelském kontextu než výchozí?
 

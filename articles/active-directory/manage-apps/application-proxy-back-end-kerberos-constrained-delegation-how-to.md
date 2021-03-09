@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258214"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487946"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfiguracemi omezeného delegování Kerberos pro proxy aplikací
 
@@ -161,7 +161,7 @@ Pokud pořád nemůžete dělat svůj průběh, může vám pomoct podpora Micro
 ## <a name="other-scenarios"></a>Další scénáře
 
 - Azure Application proxy vyžaduje lístek Kerberos před odesláním žádosti do aplikace. Některé aplikace od jiných výrobců nezpůsobují tuto metodu ověřování. Tyto aplikace očekávají, že budou probíhat přísnější jednání. První požadavek je anonymní, což aplikaci umožňuje reagovat na typy ověřování, které podporuje přes 401. Tento typ vyjednávání Kerberos se dá povolit pomocí kroků popsaných v tomto dokumentu: [omezené delegování protokolu Kerberos pro jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md).
-- Ověřování s více segmenty se obvykle používá ve scénářích, kdy je aplikace vrstvena s back-end a front-end, kde obě vyžadují ověřování, například SQL Server Reporting Services. Pokud chcete nakonfigurovat scénář s více segmenty směrování, přečtěte si článek podpora [omezeného delegování protokolu Kerberos ve scénářích s více segmenty směrování může vyžadovat přechod protokolu](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- Ověřování s více segmenty se obvykle používá ve scénářích, kdy je aplikace vrstvena s back-end a front-end, kde obě vyžadují ověřování, například SQL Server Reporting Services. Další podrobnosti najdete v tématu [Konfigurace omezeného delegování protokolu Kerberos pro proxy stránky webového zápisu](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation).
 
 ## <a name="next-steps"></a>Další kroky
 

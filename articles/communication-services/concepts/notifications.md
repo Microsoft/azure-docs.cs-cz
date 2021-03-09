@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a5ad66cb401715790bcff8c773e6d7881b103d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660153"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487691"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Chat komunikačních služeb Azure a volání klientských knihoven vytvoří kanál pro zasílání zpráv v reálném čase, který umožňuje efektivní a spolehlivé doručování zpráv do připojených klientů. Díky tomu můžete do svých aplikací vytvořit bohatou funkci komunikace v reálném čase, aniž byste museli implementovat složitou logiku dotazování HTTP. V mobilních aplikacích ale tento kanál signalizace zůstane připojený jenom v případě, že je vaše aplikace aktivní v popředí. Pokud chcete, aby uživatelé přijímali příchozí hovory nebo zprávy chatu, když je vaše aplikace na pozadí, měli byste použít nabízená oznámení.
 

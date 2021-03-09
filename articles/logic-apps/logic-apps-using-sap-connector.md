@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454222"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489833"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -752,7 +752,7 @@ Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/vi
 
 Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-message-from-sap).
+1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, použijte k [nastavení aplikace logiky s triggerem SAP](#receive-message-from-sap)předchozí kroky v tomto tématu.
 
     > [!IMPORTANT]
     > V **ID programu** SAP se rozlišují malá a velká písmena. Při konfiguraci aplikace logiky a serveru SAP nezapomeňte konzistentně používat stejný formát případu pro vaše **ID programu** . V opačném případě se může při pokusu o odeslání IDoc do SAP zobrazit následující chyby v monitoru tRFC (T-Code SM58):
@@ -765,6 +765,14 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pom
    Například:
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. [Přidejte akci odpovědi do aplikace logiky](/azure/connectors/connectors-native-reqres#add-a-response-action) , abyste mohli okamžitě odpovědět na stav požadavku SAP. Je osvědčeným postupem přidat tuto akci hned po triggeru, abyste mohli komunikační kanál uvolnit se serverem SAP. Vyberte jeden z následujících stavových kódů ( `statusCode` ), který chcete použít v akci odpovědi:
+
+    * **202 přijato**, což znamená, že žádost byla přijata ke zpracování, ale zpracování ještě není dokončeno.
+
+    * **204 bez obsahu**, což znamená, že server úspěšně splnil požadavek a neexistuje žádný další obsah k odeslání v těle datové části odpovědi. 
+
+    * **200 OK**. Tento stavový kód vždy obsahuje datovou část, a to i v případě, že server vygeneruje tělo datové části s nulovou délkou. 
 
 1. Získejte kořenový obor názvů z XML IDoc, který vaše aplikace logiky obdrží od SAP. Chcete-li tento obor názvů extrahovat z dokumentu XML, přidejte krok, který vytvoří místní řetězcovou proměnnou a uloží tento obor názvů pomocí `xpath()` výrazu:
 

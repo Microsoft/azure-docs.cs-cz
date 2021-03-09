@@ -7,12 +7,12 @@ services: firewall
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 3914a82903c293cf1a8306b5ecc1f542fef83e72
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549645"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485516"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Certifikáty verze Preview Azure Firewall Premium 
 
@@ -90,6 +90,117 @@ Pokud chcete nakonfigurovat certifikát certifikační autority v zásadě brán
 > Pokud chcete zobrazit a nakonfigurovat certifikát z Azure Portal, musíte do zásady přístupu Key Vault přidat svůj uživatelský účet Azure. Poskytněte uživatelskému účtu oprávnění k **získání** a **zobrazení seznamu** pod **oprávněními tajného** kódu.
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Zásada přístupu Azure Key Vault":::
 
+
+## <a name="create-your-own-self-signed-ca-certificate"></a>Vytvoření vlastního certifikátu podepsaného svým držitelem
+
+Abyste mohli otestovat a ověřit kontrolu protokolu TLS, můžete k vytvoření vlastní kořenové certifikační autority podepsané svým držitelem a zprostředkující certifikační autority použít následující skripty.
+
+> [!IMPORTANT]
+> V produkčním prostředí byste měli vytvořit certifikát zprostředkující certifikační autority pomocí podnikové infrastruktury veřejných klíčů. Podniková infrastruktura veřejných klíčů využívá stávající infrastrukturu a zpracovává distribuci kořenové certifikační autority na všechny počítače koncového bodu.
+
+Existují dvě verze skriptu:
+- skript bash `cert.sh` 
+- PowerShellový skript `cert.ps1` 
+
+ Oba skripty také používají `openssl.cnf` konfigurační soubor. Chcete-li použít skripty, zkopírujte obsah `openssl.cnf` a `cert.sh` nebo `cert.ps1` do místního počítače.
+
+Skripty generují následující soubory:
+- rootCA. CRT/rootCA. Key – veřejný certifikát kořenové certifikační autority a privátní klíč.
+- interCA. CRT/interCA. Key – veřejný certifikát a privátní klíč certifikační autority
+- interCA. pfx – zprostředkující balíček PKCS12 certifikační autority, který bude používat brána firewall
+
+> [!IMPORTANT]
+> rootCA. Key by měl být uložený v zabezpečeném umístění offline. Skripty generují certifikát s platností 1024 dnů.
+
+Po vytvoření certifikátů je nasaďte do následujících umístění:
+- rootCA. CRT – nasazení na koncových počítačích (pouze veřejný certifikát).
+- interCA. pfx – import jako certifikát na Key Vault a přiřazení k zásadám brány firewall.
+
+### <a name="opensslcnf"></a>**OpenSSL. CNF**
+```
+[ req ]
+default_bits        = 4096
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha512
+
+[ req_distinguished_name ]
+countryName                     = Country Name (2 letter code)
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+emailAddress                    = Email Address
+
+[ rootCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ interCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true, pathlen:1
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ server_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:false
+keyUsage = critical, digitalSignature
+extendedKeyUsage = serverAuth
+```
+
+###  <a name="bash-script---certsh"></a>Skript bash – cert.sh 
+```bash
+#!/bin/bash
+
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 1024 -out rootCA.crt -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA" -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA"
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 1024 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password "pass:"
+
+echo ""
+echo "================"
+echo "Successfully generated root and intermediate CA certificates"
+echo "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+echo "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+echo "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+echo "================"
+```
+
+### <a name="powershell---certps1"></a>PowerShell – cert.ps1
+```powershell
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 3650 -out rootCA.crt -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA' -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA'
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 3650 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password 'pass:'
+
+Write-Host ""
+Write-Host "================"
+Write-Host "Successfully generated root and intermediate CA certificates"
+Write-Host "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+Write-Host "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+Write-Host "================"
+
+```
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

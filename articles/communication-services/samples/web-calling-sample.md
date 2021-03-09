@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658093"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486399"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
 
@@ -23,6 +23,9 @@ Ukázka webového volání je webová aplikace, která slouží jako podrobný n
 Tato ukázka byla sestavena pro vývojáře a usnadňuje vám práci s komunikačními službami. Jeho uživatelské rozhraní je rozdělené do několika oddílů, z nichž každý obsahuje tlačítko "Zobrazit kód", které umožňuje zkopírovat kód přímo z prohlížeče do vlastní aplikace komunikační služby.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Začínáme s ukázkou webového volání
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 > [!IMPORTANT]
 > [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)..

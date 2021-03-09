@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 752f38c0a44d40f2bf7e7b5961dca7743fbf4b76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215047"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488031"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -36,7 +36,7 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 * Pro vytvoření privátního koncového bodu v nástroji musíte mít existující virtuální síť. Před přidáním privátního koncového bodu musíte taky [zakázat zásady sítě pro privátní koncové body](../private-link/disable-private-endpoint-network-policy.md) .
 ## <a name="limitations"></a>Omezení
 
-* Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
+* Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není v oblastech Azure Government k dispozici.
 * Pokud povolíte veřejný přístup k pracovnímu prostoru zabezpečenému pomocí privátního propojení a použijete Azure Machine Learning studia přes veřejný Internet, některé funkce, jako je například Návrhář, nemusí mít přístup k vašim datům. K tomuto problému dochází, když jsou data uložená ve službě, která je zabezpečená za virtuální sítí. Například účet Azure Storage.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod

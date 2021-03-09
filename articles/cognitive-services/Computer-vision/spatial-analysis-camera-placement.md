@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185474"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487411"
 ---
 # <a name="camera-placement-guide"></a>Průvodce umístěním kamery
 
@@ -72,12 +72,12 @@ Pomocí následující tabulky můžete určit vzdálenost kamery od ohniskovéh
 
 | Výška kamery | Vzdálenost mezi fotoaparátem a ohniskem (min/max) |  
 | ------------- | ---------------------------------------- |  
-| 8            | 10 ' – 13 '                                  |  
-| 10pruhový           | 7 – 13                                   |  
-| 12,5           | 10 '-17 '                                  |  
-| čtrnáct           | 11 ' – 18 '                                  |  
-| 16bitovém           | 12 '-22 '                                  |  
-| 20o           | 15 – 30                                  |  
+| 8            | 4.6 "-8"                                  |  
+| 10pruhový           | 5,8 ' – 10 '                                 |  
+| 12,5           | 7 '-12 '                                   |  
+| čtrnáct           | 8 ' – 14 ' '                                  |  
+| 16bitovém           | 9.2 – 16                                 |  
+| 20o           | 11,5 "-20"                                |  
 
 Následující obrázek simuluje zobrazení kamery z nejbližších a nejvzdálenějších vzdáleností z kamery do ohniska.
 
@@ -91,15 +91,9 @@ V této části jsou popsány přijatelné rozsahy připojení úhlu kamery. Tyt
 
 ### <a name="line-configuration"></a>Konfigurace řádku
 
-V následující tabulce jsou uvedena doporučení pro kamery nakonfigurované pro operaci **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** . V případě detekce masky obličeje je hodnota +/-30 stupňů optimálním úhlem připojení kamery pro výškou kamery od 8 do 12.
+Pro **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** operace +/-5 ° je optimálním úhlem připevnění kamery, aby se maximalizovala přesnost.
 
-| Výška kamery | Vzdálenost mezi fotoaparátem a ohniskem | Optimální úhel připevnění kamery (min/max) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 8            | 9                             | +/-40 °                                     |  
-| 10pruhový           | 10pruhový                            | +/-30 °                                     |  
-| 12,5           | 13,5                            | +/-20 °                                     |  
-| 16bitovém           | let                            | +/-10 °                                     |  
-| 20o           | 22                            | +/-10 °                                     |  
+V případě detekce masky obličeje je hodnota +/-30 stupňů optimálním úhlem připojení kamery pro výškou kamery od 8 do 12.
 
 Následující obrázek simuluje zobrazení kamery pomocí doporučení levého úhlu (-) a pravého úhlu (+) pro použití **cognitiveservices Account. Vision. spatialanalysis-personcrossingline** k tomu, aby se vypočítána jako vchod do dvířek.
 

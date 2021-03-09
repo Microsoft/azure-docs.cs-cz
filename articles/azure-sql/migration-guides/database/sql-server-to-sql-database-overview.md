@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368043"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488269"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Přehled migrace: SQL Server pro SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -104,6 +104,7 @@ V následující tabulce jsou uvedené doporučené nástroje pro migraci:
 
 |Technologie | Popis|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Azure Migrate pro Azure SQL vám umožní zjišťovat a hodnotit vaše datové úložiště SQL ve velkém měřítku, pokud je na VMware, a poskytuje doporučení pro nasazení SQL Azure, cílovou velikost a měsíční odhady. | 
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Data Migration Assistant je desktopový nástroj, který poskytuje bezproblémový odhad SQL Server a migrace do Azure SQL Database (jak schéma, tak data). Nástroj se dá nainstalovat na místní server nebo do místního počítače, který má připojení ke svým zdrojovým databázím. Proces migrace je logický pohyb dat mezi objekty ve zdrojové a cílové databázi. </br> – Migrace samostatných databází (schématu i dat)|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|Služba Azure první strany, která může migrovat vaše databáze SQL Server, aby Azure SQL Database pomocí Azure Portal nebo automatizovaného prostředí PowerShell. Azure DMS vyžaduje, abyste při zřizování vybrali upřednostňovanou službu Azure Virtual Network (VNet), abyste měli jistotu, že máte připojení ke zdrojovým databázím SQL Server. </br> – Migrujte jednotlivé databáze nebo škálování. |
 | | |
@@ -194,7 +195,7 @@ Kromě pokročilých funkcí správy a zabezpečení SQL Database poskytuje sadu
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Description  |
+|Prostředek  |Popis  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých majetku poskytnutím automatizovaného a sjednoceného rozhodovacího procesu platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server nativního BulkLoad klienta, které funguje na všech verzích SQL Server, včetně Azure SQL Database.|

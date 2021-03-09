@@ -5,19 +5,19 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739432"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489629"
 ---
-# <a name="create-sas-tokens-for-document-translation"></a>Vytváření tokenů SAS pro překlad dokumentu
+# <a name="create-sas-tokens-for-document-translation-processing"></a>Vytváření tokenů SAS pro zpracování překladu dokumentu
 
 V tomto článku se dozvíte, jak vytvořit tokeny sdíleného přístupového podpisu (SAS) pomocí Průzkumník služby Azure Storage nebo Azure Portal. Token SAS poskytuje zabezpečený a delegovaný přístup k prostředkům ve vašem účtu úložiště Azure.
 
-## <a name="create-sas-tokens-with-azure-storage-explorer"></a>Vytváření tokenů SAS pomocí Průzkumník služby Azure Storage
+## <a name="create-your-sas-tokens-with-azure-storage-explorer"></a>Vytvoření tokenů SAS pomocí Průzkumník služby Azure Storage
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +65,7 @@ V tomto článku se dozvíte, jak vytvořit tokeny sdíleného přístupového p
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Vytváření tokenů SAS pro objekty BLOB v Azure Portal
 
 > [!NOTE]
-> Vytváření tokenů SAS pro kontejnery přímo v Azure Portal není aktuálně podporováno. Můžete ale vytvořit token SAS pomocí [**Průzkumník služby Azure Storage**](#create-sas-tokens-with-azure-storage-explorer) nebo dokončit úlohu [programově](../../../storage/blobs/sas-service-create.md).
+> Vytváření tokenů SAS pro kontejnery přímo v Azure Portal není aktuálně podporováno. Můžete ale vytvořit token SAS pomocí [**Průzkumník služby Azure Storage**](#create-your-sas-tokens-with-azure-storage-explorer) nebo dokončit úlohu [programově](../../../storage/blobs/sas-service-create.md).
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Požadavky
@@ -74,7 +74,7 @@ Abyste mohli začít, budete potřebovat:
 
 * Aktivní [**účet Azure**](https://azure.microsoft.com/free/cognitive-services/).  Pokud ho nemáte, můžete si [**vytvořit bezplatný účet**](https://azure.microsoft.com/free/).
 * Prostředek služby [**Translator**](https://ms.portal.azure.com/#create/Microsoft) **(nejedná se** o Cognitive Services prostředek s více službami.  *Viz* [Vytvoření nového prostředku Azure](../../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).  
-* [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Veškerý přístup k Azure Storage probíhá prostřednictvím účtu úložiště.
+* [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Vytvoříte kontejnery pro ukládání a uspořádání dat objektů BLOB v rámci svého účtu úložiště.
 
 ### <a name="create-your-tokens"></a>Vytvoření tokenů
 

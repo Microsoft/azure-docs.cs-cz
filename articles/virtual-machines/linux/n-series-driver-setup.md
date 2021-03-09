@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: 766f6cb0515f45fa11ee26ba23e79ae51fff5ce3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 333d4327e233d8101ece9f4272357a43cec47e56
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436086"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489816"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -45,7 +45,12 @@ Pak spusťte instalační příkazy specifické pro vaši distribuci.
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. Stáhněte si a nainstalujte ovladače CUDA z webu NVIDIA. Například pro Ubuntu 16,04 LTS:
+1. Stáhněte si a nainstalujte ovladače CUDA z webu NVIDIA. 
+    > [!NOTE]
+   >  Následující příklad ukazuje cestu k balíčku CUDA pro Ubuntu 16,04. Nahraďte cestu specifickou pro verzi, kterou plánujete použít. 
+   >  
+   >  Přejděte na stránku [stažení softwaru společnosti NVIDIA] ( https://developer.download.nvidia.com/compute/cuda/repos/) pro úplnou cestu specifickou pro každou verzi. 
+   > 
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
    wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
@@ -59,6 +64,7 @@ Pak spusťte instalační příkazy specifické pro vaši distribuci.
    ```
 
    Instalace může trvat několik minut.
+ 
 
 2. Pokud chcete volitelně nainstalovat úplnou CUDA sadu nástrojů, zadejte:
 

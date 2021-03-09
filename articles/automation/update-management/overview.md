@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 01/22/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587868"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485669"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -78,7 +78,7 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 |Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje posouzení a opravy pro tento operační systém. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) se podporuje pro Windows Server 2008 R2. |
 |CentOS 6 a 7 (x64)      | Agenti Linux vyžadují přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje `yum` , aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 a 7 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
-|SUSE Linux Enterprise Server 12 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací.        |
+|SUSE Linux Enterprise Server 12, 15 a 15,1 (x64)     | Agenti Linux vyžadují přístup k úložišti aktualizací. V případě SUSE 15. x se na počítači vyžaduje Python 3.      |
 |Ubuntu 14,04 LTS, 16,04 LTS a 18,04 LTS (x64)      |Agenti Linux vyžadují přístup k úložišti aktualizací.         |
 
 > [!NOTE]
@@ -167,11 +167,11 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br/><br/>Přímé připojení od agenta Operations Manager do Azure Monitor protokolů není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 

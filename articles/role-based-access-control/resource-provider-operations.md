@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718722"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487847"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -50,6 +50,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. storagesync](#microsoftstoragesync) |
 | [Microsoft. StorSimple](#microsoftstorsimple) |
 | **Web** |
+| [Microsoft. AppPlatform](#microsoftappplatform) |
 | [Microsoft. CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft. DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft. Maps](#microsoftmaps) |
@@ -2047,6 +2048,62 @@ Služba Azure: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Operations/Read | Zobrazí nebo získá operace. |
 
 ## <a name="web"></a>Web
+
+### <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+Služba Azure: [jarní cloud Azure](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. AppPlatform/Register/Action | Zaregistrujte předplatné do poskytovatele prostředků Microsoft. AppPlatform. |
+> | Microsoft. AppPlatform/zrušit registraci/akce | Zrušení registrace předplatného od poskytovatele prostředků Microsoft. AppPlatform |
+> | Microsoft. AppPlatform/Locations/checkNameAvailability/Action | Ověřit dostupnost názvu prostředku |
+> | Microsoft. AppPlatform/Locations/operationResults/jaře/Read | Výsledek operace čtení prostředku |
+> | Microsoft. AppPlatform/Locations/stav operationstatus/operationId/Read | Číst stav operace prostředku |
+> | Microsoft. AppPlatform/Operations/Read | Výpis dostupných operací Microsoft Azure jarního cloudu |
+> | Microsoft. AppPlatform/SKU/číst | Výpis dostupných SKU Microsoft Azure jarního cloudu |
+> | Microsoft. AppPlatform/jaře/Write | Vytvoření nebo aktualizace konkrétní instance služby jarní cloudová služba Azure |
+> | Microsoft. AppPlatform/jarní/DELETE | Odstranění konkrétní instance služby jarní cloudová služba Azure |
+> | Microsoft. AppPlatform/jarní/Read | Získat instance služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/jarní/enableTestEndpoint/Action | Povolení funkce testovacího koncového bodu pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/jarní/disableTestEndpoint/Action | Zakázat funkci testovacího koncového bodu pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/jarní/listTestKeys/Action | Vypíše zkušební klíče pro určitou instanci služby Azure jaře Cloud Service. |
+> | Microsoft. AppPlatform/jarní/regenerateTestKey/Action | Znovu vygenerovat klíč testu pro konkrétní instanci cloudové služby Azure jaře |
+> | Microsoft. AppPlatform/jaře/aplikace/Write | Vytvoření nebo aktualizace aplikace pro konkrétní instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/pružina/aplikace/odstranit | Odstranění aplikace pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/pružina/aplikace/číst | Získání aplikací pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/pružina/aplikace/getResourceUploadUrl/Action | Získat adresu URL pro odeslání prostředku konkrétní Microsoft Azureé jarní cloudové aplikace |
+> | Microsoft. AppPlatform/pružina/aplikace/validateDomain/Action | Ověření vlastní domény pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/vazby/zápis | Vytvoření nebo aktualizace vazby pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/vazby/odstranit | Odstranění vazby pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/vazby/číst | Získat vazby pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/zápis | Vytvořit nebo aktualizovat nasazení pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/odstranění | Odstranění nasazení pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/čtení | Získat nasazení pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/spuštění/akce | Spuštění nasazení pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/zastavení/akce | Zastavení nasazení konkrétní aplikace |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/restartování/akce | Restartování nasazení pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/getLogFileUrl/Action | Získat adresu URL souboru protokolu pro konkrétní Microsoft Azure nasazování cloudových aplikací |
+> | Microsoft. AppPlatform/pružina/aplikace/nasazení/SKU/čtení | Výpis dostupných SKU pro nasazení aplikace |
+> | Microsoft. AppPlatform/jaře/aplikace/domény/Write | Vytvoření nebo aktualizace vlastní domény pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/domény/odstranit | Odstranění vlastní domény pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/pružina/aplikace/domény/číst | Získání vlastních domén pro konkrétní aplikaci |
+> | Microsoft. AppPlatform/jarní/Certificates/Write | Vytvoření nebo aktualizace certifikátu pro konkrétní instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/pružina/certifikáty/odstranit | Odstranit certifikát pro určitou instanci cloudové služby Azure na jaře |
+> | Microsoft. AppPlatform/pružina/certifikáty/číst | Získat certifikáty pro určitou instanci cloudové služby Azure na jaře |
+> | Microsoft. AppPlatform/jarní/configServers/Read | Získání konfiguračního serveru pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/jarní/configServers/Write | Vytvoření nebo aktualizace konfiguračního serveru pro určitou instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/pružina/nasazení/číst | Získat nasazení pro určitou instanci služby jarní cloudovou službu Azure |
+> | Microsoft. AppPlatform/pružiny/detektory/číst | Získat detektory pro určitou instanci cloudové služby Azure na jaře |
+> | Microsoft. AppPlatform/jarní/monitoringSettings/Read | Získat nastavení monitorování pro určitou instanci služby jarní cloudovou službu Azure |
+> | Microsoft. AppPlatform/jarní/monitoringSettings/Write | Vytvořit nebo aktualizovat nastavení monitorování pro určitou instanci služby jarní cloudovou službu Azure |
+> | **Akce dataaction** | **Popis** |
+> | Microsoft. AppPlatform/jarní/soubor configservice/Read | Přečtěte si obsah konfigurace (například Application. yaml) pro konkrétní instanci služby Azure jaře Cloud Service. |
+> | Microsoft. AppPlatform/jarní/eurekaService/Read | Přečtěte si informace o registraci uživatelských aplikací pro určitou instanci služby jarní Cloud Service Azure. |
+> | Microsoft. AppPlatform/jarní/eurekaService/Write | Zápis registračních aplikací pro uživatele pro konkrétní instanci služby Azure jaře Cloud Service |
+> | Microsoft. AppPlatform/jarní/eurekaService/DELETE | Odstraní informace o registraci aplikace uživatele pro konkrétní instanci cloudové služby Azure jaře. |
+> | Microsoft. AppPlatform/jarní/logstreamService/Read | Přečtěte si protokol streamování uživatelské aplikace pro určitou instanci Azure jaře Cloud Service. |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -10443,7 +10500,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Ostatní
 
 ### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 

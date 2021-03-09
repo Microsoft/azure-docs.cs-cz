@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 3278c9956dd5017572f063059250c97727656923
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 44a838bdce4721d24bd0bdbb45ac7b36ceb34e71
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252368"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488365"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: nastavení jednotného přihlašování založeného na SAML (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)
 
@@ -39,7 +39,7 @@ K nastavení jednotného přihlašování pro aplikaci, kterou jste přidali do 
 
 ## <a name="enable-single-sign-on-for-an-app"></a>Povolení jednotného přihlašování pro aplikaci
 
-Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí stránka přehled. Pokud konfigurujete aplikaci, která již byla přidána, podívejte se do prvního rychlého startu. Provede vás zobrazením aplikací přidaných do tenanta. 
+Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí stránka přehled. Pokud konfigurujete aplikaci, která již byla přidána, podívejte se do prvního rychlého startu. Provede vás zobrazením aplikací přidaných do tenanta.
 
 Nastavení jednotného přihlašování pro aplikaci:
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d43eda404a5257c0ec28a884b6ebf182330ba51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690936"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488411"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Průvodce migrací: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,6 +58,8 @@ Případně můžete pomocí sady [nástrojů Microsoft Assessment and Plannin
 Další informace o nástrojích, které jsou k dispozici pro fázi zjišťování, najdete v tématu [služby a nástroje dostupné pro scénáře migrace dat](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Posouzení 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Po zjištění zdrojů dat vyhodnoťte všechny místní SQL Server databáze, které je možné migrovat do Azure SQL Database a Identifikujte tak blokování migrace nebo problémy s kompatibilitou. 
 
@@ -157,10 +159,10 @@ Pokud chcete urychlit migraci na Azure SQL Database, měli byste zvážit násle
 |  | Spory prostředků | Doporučení |
 |--|--|--|
 | **Zdroj (obvykle místní)** |Hlavním kritickým bodem během migrace ve zdroji jsou vstupně-výstupní operace s daty a latence v DATOVÉm souboru, který je potřeba monitorovat pečlivě.  |Na základě latence vstupně-výstupních operací a datových souborů a v závislosti na tom, jestli se jedná o virtuální počítač nebo fyzický server, budete muset zapojit Správce úložiště a prozkoumat možnosti, jak zmírnit kritické body. |
-|**Cíl (Azure SQL Database)**|Největší faktor omezení je míra generování protokolu a latence v souboru protokolu. V případě Azure SQL Database můžete získat maximálně 96 MB/s rychlost generování protokolu. | Pokud chcete zrychlit migraci, naplánujte cílovou databázi SQL tak, aby Pro důležité obchodní informace Gen5 8 Vcore, aby se získala maximální rychlost generování protokolu 96 MB/s, a taky pro soubor protokolu zajistěte nízkou latenci. Úroveň služby pro [škálování](../../database/service-tier-hyperscale.md) na úrovni služeb poskytuje rychlost protokolu 100 MB/s (bez ohledu na zvolenou úroveň služby). |
+|**Cíl (Azure SQL Database)**|Největší faktor omezení je míra generování protokolu a latence v souboru protokolu. V případě Azure SQL Database můžete získat maximálně 96 MB/s rychlost generování protokolu. | Pokud chcete zrychlit migraci, naplánujte cílovou databázi SQL tak, aby Pro důležité obchodní informace Gen5 8 vCore, aby se získala maximální rychlost generování protokolu 96 MB/s, a taky pro soubor protokolu zajistěte nízkou latenci. Úroveň služby pro [škálování](../../database/service-tier-hyperscale.md) na úrovni služeb poskytuje rychlost protokolu 100 MB/s bez ohledu na zvolenou úroveň služby. |
 |**Síť** |Požadovaná šířka pásma sítě je rovna maximální rychlosti ingestování protokolu 96 MB/s (768 MB/s). |V závislosti na připojení k síti z místního datového centra k Azure se podívejte na šířku pásma vaší sítě (obvykle [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)), která bude vyhovovat maximální rychlosti ingestování protokolů. |
 |**Virtuální počítač použitý pro Data Migration Assistant (DMA)** |CPU je primárním kritickým bodem pro virtuální počítač, na kterém běží DMA. |Věci, které je potřeba zvážit při urychlení migrace dat pomocí </br>– Virtuální počítače náročné na výpočetní výkon Azure </br>-Použít aspoň F8s_v2 (8 Vcore) virtuální počítač pro provoz DMA </br>– Ujistěte se, že je virtuální počítač spuštěný ve stejné oblasti Azure jako cíl. |
-|**Azure Database Migration Service (DMS)** |Spory výpočetních prostředků a databázové objekty, které je potřeba pro DMS |Použijte vCore úrovně Premium 4. DMS automaticky postará o databázové objekty, jako jsou cizí klíče, triggery, omezení a neclusterované indexy, a nepotřebuje žádný ruční zásah.  |
+|**Azure Database Migration Service (DMS)** |Spory výpočetních prostředků a databázové objekty, které je potřeba pro DMS |Použijte vCore úrovně Premium 4. DMS automaticky postará o databázové objekty, jako jsou cizí klíče, triggery, omezení a neclusterované indexy, a nepotřebuje ruční zásah.  |
 
 
 ## <a name="post-migration"></a>Po migraci

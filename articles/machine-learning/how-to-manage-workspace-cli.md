@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/30/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 8ea3f36d4e63b3439691772c25e7b3af77dcdb02
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210032"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489544"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -148,7 +148,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 ### <a name="virtual-network-and-private-endpoint"></a>Virtuální síť a soukromý koncový bod
 
 > [!IMPORTANT]
-> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
+> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není v oblastech Azure Government k dispozici.
 
 Pokud chcete omezit přístup k pracovnímu prostoru na virtuální síť, můžete použít následující parametry:
 

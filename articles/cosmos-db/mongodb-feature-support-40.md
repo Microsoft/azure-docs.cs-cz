@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 41293f96246dd4badab000c4e7f936d825e7665a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691123"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485397"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB (verze serveru 4,0): podporované funkce a syntaxe
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,6 +24,9 @@ Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody Mong
 ## <a name="protocol-support"></a>Podpora protokolů
 
 Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Jakýkoli ovladač klienta, který podporuje tyto protokoly, by se měl dokázat připojit k rozhraní API služby Azure Cosmos DB pro MongoDB. Při použití rozhraní API Azure Cosmos DB pro účty MongoDB má 3.6 + verze účtů ve formátu, `*.mongo.cosmos.azure.com` že verze 3,2 účtů má koncový bod ve formátu `*.documents.azure.com` .
+
+> [!NOTE]
+> Tento článek obsahuje jenom podporované příkazy serveru a nezahrnuje funkce obálky na straně klienta. Funkce obálky na straně klienta, například `deleteMany()` a `updateMany()` interně využívají `delete()` `update()` příkazy a serveru. Funkce, které využívají podporované příkazy serveru, jsou kompatibilní s rozhraním API Azure Cosmos DB pro MongoDB.
 
 ## <a name="query-language-support"></a>Podpora jazyka dotazů
 

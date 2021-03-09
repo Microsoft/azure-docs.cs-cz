@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871091"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487980"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
@@ -52,7 +52,7 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
     > [!NOTE]
     > Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
     
-### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Tyto plně kvalifikované názvy domén se používají ve všech ostatních oblastech.
+### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Tyto plně kvalifikované názvy domén se používají ve všech ostatních veřejných oblastech.
 Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) používané vaším pracovním prostorem:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
@@ -63,6 +63,17 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
     > [!NOTE]
     > Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
 
+### <a name="azure-china-21vianet-regions"></a>Oblasti Azure Čína 21Vianet
+
+Následující plně kvalifikované názvy domén jsou pro oblasti Azure Čína 21Vianet:
+
+* `<workspace-GUID>.workspace.<region>.cert.api.ml.azure.cn`
+* `<workspace-GUID>.workspace.<region>.api.ml.azure.cn`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
+
+    > [!NOTE]
+    > Název pracovního prostoru pro tento plně kvalifikovaný název domény může být zkrácený. Zkrácení se zkrátí, aby byl plně kvalifikovaný název domény menší nebo roven 63 znaků.
+* `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>Najít IP adresy
 
 Pokud chcete najít interní IP adresy pro plně kvalifikované názvy domén ve virtuální síti, použijte jednu z následujících metod:
@@ -94,7 +105,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ---
 
-Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného názvu domény a privátní IP adresy pro prostředky.
+Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného názvu domény a privátní IP adresy pro prostředky. Následující příklad pochází z globální oblasti Azure:
 
 | FQDN | IP adresa |
 | ----- | ----- |
@@ -112,6 +123,12 @@ Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného 
 >
 > Pro všechny tyto IP adresy použijte stejnou adresu jako u `*.api.azureml.ms` položek vrácených z předchozích kroků.
 
+Následující tabulka ukazuje příklad IP adres z oblastí Azure Čína 21Vianet:
+
+| FQDN | IP adresa |
+| ----- | ----- |
+| `52882c08-ead2-44aa-af65-08a75cf094bd.workspace.chinaeast2.api.ml.azure.cn` | `10.1.0.5` |
+| `ml-mype-pltest-chinaeast2-52882c08-ead2-44aa-af65-08a75cf094bd.notebooks.chinacloudapi.cn` | `10.1.0.6` |
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o použití Azure Machine Learning s virtuální sítí najdete v tématu [Přehled virtuální sítě](how-to-network-security-overview.md).

@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659252"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487372"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Požadavky na infrastrukturu rozhraní SIP 
 
@@ -158,12 +158,12 @@ Rozsah portů mediálních procesorů je uveden v následující tabulce:
 
 ## <a name="media-traffic-media-processors-geography"></a>Multimediální provoz: geografické procesory
 
-Přenos multimédií se zaznamená prostřednictvím komponent nazývaných multimediální procesory. Multimediální procesory se umístí do stejných datových center jako proxy SIP. Existují taky další multimediální procesory, které optimalizují Media Flow. Například nemusíte mít komponentu proxy SIP v Austrálii (toky SIP přes Singapur nebo Hongkong), ale v Austrálii máme místně i procesor médií. Nutnost místních procesorů médií je vyřízena latencí, které se používá při posílání provozu na dálku, například z Austrálie do Singapuru nebo Hongkong. I když je latence v příkladu přenosu dat z Austrálie do Hongkongu nebo Singapuru přijatelná, aby se zajistila dobrá kvalita volání pro přenosy SIP, a to v reálném čase, jako u datových médií v reálném čase.
+Přenos multimédií se zaznamená prostřednictvím komponent nazývaných multimediální procesory. Multimediální procesory se umístí do stejných datových center jako proxy SIP. Existují taky další multimediální procesory, které optimalizují Media Flow. Například nemusíte mít komponentu proxy SIP v Austrálii (toky SIP přes Singapuru nebo Hongkong), ale v Austrálii máme místně i procesor médií. Nutnost místních procesorů v místním prostředí je vyřízena latencí, které se používá při posílání provozu na dálku, například z Austrálie do Singapuru nebo Hongkong. I když latence v příkladech přenosu dat z Austrálie do Hongkong – zvláštní správní oblast nebo Singapur, je přijatelná, aby se zajistila dobrá kvalita volání pro přenosy SIP, a to v reálném čase pro provoz médií.
 
 Umístění, kde jsou nasazené součásti proxy SIP a multimediálního procesoru:
 - US (2 v datových centrech USA – západ a USA – východ)
 - Evropa (Amsterdam a datacentra Dublin)
-- Asie (Singapur a Hongkong – zvláštní datacentra)
+- Asie (Singapur a Hongkong – zvláštní datacentra pro správní oblast)
 - Austrálie (datacentra AU a jihovýchod)
 
 Umístění, ve kterých jsou nasazeny pouze procesory médií (v rámci nejbližšího datového centra je to přes protokol SIP):
