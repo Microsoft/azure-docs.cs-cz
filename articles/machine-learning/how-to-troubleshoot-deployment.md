@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 1a7116f0edbed8270a3345bc924bf50872615b04
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217155"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518259"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Řešení potíží s nasazením vzdáleného modelu 
 
@@ -32,7 +32,7 @@ Přečtěte si, jak řešit a řešit běžné chyby, ke kterým může dojít p
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure** Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
-* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
@@ -99,7 +99,7 @@ Použijte informace v článku [Kontrola protokolu Docker](how-to-troubleshoot-d
 
 ## <a name="function-fails-get_model_path"></a>Funkce se nezdařila: get_model_path ()
 
-Často `init()` je ve funkci skriptu bodování volána funkce [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud se soubor modelu nebo složka modelů nenajde, funkce selže. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
+Často `init()` je ve funkci skriptu bodování volána funkce [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud se soubor modelu nebo složka modelů nenajde, funkce selže. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
 
 ```python
 from azureml.core.model import Model
@@ -177,7 +177,7 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     > [!NOTE]
     > Pokud obdržíte špičky žádostí větší, než jsou nové minimální repliky schopné zpracovat, můžete se 503s znovu dostat. Například při zvyšování provozu na službu možná budete muset zvětšit minimální repliky.
 
-Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_replicas` a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) .
+Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_replicas` a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) .
 
 ## <a name="http-status-code-504"></a>Stavový kód HTTP 504
 

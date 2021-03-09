@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318930"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520893"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Použití privátních balíčků Pythonu s Azure Machine Learning
 
@@ -29,14 +29,14 @@ Doporučený postup závisí na tom, jestli máte několik balíčků pro jeden 
 
 Soukromé balíčky se používají přes třídu [prostředí](/python/api/azureml-core/azureml.core.environment.environment) . V rámci prostředí deklarujete, které balíčky python se mají použít, včetně soukromých. Další informace o prostředí v Azure Machine Learning všeobecně najdete v tématu [Jak používat prostředí](how-to-use-environments.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
- * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+ * [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install)
  * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Použití malého počtu balíčků pro vývoj a testování
 
-Pro malý počet privátních balíčků pro jeden pracovní prostor použijte statickou [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) metodu. Tento přístup umožňuje rychle přidat do pracovního prostoru soukromý balíček a je vhodný pro účely vývoje a testování.
+Pro malý počet privátních balíčků pro jeden pracovní prostor použijte statickou [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment#add-private-pip-wheel-workspace--file-path--exist-ok-false-) metodu. Tento přístup umožňuje rychle přidat do pracovního prostoru soukromý balíček a je vhodný pro účely vývoje a testování.
 
 Nastavte argument cesta k souboru na místní soubor kolečka a spusťte ```add_private_pip_wheel``` příkaz. Příkaz vrátí adresu URL používanou ke sledování umístění balíčku v pracovním prostoru. Zaznamenejte si adresu URL úložiště a předejte ji `add_pip_package()` metodě.
 
@@ -58,7 +58,7 @@ Tento přístup používá k ověření v úložišti token Personal Access. Ste
 
  1. Pro instanci Azure DevOps [Vytvořte osobní přístupový token (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) . Nastavte rozsah tokenu pro __sbalení > číst__. 
 
- 2. Pomocí metody [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) přidejte do vlastností pracovního prostoru adresu URL Azure DEVOPS a Pat.
+ 2. Pomocí metody [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) přidejte do vlastností pracovního prostoru adresu URL Azure DEVOPS a Pat.
 
      ```python
     from azureml.core import Workspace

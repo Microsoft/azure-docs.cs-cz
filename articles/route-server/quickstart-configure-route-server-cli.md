@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef41c52fa1b63094d952dc34f81db36f7aeaac95
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695239"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521284"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure CLI 
 
@@ -56,8 +56,8 @@ az account set --subscription "<subscription ID>"
 Než budete moct vytvořit směrovací server Azure, budete k hostování nasazení potřebovat virtuální síť. Pomocí příkazu níže vytvořte skupinu prostředků a virtuální síť. Pokud již máte virtuální síť, můžete přejít k další části.
 
 ```azurecli-interactive
-az group create -n “RouteServerRG” -l “westus” 
-az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --address-prefix “10.0.0.0/16” 
+az group create -n "RouteServerRG" -l "westus" 
+az network vnet create -g "RouteServerRG" -n "myVirtualNetwork" --address-prefix "10.0.0.0/16" 
 ``` 
 
 ### <a name="add-a-subnet"></a>Přidání podsítě 
@@ -65,13 +65,13 @@ az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --addres
 1. Přidejte podsíť s názvem *RouteServerSubnet* , do které se nasadí Server směrování Azure. Tato podsíť je vyhrazená podsíť jenom pro server Azure Route. RouteServerSubnet musí být/27 nebo kratší předpona (například/26,/25) nebo se vám při přidávání serveru tras Azure zobrazí chybová zpráva.
 
     ```azurecli-interactive 
-    az network vnet subnet create -g “RouteServerRG” --vnet-name “myVirtualNetwork” --name “RouteServerSubnet” --address-prefix “10.0.0.0/24”  
+    az network vnet subnet create -g "RouteServerRG" --vnet-name "myVirtualNetwork" --name "RouteServerSubnet" --address-prefix "10.0.0.0/24"  
     ``` 
 
 1. Získejte ID RouteServerSubnet. Chcete-li zobrazit ID prostředku všech podsítí ve virtuální síti, použijte tento příkaz: 
 
     ```azurecli-interactive 
-    subnet_id = $(az network vnet subnet show -n “RouteServerSubnet” --vnet-name “myVirtualNetwork” -g “RouteServerRG” --query id -o tsv) 
+    subnet_id = $(az network vnet subnet show -n "RouteServerSubnet" --vnet-name "myVirtualNetwork" -g "RouteServerRG" --query id -o tsv) 
     ``` 
 
 ID RouteServerSubnet vypadá takto: 
@@ -83,7 +83,7 @@ ID RouteServerSubnet vypadá takto:
 Vytvoření směrovacího serveru pomocí tohoto příkazu: 
 
 ```azurecli-interactive
-az network routeserver create -n “myRouteServer” -g “RouteServerRG” --hosted-subnet $subnet_id  
+az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-subnet $subnet_id  
 ``` 
 
 Umístění musí odpovídat umístění vaší virtuální sítě. HostedSubnet je ID RouteServerSubnet, které jste získali v předchozí části. 
@@ -94,7 +94,7 @@ K navázání partnerského vztahu ze serveru tras na síťové virtuální zař
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA1_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +104,7 @@ K nastavení partnerského vztahu s různými síťové virtuální zařízení 
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA2_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Dokončete konfiguraci na síťové virtuální zařízení 
@@ -112,7 +112,7 @@ az network routeserver peering create --routeserver-name “myRouteServer” -g 
 K dokončení konfigurace síťové virtuální zařízení a povolení relací protokolu BGP budete potřebovat IP adresu a ASN serveru tras Azure. Tyto informace můžete získat pomocí tohoto příkazu: 
 
 ```azurecli-interactive 
-az network routeserver show -g “RouteServerRG” -n “myRouteServer” 
+az network routeserver show -g "RouteServerRG" -n "myRouteServer" 
 ``` 
 
 Výstup obsahuje následující informace. 
@@ -143,14 +143,14 @@ Pokud máte bránu ExpressRoute a bránu Azure VPN ve stejné virtuální síti 
 1. Pokud chcete povolit výměnu tras mezi serverem směrování Azure a branami, použijte tento příkaz:
 
 ```azurecli-interactive 
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic true 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic true 
 
 ``` 
 
 2. Pokud chcete zakázat výměnu tras mezi serverem směrování Azure a branami, použijte tento příkaz:
 
 ```azurecli-interactive
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic false 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
 ``` 
 
 ## <a name="troubleshooting"></a>Řešení potíží 
@@ -169,13 +169,13 @@ Pokud už nepotřebujete Server tras Azure, pomocí těchto příkazů odeberte 
 1. Pomocí tohoto příkazu odeberte vytvoření partnerského vztahu protokolu BGP mezi serverem Azure Route Server a síťové virtuální zařízení:
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name “myRouteServer” -g “RouteServerRG” -n “NVA2_name” 
+az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. Odeberte server služby Azure Route pomocí tohoto příkazu: 
 
 ```azurecli-interactive 
-az network routeserver delete -n “myRouteServer” -g “RouteServerRG” 
+az network routeserver delete -n "myRouteServer" -g "RouteServerRG" 
 ``` 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,16 +8,16 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805525"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517867"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Řešení potíží s synchronizací cloudu
 
-Cloudová synchronizace se dotýká mnoha různých věcí a má mnoho různých závislostí. Tento rozsáhlý rozsah může vést k různým problémům. Tento článek vám pomůže vyřešit tyto problémy. Zavádí typické oblasti, na které se můžete soustředit, jak získat další informace a různé techniky, které můžete použít ke sledování problémů.
+Synchronizace cloudu se dotýká celé řady různých věcí a má celou řadu různých závislostí. Tento široký rozsah může vést k různým problémům. Tento článek vám pomůže vyřešit tyto problémy. Toto téma představuje obvyklé oblasti, na které byste se měli zaměřit, postup shromáždění dalších informací a různé techniky, které můžete využít k odhalování problémů.
 
 
 ## <a name="common-troubleshooting-areas"></a>Běžné oblasti odstraňování potíží
@@ -120,7 +120,7 @@ Při instalaci agenta zřizování cloudu se může zobrazit chybová zpráva.
 
 K tomuto problému obvykle dochází v důsledku toho, že agent nedokáže spustit registrační skripty PowerShellu kvůli zásadám spouštění v prostředí PowerShell.
 
-Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
 
 ### <a name="log-files"></a>Soubory protokolu
 

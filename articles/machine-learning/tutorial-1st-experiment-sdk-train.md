@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bee2b31f215758bf5cf73ff5393058fb915cdf25
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369049"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522338"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning poskytuje koncept [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) , které představuje reprodukovatelné prostředí Pythonu ve verzi pro spouštění experimentů. Je snadné vytvořit prostředí z místního prostředí conda nebo PIP.
+      Azure Machine Learning poskytuje koncept [prostředí](/python/api/azureml-core/azureml.core.environment.environment) , které představuje reprodukovatelné prostředí Pythonu ve verzi pro spouštění experimentů. Je snadné vytvořit prostředí z místního prostředí conda nebo PIP.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -140,7 +140,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Přidá prostředí do [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+      Přidá prostředí do [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
    :::column-end:::
 :::row-end:::
 
@@ -262,7 +262,7 @@ Tentokrát, když navštívíte Studio, přejděte na kartu **metriky** , kde se
 
 V této relaci jste upgradovali ze základního "Hello World!" skript do realističtějšího školicího skriptu, který vyžadoval spuštění konkrétního prostředí Pythonu. Zjistili jste, jak převzít místní prostředí conda do cloudu pomocí Azure Machine Learningch prostředí. Nakonec jste viděli, jak v několika řádcích kódu můžete protokolovat metriky pro Azure Machine Learning.
 
-Existují i jiné způsoby vytváření Azure Machine Learning prostředí, včetně souboru [pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-) nebo [ze stávajícího místního prostředí conda](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-).
+Existují i jiné způsoby vytváření Azure Machine Learning prostředí, včetně souboru [pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) nebo [ze stávajícího místního prostředí conda](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-).
 
 V další relaci uvidíte, jak pracovat s daty v Azure Machine Learning nahráním datové sady CIFAR10 do Azure.
 

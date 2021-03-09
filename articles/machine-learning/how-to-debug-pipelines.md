@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131810"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522083"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Řešení potíží s kanály strojového učení
 
-V tomto článku se dozvíte, jak řešit chyby při spuštění [kanálu strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) a v [Návrháři Azure Machine Learning](./concept-designer.md). 
+V tomto článku se dozvíte, jak řešit chyby při spuštění [kanálu strojového učení](concept-ml-pipelines.md) v sadě [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) a v [Návrháři Azure Machine Learning](./concept-designer.md). 
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
@@ -192,7 +192,7 @@ Následující tabulka poskytuje informace o různých možnostech ladění pro 
 
 | Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje informací                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md)<br>[AzureML. Core. Run – třída](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md)<br>[AzureML. Core. Run – třída](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Tisk/protokolování v Pythonu    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md)<br><br>[Protokolování Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Protokol    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – trasování                | [Ladění kanálů ve službě Application Insights](./how-to-log-pipelines-application-insights.md)<br><br>[Nástroje pro export OpenCensus pro Azure Monitor](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Kuchařka protokolování Pythonu](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu
 1. V pravém podokně modulu otevřete kartu  **výstupy + protokoly** .
 1. Rozbalte pravé podokno a vyberte **70_driver_log.txt** pro zobrazení souboru v prohlížeči. Protokoly také můžete stahovat místně.
 
-    ![Rozšířené podokno výstup v Návrháři](./media/how-to-debug-pipelines/designer-logs.png)? zobrazení = Azure-ml-py&Preserve-View = true)? zobrazení = Azure-ml-py&Preserve-View = true)
+    ![Rozšířené podokno výstup v Návrháři](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>Získání protokolů z spuštění kanálu
 
@@ -274,6 +274,6 @@ V některých případech možná budete muset interaktivně ladit kód Pythonu,
 
 * Úplný příklad automatizovaného strojového učení v kanálech ML najdete v tématu [Použití automatizovaného ml v kanálu Azure Machine Learning v Pythonu](how-to-use-automlstep-in-pipelines.md).
 
-* Nápovědu k balíčku [AzureML-Pipelines-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) a balíčku [AzureML-Pipelines-Steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) najdete v referenčních informacích k sadě SDK.
+* Nápovědu k balíčku [AzureML-Pipelines-Core](/python/api/azureml-pipeline-core/) a balíčku [AzureML-Pipelines-Steps](/python/api/azureml-pipeline-steps/) najdete v referenčních informacích k sadě SDK.
 
 * Podívejte se na seznam [výjimek návrháře a kódů chyb](algorithm-module-reference/designer-error-codes.md).

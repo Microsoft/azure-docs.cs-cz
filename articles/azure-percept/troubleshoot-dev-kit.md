@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c8027b62c0c463e134817f589ba3e1957cea5b39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679276"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521522"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Řešení potíží s Azure Percept DK (dev Kit)
 
@@ -95,7 +95,7 @@ Existují tři malé indikátory LED na nosných deskách. Ikona cloudu se tiskn
 |POD             |State      |Popis                      |
 |----------------|-----------|---------------------------------|
 |LED 1 (IoT Hub) |Zapnuto (Solid) |Zařízení je připojené k IoT Hub. |
-|Indikátor LED 2 (Wi-Fi)   |Pomalé blikání |Probíhá ověřování zařízení. |
+|Indikátor LED 2 (Wi-Fi)   |Pomalé blikání |Zařízení je připravené k nakonfigurování Wi-Fi snadné připojení a oznamuje jeho přítomnost do konfigurátoru. |
 |Indikátor LED 2 (Wi-Fi)   |Rychlé blikání |Ověřování bylo úspěšné, probíhá přidružení zařízení. |
 |Indikátor LED 2 (Wi-Fi)   |Zapnuto (Solid) |Ověřování a přidružení byly úspěšné. zařízení je připojené k síti Wi-Fi. |
 |INDIKÁTOR LED 3           |NA         |Indikátor LED se nepoužívá. |

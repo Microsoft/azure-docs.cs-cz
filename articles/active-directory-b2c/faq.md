@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498825"
+ms.locfileid: "102517986"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -145,13 +145,13 @@ Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo 
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Odstraní všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
+1. Odstraňte všechny **zprostředkovatele identity** ve vašem tenantovi Azure AD B2C.
 1. Vyberte **Registrace aplikací** a pak vyberte kartu **všechny aplikace** .
 1. Odstraňte všechny aplikace, které jste zaregistrovali.
 1. Odstraňte **B2C-Extensions-App**.
 1. V části **Spravovat** vyberte **Uživatelé**.
 1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
-1. V části **Spravovat** vyberte **uživatelská nastavení**.
 1. V části **Spravovat** vyberte **vlastnosti** .
 1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.

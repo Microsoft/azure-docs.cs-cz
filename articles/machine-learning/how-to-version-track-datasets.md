@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880063"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520536"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Verze a sledování Azure Machine Learning datových sad
 
@@ -31,7 +31,7 @@ Typické scénáře správy verzí:
 
 Pro tento kurz potřebujete:
 
-- [Sada Azure Machine Learning SDK pro Python je nainstalována](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Tato sada SDK obsahuje balíček [AzureML-DataSets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) .
+- [Sada Azure Machine Learning SDK pro Python je nainstalována](/python/api/overview/azure/ml/install). Tato sada SDK obsahuje balíček [AzureML-DataSets](/python/api/azureml-core/azureml.core.dataset) .
     
 - [Pracovní prostor Azure Machine Learning](concept-workspace.md). Načtěte existující kód spuštěním následujícího kódu nebo [vytvořte nový pracovní prostor](how-to-manage-workspace.md).
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
 
-Ve výchozím nastavení metoda [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
+Ve výchozím nastavení metoda [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
 
 Následující kód Získá verzi 1 `titanic_ds` datové sady.
 
@@ -182,7 +182,7 @@ Následují scénáře, kdy jsou vaše data sledována jako **výstupní datová
 
 Pro každý Machine Learning experiment můžete snadno trasovat datové sady používané jako vstup s `Run` objektem experiment.
 
-Následující kód používá [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
+Následující kód používá [`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
 
 ```Python
 # get input datasets

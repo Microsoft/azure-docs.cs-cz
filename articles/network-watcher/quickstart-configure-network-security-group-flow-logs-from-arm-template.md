@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019716"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521862"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Rychlý Start: Konfigurace protokolů toku skupiny zabezpečení sítě pomocí šablony ARM
 
@@ -82,7 +82,7 @@ Následující kód ukazuje objekt log Flow NSG a jeho parametry. Chcete-li vytv
 
 Pokud používáte šablony ARM poprvé, přečtěte si další informace o šablonách ARM v následujících článcích:
 
-- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [Nasazení prostředků pomocí šablon ARM a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Následující příklad je kompletní šablona. Je to také nejjednodušší verze šablony. Příklad obsahuje minimální parametry, které jsou předány k nastavení protokolů toku NSG. Další příklady najdete v článku Přehled [Konfigurace protokolů toku NSG ze šablony Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md).
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 Máte dvě možnosti, jak zjistit, zda bylo nasazení úspěšné:
 
 - Konzola PowerShellu `ProvisioningState` se zobrazí jako `Succeeded` .
-- Pro potvrzení změn navštivte [stránku portálu NSG Flow log](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) . 
+- Pro potvrzení změn navštivte [stránku portálu NSG Flow log](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) .
 
 Pokud došlo k problémům s nasazením, přečtěte si téma [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 

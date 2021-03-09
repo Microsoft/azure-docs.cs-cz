@@ -2,19 +2,19 @@
 title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741119"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521692"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
-Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure s Azure Resource Manager šablon (šablon ARM) nebo souboru bicep nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md) nebo [bicep Overview](bicep-overview.md).
+Tento článek vysvětluje, jak pomocí rozhraní příkazového řádku Azure s Azure Resource Manager šablon (šablon ARM) nebo souborů bicep nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md) nebo [bicep Overview](bicep-overview.md).
 
-Příkazy nasazení změněné v Azure CLI verze 2.2.0. Příklady v tomto článku vyžadují Azure CLI verze 2.2.0 nebo novější.
+Příkazy nasazení změněné v Azure CLI verze 2.2.0. Příklady v tomto článku vyžadují Azure CLI verze 2.2.0 nebo novější. K nasazení souborů bicep potřebujete [Azure CLI verze 2.20.0 nebo novější](/cli/azure/install-azure-cli).
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -85,7 +85,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 ## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
 
 > [!NOTE]
-> V současné době Azure CLI nepodporuje nasazování odebrání souborů bicep.
+> V současné době Azure CLI nepodporuje nasazování vzdálených souborů bicep. K nasazení vzdáleného souboru bicep použijte příkaz CLI bicep pro zkompilování souboru bicep do šablony JSON jako první.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
 
@@ -148,7 +148,7 @@ Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v histor
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
 > [!NOTE]
-> V současné době Azure CLI nepodporuje vytváření specifikací šablon poskytnutím souborů bicep. Můžete však vytvořit šablonu ARM nebo soubor bicep pomocí prostředku [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) pro nasazení specifikace šablony. Tady je [příklad](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+> V současné době Azure CLI nepodporuje vytváření specifikací šablon poskytnutím souborů bicep. Můžete však vytvořit soubor bicep pomocí prostředku [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) pro nasazení specifikace šablony. Tady je [příklad](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 
 Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 

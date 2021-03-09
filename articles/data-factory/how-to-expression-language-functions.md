@@ -1,18 +1,18 @@
 ---
 title: Použití parametrů a výrazů v Azure Data Factory
 description: V tomto článku najdete informace o výrazech a funkcích, které můžete použít při vytváření entit Data Factory.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 9cf37d554081ddd300a3ea4c16e2f167c5b98895
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/08/2020
+ms.openlocfilehash: 4aa8a0790e7f5812e8c6a70eab1718f92a5e00d0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510449"
+ms.locfileid: "102520298"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Jak používat parametry, výrazy a funkce v Azure Data Factory
 
@@ -21,7 +21,11 @@ ms.locfileid: "102510449"
 > * [Aktuální verze](how-to-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V tomto článku se primárně zaměřujeme na koncepce učení s příklady a kurzy, které vám pomohou při zkoumání možností vytváření parametrizovaných datových kanálů v rámci Azure Data Factory. Parametrizace a dynamické výrazy jsou takové významné přídavky na ADF, protože můžou ušetřit obrovské množství času a umožňovat mnohem flexibilnější extrakci, transformaci, načítání (ETL) nebo extrakci, načítání, transformaci (ELT), což výrazně sníží náklady na údržbu řešení a urychlí implementaci nových funkcí do stávajících kanálů. Tyto zisky jsou způsobeny tím, že Parametrizace minimalizuje množství pevného kódu a zvyšuje počet opakovaně použitelných objektů a procesů v řešení.
+V tomto dokumentu se primárně zaměřujeme na základní koncepty učení s různými příklady, které vám pomohou při vytváření parametrizovaných datových kanálů v rámci Azure Data Factory. Parametrizace a dynamické výrazy jsou takové významné přídavky na ADF, protože můžou ušetřit obrovské množství času a umožňují mnohem flexibilnější extrakci, transformaci, načítání (ETL) nebo extrakci, načítání, transformaci (ELT), což výrazně sníží náklady na údržbu řešení a urychlí implementaci nových funkcí do stávajících kanálů. Tyto zisky jsou způsobeny tím, že Parametrizace minimalizuje množství pevného kódu a zvyšuje počet opakovaně použitelných objektů a procesů v řešení.
+
+## <a name="azure-data-factory-ui-and-parameters"></a>Uživatelské rozhraní a parametry Azure Data Factory
+
+Pokud v uživatelském rozhraní ADF začínáte s využitím parametrů Azure Data Factory, přečtěte si prosím [uživatelské rozhraní Data Factory pro propojené služby s parametry](https://docs.microsoft.comazure/data-factory/parameterize-linked-services#data-factory-ui)  a [uživatelským rozhraním Data Factory pro kanál řízený metadaty s parametry](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) pro vizuální vysvětlení.
 
 ## <a name="parameter-and-expression-concepts"></a>Koncepce parametrů a výrazů 
 
@@ -39,7 +43,7 @@ Například:
 "name": "@pipeline().parameters.password"
 ```
 
-Výrazy se můžou objevit kdekoli v hodnotě řetězce JSON a vždycky mají za následek jinou hodnotu JSON. Pokud je hodnotou JSON výraz, tělo výrazu se extrahuje odebráním znaku při přihlášení ( \@ ). Pokud je vyžadován řetězcový literál, který začíná \@ , musí být uvozen pomocí \@ \@ . Následující příklady znázorňují, jak jsou výrazy vyhodnocovány.  
+Výrazy se můžou objevit kdekoli v hodnotě řetězce JSON a vždycky mají za následek jinou hodnotu JSON. Tady je *heslo* parametr kanálu ve výrazu. Pokud je hodnotou JSON výraz, tělo výrazu se extrahuje odebráním znaku při přihlášení ( \@ ). Pokud je vyžadován řetězcový literál, který začíná \@ , musí být uvozen pomocí \@ \@ . Následující příklady znázorňují, jak jsou výrazy vyhodnocovány.  
   
 |Hodnota JSON|Výsledek|  
 |----------------|------------|  
@@ -301,13 +305,20 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
 | [Ticks](control-flow-expression-language-functions.md#ticks) | Vrátí `ticks` hodnotu vlastnosti pro zadané časové razítko. |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | Vrátí aktuální časové razítko jako řetězec. |
 
-## <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Podrobný kanál kopírování služby Azure Data Factory s parametry 
+## <a name="detailed-examples-for-practice"></a>Podrobné příklady pro postupy
+
+### <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Podrobný kanál kopírování služby Azure Data Factory s parametry 
 
 Tento [parametr kanálu kopírování kanálu služby Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede procesem předávání parametrů mezi kanálem a aktivitou a také mezi aktivitami.
 
-## <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Podrobný kanál mapování toku dat s parametry 
+### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Podrobný kanál mapování toku dat s parametry 
 
 Sledujte prosím [tok dat mapování s parametry](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) pro komplexní příklad používání parametrů v toku dat.
+
+### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Podrobné kanály založené na metadatech s parametry
+
+Pokud chcete získat další informace o použití parametrů pro návrh kanálů řízených metadaty, postupujte prosím podle [kanálu založeného na metadatech s parametry](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) . Toto je oblíbený případ použití pro parametry.
+
 
 ## <a name="next-steps"></a>Další kroky
 Seznam systémových proměnných, které můžete použít ve výrazech, najdete v tématu [systémové proměnné](control-flow-system-variables.md).

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526234"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518038"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -30,6 +30,10 @@ ms.locfileid: "100526234"
 - Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
 - Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](identity-provider-facebook.md) . I když se aplikace Facebook nevyžaduje pro použití vlastních zásad, používá se v tomto návodu k předvedení povolení sociálního přihlášení ve vlastních zásadách.
+
+> [!TIP]
+> Tento článek vysvětluje, jak nastavit klienta ručně. Celý proces můžete automatizovat z tohoto článku. Automatizace nasadí Azure AD B2C [SocialAndLocalAccountsWithMFA Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack), který bude poskytovat registraci a přihlášení, resetování hesla a cestu pro úpravy profilu. Pokud chcete tento návod automatizovat, přejděte na [instalační aplikaci IEF](https://aka.ms/iefsetup) a postupujte podle pokynů.
+
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 

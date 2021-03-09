@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175001"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518669"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -69,9 +69,14 @@ V následujících pěti částech se dozvíte, jak zabezpečit scénář sítě
 Pomocí následujícího postupu Zabezpečte svůj pracovní prostor a přidružené prostředky. Tyto kroky umožní vašim službám komunikovat ve virtuální síti.
 
 1. Vytvořte [pracovní prostor podporující privátní linku](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) , který umožní komunikaci mezi vaší virtuální sítí a pracovním prostorem.
-1. Přidejte Azure Key Vault do virtuální sítě s [koncovým bodem služby](../key-vault/general/overview-vnet-service-endpoints.md) nebo [soukromým koncovým bodem](../key-vault/general/private-link-service.md). Nastavte Key Vault na ["umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Přidejte svůj účet Azure Storage do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
-1. [Nakonfigurujte Azure Container registry pro použití privátního koncového bodu](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+1. Do virtuální sítě přidejte následující _služby pomocí_ __koncového bodu služby__ nebo __privátního koncového bodu__. Pro přístup k těmto službám musíte taky dovolit důvěryhodným službám Microsoftu:
+    
+    | Služba | Informace o koncovém bodu | Povolení důvěryhodných informací |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Koncový bod služby](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Soukromý koncový bod](../key-vault/general/private-link-service.md) | [Umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall.](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Účet Azure Storage__ | [Koncový bod služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Soukromý koncový bod](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Udělení přístupu k důvěryhodným službám Azure](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Koncový bod služby](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Soukromý koncový bod](../container-registry/container-registry-private-link.md) | [Povolení důvěryhodných služeb](../container-registry/allow-access-trusted-services.md) |
+
 
 ![Diagram architektury znázorňující, jak pracovní prostor a přidružené prostředky komunikují přes koncové body služby nebo privátní koncové body uvnitř virtuální sítě](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

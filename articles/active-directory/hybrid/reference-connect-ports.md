@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 681d92ed162feff0510067556d7eeaa47b12d988
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80331093"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520026"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Porty a protokoly, které vyžaduje hybridní identita
 Následující dokument představuje technické informace o požadovaných portech a protokolech pro implementaci řešení hybridní identity. Použijte následující obrázek a přečtěte si odpovídající tabulku.
@@ -39,7 +39,7 @@ V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro ko
 | LDAP |389 (TCP/UDP) |Používá se pro import dat ze služby AD. Data se šifrují pomocí podpisu protokolu Kerberos & zapečetit. |
 | SMB | 445 (TCP) |Pomocí bezproblémového jednotného přihlašování můžete v doménové struktuře služby AD vytvořit účet počítače. |
 | PROTOKOL LDAP/SSL |636 (TCP/UDP) |Používá se pro import dat ze služby AD. Přenos dat je podepsaný a zašifrovaný. Používá se pouze v případě, že používáte protokol TLS. |
-| RPC |49152 – 65535 (náhodný port s vysokým protokolem RPC) (TCP) |Používá se při počáteční konfiguraci Azure AD Connect při vytváření vazby k doménovým strukturám AD a při synchronizaci hesel. Další informace najdete v tématech [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)a [KB224196](https://support.microsoft.com/kb/224196) . |
+| RPC |49152 – 65535 (náhodný port s vysokým protokolem RPC) (TCP) |Používá se při počáteční konfiguraci Azure AD Connect při vytváření vazby k doménovým strukturám AD a při synchronizaci hesel. Pokud byl dynamický port změněn, je nutné otevřít tento port. Další informace najdete v tématech [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)a [KB224196](https://support.microsoft.com/kb/224196) . |
 |WinRM  | 5985 (TCP) |Používá se jenom v případě, že instalujete AD FS pomocí Průvodce Azure AD Connectm v nástroji gMSA.|
 |služba AD DS webové služby | 9389 (TCP) |Používá se jenom v případě, že instalujete AD FS pomocí Průvodce Azure AD Connectm v nástroji gMSA. |
 

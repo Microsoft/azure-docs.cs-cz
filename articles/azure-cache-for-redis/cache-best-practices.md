@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 84a6bba390b0f6b101bd8243cf47b79af9618999
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454732"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521641"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Pomocí těchto osvědčených postupů můžete maximalizovat výkon a nákladově efektivní využití vaší instance Azure cache pro Redis.
@@ -30,6 +30,8 @@ Pomocí těchto osvědčených postupů můžete maximalizovat výkon a náklado
  * **Vyhledejte instanci mezipaměti a aplikaci ve stejné oblasti.**  Pokud byste se připojovali k mezipaměti v jiné oblasti, výrazně byste tím zvýšili latenci a snížili spolehlivost.  I když se můžete připojit mimo Azure, nedoporučuje se *obzvláště při použití Redis jako mezipaměti*.  Pokud používáte Redis jako úložiště typu klíč/hodnota, latence nemusí být primárním problémem. 
 
  * **Znovu použijte připojení.**  Vytváření nových připojení je náročné a zvyšuje latenci, takže by bylo možné znovu použít připojení co nejvíc. Pokud se rozhodnete vytvořit nová připojení, ujistěte se, že jste staré připojení zavřeli předtím, než je uvolníte (i ve spravovaných paměťových jazycích, jako je .NET nebo Java).
+
+* **Použijte přesměrování.**  Zkuste zvolit klienta Redis, který podporuje [kanály Redis](https://redis.io/topics/pipelining) , aby bylo možné efektivně využívat síť, abyste dosáhli nejlepší propustnosti.
 
  * **Nakonfigurujte klientskou knihovnu tak, aby používala *časový limit připojení* aspoň 15 sekund**, a systémovým časem umožní připojit se i v rámci vyšších procesorových podmínek.  Hodnota časového limitu malého připojení nezaručuje, že v daném časovém rámci bude vytvořeno připojení.  Pokud dojde k nějakému problému (vysoký procesor procesoru, vysoký procesor serveru atd.), pak hodnota krátkého časového limitu připojení způsobí selhání pokusu o připojení. Toto chování často způsobuje horší špatnou situaci.  Namísto zvýšení časových limitů tím, že se postará o problém, vynutí systém restartování procesu pokusu o opětovné připojení, což může vést k *selhání > typu Connect->* . Obecně doporučujeme, abyste časový limit připojení nechali 15 sekund nebo vyšší. Je lepší podařit, aby se Váš pokus o připojení uspěl po 15 nebo 20 sekundách, než je možné ho rychle opakovat. Tato smyčka opakování může způsobit, že výpadek bude trvat déle, než když necháte systém jenom na začátku.  
      > [!NOTE]

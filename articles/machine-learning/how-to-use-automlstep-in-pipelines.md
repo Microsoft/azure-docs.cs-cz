@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692211"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520502"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 
@@ -37,7 +37,7 @@ Automatizovaná ML v kanálu je reprezentována `AutoMLStep` objektem. `AutoMLSt
 
 Existuje několik podtříd třídy `PipelineStep` . Kromě toho se v `AutoMLStep` tomto článku zobrazí `PythonScriptStep` Příprava dat a další pro registraci modelu.
 
-Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, je `Dataset` objekty. Chcete-li přesunout data _mezi_ kroky a možnou možností uložit výstup z běhu, preferovaným způsobem jsou [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) objekty a. Chcete-li použít s `AutoMLStep` , `PipelineData` objekt musí být transformován do `PipelineOutputTabularDataset` objektu. Další informace najdete v tématu [vstupní a výstupní data z kanálů ml](how-to-move-data-in-out-of-pipelines.md).
+Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, je `Dataset` objekty. Chcete-li přesunout data _mezi_ kroky a možnou možností uložit výstup z běhu, preferovaným způsobem jsou [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) objekty a. Chcete-li použít s `AutoMLStep` , `PipelineData` objekt musí být transformován do `PipelineOutputTabularDataset` objektu. Další informace najdete v tématu [vstupní a výstupní data z kanálů ml](how-to-move-data-in-out-of-pipelines.md).
 
 `AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](./how-to-configure-auto-train.md#configure-your-experiment-settings). 
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174933"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518700"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -36,7 +36,7 @@ Budete potřebovat:
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
+- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 - Pracovní prostor služby Azure Machine Learning.
   
@@ -55,7 +55,7 @@ Budete potřebovat:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Použít `Dataset` objekty pro již existující data 
 
-Upřednostňovaným způsobem, jak ingestovat data do kanálu, je použít objekt [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) . `Dataset` objekty reprezentují trvalá data dostupná v celém pracovním prostoru.
+Upřednostňovaným způsobem, jak ingestovat data do kanálu, je použít objekt [DataSet](/python/api/azureml-core/azureml.core.dataset%28class%29) . `Dataset` objekty reprezentují trvalá data dostupná v celém pracovním prostoru.
 
 Existuje mnoho způsobů, jak vytvářet a registrovat `Dataset` objekty. Tabulkové datové sady jsou pro data s oddělovači k dispozici v jednom nebo více souborech. Datové sady souborů jsou pro binární data (například obrázky) nebo pro data, která budete analyzovat. Nejjednodušším programovým způsobem, jak vytvářet `Dataset` objekty, je použít existující objekty BLOB v úložišti pracovních prostorů nebo veřejných adresách URL:
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Použít `OutputFileDatasetConfig` pro mezilehlé data
 
-Přestože `Dataset` objekty reprezentují pouze trvalá data, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) lze objekty použít pro dočasný výstup dat z kroků kanálu **a** trvalých výstupních dat. `OutputFileDatasetConfig` podporuje zápis dat do úložiště objektů blob, sdílené složky, adlsgen1 nebo adlsgen2. Podporuje režim připojení i režim odesílání. V režimu připojení se soubory zapsané do připojeného adresáře trvale ukládají při zavření souboru. V režimu nahrávání se soubory zapsané do výstupního adresáře odešlou na konci úlohy. Pokud úloha selže nebo se zruší, výstupní adresář nebude nahrán.
+Přestože `Dataset` objekty reprezentují pouze trvalá data, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) lze objekty použít pro dočasný výstup dat z kroků kanálu **a** trvalých výstupních dat. `OutputFileDatasetConfig` podporuje zápis dat do úložiště objektů blob, sdílené složky, adlsgen1 nebo adlsgen2. Podporuje režim připojení i režim odesílání. V režimu připojení se soubory zapsané do připojeného adresáře trvale ukládají při zavření souboru. V režimu nahrávání se soubory zapsané do výstupního adresáře odešlou na konci úlohy. Pokud úloha selže nebo se zruší, výstupní adresář nebude nahrán.
 
  `OutputFileDatasetConfig` výchozí chování objektu je zapisovat do výchozího úložiště dat pracovního prostoru. Předejte své `OutputFileDatasetConfig` objekty do objektu `PythonScriptStep` pomocí `arguments` parametru.
 

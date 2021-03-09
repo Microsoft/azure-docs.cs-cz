@@ -1,18 +1,20 @@
 ---
 title: Nasazení prostředků pomocí PowerShellu a šablony
-description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
+description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v Správce prostředků šabloně nebo v souboru bicep.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881261"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521624"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
-Tento článek vysvětluje, jak používat Azure PowerShell se šablonami Azure Resource Manager (šablony ARM) k nasazení vašich prostředků do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md).
+Tento článek vysvětluje, jak použít Azure PowerShell se šablonami Azure Resource Manager (šablony ARM) nebo soubory bicep k nasazení vašich prostředků do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Přehled nasazení šablony](overview.md) nebo [bicep Overview](bicep-overview.md).
+
+K nasazení souborů bicep potřebujete [Azure PowerShell verze 5.6.0 nebo novější](/powershell/azure/install-az-ps).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,13 +34,13 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 - K nasazení do **skupiny prostředků** použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
   ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
   ```
 
 - K nasazení do **předplatného** použijte [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) , což je alias `New-AzDeployment` rutiny:
 
   ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
@@ -46,7 +48,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 - K nasazení do **skupiny pro správu** použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
@@ -54,7 +56,7 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 - K nasazení do **tenanta** použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
   ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
@@ -89,7 +91,7 @@ Pokud pro každé nasazení zadáte jedinečný název, můžete je spustit soub
 
 Aby nedocházelo ke konfliktům s souběžnými nasazeními a zajistili v historii nasazení jedinečné položky, udělte každé nasazení jedinečný název.
 
-## <a name="deploy-local-template"></a>Nasazení místní šablony
+## <a name="deploy-local-template-or-bicep-file"></a>Nasadit místní šablonu nebo soubor bicep
 
 Šablonu můžete nasadit z místního počítače nebo z nějakého, který je uložen externě. Tato část popisuje nasazení místní šablony.
 
@@ -99,18 +101,21 @@ Pokud provádíte nasazení do skupiny prostředků, která neexistuje, vytvořt
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-K nasazení místní šablony použijte `-TemplateFile` parametr v příkazu nasazení. Následující příklad také ukazuje, jak nastavit hodnotu parametru, který pochází ze šablony.
+K nasazení místní šablony nebo souboru bicep použijte `-TemplateFile` parametr v příkazu nasazení. Následující příklad také ukazuje, jak nastavit hodnotu parametru, který pochází ze šablony.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
+  -TemplateFile <path-to-template-or-bicep>
 ```
 
 Dokončení nasazení může trvat několik minut.
 
 ## <a name="deploy-remote-template"></a>Nasadit vzdálenou šablonu
+
+> [!NOTE]
+> V současné době Azure PowerShell nepodporuje nasazování vzdálených souborů bicep. K nasazení vzdáleného souboru bicep použijte příkaz CLI bicep pro zkompilování souboru bicep do šablony JSON jako první.
 
 Místo uložení šablon ARM na místní počítač můžete chtít ukládat je do externího umístění. Šablony můžete uložit do úložiště pro správu zdrojového kódu (jako je GitHub). Nebo je můžete uložit do účtu úložiště v Azure, abyste k nim mohli v organizaci sdílet přístup.
 
@@ -145,6 +150,8 @@ Další informace najdete v tématu [použití relativní cesty pro propojené �
 
 ## <a name="deploy-template-spec"></a>Nasadit specifikaci šablony
 
+> [!NOTE]
+> V současné době Azure PowerShell nepodporuje vytváření specifikací šablon poskytnutím souborů bicep. Můžete však vytvořit soubor bicep pomocí prostředku [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) pro nasazení specifikace šablony. Tady je [příklad](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 Místo nasazení místní nebo vzdálené šablony můžete vytvořit [specifikaci šablony](template-specs.md). Specifikace šablony je prostředek ve vašem předplatném Azure, který obsahuje šablonu ARM. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
 Následující příklady ukazují, jak vytvořit a nasadit specifikace šablony.
@@ -187,7 +194,7 @@ Chcete-li předat vložené parametry, zadejte název parametru pomocí `New-AzR
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -197,7 +204,7 @@ Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -211,13 +218,13 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>Soubory parametrů
 
-Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s přístupným identifikátorem URI.
+Místo předávání parametrů v podobě hodnot vložených do skriptu pro vás možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů může být místní soubor nebo externí soubor s přístupným identifikátorem URI. Šablona ARM i soubor bicep používají soubory parametrů JSON.
 
 Další informace o souboru parametrů najdete v tématu [Vytvoření souboru parametrů Resource Manageru](parameter-files.md).
 
@@ -225,7 +232,7 @@ Chcete-li předat místní soubor parametrů, použijte `TemplateParameterFile` 
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 

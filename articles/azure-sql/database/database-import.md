@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8d246f06db9fc9f4e6916ea69ec49ddaf8cf0667
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040168"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519771"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 > [!NOTE]
 > Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované Data-Tier aplikačním rozhraním (DacFX). Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou s chybou `There is not enough space on the disk` . V takovém případě je možné alternativní řešení spustit sqlpackage.exe v počítači s dostatečným místem na disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat SqlPackage k importu a exportu databází větších než 150 GB.
 
-1. Pro import ze souboru BACPAC do nové izolované databáze pomocí Azure Portal otevřete příslušnou stránku serveru a pak na panelu nástrojů vyberte **importovat databázi** .  
+1. Pro import ze souboru BACPAC do nové izolované databáze pomocí Azure Portal otevřete příslušnou stránku serveru a pak na panelu nástrojů vyberte **importovat databázi**.  
 
    ![Import1 databáze](./media/database-import/sql-server-import-database.png)
 
@@ -52,13 +52,13 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 
    ![Import2 databáze](./media/database-import/sql-server-import-database-settings.png)
 
-1. Klikněte na **OK** .
+1. Klikněte na **OK**.
 
-1. Chcete-li monitorovat průběh importu, otevřete stránku serveru databáze a v části **Nastavení** vyberte **Historie importu a exportu** . Po úspěšném dokončení importu bude **dokončený** stav.
+1. Chcete-li monitorovat průběh importu, otevřete stránku serveru databáze a v části **Nastavení** vyberte **Historie importu a exportu**. Po úspěšném dokončení importu bude **dokončený** stav.
 
    ![Stav importu databáze](./media/database-import/sql-server-import-database-history.png)
 
-1. Pokud chcete ověřit, jestli je databáze na serveru živá, vyberte **databáze SQL** a ověřte, jestli je nová databáze **online** .
+1. Pokud chcete ověřit, jestli je databáze na serveru živá, vyberte **databáze SQL** a ověřte, jestli je nová databáze **online**.
 
 ## <a name="using-sqlpackage"></a>Použití SqlPackage
 
@@ -68,7 +68,7 @@ Pro škálování a výkon doporučujeme místo použití Azure Portal používa
 
 Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
 
-Následující příkaz SqlPackage importuje databázi **AdventureWorks2008R2** z místního úložiště na logický SQL Server s názvem **mynewserver20170403** . Vytvoří novou databázi s názvem **myMigratedDatabase** s úrovní služeb **Premium** a cílem služby **P6** . Změňte tyto hodnoty tak, jak jsou vhodné pro vaše prostředí.
+Následující příkaz SqlPackage importuje databázi **AdventureWorks2008R2** z místního úložiště na logický SQL Server s názvem **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s úrovní služeb **Premium** a cílem služby **P6** . Změňte tyto hodnoty tak, jak jsou vhodné pro vaše prostředí.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -144,6 +144,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 > [!TIP]
 > Další příklad skriptu najdete v tématu [Import databáze ze souboru BacPac](scripts/import-from-bacpac-powershell.md).
+
+## <a name="cancel-the-import-request"></a>Zrušit žádost o import
+
+V následujícím příkladu příkazu PowerShellu použijte [operace Database Operations – Cancel API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) nebo PowerShell [stop-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity?view=azps-5.5.0).
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
+```
+
 
 ## <a name="limitations"></a>Omezení
 

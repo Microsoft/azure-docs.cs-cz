@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962752"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520655"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrace databáze SQL Server pro Azure SQL Database pomocí Azure PowerShell
 
@@ -42,7 +42,7 @@ K provedení těchto kroků potřebujete:
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějším.
 * Pokud chcete vytvořit Microsoft Azure Virtual Network pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](../expressroute/expressroute-introduction.md) nebo [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * Aby bylo dokončeno posouzení místní databáze a migrace schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](/sql/dma/dma-assesssqlonprem)
-* Pokud chcete stáhnout a nainstalovat modul AZ. datamigration z Galerie prostředí PowerShell pomocí [rutiny prostředí PowerShell Install-Module](/powershell/module/powershellget/Install-Module?view=powershell-5.1); Nezapomeňte otevřít okno příkazového řádku PowerShellu pomocí příkazu Spustit jako správce.
+* Pokud chcete stáhnout a nainstalovat modul AZ. datamigration z Galerie prostředí PowerShell pomocí [rutiny prostředí PowerShell Install-Module](/powershell/module/powershellget/Install-Module); Nezapomeňte otevřít okno příkazového řádku PowerShellu pomocí příkazu Spustit jako správce.
 * Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](/sql/t-sql/statements/grant-server-permissions-transact-sql) .
 * Aby se zajistilo, že přihlašovací údaje použité pro připojení k cílové instanci Azure SQL DB mají oprávnění řídicí databáze pro cílové Azure SQL Database databáze.
 * Předplatné Azure. Pokud ho ještě nemáte, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.

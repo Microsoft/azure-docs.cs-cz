@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937629"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517697"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování s Azure Active Directory
 
@@ -37,7 +37,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Jednotné přihlašování prostřednictvím tokenu primární aktualizace vs. bezproblémové jednotné přihlašování
 
-Pro Windows 10 se doporučuje použít jednotné přihlašování prostřednictvím primárního obnovovacího tokenu (PRT). U systémů Windows 7 a 8,1 se doporučuje používat bezproblémové jednotné přihlašování.
+U systémů Windows 10, Windows Server 2016 a novějších verzí se doporučuje používat jednotné přihlašování prostřednictvím primárního obnovovacího tokenu (PRT). U systémů Windows 7 a 8,1 se doporučuje používat bezproblémové jednotné přihlašování.
 Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo připojené k doméně, ale nepoužívá se na [zařízeních připojených](../devices/concept-azure-ad-join.md) k Windows 10 Azure AD ani na [zařízeních připojených k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md). Jednotné přihlašování k Azure AD, připojené k hybridní službě Azure AD a zařízení registrovaná službou Azure AD funguje na základě [primárního obnovovacího tokenu (PRT)](../devices/concept-primary-refresh-token.md) .
 
 Jednotné přihlašování prostřednictvím PRT funguje, když jsou zařízení zaregistrovaná ve službě Azure AD pro připojení k hybridní službě Azure AD, připojené k Azure AD nebo osobní registrovaná zařízení prostřednictvím Přidat pracovní nebo školní účet. Další informace o tom, jak jednotné přihlašování funguje s Windows 10 pomocí PRT, najdete v tématech [primární aktualizační token (PRT) a Azure AD](../devices/concept-primary-refresh-token.md) .

@@ -5,23 +5,23 @@ description: K ochraně dat ve vašem účtu úložiště můžete použít vlas
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 03/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 92a83e03d486d0bf9344fbdcf705703ea788528c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 358be21a1f7f13c0c0ce1bf0e57dda53174216b2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218566"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517527"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Klíče spravované zákazníkem pro šifrování Azure Storage
 
 K ochraně dat ve vašem účtu úložiště můžete použít vlastní šifrovací klíč. Když zadáte klíč spravovaný zákazníkem, použije se tento klíč k ochraně a řízení přístupu ke klíči, který šifruje vaše data. Klíče spravované zákazníkem nabízejí větší flexibilitu při správě řízení přístupu.
 
-K ukládání klíčů spravovaných zákazníkem je nutné použít buď Azure Key Vault, nebo Azure Key Vault spravovaný model hardwarového zabezpečení (HSM) (ve verzi Preview). Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů nebo spravovaného modulu HSM, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Účet úložiště a trezor klíčů nebo spravovaný modul HSM musí být ve stejné oblasti a v rámci stejného Azure Active Directory klienta (Azure AD), ale můžou být v různých předplatných.
+K ukládání klíčů spravovaných zákazníkem je nutné použít buď Azure Key Vault, nebo Azure Key Vault spravovaný modul hardwarového zabezpečení (HSM) (Preview). Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů nebo spravovaného modulu HSM, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Účet úložiště a trezor klíčů nebo spravovaný modul HSM musí být ve stejné oblasti a v rámci stejného Azure Active Directory klienta (Azure AD), ale můžou být v různých předplatných.
 
 Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md).
 

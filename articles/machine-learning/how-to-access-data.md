@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659660"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519924"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Připojení ke službám úložiště v Azure
 
-V tomto článku se dozvíte, jak se připojit ke službám Data Storage v Azure s Azure Machine Learning úložiště dat a [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+V tomto článku se dozvíte, jak se připojit ke službám Data Storage v Azure s Azure Machine Learning úložiště dat a [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro).
 
 Data se bezpečně připojují k vaší službě úložiště v Azure bez nutnosti ukládat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenů ve vašem [Key Vault](https://azure.microsoft.com/services/key-vault/) , které jsou přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. Můžete vytvářet úložiště dat, která se připojují k [těmto řešením úložiště Azure](#matrix).
 
@@ -29,7 +29,7 @@ Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního
 Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Machine Learning Studio k vytvoření a registraci úložišť dat](how-to-connect-data-ui.md#create-datastores).
 
 >[!TIP]
-> V tomto článku se předpokládá, že se chcete ke službě úložiště připojit pomocí přihlašovacích údajů pro ověřování na základě přihlašovacích údajů, jako je instanční objekt nebo token sdíleného přístupového podpisu (SAS). Mějte na paměti, že pokud jsou přihlašovací údaje zaregistrované v úložišti dat, můžou tyto přihlašovací údaje načíst všichni uživatelé s rolí *čtenáře* pracovních prostorů. [Přečtěte si další informace o roli *čtenáře* pracovních prostorů.](how-to-assign-roles.md#default-roles) <br><br>Pokud se to týká, zjistěte, jak se [připojit ke službám úložiště s přístupem na základě identity](how-to-identity-based-data-access.md). <br><br>Tato funkce je [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit. 
+> V tomto článku se předpokládá, že se chcete ke službě úložiště připojit pomocí přihlašovacích údajů pro ověřování na základě přihlašovacích údajů, jako je instanční objekt nebo token sdíleného přístupového podpisu (SAS). Mějte na paměti, že pokud jsou přihlašovací údaje zaregistrované v úložišti dat, můžou tyto přihlašovací údaje načíst všichni uživatelé s rolí *čtenáře* pracovních prostorů. [Přečtěte si další informace o roli *čtenáře* pracovních prostorů.](how-to-assign-roles.md#default-roles) <br><br>Pokud se to týká, zjistěte, jak se [připojit ke službám úložiště s přístupem na základě identity](how-to-identity-based-data-access.md). <br><br>Tato funkce je [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) funkcí ve verzi Preview a může se kdykoli změnit. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Mac
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
-- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro).
 
 - Pracovní prostor služby Azure Machine Learning.
   
@@ -66,7 +66,7 @@ Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Mac
 > [!TIP]
 > **Pro Nepodporovaná řešení úložišť** a za účelem úspory nákladů na výstup dat během experimentů ml [přesuňte data](#move) do podporovaného řešení úložiště Azure. 
 
-| &nbsp;Typ úložiště | &nbsp;Typ ověřování | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Sada SDK pro službu Azure &nbsp; Machine &nbsp; Learning &nbsp; Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Rozhraní příkazového &nbsp; řádku Azure Machine &nbsp; Learning](reference-azure-machine-learning-cli.md) | [&nbsp; &nbsp; &nbsp; Rozhraní REST API služby Azure Machine Learning](/rest/api/azureml/) | VS Code
+| &nbsp;Typ úložiště | &nbsp;Typ ověřování | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Sada SDK pro službu Azure &nbsp; Machine &nbsp; Learning &nbsp; Python](/python/api/overview/azure/ml/intro) |  [Rozhraní příkazového &nbsp; řádku Azure Machine &nbsp; Learning](reference-azure-machine-learning-cli.md) | [&nbsp; &nbsp; &nbsp; Rozhraní REST API služby Azure Machine Learning](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
 [&nbsp;Úložiště objektů BLOB v Azure &nbsp;](../storage/blobs/storage-blobs-overview.md)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓ |✓
 [&nbsp; &nbsp; Sdílená složka Azure](../storage/files/storage-files-introduction.md)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓|✓
@@ -77,8 +77,8 @@ Pro používání s nízkým kódem si přečtěte téma jak použít [Azure Mac
 [Azure &nbsp; Database &nbsp; for &nbsp; MySQL](../mysql/overview.md) | Ověřování SQL|  | ✓* | ✓* |✓*|
 [Systém souborů datacihly &nbsp; &nbsp;](/azure/databricks/data/databricks-file-system)| Žádné ověřování | | ✓** | ✓ ** |✓** |
 
-\*MySQL se podporuje jenom pro [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) kanálu.<br />
-\*\*Datacihly se podporují jenom pro [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) kanálu.
+\*MySQL se podporuje jenom pro [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) kanálu.<br />
+\*\*Datacihly se podporují jenom pro [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) kanálu.
 
 
 ### <a name="storage-guidance"></a>Pokyny k ukládání
@@ -143,7 +143,7 @@ V této části jsou příklady, jak vytvořit a zaregistrovat úložiště dat 
 * [Sdílená složka Azure](#azure-file-share)
 * [Azure Data Lake Storage generace 2](#azure-data-lake-storage-generation-2)
 
- Chcete-li vytvořit úložiště dat pro jiné podporované služby úložiště, přečtěte si [referenční dokumentaci pro příslušné `register_azure_*` metody](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods).
+ Chcete-li vytvořit úložiště dat pro jiné podporované služby úložiště, přečtěte si [referenční dokumentaci pro příslušné `register_azure_*` metody](/python/api/azureml-core/azureml.core.datastore.datastore#methods).
 
 Pokud dáváte přednost prostředí s nízkým kódem, přečtěte si téma [připojení k datům pomocí Azure Machine Learning studia](how-to-connect-data-ui.md).
 >[!IMPORTANT]
@@ -154,7 +154,7 @@ Pokud dáváte přednost prostředí s nízkým kódem, přečtěte si téma [p�
 
 ### <a name="azure-blob-container"></a>Kontejner objektů blob Azure
 
-Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Pokud chcete zaregistrovat kontejner objektů blob Azure jako úložiště dat, použijte [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Následující kód vytvoří a zaregistruje `blob_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje k `my-container-name` kontejneru objektů BLOB v `my-account-name` účtu úložiště pomocí poskytnutého přístupového klíče účtu. Pokyny k scénářům virtuální sítě najdete v části věnované [oprávněním pro přístup & k úložišti](#storage-access-and-permissions) a kde najít požadovaná ověřovací pověření. 
 
@@ -173,7 +173,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-file-share"></a>Sdílená složka Azure
 
-Pokud chcete zaregistrovat sdílenou složku Azure jako úložiště dat, použijte [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
+Pokud chcete zaregistrovat sdílenou složku Azure jako úložiště dat, použijte [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
 
 Následující kód vytvoří a zaregistruje `file_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje ke `my-fileshare-name` sdílené složce v `my-account-name` účtu úložiště pomocí poskytnutého přístupového klíče účtu. Pokyny k scénářům virtuální sítě najdete v části věnované [oprávněním pro přístup & k úložišti](#storage-access-and-permissions) a kde najít požadovaná ověřovací pověření. 
 
@@ -192,7 +192,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generace 2
 
-Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).  
+Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).  
 
 Aby bylo možné použít instanční objekt, musíte [aplikaci zaregistrovat](../active-directory/develop/app-objects-and-service-principals.md) a udělit přístup k datům instančního objektu prostřednictvím řízení přístupu na základě role Azure (Azure RBAC) nebo seznamů řízení přístupu (ACL). Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](../storage/blobs/data-lake-storage-access-control-model.md). 
 
@@ -244,13 +244,13 @@ U datových sad můžete [Stáhnout nebo připojit](how-to-train-with-datasets.m
 
 ## <a name="get-datastores-from-your-workspace"></a>Získat úložiště dat z vašeho pracovního prostoru
 
-Chcete-li získat konkrétní úložiště dat registrované v aktuálním pracovním prostoru, použijte [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-workspace--datastore-name-) statickou metodu pro `Datastore` třídu:
+Chcete-li získat konkrétní úložiště dat registrované v aktuálním pracovním prostoru, použijte [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29#get-workspace--datastore-name-) statickou metodu pro `Datastore` třídu:
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Chcete-li získat seznam úložišť dat zaregistrovaných v daném pracovním prostoru, můžete použít [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedatastores) vlastnost v objektu pracovního prostoru:
+Chcete-li získat seznam úložišť dat zaregistrovaných v daném pracovním prostoru, můžete použít [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29#datastores) vlastnost v objektu pracovního prostoru:
 
 ```Python
 # List all datastores registered in the current workspace
@@ -274,7 +274,7 @@ Výchozí úložiště dat můžete také změnit pomocí následujícího kódu
 
 Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložiště dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
-| Metoda | Přístup k úložišti dat | Popis |
+| Metoda | Přístup k úložišti dat | Description |
 | ----- | :-----: | ----- |
 | [Dávkové předpovědi](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
 | [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely jako webovou službu. |

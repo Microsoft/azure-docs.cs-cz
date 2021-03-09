@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225148"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521709"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Firewall webových aplikací Azure v Azure Content Delivery Network
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Firewall webových aplikací Azure v Azure Content Delivery Network od Microsoftu
 
 Firewall webových aplikací Azure (WAF) v Azure Content Delivery Network (CDN) od Microsoftu poskytuje centralizovanou ochranu vašeho webového obsahu. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaše služba vysoce dostupná pro vaše uživatele a pomáhá splnit požadavky na dodržování předpisů.
 
@@ -35,7 +35,7 @@ Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jednomu nebo v�
 
 - spravované sady pravidel, které jsou kolekcí předem nakonfigurovaných pravidel spravovaných Azure.
 
-Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: *Allow*, *Block*, *log*a *redirect*. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
+Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: *Allow*, *Block*, *log* a *redirect*. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
 
 Pravidla v rámci zásad jsou zpracovávána v pořadí podle priority. Priorita je jedinečné číslo definující pořadí pravidel, která se mají zpracovat. Menší čísla mají vyšší prioritu a tato pravidla se vyhodnocují před pravidly s větší hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
 
@@ -71,7 +71,7 @@ Vlastní pravidla můžou odpovídat pravidlům pravidel řízení sazeb.
 
 Můžete nakonfigurovat tato vlastní pravidla shody:
 
-- Seznam *povolených a blokovaných IP*adres: můžete řídit přístup k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
+- Seznam *povolených a blokovaných IP* adres: můžete řídit přístup k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
 
 - *Geografické řízení přístupu*: můžete řídit přístup k webovým aplikacím na základě kódu země, který je PŘIDRUŽENÝ k IP adrese klienta.
 

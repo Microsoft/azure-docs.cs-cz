@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 749ef16139bbab2742c43a81e985fb0a49e9393b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209461"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519329"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -42,7 +42,7 @@ Tento dokument je rozdělen do dvou částí:
 ## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
-* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install). 
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * [Azure Container Registry](../container-registry/index.yml) nebo jiný registr Docker, který je přístupný na internetu.
@@ -216,7 +216,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Image | Popis |
+| Image | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |
@@ -234,7 +234,7 @@ Další informace najdete v tématu [Azure Machine Learning úložiště kontejn
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Použití obrázku s Azure Machine Learning SDK
 
-Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor** nebo **kontejner kontejneru, který je veřejně přístupný**, nastavte následující atributy [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) :
+Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor** nebo **kontejner kontejneru, který je veřejně přístupný**, nastavte následující atributy [prostředí](/python/api/azureml-core/azureml.core.environment.environment) :
 
 + `docker.enabled=True`
 + `docker.base_image`: Nastavte na registr a cestu k imagi.
@@ -268,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Je nutné přidat AzureML-Defaults s Version >= 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Musíte také nastavit vlastnost inferencing_stack_version v prostředí na "nejnovější". tím se nainstalují konkrétní balíčky apt, které webová služba potřebuje. 
 
-Po definování prostředí jej pomocí objektu [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) definujte odvozená prostředí, ve kterém se model a webová služba spustí.
+Po definování prostředí jej pomocí objektu [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) definujte odvozená prostředí, ve kterém se model a webová služba spustí.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -297,7 +297,7 @@ Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytv�
 > [!IMPORTANT]
 > V současné době může Machine Learning CLI používat image z Azure Container Registry pro váš pracovní prostor nebo veřejně přístupná úložiště. Nemůže použít obrázky ze samostatných privátních registrů.
 
-Před nasazením modelu pomocí Machine Learning CLI vytvořte [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) , které používá vlastní image. Pak vytvořte konfigurační soubor odvození, který odkazuje na prostředí. Prostředí můžete také definovat přímo v konfiguračním souboru odvození. Následující dokument JSON ukazuje, jak odkazovat na obrázek ve veřejném registru kontejneru. V tomto příkladu je prostředí definované jako vložené:
+Před nasazením modelu pomocí Machine Learning CLI vytvořte [prostředí](/python/api/azureml-core/azureml.core.environment.environment) , které používá vlastní image. Pak vytvořte konfigurační soubor odvození, který odkazuje na prostředí. Prostředí můžete také definovat přímo v konfiguračním souboru odvození. Následující dokument JSON ukazuje, jak odkazovat na obrázek ve veřejném registru kontejneru. V tomto příkladu je prostředí definované jako vložené:
 
 ```json
 {

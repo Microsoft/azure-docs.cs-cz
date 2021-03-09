@@ -2,17 +2,17 @@
 title: Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
 description: Nastavte cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC) na řešení Azure VMware a využijte výhod řešení, která vyžadují službu WSFC.
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 84bb846cd3fb6dd1b138308670db7ccf122b2187
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/09/2021
+ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491273"
+ms.locfileid: "102518989"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
 
-V tomto článku Vás provedeme procesem nastavení clusteru s podporou převzetí služeb při selhání Windows serveru v řešení VMware Azure. Implementace v tomto článku je určena pro účely testování konceptu a pilotního nasazení.
+V tomto článku Vás provedeme procesem nastavení clusteru s podporou převzetí služeb při selhání Windows serveru v řešení VMware Azure. Implementace v tomto článku je určena pro účely testování konceptu a pilotního nasazení. K dispozici je doporučujeme použít konfiguraci CIB (cluster-in-the-box), dokud nebudou dostupné zásady umístění.
 
 Cluster systému Windows Server s podporou převzetí služeb při selhání (WSFC), dříve označovaný jako služba Microsoft Service Cluster Service (MSCS), je funkcí operačního systému Windows Server (OS). WSFC je důležité obchodní funkce a pro mnoho aplikací se vyžaduje. Například WSFC je nutné pro následující konfigurace:
 
@@ -143,7 +143,7 @@ Následující aktivity nejsou podporované a můžou způsobit převzetí služ
         
       - **Ověřte síťovou komunikaci**. Test ověření clusteru vyvolá upozornění, že je k dispozici pouze jedno síťové rozhraní na jeden uzel clusteru. Toto upozornění můžete ignorovat. Řešení Azure VMware poskytuje požadovanou dostupnost a výkon, protože uzly jsou připojené k jednomu z segmentů NSX-T. Tuto položku však nechte v rámci testu ověření clusteru, protože ověří další aspekty síťové komunikace.
 
-16. Vytvořte pravidlo DRS pro oddělení virtuálních počítačů služby WSFC mezi uzly řešení VMware Azure. Použijte následující pravidla: jedno spřažení typu Host-to-VM a jedno pravidlo pro ochranu virtuálního počítače na virtuální počítač. Tímto způsobem se uzly clusteru nespustí na stejném hostiteli řešení Azure VMware.
+16. Vytvořte pravidlo DRS k umístění virtuálních počítačů služby WSFC do stejného uzlu řešení Azure VMware. K tomu potřebujete pravidlo spřažení od hostitele k virtuálnímu počítači. Tímto způsobem se uzly clusteru spustí na stejném hostiteli řešení Azure VMware. Znovu se jedná o pilotní účely, dokud nejsou k dispozici zásady umístění.
 
     >[!NOTE]
     > K tomu je potřeba vytvořit lístek žádosti o podporu. Naše organizace podpory Azure vám to může pomoci.

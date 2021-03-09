@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693862"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519703"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -391,7 +391,7 @@ Přizpůsobení vlastností:
 - **validExitCodes** – volitelné, platné kódy, které lze vrátit z příkazu Script/inline, tím se vyhnete nahlášené chybě příkazu Script/inline.
 - **runElevated** – volitelná, logická hodnota, podpora spouštění příkazů a skriptů se zvýšenými oprávněními.
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
-    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash)
 
 
 ### <a name="file-customizer"></a>Úprav souborů
@@ -456,7 +456,7 @@ Přizpůsobení vlastností:
 - **updateLimit** – volitelné, definuje, kolik aktualizací se dá nainstalovat, výchozí 1000.
  
 > [!NOTE]
-> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalace pomocí [režimu spánku] nebo příkazů čekání ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
+> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalací pomocí příkazů [režimu spánku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) nebo čekání ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
 
 ### <a name="generalize"></a>Generalizovat 
 Ve výchozím nastavení bude Azure image Builder na konci každé fáze přizpůsobení image taky spouštět kód zrušení zřízení, aby se image generalizoval. Generalizace je proces, ve kterém je image nastavená tak, aby se mohla znovu použít k vytvoření více virtuálních počítačů. Pro virtuální počítače s Windows používá Azure image Builder nástroj Sysprep. Pro Linux spustí Azure image Builder "waagent-disvision". 

@@ -3,12 +3,12 @@ title: Automatizace přidávání uživatele testovacího prostředí v Azure De
 description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6dddf06289da79e16cbd7e64869fa77f0a40dd22
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508822"
+ms.locfileid: "102519397"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.
@@ -161,7 +161,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 
 Je důležité si uvědomit, že název nasazení skupiny a identifikátor GUID přiřazení role musí být jedinečné. Pokud se pokusíte nasadit přiřazení prostředku s nejedinečným identifikátorem GUID, zobrazí se `RoleAssignmentUpdateNotPermitted` Chyba.
 
-Pokud plánujete používat šablonu několikrát pro přidání několika objektů služby Active Directory do role uživatele DevTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShellu. Následující příklad používá rutinu [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) k dynamickému určení názvu nasazení skupiny prostředků a identifikátoru GUID přiřazení role.
+Pokud plánujete používat šablonu několikrát pro přidání několika objektů služby Active Directory do role uživatele DevTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShellu. Následující příklad používá rutinu [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) k dynamickému určení názvu nasazení skupiny prostředků a identifikátoru GUID přiřazení role.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092916"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520774"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -45,7 +45,7 @@ Například automatizované ML generuje v závislosti na typu experimentu násle
 
 Po dokončení automatizovaného experimentu ML se dá najít historie běhů prostřednictvím:
   - Prohlížeč s [Azure Machine Learning studia](overview-what-is-machine-learning-studio.md)
-  - Jupyter Poznámkový blok s použitím [widgetu RunDetails Jupyter](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)
+  - Jupyter Poznámkový blok s použitím [widgetu RunDetails Jupyter](/python/api/azureml-widgets/azureml.widgets.rundetails)
 
 Následující kroky a videa ukazují, jak zobrazit historii spuštění a metriky vyhodnocení modelu a grafy v studiu:
 

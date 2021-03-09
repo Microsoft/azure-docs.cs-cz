@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692415"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520625"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -72,7 +72,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
-        Pole| Popis
+        Pole| Description
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
@@ -99,7 +99,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
-    Pole|Popis
+    Pole|Description
     ---|---
     Název výpočetních prostředků| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Priorita virtuálního počítače| Virtuální počítače s nízkou prioritou jsou levnější, ale nezaručují výpočetní uzly. 
@@ -132,11 +132,11 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
-    Další konfigurace|Popis
+    Další konfigurace|Description
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#primary-metric).
     Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu. <br> Tato funkce není aktuálně k dispozici pro [určité algoritmy prognózy](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
-    Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení. <br><br> Povolení algoritmů je dostupné jenom pro [experimenty sady SDK](how-to-configure-auto-train.md#supported-models). <br> Podívejte se na [podporované modely pro každý typ úkolu](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py).
+    Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení. <br><br> Povolení algoritmů je dostupné jenom pro [experimenty sady SDK](how-to-configure-auto-train.md#supported-models). <br> Podívejte se na [podporované modely pro každý typ úkolu](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels).
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)*: dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. <br> [Další informace o vzájemném ověřování](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Prognózování podporuje pouze k přeložení pro křížové ověření.
     Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací. Přečtěte si další informace o tom, jak automatizované ML provádí [v clusterech více podřízených spuštění](how-to-configure-auto-train.md#multiple-child-runs-on-clusters).
@@ -217,7 +217,7 @@ Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
     Pole| Hodnota
     ----|----
     Název| Zadejte jedinečný název pro vaše nasazení.
-    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Description| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočetních prostředků| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
     Název výpočetních prostředků| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.

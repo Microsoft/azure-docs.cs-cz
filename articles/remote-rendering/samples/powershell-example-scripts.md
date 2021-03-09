@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009751"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518207"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -36,7 +36,7 @@ Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azur
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Install-Module -Name Az -AllowClobber`
 
-1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
+1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies) :
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 

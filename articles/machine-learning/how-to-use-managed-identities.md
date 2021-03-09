@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388069"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521012"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md)
-- [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/intro).
 - Aby bylo možné přiřadit role, přihlášení k předplatnému Azure musí mít roli [spravovaného operátora identity](../role-based-access-control/built-in-roles.md#managed-identity-operator) nebo jinou roli, která uděluje požadované akce (například __vlastník__).
 - Musíte být obeznámeni s vytvářením a práci se [spravovanými identitami](../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -107,7 +107,7 @@ Pokud chcete získat přístup k pracovnímu prostoru ACR, vytvořte výpočetn�
 
 # <a name="python"></a>[Python](#tab/python)
 
-Při vytváření výpočetního clusteru s [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)použijte `identity_type` parametr pro nastavení spravovaného typu identity.
+Při vytváření výpočetního clusteru s [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration)použijte `identity_type` parametr pro nastavení spravovaného typu identity.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,7 +191,7 @@ V tomto scénáři Azure Machine Learning služba sestaví školicí nebo odvozu
 
         ID prostředku UAI je ID prostředku Azure přiřazené identitě uživatele ve formátu `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. V připojeních pracovního prostoru zadejte externí ACR a ID klienta __spravované identity přiřazené uživatelem__ pomocí [metody Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
+1. V připojeních pracovního prostoru zadejte externí ACR a ID klienta __spravované identity přiřazené uživatelem__ pomocí [metody Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-):
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Volitelně můžete zadat adresu URL spravovaného prostředku identity a ID klienta v samotné definici prostředí pomocí [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Pokud použijete identitu registru explicitně, potlačí všechna připojení k pracovnímu prostoru, která jste zadali dříve:
+Volitelně můžete zadat adresu URL spravovaného prostředku identity a ID klienta v samotné definici prostředí pomocí [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity). Pokud použijete identitu registru explicitně, potlačí všechna připojení k pracovnímu prostoru, která jste zadali dříve:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

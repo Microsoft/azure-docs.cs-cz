@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251110"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518496"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurace a odesílání trénovacích spuštění
 
@@ -26,15 +26,15 @@ Po školení je běžné začít na místním počítači a později škálovat 
 
 Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění skriptu**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
-* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure Machine Learning pracovní prostor](how-to-manage-workspace.md),`ws`
 * Cíl výpočtů, `my_compute_target` .  [Vytvořit cíl výpočtů](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Co je konfigurace spuštění skriptu?
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) se používá ke konfiguraci informací nezbytných pro odeslání školicích běhů v rámci experimentu.
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) se používá ke konfiguraci informací nezbytných pro odeslání školicích běhů v rámci experimentu.
 
 Odešlete experiment školení s objektem ScriptRunConfig.  Tento objekt obsahuje:
 
@@ -42,7 +42,7 @@ Odešlete experiment školení s objektem ScriptRunConfig.  Tento objekt obsahuj
 * **skript**: školicí skript, který se má spustit
 * **compute_target**: výpočetní cíl, na kterém se má spustit
 * **prostředí**: prostředí, které se má použít při spuštění skriptu.
-* a některé další konfigurovatelné možnosti (Další informace najdete v [referenční dokumentaci](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) )
+* a některé další konfigurovatelné možnosti (Další informace najdete v [referenční dokumentaci](/python/api/azureml-core/azureml.core.scriptrunconfig) )
 
 ## <a name="train-your-model"></a><a id="submit"></a>Trénování modelu
 
@@ -133,7 +133,7 @@ Pokud máte argumenty příkazového řádku, které chcete předat skriptu pro 
 Pokud chcete přepsat výchozí maximální dobu povolenou pro spuštění, můžete to provést prostřednictvím **`max_run_duration_seconds`** parametru. Systém se pokusí spuštění automaticky zrušit, pokud trvá déle než tato hodnota.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Zadat konfiguraci distribuované úlohy
-Pokud chcete spustit úlohu distribuovaného školení, zadejte pro parametr konfiguraci specifickou pro distribuovanou úlohu **`distributed_job_config`** . Podporované typy konfigurace zahrnují [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py). 
+Pokud chcete spustit úlohu distribuovaného školení, zadejte pro parametr konfiguraci specifickou pro distribuovanou úlohu **`distributed_job_config`** . Podporované typy konfigurace zahrnují [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration). 
 
 Další informace a příklady spouštění distribuovaných úloh Horovod, TensorFlow a PyTorch najdete v těchto tématech:
 
@@ -197,10 +197,10 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
     
     Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
     Závislosti specifické pro rozhraní jsou uvedené v dokumentaci k příslušnému rozhraní:
-    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [Skriptu sklearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer#remarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch#remarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow#remarks)
+    *  [Skriptu sklearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn#remarks)
     
     > [!Note]
     > Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
@@ -208,7 +208,7 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
 * **NameError (název není definován), AttributeError (objekt nemá žádný atribut)**: Tato výjimka by měla pocházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK se můžete podívat na `run.get_details()` chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
 
 
-* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
+* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29#archive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
     Trvalé odstranění jednotlivých experimentů nebo spuštění se v současné době nepodporuje. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
@@ -229,5 +229,5 @@ Příklady konfigurace spuštění různých školicích scénářů najdete v t
 * Podívejte se, jak naučit modely s konkrétními rozhraními ML, jako jsou [Scikit-učení](how-to-train-scikit-learn.md), [TensorFlow](how-to-train-tensorflow.md)a [PyTorch](how-to-train-pytorch.md).
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* Zobrazit odkaz na sadu SDK [třídy ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)
+* Zobrazit odkaz na sadu SDK [třídy ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)
 * [Použití Azure Machine Learning s Azure Virtual Networks](./how-to-network-security-overview.md)

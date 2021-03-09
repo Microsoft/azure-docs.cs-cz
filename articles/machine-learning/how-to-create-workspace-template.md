@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503177"
+ms.locfileid: "102522202"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -32,12 +32,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 * Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](/powershell/azure/) , nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
-* Některé scénáře vyžadují, abyste otevřeli lístek podpory. Mezi tyto scénáře patří:
-
-    * __Pracovní prostor s podporou služby Private Link a klíčem spravovaným zákazníkem__
-    * __Azure Container Registry pro pracovní prostor za vaší virtuální sítí__
-
-    Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Některé scénáře vyžadují, abyste otevřeli lístek podpory. Například použití pracovního prostoru s povoleným privátním propojením s klíčem spravovaným zákazníkem. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Omezení
 

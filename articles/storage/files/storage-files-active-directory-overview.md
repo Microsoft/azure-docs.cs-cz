@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695890"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519788"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -128,7 +128,7 @@ Jakmile povolíte Azure služba AD DS nebo místní služba AD DS ověřování,
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Konfigurace oprávnění adresářů nebo souborů pro soubory Azure
 
-Sdílené složky Azure vynutila standardní oprávnění souborů Windows v adresáři i na úrovni souborů, včetně kořenového adresáře. Konfigurace oprávnění na úrovni adresáře nebo souborů se podporuje přes protokol SMB i REST. Připojte cílovou sdílenou složku z virtuálního počítače a nakonfigurujte oprávnění pomocí Průzkumníka souborů Windows, Windows [Icacls](/windows-server/administration/windows-commands/icacls)nebo příkazu [set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) .
+Sdílené složky Azure vynutila standardní oprávnění souborů Windows v adresáři i na úrovni souborů, včetně kořenového adresáře. Konfigurace oprávnění na úrovni adresáře nebo souborů se podporuje přes protokol SMB i REST. Připojte cílovou sdílenou složku z virtuálního počítače a nakonfigurujte oprávnění pomocí Průzkumníka souborů Windows, Windows [Icacls](/windows-server/administration/windows-commands/icacls)nebo příkazu [set-ACL](/powershell/module/microsoft.powershell.security/get-acl) .
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Použijte klíč účtu úložiště pro oprávnění naduživatelem.
 
@@ -139,7 +139,7 @@ Uživatel s klíčem účtu úložiště má přístup ke sdíleným složkám A
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Zachování seznamů ACL adresářů a souborů při importu dat do sdílených složek Azure
 
-Azure Files podporuje zachovávání seznamů ACL na úrovni adresáře nebo souborů při kopírování dat do sdílených složek Azure. Seznamy řízení přístupu můžete zkopírovat do složky nebo souboru do sdílených složek Azure pomocí Azure File Sync nebo běžných nástrojů pro přesun souborů. Pomocí příkazu [Robocopy](/windows-server/administration/windows-commands/robocopy) s `/copy:s` příznakem můžete například kopírovat data i seznamy ACL do sdílené složky Azure. Seznamy řízení přístupu (ACL) jsou ve výchozím nastavení zachované, nemusíte u svého účtu úložiště povolit ověřování na základě identity, abyste zachovali seznamy ACL.
+Azure Files podporuje zachovávání seznamů ACL na úrovni adresáře nebo souborů při kopírování dat do sdílených složek Azure. Seznamy řízení přístupu můžete zkopírovat do složky nebo souboru do sdílených složek Azure pomocí Synchronizace souborů Azure nebo běžných nástrojů pro přesun souborů. Pomocí příkazu [Robocopy](/windows-server/administration/windows-commands/robocopy) s `/copy:s` příznakem můžete například kopírovat data i seznamy ACL do sdílené složky Azure. Seznamy řízení přístupu (ACL) jsou ve výchozím nastavení zachované, nemusíte u svého účtu úložiště povolit ověřování na základě identity, abyste zachovali seznamy ACL.
 
 ## <a name="pricing"></a>Ceny
 Pro povolení ověřování na základě identity přes protokol SMB v účtu úložiště není k dispozici žádný další poplatek za službu. Další informace o cenách najdete v tématu ceny za [Azure Files](https://azure.microsoft.com/pricing/details/storage/files/) a [ceny Azure AD Domain Services](https://azure.microsoft.com/pricing/details/active-directory-ds/).

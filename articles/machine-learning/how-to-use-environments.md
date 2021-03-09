@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 75882701984dfff3005aa3661274a8dc94b22a28
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 038e1394c68df63221d99b87449e5502ae62fadc
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596356"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521029"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Vytvoření & použití softwarových prostředí v Azure Machine Learning
 
 
-V tomto článku se dozvíte, jak vytvářet a spravovat Azure Machine Learning [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py). Prostředí můžete použít ke sledování a reprodukování závislostí softwaru projektů při jejich vývoje.
+V tomto článku se dozvíte, jak vytvářet a spravovat Azure Machine Learning [prostředí](/python/api/azureml-core/azureml.core.environment.environment). Prostředí můžete použít ke sledování a reprodukování závislostí softwaru projektů při jejich vývoje.
 
 Správa závislostí softwaru je běžným úkolem pro vývojáře. Chcete zajistit, aby sestavení byla reprodukovatelná bez obsáhlé ruční konfigurace softwaru. Účty Azure Machine Learning `Environment` třídy pro místní vývojová řešení, jako jsou PIP a Conda, a vývoj distribuovaných cloudů prostřednictvím možností Docker.
 
@@ -36,7 +36,7 @@ Základní informace o tom, jak prostředí pracují v Azure Machine Learning, n
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
@@ -87,7 +87,7 @@ for env in envs:
 
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Použití conda závislostí nebo souborů požadavků PIP
 
-Prostředí můžete vytvořit ze specifikace conda nebo souboru s požadavky PIP. Použijte [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-conda-specification-name--file-path-) metodu nebo [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-pip-requirements-name--file-path-) metodu. Do argumentu metoda zahrňte název vašeho prostředí a cestu k souboru, který chcete. 
+Prostředí můžete vytvořit ze specifikace conda nebo souboru s požadavky PIP. Použijte [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-) metodu nebo [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) metodu. Do argumentu metoda zahrňte název vašeho prostředí a cestu k souboru, který chcete. 
 
 ```python
 # From a Conda specification file
@@ -103,7 +103,7 @@ myenv = Environment.from_pip_requirements(name = "myenv",
 
 Když povolíte Docker, Azure Machine Learning sestaví Docker image a v rámci tohoto kontejneru vytvoří prostředí Pythonu s ohledem na vaše specifikace. Image Docker se ukládají do mezipaměti a znovu se používají: první spuštění v novém prostředí obvykle trvá déle, než se image sestaví.
 
-[`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection?preserve-view=true&view=azure-ml-py) `Environment` Třída Azure Machine Learning umožňuje jemně přizpůsobit a řídit hostovaný operační systém, na kterém spouštíte školení. `arguments`Proměnná se dá použít k určení dalších argumentů, které se mají předat příkazu Docker run.
+[`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) `Environment` Třída Azure Machine Learning umožňuje jemně přizpůsobit a řídit hostovaný operační systém, na kterém spouštíte školení. `arguments`Proměnná se dá použít k určení dalších argumentů, které se mají předat příkazu Docker run.
 
 ```python
 # Creates the environment inside a Docker container.
@@ -179,7 +179,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 
 #### <a name="retrieve-image-details"></a>Načíst podrobnosti obrázku
 
-V případě registrovaného prostředí můžete načíst podrobnosti o imagi pomocí následujícího kódu, kde `details` je instance [DockerImageDetails](/python/api/azureml-core/azureml.core.environment.dockerimagedetails?preserve-view=true&view=azure-ml-py) (AzureML Python SDK >= 1,11) a poskytuje všechny informace o imagi prostředí, jako je například souboru Dockerfile, registr a název bitové kopie.
+V případě registrovaného prostředí můžete načíst podrobnosti o imagi pomocí následujícího kódu, kde `details` je instance [DockerImageDetails](/python/api/azureml-core/azureml.core.environment.dockerimagedetails) (AzureML Python SDK >= 1,11) a poskytuje všechny informace o imagi prostředí, jako je například souboru Dockerfile, registr a název bitové kopie.
 
 ```python
 details = environment.get_image_details(workspace=ws)
@@ -195,14 +195,14 @@ details = run.get_environment().get_image_details(workspace=ws)
 
 Pokud máte v místním počítači existující prostředí Conda, můžete službu použít k vytvoření objektu prostředí. Pomocí této strategie můžete své místní interaktivní prostředí použít na vzdáleném spuštění.
 
-Následující kód vytvoří objekt prostředí z existujícího prostředí conda `mycondaenv` . Používá [`from_existing_conda_environment()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-existing-conda-environment-name--conda-environment-name-) metodu.
+Následující kód vytvoří objekt prostředí z existujícího prostředí conda `mycondaenv` . Používá [`from_existing_conda_environment()`](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-) metodu.
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name="myenv",
                                                     conda_environment_name="mycondaenv")
 ```
 
-Definici prostředí lze uložit do adresáře ve snadno upravitelném formátu pomocí [`save_to_directory()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-to-directory-path--overwrite-false-) metody. Po změně lze vytvořit instanci nového prostředí načtením souborů z adresáře.
+Definici prostředí lze uložit do adresáře ve snadno upravitelném formátu pomocí [`save_to_directory()`](/python/api/azureml-core/azureml.core.environment.environment#save-to-directory-path--overwrite-false-) metody. Po změně lze vytvořit instanci nového prostředí načtením souborů z adresáře.
 
 ```python
 # save the enviroment
@@ -232,13 +232,13 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="add-packages-to-an-environment"></a>Přidání balíčků do prostředí
 
-Přidejte balíčky do prostředí pomocí souborů Conda, PIP nebo privátního kola. Zadejte každou závislost balíčku pomocí [`CondaDependency`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py) třídy. Přidejte ho do prostředí `PythonSection` .
+Přidejte balíčky do prostředí pomocí souborů Conda, PIP nebo privátního kola. Zadejte každou závislost balíčku pomocí [`CondaDependency`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies) třídy. Přidejte ho do prostředí `PythonSection` .
 
 ### <a name="conda-and-pip-packages"></a>Balíčky conda a PIP
 
 Pokud je balíček k dispozici v úložišti balíčků Conda, doporučujeme použít instalaci conda spíše než instalaci PIP. Balíčky conda se typicky dodávají s předem vytvořenými binárními soubory, které zajistí spolehlivější instalaci.
 
-Následující příklad přidá do prostředí `myenv` . Přidá 1.17.0 verze `numpy` . Přidá také `pillow` balíček. V příkladu se používá [`add_conda_package()`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-conda-package-conda-package-) Metoda a [`add_pip_package()`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-pip-package-pip-package-) metoda, v uvedeném pořadí.
+Následující příklad přidá do prostředí `myenv` . Přidá 1.17.0 verze `numpy` . Přidá také `pillow` balíček. V příkladu se používá [`add_conda_package()`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies#add-conda-package-conda-package-) Metoda a [`add_pip_package()`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies#add-pip-package-pip-package-) metoda, v uvedeném pořadí.
 
 ```python
 from azureml.core.environment import Environment
@@ -276,7 +276,7 @@ Spravujte prostředí, abyste je mohli aktualizovat, sledovat a opakovaně použ
 
 ### <a name="register-environments"></a>Registrovat prostředí
 
-Prostředí se do vašeho pracovního prostoru automaticky zaregistruje, když odešlete spuštění nebo nasazení webové služby. Prostředí můžete také ručně zaregistrovat pomocí [`register()`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace-) metody. Tato operace zpřístupňuje prostředí do entity, která je sledována a ve verzi cloudu. Entitu lze sdílet mezi uživateli pracovního prostoru.
+Prostředí se do vašeho pracovního prostoru automaticky zaregistruje, když odešlete spuštění nebo nasazení webové služby. Prostředí můžete také ručně zaregistrovat pomocí [`register()`](/python/api/azureml-core/azureml.core.environment%28class%29#register-workspace-) metody. Tato operace zpřístupňuje prostředí do entity, která je sledována a ve verzi cloudu. Entitu lze sdílet mezi uživateli pracovního prostoru.
 
 Následující kód registruje `myenv` prostředí do `ws` pracovního prostoru.
 
@@ -292,11 +292,11 @@ Při prvním použití prostředí v rámci školení nebo nasazení je tato mo�
 
 #### <a name="view-a-list-of-environments"></a>Zobrazení seznamu prostředí
 
-Prohlédněte si prostředí v pracovním prostoru pomocí [`Environment.list(workspace="workspace_name")`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelist-workspace-) třídy. Pak vyberte prostředí, které chcete znovu použít.
+Prohlédněte si prostředí v pracovním prostoru pomocí [`Environment.list(workspace="workspace_name")`](/python/api/azureml-core/azureml.core.environment%28class%29#list-workspace-) třídy. Pak vyberte prostředí, které chcete znovu použít.
 
 #### <a name="get-an-environment-by-name"></a>Získat prostředí podle názvu
 
-Konkrétní prostředí můžete také získat podle názvu a verze. Následující kód používá [`get()`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-workspace--name--version-none-) metodu pro načtení verze `1` `myenv` prostředí v `ws` pracovním prostoru.
+Konkrétní prostředí můžete také získat podle názvu a verze. Následující kód používá [`get()`](/python/api/azureml-core/azureml.core.environment%28class%29#get-workspace--name--version-none-) metodu pro načtení verze `1` `myenv` prostředí v `ws` pracovním prostoru.
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -304,7 +304,7 @@ restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
 
 #### <a name="train-a-run-specific-environment"></a>Výuka prostředí specifického pro běh
 
-Chcete-li získat prostředí, které bylo použito pro konkrétní spuštění po dokončení školení, použijte [`get_environment()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-environment--) metodu ve `Run` třídě.
+Chcete-li získat prostředí, které bylo použito pro konkrétní spuštění po dokončení školení, použijte [`get_environment()`](/python/api/azureml-core/azureml.core.run.run#get-environment--) metodu ve `Run` třídě.
 
 ```python
 from azureml.core import Run
@@ -319,7 +319,7 @@ Pokud chcete aktualizovat verzi balíčku Pythonu v existujícím prostředí, z
 
 ### <a name="debug-the-image-build"></a>Ladění sestavení image
 
-Následující příklad používá [`build()`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) metodu k ručnímu vytvoření prostředí jako image Docker. Monitoruje výstupní protokoly ze sestavení imagí pomocí [`wait_for_completion()`](/python/api/azureml-core/azureml.core.image%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truewait-for-creation-show-output-false-) . Sestavená image se pak zobrazí v instanci Azure Container Registry pracovního prostoru. Tyto informace jsou užitečné pro ladění.
+Následující příklad používá [`build()`](/python/api/azureml-core/azureml.core.environment%28class%29#build-workspace--image-build-compute-none-) metodu k ručnímu vytvoření prostředí jako image Docker. Monitoruje výstupní protokoly ze sestavení imagí pomocí [`wait_for_completion()`](/python/api/azureml-core/azureml.core.image%28class%29#wait-for-creation-show-output-false-) . Sestavená image se pak zobrazí v instanci Azure Container Registry pracovního prostoru. Tyto informace jsou užitečné pro ladění.
 
 ```python
 from azureml.core import Image
@@ -327,7 +327,7 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-Je vhodné nejprve sestavit image místně pomocí [`build_local()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-local-workspace--platform-none----kwargs-) metody. Pokud chcete vytvořit image Docker, nastavte volitelný parametr `useDocker=True` . Pokud chcete výsledný obrázek nasdílet do registru kontejneru AzureML pracovního prostoru, nastavte `pushImageToWorkspaceAcr=True` .
+Je vhodné nejprve sestavit image místně pomocí [`build_local()`](/python/api/azureml-core/azureml.core.environment.environment#build-local-workspace--platform-none----kwargs-) metody. Pokud chcete vytvořit image Docker, nastavte volitelný parametr `useDocker=True` . Pokud chcete výsledný obrázek nasdílet do registru kontejneru AzureML pracovního prostoru, nastavte `pushImageToWorkspaceAcr=True` .
 
 ```python
 build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
@@ -342,7 +342,7 @@ Chcete-li odeslat školicí běh, je třeba zkombinovat prostředí, [cíl výpo
 
 Když odešlete školicí běh, může vytváření nového prostředí trvat několik minut. Doba trvání závisí na velikosti požadovaných závislostí. Služba ukládá do mezipaměti prostředí. Takže pokud definice prostředí zůstane beze změny, nebudete se zabývat úplným časem nastavení jenom jednou.
 
-Následující příklad spuštění místního skriptu ukazuje, kde byste použili [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) jako objekt obálky.
+Následující příklad spuštění místního skriptu ukazuje, kde byste použili [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) jako objekt obálky.
 
 ```python
 from azureml.core import ScriptRunConfig, Experiment
@@ -371,7 +371,7 @@ Prostředí můžete použít při nasazení modelu jako webové služby. Tato m
 
 Pokud definujete vlastní prostředí pro nasazení webové služby, je nutné `azureml-defaults` vytvořit seznam s verzí >= 1.0.45 jako závislostí PIP. Tento balíček obsahuje funkce, které jsou potřeba pro hostování modelu jako webové služby.
 
-Chcete-li nasadit webovou službu, zkombinujte prostředí, výpočetní výkon, model bodování a registrovaný model do objektu nasazení [`deploy()`](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) . Další informace najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+Chcete-li nasadit webovou službu, zkombinujte prostředí, výpočetní výkon, model bodování a registrovaný model do objektu nasazení [`deploy()`](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) . Další informace najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 V tomto příkladu Předpokládejme, že jste dokončili školicí běh. Nyní chcete nasadit tento model do Azure Container Instances. Při sestavování webové služby jsou soubory modelů a bodování připojené k imagi a do image se přidá zásobník odvození Azure Machine Learning.
 
@@ -437,4 +437,4 @@ az ml environment download -n myenv -d downloaddir
 
 * Postup použití spravovaného cílového výpočetního prostředí pro výuku modelu najdete v tématu [kurz: výuka modelu](tutorial-train-models-with-aml.md).
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* Podívejte se na [ `Environment` odkaz třídy SDK](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py).
+* Podívejte se na [ `Environment` odkaz třídy SDK](/python/api/azureml-core/azureml.core.environment%28class%29).

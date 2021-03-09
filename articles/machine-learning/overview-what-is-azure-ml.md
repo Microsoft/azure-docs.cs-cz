@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 11/04/2020
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 09be6a73b092f6298099e4a11bcd606759515c07
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374248"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521386"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -42,7 +42,7 @@ Díky předpovědím neboli predikcím ze strojového učení můžou být aplik
 Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteří potřebují pro své pracovní postupy pro strojové učení, včetně těchto nástrojů:
 + [Návrhář Azure Machine Learning](tutorial-designer-automobile-price-train-score.md): přetažení modulů pro sestavování experimentů a následné nasazení kanálů.
 
-+ Jupyter poznámkové bloky: pomocí našich [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks) nebo vytvořte vlastní poznámkové bloky a využijte naši <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">sadu SDK pro ukázky Pythonu</a> pro váš strojové učení. 
++ Jupyter poznámkové bloky: pomocí našich [ukázkových poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks) nebo vytvořte vlastní poznámkové bloky a využijte naši <a href="/python/api/overview/azure/ml/intro" target="_blank">sadu SDK pro ukázky Pythonu</a> pro váš strojové učení. 
 
 + Skripty nebo notebooky r, ve kterých používáte <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">sadu SDK pro R</a> k psaní vlastního kódu nebo použití modulů R v návrháři.
 
@@ -60,7 +60,7 @@ Můžete dokonce použít [MLflow ke sledování metrik a nasazení modelů](how
 
 ## <a name="build-ml-models-in-python-or-r"></a>Vytváření modelů ML v Pythonu nebo R
 
-Spusťte školení na místním počítači pomocí Azure Machine Learning <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> nebo <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>. Pak můžete horizontální navýšení kapacity na Cloud. 
+Spusťte školení na místním počítači pomocí Azure Machine Learning <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> nebo <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a>. Pak můžete horizontální navýšení kapacity na Cloud. 
 
 Díky mnoha dostupným [výpočetním cílům](how-to-create-attach-compute-studio.md), jako je Azure Machine Learning compute a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks), a s [pokročilými službami ladění pomocí parametrů](how-to-tune-hyperparameters.md)můžete vytvářet lepší modely rychleji pomocí výkonného cloudu.
 
@@ -91,7 +91,7 @@ Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-t
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: nasazení správy životního cyklu &
 Pokud máte správný model, můžete ho snadno použít ve webové službě, v zařízení IoT nebo v Power BI. Další informace najdete v článku věnovaném [nasazení a umístění](how-to-deploy-and-where.md).
 
-Pak můžete nasadit nasazené modely pomocí [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py), [Azure Machine Learning Studio](https://ml.azure.com)nebo rozhraní příkazového [řádku Machine Learning](reference-azure-machine-learning-cli.md).
+Pak můžete nasadit nasazené modely pomocí [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/), [Azure Machine Learning Studio](https://ml.azure.com)nebo rozhraní příkazového [řádku Machine Learning](reference-azure-machine-learning-cli.md).
 
 Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-consume-web-service.md) nebo [asynchronně](./tutorial-pipeline-batch-scoring-classification.md) u velkých objemů dat.
 

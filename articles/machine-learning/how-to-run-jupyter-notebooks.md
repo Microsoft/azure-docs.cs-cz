@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423981"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518717"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
 
@@ -115,7 +115,7 @@ Pouze můžete zobrazit a použít výpočetní instance, které vytvoříte.  V
 
 ### <a name="view-logs-and-output"></a>Zobrazit protokoly a výstup
 
-Pomocí [widgetů poznámkového bloku](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
+Pomocí [widgetů poznámkového bloku](/python/api/azureml-widgets/azureml.widgets) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Snímek obrazovky: widget poznámkového bloku Jupyter ":::
 
@@ -195,7 +195,7 @@ Buňka je v režimu příkazu, když není k dispozici žádný textový kurzor,
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Buňka poznámkového bloku v režimu příkazu ":::
 
-| Zástupce                      | Popis                          |
+| Zástupce                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | Přechod do režimu úprav             |        
 | Shift + Enter                 | Spustit buňku, vyberte níže         |     
@@ -239,7 +239,7 @@ Režim úprav je označen textovým kurzorem, který vás vyzve k zadání v obl
 
 Pomocí následujících klávesových zkratek můžete snáze procházet a spouštět kód v Azure Machine Learning poznámkových blocích v režimu úprav.
 
-| Zástupce                      | Popis|                                     
+| Zástupce                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Přejít do režimu příkazu|  
 | Ctrl/Command + mezerník       | Aktivace technologie IntelliSense |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878591"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518868"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Migrace z odhady na ScriptRunConfig
 
@@ -30,7 +30,7 @@ Tento článek se věnuje běžným hlediskům při migraci z odhady na ScriptRu
 > Pokud chcete migrovat na ScriptRunConfig z odhady, ujistěte se, že používáte >= 1.15.0 sady Python SDK.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>Dokumentace a ukázky ScriptRunConfig
-Dokumentace a ukázky Azure Machine Learning byly aktualizovány tak, aby používaly [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) pro konfiguraci a odeslání úlohy.
+Dokumentace a ukázky Azure Machine Learning byly aktualizovány tak, aby používaly [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) pro konfiguraci a odeslání úlohy.
 
 Informace o použití ScriptRunConfig najdete v následující dokumentaci:
 * [Konfigurace a odesílání trénovacích spuštění](how-to-set-up-training-targets.md)
@@ -107,7 +107,7 @@ Další informace o používání dat pro školení najdete v těchto tématech:
 * [Výuka s datovými sadami v Azure ML](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Distribuované trénování
-Pokud potřebujete nakonfigurovat distribuovanou úlohu pro školení, udělejte to tak, že zadáte `distributed_job_config` parametr v konstruktoru ScriptRunConfig. Předejte [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)nebo [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) pro distribuované úlohy příslušných typů.
+Pokud potřebujete nakonfigurovat distribuovanou úlohu pro školení, udělejte to tak, že zadáte `distributed_job_config` parametr v konstruktoru ScriptRunConfig. Předejte [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)nebo [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) pro distribuované úlohy příslušných typů.
 
 V následujícím příkladu je nakonfiguruje školicí úkol PyTorch pro použití distribuovaného školení s MPI/Horovod:
 ```python

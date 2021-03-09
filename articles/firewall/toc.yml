@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: Nasazení a konfigurace brány firewall Premium
       href: premium-deploy.md
+    - name: Nasazení certifikátů podnikové certifikační autority pro Premium
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Migrace na Azure Firewall Premium
       href: premium-migrate.md
 - name: Referenční informace

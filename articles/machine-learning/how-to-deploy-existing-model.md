@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8076e3f6b2198abe46ae49cd8e0fd2b02f000231
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213126"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519346"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Nasazení stávajícího modelu pomocí Azure Machine Learning
 
@@ -28,11 +28,11 @@ Další informace o konceptech a pojmech v tomto článku najdete v tématu [Spr
 ## <a name="prerequisites"></a>Požadavky
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
-  + V příkladech Pythonu se předpokládá, že `ws` je proměnná nastavená na váš pracovní prostor Azure Machine Learning. Další informace o tom, jak se připojit k pracovnímu prostoru, najdete v [dokumentaci k sadě Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace).
+  + V příkladech Pythonu se předpokládá, že `ws` je proměnná nastavená na váš pracovní prostor Azure Machine Learning. Další informace o tom, jak se připojit k pracovnímu prostoru, najdete v [dokumentaci k sadě Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/#workspace).
   
   + Příklady rozhraní příkazového řádku používají zástupné symboly `myworkspace` a `myresourcegroup` , které byste měli nahradit názvem vašeho pracovního prostoru a skupinou prostředků, která ho obsahuje.
 
-* [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
+* [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install).  
 
 * Rozšíření rozhraní příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) a [Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-Další informace naleznete v tématu [model. Register ()](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) reference.
+Další informace naleznete v tématu [model. Register ()](/python/api/azureml-core/azureml.core.model%28class%29#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) reference.
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 Další informace najdete v následujících článcích:
 
 + [Jak používat prostředí](how-to-use-environments.md).
-+ Odkaz na [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)
++ Odkaz na [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig)
 
 
 Rozhraní příkazového řádku načte konfiguraci odvození ze souboru YAML:
@@ -220,7 +220,7 @@ Další informace o vstupních skriptech najdete v tématu [nasazení modelů po
 
 ## <a name="define-deployment"></a>Definovat nasazení
 
-Balíček [WebService](/python/api/azureml-core/azureml.core.webservice?preserve-view=true&view=azure-ml-py) obsahuje třídy používané pro nasazení. Třída, kterou použijete, určuje, kde je model nasazen. Například pro nasazení jako webové služby ve službě Azure Kubernetes použijte k vytvoření konfigurace nasazení [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) .
+Balíček [WebService](/python/api/azureml-core/azureml.core.webservice) obsahuje třídy používané pro nasazení. Třída, kterou použijete, určuje, kde je model nasazen. Například pro nasazení jako webové služby ve službě Azure Kubernetes použijte k vytvoření konfigurace nasazení [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) .
 
 Následující kód Pythonu definuje konfiguraci nasazení pro místní nasazení. Tato konfigurace nasadí model jako webovou službu do místního počítače.
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-Další informace naleznete v odkazu [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) .
+Další informace naleznete v odkazu [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.localwebservice#deploy-configuration-port-none-) .
 
 Rozhraní příkazového řádku načte konfiguraci nasazení ze souboru YAML:
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-Další informace naleznete v tématu [model. deploy ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) reference.
+Další informace naleznete v tématu [model. deploy ()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) reference.
 
 Chcete-li model nasadit z rozhraní příkazového řádku, použijte následující příkaz. Tento příkaz nasadí verzi 1 registrovaného modelu ( `sentiment:1` ) pomocí odvození a konfigurace nasazení uložené v `inferenceConfig.json` `deploymentConfig.json` souborech a:
 

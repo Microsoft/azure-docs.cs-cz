@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575069"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521335"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -88,7 +88,7 @@ Azure Machine Learning má k jeho metrikám přidružené následující dimenze
 | NodeId | ID uzlu, který byl vytvořen v případě běhu úlohy. K dispozici pouze pro CpuUtilization a GpuUtilization. |
 | RunId | ID běhu/úlohy K dispozici pouze pro CpuUtilization a GpuUtilization. |
 | ComputeType | Typ výpočtu, který se používá. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
-| PipelineStepType | Typ [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) použitý v běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+| PipelineStepType | Typ [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) použitý v běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 | PublishedPipelineId | ID publikovaného kanálu používaného v běhu K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 | RunType | Typ běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 

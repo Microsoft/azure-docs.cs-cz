@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 75ad3743a90f5773163a8f115e1924b8c5bbe097
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1c05ff1bf1956943230bf523584025787495d57f
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108089"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517850"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Verze toku uživatele v Azure Active Directory B2C
 
 Toky uživatelů v Azure Active Directory B2C (Azure AD B2C) vám pomůžou nastavit společné [zásady](user-flow-overview.md) , které plně popisují prostředí identity zákazníků. Mezi tyto prostředí patří registrace, přihlášení, resetování hesla nebo úpravy profilu. Následující tabulky popisují toky uživatelů, které jsou k dispozici v Azure AD B2C.
 
 > [!IMPORTANT]
-> Změnili jsme způsob, jakým jsme odkazovali na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
+> Změnili jsme způsob, jakým označujeme verze toků uživatelů. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
 >
 >- **Doporučené** toky pro uživatele jsou nové verze Preview toků uživatelů. Jsou důkladně testovány a kombinovány se všemi funkcemi starších verzí **v2** a **v 1.1** . Až dál, budou se udržovat a aktualizovat nové doporučené toky uživatelů. Po přechodu na tyto nové doporučené toky uživatelů budete mít přístup k novým funkcím, jakmile jsou vydány.
 >- **Standardní** uživatelské toky, dříve označované jako **v1**, jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Pokud jsou toky uživatelů klíčové a závisí na vysoce stabilních verzích, můžete pokračovat v používání standardních uživatelských toků a realizovat, že tyto verze nebudou zachované a aktualizované.
@@ -33,19 +33,19 @@ Toky uživatelů v Azure Active Directory B2C (Azure AD B2C) vám pomůžou nast
 
 Doporučené toky pro uživatele jsou verze Preview, které spojují nové funkce se staršími možnostmi verze V2 a V 1.1. Dál se budou udržovat a aktualizovat Doporučené toky uživatelů.
 
-| Tok uživatele | Popis |
+| Tok uživatele | Description |
 | --------- | ----------- |
-| Resetování hesla (Preview) | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[požadavky na složitost hesla](password-complexity.md)</li></ul> |
+| Resetování hesla (Preview) | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Ověřování věku](age-gating.md)</li><li>[požadavky na složitost hesla](password-complexity.md)</li></ul> |
 | Úpravy profilu (Preview) | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |
-| Přihlášení (Preview) | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>Přizpůsobení přihlašovací stránky</li></ul> |
-| Zaregistrovat se (Preview) | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
-| Registrace a přihlášení (Preview) | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
+| Přihlášení (Preview) | Umožňuje uživateli přihlásit se ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](age-gating.md)</li><li>Přizpůsobení přihlašovací stránky</li></ul> |
+| Zaregistrovat se (Preview) | Umožňuje uživateli vytvořit účet. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li><li>[Ověřování věku](age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
+| Registrace a přihlášení (Preview) | Umožňuje uživateli vytvořit účet nebo se přihlásit ke svému účtu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>[Ověřování věku](age-gating.md)</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>Toky standardních uživatelů
 
 Standardní uživatelské toky (dříve označované jako V1) jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Standardní uživatelské toky se nebudou dál aktualizovat.
 
-| Tok uživatele | Popis |
+| Tok uživatele | Description |
 | --------- | ----------- | ----------- |
 | Resetování hesla | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Požadavky na složitost hesla](password-complexity.md)</li></ul> |
 | Úpravy profilu | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |

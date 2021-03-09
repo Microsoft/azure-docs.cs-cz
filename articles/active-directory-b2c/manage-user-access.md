@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951617"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518048"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -83,7 +83,53 @@ Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jiným
 - Pokud je uživatel známý jako dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **dospělé**.
 - Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou **podverze** a podle potřeby nastavte **consentProvidedForMinor**.
 
-Další informace o shromažďování dat DOB najdete v tématu [použití omezení stáří v Azure AD B2C](basic-age-gating.md).
+## <a name="minor-calculation-rules"></a>Vedlejší pravidla výpočtů
+
+Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo nepovažuje za nezletilou, a stáří, ve kterém by měl mít uživatel souhlas rodičů. V následující tabulce jsou uvedena věková pravidla, která se používají k definování vedlejších a méně závažného souhlasu.
+
+| Země/oblast | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
+| -------------- | ------------------- | ----------------- | --------- |
+| Výchozí | Žádné | Žádné | 18 |
+| AE | Spojené arabské emiráty | Žádné | 21 |
+| AT | Rakousko | 14 | 18 |
+| BE | Belgie | 14 | 18 |
+| BG | Bulharsko | 16 | 18 |
+| BH | Bahrajn | Žádné | 21 |
+| CM | Kamerun | Žádné | 21 |
+| CY | Kypr | 16 | 18 |
+| CZ | Česká republika | 16 | 18 |
+| DE | Německo | 16 | 18 |
+| DK | Dánsko | 16 | 18 |
+| EE | Estonsko | 16 | 18 |
+| EG | Egypt | Žádné | 21 |
+| ES | Španělsko | 13 | 18 |
+| FR | Francie | 16 | 18 |
+| GB | Spojené království | 13 | 18 |
+| GR | Řecko | 16 | 18 |
+| HR | Chorvatsko | 16 | 18 |
+| HU | Maďarsko | 16 | 18 |
+| IE | Irsko | 13 | 18 |
+| IT | Itálie | 16 | 18 |
+| KR | Korejská republika | 14 | 18 |
+| LT | Litva | 16 | 18 |
+| LU | Lucembursko | 16 | 18 |
+| LV | Lotyšsko | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| NA | Namibie | Žádné | 21 |
+| NL | Nizozemsko | 16 | 18 |
+| PL | Polsko | 13 | 18 |
+| PT | Portugalsko | 16 | 18 |
+| RO | Rumunsko | 16 | 18 |
+| SE | Švédsko | 13 | 18 |
+| SG | Singapur | Žádné | 21 |
+| SI | Slovinsko | 16 | 18 |
+| SK | Slovensko | 16 | 18 |
+| TD | Čad | Žádné | 21 |
+| TH | Thajsko | Žádné | 20 |
+| TW | Tchaj-wan | Žádné | 20 |
+| USA | USA | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>Zachytit smlouvu podmínek použití
 
@@ -175,5 +221,6 @@ Následuje příklad souhlasu s podmínkami použití v deklaraci identity na z�
 
 ## <a name="next-steps"></a>Další kroky
 
+- [V Azure AD B2C povolte omezení stáří](age-gating.md).
 - Informace o tom, jak odstranit a exportovat uživatelská data, najdete v tématu [Správa uživatelských dat](manage-user-data.md).
 - Příklad vlastních zásad, které implementují podmínku použití, najdete v tématu [vlastní zásady B2C IEF – registrace a přihlášení pomocí výzvy k zadání podmínek použití](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

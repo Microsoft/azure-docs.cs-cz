@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485516"
+ms.locfileid: "102520281"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Certifikáty verze Preview Azure Firewall Premium 
 
@@ -96,7 +96,7 @@ Pokud chcete nakonfigurovat certifikát certifikační autority v zásadě brán
 Abyste mohli otestovat a ověřit kontrolu protokolu TLS, můžete k vytvoření vlastní kořenové certifikační autority podepsané svým držitelem a zprostředkující certifikační autority použít následující skripty.
 
 > [!IMPORTANT]
-> V produkčním prostředí byste měli vytvořit certifikát zprostředkující certifikační autority pomocí podnikové infrastruktury veřejných klíčů. Podniková infrastruktura veřejných klíčů využívá stávající infrastrukturu a zpracovává distribuci kořenové certifikační autority na všechny počítače koncového bodu.
+> V produkčním prostředí byste měli vytvořit certifikát zprostředkující certifikační autority pomocí podnikové infrastruktury veřejných klíčů. Podniková infrastruktura veřejných klíčů využívá stávající infrastrukturu a zpracovává distribuci kořenové certifikační autority na všechny počítače koncového bodu. Další informace najdete v tématu [nasazení a konfigurace certifikátů certifikační autority organizace pro Azure firewall ve verzi Preview](premium-deploy-certificates-enterprise-ca.md).
 
 Existují dvě verze skriptu:
 - skript bash `cert.sh` 

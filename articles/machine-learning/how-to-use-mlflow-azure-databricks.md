@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a894a46ce7c78b65dde80c52f9516fcbe4d27bcb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912913"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520995"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů Azure Databricks ML pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -35,7 +35,7 @@ Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte balíček `azureml-mlflow`. 
-    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
 * [Azure Databricks pracovní prostor a cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
     * Podívejte se, která [přístupová oprávnění potřebujete k provádění operací MLflow s vaším pracovním prostorem](how-to-assign-roles.md#mlflow-operations).

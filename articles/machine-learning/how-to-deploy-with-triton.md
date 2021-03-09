@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218838"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519193"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -36,7 +36,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
-* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/?view=azure-ml-py) **nebo** rozšíření [Azure CLI](/cli/azure/) a [Machine Learning](reference-azure-machine-learning-cli.md).
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/) **nebo** rozšíření [Azure CLI](/cli/azure/) a [Machine Learning](reference-azure-machine-learning-cli.md).
 * Pracovní instalace Docker pro místní testování. Informace o instalaci a ověření Docker najdete v dokumentaci k Docker [v dokumentaci k instalaci.](https://docs.docker.com/get-started/)
 
 ## <a name="architectural-overview"></a>Přehled architektury
@@ -134,7 +134,7 @@ model = Model.register(
 )
 
 ```
-Další informace naleznete v dokumentaci k [třídě modelu](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
+Další informace naleznete v dokumentaci k [třídě modelu](/python/api/azureml-core/azureml.core.model.model).
 
 ---
 
@@ -276,7 +276,7 @@ Odvozená konfigurace umožňuje používat vstupní skript i proces nasazení A
 > [!IMPORTANT]
 > Je nutné zadat toto `AzureML-Triton` [prostředí](./resource-curated-environments.md).
 >
-> Příklad kódu Pythonu se klonuje `AzureML-Triton` do jiného prostředí s názvem `My-Triton` . I toto prostředí používá kód Azure CLI. Další informace o klonování prostředí naleznete v tématu [prostředí. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) reference.
+> Příklad kódu Pythonu se klonuje `AzureML-Triton` do jiného prostředí s názvem `My-Triton` . I toto prostředí používá kód Azure CLI. Další informace o klonování prostředí naleznete v tématu [prostředí. Clone ()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) reference.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -337,7 +337,7 @@ Informace o tom, jak vytvořit klienta, který odesílá požadavky na odvození
 
 ### <a name="setting-the-number-of-workers"></a>Nastavení počtu pracovních procesů
 
-Chcete-li nastavit počet pracovních procesů v nasazení, nastavte proměnnou prostředí `WORKER_COUNT` . Vzhledem k tomu, že máte objekt [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) s názvem `env` , můžete provést následující akce:
+Chcete-li nastavit počet pracovních procesů v nasazení, nastavte proměnnou prostředí `WORKER_COUNT` . Vzhledem k tomu, že máte objekt [prostředí](/python/api/azureml-core/azureml.core.environment.environment) s názvem `env` , můžete provést následující akce:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

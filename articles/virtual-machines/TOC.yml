@@ -823,8 +823,8 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
     - name: Vysvětlení restartování virtuálních počítačů
       href: understand-vm-reboots.md
-    - name: Stavy a životní cyklus
-      href: states-lifecycle.md
+    - name: Stavy a fakturace
+      href: states-billing.md
     - name: Oblasti Azure
       href: regions.md
 - name: Disky
@@ -1355,7 +1355,7 @@
             - name: Nejčastější dotazy k všeobecné dostupnosti
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Nejčastější dotazy
-              href: ../azure-monitor/faq.md
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: Povolení monitorování
               items:
                 - name: Povolení přehledu monitorování

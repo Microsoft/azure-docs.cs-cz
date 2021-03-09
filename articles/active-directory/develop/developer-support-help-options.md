@@ -12,85 +12,96 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecbb7ec503011d78c2f83a76cea921e1cf438ac1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215098"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517925"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
-Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API, nebo když implementujete novou funkci aplikace, nastane čas, kdy potřebujete získat pomoc od komunity nebo porozumět možnostem podpory, které máte jako vývojář. Tento článek vám pomůže pochopit tyto možnosti, včetně těchto:
+Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API, nebo když implementujete novou funkci aplikace, nastane čas, kdy potřebujete získat pomoc od komunity nebo porozumět možnostem podpory, které máte jako vývojář. Tady jsou návrhy, kde můžete získat nápovědu k vývoji řešení Microsoft Identity Platform.
 
-> [!div class="checklist"]
-> * Jak hledat, jestli na vaši otázku neodpověděla komunita, nebo jestli už existuje stávající dokumentace k funkci, kterou se pokoušíte implementovat
-> * V některých případech chcete použít naše nástroje podpory, které vám pomůžou s laděním konkrétního problému.
-> * Pokud nemůžete najít odpověď, kterou potřebujete, můžete se zeptat na dotaz na *Microsoft Q&a* .
-> * Pokud narazíte na problém s jednou z našich knihoven pro ověřování, vyvolejte problém *GitHubu* .
-> * Nakonec, pokud potřebujete mluvit s někým, možná budete chtít otevřít žádost o podporu.
+## <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
-## <a name="search"></a>Search
+<div class='icon is-large'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+</div>
 
-Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědi na dotazy k [Microsoft Q&](/answers/products/) .
+Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azure.microsoft.com/support/plans) , který nejlépe vyhovuje, ať už jste vývojář, který spouštíte jako cestu v cloudu, nebo velkou organizaci, která nasazuje strategické aplikace, které jsou důležité pro podnikání. Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal.
 
-### <a name="scoped-search"></a>Hledání v oboru
+- Pokud již máte plán podpory Azure, [otevřete žádost o podporu zde](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky [Microsoft Q&](https://docs.microsoft.com/answers/products/) dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
-
-Pro dosažení rychlejších výsledků můžete určit rozsah hledání do složky [Microsoft Q&](/answers/products/)dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
-
-
-```
-{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
-```
-
-Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hledání.
-
-## <a name="use-the-development-support-tools"></a>Použití nástrojů pro podporu vývoje
-
-| Nástroj  | Popis  |
-|---------|---------|
-| [jwt.ms](https://jwt.ms) | Vložte ID nebo přístupový token k dekódování názvů a hodnot deklarací identity. |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který umožňuje vytvářet žádosti a zobrazovat odpovědi na rozhraní Microsoft Graph API. |
+- Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.serviceshub.microsoft.com/supportforbusiness)otevřít žádost o podporu od Microsoftu.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
+<div class='icon is-large'>
+    <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
+</div>             
 
-[Microsoft Q&A](/answers/products/) je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
+Získejte odpovědi na otázky týkající se vývoje vaší aplikace identity přímo od techniků Microsoftu, z Azure MVP (MVP) a členů naší odborné komunity.
 
-Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku do složky [Microsoft Q&a](/answers/products/) . Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
+[Microsoft Q&A](/answers/products/) je doporučeným zdrojem podpory komunity Azure.
 
-|Součást/oblast  | Značky |
-|---------|---------|
-| Knihovna ADAL | [modulu](/answers/topics/azure-ad-adal-deprecation.html) |
-| Knihovna MSAL     | [msal](/answers/topics/azure-ad-msal.html) |
-| Middleware OWIN  | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](/answers/topics/azure-ad-b2b.html) |
-| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](/answers/topics/azure-ad-b2c.html) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-AD-Graph]](/answers/topics/azure-ad-graph.html) |
-| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+Pokud nemůžete najít odpověď na váš problém hledáním v Microsoft Q&A, odešlete novou otázku. Použijte jednu z následujících značek, když požádáte o [vysokou kvalitu otázky](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html):
 
-Následující příspěvky z [Microsoft Q&a](/answers/products/) obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
-
-* [Návody klást dobré otázky](/answers/articles/24951/how-to-write-a-quality-question.html)
-* [Jak vytvořit minimální, úplný a ověřitelný příklad](/answers/articles/24907/how-to-write-a-quality-answer.html)
+| Součást/oblast| Značky  |
+|------------|---------------------------|
+| Active Directory Authentication Library (ADAL)                              | [modulu](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
+| OWIN (Open Web Interface for .NET) middleware                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/externí identity](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
+| Všechny ostatní oblasti ověřování a autorizace                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
 
-Pokud narazíte na chybu nebo problém týkající se našich knihoven, vyvolejte problém v našich úložištích GitHubu. Vzhledem k tomu, že naše knihovny jsou open source, můžete také odeslat žádost o přijetí změn.
+<div class='icon is-large'>
+    <img alt='GitHub-image' src='./media/common/github.svg'>
+</div>
 
-Seznam knihoven a jejich úložišť GitHub najdete v následujících tématech:
+Pokud potřebujete pomáhat s jednou z knihoven Microsoft Authentication Library (MSAL), otevřete problém v úložišti na GitHubu.
 
-* Knihovny [knihovny Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) a úložiště GitHub
-* Knihovny [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) a úložiště GitHub
+| Knihovna MSAL | Adresa URL problémů GitHubu|
+| --- | --- |
+| MSAL pro Android | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSALý úhlový | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL pro iOS a MacOS| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
+| MSAL v Javě | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
+| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+|MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
+| Uzel MSAL | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
+| MSAL reagovat | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
 
-## <a name="open-a-support-request"></a>Otevřete žádost o podporu.
+## <a name="submit-feedback-on-azure-feedback"></a>Odeslání názoru na zpětnou vazbu k Azure
 
-Pokud potřebujete mluvit s někým, můžete otevřít žádost o podporu. Pokud jste zákazníkem Azure, máte k dispozici několik možností podpory. K porovnání plánů si Projděte [tuto stránku](https://azure.microsoft.com/support/plans/). K dispozici je také podpora pro vývojáře pro zákazníky Azure. Informace o tom, jak zakoupit plány podpory pro vývojáře, najdete na [této stránce](https://azure.microsoft.com/support/plans/developer/).
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
 
-* Pokud už máte plán podpory Azure, [otevřete žádost o podporu tady](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+Pokud chcete požádat o nové funkce, publikujte je na základě zpětné vazby Azure. Sdílejte své nápady, aby Microsoft Identity Platform lépe fungoval pro aplikace, které vyvíjíte.
 
-* Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.serviceshub.microsoft.com/supportforbusiness)otevřít žádost o podporu od Microsoftu.
+| Služba                       | Adresa URL zpětné vazby Azure |
+|-------------------------------|---------------|
+| Azure Active Directory | https://feedback.azure.com/forums/169401-azure-active-directory |
+| Azure Active Directory – vývojové prostředí             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=164757 |
+| Azure Active Directory – ověřování             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167256 |
 
-Můžete také vyzkoušet [virtuálního agenta](https://support.microsoft.com/contactus/?ws=support) a získat podporu nebo klást otázky.
+## <a name="stay-informed-of-updates-and-new-releases"></a>Udržujte si přehled o aktualizacích a nových verzích
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+- [Aktualizace Azure](https://azure.microsoft.com/updates/?category=identity): Přečtěte si o důležitých aktualizacích produktů, plánech a oznámeních.
+
+- [Novinky v](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs)dokumentaci: získáte informace o tom, co je nového v dokumentaci k platformě Microsoft Identity Platform.
+
+- [Azure Active Directory blog o identitě](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Získejte novinky a informace o Azure AD.
+
+- [Technická komunita](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): Sdílejte své prostředí, zapojte se od expertů a Naučte se od nich.
+
+

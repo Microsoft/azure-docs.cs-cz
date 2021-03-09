@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201885"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522389"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -164,7 +164,7 @@ Zobrazí se následující výstup:
     WSManStackVersion              3.0
 ```
 
-Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
+Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](/powershell/scripting/install/installing-powershell).
 
 **Nainstalovat Azure PowerShell a Data Box moduly**
 
@@ -355,22 +355,34 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     ![Rozšířené možnosti vlastního hesla pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení**, vyberte **použít vlastní heslo** a zadejte heslo, které splňuje požadavky na zabezpečení.
+     
+     Heslo musí být alfanumerické a musí obsahovat 12 až 15 znaků, přičemž aspoň jedno velké písmeno, jedno malé písmeno, jeden speciální znak a jedno číslo. 
+
+     - Povolené speciální znaky: @ # – $% ^! + = ; : _ ( )
+     - Nepovolené znaky: I L o 0
    
      ![Možnosti použití vlastního hesla zařízení na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - Použití vlastních hesel ke sdíleným složkám:
 
-   - Nastavením **Předvolby pro hesla pro sdílení** vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
+   1. Nastavením **Předvolby pro hesla pro sdílení** vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
      
-        ![Možnosti použití vlastních hesel pro sdílení na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Možnosti použití vlastních hesel pro sdílení na obrazovce zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - Zadejte heslo pro každý účet úložiště v uvedeném pořadí. Heslo bude použito ve všech sdílených složkách účtu úložiště.
-     
-        Pokud chcete použít stejné heslo pro všechny účty úložiště, vyberte **Kopírovat do všech**. Po dokončení vyberte **Uložit**.
-     
-        ![Obrazovka pro zadávání hesel pro sdílení Data Boxho pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. Zadejte heslo pro každý účet úložiště v uvedeném pořadí. Heslo bude použito ve všech sdílených složkách účtu úložiště.
+    
+       Heslo musí být alfanumerické a musí obsahovat 12 až 64 znaků, přičemž aspoň jedno velké písmeno, jedno malé písmeno, jeden speciální znak a jedno číslo.
 
-       Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení nebo změny hesel** .
+       - Povolené speciální znaky: @ # – $% ^! + = ; : _ ( )
+       - Nepovolené znaky: I L o 0
+     
+    1. Pokud chcete použít stejné heslo pro všechny účty úložiště, vyberte **Kopírovat do všech**. 
+
+    1. Po dokončení vyberte **Uložit**.
+     
+       ![Obrazovka pro zadávání hesel pro sdílení Data Boxho pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení nebo změny hesel** .
 
 16. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení** možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
 
@@ -413,7 +425,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
 
 1. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu CLI k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro `az databox job create` :
 
-   | Nastavení (parametr) | Popis |  Ukázková hodnota |
+   | Nastavení (parametr) | Description |  Ukázková hodnota |
    |---|---|---|
    |resource-group| Použijte existující skupinu prostředků, nebo vytvořte novou. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
    |name| Název vytvářené objednávky. | "mydataboxorder"|
@@ -532,7 +544,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
 
 2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob).
 
-    | Nastavení (parametr) | Popis |  Ukázková hodnota |
+    | Nastavení (parametr) | Description |  Ukázková hodnota |
     |---|---|---|
     |ResourceGroupName [povinné]| Použijte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. | myresourcegroup|
     |Název [povinné]| Název vytvářené objednávky. | "mydataboxorder"|

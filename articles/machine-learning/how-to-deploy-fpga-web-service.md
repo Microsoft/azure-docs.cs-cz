@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212786"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519312"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Nasazení modelů ML na pole – programovatelné pole brány (FPGA) s Azure Machine Learning 
 
-V tomto článku se dozvíte o FPGA a o tom, jak nasadit modely ML do Azure FPGA pomocí [balíčku Pythonu pro hardwarové-akcelerované modely](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) z [Azure Machine Learning](overview-what-is-azure-ml.md).
+V tomto článku se dozvíte o FPGA a o tom, jak nasadit modely ML do Azure FPGA pomocí [balíčku Pythonu pro hardwarové-akcelerované modely](/python/api/azureml-accel-models/azureml.accel) z [Azure Machine Learning](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Co jsou FPGA?
 Pole FPGA obsahují pole programovatelných bloků logiky a hierarchii propojení, jejichž konfigurace se dá měnit. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu. 
@@ -31,7 +31,7 @@ FPGA můžete znovu nakonfigurovat pro různé typy modelů strojového učení.
 
 ![Diagram porovnání Azure Machine Learning FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Procesor| Zkratka |Popis|
+|Procesor| Zkratka |Description|
 |---|:-------:|------|
 |Integrované okruhy specifické pro aplikaci|ASICs|Vlastní okruhy, například jednotky procesoru Google tensor (TPU), poskytují nejvyšší efektivitu. Nedají se znovu nakonfigurovat, jak se vaše potřeby mění.|
 |Pole – programovatelné pole brány|FPGA|FPGA, jako jsou ty, které jsou k dispozici v Azure, poskytují výkon blízko ASICs. Jsou také flexibilní a znovu konfigurovatelné v čase, k implementaci nové logiky.|
@@ -56,7 +56,7 @@ Aby bylo možné optimalizovat latenci a propustnost, váš klient odesílajíc�
 
 ## <a name="deploy-models-on-fpgas"></a>Nasazení modelů na FPGA
 
-Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine Learning modely s hardwarovou akcelerací](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py). Použití FPGA poskytuje odvození nízké latence, a to i s jednou velikostí dávky. 
+Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine Learning modely s hardwarovou akcelerací](/python/api/azureml-accel-models/azureml.accel). Použití FPGA poskytuje odvození nízké latence, a to i s jednou velikostí dávky. 
 
 V tomto příkladu vytvoříte graf TensorFlow, abyste mohli předzpracovat vstupní image, vytvořit ji featurizer pomocí ResNet 50 na FPGA a pak tyto funkce spustit prostřednictvím klasifikátoru, který je vyškolený na ImageNet sadě dat. Model se pak nasadí do clusteru AKS.
 
@@ -80,7 +80,7 @@ V tomto příkladu vytvoříte graf TensorFlow, abyste mohli předzpracovat vstu
 
 ### <a name="define-the-tensorflow-model"></a>Definování modelu TensorFlow
 
-Začněte tím, že použijete [sadu SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) k vytvoření definice služby. Definice služby je soubor popisující kanál grafů (vstup, featurizer a klasifikátor) založený na TensorFlow. Příkaz pro nasazení komprimuje definice a grafy do souboru ZIP a nahraje soubor ZIP do úložiště objektů BLOB v Azure. DNN je už nasazené pro běh na FPGA.
+Začněte tím, že použijete [sadu SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro) k vytvoření definice služby. Definice služby je soubor popisující kanál grafů (vstup, featurizer a klasifikátor) založený na TensorFlow. Příkaz pro nasazení komprimuje definice a grafy do souboru ZIP a nahraje soubor ZIP do úložiště objektů BLOB v Azure. DNN je už nasazené pro běh na FPGA.
 
 1. Načíst Azure Machine Learning pracovní prostor
 

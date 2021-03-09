@@ -11,16 +11,16 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690273"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522151"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Řešení potíží s třídou ParallelRunStep
 
-V tomto článku se dozvíte, jak řešit chyby pomocí třídy [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) ze sady [SDK Azure Machine Learning](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+V tomto článku se dozvíte, jak řešit chyby pomocí třídy [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) ze sady [SDK Azure Machine Learning](/python/api/overview/azure/ml/intro).
 
 Obecné tipy pro řešení potíží s kanálem najdete v tématu [řešení potíží s kanály strojového učení](how-to-debug-pipelines.md).
 
@@ -212,7 +212,7 @@ def run(mini_batch):
 
 Uživatel může předat referenční data ke skriptu pomocí parametru side_inputs ParalleRunStep. Všechny datové sady, které jsou zadány jako side_inputs, budou připojeny do všech pracovních uzlů. Uživatel může zjistit umístění připojení pomocí argumentu.
 
-Vytvořte [datovou sadu](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) obsahující referenční data a zaregistrujte ji do svého pracovního prostoru. Předejte ho do `side_inputs` parametru vašeho `ParallelRunStep` . Navíc můžete přidat jeho cestu do `arguments` oddílu a snadno tak získat přístup k jeho připojené cestě:
+Vytvořte [datovou sadu](/python/api/azureml-core/azureml.core.dataset.dataset) obsahující referenční data a zaregistrujte ji do svého pracovního prostoru. Předejte ho do `side_inputs` parametru vašeho `ParallelRunStep` . Navíc můžete přidat jeho cestu do `arguments` oddílu a snadno tak získat přístup k jeho připojené cestě:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -262,6 +262,6 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 * Podívejte se na tyto [poznámkové bloky Jupyter, které demonstrují Azure Machine Learning kanály](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) .
 
-* Nápovědu k balíčku [AzureML-Pipeline Steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) najdete v referenčních informacích k sadě SDK. Zobrazení referenční [dokumentace](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) pro třídu ParallelRunStep.
+* Nápovědu k balíčku [AzureML-Pipeline Steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) najdete v referenčních informacích k sadě SDK. Zobrazení referenční [dokumentace](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) pro třídu ParallelRunStep.
 
 * Řiďte se [pokročilým kurzem](tutorial-pipeline-batch-scoring-classification.md) používání kanálů pomocí ParallelRunStep. V tomto kurzu se dozvíte, jak předat jiný soubor jako vstup ze strany.
