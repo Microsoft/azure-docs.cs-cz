@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 0029b3f2f70745997ea99db6d88ee298965453fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92771bb22897b0568ae601813ca919a260a31d8d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101132"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499386"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky SDK pro Python: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93101132"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/overview/azure/cosmosdb)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) nebo [python 3,3, 3,4, 3,5 nebo 3,6](https://www.python.org/downloads/)|
@@ -47,7 +47,7 @@ ms.locfileid: "93101132"
 * Předběžná verze sady SDK
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 

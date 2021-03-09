@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175702"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510706"
 ---
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů. Můžete ji použít ke správě a konfiguraci virtuálních počítačů.
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v části [Souhrn kategorií koncových bodů](#endpoint-categories).
@@ -86,7 +86,7 @@ Obecně platí, že požadavky na IMDS jsou omezeny na 5 požadavků za sekundu.
 
 V současné době jsou podporovány následující příkazy protokolu HTTP:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 |------|-------------|
 | `GET` | Načíst požadovaný prostředek
 
@@ -104,7 +104,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Určuje parametry:
 
-| Název | Hodnota |
+| Name | Hodnota |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -264,7 +264,7 @@ Kořenový koncový bod je `http://169.254.169.254/metadata` .
 
 Rozhraní IMDS API obsahuje několik kategorií koncového bodu, které představují různé zdroje dat, z nichž každý obsahuje jeden nebo více koncových bodů. Podrobnosti najdete v každé kategorii.
 
-| Kořen kategorie | Popis | Představená verze |
+| Kořen kategorie | Description | Představená verze |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Viz [Attestation data](#attested-data) | 2018-10-01
 | `/metadata/identity` | Viz [spravovaná identita prostřednictvím IMDS](#managed-identity) . | 2018-02-01
@@ -314,7 +314,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametry
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `format` | Volitelné | Formát ( `json` nebo `text` ) odpovědi. * Poznámka: může být vyžadováno při použití parametrů Request
@@ -329,7 +329,7 @@ Rozpis schématu:
 
 **Výpočetní služby**
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `azEnvironment` | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 | `customData` | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
@@ -345,8 +345,8 @@ Rozpis schématu:
 | `osType` | Linux nebo Windows | 2017-04-02
 | `placementGroupId` | [Skupina umístění](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
 | `plan` | [Plánování](/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
-| `platformUpdateDomain` |  [Aktualizujte doménu](../articles/virtual-machines/manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
-| `platformFaultDomain` | [Doména selhání](../articles/virtual-machines/manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
+| `platformUpdateDomain` |  [Aktualizujte doménu](../articles/virtual-machines/availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
+| `platformFaultDomain` | [Doména selhání](../articles/virtual-machines/availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
 | `priority` | Priorita virtuálního počítače. Další informace najdete v části [virtuální počítače s přímým](../articles/virtual-machines/spot-vms.md) odkazem. | 2020-12-01
 | `provider` | Poskytovatel virtuálního počítače | 2018-10-01
 | `publicKeys` | [Kolekce veřejných klíčů](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
@@ -372,7 +372,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-| Data | Popis |
+| Data | Description |
 |------|-------------|
 | `id` | ID prostředku
 | `offer` | Nabídka platformy nebo Image Marketplace
@@ -382,7 +382,7 @@ Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operač
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-| Data | Popis |
+| Data | Description |
 |------|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -397,7 +397,7 @@ Objekt disku operačního systému obsahuje následující informace o disku s o
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data | Popis |
+Data | Description |
 -----|-------------|
 | `caching` | Požadavky na ukládání do mezipaměti
 | `createOption` | Informace o tom, jak byl virtuální počítač vytvořen
@@ -413,7 +413,7 @@ Data | Popis |
 
 **Síť**
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 | `ipv4.publicIpAddress` | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -908,7 +908,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametry
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Popis |
 |------|-------------------|-------------|
 | `api-version` | Povinné | Verze, která se používá k obsluhování žádosti
 | `nonce` | Volitelné | Desítkový řetězec, který slouží jako kryptografická hodnota nonce. Pokud není zadána žádná hodnota, IMDS použije aktuální časové razítko UTC.
@@ -933,7 +933,7 @@ U virtuálních počítačů vytvořených pomocí modelu nasazení Classic `vmI
 
 Dekódování dokumentu obsahuje následující pole:
 
-| Data | Popis | Představená verze |
+| Data | Description | Představená verze |
 |------|-------------|--------------------|
 | `licenseType` | Typ licence pro [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit). Tato možnost je k dispozici pouze pro virtuální počítače s podporou AHB. | 2020-09-01
 | `nonce` | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud `nonce` nebyla zadána žádná, použije se aktuální koordinovaný světový časový razítko. | 2018-10-01

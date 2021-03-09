@@ -3,12 +3,12 @@ title: Získání přehledů pomocí centra zálohování
 description: Naučte se analyzovat historické trendy a získat hlubší přehled o zálohách pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719453"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506003"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Získání přehledů pomocí centra zálohování
 
@@ -44,17 +44,19 @@ K dispozici jsou následující zobrazení:
 
 1. **Souhrn** – pomocí této karty získáte podrobný přehled vaší služby zálohování. [Další informace](./configure-reports.md#summary)
 
-1. **Zálohované položky** – pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. [Další informace](./configure-reports.md#backup-items)
+2. **Zálohované položky** – pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. [Další informace](./configure-reports.md#backup-items)
 
-1. **Využití** – pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše zálohy. [Další informace](./configure-reports.md#usage)
+3. **Využití** – pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše zálohy. [Další informace](./configure-reports.md#usage)
 
-1. **Úlohy** – pomocí této karty můžete zobrazit dlouhotrvající trendy na úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. [Další informace](./configure-reports.md#jobs)
+4. **Úlohy** – pomocí této karty můžete zobrazit dlouhotrvající trendy na úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. [Další informace](./configure-reports.md#jobs)
 
-1. **Zásady** – pomocí této karty můžete zobrazit informace o všech aktivních zásadách, jako je třeba počet přidružených položek a celkové cloudové úložiště spotřebované položkami zálohovanými v rámci dané zásady. [Další informace](./configure-reports.md#policies)
+5. **Zásady** – pomocí této karty můžete zobrazit informace o všech aktivních zásadách, jako je třeba počet přidružených položek a celkové cloudové úložiště spotřebované položkami zálohovanými v rámci dané zásady. [Další informace](./configure-reports.md#policies)
 
-1. **Optimalizovat** – pomocí této karty získáte přehled o potenciálních možnostech optimalizace nákladů pro vaše zálohy. [Další informace](./configure-reports.md#optimize)
+6. **Optimalizovat** – pomocí této karty získáte přehled o potenciálních možnostech optimalizace nákladů pro vaše zálohy. [Další informace](./configure-reports.md#optimize)
 
-1. **Přistoupení k zásadám** – pomocí této karty získáte přehled o tom, jestli má každá instance zálohování alespoň jednu úspěšnou zálohu za den.
+7. **Přistoupení k zásadám** – pomocí této karty získáte přehled o tom, jestli má každá instance zálohování alespoň jednu úspěšnou zálohu za den. [Další informace](./configure-reports.md#policy-adherence)
+
+E-maily pro všechny tyto sestavy můžete nakonfigurovat také pomocí funkce [Sestava e-mailu](backup-reports-email.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

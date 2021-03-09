@@ -5,12 +5,12 @@ description: Naučte se, jak vytvořit a používat statickou IP adresu pomocí 
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651885"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509468"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
 
@@ -63,16 +63,14 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické IP adresy
 
-Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Například:
+Před vytvořením služby zajistěte, aby identita clusteru používaná clusterem AKS měla delegovaná oprávnění k jiné skupině prostředků. Například:
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
-
-Případně můžete použít spravovanou identitu přiřazenou systémem pro oprávnění místo instančního objektu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 
 > [!IMPORTANT]
 > Pokud jste přizpůsobili odchozí IP adresu, ujistěte se, že vaše identita clusteru má oprávnění k odchozí veřejné IP adrese i k této příchozí veřejné IP adrese.

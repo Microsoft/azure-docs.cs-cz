@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fa10ddad8d2fbbc414f0ccaf16b9b99fae0b0786
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435490"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505031"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 
@@ -116,7 +116,7 @@ Tyto sady SDK můžete spustit na jakémkoli zařízení, které může podporov
 * [ukázky](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples)
 * [Balíček](https://pypi.org/project/azure-iot-device/)
 * [Referenční dokumentace](/python/api/azure-iot-device)
-* [Referenční dokumentace modulu Edge](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python&preserve-view=true)
+* [Referenční dokumentace modulu Edge](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)
 
 ### <a name="service-sdks"></a>Sady SDK pro služby
 Azure IoT taky nabízí sady SDK pro služby, které vám umožňují vytvářet aplikace na straně řešení pro správu zařízení, získávat přehledy, vizualizovat data a další. Tyto sady SDK jsou specifické pro každou službu Azure IoT a jsou k dispozici v jazycích C#, Java, JavaScript a Python, které zjednodušují vývojové prostředí. 
@@ -147,7 +147,7 @@ Digitální vlákna Azure je nabídka typu platforma jako služba (PaaS), která
 
 **Sada SDK službyNode.js ADT**: [](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)  |  [](https://www.npmjs.com/package/@azure/digital-twins-core)  |  [](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core/samples)  |  [Referenční dokumentace](/javascript/api/@azure/digital-twins-core/) ukázek balíčku úložiště GitHubu
 
-**Python ADT Service SDK**: [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [](https://pypi.org/project/azure-digitaltwins-core/)  |  dokumentace k [ukázkám](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)balíčku úložiště GitHubu  |  [Referenční dokumentace](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)
+**Python ADT Service SDK**: [](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [](https://pypi.org/project/azure-digitaltwins-core/)  |  dokumentace k [ukázkám](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core/samples)balíčku úložiště GitHubu  |  [Referenční dokumentace](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)
 
 #### <a name="device-provisioning-service"></a>Device Provisioning Service
 

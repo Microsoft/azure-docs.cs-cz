@@ -3,12 +3,12 @@ title: Přístup k komunitním prostředkům pomocí centra zálohování
 description: Použití služby Backup Center k přístupu k ukázkovým šablonám, skriptům a požadavkům na funkce
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 23892c11df26bd3799ca247ef31a7d4c1b6e8bf5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b5173f916341497620d521af1bc7e973e0b6e507
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100028"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506258"
 ---
 # <a name="access-community-resources-using-backup-center"></a>Přístup k komunitním prostředkům pomocí centra zálohování
 

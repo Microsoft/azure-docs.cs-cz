@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c89ad69207a51a92b56d268c685aa2be4118cf1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014223"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507581"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Přesunutí interních Load Balancer Azure do jiné oblasti pomocí prostředí PowerShell
 
@@ -43,18 +43,18 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>Exportovat šablonu virtuální sítě a nasadit z Azure PowerShell
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  Získejte ID prostředku virtuální sítě, kterou chcete přesunout do cílové oblasti a umístit ji do proměnné pomocí [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+2.  Získejte ID prostředku virtuální sítě, kterou chcete přesunout do cílové oblasti a umístit ji do proměnné pomocí [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportujte zdrojovou virtuální síť do souboru. JSON do adresáře, ve kterém spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportujte zdrojovou virtuální síť do souboru. JSON do adresáře, ve kterém spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
     ```
   
-7. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) spuštěním následujícího příkazu:
+7. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation) spuštěním následujícího příkazu:
 
     ```azurepowershell-interactive
 
@@ -107,7 +107,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     ```
 8.  Můžete také změnit další parametry v souboru **\<resource-group-name> . JSON** , pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >  **addressSpace** a změnou vlastnosti **addressPrefixes** v souboru **\<resource-group-name> . JSON** :
+    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >   a změnou vlastnosti **addressPrefixes** v souboru **\<resource-group-name> . JSON** :
 
         ```json
                 "resources": [
@@ -196,20 +196,20 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 9.  Uložte soubor **\<resource-group-name> . JSON** .
 
-10. Vytvoření skupiny prostředků v cílové oblasti pro nasazení cílové virtuální sítě pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)
+10. Vytvoření skupiny prostředků v cílové oblasti pro nasazení cílové virtuální sítě pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
     
     ```azurepowershell-interactive
 
@@ -224,19 +224,19 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu interního nástroje pro vyrovnávání zatížení a nasaďte ji z Azure PowerShell
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Získejte ID prostředku interního nástroje pro vyrovnávání zatížení, který chcete přesunout do cílové oblasti a umístit ho do proměnné pomocí [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+2. Získejte ID prostředku interního nástroje pro vyrovnávání zatížení, který chcete přesunout do cílové oblasti a umístit ho do proměnné pomocí [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportujte konfiguraci interního nástroje pro vyrovnávání zatížení do souboru. JSON do adresáře, kde spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportujte konfiguraci interního nástroje pro vyrovnávání zatížení do souboru. JSON do adresáře, kde spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
@@ -263,7 +263,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
              }
     ```
  
-6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **\<resource-group-name> . JSON** .  K získání ID použijte [příkaz Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0):
+6. Pokud chcete upravit hodnotu cílové virtuální sítě, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **\<resource-group-name> . JSON** .  K získání ID použijte [příkaz Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -306,7 +306,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
                 },
     ```
 
-11. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) spuštěním následujícího příkazu:
+11. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation) spuštěním následujícího příkazu:
 
     ```azurepowershell-interactive
 
@@ -315,7 +315,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     ```
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
     
-    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard změňte změnou **sku**  >  vlastnosti **název** SKU v souboru **\<resource-group-name> . JSON** :
+    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení v konfiguraci z úrovně Standard na Basic nebo Basic na standard změňte změnou   >  vlastnosti **název** SKU v souboru **\<resource-group-name> . JSON** :
 
         ```json
         "resources": [
@@ -433,12 +433,12 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     
 13. Uložte soubor **\<resource-group-name> . JSON** .
     
-10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový interní nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
+10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový interní nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
     
     ```
 
-12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) a [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) a [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
     
     ```azurepowershell-interactive
 
@@ -462,7 +462,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ## <a name="discard"></a>Zahodit 
 
-Pokud po nasazení chcete začít znovu nebo zrušit virtuální síť a nástroj pro vyrovnávání zatížení v cíli, odstraňte skupinu prostředků vytvořenou v cíli a přesunutou virtuální síť a nástroj pro vyrovnávání zatížení se odstraní.  Chcete-li odebrat skupinu prostředků, použijte [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Pokud po nasazení chcete začít znovu nebo zrušit virtuální síť a nástroj pro vyrovnávání zatížení v cíli, odstraňte skupinu prostředků vytvořenou v cíli a přesunutou virtuální síť a nástroj pro vyrovnávání zatížení se odstraní.  Chcete-li odebrat skupinu prostředků, použijte [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG nebo skupinu prostředků, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) nebo [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) a [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) .
+Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG nebo skupinu prostředků, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) nebo [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) a [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) .
 
 ```azurepowershell-interactive
 

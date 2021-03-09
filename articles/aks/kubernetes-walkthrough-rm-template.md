@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 56bacf1ae68081d5822fdb0e80762926d4eb581c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: f17e42915968f52aee8bd106b5cadd26457998ff
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173689"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501310"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí šablony ARM
 
@@ -32,7 +32,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 - Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.61 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
-- Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, poskytnete veřejný klíč SSH a Azure Active Directory instančního objektu. Alternativně můžete pro oprávnění použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu. Pokud potřebujete některý z těchto prostředků, přečtěte si následující část. v opačném případě přejděte k části [Kontrola šablony](#review-the-template) .
+- Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, zadáte veřejný klíč SSH. Pokud potřebujete tento prostředek, přečtěte si následující část. v opačném případě přejděte k části [Kontrola šablony](#review-the-template) .
 
 ### <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
@@ -47,28 +47,6 @@ ssh-keygen -t rsa -b 2048
 ```
 
 Další informace o vytváření klíčů SSH najdete v tématu [vytváření a Správa klíčů ssh pro ověřování v Azure][ssh-keys].
-
-### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-
-Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění. Ve výchozím nastavení je tento instanční objekt platný po dobu jednoho roku. Všimněte si, že místo instančního objektu můžete použít spravovanou identitu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
-
-```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
-```
-
-Výstup se podobá následujícímu příkladu:
-
-```json
-{
-  "appId": "8b1ede42-d407-46c2-a1bc-6b213b04295f",
-  "displayName": "azure-cli-2019-04-19-21-42-11",
-  "name": "http://azure-cli-2019-04-19-21-42-11",
-  "password": "27e5ac58-81b0-46c1-bd87-85b4ef622682",
-  "tenant": "73f978cf-87f2-41bf-92ab-2e7ce012db57"
-}
-```
-
-Poznamenejte si *appId* a *password*. Tyto hodnoty se použijí v dalších krocích.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -95,13 +73,10 @@ Další ukázky AKS najdete na webu [šablony pro rychlý Start AKS][aks-quickst
     * **Předpona DNS**: Zadejte jedinečnou předponu DNS pro váš cluster, například *myakscluster*.
     * **Uživatelské jméno správce systému Linux**: zadejte uživatelské jméno pro připojení pomocí protokolu SSH, například *azureuser*.
     * **Veřejný klíč SSH RSA**: Zkopírujte a vložte *veřejnou* část páru klíčů ssh (ve výchozím nastavení obsah *~/.ssh/id_rsa. pub*).
-    * **ID klienta instančního objektu**: Zkopírujte a vložte *appId* objektu služby z `az ad sp create-for-rbac` příkazu.
-    * **Tajný kód klienta instančního objektu**: Zkopírujte a vložte z příkazu *heslo* k instančnímu objektu `az ad sp create-for-rbac` .
-    * **Souhlasím s výše uvedenými podmínkami a ujednáními**: zaškrtněte toto políčko, aby bylo možné souhlasit.
 
     ![Správce prostředků šablonu pro vytvoření clusteru služby Azure Kubernetes na portálu](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. Vyberte **Koupit**.
+3. Vyberte **Zkontrolovat a vytvořit**.
 
 Vytvoření clusteru AKS bude trvat několik minut. Než přejdete k dalšímu kroku, počkejte, než se cluster úspěšně nasadí.
 

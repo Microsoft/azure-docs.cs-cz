@@ -3,14 +3,14 @@ title: Řízení infrastruktury zálohování s využitím centra zálohování
 description: Naučte se řídit prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893842"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506196"
 ---
-# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Správa záloh pomocí centra zálohování (Preview)
+# <a name="govern-your-backup-estate-using-backup-center"></a>Řízení infrastruktury zálohování s využitím centra zálohování
 
 Centrum zálohování vám pomůže řídit vaše prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování. Níže jsou uvedené některé možnosti zásad správného řízení služby Backup Center:
 

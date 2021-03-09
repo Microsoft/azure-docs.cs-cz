@@ -3,12 +3,12 @@ title: Přidání úložiště artefaktů do testovacího prostředí v Azure De
 description: Naučte se, jak zadat vlastní úložiště artefaktů pro testovací prostředí v Azure DevTest Labs k ukládání nástrojů nedostupných ve veřejném úložišti artefaktů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512007"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502191"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje zadat artefakt, který se má přidat k virtuálnímu počítači v době vytváření nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definované v souboru JSON, který se načte z GitHubu nebo z úložiště Git Azure DevOps.
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 Po úspěšném spuštění New-AzResourceGroupDeployment výstup příkazu vypíše důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/?view=azps-1.2.0) podrobné pokyny k jeho instalaci.
+V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/) podrobné pokyny k jeho instalaci.
 
 ### <a name="full-script"></a>Celý skript
 Tady je úplný skript, včetně některých podrobných zpráv a komentářů:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103392"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498757"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -54,12 +54,12 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V části **Spravovat** vyberte **ověřování**.
 > 1. Vyberte **Přidat platformu**  >  **mobilní a desktopové aplikace**.
-> 1. V části **identifikátory URI pro přesměrování** vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. V části **identifikátory URI pro přesměrování** vyberte `https://login.microsoftonline.com/common/oauth2/nativeclient` a v části **vlastní identifikátory URI pro přesměrování** přidejte `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` , kde `{client_id}` je ID aplikace (klienta) vaší aplikace (stejný identifikátor GUID, který se zobrazí v `msal{client_id}://auth` zaškrtávacím políčku).
 > 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
-> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI přesměrování** `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> Aby ukázka kódu v tomto rychlém startu fungovala, přidejte **identifikátor URI pro přesměrování** `https://login.microsoftonline.com/common/oauth2/nativeclient` a `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >

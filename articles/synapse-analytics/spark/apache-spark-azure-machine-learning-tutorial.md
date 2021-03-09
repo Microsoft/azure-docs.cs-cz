@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942345"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498672"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Kurz: výuka modelu v Pythonu pomocí automatizovaného strojového učení
 
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Převod datového rámce na Azure Machine Learning datovou sadu
-Chcete-li odeslat vzdálený experiment, převeďte datovou sadu na ```TabularDatset``` instanci Azure Machine Learning. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
+Chcete-li odeslat vzdálený experiment, převeďte datovou sadu na ```TabularDatset``` instanci Azure Machine Learning. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
 
 Následující kód získá existující pracovní prostor a výchozí úložiště dat Azure Machine Learning. Poté předá do parametru Path úložiště dat a umístění souborů, aby bylo možné vytvořit novou ```TabularDataset``` instanci. 
 

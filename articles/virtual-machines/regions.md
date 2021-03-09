@@ -1,18 +1,19 @@
 ---
 title: Oblast Azure
 description: Přečtěte si o oblastech pro spouštění virtuálních počítačů v Azure.
-author: cynthn
-ms.author: cynthn
+author: mimckitt
+ms.author: mimckitt
+ms.reviewer: cynthnn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/8/2021
+ms.openlocfilehash: e874a76cc447158127da8482f23bf03d56961818
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650549"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504605"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Oblasti pro virtuální počítače v Azure
 
@@ -75,8 +76,8 @@ V následující tabulce najdete stručný přehled rozdílů jednotlivých typ�
 
 | Strategie replikace | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Data se replikují napříč různými zařízeními. |No |Yes |Yes |Yes |
-| Data je možné načíst ze sekundárního i primárního umístění. |No |No |No |Yes |
+| Data se replikují napříč různými zařízeními. |No |Ano |Ano |Ano |
+| Data je možné načíst ze sekundárního i primárního umístění. |No |No |No |Ano |
 | Počet kopií dat uchovávaných na samostatných uzlech |3 |3 |6 |6 |
 
 Další informace o [možnostech replikace služby Azure Storage najdete tady](../storage/common/storage-redundancy.md). Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](./managed-disks-overview.md).

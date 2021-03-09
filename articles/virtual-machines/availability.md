@@ -1,78 +1,62 @@
 ---
-title: Možnosti dostupnosti
-description: Přečtěte si o funkcích dostupnosti pro spouštění virtuálních počítačů v Azure.
-author: cynthn
-ms.author: cynthn
+title: Možnosti dostupnosti pro Azure Virtual Machines
+description: Přečtěte si o možnostech dostupnosti pro spouštění virtuálních počítačů v Azure.
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 0af9d27561649a559913912165e63e913a32ff2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/08/2021
+ms.reviewer: cynthn
+ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178282"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507870"
 ---
-# <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
+# <a name="availability-options-for-azure-virtual-machines"></a>Možnosti dostupnosti pro Azure Virtual Machines
+Tento článek poskytuje přehled možností dostupnosti pro virtuální počítače Azure (VM).
 
-Tento článek obsahuje přehled funkcí dostupnosti virtuálních počítačů Azure (VM).
+## <a name="availability-zones"></a>Zóny dostupnosti
 
-## <a name="high-availability"></a>Vysoká dostupnost
+[Zóny dostupnosti](../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context) rozšiřují úroveň řízení, kterou je třeba udržovat v dostupnosti aplikací a dat na virtuálních počítačích. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři Zóny dostupnosti na jednu podporovanou oblast Azure. 
 
-Zatížení se obvykle šíří napříč různými virtuálními počítači, aby se zajistila vysoká propustnost, výkon a vytvořila redundance v případě, že je virtuální počítač ovlivněný z důvodu aktualizace nebo jiné události. 
+Každá zóna dostupnosti má samostatný zdroj napájení, síť a chlazení. Návrhem řešení pro použití replikovaných virtuálních počítačů v zónách můžete chránit aplikace a data před ztrátou datového centra. Pokud dojde k ohrožení jedné zóny, replikované aplikace a data jsou okamžitě k dispozici v jiné zóně. 
 
-Existuje několik možností, které Azure poskytuje k dosažení vysoké dostupnosti. Nejdřív si budeme mluvit o základních konstrukcích. 
-
-### <a name="availability-zones"></a>Zóny dostupnosti
-
-[Zóny dostupnosti](../availability-zones/az-overview.md) rozšiřují úroveň řízení, kterou máte k dispozici, abyste zachovali dostupnost aplikací a dat na vašich virtuálních počítačích. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři Zóny dostupnosti na jednu podporovanou oblast Azure. 
-
-Každá zóna dostupnosti má samostatný zdroj napájení, síť a chlazení. Díky navrhování vašich řešení pro použití replikovaných virtuálních počítačů v zónách můžete chránit aplikace a data před ztrátou datacentra. Pokud dojde k ohrožení jedné zóny, replikované aplikace a data jsou okamžitě k dispozici v jiné zóně. 
-
-![Zóny dostupnosti](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-Přečtěte si další informace o nasazení virtuálního počítače se [systémem Windows](./windows/create-powershell-availability-zone.md) nebo [Linux](./linux/create-cli-availability-zone.md) v zóně dostupnosti.
-
-
-### <a name="fault-domains"></a>Domény selhání
-
-Doména selhání je logická skupina hardwarových komponent, které sdílejí společný zdroj napájení a síťový přepínač (je obdobou stojanu v místním datovém centru). 
-
-### <a name="update-domains"></a>Aktualizační domény
-
-Aktualizační doména je logická skupina hardwarových komponent, u kterých je možné provést údržbu nebo restart současně. 
-
-Tento přístup zajišťuje, že při pravidelné údržbě Azure zůstává vždycky nejméně jedna instance vaší aplikace spuštěná. Restartování aktualizačních domén nemusí během údržby pokračovat sekvenčně, ale v jednu chvíli se restartuje jenom jedna aktualizační doména.
+## <a name="availability-sets"></a>Skupiny dostupnosti
+[Skupina dostupnosti](availability-set-overview.md) je logické seskupení virtuálních počítačů, které umožňuje Azure pochopit, jak je vaše aplikace sestavená, aby poskytovala redundanci a dostupnost. Doporučujeme, aby se v rámci skupiny dostupnosti vytvořily dva nebo víc virtuálních počítačů, které poskytují vysoce dostupné aplikace a splňovaly [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Pro samotnou skupinu dostupnosti se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače.
 
 
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines škálování sad 
 
-Azure Virtual Machine Scale Sets vám umožní vytvořit a spravovat skupinu virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat v reakci na poptávku nebo podle určeného rozvrhu. Sady škálování poskytují vysokou dostupnost vašim aplikacím a umožňují centrálně spravovat, konfigurovat a aktualizovat spoustu virtuálních počítačů. Pro zajištění vysoce dostupné aplikace a pro splnění [99,95% smlouvy SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/)doporučujeme, aby se v rámci sady škálování vytvořily dva nebo víc virtuálních počítačů. Pro samotnou sadu škálování se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače. Pokud jeden virtuální počítač používá [Azure Premium SSD](./disks-types.md#premium-ssd), platí Azure SLA pro neplánované události údržby. Virtuální počítače v sadě škálování se dají nasadit mezi více aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost a odolnost proti výpadkům kvůli výpadkům datového centra a plánovaným nebo neplánovaným událostem údržby. Virtuální počítače v sadě škálování je taky možné nasadit do jedné zóny dostupnosti nebo v regionu. Možnosti nasazení zóny dostupnosti se můžou lišit v závislosti na režimu orchestrace.
+[Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context) vám umožní vytvořit a spravovat skupinu virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat v reakci na poptávku nebo podle určeného rozvrhu. Sady škálování poskytují vysokou dostupnost vašim aplikacím a umožňují centrálně spravovat, konfigurovat a aktualizovat spoustu virtuálních počítačů. Pro zajištění vysoce dostupné aplikace a pro splnění [99,95% smlouvy SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/)doporučujeme, aby se v rámci sady škálování vytvořily dva nebo víc virtuálních počítačů. Pro samotnou sadu škálování se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače.
 
-**Domény selhání a aktualizační domény**
+Virtuální počítače v sadě škálování je taky možné nasadit do jedné zóny dostupnosti nebo v regionu. Možnosti nasazení zóny dostupnosti se můžou lišit v závislosti na [režimu orchestrace](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context).
 
-Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Viz [Správa dostupnosti virtuálních počítačů v Azure](./manage-availability.md).
-
-**Režimy orchestrace pro sady škálování**
-
-Režimy orchestrace virtuálních počítačů umožňují lepší kontrolu nad tím, jak jsou instance virtuálních počítačů spravovány sadou škálování. V sadě škálování můžete povolit jednotný nebo flexibilní režim orchestrace. Jednotná orchestrace je optimalizovaná pro rozsáhlá Bezstavová zatížení se stejnými instancemi. Flexibilní orchestrace (Preview) je určena pro vysokou dostupnost ve velkém měřítku se stejnými nebo více typy virtuálních počítačů. Přečtěte si další informace o těchto [režimech orchestrace](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) a o tom, jak je povolit.
+## <a name="load-balancer"></a>Nástroj pro vyrovnávání zatížení
+Kombinací [Azure Load Balancer](../load-balancer/load-balancer-overview.md) se zónou dostupnosti nebo skupinou dostupnosti získáte maximální odolnost aplikací. Azure Load Balancer rozděluje provoz mezi víc virtuálních počítačů. Azure Load Balancer je součástí virtuálních počítačů úrovně Standard. Ne všechny úrovně virtuálních počítačů zahrnují nástroj Azure Load Balancer. Další informace o vyrovnávání zatížení virtuálních počítačů najdete v tématu **Vyrovnávání zatížení virtuálních počítačů** pro [Linux](linux/tutorial-load-balancer.md) nebo [Windows](windows/tutorial-load-balancer.md).
 
 
-## <a name="availability-sets"></a>Skupiny dostupnosti
-Skupina dostupnosti je logické seskupení virtuálních počítačů, které umožňují Azure pochopit, jak je sestavená vaše aplikace, aby bylo možné zajistit redundanci a dostupnost. Doporučujeme, aby se v rámci skupiny dostupnosti vytvořily dva nebo víc virtuálních počítačů, které poskytují vysoce dostupné aplikace a splňovaly [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Pro samotnou skupinu dostupnosti se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače. Pokud jeden virtuální počítač používá [Azure Premium SSD](./disks-types.md#premium-ssd), platí Azure SLA pro neplánované události údržby.
+## <a name="azure-storage-redundancy"></a>Redundance Azure Storage
+Azure Storage vždycky ukládá více kopií vašich dat, takže je chráněná před plánovanými a neplánovanými událostmi, včetně přechodných selhání hardwaru, sítě nebo výpadků napájení a obrovských přirozených havárií. Redundance zajišťuje, že váš účet úložiště splňuje požadavky na dostupnost a odolnost i v případě selhání.
 
-Ve skupině dostupnosti jsou virtuální počítače automaticky distribuované napříč těmito doménami selhání. Tento přístup omezuje dopady potenciálního selhání fyzického hardwaru, výpadků sítě nebo přerušení napájení.
+Při rozhodování, která možnost redundance je pro váš scénář nejvhodnější, zvažte kompromisy mezi nižšími náklady a vyšší dostupností. Mezi faktory, které vám pomůžou určit, kterou možnost redundance byste měli zvolit, patří:
+- Způsob replikace dat v primární oblasti
+- Bez ohledu na to, jestli se vaše data replikují do druhé oblasti, která je geograficky vzdálená v primární oblasti, aby se chránila před místními katastrofami
+- Bez ohledu na to, jestli vaše aplikace vyžaduje přístup pro čtení replikovaných dat v sekundární oblasti, pokud z nějakého důvodu nebude dostupná primární oblast
 
-Virtuální počítače, které používají [Azure Managed Disks](./faq-for-disks.md), odpovídají doménám selhání spravovaných disků (pokud se použije spravovaná skupina dostupnosti). Toto uspořádání zajišťuje, aby všechny spravované disky připojené k virtuálnímu počítači byly umístěné ve stejné doméně selhání spravovaných disků. 
+Další informace najdete v tématu [Azure Storage redundance](../storage/common/storage-redundancy.md) .
 
-Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto doménách selhání spravovaného disku pro [virtuální](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) počítače se [systémem Linux nebo virtuální počítače s Windows](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)najdete v článku.
+## <a name="azure-site-recovery"></a>Azure Site Recovery
+Jako organizace potřebujete, abyste přijali strategii pro provozní kontinuitu a zotavení po havárii (BCDR), která udržuje vaše data v bezpečí a vaše aplikace a úlohy online, když dojde k plánovaným a neplánovaným výpadkům.
 
-![Spravovaná Skupina dostupnosti](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) pomáhá zajistit kontinuitu podnikových procesů tím, že udržuje podnikové aplikace a úlohy spuštěné během výpadků. Site Recovery replikuje úlohy spuštěné na fyzických a virtuálních počítačích z primární lokality do sekundárního umístění. Když dojde k výpadku v primární lokalitě, převezme služby při selhání sekundární lokalita a přistupujete k aplikacím z ní. Po opětovném zprovoznění můžete navrátit služby do primární lokality.
 
-
-Virtuální počítače v rámci skupiny dostupnosti jsou taky automaticky distribuované napříč aktualizačními doménami. 
-
-![Skupiny dostupnosti](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+Site Recovery může spravovat replikaci pro:
+- Virtuální počítače Azure replikované mezi oblastmi Azure.
+- Místní virtuální počítače, Azure Stack virtuální počítače a fyzické servery.
 
 ## <a name="next-steps"></a>Další kroky
-Teď můžete tyto funkce pro zajištění redundance a dostupnosti začít používat a vytvořit prostředí Azure. Informace o doporučených postupech najdete v tématu věnovaném [osvědčeným postupům pro zajištění dostupnosti v Azure](/azure/architecture/checklist/resiliency-per-service).
+- [Vytvoření virtuálního počítače v zóně dostupnosti](/linux/create-cli-availability-zone.md)
+- [Vytvoření virtuálního počítače ve skupině dostupnosti](/linux/tutorial-availability.md)
+- [Vytvoření škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/quick-create-portal.md)

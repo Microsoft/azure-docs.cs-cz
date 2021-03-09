@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e8c21df3b783241a3a4bfdbe28b28b2bceb89b4d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704465"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509111"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletního virtuálního počítače se systémem Linux pomocí Azure CLI
 Pokud chcete rychle vytvořit virtuální počítač v Azure, můžete použít jeden příkaz Azure CLI, který pomocí výchozích hodnot vytvoří všechny požadované podpůrné prostředky. Automaticky se vytvoří prostředky, jako je virtuální síť, veřejná IP adresa a pravidla skupiny zabezpečení sítě. Pro lepší kontrolu vašeho prostředí při použití v produkčním prostředí můžete tyto prostředky vytvořit předem a potom do nich přidat své virtuální počítače. Tento článek vás provede postupem, jak vytvořit virtuální počítač a každý z podpůrných prostředků od jednoho.
@@ -434,7 +434,7 @@ Domény selhání definují seskupení virtuálních počítačů, které sdíle
 
 Aktualizace domén označují skupiny virtuálních počítačů a základní fyzický hardware, které lze restartovat současně. Během plánované údržby nemusí být pořadí, ve kterém se aktualizační domény restartují, sekvenční, ale v jednom okamžiku se restartuje jenom jedna aktualizační doména.
 
-Azure automaticky distribuuje virtuální počítače napříč doménami selhání a aktualizačními doménami při jejich umísťování do skupiny dostupnosti. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../manage-availability.md).
+Azure automaticky distribuuje virtuální počítače napříč doménami selhání a aktualizačními doménami při jejich umísťování do skupiny dostupnosti. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../availability.md).
 
 Vytvořte skupinu dostupnosti pro virtuální počítač pomocí [AZ VM Availability-set Create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti *myAvailabilitySet*:
 

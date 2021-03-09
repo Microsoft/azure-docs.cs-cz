@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d21852ad684782fa1cb917442fee236d3c882b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450255"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502140"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupného upgradu cloudových aplikací pomocí SQL Database aktivní geografická replikace
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Dokončí geografickou replikaci odpojením sekundárního (11). Tato akce vytvoří nezávislou, plně synchronizovanou kopii provozní databáze. Tato databáze bude upgradována. Následující příklad používá jazyk Transact-SQL, ale je k dispozici také [prostředí PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) . 
+2. Dokončí geografickou replikaci odpojením sekundárního (11). Tato akce vytvoří nezávislou, plně synchronizovanou kopii provozní databáze. Tato databáze bude upgradována. Následující příklad používá jazyk Transact-SQL, ale je k dispozici také [prostředí PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) . 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -145,7 +145,7 @@ Klíčovou výhodou této možnosti je, že můžete upgradovat aplikaci i její
 
 Hlavním kompromisem je to, že vyžaduje dvojí redundanci každé součásti aplikace, a proto se zvýší náklady na dolar. Zahrnuje taky složitější pracovní postup.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tyto dvě metody upgradu popsané v článku se liší od nákladů na složitost a dolar, ale obě se zaměřují na minimalizaci toho, jak dlouho je uživatel omezený na operace jen pro čtení. Tato doba je přímo definovaná po dobu trvání skriptu upgradu. Nezávisí na velikosti databáze, zvolené úrovni služby, konfiguraci webu nebo jiných faktorech, které nemůžete snadno ovládat. Všechny kroky přípravy jsou oddělené od kroků upgradu a neovlivňují produkční aplikaci. Efektivita skriptu upgradu je klíčovým faktorem, který určuje prostředí uživatele během upgradů. Nejlepším způsobem, jak toto prostředí zlepšit, je zaměřit se na to, co je potřeba k tomu, aby byl skript upgradu co nejefektivnější.
 

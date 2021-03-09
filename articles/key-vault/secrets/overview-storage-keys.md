@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242351"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499216"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 > [!IMPORTANT]
@@ -42,21 +42,21 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Ostatní  | Libovolný | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
 - [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-- [Vytvoření trezoru klíčů](quick-create-cli.md)
+- [Vytvořte trezor klíčů.](quick-create-cli.md)
 - [Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md?tabs=azure-cli). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
       
 ## <a name="manage-storage-account-keys"></a>Správa klíčů účtu úložiště
 
 ### <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 
-Pomocí příkazů [AZ Login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) ověřte relaci Azure CLI.
+Pomocí příkazů [AZ Login](/powershell/module/az.accounts/connect-azaccount) ověřte relaci Azure CLI.
 
 ```azurecli-interactive
 az login

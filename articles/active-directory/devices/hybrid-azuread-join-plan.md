@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687277"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500804"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -167,11 +167,11 @@ V některých případech se vaše místní uživatelské názvy UPN můžou li�
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.
 
-| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
+| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Description |
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaní | Z verze 1703 | Obecná dostupnost |
 | Bez směrování | Federovaní | Z verze 1803 | Obecná dostupnost |
-| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. Místní hlavní název uživatele (UPN) musí být synchronizovaný s     `onPremisesUserPrincipalName` atributem v Azure AD. |
 | Bez směrování | Spravované | Nepodporováno | |
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,12 +3,12 @@ title: Glosář Azure Backup
 description: Tento článek popisuje výrazy užitečné pro použití s Azure Backup.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723910"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502021"
 ---
 # <a name="azure-backup-glossary"></a>Glosář Azure Backup
 
@@ -31,7 +31,7 @@ Obnovení provedené z bodu obnovení do jiného umístění, než je původní 
 
 (Termín specifický pro úlohy)
 
-Zálohování konzistentní s aplikací zaznamenává obsah paměti a probíhající vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají [zapisovač VSS VSS](#vss-windows-volume-shadow-copy-service) (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikací před tím, než dojde k zálohování. [Přečtěte si další informace](backup-azure-vms-introduction.md).
+Zálohování konzistentní s aplikací zaznamenává obsah paměti a probíhající vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají [zapisovač VSS VSS](#vss-windows-volume-shadow-copy-service) (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikací před tím, než dojde k zálohování. [Další informace](backup-azure-vms-introduction.md).
 
 ## <a name="azure-resource-manager-arm-templates"></a>Šablony Azure Resource Manageru (ARM)
 
@@ -88,7 +88,7 @@ Skutečné úložiště používané instancí zálohy. Zahrnuje velikost všech
 
 ## <a name="bare-metal-backup"></a>Úplné zálohování systému
 
-Zálohuje soubory operačního systému a všechna data na kritických svazcích, s výjimkou uživatelských dat. V rámci definice zahrnuje úplné zálohování systému zálohu stavu systému. Poskytuje ochranu v případě, že se počítač nespustí a vy budete muset všechno obnovit. [Přečtěte si další informace](backup-mabs-system-state-and-bmr.md).
+Zálohuje soubory operačního systému a všechna data na kritických svazcích, s výjimkou uživatelských dat. V rámci definice zahrnuje úplné zálohování systému zálohu stavu systému. Poskytuje ochranu v případě, že se počítač nespustí a vy budete muset všechno obnovit. [Další informace](backup-mabs-system-state-and-bmr.md).
 
 ## <a name="backup-extensions--vm-extensions"></a>Rozšíření pro zálohování/rozšíření virtuálních počítačů
 
@@ -120,7 +120,7 @@ Procentuální hodnota změny v zálohovaných datech mezi dvěma po sobě jdouc
 
 (Termín specifický pro úlohy)
 
-K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování. [Přečtěte si další informace](backup-azure-vms-introduction.md#snapshot-consistency).
+K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování. [Další informace](backup-azure-vms-introduction.md#snapshot-consistency).
 
 ## <a name="cross-region-restore-crr"></a>Obnovení mezi oblastmi (CRR)
 
@@ -148,7 +148,7 @@ Přečtěte si [dokumentaci k ExpressRoute](../expressroute/expressroute-introdu
 
 (Termín specifický pro úlohy)
 
-Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu. [Přečtěte si další informace](backup-azure-vms-introduction.md#snapshot-consistency).
+Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu. [Další informace](backup-azure-vms-introduction.md#snapshot-consistency).
 
 ## <a name="frontend-storage--source-size"></a>Front-endové úložiště/zdrojová velikost
 
@@ -202,7 +202,7 @@ Informace najdete v [dokumentaci ke službě Managed disks](../virtual-machines/
 
 (Termín specifický pro úlohy)
 
-Označuje se taky jako agent **Azure Backup agenta** nebo agent **Recovery Services**, Azure Backup k zálohování dat z místních počítačů a virtuálních počítačů Azure do záložního Recovery Services trezoru v Azure. [Přečtěte si další informace](backup-support-matrix-mars-agent.md).
+Označuje se taky jako agent **Azure Backup agenta** nebo agent **Recovery Services**, Azure Backup k zálohování dat z místních počítačů a virtuálních počítačů Azure do záložního Recovery Services trezoru v Azure. [Další informace](backup-support-matrix-mars-agent.md).
 
 ## <a name="nsg-network-security-group"></a>NSG (skupina zabezpečení sítě)
 
@@ -210,7 +210,7 @@ Přečtěte si [dokumentaci k NSG](../virtual-network/network-security-groups-ov
 
 ## <a name="offline-seeding"></a>Offline osazení
 
-Dosazení offline se týká procesu přenosu počáteční (úplné) zálohy offline bez použití šířky pásma sítě. Poskytuje mechanismus pro kopírování zálohovaných dat do fyzických úložných zařízení, která se pak odesílají do nejbližšího datového centra Azure a nahrála se do úložiště Recovery Services. [Přečtěte si další informace](offline-backup-overview.md).
+Dosazení offline se týká procesu přenosu počáteční (úplné) zálohy offline bez použití šířky pásma sítě. Poskytuje mechanismus pro kopírování zálohovaných dat do fyzických úložných zařízení, která se pak odesílají do nejbližšího datového centra Azure a nahrála se do úložiště Recovery Services. [Další informace](offline-backup-overview.md).
 
 ## <a name="on-demand-backup--ad-hoc-backup"></a>Zálohování na vyžádání/zálohování ad hoc
 
@@ -232,7 +232,7 @@ Přečtěte si [dokumentaci k privátnímu koncovému bodu](../private-link/priv
 
 ## <a name="protected-instance"></a>Chráněná instance
 
-Chráněná instance odkazuje na počítač, fyzický nebo virtuální server, který používáte ke konfiguraci zálohování na Azure.  Z **hlediska fakturace** je počet chráněných instancí pro počítač funkcí jeho velikosti front-endu. Jedna instance zálohy (například virtuální počítač zálohovaný do Azure) může odpovídat několika chráněným instancím v závislosti na velikosti front-endu. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/backup/).
+Chráněná instance odkazuje na počítač, fyzický nebo virtuální server, který používáte ke konfiguraci zálohování na Azure.  Z **hlediska fakturace** je počet chráněných instancí pro počítač funkcí jeho velikosti front-endu. Jedna instance zálohy (například virtuální počítač zálohovaný do Azure) může odpovídat několika chráněným instancím v závislosti na velikosti front-endu. [Další informace](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (řízení přístupu na základě role)
 
@@ -272,11 +272,11 @@ RTO označuje maximální možnou dobu, během které mohou být data obnovena k
 
 ## <a name="secondary-region--paired-region"></a>Sekundární oblast/spárovaná oblast
 
-Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. Jedna je primární oblastí a druhá je sekundární oblastí. Spárované oblasti jsou používány některými službami Azure (včetně Azure Backup s nastaveními GRS), aby se zajistila Kontinuita podnikových aplikací a chránila před ztrátou dat. [Přečtěte si další informace](../best-practices-availability-paired-regions.md).
+Regionální pár se skládá ze dvou oblastí ve stejné zeměpisné oblasti. Jedna je primární oblastí a druhá je sekundární oblastí. Spárované oblasti jsou používány některými službami Azure (včetně Azure Backup s nastaveními GRS), aby se zajistila Kontinuita podnikových aplikací a chránila před ztrátou dat. [Další informace](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Obnovitelné odstranění
 
-Obnovitelné odstranění je funkce, která pomáhá chránit před náhodným odstraněním zálohovaných dat. Pomocí obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po delší dobu, což umožňuje obnovení této zálohované položky bez ztráty dat. [Přečtěte si další informace](backup-azure-security-feature-cloud.md).
+Obnovitelné odstranění je funkce, která pomáhá chránit před náhodným odstraněním zálohovaných dat. Pomocí obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po delší dobu, což umožňuje obnovení této zálohované položky bez ztráty dat. [Další informace](backup-azure-security-feature-cloud.md).
 
 ## <a name="snapshot"></a>Snímek
 
@@ -294,11 +294,23 @@ Předplatné Azure je logický kontejner, který se používá ke zřizování p
 
 (Termín specifický pro úlohy)
 
-Zálohuje soubory operačního systému. Tato záloha umožňuje obnovení při spuštění počítače, ale systémové soubory a Registry jsou ztraceny. [Přečtěte si další informace](backup-mabs-system-state-and-bmr.md).
+Zálohuje soubory operačního systému. Tato záloha umožňuje obnovení při spuštění počítače, ale systémové soubory a Registry jsou ztraceny. [Další informace](backup-mabs-system-state-and-bmr.md).
 
 ## <a name="tenant"></a>Tenant
 
 Klient představuje organizaci. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
+
+## <a name="tier"></a>Úroveň
+
+V současné době Azure Backup podporuje následující úrovně úložiště zálohování:
+
+### <a name="snapshot-tier"></a>Vrstva snímku
+
+(Termín specifický pro úlohy) V první fázi zálohování virtuálního počítače se pořízené snímky ukládají společně s diskem. Tato forma úložiště se označuje jako vrstva snímku. Obnovení vrstvy snímků je rychlejší (než obnovení z trezoru), protože eliminují dobu čekání na zkopírování snímků z trezoru před aktivací operace obnovení.
+
+### <a name="vault-standard-tier"></a>Vault-Standard úroveň
+
+Data záloh pro všechny úlohy, které Azure Backup podporuje, se ukládají do trezorů, které uchovávají úložiště pro zálohování, automatické škálování sady účtů úložiště, které spravuje Azure Backup. Vault-Standard vrstva je online vrstva úložiště, která umožňuje uložit izolovanou kopii zálohovaných dat do spravovaného tenanta společnosti Microsoft a vytvořit tak další úroveň ochrany. Pro úlohy, kde je podporována vrstva snímků, je kopie zálohovaných dat jak v úrovni snímku, tak i v trezoru úrovně Standard. Trezor – úroveň Standard zajišťuje dostupnost zálohovaných dat i v případě, že je odstraněn nebo ohrožen zálohovaný zdroj dat.
 
 ## <a name="unmanaged-disk"></a>Nespravovaný disk
 
@@ -310,7 +322,7 @@ Entita úložiště v Azure, která slouží k zálohování dat. Je to také je
 
 ## <a name="vault-credentials"></a>Přihlašovací údaje trezoru
 
-Soubor s přihlašovacími údaji trezoru je certifikát vygenerovaný portálem pro každý trezor. Tento postup se používá při registraci místního serveru do trezoru. [Přečtěte si další informace](backup-azure-dpm-introduction.md).
+Soubor s přihlašovacími údaji trezoru je certifikát vygenerovaný portálem pro každý trezor. Tento postup se používá při registraci místního serveru do trezoru. [Další informace](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>Virtuální síť (Virtual Network)
 

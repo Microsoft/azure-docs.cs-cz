@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675111"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502429"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure PowerShell
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standardní SKU – používání zón**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->Následující příkaz funguje pro AZ. Network Module verze 4.5.0 nebo novější.  Další informace o aktuálně používaných modulech PowerShellu najdete v [dokumentaci k PowerShellGet](/powershell/module/powershellget/?view=powershell-7.1).
+>Následující příkaz funguje pro AZ. Network Module verze 4.5.0 nebo novější.  Další informace o aktuálně používaných modulech PowerShellu najdete v [dokumentaci k PowerShellGet](/powershell/module/powershellget/).
 
 Pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) vytvořte standardní veřejnou IP adresu v zóně s názvem **myStandardZRPublicIP** v **myResourceGroup**.
 
@@ -89,7 +89,7 @@ Všimněte si, že výše uvedené možnosti pro zóny jsou pouze výběr platn�
 # <a name="standard-sku---no-zones"></a>[**Standardní SKU – žádné zóny**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->Následující příkaz funguje pro AZ. Network Module verze 4.5.0 nebo novější.  Další informace o aktuálně používaných modulech PowerShellu najdete v [dokumentaci k PowerShellGet](/powershell/module/powershellget/?view=powershell-7.1).
+>Následující příkaz funguje pro AZ. Network Module verze 4.5.0 nebo novější.  Další informace o aktuálně používaných modulech PowerShellu najdete v [dokumentaci k PowerShellGet](/powershell/module/powershellget/).
 
 Použijte [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) k vytvoření standardní veřejné IP adresy jako prostředku mimo oblast s názvem **myStandardPublicIP** v **myResourceGroup**.
 

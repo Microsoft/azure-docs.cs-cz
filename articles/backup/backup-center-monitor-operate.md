@@ -3,14 +3,14 @@ title: Monitorování a správa zálohování s využitím centra zálohování
 description: Tento článek vysvětluje, jak monitorovat a provozovat zálohy ve velkém měřítku pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719538"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506114"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Monitorování a správa zálohování s využitím centra zálohování
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Monitorování a provozování záloh pomocí centra zálohování
 
 Jako správce zálohování můžete pomocí služby Backup Center monitorovat vaše úlohy a inventář záloh na každodenní bázi. Pomocí služby Backup Center můžete také provádět běžné operace, jako je třeba reakce na požadavky na zálohování na vyžádání, obnovení záloh, vytváření zásad zálohování atd.
 

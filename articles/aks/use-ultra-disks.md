@@ -4,12 +4,12 @@ description: Přečtěte si, jak povolit a nakonfigurovat disky Ultra v clusteru
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178843"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502565"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Použití disků Azure Ultra ve službě Azure Kubernetes (Preview)
 
@@ -84,7 +84,7 @@ Pokud chcete vytvořit clustery bez podpory Ultra disk, můžete to udělat tak,
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>Povolení disků Ultra v existujícím clusteru
 
-Můžete povolit disky Ultra na existujících clusterech přidáním nového fondu uzlů do clusteru, který podporuje extrémně disky. Nakonfigurujte nový fond uzlů pro použití šifrování založeného na hostiteli pomocí `--aks-custom-headers` příznaku.
+Můžete povolit disky Ultra na existujících clusterech přidáním nového fondu uzlů do clusteru, který podporuje extrémně disky. Nakonfigurujte nový fond uzlů tak, aby používal disky Ultra pomocí `--aks-custom-headers` příznaku.
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true

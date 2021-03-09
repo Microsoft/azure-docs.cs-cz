@@ -921,7 +921,7 @@
         - name: REST (rovina řízení)
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Šablona Resource Manageru
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -1039,7 +1039,7 @@
         - name: Poskytovatel prostředků REST
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Šablona Resource Manageru
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Rozhraní MongoDB API
@@ -1170,7 +1170,7 @@
         - name: Poskytovatel prostředků REST
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Šablona Resource Manageru
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Rozhraní Gremlin API
@@ -1248,7 +1248,7 @@
         - name: Hlavičky odpovědi
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Poskytovatel prostředků REST
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Šablona Resource Manageru
@@ -1334,7 +1334,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Rozhraní REST API služby Table Storage
           href: /rest/api/storageservices/table-service-rest-api
 - name: Návody

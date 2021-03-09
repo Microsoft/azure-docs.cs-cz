@@ -1,24 +1,20 @@
 ---
-title: Společné umístění virtuálních počítačů
-description: Přečtěte si, jak umístit prostředky virtuálních počítačů Azure do společného umístění pro lepší latenci.
+title: Skupiny umístění bezkontaktní komunikace
+description: Přečtěte si o používání skupin umístění blízkosti v Azure.
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 584d98c93083bc0b203276c8eda2801841da3ad7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924214"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507853"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Snížení latence umisťováním prostředků do společného umístění
-
-Při nasazování aplikace v Azure vytvoří rozšíření instancí napříč oblastmi nebo zónami dostupnosti latenci sítě, což může mít vliv na celkový výkon vaší aplikace. 
-
-## <a name="proximity-placement-groups"></a>Skupiny umístění bezkontaktní komunikace
+# <a name="proximity-placement-groups"></a>Skupiny umístění bezkontaktní komunikace
 
 Umístění virtuálních počítačů v jedné oblasti omezuje fyzickou vzdálenost mezi instancemi. Jejich umístění v rámci jedné zóny dostupnosti se také fyzicky přiblíží dohromady. Pokud se ale nároky na Azure rozroste, může jedna zóna dostupnosti zahrnovat několik fyzických datových center, což může způsobit, že vaše aplikace bude mít vliv na latenci sítě. 
 

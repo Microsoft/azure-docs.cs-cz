@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461431"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508227"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
 
@@ -24,20 +24,20 @@ V tomto článku se dozvíte, jak získat přístup k datům pomocí [Azure Mach
 
 Následující tabulka definuje a shrnuje výhody datových úložišť a datových sad. 
 
-|Objekt|Popis| Výhody|   
+|Objekt|Description| Výhody|   
 |---|---|---|
 |Úložiště dat| Připojte se bezpečně k vaší službě úložiště v Azure, a to uložením informací o připojení, jako je ID předplatného a autorizace tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru. | Vzhledem k tomu, že jsou vaše informace bezpečně uložené, můžete <br><br> <li> &nbsp;Neumísťujte &nbsp; &nbsp; přihlašovací údaje pro ověřování &nbsp; nebo &nbsp; původní &nbsp; zdroje dat na riziko. <li> Už je nemusíte zakódovat ve svých skriptech.
 |Datové sady| Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. U datových sad můžete, <br><br><li> Přístup k datům během školení modelu.<li> Sdílejte data a spolupracujte s ostatními uživateli.<li> Využijte open source knihovny, jako je PANDAS, pro zkoumání dat. | Vzhledem k tomu, že datové sady jsou vyhodnoceny laxně vytvářená a data zůstávají v jejím existujícím umístění, je <br><br><li>Uchovávejte v úložišti jednu kopii dat.<li> Neúčtují se žádné dodatečné náklady na úložiště. <li> Nehrozí neriziková neúmyslná změna původních zdrojů dat.<li>Zvýšení rychlosti výkonu pracovního postupu ML. 
 
 Informace o tom, kde úložiště dat a datové sady vyhovují celkovému pracovnímu postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-Pro prostředí prvního kódu si přečtěte následující články, které používají [sadu Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) :
+Pro prostředí prvního kódu si přečtěte následující články, které používají [sadu Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) :
 * [Připojte se ke službám úložiště Azure s úložištěm dat](how-to-access-data.md). 
 * [Vytvořte Azure Machine Learning datové sady](how-to-create-register-datasets.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -111,13 +111,13 @@ Konkrétně datový profil Azure Machine Learning datové sady zahrnuje:
 >[!NOTE]
 > Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
 
-|Statistický údaj|Popis
+|Statistický údaj|Description
 |------|------
-|Příznak| Název sloupce, který je sumarizován.
+|Funkce| Název sloupce, který je sumarizován.
 |Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 |Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 |Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-|Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (například logické hodnoty), se zobrazí prázdné položky.
+|Min| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (například logické hodnoty), se zobrazí prázdné položky.
 |Maximum| Maximální hodnota sloupce 
 |Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 |Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 62a5a5307e704b22a2c9ead197dae3360d5d03b1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214792"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508805"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -110,7 +110,7 @@ Vlastník prostředku privátního propojení může provést následující akc
 > Pouze privátní koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení. 
 
 ### <a name="connecting-using-alias"></a>Připojování pomocí aliasu
-Alias je jedinečný moniker, který se generuje, když vlastník služby vytvoří službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení. Vlastník služby může tento alias sdílet se svými spotřebiteli offline. Příjemci můžou požádat o připojení ke službě privátního propojení buď pomocí identifikátoru URI prostředku, nebo aliasu. Pokud se chcete připojit pomocí aliasu, musíte vytvořit privátní koncový bod pomocí metody ručního schválení připojení. Pro použití metody schvalování ručního připojení nastavte parametr ruční požadavek na hodnotu true během vytváření toku privátního koncového bodu. Podrobnosti najdete v [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) a [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) . 
+Alias je jedinečný moniker, který se generuje, když vlastník služby vytvoří službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení. Vlastník služby může tento alias sdílet se svými spotřebiteli offline. Příjemci můžou požádat o připojení ke službě privátního propojení buď pomocí identifikátoru URI prostředku, nebo aliasu. Pokud se chcete připojit pomocí aliasu, musíte vytvořit privátní koncový bod pomocí metody ručního schválení připojení. Pro použití metody schvalování ručního připojení nastavte parametr ruční požadavek na hodnotu true během vytváření toku privátního koncového bodu. Podrobnosti najdete v [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) a [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) . 
 
 ## <a name="dns-configuration"></a>Konfigurace DNS 
 Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. To je nutné přepsat pro připojení pomocí privátního koncového bodu. 

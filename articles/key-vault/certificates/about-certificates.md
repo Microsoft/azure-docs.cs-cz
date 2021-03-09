@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919926"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507207"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -91,7 +91,7 @@ Zásady certifikátu obsahují informace o tom, jak vytvořit a spravovat život
 
 Když se od začátku vytvoří certifikát Key Vault, musí se zadat zásada. Zásada určuje, jak se má vytvořit tato Key Vault verze certifikátu nebo další verze certifikátu Key Vault. Jakmile je zásada navázána, nepožaduje se u následných operací vytvoření budoucích verzí. Pro všechny verze Key Vaultho certifikátu existuje jenom jedna instance zásady.  
 
-Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)):  
 
 -   Vlastnosti certifikátu x509: obsahuje název subjektu, alternativní názvy subjektu a další vlastnosti používané k vytvoření žádosti o certifikát x509.  
 -   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a ReuseKeyOnRenewal pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč. 
@@ -127,7 +127,7 @@ Objekt certifikátu Key Vault obsahuje konfiguraci, která se používá ke komu
 
 -   Key Vault partneři s následujícími poskytovateli vystavitelů certifikátů pro certifikáty TLS/SSL
 
-|**Název zprostředkovatele**|**Umístění**|
+|**Název poskytovatele**|**Umístění**|
 |----------|--------|
 |DigiCert|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
 |GlobalSign|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
