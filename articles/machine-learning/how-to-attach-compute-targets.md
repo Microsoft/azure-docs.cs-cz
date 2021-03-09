@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518687"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504929"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Nastavení cílových výpočetních prostředků pro školení a nasazení modelu
 
@@ -43,7 +43,7 @@ Pokud chcete použít výpočetní cíle spravované pomocí Azure Machine Learn
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
+* [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -60,7 +60,7 @@ Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších mat
 
 Pokud používáte místní počítač pro **školení**, není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
 
-Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. K provedení nasazení použijte [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) k definování portu, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. K provedení nasazení použijte [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#deploy-configuration-port-none-) k definování portu, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače
 
@@ -325,7 +325,7 @@ Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka
 > Nevytvářejte více souběžných příloh stejného ADLA z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
 > [!TIP]
-> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) ke zkopírování dat před školeními.
+> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep) ke zkopírování dat před školeními.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Instance kontejneru Azure
 

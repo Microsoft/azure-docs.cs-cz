@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204010"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503909"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
@@ -42,7 +42,7 @@ az account list
 az account set --subscription "<subscriptionID>"
 ```
 
-Pomocí Azure PowerShell můžete nejdřív vypsat své odběry pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-4.7.0) a pak se k ní připojit pomocí rutiny [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-4.7.0) : 
+Pomocí Azure PowerShell můžete nejdřív vypsat své odběry pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) a pak se k ní připojit pomocí rutiny [set-AzContext](/powershell/module/az.accounts/set-azcontext) : 
 
 ```powershell-interactive
 Get-AzSubscription
@@ -64,13 +64,13 @@ Pomocí Azure CLI použijte příkaz [AZ Storage Account Create](/cli/azure/stor
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
 ```
 
-Pomocí Azure PowerShell použijte rutinu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount?view=azps-4.7.0) . Budete muset zadat umístění, které odpovídá skupině prostředků.
+Pomocí Azure PowerShell použijte rutinu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . Budete muset zadat umístění, které odpovídá skupině prostředků.
 
 ```powershell
  New-AzStorageAccount -ResourceGroupName myResourceGroup -Name "<your-unique-storage-account-name>" -Type "Standard_LRS" -Location "eastus"
 ```
 
-V obou případech si poznamenejte "ID" účtu úložiště. Operace Azure CLI vrátí "ID" ve výstupu. Chcete-li získat "ID" s Azure PowerShell, použijte [příkaz Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-4.7.0) a přiřadíte výstup k proměnné $SA. Pak uvidíte účet úložiště s $sa. ID. ($Sa. Dále v tomto článku se bude používat i kontextová vlastnost.)
+V obou případech si poznamenejte "ID" účtu úložiště. Operace Azure CLI vrátí "ID" ve výstupu. Chcete-li získat "ID" s Azure PowerShell, použijte [příkaz Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) a přiřadíte výstup k proměnné $SA. Pak uvidíte účet úložiště s $sa. ID. ($Sa. Dále v tomto článku se bude používat i kontextová vlastnost.)
 
 ```powershell-interactive
 $sa = Get-AzStorageAccount -Name "<your-unique-storage-account-name>" -ResourceGroup "myResourceGroup"
@@ -84,7 +84,7 @@ ID účtu úložiště bude ve formátu "/Subscriptions/<identifikátorem-ID př
 
 ## <a name="obtain-your-key-vault-resource-id"></a>Získání ID prostředku trezoru klíčů
 
-V [rychlém startu CLI](quick-create-cli.md) a [rychlém startu PowerShellu](quick-create-powershell.md)jste vytvořili klíč s jedinečným názvem.  Znovu použijte tento název v následujících krocích.  Pokud si název vašeho trezoru klíčů nepamatujete, můžete k jejich vypsání použít příkaz Azure CLI [AZ Key trezor list](/cli/azure/keyvault#az_keyvault_list) nebo rutina Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) .
+V [rychlém startu CLI](quick-create-cli.md) a [rychlém startu PowerShellu](quick-create-powershell.md)jste vytvořili klíč s jedinečným názvem.  Znovu použijte tento název v následujících krocích.  Pokud si název vašeho trezoru klíčů nepamatujete, můžete k jejich vypsání použít příkaz Azure CLI [AZ Key trezor list](/cli/azure/keyvault#az_keyvault_list) nebo rutina Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) .
 
 K vyhledání ID prostředku použijte název trezoru klíčů.  Pomocí Azure CLI použijte příkaz [AZ klíčů trezor show](/cli/azure/keyvault#az_keyvault_show) .
 
@@ -92,7 +92,7 @@ K vyhledání ID prostředku použijte název trezoru klíčů.  Pomocí Azure C
 az keyvault show --name "<your-unique-keyvault-name>"
 ```
 
-Pomocí Azure PowerShell použijte rutinu [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) .
+Pomocí Azure PowerShell použijte rutinu [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) .
 
 ```powershell-interactive
 Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
@@ -102,13 +102,13 @@ ID prostředku vašeho trezoru klíčů bude ve formátu "/Subscriptions/<your-s
 
 ## <a name="enable-logging-using-azure-powershell"></a>Povolit protokolování pomocí Azure PowerShell
 
-Pokud chcete povolit protokolování pro Key Vault, použijeme příkaz Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) nebo rutinu [set-AZDIAGNOSTICSETTING](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
+Pokud chcete povolit protokolování pro Key Vault, použijeme příkaz Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) nebo rutinu [set-AZDIAGNOSTICSETTING](/powershell/module/az.monitor/set-azdiagnosticsetting) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-V Azure PowerShell použijeme rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) s příznakem **-Enabled** nastaveným na **$true** a kategorií nastavenou na `AuditEvent` (jediná kategorie pro Key Vault protokolování):
+V Azure PowerShell použijeme rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) s příznakem **-Enabled** nastaveným na **$true** a kategorií nastavenou na `AuditEvent` (jediná kategorie pro Key Vault protokolování):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -123,7 +123,7 @@ az monitor diagnostic-settings update
 ```
 -->
 
-Pomocí Azure PowerShell použijte rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) . 
+Pomocí Azure PowerShell použijte rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) . 
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -149,7 +149,7 @@ Nejprve vypíšete seznam všech objektů BLOB v kontejneru.  Pomocí Azure CLI 
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
 ```
 
-V Azure PowerShell použijte příkaz [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) , který bude obsahovat všechny objekty BLOB v tomto kontejneru, a zadejte:
+V Azure PowerShell použijte příkaz [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) , který bude obsahovat všechny objekty BLOB v tomto kontejneru, a zadejte:
 
 ```powershell
 Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
@@ -165,7 +165,7 @@ Pomocí Azure CLI použijte příkaz [AZ Storage BLOB Download](/cli/azure/stora
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
 ```
 
-Pomocí Azure PowerShell použijte k získání seznamu objektů BLOB rutinu [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) a potom pomocí kanálu rutinu [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) Stáhněte protokoly do zvolené cesty.
+Pomocí Azure PowerShell použijte k získání seznamu objektů BLOB rutinu [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob) a potom pomocí kanálu rutinu [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) Stáhněte protokoly do zvolené cesty.
 
 ```powershell-interactive
 $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"

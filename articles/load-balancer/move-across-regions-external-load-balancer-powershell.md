@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e43d8f1050f6b2b458c0926c674c05f7f18edc63
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 94cb46536bcf029a9e71a7238772ccc7b186b1dc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018507"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500268"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Přesunout externí Load Balancer Azure do jiné oblasti pomocí Azure PowerShell
 
@@ -43,18 +43,18 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
 ### <a name="export-the-public-ip-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu veřejné IP adresy a nasaďte ji z Azure PowerShell
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2. Získejte ID prostředku veřejné IP adresy, kterou chcete přesunout do cílové oblasti a umístit ji do proměnné pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+2. Získejte ID prostředku veřejné IP adresy, kterou chcete přesunout do cílové oblasti a umístit ji do proměnné pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportujte zdrojovou veřejnou IP adresu do souboru. JSON do adresáře, ve kterém spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportujte zdrojovou veřejnou IP adresu do souboru. JSON do adresáře, ve kterém spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -107,7 +107,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
              ]             
     ```
   
-7. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) spuštěním následujícího příkazu:
+7. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation) spuštěním následujícího příkazu:
 
     ```azurepowershell-interactive
 
@@ -116,7 +116,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     ```
 8. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou **sku**  >  vlastnosti **název** SKU v souboru **\<resource-group-name> . JSON** :
+    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou   >  vlastnosti **název** SKU v souboru **\<resource-group-name> . JSON** :
 
          ```json
             "resources": [
@@ -163,12 +163,12 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
 9. Uložte soubor **\<resource-group-name> . JSON** .
 
-10. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílové veřejné IP adresy pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0).
+10. Vytvořte skupinu prostředků v cílové oblasti pro nasazení cílové veřejné IP adresy pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
@@ -176,7 +176,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     
     ```
 
-12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
     
     ```azurepowershell-interactive
 
@@ -192,19 +192,19 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
 ### <a name="export-the-external-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu externího nástroje pro vyrovnávání zatížení a nasaďte ji z Azure PowerShell
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Získejte ID prostředku externího nástroje pro vyrovnávání zatížení, který chcete přesunout do cílové oblasti a umístit ho do proměnné pomocí [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+2. Získejte ID prostředku externího nástroje pro vyrovnávání zatížení, který chcete přesunout do cílové oblasti a umístit ho do proměnné pomocí [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
 
     ```azurepowershell-interactive
     $sourceExtLBID = (Get-AzLoadBalancer -Name <source-external-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportujte konfiguraci externího nástroje pro vyrovnávání zatížení do souboru. JSON do adresáře, kde spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0):
+3. Exportujte konfiguraci externího nástroje pro vyrovnávání zatížení do souboru. JSON do adresáře, kde spustíte příkaz [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup):
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
@@ -232,7 +232,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
     ```
 
-6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **\<resource-group-name> . JSON** .  K získání ID použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+6.  Pokud chcete upravit hodnotu cílové veřejné IP adresy, která se přesunula výše, musíte nejdřív získat ID prostředku a pak ho zkopírovat a vložit do souboru **\<resource-group-name> . JSON** .  K získání ID použijte [příkaz Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -297,7 +297,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
                 },
     ```
 
-11. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) spuštěním následujícího příkazu:
+11. Pokud chcete získat kódy umístění oblastí, můžete použít rutinu Azure PowerShell [Get-AzLocation](/powershell/module/az.resources/get-azlocation) spuštěním následujícího příkazu:
 
     ```azurepowershell-interactive
 
@@ -306,7 +306,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     ```
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
     
-    * **SKU** -SKU externí služby Load Balancer můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na úroveň Standard, a to změnou vlastnosti název **SKU**  >  **name** v souboru **\<resource-group-name> . JSON** :
+    * **SKU** -SKU externí služby Load Balancer můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na úroveň Standard, a to změnou vlastnosti název **SKU**  >   v souboru **\<resource-group-name> . JSON** :
 
         ```json
         "resources": [
@@ -452,12 +452,12 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
 13. Uložte soubor **\<resource-group-name> . JSON** .
     
-10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový externí nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
+10. Vytvořte nebo skupinu prostředků v cílové oblasti pro cílový externí nástroj pro vyrovnávání zatížení, který se má nasadit pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). V rámci tohoto procesu je možné znovu použít stávající skupinu prostředků z výše uvedeného:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Nasaďte upravený soubor **\<resource-group-name> . JSON** do skupiny prostředků vytvořené v předchozím kroku pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
     ```azurepowershell-interactive
 
@@ -465,7 +465,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
     
     ```
 
-12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) a [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0):
+12. Pokud chcete ověřit, že se prostředky vytvořily v cílové oblasti, použijte příkaz [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) a [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer):
     
     ```azurepowershell-interactive
 
@@ -481,7 +481,7 @@ Následující kroky ukazují, jak připravit externí nástroj pro vyrovnáván
 
 ## <a name="discard"></a>Zahodit 
 
-Pokud po nasazení chcete začít znovu nebo zahodit veřejnou IP a nástroj pro vyrovnávání zatížení v cíli, odstraňte skupinu prostředků vytvořenou v cíli a přesunutou veřejnou IP adresu a nástroj pro vyrovnávání zatížení odstraní.  Chcete-li odebrat skupinu prostředků, použijte [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Pokud po nasazení chcete začít znovu nebo zahodit veřejnou IP a nástroj pro vyrovnávání zatížení v cíli, odstraňte skupinu prostředků vytvořenou v cíli a přesunutou veřejnou IP adresu a nástroj pro vyrovnávání zatížení odstraní.  Chcete-li odebrat skupinu prostředků, použijte [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -491,7 +491,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>Vyčištění
 
-Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG nebo skupinu prostředků, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) nebo [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0) a [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) .
+Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG nebo skupinu prostředků, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) nebo [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) a [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) .
 
 ```azurepowershell-interactive
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5f8f72ec296be3127a2f8c1ddc87d883d7e2deed
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806168"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504571"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Migrace na Premium Storage pomocí Site Recovery
 
@@ -165,7 +165,7 @@ Pokud chcete ověřit, jestli je konfigurační server úspěšně přidružený
 
    ![Povolit podokno replikace se zvoleným zdrojem][13]
 
-Při návrhu Azure Storageho prostředí doporučujeme pro každý virtuální počítač ve skupině dostupnosti použít samostatné účty úložiště. Doporučujeme, abyste podle osvědčeného postupu ve vrstvě úložiště [používali pro každou skupinu dostupnosti více účtů úložiště](../manage-availability.md). Distribuce disků virtuálních počítačů do několika účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-výstupní operace v infrastruktuře úložiště Azure.
+Při návrhu Azure Storageho prostředí doporučujeme pro každý virtuální počítač ve skupině dostupnosti použít samostatné účty úložiště. Doporučujeme, abyste podle osvědčeného postupu ve vrstvě úložiště [používali pro každou skupinu dostupnosti více účtů úložiště](../availability.md). Distribuce disků virtuálních počítačů do několika účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-výstupní operace v infrastruktuře úložiště Azure.
 
 Pokud jsou vaše virtuální počítače ve skupině dostupnosti, místo replikace disků všech virtuálních počítačů do jednoho účtu úložiště důrazně doporučujeme migrovat několik virtuálních počítačů vícekrát. Virtuální počítače ve stejné skupině dostupnosti tak nebudou sdílet jeden účet úložiště. Pomocí podokna **Povolit replikaci** můžete nastavit cílový účet úložiště pro každý virtuální počítač v jednom okamžiku.
  

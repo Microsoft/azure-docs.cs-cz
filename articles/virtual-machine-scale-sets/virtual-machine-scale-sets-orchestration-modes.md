@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 71ddb1217be7fe3e1254e0d49e1f40c43a55a3f0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043707"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502412"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -103,33 +103,33 @@ Následující tabulka porovnává flexibilní režim orchestrace, jednotný re�
 |         Podporované SKU  |            D Series, E série, F Series, série, B Series, Intel, AMD  |            Všechny SKU  |            Všechny SKU  |
 |         Zóny dostupnosti  |            Volitelně můžete zadat všechny instance půdy v jedné zóně dostupnosti. |            Určení instancí v rámci 1, 2 nebo 3 zón dostupnosti  |            Nepodporováno  |
 |         Úplná kontrola nad virtuálními počítači, síťovými kartami a disky  |            Ano  |            Omezené řízení pomocí rozhraní API VM Virtual Machine Scale Sets  |            Ano  |
-|         Automatické škálování  |            Ne  |            Ano  |            Ne  |
-|         Přiřazení virtuálního počítače ke konkrétní doméně selhání  |            Ano  |             Ne   |            Ne  |
-|         Odebrání síťových karet a disků při odstraňování instancí virtuálních počítačů  |            Ne  |            Ano  |            Ne  |
-|         Zásady upgradu (VM Scale Sets) |            Ne  |            Automatické, vracení, ruční  |            –  |
-|         Automatické aktualizace operačního systému (VM Scale Sets) |            Ne  |            Ano  |            –  |
-|         Oprava zabezpečení hosta  |            Ano  |            Ne  |            Ano  |
-|         Ukončení oznámení (VM Scale Sets) |            Ne  |            Ano  |            –  |
-|         Oprava instance (VM Scale Sets) |            Ne  |            Ano   |            –  |
+|         Automatické škálování  |            No  |            Ano  |            No  |
+|         Přiřazení virtuálního počítače ke konkrétní doméně selhání  |            Ano  |             No   |            No  |
+|         Odebrání síťových karet a disků při odstraňování instancí virtuálních počítačů  |            No  |            Ano  |            No  |
+|         Zásady upgradu (VM Scale Sets) |            No  |            Automatické, vracení, ruční  |            –  |
+|         Automatické aktualizace operačního systému (VM Scale Sets) |            No  |            Ano  |            –  |
+|         Oprava zabezpečení hosta  |            Ano  |            No  |            Ano  |
+|         Ukončení oznámení (VM Scale Sets) |            No  |            Ano  |            –  |
+|         Oprava instance (VM Scale Sets) |            No  |            Ano   |            –  |
 |         Urychlení sítě  |            Ano  |            Ano  |            Ano  |
 |         Přímé instance a ceny   |            Ano, můžete mít instance obou přímých i běžných priorit.  |            Ano, instance musí být buď všechny přímé, nebo všechny běžné.  |            Ne, jenom instance běžné priority  |
 |         Kombinace operačních systémů  |            Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |            Ne, instance se shodují s operačním systémem.  |               Ano, Linux a Windows se můžou nacházet ve stejné flexibilní sadě škálování. |
 |         Monitorovat stav aplikace  |            Rozšíření stavu aplikace  |            Test stavu aplikace nebo služba Azure Load Balancer  |            Rozšíření stavu aplikace  |
-|         UltraSSD disky   |            Ano  |            Ano, pouze pro oblast nasazení  |            Ne  |
-|         InfiniBand   |            Ne  |            Ano, pouze jedna skupina umístění  |            Ano  |
-|         Akcelerátor zápisu   |            Ne  |            Ano  |            Ano  |
+|         UltraSSD disky   |            Ano  |            Ano, pouze pro oblast nasazení  |            No  |
+|         InfiniBand   |            No  |            Ano, pouze jedna skupina umístění  |            Ano  |
+|         Akcelerátor zápisu   |            No  |            Ano  |            Ano  |
 |         Skupiny umístění blízkosti   |            Ano  |            Ano  |            Ano  |
-|         Vyhrazení hostitelé Azure   |            Ne  |            Ano  |            Ano  |
-|         Základní SLB   |            Ne  |            Ano  |            Ano  |
+|         Vyhrazení hostitelé Azure   |            No  |            Ano  |            Ano  |
+|         Základní SLB   |            No  |            Ano  |            Ano  |
 |         SKU Azure Load Balancer Standard |            Ano  |            Ano  |            Ano  |
-|         Application Gateway  |            Ne  |            Ano  |            Ano  |
-|         Řízení údržby   |            Ne  |            Ano  |            Ano  |
+|         Application Gateway  |            No  |            Ano  |            Ano  |
+|         Řízení údržby   |            No  |            Ano  |            Ano  |
 |         Vypsat virtuální počítače v sadě  |            Ano  |            Ano  |            Ano, vypsat virtuální počítače v AvSet  |
-|         Výstrahy Azure  |            Ne  |            Ano  |            Ano  |
-|         Přehledy virtuálních počítačů  |            Ne  |            Ano  |            Ano  |
+|         Výstrahy Azure  |            No  |            Ano  |            Ano  |
+|         Přehledy virtuálních počítačů  |            No  |            Ano  |            Ano  |
 |         Azure Backup  |            Ano  |            Ano  |            Ano  |
 |         Azure Site Recovery  |            Ano, pouze PowerShell  |            Ano  |            Ano  |
-|         Přidat nebo odebrat existující virtuální počítač do skupiny  |            Ne  |            Ne  |            Ne  | 
+|         Přidat nebo odebrat existující virtuální počítač do skupiny  |            No  |            No  |            No  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Zaregistrovat pro flexibilní režim orchestrace
@@ -299,7 +299,7 @@ Do sady škálování v flexibilním režimu orchestrace můžete přidat až 10
 
 |   | Flexibilní orchestrace  | Jednotná orchestrace  | Skupiny dostupnosti  |
 |-|-|-|-|
-| Nasazení napříč zónami dostupnosti  | Ne  | Ano  | Ne  |
+| Nasazení napříč zónami dostupnosti  | No  | Ano  | No  |
 | Záruky dostupnosti domén selhání v rámci oblasti  | Ano, maximálně 1000 instancí se dá rozdělit do až tří domén selhání v oblasti. Maximální počet domén selhání se liší podle oblasti.  | Ano, až 100 instancí  | Ano, až 200 instancí  |
 | Skupiny umístění  | Flexibilní režim vždycky používá více skupin umístění (singlePlacementGroup = false).  | Můžete zvolit jednu skupinu umístění nebo více skupin umístění. | –  |
 | Aktualizační domény  | Žádná, údržba nebo aktualizace hostitele jsou v doméně selhání v doméně selhání.  | Až 5 aktualizačních domén  | Až 20 aktualizačních domén  |
@@ -322,7 +322,7 @@ InvalidParameter. The specified fault domain count 2 must fall in the range 1 to
 
 **Příčina:** `platformFaultDomainCount` Parametr není pro vybranou oblast nebo zónu platný. 
 
-**Řešení:** Musíte vybrat platnou `platformFaultDomainCount` hodnotu. Pro nasazení napříč oblastmi `platformFaultDomainCount` je maximální hodnota 1. V případě regionálních nasazení, kde není určena žádná zóna, se maximální velikost `platformFaultDomainCount` liší v závislosti na oblasti. V tématu [Správa dostupnosti virtuálních počítačů pro skripty](../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) můžete určit maximální počet domén selhání na oblast. 
+**Řešení:** Musíte vybrat platnou `platformFaultDomainCount` hodnotu. Pro nasazení napříč oblastmi `platformFaultDomainCount` je maximální hodnota 1. V případě regionálních nasazení, kde není určena žádná zóna, se maximální velikost `platformFaultDomainCount` liší v závislosti na oblasti. V tématu [Správa dostupnosti virtuálních počítačů pro skripty](../virtual-machines/availability.md) můžete určit maximální počet domén selhání na oblast. 
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.

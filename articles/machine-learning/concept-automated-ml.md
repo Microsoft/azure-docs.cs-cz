@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180493"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502531"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -116,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Zpracování škálování| Popis |
+|&nbsp; & &nbsp; Zpracování škálování| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -204,7 +204,7 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML:
 
-* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 
+* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) 
 
 * Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,7 +289,7 @@ Přečtěte si podrobné příklady kódu a případy použití v [úložišti n
 
 ### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK
 
-Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py). 
+Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 > [!Note]
 > Automatizované funkce strojového učení jsou dostupné i v dalších řešeních Microsoftu, jako jsou [ml.NET](/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

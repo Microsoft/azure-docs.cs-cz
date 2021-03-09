@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442940"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507275"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
@@ -57,8 +57,8 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
     | Parametr | Popis |
     | --------- | ----------- |
-    | deviceManufacturer | Výrobce zařízení, ke kterému je aktualizace kompatibilní, například contoso
-    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zpráva
+    | deviceManufacturer | Výrobce zařízení: aktualizace je kompatibilní, například contoso. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) výrobce
+    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zprávy. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) modelu
     | updateProvider | Entita, která vytváří nebo přímo zodpovídá za aktualizaci. Často se jedná o název společnosti.
     | aktualizovat | Identifikátor pro třídu aktualizací. Třída může být cokoliv, co zvolíte. Často se jedná o název zařízení nebo modelu.
     | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Může nebo nemusí odpovídat verzi jednotlivé součásti softwaru na zařízení.

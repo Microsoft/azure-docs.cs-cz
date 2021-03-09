@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183638"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503874"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
 
@@ -37,7 +37,7 @@ Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
-> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 1.13.0 verze.
+> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) 1.13.0 verze.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -309,7 +309,7 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 ### <a name="configure-the-training-job"></a>Konfigurace školicí úlohy
 
-Vytvořte objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Nakonfigurujte ScriptRunConfig zadáním:
+Vytvořte objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Nakonfigurujte ScriptRunConfig zadáním:
 
 * Adresář, který obsahuje vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Cílové výpočetní prostředí. V tomto případě používáte cluster pro výpočty služby Azure Machine Learning, který jste vytvořili.
@@ -382,7 +382,7 @@ Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu 
 
 ### <a name="jupyter-widget"></a>Widget Jupyter
 
-Sledujte průběh běhu pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Podobně jako odeslání běhu je pomůcka asynchronní a poskytuje aktualizace za provozu každých 10 až 15 sekund, dokud se nedokončí úloha:
+Sledujte průběh běhu pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets). Podobně jako odeslání běhu je pomůcka asynchronní a poskytuje aktualizace za provozu každých 10 až 15 sekund, dokud se nedokončí úloha:
 
 ```python
 from azureml.widgets import RunDetails

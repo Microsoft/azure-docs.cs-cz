@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 04492abc0f235c2dc6139adbe543bcce82f7f7b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646857"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500288"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Kurz: Konfigurace Arkose Labs pomocí Azure Active Directory B2C
 
-V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C ověřování pomocí [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
+V tomto ukázkovém kurzu se dozvíte, jak integrovat Azure Active Directory (AD) B2C ověřování pomocí [Arkose Labs](https://www.arkoselabs.com/). Arkose Labs můžou organizacím pomáhat s útoky na roboty, útoky při převzetí účtů a podvodnými otevřenými účty.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +46,7 @@ Následující diagram popisuje, jak se Arkose Labs integrují s Azure AD B2C.
 
 ![Obrázek znázorňuje diagram architektury Arkose Labs.](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Krok  | Popis |
+| Krok  | Description |
 |---|---|
 |1     | Uživatel se přihlásí a vytvoří účet. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs.         |
 |2     |  Jakmile uživatel tuto výzvu dokončí, Azure AD B2C odešle stav do Arkose Labs, aby vygeneroval token. |
@@ -196,7 +196,7 @@ Další informace o Visual Studio Code vývoji pro Azure Functions najdete v [to
 
 [Vytvořte konektor API](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) a povolte ho pro tok uživatele. Vaše konfigurace konektoru API by měla vypadat takto:
 
-![Obrázek zobrazuje hledání podle ID aplikace](media/partner-arkose-labs/configure-api-connector.png)
+![Obrázek ukazuje, jak nakonfigurovat konektor API.](media/partner-arkose-labs/configure-api-connector.png)
 
 - **Adresa URL koncového bodu** – je adresa URL funkce, kterou jste zkopírovali dříve během nasazování funkce Azure Functions.
 

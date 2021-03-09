@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8aa5108b6998424b35e3f4ecac6b51e78f276b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424117"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500508"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
@@ -25,7 +25,7 @@ ms.locfileid: "102424117"
 >
 > **Pokud jste koncový uživatel a potřebujete se vrátit zpátky k účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr)**.
 
-[Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) je funkce Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků oddělení IT o nápovědu. Uživatelé můžou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo jsou v denní době. Díky tomu, že si zaměstnanci můžou odblokovat vlastní odblokování, může vaše organizace snížit neproduktivní dobu a náklady na vysokou podporu pro nejčastější problémy související s heslem.
+[Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) je funkce Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků oddělení IT o nápovědu. Uživatelé můžou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo jsou v denní době. Díky tomu, že si zaměstnanci můžou odblokovat vlastní odblokování, může vaše organizace snížit neproduktivní dobu a náklady na vysokou podporu pro nejčastější problémy související s heslem.
 
 SSPR má následující klíčové funkce:
 
@@ -255,7 +255,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Popis |
+| Scénáře| Description |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |

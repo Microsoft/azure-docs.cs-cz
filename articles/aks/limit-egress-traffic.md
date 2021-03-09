@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685750"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505054"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -28,13 +28,13 @@ Odchozí závislosti AKS jsou téměř zcela definovány s plně kvalifikovaným
 Ve výchozím nastavení mají clustery AKS neomezený odchozí (výstupní) přístup k Internetu. Tato úroveň přístupu k síti umožňuje uzlům a službám, které spouštíte pro přístup k externím prostředkům, podle potřeby. Pokud chcete omezit výstupní přenos dat, musí být k dispozici omezený počet portů a adres, aby bylo možné udržovat v pořádku úlohy údržby clusteru. Nejjednodušším řešením pro zabezpečení odchozích adres je použití zařízení brány firewall, které může řídit odchozí přenosy na základě názvů domén. Azure Firewall například může omezit odchozí přenosy HTTP a HTTPS na základě plně kvalifikovaného názvu domény cílového umístění. Můžete taky nakonfigurovat upřednostňovanou bránu firewall a pravidla zabezpečení, abyste tyto požadované porty a adresy povolili.
 
 > [!IMPORTANT]
-> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [ * *_zásady sítě_* _][network-policy].
+> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [**_zásady sítě_**][network-policy].
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Požadovaná odchozí síťová pravidla a plně kvalifikované názvy domény pro clustery AKS
 
 Pro cluster AKS se vyžadují následující pravidla sítě a plně kvalifikovaného názvu domény nebo aplikace, která můžete použít, pokud chcete nakonfigurovat řešení jiné než Azure Firewall.
 
-_ Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
+* Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
 * Do zařízení brány firewall lze umístit koncové body s plně kvalifikovaným názvem domény (FQDN) HTTP/HTTPS.
 * Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou u vašeho clusteru AKS lišit, a to na základě řady kvalifikátorů.
 * AKS pomocí kontroleru pro přístup vloží plně kvalifikovaný název domény jako proměnnou prostředí do všech nasazení v rámci Kube systému a serveru gatekeeper. tím zajistíte, aby veškerá systémová komunikace mezi uzly a serverem API používala plně kvalifikovaný název domény serveru API a ne IP Server API. 
@@ -48,8 +48,8 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) .|
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) . |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) .|
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. Nevyžaduje se pro [privátní clustery](private-clusters.md) . |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP. Nevyžaduje se pro [privátní clustery](private-clusters.md) .  |
@@ -74,9 +74,9 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:22`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Ani* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:22`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Nebo* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se v případě, že se používají lusky nebo nasazení, které přistupují k serveru rozhraní API. tyto položky nebo nasazení by používaly IP adresu rozhraní API.  |
@@ -102,8 +102,8 @@ Požadovaná síťová pravidla a závislosti IP adres:
 
 | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-| **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+| **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:123`** nebo **`ntp.ubuntu.com:123`** (Pokud používáte Azure firewall síťových pravidel)  | UDP      | 123     | Vyžadováno pro synchronizaci času NTP (Network Time Protocol) na uzlech se systémem Linux.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Pokud používáte vlastní servery DNS, musíte zajistit, aby byly přístupné pro uzly clusteru. |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vyžaduje se, aby při spuštění lusků a nasazení, které přistupují k serveru rozhraní API, používala tato lusky nebo nasazení rozhraní API IP.  |
@@ -407,7 +407,7 @@ Cluster AKS se teď dá nasadit do existující virtuální sítě. Použijeme t
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Vytvoření instančního objektu s přístupem ke zřízení v existující virtuální síti
 
-Objekt služby používá AKS k vytváření prostředků clusteru. Instanční objekt, který se předává v čase vytvoření, se používá k vytvoření základních prostředků AKS, jako jsou prostředky úložiště, IP adresy a nástroje pro vyrovnávání zatížení používané v AKS (místo toho můžete také použít [spravovanou identitu](use-managed-identity.md) ). Pokud nejsou níže udělená příslušná oprávnění, nebudete moct zřídit cluster AKS.
+Identitu clusteru (spravovanou identitu nebo instanční objekt) používá AKS k vytváření prostředků clusteru. Instanční objekt, který se předává v čase vytvoření, se používá k vytvoření základních prostředků AKS, jako jsou prostředky úložiště, IP adresy a nástroje pro vyrovnávání zatížení používané v AKS (místo toho můžete také použít [spravovanou identitu](use-managed-identity.md) ). Pokud nejsou níže udělená příslušná oprávnění, nebudete moct zřídit cluster AKS.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

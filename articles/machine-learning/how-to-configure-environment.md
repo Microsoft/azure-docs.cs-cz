@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031755"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501613"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí v Pythonu pro Azure Machine Learning
 
@@ -55,7 +55,7 @@ Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě
 
 Tento soubor JSON musí být ve struktuře adresáře, která obsahuje vaše skripty Pythonu nebo Jupyter Poznámkový blok. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML* nebo v nadřazeném adresáři.
 
-Chcete-li použít tento soubor z kódu, použijte [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metodu. Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
+Chcete-li použít tento soubor z kódu, použijte [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace#from-config-path-none--auth-none---logger-none---file-name-none-) metodu. Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
 
 Vytvořte konfigurační soubor pracovního prostoru jedním z následujících způsobů:
 
@@ -67,7 +67,7 @@ Vytvořte konfigurační soubor pracovního prostoru jedním z následujících 
 
 * Azure Machine Learning Python SDK
 
-    Vytvořte skript pro připojení k Azure Machine Learningmu pracovnímu prostoru a použijte [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metodu k vygenerování souboru a uložte ho jako *. azureml/config.jsna*. Nezapomeňte nahradit `subscription_id` , `resource_group` a `workspace_name` vlastníky.
+    Vytvořte skript pro připojení k Azure Machine Learningmu pracovnímu prostoru a použijte [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace#write-config-path-none--file-name-none-) metodu k vygenerování souboru a uložte ho jako *. azureml/config.jsna*. Nezapomeňte nahradit `subscription_id` , `resource_group` a `workspace_name` vlastníky.
 
     ```python
     from azureml.core import Workspace
@@ -99,7 +99,7 @@ Konfigurace místního vývojového prostředí nebo vzdáleného virtuálního 
     > Pokud pracujete v systému Linux nebo macOS a používáte jiné prostředí než bash (například ZSH), může dojít k chybám při spuštění některých příkazů. Pokud chcete tento problém obejít, pomocí `bash` příkazu spusťte nové prostředí bash a spusťte příkazy tam.
 
 1. Aktivujte nově vytvořené virtuální prostředí Python.
-1. Nainstalujte [sadu Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+1. Nainstalujte [sadu Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install).
 1. Pokud chcete nakonfigurovat místní prostředí tak, aby používalo pracovní prostor Azure Machine Learning, [vytvořte konfigurační soubor pracovního prostoru](#workspace) nebo použijte existující.
 
 Teď, když máte nastavené místní prostředí, jste připraveni začít pracovat s Azure Machine Learning. Začínáme najdete v [příručce Začínáme v Azure Machine Learning Pythonu](tutorial-1st-experiment-sdk-setup-local.md) .
@@ -217,4 +217,4 @@ Další informace najdete v tématu [Virtual Machines pro datové vědy](https:/
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuku modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s datovou sadou mnist ručně zapsaných
-- Referenční informace o [sadě Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)najdete v tématu. 
+- Referenční informace o [sadě Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro)najdete v tématu. 

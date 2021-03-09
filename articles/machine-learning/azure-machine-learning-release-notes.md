@@ -9,16 +9,16 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124002"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502344"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
-V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro) .
 
 __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozornění zkopírováním a vložením následující adresy URL do čtečky informačních kanálů: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -49,7 +49,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
     + [Experimentální funkce] Přidání podpory pro připojení fondu synapse Spark do AML jako výpočetní prostředí
     + [Experimentální funkce] Přidejte podporu pro přístup k datům založeným na identitě. Uživatelé můžou Registrovat úložiště dat nebo datové sady bez zadání přihlašovacích údajů. V takovém případě se pro ověřování použijí tokeny AAD uživatelů nebo spravovaná identita služby COMPUTE Target. Další informace najdete [tady](https://aka.ms/data-access).
   + **azureml-pipeline-steps**
-    + [Experimentální funkce] Přidání podpory pro [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py)
+    + [Experimentální funkce] Přidání podpory pro [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep)
   + **azureml-synapse**
     + [Experimentální funkce] Přidáním podpory Spark Magic spustíte interaktivní relaci ve fondu synapse Spark.
 + **Opravy chyb a vylepšení**
@@ -80,10 +80,10 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
     + Opravili jsme chybu, kdy by modely klasických předpovědí (např. AutoArima) mohly obdržet školicí data. řádky s imputovanémi cílovými hodnotami nebyly k dispozici. Tím došlo k porušení kontraktu dat těchto modelů. * Opravili jsme různé chyby s chováním prodlevy v časové řadě. Operace prodlevy po výskytu dříve neoznačily všechny imputované řádky správně, takže nikdy negeneruje správné hodnoty prodlevy výskytů. Opravili jsme také některé problémy s kompatibilitou mezi operátorem Lag a operátorem postupného okna s chováním pro prodlevu s opakováním. Dříve to vedlo k tomu, že operátor posuvných oken vyřazuje některé řádky ze školicích dat, které by jinak používaly.
   + **azureml-core**
     + Přidání podpory pro ověřování tokenů cílovou skupinou.
-    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) pro podporu více procesů úloh PyTorch s více uzly.
+    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) pro podporu více procesů úloh PyTorch s více uzly.
   + **azureml-pipeline-steps**
-    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) nyní GA a již není experimentální.
-    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): přidejte allowed_failed_count argumentů a allowed_failed_percent pro kontrolu prahové hodnoty chyby na Mini úrovni dávky. Prahová hodnota chyby má nyní 3 charaktery:
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep) nyní GA a již není experimentální.
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig): přidejte allowed_failed_count argumentů a allowed_failed_percent pro kontrolu prahové hodnoty chyby na Mini úrovni dávky. Prahová hodnota chyby má nyní 3 charaktery:
        + error_threshold – počet povolených neúspěšných Mini položek dávky; 
        + allowed_failed_count – počet povolených neúspěšných Mini dávek; 
        + allowed_failed_percent – procento povolených neúspěšných Mini dávek. 
@@ -93,7 +93,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
     + ScriptRunConfig je teď podporován HyperDriveStep
   + **azureml-train-core**
     + HyperDrive běhy vyvolané z ScriptRun se teď považují za podřízený běh.
-    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) pro podporu více procesů úloh PyTorch s více uzly.
+    + Přidejte `process_count` do [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) pro podporu více procesů úloh PyTorch s více uzly.
   + **azureml-widgets**
     + Přidejte ParallelRunStepDetails widgetu a vizualizujte stav ParallelRunStep.
     + Umožňuje uživatelům Hyperdrive zobrazit další osu v grafu paralelních souřadnic, která ukazuje hodnotu metriky odpovídající každé sadě parametrů pro každé podřízené spuštění.
@@ -454,7 +454,7 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Sada SDK Azure Machine Learning pro Python v 1.13.0
 + **Funkce ve verzi Preview**
-  + **AzureML-Core** Díky nové schopnosti výstupních datových sad můžete zapisovat zpátky do cloudového úložiště, včetně objektů blob, ADLS Gen 1, ADLS Gen 2 a Shared. Můžete nakonfigurovat, kde mají být výstupní data, jak výstupní data (prostřednictvím připojení nebo nahrávání) zaregistrovat výstupní data pro budoucí opakované použití a sdílení a předat mezilehlá data mezi jednotlivými kroky kanálu plynule. Tím se povoluje reprodukovatelnost, sdílení, zabrání se duplikace dat a výsledkem jsou náklady na efektivitu a produktivitu. [Naučte se používat](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)
+  + **AzureML-Core** Díky nové schopnosti výstupních datových sad můžete zapisovat zpátky do cloudového úložiště, včetně objektů blob, ADLS Gen 1, ADLS Gen 2 a Shared. Můžete nakonfigurovat, kde mají být výstupní data, jak výstupní data (prostřednictvím připojení nebo nahrávání) zaregistrovat výstupní data pro budoucí opakované použití a sdílení a předat mezilehlá data mezi jednotlivými kroky kanálu plynule. Tím se povoluje reprodukovatelnost, sdílení, zabrání se duplikace dat a výsledkem jsou náklady na efektivitu a produktivitu. [Naučte se používat](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)
     
 + **Opravy chyb a vylepšení**
   + **azureml-automl-core**
@@ -528,7 +528,7 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
   + **azureml-core**
     + Nová metoda `run.get_detailed_status()` nyní zobrazuje podrobné vysvětlení aktuálního stavu spuštění. V současné době se zobrazuje pouze vysvětlení pro `Queued` stav.
     + Přidáním parametrů image_name a image_label do model. Package () povolíte přejmenování sestavené image balíčku.
-    + Nová metoda `set_pip_requirements()` pro nastavení celého oddílu PIP [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py) najednou.
+    + Nová metoda `set_pip_requirements()` pro nastavení celého oddílu PIP [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies) najednou.
     + Povolit registraci přihlašovacích údajů – bez ADLS Gen2 úložiště dat
     + Vylepšená chybová zpráva při pokusu o stažení nebo připojení nesprávného typu datové sady.
     + Aktualizujte si ukázkový Poznámkový blok filtru datové sady časových řad s dalšími příklady partition_timestamp, který poskytuje optimalizaci filtru.
@@ -553,7 +553,7 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
     + Pevné problémy s snímkem při odesílání AutoMLch běhů bez uživatelem zadaných skriptů.
     + Pevné selhání při spuštění v případě, že data obsahují NaN a featurization, je vypnuto.
   + **azureml-train-core**
-    + Přidání podpory pro zadání možností PIP (například--extra-index-URL) v souboru požadavků PIP předaného [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator?preserve-view=true&view=azure-ml-py) `pip_requirements_file` parametru through
+    + Přidání podpory pro zadání možností PIP (například--extra-index-URL) v souboru požadavků PIP předaného [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator) `pip_requirements_file` parametru through
 
 
 ## <a name="2020-08-03"></a>2020-08-03
@@ -1001,7 +1001,7 @@ Přečtěte si další informace o [označování segmentace instancí imagí](h
 ## <a name="2020-05-04"></a>2020-05-04
 **Nové prostředí poznámkového bloku**
 
-Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém učení přímo ve webovém prostředí studia Azure Machine Learning. V těchto poznámkových blocích [můžete začít používat](./how-to-run-jupyter-notebooks.md) všechny třídy a metody, které jsou k dispozici v [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
+Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém učení přímo ve webovém prostředí studia Azure Machine Learning. V těchto poznámkových blocích [můžete začít používat](./how-to-run-jupyter-notebooks.md) všechny třídy a metody, které jsou k dispozici v [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) .
 
 **Zavedly se nové funkce:**
 
@@ -1020,7 +1020,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Popis  |
+| Webový nástroj  |     Description  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1372,7 +1372,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Přidání zpráv o zastaralosti pro všechny cesty kódu třídy obrázků
     + Pevná Správa modelů konstrukce URL pro oblast Azure Čína 21Vianet
     + Opravili jsme problém, kdy se pro Azure Functions nedaly použít modely s source_dir.    
-    + Přidání možnosti pro [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) pro nahrání image do registru kontejneru pracovního prostoru AzureML
+    + Přidání možnosti pro [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment) pro nahrání image do registru kontejneru pracovního prostoru AzureML
     + Sada SDK se aktualizovala tak, aby používala novou knihovnu tokenů v Azure synapse s nekompatibilním způsobem.
   + **azureml-interpret**
     + Opravila se chyba, kde nebyla vrácena žádná vysvětlení, pokud nebyla k dispozici žádná vysvětlení ke stažení. Nyní vyvolá výjimku, která odpovídá chování jinde.
@@ -1532,7 +1532,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Popis | 
+| Webový nástroj | Description | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 
@@ -1751,7 +1751,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
       + Parametr ' daily_latest_only ' je zastaralý.
     + Podpora načítání výstupů pro posun dat na základě datové sady
   + **azureml-explain-model**
-    + Přidání podpory pro [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py&preserve-view=true) , která se má vytvořit přímo pomocí MimicWrapper
+    + Přidání podpory pro [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer) , která se má vytvořit přímo pomocí MimicWrapper
   + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
     + Vylepšený výkon pro vytváření velkých kanálů.
   + **[azureml-train-core](/python/api/azureml-train-core)**
@@ -2334,7 +2334,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
 
 Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 
-[`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?preserve-view=true&view=azure-ml-py)Byla představena přidání nové verze publikovaného kanálu při zachování stejného koncového bodu.
+[`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint)Byla představena přidání nové verze publikovaného kanálu při zachování stejného koncového bodu.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
@@ -2351,7 +2351,7 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 + **Nové funkce**
   + Sada Azure Machine Learning SDK teď podporuje Python 3,7.
   + Azure Machine Learning DNN odhady teď nabízí integrovanou podporu více verzí. Například `TensorFlow` Estimator nyní přijímá `framework_version` parametr a uživatelé mohou zadat verzi "1,10" nebo "1,12". Seznam verzí podporovaných vaší aktuální verzí sady SDK je vyvolán `get_supported_versions()` na požadovanou třídu rozhraní (například `TensorFlow.get_supported_versions()` ).
-  Seznam verzí podporovaných nejnovější verzí sady SDK najdete v [dokumentaci k DNN Estimator](/python/api/azureml-train-core/azureml.train.dnn?preserve-view=true&view=azure-ml-py).
+  Seznam verzí podporovaných nejnovější verzí sady SDK najdete v [dokumentaci k DNN Estimator](/python/api/azureml-train-core/azureml.train.dnn).
 
 ## <a name="2019-03-25"></a>2019-03-25
 
@@ -2388,13 +2388,13 @@ Sada Azure Machine Learning SDK pro Python v 1.0.30 vydaná.
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Sada SDK Azure Machine Learning pro Python v 1.0.17
 
 + **Nové funkce**
-  + Azure Machine Learning nyní poskytuje prvotřídní podporu pro oblíbený řetěz DNN Framework. Použití [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py) třídy uživatelé můžou snadno naučit a nasazovat modely řetězení.
+  + Azure Machine Learning nyní poskytuje prvotřídní podporu pro oblíbený řetěz DNN Framework. Použití [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer) třídy uživatelé můžou snadno naučit a nasazovat modely řetězení.
     + Naučte se [spouštět distribuované školení pomocí ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb) .
     + Naučte se [spouštět ladění parametrů pomocí chainer pomocí Hyperdrive](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) .
   + Přidání kanálů Azure Machine Learning možnost aktivovat spuštění kanálu na základě úprav úložiště dat. [Poznámkový blok plánu](https://aka.ms/pl-schedule) kanálu se aktualizuje a prezentuje tuto funkci.
 
 + **Opravy chyb a vylepšení**
-  + Přidali jsme podporu Azure Machine Learningch kanálů pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (například úložiště objektů BLOB) na [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) , které jsou k [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)dodány. Ve výchozím nastavení se jako záložní úložiště dat používají úložiště souborů Azure, které může narazit na problémy s omezením při současném spuštění velkého počtu kroků.
+  + Přidali jsme podporu Azure Machine Learningch kanálů pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (například úložiště objektů BLOB) na [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration) , které jsou k [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)dodány. Ve výchozím nastavení se jako záložní úložiště dat používají úložiště souborů Azure, které může narazit na problémy s omezením při současném spuštění velkého počtu kroků.
 
 ### <a name="azure-portal"></a>portál Azure
 

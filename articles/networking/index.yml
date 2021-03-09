@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 09/28/2020
-  ms.openlocfilehash: afa5f2425b521ef0a83d44be03f5e99fb066504b
-  ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102217138"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102503393"
 highlightedContent:
   items:
   - title: Co jsou Sítě Azure?
@@ -333,7 +333,7 @@ additionalContent:
   - items:
     - title: Příkazy Azure PowerShellu pro sítě Azure
       summary: Další informace o síťových rutinách Azure
-      url: /powershell/module/az.network/?view=azps-3.5.0#networking
+      url: /powershell/module/az.network/#networking
     - title: Příkazy Azure CLI pro sítě Azure
       summary: Příkazy pro sítě Azure najdete v referenčních informacích k rozhraní příkazového řádku.
       url: /cli/azure/network

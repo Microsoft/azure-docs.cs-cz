@@ -27,12 +27,12 @@
         - name: Připojování k programu Defender pro řešení založené na agentech IoT
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: Instalace programu Defender pro IoT Micro Agent
+        - name: Instalace programu Defender pro IoT Micro Agent (Preview)
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: Vytvoření modulu Defender IoT Micro Agent
+        - name: Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
           href: quickstart-create-micro-agent-module-twin.md
-        - name: Sestavení programu Defender pro IoT Micro Agent ze zdrojového kódu
+        - name: Sestavení programu Defender pro IoT Micro Agent ze zdrojového kódu (Preview)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Konfigurace modulu zabezpečení pro Azure RTO
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: Řešení založená na agentech pro tvůrce zařízení
       items:
-        - name: Přehled portfolia agenta a podpora operačního systému
+        - name: Přehled portfolia agenta a podpora operačního systému (Preview)
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: Přehled samostatného agenta Micro
+        - name: Přehled nástroje Standalone Micro Agent (Preview)
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: Ověřování agentů zabezpečení
+        - name: Ověřování agenta zabezpečení (Preview)
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: Stav zabezpečení-SNS – srovnávací test
           href: concept-security-posture.md
-        - name: Agregace událostí
+        - name: Agregace událostí (Preview)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: Integrované výstrahy pro IoT Hub
@@ -297,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: Řešení potíží
   items:
-    - name: Řešení potíží s agentem IoT Micro v programu Defender
+    - name: Řešení potíží s agentem IoT Micro v Defenderu (Preview)
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: Podpora funkcí a vyřazení z provozu

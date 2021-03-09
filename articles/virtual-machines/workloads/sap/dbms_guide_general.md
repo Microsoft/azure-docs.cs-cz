@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 470b6b0c871d91a2a8a584a6efd04605e0afcf88
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e978baa556f1bc1cfea0ccd5abbbf92dc77b1622
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666836"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504010"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -265,7 +265,7 @@ Existují další metody redundance. Další informace najdete v tématu [replik
 
 
 ## <a name="vm-node-resiliency"></a>Odolnost uzlu virtuálního počítače
-Azure nabízí několik různých SLA pro virtuální počítače. Další informace najdete v nejnovější verzi [smlouvy SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Vzhledem k tomu, že je vrstva DBMS důležitá k dostupnosti v systému SAP, potřebujete pochopit skupiny dostupnosti, Zóny dostupnosti a události údržby. Další informace o těchto konceptech najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../manage-availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../manage-availability.md).
+Azure nabízí několik různých SLA pro virtuální počítače. Další informace najdete v nejnovější verzi [smlouvy SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Vzhledem k tomu, že je vrstva DBMS důležitá k dostupnosti v systému SAP, potřebujete pochopit skupiny dostupnosti, Zóny dostupnosti a události údržby. Další informace o těchto konceptech najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../availability.md).
 
 Minimální doporučení pro provoz DBMS scénářů s úlohou SAP:
 

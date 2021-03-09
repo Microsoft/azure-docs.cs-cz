@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e41d4f6f8b8aeb2be376ae1385189fe02e9b897
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179047"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504653"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Rychlý Start: vytvoření šablon ARM pomocí Visual Studio Code
 
 Nástroje Azure Resource Manager pro Visual Studio Code poskytují podporu jazyků, fragmenty prostředků a automatického dokončování prostředků. Tyto nástroje vám pomůžou vytvořit a ověřit šablony Azure Resource Manager (šablony ARM). V tomto rychlém startu použijete rozšíření k vytvoření šablony ARM od začátku. V takovém případě se můžete setkat s funkcemi rozšíření, jako jsou fragmenty šablon ARM, ověřování, dokončování a podpora souborů parametrů.
 
-K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [rozšířením nástroje Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Potřebujete také rozhraní příkazového [řádku Azure CLI](/cli/azure/) nebo [modul Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) nainstalovaný a ověřený.
+K dokončení tohoto rychlého startu potřebujete [Visual Studio Code](https://code.visualstudio.com/)s nainstalovanou [rozšířením nástroje Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Potřebujete také rozhraní příkazového [řádku Azure CLI](/cli/azure/) nebo [modul Azure PowerShell](/powershell/azure/new-azureps-module-az) nainstalovaný a ověřený.
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 

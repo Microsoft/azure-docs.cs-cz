@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 63d23b01eddc70dedd849560248dd053c80e0037
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181410"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507802"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal
 
@@ -47,13 +47,11 @@ Cluster AKS vytvoříte takto:
 
 4. Na stránce **fondy uzlů** ponechte výchozí možnosti. V dolní části obrazovky klikněte na **Další: ověřování**.
     > [!CAUTION]
-    > Vytváření nových objektů služby AAD může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud k tomu dojde, navštivte prosím [řešení běžných potíží se službou Azure Kubernetes](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) , které vám umožní zmírnit.
+    > Vytvoření nové identity clusteru může trvat několik minut, než se rozšíří a stane se k dispozici, což způsobí, že se instanční objekt nenalezne chyby a chyby ověřování v Azure Portal. Pokud k tomu dojde, navštivte prosím [řešení běžných potíží se službou Azure Kubernetes](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) , které vám umožní zmírnit.
 
 5. Na kartě **Authentication** (Ověřování) nakonfigurujte následující možnosti:
-    - Vytvořte nový instanční objekt tak, že v poli **Service Principal** (Instanční objekt) ponecháte možnost **(new) default service principal** ((nové) výchozí instanční objekt). Můžete také zvolit *Configure service principal* (Nakonfigurovat instanční objekt) a použít existující instanční objekt. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
+    - Vytvořte novou identitu clusteru tak, že necháte pole **ověřování** se **spravovanou identitou System-assinged**. Případně můžete zvolit **instanční objekt** pro použití instančního objektu. Vyberte *(nový) výchozí instanční objekt* pro vytvoření výchozího instančního objektu, nebo *nakonfigurujte instanční objekt* tak, aby používal stávající objekt služby. Pokud použijete existující, budete muset zadat ID a tajný klíč klienta SPN.
     - Povolte možnost Kubernetes řízení přístupu na základě role (Kubernetes RBAC). Tím si zajistíte podrobnější kontrolu nad přístupem k prostředkům Kubernetes nasazeným v clusteru AKS.
-
-    Alternativně můžete místo instančního objektu použít spravovanou identitu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md) .
 
 Ve výchozím nastavení se používá *základní* sítě a Azure monitor pro kontejnery jsou povoleny. Klikněte na **Review + create** (Zkontrolovat a vytvořit) a po dokončení ověření na **Create** (Vytvořit).
 

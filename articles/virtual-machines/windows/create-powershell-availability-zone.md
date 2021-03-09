@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows v zóně pomocí Azure PowerShell
-description: Vytvoření virtuálního počítače s Windows v zóně dostupnosti pomocí Azure PowerShellu
+title: Vytvoření virtuálního počítače v zóně pomocí Azure PowerShell
+description: Vytvoření virtuálního počítače v zóně dostupnosti pomocí Azure PowerShell
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02897add4f3ca51fa7e172bc200af2c7b9065ed4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825238"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502633"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Vytvoření virtuálního počítače s Windows v zóně dostupnosti pomocí PowerShellu
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>Vytvoření virtuálního počítače v zóně dostupnosti pomocí Azure PowerShell
 
 Tento článek podrobně popisuje použití Azure PowerShellu k vytvoření virtuálního počítače Azure se systémem Windows Server 2016 v zóně dostupnosti Azure. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 

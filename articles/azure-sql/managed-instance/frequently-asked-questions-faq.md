@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178129"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503194"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -102,7 +102,7 @@ Ano, můžete. Pokyny najdete v tématu [Přesunutí prostředků do různých o
 
 **Jak můžu odstranit spravovanou instanci?**
 
-Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), rozhraní příkazového [řádku Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) nebo [Správce prostředků REST API](/rest/api/sql/managedinstances/delete).
+Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](/powershell/module/az.sql/remove-azsqlinstance), rozhraní příkazového [řádku Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) nebo [Správce prostředků REST API](/rest/api/sql/managedinstances/delete).
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 

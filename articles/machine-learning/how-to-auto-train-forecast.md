@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392319"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503500"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
 
-V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení a AutoML [Azure Machine Learning v sadě SDK Pythonu](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)nakonfigurovat a naučit regresní model předpovědi časových řad. 
+V tomto článku se dozvíte, jak pomocí automatizovaného strojového učení a AutoML [Azure Machine Learning v sadě SDK Pythonu](/python/api/overview/azure/ml/)nakonfigurovat a naučit regresní model předpovědi časových řad. 
 
 Uděláte to takto: 
 
@@ -120,7 +120,7 @@ Přečtěte si další informace o tom, jak AutoML používá křížové ověř
 
 ## <a name="configure-experiment"></a>Konfigurovat experiment
 
-[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Konfigurace pro model prognózy je podobná nastavení standardního regresního modelu, ale některé modely, možnosti konfigurace a featurization kroky existují konkrétně pro data časových řad. 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)Objekt definuje nastavení a data potřebná pro úkol automatizovaného strojového učení. Konfigurace pro model prognózy je podobná nastavení standardního regresního modelu, ale některé modely, možnosti konfigurace a featurization kroky existují konkrétně pro data časových řad. 
 
 ### <a name="supported-models"></a>Podporované modely
 Automatizované strojové učení automaticky zkouší různé modely a algoritmy jako součást procesu vytváření a ladění modelu. Jako uživatel není nutné zadávat algoritmus. Pro předvídání experimentů jsou nativní modely časových řad i obsáhlého učení součástí systému doporučení. Následující tabulka shrnuje tuto podmnožinu modelů. 
@@ -138,7 +138,7 @@ ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak,
 
 Podobně jako u regresního problému definujete standardní parametry školení, jako je typ úkolu, počet iterací, školicích dat a počet křížových ověření. Pro úlohy prognózy existují další parametry, které musí být nastaveny, které mají vliv na experiment. 
 
-Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe najdete v [referenční dokumentaci třídy ForecastingParameter](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) .
+Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe najdete v [referenční dokumentaci třídy ForecastingParameter](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) .
 
 | &nbsp;Název parametru | Popis | Povinné |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe naj
 
 
 Následující kód: 
-* Využívá [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) třídu k definování parametrů předpovědi pro školení experimentů.
+* Využívá [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) třídu k definování parametrů předpovědi pro školení experimentů.
 * Nastaví na `time_column_name` `day_datetime` pole v datové sadě. 
 * Definuje `time_series_id_column_names` parametr pro `"store"` . Tím se zajistí, že se pro data vytvoří **dvě samostatné skupiny časových řad** . jednu pro úložiště a a B.
 * Nastaví na `forecast_horizon` 50, aby bylo možné předpovědět celou sadu testů. 
@@ -298,7 +298,7 @@ Podívejte se na příklad kódu Pythonu s využitím [agregované agregační f
 
 ### <a name="short-series-handling"></a>Zpracování krátkých řad
 
-Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_configuration reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_configuration reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
 
 Automatizované ML nabízí ve výchozím nastavení krátké zpracování řady s `short_series_handling_configuration` parametrem v `ForecastingParameters` objektu. 
 

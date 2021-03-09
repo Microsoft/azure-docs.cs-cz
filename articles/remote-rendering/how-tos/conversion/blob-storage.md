@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215540"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507513"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
 
@@ -65,7 +65,7 @@ Chcete-li začít s převodem modelu, je nutné jej nahrát pomocí jedné z ná
 
 - [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) – pohodlné uživatelské rozhraní pro nahrávání, stahování a správu souborů v Azure Blob Storage
 - [Příkazový řádek Azure](../../../storage/blobs/storage-quickstart-blobs-cli.md)
-- [Modul Azure PowerShellu](/powershell/azure/install-az-ps?view=azps-2.2.0)
+- [Modul Azure PowerShellu](/powershell/azure/install-az-ps)
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
 - [Používání sady SDK pro úložiště (Python, C#...)](../../../storage/index.yml)
 - [Použití rozhraní REST API pro Azure Storage](/rest/api/storageservices/blob-service-rest-api)

@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6c9b4a9ee1a778ba7a534377f8b2abe9d9a7e18a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627811"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504726"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -35,7 +35,7 @@ Pomocí spravovaných disků můžete vytvořit až 50 000 **disků** virtuáln�
 
 ### <a name="integration-with-availability-sets"></a>Integrace se skupinami dostupnosti
 
-Spravované disky jsou integrované se skupinami dostupnosti, aby se zajistilo, že disky [virtuálních počítačů ve skupině dostupnosti](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. Disky se automaticky umístí do různých jednotek škálování úložiště (razítka). Selže-li razítko z důvodu selhání hardwaru nebo softwaru, selžou pouze instance virtuálních počítačů s disky v těchto razítkech. Řekněme například, že máte aplikaci spuštěnou na pět virtuálních počítačů a že jsou virtuální počítače ve skupině dostupnosti. Disky pro tyto virtuální počítače se neuloží do stejného razítka, takže pokud se jedno razítko rozroste, ostatní instance aplikace se budou dál spouštět.
+Spravované disky jsou integrované se skupinami dostupnosti, aby se zajistilo, že disky [virtuálních počítačů ve skupině dostupnosti](./availability-set-overview.md) jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. Disky se automaticky umístí do různých jednotek škálování úložiště (razítka). Selže-li razítko z důvodu selhání hardwaru nebo softwaru, selžou pouze instance virtuálních počítačů s disky v těchto razítkech. Řekněme například, že máte aplikaci spuštěnou na pět virtuálních počítačů a že jsou virtuální počítače ve skupině dostupnosti. Disky pro tyto virtuální počítače se neuloží do stejného razítka, takže pokud se jedno razítko rozroste, ostatní instance aplikace se budou dál spouštět.
 
 ### <a name="integration-with-availability-zones"></a>Integrace s Zóny dostupnosti
 
@@ -100,7 +100,7 @@ Tento disk má maximální kapacitu 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime) nebo při [opětovném nasazení virtuálního počítače](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
+Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./understand-vm-reboots.md) nebo při [opětovném nasazení virtuálního počítače](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 
 Na virtuálních počítačích se systémem Azure Linux je dočasný disk typicky/dev/sdb a na virtuálních počítačích s Windows dočasný disk je ve výchozím nastavení D: Pokud na hostiteli nepovolíte šifrování, dočasný disk není zašifrovaný šifrováním na straně serveru.
 

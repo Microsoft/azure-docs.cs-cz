@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736889"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508312"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Provozní kontinuita a HADR pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,7 +106,7 @@ Virtuální počítače Azure, úložiště a sítě mají různé provozní cha
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Uzly s vysokou dostupností ve skupině dostupnosti
 Skupiny dostupnosti v Azure umožňují umístit uzly s vysokou dostupností do samostatných domén selhání a aktualizačních domén. Platforma Azure přiřadí aktualizační doménu a doménu selhání každému virtuálnímu počítači v sadě dostupnosti. Tato konfigurace v rámci datového centra zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje smlouvu SLA Azure 99,95%. 
 
-Chcete-li nakonfigurovat nastavení s vysokou dostupností, umístěte všechny účastnící SQL Server virtuální počítače do stejné skupiny dostupnosti, aby nedošlo ke ztrátě aplikace nebo dat během události údržby. Ve stejné skupině dostupnosti se můžou zúčastnit jenom uzly ve stejné cloudové službě. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Chcete-li nakonfigurovat nastavení s vysokou dostupností, umístěte všechny účastnící SQL Server virtuální počítače do stejné skupiny dostupnosti, aby nedošlo ke ztrátě aplikace nebo dat během události údržby. Ve stejné skupině dostupnosti se můžou zúčastnit jenom uzly ve stejné cloudové službě. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Uzly s vysokou dostupností v zóně dostupnosti
 Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítí. Fyzické oddělení zón dostupnosti v rámci oblasti pomáhá chránit aplikace a data před selháními datových center tím, že zajišťuje, že je k dispozici aspoň jeden virtuální počítač a že splňuje smlouvu SLA Azure o 99,99 procent. 

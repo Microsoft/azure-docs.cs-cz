@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: d889eab429b56a9f4e01684e03c67d394d33472b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2afac0e25c394c9bf265daf1fe3ded3d763a7c61
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178010"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508499"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrace úložiště Azure pro oznamování a zálohování
 
@@ -29,7 +29,7 @@ V této příručce se dozvíte, jak používat rozhraní REST API s kudrlinkou.
 
 - Prostředek Custom Vision v Azure. Pokud ho nemáte, pokračujte na Azure Portal a [vytvořte nový prostředek Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Tato funkce v současné době nepodporuje prostředek služby pro rozpoznávání (vše v jednom klíči).
 - Účet Azure Storage s kontejnerem objektů BLOB. Pokud potřebujete s tímto krokem, postupujte podle [cvičení 1 Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) .
-* [PowerShell verze 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)nebo podobná aplikace příkazového řádku.
+* [PowerShell verze 6.0 +](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)nebo podobná aplikace příkazového řádku.
 
 ## <a name="set-up-azure-storage-integration"></a>Nastavení integrace služby Azure Storage
 

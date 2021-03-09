@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951711"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508738"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Kurz: předpoklady pro vytváření skupin dostupnosti v SQL Server v Azure Virtual Machines
 
@@ -145,7 +145,7 @@ Následující tabulka shrnuje nastavení konfigurace sítě:
 
 ## <a name="create-availability-sets"></a>Vytvoření skupin dostupnosti
 
-Před vytvořením virtuálních počítačů je potřeba vytvořit skupiny dostupnosti. Skupiny dostupnosti omezují výpadky plánovaných nebo neplánovaných událostí údržby. Skupina dostupnosti Azure je logickou skupinou prostředků, které Azure umístí do fyzických domén selhání a aktualizačních domén. Doména selhání zajišťuje, že členové skupiny dostupnosti mají samostatné prostředky napájení a sítě. Aktualizační doména zajišťuje, že členové skupiny dostupnosti nejsou zavedeni pro údržbu ve stejnou dobu. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Před vytvořením virtuálních počítačů je potřeba vytvořit skupiny dostupnosti. Skupiny dostupnosti omezují výpadky plánovaných nebo neplánovaných událostí údržby. Skupina dostupnosti Azure je logickou skupinou prostředků, které Azure umístí do fyzických domén selhání a aktualizačních domén. Doména selhání zajišťuje, že členové skupiny dostupnosti mají samostatné prostředky napájení a sítě. Aktualizační doména zajišťuje, že členové skupiny dostupnosti nejsou zavedeni pro údržbu ve stejnou dobu. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Potřebujete dvě skupiny dostupnosti. Jedna je určena pro řadiče domény. Druhý je pro SQL Server virtuálních počítačů.
 
@@ -205,7 +205,7 @@ Následující tabulka uvádí nastavení těchto dvou počítačů:
 | **Účet úložiště diagnostiky** |*Automaticky vytvořeno* |
 
    >[!IMPORTANT]
-   >Virtuální počítač můžete umístit do skupiny dostupnosti jenom při jeho vytváření. Po vytvoření virtuálního počítače už skupinu dostupnosti nemůžete změnit. Viz [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md).
+   >Virtuální počítač můžete umístit do skupiny dostupnosti jenom při jeho vytváření. Po vytvoření virtuálního počítače už skupinu dostupnosti nemůžete změnit. Viz [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/availability.md).
 
 Azure vytvoří virtuální počítače.
 
@@ -383,7 +383,7 @@ Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 
 * **Storage – Azure Managed Disks**
 
-   Pro úložiště virtuálního počítače použijte Azure Managed Disks. Microsoft doporučuje Managed Disks pro SQL Server virtuálních počítačů. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../../../virtual-machines/managed-disks-overview.md). Konkrétní informace o spravovaných discích ve skupině dostupnosti najdete v tématu [použití Managed disks pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+   Pro úložiště virtuálního počítače použijte Azure Managed Disks. Microsoft doporučuje Managed Disks pro SQL Server virtuálních počítačů. Spravované disky se starají o úložiště na pozadí. Navíc, pokud jsou virtuální počítače se Spravovanými disky ve stejné skupině dostupnosti, Azure distribuuje prostředky úložiště pro zajištění odpovídající redundance. Další informace najdete v tématu [Přehled Spravovaných disků Azure](../../../virtual-machines/managed-disks-overview.md). Konkrétní informace o spravovaných discích ve skupině dostupnosti najdete v tématu [použití Managed disks pro virtuální počítače ve skupině dostupnosti](../../../virtual-machines/availability.md).
 
 * **Privátní IP adresy sítě v produkčním prostředí**
 

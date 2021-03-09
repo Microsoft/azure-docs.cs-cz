@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671896"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505898"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
 
@@ -222,7 +222,7 @@ Platforma SAP BI obsahuje mnoho různých komponent a při navrhování architek
 
 Také počet domén aktualizace a selhání, které může použít Skupina dostupnosti Azure v rámci jednotky škálování Azure, je omezený. Takže pokud budete přidávat virtuální počítače do jedné skupiny dostupnosti, pak dva nebo víc virtuálních počítačů nakonec skončí stejnou chybou nebo aktualizační doménou. Další informace najdete v části [sady dostupnosti Azure](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#azure-availability-sets) v dokumentu plánování a implementace virtuálních počítačů Azure.
 
-Pro pochopení konceptu skupin dostupnosti Azure a způsobu, jakým se skupiny dostupnosti vztahují k doménám selhání a upgradu, přečtěte si článek [Správa dostupnosti](../../manage-availability.md) .
+Pro pochopení konceptu skupin dostupnosti Azure a způsobu, jakým se skupiny dostupnosti vztahují k doménám selhání a upgradu, přečtěte si článek [Správa dostupnosti](../../availability.md) .
 
 > [!Important]
 > Pojmy Zóny dostupnosti Azure a sady dostupnosti Azure se vzájemně vylučují. To znamená, že můžete nasadit pár nebo několik virtuálních počítačů do konkrétní zóny dostupnosti nebo do skupiny dostupnosti Azure. Ale ne obojí.

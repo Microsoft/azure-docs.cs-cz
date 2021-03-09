@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488065"
+ms.locfileid: "102503177"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -30,7 +30,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](/powershell/azure/) , nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 * Některé scénáře vyžadují, abyste otevřeli lístek podpory. Mezi tyto scénáře patří:
 

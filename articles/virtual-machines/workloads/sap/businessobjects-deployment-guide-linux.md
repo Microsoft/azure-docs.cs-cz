@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671925"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505932"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
 
@@ -36,7 +36,7 @@ V tomto příkladu se používá verze produktu a rozložení systému souborů.
 - Azure Database for MySQL (verze: 8.0.15)
 - MySQL C API Connector – libmysqlclient (verze: 6.1.11)
 
-| Systém souborů        | Popis                                                                                                               | Velikost (GB)             | Vlastník  | Group (Skupina)  | Storage                    |
+| Systém souborů        | Description                                                                                                               | Velikost (GB)             | Vlastník  | Group (Skupina)  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Systém souborů pro instalaci instance SAP BOBI, výchozí webové aplikace Tomcat a ovladače databáze (v případě potřeby) | Pokyny pro určení velikosti SAP | bl1adm | sapsys | Spravovaný disk úrovně Premium – SSD |
 | /usr/sap/frsinput  | Adresář pro připojení je určený pro sdílené soubory ve všech hostitelích BOBI, které se použijí jako adresář úložiště vstupních souborů.  | Obchodní potřeby         | bl1adm | sapsys | Azure NetApp Files         |
@@ -603,7 +603,7 @@ Chcete-li snížit dopad výpadků z důvodu jedné nebo více událostí, je vh
 - Pro virtuální počítače ve skupině dostupnosti použijte Managed Disks.
 - Nakonfigurujte každou aplikační vrstvu na samostatné skupiny dostupnosti.
 
-Další informace najdete v části [Správa dostupnosti virtuálních počítačů se systémem Linux](../../manage-availability.md) .
+Další informace najdete v části [Správa dostupnosti virtuálních počítačů se systémem Linux](../../availability.md) .
 
 #### <a name="high-availability-for-cms-database"></a>Vysoká dostupnost pro databázi CMS
 

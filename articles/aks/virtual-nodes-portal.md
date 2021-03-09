@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4c67d3608d2128385c273425ea495a02fa5a8c45
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180900"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501800"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů v Azure Portal
 
@@ -64,7 +64,7 @@ Na stránce **škálování** vyberte v části **virtuální uzly** *povoleno* 
 
 ![Vytvoření clusteru AKS a povolení virtuálních uzlů](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Ve výchozím nastavení je vytvořen Azure Active Directory instančního objektu. Tento instanční objekt se používá pro komunikaci clusteru a integraci s dalšími službami Azure. Alternativně můžete místo instančního objektu použít spravovanou identitu pro oprávnění. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
+Ve výchozím nastavení se vytvoří identita clusteru. Tato identita clusteru se používá pro komunikaci clusteru a integraci s dalšími službami Azure. Ve výchozím nastavení je tato identita clusteru spravovaná identitou. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md). Jako identitu clusteru můžete použít taky instanční objekt.
 
 Cluster je taky nakonfigurovaný pro pokročilé sítě. Virtuální uzly jsou nakonfigurované tak, aby používaly svou vlastní podsíť virtuální sítě Azure. Tato podsíť má delegovaná oprávnění k připojení prostředků Azure mezi clusterem AKS. Pokud ještě nemáte delegovanou podsíť, Azure Portal vytvoří a nakonfiguruje virtuální síť Azure a podsíť pro použití s virtuálními uzly.
 

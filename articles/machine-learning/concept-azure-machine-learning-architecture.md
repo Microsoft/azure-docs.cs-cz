@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091665"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503687"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -102,7 +102,7 @@ Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění m
 
 [Pracovní prostor](#workspace)  >  [Experimenty](#experiments)  >  [Spustit příkaz](#runs)  >  **Konfigurace spuštění**
 
-Konfigurace spuštění definuje, jak by se měl skript spustit v zadaném výpočetním cíli. Pomocí konfigurace můžete zadat skript, cíl výpočtů a prostředí Azure ML, na kterém budou spouštěny všechny distribuované konfigurace specifické pro danou úlohu a některé další vlastnosti. Další informace o kompletní sadě konfigurovatelných možností pro spuštění najdete v tématu [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+Konfigurace spuštění definuje, jak by se měl skript spustit v zadaném výpočetním cíli. Pomocí konfigurace můžete zadat skript, cíl výpočtů a prostředí Azure ML, na kterém budou spouštěny všechny distribuované konfigurace specifické pro danou úlohu a některé další vlastnosti. Další informace o kompletní sadě konfigurovatelných možností pro spuštění najdete v tématu [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
 
 Konfigurace spuštění může být trvalá do souboru v adresáři, který obsahuje školicí skript.   Nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
@@ -282,7 +282,7 @@ Nástroj Studio také umožňuje přístup k interaktivním nástrojům, které 
 > Nástroje označené (Preview) jsou momentálně ve verzi Public Preview.
 > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
++  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro).
 + Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Preview).
 + Použijte [návrháře Azure Machine Learning](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu. 
 + Pro automatizaci použijte [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) .

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051577"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501224"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -61,7 +61,7 @@ Vyberte aktivitu na plátně pro konfiguraci vlastností a parametrů v okně ko
 
 Sada parametrů definuje povinné a volitelné parametry, které přijímají hodnoty pro konkrétní rutinu. Všechny rutiny mají alespoň jednu sadu parametrů a některé mají několik sad. Pokud má rutina více sad parametrů, je nutné před konfigurací parametrů vybrat, která se má použít. Sadu parametrů použitou v aktivitě můžete změnit tak, že vyberete **sadu parametrů** a vyberete jinou sadu. V takovém případě ztratí všechny hodnoty parametrů, které jste již nakonfigurovali.
 
-V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet** s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
+V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet** s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
 
 ![Sada parametrů](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -435,4 +435,4 @@ Máte možnost vrátit se k publikované verzi Runbooku. Tato operace vyvolává
 * Informace o tom, jak začít s grafickými Runbooky, najdete v tématu [kurz: Vytvoření grafického Runbooku](learn/automation-tutorial-runbook-graphical.md).
 * Další informace o typech runbooků a jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](automation-runbook-types.md).
 * Informace o ověřování pomocí účtu Spustit jako pro automatizaci najdete v tématu [účet Spustit jako](automation-security-overview.md#run-as-account).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/#automation).

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042449"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504163"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Následující diagram znázorňuje skupinu dostupnosti pro SQL Server na virtu�
 
 ## <a name="vm-redundancy"></a>Redundance virtuálního počítače 
 
-Aby bylo možné zvýšit redundanci a vysokou dostupnost, SQL Server virtuální počítače buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](../../../availability-zones/az-overview.md).
+Aby bylo možné zvýšit redundanci a vysokou dostupnost, SQL Server virtuální počítače buď ve stejné [skupině dostupnosti](../../../virtual-machines/availability-set-overview.md), nebo v různých [zónách dostupnosti](../../../availability-zones/az-overview.md).
 
 Umístění sady virtuálních počítačů do stejné skupiny dostupnosti chrání před výpadky v rámci datového centra, které způsobilo selhání zařízení (virtuální počítače v rámci skupiny dostupnosti nesdílejí prostředky) nebo aktualizace (virtuální počítače v rámci skupiny dostupnosti nejsou aktualizované ve stejnou dobu). Zóny dostupnosti chránit před selháním celého datového centra, přičemž každá zóna představuje sadu Datacenter v rámci oblasti.  Díky zajištění umístění prostředků do různých Zóny dostupnosti nemůže žádný výpadek na úrovni datacentra přebírat všechny vaše virtuální počítače offline.
 
@@ -83,17 +83,17 @@ Následující tabulka poskytuje porovnání dostupných možností:
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
 |**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše|
-|**Vytvoří cluster za vás.**|Ano|Ano | Ano |Ne|
-|**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
-|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
-|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
+|**Vytvoří cluster za vás.**|Ano|Ano | Ano |No|
+|**Vytvoří skupinu dostupnosti pro vás.** |Ano |No|No|No|
+|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |No|No|No|Ano|
+|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|No|No|No|Ano|
 |**Konfigurace kvora služby WSFC**|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
-|**DR s více oblastmi** |Ne|Ne|Ne|Ano|
+|**DR s více oblastmi** |No|No|No|Ano|
 |**Podpora více podsítí** |Ano|Ano|Ano|Ano|
 |**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
 |**DR s více zónami ve stejné oblasti**|Ano|Ano|Ano|Ano|
-|**Distributed AG bez AD**|Ne|Ne|Ne|Ano|
-|**Distribuovaný AG bez clusteru** |Ne|Ne|Ne|Ano|
+|**Distributed AG bez AD**|No|No|No|Ano|
+|**Distribuovaný AG bez clusteru** |No|No|No|Ano|
 
 Další informace najdete v tématech [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablony rychlý Start](availability-group-quickstart-template-configure.md)a [Ruční](availability-group-manually-configure-prerequisites-tutorial.md).
 

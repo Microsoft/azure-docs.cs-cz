@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651933"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500542"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Přehled zřizování protokolů v Azure Portal (Preview)
 
@@ -207,7 +207,7 @@ Soubor JSON se stáhne ve formátu minifikovaného, aby se snížila velikost so
 
 Tady jsou některé ukázkové příkazy pro práci se souborem JSON pomocí PowerShellu. Můžete použít libovolný programovací jazyk, se kterým jste spokojeni.  
 
-Nejprve [si přečtěte soubor JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) spuštěním tohoto příkazu:
+Nejprve [si přečtěte soubor JSON](/powershell/module/microsoft.powershell.utility/convertfrom-json) spuštěním tohoto příkazu:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -243,7 +243,7 @@ Zde jsou některé tipy a doporučení pro sestavy zřizování:
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které najdete v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Popis|
+|Kód chyby|Description|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributu buď v Azure AD, nebo v aplikaci. Nebo si přečtěte odpovídající konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížený a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|

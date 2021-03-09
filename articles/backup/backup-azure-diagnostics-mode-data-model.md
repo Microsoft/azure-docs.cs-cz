@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586782"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500984"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -18,7 +18,8 @@ Pomocí Log Analytics datového modelu můžete vytvářet vlastní výstrahy z 
 
 > [!NOTE]
 >
-> Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](./backup-azure-reports-data-model.md) .
+> * Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](./backup-azure-reports-data-model.md) .
+> * Pro vytváření vlastních zobrazení sestav doporučujeme místo práce s nezpracovanými tabulkami, které jsou uvedeny níže, použít [systémové funkce v Azure monitor protokoly](backup-reports-system-functions.md) .
 
 ## <a name="using-azure-backup-data-model"></a>Použití datového modelu Azure Backup
 

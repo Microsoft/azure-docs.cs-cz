@@ -6,12 +6,12 @@ author: curib
 ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 0ab959d531ff1080e5e6a640410b4955e4cfeff7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652194"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508159"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí PowerShellu
 
@@ -73,7 +73,7 @@ New-AzRedisCache
    [-Confirm]
    [<CommonParameters>]
 ```
-Další informace o vytvoření instance mezipaměti v PowerShellu najdete v [referenčních](/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0)informacích o Azure PowerShell. 
+Další informace o vytvoření instance mezipaměti v PowerShellu najdete v [referenčních](/powershell/module/az.rediscache/new-azrediscache)informacích o Azure PowerShell. 
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
@@ -132,7 +132,7 @@ Import-AzRedisCache
       [-Confirm]
       [<CommonParameters>]
 ```
-Další informace o importování v PowerShellu najdete v [referenčních](/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0)informacích o Azure PowerShell. 
+Další informace o importování v PowerShellu najdete v [referenčních](/powershell/module/az.rediscache/import-azrediscache)informacích o Azure PowerShell. 
 
 Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Podívejte se na webovou aplikaci, abyste si zobrazili událost, kterou jste právě odeslali.
 
