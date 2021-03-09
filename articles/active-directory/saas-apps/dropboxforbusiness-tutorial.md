@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643809"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488388"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Kurz: integrace firemního Dropboxu pomocí Azure Active Directory
 
@@ -38,9 +38,9 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-* V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Společnost **Dropbox podporuje jednotné** přihlašování v/v.
+* V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Společnost Dropboxu **podporuje jednotné** přihlašování, které iniciuje.
 
-* Společnost Dropbox podporuje [automatizované zřizování a rušení zřizování uživatelů](dropboxforbusiness-tutorial.md)
+* Společnost Dropbox podporuje [automatizované zřizování a rušení zřizování uživatelů](dropboxforbusiness-tutorial.md).
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -82,11 +82,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://www.dropbox.com/sso/<id>`
-
-    b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `Dropbox`
-
+    
+     b. Do textového pole **identifikátor (ID entity)** zadejte hodnotu: `Dropbox`
+    
     > [!NOTE]
-    > Hodnota předchozí přihlašovací adresy URL není reálné číslo. Tuto hodnotu aktualizujete pomocí skutečné přihlašovací adresy URL, která se vysvětluje později v tomto kurzu.
+    > **Přihlašovací jméno jednotného** přihlašování k Dropboxu najdete na webu dropboxu v > konzole pro správu > nastavení > jednotné přihlašování > přihlašovací adresa URL jednotného přihlašování.
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -137,23 +137,23 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 4. Klikněte na **ikonu uživatele** a vyberte kartu **Nastavení** .
 
-    ![Snímek obrazovky zobrazující, že je vybraná akce ikona uživatele a nastavení.](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná akce ikona uživatele a nastavení.](./media/dropboxforbusiness-tutorial/configure-1.png "Konfigurace jednotného přihlašování")
 
 5. V navigačním podokně na levé straně klikněte na Konzola pro **správu**.
 
-    ![Snímek obrazovky zobrazující, že je vybraná Konzola pro správu](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná Konzola pro správu](./media/dropboxforbusiness-tutorial/configure-2.png "Konfigurace jednotného přihlašování")
 
 6. V **konzole pro správu** klikněte v levém navigačním podokně na **Nastavení** .
 
-    ![Snímek obrazovky, který zobrazuje vybrané nastavení.](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje vybrané nastavení.](./media/dropboxforbusiness-tutorial/configure-3.png "Konfigurace jednotného přihlašování")
 
 7. V části **ověřování** vyberte možnost **jednotné přihlašování** .
 
-    ![Snímek obrazovky, který zobrazuje oddíl ověřování s vybraným možnostmi jednotné přihlašování](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje oddíl ověřování s vybraným možnostmi jednotné přihlašování](./media/dropboxforbusiness-tutorial/configure-4.png "Konfigurace jednotného přihlašování")
 
 8. V části **jednotné přihlašování** proveďte následující kroky:  
 
-    ![Snímek obrazovky se zobrazením nastavení konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky se zobrazením nastavení konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure-5.png "Konfigurace jednotného přihlašování")
 
     a. V rozevíracím seznamu vyberte možnost **požadováno** pro **jednotné přihlašování**.
 
@@ -174,7 +174,7 @@ V této části se na firemním Dropboxu vytvoří uživatel s názvem B. Simon.
 >[!Note]
 >Pokud potřebujete ručně vytvořit uživatele, kontaktujte [tým podpory pro firemního klienta Dropbox](https://www.dropbox.com/business/contact) .
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
@@ -186,4 +186,4 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování služby Dropbox můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování služby Dropbox můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

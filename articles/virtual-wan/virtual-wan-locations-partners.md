@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: references_regions
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1f05e76768ffc8ce930d97573c7729b8e4afafe
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4a02a02eeb40c1a61df88c49bf967b2ca57befc3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452743"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489323"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -62,9 +62,9 @@ Tito partneři mají **spravované nabídky aplikací** , které jsou teď dostu
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Průvodce nasazením Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[VWAN se směrovačem služby Cisco Cloud Service (CSR)](https://aka.ms/ciscoMarketPlaceOffer)| Během Public Preview služby Cisco Cloud Services (CSR) WAN do centra VWAN vyžaduje Cisco registraci koncového zákazníka jako zákazníka Cisco EFT (předčasných zkušebních verzí), a to odesláním e-mailu vwan_public_preview@external.cisco.com a vyžádáním Průvodce nasazením vManage. 
-|[VMware SD-WAN ve virtuálním centru sítě WAN](https://kb.vmware.com/s/article/82746) | Při Public Previewí VMware SD-WAN do centra VWAN vyžaduje VMware, aby se zákazníci zaregistrovali odesláním e-mailu vhubsupport@vmware.com . [Průvodce nasazením VMware SD-WAN v síti Virtual WAN](https://kb.vmware.com/s/article/82746)|
+|[VMware SD-WAN ve virtuálním centru sítě WAN](https://sdwan.vmware.com/partners/microsoft) | Při Public Previewí VMware SD-WAN do centra VWAN vyžaduje VMware, aby se zákazníci zaregistrovali odesláním e-mailu vhubsupport@vmware.com . [Průvodce nasazením VMware SD-WAN v síti Virtual WAN](https://kb.vmware.com/s/article/82746)|
 
-Následující partneři jsou plánované k uvedení síťové virtuální zařízení do virtuálního centra v blízké budoucnosti: Aviatrix, Citrix, VeloCloud a naopak.
+Následující partneři jsou plánované k uvedení síťové virtuální zařízení do virtuálního centra v blízké budoucnosti: sítě Aviatrix, Citrix a naopak.
 
 ## <a name="locations"></a><a name="locations"></a>Polohy
 

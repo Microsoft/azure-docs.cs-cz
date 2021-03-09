@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5a89e9ae05b0733c865d537ffeb1714d3b3ebef1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536828"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489357"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Vytváření dotazů v Azure Kognitivní hledání
 
@@ -21,18 +21,21 @@ Pokud vytváříte dotaz poprvé, Tento článek popisuje přístupy a metody pr
 
 ## <a name="whats-a-query-request"></a>Co je požadavek na dotaz?
 
-Dotaz je požadavek jen pro čtení na kolekci docs v rámci jednoho vyhledávacího indexu. Určuje typ queryType a výraz dotazu, i když je parametr Search. Výraz dotazu může mít hledané výrazy, frázi uzavřenou v uvozovkách a operátory.
+Dotaz je požadavek jen pro čtení na kolekci docs v rámci jednoho vyhledávacího indexu. Určuje, že parametr Search obsahuje výraz dotazu, který se skládá z výrazů, frází uzavřených v uvozovkách a operátorů.
 
-Dotaz může mít také ' count ', aby vrátil počet shod nalezených v indexu, ' SELECT ' pro výběr, která pole se vrátí ve výsledku hledání a ' OrderBy ' pro řazení výsledků. Následující příklad poskytuje obecnou představu o požadavku na dotaz tím, že zobrazuje podmnožinu dostupných parametrů. Další informace o složení dotazů naleznete v tématu [typy a kompozice dotazů](search-query-overview.md) a [hledání dokumentů (REST)](/rest/api/searchservice/search-documents).
+Další parametry poskytují další definice dotazu a odpovědi. Například obory ' searchFields ' se dotazují na konkrétní pole, ' SELECT ' určuje, která pole jsou vrácena ve výsledcích a ' count ' vrátí počet shod nalezených v indexu.
+
+Následující příklad poskytuje obecnou představu o požadavku na dotaz tím, že zobrazuje podmnožinu dostupných parametrů. Další informace o složení dotazů naleznete v tématu [typy a kompozice dotazů](search-query-overview.md) a [hledání dokumentů (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
-    "count": "true",
-    "orderby": "Rating desc"
+    "search": "NY +view",
+    "queryType": "simple",
+    "searchMode": "all",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "count": "true"
 }
 ```
 

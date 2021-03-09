@@ -9,16 +9,15 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4acc1cb93fb04ba190173fea05805a1a4b833ffc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690443"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488762"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
@@ -40,15 +39,15 @@ V nabídce prostředek přejděte na okno **telefonní čísla** .
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Snímek obrazovky s telefonickou stránkou zdroje komunikačních služeb.":::
 
-Kliknutím na tlačítko **získat** spusťte průvodce. Průvodce v okně **telefonní čísla** vás provede řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři. 
+Kliknutím na tlačítko **získat** spusťte průvodce. Průvodce v okně **telefonní čísla** vás provede řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři.
 
-Nejdřív budete muset zvolit **zemi nebo oblast** , kde byste chtěli telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat **případ použití** , který nejlépe vyhovuje vašim potřebám. 
+Nejdřív budete muset zvolit **zemi nebo oblast** , kde byste chtěli telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat **případ použití** , který nejlépe vyhovuje vašim potřebám.
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky s zobrazením získat čísla telefonů":::
 
 ### <a name="select-your-phone-number-features"></a>Výběr funkcí telefonního čísla
 
-Konfigurace telefonního čísla je rozdělená do dvou kroků: 
+Konfigurace telefonního čísla je rozdělená do dvou kroků:
 
 1. Výběr [typu čísla](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Výběr [číselných funkcí](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)

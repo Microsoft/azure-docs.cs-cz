@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432940"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487136"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
 
@@ -177,7 +177,7 @@ Následující tabulka shrnuje parametry dotazu používané v sémantickém dot
 | queryType | Řetězec | Mezi platné hodnoty patří jednoduchá, plná a sémantická. Pro sémantické dotazy je požadována hodnota sémantika. |
 | queryLanguage | Řetězec | Vyžaduje se pro sémantické dotazy. V současné době je implementována pouze "en-US". |
 | searchFields | Řetězec | Seznam prohledávatelných polí oddělených čárkami. Volitelné, ale doporučené. Určuje pole, přes která probíhá sémantické hodnocení. </br></br>Na rozdíl od jednoduchých a úplných typů dotazů je pořadí, ve kterém jsou pole uvedena, určena přednostně.|
-| zodpovídá |Řetězec | Volitelné pole, které určuje, zda jsou ve výsledku zahrnuty sémantické odpovědi. V současné době je implementována pouze "extrakce". Odpovědi lze nakonfigurovat tak, aby vracely maximálně pět. Příklad "extrakce"|count3 "" zobrazuje počet tří odpovědí. Výchozí hodnota je 1.|
+| zodpovídá |Řetězec | Volitelné pole, které určuje, zda jsou ve výsledku zahrnuty sémantické odpovědi. V současné době je implementována pouze "extrakce". Odpovědi lze nakonfigurovat tak, aby vracely maximálně pět. Výchozí hodnota je jedna. V tomto příkladu se zobrazuje počet tří odpovědí: "extrahovatelné \| count3". |
 
 ## <a name="query-with-search-explorer"></a>Dotaz s využitím Průzkumníka služby Hledání
 
@@ -186,7 +186,7 @@ Následující dotaz cílí na integrovaný ukázkový index hotelů, pomocí ro
 ### <a name="with-querytypesemantic"></a>With queryType = sémantická
 
 ```json
-search=I want a nice hotel on the water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
+search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
 ```
 
 Následuje několik prvních výsledků.

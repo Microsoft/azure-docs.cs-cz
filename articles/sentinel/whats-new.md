@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 66294e3c59c2252042e30864dd220683106cd574
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453797"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485380"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -29,6 +29,32 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 >
 > Můžete také přispět. Připojte se k nám ve [komunitě Azure Sentinel Threat Hunters GitHub](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="march-2021"></a>Březen 2021
+
+- [Integrace incidentů v programu Microsoft 365 Defender](#microsoft-365-defender-incident-integration) (Public Preview)
+- [Nové konektory Microsoft Service Connector pomocí Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="microsoft-365-defender-incident-integration"></a>Integrace incidentů v programu Microsoft 365 Defender
+
+Integrace incidentů služby [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) v Azure Sentinel umožňuje streamování všech M365D incidentů do Azure Sentinel a jejich synchronizaci mezi oběma portály. Incidenty od M365D (dříve označované jako Microsoft Threat Protection nebo MTP) obsahují všechny přidružené výstrahy, entity a relevantní informace, které vám poskytnou dostatečný kontext pro provádění třídění a předběžné šetření v kontextu Azure Sentinel. Jednou v Sentinele budou incidenty stále synchronizované s M365D, což vám umožní využít výhody obou portálů při vyšetřování incidentů.
+
+Použití služby Azure Sentinel a Microsoft 365 Defender společně vám dává nejlepší z obou světů. Získáte přehled o tom, že vám SIEM poskytuje celou škálu informačních prostředků vaší organizace, a také hloubku vlastního a přizpůsobeného vyšetřovacího výkonu, který nástroj XDR poskytuje k ochraně vašich Microsoft 365ch prostředků, a to jak z těchto koordinovaných, tak i z důvodu bezproblémové operace SOC.
+
+Další informace najdete v tématu [integrace programu Microsoft 365 Defender s použitím Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
+
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Nové konektory Microsoft Service Connector pomocí Azure Policy
+
+[Azure Policy](../governance/policy/overview.md) je služba Azure, která umožňuje používat zásady k vymáhání a řízení vlastností prostředku. Použití zásad zajišťuje, aby prostředky zůstaly v souladu se standardy pro řízení IT.
+
+Mezi vlastnosti prostředků, které mohou být řízeny zásadami, patří vytváření a zpracování protokolů diagnostiky a auditování. Azure Sentinel nyní používá Azure Policy k tomu, aby vám umožnila použít pro všechny (aktuální a budoucí) prostředky určitého typu, jejichž protokoly chcete ingestovat do Azure Sentinel, možnost společné sady diagnostických protokolů. Když Azure Policy, nebudete už muset nastavovat prostředky diagnostiky nastavení prostředky podle prostředku.
+
+Konektory založené na Azure Policy jsou teď dostupné pro tyto služby Azure:
+- [Azure Key Vault](connect-azure-key-vault.md) (Public Preview)
+- [Služba Azure Kubernetes](connect-azure-kubernetes-service.md) (Public Preview)
+- Databáze a servery Azure SQL (GA)
+
+Zákazníci pořád budou moct protokoly odesílat ručně pro konkrétní instance a nemusí používat modul zásad.
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -86,7 +112,7 @@ Naše kolekce integrace třetích stran se pořád zvětšuje, ale během posled
 - [Endpoint Protection Symantec](connect-data-sources.md)
 - [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Trend Micro XDR](connect-data-sources.md)
-- [VMWare ESXi](connect-vmware-esxi.md)
+- [VMware ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA Insights na stránce entity
 

@@ -66,40 +66,46 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365 (teď s Teams!)
-              href: connect-office-365.md
-            - name: Dynamics 365 (novinka!)
-              href: connect-dynamics-365.md
-            - name: Cloud App Security
-              href: connect-cloud-app-security.md
             - name: Protokol aktivit Azure
               href: connect-azure-activity.md
             - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection
-              href: connect-azure-information-protection.md
-            - name: Microsoft 365 Defender
-              href: connect-microsoft-365-defender.md
-            - name: Microsoft Defender pro koncový bod (dříve MDATP)
-              href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Microsoft Defender pro identity (dříve Azure ATP)
-              href: connect-azure-atp.md
-            - name: Microsoft Defender for Office 365 (dříve Office 365 ATP)
-              href: connect-office-365-advanced-threat-protection.md
             - name: Upozornění Azure Defenderu z ASC
               href: connect-azure-security-center.md
-            - name: Defender pro IoT (dříve ASC pro IoT)
-              href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall
               href: connect-azure-firewall.md
-            - name: Firewall webových aplikací Azure (WAF)
-              href: connect-azure-waf.md
+            - name: Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Azure Key Vault
+              href: connect-azure-key-vault.md
+            - name: Azure Kubernetes Service (AKS)
+              href: connect-azure-kubernetes-service.md
             - name: Protokoly databází Azure SQL
               href: connect-azure-sql-logs.md
+            - name: Firewall webových aplikací Azure (WAF)
+              href: connect-azure-waf.md
+            - name: Defender pro IoT (dříve ASC pro IoT)
+              href: connect-asc-iot.md
             - name: Server DNS
               href: connect-dns.md
+            - name: Dynamics 365 (novinka!)
+              href: connect-dynamics-365.md
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+              expanded: true
+              items:
+                - name: Cloud App Security
+                  href: connect-cloud-app-security.md
+                - name: Microsoft Defender pro koncový bod (dříve MDATP)
+                  href: connect-microsoft-defender-advanced-threat-protection.md
+                - name: Microsoft Defender pro identity (dříve Azure ATP)
+                  href: connect-azure-atp.md
+                - name: Microsoft Defender for Office 365 (dříve Office 365 ATP)
+                  href: connect-office-365-advanced-threat-protection.md
+            - name: Office 365 (teď s Teams!)
+              href: connect-office-365.md
             - name: Brána Windows Firewall
               href: connect-windows-firewall.md
             - name: Události zabezpečení systému Windows

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 03/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d15e5e13b2b0defe45fd45450aee7c262052b4f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bcfc2996daeb34f357625572d39661638982ae42
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459411"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489111"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jive
 
@@ -25,8 +25,6 @@ V tomto kurzu se dozvíte, jak integrovat Jive s Azure Active Directory (Azure A
 * Řízení ve službě Azure AD, která má přístup k Jive.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Jive svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,15 +37,14 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Jive podporuje jednotné přihlašování iniciované v **SP**
-* Jive podporuje [ **automatizované** zřizování uživatelů](jive-provisioning-tutorial.md)
-* Po nakonfigurování Jive můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Jive podporuje jednotné přihlašování iniciované v **SP** .
+* Jive podporuje [ **automatizované** zřizování uživatelů](jive-provisioning-tutorial.md).
 
-## <a name="adding-jive-from-the-gallery"></a>Přidání Jive z Galerie
+## <a name="add-jive-from-the-gallery"></a>Přidání Jive z Galerie
 
 Pokud chcete nakonfigurovat integraci Jive do služby Azure AD, musíte přidat Jive z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -55,26 +52,26 @@ Pokud chcete nakonfigurovat integraci Jive do služby Azure AD, musíte přidat 
 1. Na panelu výsledků vyberte **Jive** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-jive"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Jive
+## <a name="configure-and-test-azure-ad-sso-for-jive"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Jive
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Jive pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Jive.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Jive, dokončete následující stavební bloky:
+K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Jive postupujte takto:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte Jive SSO](#configure-jive-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte Jive Test User](#create-jive-test-user)** -to, abyste měli protějšek B. Simon v Jive, která je propojená s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte Jive Test User](#create-jive-test-user)** -to, abyste měli protějšek B. Simon v Jive, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Jive** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **Jive** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -98,17 +95,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -120,18 +111,12 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Jive.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Jive**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-jive-sso"></a>Konfigurace jednotného přihlašování Jive
@@ -140,7 +125,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce v horní části klikněte na **SAML**.
 
-    ![Snímek obrazovky zobrazuje kartu SAML s povoleným vybraným.](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Snímek obrazovky zobrazuje kartu SAML s povoleným vybraným.](./media/jive-tutorial/jive-2.png)
 
     a. Na kartě **Obecné** vyberte **povoleno** .
 
@@ -148,7 +133,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte na kartu **metadata IDP** .
 
-    ![Snímek obrazovky ukazuje vybranou METADATA karta SAML I D P.](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Snímek obrazovky ukazuje vybranou METADATA karta SAML I D P.](./media/jive-tutorial/jive-3.png)
 
     a. Zkopírujte obsah staženého souboru XML metadat a vložte jej do textového pole **metadat poskytovatele identity (IDP)** .
 
@@ -156,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Vyberte kartu **mapování atributu uživatele** .
 
-    ![Snímek obrazovky s vybraným MAPOVÁNÍm atributu uživatele zobrazuje kartu SAML.](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Snímek obrazovky s vybraným MAPOVÁNÍm atributu uživatele zobrazuje kartu SAML.](./media/jive-tutorial/jive-4.png)
 
     a. Do textového pole **e-mail** zkopírujte a vložte název atributu hodnoty **pošty** .
 
@@ -172,22 +157,14 @@ Pokud potřebujete ručně vytvořit uživatele, pracujte s [týmem podpory klie
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Když na přístupovém panelu kliknete na dlaždici Jive, měli byste se automaticky přihlásit k Jive, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Jive, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+* Přejít na adresu URL pro přihlášení k Jive přímo a zahájit tok přihlášení.
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Jive v části Moje aplikace, přesměruje se na přihlašovací adresu Jive. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte si Jive s Azure AD](https://aad.portal.azure.com/)
-
-- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Konfigurace zřizování uživatelů](jive-provisioning-tutorial.md)
-
-- [Jak chránit Jive pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)
+Po nakonfigurování Jive můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 03/04/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 54f3f075e9bf8bce9d8fb01a28f0f81dd3a930aa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218413"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489272"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Existují dvě samostatné rodiny volání klientských knihoven pro *klienty* a *služby.* Aktuálně dostupné klientské knihovny jsou určené pro prostředí koncových uživatelů: websites a Native Apps.
 
@@ -28,12 +29,12 @@ Knihovny klienta služby ještě nejsou k dispozici a poskytují přístup k nez
 
 Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici ve komunikačních službách Azure, které volají klientské knihovny.
 
-| Skupina funkcí | Schopnost                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Skupina funkcí | Schopnost                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Základní funkce | Jedno volání 1:1 mezi dva uživatele                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Umístit skupinové volání s více než dvěma uživateli (až 350 uživatelů)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️ 
-|                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️ 
+| Základní funkce | Jedno volání 1:1 mezi dva uživatele                                                                           | ✔️   | ✔️            | ✔️
+|                   | Umístit skupinové volání s více než dvěma uživateli (až 350 uživatelů)                                                       | ✔️   | ✔️            | ✔️
+|                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️
+|                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️
 |                   | Pozvat dalšího účastníka VoIP, aby se připojil k probíhajícímu volání skupiny                                                       | ✔️   | ✔️            | ✔️
 |  Střední řízení volání | Zapnout/vypnout video                                                                                              | ✔️   | ✔️            | ✔️ 
 |                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️         
