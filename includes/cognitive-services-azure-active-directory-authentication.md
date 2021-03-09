@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109183"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510913"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
@@ -25,13 +25,13 @@ V následujících částech budete pomocí prostředí Azure Cloud Shell nebo A
 
 Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existující prostředek Cognitive Services, který nemá název vlastní subdomény, postupujte podle pokynů v [Cognitive Services vlastní subdomény](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) , abyste pro svůj prostředek povolili vlastní subdoménu.
 
-1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Začněte otevřením Azure Cloud Shell. Pak [Vyberte předplatné](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Dále [vytvořte prostředek Cognitive Services](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".
+2. Dále [vytvořte prostředek Cognitive Services](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) s vlastní subdoménou. Název subdomény musí být globálně jedinečný a nesmí obsahovat speciální znaky, například: ".", "!", ",".
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 > [!NOTE]
 > Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.
 
-1. Nejdřív si zaregistrujeme [aplikaci AAD](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
+1. Nejdřív si zaregistrujeme [aplikaci AAD](/powershell/module/Az.Resources/New-AzADApplication).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
 
    V následujícím kroku budete potřebovat **ApplicationId** .
 
-2. Dále musíte [vytvořit instanční objekt](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) pro aplikaci AAD.
+2. Dále musíte [vytvořit instanční objekt](/powershell/module/az.resources/new-azadserviceprincipal) pro aplikaci AAD.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budet
    >[!NOTE]
    > Pokud zaregistrujete aplikaci v Azure Portal, bude tento krok dokončen za vás.
 
-3. Posledním krokem je [přiřazení role "Cognitive Services uživatele"](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) k instančnímu objektu (vymezenému pro prostředek). Přiřazením role udělíte instančnímu objektu přístup k tomuto prostředku. Stejnému instančnímu objektu můžete udělit přístup k několika prostředkům v rámci vašeho předplatného.
+3. Posledním krokem je [přiřazení role "Cognitive Services uživatele"](/powershell/module/az.Resources/New-azRoleAssignment) k instančnímu objektu (vymezenému pro prostředek). Přiřazením role udělíte instančnímu objektu přístup k tomuto prostředku. Stejnému instančnímu objektu můžete udělit přístup k několika prostředkům v rámci vašeho předplatného.
    >[!NOTE]
    > Je použit identifikátor ObjectId objektu služby, nikoli identifikátor ObjectId pro aplikaci.
    > ACCOUNT_ID bude ID prostředku Azure účtu Cognitive Services, který jste vytvořili. ID prostředku Azure můžete najít z části vlastnosti prostředku v Azure Portal.

@@ -1,5 +1,5 @@
 ---
-title: Sestavení agenta Defender Micro ze zdrojového kódu
+title: Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
 titleSuffix: Azure Defender for IoT
 description: Mikroagenti zahrnuje infrastrukturu, která se dá použít k přizpůsobení distribuce.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 57360d939ea0cda513732cfbcc35c1d22a899f6c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 29cac544c858b030cff8e9101737b30e96b863bf
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124529"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506595"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code"></a>Sestavení agenta Defender Micro ze zdrojového kódu
+# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
 
 Mikroagenti zahrnuje infrastrukturu, která se dá použít k přizpůsobení distribuce. Chcete-li zobrazit seznam dostupných parametrů konfigurace, Prohlédněte si `configs/LINUX_BASE.conf` soubor.
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 511544f81f6de887014545e3f4bbc7a4172fc91e
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488745"
+ms.locfileid: "102499182"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Import klíčů chráněných HSM pro Key Vault (podpůrný software nCipher)
 
@@ -63,7 +63,7 @@ Seznam požadavků pro Přineste si vlastní klíč (BYOK) pro Azure Key Vault n
 | Předplatné Azure |Pokud chcete vytvořit Azure Key Vault, potřebujete předplatné Azure: [Zaregistrujte se do bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/) . |
 | Úroveň služby Azure Key Vault Premium na podporu klíčů chráněných HSM |Další informace o úrovních služby a možnostech pro Azure Key Vault najdete na webu [Azure Key Vault s cenami](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Podpůrný software nCipher hardwarového nShield HSM, SmartCard a software podpory |Musíte mít přístup k modulu hardwarového zabezpečení podpůrný software nCipher a základnímu provoznímu znalostí podpůrný software nCipher hardwarového nShield HSM. Seznam kompatibilních modelů najdete v tématu [podpůrný software nCipher hardwarového nShield hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) , případně si můžete koupit modul hardwarového zabezpečení (HSM), pokud ho ještě nemáte. |
-| Následující hardware a software:<ol><li>Offline pracovní stanice x64 s minimálním operačním systémem Windows pro Windows 7 a software podpůrný software nCipher hardwarového nShield, který je minimálně verze 11,50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je potřeba [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a nainstalovanou **minimální verzi** [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 1.1.0.</li><li>Jednotka USB nebo jiné přenosné úložné zařízení, které má alespoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se ale nevynutilo programově.<br/><br/>V následujících pokynech se tato pracovní stanice označuje jako odpojená pracovní stanice.</p></blockquote><br/>Pokud je váš klíč tenanta pro produkční síť, doporučujeme, abyste k stažení sady nástrojů používali druhou, samostatnou pracovní stanici a nahráli jste klíč tenanta. Pro účely testování k tomu ale můžete použít první pracovní stanici.<br/><br/>V následujících pokynech se tato druhá pracovní stanice označuje jako pracovní stanice připojená k Internetu.</p></blockquote><br/> |
+| Následující hardware a software:<ol><li>Offline pracovní stanice x64 s minimálním operačním systémem Windows pro Windows 7 a software podpůrný software nCipher hardwarového nShield, který je minimálně verze 11,50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je potřeba [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a nainstalovanou **minimální verzi** [Azure PowerShell](/powershell/azure/) 1.1.0.</li><li>Jednotka USB nebo jiné přenosné úložné zařízení, které má alespoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Toto doporučení se ale nevynutilo programově.<br/><br/>V následujících pokynech se tato pracovní stanice označuje jako odpojená pracovní stanice.</p></blockquote><br/>Pokud je váš klíč tenanta pro produkční síť, doporučujeme, abyste k stažení sady nástrojů používali druhou, samostatnou pracovní stanici a nahráli jste klíč tenanta. Pro účely testování k tomu ale můžete použít první pracovní stanici.<br/><br/>V následujících pokynech se tato druhá pracovní stanice označuje jako pracovní stanice připojená k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generování a přenos klíče pro Azure Key Vault HSM
 

@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: Parametrizace mapování toků dat
           href: parameters-data-flow.md
+        - name: Jak parametrizovat
+          href: how-to-expression-language-functions.md
     - name: Zabezpečení
       items:
         - name: Aspekty zabezpečení přesunu dat

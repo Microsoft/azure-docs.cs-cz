@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: Kódy chyb
           href: error-codes-spot.md
-    - name: Možnosti nákupu
+    - name: Zvýhodněné hybridní využití Azure
       items:
-        - name: Zvýhodněné hybridní využití Azure
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: Použití licence programu Zvýhodněné hybridní využití Azure
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: Použití práv hostování více klientů pro Windows 10
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: Rezervované instance
-          items:
-            - name: Předplacení pro virtuální počítače
-              href: ./prepay-reserved-vm-instances.md
-            - name: Předplacení pro služby Dedicated Host
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: Co jsou rezervace Azure?
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: Flexibilita velikosti instance virtuálního počítače
-              href: reserved-vm-instance-size-flexibility.md
+            - name: Použití licence programu Zvýhodněné hybridní využití Azure
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: Použití práv hostování více klientů pro Windows 10
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: Rezervované instance
+      items:
+        - name: Předplacení pro virtuální počítače
+          href: ./prepay-reserved-vm-instances.md
+        - name: Předplacení pro služby Dedicated Host
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: Co jsou rezervace Azure?
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Flexibilita velikosti instance virtuálního počítače
+          href: reserved-vm-instance-size-flexibility.md
     - name: Vytvoření virtuálních počítačů se systémem Linux
       items:
         - name: Schválené distribuce
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: Dostupnost a škálování
   items:
-    - name: Škálovací sady
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: Dostupnost
+    - name: Přehled
       href: availability.md
-    - name: Společné umístění
-      href: co-location.md
-    - name: Výkon sítě
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: Stavy a životní cyklus
-      href: states-lifecycle.md
-    - name: Automatické škálování
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: Vysoká dostupnost
-      href: manage-availability.md
     - name: Skupiny dostupnosti
       items:
-        - name: Linux
+        - name: Přehled
+          href: availability-set-overview.md
+        - name: Rozhraní příkazového řádku
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: Vytvoření skupiny dostupnosti
-              href: ./windows/tutorial-availability-sets.md
-            - name: Změna skupiny dostupnosti
-              href: ./windows/change-availability-set.md
-    - name: Vytvoření skupiny umístění bezkontaktní komunikace
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: Změna skupiny dostupnosti
+          href: ./windows/change-availability-set.md
+    - name: Zóny dostupnosti
       items:
+        - name: Přehled
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: Rozhraní příkazového řádku
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: Portál
+          href: ./windows/create-portal-availability-zone.md
+    - name: Skupiny umístění blízkosti
+      items:
+        - name: Přehled
+          href: co-location.md
         - name: Rozhraní příkazového řádku
           href: ./linux/proximity-placement-groups.md
-        - name: Portál
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: Vytvoření virtuálního počítače v zóně dostupnosti
-      href: ./linux/create-cli-availability-zone.md
+        - name: Portál
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: Virtual Machine Scale Sets
+      items:
+        - name: Přehled
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: Automatické škálování
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: Režimy orchestrace
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: Vysvětlení restartování virtuálních počítačů
+      href: understand-vm-reboots.md
+    - name: Stavy a životní cyklus
+      href: states-lifecycle.md
+    - name: Oblasti Azure
+      href: regions.md
 - name: Disky
   items:
     - name: Úvod ke spravovaným diskům

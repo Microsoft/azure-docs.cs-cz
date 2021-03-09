@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737643"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506697"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -132,7 +132,7 @@ Vzhledem k tomu, že poskytovatel prostředků Azure Storage převezme služby p
 
 ### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
-Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/manage-availability.md) a [zotavení po havárii](../../virtual-machines/backup-recovery.md) , které jsou specifické pro virtuální počítače v Azure.
+Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/availability.md) a [zotavení po havárii](../../virtual-machines/backup-recovery.md) , které jsou specifické pro virtuální počítače v Azure.
 
 ### <a name="azure-unmanaged-disks"></a>Nespravované disky Azure
 

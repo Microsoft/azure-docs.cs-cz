@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900854"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510895"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98900854"
 | Celkový počet jader virtuálního počítače na [předplatné](https://azure.microsoft.com/pricing/) |20<sup>1</sup> na oblast. Pokud chcete zvýšit limit, obraťte se na podporu. |
 | Celkový počet jader virtuálních počítačů Azure na jedno [předplatné](https://azure.microsoft.com/pricing/) |20<sup>1</sup> na oblast. Pokud chcete zvýšit limit, obraťte se na podporu. |
 | Virtuální počítač na řadu, například Dv2 a F, jader na [předplatné](https://azure.microsoft.com/pricing/) |20<sup>1</sup> na oblast. Pokud chcete zvýšit limit, obraťte se na podporu. |
-| [Skupiny dostupnosti](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 500 na oblast |
+| [Skupiny dostupnosti](../articles/virtual-machines/availability-set-overview.md) na předplatné |2 500 na oblast |
 | Virtuální počítače na skupinu dostupnosti | 200 |
 | [Skupiny umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) na [skupinu prostředků](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Počet certifikátů na skupinu dostupnosti | 199<sup>2</sup> |

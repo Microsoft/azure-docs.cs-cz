@@ -3,14 +3,18 @@ title: Datový model pro události diagnostiky Azure Backup
 description: Tento datový model se odkazuje na režim konkrétní prostředek odeslání diagnostických událostí na Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0d75af6d2b41aad0b5f821dd1f6409b30f7ca531
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173975"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499590"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datový model pro události diagnostiky Azure Backup
+
+> [!NOTE]
+>
+> Pro vytváření vlastních zobrazení sestav doporučujeme místo práce s nezpracovanými tabulkami, které jsou uvedeny níže, použít [systémové funkce v Azure monitor protokoly](backup-reports-system-functions.md) .
 
 ## <a name="coreazurebackup"></a>CoreAzureBackup
 
@@ -55,7 +59,7 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | ResourceGroupName                 | Text          | Skupina prostředků prostředku (například trezor Recovery Services) pro shromažďovaná data |
 | SchemaVersion                     | Text          | Toto pole označuje aktuální verzi schématu. Je **v2** |
 | SecondaryBackupProtectionState    | Text          | Zda je pro zálohovanou položku povolena sekundární ochrana  |
-| Stav                             | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
+| State                             | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
 | StorageReplicationType            | Text          | Typ replikace úložiště pro trezor Například Neredundantní |
 | SubscriptionId                    | Text          | Identifikátor předplatného prostředku (například Recovery Services trezor), pro který se shromažďují data |
 | VaultName                         | Text          | Název trezoru                                            |
@@ -88,7 +92,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k výstraze |
 | RecommendedAction              | Text          | Akce doporučená pro vyřešení výstrahy                      |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stav                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
+| State                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
 | StorageUniqueId                | Text          | Jedinečné ID použité k identifikaci entity úložiště                |
 | VaultUniqueId                  | Text          | Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s výstrahou    |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
@@ -108,7 +112,7 @@ Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 | ProtectedContainerUniqueId     | Text          | Jedinečné ID pro identifikaci chráněného kontejneru, na kterém je úloha spuštěná |
 | ProtectedInstanceCount         | Text          | Počet chráněných instancí pro přidruženou zálohovanou položku nebo chráněný kontejner v dané datum a čas |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stav                          | Text          | Stav objektu zálohované položky, například Active, Deleted |
+| State                          | Text          | Stav objektu zálohované položky, například Active, Deleted |
 | VaultUniqueId                  | Text          | Jedinečný identifikátor chráněného trezoru přidruženého k chráněné instanci |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
 
@@ -139,7 +143,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | RecoveryJobLocation            | Text          | Umístění, kam se uložil bod obnovení, který se má obnovit |
 | RecoveryLocationType           | Text          | Typ umístění pro obnovení                                |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stav                          | Text          | Aktuální stav objektu úlohy, například aktivní, odstraněn |
+| State                          | Text          | Aktuální stav objektu úlohy, například aktivní, odstraněn |
 | VaultUniqueId                  | Text          | Jedinečný identifikátor chráněného trezoru přidruženého k úloze |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
 
@@ -177,7 +181,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | RetentionDuration               | Text           | Doba uchování pro nakonfigurované zálohy                    |
 | RetentionType                   | Text           | Typ uchování                                            |
 | SchemaVersion                   | Text           | Toto pole označuje aktuální verzi schématu. je **v2** |
-| Stav                           | Text           | Aktuální stav objektu zásad Například aktivní, odstraněno |
+| State                           | Text           | Aktuální stav objektu zásad Například aktivní, odstraněno |
 | SynchronisationFrequencyPerDay  | Celé číslo   | Počet pokusů za den, kdy je záloha souborů synchronizovaná pro SC DPM a MABS |
 | VaultUniqueId                   | Text           | Jedinečné ID trezoru, ke kterému patří tato zásada          |
 | WeeklyRetentionDaysOfTheWeek    | Text           | Dny v týdnu vybrané pro týdenní uchování               |
@@ -207,7 +211,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 | PreferredWorkloadOnVolume      | Text          | Úloha, pro kterou je tento svazek upřednostňovaným úložištěm      |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného kontejneru přidruženého k zálohovaným položkám |
 | SchemaVersion                  | Text          | Verze schématu Například **v2**                   |
-| Stav                          | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
+| State                          | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
 | StorageAllocatedInMBs          | Číslo        | Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk |
 | StorageConsumedInMBs           | Číslo        | Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
 | StorageName                    | Text          | Název entity úložiště Například jednotku e:\                      |
@@ -236,7 +240,7 @@ Každý záznam ve výše uvedených tabulkách má přidružený **název opera
 | AddonAzureBackupStorage | Storage | Představuje záznam obsahující všechny podrobnosti dané entity úložiště. Například název úložiště, typ atd. |
 | AddonAzureBackupStorage | StorageAssociation | Představuje mapování mezi zálohovanou položkou a celková velikost cloudového úložiště spotřebovaného zálohovanou položkou. |
 | AddonAzureBackupProtectedInstance | ProtectedInstance | Představuje záznam, který obsahuje počet chráněných instancí pro každý kontejner nebo zálohovanou položku. V případě zálohování virtuálních počítačů Azure je počet chráněných instancí dostupný na úrovni zálohované položky pro jiné úlohy, které jsou dostupné na chráněné úrovni kontejneru. |
-| AddonAzureBackupPolicy | Zásada |  Představuje záznam obsahující všechny podrobnosti o zásadách zálohování a uchovávání informací. Například ID, název, nastavení uchovávání atd. |
+| AddonAzureBackupPolicy | Zásady |  Představuje záznam obsahující všechny podrobnosti o zásadách zálohování a uchovávání informací. Například ID, název, nastavení uchovávání atd. |
 | AddonAzureBackupPolicy | PolicyAssociation | Představuje mapování mezi zálohovanou položkou a zásadami zálohování, které se na ně vztahují. |   
 
 Často je třeba provést spojení mezi různými tabulkami a různými sadami záznamů, které jsou součástí stejné tabulky (rozlišené podle názvu operace), a získat tak všechna pole požadovaná pro vaši analýzu. Pokud chcete začít, podívejte se na [Ukázkové dotazy](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries) . 

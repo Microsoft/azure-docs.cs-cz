@@ -3,12 +3,12 @@ title: Rozšíří Azure DevTest Labs pomocí Azure Functions | Microsoft Docs
 description: Naučte se, jak můžete Azure DevTest Labs pomocí Azure Functions roztáhnout.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203670"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501154"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Rozšíření DevTest Labs s využitím služby Azure Functions
 Azure Functions můžete použít k podpoře dalších scénářů nad rámec těch, které už podporuje DevTest Labs. Azure Functions můžete použít k rozšiřování integrovaných funkcí služby, aby splňovaly potřeby vaší firmy. Následující seznam uvádí některé z možných scénářů. V tomto článku se dozvíte, jak implementovat jeden z těchto ukázkových scénářů.
@@ -44,7 +44,7 @@ K dispozici je další akce, kterou je možné provést pro všechny virtuální
 V této části najdete podrobné pokyny k nastavení prostředků Azure potřebných k aktualizaci stránky **interní podpory** . Tento návod poskytuje jeden příklad rozšíření DevTest Labs. Tento model můžete použít pro jiné scénáře.
 
 ### <a name="step-1-create-a-service-principal"></a>Krok 1: Vytvoření instančního objektu 
-Prvním krokem je získání instančního objektu s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování na základě hesla. Můžete to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)nebo [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již používáte instanční objekt, můžete tento krok přeskočit.
+Prvním krokem je získání instančního objektu s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování na základě hesla. Můžete to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)nebo [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již používáte instanční objekt, můžete tento krok přeskočit.
 
 Poznamenejte si **ID aplikace**, **klíč** a **ID tenanta** objektu služby. Budete je potřebovat později v tomto návodu. 
 

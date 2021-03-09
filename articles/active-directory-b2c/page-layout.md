@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df94bb5e6066b83afd566181debbc0872dc1a5b4
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: b15c63545c71d4513abe9102b4de165e2ab5857a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120258"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499845"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -73,6 +73,9 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 - Původní vydaná verze
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Přihlašovací stránka jednotného přihlašování s odkazem na resetování hesla (unifiedssp)
+
+> [!TIP]
+> Pokud vaše stránka bude lokalizována pro podporu více národních prostředí nebo jazyků v toku uživatele. Článek s [ID lokalizace](localization-string-ids.md) poskytuje seznam identifikátorů lokalizace, které můžete použít pro vybranou verzi stránky.
 
 **2.1.2**
 - Opravili jsme problém s kódováním lokalizace pro jazyky, jako je španělština a francouzština.

@@ -275,7 +275,7 @@
         - name: SDK pro .NET
           href: /dotnet/api/overview/azure/hdinsight
         - name: SDK pro Python
-          href: /python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true
+          href: /python/api/overview/azure/hdinsight
         - name: SDK pro Javu
           href: /java/api/overview/azure/hdinsight
         - name: SDK pro Go

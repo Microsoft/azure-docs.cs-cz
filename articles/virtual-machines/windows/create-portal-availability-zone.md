@@ -1,22 +1,22 @@
 ---
-title: Vytvoření virtuálního počítače s Windows v zóně pomocí Azure Portal
+title: Vytvoření virtuálního počítače s zónou pomocí Azure Portal
 description: Vytvoření virtuálního počítače s Windows v zóně dostupnosti s Azure Portal
 documentationcenter: virtual-machines
-author: cynthn
-ms.service: virtual-machines-windows
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.workload: infrastructure
-ms.date: 03/27/2018
-ms.author: cynthn
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828910"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501681"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Vytvoření virtuálního počítače s Windows v zóně dostupnosti s Azure Portal
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Vytvoření virtuálního počítače v zóně dostupnosti pomocí Azure Portal
 
 Tento článek popisuje použití Azure Portal k vytvoření virtuálního počítače v zóně dostupnosti Azure. [Zóna dostupnosti](../../availability-zones/az-overview.md) je fyzicky oddělená zóna v oblasti Azure. Zóny dostupnosti se používají k ochraně aplikací a dat před málo pravděpodobným selháním nebo ztrátou celého datového centra.
 
@@ -40,7 +40,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     ![Vyberte velikost virtuálního počítače.](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. V části **Nastavení**  >  **Vysoká dostupnost**vyberte jednu z očíslovaných zón v rozevíracím seznamu **zóna dostupnosti** , zbývající výchozí hodnoty a klikněte na **OK**.
+5. V části **Nastavení**  >  **Vysoká dostupnost** vyberte jednu z očíslovaných zón v rozevíracím seznamu **zóna dostupnosti** , zbývající výchozí hodnoty a klikněte na **OK**.
 
     ![Vyberte zónu dostupnosti.](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

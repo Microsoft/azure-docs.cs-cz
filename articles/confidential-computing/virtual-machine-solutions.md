@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 3e55ae476becca23e6ea23fdc9c5fc7ec72b68ef
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204180"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509145"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
@@ -76,7 +76,7 @@ Postupujte podle kurzu rychlý Start a nasaďte DCsv2-Series virtuální počít
 
 Při používání virtuálních počítačů v Azure zodpovídáte za implementaci řešení vysoké dostupnosti a zotavení po havárii, abyste se vyhnuli výpadkům. 
 
-Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci zóny prostřednictvím Zóny dostupnosti. Pro zajištění nejvyšší dostupnosti a redundance pro důvěrný výpočetní prostředí použijte [skupiny dostupnosti](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). Kvůli hardwarovým omezením můžou skupiny dostupnosti pro instance s důvěrnými výpočetními instancemi mít maximálně 10 aktualizačních domén. 
+Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci zóny prostřednictvím Zóny dostupnosti. Pro zajištění nejvyšší dostupnosti a redundance pro důvěrný výpočetní prostředí použijte [skupiny dostupnosti](../virtual-machines/availability-set-overview.md). Kvůli hardwarovým omezením můžou skupiny dostupnosti pro instance s důvěrnými výpočetními instancemi mít maximálně 10 aktualizačních domén. 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Nasazení pomocí šablony Azure Resource Manager (ARM)
 

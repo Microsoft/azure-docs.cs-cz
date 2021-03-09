@@ -4,7 +4,7 @@ description: Přečtěte si, jak odesílat ověřovací tokeny z klienta do slu�
 services: media-services
 keywords: Ochrana obsahu, DRM, ověřování tokenů
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
@@ -13,15 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/08/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498e6d9e38468b126dbe10e0d0f59f54f1816ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9007672f9a3e505578459f63a185c8751051ce0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261032"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507955"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Přečtěte si, jak klienti přecházejí tokeny službě doručování klíčů Azure Media Services
 
@@ -55,8 +55,6 @@ Tato možnost se používá jenom pro získání licence PlayReady, a to prostř
     </CustomData>
     ```
     Do elementu tokenu vložte svůj ověřovací token.
-
-- Pomocí alternativního seznamu testů HTTP Live Streaming (HLS). Pokud potřebujete nakonfigurovat ověřování pomocí tokenu pro AES + HLS přehrávání v iOS/Safari, neexistuje způsob, jakým můžete přímo odeslat token. Další informace o tom, jak alternativní seznam testů povolit pro tento scénář, najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677159"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506884"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.
@@ -102,7 +102,7 @@ Pro typ databáze jsou k dispozici SQL Server a SAP HANA. Nezávisle na systému
 
 I když se v konkrétních a obecných databázových dokumentech již zvýrazňuje, měli byste se seznámit s těmito kroky:
 
-- [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../manage-availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../manage-availability.md)
+- [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../availability.md)
 - [SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Tyto dokumenty by vám měly pomáhat při rozhodování o výběru typů úložiště a konfiguraci vysoké dostupnosti.

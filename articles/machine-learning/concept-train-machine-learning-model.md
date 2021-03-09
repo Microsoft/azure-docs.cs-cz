@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880940"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500406"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -23,7 +23,7 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
 
 + [Azure Machine Learning SDK pro Python](#python-sdk): sada Python SDK nabízí několik způsobů výuky modelů, z nichž každá má různé možnosti.
 
-    | Způsob školení | Popis |
+    | Způsob školení | Description |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Typický způsob, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. V konfiguraci spuštění můžete zadat školicí skript, cíl výpočtů a prostředí Azure ML a spustit školicí úlohu. |
     | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
@@ -41,13 +41,13 @@ Každá z těchto metod školení může pro školení použít různé typy vý
 
 Sada SDK Azure Machine Learning pro Python umožňuje sestavovat a spouštět pracovní postupy strojového učení s Azure Machine Learning. Můžete komunikovat se službou z interaktivní relace Pythonu, poznámkových bloků Jupyter, Visual Studio Code nebo jiného integrovaného vývojového prostředí (IDE).
 
-* [Co je sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-* [Instalace/aktualizace sady SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+* [Co je sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro)
+* [Instalace/aktualizace sady SDK](/python/api/overview/azure/ml/install)
 * [Konfigurace vývojového prostředí pro Azure Machine Learning](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Konfigurace spuštění
 
-Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py). Pak se použije konfigurace spuštění skriptu spolu se školicími skripty k výuce modelu na výpočetním cíli.
+Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig). Pak se použije konfigurace spuštění skriptu spolu se školicími skripty k výuce modelu na výpočetním cíli.
 
 Můžete začít s konfigurací spuštění pro místní počítač a pak v případě potřeby přejít na jeden pro cloudový cíl výpočtů. Když měníte cíl výpočtů, změníte jenom konfiguraci spuštění, kterou použijete. Spuštění také zaznamená informace o úloze školení, jako jsou vstupy, výstupy a protokoly.
 

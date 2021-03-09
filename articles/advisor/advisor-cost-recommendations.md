@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458506"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503370"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -21,7 +21,7 @@ I když některé scénáře aplikací můžou mít za následek nízké využit
 Doporučené akce jsou vypnuté nebo změny velikosti specifické pro vyhodnocování prostředku.
 
 Model pokročilého vyhodnocení v Advisoru se považuje za vypínání virtuálních počítačů, pokud jsou splněné všechny tyto příkazy: 
-- P95th z maximální hodnoty využití procesoru je menší než 3%. 
+- P95th maximální hodnoty využití procesoru je menší než 3%. 
 - Využití sítě je méně než 2% po dobu sedmi dnů.
 - Tlak paměti je nižší než mezní hodnoty.
 
@@ -101,7 +101,7 @@ Poradce identifikuje prostředky, ve kterých se omezuje zásada mezipaměti tab
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 

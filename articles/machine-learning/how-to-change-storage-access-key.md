@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450796"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503432"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -29,11 +29,11 @@ Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy 
 
 > Přihlašovací údaje registrované pro úložiště dat se ukládají do Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte v Key Vault povoleno [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) , v tomto článku najdete pokyny k aktualizaci přihlašovacích údajů. Pokud zrušíte registraci úložiště dat a pokusíte se ho znovu zaregistrovat pod stejným názvem, tato akce se nezdaří. Pokud chcete v tomto scénáři povolit obnovitelné odstranění, přečtěte si téma [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 
-* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install).
 
 * [Rozšíření Azure Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
@@ -142,4 +142,4 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o registraci úložišť dat najdete v [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) odkazu na třídu.
+Další informace o registraci úložišť dat najdete v [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) odkazu na třídu.

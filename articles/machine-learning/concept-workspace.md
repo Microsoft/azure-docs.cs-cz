@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bf2419799ad6c229c6ffb891bc588479e134d427
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683436"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500389"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -52,7 +52,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 + Na webu:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Návrhář služby Azure Machine Learning](concept-designer.md) 
-+ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
++ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro).
 + V jakémkoli prostředí R s [Azure Machine Learning SDK pro R (Preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md)
 + [Rozšíření Azure Machine Learning VS Code](how-to-manage-resources-vscode.md#workspaces)

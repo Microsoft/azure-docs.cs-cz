@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2396973170762bf98be63b998a87c8a47ce3226d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217648"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499879"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -319,7 +319,7 @@ Do Azure PowerShell AZ Module této aktualizace jsme přidali nové rutiny AzWvd
 
 Pokud chcete modul nainstalovat, postupujte podle pokynů v části [nastavení modulu PowerShell pro virtuální počítač s Windows](powershell-module.md).
 
-Seznam dostupných příkazů můžete zobrazit také v [Referenční příručce k AzWvd prostředí PowerShell](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true).
+Seznam dostupných příkazů můžete zobrazit také v [Referenční příručce k AzWvd prostředí PowerShell](/powershell/module/az.desktopvirtualization/#desktopvirtualization).
 
 Další informace o nových funkcích najdete v [našem blogovém příspěvku](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
 

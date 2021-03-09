@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 98260b909514febf80ea6a1a33b0f9e3d2d1446b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431886"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498859"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
 
-V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
+V této příručce se dozvíte, jak definovat různé konfigurační nastavení pro automatizované experimenty strojového učení pomocí [sady Azure Machine Learning SDK](/python/api/overview/azure/ml/intro). Automatický strojové učení vybere pro vás algoritmus a parametry a vygeneruje model připravený pro nasazení. K dispozici je několik možností, pomocí kterých můžete nakonfigurovat automatizované experimenty strojového učení.
 
 Příklady automatických experimentů strojového učení najdete v tématu [kurz: výuka modelu klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [výukových modelů pomocí automatizovaného strojového učení v cloudu](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ Pro tento článek potřebujete,
     Pro instalaci sady SDK můžete buď 
     * Vytvořte výpočetní instanci, která automaticky nainstaluje sadu SDK a je předem nakonfigurovaná pro pracovní postupy ML. Další informace najdete v tématu [Vytvoření a Správa výpočetní instance Azure Machine Learning](how-to-create-manage-compute-instance.md) . 
 
-    * [Nainstalujte `automl` balíček sami](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), včetně [výchozí instalace](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) sady SDK.
+    * [Nainstalujte `automl` balíček sami](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), včetně [výchozí instalace](/python/api/overview/azure/ml/install#default-install) sady SDK.
 
 ## <a name="select-your-experiment-type"></a>Výběr typu experimentu
 
@@ -69,7 +69,7 @@ Požadavky na školicí data ve strojovém učení:
 - Data musí být v tabulkovém formátu.
 - Hodnota pro předpověď, cílový sloupec musí být v datech.
 
-**Pro vzdálené experimenty** musí být školicí data dostupná ze vzdáleného výpočetního prostředí. AutoML při práci ve vzdáleném výpočetním prostředí přijímá pouze [tabulkové datové sady Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py). 
+**Pro vzdálené experimenty** musí být školicí data dostupná ze vzdáleného výpočetního prostředí. AutoML při práci ve vzdáleném výpočetním prostředí přijímá pouze [tabulkové datové sady Azure Machine Learning](/python/api/azureml-core/azureml.data.tabulardataset). 
 
 Datové sady Azure Machine Learning zveřejňují funkce umožňující:
 
@@ -257,7 +257,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Popis |
+|Konfigurace Featurization | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|

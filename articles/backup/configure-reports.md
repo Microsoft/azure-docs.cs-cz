@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710613"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509355"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -22,8 +22,8 @@ Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-- Sestavy zálohování se podporují pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) a System Center Data Protection Manager (DPM). Pro zálohování sdílené složky Azure se zobrazí data pro všechny záznamy vytvořené od 1. června 2020.
-- V případě zálohování sdílených složek Azure se v sestavách aktuálně nezobrazuje data v chráněných instancích (pro všechny zálohované položky je výchozí hodnota nulová).
+- Sestavy zálohování se podporují pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) a System Center Data Protection Manager (DPM). Pro zálohování sdílené složky Azure se zobrazí data pro záznamy vytvořené od 1. června 2020.
+- V případě zálohování sdílené složky Azure se data v chráněných instancích zobrazí pro záznamy vytvořené po 1. únoru 2021 (výchozí hodnota je u starších záznamů nulová).
 - Pro úlohy DPM jsou sestavy zálohování podporované pro DPM verze 5.1.363.0 a novější a verze agenta 2.0.9127.0 a vyšší.
 - Pro úlohy MABS jsou sestavy zálohování podporované pro MABS verze 13.0.415.0 a vyšší a verze agenta 2.0.9170.0 a vyšší.
 - Sestavy zálohování můžete zobrazit ve všech zálohovaných položkách, trezorech, předplatných a oblastech, pokud jsou data odesílána do Log Analyticsho pracovního prostoru, ke kterému má uživatel přístup. Chcete-li zobrazit sestavy pro sadu trezorů, stačí mít přístup čtenář k pracovnímu prostoru Log Analytics, do kterého trezory odesílají svá data. Nemusíte mít přístup k jednotlivým trezorům.
@@ -142,17 +142,31 @@ Filtr **typu správy zálohování** v horní části karty by měl mít položk
 
 ###### <a name="policy-adherence"></a>Dodržování zásad
 
-Pomocí této karty můžete zjistit, jestli všechny instance služby Backup mají každý den alespoň jednu úspěšnou zálohu. Můžete zobrazit dodržování zásad podle časového období nebo podle instance zálohování.
+Pomocí této karty můžete zjistit, jestli všechny instance služby Backup mají každý den alespoň jednu úspěšnou zálohu. U položek s týdenními zásadami zálohování můžete pomocí této karty zjistit, jestli všechny instance služby Backup mají alespoň jednu úspěšnou zálohu v týdnu.
+
+K dispozici jsou dva typy zobrazení pro dodržování zásad:
+
+* **Dodržování zásad podle časového období**: pomocí tohoto zobrazení můžete určit, kolik položek má mít alespoň jednu úspěšnou zálohu v daném dni a kolika se v daném dnu ještě neúspěšně zálohovaná. Kliknutím na řádek můžete zobrazit podrobnosti o všech úlohách zálohování, které byly aktivovány ve vybraném dni. Všimněte si, že pokud nastavíte časový rozsah na větší hodnotu, například v posledních 60 dnech, mřížka se vykreslí v týdenním zobrazení a zobrazí se počet všech položek, u kterých došlo k nejméně jednomu úspěšnému zálohování každý den v daném týdnu. Podobně existuje měsíční zobrazení pro větší časové rozsahy.
+
+V případě položek, které jsou zálohovány týdně, Tato mřížka vám pomůže identifikovat všechny položky, které v daném týdnu obsahovaly alespoň jednu úspěšnou zálohu. V případě většího časového rozsahu, jako je například posledních 120 dní, se mřížka vykreslí v měsíčním zobrazení a v daném měsíci se zobrazí počet všech položek, které mají alespoň jednu úspěšnou zálohu. [Zásady používané v sestavách zálohování](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) vám pomají více podrobností o každodenních, týdenních a měsíčních zobrazeních.
+
+![Dodržování zásad podle časového období](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+
+* **Dodržování zásad podle instance zálohy**: v tomto zobrazení můžete podrobnosti o dodržování zásad na úrovni instance zálohy. Buňka, která má zelenou poznámku, že v daném dni měla instance zálohování alespoň jednu úspěšnou zálohu. Buňka, která je červená, označuje, že instance zálohování neobsahovala v daném dni ještě jednu úspěšnou zálohu. Agregace denně, týdně a měsíčně následují stejné chování jako v zobrazení zásady pro dodržování zásad podle časových období. Kliknutím na libovolný řádek můžete zobrazit všechny úlohy zálohování v dané instanci zálohování ve vybraném časovém rozsahu.
+
+![Dodržování zásad podle instance zálohování](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>Sestavy Azure Backup e-mailu
 
 Pomocí funkce **Sestava e-mailu** dostupné v sestavách Backup můžete vytvářet automatizované úlohy pro příjem pravidelných sestav prostřednictvím e-mailu. Tato funkce funguje tak, že se v prostředí Azure nasadí aplikace logiky, která se dotazuje na data z vybraných pracovních prostorů Log Analytics (LA) na základě zadaných vstupů.
 
-Jakmile se vytvoří aplikace logiky, budete muset autorizovat připojení k protokolům Azure Monitor a Office 365. Provedete to tak, že v Azure Portal přejdete na **Logic Apps** a vyhledáte název úlohy, kterou jste vytvořili. Výběrem položky nabídky **připojení rozhraní API** otevřete seznam připojení rozhraní API, která je potřeba autorizovat.
+Jakmile se vytvoří aplikace logiky, budete muset autorizovat připojení k protokolům Azure Monitor a Office 365. Provedete to tak, že v Azure Portal přejdete na **Logic Apps** a vyhledáte název úlohy, kterou jste vytvořili. Výběrem položky nabídky **připojení rozhraní API** otevřete seznam připojení rozhraní API, která je potřeba autorizovat. [Přečtěte si další informace o tom, jak nakonfigurovat e-maily a řešit problémy](backup-reports-email.md).
 
 ###### <a name="customize-azure-backup-reports"></a>Přizpůsobení sestav Azure Backup
 
-Sestavy zálohování využívají funkce v protokolech Azure Monitor. Tyto funkce pracují s daty v nezpracovaných Azure Backup tabulkách v LA a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů.
+Sestavy zálohování využívají [systémové funkce v protokolech Azure monitor](backup-reports-system-functions.md). Tyto funkce pracují s daty v nezpracovaných Azure Backup tabulkách v LA a vracejí formátovaná data, která vám pomůžou snadno načíst informace o všech entitách souvisejících s zálohováním pomocí jednoduchých dotazů. 
+
+Chcete-li vytvořit vlastní sešity vytváření sestav pomocí sestav zálohování jako základu, můžete přejít k sestavám zálohování, kliknout na **Upravit** v horní části sestavy a zobrazit nebo upravit dotazy používané v sestavách. Další informace o tom, jak vytvářet vlastní sestavy, najdete v [dokumentaci k sešitům Azure](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
 
 ## <a name="export-to-excel"></a>Exportovat do aplikace Excel
 
@@ -175,6 +189,8 @@ Pokud používáte [Azure Lighthouse](../lighthouse/index.yml) s delegovaným p�
 - Tato sestava obsahuje podrobnosti o úlohách (kromě úloh protokolu), které se *aktivovaly* ve vybraném časovém rozsahu.
 - Hodnoty zobrazené pro **cloudové úložiště** a **chráněné instance** jsou na *konci* vybraného časového rozsahu.
 - Záložní položky zobrazené v sestavách jsou ty položky, které existují na *konci* vybraného časového rozsahu. Zálohované položky, které se odstranily uprostřed vybraného časového rozsahu, se nezobrazí. Stejné konvence platí i pro zásady zálohování.
+- Pokud vybraný časový rozsah zahrnuje období kratší než 30 dní, grafy se vykreslují v denním zobrazení, kde je každý den jeden datový bod. Pokud časový rozsah zahrnuje období delší než 30 dní a menší nebo rovno 90 dní, grafy se vykreslují v týdenním zobrazení. V případě větších časových rozsahů se grafy vykreslují v měsíčním zobrazení. Týdenní nebo měsíční agregace dat pomáhá zlepšit výkon dotazů a jednodušší čitelnosti dat v grafech.
+- Mřížka respektující zásady také sleduje podobnou logiku agregace, jak je popsáno výše. Existuje však několik menších rozdílů. Prvním rozdílem je to, že u položek s týdenními zásadami zálohování se nezobrazuje žádné denní zobrazení (k dispozici jsou jenom týdenní a měsíční zobrazení). V Gridech pro položky s týdenními zásadami zálohování se pak za měsíc považuje za dobu 4 týdne (28 dní) a ne 30 dnů, aby se vyloučily částečné týdny.
 
 ## <a name="query-load-times"></a>Doba načítání dotazů
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220945"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505048"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Sada Python SDK služby Azure Cosmos DB pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "98220945"
 | |  |
 |---|---|
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/azure-cosmos/)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Začínáme**|[Začínáme se sadou Python SDK](create-sql-api-python.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -221,7 +221,7 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 
 * Přidání podpory pro výchozí opakování při potížích s připojením
 
-### <a name="231"></a>2.3.1
+### <a name="231"></a>kládají
 
 * Aktualizovaná dokumentace, aby odkazovala Azure Cosmos DB místo Azure DocumentDB.
 

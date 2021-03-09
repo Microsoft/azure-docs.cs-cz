@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660280"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498825"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -82,7 +82,10 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
 
-V současné době neexistuje žádný způsob, jak změnit pole "od:" v e-mailu.
+V tuto chvíli nemůžete v e-mailu změnit pole od:.
+
+> [!TIP]
+> Pomocí Azure AD B2C [vlastní zásady](custom-policy-overview.md)můžete přizpůsobit e-mailové Azure AD B2C odeslat uživatelům, včetně pole od: e-mailu. Vlastní ověřování e-mailu vyžaduje použití poskytovatele e-mailu jiného výrobce, jako je [Mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md)nebo [SparkPost](https://sparkpost.com).
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak můžu migrovat existující uživatelská jména, hesla a profily z databáze do Azure AD B2C?
 

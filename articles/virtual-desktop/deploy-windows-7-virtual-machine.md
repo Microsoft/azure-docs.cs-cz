@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d245b780acee59afbc6cb8bde6c916bfd1046e3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007569"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508550"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
@@ -46,7 +46,7 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
      shutdown /r /t 0
      ```
 
-12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) .
+12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo) .
 
       - Pokud místo toho chcete Azure Portal použít, můžete také přejít na stránku Přehled fondu hostitelů, do kterého chcete virtuální počítač přidat, a vytvořit token.
 

@@ -223,7 +223,7 @@
 - name: Zdroje a prostředky
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST API – referenční informace
       href: /rest/api/desktopvirtualization/
     - name: Experience Estimator
