@@ -2,13 +2,13 @@
 title: CI/CD s Azure Pipelines a šablonami
 description: Popisuje, jak nakonfigurovat průběžnou integraci v Azure Pipelines pomocí šablon Azure Resource Manager. Ukazuje, jak použít skript prostředí PowerShell nebo zkopírovat soubory do pracovního umístění a nasadit z něj.
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594193"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561938"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM se službou Azure Pipelines
 
@@ -234,4 +234,5 @@ Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vra
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o používání šablon ARM s akcemi na GitHubu najdete v tématu [nasazení Azure Resource Manager šablon pomocí akcí GitHubu](deploy-github-actions.md).
+* Pokud chcete použít operaci citlivostní operace v kanálu, přečtěte si téma [test šablon ARM pomocí What-If v kanálu](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
+* Další informace o používání šablon ARM s akcemi na GitHubu najdete v tématu [nasazení Azure Resource Manager šablon pomocí akcí GitHubu](deploy-github-actions.md).

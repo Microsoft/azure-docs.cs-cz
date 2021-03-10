@@ -2,18 +2,18 @@
 title: Principy Cloud-init
 description: Hlubokou podrobně pro porozumění zřizování virtuálního počítače Azure pomocí Cloud-init.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86042067"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559439"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Začnete hlouběji do cloudu – init
 Pokud se chcete dozvědět víc o [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) nebo je vyřešit na hlubší úrovni, potřebujete pochopit, jak to funguje. Tento dokument popisuje důležité části a vysvětluje konkrétní informace o Azure.

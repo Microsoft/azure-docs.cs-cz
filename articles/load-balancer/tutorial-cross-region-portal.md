@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712503"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561394"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Kurz: vytvoření Azure Load Balancer mezi oblastmi pomocí Azure Portal
 
@@ -56,7 +56,7 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení mezi oblastm
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreateCRLBTutorial-RG** .|
-    | Název                   | Zadejte **myLoadBalancer-CR** .                                   |
+    | Name                   | Zadejte **myLoadBalancer-CR** .                                   |
     | Oblast         | Vyberte **(US) západní USA**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Ponechte výchozí hodnotu **Standard**. |
@@ -200,9 +200,6 @@ V tomto kurzu jste:
 * Bylo vytvořeno pravidlo vyrovnávání zatížení.
 * Otestování nástroje pro vyrovnávání zatížení.
 
-Další informace o nástroji pro vyrovnávání zatížení mezi oblastmi najdete v tématu [Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)](cross-region-overview.md).
-
-
-Přejděte k dalšímu článku, kde se dozvíte, jak:
+Další informace o nástroji pro vyrovnávání zatížení mezi oblastmi najdete v těchto tématech:
 > [!div class="nextstepaction"]
-> [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)](cross-region-overview.md)

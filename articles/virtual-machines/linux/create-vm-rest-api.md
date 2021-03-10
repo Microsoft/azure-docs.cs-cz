@@ -2,16 +2,17 @@
 title: Vytvoření virtuálního počítače se systémem Linux pomocí REST API
 description: Naučte se, jak vytvořit virtuální počítač se systémem Linux v Azure, který používá Managed Disks a ověřování SSH s Azure REST API.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737041"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554560"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
 
@@ -54,7 +55,7 @@ Obecné informace o práci s požadavky na REST API najdete v tématu [komponent
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-| Name                       | Požaduje se | Typ                                                                                | Popis  |
+| Name                       | Požaduje se | Typ                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
 | name                       |          | řetězec                                                                              | Název virtuálního počítače |
@@ -128,7 +129,7 @@ K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby.
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat virtuální počítač:
 
-| Název        | Typ                                                                              | Popis |
+| Název        | Typ                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |

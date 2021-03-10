@@ -1,20 +1,20 @@
 ---
-title: Vytvoření služby privátního propojení Azure pomocí Azure CLI
-description: Naučte se vytvořit službu privátního propojení Azure pomocí Azure CLI.
+title: Rychlý Start – vytvoření služby privátního propojení Azure pomocí Azure CLI
+description: V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení Azure pomocí Azure CLI.
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653666"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563026"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
+# <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure CLI
 
 Začněte vytvářet službu privátního propojení, která odkazuje na vaši službu.  Poskytněte soukromému odkazu přístup k vaší službě nebo prostředku nasazenému za službou Azure Standard Load Balancer.  Uživatelé vaší služby mají privátní přístup ze své virtuální sítě.
 

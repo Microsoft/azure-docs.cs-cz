@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649202"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557365"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Řízení účtů místních služeb
 
@@ -64,7 +64,7 @@ U uživatelských účtů používaných jako účty služeb použijte následuj
 
 *  **LogonWorkstations**: omezte oprávnění, kde se může účet služby přihlásit. Pokud se spustí místně na počítači a přistupuje pouze k prostředkům v tomto počítači, omezte jeho přihlášení na jiné místo.
 
-* [**Nelze změnit heslo**](/powershell/module/addsadministration/set-aduser?view=win10-ps): zabrání účtu služby změnit jeho vlastní heslo nastavením parametru na hodnotu false.
+* [**Nelze změnit heslo**](/powershell/module/addsadministration/set-aduser): zabrání účtu služby změnit jeho vlastní heslo nastavením parametru na hodnotu false.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Sestavení procesu správy životního cyklu
@@ -151,9 +151,9 @@ Posouzení rizik, jakmile se pořídí a zdokumentující, může mít dopad na:
 
 * [Vypršení platnosti účtu](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * U všech uživatelských účtů používaných jako účty služeb definujte reálné a přesné datum ukončení, které se má použít. Tuto možnost nastavte pomocí příznaku "platnost účtu". Další podrobnosti najdete v tématu[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
+   * U všech uživatelských účtů používaných jako účty služeb definujte reálné a přesné datum ukončení, které se má použít. Tuto možnost nastavte pomocí příznaku "platnost účtu". Další podrobnosti najdete v tématu[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration). 
 
-* Přihlášení k ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Přihlášení k ([LogonWorkstation](/powershell/module/addsadministration/set-aduser))
 
 * Požadavky [zásad hesel](../../active-directory-domain-services/password-policy.md)
 

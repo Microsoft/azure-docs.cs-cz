@@ -1,28 +1,28 @@
 ---
 title: Přehled pro Azure Logic Apps Preview
-description: Azure Logic Apps Preview je cloudové řešení pro vytváření automatizovaných stavových a bezstavových pracovních postupů, které integrují aplikace, data, služby a systémy s minimálním kódem pro scénáře na podnikové úrovni.
+description: Azure Logic Apps Preview je cloudové řešení pro vytváření automatizovaných pracovních postupů s jedním klienty, stavové a bezstavové pracovní postupy, které integrují aplikace, data, služby a systémy s minimálním kódem pro scénáře na podnikové úrovni.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/08/2021
+ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442736"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561853"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
 > [!IMPORTANT]
 > Tato funkce je ve verzi Public Preview, poskytuje se bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V Azure Logic Apps Preview můžete vytvářet řešení pro automatizaci a integraci napříč aplikacemi, daty, Cloud Services a systémy tím, že vytvoříte a spustíte aplikace logiky, které zahrnují [ *stavové* a *bezstavové* pracovní postupy](#stateful-stateless) pomocí nového typu prostředku **Aplikace logiky (Preview)** . Díky tomuto novému typu aplikace logiky můžete vytvořit několik pracovních postupů využívajících přepracované prostředí runtime Azure Logic Apps Preview, které poskytuje přenositelnost, lepší výkon a flexibilitu pro nasazení a spouštění v různých hostujících prostředích, nejen Azure, ale i kontejnery Docker.
+V Azure Logic Apps Preview můžete vytvářet řešení pro automatizaci a integraci napříč aplikacemi, daty, Cloud Services a systémy tím, že vytvoříte a spustíte aplikace logiky pro jednoho tenanta s novým typem prostředku **Aplikace logiky (Preview)** . Pomocí tohoto typu aplikace logiky pro jeden tenant může sestavovat několik [ *stavových* a *bezstavových* pracovních postupů](#stateful-stateless) , které využívají přepracované prostředí runtime Azure Logic Apps Preview, které poskytuje přenositelnost, lepší výkon a flexibilitu pro nasazení a spouštění v různých hostujících prostředích, včetně nejen Azure, ale také kontejnerů Docker.
 
-Jak je to možné? Přepracované modul runtime používá [model rozšíření Azure Functions](../azure-functions/functions-bindings-register.md) a je hostovaný jako rozšíření na Azure Functions runtime. Tato architektura znamená, že můžete spustit nový typ aplikace logiky kdekoli, kde Azure Functions běžet. Opětovně navržený modul runtime můžete hostovat téměř u všech síťových topologií a vybrat dostupnou výpočetní velikost pro zpracování potřebných úloh, které vyžadují vaše pracovní postupy. Další informace najdete v tématu [Úvod do Azure Functions](../azure-functions/functions-overview.md) a [Azure Functions triggery a vazby](../azure-functions/functions-triggers-bindings.md).
+Jak je to možné? Přepracované modul runtime používá [model rozšíření Azure Functions](../azure-functions/functions-bindings-register.md) a je hostovaný jako rozšíření na Azure Functions runtime. Tato architektura znamená, že můžete spustit typ aplikace logiky pro jeden tenant kdekoli, kde Azure Functions běžet. Opětovně navržený modul runtime můžete hostovat téměř u všech síťových topologií a vybrat dostupnou výpočetní velikost pro zpracování potřebných úloh, které vyžadují vaše pracovní postupy. Další informace najdete v tématu [Úvod do Azure Functions](../azure-functions/functions-overview.md) a [Azure Functions triggery a vazby](../azure-functions/functions-triggers-bindings.md).
 
-Můžete vytvořit prostředek **Aplikace logiky (Preview)** , a to buď [spuštěním v Azure Portal](create-stateful-stateless-workflows-azure-portal.md) nebo [vytvořením projektu v Visual Studio Code s rozšířením Azure Logic Apps (Preview)](create-stateful-stateless-workflows-visual-studio-code.md). V Visual Studio Code také můžete vytvářet *a místně spouštět* pracovní postupy ve svém vývojovém prostředí. Bez ohledu na to, jestli používáte portál nebo Visual Studio Code, můžete nasadit a spustit nový typ aplikace logiky ve stejných druzích hostujících prostředí.
+Můžete vytvořit prostředek **Aplikace logiky (Preview)** , a to buď [spuštěním v Azure Portal](create-stateful-stateless-workflows-azure-portal.md) nebo [vytvořením projektu v Visual Studio Code s rozšířením Azure Logic Apps (Preview)](create-stateful-stateless-workflows-visual-studio-code.md). V Visual Studio Code také můžete vytvářet *a místně spouštět* pracovní postupy ve svém vývojovém prostředí. Bez ohledu na to, jestli používáte portál nebo Visual Studio Code, můžete nasadit a spustit typ aplikace logiky pro jeden tenant ve stejném druhu hostitelských prostředí.
 
 Tento přehled obsahuje následující oblasti:
 
@@ -48,7 +48,7 @@ Další informace najdete v těchto tématech:
 
 ## <a name="how-does-azure-logic-apps-preview-differ"></a>Jak se liší Azure Logic Apps Preview?
 
-Modul runtime Azure Logic Apps Preview používá rozšíření [Azure Functions](../azure-functions/functions-overview.md) a je hostovaný jako rozšíření v modulu runtime Azure Functions. Tato architektura znamená, že můžete spustit nový typ aplikace logiky kdekoli, kde Azure Functions běžet. Modul runtime služby Azure Logic Apps Preview můžete hostovat na téměř libovolné síťové topologii, kterou potřebujete, a vybrat dostupnou výpočetní velikost pro zpracování potřebných úloh, které váš pracovní postup potřebuje. Další informace o rozšíření Azure Functions najdete v tématu věnovaném [sadě WebJobs SDK: vytváření vlastních vstupních a výstupních vazeb](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
+Modul runtime Azure Logic Apps Preview používá rozšíření [Azure Functions](../azure-functions/functions-overview.md) a je hostovaný jako rozšíření v modulu runtime Azure Functions. Tato architektura znamená, že můžete spustit typ aplikace logiky pro jeden tenant kdekoli, kde Azure Functions běžet. Modul runtime služby Azure Logic Apps Preview můžete hostovat na téměř libovolné síťové topologii, kterou potřebujete, a vybrat dostupnou výpočetní velikost pro zpracování potřebných úloh, které váš pracovní postup potřebuje. Další informace o rozšíření Azure Functions najdete v tématu věnovaném [sadě WebJobs SDK: vytváření vlastních vstupních a výstupních vazeb](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
 Díky tomuto novému přístupu se modul runtime Azure Logic Apps Preview a vaše pracovní postupy nacházejí v rámci aplikace, které můžete zabalit dohromady. Tato funkce umožňuje nasazení a spouštění pracovních postupů pouhým kopírováním artefaktů do hostitelského prostředí a spuštěním vaší aplikace. Tento přístup také poskytuje standardizované prostředí pro vytváření kanálů nasazení v rámci projektů pracovních postupů pro spouštění požadovaných testů a ověření před nasazením změn v produkčních prostředích. Další informace najdete v tématu [Azure Logic Apps spouštění odkudkoli a za běhu s hlubokým podrobně](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
 
@@ -56,16 +56,18 @@ Následující tabulka stručně shrnuje rozdíly ve způsobu, jakým pracovní 
 
 | Prostředí | Sdílení a spotřeba prostředků |
 |-------------|----------------------------------|
-| Azure Logic Apps (více tenantů) | Pracovní postupy *od zákazníků ve více klientech* sdílejí stejné zpracování (COMPUTE), úložiště, sítě a tak dále. |
-| Azure Logic Apps (Preview) | Pracovní postupy *ve stejné aplikaci logiky* sdílejí stejné zpracování (COMPUTE), úložiště, síť a tak dále. |
+| Azure Logic Apps (více tenantů) | Pracovní postupy *od zákazníků napříč více klienty* sdílejí stejné zpracování (výpočetní prostředky), úložiště, síť a tak dále. |
+| Azure Logic Apps (Preview, jeden tenant) | Pracovní postupy *ve stejné aplikaci logiky a jednom tenantovi* sdílejí stejné zpracování (výpočetní prostředky), úložiště, síť a tak dále. |
 | Prostředí integrační služby (není k dispozici ve verzi Preview) | Pracovní postupy ve *stejném prostředí* sdílejí stejné zpracování (COMPUTE), úložiště, síť a tak dále. |
 ||||
 
-Mezitím stále můžete v Azure Portal a v Visual Studio Code vytvořit původní typ aplikace logiky, a to pomocí původní přípony Azure Logic Apps. I když se vývojové prostředí liší mezi původními a novými typy aplikací logiky, může vaše předplatné Azure zahrnovat oba typy. Můžete zobrazit a přistupovat ke všem nasazeným Logic Apps v předplatném Azure, ale aplikace se uspořádají do jejich vlastních kategorií a oddílů.
+Stále můžete v Azure Portal a v Visual Studio Code vytvořit typ aplikace logiky pro více tenantů pomocí rozšíření Azure Logic Apps pro více tenantů. I když se vývojové prostředí liší od typů aplikací logiky víceklientské architektury a jednoho tenanta, může vaše předplatné Azure zahrnovat oba typy. Můžete zobrazit a přistupovat ke všem nasazeným Logic Apps v předplatném Azure, ale aplikace se uspořádají do vlastních kategorií a oddílů.
 
 <a name="stateful-stateless"></a>
 
 ## <a name="stateful-and-stateless-workflows"></a>Stavové a bezstavové pracovní postupy
+
+Pomocí typu aplikace logiky pro jeden tenant můžete vytvořit tyto typy pracovních postupů v rámci stejné aplikace logiky:
 
 * *Stavové*
 
@@ -149,9 +151,9 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 
   * [Azure Logic Apps spouštění možností kdekoli v síti pomocí Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* Znovu vygenerujte přístupové klíče pro spravovaná připojení používaná jednotlivými pracovními postupy v prostředku **Aplikace logiky (Preview)** . Pro tuto úlohu [použijte stejný postup jako u prostředku **Logic Apps** , ale na úrovni jednotlivých pracovních postupů](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nikoli na úrovni prostředků aplikace logiky.
+* Znovu vygenerujte přístupové klíče pro spravovaná připojení používaná jednotlivými pracovními postupy v prostředku **Aplikace logiky pro jednoho tenanta (Preview)** . Pro tuto úlohu [použijte stejný postup pro více tenantů **Logic Apps** prostředků, ale na úrovni jednotlivých pracovních postupů](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nikoli na úrovni prostředků aplikace logiky.
 
-* Pomocí stejných kroků jako v Návrháři bez náhledu přidejte do nového návrháře paralelní větve.
+* Pomocí stejných kroků jako v Návrháři s více klienty přidejte do návrháře s jedním klientem paralelní větve.
 
 Další informace najdete v tématu [Změna, omezené, nedostupné a nepodporované funkce](#limited-unavailable-unsupported) a [Stránka Logic Apps Public Preview známých problémů na GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
@@ -159,14 +161,14 @@ Další informace najdete v tématu [Změna, omezené, nedostupné a nepodporova
 
 ## <a name="pricing-model"></a>Cenový model
 
-Když vytvoříte nový typ aplikace logiky v Azure Portal nebo nasadíte z Visual Studio Code, musíte zvolit plán hostování, buď [App Service nebo Premium](../azure-functions/functions-scale.md), pro použití vaší aplikace logiky. Tento plán určuje cenový model, který se vztahuje na běh aplikace logiky. Pokud vyberete plán App Service, musíte také zvolit [cenovou úroveň](../app-service/overview-hosting-plans.md).
+Když vytvoříte typ aplikace logiky pro jeden tenant v Azure Portal nebo nasadíte z Visual Studio Code, musíte zvolit plán hostování, buď [App Service nebo Premium](../azure-functions/functions-scale.md), pro použití vaší aplikace logiky. Tento plán určuje cenový model, který se vztahuje na běh aplikace logiky. Pokud vyberete plán App Service, musíte také zvolit [cenovou úroveň](../app-service/overview-hosting-plans.md).
 
 *Stavové* pracovní postupy používají [externí úložiště](../azure-functions/storage-considerations.md#storage-account-requirements), takže [ceny Azure Storage](https://azure.microsoft.com/pricing/details/storage/) se vztahují na transakce úložiště, které provádí modul runtime Azure Logic Apps Preview. Například fronty se používají pro plánování, zatímco tabulky a objekty BLOB se používají k ukládání stavů pracovního postupu.
 
 > [!NOTE]
 > Během veřejné verze Preview se pro spuštění Logic Apps na App Service neúčtují *Další* poplatky nad vybraný plán.
 
-Další informace o cenových modelech, které se vztahují na tento nový typ prostředku, najdete v těchto tématech:
+Další informace o cenových modelech, které platí pro typ prostředku s jedním klientem, najdete v těchto tématech:
 
 * [Hostování a škálování Azure Functions](../azure-functions/functions-scale.md)
 * [Horizontální navýšení kapacity aplikace v Azure App Service](../app-service/manage-scale-up.md)
@@ -202,9 +204,9 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
       V Azure Portal můžete vybrat funkci triggeru HTTP, kde máte přístup vytvořením připojení prostřednictvím uživatelského prostředí. Pokud provedete kontrolu definice JSON akce funkce v zobrazení kódu nebo **workflow.jsv** souboru, akce odkazuje na funkci pomocí `connectionName` odkazu. Tato verze vyabstrakce informace o funkci jako připojení, které můžete najít v **connections.jsprojektu v** souboru, který je k dispozici po vytvoření připojení.
 
       > [!NOTE]
-      > V rámci verze Preview podporuje akce funkce pouze ověřování řetězce dotazu. Azure Logic Apps Preview Získá výchozí klíč z funkce při vytváření připojení, uloží tento klíč do nastavení aplikace a při volání funkce použije klíč k ověření.
+      > V rámci jednoho tenanta je akce funkce podporována pouze ověřováním řetězce dotazu. Azure Logic Apps Preview Získá výchozí klíč z funkce při vytváření připojení, uloží tento klíč do nastavení aplikace a při volání funkce použije klíč k ověření.
       >
-      > V případě původní verze platí, že pokud tento klíč obnovíte například prostřednictvím prostředí Azure Functions na portálu, akce Function již nebude fungovat z důvodu neplatného klíče. Chcete-li tento problém vyřešit, je nutné znovu vytvořit připojení k funkci, kterou chcete volat nebo aktualizovat nastavení aplikace pomocí nového klíče.
+      > Stejně jako u víceklientské verze, pokud tento klíč obnovíte například prostřednictvím prostředí Azure Functions na portálu, akce funkce už nebude fungovat z důvodu neplatného klíče. Chcete-li tento problém vyřešit, je nutné znovu vytvořit připojení k funkci, kterou chcete volat nebo aktualizovat nastavení aplikace pomocí nového klíče.
 
     * Vestavěná akce, [vložený kód jazyka JavaScript spouštěný kódem](logic-apps-add-run-inline-code.md) , je nyní **vložená operace kódu – spuštění vloženého JavaScriptu**.
 
@@ -222,7 +224,7 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
 
 * [Vlastní konektory](../connectors/apis-list.md#custom-apis-and-connectors) se v současné době ve verzi Preview nepodporují.
 
-* **Dostupnost plánu hostování**: ať už vytvoříte nový typ prostředku **Aplikace logiky (Preview)** v Azure Portal nebo nasadíte z Visual Studio Code, můžete v Azure použít jenom plán hostování Premium nebo App Service. Plány hostování spotřeby nejsou k dispozici a nejsou podporovány pro nasazení tohoto typu prostředku. Můžete nasadit z Visual Studio Code do kontejneru Docker, ale ne do [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+* **Dostupnost plánu hostování**: ať už vytváříte typ prostředku **Logic app aplikace (Preview)** v Azure Portal nebo nasazujete z Visual Studio Code, můžete v Azure použít jenom plán hostování Premium nebo App Service. Plány hostování spotřeby nejsou k dispozici a nejsou podporovány pro nasazení tohoto typu prostředku. Můžete nasadit z Visual Studio Code do kontejneru Docker, ale ne do [prostředí integračních služeb (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 * **Ladění zarážek v Visual Studio Code**: i když můžete přidat a používat zarážky v rámci **workflow.js** souboru pro pracovní postup, zarážky se podporují jenom pro akce v tuto chvíli, ne triggery. Další informace najdete v tématu [Vytvoření stavových a bezstavových pracovních postupů v Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
@@ -233,6 +235,17 @@ V Azure Logic Apps ve verzi Preview se tyto možnosti změnily nebo jsou aktuál
    * Chcete-li zobrazit historii spuštění, otevřete pracovní postup ve vaší aplikaci logiky. V nabídce pracovní postup vyberte v části **vývojář** možnost **monitor**.
 
    * Pokud chcete zkontrolovat historii triggerů, otevřete pracovní postup ve vaší aplikaci logiky. V nabídce pracovní postup vyberte v části **vývojář** možnost **aktivovat historie**.
+
+<a name="firewall-permissions"></a>
+
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Povolení provozu v striktních scénářích sítě a brány firewall
+
+Pokud má vaše prostředí přísné požadavky na síť nebo brány firewall, které omezují provoz, musíte v pracovních postupech aplikace logiky dovolit přístup pro všechna triggerová nebo akční připojení.
+
+Pokud chcete najít plně kvalifikované názvy domény (FQDN) pro tato připojení, přečtěte si příslušné části v těchto tématech:
+
+* [Oprávnění brány firewall pro aplikace logiky pro jednoho tenanta – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Oprávnění brány firewall pro aplikace logiky pro jednoho tenanta – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 

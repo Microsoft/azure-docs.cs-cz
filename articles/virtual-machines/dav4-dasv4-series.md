@@ -3,16 +3,16 @@ title: Řada Dav4 a Dasv4
 description: Specifikace pro virtuální počítače s Dav4 a Dasv4-Series.
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c78bcfe316f543cd6408c24a9ed140b60daad22d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d68e5b7406b2cfa32b06f4731180684bae0c4334
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558080"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554101"
 ---
 # <a name="dav4-and-dasv4-series"></a>Řada Dav4 a Dasv4
 

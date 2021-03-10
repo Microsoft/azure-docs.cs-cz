@@ -2,16 +2,16 @@
 title: Příkazy rozhraní příkazového řádku Azure
 description: Seznamte se s některými běžnými příkazy Azure CLI, které vám pomohou začít spravovat vaše virtuální počítače v režimu Azure Resource Manager.
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372242"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559626"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Běžné příkazy Azure CLI pro správu prostředků
 
@@ -23,14 +23,14 @@ Tento článek vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte 
 Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazového řádku najdete v online nápovědě k příkazům a možnostech zadáním `az <command> <subcommand> --help` .
 
 ### <a name="create-vms"></a>Vytvoření virtuálních počítačů
-| Úloha | Příkazy Azure CLI |
+| Úkol | Příkazy Azure CLI |
 | --- | --- |
 | Vytvoření skupiny prostředků | `az group create --name myResourceGroup --location eastus` |
 | Vytvoření virtuálního počítače s Linuxem | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
 | Vytvoření virtuálního počítače s Windows | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
 ### <a name="manage-vm-state"></a>Správa stavu virtuálního počítače
-| Úloha | Příkazy Azure CLI |
+| Úkol | Příkazy Azure CLI |
 | --- | --- |
 | Spuštění virtuálního počítače | `az vm start --resource-group myResourceGroup --name myVM` |
 | Zastavení virtuálního počítače | `az vm stop --resource-group myResourceGroup --name myVM` |
@@ -40,7 +40,7 @@ Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazov
 | Odstranění virtuálního počítače | `az vm delete --resource-group myResourceGroup --name myVM` |
 
 ### <a name="get-vm-info"></a>Získat informace o virtuálním počítači
-| Úloha | Příkazy Azure CLI |
+| Úkol | Příkazy Azure CLI |
 | --- | --- |
 | Výpis virtuálních počítačů | `az vm list` |
 | Získání informací o virtuálním počítači | `az vm show --resource-group myResourceGroup --name myVM` |
@@ -48,7 +48,7 @@ Podrobnější nápovědu ke konkrétním přepínačům a možnostem příkazov
 | Získání všech dostupných velikostí virtuálních počítačů | `az vm list-sizes --location eastus` |
 
 ## <a name="disks-and-images"></a>Disky a image
-| Úloha | Příkazy Azure CLI |
+| Úkol | Příkazy Azure CLI |
 | --- | --- |
 | Přidání datového disku k virtuálnímu počítači | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new` |
 | Odebrání datového disku z virtuálního počítače | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |

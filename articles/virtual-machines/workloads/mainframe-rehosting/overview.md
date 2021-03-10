@@ -1,7 +1,7 @@
 ---
 title: Opětovné hostování sálového počítače na virtuálních počítačích Azure
 description: Využijte virtuální počítače na Microsoft Azure a znovu hostovat své sálové úlohy, jako jsou systémy založené na IBM Z.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7ae20b484b4c22c19b856c237d85efe31dc01407
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220747"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553540"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 

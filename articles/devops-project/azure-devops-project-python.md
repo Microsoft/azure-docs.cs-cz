@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 99ca60f2610d34d194c50e92501c0126a7c80323
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588926"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566545"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro Python pomocí Azure DevOps Starter
 
 V tomto rychlém startu použijete zjednodušené prostředí Azure DevOps Starter k nastavení kanálu průběžné integrace (CI) a průběžného doručování (CD) pro vaši aplikaci v Pythonu v Azure Pipelines. K nastavení všeho, co potřebujete pro vývoj, nasazení a monitorování vaší aplikace, můžete použít Azure DevOps Starter. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Účet [Azure DevOps](https://azure.microsoft.com/services/devops/) a organizace.
@@ -87,7 +87,7 @@ V předchozím kroku DevOps Starter automaticky nakonfigurovali úplný kanál C
 
 1. Přejděte na pole **stav** a potom vyberte **tři tečky** (...). V nabídce se zobrazí několik možností, jako je například zařazení nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
 1. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení. Sestavení provádí různé úkoly, jako je načítání zdrojů z úložiště Git, obnovování závislostí a publikování výstupů pro nasazení.
 
@@ -129,4 +129,4 @@ Azure App Service a související prostředky můžete odstranit, i když je už
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)

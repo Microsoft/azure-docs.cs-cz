@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5712448c8c5248d3c84ce43f8a41c669355f1d43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979738"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565729"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
 
@@ -40,6 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="prerequisites"></a>Požadavky
 **Požadavek** | **Popis**
 --- | ---
+**Podpora Resource stěhovací** | [Zkontrolujte](common-questions.md) podporované oblasti a další časté otázky.
 **Oprávnění předplatného** | Ověřte, že máte přístup *vlastníka* k předplatnému obsahující prostředky, které chcete přesunout.<br/><br/> **Proč potřebuji přístup k vlastníkovi?** Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná. Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
 **Podpora virtuálních počítačů** |  Ověřte, že virtuální počítače, které chcete přesunout, jsou podporované.<br/><br/> - [Ověřte](support-matrix-move-region-azure-vm.md#windows-vm-support) podporované virtuální počítače s Windows.<br/><br/> - [Ověřte](support-matrix-move-region-azure-vm.md#linux-vm-support) podporované virtuální počítače se systémem Linux a verze jádra.<br/><br/> – Ověřte podporovaná nastavení [COMPUTE](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [úložiště](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)a [sítě](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) .
 **Cílové předplatné** | Aby bylo možné vytvořit prostředky, které přesouváte v cílové oblasti, musí předplatné v cílové oblasti mít dostatečnou kvótu. Pokud nemá kvótu, [požádejte o další omezení](../azure-resource-manager/management/azure-subscription-service-limits.md).
@@ -93,7 +94,7 @@ Vyberte prostředky, které chcete přesunout.
 > [!NOTE]
 > - Přidané prostředky jsou ve stavu *Příprava čeká na vyřízení* .
 > - Skupina prostředků pro virtuální počítače se přidá automaticky.
-> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 

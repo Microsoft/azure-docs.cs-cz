@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917796"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565815"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,6 +59,26 @@ Pokud jste vyřešili všechny identifikované blokující bloky migrace a pokra
 - Nové funkce, které používáte jako transparentní šifrování databáze (TDE) nebo skupiny automatického převzetí služeb při selhání, můžou mít vliv na využití CPU a vstupně-výstupních operací.
 
 Spravovaná instance SQL garantuje 99,99% dostupnost i v kritických scénářích, takže režijní náklady způsobené těmito funkcemi se nedají zakázat. Další informace najdete v části [hlavní příčiny, které můžou způsobit jiný výkon SQL Server a Azure SQL Managed instance](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/).
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (paměťově optimalizované tabulky)
+
+SQL Server poskytuje In-Memory OLTP schopnost, která umožňuje využití paměťově optimalizovaných tabulek, paměťově optimalizovaných typů tabulek a nativně kompilovaných modulů SQL ke spouštění úloh, které mají požadavky na zpracování s vysokou propustností a nízkou latencí. 
+
+> [!IMPORTANT]
+> In-Memory OLTP se podporuje jenom v Pro důležité obchodní informace úrovni ve spravované instanci Azure SQL (a není podporovaná na úrovni Pro obecné účely).
+
+Pokud máte v místních SQL Serverch paměťově optimalizované tabulky nebo paměťově optimalizované typy tabulek a chcete migrovat na spravovanou instanci Azure SQL, měli byste buď:
+
+- Vyberte úroveň Pro důležité obchodní informace pro vaši cílovou spravovanou instanci SQL Azure, která podporuje In-Memory OLTP, nebo
+- Pokud chcete migrovat na Pro obecné účely úroveň ve spravované instanci Azure SQL, odeberte paměťově optimalizované tabulky, paměťově optimalizované typy tabulek a nativně zkompilované moduly SQL, které komunikují s paměťově optimalizovanými objekty před migrací databází. K identifikaci všech objektů, které je třeba před migrací do Pro obecné účely úrovně, použít následující dotaz T-SQL:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
 
 ### <a name="create-a-performance-baseline"></a>Vytvoření standardních hodnot výkonu
 

@@ -2,22 +2,22 @@
 title: Kurz – konfigurace Kanárských nasazení pro Azure Linux Virtual Machines
 description: V tomto kurzu se naučíte nastavit kanál průběžného nasazování (CD). Tento kanál aktualizuje skupinu virtuálních počítačů Azure Linux pomocí strategie pro Kanárské nasazení.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963478"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552503"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie pro Kanárské nasazení pro Azure Linux Virtual Machines
 
@@ -48,7 +48,7 @@ Pomocí možnosti průběžné doručování můžete z Azure Portal nakonfiguro
 
 1. Skupina nasazení je logická sada cílových počítačů nasazení, které reprezentují fyzická prostředí. Příklady jsou dev, test, UAT a produkce. Můžete vytvořit novou skupinu pro nasazení nebo vybrat některou z existujících.
 1. Vyberte kanál sestavení, který publikuje balíček, který se má nasadit do virtuálního počítače. Publikovaný balíček by měl mít skript nasazení s názvem deploy.ps1 nebo deploy.sh ve složce deployscripts v kořenové složce balíčku. Kanál spustí tento skript nasazení.
-1. V **strategii nasazení**vyberte možnost **Kanárské**.
+1. V **strategii nasazení** vyberte možnost **Kanárské**.
 1. Přidejte značku "Kanárské" do virtuálních počítačů, které jsou součástí Kanárských nasazení. Přidejte značku "prod" do virtuálních počítačů, které jsou součástí nasazení provedených po úspěšném nasazení. Značky umožňují cílit jenom na virtuální počítače, které mají konkrétní roli.
 
    ![Panel nepřetržitého doručování se zvolenou hodnotou strategie nasazení](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)

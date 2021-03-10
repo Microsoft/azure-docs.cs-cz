@@ -1,26 +1,19 @@
 ---
-title: Rychlý Start – integrace účtu Azure Storage s Azure CDN
-description: Zjistěte, jak používat Azure Content Delivery Network (CDN) k doručování širokopásmového obsahu díky ukládání objektů blob ze služby Azure Storage do mezipaměti.
+title: 'Rychlý Start: integrace účtu Azure Storage s Azure CDN'
+description: V tomto rychlém startu se dozvíte, jak používat Azure Content Delivery Network (CDN) k doručování obsahu s vysokou šířkou pásma ukládáním objektů blob do mezipaměti z Azure Storage.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018609"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561921"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý Start: integrace účtu Azure Storage s Azure CDN
 
@@ -34,7 +27,7 @@ V tomto rychlém startu povolíte [Azure Content Delivery Network (CDN)](cdn-ove
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště poskytuje přístup ke službám Azure Storage. Účet úložiště představuje nejvyšší úroveň oboru názvů pro přístup k jednotlivým součástem služby Azure Storage: Azure Blob Storage, Azure Queue Storage a Azure Table Storage. Další informace najdete v tématu [Seznámení se službou Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
@@ -123,9 +116,6 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 3. Pokud chcete účet úložiště odstranit, vyberte ho na řídicím panelu a pak v horní nabídce vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
-
-> [!div class="nextstepaction"]
-> [Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md)
 
 > [!div class="nextstepaction"]
 > [Kurz: použití sítě CDN pro statický obsah serveru z webové aplikace](cdn-add-to-web-app.md)

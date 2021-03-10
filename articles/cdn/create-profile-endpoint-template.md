@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: vytvoření profilu a koncového bodu – Správce prostředků šablony'
 titleSuffix: Azure Content Delivery Network
-description: Naučte se vytvořit profil Content Delivery Network Azure a koncový bod a Správce prostředků šablonu.
+description: V tomto rychlém startu se dozvíte, jak vytvořit profil Content Delivery Network Azure a koncový bod a Správce prostředků šablonu.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695717"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560459"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rychlý Start: vytvoření profilu Azure CDN a šablony koncového bodu – ARM
 
@@ -107,7 +107,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -126,5 +126,5 @@ V tomto rychlém startu jste vytvořili:
 
 Další informace o Azure CDN a Azure Resource Manager najdete dál v článcích níže.
 
-* Přečtěte si [přehled Azure CDN](cdn-overview.md)
-* Další informace o [Azure Resource Manageru](../azure-resource-manager/management/overview.md)
+> [!div class="nextstepaction"]
+> [Kurz: použití CDN k poskytování statického obsahu z webové aplikace](cdn-add-to-web-app.md)

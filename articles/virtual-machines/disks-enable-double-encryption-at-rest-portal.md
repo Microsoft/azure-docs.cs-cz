@@ -5,15 +5,15 @@ author: roygara
 ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 3882aae0fb1ecf330917f886555208c3937dd9a5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b5f58b549fc9d879f6c2e5515c679d82c3ff44e4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358214"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560357"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>K povolení dvojitého šifrování v klidovém umístění pro Managed disks použijte Azure Portal.
 
@@ -21,7 +21,7 @@ Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro s
 
 ## <a name="getting-started"></a>Začínáme
 
-1. Přihlaste se k [portálu Azure Portal](https://aka.ms/diskencryptionupdates).
+1. Přihlaste se na [Azure Portal](https://aka.ms/diskencryptionupdates).
 
     > [!IMPORTANT]
     > Pro přístup k Azure Portal je nutné použít [poskytnutý odkaz](https://aka.ms/diskencryptionupdates) . Dvojité šifrování v klidovém umístění není aktuálně viditelné ve veřejném Azure Portal bez použití odkazu.

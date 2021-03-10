@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 09654ddafba6c60db0290a8c7ce08d4b1b168f6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 34b06d2b74c0e13e924ae14e85ccfde0c9847793
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504878"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554951"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Základní hodnoty zabezpečení Azure pro Azure DDoS Protection Standard
 
@@ -98,9 +98,9 @@ Kromě toho má Azure Active Directory (AD) předdefinované role, které se mus
 
 - [Pochopení oprávnění v Azure DDoS Protection](../../ddos-protection/manage-permissions.md)
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Monitorování služby Azure Security Center:** Ano
 

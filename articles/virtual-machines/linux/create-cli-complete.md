@@ -2,16 +2,17 @@
 title: Vytvoření prostředí Linux pomocí Azure CLI
 description: Vytvoření úložiště, virtuálního počítače se systémem Linux, virtuální sítě a podsítě, nástroje pro vyrovnávání zatížení, síťového rozhraní, veřejné IP adresy a skupiny zabezpečení sítě, a to vše od základů pomocí Azure CLI.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: e8c21df3b783241a3a4bfdbe28b28b2bceb89b4d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: ff86651d56abe090ca08c508a220362f9a011a3f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509111"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554696"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletního virtuálního počítače se systémem Linux pomocí Azure CLI
 Pokud chcete rychle vytvořit virtuální počítač v Azure, můžete použít jeden příkaz Azure CLI, který pomocí výchozích hodnot vytvoří všechny požadované podpůrné prostředky. Automaticky se vytvoří prostředky, jako je virtuální síť, veřejná IP adresa a pravidla skupiny zabezpečení sítě. Pro lepší kontrolu vašeho prostředí při použití v produkčním prostředí můžete tyto prostředky vytvořit předem a potom do nich přidat své virtuální počítače. Tento článek vás provede postupem, jak vytvořit virtuální počítač a každý z podpůrných prostředků od jednoho.

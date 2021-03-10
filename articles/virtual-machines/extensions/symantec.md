@@ -1,20 +1,19 @@
 ---
 title: Instalace Symantec Endpoint Protection na virtuální počítač s Windows v Azure
 description: Přečtěte si, jak nainstalovat a nakonfigurovat rozšíření Symantec Endpoint Protection Security na novém nebo existujícím virtuálním počítači Azure vytvořeném pomocí modelu nasazení Classic.
-author: roiyz
-tags: azure-service-management
-ms.service: virtual-machines-windows
-ms.subservice: extensions
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 03/31/2017
-ms.author: akjosh
-ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a25e9eb27111a450f787f4efb3e0d39456fc757
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967937"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559643"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -60,7 +59,7 @@ Ověření, zda bylo nainstalováno rozšíření zabezpečení Symantec a je ak
 2. Pro Windows Server 2008 R2 klikněte na **Start > Symantec Endpoint Protection**. Pro Windows Server 2012 nebo Windows Server 2012 R2 na obrazovce Start zadejte **Symantec** a pak klikněte na **Symantec Endpoint Protection**.
 3. Na kartě **stav** okna **stav-Symantec Endpoint Protection** použijte v případě potřeby aktualizace nebo restartovat.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem][Logon]
 
 [Rozšíření a funkce virtuálních počítačů Azure][Ext]

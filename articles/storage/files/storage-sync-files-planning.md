@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 171e858ef06228f2bf5ef5dea662de00143a0567
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 51814ba36eec7b1f7d8b95ce80210d93b4cbec3f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441937"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564216"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -206,7 +206,7 @@ Synchronizace souborů Azure nepodporuje odstranění duplicitních dat a vrstve
 - Pokud je odstranění duplicitních dat u svazku po povolení vrstvení cloudu povolené, bude úloha optimalizace prvotního odstranění duplicit optimalizovat soubory na svazku, které ještě nejsou vrstvené, a bude mít následující dopad na vrstvení cloudu:
     - Zásada volného místa bude pokračovat v souborech vrstev podle volného místa na svazku pomocí nástroje heatmapu.
     - Zásada data přeskočí vrstvení souborů, které mohly být jinak způsobilé pro vrstvení z důvodu úlohy optimalizace odstranění duplicitních dat při přístupu k souborům.
-- V případě probíhajících úloh optimalizace odstranění duplicit se vrstvení cloudu se zásadami data po nastavení [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps&preserve-view=true) odstranění duplicitních dat zpozdí, pokud soubor ještě není vrstvený. 
+- V případě probíhajících úloh optimalizace odstranění duplicit se vrstvení cloudu se zásadami data po nastavení [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume) odstranění duplicitních dat zpozdí, pokud soubor ještě není vrstvený. 
     - Příklad: Pokud je nastavení MinimumFileAgeDays sedm dní a zásady pro datové vrstvy cloudu jsou nastavené na 30 dní, zásada data bude mít soubory na úrovni po 37 dnech.
     - Poznámka: když je soubor vrstvený Synchronizace souborů Azure, úloha optimalizace odstranění duplicit soubor přeskočí.
 - Pokud je server se systémem Windows Server 2012 R2 s nainstalovaným agentem Synchronizace souborů Azure upgradován na Windows Server 2016 nebo Windows Server 2019, je nutné provést následující kroky, aby bylo možné podporovat odstranění duplicitních dat a vrstvení cloudu na stejném svazku:  

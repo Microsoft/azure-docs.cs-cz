@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736331"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563936"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Vytváření stavových a bezstavových pracovních postupů v Azure Portal s využitím Azure Logic Apps Preview
 
@@ -76,11 +76,11 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Předplatné** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro vaši aplikaci logiky. |
-   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Skupina prostředků Azure, kde vytvoříte aplikaci logiky a související prostředky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří skupinu prostředků s názvem `Fabrikam-Workflows-RG` . |
-   | **Název aplikace logiky** | Ano | <*Logic-App-Name*> | Název, který se má použít pro vaši aplikaci logiky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří aplikaci logiky s názvem `Fabrikam-Workflows` . <p><p>**Poznámka**: název vaší aplikace logiky automaticky získá příponu, `.azurewebsites.net` , protože prostředek **Aplikace logiky (Preview)** je napájený Azure Functions, který používá stejné zásady vytváření názvů aplikací. |
-   | **Publikovat** | Ano | <*nasazení – prostředí*> | Cíl nasazení pro vaši aplikaci logiky. Do Azure se dá nasadit tak, že vyberete **pracovní postup** nebo **kontejner Docker**. <p><p>V tomto příkladu se používá **pracovní postup**, který nasadí prostředek **Aplikace logiky (Preview)** do Azure Portal. <p><p>**Poznámka**: před výběrem **kontejneru Docker** se ujistěte, že jste vytvořili image kontejneru Docker. Tuto image můžete například vytvořit pomocí [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)nebo [instance kontejneru Azure](../container-instances/container-instances-overview.md). Tímto způsobem můžete po výběru **kontejneru Docker** [zadat kontejner, který chcete použít v nastavení aplikace logiky](#set-docker-container). |
-   | **Oblast** | Ano | <*Oblast Azure*> | Oblast Azure, která se má použít při vytváření skupiny prostředků a prostředků <p><p>Tento příklad používá **západní USA**. |
+   | **Předplatné** | Yes | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro vaši aplikaci logiky. |
+   | **Skupina prostředků** | Yes | <*Azure-Resource-Group-Name*> | Skupina prostředků Azure, kde vytvoříte aplikaci logiky a související prostředky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří skupinu prostředků s názvem `Fabrikam-Workflows-RG` . |
+   | **Název aplikace logiky** | Yes | <*Logic-App-Name*> | Název, který se má použít pro vaši aplikaci logiky. Název tohoto prostředku musí být v různých oblastech jedinečný a může obsahovat jenom písmena, číslice, spojovníky ( **-** ), podtržítka (**_**), kulaté závorky (**()**) a tečky (**.**). <p><p>Tento příklad vytvoří aplikaci logiky s názvem `Fabrikam-Workflows` . <p><p>**Poznámka**: název vaší aplikace logiky automaticky získá příponu, `.azurewebsites.net` , protože prostředek **Aplikace logiky (Preview)** je napájený Azure Functions, který používá stejné zásady vytváření názvů aplikací. |
+   | **Publikovat** | Yes | <*nasazení – prostředí*> | Cíl nasazení pro vaši aplikaci logiky. Do Azure se dá nasadit tak, že vyberete **pracovní postup** nebo **kontejner Docker**. <p><p>V tomto příkladu se používá **pracovní postup**, který nasadí prostředek **Aplikace logiky (Preview)** do Azure Portal. <p><p>**Poznámka**: před výběrem **kontejneru Docker** se ujistěte, že jste vytvořili image kontejneru Docker. Tuto image můžete například vytvořit pomocí [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)nebo [instance kontejneru Azure](../container-instances/container-instances-overview.md). Tímto způsobem můžete po výběru **kontejneru Docker** [zadat kontejner, který chcete použít v nastavení aplikace logiky](#set-docker-container). |
+   | **Oblast** | Yes | <*Oblast Azure*> | Oblast Azure, která se má použít při vytváření skupiny prostředků a prostředků <p><p>Tento příklad používá **západní USA**. |
    |||||
 
    Tady je příklad:
@@ -91,10 +91,10 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Azure
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Účet úložiště** | Ano | <*Azure-Storage-Account-Name*> | [Účet Azure Storage](../storage/common/storage-account-overview.md) , který se má použít pro transakce úložiště. Tento název prostředku musí být v různých oblastech jedinečný a musí mít 3-24 znaků a obsahovat jenom číslice a malá písmena. Vyberte buď existující účet, nebo vytvořte nový účet. <p><p>Tento příklad vytvoří účet úložiště s názvem `fabrikamstorageacct` . |
-   | **Typ plánu** | Ano | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je buď [**Functions Premium**](../azure-functions/functions-premium-plan.md) , nebo [ **plán služby App Service** (vyhrazená)](../azure-functions/dedicated-plan.md). Vaše volba má vliv na možnosti a cenové úrovně, které jsou později dostupné. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p>Například plán služby Functions úrovně Premium poskytuje přístup k funkcím sítě, jako je například připojení a integrace soukromě s virtuálními sítěmi Azure, podobně jako Azure Functions při vytváření a nasazování aplikací logiky. Další informace najdete v těchto tématech: <p><p>- [Možnosti Azure Functions sítě](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps spouštění možností kdekoli v síti pomocí Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
-   | **Plán Windows** | Ano | <*plán – název*> | Název plánu, který se má použít. Vyberte buď existující plán, nebo zadejte název nového plánu. <p><p>V tomto příkladu se používá název `Fabrikam-Service-Plan` . |
-   | **SKU a velikost** | Ano | <*cenová úroveň*> | [Cenová úroveň](../app-service/overview-hosting-plans.md) , která se má použít pro hostování aplikace logiky Vaše volby jsou ovlivněny typem plánu, který jste předtím zvolili. Pokud chcete změnit výchozí úroveň, vyberte **změnit velikost**. Na základě zatížení, které potřebujete, pak můžete vybrat jiné cenové úrovně. <p><p>V tomto příkladu se používá Volná **cenová úroveň F1** pro úlohy **vývoje a testování** . Další informace najdete v [podrobnostech o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/). |
+   | **Účet úložiště** | Yes | <*Azure-Storage-Account-Name*> | [Účet Azure Storage](../storage/common/storage-account-overview.md) , který se má použít pro transakce úložiště. Tento název prostředku musí být v různých oblastech jedinečný a musí mít 3-24 znaků a obsahovat jenom číslice a malá písmena. Vyberte buď existující účet, nebo vytvořte nový účet. <p><p>Tento příklad vytvoří účet úložiště s názvem `fabrikamstorageacct` . |
+   | **Typ plánu** | Yes | <*Azure – hostování – plán*> | [Plán hostování](../app-service/overview-hosting-plans.md) , který se má použít pro nasazení aplikace logiky, což je buď [**Functions Premium**](../azure-functions/functions-premium-plan.md) , nebo [ **plán služby App Service** (vyhrazená)](../azure-functions/dedicated-plan.md). Vaše volba má vliv na možnosti a cenové úrovně, které jsou později dostupné. <p><p>V tomto příkladu se používá **plán služby App Service**. <p><p>**Poznámka**: podobně jako u Azure Functions typ prostředku **Aplikace logiky (Preview)** vyžaduje plán hostování a cenovou úroveň. Plány spotřeby nejsou podporované ani nejsou dostupné pro tento typ prostředku. Další informace najdete v těchto tématech: <p><p>- [Azure Functions škálování a hostování](../azure-functions/functions-scale.md) <br>- [Podrobnosti o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/) <p><p>Například plán služby Functions úrovně Premium poskytuje přístup k funkcím sítě, jako je například připojení a integrace soukromě s virtuálními sítěmi Azure, podobně jako Azure Functions při vytváření a nasazování aplikací logiky. Další informace najdete v těchto tématech: <p><p>- [Možnosti Azure Functions sítě](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps spouštění možností kdekoli v síti pomocí Azure Logic Apps Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
+   | **Plán Windows** | Yes | <*plán – název*> | Název plánu, který se má použít. Vyberte buď existující plán, nebo zadejte název nového plánu. <p><p>V tomto příkladu se používá název `Fabrikam-Service-Plan` . |
+   | **SKU a velikost** | Yes | <*cenová úroveň*> | [Cenová úroveň](../app-service/overview-hosting-plans.md) , která se má použít pro hostování aplikace logiky Vaše volby jsou ovlivněny typem plánu, který jste předtím zvolili. Pokud chcete změnit výchozí úroveň, vyberte **změnit velikost**. Na základě zatížení, které potřebujete, pak můžete vybrat jiné cenové úrovně. <p><p>V tomto příkladu se používá Volná **cenová úroveň F1** pro úlohy **vývoje a testování** . Další informace najdete v [podrobnostech o cenách App Service](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
 
 1. Pokud vaše nastavení vytváření a nasazení podporují použití [Application Insights](../azure-monitor/app/app-insights-overview.md), můžete volitelně povolit diagnostické protokolování a trasování pro vaši aplikaci logiky.
@@ -226,9 +226,9 @@ Než budete moct přidat Trigger do prázdného pracovního postupu, ujistěte s
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Do** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
-   | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
-   | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
+   | **Do** | Yes | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Předmět** | Yes | `An email from your example workflow` | Předmět e-mailu |
+   | **Text** | Yes | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
 
    > [!NOTE]
@@ -236,7 +236,33 @@ Než budete moct přidat Trigger do prázdného pracovního postupu, ujistěte s
 
 1. Uložte svou práci. Na panelu nástrojů návrháře vyberte **Uložit**.
 
-V dalším kroku otestujete pracovní postup ručním spuštěním.
+1. Pokud má vaše prostředí striktní požadavky na síť nebo brány firewall, které omezují provoz, musíte nastavit oprávnění pro všechna připojení triggeru nebo akce, která existují ve vašem pracovním postupu. Vyhledání plně kvalifikovaného 
+
+   V opačném případě otestujte pracovní postup [ručním spuštěním](#trigger-workflow)rutiny.
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Vyhledat názvy domén pro přístup k bráně firewall
+
+Než nasadíte aplikaci logiky a spustíte pracovní postup v Azure Portal, pokud má vaše prostředí striktní požadavky na síť nebo brány firewall, které omezují provoz, musíte nastavit síť nebo bránu firewall pro jakékoli připojení triggeru nebo akce v pracovních postupech, které existují ve vaší aplikaci logiky.
+
+Plně kvalifikované názvy domén (FQDN) pro tato připojení zjistíte pomocí těchto kroků:
+
+1. V nabídce aplikace logiky v části **pracovní postupy** vyberte **připojení**. Na kartě **připojení rozhraní API** vyberte název prostředku připojení, například:
+
+   ![Snímek obrazovky, který zobrazuje nabídku aplikace Azure Portal a logiky se zvoleným názvem připojení a názvem prostředku "offic365".](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. Rozšiřte si prohlížeč dostatečně natolik, aby se zobrazilo **zobrazení JSON** v pravém horním rohu prohlížeče, vyberte **zobrazení JSON**.
+
+   ![Snímek obrazovky, který zobrazuje podokno připojení Azure Portal a rozhraní API s vybraným "zobrazením JSON".](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. Najděte, zkopírujte a uložte `connectionRuntimeUrl` hodnotu vlastnosti někam bezpečně, abyste mohli bránu firewall nastavit s těmito informacemi.
+
+   ![Snímek obrazovky, na které se zobrazuje vybraná hodnota vlastnosti "connectionRuntimeUrl".](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. Pro každé připojení opakujte příslušné kroky.
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>Aktivovat pracovní postup
 
@@ -304,7 +330,7 @@ U stavového pracovního postupu můžete po každém spuštění pracovního po
    > [!TIP]
    > Pokud se nezobrazuje poslední stav spuštění, na panelu nástrojů v podokně **monitorování** vyberte **aktualizovat**. Pro aktivační událost, která se přeskočila kvůli kritériím nesplnění nebo hledáním žádných dat, neproběhne žádné spuštění.
 
-   | Stav spuštění | Popis |
+   | Stav spuštění | Description |
    |------------|-------------|
    | **Bylo přerušeno** | Spuštění bylo zastaveno nebo nebylo dokončeno z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
    | **Stornován** | Běh se aktivoval a začal, ale přijal žádost o zrušení. |
@@ -323,7 +349,7 @@ U stavového pracovního postupu můžete po každém spuštění pracovního po
 
    Tady jsou možné stavy, které může každý krok pracovního postupu mít:
 
-   | Stav akce | Ikona | Popis |
+   | Stav akce | Ikona | Description |
    |---------------|------|-------------|
    | **Bylo přerušeno** | ![Ikona pro stav akce přerušeno][aborted-icon] | Akce se zastavila nebo nedokončila z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
    | **Stornován** | ![Ikona pro stav akce zrušeno][cancelled-icon] | Akce byla spuštěna, ale přijala žádost o zrušení. |

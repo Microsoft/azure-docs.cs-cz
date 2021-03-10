@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954273"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555631"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníci na komerčním webu Marketplace Analytics
 
@@ -142,28 +142,28 @@ Všimněte si, že:
 
 _**Tabulka 1: slovník datových podmínek**_
 
-| Název sloupce | Název atributu | Definice |
-| ------------ | ------------- | ------------- |
-| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. |
-| DateAcquired | Datum získání | První datum, kdy zákazník koupil jakoukoli nabídku, kterou jste publikovali. |
-| DateLost | Datum ztráty | Poslední datum, kdy zákazník zrušil poslední z předchozích zakoupených nabídek. |
-| Název zprostředkovatele | Název zprostředkovatele | Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP. |
-| E-mail poskytovatele | E-mail poskytovatele | E-mailová adresa poskytovatele zapojeného v relaci mezi společností Microsoft a zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP. |
-| FirstName | Křestní jméno zákazníka | Křestní jméno zadané zákazníkem. Název může být jiný než název uvedený v předplatném Azure zákazníka. |
-| LastName | Příjmení zákazníka | Příjmení zadané zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka. |
-| E-mail | E-mail zákazníka | E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka. |
-| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka. |
-| CustomerCity | Město zákazníka | Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka. |
-| Poštovní směrovací číslo zákazníka | Poštovní směrovací číslo zákazníka | Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka. |
-| CustomerCommunicationCulture | Jazyk zákaznické komunikace | Jazyk upřednostňovaný zákazníkem pro komunikaci. |
-| CustomerCountryRegion | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
-| AzureLicenseType | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako _kanál_. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
-| PromotionalCustomers | Je propagační kontaktní osoba v | Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace. |
-| CustomerState | Stav zákazníka | Stav pobytu poskytnutého zákazníkem Stav může být jiný než stav uvedený v předplatném Azure zákazníka. |
-| CommerceRootCustomer | Kořenový zákazník pro Commerce | Jedno ID fakturačního účtu může být přidruženo k několika zákaznickým ID.<br>Jedna kombinace ID fakturačního účtu a ID zákazníka může být přidružená k několika předplatným komerčního tržiště.<br>Kořenový zákazník pro obchodní oddělení označuje název zákazníka předplatného. |
-| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. |
-| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. |
-||||
+| Název sloupce v<br>uživatelské rozhraní | Název atributu | Definice | Název sloupce v programovém programu<br>přístup k sestavám |
+| ------------ | ------------- | ------------- | ------------- |
+| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. | MarketplaceSubscriptionId |
+| DateAcquired | Datum získání | První datum, kdy zákazník koupil jakoukoli nabídku, kterou jste publikovali. | DateAcquired |
+| DateLost | Datum ztráty | Poslední datum, kdy zákazník zrušil poslední z předchozích zakoupených nabídek. | DateLost |
+| Název poskytovatele | Název poskytovatele | Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP. | ProviderName |
+| E-mail poskytovatele | E-mail poskytovatele | E-mailová adresa poskytovatele zapojeného v relaci mezi společností Microsoft a zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP. | ProviderEmail |
+| FirstName | Křestní jméno zákazníka | Křestní jméno zadané zákazníkem. Název může být jiný než název uvedený v předplatném Azure zákazníka. | FirstName |
+| LastName | Příjmení zákazníka | Příjmení zadané zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka. | LastName |
+| E-mail | E-mail zákazníka | E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka. | E-mail |
+| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka. | Název CustomerCompany |
+| CustomerCity | Město zákazníka | Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka. | CustomerCity |
+| Poštovní směrovací číslo zákazníka | Poštovní směrovací číslo zákazníka | Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka. | CustomerPostal kód |
+| CustomerCommunicationCulture | Jazyk zákaznické komunikace | Jazyk upřednostňovaný zákazníkem pro komunikaci. | CustomerCommunicationCulture |
+| CustomerCountryRegion | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. | CustomerCountryRegion |
+| AzureLicenseType | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako _kanál_. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> | AzureLicenseType |
+| PromotionalCustomers | Je propagační kontaktní osoba v | Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace. | PromotionalCustomers |
+| CustomerState | Stav zákazníka | Stav pobytu poskytnutého zákazníkem Stav může být jiný než stav uvedený v předplatném Azure zákazníka. | CustomerState |
+| CommerceRootCustomer | Kořenový zákazník pro Commerce | Jedno ID fakturačního účtu může být přidruženo k několika zákaznickým ID.<br>Jedna kombinace ID fakturačního účtu a ID zákazníka může být přidružená k několika předplatným komerčního tržiště.<br>Kořenový zákazník pro obchodní oddělení označuje název zákazníka předplatného. | CommerceRootCustomer |
+| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. | CustomerId |
+| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. | BillingAccountId |
+|||||
 
 ### <a name="customers-page-filters"></a>Filtry stránky pro zákazníky
 

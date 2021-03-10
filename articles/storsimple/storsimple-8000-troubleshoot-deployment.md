@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f1bce5c0ecdab4a9c96c3f2cc0e9734247bdfd66
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808047"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566341"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s nasazením zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -69,7 +69,7 @@ V následujících tabulkách jsou uvedeny běžné chyby, se kterými se může
 * Zaregistrujte zařízení.
 
 ## <a name="errors-during-the-required-network-settings"></a>Chyby při požadovaném nastavení sítě
-| Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
+| No. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: Tento příkaz lze spustit pouze na aktivním řadiči. |V pasivním řadiči se provedla konfigurace. |Spusťte tento příkaz z aktivního řadiče. Další informace najdete v tématu [určení aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | 2 |Invoke-HcsSetupWizard: zařízení není připravené. |Nastaly problémy s připojením k síti u DATA 0. |Ověřte připojení fyzické sítě k datům 0. |
@@ -80,7 +80,7 @@ V následujících tabulkách jsou uvedeny běžné chyby, se kterými se může
 | 7 |Invoke-HcsSetupWizard: z mapovače koncových bodů nejsou k dispozici žádné další koncové body. (Výjimka z HRESULT: 0x800706D9) |Funkce clusteru nefunguje. |Pro další kroky [kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) . |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Chyby při nastavení volitelného webového proxy serveru
-| Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
+| No. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard: neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát: http:// *\<IP address or FQDN of the web proxy server>* :*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard: Server RPC není k dispozici (výjimka z HRESULT: 0x800706ba). |Hlavní příčinou je jedna z následujících:<ol><li>Cluster není zapnutý.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadičem a příkaz se spustí z pasivního kontroleru.</li></ol> |V závislosti na hlavní příčině:<ol><li>[Kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) , abyste se ujistili, že cluster je v clusteru.</li><li>Spusťte příkaz z aktivního řadiče. Pokud chcete spustit příkaz z pasivního kontroleru, budete muset zajistit, aby pasivní řadič mohl komunikovat s aktivním řadičem. Pokud je toto připojení přerušeno, budete muset [kontaktovat podpora Microsoftu](storsimple-8000-contact-microsoft-support.md) .</li></ol> |
@@ -103,7 +103,7 @@ Pokud chcete získat další informace o hesle Správce zařízení, přejděte 
 
 Při nastavování správce zařízení a StorSimple hesla Snapshot Manager se může zobrazit jedna nebo více následujících chyb.
 
-| Ne. | Chybová zpráva | Doporučená akce |
+| No. | Chybová zpráva | Doporučená akce |
 | --- | --- | --- |
 | 1 |Heslo překračuje maximální délku. |Heslo správce zařízení musí mít délku 8 až 15 znaků. |
 | 2 |Heslo nesplňuje požadovanou délku. |Heslo správce zařízení musí mít délku 8 až 15 znaků.|
@@ -126,7 +126,7 @@ Heslo můžete v Azure Portal resetovat prostřednictvím služby Správce zař�
 ## <a name="errors-during-device-registration"></a>Chyby při registraci zařízení
 K registraci zařízení použijete službu StorSimple Správce zařízení spuštěnou v Microsoft Azure. Při registraci zařízení se můžete setkat s jedním nebo několika následujícími problémy.
 
-| Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
+| No. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
 | 1 |Chyba 350027: Nepodařilo se zaregistrovat zařízení s Správce zařízení StorSimple. | |Počkejte několik minut a potom operaci opakujte. Pokud se problém nevyřeší, obraťte se na [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md). |
 | 2 |Chyba 350013: při registraci zařízení došlo k chybě. Příčinou může být nesprávný registrační klíč služby. | |Zaregistrujte prosím zařízení znovu se správným registračním klíčem služby. Další informace najdete v tématu [získání registračního klíče služby.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
@@ -189,7 +189,7 @@ Když nakonfigurujete síťová rozhraní pro nasazení na první zařízení, s
    * Pokud je rozhraní v pořádku, ale není povoleno, zobrazí se stav **ifIndex** jako **NotPresent**.
    * Pokud rozhraní neexistuje, nezobrazí se v tomto seznamu. Uživatelské rozhraní služby StorSimple Správce zařízení bude toto rozhraní pořád zobrazovat ve stavu selhání.
 
-Další informace o tom, jak používat tuto rutinu, najdete v tématu rutiny [Get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) v tématu Reference k rutinám prostředí Windows PowerShell.
+Další informace o tom, jak používat tuto rutinu, najdete v tématu rutiny [Get-netadapter](/powershell/module/netadapter/get-netadapter) v tématu Reference k rutinám prostředí Windows PowerShell.
 
 V následujících částech jsou uvedeny ukázky výstupu z `Get-NetAdapter` rutiny.
 

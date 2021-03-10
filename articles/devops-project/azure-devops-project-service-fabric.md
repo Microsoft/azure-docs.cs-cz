@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078331c35c76a3cda97398b1a487933a3f0f5ab8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856020"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559303"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Kurz: nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí Azure DevOps Starter
 
@@ -25,7 +25,7 @@ DevOps Starter také:
 * Vytvoří a nakonfiguruje kanál verze ve službě Azure DevOps, který nastaví kanál CI/CD.
 * Vytvoří prostředek Azure Application Insights pro monitorování.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Pomocí DevOps Starter vytvořte aplikaci ASP.NET Core a nasaďte ji do Service Fabric
@@ -35,7 +35,7 @@ V tomto kurzu provedete následující:
 > * Potvrzení změn do Gitu a automatické nasazení do Azure
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -43,17 +43,17 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter taky v předplatném Azure vytvoří prostředky Azure, jako je Cluster Service Fabric.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
-1. Vyberte **.NET**a pak vyberte **Další**.
+1. Vyberte **.NET** a pak vyberte **Další**.
 
-1. V části **zvolte Aplikační architekturu**vyberte **ASP.NET Core**a pak vyberte **Další**.
+1. V části **zvolte Aplikační architekturu** vyberte **ASP.NET Core** a pak vyberte **Další**.
 
-1. Vyberte možnost **Cluster Service Fabric**a pak vyberte **Další**. 
+1. Vyberte možnost **Cluster Service Fabric** a pak vyberte **Další**. 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatného Azure
 
@@ -98,7 +98,7 @@ DevOps Starter automaticky nakonfiguruje kanál CI/CD v Azure Pipelines. Kanál 
 
 DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazení z vaší organizace Azure DevOps do svého předplatného Azure. Tyto kroky zahrnují konfiguraci připojení služby Azure pro ověřování Azure DevOps k vašemu předplatnému Azure. Automatizace také vytvoří kanál pro vydávání verzí, který poskytuje disk CD do Azure. Pokud se chcete dozvědět víc o kanálu vydávání, udělejte toto:
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**. DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**. DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
@@ -121,13 +121,13 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na web. Při každé změně úložiště Git se spustí sestavení a vydaná verze nasadí vaše změny do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Úložiště Git můžete například klonovat v oblíbených nástrojích nebo v integrovaném vývojovém prostředí (IDE) a pak doručovat změny do tohoto úložiště.
 
-1. V nabídce Azure DevOps vyberte **Code**  >  **soubory**kódu a pak přejděte do svého úložiště.
+1. V nabídce Azure DevOps vyberte   >  **soubory** kódu a pak přejděte do svého úložiště.
 
 1. V adresáři *Views\Home* vyberte tři tečky (...) vedle souboru *index. cshtml* a pak vyberte **Upravit**.
 
 1. Proveďte v souboru změny, jako je například přidání textu do jedné z značek DIV. 
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.  
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.  
     Po chvíli se spustí sestavení a následně se spustí vydání pro nasazení změn. Stav buildu můžete monitorovat na řídicím panelu Start DevOps nebo v prohlížeči pomocí protokolování Azure DevOps v reálném čase.
 
 1. Až se vydaná verze dokončí, aktualizujte svou aplikaci, aby se ověřily vaše změny.
@@ -158,4 +158,4 @@ Volitelně můžete kanál Azure CI/CD přizpůsobit potřebám svého týmu. Te
 Další informace o Service Fabric a mikroslužbách najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Použití přístupu založeného na mikroslužbách při vytváření aplikací](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Použití přístupu založeného na mikroslužbách při vytváření aplikací](/azure/devops/pipelines/release/define-multistage-release-process)
