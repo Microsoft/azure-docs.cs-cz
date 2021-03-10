@@ -4,16 +4,16 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 03/02/2021
 ms.author: crtreasu
-ms.openlocfilehash: 8b7ab183dfb7b6721beae7835acd75bc7a05e72c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d8dfc3d4b7a8447250481b98c1adadc865a29da1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044625"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532735"
 ---
 ### <a name="upload-your-model"></a>Nahrání modelu
 
-Pokud ještě nemáte model ukotvení objektu, postupujte podle pokynů v tématu [Vytvoření modelu](/object-anchors/quickstarts/get-started-model-conversion.md) a vytvořte ho. Pak se vraťte sem.
+Pokud ještě nemáte model ukotvení objektu, postupujte podle pokynů v tématu [Vytvoření modelu](/azure/object-anchors/quickstarts/get-started-model-conversion) a vytvořte ho. Pak se vraťte sem.
 
 Po připojení HoloLens k portálu zařízení se systémem Windows pomocí následujících kroků nahrajte model, který má aplikace používat:
 

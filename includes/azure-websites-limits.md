@@ -3,13 +3,13 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024353"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532614"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v1-V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,27 +24,27 @@ ms.locfileid: "98024353"
 | Šířka pásma |165 MB |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |Neomezeno, platí [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) |
 | Architektura aplikace |32bitová |32bitová |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |32bitový/64bitový (64 bitů) |
 | Webové sokety na instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
-| Připojení IP | 600 | 600 | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | 16 000 |
+| Odchozí IP připojení na instanci | 600 | 600 | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | Závisí na velikosti instance<sup>8</sup> | 16 000 |
 | Souběžná [připojení ladicího programu](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikaci |1 |1 |1 |5 |5 |5 |
 | App Service certifikátů na předplatné<sup>9</sup>| Nepodporováno | Nepodporováno |10 |10 |10 |10 |
 | Vlastní domény na aplikaci</a> |0 (pouze subdomény azurewebsites.net)|500 |500 |500 |500 |500 |
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-certificate.md) vlastní domény |Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Neomezené SNI SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení | Zahrnuté neomezené SNI SSL a 1 IP SSL připojení|
 | Hybridní připojení | | | 5 podle plánu | 25 na plán | 200 na aplikaci | 200 na aplikaci |
-| [Integrace virtuální sítě](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Integrace virtuální sítě](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  × |  ×  |  ×  |
 | [Soukromé koncové body](../articles/app-service/networking/private-endpoint.md) | | |   |   |  100 na aplikaci  |    |
-| Integrovaný nástroj pro vyrovnávání zatížení | |X |X |X |X |X<sup>10</sup> |
+| Integrovaný nástroj pro vyrovnávání zatížení | |× |× |× |× |X<sup>10</sup> |
 | [Omezení přístupu](../articles/app-service/networking-features.md#access-restrictions) | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci |
-| [Vždy zapnuto](../articles/app-service/configure-common.md) | | |X |X |X |X |
+| [Vždy zapnuto](../articles/app-service/configure-common.md) | | |× |× |× |× |
 | [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |
-| [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
-| Webové [úlohy](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
-| [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
+| [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |× |× |× |
+| Webové [úlohy](../articles/app-service/webjobs-create.md)<sup>11</sup> |× |× |× |× |× |× |
+| [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |× |× |× |× |
 | [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) na aplikaci| | | |5 |20 |20 |
-| [Testování v produkčním prostředí](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |X |X |X |
-| [Diagnostické protokoly](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
-| Kudu | X | X | X | X | X | X |
-| [Ověřování a autorizace](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
-| [App Service spravované certifikáty (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
+| [Testování v produkčním prostředí](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |× |× |× |
+| [Diagnostické protokoly](../articles/app-service/troubleshoot-diagnostic-logs.md) | × | × | × | × | × | × |
+| Kudu | × | × | × | × | × | × |
+| [Ověřování a autorizace](../articles/app-service/overview-authentication-authorization.md) | × | × | × | × | × | × |
+| [App Service spravované certifikáty (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | × | × | × | × |
 | SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup> Pokud není uvedeno jinak, jsou aplikace a kvóty úložiště podle App Serviceho plánu.  
