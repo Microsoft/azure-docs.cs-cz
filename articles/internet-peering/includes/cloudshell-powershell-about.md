@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 607cb824a50da3778ebe34f184abc0dc97c15961
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d125471d4a6c68aff12921a8524a91ef75b6c51a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025478"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532575"
 ---
 Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Vyberte **Kopírovat** a zkopírujte kód a vložte ho do Cloud Shell. Pak vyberte **ENTER** a spusťte ji. K dispozici je několik způsobů, jak spustit Cloud Shell:
 
@@ -29,4 +29,4 @@ Pokud nechcete používat Azure Cloud Shell, můžete místo toho nainstalovat P
 
 Verzi PowerShellu, kterou používáte místně, zjistíte pomocí rutiny **Get-Module-ListAvailable AZ** . Chcete-li provést aktualizaci, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/azurerm/overview).
 
-Pokud používáte prostředí PowerShell v macOS, postupujte podle kroků v části [instalace prostředí PowerShell v MacOS.](/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)
+Pokud používáte prostředí PowerShell v macOS, postupujte podle kroků v části [instalace prostředí PowerShell v MacOS.](/powershell/scripting/install/installing-powershell-core-on-macos)

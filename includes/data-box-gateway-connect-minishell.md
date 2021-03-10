@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c0ba6aee0e23dc0c68348c59c8ca8acdcd606435
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 03aed175b105ad650407acb4a839c5a5b8004465
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900840"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532606"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -58,11 +58,11 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta Windows.
 
 V klientovi se systémem Linux, který budete používat pro připojení:
 
-- [Nainstalujte nejnovější prostředí PowerShell Core pro Linux](/powershell/scripting/install/installing-powershell-core-on-linux?preserve-view=true&view=powershell-6) z GitHubu, abyste získali funkci Vzdálená komunikace SSH. 
+- [Nainstalujte nejnovější prostředí PowerShell Core pro Linux](/powershell/scripting/install/installing-powershell-core-on-linux) z GitHubu, abyste získali funkci Vzdálená komunikace SSH. 
 - [Nainstalujte jenom `gss-ntlmssp` balíček z modulu NTLM](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). U klientů Ubuntu použijte následující příkaz:
     - `sudo apt-get install gss-ntlmssp`
 
-Pokud potřebujete další informace, přečtěte si [v protokolu SSH Vzdálená komunikace PowerShellu](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?preserve-view=true&view=powershell-6).
+Pokud potřebujete další informace, přečtěte si [v protokolu SSH Vzdálená komunikace PowerShellu](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
 Pomocí těchto kroků se můžete vzdáleně připojit z klienta NFS.
 
