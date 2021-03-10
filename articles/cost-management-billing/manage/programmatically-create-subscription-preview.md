@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202990"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565712"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Programové vytváření předplatných Azure pomocí rozhraní API ve verzi Preview
 
@@ -190,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `Get-AzEnrollmentAccount`. |
 | `OwnerObjectId`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC při vytváření předplatného.  |
 | `OwnerSignInName`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `OwnerObjectId`.|
-| `OwnerApplicationId` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `OwnerObjectId`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `OwnerApplicationId` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `OwnerObjectId`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Úplný seznam všech parametrů najdete v tématu [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
 
@@ -211,7 +211,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `az billing enrollment-account list`. |
 | `owner-object-id`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC při vytváření předplatného.  |
 | `owner-upn`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `owner-object-id`.|
-| `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC při vytváření předplatného. Tento parametr můžete použít místo parametru `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Úplný seznam všech parametrů najdete u příkazu [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create).
 

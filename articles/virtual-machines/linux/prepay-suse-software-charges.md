@@ -4,16 +4,16 @@ description: Přečtěte si, jak můžete předem zaplatit softwarové plány a 
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602621"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549749"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Předplacení softwarových plánů Azure
 
@@ -32,7 +32,7 @@ V Azure Portal můžete koupit softwarové plány SUSE a RedHat. Postup při ná
 Vyplňte požadovaná pole. Slevový virtuální počítač se systémem SUSE nebo RedHat, který odpovídá atributům, co kupujete. Skutečný počet nasazení, která získají slevu, závisí na zvoleném rozsahu a množství.
 3. Vyberte předplatné. Používá se k platbě za plán.
 Platební metodou předplatného se účtují náklady na front-end pro rezervaci. Typ předplatného musí být smlouva Enterprise (počet nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo individuální smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P).
-    - U podnikového předplatného se poplatky odečtou od předplatného Azure v rámci předplatného (dříve nazývaného peněžního závazku), nebo se účtují jako nadlimitní využití.
+    - V případě předplatného se smlouvou Enterprise se poplatky strhávají ze zůstatku Azure Prepaymentu (dřív označovaný jako peněžní závazek) v rámci dané registrace nebo se účtují jako nadlimitní využití.
     - U jednotlivých předplatných s průběžnými platbami se poplatky účtují na platební kartu nebo platební metodu předplatného.
 4. Vyberte rozsah. Obor může zahrnovat jedno nebo víc předplatných (sdílený rozsah).
     - Jedno předplatné – sleva plánu se používá pro porovnání využití v rámci předplatného.

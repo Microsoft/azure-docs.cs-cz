@@ -1,17 +1,17 @@
 ---
 title: Podpora ověřování mimo proc pomocí Daemonset pomocníka Intel SGX pro uvozovky v Azure (Preview)
-description: DaemonSet pro generování uvozovek mimo proces aplikace SGX. V tomto článku se dozvíte, jak je k dispozici zařízení ověření mimo proc pro důvěrné úlohy běžící uvnitř kontejneru.
+description: DaemonSet pro generování uvozovek mimo proces aplikace SGX. Tento článek vysvětluje, jak se rovided zařízení pro ověřování mimo proc pro důvěrné úlohy běžící uvnitř kontejneru.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653325"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553251"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Správa softwaru platforem pomocí rutiny pomocníka SGX citace (Preview)
 

@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: Přibližná relokalizace
       href: concepts/coarse-reloc.md
+    - name: Kotva – najít strategii
+      href: concepts/anchor-locate-strategy.md
 - name: Odkazy
   items:
     - name: SDK pro Unity

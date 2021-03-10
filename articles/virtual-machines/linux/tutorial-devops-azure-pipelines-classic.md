@@ -5,19 +5,20 @@ author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dd47250989be5c31d5f0ade2b602b9d6af535d83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978301"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563995"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie kumulativního nasazení pro virtuální počítače Azure Linux
 
@@ -52,7 +53,7 @@ Pomocí možnosti průběžné doručování můžete ve Azure Portal nakonfigur
 
 1. Skupina nasazení je logická sada cílových počítačů nasazení, které reprezentují fyzická prostředí. Příklady jsou dev, test, UAT a produkce. Můžete vytvořit novou skupinu pro nasazení nebo vybrat některou z existujících.
 1. Vyberte kanál sestavení, který publikuje balíček, který se má nasadit do virtuálního počítače. Publikovaný balíček by měl mít skript nasazení s názvem deploy.ps1 nebo deploy.sh ve složce deployscripts v kořenové složce balíčku. Kanál spustí tento skript nasazení.
-1. V **strategii nasazení**vyberte možnost **válcování**.
+1. V **strategii nasazení** vyberte možnost **válcování**.
 1. Volitelně můžete označit každý počítač jeho rolí. Příklady jsou značky "Web" a "DB". Tyto značky vám pomůžou cílit jenom na virtuální počítače, které mají konkrétní roli.
 1. Vyberte **OK** a nakonfigurujte kanál průběžného doručování.
 1. Po dokončení konfigurace máte k dispozici kanál nepřetržitého doručování, který je nakonfigurován pro nasazení na virtuální počítač.  

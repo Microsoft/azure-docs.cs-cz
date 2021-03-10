@@ -2,18 +2,19 @@
 title: Kurz – nastavení zotavení po havárii pro virtuální počítače s Windows pomocí Azure Site Recovery
 description: Naučte se, jak povolit zotavení po havárii pro virtuální počítače s Windows do jiné oblasti Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53cc0b820bd2ffb9fc28b37f44bb71a7b9d3cd30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e9f44ea2af832729a47bf4b719b90f9b14e401b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380363"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555852"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>Kurz: povolení zotavení po havárii pro virtuální počítače s Windows
 
@@ -152,7 +153,7 @@ Následujícím způsobem zakažte replikaci:
 
 Rozšíření Site Recovery nainstalované na virtuálním počítači během replikace se neodebere automaticky. Pokud zakážete replikaci pro virtuální počítač a nechcete ho znovu replikovat později, můžete rozšíření Site Recovery odebrat ručně následujícím způsobem: 
 
-1. Přejít na rozšíření **Nastavení** virtuálního počítače >  >  **Extensions**.
+1. Přejít na rozšíření **Nastavení** virtuálního počítače >  >  .
 2. Na stránce **rozšíření** vyberte každou položku *Microsoft. Azure. RecoveryServices* pro Linux.
 3. Na stránce vlastnosti rozšíření vyberte možnost **odinstalovat**.
 

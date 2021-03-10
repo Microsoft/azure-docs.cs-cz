@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652309"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547828"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce klíčových frází vnímání znalostí
 
@@ -37,21 +37,22 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy | Popis |
+| Vstupy | Description |
 |---------------------|-------------|
 | `defaultLanguageCode` | Volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně.  Pokud není zadán výchozí kód jazyka, použije se jako výchozí kód jazyka angličtina (EN). <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)najdete v části. |
 | `maxKeyPhraseCount`   | Volitelné Maximální počet klíčových frází, které mají být vyprodukovány. |
+| `modelVersion`   | Volitelné Verze modelu, která se má použít při volání služby Analýza textu Ve výchozím nastavení bude k dispozici nejnovější dostupná, pokud není zadaný. Tuto hodnotu nedoporučujeme zadávat, pokud není nezbytně nutné. Další podrobnosti najdete v tématu [Správa verzí modelů v rozhraní API pro analýzu textu](../cognitive-services/text-analytics/concepts/model-versioning.md) . |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Vstup  | Popis |
+| Vstup  | Description |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
 | `languageCode`    |  Řetězec, který označuje jazyk záznamů. Pokud tento parametr nezadáte, použije se k analýze záznamů výchozí kód jazyka. <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Výstup     | Popis |
+| Výstup     | Description |
 |--------------------|-------------|
 | `keyPhrases` | Seznam klíčových frází extrahovaných ze vstupního textu. Klíčové fráze jsou vraceny v pořadí podle důležitosti. |
 
@@ -109,8 +110,8 @@ Ve výše uvedeném příkladu se výstup vaší dovednosti zapíše do nového 
 
 Jako vstup do jiných dovedností můžete použít "Document/myKeyPhrases", nebo jako zdroj [mapování polí výstupu](cognitive-search-output-field-mapping.md).
 
-## <a name="errors-and-warnings"></a>Chyby a upozornění
-Pokud zadáte nepodporovaný kód jazyka, je vygenerována chyba a nebudou extrahovány klíčové fráze.
+## <a name="warnings"></a>Upozornění
+Pokud zadáte nepodporovaný kód jazyka, bude vygenerováno upozornění a nebudou extrahovány klíčové fráze.
 Pokud je text prázdný, bude se vytvářet upozornění.
 Pokud je text větší než 50 000 znaků, analyzují se pouze prvních 50 000 znaků a bude vydáno upozornění.
 

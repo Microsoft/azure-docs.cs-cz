@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202344"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554866"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -81,13 +81,12 @@ Scénář bez propojení zatím nemá publikovaný Průvodce migrací. V této t
 | Zdroj | Cíl: </br>Hybridní nasazení | Cíl: </br>Pouze cloudové nasazení |
 |:---|:--|:--|
 | | Kombinace nástrojů:| Kombinace nástrojů: |
-| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)</li><li>[Synchronizace souborů Azure a Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Synchronizace souborů Azure a předem vysazených souborů v cloudu](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Synchronizace souborů Azure a služba migrace úložiště</li></ul> | <ul><li>Synchronizace souborů Azure</li><li>Synchronizace souborů Azure a Data Box</li><li>Synchronizace souborů Azure a služba migrace úložiště</li><li>RoboCopy</li></ul> |
-| Windows Server 2012 a starší | <ul><li>Synchronizace souborů Azure a Data Box</li><li>Synchronizace souborů Azure a služba migrace úložiště</li></ul> | <ul><li>Synchronizace souborů Azure a služba migrace úložiště</li><li>RoboCopy</li></ul> |
-| Úložiště připojené k síti (NAS) | <ul><li>[Synchronizace souborů Azure a Robocopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux nebo Samba | <ul><li>[Synchronizace souborů Azure a Robocopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Microsoft Azure StorSimple cloudové zařízení 8100 nebo StorSimple Cloud Appliance 8600 | <ul><li>[Synchronizace souborů Azure a StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Synchronizace souborů Azure](storage-files-migration-storsimple-1200.md)</li></ul> | |
-| | | |
+| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)</li><li>[Synchronizace souborů Azure a Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li><li>Prostřednictvím Synchronizace souborů Azure</li></ul> |
+| Windows Server 2012 a starší | <ul><li>Přes DataBox a Synchronizace souborů Azure na nejnovější serverový operační systém</li><li>Přes službu migrace úložiště na nejnovější Server s Synchronizace souborů Azure a pak nahrajte</li></ul> | <ul><li>Přes službu migrace úložiště na nejnovější Server s Synchronizace souborů Azure</li><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
+| Úložiště připojené k síti (NAS) | <ul><li>[Přes Synchronizace souborů Azure nahrát](storage-files-migration-nas-hybrid.md)</li><li>[Přes DataBox + Synchronizace souborů Azure](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
+| Linux/Samba | <ul><li>[Synchronizace souborů Azure a Robocopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Přes Robocopy do připojené sdílené složky Azure</li></ul> |
+| Microsoft Azure StorSimple cloudové zařízení 8100 nebo StorSimple Cloud Appliance 8600 | <ul><li>[Přes vyhrazenou cloudovou službu pro migraci dat](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Prostřednictvím Synchronizace souborů Azure](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Sada nástrojů pro migraci
 
@@ -120,9 +119,9 @@ Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhod
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Podporuje se. Sdílené složky Azure je možné připojit jako síťové jednotky. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Synchronizace souborů Azure | Nativně integrovaná do sdílených složek Azure. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Služba migrace úložiště | Nepřímo podporováno. Sdílené složky Azure je možné na cílových serverech SMS připojit jako síťové jednotky. | Plná přesnost. * |
-|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, verze 10,4 nebo novější| Podporuje se. | Plná přesnost. * |
-|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Podporuje se. | DataBox nyní plně podporuje metadata. [Data box lze také použít v kombinaci s synchronizace souborů Azure](storage-sync-offline-data-transfer.md). |
-|![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Průzkumník služby Azure Storage verze 1,14 | Podporuje se. | Nekopíruje seznamy ACL. Podporuje časová razítka.  |
+|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>verze 10,6 | Podporuje se. | Nepodporuje kopírování seznamu ACL zdrojového kořenu, jinak plná přesnost. * </br>[Naučte se používat AzCopy s Azure File shares](../common/storage-use-azcopy-files.md) |
+|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Podporuje se. | DataBox plně podporuje metadata. |
+|![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Průzkumník služby Azure Storage </br>verze 1,14 | Podporuje se. | Nekopíruje seznamy ACL. Podporuje časová razítka.  |
 |![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Podporuje se. | Nekopíruje metadata. |
 |||||
 
@@ -149,7 +148,7 @@ Testovaná verze nástroje je verze 4.4.1. Je kompatibilní se soubory na úrovn
 1. Vytvořte plán, pro který chcete nasadit sdílené složky Azure (jenom pro Cloud nebo hybridní).
 1. Projděte si seznam dostupných průvodců migrací, kde najdete podrobný průvodce, který odpovídá vašemu zdroji a nasazení sdílených složek Azure.
 
-Zde jsou další informace o technologiích souborů Azure, které jsou uvedené v tomto článku:
+Další informace o technologiích souborů Azure, které jsou uvedené v tomto článku:
 
 * [Přehled služby Azure File Share](storage-files-introduction.md)
 * [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

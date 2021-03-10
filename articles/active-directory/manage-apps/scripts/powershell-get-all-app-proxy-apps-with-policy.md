@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 94783a03d313155e31e22c08dbbef048aa029600
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 67a521886f5ff7e7e68f82c80004e0cf2649e652
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254015"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565627"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Získat všechny aplikace proxy aplikací pomocí zásad životnosti tokenů
 
@@ -28,7 +28,7 @@ Tento ukázkový skript PowerShellu obsahuje seznam všech aplikací proxy aplik
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu grafu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro verzi Preview modulu grafu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

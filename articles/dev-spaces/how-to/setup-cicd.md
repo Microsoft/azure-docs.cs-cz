@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 142f01a04066b919a81e1ad1ea95efa31f51f6ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017776"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548729"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -28,7 +28,7 @@ I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly
 ## <a name="prerequisites"></a>Požadavky
 * Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces
 * [Nainstalované rozhraní příkazového řádku Azure Dev Spaces](upgrade-tools.md)
-* [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Podrobnosti [účtu správce](../../container-registry/container-registry-authentication.md#admin-account) Azure Container Registry k dispozici
 * [Autorizace clusteru AKS pro vyžádání z Azure Container Registry](../../aks/cluster-container-registry-integration.md)
@@ -37,7 +37,7 @@ I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly
 V průběhu času vytvoříme větev našeho úložiště GitHub ukázkového kódu. Přejít na https://github.com/Azure/dev-spaces a vybrat **rozvětvení**. Po dokončení procesu rozvětvení **naklonujte** rozvětvenou verzi úložiště místně. Ve výchozím nastavení bude _Hlavní_ větev rezervována, ale zahrnuli jsme do větve _azds_updates_ nějaké změny času, které by se také měly přenést během rozvětvení. Větev _azds_updates_ obsahuje aktualizace, které požádáme o ruční provedení v oddílech kurzu pro vývoj prostorů a také některých předem připravených souborů YAML a JSON pro zjednodušení nasazení systému CI/CD. Pomocí příkazu, který se má `git checkout -b azds_updates origin/azds_updates` rezervovat _azds_updates_ větvi v místním úložišti, můžete použít příkaz.
 
 ## <a name="dev-spaces-setup"></a>Nastavení vývojových prostorů
-Pomocí příkazu vytvořte nové místo _dev_ s názvem dev `azds space select` . Místo pro _vývoj_ bude použit kanál CI/CD, aby bylo možné vložit změny kódu. Také se použije k vytvoření _podřízených prostorů_ na základě _vývoje_.
+Pomocí příkazu vytvořte nové místo  s názvem dev `azds space select` . Místo pro _vývoj_ bude použit kanál CI/CD, aby bylo možné vložit změny kódu. Také se použije k vytvoření _podřízených prostorů_ na základě _vývoje_.
 
 ```cmd
 azds space select -n dev
@@ -70,7 +70,7 @@ Možnost zakázání:
 > [!Note]
 > Funkce Preview _prostředí pro vytváření nových kanálů YAML_ v Azure DevOps je v konfliktu s vytvářením předem definovaných kanálů sestavení. Pokud chcete nasadit náš předem definovaný kanál sestavení, musíte ho teď zakázat.
 
-Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
+Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](/azure/devops/pipelines/yaml-schema?tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
 
 V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která vypadá přibližně takto: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 

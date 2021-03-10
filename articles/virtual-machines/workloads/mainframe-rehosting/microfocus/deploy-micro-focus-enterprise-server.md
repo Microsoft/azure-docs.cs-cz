@@ -1,7 +1,7 @@
 ---
 title: Nasaďte Micro Enterprise Server 5,0 na AKS | Microsoft Docs
 description: Přehostování úloh sálového počítače IBM z/OS pomocí vývojového a testovacího prostředí pro Azure na virtuálních počítačích Azure (virtuální počítače).
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e5b3857c2252a939080206fb1f92cc422f326fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042537"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564352"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Nasazení Micro Enterprise serveru 5,0 na AKS
 
@@ -39,11 +39,11 @@ K? Pusťme se do toho.
 
 ## <a name="create-the-azure-container-registry"></a>Vytvoření Azure Container Registry
 
-Z Azure Portal v levém horním rohu vyberte **vytvořit prostředek** . Z řídicího panelu Marketplace vyberte **kontejnery a** pak **Container Registry**. Tím přejdete do podokna **vytvořit registr kontejnerů** , ve kterém musíte vyplnit **název registru**, **předplatné Azure**, **skupinu prostředků**a **umístění**. **Název registru** musí být přeložen, takže musí být jedinečný. Vyberte **skupinu prostředků** , kterou jste použili v předchozím příspěvku blogu, a stejné odpovídající **umístění**. Pro **skladovou**položku vyberte **Povolit** pro **uživatele s oprávněními správce** a **Basic** . Jakmile máte všechno vyplněné, vyberte **vytvořit**.
+Z Azure Portal v levém horním rohu vyberte **vytvořit prostředek** . Z řídicího panelu Marketplace vyberte **kontejnery a** pak **Container Registry**. Tím přejdete do podokna **vytvořit registr kontejnerů** , ve kterém musíte vyplnit **název registru**, **předplatné Azure**, **skupinu prostředků** a **umístění**. **Název registru** musí být přeložen, takže musí být jedinečný. Vyberte **skupinu prostředků** , kterou jste použili v předchozím příspěvku blogu, a stejné odpovídající **umístění**. Pro **skladovou** položku vyberte **Povolit** pro **uživatele s oprávněními správce** a **Basic** . Jakmile máte všechno vyplněné, vyberte **vytvořit**.
 
 ![Vytvořit rozhraní registru kontejneru](media/deploy-image-1.png)
 
-Po nasazení registru vyberte **Přejít k prostředku**. Tím přejdete k hlavnímu oknu Azure Container Registry. Dobrým prvkem je rychlé zprovoznění možnost nabídky **Quick Start** . Vyberte ho a zobrazí se vám pokyny k tomu, co je potřeba udělat, aby se image načetly a načetly do registru. Pojďme na to, i když:
+Po nasazení registru vyberte **Přejít k prostředku**. Tím přejdete k hlavnímu oknu Azure Container Registry. Dobrým prvkem je rychlé zprovoznění možnost nabídky  . Vyberte ho a zobrazí se vám pokyny k tomu, co je potřeba udělat, aby se image načetly a načetly do registru. Pojďme na to, i když:
 
 1.  **Nainstalovat Docker** – nemusíte si dělat starosti, protože už je to hotové.
 
@@ -71,7 +71,7 @@ Po přihlášení otevřete příkazový řádek a spusťte následující pří
 
 -   **Image Docker** – zobrazí seznam všech nainstalovaných IMAGÍ na virtuálním počítači. Poznamenejte si **mikrofocus/ES-acctdemo** , protože se jedná o ten, se kterým budete pracovat.
 
--   **acrmf50.azurecr.IO přihlášení Docker** – správný formát tady je *Docker Login \<registry name\> *. Nahraďte libovolný název, který jste použili při vytváření registru.
+-   **acrmf50.azurecr.IO přihlášení Docker** – správný formát tady je *Docker Login \<registry name\>*. Nahraďte libovolný název, který jste použili při vytváření registru.
 
     -   Budete potřebovat **uživatelské jméno** a **heslo** , které jste zkopírovali z Azure Portal. Měli byste vidět aplikaci podobnou té na následujícím obrázku.
 
@@ -85,7 +85,7 @@ Po přihlášení otevřete příkazový řádek a spusťte následující pří
 
     ![Obrazovka příkazového řádku správce](media/deploy-image-4.png)
 
-Teď se vraťte do Azure Portal, konkrétně do **úložiště**. V nabídce pro **úložiště** **Vyberte úložiště a měli**byste vidět uvedené **ES-acctdemo** . Teď vytvořte cluster AKS.
+Teď se vraťte do Azure Portal, konkrétně do **úložiště**. V nabídce pro **úložiště** **Vyberte úložiště a měli** byste vidět uvedené **ES-acctdemo** . Teď vytvořte cluster AKS.
 
 ## <a name="create-the-azure-kubernetes-aks-cluster"></a>Vytvoření clusteru Azure Kubernetes (AKS)
 

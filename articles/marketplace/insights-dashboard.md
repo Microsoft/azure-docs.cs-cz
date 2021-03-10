@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458292"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553931"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Přehledy Marketplace v analýzách komerčního marketplace
 
@@ -103,6 +103,19 @@ Tato tabulka obsahuje seznam návštěv stránky a volání akcí pro vybrané s
 
 > [!TIP]
 > Pomocí ikony stáhnout v pravém horním rohu libovolného widgetu můžete data stáhnout. Svůj názor na každé widgety můžete poskytnout kliknutím na ikonu "palec nahoru" nebo "palec".
+
+| Název sloupce v<br>uživatelské rozhraní | Název atributu | Definice | Název sloupce v programovém programu<br>přístup k sestavám |
+| ------------ | ------------- | ------------- | ------------- |
+| Date (Datum) | Datum návštěvy | Datum návštěvy stránky nebo výzva kliknutí na generování události na stránce nabídky v Azure Marketplace a/nebo AppSource. | Date (Datum) |
+| Název nabídky | Název nabídky | Název nabídky komerčního tržiště. | OfferName |
+| Referenční doména | Referenční doména | Název domény odkazů, ze které se stránka navštíví Pokud pro návštěvě stránky nejsou zachyceny žádné referenční domény, pak je odpovídající položka "referenční doména není k dispozici". |  ReferralDomain |
+| Jméno země | Jméno země | Název země, ze které došlo k návštěvě stránky. | Country |
+| Návštěvy stránky | Návštěvy stránky | Počet návštěv stránky přidružených k názvu nabídky pro konkrétní datum. | PageVisits |
+| Získat hned | Získat hned | Počet kliknutí na stránku získat nyní výzva na stránce nabídky pro konkrétní datum. | GetItNow |
+| Kontaktujte mě | Kontaktujte mě | Počet kliknutí na kontaktní mne výzva na stránce nabídky pro konkrétní datum. | ContactMe |
+| Testovací verze | Testovací verze | Počet kliknutí na "testovací jednotku" výzva na stránce nabídky pro konkrétní datum. | TestDrive |
+| Bezplatná zkušební verze | Bezplatná zkušební verze | Počet kliknutí na výzva bezplatné zkušební verze na stránce nabídky pro konkrétní datum. | FreeTrial |
+|||||
 
 ## <a name="next-steps"></a>Další kroky
 

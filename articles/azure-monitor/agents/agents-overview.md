@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034434"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551466"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -152,10 +152,10 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 
 ### <a name="linux"></a>Linux
 
-| Operační systém | Agent Azure Monitoru | Agent Log Analytics | Agent závislostí | Rozšíření diagnostiky | 
+| Operační systém | Azure Monitor agenta <sup>1</sup> | Log Analytics agenta <sup>1</sup> | Agent závislostí | Diagnostické rozšíření <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017,09                                        |   | × |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | × | × | × |   |
+| CentOS Linux 8                                              | × <sup>3</sup> | × | × |   |
 | CentOS Linux 7                                              | × | × | × | × |
 | CentOS Linux 6                                              |   | × |   |   |
 | CentOS Linux 6.5 +                                           |   | × | × | × |
@@ -164,26 +164,28 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 | Debian 8                                                    |   | × | × |   |
 | Debian 7                                                    |   |   |   | × |
 | OpenSUSE 13.1 +                                              |   |   |   | × |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | × | × |   |   |
+| Oracle Linux 8                                              | × <sup>3</sup> | × |   |   |
 | Oracle Linux 7                                              | × | × |   | × |
 | Oracle Linux 6                                              |   | × |   |   |
 | Oracle Linux 6.4 +                                           |   | × |   | × |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | × | × | × |   |
+| Server Red Hat Enterprise Linux 8                           | × <sup>3</sup> | × | × |   |
 | Red Hat Enterprise Linux Server 7                           | × | × | × | × |
 | Red Hat Enterprise Linux Server 6                           |   | × | × |   |
 | Red Hat Enterprise Linux Server 6.7 +                        |   | × | × | × |
-| SUSE Linux Enterprise Server 15,2 <sup>1</sup> <sup>2</sup> | × |   |   |   |
-| SUSE Linux Enterprise Server 15,1 <sup>1</sup> <sup>2</sup> | × | × |   |   |
+| SUSE Linux Enterprise Server 15,2                           | × <sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15,1                           | × <sup>3</sup> | × |   |   |
 | SUSE Linux Enterprise Server 15                             | × | × | × |   |
 | SUSE Linux Enterprise Server 12                             | × | × | × | × |
-| Ubuntu 20,04 LTS <sup>1</sup>                               | × | × | × |   |
+| Ubuntu 20,04 LTS                                            | × | × | × |   |
 | Ubuntu 18.04 LTS                                            | × | × | × | × |
 | Ubuntu 16.04 LTS                                            | × | × | × | × |
 | Ubuntu 14,04 LTS                                            |   | × |   | × |
 
-<sup>1</sup> vyžaduje, aby byl na počítači nainstalován Python 3.
+<sup>1</sup> vyžaduje instalaci Pythonu (2 nebo 3) do počítače.
 
-<sup>2</sup> známý problém shromažďující události syslog. V tuto chvíli jsou podporovaná jenom data o výkonu.
+<sup>2</sup> vyžaduje, aby byl na počítači nainstalován Python 2.
+
+<sup>3</sup> známý problém shromažďující události syslog V tuto chvíli jsou podporovaná jenom data o výkonu.
 #### <a name="dependency-agent-linux-kernel-support"></a>Podpora jádra agenta závislostí v systému Linux
 
 Vzhledem k tomu, že agent závislostí funguje na úrovni jádra, je podpora také závislá na verzi jádra. V následující tabulce jsou uvedeny hlavní a dílčí verze operačního systému Linux a podporované verze jádra pro agenta závislostí.

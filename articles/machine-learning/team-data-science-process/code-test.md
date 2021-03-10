@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656831"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565865"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testování kódu pro datové vědy v Azure pomocí vědeckého procesu týmového zpracování dat a Azure DevOps Services
 Tento článek obsahuje předběžné pokyny pro testování kódu v pracovním postupu pro datové vědy. Toto testování dává pracovníkům dat systematický a efektivní způsob kontroly kvality a očekávaného výsledku jejich kódu. Používáme projekt vědeckého zpracování týmových dat (TDSP) [, který používá datovou sadu pro příjem dat z Ski dospělé](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve, a ukazuje, jak se dá provést testování kódu. 
@@ -124,7 +124,7 @@ Pomocí následujících kroků můžete nastavit a spustit testování kódu a 
 
     ![Seznam šablon a tlačítko "prázdný proces"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Pojmenujte sestavení a vyberte agenta. Můžete zvolit výchozí, pokud chcete použít DSVM k dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Pojmenujte sestavení a vyberte agenta. Můžete zvolit výchozí, pokud chcete použít DSVM k dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](/azure/devops/pipelines/agents/agents).
     
     ![Sestavení a výběr agentů](./media/code-test/select_agent.PNG)
 

@@ -3,19 +3,20 @@ title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – �
 description: Naučte se, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích Lsv2-Series pomocí příkladu pro Linux.
 services: virtual-machines-linux
 author: laurenhughes
-ms.service: virtual-machines-linux
-ms-subservice: sizes
+ms.service: virtual-machines
+ms-subservice: vm-sizes-storage
+ms.collection: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307097"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552758"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích s Lsv2-Series Linux
 

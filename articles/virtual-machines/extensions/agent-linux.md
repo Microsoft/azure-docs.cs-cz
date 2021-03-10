@@ -1,20 +1,19 @@
 ---
 title: Přehled agenta virtuálního počítače Azure Linux
 description: Naučte se instalovat a konfigurovat agenta pro Linux (waagent), abyste mohli spravovat interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure.
-author: axayjo
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: linux
 ms.date: 10/17/2016
-ms.author: akjosh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4a391e52f80ec171d48718a18764f0f88f34133
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e8851ddd5211536394614727d990a2b52d32bfcc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016484"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565373"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
@@ -85,9 +84,9 @@ Jiné podporované systémy:
 
 Agent pro Linux závisí na některých systémových balíčcích, aby fungoval správně:
 
-* Python 2.6 +
-* OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Python 2.6 nebo novější
+* OpenSSL 1.0 nebo novější
+* OpenSSH 5.3 nebo novější
 * Nástroje systému souborů: sfdisk, fdisk, mkfs, částečněd
 * Nástroje pro heslo: chpasswd, sudo
 * Nástroje pro zpracování textu: sed, grep

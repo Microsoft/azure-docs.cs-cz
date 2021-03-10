@@ -5,15 +5,15 @@ author: JBCook
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5ecd3827bbdc12b098684f1feda2df652f11940
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872328"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551908"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -32,7 +32,7 @@ Tady je několik způsobů, jak můžete nasadit virtuální počítač s DCsv2:
 
 **Budou všechny image operačních systémů fungovat s důvěrným výpočetním prostředím Azure?**
 
-Ne. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/generation-2.md) a [Windows](../virtual-machines/generation-2.md)
+No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/generation-2.md) a [Windows](../virtual-machines/generation-2.md)
 
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 
@@ -47,7 +47,7 @@ Ujistěte se, že jste vybrali oblast, která je [k dispozici](https://azure.mic
 
 **Můžu povolit akcelerované síťové služby s důvěrným výpočetním prostředím Azure?**
 
- Ne. Akcelerované síťové služby se na virtuálních počítačích DC-Series nebo DCsv2-Series nepodporují. Akcelerované síťové služby se nedají povolit pro jakékoli nasazení s důvěrnými výpočetními počítači nebo nasazení clusteru služby Azure Kubernetes spuštěné na důvěrné výpočetní platformě.
+ No. Akcelerované síťové služby se na virtuálních počítačích DC-Series nebo DCsv2-Series nepodporují. Akcelerované síťové služby se nedají povolit pro jakékoli nasazení s důvěrnými výpočetními počítači nebo nasazení clusteru služby Azure Kubernetes spuštěné na důvěrné výpočetní platformě.
 
 **Můžu s těmito počítači použít vyhrazeného hostitele Azure?**
 
@@ -63,7 +63,7 @@ DC-Series virtuální počítače běží na starších 6 procesorech Intel s In
 
 **Jsou virtuální počítače DCsv2 k dispozici globálně?**
 
-Ne. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+No. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
 
 **Je technologie Hyper-Threading na těchto počítačích VYPNUTá?**
 

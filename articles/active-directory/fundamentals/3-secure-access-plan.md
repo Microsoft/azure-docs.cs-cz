@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725207"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554016"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. vytvoření plánu zabezpečení pro externí přístup 
 
@@ -132,7 +132,7 @@ I když budou vaše zásady vysoce přizpůsobené vašim potřebám, vezměte v
 
    * Pokud používáte [připojené organizace](../governance/entitlement-management-organization.md) k seskupení všech uživatelů z jednoho partnera, naplánujte pravidelné recenze s vlastníkem firmy a zástupcem partnera.
 
-* **Microsoft 365 skupiny** Nastavte [Zásady vypršení platnosti skupiny](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) pro Microsoft 365 skupiny, na které se přizvaní externí uživatelé. 
+* **Microsoft 365 skupiny** Nastavte [Zásady vypršení platnosti skupiny](/microsoft-365/solutions/microsoft-365-groups-expiration-policy) pro Microsoft 365 skupiny, na které se přizvaní externí uživatelé. 
 
 * **Další možnosti**. Pokud mají externí uživatelé přístup mimo balíčky pro přístup nebo Microsoft 365 skupiny oprávnění pro správu, nastavte obchodní proces na kontrolu, kdy by se měly účty vystavovat jako neaktivní nebo odstraněné. Například:
 

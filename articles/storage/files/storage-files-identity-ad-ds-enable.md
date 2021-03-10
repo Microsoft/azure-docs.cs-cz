@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630392"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553217"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
@@ -41,7 +41,7 @@ Rutiny v modulu AzFilesHybrid PowerShellu provedou potřebné změny a funkce v�
 Zástupné hodnoty nahraďte vlastními v parametrech níže, než je spustíte v prostředí PowerShell.
 > [!IMPORTANT]
 > Rutina připojení k doméně vytvoří účet služby AD, který bude představovat účet úložiště (sdílená složka) ve službě AD. Můžete se rozhodnout, že se zaregistrujete jako účet počítače nebo přihlašovací účet služby. Podrobnosti najdete v [části Nejčastější dotazy](./storage-files-faq.md#security-authentication-and-access-control) . V případě účtů počítačů je ve službě AD po dobu 30 dnů nastavena výchozí doba platnosti hesla. Podobně platí, že přihlašovací účet služby může mít nastavené stáří vypršení platnosti hesla na doméně služby AD nebo organizační jednotce (OU).
-> U obou typů účtů doporučujeme, abyste zkontrolovali stáří vypršení platnosti hesla nakonfigurované v prostředí služby AD a naplánovali byste si [aktualizovat heslo účtu úložiště](storage-files-identity-ad-ds-update-password.md) účtu služby AD před maximálním stářím hesla. Můžete zvážit [Vytvoření nové organizační jednotky AD (OU) ve službě AD](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) a zakázat zásady pro vypršení platnosti hesla na účtech [počítačů](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) nebo účtů přihlášení služby odpovídajícím způsobem. 
+> U obou typů účtů doporučujeme, abyste zkontrolovali stáří vypršení platnosti hesla nakonfigurované v prostředí služby AD a naplánovali byste si [aktualizovat heslo účtu úložiště](storage-files-identity-ad-ds-update-password.md) účtu služby AD před maximálním stářím hesla. Můžete zvážit [Vytvoření nové organizační jednotky AD (OU) ve službě AD](/powershell/module/addsadministration/new-adorganizationalunit) a zakázat zásady pro vypršení platnosti hesla na účtech [počítačů](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) nebo účtů přihlášení služby odpovídajícím způsobem. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Pokud jste už dříve úspěšně spustili `Join-AzStorageAccountForAuth` skrip
 
 ### <a name="checking-environment"></a>Kontroluje se prostředí.
 
-Nejdřív je potřeba, abyste zkontrolovali stav svého prostředí. Konkrétně je nutné ověřit, zda je [Služba Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) nainstalována a zda je prostředí spuštěno s oprávněními správce. Pak zkontrolujte, jestli je nainstalovaný [modul Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0), a pokud ne, nainstalujte ho. Po dokončení těchto kontrol zkontrolujte služba AD DS a podívejte se, jestli je k dispozici buď [účet počítače](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](/windows/win32/ad/about-service-logon-accounts) , který už je vytvořený pomocí SPN nebo UPN, jako "CIFS/Your-Storage-Account-Name-tady. File. Core. Windows. NET". Pokud účet neexistuje, vytvořte ho tak, jak je popsáno v následující části.
+Nejdřív je potřeba, abyste zkontrolovali stav svého prostředí. Konkrétně je nutné ověřit, zda je [Služba Active Directory PowerShell](/powershell/module/addsadministration/) nainstalována a zda je prostředí spuštěno s oprávněními správce. Pak zkontrolujte, jestli je nainstalovaný [modul Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0), a pokud ne, nainstalujte ho. Po dokončení těchto kontrol zkontrolujte služba AD DS a podívejte se, jestli je k dispozici buď [účet počítače](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí), nebo [účet přihlášení služby](/windows/win32/ad/about-service-logon-accounts) , který už je vytvořený pomocí SPN nebo UPN, jako "CIFS/Your-Storage-Account-Name-tady. File. Core. Windows. NET". Pokud účet neexistuje, vytvořte ho tak, jak je popsáno v následující části.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Ruční vytvoření identity představující účet úložiště ve službě AD
 

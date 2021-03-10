@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174715"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564080"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -152,7 +152,7 @@ Předtím, než budete moci použít digitální certifikát vytvořený v před
 
     Na stránce **zabezpečení** vyberte možnost **heslo** pro ochranu *.* Soubor certifikátu PFX. Šifrovací algoritmus musí být *TripleDES-SHA1*. Zadejte a potvrďte heslo a pak vyberte **Další**. Toto heslo se používá v další části k povolení zabezpečeného protokolu LDAP pro spravovanou doménu.
 
-    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
+    Pokud exportujete pomocí [rutiny PowerShellu export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate), je potřeba předat příznak *-CryptoAlgorithmOption* pomocí TripleDES_SHA1.
 
     ![Snímek obrazovky s šifrováním hesla](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -245,7 +245,7 @@ Pojďme vytvořit pravidlo, které umožní příchozí zabezpečený přístup 
     | Protokol                          | TCP          |
     | Akce                            | Povolit        |
     | Priorita                          | 401          |
-    | Název                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Až budete připraveni, vyberte **Přidat** a uložte a použijte pravidlo.
 

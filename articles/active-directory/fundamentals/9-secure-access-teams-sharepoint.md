@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f373c849cd542769fec7a10f20dad04e742c9591
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565134"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Zabezpečení externího přístupu k Microsoft teams, SharePointu a OneDrivu pro firmy 
 
@@ -90,7 +90,7 @@ Další informace o správě externího přístupu v týmech najdete v následuj
 
 * [Správa externího přístupu v Microsoft Teams](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 modely identity a Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 modely identity a Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity)
 
 * [Modely identit a ověřování pro Microsoft Teams](/MicrosoftTeams/identify-models-authentication)
 

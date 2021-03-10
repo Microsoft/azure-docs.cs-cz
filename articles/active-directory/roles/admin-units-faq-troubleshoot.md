@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: c1f41dca3b52ce75ba2342506f621cca0618a3bf
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740376"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565882"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Jednotky pro správu Azure AD: řešení potíží a nejčastější dotazy
 
-Pro přesnější administrativní řízení v Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo víc jednotek pro správu. Ukázkové skripty PowerShellu pro běžné úlohy najdete v tématu [práce s jednotkami pro správu](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+Pro přesnější administrativní řízení v Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo víc jednotek pro správu. Ukázkové skripty PowerShellu pro běžné úlohy najdete v tématu [práce s jednotkami pro správu](/powershell/azure/active-directory/working-with-administrative-units).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -69,9 +69,9 @@ Jednotky pro správu, například organizační jednotky ve službě Windows Ser
 
 **Otázka: jsou jednotky pro správu podporované v PowerShellu a v Graph API?**
 
-**Odpověď:** Ano. Najdete podporu pro jednotky pro správu v [dokumentaci k rutinám prostředí PowerShell](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) a v [ukázkových skriptech](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
+**Odpověď:** Ano. Najdete podporu pro jednotky pro správu v [dokumentaci k rutinám prostředí PowerShell](/powershell/module/Azuread/) a v [ukázkových skriptech](/powershell/azure/active-directory/working-with-administrative-units).
 
-V Microsoft Graph najdete podporu pro [typ prostředku administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) .
+V Microsoft Graph najdete podporu pro [typ prostředku administrativeUnit](/graph/api/resources/administrativeunit) .
 
 ## <a name="next-steps"></a>Další kroky
 
