@@ -5,17 +5,17 @@ services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 ms.author: mimckitt
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488561"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550943"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
 Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../cost-management-billing/understand/review-individual-bill.md).
@@ -72,7 +72,7 @@ Název oblasti naplněný v poli umístění prostředku v podrobnostech o použ
 | CanadaCentral | Kanada – střed|
 | CanadaEast | Kanada – východ|
 | CentralIndia | Indie – střed|
-| centralus | Střední USA|
+| centralus | USA – střed|
 | chinaeast | Čína – východ|
 | chinanorth | Čína – sever|
 | eastasia | Východní Asie|

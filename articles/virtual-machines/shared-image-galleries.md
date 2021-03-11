@@ -3,18 +3,18 @@ title: Sdílení imagí virtuálních počítačů se sdílenými galeriemi
 description: Naučte se používat Galerie sdílených imagí ke sdílení imagí virtuálních počítačů se systémem Linux napříč vaší organizací.
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a5bc0620468980da68e1b92f758d5f3862ac7d3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 225aca8c4695db33e504a5857acb856f4e01d1f1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487249"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551058"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
@@ -150,8 +150,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | Ne                   | Ano          | Ano                  |
+| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
+| Definice image     | No                   | Yes          | Yes                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o službě Azure RBAC najdete v tématu [přiřazení rolí Azure](../role-based-access-control/role-assignments-portal.md).
 
@@ -170,12 +170,12 @@ Za používání služby Galerie sdílených imagí se neúčtují žádné dal�
 Po vytvoření můžete provést některé změny v prostředcích Galerie imagí. Jsou omezeny na:
  
 Galerie sdílených imagí:
-- Popis
+- Description
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Popis
+- Description
 - Datum konce životnosti
 
 Verze Image:

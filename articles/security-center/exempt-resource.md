@@ -3,16 +3,16 @@ title: Vyloučení doporučení Azure Security Center od prostředku, předplatn
 description: Naučte se vytvářet pravidla pro vyloučení doporučení zabezpečení z předplatných nebo skupin pro správu a zabránit jejich vlivu na vaše zabezpečené skóre.
 author: memildin
 ms.author: memildin
-ms.date: 01/22/2021
+ms.date: 03/10/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7a010b1014181ed325500fa501212579ef67d26
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709372"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617569"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Vyloučení prostředků a doporučení ze zabezpečeného skóre 
 
@@ -30,13 +30,14 @@ V takových případech můžete vytvořit výjimku pro doporučení pro:
 
 ## <a name="availability"></a>Dostupnost
 
-|Aspekt|Podrobnosti|
-|----|:----|
-|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Stanov|Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.|
-|Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
-|||
+| Aspekt                          | Podrobnosti                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Stav vydaných verzí:                  | Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
+| Stanov                        | Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se můžou v budoucnu uplatňovat poplatky.                                                                                                                                                                 |
+| Požadované role a oprávnění: | **Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
+| Omezení:                    | Výjimky je možné vytvořit jenom pro doporučení zahrnutá ve výchozí iniciativě Security Center, srovnávacích testech zabezpečení Azure. Doporučení, která jsou generována z vlastních iniciativ, nelze vyloučit. Přečtěte si další informace o vztazích mezi [zásadami, iniciativami a doporučeními](security-policy-concept.md). |
+| Cloud                         | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                                                                                                                                                         |
+|                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definovat výjimku
 
@@ -44,6 +45,9 @@ Chcete-li vyladit doporučení zabezpečení, která Security Center provádí p
 
 - Označte konkrétní **doporučení** nebo jako "zmírňované" nebo "přijatelné riziko". Můžete vytvořit výjimky doporučení pro předplatné, více předplatných nebo celou skupinu pro správu.
 - Označení **jednoho nebo více prostředků** jako "zmírňované" nebo "přijatelné riziko" pro konkrétní doporučení.
+
+> [!NOTE]
+> Výjimky je možné vytvořit jenom pro doporučení zahrnutá ve výchozí iniciativě Security Center, srovnávacích testech zabezpečení Azure. Doporučení, která jsou vygenerována ze všech vlastních iniciativ přiřazených k vašim předplatným, nelze vyloučit. Přečtěte si další informace o vztazích mezi [zásadami, iniciativami a doporučeními](security-policy-concept.md).
 
 > [!TIP]
 > Můžete také vytvořit výjimky pomocí rozhraní API. Příklad JSON a vysvětlení relevantních struktur naleznete v tématu [struktura Azure Policych výjimek](../governance/policy/concepts/exemption-structure.md).
@@ -161,7 +165,7 @@ Další informace najdete na následujících stránkách:
 
 
 
-## <a name="exemption-rule-faq"></a>Nejčastější dotazy k pravidlům výjimky
+## <a name="faq---exemption-rules"></a>Nejčastější dotazy – pravidla výjimek
 
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Co se stane, když je jedno doporučení v několika iniciativách k zásadám?
 

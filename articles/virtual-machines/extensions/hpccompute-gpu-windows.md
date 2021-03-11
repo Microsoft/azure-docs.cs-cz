@@ -1,25 +1,26 @@
 ---
 title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure s Windows
 description: Microsoft Azure rozšíření pro instalaci ovladačů NVIDIA GPU na výpočetní virtuální počítače řady N-Series s Windows
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 manager: gwallace
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 82ed1d57d72a4479005d8bfd2234c124a97096ee
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7cd2c5e54ccb81294a93c0ecebaa174df8d14011
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965982"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559660"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
@@ -74,7 +75,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
 | typ | NvidiaGpuDriverWindows | řetězec |
 | typeHandlerVersion | 1.3 | int |

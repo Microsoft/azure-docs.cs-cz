@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936171"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549460"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Vytvoření první trvalé funkce v Pythonu
 
@@ -58,22 +58,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools. Zároveň vytvoří projekt Function App ve složce. Tento projekt obsahuje [host.js](../functions-host-json.md) a [local.settings.jsv](../functions-run-local.md#local-settings-file) konfiguračních souborech.
 
-V kořenové složce se vytvoří také soubor requirements.txt. Určuje balíčky Pythonu potřebné ke spuštění vaší aplikace Function App.
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Verze sad rozšíření Azure Functions aktualizací
-
-Python Azure Functions vyžaduje verzi 2. x z [sad rozšíření Azure Functions](../functions-bindings-register.md#access-extensions-in-non-net-languages). Sady rozšíření jsou konfigurovány v *host.js*.
-
-1. V projektu otevřete *host.js* . Aktualizujte sadu rozšíření `version` na `[2.*, 3.0.0)` . To určuje rozsah verzí, který je větší nebo roven 2,0 a menší než 3,0.
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. Aby se projevila aktualizovaná verze balíčku rozšíření, musí se VS Code znovu načíst. V paletě příkazů spusťte hledání příkazu pro *vývojáře: znovu načíst okno* a spusťte jej.
+V kořenové složce se vytvoří také soubor *requirements.txt* . Určuje balíčky Pythonu potřebné ke spuštění vaší aplikace Function App.
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>Instalace Azure – funkce – trvalé z PyPI
 
@@ -83,7 +68,7 @@ Při vytváření projektu rozšíření Azure Functions VS Code automaticky vyt
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. V aktuální složce otevřete integrovaný terminál editoru (<kbd>CTRL + SHIFT + '</kbd>).
@@ -144,7 +129,7 @@ Dále přidáte `Hello` funkci odkazované aktivity.
     | Výzva | Hodnota | Popis |
     | ------ | ----- | ----------- |
     | Vyberte šablonu pro funkci | Aktivita Durable Functions | Vytvoření funkce aktivity |
-    | Zadejte název funkce. | Dobrý den | Název funkce aktivity |
+    | Zadejte název funkce. | Hello (Nazdar) | Název funkce aktivity |
 
 Přidali jste `Hello` funkci aktivity, která je vyvolána nástrojem Orchestrator. Otevřete *Hello/ \_ \_ init__. py* , abyste viděli, že jako vstup pořizuje název a vrátí pozdrav. Funkce Activity je místo, kde provedete akce, jako je například vytvoření databázového volání nebo provedení výpočtu.
 

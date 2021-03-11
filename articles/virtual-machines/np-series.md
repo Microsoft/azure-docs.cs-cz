@@ -3,16 +3,16 @@ title: NP-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače NP-Series.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 4fe6df5a9eabc6e5088618039fdea450ee8314ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 09adb19623ea866091e1b949e78263661eddbb52
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693845"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551143"
 ---
 # <a name="np-series-preview"></a>NP-Series (Preview) 
 Virtuální počítače NP-Series jsou napájené [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA pro urychlení úloh, jako je odvozování strojového učení, překódování videa a hledání v databázi & Analytics. Virtuální počítače s řadou NP-Series využívají i procesory Intel Xeon 8171M (Skylake) s veškerou základní rychlostí Turbo 3,2 GHz.

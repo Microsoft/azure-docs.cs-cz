@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: f6e9c0a3d9100bc447314f5874107363c6bf5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0cf89a755090010bb80507c52f90baa2a4e804a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289439"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617620"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Formáty a kodeky Standard Encoder
 
@@ -98,7 +98,7 @@ V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou po
 
 | Formát souboru | Kodek videa | Zvukový kodek |
 | --- | --- | --- |
-| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
+| MP4 <br/><br/>(včetně kontejnerů MP4 s více přenosovými rychlostmi) |H. 264 (profily vysoké, hlavní a základní), HEVC (H. 265) 8 bitů |AAC-LC, HE-AAC V1, IT-AAC v2 |
 | MPEG2 – TS |H. 264 (profily vysoké, hlavní a základní) |AAC-LC, HE-AAC V1, IT-AAC v2 |
 
 ## <a name="next-steps"></a>Další kroky

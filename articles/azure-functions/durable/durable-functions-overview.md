@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 15e1dff37e1782baf5740a3fb35119bbbbffc297
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931717"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558793"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -23,7 +23,7 @@ Durable Functions aktuálně podporuje následující jazyky:
 
 * **C#**: [knihovny předkompilovaných tříd](../functions-dotnet-class-library.md) a [skript jazyka C#](../functions-reference-csharp.md).
 * **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
-* **Python**: vyžaduje verzi 2.3.1 rozšíření Durable Functions nebo novější verzi. Podpora Durable Functions je v současnosti ve verzi Public Preview.
+* **Python**: vyžaduje verzi 2.3.1 rozšíření Durable Functions nebo novější verzi.
 * **F #**: předkompilované knihovny tříd a skript jazyka F #. Skript F # se podporuje jenom pro verzi 1. x modulu runtime Azure Functions.
 * **PowerShell**: podpora pro Durable Functions je aktuálně ve verzi Public Preview. Podporováno pouze pro verzi 3. x modulu Azure Functions runtime a prostředí PowerShell 7. Vyžaduje verzi 2.2.2 rozšíření Durable Functions nebo novější verzi. V současné době jsou podporovány pouze následující vzorce: [řetězení funkcí](#chaining), [ventilátor nebo ventilátor –](#fan-in-out) [asynchronní rozhraní HTTP API](#async-http).
 

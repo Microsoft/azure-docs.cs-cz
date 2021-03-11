@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521199"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608678"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -59,8 +59,8 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
   + [Nativní terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Uživatelé teď budou mít přístup k integrovanému terminálu i k operaci Git prostřednictvím integrovaného terminálu.
   + [Fragmenty poznámkových bloků (Preview)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Běžné výpisy kódu v Azure ML jsou teď dostupné na dosah ruky. Přejděte na panel fragmenty kódu, který je přístupný prostřednictvím panelu nástrojů, nebo aktivujte nabídku fragmenty kódu pomocí kombinace kláves CTRL + MEZERNÍK.  
   + [Klávesové zkratky](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Plná parita s klávesovými zkratkami, které jsou k dispozici v Jupyter. 
-  + Označuje parametry buňky. Zobrazí uživatele, kteří mají buňku v poznámkovém bloku, a můžou spouštět parametrizované poznámkové bloky přes [Papermill](https://github.com/nteract/papermill) ve výpočetní instanci.
-  + Terminál a správce relace jádra: uživatelé budou moct spravovat všechny jádra a relace Terminálové služby běžící na výpočetním prostředí.
+  + Označuje parametry buňky. Zobrazuje uživatele, které buňky v poznámkovém bloku představují buňky parametrů a můžou spouštět parametrizované poznámkové bloky přes [Papermill](https://github.com/nteract/papermill) ve výpočetní instanci.
+  + Terminál a správce relace jádra: uživatelé budou moct spravovat všechny jádra a relace Terminálové služby běžící na jejich výpočetním prostředí.
   + Tlačítko sdílení. Uživatelé teď můžou sdílet kterýkoli soubor v Průzkumníkovi souborů poznámkového bloku tak, že na něj klikne pravým tlačítkem a použijete tlačítko sdílet.
 
 

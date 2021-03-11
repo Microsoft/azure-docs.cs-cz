@@ -2,16 +2,17 @@
 title: Použití Cloud-init ke spuštění skriptu bash v virtuálním počítači Linux v Azure
 description: Použití Cloud-init ke spuštění skriptu bash na virtuálním počítači Linux během vytváření pomocí Azure CLI
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0370ddeafd1f695292ba122bfebd6197a360f560
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dabd7db85d4222ca2e9f8387b716af291ee6a69
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372803"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559422"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Použití Cloud-init ke spuštění skriptu bash na virtuálním počítači Linux v Azure
 V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthedocs.io) spustit stávající skript bash na virtuálním počítači (VM) se systémem Linux nebo ve službě Virtual Machine Scale Sets (VMSS) v době zřizování v Azure. Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .

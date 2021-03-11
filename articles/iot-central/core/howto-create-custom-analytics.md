@@ -1,7 +1,7 @@
 ---
 title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Microsoft Docs
 description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
-author: TheJasonAndrew
+author: TheRealJasonAndrew
 ms.author: v-anjaso
 ms.date: 02/18/2020
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741670"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551313"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -103,7 +103,7 @@ Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte na stránku **Export dat (starší verze)** , vyberte **+ Nový** a pak **Azure Event Hubs**.
+1. Přejděte na stránku pro **Export dat** , vyberte **+ Nový** a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
     | Nastavení | Hodnota |
@@ -136,7 +136,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | Režim clusteru | Standard |
 | Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Verze Pythonu | 3 |
-| Povolit automatické škálování | Ne |
+| Povolit automatické škálování | No |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
 | Pracovníků | 1 |

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559354"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
-Funkce Start/Stop VMs during off-hours spustí nebo zastaví povolený virtuální počítač Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/alerts/action-groups.md). Tuto funkci můžete pro většinu scénářů povolit na obou Azure Resource Manager i v klasických virtuálních počítačích. 
+Funkce Start/Stop VMs during off-hours spustí nebo zastaví povolený virtuální počítač Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/alerts/action-groups.md). Tuto funkci můžete pro většinu scénářů povolit na obou Azure Resource Manager i v klasických virtuálních počítačích.
 
 Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzVm](/powershell/module/az.compute/start-azvm) . Pro zastavování virtuálních počítačů používá [stop-AzVM](/powershell/module/az.compute/stop-azvm) .
 
@@ -34,6 +34,9 @@ U aktuální funkce platí následující omezení:
 
 - Spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako váš účet Azure Automation.
 - Je k dispozici v Azure a Azure Government pro libovolnou oblast, která podporuje pracovní prostor Log Analytics, Azure Automation účet a výstrahy. Azure Government oblasti momentálně nepodporují funkce e-mailu.
+
+> [!NOTE]
+> Před instalací této verze chceme, abyste věděli o [další verzi](https://github.com/microsoft/startstopv2-deployments), která je ve verzi Preview hned teď.  Tato nová verze (v2) nabízí stejné funkce jako tato, ale je navržená tak, aby využila výhod novější technologie v Azure. Přidává některé běžně požadované funkce od zákazníků, jako je podpora více předplatných z jedné instance spuštění/zastavení.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +109,7 @@ V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho
 
 Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na hodnotu true podporuje parametr podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru a ověří, jestli jsou cílové správné virtuální počítače. Sada Runbook provede pouze své definované akce, pokud `WhatIf` je parametr nastaven na hodnotu false.
 
-|Runbook | Parametry | Popis|
+|Runbook | Parametry | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList` je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf` povolí ověřování logiky sady Runbook bez provedení.|
@@ -158,7 +161,7 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frekvence | Popis|
+|Název plánu | Frekvence | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase. Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků. Povolte související plán **naplánované – StartVM**.|

@@ -3,19 +3,20 @@ title: Migrace z AWS a dalších platforem na Managed Disks v Azure
 description: Vytvářejte virtuální počítače v Azure pomocí VHD odeslaných z jiných cloudů, jako je AWS nebo jiných virtualizačních platforem, a využijte výhod Azure Managed Disks.
 author: roygara
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subervice: disks
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c817528ff26dd10112eaf69c7ad20f8fb5813695
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200885"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550395"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -31,7 +32,7 @@ Můžete nahrát generalizované a specializované virtuální pevné disky.
 >
 
 
-| Scénář                                                                                                                         | Dokumentace                                                                                                                       |
+| Scenario                                                                                                                         | Dokumentace                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Máte existující instance EC2 AWS, které byste chtěli migrovat na virtuální počítače Azure pomocí spravovaných disků.                              | [Přesunutí virtuálního počítače z Amazon Web Services (AWS) do Azure](aws-to-azure.md)                           |
 | Máte virtuální počítač z jiné virtualizační platformy, kterou byste chtěli použít jako image k vytvoření několika virtuálních počítačů Azure. | [Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nového virtuálního počítače v Azure.](upload-generalized-managed.md) |

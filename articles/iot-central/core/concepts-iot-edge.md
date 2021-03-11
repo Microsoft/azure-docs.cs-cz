@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608627"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Připojení zařízení Azure IoT Edge k aplikaci Azure IoT Central
 
@@ -74,8 +74,6 @@ Následující diagram znázorňuje připojení k zařízení IoT Edge brány pr
 Podřízená zařízení se můžou připojit k zařízení IoT Edge brány prostřednictvím několika vlastních modulů. Následující diagram zobrazuje zařízení, která se připojují prostřednictvím vlastního modulu Modbus, vlastního modulu v police a modulu *centra IoT Edge*  :
 
 :::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="Diagram připojení pomocí více vlastních modulů" border="false":::
-
-<!-- To do: add link to how to configure gateway article? -->
 
 ## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge zařízení a IoT Central
 
@@ -286,7 +284,7 @@ IoT Edge runtime můžete také nainstalovat v následujících prostředích:
 
 Pokud jste jako zařízení brány vybrali IoT Edge zařízení, můžete pro zařízení, která chcete připojit k zařízení brány, přidat podřízené vztahy k modelům zařízení.
 
-<!-- TODO - add link to Edge Gateway how-to -->
+Další informace najdete v tématu [Postup připojení zařízení přes IoT Edge transparentní bránu](how-to-connect-iot-edge-transparent-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 
