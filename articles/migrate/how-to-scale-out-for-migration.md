@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047930"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612061"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Škálování migrace virtuálních počítačů VMware bez agenta do Azure
 
@@ -147,10 +147,10 @@ Pokud chcete dokončit registraci zařízení se škálováním na více instanc
 1. V automaticky otevíraném okně otevřeném v předchozím kroku vyberte umístění zkopírovaného konfiguračního souboru zip a klikněte na **Uložit**.
 
 Po úspěšném naimportování souborů se registrace zařízení se škálováním na více instancí dokončí a zobrazí se časové razítko posledního úspěšného importu. Kliknutím na **Zobrazit podrobnosti** můžete zobrazit také podrobnosti o registraci.
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Import proběhl úspěšně":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Snímek obrazovky ukazuje registraci zařízení se škálováním na více instancí s Azure Migrate projektu.":::
 
 V tomto okamžiku byste měli znovu ověřit, jestli se zařízení se škálováním na více instancí může připojit k serveru vCenter. Kliknutím na znovu **ověřit** ověřte vCenter Server připojení ze zařízení se škálováním na více instancí.
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Import proběhl úspěšně":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Snímek obrazovky ukazuje zobrazení přihlašovacích údajů a zdrojů zjišťování, které se mají ověřit.":::
 
 > [!IMPORTANT]
 > Pokud upravíte přihlašovací údaje vCenter Server na primárním zařízení, nezapomeňte znovu importovat konfigurační soubory do zařízení se škálováním na více instancí, abyste získali nejnovější konfiguraci a pokračovali v probíhajících replikacích.<br/> Pokud už nepotřebujete zařízení se škálováním na více instancí, ujistěte se, že jste zakázali zařízení se škálováním na více instancí. [**Přečtěte si další informace**](./common-questions-appliance.md) o tom, jak zakázat zařízení se škálováním na více instancí v případě potřeby.

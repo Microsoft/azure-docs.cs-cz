@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856003"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548474"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Kurz: nasazení aplikace ASP.NET a kódu Azure SQL Database pomocí Azure DevOps Starter
 
@@ -25,7 +25,7 @@ DevOps Starter také:
 * Nastaví pro disk CD kanál pro vydání verze. 
 * Vytvoří prostředek Azure Application Insights pro monitorování.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Nasazení aplikace ASP.NET a Azure SQL Database kódu pomocí Azure DevOps Starter
@@ -36,7 +36,7 @@ V tomto kurzu provedete následující:
 > * Připojení k Azure SQL Database 
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -44,17 +44,17 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také v předplatném Azure vytvoří prostředky Azure, jako je například Azure SQL Database, podle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Vyberte **.NET**a pak vyberte **Další**.
+1. Vyberte **.NET** a pak vyberte **Další**.
 
-1. V části **zvolit rozhraní aplikace**vyberte **ASP.NET**.
+1. V části **zvolit rozhraní aplikace** vyberte **ASP.NET**.
 
-1. Vyberte **Přidat databázi**a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
+1. Vyberte **Přidat databázi** a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
     
 1. Vyberte **Další**.
 
@@ -64,7 +64,7 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Zadejte název projektu Azure DevOps. 
 
-1. Vyberte služby předplatného Azure. Pokud chcete zobrazit další nastavení konfigurace Azure a identifikovat uživatelské jméno v části **Podrobnosti o přihlášení k databázovému serveru** , můžete vybrat **změnit**. Uložte si uživatelské jméno pro další kroky v tomto kurzu. Pokud tento volitelný krok provedete, před výběrem **Hotovo**ukončete oblast konfigurace Azure.
+1. Vyberte služby předplatného Azure. Pokud chcete zobrazit další nastavení konfigurace Azure a identifikovat uživatelské jméno v části **Podrobnosti o přihlášení k databázovému serveru** , můžete vybrat **změnit**. Uložte si uživatelské jméno pro další kroky v tomto kurzu. Pokud tento volitelný krok provedete, před výběrem **Hotovo** ukončete oblast konfigurace Azure.
  
 1. Vyberte **Hotovo**. Po několika minutách se proces dokončí a otevře se řídicí panel DevOps Starter v Azure Portal. Můžete také přejít na řídicí panel přímo ze **všech prostředků** v Azure Portal. Na pravé straně vyberte **Procházet** a zobrazte spuštěnou aplikaci.
     
@@ -82,7 +82,7 @@ DevOps Starter automaticky nakonfiguruje úplný kanál CI/CD v Azure Repos. Kan
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure Pipelines sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -94,7 +94,7 @@ DevOps Starter automaticky nakonfiguruje úplný kanál CI/CD v Azure Repos. Kan
 
 DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazení z vaší organizace Azure DevOps do svého předplatného Azure. Tyto kroky zahrnují konfiguraci připojení služby Azure pro ověřování Azure DevOps k vašemu předplatnému Azure. Automatizace také vytvoří kanál CD, který poskytuje disk CD pro virtuální počítač Azure. Pokud se chcete dozvědět víc o kanálu CD Azure DevOps, postupujte takto:
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**. DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**. DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
@@ -111,9 +111,9 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
   
 1. Vedle pole **hodnota** vyberte ikonu visacího zámku nezobrazuje, zadejte nové heslo a pak vyberte **Uložit**.
 
-1. Vlevo vyberte **úlohy**a pak vyberte své prostředí. Úlohy jsou aktivity, které proces nasazení provádí, a jsou seskupeny ve fázích. Tento kanál vydaných verzí má jednu fázi, která obsahuje úlohu nasazení *Azure App Service nasazení* a *Azure SQL Database* .
+1. Vlevo vyberte **úlohy** a pak vyberte své prostředí. Úlohy jsou aktivity, které proces nasazení provádí, a jsou seskupeny ve fázích. Tento kanál vydaných verzí má jednu fázi, která obsahuje úlohu nasazení *Azure App Service nasazení* a *Azure SQL Database* .
 
-1. Vyberte úlohu *Spustit SQL Azure* a prověřte různé vlastnosti, které se používají pro nasazení SQL. V části **balíček pro nasazení**používá úloha soubor *SQL DACPAC* .
+1. Vyberte úlohu *Spustit SQL Azure* a prověřte různé vlastnosti, které se používají pro nasazení SQL. V části **balíček pro nasazení** používá úloha soubor *SQL DACPAC* .
 
 1. Na pravé straně vyberte **Zobrazit vydané verze** , aby se zobrazila Historie verzí.
 
@@ -130,13 +130,13 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na web. Každá změna úložiště Git spustí sestavení ve službě Azure DevOps a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použijte jiný postup, chcete-li potvrdit změny do úložiště. Změny kódu inicializují proces CI/CD a automaticky nasadí vaše změny do Azure.
 
-1. V levém podokně vyberte **kód**a pak klikněte na své úložiště.
+1. V levém podokně vyberte **kód** a pak klikněte na své úložiště.
 
 1. V adresáři *SampleWebApplication\Views\Home* vyberte tři tečky (...) vedle souboru *index. cshtml* a pak vyberte **Upravit**. 
 
 1. Proveďte v souboru změny, jako je například přidání textu do jedné z značek DIV. 
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Sledujte stav buildu na řídicím panelu DevOps Starter nebo v prohlížeči s vaší organizací Azure DevOps.
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Sledujte stav buildu na řídicím panelu DevOps Starter nebo v prohlížeči s vaší organizací Azure DevOps.
 
 1. Po dokončení vydaných verzí aktualizujte svou aplikaci, aby se ověřily vaše změny.
 
@@ -146,7 +146,7 @@ Abyste se mohli připojit k Azure SQL Database, potřebujete příslušná oprá
 
 1. Na řídicím panelu DevOps Starter vyberte **SQL Database** a přejdete na stránku pro správu SQL Database.
    
-1. Vyberte **nastavit bránu firewall serveru**a pak vyberte **Přidat IP adresu klienta**. 
+1. Vyberte **nastavit bránu firewall serveru** a pak vyberte **Přidat IP adresu klienta**. 
 
 1. Vyberte **Uložit**. Vaše IP adresa klienta má teď přístup k SQL Server prostředku Azure.
 
@@ -190,7 +190,7 @@ Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly pož
 Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>Videa
 

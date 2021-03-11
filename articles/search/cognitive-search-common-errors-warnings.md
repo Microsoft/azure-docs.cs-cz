@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895935"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553234"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -236,6 +236,8 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Upozornění: vstup dovedností ' languageCode ' má následující kódy jazyka ' X, Y, Z ', minimálně jeden z nich je neplatný.
 Jedna nebo více hodnot předaných do volitelného `languageCode` vstupu pro podřízenou dovednost není podporováno. Tato situace může nastat, Pokud předáváte výstup [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) k následným dovednostím a výstup se skládá z více jazyků, než jaké jsou podporované v těchto dovednostech.
+
+Všimněte si, že pokud se `countryHint` do LanguageDetectionSkill předává neplatný vstup, může se také zobrazit výstraha podobná této. Pokud k tomu dojde, ověřte, že pole, které používáte ze zdroje dat pro tento vstup, obsahuje platné kódy zemí ISO 3166-1 alpha-2 2. Pokud jsou některé platné a některé jsou neplatné, pokračujte podle následujících pokynů, ale nahraďte je `languageCode` `countryHint` a `defaultLanguageCode` with, `defaultCountryHint` aby odpovídaly vašemu případu použití.
 
 Pokud víte, že je vaše datová sada v jednom jazyce, měli byste odebrat [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a `languageCode` vstup dovedností a `defaultLanguageCode` místo toho použít pro tuto dovednost parametr dovednosti. za předpokladu, že je jazyk podporován pro tuto dovednost.
 

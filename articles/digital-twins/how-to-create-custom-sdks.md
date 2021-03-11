@@ -1,39 +1,44 @@
 ---
-title: Vytváření vlastních sad SDK pro digitální vlákna Azure s využitím AutoRest
+title: Vytváření vlastních jazykových sad SDK pomocí automatického REST
 titleSuffix: Azure Digital Twins
-description: Podívejte se, jak vygenerovat vlastní sady SDK pro použití digitálních vláken Azure s jinými jazyky než C#.
+description: Naučte se, jak pomocí funkce AutoRest generovat sady SDK pro vlastní jazyk, a to pro psaní kódu Azure Digital revláken v jiných jazycích, které nemají publikované sady SDK.
 author: baanders
 ms.author: baanders
-ms.date: 4/24/2020
+ms.date: 3/9/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom:
+- devx-track-js
+- contperf-fy21q3
+ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049793"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561836"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
+# <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních jazykových sad SDK pro digitální vlákna Azure pomocí automatického REST
 
-V současné době jsou pro rozhraní .NET (C#), JavaScript a Java pouze sady SDK pro rovinu publikovaných dat pro interakci s rozhraními API digitálních vláken Azure. O těchto sadách SDK si můžete přečíst a obecně v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md). Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK pro datovou rovinu v jazyce podle vašeho výběru pomocí funkce AutoRest.
+Pokud potřebujete pracovat s digitálními úkoly Azure pomocí jazyka, který nemá [publikována sada Azure Digital](how-to-use-apis-sdks.md)Workers SDK, v tomto článku se dozvíte, jak pomocí funkce AutoRest vygenerovat vlastní sadu SDK v jazyce podle vašeho výběru. 
 
->[!NOTE]
-> Můžete také použít AutoRest k vygenerování sady SDK řídicí roviny, pokud byste chtěli. Provedete to tak, že provedete kroky v tomto článku pomocí nejnovějšího souboru Swagger (openapi) **řídicí** plochy ze [složky Swagger ovládacího prvku](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) , nikoli z roviny dat.
+Příklady v tomto článku ukazují vytvoření [sady SDK datové roviny](how-to-use-apis-sdks.md#overview-data-plane-apis), ale tento proces bude fungovat také pro VYGENEROVÁNÍ  [sady SDK řídicích rovin](how-to-use-apis-sdks.md#overview-control-plane-apis) .
 
-## <a name="set-up-your-machine"></a>Nastavení počítače
+## <a name="prerequisites"></a>Požadavky
 
-K vygenerování sady SDK budete potřebovat:
-* [AutoRest](https://github.com/Azure/autorest), verze 2.0.4413 (verze 3 není momentálně podporovaná)
-* [Node.js](https://nodejs.org) jako předpoklad pro AutoRest
-* Nejnovější soubor Swagger (openapi) **roviny dat** v Azure, ze [složky Swagger datové roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins), a do doprovodné složky příkladů.  Stáhněte si soubor Swagger *digitaltwins.js* a jeho složku příkladů do svého místního počítače.
+Aby bylo možné vygenerovat sadu SDK, budete nejprve muset na svém místním počítači dokončit následující instalaci:
+* Instalace [**AutoRest**](https://github.com/Azure/autorest), verze 2.0.4413 (verze 3 není aktuálně podporovaná)
+* Instalace [**Node.js**](https://nodejs.org), což je předpokladem pro použití automatického REST
+* Nainstalovat [ **Visual Studio**](https://visualstudio.microsoft.com/downloads/)
+* Stáhněte si nejnovější soubor Swagger (openapi) **roviny dat** pro Azure, který se nachází ve [složce Swagger datové roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins), spolu s doprovodnou složkou příkladů. Soubor Swagger je ten s názvem *digitaltwins.jsv*.
+
+>[!TIP]
+> Pokud chcete vytvořit **sadu SDK řídicí plochy** , proveďte kroky v tomto článku pomocí nejnovějšího souboru **Swagger** (openapi) roviny ovládacího prvku () ze [složky Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) místo z roviny dat.
 
 Jakmile je počítač vybavený vše ze seznamu výše, jste připraveni použít k vytvoření sady SDK sadu AutoRest.
 
-## <a name="create-the-sdk-with-autorest"></a>Vytvoření sady SDK pomocí programu AutoRest 
+## <a name="create-the-sdk-using-autorest"></a>Vytvoření sady SDK pomocí programu AutoRest 
 
-Pokud máte Node.js nainstalované, můžete spustit tento příkaz, abyste se ujistili, že máte nainstalovanou správnou verzi AutoRest:
+Jakmile Node.js nainstalujete, můžete spustit tento příkaz, abyste se ujistili, že máte nainstalovanou požadovanou verzi AutoRest:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -51,11 +56,11 @@ V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *Di
 
 AutoRest podporuje široké spektrum generátorů kódů jazyka.
 
-## <a name="add-the-sdk-to-a-visual-studio-project"></a>Přidat sadu SDK do projektu sady Visual Studio
+## <a name="make-the-sdk-into-a-class-library"></a>Vytvoření sady SDK do knihovny tříd
 
-Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Je ale možné, že budete chtít zahrnout sadu Azure Digital SDK do několika samostatných projektů (klientské aplikace, Azure Functions aplikace atd.). Z tohoto důvodu může být užitečné sestavit samostatný projekt (knihovnu tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do několika řešení jako odkaz na projekt.
+Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Je však možné, že budete chtít zahrnout sadu SDK digitálních vláken Azure do několika samostatných projektů (klientské aplikace, Azure Functions aplikace a další). Z tohoto důvodu může být užitečné sestavit samostatný projekt (knihovnu tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do několika řešení jako odkaz na projekt.
 
-V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky spoléhají na **Visual Studio** ( [tady](https://visualstudio.microsoft.com/downloads/)si můžete nainstalovat nejnovější verzi).
+V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky jsou závislé na **aplikaci Visual Studio**.
 
 Tady je postup:
 
@@ -81,7 +86,7 @@ Pokud je chcete přidat, otevřete *nástroje > správce balíčků nuget > spra
 
 Nyní můžete sestavit projekt a zahrnout ho jako odkaz na projekt v libovolné aplikaci digitálního vlákna v Azure, kterou zapisujete.
 
-## <a name="general-guidelines-for-generated-sdks"></a>Obecné pokyny pro vygenerované sady SDK
+## <a name="tips-for-using-the-sdk"></a>Tipy pro používání sady SDK
 
 Tato část obsahuje obecné informace a pokyny pro používání vygenerované sady SDK.
 

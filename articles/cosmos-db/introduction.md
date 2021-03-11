@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556867"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618300"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556867"
 V současné době se od aplikací žádá, aby byly vysoce responzivní a vždy online. Aby bylo možné zajistit nízkou latenci a vysokou dostupnost, instance aplikací je potřeba nasazovat do datových center, která se nachází v blízkosti uživatelů. Aplikace musí v reálném čase reagovat na velké změny ve využití během špiček, ukládat stále větší a větší objemy dat a umožnit jejich dostupnost uživatelům v řádech milisekund.
 
 Azure Cosmos DB je plně spravovaná databáze NoSQL pro vývoj moderních aplikací. Jednorázová doba odezvy v milisekundách a automatická a okamžitá škálovatelnost, zaručená rychlost v jakémkoli měřítku. Provozní kontinuita je zaručená dostupností, která je zajištěná smlouvou [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) a zabezpečením na podnikové úrovni. Vývoj aplikací je rychlejší a produktivnější díky klíč distribuci dat ve více oblastech kdekoli na světě, open source rozhraní API a sadách SDK pro oblíbené jazyky. Jako plně spravovaná služba Azure Cosmos DB přebírá správu databáze z vašich rukou s automatickou správou, aktualizacemi a opravami. Taky zajišťuje správu kapacity s cenově efektivními možnostmi bez serveru a automatickým škálováním, které reagují na aplikaci, musí odpovídat kapacitě na vyžádání.
+
+> [!NOTE]
+> Chcete pomoci vylepšit Azure Cosmos DB dokumentace zapojením do uživatelské studie? Vyplnění tohoto kontrolního [šetření](https://aka.ms/cosmosdb-documentation-screener-survey)za 5 minut Věnujte několik minut. Pokud máte nárok, budete přesměrováni do Scheduleru, kde můžete rezervovat slot pro připojení k interaktivnímu výzkumnému cvičení. Během tohoto procesu nejsou shromažďovány žádné osobní údaje podle našeho [prohlášení o zásadách ochrany osobních údajů](https://go.microsoft.com/fwlink/?LinkId=521839).
 
 Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků nebo využít [Azure Cosmos dB úrovně Free](optimize-dev-test.md#azure-cosmos-db-free-tier) k získání účtu s prvním 400 ru/s a 5 GB volného místa.
 

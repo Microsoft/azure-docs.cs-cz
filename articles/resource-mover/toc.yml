@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: Přesunutí šifrovaných virtuálních počítačů Azure do jiné oblasti
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: Přesunutí prostředků mezi oblastmi pomocí PowerShellu
+      href: tutorial-move-region-powershell.md
     - name: Přesun prostředků SQL do jiné oblasti
       href: tutorial-move-region-sql.md
 - name: Koncepty
@@ -28,8 +30,6 @@
   items:
     - name: Přesun mezi oblastmi
       items:
-        - name: Přesun napříč oblastmi s využitím PowerShellu
-          href: move-region-powershell.md
         - name: Přesun virtuálních počítačů Azure do zón dostupnosti
           href: move-region-availability-zone.md
         - name: Přesun napříč oblastmi (ze skupiny prostředků)

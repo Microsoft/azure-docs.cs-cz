@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: cdd886bfcfb02aa46e440d2574b241f9b1cf3134
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b4a348bbc73e6cfb2fabaa8e401af0ddf7265354
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564136"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561904"
 ---
 # <a name="enclave-aware-containers"></a>Kontejnery s podporou enklávy
 
@@ -31,7 +31,7 @@ Aplikační architektura kontejnerů s podporou enklávy poskytuje největší k
 ### <a name="open-enclave-sdk"></a>Open Enclave SDK
 Open enklávy SDK je hardwarová knihovna Open Source nezávislá pro vývoj aplikací v jazyce C, C++, které využívají prostředí pro důvěryhodné spouštění založené na hardwaru. Aktuální implementace poskytuje podporu pro Intel SGX a podporu verze Preview pro [operační systém op-Tee na ARM TrustZone](https://optee.readthedocs.io/en/latest/general/about.html).
 
-Začínáme s Open enklávy kontejnerem na bázi [here](https://github.com/openenclave/openenclave/tree/master/docs/GettingStartedDocs)
+Začínáme s Open enklávy kontejnerem na bázi [](https://github.com/openenclave/openenclave/tree/master/docs/GettingStartedDocs)
 
 ### <a name="intel-sgx-sdk"></a>Sada SGX SDK Intel
 Intel udržuje sadu Software Development Kit pro vytváření SGXch aplikací pro úlohy pro Linux i Windows Container. Kontejnery Windows nejsou aktuálně podporované AKS důvěrnými výpočetními uzly.

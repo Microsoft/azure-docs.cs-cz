@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596639"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612520"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -53,7 +53,7 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
      > Pokud má virtuální síť rozsahy adres, které se překrývají s jinou virtuální sítí nebo místní sítí, nelze tyto dvě sítě připojit. Než nadefinujete rozsah adres, zvažte, jestli možná budete chtít virtuální síť připojit k jiným virtuálním sítím nebo místním sítím v budoucnu. Microsoft doporučuje konfigurovat rozsahy adres virtuální sítě s privátním adresním prostorem nebo veřejným adresním prostorem vlastněným vaší organizací.
      >
 
-     - **Název podsítě**: název podsítě musí být v rámci virtuální sítě jedinečný. Po vytvoření podsítě už název podsítě nemůžete změnit. Portál vyžaduje, abyste při vytváření virtuální sítě definovali jednu podsíť, a to i v případě, že virtuální síť nemusí mít žádné podsítě. Na portálu můžete při vytváření virtuální sítě definovat jenom jednu podsíť. Další podsítě můžete do virtuální sítě přidat později po vytvoření virtuální sítě. Informace o přidání podsítě do virtuální sítě najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md). Virtuální síť s více podsítěmi můžete vytvořit pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu.
+     - **Název podsítě**: název podsítě musí být v rámci virtuální sítě jedinečný. Po vytvoření podsítě už název podsítě nemůžete změnit. Portál vyžaduje, abyste při vytváření virtuální sítě definovali jednu podsíť, a to i v případě, že virtuální síť nemusí mít žádné podsítě. Na portálu můžete při vytváření virtuální sítě definovat jednu nebo víc podsítí. Další podsítě můžete do virtuální sítě přidat později po vytvoření virtuální sítě. Informace o přidání podsítě do virtuální sítě najdete v tématu [Správa podsítí](virtual-network-manage-subnet.md). Virtuální síť s více podsítěmi můžete vytvořit pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu.
 
        >[!TIP]
        >V některých případech můžou správci vytvořit různé podsítě pro filtrování nebo řízení směrování provozu mezi podsítěmi. Před definováním podsítí zvažte, jak budete chtít filtrovat a směrovat provoz mezi vašimi podsítěmi. Další informace o filtrování provozu mezi podsítěmi najdete v tématu [skupiny zabezpečení sítě](./network-security-groups-overview.md). Azure automaticky směruje provoz mezi podsítěmi, ale můžete přepsat výchozí trasy Azure. Další informace o směrování provozu ve výchozí podsíti Azure najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).

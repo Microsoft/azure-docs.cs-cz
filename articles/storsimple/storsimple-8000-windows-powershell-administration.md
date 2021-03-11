@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 3292f337a39e2adb7dc5e78f12785ead8759f5d1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808031"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611942"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
 
@@ -29,7 +29,7 @@ Po přečtení tohoto článku budete moct:
 
 > [!NOTE]
 > * Rutiny Windows PowerShell pro StorSimple umožňují spravovat zařízení StorSimple pomocí sériové konzoly nebo vzdáleně pomocí vzdálené komunikace Windows PowerShellu. Další informace o jednotlivých rutinách, které se dají použít v tomto rozhraní, najdete v referenčních informacích k [rutině pro Windows PowerShell pro StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true).
-> * Rutiny Azure PowerShell StorSimple jsou jinou kolekcí rutin, které umožňují automatizovat úlohy na úrovni služby a migrace StorSimple z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v referenčních informacích k [rutinám Azure StorSimple](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure).
+> * Rutiny Azure PowerShell StorSimple jsou jinou kolekcí rutin, které umožňují automatizovat úlohy na úrovni služby a migrace StorSimple z příkazového řádku. Další informace o rutinách Azure PowerShell pro StorSimple najdete v referenčních informacích k [rutinám Azure StorSimple](/powershell/module/servicemanagement/azure.service/#azure).
 
 
 K Windows PowerShell pro StorSimple můžete přistupovat pomocí jedné z následujících metod:

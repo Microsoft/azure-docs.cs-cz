@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178319"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623580"
 ---
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
 
@@ -147,7 +147,7 @@ Když se virtuální počítač spustí, bude nárůst požadavků na jeho limit
 
 Po spuštění spustíte aplikaci, která má nekritickou úlohu. Tato aplikace vyžaduje 15 MB/s, která se rovnoměrně rozšíří napříč všemi disky.
 
-![Aplikace pošle požadavek na 15 MB/s propustnosti virtuálnímu počítači, virtuální počítač provede požadavek a pošle každému z nich požadavek na 5 MB/s. Každý disk vrátí 5 MB/s, virtuální počítač vrátí 15 MB/s do aplikace.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Aplikace pošle požadavek na 15 MB/s propustnosti virtuálnímu počítači, virtuální počítač provede požadavek a pošle každému z nich požadavek na 5 MB/s. Každý disk vrátí 5 MB/s odpovědí, virtuální počítač vrátí 15 MB/s na aplikaci.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 Aplikace pak potřebuje zpracovat dávkovou úlohu, která vyžaduje 360 MB/s. Standard_L8s_v2 se rozpíná, aby splňovala tuto poptávku, a pak požadavky. Disk s operačním systémem vyžaduje jenom 20 MB/s. Zbývajících 340 MB/s se zpracovává na základě shlukování datových disků P4.
 

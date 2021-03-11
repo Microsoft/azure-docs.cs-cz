@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 4a6c7b36665c7a38534ce8e470bc8b327c274d95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 53138a22c58e89ade4af234630e9429a19738a6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "99095172"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556464"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>Začínáme s rozhraním příkazového řádku Azure Speech
 
@@ -86,7 +86,7 @@ spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 Syntetizované výstupy můžete také uložit do souboru. V tomto příkladu vytvoříme soubor s názvem `my-sample.wav` v adresáři, ve kterém se příkaz spustí.
 
 ```console
-spx synthesize --text "We hope that you enjoy using the Speech CLI." --audio output my-sample.wav
+spx synthesize --text "Enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
 Tyto příklady předpokládají, že testujete v angličtině. Podporujeme ale syntézu řeči v mnoha jazycích. Pomocí tohoto příkazu můžete stáhnout úplný seznam hlasů nebo si můžete navštívit [stránku podpory jazyků](./language-support.md).

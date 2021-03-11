@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429258"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617994"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -78,10 +78,10 @@ Provozní [kontinuita a zotavení po havárii](../best-practices-availability-pa
 Clustery nasazené ve dvou oblastech budou za běžných okolností fungovat nezávisle. V případě chyby nebo výpadku jedné oblasti dojde k následujícímu:
 
 - Azure Attestation BCDR poskytne bezproblémové převzetí služeb při selhání, ve kterém si zákazníci nemusí dělat další krok k obnovení.
-- [Azure Traffic Manager](../traffic-manager/index.yml) pro oblast detekuje sondu stavu a přepne koncový bod do spárované oblasti.
+- [Azure Traffic Manager](../traffic-manager/index.yml) pro oblast zjistí, že sonda stavu je degradována a přepne koncový bod do spárované oblasti.
 - Existující připojení nebudou fungovat a budou se zobrazovat interní chyby serveru nebo problémy s časovým limitem.
-- Všechny operace roviny ovládacího prvku budou zablokovány. Zákazníci nebudou moct vytvářet poskytovatele ověření identity a zásady aktualizace v primární oblasti.
-- Všechny operace roviny dat, včetně volání ověřování, budou i nadále fungovat v primární oblasti.
+- Všechny operace roviny ovládacího prvku budou zablokovány. Zákazníci nebudou moct vytvářet poskytovatele ověření identity v primární oblasti.
+- Všechny operace roviny dat, včetně volání ověřování a konfigurace zásad, budou obsluhovány sekundární oblastí. Zákazníci můžou dál pracovat na operacích roviny dat s původním identifikátorem URI odpovídajícím primární oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 - Seznamte se se [základními koncepty Azure Attestation](basic-concepts.md)

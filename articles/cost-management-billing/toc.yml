@@ -52,8 +52,6 @@
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management pro partnery
           href: costs/get-started-partners.md
-        - name: Migrace z vytváření sestav EA na rozhraní API Azure Resource Manageru
-          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Reservations
       items:
         - name: Co jsou rezervace Azure?
@@ -296,8 +294,10 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: Migrace z rozhraní API EA na MCA
           href: costs/migrate-cost-management-api.md
-        - name: Přiřazení rolí k SPN
+        - name: Přiřazení rolí k hlavním názvům služby EA
           href: manage/assign-roles-azure-service-principals.md
+        - name: Migrace z vytváření sestav EA na rozhraní API Azure Resource Manageru
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Nákup a správa rezervací
       items:
         - name: 'Určení, co koupit'
