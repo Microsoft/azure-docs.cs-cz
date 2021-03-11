@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051220"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561887"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -71,7 +71,7 @@ Další informace o možnostech redundance v Azure Storage najdete v tématu [Az
 - Tabulky
 
 > [!NOTE]
-> Microsoft doporučuje pro většinu scénářů používat účet úložiště pro obecné účely v2. Účet úložiště pro obecné účely v1 nebo blob můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data.
+> Microsoft doporučuje pro většinu scénářů používat účet úložiště pro obecné účely v2. Účet úložiště pro obecné účely v1 nebo blob můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data. Upgrade však nelze vrátit zpět.
 >
 > Další informace o tom, jak upgradovat na účet pro obecné účely v2, najdete v tématu [upgrade na účet úložiště pro obecné účely v2](storage-account-upgrade.md).
 
@@ -87,13 +87,18 @@ Další informace o možnostech redundance v Azure Storage najdete v tématu [Az
 - Fronty
 - Tabulky
 
-Společnost Microsoft doporučuje pro většinu scénářů použití účtů pro obecné účely verze 2. Účty pro obecné účely v1 můžete použít pro tyto scénáře:
+Účty pro obecné účely v1 můžete použít pro tyto scénáře:
 
 - Vaše aplikace vyžadují model nasazení Azure Classic. Účty pro obecné účely v2 a účty BLOB Storage podporují jenom model nasazení Azure Resource Manager.
 
 - Vaše aplikace jsou náročné na transakce nebo využívají značnou šířku pásma geografické replikace, ale nevyžadují velkou kapacitu. V tomto případě může být obecným účelem v1 největší ekonomická volba.
 
 - Používáte verzi [REST API služby úložiště](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) , která je starší než 2014-02-14 nebo Klientská knihovna s verzí nižší než 4. x. Nemůžete upgradovat svoji aplikaci.
+
+> [!NOTE]
+> I když společnost Microsoft doporučuje pro většinu scénářů použití účtů pro obecné účely verze 2, bude společnost Microsoft nadále podporovat účty pro obecné účely V1 pro nové i stávající zákazníky. Můžete vytvořit účty úložiště pro obecné účely v1 v nových oblastech, kdykoli je Azure Storage k dispozici v těchto oblastech. Společnost Microsoft v současné době nemá k dispozici plán pro vyřazení podpory pro účty pro obecné účely V1 a před vyřazením jakékoli Azure Storageé funkce poskytne předběžné oznámení alespoň na jeden rok. Microsoft bude dál poskytovat aktualizace zabezpečení pro účty pro obecné účely V1, ale pro tento typ účtu se neočekává žádný nový vývoj funkcí.
+>
+> Od 1. října 2020 se ceny pro účty pro obecné účely v1 v nových Azure Storagech oblastech rovnají s cenami pro účty pro obecné účely V2 v těchto oblastech. Ceny v existujících oblastech Azure Storage se nezměnily. Podrobnosti o cenách pro účty pro obecné účely v1 v konkrétní oblasti najdete na stránce s cenami Azure Storage. Zvolte oblast a potom klikněte na **nabídku ceny** a pak vyberte **Další**.
 
 ### <a name="blockblobstorage-accounts"></a>Účty BlockBlobStorage
 
@@ -124,7 +129,7 @@ V závislosti na typu vytvářeného účtu úložiště si můžete vybrat mezi
 | Obecné účely v1 | Standard, Premium<sup>1</sup> |
 | BlockBlobStorage | Premium |
 | Úložiště | Premium |
-| Blob Storage | Standardní |
+| Blob Storage | Standard |
 
 <sup>1</sup> K dispozici je výkon úrovně Premium pro účty pro obecné účely v2 a obecné účely v1 jenom pro objekty blob disku a stránky. Výkon služby Premium pro objekty blob bloku nebo Append je k dispozici pouze v účtech BlockBlobStorage. Premium Performance for Files je k dispozici pouze v účtech úložiště.
 

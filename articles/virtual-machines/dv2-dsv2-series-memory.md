@@ -3,16 +3,16 @@ title: Paměťově optimalizované virtuální počítače s Dv2 a DSv2-Series �
 description: Specifikace pro virtuální počítače s Dv2 a DSv2-Series.
 author: joelpelley
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8450a4bf172abcc57f93ccd20bc84642946e7ba9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f07e4542e380e4e8057d9011a6b613e9ad55a058
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555064"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560323"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 

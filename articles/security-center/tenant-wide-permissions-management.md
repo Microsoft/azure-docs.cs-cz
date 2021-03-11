@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107471"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617484"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>Udělení a vyžádání viditelnosti v úrovni tenanta
 
 Uživatel s rolí Azure Active Directory (AD) **globálního správce** může mít odpovědnost v rámci tenanta, ale nemá oprávnění Azure zobrazovat informace o celé organizaci v Azure Security Center. Vyžaduje se zvýšení oprávnění, protože přiřazení role Azure AD neuděluje přístup k prostředkům Azure. 
-
-> [!TIP]
-> Přečtěte si další informace o zvýšení oprávnění pro roli globálního správce v části [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../role-based-access-control/elevate-access-global-admin.md).
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Udělení oprávnění na úrovni tenanta sobě
 
@@ -45,6 +42,14 @@ Přiřazení oprávnění na úrovni tenanta:
 1. Odhlaste se od Azure Portal a pak se znovu přihlaste.
 
 1. Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Security Center a ověřte si, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
+
+Výše uvedený jednoduchý proces provede pro vás automaticky několik operací:
+
+1. Oprávnění uživatele jsou dočasně zvýšena.
+1. Pomocí nových oprávnění se uživatel přiřadí k požadované roli Azure RBAC pro kořenovou skupinu pro správu.
+1. Oprávnění se zvýšenými oprávněními se odeberou.
+
+Další podrobnosti o procesu zvýšení oprávnění služby Azure AD najdete v tématu [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../role-based-access-control/elevate-access-global-admin.md).
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Požádat o oprávnění na úrovni tenanta, pokud není dostatečná

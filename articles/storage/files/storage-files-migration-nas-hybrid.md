@@ -7,21 +7,30 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202667"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547543"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace z úložiště připojení k síti (NAS) do hybridního nasazení v cloudu pomocí Synchronizace souborů Azure
+
+Tento článek migrace je jedním z několika součástí, které zahrnují klíčová slova NAS a Synchronizace souborů Azure. Podívejte se, jestli tento článek platí pro váš scénář:
+
+> [!div class="checklist"]
+> * Zdroj dat: úložiště připojené k síti (NAS)
+> * Trasa migrace: server NAS: &rArr; &rArr; nahrání a synchronizace Windows serveru se sdílenými složkami Azure
+> * Místní ukládání souborů do mezipaměti: Ano, konečným cílem je nasazení Synchronizace souborů Azure.
+
+Pokud je váš scénář jiný, podívejte se do [tabulky Průvodce migrací](storage-files-migration-overview.md#migration-guides).
 
 Synchronizace souborů Azure funguje v umístěních přímo připojeného úložiště (DAS) a nepodporuje synchronizaci s umístěními síťového připojeného úložiště (NAS).
 Tato skutečnost provede migraci vašich souborů a tento článek vás provede plánováním a prováděním této migrace.
 
 ## <a name="migration-goals"></a>Cíle migrace
 
-Cílem je přesunout sdílené složky, které máte na zařízení NAS, na Windows Server. Pak využijte Synchronizace souborů Azure pro nasazení hybridního cloudu. Tato migrace se musí udělat způsobem, který zaručuje integritu produkčních dat i dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
+Cílem je přesunout sdílené složky, které máte na zařízení NAS, na Windows Server. Pak využijte Synchronizace souborů Azure pro nasazení hybridního cloudu. Obecně se musí migrace provést způsobem, který Guaranty integritu produkčních dat a její dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
 
 ## <a name="migration-overview"></a>Přehled migrace
 
@@ -45,14 +54,14 @@ Jak je uvedeno v [článku Přehled migrace](storage-files-migration-overview.md
 * Vytvořte Windows Server 2019 – minimálně 2012R2 jako virtuální počítač nebo fyzický server. Podporuje se taky cluster Windows serveru s podporou převzetí služeb při selhání.
 * Zřídit nebo přidat přímo připojené úložiště (DAS ve srovnání se serverem NAS, který není podporován).
 
-    Velikost úložiště, kterou zřídíte, může být menší než vaše zařízení, které aktuálně používáte, v případě, že použijete funkci [cloudové vrstvy](storage-sync-cloud-tiering-overview.md) Azure File Sync.
+    Velikost úložiště, kterou zřizujete, může být menší než vaše aktuálně používáte na svém zařízení NAS. Tato volba konfigurace vyžaduje, abyste také využívali funkci [cloudových vrstev](storage-sync-cloud-tiering-overview.md) Azure File Sync.
     Když ale kopírujete soubory z většího prostoru NAS do menšího svazku Windows serveru v pozdější fázi, budete muset pracovat v dávkách:
 
     1. Přesunutí sady souborů, které se vejdou na disk
     2. Povolit synchronizaci souborů a vrstvení cloudu
-    3. Pokud je na svazku vytvořeno více volného místa, pokračujte dalším dávkou souborů. 
+    3. Pokud je na svazku vytvořeno více volného místa, pokračujte dalším dávkou souborů. Další možností je zkontrolovat pomocí příkazu Robocopy v [oddílu nadcházející Robocopy](#phase-7-robocopy) použití nového `/LFSM` přepínače. Použití nástroje `/LFSM` může výrazně zjednodušit úlohy Robocopy, ale není kompatibilní s některými jinými přepínači Robocopy, na kterých byste měli.
     
-    Tomuto přístupu k dávkám se můžete vyhnout tím, že zřizujete stejné místo na Windows serveru, které vaše soubory zaujímají na zařízení NAS. Zvažte odstranění duplicitních dat na serveru NAS nebo v systému Windows. Pokud nechcete, aby se na Windows Server trvale potvrdilo toto vysoké množství úložiště, můžete zmenšit velikost svazku po migraci a před úpravou zásad cloudové vrstvy. Tím se vytvoří menší místní mezipaměť sdílených složek Azure.
+    Tomuto přístupu k dávkám se můžete vyhnout tím, že zřizujete stejné místo na Windows serveru, které vaše soubory zaujímají na zařízení NAS. Zvažte odstranění duplicitních dat na serveru NAS nebo v systému Windows. Pokud nechcete, aby se toto úložiště na Windows Server trvale potvrdilo, můžete zmenšit velikost svazku po migraci a ještě před úpravou zásad cloudové vrstvy. Tím se vytvoří menší místní mezipaměť sdílených složek Azure.
 
 Konfigurace prostředků (COMPUTE a RAM) systému Windows Server, který nasazujete, závisí hlavně na počtu položek (soubory a složky), které budete synchronizovat. Pokud máte nějaké obavy, doporučujeme, abyste se s vyšší konfigurací výkonu přečetli.
 
@@ -108,76 +117,7 @@ Následující příkaz Robocopy zkopíruje soubory z úložiště NAS do cílov
 Pokud jste na Windows serveru zřídili méně úložiště, než vaše soubory zabírají na zařízení NAS, pak jste nakonfigurovali vrstvu cloudu. Vzhledem k plnémumu místnímu svazku Windows serveru se [vrstvení cloudu](storage-sync-cloud-tiering-overview.md) zahájí v souborech a vrstvách, které se už úspěšně synchronizovaly. Vrstvení cloudu vytvoří dostatek místa pro pokračování kopie ze zařízení NAS. Vrstvení cloudu kontroluje jednu hodinu, která se synchronizuje, a uvolní místo na disku, abyste dosáhli volného místa na 99% svazku.
 Je možné, že Robocopy přesouvá soubory rychleji, než je můžete synchronizovat s cloudem a vrstvou místně, takže na místním disku dochází místo. Příkaz Robocopy se nezdaří. Doporučujeme, abyste procházeli prostřednictvím sdílených složek v sekvenci, která to brání. Například nespouštíte úlohy Robocopy pro všechny sdílené složky ve stejnou dobu nebo pouze přesunutím sdílených složek, které odpovídají aktuálnímu volnému místu na Windows serveru, abyste si vyuváděli pár.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Pozadí
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Umožňuje nástroji Robocopy spustit vícevláknové procesy. Výchozí hodnota je 8, maximální hodnota je 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Výstupuje stav do souboru protokolu jako UNICODE (přepíše existující protokol).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Provede výstup do okna konzoly. Používá se ve spojení s výstupem do souboru protokolu.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      Spustí příkaz Robocopy ve stejném režimu, který používá zálohovací aplikace. Umožňuje nástroji Robocopy přesunout soubory, ke kterým aktuální uživatel nemá oprávnění.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Umožňuje několikrát spustit tento příkaz Robocopy na stejném cíli nebo cíli. Určuje, co se zkopírovalo dřív, a vynechá ho. Budou zpracovány pouze změny, přidání a "*odstranění*", k nimž došlo od posledního spuštění. Pokud příkaz neběžel dřív, nevynechá se nic. Příznak */Mir* je vynikající možností pro umístění zdrojů, která se pořád aktivně používají a mění.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      věrnost kopírování souborů (výchozí je/COPY: DAT), příznaky kopírování: D = data, A = atributy, T = časová razítka, S = zabezpečení – seznamy řízení přístupu NTFS, O = informace o vlastníkovi, U = informace o auditování
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      Kopírovat všechny informace o souboru (ekvivalentní k/COPY: DATSOU)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      věrnost pro kopii adresářů (výchozí hodnota je/DCOPY: DA), příznaky kopírování: D = data, A = atributy, T = časová razítka
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>Fáze 8: vyjmutí uživatele z převzetí
 
@@ -196,7 +136,7 @@ Druhý čas se dokončí rychleji, protože potřebuje pouze přenést změny, k
 
 Tento postup opakujte, dokud nebudete přesvědčeni, že doba potřebná k dokončení nástroje Robocopy pro konkrétní umístění spadá do přijatelného okna pro výpadky.
 
-Když posuzujete nepotřebné výpadky a jste připraveni přejít na umístění serveru NAS do režimu offline: aby uživatel mohl pracovat offline, máte možnost změnit seznamy řízení přístupu v kořenovém adresáři sdílené složky tak, aby uživatelé nemuseli mít přístup k umístění nebo provedli jiný vhodný krok, který brání změně obsahu v této složce na serveru NAS.
+Když považujete nepotřebné výpadky, musíte odebrat uživatelský přístup ke sdíleným složkám založeným na serveru NAS. To můžete provést všemi kroky, které uživatelům brání ve změně struktury souborů a složek a obsahu. Příkladem je Ukázat DFS-Namespace k neexistujícímu umístění nebo změnit kořenové seznamy ACL pro sdílenou složku.
 
 Spusťte jeden poslední příkaz Robocopy. V takovém případě se zobrazí všechny změny, které mohly být vynechány.
 Doba, po kterou tento poslední krok trvá, závisí na rychlosti kontroly nástroje Robocopy. Můžete odhadnout čas (který se rovná vašemu výpadku), a to měřením doby trvání předchozího běhu.
@@ -224,7 +164,7 @@ Pokud chcete řešit potíže s Synchronizace souborů Azure problémy, podívej
 
 ## <a name="next-steps"></a>Další kroky
 
-K dispozici je více informací o sdílených složkách a Synchronizace souborů Azure Azure. Následující články vám pomůžou pochopit pokročilé možnosti, osvědčené postupy a také pomoc při odstraňování potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
+K dispozici je více informací o sdílených složkách a Synchronizace souborů Azure Azure. Následující články vám pomůžou pochopit pokročilé možnosti, osvědčené postupy a také obsahovat pomoc s řešením potíží. Tyto články v případě potřeby odkazují na [dokumentaci ke sdílení souborů Azure](storage-files-introduction.md) .
 
 * [Přehled AFS](./storage-sync-files-planning.md)
 * [Průvodce nasazením pro AFS](./storage-how-to-create-file-share.md)

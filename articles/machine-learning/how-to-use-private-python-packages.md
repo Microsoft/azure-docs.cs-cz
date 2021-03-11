@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520893"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618096"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Použití privátních balíčků Pythonu s Azure Machine Learning
 
@@ -52,11 +52,11 @@ Interně Azure Machine Learning služba nahrazuje adresu URL zabezpečenou adres
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Použití úložiště balíčků z Azure DevOps feed
 
-Pokud aktivně vyvíjíte balíčky Pythonu pro vaši aplikaci Machine Learning, můžete je hostovat do úložiště Azure DevOps jako artefakty a publikovat je jako informační kanál. Tento přístup umožňuje integrovat pracovní postup DevOps pro vytváření balíčků s vaším pracovní prostor Azure Machine Learning. Informace o tom, jak nastavit kanály Pythonu pomocí Azure DevOps, najdete [v článku Začínáme s balíčky Pythonu v Azure Artifacts](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops)
+Pokud aktivně vyvíjíte balíčky Pythonu pro vaši aplikaci Machine Learning, můžete je hostovat do úložiště Azure DevOps jako artefakty a publikovat je jako informační kanál. Tento přístup umožňuje integrovat pracovní postup DevOps pro vytváření balíčků s vaším pracovní prostor Azure Machine Learning. Informace o tom, jak nastavit kanály Pythonu pomocí Azure DevOps, najdete [v článku Začínáme s balíčky Pythonu v Azure Artifacts](/azure/devops/artifacts/quickstarts/python-packages)
 
 Tento přístup používá k ověření v úložišti token Personal Access. Stejný přístup se vztahuje i na jiná úložiště s ověřováním na základě tokenů, jako jsou například soukromá úložiště GitHub. 
 
- 1. Pro instanci Azure DevOps [Vytvořte osobní přístupový token (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) . Nastavte rozsah tokenu pro __sbalení > číst__. 
+ 1. Pro instanci Azure DevOps [Vytvořte osobní přístupový token (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat) . Nastavte rozsah tokenu pro __sbalení > číst__. 
 
  2. Pomocí metody [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) přidejte do vlastností pracovního prostoru adresu URL Azure DEVOPS a Pat.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725240"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560612"
 ---
 # <a name="securing-external-access-with-groups"></a>Zabezpečení externího přístupu pomocí skupin 
 
@@ -54,7 +54,7 @@ Při vývoji strategie skupiny pro zabezpečení externího přístupu k vašim 
 
    * *Ve výchozím nastavení mohou všichni uživatelé vytvářet skupiny M365 a skupiny jsou otevřeny pro všechny (interní a externí) uživatele ve vašem tenantovi, aby se mohli připojit*. 
 
-      * [Vytvoření skupiny Microsoft 365 můžete omezit](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) na členy určité skupiny zabezpečení. Ke konfiguraci tohoto nastavení použijte Windows PowerShell. 
+      * [Vytvoření skupiny Microsoft 365 můžete omezit](/microsoft-365/solutions/manage-creation-of-groups) na členy určité skupiny zabezpečení. Ke konfiguraci tohoto nastavení použijte Windows PowerShell. 
 
 * **Kdo by měl být schopný pozvat lidi do skupin?** Mohou všichni členové skupiny přidávat další členy nebo mohou pouze vlastníci skupiny přidat členy?
 
@@ -150,13 +150,13 @@ Hybridní organizace mají místní infrastrukturu i cloudovou infrastrukturu Az
 
 ## <a name="microsoft-365-groups"></a>Skupiny Microsoft 365
 
-[Microsoft 365 skupiny](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) představují základní službu pro členství, která se řídí všemi přístupy přes M365. Je možné je vytvořit z [Azure Portal](https://portal.azure.com/)nebo z [portálu M365](https://admin.microsoft.com/). Při vytvoření skupiny M365 udělíte přístup ke skupině prostředků, které se používají ke spolupráci. Úplný seznam těchto prostředků najdete v tématu [Přehled skupin Microsoft 365 pro správce](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
+[Microsoft 365 skupiny](/microsoft-365/admin/create-groups/office-365-groups) představují základní službu pro členství, která se řídí všemi přístupy přes M365. Je možné je vytvořit z [Azure Portal](https://portal.azure.com/)nebo z [portálu M365](https://admin.microsoft.com/). Při vytvoření skupiny M365 udělíte přístup ke skupině prostředků, které se používají ke spolupráci. Úplný seznam těchto prostředků najdete v tématu [Přehled skupin Microsoft 365 pro správce](/microsoft-365/admin/create-groups/office-365-groups) .
 
 M365 skupiny mají pro své role následující drobné odlišnosti.
 
 * **Vlastníci** – vlastníci skupiny můžou přidávat nebo odebírat členy a mít jedinečná oprávnění, jako je možnost odstraňovat konverzace ze sdílené doručené pošty nebo měnit nastavení skupiny. Vlastníci skupiny můžou přejmenovat skupinu, aktualizovat popis nebo obrázek a další.
 
-* **Členové** – členové mají přístup ke všem ve skupině, ale nemůžou měnit nastavení skupiny. Ve výchozím nastavení mohou členové skupiny pozvat hostům, aby se připojili ke skupině, i když [Toto nastavení můžete řídit](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Členové** – členové mají přístup ke všem ve skupině, ale nemůžou měnit nastavení skupiny. Ve výchozím nastavení mohou členové skupiny pozvat hostům, aby se připojili ke skupině, i když [Toto nastavení můžete řídit](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Hosté** – členové skupiny jsou členy, kteří jsou mimo vaši organizaci. Hosté mají ve výchozím nastavení určitá omezení funkcí v týmech.
 

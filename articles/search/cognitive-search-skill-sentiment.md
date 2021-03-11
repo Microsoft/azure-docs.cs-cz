@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935275"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547471"
 ---
 # <a name="sentiment-cognitive-skill"></a>Mínění vnímání znalostí
 
@@ -110,11 +110,9 @@ U parametrů se rozlišují malá a velká písmena.
 }
 ```
 
-## <a name="notes"></a>Poznámky
-Pokud je toto nastavení prázdné, nevrátí se pro tyto záznamy mínění skóre.
-
-## <a name="error-cases"></a>Chybové případy
-Pokud jazyk není podporován, je vygenerována chyba a nebude vráceno žádné mínění skóre.
+## <a name="warning-cases"></a>Případy upozornění
+Pokud je text prázdný, vygeneruje se upozornění a nevrátí se žádné mínění skóre.
+Pokud jazyk není podporován, je vygenerováno upozornění a nebude vráceno žádné mínění skóre.
 
 ## <a name="see-also"></a>Viz také
 

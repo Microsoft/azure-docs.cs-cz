@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 952be09662c2c74f883d63de72bba2b9cb58d0e0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656440"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553999"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Export certifikátů emulátoru Azure Cosmos DB pro použití s aplikacemi Java, Python a Node.js
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Je potřeba exportovat certifikát emulátoru a úspěšně použít koncový bo
 
 Při spouštění aplikací Java nebo aplikací MongoDB, které používají klienta založeného na jazyce Java, je snazší nainstalovat certifikát do výchozího úložiště certifikátů Java, než aby se tyto příznaky prošly `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` . Například zahrnutá ukázková aplikace Java ( `https://localhost:8081/_explorer/index.html` ) závisí na výchozím úložišti certifikátů.
 
-Podle pokynů v části [Přidání certifikátu do úložiště certifikátů Java](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) importujte certifikát X. 509 do výchozího úložiště certifikátů Java. Mějte na paměti, že při spuštění nástroje webtool budete pracovat v adresáři *% JAVA_HOME%* . Po importu certifikátu do úložiště certifikátů se klienti pro SQL a Azure Cosmos DB API pro MongoDB budou moci připojit k emulátoru Azure Cosmos DB.
+Podle pokynů v části [Přidání certifikátu do úložiště certifikátů Java](https://docs.oracle.com/cd/E54932_01/doc.705/e54936/cssg_create_ssl_cert.htm) importujte certifikát X. 509 do výchozího úložiště certifikátů Java. Mějte na paměti, že při spuštění nástroje webtool budete pracovat v adresáři *% JAVA_HOME%* . Po importu certifikátu do úložiště certifikátů se klienti pro SQL a Azure Cosmos DB API pro MongoDB budou moci připojit k emulátoru Azure Cosmos DB.
 
 Případně můžete pomocí následujícího skriptu bash importovat certifikát:
 

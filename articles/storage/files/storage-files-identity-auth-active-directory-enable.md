@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739991"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547494"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
@@ -23,7 +23,7 @@ Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přeč
 ## <a name="supported-scenarios-and-restrictions"></a>Podporované scénáře a omezení
 
 - Služba AD DS identit, které se používají pro místní služba AD DS ověřování souborů Azure, musí být synchronizované do Azure AD. Synchronizace hodnot hash hesel je volitelná. 
-- Podporuje sdílené složky Azure spravované pomocí Azure File Sync.
+- Podporuje sdílené složky Azure spravované pomocí Synchronizace souborů Azure.
 - Podporuje ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC a [AES 256](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Podpora šifrování AES 256 je aktuálně omezená na účty úložiště s názvy <= 15 znaků. Šifrování AES-128 Kerberos se zatím nepodporuje.
 - Podporuje prostředí s jednotným přihlašováním.
 - Podporuje se jenom na klientech, na kterých běží novější verze operačních systémů než Windows 7 nebo Windows Server 2008 R2.
@@ -33,10 +33,14 @@ Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přeč
 
 Když povolíte služba AD DS pro sdílené složky Azure přes protokol SMB, počítače připojené služba AD DS můžou připojit sdílené složky Azure pomocí svých stávajících přihlašovacích údajů služba AD DS. Tato funkce se dá povolit u prostředí služba AD DS hostovaného buď v premch počítačích, nebo hostovaných v Azure.
 
-> [!NOTE]
-> Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžné případy použití, publikovali jsme dvě videa s podrobnými pokyny pro následující scénáře:
-> - [Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>Videa
+
+Abychom vám pomohli nastavit ověřování Azure Files AD pro některé běžné případy použití, publikovali jsme dvě videa s podrobnými pokyny pro následující scénáře:
+
+| Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD) | Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)  |
+|-|-|
+| [![Záznam dění na záznamovém zařízení s výměnou místních souborových serverů – kliknutím si můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Záznam dění na záznamovém okně s použitím souborů Azure jako videa kontejneru profilu – kliknutím si ho můžete přehrát.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>Požadavky 
 

@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 50b8bc0882a5a219e70a44fdefe7dff30ae9e0ae
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487640"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561343"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
@@ -81,6 +81,6 @@ Komunikační služby Azure budou předávány do Azure Monitor dat protokolová
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-- [Žádosti subjektu dat Azure pro GDPR a CCPA](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
+- [Žádosti subjektu dat Azure pro GDPR a CCPA](/microsoft-365/compliance/gdpr-dsr-azure)
 - [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Interaktivní mapa Azure – kde jsou moje zákaznická data?](https://azuredatacentermap.azurewebsites.net/)

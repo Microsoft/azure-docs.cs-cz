@@ -2,14 +2,14 @@
 title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus
 description: Popisuje, jak použít Service Bus k optimalizaci výkonu při výměně zprostředkovaných zpráv.
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c775555f82258c532d72917220129e3913ad314
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456041"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561870"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -44,17 +44,22 @@ Další informace o minimální podpoře .NET Standard platforem najdete v téma
 # <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
 Service Bus objekty, které pracují se službou, jako je například [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)a [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor), by měly být registrovány pro vkládání závislostí jako singleton (nebo instance jednou a sdílená). ServiceBusClient je možné zaregistrovat pro vkládání závislostí s [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
 
-Po odeslání nebo přijetí každé zprávy doporučujeme, abyste tyto objekty nezavřeli nebo neodstranili. Pokud chcete zavřít nebo odstranit objekty specifické pro entitu (ServiceBusSender/Receiver/procesor), dojde k odtržení odkazu na službu Service Bus. Zrušením ServiceBusClient výsledků odtrhnout připojení ke službě Service Bus. Navázání připojení je náročná operace, kterou se můžete vyhnout opětovným použitím stejného ServiceBusClient a vytvořením potřebných objektů specifických pro danou entitu ze stejné instance ServiceBusClient. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
+Po odeslání nebo přijetí každé zprávy doporučujeme, abyste tyto objekty nezavřeli nebo neodstranili. Pokud chcete zavřít nebo odstranit objekty specifické pro entitu (ServiceBusSender/Receiver/procesor), dojde k odtržení odkazu na službu Service Bus. Zrušením ServiceBusClient výsledků odtrhnout připojení ke službě Service Bus. 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Service Bus klientské objekty, jako jsou implementace [`IQueueClient`][QueueClient] nebo [`IMessageSender`][MessageSender] , by měly být registrovány pro vkládání závislostí jako typu Singleton (nebo instance jednou a sdílená). Po odeslání zprávy doporučujeme, abyste nezavřeli objekty pro vytváření zpráv, fronty, témata nebo předplatné, a pak je znovu vytvoříte při odeslání další zprávy. Ukončení objektu pro vytváření zpráv odstraní připojení ke službě Service Bus. Při opětovném vytvoření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
+Service Bus klientské objekty, jako jsou implementace [`IQueueClient`][QueueClient] nebo [`IMessageSender`][MessageSender] , by měly být registrovány pro vkládání závislostí jako typu Singleton (nebo instance jednou a sdílená). Po odeslání zprávy doporučujeme, abyste nezavřeli objekty pro vytváření zpráv, fronty, témata nebo předplatné, a pak je znovu vytvoříte při odeslání další zprávy. Ukončení objektu pro vytváření zpráv odstraní připojení ke službě Service Bus. Při opětovném vytvoření továrny se vytvoří nové připojení. 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Service Bus objekty klienta, například `QueueClient` nebo `MessageSender` , jsou vytvořeny prostřednictvím objektu [MessagingFactory][MessagingFactory] , který poskytuje také interní správu připojení. Po odeslání zprávy doporučujeme, abyste nezavřeli objekty pro vytváření zpráv, fronty, témata nebo předplatné, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
+Service Bus objekty klienta, například `QueueClient` nebo `MessageSender` , jsou vytvořeny prostřednictvím objektu [MessagingFactory][MessagingFactory] , který poskytuje také interní správu připojení. Po odeslání zprávy doporučujeme, abyste nezavřeli objekty pro vytváření zpráv, fronty, témata nebo předplatné, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. 
 
 ---
+
+Následující Poznámka platí pro všechny sady SDK:
+
+> [!NOTE]
+> Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken.
 
 ## <a name="concurrent-operations"></a>Souběžné operace
 Operace, jako je například Send, Receive, DELETE atd., nějakou dobu trvá. Tato doba zahrnuje dobu, kterou služba Service Bus potřebuje k zpracování operace, a latenci žádosti a odpovědi. Chcete-li zvýšit počet operací v čase, operace musí být spuštěny souběžně.

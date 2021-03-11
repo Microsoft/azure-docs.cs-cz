@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213092"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609389"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -37,6 +37,77 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 > [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>Podpora kódování HEVC ve standardním kodéru
+
+Standard Encoder teď podporuje podporu kódování 8bitové HEVC (H. 265). Obsah HEVC se dá doručit a zabalit přes dynamický balíček pomocí formátu hev1.  
+
+Nové vlastní kódování rozhraní .NET s ukázkou HEVC je k dispozici v [úložišti centra Git služby Media-Services-V3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC).
+Kromě vlastního kódování jsou nyní k dispozici následující nově Vestavěná přednastavení kódování HEVC:
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+
+Zákazníci, kteří dříve používali HEVC v kodéru Premium v rozhraní API v2, by měli migrovat na používání nové podpory kódování HEVC ve standardním kodéru.
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Oznámení o zastaralosti rozhraní API pro Azure Media Services V2 a sady SDK
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Aktualizace Azure Media Services REST API a sad SDK na V3 od 29. února 2024
+
+Vzhledem k tomu, že verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java nabízí více funkcí než verze 2, vyvyřazujeme verze 2 Azure Media Services REST API a klientské sady SDK pro .NET a Java. Doporučujeme, abyste tento přepínač provedli dřív, abyste získali bohatší výhody verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java. Verze 3 poskytuje: 
+ 
+- nepřetržitá podpora živé události
+- Rozhraní REST API pro platformu ARM, klientské sady SDK pro .NET Core, Node.js, Python, Java, přejít a Ruby.
+- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Požaduje se akce:
+
+Chcete-li minimalizovat přerušení vašich úloh, přečtěte si [Průvodce migrací](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a převeďte svůj kód z rozhraní API verze 2 a sady SDK na verzi 3 API a SDK před 29. února 2024.
+**Po 29. února 2024** přestane Azure Media Services nadále přijímat provoz ve verzi 2 REST API, rozhraní API pro správu účtů ARM verze 2015-10-01 nebo z SDK klienta .NET verze 2. To zahrnuje všechny klientské sady SDK Open Source třetích stran, které mohou volat rozhraní API verze 2.  
+
+Podívejte se na oficiální [oznámení o aktualizacích Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>Podpora kodéru úrovně Standard pro v2 API
+
+Kromě nově přidané podpory pro kódování HEVC (H. 265) jsou nyní k dispozici následující funkce ve verzi 2020-05-01 rozhraní API pro kódování. 
+
+- V nové podpoře **JobInputClip** se teď podporuje víc sešitů vstupních souborů. 
+    - K dispozici je příklad pro .NET, který ukazuje, jak [spojí dva prostředky dohromady](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
+- Výběr zvukové stopy umožňuje zákazníkům vybrat a namapovat příchozí zvukové stopy a směrovat je do výstupu pro kódování.
+    - Podrobnosti o **AudioTrackDescriptor** a sledování výběru najdete v [REST API openapi](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) .
+- Sledovat výběr pro kódování – umožňuje zákazníkům vybrat stopy ze zdrojového souboru nebo živého archivu ABR s více přenosovými rychlostmi. Extrémně užitečné pro generování rychlostmi z živých souborů archivu událostí.
+    - Viz [VideoTrackDescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562)
+- Funkce redigování (rozostření) přidané do FaceDetector
+    - Zobrazit režimy [redigování](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) a [kombinované](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) FaceDetector přednastavené
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>Nové verze klientské sady SDK pro rozhraní Azure Media Services API pro 2020-05-01
+
+Nové verze sady Client SDK pro všechny dostupné jazyky jsou nyní k dispozici s výše uvedenými funkcemi.
+Aktualizujte prosím na nejnovější klientské sady SDK v základu kódu pomocí Správce balíčků.
+
+- [3.0.4 balíčku sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js 8.1.0 verze TypeScript](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python Azure – Správa – Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0-beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Aktualizované ukázky Node.js TypeScript pomocí sady isomorphic SDK pro JavaScript
+
+Ukázky Node.js byly aktualizované, aby používaly nejnovější sadu SDK isomorphic. Ukázky nyní ukazují použití TypeScriptu. Kromě toho se přidala Nová ukázka živého streamování pro Node.js/TypeScript..
+
+Podívejte se na nejnovější ukázky v úložišti centra Git **[služby Media-Services-V3-Node-kurzy](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** .
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>Nový živý úsporný režim pro podporu rychlejšího spuštění z teplého stavu
+
+Živé události teď podporují režim fakturace s nižšími náklady pro "úsporu". To zákazníkům umožňuje předem přidělit živé události za nižší náklady na vytvoření "aktivních fondů". Zákazníci pak můžou použít úsporné živé události k přechodu do běžícího stavu rychleji než od začátku po vytvoření.  Tím se zkracuje čas na spuštění kanálu významně a umožňuje rychlé přidělování v hotovém fondu počítačů, které běží v nižším cenovém režimu.
+[Tady](https://azure.microsoft.com/pricing/details/media-services)najdete nejnovější informace o cenách.
+Další informace o pohotovostním stavu a dalších stavech živých událostí najdete v článku [stavy událostí živého vysílání a fakturace.](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing)
 
 ## <a name="december-2020"></a>Prosinec 2020
 

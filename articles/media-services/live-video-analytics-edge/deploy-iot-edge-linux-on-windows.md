@@ -3,16 +3,16 @@ title: Nasazení na IoT Edge pro Linux ve Windows – Azure
 description: Tento článek poskytuje pokyny, jak nasadit na zařízení s Windows na IoT Edge pro Linux.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042177"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618130"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Nasazení na IoT Edge pro Linux v zařízení s Windows (EFLOW)
 
-V tomto článku se dozvíte, jak nasadit Live video Analytics na hraničním zařízení, které má [IoT Edge pro Linux ve Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows?view=iotedge-2018-06). Po dokončení kroků v tomto dokumentu budete moct spustit [mediální graf](media-graph-concept.md) , který detekuje pohyb ve videu a vysílá takové události do centra IoT v cloudu. Pak můžete přepnout do Media graphu pro pokročilé scénáře a využít možnosti Live video Analytics pro vaše zařízení IoT Edge se systémem Windows.
+V tomto článku se dozvíte, jak nasadit Live video Analytics na hraničním zařízení, které má [IoT Edge pro Linux ve Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). Po dokončení kroků v tomto dokumentu budete moct spustit [mediální graf](media-graph-concept.md) , který detekuje pohyb ve videu a vysílá takové události do centra IoT v cloudu. Pak můžete přepnout do Media graphu pro pokročilé scénáře a využít možnosti Live video Analytics pro vaše zařízení IoT Edge se systémem Windows.
 
 ## <a name="prerequisites"></a>Požadavky 
 

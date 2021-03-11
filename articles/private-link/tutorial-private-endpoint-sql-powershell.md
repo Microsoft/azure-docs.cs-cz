@@ -1,5 +1,5 @@
 ---
-title: Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – PowerShell
+title: 'Kurz: připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – PowerShell'
 description: V tomto kurzu se dozvíte, jak pomocí Azure PowerShell vytvořit server SQL Azure s privátním koncovým bodem.
 services: private-link
 author: asudbring
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4999d8b5d5ebe5d44aae782589b5c63324a4027b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096509"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554934"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure PowerShell
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Kurz: připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure PowerShell
 
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě s prostředky privátního propojení.
 
@@ -338,8 +338,6 @@ V tomto kurzu jste vytvořili:
 
 Virtuální počítač jste použili k zabezpečenému otestování připojení k SQL serveru v rámci privátního koncového bodu.
 
-V dalším kroku se může také zajímat [Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , která připojuje webovou aplikaci mimo virtuální síť k privátnímu koncovému bodu databáze.
-
-Naučte se vytvořit službu privátního propojení:
+V dalším kroku se může také zajímat **Webová aplikace s privátním připojením ke scénáři architektury Azure SQL Database** , která připojuje webovou aplikaci mimo virtuální síť k privátnímu koncovému bodu databáze.
 > [!div class="nextstepaction"]
-> [Vytvoření služby privátního propojení](create-private-link-service-portal.md)
+> [Webová aplikace s privátním připojením ke službě Azure SQL Database](/azure/architecture/example-scenario/private-web-app/private-web-app)

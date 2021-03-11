@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650970"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609902"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Ochrana Microsoft 365 z místních útoků
 
@@ -69,7 +69,7 @@ Chcete-li vyřešit výše uvedené vektory hrozeb, doporučujeme dodržovat pri
 
     Tyto účty správců jsou účty s omezeným použitím. *Žádné místní účty by neměly mít v Microsoft 365 oprávnění správce.* 
 
-    Další informace najdete v tématu [Přehled rolí správce Microsoft 365](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide). Viz také [role Microsoft 365 ve službě Azure AD](../roles/m365-workload-docs.md).
+    Další informace najdete v tématu [Přehled rolí správce Microsoft 365](/microsoft-365/admin/add-users/about-admin-roles). Viz také [role Microsoft 365 ve službě Azure AD](../roles/m365-workload-docs.md).
 
 1. **Správa zařízení z Microsoft 365.** Použijte službu Azure AD JOIN a cloudovou správu mobilních zařízení (MDM), abyste vyloučili závislosti na místní infrastruktuře správy zařízení. Tyto závislosti můžou ohrozit ovládací prvky zařízení a zabezpečení.
 
@@ -151,7 +151,7 @@ Při použití ke zřízení hybridních účtů systém Azure-AD-on-Cloud-HR sp
 
 Cloudové skupiny umožňují oddělit vaše spolupráce a přístup z vaší místní infrastruktury.
 
-* **Spolupráce**: použití skupin Microsoft 365 a Microsoft Teams pro moderní spolupráci. Vyřazení místních distribučních seznamů z provozu a [upgrade distribučních seznamů na Microsoft 365 skupiny v aplikaci Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Spolupráce**: použití skupin Microsoft 365 a Microsoft Teams pro moderní spolupráci. Vyřazení místních distribučních seznamů z provozu a [upgrade distribučních seznamů na Microsoft 365 skupiny v aplikaci Outlook](/office365/admin/manage/upgrade-distribution-lists).
 
 * **Přístup**: k autorizaci přístupu k aplikacím ve službě Azure AD použijte skupiny zabezpečení Azure AD nebo skupiny Microsoft 365.
 * **Licencování sady office 365**: k zřízení sady Office 365 pomocí pouze cloudových skupin použijte licencování na základě skupin. Tato metoda odděluje řízení členství ve skupině z místní infrastruktury.
@@ -203,9 +203,9 @@ Podmíněný přístup Azure AD slouží k interpretaci signálů a jejich použ
 
 * Pokud je to možné, používejte podmíněný přístup k [blokování starších protokolů ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md) . Kromě toho zakažte starší protokoly ověřování na úrovni aplikace pomocí konfigurace specifické pro aplikaci.
 
-   Další informace najdete v tématu [protokoly pro starší verze ověřování](../fundamentals/auth-sync-overview.md). Nebo si přečtěte konkrétní podrobnosti pro [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   Další informace najdete v tématu [protokoly pro starší verze ověřování](../fundamentals/auth-sync-overview.md). Nebo si přečtěte konkrétní podrobnosti pro [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant).
 
-* Implementujte doporučené [Konfigurace identit a přístupu k zařízením](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide).
+* Implementujte doporučené [Konfigurace identit a přístupu k zařízením](/microsoft-365/security/office-365-security/identity-access-policies).
 
 * Pokud používáte verzi služby Azure AD, která neobsahuje podmíněný přístup, ujistěte se, že používáte [výchozí hodnoty zabezpečení Azure AD](../fundamentals/concept-fundamentals-security-defaults.md).
 

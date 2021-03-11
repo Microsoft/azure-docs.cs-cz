@@ -3,12 +3,12 @@ title: Podpora archivní úrovně (Preview)
 description: Další informace o podpoře vrstev archivů pro Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 30a7915332d1d7ecab87b0db1ddc6dacc0fa69c9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050604"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609848"
 ---
 # <a name="archive-tier-support-preview"></a>Podpora archivní úrovně (Preview)
 
@@ -40,7 +40,12 @@ Podporovaní klienti:
 
 ## <a name="get-started-with-powershell"></a>Začínáme s PowerShellem
 
-1. Stáhněte si [nejnovější modul PowerShellu](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (Preview).
+1. V PowerShellu spusťte následující příkaz:
+  
+    ```azurepowershell
+    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
+    ```
+
 1. Připojte se k Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 1. Přihlaste se k předplatnému:
 
