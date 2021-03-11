@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 225aca8c4695db33e504a5857acb856f4e01d1f1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551058"
+ms.locfileid: "102609137"
 ---
 # <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
@@ -104,7 +104,7 @@ Specializované virtuální počítače neprošly procesem odebrání informací
 
 ## <a name="regional-support"></a>Místní podpora
 
-Všechny veřejné oblasti můžou být cílové oblasti, ale replikovat do Austrálie Central a Austrálie – střed 2 potřebujete, aby bylo vaše předplatné přidané do seznamu povolených. Chcete-li požádat o přidání předplatných do seznamu povolených, použijte následující: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
+Všechny veřejné oblasti můžou být cílové oblasti, ale některé oblasti vyžadují, aby zákazníci procházeli procesem žádosti, aby získali přístup. Chcete-li požádat o přidání předplatného do seznamu povolených oblastí, jako je například Austrálie – střed nebo Austrálie – střed 2, odeslat [žádost o přístup](/troubleshoot/azure/general/region-access-request-process)
 
 ## <a name="limits"></a>Omezení 
 

@@ -2,17 +2,17 @@
 title: NCas T4 V3-Series
 description: Specifikace pro virtuální počítače s NCas T4 řady V3
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042738"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609205"
 ---
 # <a name="ncast4_v3-series"></a>Řada NCasT4_v3 
 
@@ -28,7 +28,7 @@ Virtuální počítače řady NCasT4_v3-Series využívají GPU a procesory AMD 
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
 [Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
-NVIDIA NVLink Interconnect: nepodporováno<br>
+NVIDIA NVLink Interconnect: podporováno<br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |

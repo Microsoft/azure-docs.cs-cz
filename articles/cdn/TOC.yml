@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: Nastavení pravidel ukládání
       href: cdn-caching-rules-tutorial.md
-    - name: Vynucení HTTPS s využitím stroje pravidel Standard
-      href: cdn-standard-rules-engine.md
 - name: ukázky
   items:
     - name: Ukázky kódů
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: Více zdrojů koncových bodů
           href: endpoint-multiorigin.md
+        - name: Vynucení HTTPS s využitím stroje pravidel Standard
+          href: cdn-standard-rules-engine.md
         - name: Řízení chování při ukládání do mezipaměti
           items:
             - name: Řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do mezipaměti

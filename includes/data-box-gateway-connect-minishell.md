@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 03aed175b105ad650407acb4a839c5a5b8004465
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
-ms.translationtype: HT
+ms.openlocfilehash: f9707ab48d64ede2e796675eb3a0a6e7820c7073
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532606"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603374"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -68,7 +68,7 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta NFS.
 
 1. K otevření relace PowerShellu zadejte:
 
-    `sudo pwsh`
+    `pwsh`
  
 2. Pro připojení pomocí vzdáleného klienta zadejte:
 

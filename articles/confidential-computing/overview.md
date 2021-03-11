@@ -4,16 +4,16 @@ description: Přehled výpočetních funkcí Azure důvěrné (ACC)
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560821"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554186"
 ---
 # <a name="confidential-computing-on-azure"></a>Důvěrné výpočetní prostředí v Azure
 
@@ -49,11 +49,11 @@ TEE je prostředí, které vynutilo provádění pouze autorizovaného kódu. Ž
 Spouštění úloh v cloudu vyžaduje důvěryhodnost. Tento vztah důvěryhodnosti udělíte různým poskytovatelům, kteří umožňují různé komponenty vaší aplikace.
 
 
-**Dodavatelé softwaru aplikací** : důvěřovat softwaru nasazením Prem, pomocí Open Source nebo vytvořením interního aplikačního softwaru.
+**Dodavatelé softwaru aplikací**: důvěřovat softwaru nasazením Prem, pomocí Open Source nebo vytvořením interního aplikačního softwaru.
 
-**Dodavatelé hardwaru** : důvěřovat hardwaru pomocí místního hardwaru nebo interního hardwaru. 
+**Dodavatelé hardwaru**: důvěřovat hardwaru pomocí místního hardwaru nebo interního hardwaru. 
 
-**Poskytovatelé infrastruktury** : důvěryhodní poskytovatelé cloudu nebo spravovat vlastní místní datová centra.
+**Poskytovatelé infrastruktury**: důvěryhodní poskytovatelé cloudu nebo spravovat vlastní místní datová centra.
 
 
 Důvěrné výpočetní prostředí Azure usnadňuje důvěřování poskytovateli cloudu tím, že snižuje nutnost důvěry v různých aspektech výpočetní cloudové infrastruktury. Důvěrné výpočetní prostředí Azure minimalizuje důvěru pro jádro hostitelského operačního systému, hypervisor, Správce virtuálních počítačů a správce hostitele.
@@ -68,13 +68,13 @@ Nižší TCB znamená vyšší zabezpečení. Existuje méně nebezpečí vystav
 
 Důvěrné výpočetní prostředí Azure umožňuje využívat důvěrné výpočetní funkce ve virtualizovaném prostředí. Nyní můžete používat nástroje, software a cloudovou infrastrukturu k sestavování nad zabezpečeným hardwarem.  
 
-**Zabránit neoprávněnému přístupu** : spouštějte citlivá data v cloudu. Důvěřovat tomu, že Azure poskytuje nejlepší možnou ochranu dat, a to s malým množstvím změn, co se ještě dnes děje.
+**Zabránit neoprávněnému přístupu**: spouštějte citlivá data v cloudu. Důvěřovat tomu, že Azure poskytuje nejlepší možnou ochranu dat, a to s malým množstvím změn, co se ještě dnes děje.
 
-**Dodržování předpisů** : migrujte do cloudu a udržujte plnou kontrolu nad daty, která budou splňovat předpisy státní správy pro ochranu osobních údajů a zabezpečení IP adresy organizace.
+**Dodržování předpisů**: migrujte do cloudu a udržujte plnou kontrolu nad daty, která budou splňovat předpisy státní správy pro ochranu osobních údajů a zabezpečení IP adresy organizace.
 
-**Zabezpečená a nedůvěryhodná spolupráce** : řešení problémů s pracovním měřítkem napříč různými organizacemi, dokonce i soutěžiteli, k odemknutí rozsáhlých datových analýz a hlubších přehledů.
+**Zabezpečená a nedůvěryhodná spolupráce**: řešení problémů s pracovním měřítkem napříč různými organizacemi, dokonce i soutěžiteli, k odemknutí rozsáhlých datových analýz a hlubších přehledů.
 
-**Izolované zpracování** : nabízí novou vlnu produktů, které odstraňují zodpovědnost na soukromá data pomocí nenevidomého zpracování. Poskytovatel služby nemůže ani načíst uživatelská data. 
+**Izolované zpracování**: nabízí novou vlnu produktů, které odstraňují zodpovědnost na soukromá data pomocí nenevidomého zpracování. Poskytovatel služby nemůže ani načíst uživatelská data. 
 
 ## <a name="get-started"></a>Začínáme
 ### <a name="azure-compute"></a>Azure Compute

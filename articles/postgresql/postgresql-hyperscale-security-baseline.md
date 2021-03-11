@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588280"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607981"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – Citus (škálovatelné)
 
@@ -544,9 +544,9 @@ Azure Resource Manager taky umožňuje exportovat šablonu do JavaScript Object 
 
 **Pokyny**: Pokud používáte vlastní definice zásad Azure pro instance Citus a související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index)
 
 **Monitorování služby Azure Security Center:** Nelze použít
 

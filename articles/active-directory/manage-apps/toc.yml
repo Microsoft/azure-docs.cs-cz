@@ -38,8 +38,14 @@
       items:
         - name: Přehled ukázek správy aplikací
           href: app-management-powershell-samples.md
-        - name: 'Export všech registrací, tajných kódů a certifikátů aplikací'
+        - name: Export tajných klíčů a certifikátů (registrace aplikací)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: Export tajných klíčů a certifikátů (podnikové aplikace)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: Export tajných kódů a certifikátů
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: Export tajných klíčů a certifikátů po uplynutí požadovaného data
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Ukázky PowerShellu proxy aplikací
       href: application-proxy-powershell-samples.md
 - name: Koncepty

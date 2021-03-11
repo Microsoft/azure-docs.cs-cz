@@ -8,18 +8,18 @@ ms.author: pamistel
 ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 409498201ac94882f1a28917693ffd3a65631fc7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583723"
+ms.locfileid: "102617399"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>Princip třídy AnchorLocateCriteria
 V tomto článku se seznámíte s různými možnostmi, které můžete použít při dotazování kotvy. Přejdeme se na AnchorLocateCriteria třídu, její možnosti a platné kombinace možností.
 
 ## <a name="anchor-locate-criteria"></a>Umístit kritéria pro kotvu
-[Třída AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria?view=spatialanchors-dotnet) vám pomůže zadat dotaz na službu pro dříve vytvořené kotvy. Jeden objekt AnchorLocateCriteria může být v každém sledovacím procesu použit kdykoli. Každý objekt AnchorLocateCriteria musí obsahovat **přesně jednu** z následujících vlastností: [identifiers](#identifiers), [NearAnchor](#nearanchor)nebo [NearDevice](#neardevice). V případě potřeby je možné nastavit další vlastnosti, jako je například [strategie](#strategy), [BypassCache](#bypasscache)a [RequestedCategories](#requestedcategories) . 
+[Třída AnchorLocateCriteria](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocatecriteria) vám pomůže zadat dotaz na službu pro dříve vytvořené kotvy. Jeden objekt AnchorLocateCriteria může být v každém sledovacím procesu použit kdykoli. Každý objekt AnchorLocateCriteria musí obsahovat **přesně jednu** z následujících vlastností: [identifiers](#identifiers), [NearAnchor](#nearanchor)nebo [NearDevice](#neardevice). V případě potřeby je možné nastavit další vlastnosti, jako je například [strategie](#strategy), [BypassCache](#bypasscache)a [RequestedCategories](#requestedcategories) . 
 
 ### <a name="properties"></a>Vlastnosti
 Ve sledovacím procesu definujte **přesně jednu** z těchto vlastností:

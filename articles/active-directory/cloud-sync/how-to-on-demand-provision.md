@@ -1,6 +1,6 @@
 ---
-title: Zřizování na vyžádání Azure AD Connect synchronizace cloudu
-description: Tento článek popisuje funkci zřizování na vyžádání.
+title: Zřizování na vyžádání v Azure AD Connect synchronizace cloudu
+description: Tento článek popisuje, jak pomocí funkce synchronizace cloudu Azure AD Connect otestovat změny konfigurace.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,88 +11,90 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622520"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554271"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Zřizování na vyžádání Azure AD Connect synchronizace cloudu
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Zřizování na vyžádání v Azure AD Connect synchronizace cloudu
 
-Azure AD Connect synchronizace cloudu představila novou funkci, která vám umožní otestovat změny konfigurace, a to použitím těchto změn u jednoho uživatele.  Pomocí této služby můžete ověřit a ověřit, zda byly změny provedené v konfiguraci správně použity a zda jsou správně synchronizovány do Azure AD.  
+Pomocí funkce Cloud Sync služby Azure Active Directory (Azure AD) Connect můžete testovat změny konfigurace tím, že tyto změny použijete u jednoho uživatele. Toto zřizování na vyžádání pomáhá ověřit a ověřit, zda byly změny provedené v konfiguraci správně aplikovány a zda jsou správně synchronizovány do Azure AD.  
 
 > [!IMPORTANT] 
-> Když použijete zřizování na vyžádání, nepoužijí se pro vybraného uživatele filtry oborů.  To znamená, že můžete použít zřizování na vyžádání pro uživatele, kteří jsou mimo určené organizační jednotky.
+> Když použijete zřizování na vyžádání, nepoužijí se pro vybraného uživatele filtry oborů. Můžete použít zřizování na vyžádání pro uživatele, kteří jsou mimo zadané organizační jednotky.
 
-
-## <a name="using-on-demand-provisioning"></a>Použití zřizování na vyžádání
-Chcete-li použít novou funkci, postupujte podle následujících kroků.
-
+## <a name="validate-a-user"></a>Ověření uživatele
+Pokud chcete použít zřizování na vyžádání, postupujte podle těchto kroků:
 
 1.  Na portálu Azure Portal vyberte **Azure Active Directory**.
 2.  Vyberte **Azure AD Connect**.
 3.  Vyberte **Spravovat cloudovou synchronizaci**.
 
-    ![Spravovat zřizování](media/how-to-install/install-6.png)
+    ![Snímek obrazovky zobrazující odkaz pro správu synchronizace cloudu](media/how-to-install/install-6.png)
 4. V části **Konfigurace** vyberte svou konfiguraci.
-5. V části **ověřit** klikněte na tlačítko **zřídit uživatele** . 
+5. V části **ověřit** vyberte tlačítko **zřídit uživatele** . 
 
- ![Zřídit uživatele](media/how-to-on-demand-provision/on-demand-2.png)
+   ![Snímek obrazovky, který zobrazuje tlačítko pro zřízení uživatele.](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. Na obrazovce zřizování na vyžádání.  Zadejte **rozlišující jméno** uživatele a klikněte na tlačítko **zřídit** .  
+6. Na obrazovce **zřizování na vyžádání** zadejte rozlišující jméno uživatele a klikněte na tlačítko **zřídit** .  
  
- ![Zřizování na vyžádání](media/how-to-on-demand-provision/on-demand-3.png)
-7. Po dokončení by se měla zobrazit obrazovka úspěšná a 4 zelená zaškrtávací políčka, která označují úspěšné zřízení.  Vlevo se zobrazí všechny chyby.
+   ![Snímek obrazovky, který zobrazuje uživatelské jméno a tlačítko pro zřízení.](media/how-to-on-demand-provision/on-demand-3.png)
+7. Po dokončení zřizování se zobrazí obrazovka po úspěchu se čtyřmi zelenými značkami zaškrtnutí. Všechny chyby jsou zobrazeny vlevo.
 
-  ![Success](media/how-to-on-demand-provision/on-demand-4.png)
+   ![Snímek obrazovky, který ukazuje úspěšné zřízení.](media/how-to-on-demand-provision/on-demand-4.png)
 
-Nyní se můžete podívat na uživatele a zjistit, zda byly provedeny změny provedené v konfiguraci.  Zbývající část tohoto dokumentu popisuje jednotlivé oddíly, které se zobrazí v podrobnostech o úspěšné synchronizaci uživatele.
+## <a name="get-details-about-provisioning"></a>Získat podrobnosti o zřizování
+Nyní se můžete podívat na informace o uživateli a zjistit, jestli byly provedeny změny provedené v konfiguraci. Zbývající část tohoto článku popisuje jednotlivé oddíly, které se zobrazí v podrobnostech o úspěšné synchronizaci uživatele.
 
-## <a name="import-user-details"></a>Importovat podrobnosti o uživateli
-V této části najdete informace o uživateli, který se importoval ze služby Active Directory.  To znamená, že uživatel vypadá předtím, než se zřídí do Azure AD.  Kliknutím na odkaz **Zobrazit podrobnosti** zobrazíte tyto informace.
+### <a name="import-user"></a>Importovat uživatele
+Část **Import uživatele** poskytuje informace o uživateli, který byl importován ze služby Active Directory. Tento uživatel vypadá před tím, než se zřídí do služby Azure AD. Chcete-li zobrazit tyto informace, vyberte odkaz **Zobrazit podrobnosti** .
 
-![Importovat uživatele](media/how-to-on-demand-provision/on-demand-5.png)
+![Snímek obrazovky s tlačítkem pro zobrazení podrobností o importovaném uživateli](media/how-to-on-demand-provision/on-demand-5.png)
 
-Pomocí těchto informací můžete zobrazit různé atributy a jejich hodnoty, které byly naimportovány.  Pokud jste vytvořili mapování vlastního atributu, budete moct zobrazit jeho hodnotu.
-![Importovat podrobnosti o uživateli](media/how-to-on-demand-provision/on-demand-6.png)
+Pomocí těchto informací můžete zobrazit různé atributy (a jejich hodnoty), které byly naimportovány. Pokud jste vytvořili mapování vlastního atributu, můžete tady zobrazit jeho hodnotu.
 
-## <a name="determine-if-user-is-in-scope-details"></a>Určení, jestli se uživatel nachází v podrobnostech o oboru
-Tato část poskytuje informace o tom, jestli je uživatel, který se importoval do služby Azure AD, v oboru.  Kliknutím na odkaz **Zobrazit podrobnosti** zobrazíte tyto informace.
+![Snímek obrazovky zobrazující podrobnosti o uživateli](media/how-to-on-demand-provision/on-demand-6.png)
 
-![Obor uživatele](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>Zjistit, jestli je uživatel v oboru
+Část určení toho, jestli **je uživatel v oboru** , poskytuje informace o tom, jestli je uživatel, který byl naimportovaný do Azure AD, v oboru. Chcete-li zobrazit tyto informace, vyberte odkaz **Zobrazit podrobnosti** .
 
-Pomocí těchto informací můžete zobrazit další informace o oboru uživatelů.
+![Snímek obrazovky s tlačítkem pro zobrazení podrobností o oboru uživatele](media/how-to-on-demand-provision/on-demand-7.png)
 
-![Podrobnosti o oboru uživatele](media/how-to-on-demand-provision/on-demand-10a.png)
+Pomocí těchto informací můžete zjistit, jestli je uživatel v oboru.
 
-## <a name="match-user-between-source-and-target-system-details"></a>Porovnává uživatele mezi podrobnostmi zdrojového a cílového systému
-Tato část poskytuje informace o tom, jestli uživatel ve službě Azure AD již existuje a že se k němu připojit místo zřízení nového uživatele.  Kliknutím na odkaz **Zobrazit podrobnosti** zobrazíte tyto informace.
-![Zobrazení podrobností](media/how-to-on-demand-provision/on-demand-8.png)
+![Snímek obrazovky zobrazující podrobnosti o rozsahu uživatele](media/how-to-on-demand-provision/on-demand-10a.png)
+
+### <a name="match-user-between-source-and-target-system"></a>Odpovídá uživateli mezi zdrojovým a cílovým systémem
+Oddíl **Shoda uživatele mezi zdrojovým a cílovým systémem** poskytuje informace o tom, jestli uživatel už ve službě Azure AD existuje a jestli se k němu má připojit místo zřízení nového uživatele. Chcete-li zobrazit tyto informace, vyberte odkaz **Zobrazit podrobnosti** .
+
+![Snímek obrazovky s tlačítkem pro zobrazení podrobností o odpovídajícím uživateli](media/how-to-on-demand-provision/on-demand-8.png)
 
 Pomocí těchto informací můžete zjistit, zda byla nalezena shoda nebo zda bude vytvořen nový uživatel.
 
-![Údaje uživatele](media/how-to-on-demand-provision/on-demand-11.png)
+![Snímek obrazovky, který zobrazuje informace o uživateli.](media/how-to-on-demand-provision/on-demand-11.png)
 
-U odpovídajícího podrobností se zobrazí zpráva s jednou ze tří následujících operací.  Jsou to tyto:
-- Vytvoření – ve službě Azure AD se vytvoří uživatel.
-- Aktualizace – uživatel je aktualizovaný na základě změny provedené v konfiguraci.
-- Odstranění – uživatel se odebere z Azure AD.
+Pro porovnání podrobností se zobrazí zpráva s jednou ze tří následujících operací:
+- **Vytvořit**: ve službě Azure AD se vytvoří uživatel.
+- **Aktualizace**: uživatel je aktualizovaný na základě změny provedené v konfiguraci.
+- **Odstranit**: uživatel je odebraný z Azure AD.
 
 V závislosti na typu operace, kterou jste provedli, se tato zpráva bude lišit.
 
-## <a name="perform-action-details"></a>Provést podrobnosti akce
-V této části najdete informace o uživateli, který se zřídil nebo exportovali do služby Azure AD po použití konfigurace.  Uživatel to vypadá, když se zřídí do Azure AD.  Kliknutím na odkaz **Zobrazit podrobnosti** zobrazíte tyto informace.
-![Provést podrobnosti akce](media/how-to-on-demand-provision/on-demand-9.png)
+### <a name="perform-action"></a>Provést akci
+Oddíl **provést akci** poskytuje informace o uživateli, který se zřídil nebo exportovali do služby Azure AD po použití konfigurace. Uživatel to vypadá po zřízení do Azure AD. Chcete-li zobrazit tyto informace, vyberte odkaz **Zobrazit podrobnosti** .
 
-Pomocí těchto informací můžete zobrazit hodnoty atributů po použití konfigurace.  Vypadají podobně jako při importu nebo se liší?  Platí konfigurace úspěšně?  
+![Snímek obrazovky s tlačítkem pro zobrazení podrobností o provedené akci](media/how-to-on-demand-provision/on-demand-9.png)
 
-Tato operace vám umožní trasovat transformaci atributů při pohybu přes Cloud a do tenanta Azure AD.
+Pomocí těchto informací můžete zobrazit hodnoty atributů po použití konfigurace. Vypadají podobně jako při importu, nebo se liší? Byla konfigurace úspěšně použita?  
 
-![Trace – atribut](media/how-to-on-demand-provision/on-demand-12.png)
+Tento proces umožňuje sledovat transformaci atributů při pohybu přes Cloud a do tenanta služby Azure AD.
+
+![Snímek obrazovky zobrazující Podrobnosti trasovacího atributu](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>Další kroky 
 
 - [Co je Azure AD Connect synchronizace cloudu?](what-is-cloud-sync.md)
-- [Postup instalace Azure AD Connect synchronizace cloudu](how-to-install.md)
+- [Instalace Azure AD Connect synchronizace cloudu](how-to-install.md)
  

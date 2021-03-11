@@ -2,18 +2,19 @@
 title: Azure Disk Encryption v izolované síti
 description: V tomto článku se seznámíte s tipy pro řešení potíží pro Microsoft Azure šifrování disků na virtuálních počítačích se systémem Linux.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913819"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553047"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
 
@@ -25,12 +26,12 @@ Azure Disk Encryption závisí na řadě komponent, které se obvykle instalují
 
 Tady jsou balíčky nutné pro každou distribuci. Úplný seznam podporovaných distribuce a typů svazků najdete v tématu [podporované virtuální počítače a operační systémy](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04** : lsscsi, psmisc, at, cryptsetup-bin, Python – parted, Python-šest, procps, GRUB-PC-bin
-- **CentOS 7,2-7,7** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypter, pyparted, procps-NG, util – Linux
-- **CentOS 6,8** : lsscsi, psmisc, LVM2, UUID, at, cryptsetup-reencrypted, pyparted, Python-šest
-- **RedHat 7,2-7,7** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypt, procps-NG, util-Linux
-- **RedHat 6,8** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup – reencrypting
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3** : lsscsi, cryptsetup
+- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, at, cryptsetup-bin, Python – parted, Python-šest, procps, GRUB-PC-bin
+- **CentOS 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypter, pyparted, procps-NG, util – Linux
+- **CentOS 6,8**: lsscsi, psmisc, LVM2, UUID, at, cryptsetup-reencrypted, pyparted, Python-šest
+- **RedHat 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup, cryptsetup-reencrypt, procps-NG, util-Linux
+- **RedHat 6,8**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup – reencrypting
+- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup
 
 Pokud je v Red Hat vyžadován proxy server, je nutné zajistit, aby byly správně nastaveny Správce předplatného a Yumu. Další informace najdete v tématu řešení potíží se [správcem předplatného a Yumu](https://access.redhat.com/solutions/189533).  
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033008"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558691"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](../essentials/platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](../logs/data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
@@ -28,11 +28,11 @@ V tématu [Vytvoření nastavení diagnostiky můžete odesílat protokoly a met
 
 [Vytvořte nastavení diagnostiky](../essentials/diagnostic-settings.md) pro odesílání protokolů prostředků do pracovního prostoru Log Analytics. Tato data jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../logs/data-platform-logs.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
 
-- Diagnostika Azure – všechna zapsaná data jsou do tabulky _AzureDiagnostics_ .
+- Diagnostika Azure – všechna zapsaná data jsou do tabulky [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) .
 - Data specifická pro prostředky jsou zapsána do jednotlivých tabulek pro každou kategorii prostředku.
 
 ### <a name="azure-diagnostics-mode"></a>Režim diagnostiky Azure 
-V tomto režimu budou všechna data z jakéhokoli nastavení diagnostiky shromažďována v tabulce _AzureDiagnostics_ . Toto je starší metoda, kterou dnes používá většina služeb Azure. Vzhledem k tomu, že více typů prostředků odesílá data do stejné tabulky, je její schéma nadmnožinou schémat všech shromažďovaných datových typů.
+V tomto režimu budou všechna data z jakéhokoli nastavení diagnostiky shromažďována v tabulce [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) . Toto je starší metoda, kterou dnes používá většina služeb Azure. Vzhledem k tomu, že více typů prostředků odesílá data do stejné tabulky, je její schéma nadmnožinou schémat všech shromažďovaných datových typů. Podrobnosti o struktuře této tabulky a o tom, jak funguje s tímto potenciálně velkým počtem sloupců, najdete v [referenčních](/azure/azure-monitor/reference/tables/azurediagnostics) informacích k AzureDiagnostics.
 
 Vezměte v úvahu následující příklad, kdy se diagnostické nastavení shromažďují do stejného pracovního prostoru pro následující typy dat:
 
@@ -95,16 +95,6 @@ Většina prostředků Azure zapíše data do pracovního prostoru v režimu **d
 Existující nastavení diagnostiky můžete upravit do režimu specifického pro prostředky. V tomto případě zůstanou shromážděná data v tabulce _AzureDiagnostics_ , dokud je neodeberete podle nastavení uchování pro daný pracovní prostor. Ve vyhrazené tabulce budou shromažďována nová data. Použijte operátor [Union](/azure/kusto/query/unionoperator) k dotazování dat napříč oběma tabulkami.
 
 Dál Sledujte Blog o [aktualizacích Azure](https://azure.microsoft.com/updates/) , kde najdete oznámení o službách Azure, které podporují režim Resource-Specific.
-
-### <a name="column-limit-in-azurediagnostics"></a>Omezení počtu sloupců v AzureDiagnostics
-Pro všechny tabulky v Azure Monitorch protokolech je omezení vlastností 500. Po dosažení tohoto limitu budou všechny řádky obsahující data s jakoukoli vlastností mimo první 500 vyhozeny při zpracování času přijímání. Tabulka *AzureDiagnostics* je zvláště náchylná k tomuto limitu, protože obsahuje vlastnosti pro všechny služby Azure, které do ní zapisují.
-
-Pokud shromažďujete protokoly prostředků z více služeb, _AzureDiagnostics_ může tento limit překročit a data budou chybět. Až budou všechny služby Azure podporovat režim konkrétního prostředku, měli byste nakonfigurovat prostředky pro zápis do několika pracovních prostorů, abyste snížili možnosti dosažení limitu sloupce 500.
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory kvůli podrobné sadě protokolů je služba, která je známá k zápisu velkého počtu sloupců a potenciálně způsobila, že _AzureDiagnostics_ překročila limit. Pro všechna nastavení diagnostiky konfigurovaná před povoleným režimem specifickým pro prostředek bude pro každou aktivitu vytvořen nový sloupec pro všechny jedinečné pojmenované uživatelské parametry. Vytvoří se další sloupce z důvodu podrobného charakteru vstupů a výstupů aktivit.
- 
-Své protokoly byste měli migrovat tak, aby používaly režim specifický pro prostředky, co nejrychleji. Pokud to nemůžete udělat okamžitě, budete dočasnou alternativou izolovat Azure Data Factory protokoly do svého vlastního pracovního prostoru, abyste minimalizovali riziko, že tyto protokoly mají vliv na jiné typy protokolů shromažďované ve vašich pracovních prostorech.
 
 
 ## <a name="send-to-azure-event-hubs"></a>Odeslat do Azure Event Hubs

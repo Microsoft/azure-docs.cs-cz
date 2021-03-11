@@ -1,21 +1,31 @@
 ---
 title: Kroky před migrací pro migraci dat do rozhraní API Azure Cosmos DB pro MongoDB
 description: Tento dokument poskytuje přehled požadavků na migraci dat z MongoDB do Cosmos DB.
-author: christopheranderson
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.author: chrande
-ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656954"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553285"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> Tato příručka před migrací MongoDB je první v řadě při migraci MongoDB Azure Cosmos DB na škálování rozhraní API Mongo. Zákazníci s licencováním a nasazením MongoDB v samoobslužné infrastruktuře můžou chtít snížit a spravovat náklady na jejich datovou infrastrukturu migrací na spravovanou cloudovou službu, jako je Azure Cosmos DB s cenami průběžných plateb a elastickou škálovatelností. Cílem této série je absolvovat zákazníka prostřednictvím procesu migrace:
+>
+> 1. [Předběžná migrace](mongodb-pre-migration.md) – inventarizace stávajících MongoDB dat, plánování migrace a výběr příslušných nástrojů pro migraci.
+> 2. Provádění – migrace z MongoDB na Azure Cosmos DB pomocí uvedených [kurzů]().
+> 3. [Po migraci](mongodb-post-migration.md) se aktualizuje a optimalizuje stávající aplikace, aby se spouštěly na novou Azure Cosmos DB datovou nemovitost.
+>
+
+Plán pevné migrace může mít vliv na časovou osu a úspěšnost migrace vašeho týmu. Dobrá analogie pro před migrací se spouští nový projekt – můžete začít definováním požadavků a pak podílet na nejdůležitějších úkolech a také nastavit prioritu pro největší úkoly, které je třeba řešit jako první. To pomáhá zajistit předvídatelný plán projektu, ale samozřejmě, neočekávané požadavky mohou vyvstat a zkomplikovat plán projektu. Když se vrátíte zpátky k migraci – sestavení komplexního plánu spuštění v rámci fáze před migrací minimalizuje riziko, že v průběhu migrace dojde k opoždění neočekávaných úloh migrace, ušetříte čas během migrace a pomůže vám zajistit splnění cílů.
 
 Před migrací dat z MongoDB (místně nebo v cloudu), abyste Azure Cosmos DB rozhraní API pro MongoDB, měli byste:
 
