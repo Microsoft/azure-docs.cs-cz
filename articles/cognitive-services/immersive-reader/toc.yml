@@ -1,30 +1,26 @@
 - name: Dokumentace k Asistivní čtečce
   href: index.yml
-- name: Co je Asistivní čtečka?
-  href: Overview.md
-- name: Rychlé zprovoznění
-  href: ./quickstarts/client-libraries.md
-- name: Kurzy
+- name: Přehled
   items:
-    - name: Spuštění Asistivní čtečky (Android)
-      href: tutorial-android.md
-    - name: Spuštění Asistivní čtečky (iOS)
-      href: tutorial-ios.md
-    - name: Spuštění Asistivní čtečky (Python)
-      href: tutorial-python.md
-    - name: Použití několika prostředků Asistivní čtečky
-      href: tutorial-multiple-resources.md
+    - name: Přehled moderního čtecího zařízení
+      href: Overview.md
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
+- name: Rychlý Start pro moderní čtečku
+  href: ./quickstarts/client-libraries.md
 - name: Postupy
   items:
     - name: Vytvoření prostředku Asistivní čtečky
       href: how-to-create-immersive-reader.md
-    - name: Nastavení zásad souborů cookie
-      href: how-to/set-cookie-policy.md
-    - name: Zobrazovaná matematika
-      href: how-to/display-math.md
-    - name: Spuštění Asistivní čtečky s obsahem HTML
-      href: how-to-launch-with-html.md
-    - name: Přizpůsobení tlačítka pro asistivní čtečku
+    - name: Spuštění moderního čtecího zařízení
+      href: how-to-launch-immersive-reader.md
+    - name: Příprava obsahu HTML
+      href: how-to-prepare-html.md
+    - name: Upravit tlačítko pro spuštění moderního čtecího zařízení
       href: how-to-customize-launch-button.md
     - name: Uložení ověřovacího tokenu do mezipaměti
       href: how-to-cache-token.md
@@ -32,21 +28,23 @@
       href: how-to-configure-read-aloud.md
     - name: Konfigurace překladu
       href: how-to-configure-translation.md
+    - name: Zobrazovaná matematika
+      href: how-to/display-math.md
+    - name: Nastavení zásad souborů cookie
+      href: how-to/set-cookie-policy.md
     - name: Ukládání předvoleb uživatelů
       href: how-to-store-user-preferences.md
+    - name: Použití několika prostředků Asistivní čtečky
+      href: how-to-multiple-resources.md
 - name: Referenční informace
   items:
     - name: JavaScript SDK
       href: reference.md
-    - name: "Poznámky k\_verzi"
-      href: release-notes.md
 - name: Zdroje a prostředky
   items:
+    - name: Místní podpora
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
-    - name: Plány Azure do budoucna
+    - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Podpora jazyků
-      href: language-support.md
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

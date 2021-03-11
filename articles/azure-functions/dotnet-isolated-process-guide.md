@@ -5,18 +5,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ffdb146b26e83e1973c1d1bfee130eabfa09ea6a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449454"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613948"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
-_Podpora .NET 5,0 je aktuálně ve verzi Preview._
-
 Tento článek je Úvod k použití jazyka C# k vývoji funkcí izolovaného procesu .NET, které se spouštějí mimo proces v Azure Functions. Spuštění mimo proces umožňuje oddělit kód vaší funkce od Azure Functions modulu runtime. Poskytuje také způsob, jak vytvořit a spustit funkce, které cílí na aktuální verzi rozhraní .NET 5,0. 
+
+| Začínáme | Koncepty| ukázky |
+|--|--|--| 
+| <ul><li>[Používání nástroje Visual Studio Code](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[Používání nástrojů příkazového řádku](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[Pomocí sady Visual Studio](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[Možnosti hostování](functions-scale.md)</li><li>[Monitorování](functions-monitoring.md)</li> | <ul><li>[Referenční ukázky](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 Pokud nepotřebujete podporovat .NET 5,0 nebo spouštět funkce mimo proces, možná budete chtít místo toho [vyvinout funkce knihovny tříd jazyka C#](functions-dotnet-class-library.md).
 
@@ -80,11 +82,12 @@ Následující kód ukazuje příklad `HostBuilder` kanálu:
 
 Přístup k kanálu tvůrce hostitele znamená, že při inicializaci můžete nastavit všechny konfigurace specifické pro danou aplikaci. Tyto konfigurace se vztahují na vaši aplikaci Function App spuštěnou v samostatném procesu. Chcete-li provést změny v konfiguraci hostitele nebo triggeru funkcí a vazeb, je stále nutné použít [host.jsv souboru](functions-host-json.md).      
 
-Následující příklad ukazuje, jak přidat konfiguraci `args` , která je načítána jako argumenty příkazového řádku: 
+<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-`ConfigureAppConfiguration`Metoda se používá ke konfiguraci zbytku procesu sestavení a aplikace. V tomto příkladu se používá také [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), což usnadňuje přidávání více položek konfigurace. Vzhledem `ConfigureAppConfiguration` k tomu, že vrací stejnou instanci [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) , můžete ji také jednoduše volat několikrát, chcete-li přidat více položek konfigurace. Můžete získat přístup k úplné sadě konfigurací z i [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
+Můžete získat přístup k úplné sadě konfigurací z i [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 Další informace o konfiguraci najdete v tématu [konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
 
@@ -98,13 +101,13 @@ Následující příklad vloží závislost služby typu Singleton:
 
 Další informace najdete v tématu [vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-### <a name="middleware"></a>Middleware
+<!--### Middleware
 
-Rozhraní .NET izolované také podporuje registraci middlewaru pomocí modelu podobného tomu, co existuje v ASP.NET. Tento model poskytuje možnost vložit logiku do kanálu volání a před a po spuštění funkcí.
+.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
 
-I když plná registrační sada rozhraní API pro middleware ještě není vystavená, podporuje se registrace middlewaru a do této ukázkové aplikace jsme přidali příklad do složky middlewaru.
+While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
 
 ## <a name="execution-context"></a>Kontext spuštění
 
@@ -180,12 +183,15 @@ Tato část popisuje aktuální stav rozdílů funkčního a chování, které b
 | Odolná služba Functions | [Podporováno](durable/durable-functions-overview.md) | Nepodporováno | 
 | Imperativní vazby | [Podporováno](functions-dotnet-class-library.md#binding-at-runtime) | Nepodporováno |
 | function.jsartefaktu | Dojde | Negenerováno |
-| Konfigurace | [host.jsna](functions-host-json.md) | [host.js](functions-host-json.md) a [vlastní inicializace](#configuration) |
+| Konfigurace | [host.jsna](functions-host-json.md) | [host.js](functions-host-json.md) a vlastní inicializace |
 | Injektáž závislostí | [Podporováno](functions-dotnet-dependency-injection.md)  | [Podporováno](#dependency-injection) |
-| Middleware | Nepodporováno | [Podporováno](#middleware) |
+| Middleware | Nepodporováno | Podporováno |
 | Časy studeného startu | Typické | Delší dobu jako při spuštění. Spustit na platformě Linux místo systému Windows, aby se snížila možná zpoždění. |
 | ReadyToRun | [Podporováno](functions-dotnet-class-library.md#readytorun) | _TBD_ |
 
+## <a name="known-issues"></a>Známé problémy
+
+Informace o řešení problémů s funkcemi izolovaného procesu .NET najdete na [stránce se známými problémy](https://aka.ms/AAbh18e). Pokud chcete nahlásit problémy, [vytvořte problém v tomto úložišti GitHub](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose).  
 
 ## <a name="next-steps"></a>Další kroky
 

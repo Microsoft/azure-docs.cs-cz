@@ -201,6 +201,8 @@
           href: core/how-to-connect-devices-x509.md
         - name: Monitorování připojení zařízení s využitím Azure CLI
           href: core/howto-monitor-devices-azure-cli.md
+        - name: Připojení zařízení přes IoT Edge transparentní bránu
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Příprava a připojení sady Azure Sphere DevKit
           href: core/howto-connect-sphere.md
         - name: Příprava a připojení zařízení RuuviTag
@@ -209,6 +211,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Připojení dalších cloudů IoT
           href: core/howto-build-iotc-device-bridge.md
+        - name: správu zařízení
+          href: core/how-to-move-device-to-iot.md
     - name: Sestavení integrovaných řešení
       items:
         - name: Přidání dlaždic na řídicí panel
@@ -298,7 +302,7 @@
     - name: Ukázky kódů
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Možnosti pomoci a podpory
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných iniciativ zásad
 description: Seznam předdefinovaných iniciativ zásad pro Azure Policy. Kategorie zahrnují dodržování předpisů, konfiguraci hostů a další.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a10b35d80758ac7e872815e730e7ef9cee79d3e0
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a14385c491a877378d9184f3bc9872ce8ba63dee
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426870"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613775"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy předdefinované definice iniciativ
 
@@ -29,9 +29,13 @@ Název na každém z vestavěných odkazů na zdroj definice iniciativy v [úlo�
 
 [!INCLUDE [azure-policy-reference-policysets-kubernetes](../../../../includes/policy/reference/bycat/policysets-kubernetes.md)]
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 [!INCLUDE [azure-policy-reference-policysets-monitoring](../../../../includes/policy/reference/bycat/policysets-monitoring.md)]
+
+## <a name="network"></a>Síť
+
+[!INCLUDE [azure-policy-reference-policysets-network](../../../../includes/policy/reference/bycat/policysets-network.md)]
 
 ## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
 

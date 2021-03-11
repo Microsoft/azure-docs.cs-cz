@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: fa10ddad8d2fbbc414f0ccaf16b9b99fae0b0786
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c9624e9a23d005185429c82199324ac570cbd63e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505031"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607726"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Přehled sad SDK pro zařízení Azure IoT
 
@@ -107,7 +107,7 @@ Tyto sady SDK můžete spustit na jakémkoli zařízení, které může podporov
 * [Úložiště GitHub](https://github.com/Azure/azure-iot-sdk-node)
 * [ukázky](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 * [Balíček](https://www.npmjs.com/package/azure-iot-device)
-* [Referenční dokumentace](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
+* [Referenční dokumentace](/javascript/api/azure-iot-device/)
 * [Referenční dokumentace modulu Edge](/javascript/api/azure-iot-device/moduleclient)
 
 #### <a name="python-device-sdk"></a>Sada SDK pro zařízení Python
@@ -131,7 +131,7 @@ Sady SDK služby IoT Hub vám umožňují vytvářet aplikace, které se svým I
 
 **Sada SDK služby Java IoT Hub Service**: [](https://github.com/Azure/azure-iot-sdk-java/tree/master/service)  |  [](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk)  |  [](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples)  |  [Referenční dokumentace](/java/api/com.microsoft.azure.sdk.iot.service) ukázek balíčku úložiště GitHubu
 
-**JavaScript IoT Hub Service SDK**: ukázky balíčku [úložiště GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/service)–  |  [](https://www.npmjs.com/package/azure-iothub)  |  [](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples)  |  [Referenční dokumentace](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest&preserve-view=true)
+**JavaScript IoT Hub Service SDK**: ukázky balíčku [úložiště GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/service)–  |  [](https://www.npmjs.com/package/azure-iothub)  |  [](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples)  |  [Referenční dokumentace](/javascript/api/azure-iothub/)
 
 **Sada SDK služby IoT Hub pro Python**: [](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub)  |  [](https://pypi.python.org/pypi/azure-iot-hub/)  |  [](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples)  |  [Referenční dokumentace](/python/api/azure-iot-hub) ukázek balíčku úložiště GitHubu
 

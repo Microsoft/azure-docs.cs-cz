@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 63538661cceb7e1bdd4151a3592ccbd4de0033b0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215353"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612010"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Co je Azure IoT Edge pro Linux ve Windows (Preview)
 
@@ -52,13 +52,11 @@ Ukázky, které ukazují komunikaci mezi aplikacemi Windows a IoT Edge moduly, n
 
 IoT Edge pro Linux ve Windows je momentálně ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Procesy instalace a správy se mohou lišit od obecně dostupných funkcí.
 
-V současné době IoT Edge pro Linux ve Windows používá verzi Windows Insider Preview centra pro správu systému Windows. Další informace o programu Windows Insider a jeho registraci najdete v tématu [co je program Windows Insider?](https://insider.windows.com/about-windows-insider-program).
-
 ## <a name="support"></a>Podpora
 
 Použijte kanály podpory a zpětné vazby IoT Edge k získání pomoci s IoT Edge pro Linux ve Windows.
 
-**Hlášení chyb** – chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v IoT Edge open source projektu. 
+**Hlášení chyb** – chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v IoT Edge open source projektu. Chyby související s Azure IoT Edge pro Linux ve Windows se dají ohlásit na [stránce problémů iotedge-eFlow](https://github.com/azure/iotedge-eflow/issues).
 
 **Tým zákaznické podpory Microsoftu** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) , můžou tým podpory zákazníků společnosti Microsoft zahájit vytvořením lístku podpory přímo z [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

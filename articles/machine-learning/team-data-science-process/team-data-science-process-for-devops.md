@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614067"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Vědecké zpracování týmových dat pro vývojářské operace
 
@@ -58,7 +58,7 @@ Následující tabulka poskytuje doprovodné materiály na úrovni, které vám 
 |  |  | [Tento dokument je určený pro vývojářské a provozní týmy, aby porozuměl výhodám konfigurace požadovaného stavu prostředí PowerShell.](/powershell/scripting/dsc/overview/dscforengineers) | PowerShell DSC | Středně pokročilý | Zkušenosti s kódováním PowerShellu, podnikovými architekturami, skriptováním |
 |  | Kód | [Tento soubor ke stažení také obsahuje dokumentaci k používání kódu sady Visual Studio Codespace pro vytváření aplikací pro datové vědy a AI.](https://code.visualstudio.com/) | Codespace sady Visual Studio | Středně pokročilý | Vývoj softwaru |
 |  |  | [Tento úvodní web vás učí o DevOps a Visual Studio](https://www.visualstudio.com/devops/) | Visual Studio | Začátečník | Vývoj softwaru |
-|  |  | [Kód můžete napsat přímo z Azure Portal pomocí Editor služby App Service. Další informace najdete v tomto prostředku o průběžné integraci s tímto nástrojem.](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) | Azure Portal | Velmi zkušení | Pozadí pro datové vědy – ale Přečtěte si to i přesto |
+|  |  | [Kód můžete napsat přímo z Azure Portal pomocí Editor služby App Service. Další informace najdete v tomto prostředku o průběžné integraci s tímto nástrojem.](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) | portál Azure | Velmi zkušení | Pozadí pro datové vědy – ale Přečtěte si to i přesto |
 |  |  | [Tento prostředek vysvětluje, jak kódovat a vytvářet experimenty prediktivní analýzy pomocí webového nástroje pro Azure Machine Learning Studio (Classic).](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) | Azure Machine Learning Studio (klasický) | Vyskytl | Vývoj softwaru |
 |  |  | [Tento odkaz obsahuje seznam a studijní odkaz na všechny vývojové nástroje na Data Science Virtual Machine v Azure.](../data-science-virtual-machine/overview.md) | Virtuální počítač pro datové vědy | Vyskytl | Vývoj softwaru, datové vědy |
 |  |  | [Přečtěte si a pochopte jednotlivé odkazy v tomto centru zabezpečení Azure Security Center na zabezpečení, ochranu osobních údajů a dodržování předpisů – velmi důležité](https://azure.microsoft.com/support/trust-center/) | Zabezpečení Azure | Středně pokročilý | Prostředí architektury systému, prostředí pro vývoj zabezpečení |
@@ -74,10 +74,10 @@ Následující tabulka poskytuje doprovodné materiály na úrovni, které vám 
 |  |  | [Tento odkaz vysvětluje, jak vytvořit datový kanál pro vaše řešení, který můžete uložit jako šablonu JSON jako balíček.](../../data-factory/v1/data-factory-introduction.md) | Azure Data Factory | Středně pokročilý | Obecné výpočetní prostředí, možnosti projektu dat |
 |  |  | [Toto téma popisuje strukturu Azure Resource Manager šablony.](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | Středně pokročilý | Znalost Microsoft Azure platformy |
 |  |  | [DSC je platforma pro správu v prostředí PowerShell, která umožňuje spravovat infrastrukturu IT a vývoj s konfigurací jako kód uloženou jako balíček. Tento odkaz je přehledem pro toto téma.](/powershell/scripting/dsc/overview/overview) | Konfigurace požadovaného stavu prostředí PowerShell | Středně pokročilý | Kódování prostředí PowerShell, znalost podnikových architektur, skriptování |
-|  | Vydat | [Tento článek hlavního odkazu obsahuje koncepty pro vytváření, testování a vydávání pro prostředí CI/CD.](/azure/devops/pipelines/?view=azure-devops) | Codespace sady Visual Studio | Vyskytl | Vývoj softwaru, znalost prostředí CI/CD, se znalostí softwaru |
+|  | Vydat | [Tento článek hlavního odkazu obsahuje koncepty pro vytváření, testování a vydávání pro prostředí CI/CD.](/azure/devops/pipelines/) | Codespace sady Visual Studio | Vyskytl | Vývoj softwaru, znalost prostředí CI/CD, se znalostí softwaru |
 |  |  | [Použijte tento předchozí odkaz na sady Runbook k automatizaci Release Management pomocí nástroje System Center.](/system-center/orchestrator/automate-runbooks) | System Center | Vyskytl | Zkušenosti s nástrojem System Center Orchestrator |
 |  |  | [Tento článek vám pomůže určit nejlepší možnost nasazení souborů pro webovou aplikaci, back-end mobilní aplikace nebo aplikaci API, aby Azure App Service, a pak vás provede pokyny k příslušným prostředkům s pokyny, které jsou specifické pro upřednostňovanou možnost.](../../app-service/deploy-local-git.md) | Nasazení Microsoft Azure | Středně pokročilý | Vývoj softwaru, zkušenosti s Microsoft Azure platformou |
-|  | Monitorování | [Tento odkaz vysvětluje Application Insights a způsob, jak ho přidat do řešení pokročilých analýz.](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Středně pokročilý | Vývoj softwaru, znalost Microsoft Azure platformy |
+|  | Monitor | [Tento odkaz vysvětluje Application Insights a způsob, jak ho přidat do řešení pokročilých analýz.](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Středně pokročilý | Vývoj softwaru, znalost Microsoft Azure platformy |
 |  |  | [Toto téma vysvětluje základní koncepty o Operations Manager pro správce, který spravuje infrastrukturu Operations Manager a operátor, který monitoruje a podporuje řešení pokročilé analýzy.](/previous-versions/system-center/system-center-2012-R2/hh230741(v=sc.12)) | System Center | Vyskytl | Znalost podnikového monitorování, System Center Operations Manager |
 |  |  | [Tato položka blogu vysvětluje, jak použít Azure Data Factory k monitorování a správě kanálu pokročilé analýzy.](https://azure.microsoft.com/blog/azure-data-factory-updates-monitoring-and-management-enhancements/) | Azure Data Factory | Středně pokročilý | Znalost Azure Data Factory |
 |  |  | [V tomto videu se dozvíte, jak monitorovat protokol s protokoly Azure Monitor.](https://channel9.msdn.com/Shows/Data-Exposed/Enterprise-HDInsight-Monitoring-with-Operations-Management-Suite) | Protokoly Azure, PowerShell | Vyskytl | Znalost platformy Azure |

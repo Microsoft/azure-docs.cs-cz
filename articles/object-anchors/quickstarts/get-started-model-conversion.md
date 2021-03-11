@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748549"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607896"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Rychlý Start: vytvoření modelu ukotvení objektů z 3D model
 
@@ -92,7 +92,7 @@ Nyní můžete pokračovat a převést 3D model.
 
 2. Otevřete `Configuration.cs` soubor umístěný v kořenovém adresáři projektu a nahraďte `set-me` hodnoty v následujících polích:
 
-   | Pole         | Popis                                                         |
+   | Pole         | Description                                                         |
    |---------------|---------------------------------------------------------------------|
    | AccountDomain | **Doména účtu** účtu kotvy objektů byla vytvořena výše. |
    | AccountId     | **ID účtu** účtu ukotvení objektu, který byl vytvořen výše.     |
@@ -100,9 +100,9 @@ Nyní můžete pokračovat a převést 3D model.
 
    Existují čtyři další pole, která je třeba ověřit:
 
-    | Pole                    | Popis                       |
+    | Pole                    | Description                       |
     | ---                      | ---                               |
-    | InputAssetPath           | Absolutní cesta k 3D model v místním počítači (ve `assets/models` složce, kterou můžete použít) je ukázkový model. Podporované formáty souborů jsou `fbx` , `ply` ,, a `obj` `glb` `gltf` . |
+    | InputAssetPath           | Absolutní cesta k 3D model v místním počítači. Podporované formáty souborů jsou `fbx` , `ply` ,, a `obj` `glb` `gltf` . |
     | AssetDimensionUnit       | Jednotka měření 3D model. Ke všem podporovaným jednotkám měření se dá dostat pomocí `Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` výčtu. |
     | Gravitace                  | Směr vektoru gravitace 3D model. Tento 3D vektor poskytuje směr směrem dolů v systému souřadnic vašeho modelu. Například pokud záporná `y` představuje směr směrem dolů v prostorovém prostoru modelu, tato hodnota by byla `Vector3(0.0f, -1.0f, 0.0f)` . |
 

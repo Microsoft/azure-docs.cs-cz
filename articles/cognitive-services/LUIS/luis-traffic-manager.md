@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993818"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609647"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Použití Microsoft Azure Traffic Manager ke správě kvóty koncových bodů napříč klíči
 Language Understanding (LUIS) nabízí možnost zvýšit kvótu požadavku koncového bodu nad rámec kvóty s jedním klíčem. To se provádí vytvořením dalších klíčů pro LUIS a jejich přidáním do aplikace LUIS na stránce **publikovat** v části **prostředky a klíče** .
@@ -371,7 +371,7 @@ Odeberte dva klíče koncového bodu LUIS, tři profily Traffic Manager a skupin
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si možnosti [middlewaru](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) v BotFramework v4, abyste porozuměli tomu, jak je možné tento kód správy provozu přidat do robota BotFramework.
+Přečtěte si možnosti [middlewaru](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler) v BotFramework v4, abyste porozuměli tomu, jak je možné tento kód správy provozu přidat do robota BotFramework.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: ef48f7623aee1256ad1f889d2e70b5a2fdb8e6bf
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f76c48af4f5ebc8013daad457f9973cf7792c7c6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102108823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547984"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Rychlý Start: vytvoření a konfigurace serveru Směrování pomocí Azure Portal
 
@@ -50,7 +50,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
     |----------|-------|
     | Předplatné | Vyberte předplatné Azure, které chcete použít k nasazení serveru směrování. |
     | Skupina prostředků | Vyberte skupinu prostředků, ve které chcete vytvořit server směrování. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou. |
-    | Název | Zadejte název serveru tras. |
+    | Name | Zadejte název serveru tras. |
     | Oblast | Vyberte oblast, ve které bude server trasy vytvořen. Vyberte stejnou oblast jako virtuální síť, kterou jste dříve vytvořili pro zobrazení virtuální sítě v rozevíracím seznamu. |
     | Virtual Network | Vyberte virtuální síť, ve které bude server trasy vytvořen. Můžete vytvořit novou virtuální síť nebo použít stávající virtuální síť. Pokud používáte existující virtuální síť, ujistěte se, že má stávající virtuální síť dostatek místa pro minimální velikost podsítě/27, aby odpovídala požadavku na podsíť serveru směrování. Pokud se vaše virtuální síť v rozevíracím seznamu nezobrazuje, ujistěte se, že jste vybrali správnou skupinu prostředků nebo oblast. |
     | Podsíť | Po vytvoření nebo výběru virtuální sítě se zobrazí pole podsíť. Tato podsíť je vyhrazená jenom pro směrování serveru. Vyberte **spravovat konfiguraci podsítě** a vytvořte podsíť Azure Route serveru. Vyberte **+ podsíť** a vytvořte podsíť pomocí následujících pokynů:</br><br>– Podsíť musí mít název *RouteServerSubnet*.</br><br>-Podsíť musí být minimálně/27 nebo větší.</br> |
@@ -101,6 +101,12 @@ Máte-li bránu brány ExpressRoute nebo bránu VPN a chcete, aby vyměňovat tr
 1. Vyberte **Povolit** pro nastavení vytvoření **větve** a potom vyberte **Uložit**.
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/enable-route-exchange.png" alt-text="Snímek obrazovky s postupem, jak povolit výměnu tras":::
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už server tras Azure nepotřebujete, vyberte **Odstranit** na stránce Přehled a zrušte zřízení serveru směrování.
+
+:::image type="content" source="./media/quickstart-configure-route-server-portal/delete-route-server.png" alt-text="Snímek obrazovky s postupem odstranění serveru Směrování":::
 
 ## <a name="next-steps"></a>Další kroky
 

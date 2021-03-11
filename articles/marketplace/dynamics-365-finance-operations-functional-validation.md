@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131237"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613625"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finance a ověřování funkčnosti operací
 
@@ -29,7 +29,7 @@ Aby bylo možné dokončit první publikování v [partnerském centru](https://
 Pro ověření funkčnosti existují dvě možnosti:
 
 - Po dobu trvání konferenčního hovoru s námi v pracovní době v Tichomoří (běžný čas), která předvádí a zaznamenává prostředí [LCS](https://lcs.dynamics.com/) a řešení
-- V partnerském centru klikněte na [Přehled komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)  >  **Overview** a na kartě doplňkového obsahu nabídky nahrajte ukázkovou adresu URL s ukázkovým videem a obrazovky LCS.
+- V partnerském centru klikněte na [Přehled komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)  >   a na kartě doplňkového obsahu nabídky nahrajte ukázkovou adresu URL s ukázkovým videem a obrazovky LCS.
 
 Certifikační tým Microsoftu zkontroluje video a soubory a pak buď schválí řešení, nebo pošle e-maily o dalších krocích.
 
@@ -50,17 +50,17 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
 
 2. Proveďte následující snímky obrazovky prostředí [LCS](https://lcs.dynamics.com/) , které odpovídají nabídce nebo řešení, které chcete publikovat. Aby mohl Certifikační tým číst text, musí být dostatečně jasné. Uložte snímky obrazovky jako soubory JPG. Můžete poskytnout [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) oprávnění k vašemu prostředí LCS, abychom mohli místo poskytování snímků obrazovky ověřit nastavení.
 
-    1. Přejít na **LCS**  >  knihovnu projektů LCS **Business Process Modeler**  >  **Project library** . Pořídit snímky obrazovky všech kroků procesu. Zahrňte **diagramy** a **revidované** sloupce, jak je znázorněno zde:
+    1. Přejít na   >  knihovnu projektů LCS **Business Process Modeler**  >  . Pořídit snímky obrazovky všech kroků procesu. Zahrňte **diagramy** a **revidované** sloupce, jak je znázorněno zde:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Zobrazuje okno knihovny projektu.":::
 
-      2. Přejít na **LCS**  >  **Solution Management**  >  **balíček testovacího řešení** správy řešení LCS Pořídit snímky obrazovky, které obsahují přehled balíčku a obsah uvedený v těchto příkladech:
+      2. Přejít na   >    >  **balíček testovacího řešení** správy řešení LCS Pořídit snímky obrazovky, které obsahují přehled balíčku a obsah uvedený v těchto příkladech:
 
-    | Pole | Image <img src="" width="400px">|
+    | Pole | Image |
     | --- | --- |
     | Přehled balíčku | [![Snímek obrazovky se zobrazeným oknem Přehled balíčku](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Schvalovatelé řešení</li></ul> | [![Obrazovka s přehledem balíčku](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Obsah balíčku<ul><li>Model</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Obsah balíčku<ul><li>Modelování</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>Konfigurace GER</li><li>Zálohování databáze</li></ul><br>V **konfiguračním oddílu GER** se nevyžadují artefakty. | [![Obrazovka obsahu balíčku 2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Model sestavy Power BI</li><li>Artefakt BPM</li></ul><br>Artefakty nejsou v oddílu **Power BI** požadovány. | [![Obrazovka obsahu balíčku – tři](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Zpracovat balíček dat</li><li>Licenční smlouva k řešení a zásady ochrany osobních údajů</li></ul><br>Části **GER Configuration** and **Power BI model sestavy** jsou volitelné, aby se zahrnuly do nabídek finance a operace. | [![Obrazovka obsahu balíčku – čtyři](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

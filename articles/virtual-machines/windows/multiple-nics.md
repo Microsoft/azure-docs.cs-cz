@@ -2,24 +2,25 @@
 title: Vytváření a správa virtuálních počítačů s Windows v Azure, které používají více síťových karet
 description: Naučte se vytvářet a spravovat virtuální počítače s Windows, které mají k němu připojené více síťových adaptérů pomocí šablon Azure PowerShell nebo Správce prostředků.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2664d175818a6e29dcd3f704c6938987bae050cd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555172"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
 K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet* a *myVM*.
 
  
 
@@ -285,7 +286,7 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
               0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
     ```
 
-    Trasa uvedená v části **Gateway** *je ve výchozím* nastavení trasa pro primární síťové rozhraní. Trasa s *192.168.2.1* pod **branou**je trasa, kterou jste přidali.
+    Trasa uvedená v části **Gateway** *je ve výchozím* nastavení trasa pro primární síťové rozhraní. Trasa s *192.168.2.1* pod **branou** je trasa, kterou jste přidali.
 
 ## <a name="next-steps"></a>Další kroky
 Zkontrolujte [velikosti virtuálních počítačů s Windows](../sizes.md) , když se pokoušíte vytvořit virtuální počítač s více síťovými kartami. Věnujte pozornost maximálnímu počtu síťových adaptérů, které podporují jednotlivé velikosti virtuálních počítačů.

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174814"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607913"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 
@@ -30,6 +30,8 @@ Součástí vašeho adresáře Azure AD B2C je [předdefinovaná sada atributů]
 * Zákaznická aplikace musí zachovat atribut **LoyaltyId** .
 * Zprostředkovatel identity má jedinečný identifikátor uživatele **uniqueUserGUID**, který musí být trvale uložený.
 * Vlastní cesta uživatele musí zachovat stav uživatele ( **migrationStatus**) pro další logiku, na které se má pracovat.
+
+*Vlastnost rozšíření* podmínek, *vlastní atribut* a *vlastní deklarace identity* odkazují na stejnou věc v kontextu tohoto článku. Název se liší v závislosti na kontextu, jako je například aplikace, objekt nebo zásada.
 
 Azure AD B2C umožňuje zvětšit sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](microsoft-graph-operations.md).
 
@@ -66,11 +68,7 @@ Jakmile vytvoříte nového uživatele pomocí toku uživatele, který použív�
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Aplikace rozšíření Azure AD B2C
 
-Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když můžou obsahovat data pro uživatele. Atribut Extension je připojen k aplikaci s názvem B2C-Extensions-App. Neupravujte tuto aplikaci, protože ji používá Azure AD B2C k ukládání uživatelských dat. Tuto aplikaci můžete najít v části Azure AD B2C, registrace aplikací.
-
-*Vlastnost rozšíření* podmínek, *vlastní atribut* a *vlastní deklarace identity* odkazují na stejnou věc v kontextu tohoto článku. Název se liší v závislosti na kontextu, jako je například aplikace, objekt nebo zásada.
-
-## <a name="get-the-application-properties"></a>Získat vlastnosti aplikace
+Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když můžou obsahovat data pro uživatele. Atribut Extension je připojen k aplikaci s názvem `b2c-extensions-app` . Neupravujte tuto aplikaci, protože ji používá Azure AD B2C k ukládání uživatelských dat. Tuto aplikaci můžete najít v části Azure AD B2C, registrace aplikací. Získat vlastnosti aplikace:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
@@ -80,14 +78,6 @@ Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když m�
 1. Zkopírujte do schránky následující identifikátory a uložte je:
     * **ID aplikace:** Příklad: `11111111-1111-1111-1111-111111111111`.
     * **ID objektu** Příklad: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>Použití vlastního atributu s MS Graph API
-
-Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_attributename` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace. Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Například:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -137,7 +127,7 @@ Mezi integrovanými a vlastními zásadami se sdílí stejné atributy rozšíř
 
 Tyto atributy můžete vytvořit pomocí uživatelského rozhraní portálu před nebo po jejich použití ve vlastních zásadách. Když vytvoříte atribut **loyaltyId** na portálu, je nutné na něj odkazovat následujícím způsobem:
 
-|Název     |Použito v |
+|Name     |Použito v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
@@ -172,6 +162,14 @@ Následující příklad ukazuje použití vlastního atributu v Azure AD B2C vl
 ```
 
 ::: zone-end
+
+## <a name="using-custom-attribute-with-ms-graph-api"></a>Použití vlastního atributu s MS Graph API
+
+Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_attributename` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace. Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Například:
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
 
 ## <a name="next-steps"></a>Další kroky
 

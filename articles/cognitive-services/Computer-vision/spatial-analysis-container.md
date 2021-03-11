@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519023"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612894"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
@@ -306,7 +306,7 @@ Instalace verze 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06).
+V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-register-device.md).
 
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 
@@ -468,7 +468,7 @@ Instalace verze 1.0.9:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-V dalším kroku zaregistrujete virtuální počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06).
+V dalším kroku zaregistrujete virtuální počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](../../iot-edge/how-to-register-device.md).
 
 Zařízení IoT Edge musíte připojit k Azure IoT Hub. Je nutné zkopírovat připojovací řetězec z IoT Edge zařízení, které jste vytvořili dříve. Případně můžete spustit níže uvedený příkaz v rozhraní příkazového řádku Azure CLI.
 

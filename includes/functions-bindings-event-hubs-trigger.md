@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556726"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608902"
 ---
 Pomocí triggeru funkce můžete reagovat na událost odeslanou do datového proudu událostí centra událostí. K nastavení triggeru musíte mít přístup pro čtení k základnímu centru událostí. Když je funkce aktivována, zpráva předaná funkci je zapsána jako řetězec.
 
@@ -351,24 +351,74 @@ Z [běhové knihovny Functions](/java/api/overview/azure/functions/runtime)jazyk
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `EventHubTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastaven na hodnotu `eventHubTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje položku události v kódu funkce. |
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `eventHubTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje položku události v kódu funkce. |
 |**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. Dá se odkazovat prostřednictvím [nastavení aplikace](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) . `%eventHubName%` |
 |**Klientská organizace** |**Klientská organizace** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr vynechán, `$Default` je použita skupina uživatelů. |
-|**kardinalita** | neuvedeno | Používá se pro všechny jazyky jiné než C #. Nastavte na, aby `many` bylo možné dávkování povolit.  Je-li tento parametr vynechán nebo je nastaven na hodnotu `one` , je do funkce předána jedna zpráva.<br><br>V jazyce C# je tato vlastnost automaticky přiřazena vždy, když Trigger obsahuje pole pro daný typ.|
-|**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
+|**kardinalita** | Není k dispozici | Používá se pro všechny jazyky jiné než C #. Nastavte na, aby `many` bylo možné dávkování povolit.  Je-li tento parametr vynechán nebo je nastaven na hodnotu `one` , je do funkce předána jedna zpráva.<br><br>V jazyce C# je tato vlastnost automaticky přiřazena vždy, když Trigger obsahuje pole pro daný typ.|
+|**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.<br><br>Pokud používáte [verzi 5. x nebo vyšší z rozšíření](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)místo připojovacího řetězce, můžete zadat odkaz na oddíl konfigurace, který definuje připojení. Viz [připojení](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>Využití
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Výchozí
+
+Pro spuštění centra událostí můžete použít následující typy parametrů:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
+### <a name="additional-types"></a>Další typy 
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
+
+### <a name="default"></a>Výchozí
+
+Pro spuštění centra událostí můžete použít následující typy parametrů:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – Výchozí vlastnosti EventData jsou k dispozici v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+
+### <a name="additional-types"></a>Další typy 
+Aplikace používající 5.0.0 nebo vyšší verze rozšíření centra událostí používají `EventData` typ v [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) , nikoli v [oboru názvů Microsoft. Azure. EventHubs](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Tato verze vyřazuje podporu pro starší `Body` typ, a to ve prospěch následujících typů:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="java"></a>[Java](#tab/java)
+
+Podrobnosti najdete v [příkladu triggeru](#example) Java.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Podrobnosti najdete v [příkladu triggeru](#example) JavaScriptu.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Podrobnosti najdete v [příkladu triggeru](#example) Pythonu.
+
+
+---
+
 
 ## <a name="event-metadata"></a>Metadata události
 
 Aktivační událost Event Hubs poskytuje několik [vlastností metadat](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Vlastnosti metadat lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Vlastnosti pocházejí ze třídy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) .
 
-|Vlastnost|Typ|Popis|
+|Vlastnost|Typ|Description|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Instance `PartitionContext`.|
 |`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
@@ -379,10 +429,3 @@ Aktivační událost Event Hubs poskytuje několik [vlastností metadat](../arti
 |`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně dat události.|
 
 Podívejte se na [Příklady kódu](#example) , které používají tyto vlastnosti dříve v tomto článku.
-
-## <a name="hostjson-properties"></a>host.jsvlastností
-<a name="host-json"></a>
-
-[host.jsv](../articles/azure-functions/functions-host-json.md#eventhub) souboru obsahuje nastavení, která řídí chování triggeru Event Hubs. Konfigurace se liší v závislosti na verzi Azure Functions.
-
-[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

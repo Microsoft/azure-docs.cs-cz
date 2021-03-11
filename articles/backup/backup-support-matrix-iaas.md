@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710664"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609783"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -72,6 +72,7 @@ Co je se podporuje, pokud chcete zálohovat počítače se systémem Linux.
 Zálohování virtuálních počítačů Azure se systémem Linux pomocí agenta virtuálního počítače Azure pro Linux | Zálohování konzistentní se soubory.<br/><br/> Zálohování konzistentní s aplikací pomocí [vlastních skriptů](backup-azure-linux-app-consistent.md).<br/><br/> Během obnovení můžete vytvořit nový virtuální počítač, obnovit disk a použít ho k vytvoření virtuálního počítače nebo obnovení disku a použít ho k nahrazení disku na existujícím virtuálním počítači. Můžete také obnovit jednotlivé soubory a složky.
 Zálohování virtuálních počítačů Linux Azure pomocí agenta MARS | Nepodporováno<br/><br/> Agenta MARS lze nainstalovat pouze do počítačů se systémem Windows.
 Zálohování virtuálních počítačů se systémem Linux Azure pomocí DPM/MABS | Nepodporováno
+Zálohování virtuálních počítačů Azure se systémem Linux pomocí přípojných bodů Docker | V současné době Azure Backup nepodporuje vyloučení přípojných bodů Docker, protože jsou při každém připojení připojeny k různým cestám.
 
 ## <a name="operating-system-support-linux"></a>Podpora operačního systému (Linux)
 
@@ -170,6 +171,7 @@ Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílen
 [Sdílené disky](../virtual-machines/disks-shared-enable.md) | Nepodporováno
 SSD úrovně Ultra disky | Nepodporováno Další informace najdete v těchto [omezeních](selective-disk-backup-restore.md#limitations).
 [Dočasné disky](../virtual-machines/managed-disks-overview.md#temporary-disk) | Dočasné disky nejsou zálohovány Azure Backup.
+NVMe/dočasné disky | Nepodporováno
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
 
@@ -211,10 +213,10 @@ Zabezpečení dat:
 
 **Počítač** | **Při přenosu** | **V klidovém umístění**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | ![Ano][green] | ![Ano][green]
-Virtuální počítače Azure | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
+Místní počítače s Windows bez DPM/MABS | ![Yes][green] | ![Yes][green]
+Virtuální počítače Azure | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>Podpora komprese virtuálních počítačů
 
@@ -227,8 +229,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
 Virtuální počítače Azure | Není k dispozici | Není k dispozici
-Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
+Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -326,6 +326,8 @@
       href: template-best-practices.md
     - name: Bicep
       items:
+        - name: Nainstalovat bicep
+          href: bicep-install.md
         - name: Porovnávání formátu JSON s bicep
           href: compare-template-syntax.md
     - name: Typy dat

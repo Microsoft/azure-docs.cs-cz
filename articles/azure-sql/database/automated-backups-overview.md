@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690603"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609919"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -140,9 +140,12 @@ V případě SQL Database i SQL spravované instance můžete v úložišti obje
 
 Další informace o LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Náklady na úložiště
+## <a name="backup-storage-costs"></a>Náklady na úložiště zálohování
 
 Cena za úložiště zálohování se liší a závisí na vašem nákupním modelu (DTU nebo vCore), zvolené možnosti redundance úložiště zálohování a také ve vaší oblasti. Úložiště zálohování se účtuje za GB za měsíc spotřebovaný. ceny najdete na stránce s cenami [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) a na stránce s [cenami Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
+
+> [!NOTE]
+> U faktury za Azure se zobrazí jenom využité úložiště záloh, ne celá spotřeba úložiště záloh. Například v hypotetickém scénáři, pokud jste zřídili 4 TB úložiště dat, získáte 4 TB bezplatného úložného prostoru pro zálohování. V případě, že jste použili celkem 5,8 TB prostoru úložiště zálohování, bude se na faktuře Azure zobrazovat jenom 1,8 TB, protože se účtuje jenom nadměrné využití úložiště záloh.
 
 ### <a name="dtu-model"></a>Model DTU
 
@@ -446,7 +449,7 @@ Přidají se nové předdefinované zásady, které se dají přiřadit na úrov
 K vykonání požadavků na uspořádání dat na úrovni organizace je možné tyto zásady přiřadit k předplatnému. Po přiřazení na úrovni předplatného nebudou uživatelé v daném předplatném moct vytvořit databázi nebo spravovanou instanci s geograficky redundantním úložištěm zálohování prostřednictvím Azure Portal nebo Azure PowerShell. 
 
 > [!IMPORTANT]
-> Při vytváření databáze prostřednictvím T-SQL se neuplatňují zásady Azure. Pokud chcete vyhodnotit zajistění dat při vytváření databáze pomocí T-SQL, [použijte v příkazu CREATE DATABASE možnost Local nebo Zone jako vstup BACKUP_STORAGE_REDUNDANCY parametr](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> Při vytváření databáze prostřednictvím T-SQL se neuplatňují zásady Azure. Pokud chcete vyhodnotit zajistění dat při vytváření databáze pomocí T-SQL, [použijte v příkazu CREATE DATABASE možnost Local nebo Zone jako vstup BACKUP_STORAGE_REDUNDANCY parametr](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups).
 
 Naučte se přiřazovat zásady pomocí [Azure Portal](../../governance/policy/assign-policy-portal.md) nebo [Azure PowerShell](../../governance/policy/assign-policy-powershell.md)
 
@@ -458,4 +461,5 @@ Naučte se přiřazovat zásady pomocí [Azure Portal](../../governance/policy/a
 - Získejte další informace o tom, jak [obnovit databázi k určitému bodu v čase pomocí prostředí PowerShell](scripts/restore-database-powershell.md).
 - Informace o tom, jak nakonfigurovat, spravovat a obnovit dlouhodobé uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí Azure Portal, najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí Azure Portal](long-term-backup-retention-configure.md).
 - Informace o tom, jak nakonfigurovat, spravovat a obnovit dlouhodobé uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí PowerShellu, najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí PowerShellu](long-term-backup-retention-configure.md).
+- Další informace o spotřebě úložiště zálohování na spravované instanci Azure SQL najdete v tématu o [spotřebě úložiště zálohování na spravované instanci](https://aka.ms/mi-backup-explained).
 - Informace o tom, jak vyladit uchování a náklady na úložiště zálohování pro spravovanou instanci Azure SQL, najdete v tématu [jemné vyladění nákladů na úložiště zálohování ve spravované instanci](https://aka.ms/mi-backup-tuning).

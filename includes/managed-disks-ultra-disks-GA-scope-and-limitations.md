@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016624"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603300"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -26,7 +26,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 
 |Oblasti  |Možnosti redundance  |
 |---------|---------|
-|Brazil South     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
+|Brazílie – jih     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Indie – střed     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Východní Asie     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Německo – středozápad     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
@@ -39,18 +39,16 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 |Austrálie – střed    |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Austrálie – východ     |Tři zóny dostupnosti         |
 |Southeast Asia    |Tři zóny dostupnosti        |
-|Kanada – střed *     |Tři zóny dostupnosti          |
-|Střední USA     |Tři zóny dostupnosti          |
+|Střední Kanada     |Tři zóny dostupnosti          |
+|USA – střed     |Tři zóny dostupnosti          |
 |East US     |Tři zóny dostupnosti          |
 |USA – východ 2     |Tři zóny dostupnosti         |
 |Francie – střed    |Dvě zóny dostupnosti        |
-|Japan East    |Tři zóny dostupnosti        |
+|Japonsko – východ    |Tři zóny dostupnosti        |
 |Severní Evropa    |Tři zóny dostupnosti        |
 |Spojené království – jih    |Tři zóny dostupnosti        |
 |West Europe    | Tři zóny dostupnosti|
 |Západní USA 2    |Tři zóny dostupnosti|
-
-\* Pokud chcete získat přístup k Zóny dostupnosti pro tuto oblast, obraťte se na podporu Azure.
 
 - Podporují se jenom na následujících řadách virtuálních počítačů:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
@@ -63,7 +61,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
     - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
-    - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [4m](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Ne všechny velikosti virtuálních počítačů jsou k dispozici v každé podporované oblasti s disky Ultra.
 - Jsou k dispozici pouze jako datové disky. 

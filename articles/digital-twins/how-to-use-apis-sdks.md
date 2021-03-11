@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507224"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554237"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -122,18 +122,21 @@ Další ukázky můžete najít také v [úložišti GitHub pro sadu .NET (C#) S
 Pomocné rutiny serializace jsou pomocné funkce dostupné v sadě SDK pro rychlé vytvoření nebo deserializaci dvojitě dostupných dat pro přístup k základním informacím. Vzhledem k tomu, že základní metody sady SDK vracejí ve výchozím nastavení ve výchozím nastavení hodnoty ve formátu JSON, může být užitečné tyto pomocné třídy použít k dalšímu přerušení dat.
 
 Dostupné pomocné třídy jsou:
-* `BasicDigitalTwin`: Představuje základní data digitálního vlákna.
-* `BasicRelationship`: Představuje základní data relace.
-* `UpdateOperationUtility`: Představuje informace o opravě JSON používané v voláních aktualizace.
-* `WriteableProperty`: Představuje metadata vlastnosti.
+* `BasicDigitalTwin`: Genericicky reprezentuje základní data z digitálního vlákna.
+* `BasicDigitalTwinComponent`: Obecně představuje komponentu ve `Contents` vlastnostech `BasicDigitalTwin`
+* `BasicRelationship`: Obecně představuje základní data relace.
+* `DigitalTwinsJsonPropertyName`: Obsahuje řetězcové konstanty pro použití v serializaci JSON a deserializaci pro vlastní digitální typy vláken.
 
 ##### <a name="deserialize-a-digital-twin"></a>Deserializace digitálního vlákna
 
-Vlákna můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Test.Json` nebo `Newtonsoft.Json` . Pro základní přístup k vytvářené pomocné třídy je tento bit pohodlnější.
+Vlákna můžete vždy deserializovat pomocí knihovny JSON dle vašeho výběru, například `System.Text.Json` nebo `Newtonsoft.Json` . Pro základní přístup k typu vlákna můžou pomocné třídy lépe využít.
 
 `BasicDigitalTwin`Pomocná třída také poskytuje přístup k vlastnostem, které jsou definovány na vlákna, prostřednictvím `Dictionary<string, object>` . K vypsání vlastností vlákna můžete použít:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
+> [!NOTE]
+> `BasicDigitalTwin` používá `System.Text.Json` atributy. Aby bylo možné použít `BasicDigitalTwin` s [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true), musíte buď inicializovat klienta s výchozím konstruktorem, nebo pokud chcete možnost serializátoru přizpůsobit, použijte [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true).
 
 ##### <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
