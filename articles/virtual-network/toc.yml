@@ -409,15 +409,13 @@
               href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
-        - name: Vytvoření brány NAT – PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
+        - name: Vytvoření a ověření služby NAT Gateway – PowerShell
+          href: tutorial-create-nat-gateway-powershell.md
         - name: Vytvoření brány NAT – CLI
           href: quickstart-create-nat-gateway-cli.md
         - name: Vytvoření brány NAT – šablona Resource Manageru
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: Vytvoření a ověření služby NAT Gateway – PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
         - name: Vytvoření a ověření služby NAT Gateway – CLI
           href: tutorial-create-validate-nat-gateway-cli.md
     - name: Řešení potíží

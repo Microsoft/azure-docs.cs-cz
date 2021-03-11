@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098141"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616685"
 ---
 # <a name="azure-percept-security-overview"></a>Přehled zabezpečení Azure Percept
 
@@ -37,7 +37,7 @@ Zařízení Azure Percept používají k zabezpečení firmwaru kořenový certi
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK se připojuje ke službě Azure Percept Studio s dalším zabezpečením a dalšími službami Azure, které využívají protokol TLS (Transport Layer Security). Azure Percept DK je zařízení s povoleným Azure IoT Edge. IoT Edge runtime je kolekce programů, které zařízení přepíná do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hranici a sdělit výsledky. Azure Percept DK využívá kontejnery Docker k izolaci IoT Edge úloh z hostitelského operačního systému a aplikací s povoleným okrajem. Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06).
+Azure Percept DK se připojuje ke službě Azure Percept Studio s dalším zabezpečením a dalšími službami Azure, které využívají protokol TLS (Transport Layer Security). Azure Percept DK je zařízení s povoleným Azure IoT Edge. IoT Edge runtime je kolekce programů, které zařízení přepíná do IoT Edge zařízení. Souhrnně IoT Edge komponenty modulu runtime umožňují zařízením IoT Edge přijímat kód, který se má spustit na hranici a sdělit výsledky. Azure Percept DK využívá kontejnery Docker k izolaci IoT Edge úloh z hostitelského operačního systému a aplikací s povoleným okrajem. Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager).
 
 ### <a name="device-update-for-iot-hub"></a>Aktualizace zařízení pro IoT Hub
 
@@ -57,7 +57,7 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
 |*. auth.azureperceptdk.azure.net|   443|    Ověřování a autorizace ve službě Azure DK SOM|
 |*. auth.projectsantacruz.azure.net| 443|    Ověřování a autorizace ve službě Azure DK SOM|
 
-Dále si Projděte seznam [připojení používaných Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices).
+Dále si Projděte seznam [připojení používaných Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices).
 
 <!---
 ## Additional Recommendations for Deployment to Production

@@ -3,16 +3,16 @@ title: NCv3-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NCv3-Series.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c28ed042156865c52607ce031507c696f28b4e7c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119752"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617297"
 ---
 # <a name="ncv3-series"></a>Řada NCv3
 
@@ -24,7 +24,7 @@ Virtuální počítače řady NCv3-Series využívají grafické procesory NVIDI
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): nepodporováno<br>
-[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 NVIDIA NVLink Interconnect: nepodporováno<br>
 
 > [!IMPORTANT]

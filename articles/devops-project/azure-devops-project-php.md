@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 06ac110da35a5a77157bd4e31caaa5aa5fd015cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588960"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566562"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro PHP pomocí Azure DevOps Starter
 
@@ -84,7 +84,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Přejděte na pole **stav** a potom vyberte **tři tečky** (...). V nabídce se zobrazí několik možností, jako je například zařazování nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
-1. Vyberte **Edit** (Upravit).
+1. Vyberte **Upravit**.
 
 1. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení. Sestavení spouští různé úlohy, jako například načítání zdrojů z úložiště Git, obnovení závislostí a publikování výstupů, které se používají pro nasazení.
 
@@ -125,4 +125,4 @@ Pokud už je nepotřebujete, můžete Azure App Service a další související 
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Přizpůsobení procesu CD](/azure/devops/pipelines/release/define-multistage-release-process)

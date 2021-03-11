@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 24f64e19077488223e13d01e110b5b5118231673
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661622"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603238"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -125,7 +125,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objektový model
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
 
-| Název                                   | Popis                                                                                                                                                                           |
+| Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |
@@ -140,22 +140,22 @@ Použijte `createThread` metodu k vytvoření vlákna chatu.
 - Slouží `topic` k poskytnutí tématu tomuto chatu. Témata lze aktualizovat po vytvoření vlákna konverzace pomocí `UpdateThread` funkce.
 - Slouží `participants` k vypsání účastníků, kteří mají být přidáni do konverzačního vlákna.
 
-Po vyřešení `createChatThread` Metoda vrátí hodnotu `CreateChatThreadResponse` . Tento model obsahuje `chatThread` vlastnost, kde můžete získat přístup k `id` nově vytvořenému vláknu. Pak můžete použít `id` k získání instance `ChatThreadClient` . `ChatThreadClient`Pak lze použít k provedení operace v rámci vlákna, jako je například odesílání zpráv nebo výpis účastníků.
+Po vyřešení `createChatThread` Metoda vrátí hodnotu `CreateChatThreadResult` . Tento model obsahuje `chatThread` vlastnost, kde můžete získat přístup k `id` nově vytvořenému vláknu. Pak můžete použít `id` k získání instance `ChatThreadClient` . `ChatThreadClient`Pak lze použít k provedení operace v rámci vlákna, jako je například odesílání zpráv nebo výpis účastníků.
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 `getChatThreadClient`Metoda vrátí `chatThreadClient` pro vlákno, které již existuje. Dá se použít k provádění operací na vytvořeném vlákně: Přidat účastníky, poslat zprávu atd. IDvlákna je jedinečné ID existujícího konverzačního vlákna.
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Odeslání zprávy do konverzačního vlákna
 
-Použijte `sendMessage` metodu k odeslání zprávy chatu k vláknu, které jste právě vytvořili, identifikovanému pomocí IDvlákna.
+Použijte `sendMessage` metodu k odeslání zprávy do vlákna identifikovaného pomocí IDvlákna.
 
-`sendMessageRequest` Popisuje povinná pole žádosti o zprávu chatu:
+`sendMessageRequest` slouží k popisu žádosti o zprávu:
 
 - Slouží `content` k zadání obsahu zprávy chatu;
 
-`sendMessageOptions` Popisuje volitelná pole žádosti o zprávu chatu:
+`sendMessageOptions` slouží k popisu volitelných parametrů operace:
 
-- Slouží `priority` k zadání úrovně priority zprávy chatu, například Normal nebo high. Tato vlastnost se dá použít k zobrazení indikátoru uživatelského rozhraní pro uživatele příjemce ve vaší aplikaci, aby se mohla zobrazit zpráva nebo spustit vlastní obchodní logiku.
 - Slouží `senderDisplayName` k zadání zobrazovaného jména odesílatele.
+- Slouží `type` k určení typu zprávy, například "text" nebo "HTML";
 
-Odpověď `sendChatMessageResult` obsahuje ID, které je jedinečným identifikátorem této zprávy.
+`SendChatMessageResult` je odpověď vrácená z odeslání zprávy, obsahuje ID, což je jedinečné ID zprávy.
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 Přidejte tento kód místo `<SEND MESSAGE TO A CHAT THREAD>` komentáře v **client.js**, aktualizujte kartu prohlížeče a zaškrtněte konzolu.
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ Po vytvoření vlákna chatu můžete z něj přidat uživatele nebo je z něj o
 Před voláním `addParticipants` metody se ujistěte, že jste pro tohoto uživatele získali nový přístupový token a identitu. Uživatel bude potřebovat přístupový token, aby mohl inicializovat svého chatového klienta.
 
 `addParticipantsRequest` popisuje objekt Request, který `participants` uvádí seznam účastníků, kteří mají být přidáni do vlákna chatu.
-- `user`, požadováno, je uživatel komunikace, který má být přidán do vlákna chatu.
+- `id`, Required, je identifikátor komunikace, který má být přidán do vlákna chatu.
 - `displayName`volitelné, je zobrazované jméno účastníka vlákna.
 - `shareHistoryTime`volitelné, je čas, od kterého je historie chatu sdílena s účastníkem. Chcete-li sdílet historii od vytvoření vlákna chatu, nastavte tuto vlastnost na jakékoli datum, které je rovno nebo menší než čas vytvoření vlákna. Pokud chcete sdílet žádnou historii předchozí až po přidání účastníka, nastavte ho na aktuální datum. Chcete-li sdílet částečnou historii, nastavte ji na datum podle svého výběru.
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

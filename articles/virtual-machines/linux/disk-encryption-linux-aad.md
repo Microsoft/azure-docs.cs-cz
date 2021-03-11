@@ -2,18 +2,19 @@
 title: Azure Disk Encryption s virtuálními počítači s Aplikace Azure AD Linux IaaS (předchozí verze)
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače s IaaS Linux.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741804"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558389"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -36,7 +37,7 @@ Před šifrováním [disků si poznamenejte, vytvořte](snapshot-copy-managed-di
 
  
 
-## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"> </a> Povolení šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS Linux
+## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"></a> Povolení šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS Linux
 
 V tomto scénáři můžete šifrování povolit pomocí šablony Azure Resource Manager, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku Azure CLI. 
 
@@ -78,7 +79,7 @@ Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
 
-### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> Povolení šifrování na stávajícím nebo běžícím virtuálním počítači se systémem Linux pomocí prostředí PowerShell
+### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"></a> Povolení šifrování na stávajícím nebo běžícím virtuálním počítači se systémem Linux pomocí prostředí PowerShell
 Pomocí rutiny [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure. Pořídit [snímek](snapshot-copy-managed-disk.md) nebo vytvořit zálohu virtuálního počítače s [Azure Backup](../../backup/backup-azure-vms-encryption.md) , než budou disky zašifrované. Parametr-skipVmBackup je už ve skriptech PowerShellu určený k zašifrování běžícího virtuálního počítače se systémem Linux.
 
 - **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta:** Následující skript inicializuje proměnné a spustí rutinu Set-AzVMDiskEncryptionExtension. U skupiny prostředků, virtuálního počítače, trezoru klíčů, aplikace Azure AD a tajného klíče klienta by se už měly vytvořit požadavky. Hodnoty MyVirtualMachineResourceGroup, MyKeyVaultResourceGroup, MySecureVM, MySecureVault, my-AAD-Client-ID a my-AAD-Client-Secret nahraďte hodnotami. Pokud chcete určit, které disky se šifrují, upravte parametr-VolumeType.
@@ -132,7 +133,7 @@ Pomocí rutiny [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/s
      ```
 
 
-### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a> Povolení šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS Linux se šablonou
+### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"></a> Povolení šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS Linux se šablonou
 
 Pomocí [šablony Správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)můžete povolit šifrování disku na existujícím nebo běžícím virtuálním počítači s IaaS Linux v Azure.
 
@@ -148,7 +149,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč nahrát Můžete ji získat pomocí příkazu rozhraní příkazového řádku Azure CLI `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu **UseExistingKek** vyberete **nokek** . Pokud v rozevíracím seznamu **UseExistingKek** vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné podporované hodnoty jsou _OS_ nebo _All_ . (Další informace najdete v části Podporované distribuce systému Linux a jejich verze pro operační systémy a datové disky v oddílu požadavky dříve.) |
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné podporované hodnoty jsou _OS_ nebo _All_. (Další informace najdete v části Podporované distribuce systému Linux a jejich verze pro operační systémy a datové disky v oddílu požadavky dříve.) |
 | sequenceVersion | Verze sekvence operace nástroje BitLocker Zvyšte číslo této verze pokaždé, když se na stejném virtuálním počítači provede operace šifrování disku. |
 | vmName | Název virtuálního počítače, na kterém se má operace šifrování provést. |
 | přístupové heslo | Jako šifrovací klíč dat zadejte silné heslo. |
@@ -164,7 +165,7 @@ Parametr EncryptFormatAll zkracuje dobu, po kterou jsou datové disky platformy 
 > EncryptFormatAll by neměl být použit, pokud jsou potřebná data na datových svazcích virtuálního počítače. Můžete vyloučit disky ze šifrování odpojováním. Vyzkoušejte nejprve parametr EncryptFormatAll na testovacím virtuálním počítači, abyste pochopili parametr funkce a jeho nevýznam před tím, než ho zkusíte na provozním virtuálním počítači. Možnost EncryptFormatAll formátuje datový disk, takže všechna data, která na něm jsou, budou ztracena. Než budete pokračovat, ověřte, že všechny disky, které chcete vyloučit, jsou správně odpojeny. </br></br>
  >Pokud tento parametr nastavíte při aktualizaci nastavení šifrování, může to vést k restartování před samotným šifrováním. V takovém případě budete chtít odebrat i disk, který nechcete naformátovat ze souboru fstab. Podobně byste měli před zahájením operace šifrování přidat do souboru fstab oddíl, který chcete šifrovat. 
 
-### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a> EncryptFormatAll kritéria
+### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"></a> EncryptFormatAll kritéria
 Parametr projde všemi oddíly a zašifruje je tak dlouho, dokud splňují *všechna* následující kritéria: 
 - Není kořenovým adresářem/operačním systémem nebo spouštěcím oddílem.
 - Ještě není zašifrováno
@@ -175,16 +176,16 @@ Parametr projde všemi oddíly a zašifruje je tak dlouho, dokud splňují *vše
 
 Zašifrujte disky, které tvoří svazek RAID nebo LVM, a ne svazek RAID nebo LVM.
 
-### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a> Použití parametru EncryptFormatAll se šablonou
+### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"></a> Použití parametru EncryptFormatAll se šablonou
 Pokud chcete použít možnost EncryptFormatAll, použijte libovolnou existující šablonu Azure Resource Manager, která šifruje virtuální počítač Linux a změňte pole **EncryptionOperation** pro prostředek AzureDiskEncryption.
 
 1. Jako příklad použijte [šablonu správce prostředků k šifrování spuštěného virtuálního počítače se systémem Linux IaaS](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm). 
 2. V šabloně pro rychlý Start Azure vyberte **nasadit do Azure** .
-3. Změňte pole **EncryptionOperation** z **EnableEncryption** na **EnableEncryptionFormatAl** .
+3. Změňte pole **EncryptionOperation** z **EnableEncryption** na **EnableEncryptionFormatAl**.
 4. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, další parametry, právní výrazy a smlouvy. Vyberte **vytvořit** , pokud chcete povolit šifrování na stávajícím nebo SPUŠTĚNém virtuálním počítači s IaaS.
 
 
-### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> Použití parametru EncryptFormatAll s rutinou prostředí PowerShell
+### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"></a> Použití parametru EncryptFormatAll s rutinou prostředí PowerShell
 Použijte rutinu [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) s parametrem EncryptFormatAll.
 
 **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta a EncryptFormatAll:** Například následující skript inicializuje proměnné a spustí rutinu Set-AzVMDiskEncryptionExtension s parametrem EncryptFormatAll. U skupiny prostředků, virtuálního počítače, trezoru klíčů, aplikace Azure AD a tajného klíče klienta by se už měly vytvořit požadavky. Hodnoty MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, my-AAD-Client-ID a my-AAD-Client-Secret nahraďte hodnotami.
@@ -203,7 +204,7 @@ Použijte rutinu [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute
    ```
 
 
-### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"> </a> Použití parametru EncryptFormatAll u Správce logických svazků (LVM) 
+### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"></a> Použití parametru EncryptFormatAll u Správce logických svazků (LVM) 
 Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte zařízení-Path a mountpoints libovolnými vašimi vlastními případy použití. Tuto instalaci můžete provést takto:
 
 - Přidejte datové disky, které budou tvořit virtuální počítač.
@@ -238,7 +239,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
 
 
 
-## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a> Nové virtuální počítače s IaaS vytvořené z VHD a šifrovacích klíčů šifrovaných zákazníkem
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"></a> Nové virtuální počítače s IaaS vytvořené z VHD a šifrovacích klíčů šifrovaných zákazníkem
 V tomto scénáři můžete povolit šifrování pomocí Správce prostředků šablony, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku. Následující části podrobněji popisují Správce prostředků šablon a příkazů rozhraní příkazového řádku. 
 
 Použijte pokyny v příloze pro přípravu předem šifrovaných imagí, které je možné použít v Azure. Po vytvoření image můžete pomocí kroků v následující části vytvořit zašifrovaný virtuální počítač Azure.
@@ -252,7 +253,7 @@ Použijte pokyny v příloze pro přípravu předem šifrovaných imagí, které
 
 
 
-### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"> </a> Použití Azure PowerShell k šifrování virtuálních počítačů s IaaS pomocí předem šifrovaných virtuálních pevných disků 
+### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"></a> Použití Azure PowerShell k šifrování virtuálních počítačů s IaaS pomocí předem šifrovaných virtuálních pevných disků 
 Pomocí rutiny PowerShellu [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)můžete povolit šifrování disku na šifrovaném virtuálním pevném disku. V následujícím příkladu jsou uvedeny některé běžné parametry. 
 
 ```powershell
@@ -341,7 +342,7 @@ Syntaxe pro hodnotu parametru klíč-šifrovací klíč je úplný identifikáto
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Zakázat šifrování pomocí šablony Správce prostředků:** Šifrování zakážete tak, že použijete [zakázat šifrování v šabloně virtuálního počítače se systémem Linux](https://aka.ms/decrypt-linuxvm) .
-     1. Vyberte **nasadit do Azure** .
+     1. Vyberte **nasadit do Azure**.
      2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, právní podmínku a smlouvu.
      3. Pokud chcete zakázat šifrování disku na běžícím virtuálním počítači s Windows, vyberte **koupit** . 
 

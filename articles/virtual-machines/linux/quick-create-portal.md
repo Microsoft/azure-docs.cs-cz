@@ -2,24 +2,25 @@
 title: Rychlý Start – vytvoření virtuálního počítače se systémem Linux v Azure Portal
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit virtuální počítač se systémem Linux.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1ccd2df3a1fd6b2f1f1cb5b2d3250e8bbfcc327
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016042"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549732"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní založené na prohlížeči pro vytváření prostředků Azure. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače se systémem Linux se systémem Ubuntu 18,04 LTS. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

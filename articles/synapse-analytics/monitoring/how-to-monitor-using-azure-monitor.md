@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672758"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549851"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Použití Azure Monitor s pracovním prostorem Azure synapse Analytics
 
@@ -103,7 +103,7 @@ Přihlaste se k Azure Portal a vyberte **monitorování**  >  **výstrah** a vyt
 
 Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
-| Název Log Analytics tabulky | Název kategorie protokolu                 | Popis |
+| Název Log Analytics tabulky | Název kategorie protokolu                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Žádosti rozhraní API služby Azure synapse Gateway. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Operace řízení přístupu založeného na rolích Azure synapse (SRBAC). |
@@ -112,7 +112,7 @@ Tady jsou protokoly emitované pracovními prostory Azure synapse Analytics:
 
 Tady jsou protokoly emitované vyhrazené fondy SQL:
 
-| Název Log Analytics tabulky        | Název kategorie protokolu             | Popis |
+| Název Log Analytics tabulky        | Název kategorie protokolu             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Informace o požadavcích a dotazech SQL ve vyhrazeném fondu SQL ve službě Azure synapse.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Informace o pracovních procesech, které dokončují kroky DMS ve vyhrazeném fondu SQL ve službě Azure synapse.
@@ -131,7 +131,7 @@ Další informace o těchto protokolech najdete v následujících informacích:
 
 Tady je protokol vysílaný Apache Spark fondy:
 
-| Název Log Analytics tabulky               | Název kategorie protokolu              | Popis                 |
+| Název Log Analytics tabulky               | Název kategorie protokolu              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Informace o ukončených Apache Sparkch aplikacích |
 
@@ -171,7 +171,7 @@ Vytvořte nebo přidejte nastavení diagnostiky pro váš pracovní prostor, vyh
 1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [referenční informace o protokolech AzureDiagnostics](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. Vyberte **Uložit**.
 

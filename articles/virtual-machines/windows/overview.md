@@ -3,17 +3,18 @@ title: Přehled virtuálních počítačů s Windows v Azure
 description: Přehled virtuálních počítačů s Windows v Azure.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665963"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550327"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -94,12 +95,12 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 
 | Prostředek | Povinné | Popis |
 | --- | --- | --- |
-| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
-| [Účet úložiště](../../storage/common/storage-account-create.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
-| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |Ne |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
-| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md) |Ne |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Yes |Virtuální počítač musí být součástí skupiny prostředků. |
+| [Účet úložiště](../../storage/common/storage-account-create.md) |Yes |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
+| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
+| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
+| [Datové disky](attach-managed-disk-portal.md) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 
 ## <a name="data-residency"></a>Rezidence dat

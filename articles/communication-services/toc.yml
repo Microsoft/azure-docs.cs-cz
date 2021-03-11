@@ -120,6 +120,8 @@
       href: concepts/authentication.md
     - name: Ochrana osobních údajů
       href: concepts/privacy.md
+    - name: Ceny
+      href: concepts/pricing.md
     - name: Nabízená oznámení
       href: concepts/notifications.md
     - name: Interoperabilita Teams

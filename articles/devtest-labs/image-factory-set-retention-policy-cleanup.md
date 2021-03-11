@@ -3,12 +3,12 @@ title: Nastavte zásady uchovávání informací v Azure DevTest Labs | Microsof
 description: Naučte se konfigurovat zásady uchovávání informací, vyčistit továrnu a vyřadit staré image z DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476049"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550021"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Nastavení zásad uchovávání informací v Azure DevTest Labs
 Tento článek popisuje, jak nastavit zásady uchovávání informací, vyčistit továrnu a vyřazení starých imagí ze všech ostatních DevTest Labs v organizaci. 
@@ -57,14 +57,14 @@ Teď, když jste dokončili definici sestavení, zaznamenejte nové sestavení, 
 
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Teď máte spuštěnou továrnu imagí, která může na vyžádání generovat a distribuovat vlastní image do vašich cvičení. V tuto chvíli je to jen pro to, aby se vaše image správně nastavily a identifikovaly cílové cvičení. Jak je uvedeno v předchozím článku, **Labs.jsv** souboru umístěném v **konfigurační** složce určuje, které Image by se měly zpřístupnit v každé cílové laboratoři. Když do své organizace přidáte další DevTest Labs, stačí přidat položku v Labs.jspro nové testovací prostředí.
 
-Přidání nového obrázku do továrny je také jednoduché. Pokud chcete do továrny zahrnout nový obrázek, otevřete [Azure Portal](https://portal.azure.com), přejděte do továrního DevTest Labs, vyberte toto tlačítko a přidejte virtuální počítač a zvolte požadovanou image na Marketplace a artefakty. Místo výběru tlačítka **vytvořit** pro vytvoření nového virtuálního počítače vyberte **Zobrazit Azure Resource Manager šablonu**a uložte šablonu jako soubor. JSON někam do složky **GoldenImages** v úložišti. Při příštím spuštění objektu pro vytváření imagí se vytvoří vlastní image.
+Přidání nového obrázku do továrny je také jednoduché. Pokud chcete do továrny zahrnout nový obrázek, otevřete [Azure Portal](https://portal.azure.com), přejděte do továrního DevTest Labs, vyberte toto tlačítko a přidejte virtuální počítač a zvolte požadovanou image na Marketplace a artefakty. Místo výběru tlačítka **vytvořit** pro vytvoření nového virtuálního počítače vyberte **Zobrazit Azure Resource Manager šablonu** a uložte šablonu jako soubor. JSON někam do složky **GoldenImages** v úložišti. Při příštím spuštění objektu pro vytváření imagí se vytvoří vlastní image.
 
 
 ## <a name="next-steps"></a>Další kroky
-1. [Naplánujte sestavení nebo vydání](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) , aby se továrna imagí pravidelně spouštěla. Pravidelně obnovuje image generované v továrně.
+1. [Naplánujte sestavení nebo vydání](/azure/devops/pipelines/build/triggers?tabs=designer) , aby se továrna imagí pravidelně spouštěla. Pravidelně obnovuje image generované v továrně.
 2. Vytvořte pro svou továrnu více zlatých imagí. Můžete také zvážit [Vytvoření artefaktů](devtest-lab-artifact-author.md) pro skriptování dalších částí úloh nastavení virtuálních počítačů a zahrnutí artefaktů do imagí pro vytváření.
 4. Vytvořte [samostatné sestavení/vydání](/azure/devops/pipelines/overview?view=azure-devops-2019) , ke kterému se má skript **DistributeImages** spustit samostatně. Tento skript můžete spustit, když provedete změny Labs.jsa dostanete image zkopírované do cílové laboratoře, aniž byste museli znovu vytvářet všechny image znovu.
 
