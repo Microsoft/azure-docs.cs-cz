@@ -2,24 +2,25 @@
 title: Rychlý Start – vytvoření virtuálního počítače s Windows v Azure Portal
 description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal vytvořit virtuální počítač s Windows
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5e52fab081a94ad58e91c629f4092ae889d38e7a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "87494515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560918"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače v Azure se systémem Windows Server 2019. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -63,7 +64,7 @@ Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyn
 
 2. Otevřete stažený soubor RDP a po zobrazení výzvy klikněte na **Připojit**. 
 
-3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako **localhost** \\ *uživatelské jméno* hostitele, zadejte heslo, které jste pro virtuální počítač vytvořili, a pak klikněte na **OK**.
+3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako  \\ *uživatelské jméno* hostitele, zadejte heslo, které jste pro virtuální počítač vytvořili, a pak klikněte na **OK**.
 
 4. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na **Ano** nebo **Pokračovat** a vytvořte připojení.
 

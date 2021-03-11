@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: f3c9f8f78f17153c3d2eb7b014cf616253b3c0c9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523936"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618249"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Správa místní konzoly pro správu
 
@@ -226,7 +226,7 @@ Při použití příkazu CLI:
 
 Spravujte certifikáty pomocí následujících příkazů:
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Vygenerovat nový privátní klíč a žádost o podepsání certifikátu | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Vygenerování certifikátu podepsaného svým držitelem | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -236,7 +236,7 @@ Spravujte certifikáty pomocí následujících příkazů:
 
 Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátního klíče, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Ověření žádosti o podepsání certifikátu (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Ověřit privátní klíč | `openssl rsa -in privateKey.key -check` |
@@ -244,13 +244,13 @@ Pokud potřebujete ověřit informace v rámci certifikátu, CSR nebo privátní
 
 Pokud se zobrazí chyba, že se soukromý klíč neshoduje s certifikátem, nebo pokud certifikát, který jste nainstalovali do lokality, není důvěryhodný, použijte k opravě chyby tyto příkazy.
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Zkontrolujte hodnotu hash MD5 veřejného klíče a ujistěte se, že se shoduje s tím, co je v rámci zástupce nebo privátního klíče. | první. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> odst. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 1. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Chcete-li převést certifikáty a klíče do různých formátů, aby byly kompatibilní s konkrétními typy serverů nebo softwaru, použijte tyto příkazy;
 
-| Popis | CLI – příkaz |
+| Description | CLI – příkaz |
 |--|--|
 | Převod souboru DER (. CRT. cer. der) na PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Převod souboru PEM na DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -415,7 +415,21 @@ Následující postup popisuje, jak aktualizovat místní verzi softwaru konzoly
 
 1. Vyberte soubor, který jste stáhli ze stránky **aktualizace** Defender pro IoT.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="mail-server-settings"></a>Nastavení poštovního serveru
+
+Definujte nastavení poštovního serveru SMTP pro místní konzolu pro správu.
+
+Pro definování:
+
+1. Přihlaste se k rozhraní příkazového řádku pro místní správu s přihlašovacími údaji správce.
+1. Zadejte ```nano /var/cyberx/properties/remote-interfaces.properties```.
+1. Stiskněte klávesu ENTER. Zobrazí se následující výzvy.
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. Zadejte název serveru SMTP a odesílatele a vyberte zadat.
+
+## <a name="see-also"></a>Viz také
 
 [Správa senzorů z konzoly pro správu](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

@@ -2,22 +2,23 @@
 title: Přehled zřizování Linux
 description: Přehled toho, jak přenést image virtuálních počítačů se systémem Linux nebo vytvořit nové image pro použití v Azure.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080144"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563213"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Zřizování virtuálních počítačů Azure Linux
-Když vytváříte virtuální počítač z generalizované Image (sdílená Galerie imagí nebo spravovaná image), řídicí plocha vám umožní vytvořit virtuální počítač a předat parametry a nastavení virtuálnímu počítači. Toto se říká *zřizování*virtuálního počítače. Během zřizování platforma zpřístupňuje virtuálnímu počítači požadované hodnoty parametrů pro vytvoření virtuálního počítače (název hostitele, uživatelské jméno, heslo, klíče SSH, customData), které jsou k dispozici pro virtuální počítač. 
+Když vytváříte virtuální počítač z generalizované Image (sdílená Galerie imagí nebo spravovaná image), řídicí plocha vám umožní vytvořit virtuální počítač a předat parametry a nastavení virtuálnímu počítači. Toto se říká *zřizování* virtuálního počítače. Během zřizování platforma zpřístupňuje virtuálnímu počítači požadované hodnoty parametrů pro vytvoření virtuálního počítače (název hostitele, uživatelské jméno, heslo, klíče SSH, customData), které jsou k dispozici pro virtuální počítač. 
 
 Zřizovací agent vloženými v rámci image bude rozhraní s platformou, propojuje až několik nezávislých rozhraní zřizování, nastaví vlastnosti a signál na platformu, kterou dokončil. 
 
@@ -70,10 +71,10 @@ Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
 
 ## <a name="azure-provisioning-agent-requirements"></a>Požadavky na agenta zřizování Azure
 Agent pro Linux a Cloud-init závisí na některých systémových balíčcích, aby fungovaly správně:
-- Python 2.6 +
-- OpenSSL 1.0 +
-- OpenSSH 5.3 +
-- Nástroje systému souborů: `sfdisk` , `fdisk` , `mkfs` , `parted`
+- Python 2.6 nebo novější
+- OpenSSL 1.0 nebo novější
+- OpenSSH 5.3 nebo novější
+- Nástroje systému souborů: `sfdisk`, `fdisk`, `mkfs`, `parted`
 - Nástroje pro heslo: chpasswd, sudo
 - Nástroje pro zpracování textu: sed, grep
 - Síťové nástroje: IP-Route

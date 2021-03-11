@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: e1fc3771eaf5e8fa59b297e2052d232150ccfab3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3d2dd7691ac601e690e9f477b0450da07233e201
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006284"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553455"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Vytvoření aplikace App Service s průběžným nasazováním pomocí Azure CLI
 
 Tento ukázkový skript vytvoří aplikaci v App Service se souvisejícími prostředky a pak nastaví průběžné nasazování z úložiště Azure DevOps. Pro tuto ukázku potřebujete:
 
 * Úložiště Azure DevOps s kódem aplikace, ke kterému máte oprávnění správce.
-* [Token PAT](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) pro vaši organizaci Azure DevOps
+* [Token PAT](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) pro vaši organizaci Azure DevOps
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

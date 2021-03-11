@@ -7,19 +7,19 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099416"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561258"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurace automatického zřizování pro agenty a rozšíření z Azure Security Center
 
-Security Center shromažďuje data z vašich prostředků pomocí příslušného agenta nebo rozšíření pro daný prostředek a typu kolekce dat, kterou jste povolili. Použijte níže uvedené precedures a ujistěte se, že váš prostředek má nezbytný Tento článek popisuje, jak nastavit Automatické zřizování agenta Log Analytics a dalších agentů a rozšíření používaných nástrojem Azure Security Center
+Azure Security Center shromažďuje data z vašich prostředků pomocí příslušného agenta nebo rozšíření pro daný prostředek a typu kolekce dat, kterou jste povolili. Pomocí níže uvedených postupů zajistěte, aby vaše prostředky měly potřebné agenty a rozšíření, které používá Security Center.
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="availability"></a>Dostupnost
 
@@ -27,15 +27,17 @@ Pokud chcete začít využívat Security Center, musíte mít předplatné pro M
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Stav vydaných verzí:          | **Funkce**: Automatické zřizování je všeobecně dostupné (GA).<br>**Agenti a rozšíření**: Agent Log Analytics pro virtuální počítače Azure je v cloudu, protože je ve verzi Preview, doplněk zásad pro KUBERNETES je GA.                |
 | Stanov                | Free                                                                                                                                                                                                                         |
-| Podporovaná umístění: | ![Ano](./media/icons/yes-icon.png) Počítače Azure<br>![Ne](./media/icons/no-icon.png) Počítače ARC Azure<br>![Ne](./media/icons/no-icon.png) Uzly Kubernetes<br>![Ne](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Cloud                 | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
+| Podporovaná umístění: | ![Yes](./media/icons/yes-icon.png) Počítače Azure<br>![No](./media/icons/no-icon.png) Počítače ARC Azure<br>![No](./media/icons/no-icon.png) Uzly Kubernetes<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Cloud                 | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov, Čína gov, jiné gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Jak Security Center shromažďovat data?
 
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. 
 
-Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktualizacích, nesprávně nakonfigurovaných nastavení zabezpečení operačního systému, stavu aplikace Endpoint Protection a ochraně před hrozbami. Shromažďování dat je potřeba jenom pro výpočetní prostředky (virtuální počítače, virtuální počítače, sady škálování na IaaS a počítače mimo Azure). Můžete využít výhod Azure Security Center i v případě, že nezřizujete agenty. budete však mít omezené zabezpečení a výše uvedené možnosti nejsou podporovány.  
+Shromažďování dat je nutné, aby poskytovala přehled o chybějících aktualizacích, nesprávně nakonfigurovaných nastavení zabezpečení operačního systému, stavu aplikace Endpoint Protection a ochraně před hrozbami. Shromažďování dat je potřeba jenom pro výpočetní prostředky, jako jsou virtuální počítače, služby Virtual Machine Scale Sets, kontejnery IaaS a počítače mimo Azure. 
+
+Můžete využít výhod Azure Security Center i v případě, že nezřizujete agenty. Máte však omezené zabezpečení a výše uvedené možnosti nejsou podporovány.  
 
 Data se shromažďují pomocí:
 
@@ -51,7 +53,7 @@ Všechna agenty a rozšíření popsaná na této stránce *lze* nainstalovat ru
 Doporučujeme povolit Automatické zřizování, ale ve výchozím nastavení je zakázané.
 
 ## <a name="how-does-auto-provisioning-work"></a>Jak Automatické zřizování funguje?
-Nastavení automatického zřizování Security Center mají přepínač pro každý typ podporovaného rozšíření. Pokud povolíte automatické zřizování rozšíření, přiřadíte příslušné pravidlo pro **nasazení, pokud neexistuje** , abyste se ujistili, že je rozšíření zřízené pro všechny stávající a budoucí prostředky tohoto typu.
+Nastavení automatického zřizování Security Center mají přepínač pro každý typ podporovaného rozšíření. Pokud povolíte automatické zřizování rozšíření, přiřadíte příslušné **nasazení, pokud zásady neexistují** . Tento typ zásad zajišťuje, aby bylo rozšíření zřízené pro všechny stávající a budoucí prostředky tohoto typu.
 
 > [!TIP]
 > Přečtěte si další informace o Azure Policy efektů včetně nasazení, pokud neexistují v seznámení s [Azure Policymi efekty](../governance/policy/concepts/effects.md).

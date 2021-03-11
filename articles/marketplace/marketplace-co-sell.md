@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 3/08/2021
+ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032581"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563774"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Přehled společného prodeje s prodejními týmy a partnery Microsoftu
 
@@ -37,11 +37,16 @@ Předprodejní příležitost je libovolný typ spolupráce s prodejními týmy 
 
 ## <a name="co-sell-statuses"></a>Stavy společného prodeje
 
-Existují čtyři úrovně společného prodeje, které je možné použít u nabídky:
+Jedná se o úroveň společného prodejního stavu, který lze použít pro nabídku.
+
+Stavy společného prodeje pro Azure:
 
 - Není připravený společný prodej
 - Připravený společný prodej
 - Azure IP – společný prodej motivovaní
+
+Stavy společného prodeje pro obchodní aplikace
+- Aplikace pro výrobce ISV Connect Standard
 - Aplikace pro výrobce ISV Connect Premium  
 
 Podrobnosti o požadavcích na dosažení těchto stavů společného prodeje najdete v tématu požadavky na [společný prodej](co-sell-requirements.md).
@@ -54,7 +59,7 @@ Informace o tom, jak dosáhnout předprodejní stav připravenosti a Azure IP, n
 
 ## <a name="benefits-of-co-sell-incentivized-status"></a>Výhody společného prodejního stavu motivovaní
 
-_Společný prodej motivovaní_ stavu, zahrnuje _spoluprodejní motivovaní_ a aplikace v Azure IP, _ISV Connect Premium motivační_. Tyto stavy incentivize partneři k prodeji vaší nabídky. Aby bylo možné tento stav dosáhnout, je nutné také dosáhnout společného prodejního stavu. Společný prodej motivovaní status získává všechny výhody řešení připraveného k prodeji a může získat další pobídky pro prodejní týmy Microsoftu a mít nárok na další výhody z komerčního tržiště.
+_Motivovaní stav spoluprodejní_ verze, zahrnuje _spoluprodejní motivovaní_ a _aplikace_ pro vlastní prodej v rámci Azure IP. Tyto stavy incentivize prodejní týmy Microsoftu k prodeji vaší nabídky. Aby bylo možné tento stav dosáhnout, je nutné také dosáhnout společného prodejního stavu. Společný prodej motivovaní status získává všechny výhody společného prodejního stavu a může získat další pobídky pro prodejní týmy Microsoftu a mít nárok na další výhody z komerčního tržiště.
 
 Pro tyto typy nabídek se dá použít motivovaní stav společného prodeje Azure IP:
 
@@ -64,18 +69,17 @@ Pro tyto typy nabídek se dá použít motivovaní stav společného prodeje Azu
 - Modul IoT Edge
 - Software jako služba (SaaS)
 
-Přípravné aplikace: pro tyto typy nabídek se dá použít stav prodejce ISV Connect.
+Pro tyto typy nabídek se dá použít stav aplikace pro prodejce ISV Connect Standard nebo Premium.
 
-- Dynamics 365 Business Central
 - Dynamics 365 pro Customer Engagement & PowerApps
 - Dynamics 365 pro operace
 
-Nabídky, které dosahují _společného prodeje Azure IP motivovaní_ , získají tyto výhody pro komerční tržiště:
+Nabídky, které dosahují motivovaní nebo _aplikace_ pro _vlastní prodej v rámci Azure IP_ , získají pro vás tyto výhody obchodního tržiště:
 
 - Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na řešení vaší infrastruktury jako služby (IaaS) nebo softwaru jako služby (SaaS) prodávaného prostřednictvím komerčního tržiště. Další informace najdete v tématu [poplatky za služby komerčního tržiště](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vašeho řešení IaaS nebo nabídky SaaS. Další informace o programu CSP najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md).
 - Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Způsobilí zákazníci uvidí nabídku označenou jako **zvýhodněné zvýhodnění Azure s nárokem** v Azure Portal. Další informace najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md).
-- Nabídky, které dosahují motivovaní nebo _aplikace_ pro _vlastní prodej v Azure IP_ , se na stránce seznam nabídek v online obchodech zobrazí **upřednostňovaná řešení** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení. Další informace najdete v tématu [upřednostňovaná řešení v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
+- Nabídky, které přinášejí motivovaní nebo _aplikace_ pro _vlastní prodej v Azure IP_ , obdrží na stránce seznam nabídek v online obchodech **upřednostňovaná řešení Microsoftu** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení.
 
 Další informace o tom, jak dosáhnout společného prodejního stavu motivovaní, najdete v tématu věnovaném předprodejní [požadavkům a spoluprodeji motivovaní požadavků](co-sell-requirements.md).
 

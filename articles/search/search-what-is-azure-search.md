@@ -7,26 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/22/2021
+ms.date: 03/09/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699429"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549885"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
 Azure Kognitivní hledání ([dříve označované jako "Azure Search"](whats-new.md#new-service-name)) je cloudová vyhledávací služba, která vývojářům poskytuje rozhraní API a nástroje pro vytváření bohatých funkcí vyhledávání přes soukromý, heterogenní obsah ve webových, mobilních a podnikových aplikacích. 
 
+Hledání je základem jakékoli aplikace, která umožňuje obsah uživatelům, a to s využitím běžných scénářů, jako je katalog nebo hledání dokumentů, hledání webů elektronického obchodování nebo dolování znalostí pro datové vědy. Rozhraní API a architektura Kognitivní hledání zjednodušují přidávání sofistikovaného načítání informací do libovolného řešení.
+
 Vyhledávací služba má následující součásti:
 
 + Vyhledávací modul pro fulltextové vyhledávání
 + Trvalé úložiště indexovaných obsahu vlastněných uživatelem
-+ Rozhraní API pro indexování a dotazování
-+ Volitelná [rozšíření založená na AI](cognitive-search-concept-intro.md), vytváření prohledávatelných obsahu na základě obrázků, nezpracovaného textu, souborů aplikace
-+ Volitelná integrace s dalšími službami Azure pro data, Machine Learning/AI a zabezpečení
++ Rozhraní API pro indexování a dotazování na obsah
++ Volitelná [rozšíření založená na AI](cognitive-search-concept-intro.md), vytváření prohledávatelných obsahu je mimo obrázky, nezpracovaný nestrukturovaný text, soubory aplikací
++ Volitelná integrace s dalšími službami Azure pro data, strojové učení/AI, monitorování a zabezpečení
++ Volitelná implementace [sémantického vyhledávání (Preview)](semantic-search-overview.md) pro vylepšení důležitosti
 
 Vyhledávací služba se nachází mezi externím úložištěm dat, která obsahují vaše neindexovaná data, a klientskou aplikací odesílající požadavky na dotaz do indexu vyhledávání a zpracovává odpověď.
 
@@ -74,8 +77,9 @@ Ucelený průzkum základních funkcí vyhledávání se dá dosáhnout ve čty�
 
 1. [**Dotazování indexu**](search-query-overview.md) pomocí [Průzkumníka služby Search](search-explorer.md) na portálu, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)nebo jiné sadě SDK.
 
-> [!TIP]
-> Minimalizujte kroky tím, že začnete s [**Průvodcem importem dat**](search-get-started-portal.md) a zdrojem dat Azure pro vytvoření, načtení a dotazování indexu v řádu minut.
+V případě prvotního průzkumu začněte s [**Průvodcem importem dat**](search-get-started-portal.md) a integrovaným zdrojem dat Azure pro vytvoření, načtení a dotazování indexu v řádu minut.
+
+Pokud chcete získat pomoc s komplexními nebo vlastními řešeními, [**obraťte se na partnera**](resource-partners-knowledge-mining.md) s hlubokými odbornými znalostmi kognitivní hledání technologie.
 
 ## <a name="compare-search-options"></a>Porovnání možností hledání
 

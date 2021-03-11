@@ -1,5 +1,5 @@
 ---
-title: Partnerská řídicí panel objednávky v komerčních obchodech na webu Marketplace Microsoft AppSource a Azure Marketplace
+title: Řídicí panel objednávky partnerského centra v analytickém obchodě na komerčních webu | Microsoft AppSource a Azure Marketplace
 description: Naučte se, jak získat přístup k analytickým sestavám na vaše komerční nabídky na webu Marketplace v grafickém a ke stažení.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561377"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -54,7 +54,7 @@ Výběr rozsahu měsíce můžete najít v pravém horním rohu každé stránky
 
 V této části najdete graf **objednávek** , který zobrazuje trend aktivních a zrušených objednávek pro vybrané období výpočtu. Metriky a trendy nárůstu jsou reprezentovány spojnicovým grafem a zobrazí hodnotu pro každý měsíc přesunutím ukazatele myši na čáru v grafu. Procentuální hodnota pod metrikami objednávek v widgetu představuje množství nárůstu nebo poklesu během vybraného období výpočtu.
 
-Existují dva objednávky: _aktivní_ a _zrušené_.
+Existují dva objednávky: _aktivní_ a _zrušeno_.
 
 - **Aktivní** se rovná počtu objednávek aktuálně používaných zákazníky v průběhu vybraného rozsahu kalendářních dat.
 - **Canceled** se rovná počtu objednávek, které se dřív nakoupily a pak zrušily během vybraného rozsahu dat.
@@ -73,7 +73,7 @@ Nabídky SaaS můžou používat jeden ze dvou modelů cen s každým plánem: p
 - **Na uživatele**: Povolte přístup k vaší nabídce s cenou na základě počtu uživatelů, kteří mají přístup k nabídce nebo zabírat křesla. Pomocí tohoto modelu založeného na využití můžete nastavit minimální a maximální počet uživatelů, které plán podporuje. Můžete vytvořit více plánů pro konfiguraci různých cenových bodů na základě počtu uživatelů. Tato pole jsou volitelná. Pokud je ponecháno bez výběru, počet uživatelů bude interpretován jako neomezený (minimální počet 1 a maximální počet, jak může vaše služba podporovat). Tato pole je možné upravovat v rámci aktualizace vašeho plánu.
 - **Měřená fakturace**: podle ceny za paušální cenu. Pomocí tohoto cenového modelu můžete volitelně definovat měřené plány, které používají rozhraní API služby pro měření softwaru Marketplace k účtování zákazníků na využití, na které se nevztahuje paušální sazba.
 
-Další informace o tom, jak naplánovat vyúčtování na pracovišti, v lokalitě a na základě měření, najdete v tématu [plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md).
+Další informace o tom, jak na pracovišti, na webu a v účtovaném měření, najdete v tématu [plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md).
 
 ### <a name="orders-by-offers-and-skus"></a>Objednávky podle nabídek a SKU
 
@@ -111,32 +111,32 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1 000 hlavních ob
 - Použijte filtry v tabulce **Podrobnosti objednávky** , abyste zobrazili jenom data, která vás zajímají. Filtrovat podle země/oblasti, typu licence Azure, typu licence komerčního tržiště, typu nabídky, stavu objednávky, volných stop, ID předplatného komerčního tržiště, ID zákazníka a názvu společnosti.
 - Když je objednávka zakoupena chráněným zákazníkem, informace v **objednávkách jsou podrobná data** maskována (* * * * * * * * * * *).
 
-**_Tabulka 1: slovník datových podmínek_* _
+***Tabulka 1: slovník datových podmínek***
 
-| Název sloupce | Název atributu | Definice |
-| ------------ | ------------- | ------------- |
-| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. |
-| MonthStartDate | Počáteční datum měsíce | Počáteční datum měsíce představuje měsíc nákupu. |
-| Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
-| Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
-| Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Různé hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> |
-| SKU | SKU | Plán přidružený k nabídce |
-| Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
-| Je verze Preview SKU | Je verze Preview SKU | Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
-| ID objednávky | ID objednávky | Jedinečný identifikátor objednávky zákazníka pro vaši komerční službu Marketplace Nabídky založené na využití virtuálních počítačů nejsou přidruženy k objednávce. |
-| Order Quantity | Order Quantity | Počet prostředků přidružených k ID objednávky pro aktivní objednávky |
-| Název cloudové instance | Název cloudové instance | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače. |
-| Je nový zákazník | Je nový zákazník | Hodnota určuje, zda nový zákazník poprvé získal jednu nebo více nabídek. Hodnota bude "Ano", pokud se nachází ve stejném kalendářním měsíci pro "datum získání". Pokud zákazník zakoupil nějaké nabídky před nahlášeným kalendářním měsícem, bude hodnota "ne". |
-| Order Status | Order Status | Stav obchodní objednávky na webu Marketplace v době poslední aktualizace dat. |
-| Datum zrušení objednávky | Datum zrušení objednávky | Datum, kdy se objednávka komerčního tržiště zrušila |
-| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka. |
-| Datum nákupu objednávky | Datum nákupu objednávky | Datum vytvoření objednávky komerčního tržiště |
-| Název nabídky | Název nabídky | Název nabídky komerčního tržiště. |
-| Datum ukončení zkušební verze | Datum ukončení zkušební verze | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí. |
-| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. |
-| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Map _ *ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. |
-| AssetCount | Počet assetů | Počet prostředků přidružených k ID objednávky. |
-||||
+| Název sloupce v<br>uživatelské rozhraní | Název atributu | Definice | Název sloupce v programovém programu<br>přístup k sestavám |
+| ------------ | ------------- | ------------- | ------------- |
+| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. V případě nabídek infrastruktury se jedná o identifikátor GUID předplatného Azure zákazníka. V případě nabídek SaaS se tato hodnota zobrazuje jako nuly, protože nákupy SaaS nevyžadují předplatné Azure. | ID předplatného Marketplace |
+| MonthStartDate | Počáteční datum měsíce | Počáteční datum měsíce představuje měsíc nákupu. Formát je rrrr-mm-dd. | MonthStartDate |
+| Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. | OfferType |
+| Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ul><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> | AzureLicenseType |
+| Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Různé hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Plán přidružený k nabídce | SKU |
+| Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. | CustomerCountry |
+| Je verze Preview SKU | Je verze Preview SKU | Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". | IsPreviewSKU |
+| ID objednávky | ID objednávky | Jedinečný identifikátor objednávky zákazníka pro vaši komerční službu Marketplace Nabídky založené na využití virtuálních počítačů nejsou přidruženy k objednávce. | OrderId |
+| Order Quantity | Order Quantity | Počet prostředků přidružených k ID objednávky pro aktivní objednávky | OrderQuantity |
+| Název cloudové instance | Název cloudové instance | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače. | CloudInstanceName |
+| Je nový zákazník | Je nový zákazník | Hodnota určuje, zda nový zákazník poprvé získal jednu nebo více nabídek. Hodnota bude "Ano", pokud se nachází ve stejném kalendářním měsíci pro "datum získání". Pokud zákazník zakoupil nějaké nabídky před nahlášeným kalendářním měsícem, bude hodnota "ne". | IsNewCustomer |
+| Order Status | Order Status | Stav obchodní objednávky na webu Marketplace v době poslední aktualizace dat. | OrderStatus |
+| Datum zrušení objednávky | Datum zrušení objednávky | Datum, kdy se objednávka komerčního tržiště zrušila | OrderCancelDate |
+| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka. | CustomerCompanyName |
+| Datum nákupu objednávky | Datum nákupu objednávky | Datum vytvoření objednávky komerčního tržiště Formát je rrrr-mm-dd. | OrderPurchaseDate |
+| Název nabídky | Název nabídky | Název nabídky komerčního tržiště. | OfferName |
+| Datum ukončení zkušební verze | Datum ukončení zkušební verze | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí. | TrialEndDate |
+| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. | CustomerId |
+| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. | BillingAccountId |
+| AssetCount | Počet assetů | Počet prostředků přidružených k ID objednávky. | Zastaralé |
+|||||
 
 ### <a name="orders-page-filters"></a>Filtry stránek objednávky
 

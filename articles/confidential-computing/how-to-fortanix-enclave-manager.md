@@ -4,17 +4,17 @@ description: Naučte se používat Fortanix důvěrného Computing Manageru k p�
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 41e47e29553b3e4d9cd0e0e8f280b3648f224bf9
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5bc1ff4a288e492613f02a8b095c5ef80436d18e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832299"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558742"
 ---
 # <a name="how-to-run-an-application-with-fortanix-confidential-computing-manager"></a>Postupy: spuštění aplikace s Fortanix důvěrného Computing Manageru
 
@@ -166,7 +166,7 @@ Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstrani
 
 Pokud chcete odstranit účet Fortanix důvěrného Computing Manageru, který jste vytvořili, přečtěte si [stránku účty](https://em.fortanix.com/accounts) v Fortanix důvěrného Computing Manageru. Najeďte myší na účet, který chcete odstranit. Vyberte svislé černé tečky v pravém horním rohu a vyberte **Odstranit účet**.
 
-  ![odstranění](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>Další kroky
 

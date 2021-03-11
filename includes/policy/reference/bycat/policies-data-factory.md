@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 200cfbcaf8da3a2129daa59299f098ce94f5fab2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f6e77b69bf85d65bc759aea83c40f1e08c17ebd8
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429075"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610710"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Datové továrny Azure by se měly šifrovat pomocí klíče spravovaného zákazníkem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec52d6d-beb7-40c4-9a9e-fe753254690e) |Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování v klidovém Azure Data Factory. Ve výchozím nastavení se zákaznická data šifrují pomocí klíčů spravovaných službou, ale klíče spravované zákazníkem se obvykle vyžadují ke splnění standardů dodržování předpisů v legislativních zákonech. Klíče spravované zákazníkem umožňují, aby byla data zašifrovaná pomocí Azure Key Vaultho klíče vytvořeného a vlastněného vámi. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy. Další informace najdete na adrese [https://aka.ms/adf-cmk](https://aka.ms/adf-cmk) . |Audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_CustomerManagedKey_Audit.json) |
 |[\[Preview \] : Azure Data Factory Integration runtime by měl mít omezení počtu jader.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F85bb39b5-2f66-49f8-9306-77da3ac5130f) |Pokud chcete spravovat prostředky a náklady, omezte počet jader prostředí Integration runtime. |Audit, zamítnutí, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/IR_Core_Count_Exceeds_Audit.json) |
@@ -21,3 +21,4 @@ ms.locfileid: "102429075"
 |[\[Verze Preview \] : Azure Data Factory propojené služby by měly při jejich použití použít ověřování spravované identity přiřazené systémem.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff78ccdb4-7bf4-4106-8647-270491d2978a) |Použití spravované identity přiřazené systémem při komunikaci s úložištěm dat prostřednictvím propojených služeb zabraňuje použití méně zabezpečených přihlašovacích údajů, jako jsou hesla nebo připojovací řetězce. |Audit, zamítnutí, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_All_Auth_Audit_except_MSI.json) |
 |[\[Verze Preview \] : Azure Data Factory by měl používat úložiště Git pro správu zdrojového kódu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77d40665-3120-4348-b539-3192ec808307) |Povolte správu zdrojového kódu na datových továrnách, abyste získali možnosti, jako je sledování změn, spolupráce, průběžná integrace a nasazení. |Audit, zamítnutí, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/Factory_None_GIT_Audit.json) |
 |[Přístup k veřejné síti na Azure Data Factory by měl být zakázán.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |Zakázáním vlastnosti přístup k veřejné síti zlepšíte zabezpečení tím, že zajistíte přístup k vašemu Azure Data Factory jenom z privátního koncového bodu. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
+|[služba SSIS (SQL Server Integration Services) prostředí Integration runtime v Azure Data Factory by měly být připojené k virtuální síti.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Nasazení Azure Virtual Network poskytuje lepší zabezpečení a izolaci pro vaše služba SSIS (SQL Server Integration Services) prostředí Integration runtime v Azure Data Factory a také podsítě, zásady řízení přístupu a další funkce pro další omezení přístupu. |Audit, zamítnutí, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |

@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599050"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561241"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Plánování a Správa nákladů pro Azure synapse Analytics
 
@@ -113,7 +113,12 @@ Další informace o nákladech pro fond SQL bez serveru najdete [v tématu cost 
 
 Můžete řídit náklady na vyhrazený fond SQL tím, že prostředek pozastavíte, když ho nepoužíváte. Pokud například nebudete databázi používat během noci a na víkendech, můžete ji během těchto časů pozastavit a obnovit během dne. Další informace najdete v tématu [pozastavení a obnovení výpočtů ve vyhrazeném fondu SQL prostřednictvím Azure Portal](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>Fond Apache Spark bez serveru
+
+Pokud chcete řídit náklady na fond Apache Spark bez serveru, povolte funkci automatického pozastavení Apache Spark serveru a nastavte svůj časový limit odpovídajícím způsobem.  Pokud pro vývoj používáte synapse Studio, aplikace Studio pošle zprávu Keep Alive, aby zachovala aktivní relaci, která je také konfigurovatelná, takže nastavte pro automatické pozastavení hodnotu krátkého časového limitu.  Až skončíte, zavřete relaci a fond Apache Spark se po dosažení hodnoty časového limitu automaticky zastaví.
+ 
+Během vývoje vytvořte více Apache Sparkch definicí fondů různých velikostí.  Vytváření definic Apache Spark fondů je bezplatné a účtují se vám jenom poplatky za využití.  Využití Apache Spark ve službě Azure synapse se účtuje za vCore hodinu a poměrná po minutě.  Například používejte malé fondy pro vývoj kódu a ověřování při použití větších velikostí fondů pro testování výkonu.
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>Integrace dat – kanály a toky dat 
 

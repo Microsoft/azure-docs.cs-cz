@@ -2,18 +2,18 @@
 title: Ověřte stav šifrování pro Linux-Azure Disk Encryption
 description: Tento článek poskytuje pokyny k ověření stavu šifrování z úrovní platformy a operačního systému.
 author: kailashmsft
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 04654672cc5806465ec9f75b695772dcb2037eab
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676814"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564131"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Ověření stavu šifrování pro Linux 
 

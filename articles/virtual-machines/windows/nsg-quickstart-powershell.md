@@ -3,17 +3,18 @@ title: Otevření portů k virtuálnímu počítači pomocí Azure PowerShell
 description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač pomocí Azure PowerShell
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8390b5c779e6aa053e1af2754c436dd51e410b06
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891750"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550412"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Postup otevření portů a koncových bodů k virtuálnímu počítači pomocí PowerShellu
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -27,9 +28,9 @@ Přihlaste se ke svému účtu Azure:
 Connect-AzAccount
 ```
 
-V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup* , *myNetworkSecurityGroup* a *myVnet* .
+V následujících příkladech nahraďte názvy parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNetworkSecurityGroup* a *myVnet*.
 
-Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80* :
+Vytvořte pravidlo pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRule* , které povoluje přenosy *tcp* na portu *80*:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -45,7 +46,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Dále vytvořte skupinu zabezpečení sítě pomocí příkazu [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo protokolu HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup* :
+Dále vytvořte skupinu zabezpečení sítě pomocí příkazu [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) a přiřaďte právě vytvořené pravidlo protokolu HTTP následujícím způsobem. Následující příklad vytvoří skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `

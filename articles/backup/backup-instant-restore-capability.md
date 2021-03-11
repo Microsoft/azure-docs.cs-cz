@@ -4,12 +4,12 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014444"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618572"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -67,7 +67,7 @@ V Azure Portal uvidíte pole přidané v podokně **zásady zálohování virtu�
 
 ![Možnost okamžitého obnovení](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 >[!NOTE]
 > Z AZ PowerShell verze 1.6.0 a vyšší můžete aktualizovat dobu uchování snímku okamžitého obnovení v zásadách pomocí PowerShellu.
@@ -112,7 +112,13 @@ Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní sn�
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Proč můj snímek ještě existuje i po nastavení Doba uchování v zásadách zálohování?
 
-Pokud má bod obnovení snímek a je to nejnovější dostupný bod obnovení, bude uložen až do další úspěšné zálohy. To je v souladu s určenými zásadami uvolňování paměti (GC). Pro případ, že se v důsledku problému na virtuálním počítači nezdařila žádná z následujících záloh, má za to, že je vždy k dispozici alespoň jeden nejnovější bod obnovení. V normálních scénářích se body obnovení vyčistí po dobu maximálně 24 hodin po vypršení platnosti.
+Pokud má bod obnovení snímek a je to nejnovější dostupný bod obnovení, bude uložen až do další úspěšné zálohy. To je v souladu s určenými zásadami uvolňování paměti (GC). Pro případ, že se v důsledku problému na virtuálním počítači nezdařila žádná z následujících záloh, má za to, že je vždy k dispozici alespoň jeden nejnovější bod obnovení. V normálních scénářích se body obnovení vyčistí po dobu maximálně 24 hodin po vypršení platnosti. Ve výjimečných scénářích může být jeden nebo dva další snímky na základě těžšího zatížení systému uvolňování paměti (GC).
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Proč se mi zobrazují další snímky než moje zásady uchovávání informací?
+
+V případě, že jsou zásady uchovávání informací nastaveny jako "1", můžete najít dva snímky. Tato vyhláška vyžaduje, aby alespoň jeden nejnovější bod obnovení byl vždy k dispozici v případě, že všechny následné zálohy selžou kvůli problému na virtuálním počítači. To může způsobit přítomnost dvou snímků.<br></br>Pokud je tedy zásada určena pro snímky "n", můžete v časech najít snímky "n + 1". Dále můžete vyhledat snímky "n + 1 + 2", pokud dojde ke zpoždění v uvolňování paměti. K tomu může dojít ve vzácných časech v těchto případech:
+- Vyčistíte snímky, které jsou v minulosti uchovávány.
+- Uvolňování paměti (GC) v back-endu je zatíženo velkým zatížením.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nepotřebuji funkci okamžitého obnovení. Je možné ho zakázat?
 
@@ -120,5 +126,5 @@ Funkce okamžitého obnovení je povolená pro všechny uživatele a nedá se za
 
 ### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Je bezpečné restartovat virtuální počítač během procesu přenosu (což může trvat mnoho hodin)? Bude restartovat přerušení virtuálního počítače nebo zpomalit přenos?
 
-Ano, bezpečnost a rychlost přenosu dat nijak neovlivní.
+Ano, je to bezpečné a rychlost přenosu dat nijak neovlivní.
 

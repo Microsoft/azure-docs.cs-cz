@@ -3,16 +3,16 @@ title: M-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady M-Series.
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: b893d2d381ccea286066d6141142c2ab190242bc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 91c29864367380a303a006d4aac823a22a966a2b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667046"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563088"
 ---
 # <a name="m-series"></a>Řada M
 
@@ -28,7 +28,7 @@ Funkce virtuálního počítače řady M-Series &reg; Hyper-Threading technologi
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 [Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
 [Akcelerované síťové služby](../virtual-network/create-vm-accelerated-networking-cli.md): podporované<br>
-[Dočasné disky s operačním systémem](ephemeral-os-disks.md): nepodporované <br>
+[Dočasné disky s operačním systémem](ephemeral-os-disks.md): podporované <br>
 <br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |

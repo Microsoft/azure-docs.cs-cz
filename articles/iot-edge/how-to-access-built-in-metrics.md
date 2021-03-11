@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341562"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562873"
 ---
 # <a name="access-built-in-metrics"></a>Přístup k integrovaným metrikám
 
@@ -44,13 +44,15 @@ Přístup k metrikám z hostitele vystavení a mapování portu metrik z modulu 
 Pokud provádíte mapování koncových bodů metriky edgeHub i edgeAgent, vyberte jiná a jedinečná čísla portů hostitele.
 
 > [!NOTE]
-> Pokud chcete zakázat metriky, nastavte `MetricsEnabled` proměnnou prostředí na `false` pro **edgeAgent**.
+> Proměnná prostředí `httpSettings__enabled` by neměla být nastavena na hodnotu `false` pro předdefinované metriky, které budou k dispozici pro shromažďování.
+>
+> Proměnné prostředí, které se dají použít k zakázání metrik, jsou uvedené v [dokumentu úložiště Azure/iotedge](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md).
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
 Metriky obsahují značky, které vám pomůžou identifikovat povaze shromažďované metriky. Všechny metriky obsahují následující značky:
 
-| Značka | Popis |
+| Značka | Description |
 |-|-|
 | iothub | Centrum, se kterým se zařízení mluví |
 | edge_device | ID aktuálního zařízení |
@@ -62,7 +64,7 @@ Quantiles poskytované pro integrované histogramy a souhrnné metriky jsou 0,1,
 
 Modul **edgeHub** generuje následující metriky:
 
-| Name | Dimenze | Popis |
+| Name | Dimenze | Description |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (zdroj operace)<br> `id` (ID modulu) | Typ: čítač<br> Celkový počet volání prozdvojení |
 | `edgehub_messages_received_total` | `route_output` (výstup odeslaných zpráv)<br> `id` | Typ: čítač<br> Celkový počet zpráv přijatých od klientů |
@@ -85,7 +87,7 @@ Modul **edgeHub** generuje následující metriky:
 
 Modul **edgeAgent** generuje následující metriky:
 
-| Name | Dimenze | Popis |
+| Name | Dimenze | Description |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Typ: měřidlo<br> Doba, po kterou byl modul zadán v nasazení a byl ve spuštěném stavu |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Typ: měřidlo<br> Doba, po kterou byl modul zadán v nasazení |

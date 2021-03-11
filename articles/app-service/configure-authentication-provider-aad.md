@@ -5,20 +5,18 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 377b7fd44b4f5afa2fd3892d9cb920484bc11c0b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509434"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563332"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 V tomto článku se dozvíte, jak nakonfigurovat ověřování pro Azure App Service nebo Azure Functions, aby se vaše aplikace přihlášena uživatelům pomocí Azure Active Directory (Azure AD) jako poskytovatele ověřování.
-
-Tato funkce není v současnosti dostupná pro plán spotřeby Linux pro Azure Functions.
 
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurace pomocí expresního nastavení
 

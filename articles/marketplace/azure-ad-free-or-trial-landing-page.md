@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: 699271316eccec1244db886ed2296f87c52f91ae
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348351"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559286"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace
 
@@ -51,7 +51,7 @@ Prvním krokem k použití identity je, abyste se ujistili, že je vaše cílov�
 
 Chcete-li začít, postupujte podle pokynů pro [registraci nové aplikace](../active-directory/develop/quickstart-register-app.md). Pokud chcete umožnit uživatelům z jiných firem, aby si aplikaci navštívili, musíte zvolit **účty v libovolné organizační složce (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (jako Skype nebo Xbox)** , když se zobrazí dotaz, kdo může aplikaci používat.
 
-Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí nastavení **uživatel. čtení** je dostatečné pro shromáždění základních informací o uživateli, aby bylo možné proces připojování hladce a automatickým způsobem vytvořit. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce** , protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
+Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí nastavení **uživatel. čtení** je dostatečné pro shromáždění základních informací o uživateli, aby bylo možné proces připojování hladce a automatickým způsobem vytvořit. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce**, protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
 
 Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená oprávnění, zvažte použití funkcí [přírůstkového souhlasu](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) Azure AD, aby všichni uživatelé, kteří odesílají z webu Marketplace, mohli s cílovou stránkou interaktivně pracovat.
 
@@ -59,7 +59,7 @@ Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená o
 
 Microsoft nabízí několik ukázkových aplikací, které implementují jednoduchý web s povoleným přihlášením Azure AD. Po registraci aplikace v Azure AD okno **rychlý Start** nabízí seznam běžných typů aplikací a vývojových zásobníků (obrázek 1). Vyberte ten, který odpovídá vašemu prostředí, a postupujte podle pokynů ke stažení a instalaci.
 
-**_Obrázek 1: okno rychlý Start v Azure Portal_* _
+***Obrázek 1: okno rychlý Start v Azure Portal***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Znázorňuje okno rychlý Start v Azure Portal.":::
 
@@ -82,7 +82,7 @@ V rámci toku [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md)
 
 ## <a name="use-the-microsoft-graph-api"></a>Použití rozhraní Microsoft Graph API
 
-Token ID obsahuje základní informace pro identifikaci uživatele, ale proces aktivace může vyžadovat další podrobnosti, jako je například společnost uživatele – k dokončení procesu připojování. Použijte [rozhraní Microsoft Graph API](/graph/use-the-api) k vyžádání těchto informací, abyste zabránili vynucení zadání těchto podrobností uživatelem. Ve výchozím nastavení zahrnují oprávnění Standard _ *User. Read* * následující informace:
+Token ID obsahuje základní informace pro identifikaci uživatele, ale proces aktivace může vyžadovat další podrobnosti, jako je například společnost uživatele – k dokončení procesu připojování. Použijte [rozhraní Microsoft Graph API](/graph/use-the-api) k vyžádání těchto informací, abyste zabránili vynucení zadání těchto podrobností uživatelem. Standardní **uživatel. oprávnění číst** ve výchozím nastavení zahrnují následující informace:
 
 | Hodnota | Popis |
 | ------------ | ------------- |
@@ -95,7 +95,7 @@ Token ID obsahuje základní informace pro identifikaci uživatele, ale proces a
 | surname | Příjmení uživatele |
 |||
 
-Další vlastnosti, například název společnosti uživatele nebo umístění uživatele (země), lze vybrat k zařazení do žádosti. Další podrobnosti najdete v tématu [vlastnosti pro typ prostředku uživatele](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties).
+Další vlastnosti, například název společnosti uživatele nebo umístění uživatele (země), lze vybrat k zařazení do žádosti. Další podrobnosti najdete v tématu [vlastnosti pro typ prostředku uživatele](/graph/api/resources/user#properties).
 
 Většina aplikací zaregistrovaných ve službě Azure AD uděluje delegovaná oprávnění ke čtení informací o uživateli z tenanta Azure AD společnosti. Každá žádost o Microsoft Graph pro tyto informace musí být doprovázena přístupovým tokenem jako ověřování. Konkrétní kroky pro vygenerování přístupového tokenu budou záviset na použitém zásobníku technologie, ale vzorový kód bude obsahovat příklad. Další informace najdete v tématu [získání přístupu jménem uživatele](/graph/auth-v2-user).
 

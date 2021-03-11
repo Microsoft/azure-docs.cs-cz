@@ -1,20 +1,21 @@
 ---
 title: Azure Key Vault rozšíření virtuálního počítače pro Windows
 description: Nasaďte agenta, který provádí automatickou aktualizaci Key Vault tajných klíčů na virtuálních počítačích pomocí rozšíření virtuálního počítače.
-services: virtual-machines-windows
+services: virtual-machines
 author: msmbaldwin
 tags: keyvault
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 42212294580b85c2b06cd98603d0f7337cee92e3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: a984d044134dbd775bacb653f8590ee78724f15b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485772"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563553"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -108,7 +109,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |

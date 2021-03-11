@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370542"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564029"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Vytvoření kontroly přístupu pro role prostředků Azure v Privileged Identity Management
 
-Přístup k rolím privilegovaného prostředku Azure pro změny zaměstnanců v průběhu času. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytváření kontrol přístupu pro privilegované role prostředků Azure můžete použít Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky.
+Potřeba přístup k privilegovaným rolím prostředků Azure, které zaměstnanci mění v čase. Chcete-li snížit riziko související se zastaralými přiřazeními rolí, měli byste pravidelně kontrolovat přístup. K vytvoření kontrol přístupu pro privilegovaný přístup k rolím prostředků Azure můžete použít Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Můžete také nakonfigurovat opakované kontroly přístupu, ke kterým dochází automaticky. Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu.
 
-Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro privilegované role prostředků Azure.
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisite-role"></a>Požadovaná role
 
  Chcete-li vytvořit kontroly přístupu, musíte být přiřazeni k roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) k roli Azure pro daný prostředek.
 
 ## <a name="open-access-reviews"></a>Otevřít recenze přístupů
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role správce privilegovaných rolí.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je přiřazený k jedné z požadovaných rolí.
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

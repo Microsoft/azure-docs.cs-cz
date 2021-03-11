@@ -2,7 +2,8 @@
 title: 'Rychlý Start: použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux'
 description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI vytvořit virtuální počítač s Linuxem
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
@@ -14,12 +15,12 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 78ecd052c071835ef488882979a3bc5306c35365
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fd411255247e6a37b857ac11c1b0abbd4558d02a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87488972"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549766"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
@@ -27,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádk
 
 V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 

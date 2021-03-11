@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007444"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618402"
 ---
 # <a name="long-audio-api"></a>Rozhraní API pro dlouhé zvukové zařízení
 
@@ -47,6 +47,13 @@ Při přípravě textového souboru se ujistěte, že:
 * Obsahuje více než 400 znaků pro prostý text nebo 400 [fakturovatelných znaků](./text-to-speech.md#pricing-note) pro text SSML a méně než 10 000 odstavců.
   * U prostého textu je každý odstavec oddělený příkladem **zadání a návratového** [vstupu v prostém textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) .
   * V případě textu SSML se každý SSMLový kus považuje za odstavec. SSML části musí být oddělené různými odstavci – [Příklad textového vstupu SSML textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+
+## <a name="sample-code"></a>Ukázka kódu
+Zbývající část této stránky se soustředí na Python, ale vzorový kód pro rozhraní API pro dlouhé zvukové rozhraní je k dispozici na GitHubu pro následující programovací jazyky:
+
+* [Vzorový kód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
+* [Vzorový kód: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
+* [Vzorový kód: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
 
 ## <a name="python-example"></a>Příklad Pythonu
 
@@ -456,10 +463,3 @@ Podporujeme flexibilní formáty zvukového výstupu. Nastavením parametru ' co
 * Audio-24khz-48kbitrate-mono-MP3
 * Audio-24khz-96kbitrate-mono-MP3
 * Audio-24khz-160kbitrate-mono-MP3
-
-## <a name="sample-code"></a>Ukázka kódu
-Vzorový kód pro dlouhé zvukové rozhraní API je k dispozici na GitHubu.
-
-* [Vzorový kód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
-* [Vzorový kód: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
-* [Vzorový kód: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)

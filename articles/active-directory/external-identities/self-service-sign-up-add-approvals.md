@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 95274f42da7f6cac9b193504df834232d7c0eb90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644863"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609976"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ Content-type: application/json
 
 Po získání ručního schválení vytvoří vlastní systém schvalování [uživatelský](/graph/azuread-users-concept-overview) účet pomocí [Microsoft Graph](/graph/use-the-api). Způsob, jakým systém schvalování zajišťuje, závisí uživatelský účet na poskytovateli identity, který použil uživatel.
 
-### <a name="for-a-federated-google-or-facebook-user"></a>Pro uživatele federovaného Google nebo Facebook
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>Pro uživatele federovaného Google nebo Facebook a jednorázové e-mailové heslo
 
 > [!IMPORTANT]
-> Systém schvalování musí explicitně ověřit, jestli `identities` `identities[0]` `identities[0].issuer` jsou přítomná a která se `identities[0].issuer` rovná Facebooku nebo Google, aby používala tuto metodu.
+> Systém schvalování by měl explicitně ověřit, `identities` jestli `identities[0]` `identities[0].issuer` jsou přítomná a která se `identities[0].issuer` rovná Facebooku, Google nebo mailu, aby používala tuto metodu.
 
-Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](/graph/api/user-post-users?tabs=http).
+Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook nebo jednorázovým heslem e-mailu, můžete použít [rozhraní API pro vytvoření uživatele](/graph/api/user-post-users?tabs=http).
 
 1. Systém schvalování používá požadavek HTTP od toku uživatele.
 
@@ -323,17 +319,17 @@ Content-type: application/json
 
 | Parametr                                           | Povinné | Popis                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName (Hlavní název uživatele)                                   | Ano      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Ano      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
-| pošta                                                | Ano      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
-| userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
-| nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
+| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
+| pošta                                                | Yes      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| userType                                            | Yes      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
+| nebyly                                          | Yes      | Informace o federované identitě.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>Pro uživatele federovaného Azure Active Directory
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>Pro uživatele federovaného Azure Active Directory nebo uživatele účet Microsoft
 
-Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu, je nutné použít [rozhraní API pro pozvání](/graph/api/invitation-post) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](/graph/api/user-update) k přiřazení dalších atributů uživateli.
+Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu nebo účet Microsoft, je nutné použít [rozhraní API pro pozvání](/graph/api/invitation-post) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](/graph/api/user-update) k přiřazení dalších atributů uživateli.
 
 1. Schvalovací systém přijme požadavek HTTP od toku uživatele.
 
