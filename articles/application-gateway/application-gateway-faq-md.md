@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576133"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619150"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -470,9 +470,9 @@ Obvykle se zobrazuje neznámý stav, pokud je přístup k back-endu zablokovaný
 
 V důsledku současných omezení platformy, pokud máte NSG v podsíti Application Gateway v2 (Standard_v2, WAF_v2) a pokud jste povolili NSG flow, uvidíte nedeterministické chování a tento scénář se momentálně nepodporuje.
 
-### <a name="does-application-gateway-store-customer-data"></a>Ukládá Application Gateway zákaznická data?
+### <a name="where-does-application-gateway-store-customer-data"></a>Kam se Application Gateway ukládají zákaznická data?
 
-Ne, Application Gateway neukládá zákaznická data.
+Application Gateway nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená.
 
 ## <a name="next-steps"></a>Další kroky
 

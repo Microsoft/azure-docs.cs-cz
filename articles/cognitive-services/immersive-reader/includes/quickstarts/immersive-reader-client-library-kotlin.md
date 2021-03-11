@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-js
-ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fa28d5779c05af615479e3143713badb7842f6c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377350"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619201"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
@@ -36,13 +36,13 @@ Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k 
 
 ![Nový projekt – Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
-V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
+V okně **Zvolte projekt** vyberte možnost **prázdná aktivita** a potom vyberte možnost **Další**.
 
 ![Prázdný projekt aktivity – Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
-Pojmenujte projekt **QuickstartKotlin**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Kotlin** a pak vyberte **Dokončit**.
+Pojmenujte projekt **QuickstartKotlin** a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Kotlin** a pak vyberte **Dokončit**.
 
 ![Konfigurace projektu – Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
@@ -613,4 +613,5 @@ Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Kdy�
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md).
+> [!div class="nextstepaction"]
+> [Vytvoření prostředku a konfigurace AAD](../../how-to-create-immersive-reader.md)

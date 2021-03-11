@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 89b89eec0375cec7d27189a10f46e7317573b98b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: a8d2a06f5b0ec7ed9a0ef563d7f65e62ef99f3b6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510814"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623294"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -131,14 +131,18 @@ Přístupové tokeny jsou krátkodobé přihlašovací údaje, které je potřeb
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Vytvoření identity a vydání přístupového tokenu v rámci stejné žádosti
 
-Použijte `createUserWithToken` metodu k vytvoření identity komunikačních služeb a vydání přístupového tokenu pro něj. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md).
+Použijte `CreateUserAndTokenAsync` metodu k vytvoření identity komunikačních služeb a vydání přístupového tokenu pro něj. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md).
 
 ```csharp  
 // Issue an identity and an access token with the "voip" scope for the new identity
-var identityWithTokenResponse = await client.CreateUserWithTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
-var identity = identityWithTokenResponse.Value.user.Id;
-var token = identityWithTokenResponse.Value.token.Token;
-var expiresOn = identityWithTokenResponse.Value.token.ExpiresOn;
+var identityAndTokenResponse = await client.CreateUserAndTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
+var identity = identityAndTokenResponse.Value.User;
+var token = identityAndTokenResponse.Value.AccessToken.Token;
+var expiresOn = identityAndTokenResponse.Value.AccessToken.ExpiresOn;
+
+Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
+Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
+Console.WriteLine(token);
 ```
 
 ## <a name="refresh-access-tokens"></a>Obnovení přístupových tokenů

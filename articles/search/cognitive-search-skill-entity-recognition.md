@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542457"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547896"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
@@ -53,7 +53,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 > [!NOTE]
-> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. `"Person"` `"Location"` `"Organization"` Typy kategorií entit, a jsou podporovány pro úplný seznam jazyků uvedených výše. Jenom _de_, _EN_, _ES_, _fr_a _zh-Hans_ podporují extrakci `"Quantity"` typů, `"Datetime"` , `"URL"` a `"Email"` . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](../cognitive-services/text-analytics/language-support.md).  
+> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. `"Person"` `"Location"` `"Organization"` Typy kategorií entit, a jsou podporovány pro úplný seznam jazyků uvedených výše. Jenom _de_, _EN_, _ES_, _fr_ a _zh-Hans_ podporují extrakci `"Quantity"` typů, `"Datetime"` , `"URL"` a `"Email"` . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](../cognitive-services/text-analytics/language-support.md).  
 
 | Název výstupu      | Description                   |
 |---------------|-------------------------------|
@@ -189,8 +189,8 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
 Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](../cognitive-services/text-analytics/overview.md), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](/dotnet/api/system.globalization.stringinfo) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
-## <a name="error-cases"></a>Chybové případy
-Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
+## <a name="warning-cases"></a>Případy upozornění
+Pokud kód jazyka pro dokument není podporován, je vrácena upozornění a extrahovány žádné entity.
 
 ## <a name="see-also"></a>Viz také
 

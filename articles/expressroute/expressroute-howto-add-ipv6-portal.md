@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 2/9/2021
+ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: ef6ea9017a9aaa98e153df0d67f0b54fe5a2b64d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9926102a2e6b25060c2a8840b56d690ce2868ade
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124155"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618739"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Přidání podpory protokolu IPv6 pro privátní partnerské vztahy pomocí Azure Portal (Preview)
 
@@ -22,8 +22,9 @@ Tento článek popisuje, jak přidat podporu protokolu IPv6 pro připojení pros
 > Tato funkce je v tuto chvíli dostupná pro verzi Preview v [oblastech Azure s zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones). Okruh ExpressRoute je proto možné vytvořit pomocí libovolného umístění partnerského vztahu, ale nasazení založená na protokolu IPv6, ke kterému se připojuje, musí být v oblasti s Zóny dostupnosti.
 
 ## <a name="register-for-public-preview"></a>Zaregistrujte se Public Preview
-Před přidáním podpory protokolu IPv6 musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, udělejte to prosím pomocí Azure PowerShell:
-1.  Přihlaste se k Azure a vyberte předplatné. Musíte to udělat u předplatného obsahujícího okruh ExpressRoute a předplatné, které obsahuje vaše nasazení Azure (Pokud se liší).
+Před přidáním podpory protokolu IPv6 musíte nejdřív zaregistrovat své předplatné. Pokud se chcete zaregistrovat, spusťte následující příkazy prostřednictvím Azure PowerShell:
+
+1.  Přihlaste se k Azure a vyberte předplatné. Spusťte tyto příkazy pro předplatné obsahující váš okruh ExpressRoute a předplatné obsahující vaše nasazení Azure (Pokud se liší).
 
     ```azurepowershell-interactive
     Connect-AzAccount 
@@ -31,7 +32,7 @@ Před přidáním podpory protokolu IPv6 musíte nejdřív zaregistrovat své p�
     Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
     ```
 
-2. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
+1. Zaregistrujte své předplatné pro Public Preview pomocí následujícího příkazu:
     ```azurepowershell-interactive
     Register-AzProviderFeature -FeatureName AllowIpv6PrivatePeering -ProviderNamespace Microsoft.Network
     ```
@@ -44,21 +45,21 @@ V prohlížeči přejdete na [Azure Portal](https://portal.azure.com)a potom se 
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>Přidání privátního partnerského vztahu IPv6 do okruhu ExpressRoute
 
-1. [Vytvořte okruh ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) nebo přejděte k existujícímu okruhu, který chcete změnit.
+1. [Vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) nebo přejděte k existujícímu okruhu, který chcete změnit.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-circuit.png" alt-text="Přejít na okruh":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-circuit.png" alt-text="Snímek obrazovky se seznamem okruhů ExpressRoute.":::
 
-2. Vyberte konfiguraci **privátního** partnerského vztahu Azure.
+1. Vyberte konfiguraci **privátního** partnerského vztahu Azure.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-peering.png" alt-text="Přejít na partnerský vztah":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-peering.png" alt-text="Snímek obrazovky se stránkou s přehledem ExpressRoute":::
 
-3. Přidejte privátní partnerský vztah IPv6 do existující konfigurace privátního partnerského vztahu IPv4, a to tak, že v **podsítích** vyberete obojí a v novém okruhu povolíte jenom privátní partnerské vztahy IPv6. stačí vybrat IPv6. Zadejte dvojici podsítí IPv6 (/126), které vlastníte pro primární propojení a sekundární odkazy. Z každé z těchto podsítí přiřadíte směrovač první použitelná IP adresa, protože společnost Microsoft použije pro svůj směrovač druhou použitelnou IP adresu. Po zadání všech parametrů **uložte** konfiguraci partnerského vztahu.
+1. Přidejte privátní partnerský vztah IPv6 do existující konfigurace privátního partnerského vztahu IPv4, a to tak, že v **podsítích** vyberete obojí a v novém okruhu povolíte jenom privátní partnerské vztahy IPv6. stačí vybrat IPv6. Zadejte dvojici podsítí IPv6 (/126), které vlastníte pro primární propojení a sekundární odkazy. Z každé z těchto podsítí přiřadíte směrovač první použitelná IP adresa, protože společnost Microsoft použije pro svůj směrovač druhou použitelnou IP adresu. Po zadání všech parametrů **uložte** konfiguraci partnerského vztahu.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-peering.png" alt-text="Přidat privátní partnerský vztah IPv6":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-peering.png" alt-text="Snímek obrazovky přidávání protokolu IPv6 na stránce privátního partnerského vztahu":::
 
-4. Po úspěšném přijetí konfigurace by se měla zobrazit podobný příklad jako v následujícím příkladu.
+1. Po úspěšném přijetí konfigurace by se měla zobrazit podobný příklad jako v následujícím příkladu.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/view-ipv6-peering.png" alt-text="Zobrazení privátního partnerského vztahu IPv6":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/view-ipv6-peering.png" alt-text="Snímek IPv6 s nakonfigurovaným privátním partnerským vztahem":::
 
 ## <a name="update-your-connection-to-an-existing-virtual-network"></a>Aktualizace připojení k existující virtuální síti
 
@@ -66,31 +67,31 @@ Použijte následující postup, pokud máte existující prostředí prostředk
 
 1. Přejděte do virtuální sítě, ke které je připojený okruh ExpressRoute.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-vnet.png" alt-text="Přejít na virtuální síť":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/navigate-to-vnet.png" alt-text="Snímek obrazovky se seznamem virtuálních sítí.":::
 
-2. Přejděte na kartu **adresní prostor** a přidejte do své virtuální sítě adresní prostor IPv6. **Uložte** adresní prostor.
+1. Přejděte na kartu **adresní prostor** a přidejte do své virtuální sítě adresní prostor IPv6. **Uložte** adresní prostor.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-space.png" alt-text="Přidat adresní prostor IPv6":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-space.png" alt-text="Snímek obrazovky s přidáním adresního prostoru IPv6 do virtuální sítě":::
 
-3. Přejděte na kartu **podsítě** a vyberte **GatewaySubnet**. Ověřte **Přidání adresního prostoru IPv6** a zadejte adresní prostor IPv6 pro vaši podsíť. Podsíť brány IPv6 pro bránu by měla být/64 nebo větší. Po zadání všech parametrů **uložte** konfiguraci.
+1. Přejděte na kartu **podsítě** a vyberte **GatewaySubnet**. Ověřte **Přidání adresního prostoru IPv6** a zadejte adresní prostor IPv6 pro vaši podsíť. Podsíť brány IPv6 pro bránu by měla být/64 nebo větší. Po zadání všech parametrů **uložte** konfiguraci.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-gateway-space.png" alt-text="Přidat adresní prostor IPv6 do podsítě":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-gateway-space.png" alt-text="Snímek obrazovky s přidáním adresního prostoru IPv6 do podsítě":::
 
-4. Pokud máte existující zónu redundantní bránu, přejděte do brány ExpressRoute a aktualizujte prostředek, aby se povolilo připojení IPv6. V opačném případě [vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) pomocí redundantní SKU zóny (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud plánujete používat FastPath, použijte ErGw3AZ.
+1. Pokud máte existující zónu redundantní bránu, přejděte do brány ExpressRoute a aktualizujte prostředek, aby se povolilo připojení IPv6. V opačném případě [vytvořte bránu virtuální sítě](expressroute-howto-add-gateway-portal-resource-manager.md) pomocí redundantní SKU zóny (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud plánujete používat FastPath, použijte ErGw3AZ.
 
-    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/refresh-gateway.png" alt-text="Aktualizace brány":::
+    :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/refresh-gateway.png" alt-text="Snímek obrazovky s aktualizací brány":::
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>Vytvoření připojení k nové virtuální síti
 
 Postupujte podle následujících kroků, pokud se chcete připojit k nové sadě prostředků Azure v oblasti s Zóny dostupnosti pomocí privátního partnerského vztahu IPv6.
 
-1. Vytvořte virtuální síť se dvěma zásobníky s adresním prostorem IPv4 i IPv6. Další informace najdete v tématu [vytvoření virtuální sítě](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Vytvořte virtuální síť se dvěma zásobníky s adresním prostorem IPv4 i IPv6. Další informace najdete v tématu [vytvoření virtuální sítě](../virtual-network/quick-create-portal.md#create-a-virtual-network).
 
-2. [Vytvořte podsíť brány Dual-Stack](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet).
+1. [Vytvořte podsíť brány Dual-Stack](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet).
 
-3. [Vytvořte bránu virtuální sítě](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud máte v úmyslu používat FastPath, použijte ErGw3AZ (Všimněte si, že je k dispozici pouze pro okruhy s přímým přístupem ExpressRoute).
+1. [Vytvořte bránu virtuální sítě](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway) pomocí zóny – redundantní SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Pokud plánujete používat FastPath, použijte ErGw3AZ (Všimněte si, že tato možnost je dostupná jenom pro okruhy pomocí ExpressRoute Direct).
 
-4. [Připojte svoji virtuální síť k okruhu ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
+1. [Připojte svoji virtuální síť k okruhu ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).
 
 ## <a name="limitations"></a>Omezení
 I když je podpora protokolu IPv6 dostupná pro připojení k nasazením v oblastech s Zóny dostupnosti, nepodporuje následující případy použití:

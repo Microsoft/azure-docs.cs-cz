@@ -2,17 +2,17 @@
 title: Postup při změně velikosti disků šifrovaných pomocí Azure Disk Encryption
 description: Tento článek poskytuje pokyny pro změnu velikosti šifrovaných disků ADE pomocí správy logických svazků.
 author: jofrance
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c3f1d08ac6375dcc854f2c16b6f66901295f88e3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498910"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564556"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Postup změny velikosti zařízení pro správu logických svazků, která používají Azure Disk Encryption
 
@@ -28,7 +28,7 @@ Tento proces změny velikosti můžete použít v následujících prostředích
     - Rozšíření s jedním průchodem
     - Rozšíření pro duální průchod
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte následující:
 

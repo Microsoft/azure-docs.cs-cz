@@ -3,16 +3,17 @@ title: Oznámení o údržbě
 description: Přehled oznámení o údržbě pro virtuální počítače běžící v Azure.
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 92cb780a80f1010fd1c2f5d19fe616e0285de73b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560804"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564522"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -49,7 +50,7 @@ Samoobslužná údržba se nedoporučuje pro nasazení pomocí **skupin dostupno
 - V případě, že se jedná o dočasnou ztrátu nějaké kapacity (1 doména aktualizace), můžete přidat instance během období údržby. 
 - V případě údržby, která nevyžaduje restart, se aktualizace aplikují na úrovni domény selhání. 
 
-**Don't** Nepoužívejte samoobslužnou údržbu v následujících scénářích: 
+ Nepoužívejte samoobslužnou údržbu v následujících scénářích: 
 - Pokud jste virtuální počítače často vypnuli ručně, pomocí DevTest Labs, pomocí automatického vypnutí nebo podle plánu, může dojít k vrácení stavu údržby, takže dojde k dalšímu výpadku.
 - V případě krátkodobých virtuálních počítačů, o kterých víte, že se odstraní před koncem vlny údržby. 
 - Pro úlohy s velkým stavem uloženým na místním (dočasném) disku, který je potřeba udržovat při aktualizaci. 
@@ -65,7 +66,7 @@ Služba samoobslužná údržba se doporučuje používat v následujících př
 - Mezi dvěma aktualizačními doménami se vyžaduje více než 30 minut času obnovení virtuálního počítače. Chcete-li řídit dobu mezi aktualizačními doménami, je nutné aktivovat údržbu v rámci virtuálních počítačů po jedné aktualizační doméně (UD).
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 
 **Otázka: Proč potřebujete restartovat virtuální počítače nyní?**

@@ -2,14 +2,14 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat prostředky Azure pomocí zámku pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369471"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619167"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -33,6 +33,10 @@ Zámky služby Resource Manager se vztahují jen na operace, které probíhají 
 Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Zámky zabrání operacím, které vyžadují požadavek POST, na rozhraní Azure Resource Manager API. Mezi běžné příklady operací, které jsou blokované zámky, patří:
 
 * Zámek jen pro čtení v **účtu úložiště** zabraňuje uživatelům v výpisu klíčů účtu. Operace s [klíči seznamu](/rest/api/storagerp/storageaccounts/listkeys) Azure Storage se zpracovává prostřednictvím žádosti post k ochraně přístupu k klíčům účtu, které poskytují úplný přístup k datům v účtu úložiště. Pokud je pro účet úložiště nakonfigurovaný zámek jen pro čtení, uživatelé, kteří nemají klíče účtu, musí pro přístup k datům objektů BLOB nebo front použít přihlašovací údaje Azure AD. Zámek jen pro čtení taky brání přiřazení rolí Azure RBAC, které jsou vymezené na účet úložiště nebo na kontejner dat (kontejner objektů BLOB nebo fronta).
+
+* Zámek nejde odstranit v **účtu úložiště** . nebrání tomu, aby se data v tomto účtu odstranila ani nezměnila. Tento typ zámku chrání jenom samotný účet úložiště a nechrání data objektů blob, front, tabulek nebo souborů v rámci tohoto účtu úložiště. 
+
+* Zámek jen pro čtení v **účtu úložiště** nebrání v odstranění ani úpravě dat v tomto účtu. Tento typ zámku chrání jenom účet úložiště, který se odstraňuje nebo upravuje, a v rámci tohoto účtu úložiště nechrání data objektů blob, front, tabulek ani souborů. 
 
 * Zámek jen pro čtení u prostředku **App Service** zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
 

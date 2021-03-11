@@ -1,19 +1,19 @@
 ---
-title: Vytvoření služby privátního propojení ve službě Azure Private Link
+title: 'Rychlý Start: vytvoření služby privátního propojení ve službě Azure Private Link'
 description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření služby privátního propojení.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555053"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Rychlý Start: vytvoření služby privátního propojení pomocí šablony ARM
 
@@ -73,7 +73,7 @@ Připojte se k virtuálnímu počítači _myConsumerVm {UniqueID}_ z Internetu n
 
 1.  Na panelu hledání na portálu zadejte _myConsumerVm {UniqueID}_.
 
-2.  Vyberte **Připojit**. **Připojení k virtuálnímu počítači** se otevře.
+2.  Vyberte **Connect** (Připojit). **Připojení k virtuálnímu počítači** se otevře.
 
 3.  Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (_. RDP_) a stáhne ho do vašeho počítače.
 
@@ -84,7 +84,7 @@ Připojte se k virtuálnímu počítači _myConsumerVm {UniqueID}_ z Internetu n
     b. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
     
     > [!NOTE]
-    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+    > Možná budete muset vybrat **Další volby**  >  **použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 5.  Vyberte **OK**.
 
@@ -112,4 +112,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [privátních odkazech Azure](private-link-overview.md).
+
+Další informace o službách, které podporují soukromý koncový bod, najdete v těchto tématech:
+> [!div class="nextstepaction"]
+> [Dostupnost privátního propojení](private-link-overview.md#availability)

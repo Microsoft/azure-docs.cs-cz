@@ -3,17 +3,18 @@ title: Azure Disk Encryption s Azure AD pro virtuální počítače s Windows (p
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače s Windows IaaS.
 author: msmbaldwin
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 352c8848b98bfb463c03ceea89ebe3f4b6ad6d5b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742421"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555274"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption s Azure AD pro virtuální počítače s Windows (předchozí verze)
 
@@ -31,7 +32,7 @@ Můžete povolit mnoho scénářů šifrování disku a postup se může lišit 
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Povolení šifrování u nových virtuálních počítačů s IaaS vytvořených z Marketplace
 Pomocí šablony Správce prostředků můžete povolit šifrování disku na novém virtuálním počítači s Windows IaaS z Marketplace v Azure. Šablona vytvoří nový zašifrovaný virtuální počítač s Windows pomocí Image Galerie Windows Serveru 2012.
 
-1. V [šabloně správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)klikněte na **nasadit do Azure** .
+1. V [šabloně správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)klikněte na **nasadit do Azure**.
 
 2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, parametry, právní smlouvy a smlouvu. Kliknutím na **koupit** nasadíte nový virtuální počítač s IaaS, ve kterém je povolené šifrování.
 
@@ -156,7 +157,7 @@ Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
 Můžete povolit šifrování disku na existujícím nebo běžícím virtuálním počítači s IaaS s Windows v Azure pomocí [šablony Správce prostředků k šifrování spuštěného virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 
-1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure** .
+1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure**.
 
 2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, parametry, právní smlouvy a smlouvu. Kliknutím na **koupit** povolíte šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS.
 
@@ -168,7 +169,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI. `az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče nástroje BitLocker. Tento parametr je nepovinný, pokud v rozevíracím seznamu UseExistingKek vyberete **nokek** . Pokud v rozevíracím seznamu UseExistingKek vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_ , _data_ a _vše_ . |
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_ a _vše_. |
 | sequenceVersion | Verze sekvence operace nástroje BitLocker Zvyšte číslo této verze pokaždé, když se na stejném virtuálním počítači provede operace šifrování disku. |
 | vmName | Název virtuálního počítače, na kterém se má operace šifrování provést. |
 
@@ -181,7 +182,7 @@ Použijte pokyny v příloze pro přípravu předem šifrovaných imagí, které
 * [Příprava předem zašifrovaného virtuálního pevného disku s Windows](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd)
 
 
-### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a> Šifrování virtuálních počítačů s předem šifrovanými virtuálními počítači pomocí Azure PowerShell
+### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"></a> Šifrování virtuálních počítačů s předem šifrovanými virtuálními počítači pomocí Azure PowerShell
 Pomocí rutiny PowerShellu [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)můžete povolit šifrování disku na šifrovaném virtuálním pevném disku. V následujícím příkladu jsou uvedeny některé běžné parametry. 
 
 ```powershell

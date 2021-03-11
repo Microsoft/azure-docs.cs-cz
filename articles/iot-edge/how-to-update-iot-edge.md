@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: db809807f0494b8510ba7eb71c742a7a7631f97e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042313"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609579"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -120,8 +120,9 @@ Pokud chcete aktualizovat na nejnovější verzi IoT Edge, použijte následují
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-:::moniker range="iotedge-2018-06"
-Při IoT Edge pro Linux ve Windows se IoT Edge spouští na virtuálním počítači Linux hostovaném na zařízení s Windows. Tento virtuální počítač je předinstalovaný pomocí IoT Edge a je spravovaný pomocí Microsoft Update a udržuje komponenty v aktuálním stavu. V současné době nejsou k dispozici žádné aktualizace.
+::: moniker range="iotedge-2018-06"
+
+Při IoT Edge pro Linux ve Windows se IoT Edge spouští na virtuálním počítači Linux hostovaném na zařízení s Windows. Tento virtuální počítač je předem nainstalovaný pomocí IoT Edge a je spravovaný pomocí Microsoft Update, aby se komponenty zachovaly v aktuálním stavu. Pokud máte povolené automatické aktualizace, budou se nové aktualizace stahovat a instalovat, jenom když budou k dispozici.
 
 U IoT Edge pro Windows se IoT Edge spouští přímo na zařízení s Windows. Pokyny k aktualizaci pomocí skriptů PowerShellu najdete v tématu [instalace a správa Azure IoT Edge pro Windows](how-to-install-iot-edge-windows-on-windows.md).
 :::moniker-end

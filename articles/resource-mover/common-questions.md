@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007052"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564267"
 ---
 # <a name="common-questions"></a>Časté dotazy
 
@@ -24,6 +24,15 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se služby [Az
 ### <a name="can-i-move-resources-across-any-regions"></a>Můžu přesouvat prostředky napříč různými oblastmi?
 
 V současné době můžete přesunout prostředky z libovolné zdrojové veřejné oblasti do libovolné cílové veřejné oblasti v závislosti na [typech prostředků dostupných v této oblasti](https://azure.microsoft.com/global-infrastructure/services/). Přesunutí prostředků v Azure Government oblastech není v současné době podporováno.
+
+### <a name="what-regions-are-currently-supported"></a>Jaké oblasti se aktuálně podporují?
+
+Prostředek Azure Resource stěhovací je v tuto chvíli k dispozici následujícím způsobem:
+
+**Podpora** | **Podrobnosti**
+--- | ---
+Přesun podpory | Prostředky Azure, které jsou podporované pro přesun pomocí Resource dodávání, je možné přesunout z libovolné veřejné oblasti do jiné veřejné oblasti.
+Podpora metadat |  Podporované oblasti pro ukládání metadat o počítačích, které mají být přesunuty, zahrnují východní USA 2, Severní Evropa, jihovýchodní Asie, Japonsko – východ, Velká Británie – jih a Austrálie – východ jako oblasti metadat. <br/><br/> Přesunutí prostředků v oblasti Azure Čína je podporované i v oblasti metadata Čína North2.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Jaké prostředky je možné přesouvat mezi oblastmi pomocí Resource Centre?
 
@@ -44,15 +53,14 @@ Nemůžete vybrat disky jako prostředky pro přesun mezi oblastmi. Disky se ale
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>Co znamená přesunout skupinu prostředků?
 
-Když je vybraný prostředek pro přesun, automaticky se přidá odpovídající skupina prostředků pro přesun. To je potřeba, protože cílový prostředek bude potřeba umístit do skupiny prostředků, jako by byl v cíli. Po přidání pro přesunutí si můžete vybrat, že se má přizpůsobit a zadat existujícího skupinu prostředků. Všimněte si, že **přesunutí skupiny prostředků neznamená,** že se přesunou všechny prostředky ve zdrojové skupině prostředků.
+Když je pro přesun prostředek vybraný, automaticky se přidá odpovídající skupina prostředků pro přesun. To je tak, že cílový prostředek může být umístěný ve skupině prostředků. Po přidání pro přesunutí můžete zvolit, že se má upravit a zadat existující skupinu prostředků. Přesunutí skupiny prostředků neznamená, že se přesunou všechny prostředky ve zdrojové skupině prostředků.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Můžu po přesunu mezi oblastmi přesunout prostředky mezi předplatnými?
 
 Po přesunutí prostředků do cílové oblasti můžete toto předplatné změnit. [Přečtěte si další informace](../azure-resource-manager/management/move-resource-group-and-subscription.md) o přesouvání prostředků do jiného předplatného. 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Přesouvá služba Azure data o zákaznících do služby Azure Resource? 
-No. Služba přesunutí prostředků neukládá zákaznická data, ukládá jenom informace o metadatech, které usnadňují sledování a průběh prostředků vybraných pro přesun zákazníkem.
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Ukládá Azure Resource stěhovací data o zákaznících? 
+No. Služba Resource stěhovací neukládá zákaznická data, ukládá jenom informace o metadatech, které usnadňují sledování a průběh přemístění prostředků.
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Kde se ukládají metadata pro přesun mezi oblastmi, které jsou uložené?
 
@@ -85,13 +93,15 @@ Pokud přidáte prostředky v centru Resource Mover na portálu, oprávnění se
 > [!IMPORTANT]
 > Důrazně doporučujeme, abyste nezměnili ani neodebrali přiřazení rolí identity. 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>Co mám dělat, když nemám oprávnění k přiřazení identity role?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>Co když nemám oprávnění k přiřazení identity role?
 
-**Možná příčina** | **Doporučení**
+Je možné, že nemáte k dispozici několik důvodů, proč máte oprávnění.
+
+**Možná příčina** | **Základě**
 --- | ---
 Nejste *přispěvatelem* a *správcem přístupu uživatele* (nebo *vlastníkem*), když přidáte prostředek poprvé. | Použijte účet s oprávněním *Přispěvatel* a *Správce přístupu uživatele* (nebo *vlastníka*) pro předplatné.
 Spravovaná identita pro prostředek stěhovací společnosti nemá požadovanou roli. | Přidejte role přispěvatel a správce přístupu uživatele.
-Spravovaná identita zdrojového stěhovacího prostředku se obnovila na *hodnotu None*. | Znovu povolte identitu přiřazenou systémem v kolekci Move > **identity**. Případně Přidejte prostředek znovu do části **Přidat prostředky**, která má stejnou věc.  
+Spravovaná identita pro prostředek stěhovací společnosti se obnovila na *hodnotu None*. | Opětovně povolte identitu přiřazenou systémem v nastaveních přesunutí kolekce > **identity**. Případně můžete v části **Přidat prostředky** znovu přidat prostředek, který má stejnou věc.  
 Předplatné se přesunulo do jiného tenanta. | Zakažte a pak povolte spravovanou identitu pro kolekci Move.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Jak můžu provést více přesunů najednou?
@@ -100,7 +110,7 @@ Podle potřeby změňte kombinace zdrojů a cílů pomocí možnosti změnit na 
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Co se stane po odebrání prostředku ze seznamu přesunutí prostředků?
 
-Můžete odebrat prostředky, které jste přidali do seznamu přesunutí. Chování při odebrání prostředku ze seznamu závisí na stavu prostředku. [Přečtěte si další informace](remove-move-resources.md#vm-resource-state-after-removing).
+Můžete odebrat prostředky, které jste přidali do seznamu přesunutí. Přesné chování při odebrání závisí na stavu prostředku. [Další informace](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

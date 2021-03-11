@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s řešeními VMware Azure pomoc
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585020"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618912"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
@@ -73,7 +73,7 @@ VMware 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
 1. Zkopírujte následující nastavení registru a vložte je do poznámkového bloku. Pak soubor uložte jako TLS. REG bez přípony. txt.
 
-   ```text
+   ```
    
    Windows Registry Editor Version 5.00
    
