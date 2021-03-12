@@ -1,66 +1,52 @@
 ---
 title: 'Cognitive Services: co je nového v docs'
-description: Novinky v Cognitive Services dokumentaci k 1. lednu 2021. ledna 2021.
+description: Co je nového v Cognitive Services dokumentaci k 1. únoru 2020 – 28. února 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 02/08/2021
-ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710311"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631366"
 ---
-# <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services Docs: co je nového ve 1. lednu 2021 – 31. ledna 2021
+# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services Docs: co je nového pro 1. února 2021 – 28. února 2021
 
-Vítá vás novinky v Cognitive Services docs od 1. ledna 2021 do 31. ledna 2021. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+Vítejte v Cognitive Services dokumentaci od 1. února 2021 do 28. února 2021. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
 
 ## <a name="cognitive-services"></a>Cognitive Services
 
-**Aktualizované články**
+### <a name="new-articles"></a>Nové články
 
-- [Plánování a Správa nákladů pro Azure Cognitive Services](plan-manage-costs.md)
-- [Kontejnery Azure Cognitive Services](cognitive-services-container-support.md)
+- [Azure Policy kontroly dodržování předpisů pro Azure Cognitive Services](security-controls-policy.md)
+
+## <a name="containers"></a>Kontejnery
+
+### <a name="new-articles"></a>Nové články
+
+- [Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)](/azure/cognitive-services/containers/container-faq)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Značky imagí a poznámky k verzi služby Azure Cognitive Services Container](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-**Nové články**
+### <a name="updated-articles"></a>Aktualizované články
 
-- [Kurz: hromadné extrakce dat formuláře pomocí Azure Data Factory](./form-recognizer/tutorial-bulk-processing.md)
-
-**Aktualizované články**
-
-- [Co je služba Rozpoznávání formulářů?](./form-recognizer/overview.md)
-
-## <a name="immersive-reader"></a>Asistivní čtečka
-
-**Aktualizované články**
-
-- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](./immersive-reader/how-to-create-immersive-reader.md)
-
-## <a name="personalizer"></a>Personalizace
-
-**Aktualizované články**
-
-- [Funkce jsou informace o akcích a kontextu.](./personalizer/concepts-features.md)
+- [Nasazení ukázkového nástroje pro popisování](/azure/cognitive-services/form-recognizer/deploy-label-tool)
+- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview)
+- [Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="text-analytics"></a>Analýza textu
 
-**Aktualizované články**
+### <a name="updated-articles"></a>Aktualizované články
 
-- [Podpora jazyka rozhraní API pro analýzu textu V3](./text-analytics/language-support.md)
-- [Migrace na verzi 3. x z rozhraní API pro analýzu textu](./text-analytics/migration-guide.md)
-- [Co je nového v rozhraní API pro analýzu textu?](./text-analytics/whats-new.md)
-
-## <a name="community-contributors"></a>Přispěvatelé komunity
-
-Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! Naučte se, jak přispívat pomocí odkazů v části " [postupovat" na úvodní stránce co je nového](index.yml).
-
-- [AnweshGangula](https://github.com/AnweshGangula) -Anwesh Gangula (1)
-- [cdglasz](https://github.com/cdglasz) -Christopher Glasz (1)
-- [huybuidac](https://github.com/huybuidac) -pří DAC HUY (1)
+- [Podpora jazyka rozhraní API pro analýzu textu V3](/azure/cognitive-services/text-analytics/language-support)
+- [Způsob volání Analýza textu REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

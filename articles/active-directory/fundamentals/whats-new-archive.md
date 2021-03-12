@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453015"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633474"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -2106,7 +2106,7 @@ Pokud potřebujete další oprávnění nebo prostředky, které se v tuto chví
 K dispozici jsou nové protokoly zřizování, které vám pomůžou monitorovat a řešit potíže s nasazením zřizování uživatelů a skupin. Tyto nové soubory protokolu obsahují informace o:
 
 - Které skupiny byly úspěšně vytvořeny v [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)
-- Jaké role byly naimportovány z [Amazon Web Services (AWS)](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-amazon-web-services-aws)
+- Jaké role byly naimportovány z [AWS Single-Account přístupu](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-aws-single-account-access)
 - Kteří zaměstnanci nebyli naimportovali z [Workday](../saas-apps/workday-inbound-tutorial.md)
 
 Další informace najdete v tématu [zřizování sestav na portálu Azure Active Directory (Preview)](../reports-monitoring/concept-provisioning-logs.md).

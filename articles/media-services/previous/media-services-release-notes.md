@@ -3,7 +3,7 @@ title: Poznámky k verzi Azure Media Services | Microsoft Docs
 description: Tento článek pojednává o poznámkách k verzi Microsoft Azure Media Services V2.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694878"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017354"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -35,7 +35,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 ## <a name="known-issues"></a><a name="issues"></a>Známé problémy
 ### <a name="media-services-general-issues"></a><a name="general_issues"></a>Media Services Obecné problémy
 
-| Problém | Popis |
+| Problém | Description |
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
 | Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
@@ -48,6 +48,26 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>Historie verze REST API
 Informace o historii verze REST API Media Services najdete v části [Azure Media Services REST API referenci].
+
+## <a name="february-2021"></a>Únor 2021
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Oznámení o zastaralosti rozhraní API pro Azure Media Services V2 a sady SDK
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Aktualizace Azure Media Services REST API a sad SDK na V3 od 29. února 2024
+
+Vzhledem k tomu, že verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java nabízí více funkcí než verze 2, vyvyřazujeme verze 2 Azure Media Services REST API a klientské sady SDK pro .NET a Java. Doporučujeme, abyste tento přepínač provedli dřív, abyste získali bohatší výhody verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java.
+Verze 3 poskytuje:
+ 
+- nepřetržitá podpora živé události
+- Rozhraní REST API pro platformu ARM, klientské sady SDK pro .NET Core, Node.js, Python, Java, přejít a Ruby.
+- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Požaduje se akce:
+
+Chcete-li minimalizovat přerušení vašich úloh, přečtěte si [Průvodce migrací](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a převeďte svůj kód z rozhraní API verze 2 a sady SDK na verzi 3 API a SDK před 29. února 2024.
+**Po 29. února 2024** přestane Azure Media Services nadále přijímat provoz ve verzi 2 REST API, rozhraní API pro správu účtů ARM verze 2015-10-01 nebo z SDK klienta .NET verze 2. To zahrnuje všechny klientské sady SDK Open Source třetích stran, které mohou volat rozhraní API verze 2.  
+
+Podívejte se na oficiální [oznámení o aktualizacích Azure](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
 
 ## <a name="september-2020"></a>Září 2020
 

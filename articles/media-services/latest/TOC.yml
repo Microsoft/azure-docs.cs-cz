@@ -49,8 +49,6 @@
       items:
         - name: Vytvoření účtu s využitím ARM
           href: quickstart-arm-template-account.md
-    - name: Základní rychlé zprovoznění kódování Pythonu
-      href: quickstart-basic-encoding-python.md
 - name: Kurzy
   items:
     - name: .NET
@@ -86,6 +84,10 @@
       items:
         - name: Kódování a streamování vzdáleného souboru – Node.js
           href: stream-files-nodejs-quickstart.md
+    - name: Python
+      items:
+        - name: Základní rychlé zprovoznění kódování Pythonu
+          href: quickstart-basic-encoding-python.md
     - name: portál Azure
       items:
         - name: Kurz pro BYOK nebo klíče spravované zákazníkem

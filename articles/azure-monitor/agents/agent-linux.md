@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041837"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199164"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics na počítačích s Linuxem
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -41,7 +41,7 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
 * Verze, které předaly datum ukončení podpory svého výrobce, nejsou podporovány.
 * Podporují jenom image virtuálních počítačů. kontejnery, i ty, které jsou odvozeny od oficiálních imagí vydavatelů distribuce, nejsou podporovány.
 * Nové verze AMI se nepodporují.  
-* Podporují se jenom verze standardu SSL 1. x.
+* Ve výchozím nastavení jsou podporovány pouze verze OpenSSL 1. x.
 
 >[!NOTE]
 >Pokud používáte distribuce nebo verzi, která není v současné době podporovaná a nerovná se k našemu modelu podpory, doporučujeme, abyste toto úložiště rozpustili a potvrdili, že podpora Microsoftu nebude poskytovat pomoc s rozvětvené verze agenta.
@@ -86,7 +86,7 @@ Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS po
 
 V následující tabulce jsou vysvětlené balíčky požadované pro [Podporované distribuce Linux](#supported-operating-systems) , na které se agent nainstaluje.
 
-|Požadovaný balíček |Popis |Minimální verze |
+|Požadovaný balíček |Description |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |

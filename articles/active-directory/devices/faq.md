@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365816"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199719"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -147,7 +147,7 @@ Odpověď **: čeká na** zaznamenání, že zařízení není registrováno. Te
 
 ### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>Otázka: Nemůžu přidat více než 3 uživatelské účty Azure AD pod stejnou relaci uživatele na zařízení s Windows 10, proč?
 
-Odpověď **: Azure** AD přidala podporu pro více účtů Azure AD ve verzi Windows 10 1803. Windows 10 ale omezuje počet účtů Azure AD na zařízení na 3 pro omezení velikosti požadavků na tokeny a povoluje spolehlivé jednotné přihlašování (SSO). Po přidání tří účtů se uživatelům zobrazí chyba pro další účty. Další informace o problému na chybové obrazovce poskytují následující zprávu oznamující důvod, proč je operace přidání účtu blokovaná, protože se dosáhlo limitu Accout. 
+Odpověď **: Azure** AD přidala podporu pro více účtů Azure AD ve verzi Windows 10 1803. Windows 10 ale omezuje počet účtů Azure AD na zařízení na 3 pro omezení velikosti požadavků na tokeny a povoluje spolehlivé jednotné přihlašování (SSO). Po přidání tří účtů se uživatelům zobrazí chyba pro další účty. Další informace o problému na chybové obrazovce poskytují následující zprávu oznamující důvod, proč je operace přidání účtu blokovaná, protože se dosáhlo limitu účtu. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Nejčastější dotazy ke službě Azure AD JOIN

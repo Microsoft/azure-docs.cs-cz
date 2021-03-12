@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3495d0bd2a446b6b3255887d9b4523eb5a70ac53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855969"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557314"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>Kurz: nasazení aplikace ASP.NET do virtuálních počítačů Azure pomocí Azure DevOps Starter
 
@@ -25,7 +25,7 @@ DevOps Starter také:
 * Nastaví pro disk CD kanál pro vydání verze. 
 * Vytvoří prostředek Azure Application Insights pro monitorování.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Nasazení aplikace ASP.NET pomocí DevOps Starter
@@ -36,7 +36,7 @@ V tomto kurzu provedete následující:
 > * Konfigurace monitorování pomocí Azure Application Insights
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -44,15 +44,15 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects také vytvoří prostředky Azure, jako jsou virtuální počítače v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Vyberte **.NET**a pak vyberte **Další**.
+1. Vyberte **.NET** a pak vyberte **Další**.
 
-1. V části **zvolte Aplikační architekturu**vyberte **ASP.NET**a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
+1. V části **zvolte Aplikační architekturu** vyberte **ASP.NET** a pak vyberte **Další**. Aplikační rozhraní, které jste zvolili v předchozím kroku, určuje typ cíle nasazení služby Azure, který je k dispozici zde. 
 
 1. Vyberte virtuální počítač a pak vyberte **Další**.
 
@@ -88,7 +88,7 @@ DevOps Starter automaticky nakonfigurovala kanál CI/CD v Azure Pipelines. Kaná
 
 1. V horní části kanálu buildu, vyberte název kanálu buildu.
 
-1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty**a pak vyberte **Uložit**.
+1. Změňte název vašeho kanálu sestavení na výstižnější, vyberte **uložit & fronty** a pak vyberte **Uložit**.
 
 1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
@@ -100,7 +100,7 @@ DevOps Starter automaticky nakonfigurovala kanál CI/CD v Azure Pipelines. Kaná
 
 DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazení z vaší organizace Azure DevOps do svého předplatného Azure. Tyto kroky zahrnují konfiguraci připojení služby Azure pro ověřování Azure DevOps k vašemu předplatnému Azure. Automatizace také vytvoří kanál CD, který poskytuje disk CD pro virtuální počítač Azure. Pokud se chcete dozvědět víc o kanálu CD Azure DevOps, postupujte takto:
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání** a pak vyberte **vydané verze**.  DevOps Starter vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
 1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**. Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
@@ -108,7 +108,7 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 1. Vedle ikony **rozevíracího** seznamu vyberte možnost **aktivační událost průběžného nasazování**. Tento kanál verze má povolený Trigger CD, který spustí nasazení pokaždé, když je k dispozici nový artefakt sestavení. Volitelně můžete aktivační událost zakázat, aby vaše nasazení vyžadovalo ruční spuštění. 
 
-1. Vlevo vyberte **úlohy**a pak vyberte své prostředí. Úlohy jsou aktivity, které proces nasazení provádí, a jsou seskupeny ve fázích. Tento kanál verze se odehrává ve dvou fázích:
+1. Vlevo vyberte **úlohy** a pak vyberte své prostředí. Úlohy jsou aktivity, které proces nasazení provádí, a jsou seskupeny ve fázích. Tento kanál verze se odehrává ve dvou fázích:
 
     - První fáze obsahuje úlohu nasazení skupiny prostředků Azure, která provede dvě věci:
      
@@ -129,13 +129,13 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na web. Každá změna úložiště Git spustí sestavení ve službě Azure DevOps a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Změny kódu inicializují proces CI/CD a automaticky nasadí změny na web IIS na virtuálním počítači Azure.
 
-1. V levém podokně vyberte **kód**a pak klikněte na své úložiště.
+1. V levém podokně vyberte **kód** a pak klikněte na své úložiště.
 
 1. V adresáři *Views\Home* vyberte tři tečky (...) vedle souboru *index. cshtml* a pak vyberte **Upravit**.
 
 1. Proveďte v souboru změny, jako je například přidání textu do jedné z značek DIV. 
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Sledujte stav buildu na řídicím panelu DevOps Starter nebo v prohlížeči s vaší organizací Azure DevOps.
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte. Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Sledujte stav buildu na řídicím panelu DevOps Starter nebo v prohlížeči s vaší organizací Azure DevOps.
 
 1. Po dokončení vydaných verzí aktualizujte svou aplikaci, aby se ověřily vaše změny.
 
@@ -149,11 +149,11 @@ Azure Application Insights umožňuje snadné monitorování výkonu a využití
 
    ![Podokno Application Insights](_img/azure-devops-project-github/appinsights.png) 
 
-1. Vyberte **časový rozsah**a pak vyberte **poslední hodina**. Pokud chcete filtrovat výsledky, vyberte **aktualizovat**. Nyní můžete zobrazit všechny aktivity za posledních 60 minut. 
+1. Vyberte **časový rozsah** a pak vyberte **poslední hodina**. Pokud chcete filtrovat výsledky, vyberte **aktualizovat**. Nyní můžete zobrazit všechny aktivity za posledních 60 minut. 
     
 1. Chcete-li ukončit časový rozsah, vyberte **x**.
 
-1. Vyberte **výstrahy**a pak vyberte **Přidat výstrahu metriky**. 
+1. Vyberte **výstrahy** a pak vyberte **Přidat výstrahu metriky**. 
 
 1. Zadejte název výstrahy.
 
@@ -165,7 +165,7 @@ Azure Application Insights umožňuje snadné monitorování výkonu a využití
 
 1. Ukončete oblast **výstrahy** a vraťte se do podokna **Application Insights** .
 
-1. Vyberte možnost **dostupnost**a poté vyberte možnost **Přidat test**. 
+1. Vyberte možnost **dostupnost** a poté vyberte možnost **Přidat test**. 
 
 1. Zadejte název testu a pak vyberte **vytvořit**. Vytvoří se jednoduchý test pomocí příkazu Ping, který ověří dostupnost vaší aplikace. Po několika minutách budou k dispozici výsledky testu a na řídicím panelu Application Insights se zobrazí stav dostupnosti.
 
@@ -198,4 +198,4 @@ V tomto kurzu jste se naučili:
 Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process)

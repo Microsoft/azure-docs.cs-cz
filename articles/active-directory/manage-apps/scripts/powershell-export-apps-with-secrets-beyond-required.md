@@ -11,20 +11,18 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 3572f481cc2cbcb1df73b33eb2543e32256ad9fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584294"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149677"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>Exportujte aplikace s tajnými kódy a certifikáty po dobu mimo požadované datum.
 
-Tento ukázkový skript PowerShellu Exportuje všechna tajná data aplikací a certifikáty, jejichž platnost vyprší déle než požadované datum pro zadané aplikace z vašeho adresáře v souboru CSV.
+Tento ukázkový skript PowerShellu exportuje tajná data všech aplikací a certifikáty, jejichž platnost vyprší po dobu, kdy zadané aplikace z vašeho adresáře v souboru CSV nejsou interaktivně.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
-
-Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powershell/azure/active-directory/install-adv2) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -32,13 +30,14 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powe
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
+Tento skript pracuje neinteraktivně. Správce používající ho bude muset změnit hodnoty v oddílu #PARAMETERS ke změně s vlastním ID aplikace, tajný klíč aplikace, název tenanta, období platnosti přihlašovacích údajů pro aplikace a cestu, kam se bude CSV exportovat.
+Tento skript používá [tok Oauth Client_Credential](../../develop/v2-oauth2-client-creds-grant-flow.md) . funkce "refreshtoken kontextového tokenu" vytvoří přístupový token na základě hodnot parametrů změněných správcem.
+
 Příkaz "Add-Member" zodpovídá za vytváření sloupců v souboru CSV.
-Proměnnou "$Path" můžete upravit přímo v PowerShellu s cestou k souboru CSV, pokud chcete, aby export neobsahoval neinteraktivní.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Načte aplikaci z adresáře. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Načte vlastníky aplikace z vašeho adresáře. |
+| [Invoke – WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | Odesílá požadavky HTTP a HTTPS na webovou stránku nebo webovou službu. Analyzuje odpověď a vrátí kolekce odkazů, obrázků a dalších významných prvků jazyka HTML. |
 
 ## <a name="next-steps"></a>Další kroky
 

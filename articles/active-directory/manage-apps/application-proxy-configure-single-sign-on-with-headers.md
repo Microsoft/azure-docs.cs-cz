@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 512316b78a0d6422daf5e268ef30db72ccbcfaeb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 813e360ffc6c78b52151af5b9867560ae6d58f2f
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688310"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198239"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>Jednotné přihlašování založené na hlavičkách pro místní aplikace s Aplikace Azure AD proxy
 
@@ -32,7 +32,7 @@ Proxy aplikace Azure Active Directory (Azure AD) nativně podporují přístup k
 Než začnete s jednotným přihlašováním pro aplikace ověřování založené na hlavičkách, ujistěte se, že je prostředí připravené s následujícími nastaveními a konfiguracemi:
 - Je nutné povolit proxy aplikace a nainstalovat konektor, který obsahuje řádek webu pro aplikace. Podívejte se na kurz [Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) a Naučte se, jak připravit místní prostředí, nainstalovat a zaregistrovat konektor a otestovat konektor. 
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 V následující tabulce jsou uvedeny běžné funkce vyžadované pro aplikace ověřování založené na hlavičkách, které jsou podporované proxy aplikací. 
 

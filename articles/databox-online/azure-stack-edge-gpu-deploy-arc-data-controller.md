@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 3ff07c773a2976a296d13510a3ddd7b41217aaa2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 57633df8c6482a9b0645813519991282bdbf22c1
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437617"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633508"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Nasazení Azure Data Services na zařízení GPU pro Azure Stack Edge pro
 
@@ -87,7 +87,7 @@ Vytvořte nový vyhrazený obor názvů, do kterého budete nasazovat řadič da
 
 1. Konfigurační soubor by měl být živý ve `.kube` složce vašeho uživatelského profilu na místním počítači. Zkopírujte soubor do této složky v profilu uživatele.
 
-    ![Umístění konfiguračního souboru na klientovi](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![Umístění konfiguračního souboru na klientovi](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 1. Udělte uživateli přístup k oboru názvů, který jste vytvořili. Zadejte: 
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <Name of namespace> -UserName <User name>`

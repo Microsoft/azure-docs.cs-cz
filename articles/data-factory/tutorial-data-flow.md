@@ -7,22 +7,25 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2019
-ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/11/2021
+ms.openlocfilehash: 5deaef04330e21c8d9c580bf2a16814d4e902f6a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497040"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199874"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat s využitím mapování toků dat
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
 
 V tomto kurzu použijete uživatelské rozhraní Azure Data Factory (UX) k vytvoření kanálu, který kopíruje a transformuje data Azure Data Lake Storage ze zdroje Gen2 (ADLS) do ADLS Gen2 jímky pomocí mapování toku dat. Konfigurační vzor v tomto kurzu se dá rozbalit při transformaci dat pomocí toku dat mapování.
 
+ >[!NOTE]
+   >Tento kurz je určen pro běžné mapování datových toků. Datové toky jsou k dispozici v Azure Data Factory i kanálech synapse. Pokud v kanálech Azure synapse začínáte toky dat, sledujte prosím [tok dat pomocí kanálů Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) . 
+   
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
@@ -32,7 +35,7 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 
@@ -43,7 +46,7 @@ Soubor, který v tomto kurzu transformuje, je MoviesDB.csv, který najdete [tady
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvoření kanálu v datové továrně.
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. V současné době je Data Factory uživatelské rozhraní podporováno pouze ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  **Data Factory**:
+2. V nabídce vlevo vyberte vytvořit data Factory **pro**  >  **integraci** prostředků  >  :
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -190,7 +193,7 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku budete aktivovat 
     ![Snímek obrazovky, který zobrazuje podokno monitorování, kde vidíte počet řádků a čas strávený v jednotlivých krocích transformace.](media/tutorial-data-flow/pipeline3.png)
 1. Kliknutím na transformaci získáte podrobné informace o sloupcích a vytváření oddílů dat.
 
-    ![Sledování](media/tutorial-data-flow/pipeline4.png)
+    ![Monitorování](media/tutorial-data-flow/pipeline4.png)
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 

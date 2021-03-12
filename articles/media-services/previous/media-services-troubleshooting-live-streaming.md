@@ -3,7 +3,7 @@ title: Průvodce odstraňováním potíží pro živé streamování | Microsoft
 description: Tento článek obsahuje návrhy, jak řešit potíže s Azure Media Servicesm při živém streamování.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 97ad3048fccc4f8ed6baf0f1d5304f1c8d81c3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1b7a7ec746f5400fe65e3e1db88ae61e97ae710a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269229"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009041"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Průvodce řešením potíží s živým streamováním
 
@@ -33,7 +33,7 @@ V této části najdete návrhy, jak řešit problémy související s místním
 * **Možný problém**: nepovedlo se najít protokoly kodéru, které by mohly pomáhat při ladění problémů.
   
   * **Wirecast proudu**: obvykle můžete najít protokoly v části C:\Users \{ username} \AppData\Roaming\Wirecast\ 
-  * **Element-Live**: můžete najít odkazy na protokoly na portálu pro správu. Klikněte na **Statistika**a pak na **protokoly**. Na stránce **soubory protokolu** se zobrazí seznam protokolů pro všechny položky Livestream. Vyberte jednu vyhovující vaší aktuální relaci. 
+  * **Element-Live**: můžete najít odkazy na protokoly na portálu pro správu. Klikněte na **Statistika** a pak na **protokoly**. Na stránce **soubory protokolu** se zobrazí seznam protokolů pro všechny položky Livestream. Vyberte jednu vyhovující vaší aktuální relaci. 
   * **Live Encoder Flash Media**: **adresář protokolu** můžete najít tak, že přejdete na kartu **protokol kódování** .
 
 ### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Problém: neexistuje žádná možnost pro výstup progresivního datového proudu.

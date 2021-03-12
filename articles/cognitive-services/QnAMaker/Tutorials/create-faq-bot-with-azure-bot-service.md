@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab6607175c596a0d82cf75f0ad786a76e85b6959
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350955"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612146"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Kurz: vytvoření robota s nejčastějšími dotazy pomocí Azure Bot Service
 Pomocí QnA Maker a Azure [bot Service](https://azure.microsoft.com/services/bot-service/) si na stránce s přehledem dotazů vytvořte roboty, které nemají žádný kód.
@@ -62,7 +62,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 1. Otevře se nová karta prohlížeče pro Azure Portal se stránkou pro vytvoření Azure Bot Service. Nakonfigurujte službu Azure bot Service. Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** pro robot se musí lišit od názvu aplikace pro službu QnA maker.
 
-    * **Postup**
+    * **Správný postup**
         * Změnit popisovač robota – Pokud není jedinečný
         * Vyberte jazyk sady SDK. Po vytvoření robota si můžete kód stáhnout do svého místního vývojového prostředí a pokračovat v procesu vývoje.
     * **Chybný postup**
@@ -80,4 +80,4 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
     Robotka chatu odpoví odpověď z vaší znalostní báze.
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Zadejte uživatelský dotaz do testovacího webového chatu.":::
-1. Vysvětlete bot v dalších [podporovaných kanálech](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0).
+1. Vysvětlete bot v dalších [podporovaných kanálech](/azure/bot-service/bot-service-manage-channels).

@@ -24,10 +24,14 @@
       items:
         - name: Úhlová
           href: quickstart-v2-angular.md
+        - name: Tok kódu úhlu ověřování
+          href: quickstart-v2-javascript-auth-code-angular.md
         - name: JavaScript – tok ověřovacího kódu
           href: quickstart-v2-javascript-auth-code.md
         - name: JavaScript – implicitní tok
           href: quickstart-v2-javascript.md
+        - name: Reagovat – tok kódu ověřování
+          href: quickstart-v2-javascript-auth-code-react.md
     - name: Webová aplikace
       items:
         - name: ASP.NET

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915704"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632080"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
 
@@ -56,7 +56,7 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout** vyberte **role adresáře (Preview)** a minimálně jednu z následujících rolí:
+   1. V části **Zahrnout** vyberte **role adresáře** a zvolte předdefinované role, jako:
       * Správce ověřování
       * Správce fakturace
       * Správce podmíněného přístupu
@@ -69,12 +69,11 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
       * Správce uživatelů
    
       > [!WARNING]
-      > Zásady podmíněného přístupu nepodporují uživatelům, kteří mají přiřazenou roli adresáře v [oboru pro jednotky pro správu](../roles/admin-units-assign-roles.md) nebo role adresáře přímo na objekt, jako je například prostřednictvím [vlastních rolí](../roles/custom-create.md).
+      > Zásady podmíněného přístupu podporují předdefinované role. Zásady podmíněného přístupu nejsou vynutily pro jiné typy rolí, včetně [administrativních rolí s rozsahem jednotek správy](../roles/admin-units-assign-roles.md) nebo [vlastních rolí](../roles/custom-create.md).
 
    1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  vyberte **všechny cloudové aplikace** a vyberte **Hotovo**.
-1. V **části podmínky**  >  **klientských aplikací** přepněte přepínač **Konfigurovat** na **Ano** a v části **Vyberte klientské aplikace, na které se tato zásada vztahuje, aby** se ponechaly všechny vybrané výchozí hodnoty, a vyberte **Hotovo**
 1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.

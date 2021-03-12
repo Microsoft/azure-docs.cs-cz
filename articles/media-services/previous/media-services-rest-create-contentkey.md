@@ -3,7 +3,7 @@ title: Vytváření klíčů obsahu pomocí REST | Microsoft Docs
 description: Tento článek ukazuje, jak vytvořit klíče obsahu, které poskytují zabezpečený přístup k prostředkům.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256969"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017252"
 ---
 # <a name="create-content-keys-with-rest"></a>Vytváření klíčů obsahu pomocí REST
 
@@ -31,13 +31,13 @@ ms.locfileid: "89256969"
 > 
 > 
 
-Media Services vám umožní doručovat šifrované prostředky. **ContentKey** zajišťuje zabezpečený přístup k vašim **assetům**s. 
+Media Services vám umožní doručovat šifrované prostředky. **ContentKey** zajišťuje zabezpečený přístup k vašim **assetům** s. 
 
-Při vytváření nového prostředku (například před [odesláním souborů](media-services-rest-upload-files.md)) můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected**nebo **EnvelopeEncryptionProtected**. 
+Při vytváření nového prostředku (například před [odesláním souborů](media-services-rest-upload-files.md)) můžete zadat následující možnosti šifrování: **StorageEncrypted**, **CommonEncryptionProtected** nebo **EnvelopeEncryptionProtected**. 
 
 Při doručování prostředků klientům můžete [nakonfigurovat, aby bylo možné dynamicky šifrovat prostředky](media-services-rest-configure-asset-delivery-policy.md) pomocí jednoho z následujících dvou šifrování: **DynamicEnvelopeEncryption** nebo **DynamicCommonEncryption**.
 
-Šifrované prostředky musí být přidruženy k **ContentKey**s. Tento článek popisuje, jak vytvořit klíč obsahu.
+Šifrované prostředky musí být přidruženy k **ContentKey** s. Tento článek popisuje, jak vytvořit klíč obsahu.
 
 Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které přiřadíte k prostředkům, které chcete zašifrovat. 
 
@@ -71,7 +71,7 @@ Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které při
      }
     ```
 
-5. Vytvořte klíč obsahu pomocí **EncryptedContentKey** (převedeno na řetězec kódovaný v kódování Base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**a hodnot **kontrolního součtu** , které jste obdrželi v předchozích krocích.
+5. Vytvořte klíč obsahu pomocí **EncryptedContentKey** (převedeno na řetězec kódovaný v kódování Base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** a hodnot **kontrolního součtu** , které jste obdrželi v předchozích krocích.
 6. Přidružte entitu **ContentKey** k entitě **Asset** pomocí operace $Links.
 
 Tento článek neukazuje, jak vygenerovat klíč AES, jak klíč zašifrovat a vypočítat kontrolní součet. 

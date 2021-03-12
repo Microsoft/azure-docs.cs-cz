@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521743"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225026"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Verze Preview: režimy orchestrace pro Virtual Machine Scale Sets v Azure 
 
@@ -128,12 +128,22 @@ Následující tabulka porovnává flexibilní režim orchestrace, jednotný re�
 |         Výstrahy Azure  |            No  |            Yes  |            Yes  |
 |         Přehledy virtuálních počítačů  |            No  |            Yes  |            Yes  |
 |         Azure Backup  |            Yes  |            Yes  |            Yes  |
-|         Azure Site Recovery  |            No  |            No  |            Yes  |
+|         Azure Site Recovery  |     No  |            No  |            Yes  |
 |         Přidat nebo odebrat existující virtuální počítač do skupiny  |            No  |            No  |            No  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Zaregistrovat pro flexibilní režim orchestrace
 Než budete moct v flexibilním režimu orchestrace nasadit Virtual Machine Scale Sets, musíte nejdřív zaregistrovat předplatné pro funkci Preview. Dokončení registrace může trvat několik minut. K registraci můžete použít následující Azure PowerShell nebo příkazy rozhraní příkazového řádku Azure.
+
+### <a name="azure-portal"></a>Azure Portal
+Přejděte na stránku podrobností pro předplatné, pro které chcete vytvořit sadu škálování v flexibilním režimu orchestrace, a v nabídce vyberte funkce verze Preview. Vyberte dvě funkce nástroje Orchestrator, které chcete povolit: _VMOrchestratorSingleFD_ a _VMOrchestratorMultiFD_, a stiskněte tlačítko zaregistrovat. Registrace funkce může trvat až 15 minut.
+
+![Registrace funkce.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+
+Po registraci funkcí pro vaše předplatné dokončete proces výslovných přihlášení tím, že tuto změnu rozšíříte do zprostředkovatele výpočetních prostředků. Přejděte na kartu poskytovatelé prostředků pro vaše předplatné, vyberte Microsoft. COMPUTE a klikněte na znovu registrovat.
+
+![Znovu zaregistrovat](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
+
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 K povolení verze Preview pro vaše předplatné použijte rutinu [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) . 

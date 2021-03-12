@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362280"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224380"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta Azure AD Connect Health
 
@@ -38,7 +38,7 @@ V následující tabulce jsou uvedeny požadavky na použití Azure AD Connect H
 | Jste globální správce ve službě Azure AD. |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci, přistupovat k portálu a provádět všechny operace v rámci Azure AD Connect Health. Další informace najdete v článku o [správě adresáře Azure AD](../fundamentals/active-directory-whatis.md). <br /><br /> Pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete ostatním uživatelům ve vaší organizaci dovolit přístup k Azure AD Connect Health. Další informace najdete v tématu [Azure RBAC pro Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Důležité**: k instalaci agentů použijte pracovní nebo školní účet. Nemůžete použít účet Microsoft. Další informace najdete v tématu [Registrace do Azure jako organizace](../fundamentals/sign-up-organization.md). |
 | Agent Azure AD Connect Health se instaluje na každý cílový server. | Agenti stavu musí být nainstalováni a nakonfigurováni na cílových serverech, aby mohli přijímat data a poskytovat možnosti monitorování a analýzy. <br /><br />Pokud například chcete získat data z infrastruktury Active Directory Federation Services (AD FS) (AD FS), musíte agenta nainstalovat na server AD FS a na server služby Proxy webových aplikací. Podobně pokud chcete získat data z místní infrastruktury Azure AD Domain Services (Azure služba AD DS), musíte agenta nainstalovat na řadiče domény.  |
 | Koncové body služby Azure mají odchozí připojení. | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud brány firewall blokují odchozí připojení, přidejte [koncové body odchozího připojení](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) do seznamu povolených. |
-|Odchozí připojení vychází z IP adres. | Informace o filtrování brány firewall na základě IP adres najdete v tématu [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
+|Odchozí připojení vychází z IP adres. | Informace o filtrování brány firewall na základě IP adres najdete v tématu [rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=56519).|
 | Kontrola TLS pro odchozí přenosy je filtrovaná nebo zakázaná. | Krok registrace agenta nebo operace nahrávání dat můžou selhat, pokud dojde k prověřování nebo ukončení protokolu TLS pro odchozí přenosy v síťové vrstvě. Další informace najdete v tématu [Nastavení kontroly TLS](/previous-versions/tn-archive/ee796230(v=technet.10)). |
 | Porty brány firewall na serveru spouštějí agenta. |Agent vyžaduje, aby následující porty brány firewall byly otevřené, aby mohly komunikovat s koncovými body služby Azure AD Connect Health: <br /><li>Port 443 protokolu TCP</li><li>Port 5671 protokolu TCP</li> <br />Nejnovější verze agenta nevyžaduje port 5671. Upgradujte na nejnovější verzi, aby se vyžadoval pouze port 443. Další informace najdete v tématu o [portech a protokolech potřebných pro hybridní identitu](./reference-connect-ports.md). |
 | Pokud je zapnuté rozšířené zabezpečení aplikace Internet Explorer, povolte zadané weby.  |Pokud je zapnuté rozšířené zabezpečení aplikace Internet Explorer, povolte na serveru, kam instalujete agenta, následující weby:<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.NET</li><li>Federační server vaší organizace, který je důvěryhodný pro Azure AD (například https: \/ /STS.contoso.com)</li> <br />Další informace najdete v tématu [Konfigurace aplikace Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Pokud máte v síti proxy server, podívejte se na poznámku, která se zobrazí na konci této tabulky.|

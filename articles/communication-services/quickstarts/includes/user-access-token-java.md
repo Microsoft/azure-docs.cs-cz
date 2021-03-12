@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 391bc24b8468281c0a9e9fd287a0a3ac3d3380b2
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0665a4ca80f7cf1b15ba432bfce68b42db36ddaa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510792"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021009"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +44,7 @@ Otevřete **pom.xml** soubor v textovém editoru. Přidejte následující prvek
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.6</version>
 </dependency>
 ```
 
@@ -60,13 +60,18 @@ Z adresáře projektu:
 Pro začátek použijte následující kód:
 
 ```java
-import com.azure.communication.identity.*;
-import com.azure.communication.common.*;
-import java.io.*;
-import java.util.*;
-import java.time.*;
+package com.communication.quickstart;
 
+import com.azure.communication.common.*;
+import com.azure.communication.identity.*;
+import com.azure.communication.identity.models.*;
+import com.azure.core.credential.*;
 import com.azure.core.http.*;
+import com.azure.core.http.netty.*;
+
+import java.io.IOException;
+import java.time.*;
+import java.util.*;
 
 public class App
 {
@@ -97,10 +102,10 @@ String accessKey = "SECRET";
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
-    .endpoint(endpoint)
-    .accessKey(accessKey)
-    .httpClient(httpClient)
-    .buildClient();
+        .endpoint(endpoint)
+        .credential(new AzureKeyCredential(accessKey))
+        .httpClient(httpClient)
+        .buildClient();
 ```
 
 Můžete inicializovat klienta pomocí libovolného vlastního klienta HTTP, který implementuje `com.azure.core.http.HttpClient` rozhraní. Výše uvedený kód ukazuje použití [klienta protokolu HTTP v Azure Core](/java/api/overview/azure/core-http-netty-readme) , který poskytuje `azure-core` .
@@ -109,6 +114,8 @@ Celý připojovací řetězec můžete zadat také pomocí `connectionString()` 
 ```java
 // Your can find your connection string from your resource in the Azure portal
 String connectionString = "<connection_string>";
+HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
+
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .connectionString(connectionString)
     .httpClient(httpClient)
@@ -130,7 +137,7 @@ Použijte `getToken` metodu pro vydání přístupového tokenu pro již existuj
 
 ```java
 // Issue an access token with the "voip" scope for a user identity
-List<String> scopes = new ArrayList<>(Arrays.asList(CommunicationTokenScope.VOIP));
+List<CommunicationTokenScope> scopes = new ArrayList<>(Arrays.asList(CommunicationTokenScope.VOIP));
 AccessToken accessToken = communicationIdentityClient.getToken(user, scopes);
 OffsetDateTime expiresAt = accessToken.getExpiresAt();
 String token = accessToken.getToken();
@@ -143,7 +150,7 @@ Alternativně můžete pomocí metody ' createUserAndToken ' vytvořit novou pol
 
 ```java
 List<CommunicationTokenScope> scopes = Arrays.asList(CommunicationTokenScope.CHAT);
-CommunicationUserIdentifierWithTokenResult result = client.createUserAndToken(scopes);
+CommunicationUserIdentifierAndToken result = communicationIdentityClient.createUserAndToken(scopes);
 CommunicationUserIdentifier user = result.getUser();
 System.out.println("\nCreated a user identity with ID: " + user.getId());
 AccessToken accessToken = result.getUserToken();
@@ -161,7 +168,7 @@ K aktualizaci přístupového tokenu použijte `CommunicationUserIdentifier` obj
 ```java
 // Value existingIdentity represents identity of Azure Communication Services stored during identity creation
 CommunicationUserIdentifier identity = new CommunicationUserIdentifier(existingIdentity);
-response = communicationIdentityClient.getToken(identity, scopes);
+AccessToken response = communicationIdentityClient.getToken(identity, scopes);
 ```
 
 ## <a name="revoke-access-tokens"></a>Odvolat přístupové tokeny

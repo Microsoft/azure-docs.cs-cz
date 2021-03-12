@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 28599c08f25533e042c03612d035912a8d0f17c0
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424695"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225366"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -56,7 +56,7 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    ```
 
    > [!NOTE]
-   > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné zásady služby a identifikátory rolí v uvedeném pořadí.
+   > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné hodnoty. Tyto hodnoty zadejte přesně tak, jak je uvedeno v příkazu. V takovém případě se to nepovede, takže při vytváření clusteru dojde k chybám. Pokud narazíte na chyby při spuštění tohoto příkazu, možná nemáte oprávnění k jeho spuštění, kontaktujte svého správce a požádejte ho o oprávnění.
 
 1. Dále vytvořte cluster v nově vytvořené Virtual Network. Spusťte následující příkaz a ujistěte se, že jste použili `Resource ID` hodnotu získanou v předchozím příkazu jako hodnotu `delegatedManagementSubnetId` proměnné:
 

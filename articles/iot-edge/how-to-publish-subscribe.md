@@ -10,14 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 730680b0cb6e8a728ed3072419674346de649368
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633967"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200675"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publikování a přihlášení k odběru pomocí Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 K publikování a odběru zpráv můžete použít zprostředkovatele Azure IoT Edge MQTT. V tomto článku se dozvíte, jak se připojit k tomuto zprostředkovateli, publikovat zprávy a přihlásit se k odběru zpráv pomocí uživatelsky definovaných témat a použít IoT Hub primitivních zpráv. Zprostředkovatel IoT Edge MQTT je integrovaný v centru IoT Edge. Další informace najdete v tématu [Možnosti zprostředkování centra IoT Edge](iot-edge-runtime.md).
 

@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: d045af3b170d585b4bf1f8c57b7ba924c6b30695
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 09644747c36b5406960097e52bbeeef1fa157e89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489782"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102629989"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Běžné dotazy k virtuálnímu počítači v Azure Marketplace
 
@@ -50,17 +50,426 @@ Pokaždé, když se pokusím vytvořit image z mých virtuálních pevných disk
 
 K tomuto problému obvykle dochází, pokud jste vytvořili virtuální počítač z virtuálního pevného disku, který je na něm zamčený. Potvrďte, že z tohoto virtuálního pevného disku není přidělený žádný virtuální počítač, a potom zkuste operaci zopakovat. Pokud se tento problém opakuje, otevřete lístek podpory. Viz [Podpora partnerského centra](support.md).
 
-## <a name="how-do-i-test-a-hidden-preview-image"></a>Návody otestovat skrytý obrázek ve verzi Preview?
+## <a name="how-do-i-create-a-vm-from-a-generalized-vhd"></a>Návody vytvořit virtuální počítač z zobecněného virtuálního pevného disku?
 
-Skryté image ve verzi Preview můžete nasadit pomocí šablon pro rychlý Start.
-Pokud chcete nasadit image verze Preview pro Linux, 
-1. Přejděte na tuto [šablonu rychlé zahájení](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)a vyberte nasadit do Azure. To byste měli provést Azure Portal
-2. V Azure Portal vyberte "Upravit šablonu".
-3. V šabloně JSON vyhledejte element imagereference a aktualizujte PublisherId, hodnotami OfferId, skuId a verzi image. Pokud chcete otestovat image Preview, přidejte do hodnotami OfferId "-PREVIEW".
- ![image](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
-4. Kliknutí na Uložit
-5. Vyplňte zbytek podrobností. Zkontrolovat a vytvořit
+### <a name="prepare-an-azure-resource-manager-template"></a>Příprava šablony Azure Resource Manager
 
+Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) zadaného uživatelem. To můžete provést tak, že zadáte image virtuálního pevného disku operačního systému a datového disku z virtuálního pevného disku nasazeného v Azure. Tyto kroky nasadí virtuální počítač pomocí zobecněného virtuálního pevného disku.
+
+1. Přihlaste se k portálu Azure.
+2. Nahrajte na účet Azure Storage svůj zobecněný virtuální pevný disk s operačním systémem a virtuální pevné disky s daty.
+3. Na domovské stránce vyberte vytvořit prostředek, vyhledejte "nasazení šablony" a vyberte vytvořit.
+4. V editoru vyberte vytvořit vlastní šablonu.
+
+   :::image type="content" source="media/vm/template-deployment.png" alt-text="Zobrazuje výběr šablony.":::
+
+5. Do editoru vložte následující šablonu JSON a vyberte Uložit.
+ ```json
+  {
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion": "1.0.0.0",
+       "parameters": {
+           "userStorageAccountName": {
+               "type": "String"
+           },
+           "userStorageContainerName": {
+               "defaultValue": "vhds",
+               "type": "String"
+           },
+           "dnsNameForPublicIP": {
+               "type": "String"
+           },
+           "adminUserName": {
+               "defaultValue": "isv",
+               "type": "String"
+           },
+           "adminPassword": {
+               "defaultValue": "",
+               "type": "SecureString"
+           },
+           "osType": {
+               "defaultValue": "windows",
+               "allowedValues": [
+                   "windows",
+                   "linux"
+               ],
+               "type": "String"
+           },
+           "subscriptionId": {
+               "type": "String"
+           },
+           "location": {
+               "type": "String"
+           },
+           "vmSize": {
+               "type": "String"
+           },
+           "publicIPAddressName": {
+               "type": "String"
+           },
+           "vmName": {
+               "type": "String"
+           },
+           "virtualNetworkName": {
+               "type": "String"
+           },
+           "nicName": {
+               "type": "String"
+           },
+           "vhdUrl": {
+               "type": "String",
+               "metadata": {
+                   "description": "VHD Url..."
+               }
+           }
+       },
+       "variables": {
+           "addressPrefix": "10.0.0.0/16",
+           "subnet1Name": "Subnet-1",
+           "subnet2Name": "Subnet-2",
+           "subnet1Prefix": "10.0.0.0/24",
+           "subnet2Prefix": "10.0.1.0/24",
+           "publicIPAddressType": "Dynamic",
+           "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+           "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
+           "hostDNSNameScriptArgument": "[concat(parameters('dnsNameForPublicIP'),'.',parameters('location'),'.cloudapp.azure.com')]",
+           "osDiskVhdName": "[concat('http://',parameters('userStorageAccountName'),'.blob.core.windows.net/',parameters('userStorageContainerName'),'/',parameters('vmName'),'osDisk.vhd')]"
+       },
+       "resources": [
+           {
+               "type": "Microsoft.Network/publicIPAddresses",
+               "apiVersion": "2015-06-15",
+               "name": "[parameters('publicIPAddressName')]",
+               "location": "[parameters('location')]",
+               "properties": {
+                   "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                   "dnsSettings": {
+                       "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                   }
+               }
+           },
+           {
+               "type": "Microsoft.Network/virtualNetworks",
+               "apiVersion": "2015-06-15",
+               "name": "[parameters('virtualNetworkName')]",
+               "location": "[parameters('location')]",
+               "properties": {
+                   "addressSpace": {
+                       "addressPrefixes": [
+                           "[variables('addressPrefix')]"
+                       ]
+                   },
+                   "subnets": [
+                       {
+                           "name": "[variables('subnet1Name')]",
+                           "properties": {
+                               "addressPrefix": "[variables('subnet1Prefix')]"
+                           }
+                       },
+                       {
+                           "name": "[variables('subnet2Name')]",
+                           "properties": {
+                               "addressPrefix": "[variables('subnet2Prefix')]"
+                           }
+                       }
+                   ]
+               }
+           },
+           {
+               "type": "Microsoft.Network/networkInterfaces",
+               "apiVersion": "2015-06-15",
+               "name": "[parameters('nicName')]",
+               "location": "[parameters('location')]",
+               "dependsOn": [
+                   "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+                   "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+               ],
+               "properties": {
+                   "ipConfigurations": [
+                       {
+                           "name": "ipconfig1",
+                           "properties": {
+                               "privateIPAllocationMethod": "Dynamic",
+                               "publicIPAddress": {
+                                   "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+                               },
+                               "subnet": {
+                                   "id": "[variables('subnet1Ref')]"
+                               }
+                           }
+                       }
+                   ]
+               }
+           },
+           {
+               "type": "Microsoft.Compute/virtualMachines",
+               "apiVersion": "2015-06-15",
+               "name": "[parameters('vmName')]",
+               "location": "[parameters('location')]",
+               "dependsOn": [
+                   "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+               ],
+               "properties": {
+                   "hardwareProfile": {
+                       "vmSize": "[parameters('vmSize')]"
+                   },
+                   "osProfile": {
+                       "computername": "[parameters('vmName')]",
+                       "adminUsername": "[parameters('adminUsername')]",
+                       "adminPassword": "[parameters('adminPassword')]"
+                   },
+                   "storageProfile": {
+                       "osDisk": {
+                           "name": "[concat(parameters('vmName'),'-osDisk')]",
+                           "osType": "[parameters('osType')]",
+                           "caching": "ReadWrite",
+                           "image": {
+                               "uri": "[parameters('vhdUrl')]"
+                           },
+                           "vhd": {
+                               "uri": "[variables('osDiskVhdName')]"
+                           },
+                           "createOption": "FromImage"
+                       }
+                   },
+                   "networkProfile": {
+                       "networkInterfaces": [
+                           {
+                               "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
+                           }
+                       ]
+                   }
+               }
+           }
+       ]
+   }
+   ```
+
+
+6. Zadejte hodnoty parametrů pro zobrazené stránky vlastností vlastního nasazení.
+
+ **TABULKA 1**
+
+| **ResourceGroupName** | **Název existující skupiny prostředků Azure Obvykle používejte stejný RG jako Trezor klíčů.** |
+| --- | --- |
+| TemplateFile | Úplná cesta k souboru VHDtoImage.jsv. |
+| userStorageAccountName | Název účtu úložiště |
+| dnsNameForPublicIP | Název DNS pro veřejnou IP adresu; musí být malými písmeny. |
+| subscriptionId | Identifikátor předplatného Azure. |
+| Umístění | Standardní geografické umístění skupiny prostředků v Azure. |
+| vmName | Název virtuálního počítače |
+| vhdUrl | Webová adresa virtuálního pevného disku. |
+| vmSize | Velikost instance virtuálního počítače |
+| publicIPAddressName | Název veřejné IP adresy. |
+| virtualNetworkName | Název virtuální sítě. |
+| nicName | Název karty síťového rozhraní pro virtuální síť. |
+| adminUserName | Uživatelské jméno účtu správce. |
+| adminPassword | Heslo správce. |
+|
+
+7. Po poskytnutí těchto hodnot vyberte koupit.
+
+Azure spustí nasazení. Vytvoří nový virtuální počítač se zadaným nespravovaným virtuálním pevným diskem v zadané cestě k účtu úložiště. Průběh můžete sledovat v Azure Portal výběrem Virtual Machines na levé straně portálu. Po vytvoření virtuálního počítače se stav změní z počáteční na spuštěno.
+
+Pro nasazení virtuálního počítače generace 2 použijte tuto šablonu:
+ ```json
+ {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "userStorageAccountName": {
+              "type": "String"
+          },
+          "userStorageContainerName": {
+              "defaultValue": "vhds",
+              "type": "String"
+          },
+          "dnsNameForPublicIP": {
+              "type": "String"
+          },
+          "adminUserName": {
+              "defaultValue": "isv",
+              "type": "String"
+          },
+          "adminPassword": {
+              "defaultValue": "",
+              "type": "SecureString"
+          },
+          "osType": {
+              "defaultValue": "windows",
+              "allowedValues": [
+                  "windows",
+                  "linux"
+              ],
+              "type": "String"
+          },
+          "subscriptionId": {
+              "type": "String"
+          },
+          "location": {
+              "type": "String"
+          },
+          "vmSize": {
+              "type": "String"
+          },
+          "publicIPAddressName": {
+              "type": "String"
+          },
+          "vmName": {
+              "type": "String"
+          },
+          "virtualNetworkName": {
+              "type": "String"
+          },
+          "nicName": {
+              "type": "String"
+          },
+          "vhdUrl": {
+              "type": "String",
+              "metadata": {
+                  "description": "VHD Url..."
+              }
+          }
+      },
+      "variables": {
+          "addressPrefix": "10.0.0.0/16",
+          "subnet1Name": "Subnet-1",
+          "subnet2Name": "Subnet-2",
+          "subnet1Prefix": "10.0.0.0/24",
+          "subnet2Prefix": "10.0.1.0/24",
+          "publicIPAddressType": "Dynamic",
+          "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+          "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet1Name'))]",
+          "hostDNSNameScriptArgument": "[concat(parameters('dnsNameForPublicIP'),'.',parameters('location'),'.cloudapp.azure.com')]",
+          "osDiskVhdName": "[concat('http://',parameters('userStorageAccountName'),'.blob.core.windows.net/',parameters('userStorageContainerName'),'/',parameters('vmName'),'osDisk.vhd')]"
+      },
+      "resources": [
+          {
+              "type": "Microsoft.Network/publicIPAddresses",
+              "apiVersion": "2015-06-15",
+              "name": "[parameters('publicIPAddressName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                  "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                  "dnsSettings": {
+                      "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                  }
+              }
+          },
+          {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2015-06-15",
+              "name": "[parameters('virtualNetworkName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                  "addressSpace": {
+                      "addressPrefixes": [
+                          "[variables('addressPrefix')]"
+                      ]
+                  },
+                  "subnets": [
+                      {
+                          "name": "[variables('subnet1Name')]",
+                          "properties": {
+                              "addressPrefix": "[variables('subnet1Prefix')]"
+                          }
+                      },
+                      {
+                          "name": "[variables('subnet2Name')]",
+                          "properties": {
+                              "addressPrefix": "[variables('subnet2Prefix')]"
+                          }
+                      }
+                  ]
+              }
+          },
+          {
+              "type": "Microsoft.Network/networkInterfaces",
+              "apiVersion": "2015-06-15",
+              "name": "[parameters('nicName')]",
+              "location": "[parameters('location')]",
+              "dependsOn": [
+                  "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+                  "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+              ],
+              "properties": {
+                  "ipConfigurations": [
+                      {
+                          "name": "ipconfig1",
+                          "properties": {
+                              "privateIPAllocationMethod": "Dynamic",
+                              "publicIPAddress": {
+                                  "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
+                              },
+                              "subnet": {
+                                  "id": "[variables('subnet1Ref')]"
+                              }
+                          }
+                      }
+                  ]
+              }
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2015-06-15",
+              "name": "[parameters('vmName')]",
+              "location": "[parameters('location')]",
+              "dependsOn": [
+                  "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
+              ],
+              "properties": {
+                  "hardwareProfile": {
+                      "vmSize": "[parameters('vmSize')]"
+                  },
+                  "osProfile": {
+                      "computername": "[parameters('vmName')]",
+                      "adminUsername": "[parameters('adminUsername')]",
+                      "adminPassword": "[parameters('adminPassword')]"
+                  },
+                  "storageProfile": {
+                      "osDisk": {
+                          "name": "[concat(parameters('vmName'),'-osDisk')]",
+                          "osType": "[parameters('osType')]",
+                          "caching": "ReadWrite",
+                          "image": {
+                              "uri": "[parameters('vhdUrl')]"
+                          },
+                          "vhd": {
+                              "uri": "[variables('osDiskVhdName')]"
+                          },
+                          "createOption": "FromImage"
+                      }
+                  },
+                  "networkProfile": {
+                      "networkInterfaces": [
+                          {
+                              "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
+                          }
+                      ]
+                  }
+              }
+          }
+      ]
+  }
+  ```
+
+
+### <a name="deploy-an-azure-vm-using-powershell"></a>Nasazení virtuálního počítače Azure pomocí PowerShellu
+
+Zkopírujte a upravte následující skript, který poskytne hodnoty pro `$storageaccount` proměnné a `$vhdUrl` . Spusťte ho k vytvoření prostředku virtuálního počítače Azure ze stávajícího zobecněného virtuálního pevného disku.
+
+```powershell
+# storage account of existing generalized VHD
+$storageaccount = "testwinrm11815"
+# generalized VHD URL
+$vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
+
+echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl
+$objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
+
+# deploying VM with existing VHD
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName"
+```
 
 
 ## <a name="next-steps"></a>Další kroky

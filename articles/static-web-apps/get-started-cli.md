@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 0de65c4546f5e87377b119370ee629f5a365b24e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: be320b57117343371d52249c2c4452e74d33a4bf
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650524"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632930"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rychlý Start: Vytvoření první statické lokality pomocí Azure CLI
 
@@ -104,6 +104,9 @@ Teď, když je úložiště vytvořené, můžete vytvořit statickou webovou ap
     ```
 
     ---
+    
+    > [!IMPORTANT]
+    > Adresa URL předaná `s` parametru nesmí obsahovat `.git` příponu.
 
     - `<RESOURCE_GROUP_NAME>`: Tuto hodnotu nahraďte existujícím názvem skupiny prostředků Azure.
 

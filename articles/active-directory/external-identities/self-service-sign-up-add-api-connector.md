@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f190b8ffbb98c6ff5465af869305de4c9135cc3f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610092"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008718"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -59,12 +59,12 @@ Certifikát můžete vytvořit pomocí [Azure Key Vault](../../key-vault/certifi
 
 Azure App Service a Azure Functions najdete v tématu [Konfigurace vzájemného ověřování TLS](../../app-service/app-service-web-configure-tls-mutual-auth.md) , kde se dozvíte, jak povolit a ověřit certifikát z koncového bodu rozhraní API.
 
-Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte konektor API v části **všechny konektory rozhraní API** a klikněte na **nahrát nový konektor**. Poslední nahraný certifikát, jehož platnost vypršela, a který je po datu zahájení, bude automaticky použit Azure Active Directory.
+Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte konektor API v části **všechny konektory rozhraní API** a klikněte na **nahrát nový certifikát**. Poslední nahraný certifikát, jehož platnost vypršela, a který je po datu zahájení, bude automaticky použit Azure Active Directory.
 
 ### <a name="api-key"></a>Klíč rozhraní API
-Některé služby používají mechanismus "klíč rozhraní API", což usnadňuje přístup k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Některé služby používají mechanismus "klíč rozhraní API" k zakódování přístupu k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Nejedná se o mechanismus, který by se měl použít samostatně v produkčním prostředí. Konfigurace pro základní ověřování nebo ověřování certifikátů je proto vždy nutná. Pokud chcete pro účely vývoje implementovat jakoukoli metodu ověřování (nedoporučuje se), můžete zvolit základní ověřování a použít dočasné hodnoty pro `username` a `password` to, že vaše rozhraní API může při implementaci autorizace ve vašem rozhraní API ignorovat.
+Nejedná se o mechanismus, který by se měl použít samostatně v produkčním prostředí. Konfigurace pro základní ověřování nebo ověřování certifikátů je proto vždy nutná. Pokud pro vývojové účely nechcete implementovat žádnou metodu ověřování (nedoporučuje se), můžete zvolit základní ověřování a použít dočasné hodnoty pro `username` a `password` to, že vaše rozhraní API může při implementaci autorizace ve vašem rozhraní API ignorovat.
 
 ## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
 Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](/graph/api/resources/user#properties) vlastností uživatele. 
@@ -76,7 +76,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -138,7 +138,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -189,7 +189,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: b166e2f648446ac1672ead00a774d71d34699380
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50aaae9e71ac9de366ee4db1981e633491094946
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724638"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199963"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura připojení v Azure Database for MariaDB
 Tento článek popisuje architekturu připojení Azure Database for MariaDB a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MariaDB od klientů v rámci i mimo Azure.
@@ -61,7 +61,9 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Maria
 | Francie – střed | 40.79.137.0, 40.79.129.1  | | |
 | Francie – jih | 40.79.177.0     | | |
 | Německo – střed | 51.4.144.100     | | |
+| Německo – sever | 51.116.56.0 | |
 | Německo – sever východ | 51.5.144.179  | | |
+| Německo – středozápad | 51.116.152.0 | |
 | Indie – střed | 104.211.96.159     | | |
 | Indie – jih | 104.211.224.146  | | |
 | Indie – západ | 104.211.160.80    | | |
@@ -75,6 +77,8 @@ V následující tabulce jsou uvedené IP adresy brány Azure Database for Maria
 | Jižní Afrika – západ | 102.133.24.0   | | |
 | Středojižní USA |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
 | Jihovýchodní Asie | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
+| Švýcarsko – sever | 51.107.56.0 ||
+| Švýcarsko – západ | 51.107.152.0| ||
 | Spojené arabské emiráty – střed | 20.37.72.64  | | |
 | Spojené arabské emiráty sever | 65.52.248.0    | | |
 | Spojené království – jih | 51.140.184.11   | | |
@@ -95,6 +99,36 @@ Podpora pro přesměrování je dostupná v rozšíření PHP [mysqlnd_azure](ht
 
 > [!IMPORTANT]
 > Podpora přesměrování [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) rozšíření PHP je v současnosti ve verzi Preview.
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>Co potřebujete znát o této plánované údržbě?
+Jedná se pouze o změnu DNS, která umožňuje jejich transparentním klientům. I když se IP adresa pro plně kvalifikovaný název domény změnila na serveru DNS, místní mezipaměť DNS se aktualizuje během 5 minut a automaticky se provede operačními systémy. Po obnovení místních serverů DNS se všechna nová připojení připojí k nové IP adrese. všechna existující připojení budou zůstat připojená k staré IP adrese bez přerušení, dokud nebudou staré IP adresy plně vyřazeny. Před vyřazením z provozu bude předchozí IP adresa přibližně trvat tři až čtyři týdny. Proto by nemělo mít žádný vliv na klientské aplikace.
+
+### <a name="what-are-we-decommissioning"></a>Co vyřadíme z provozu?
+Vyřazeny se budou jenom uzly bran. Když se uživatelé připojí ke svým serverům, prvním zastavením připojení je uzel Brána, než se připojení přepošle na server. Vyřadíme z provozu staré okruhy brány (ne okruhy klientů, ve kterých je server spuštěný). Další informace najdete v [architektuře připojení](#connectivity-architecture) .
+
+### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Jak se dá ověřit, jestli se vaše připojení budou stará o uzly brány nebo nové uzly brány?
+Použijte například příkaz pro zadání názvu FQDN vašeho serveru  ``ping xxx.mariadb.database.azure.com`` . Pokud je vrácená IP adresa jednou z IP adres uvedených v části IP adresy brány (vyřazení z provozu) v dokumentu výše, znamená to, že vaše připojení prochází starou bránou. Naopak, pokud je vrácená IP adresa jednou z IP adres uvedených v části IP adresy brány, znamená to, že vaše připojení prochází novou bránou.
+
+Můžete také otestovat [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) nebo TCPPing databázového serveru z klientské aplikace pomocí portu 3306 a zajistit, aby návratová IP adresa nebyla jednou z vyřazení IP adres.
+
+### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Návody vědět, kdy probíhá údržba, a zobrazí se další oznámení, když se staré IP adresy vyřadí z provozu?
+Po zahájení práce údržby obdržíte e-mail s informací o tom, jak se vám bude informovat. Údržba může trvat až jeden měsíc v závislosti na počtu serverů, které potřebujeme migrovat v Al oblastech. Připravte prosím klienta, aby se připojil k databázovému serveru pomocí plně kvalifikovaného názvu domény, nebo použijte novou IP adresu z tabulky výše. 
+
+### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>Jak mám dělat, když se moje klientské aplikace stále připojují k původnímu serveru brány?
+To znamená, že vaše aplikace se připojují k serveru pomocí statické IP adresy místo plně kvalifikovaného názvu domény. Zkontrolujte připojovací řetězce a nastavení sdružování připojení, nastavení AKS nebo dokonce i ve zdrojovém kódu.
+
+### <a name="is-there-any-impact-for-my-application-connections"></a>Existují nějaké důsledky pro moje připojení aplikací?
+Tato údržba je jenom změnou DNS, takže je pro klienta transparentní. Po obnovení mezipaměti DNS v klientovi (automaticky prováděné operačním systémem) se všechna nová připojení připojí k nové IP adrese a všechna existující připojení budou dál fungovat, dokud se stará IP adresa zcela nevyřadí z provozu, což obvykle několik týdnů později. A logika opakování není pro tento případ nutná, je ale dobré, že aplikace má nakonfigurovanou logiku opakování. Buď použijte plně kvalifikovaný název domény, abyste se připojili k databázovému serveru, nebo povolte seznam nové IP adresy brány v připojovacím řetězci aplikace.
+Tato operace údržby neodstraní existující připojení. Vytvoří jenom nové požadavky na připojení, které budou jít na nový okruh brány.
+
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>Můžu pro údržbu požádat o konkrétní časové období? 
+Protože by migrace měla být transparentní a nemá žádný vliv na připojení zákazníka, očekává se, že většina uživatelů nebude mít žádný problém. Zkontrolujte aplikaci proaktivně a ujistěte se, že buď použijete plně kvalifikovaný název domény pro připojení k databázovému serveru, nebo povolte seznam nové IP adresy brány v připojovacím řetězci aplikace.
+
+### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>Používám privátní propojení, bude moje připojení ovlivněno?
+Ne, toto je vyřazení hardwaru brány z provozu a nemá žádný vztah k privátním linkám nebo privátním IP adresám, ovlivní jenom veřejné IP adresy uvedené v rámci vyřazení IP adres.
+
 
 ## <a name="next-steps"></a>Další kroky
 

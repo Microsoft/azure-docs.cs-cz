@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937138"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149290"
 ---
 # <a name="identify-required-appliances"></a>Identifikace požadovaných zařízení
 
@@ -38,13 +38,13 @@ Defender for IoT podporuje fyzické i virtuální nasazení.
 
 V této části najdete přehled dostupných modelů fyzického senzoru. Můžete si koupit senzory pomocí předem nakonfigurovaného softwaru nebo senzorů nákupu, které nejsou předem nakonfigurované.
 
-| Typ nasazení | Firemní | Enterprise | SMB |
-|--|--|--|--|
-| Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model na úrovni protokolu SMB."::: |
-| Modelování | HPE DL360 | HPE DL20 | HPE DL20 |
-| Porty monitorování | Až 15 RJ45 nebo 8 OPT | Až 8 RJ45 nebo 6 OPT | 4 RJ45 |
-| Maximální šířka pásma [1](#anchortext) | 3 GB za sekundu | 1 GB za sekundu | 200 MB za sekundu |
-| Maximální počet chráněných zařízení | 30 000 | 15 000 | 1 000 |
+| Typ nasazení | Firemní | Enterprise | Připojení stojanu SMB| Robustní protokol SMB|
+|--|--|--|--|--|
+| Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model podnikové úrovně."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Model na úrovni protokolu SMB."::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="Modelem robustních úrovní SMB."::: |
+| Modelování | HPE DL360 | HPE DL20 | HPE DL20 | HPE EL300 |
+| Porty monitorování | Až 15 RJ45 nebo 8 OPT | Až 8 RJ45 nebo 6 OPT | 4 RJ45 | Až 5 |
+| Maximální šířka pásma [1](#anchortext) | 3 GB/s | 1 GB/s | 200 MB/s | 100 MB/s |
+| Maximální počet chráněných zařízení | 30 000 | 15 000 | 1 000 | 800 |
 
 Podrobnosti o dodavatelích najdete v tématu [specifikace zařízení](#appliance-specifications) .
 
@@ -109,7 +109,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Popis | Množství |
+| PN | Description | Množství |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC technický ředitel Server | 1 |
 | P19766-B21 | Evropa – lokalizace více jazyků | 1 |
@@ -180,7 +180,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Popis | Množství |
+| PN | Description | Množství |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
@@ -194,6 +194,45 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | P06683-B21 | HPE DL20 Gen10 M. 2 SATA/LFF AROC Cable Kit | 1 |
 | 512485 – B21 | HPE MOP adv 1 – Podpora pro serverová licence 1 – rok | 1 |
 | 775612 – B21 | HPE 1U – krátká kolejnice Kit | 1 |
+
+## <a name="smb-rugged-hpe-edgeline-el300"></a>Protokol SMB robustní: HPE Edgeline EL300
+
+| Součást | Technické specifikace |
+|--|--|
+| Stavebnictví | Aluminum, Fanless & design pro prach – návrh |
+| Rozměry (výška × šířka × hloubka) | 200.5 mm (7,9 ") na výšku, 232mm (9,14") na šířku 100mm (3,9) hluboko |
+| Hmotnost | 4,91 KG (10,83 kg) |
+| Procesor | Intel Core i7-8650U (1,9 GHz/4-Core/15W) |
+| Sad | Rozbočovač řadiče platformy Intel® Q170 |
+| Memory (Paměť) | 8 GB DDR4 2133MHz pro velké teploty SODIMM |
+| Storage | 128 GB 3ME3 pro velké teploty mSATA SSD |
+| Síťový adaptér | porty gigabitového Ethernetu 6x podle Intel® i219 |
+| Přístup k zařízení  | 4 USBs: 2 přední strany; 2 vzadu; 1 interní |
+| Adaptér napájení | 250V/10A |
+| Připojení | Montážní Kit, DIN kolejnice |
+| Provozní teplota | 0C na + 70C  |
+| Vlhkost | 10% ~ 90%, nekondenzující |
+| Vibrační | 0,3 Grms 10Hz pro 300Hz, 15 minut na osu – DIN kolejnice   |
+| Náraz | 10ms 10G, poloviční sinus, tři pro každou osu. (Kladné & záporné Pulse) – DIN kolejnice |
+
+### <a name="appliance-bom"></a>Kusovník zařízení
+| Produkt | Description |
+|--|--|
+| P25828-B21 | HPE Edgeline EL300 v2 – sblížený hraniční systém |
+| P25828-B21 B19 | HPE EL300 v2 – sblížený hraniční systém |
+| P25833-B21 | Intel Core i7-8650U (1,9 GHz/4 – Core/15W) FIO Basic Processor Kit pro HPE Edgeline EL300 |
+| P09176-B21 | HPE Edgeline 8 GB (1x8GB) Dual Rank x8 DDR4-2666 SODIMM WT CAS-19-19-19 registered Memory FIO Kit |
+| P09188-B21 | HPE Edgeline 256GB SATA 6G čtení náročné M. 2 2242 3yr Wty celosvětová jednotka SSD |
+| P04054-B21 | HPE Edgeline EL300 SFF až M. 2 povolení sady |
+| P08120-B21 | HPE Edgeline EL300 12VDC FIO pro přenosovou desku |
+| P08641-B21 | Zdroj napájení HPE Edgeline EL300 80W 12VDC |
+| AF564A | HPE C13-SI-32 IL 250V 10Amp 1.83 m napájecí šňůra |
+| P25835-B21 | HPE EL300 v2 FIO Board |
+| R1P49AAE | HPE EL300 iSM ADV 3yr nepřetržitě Sup_Upd E-LTU |
+| P08018 – B21 – nepovinné | HPE Edgeline EL300 nízká profilová sada závorek  |
+| P08019 – B21 – nepovinné | HPE Edgeline EL300 DIN kolejnice Mount Kit |
+| P08020 – B21 – nepovinné | HPE Edgeline EL300 Wall Mount Kit |
+| P03456 – B21 – nepovinné | HPE Edgeline 10 GbE LOM 4 – Dceřiná karta portu TSN FIO |
 
 ## <a name="virtual-appliance-specifications"></a>Specifikace virtuálního zařízení
 
@@ -209,7 +248,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 | Typ | Enterprise |
 |--|--|
-| Popis | Virtuální zařízení pro podnikové typy nasazení |
+| Description | Virtuální zařízení pro podnikové typy nasazení |
 | Virtuální procesory | 8 |
 | Memory (Paměť) | 32 GB |
 | Storage | 1,8 TB |
@@ -238,7 +277,7 @@ Po zakoupení zařízení si přečtěte tento software v **programu Defender fo
 
 | Součást | Technické specifikace |
 |--|--|
-| Skříň | rackový server 1U |
+| Skříň | rackový server 1U
 | Dimenze | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(in) |
 | Hmotnost | Maximální 29,98 kg/13.6 kg |
 | Procesor | Intel Xeon E-2144G 3,6 GHz, 8 min cache, 4C/8T, Turbo (71 W) |
@@ -260,3 +299,4 @@ Po zakoupení zařízení si přečtěte tento software v **programu Defender fo
 [O instalaci Azure Defenderu pro IoT](how-to-install-software.md)
 
 [O programu Azure Defender pro síť IoT](how-to-set-up-your-network.md)
+

@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 329036f3ed815eaaba94f441e372f4be86edd629
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862033"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558079"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Rutiny Azure AD PowerShellu pro vytváření sestav
 
 > [!NOTE] 
-> Tyto rutiny PowerShellu momentálně fungují jenom s modulem [Azure AD ve verzi Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) . Upozorňujeme, že modul Preview není navržený pro použití v produkčním prostředí. 
+> Tyto rutiny PowerShellu momentálně fungují jenom s modulem [Azure AD ve verzi Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#directory_auditing) . Upozorňujeme, že modul Preview není navržený pro použití v produkčním prostředí. 
 
 K instalaci verze Public Preview použijte následující příkaz. 
 
@@ -49,7 +49,7 @@ Tento článek poskytuje přehled rutin PowerShellu, které se použijí pro pro
 Přístup k protokolům auditu získáte pomocí rutiny Get-AzureADAuditDirectoryLogs.
 
 
-| Scénář                      | Příkaz PowerShellu |
+| Scenario                      | Příkaz PowerShellu |
 | :--                           | :--                |
 | Zobrazovaný název aplikace      | Get-AzureADAuditDirectoryLogs filtr "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "" |
 | Kategorie                      | Get-AzureADAuditDirectoryLogs-filtr "Category EQ" ApplicationManagement "" |
@@ -70,7 +70,7 @@ Protokoly [přihlášení](concept-sign-ins.md) poskytují informace o použití
 Přístup k protokolům přihlášení získáte pomocí rutiny Get-AzureADAuditSignInLogs.
 
 
-| Scénář                      | Příkaz PowerShellu |
+| Scenario                      | Příkaz PowerShellu |
 | :--                           | :--                |
 | Zobrazované jméno uživatele             | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "" |
 | Vytvořit datum a čas              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (vše od 5:30 pm v 4/18) |

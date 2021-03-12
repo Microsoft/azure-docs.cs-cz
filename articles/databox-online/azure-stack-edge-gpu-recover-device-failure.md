@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442158"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636636"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Obnovení z neúspěšného Azure Stackového zařízení pro grafické procesory 
 
@@ -52,10 +52,10 @@ Teď jste připraveni nasadit úlohy, které jste spustili na starém zařízen�
 
 Pomocí těchto kroků obnovte data na hraničních sdílených cloudech na vašem zařízení:
 
-1. Do zařízení, které selhalo, [přidejte sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-share) se stejnými názvy, které jste vytvořili dříve. Ujistěte se, že při vytváření sdílených složek je **Výběr kontejneru objektů BLOB** nastavený na **použití existující** možnosti a pak vyberte kontejner, který jste použili s předchozím zařízením.
-1. [Přidejte uživatele](azure-stack-edge-j-series-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
-1. [Přidejte účty úložiště](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account) přidružené ke sdíleným složkám dříve na zařízení. Při vytváření účtů úložiště Edge vyberte z existujícího kontejneru a najeďte na kontejner, který byl namapovaný na účet Azure Storage namapovaný na předchozím zařízení. Do vybraného kontejneru úložiště v namapovaném Azure Storage účtu se nahrála všechna data ze zařízení, která se zapsala do účtu úložiště Edge na předchozím zařízení.
-1. [Aktualizujte sdílená](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data z Azure. Tím se vyžádá všechna cloudová data z existujícího kontejneru do sdílených složek.
+1. Do zařízení, které selhalo, [přidejte sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-share) se stejnými názvy, které jste vytvořili dříve. Ujistěte se, že při vytváření sdílených složek je **Výběr kontejneru objektů BLOB** nastavený na **použití existující** možnosti a pak vyberte kontejner, který jste použili s předchozím zařízením.
+1. [Přidejte uživatele](azure-stack-edge-gpu-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
+1. [Přidejte účty úložiště](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account) přidružené ke sdíleným složkám dříve na zařízení. Při vytváření účtů úložiště Edge vyberte z existujícího kontejneru a najeďte na kontejner, který byl namapovaný na účet Azure Storage namapovaný na předchozím zařízení. Do vybraného kontejneru úložiště v namapovaném Azure Storage účtu se nahrála všechna data ze zařízení, která se zapsala do účtu úložiště Edge na předchozím zařízení.
+1. [Aktualizujte sdílená](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data z Azure. Tím se vyžádá všechna cloudová data z existujícího kontejneru do sdílených složek.
 
 ## <a name="restore-edge-local-shares"></a>Obnovit místní sdílené složky Edge
 
@@ -73,7 +73,7 @@ Po úplné konfiguraci náhradního zařízení povolte zařízení pro místní
 Pomocí těchto kroků obnovte data z místních sdílených složek:
 
 1. [Proveďte konfiguraci výpočtů na zařízení](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. [Přidejte místní sdílení](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) zpátky.
+1. [Přidejte místní sdílení](azure-stack-edge-gpu-manage-shares.md#add-a-local-share) zpátky.
 1. Spusťte postup obnovení poskytovaný řešením ochrany dat podle vlastního výběru. Viz odkazy z předchozí tabulky.
 
 ## <a name="restore-vm-files-and-folders"></a>Obnovení souborů a složek virtuálního počítače
