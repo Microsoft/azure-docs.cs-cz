@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177011"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633423"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -211,7 +211,7 @@ Další informace najdete v tématu [Automatizace zřizování uživatelů při 
  
 10 integrovaných rolí Azure AD se přejmenovaly tak, aby byly zarovnané v [centru pro správu Microsoft 365](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), na [portálu Azure AD](https://portal.azure.com/)a na [Microsoft Graph](https://developer.microsoft.com/graph/). Další informace o nových rolích najdete [v tématu oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md#all-roles).
 
-![Tabulka nových názvů rolí](media/whats-new/roles-table-rbac.png)
+![Tabulka znázorňující názvy rolí v MS Graph API a Azure Portal a navrhovaný konečný název napříč rozhraním API, Azure Portal a Mac.](media/whats-new/roles-table-rbac.png)
 
 ---
 
@@ -968,7 +968,7 @@ Nyní můžete vlastníkům aplikace dovolit monitorovat aktivity pomocí služb
  
 Některé předdefinované role Azure Active Directory (AD) mají názvy, které se liší od těch, které se zobrazují v centru pro správu Microsoft 365, na portálu Azure AD a na Microsoft Graph. Tato nekonzistence může způsobit problémy v automatizovaných procesech. V této aktualizaci přejmenováváme 10 názvů rolí, aby se zajistila konzistence. Nové názvy rolí mají následující tabulka:
 
-![Tabulka nových názvů rolí](media/whats-new/azure-role.png)
+![Tabulka znázorňující názvy rolí v MS Graph API a Azure Portal a navrhovaný název nové role v centru pro správu M365, Azure Portal a v rozhraní API.](media/whats-new/azure-role.png)
 
 ---
 

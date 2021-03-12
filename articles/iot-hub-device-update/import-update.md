@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507275"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008558"
 ---
 # <a name="import-new-update"></a>Importovat novou aktualizaci
 Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pro IoT Hub. Pokud jste to ještě neudělali, nezapomeňte se seznámit se základními [koncepcemi importu](import-concepts.md).
@@ -33,9 +33,9 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
 1. Ujistěte se, že soubor s obrázkem aktualizace nebo soubor manifestu APT je umístěný v adresáři přístupném z PowerShellu.
 
-2. Naklonujte [aktualizaci zařízení pro úložiště IoT Hub](https://github.com/azure/iot-hub-device-update)nebo si ho stáhněte jako soubor. zip do umístění přístupného z PowerShellu (po stažení souboru ZIP klikněte pravým tlačítkem na `Properties`  >  `General` kartu > zaškrtněte `Unblock` v `Security` části, abyste se vyhnuli zobrazování výzev pro upozornění na zabezpečení PowerShellu).
+2. Vytvořte textový soubor s názvem **AduUpdate. psm1** v adresáři, ve kterém se nachází soubor s obrázkem aktualizace nebo soubor manifestu apt. Pak otevřete rutinu prostředí PowerShell [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) , zkopírujte obsah do textového souboru a uložte textový soubor.
 
-3. V PowerShellu přejděte do `tools/AduCmdlets` adresáře a spusťte:
+3. V PowerShellu přejděte do adresáře, kde jste vytvořili rutinu PowerShellu z kroku 2. Potom následujícím příkazem:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,11 +57,11 @@ Přečtěte si, jak naimportovat novou aktualizaci do aktualizace zařízení pr
 
     | Parametr | Popis |
     | --------- | ----------- |
-    | deviceManufacturer | Výrobce zařízení: aktualizace je kompatibilní, například contoso. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) výrobce
-    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zprávy. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) modelu
+    | deviceManufacturer | Výrobce zařízení: aktualizace je kompatibilní, například contoso. Musí se shodovat s [vlastností zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) _výrobce_ .
+    | deviceModel | Model zařízení, ke kterému je aktualizace kompatibilní, například informační zprávy. Musí odpovídat  [vlastnosti zařízení](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)modelu.
     | updateProvider | Entita, která vytváří nebo přímo zodpovídá za aktualizaci. Často se jedná o název společnosti.
     | aktualizovat | Identifikátor pro třídu aktualizací. Třída může být cokoliv, co zvolíte. Často se jedná o název zařízení nebo modelu.
-    | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Může nebo nemusí odpovídat verzi jednotlivé součásti softwaru na zařízení.
+    | updateVersion | Číslo verze, které rozlišuje tuto aktualizaci od ostatních, kteří mají stejného poskytovatele a název. Neodpovídá verzi jednotlivého softwarové komponenty v zařízení (ale může se rozhodnout, jestli si zvolíte).
     | Typ aktualizace | <ul><li>Zadat `microsoft/swupdate:1` pro aktualizaci obrázku</li><li>Zadat `microsoft/apt:1` pro aktualizaci balíčku</li></ul>
     | installedCriteria | <ul><li>Zadejte hodnotu SWVersion pro `microsoft/swupdate:1` typ aktualizace.</li><li>Zadejte doporučenou hodnotu pro `microsoft/apt:1` typ aktualizace.
     | updateFilePath (celkem) | Cesta k souborům aktualizací v počítači
@@ -111,6 +111,9 @@ Příklad:
 ```
 
 ## <a name="import-update"></a>Importovat aktualizaci
+
+[!NOTE]
+Následující pokyny ukazují, jak naimportovat aktualizaci prostřednictvím uživatelského rozhraní Azure Portal. K importu aktualizace můžete použít taky [aktualizaci zařízení IoT Hub API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) . 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte k IoT Hub pomocí aktualizace zařízení.
 

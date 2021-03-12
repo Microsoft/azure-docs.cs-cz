@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f26905366949c2c198e52f78bc7adb734cbb7f90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895199"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612452"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 
@@ -36,7 +36,7 @@ Tento článek popisuje prvky a typy schémat JSON, na kterých je založena vý
 
 Kolekce záznamů AssetFile pro úlohu kódování.  
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **zdroje** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile.<br />Příklad: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. <br />Viz [VideoTracks](#videotracks). |
@@ -49,11 +49,11 @@ Kolekce záznamů AssetFile pro úlohu kódování.
 
 Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Element **VideoTracks** reprezentuje kolekci všech stop videa.  
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **Účet**<br /> Vyžadováno |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 1`|
-| **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1"`|
-| **Profil** |Profil H264 (platí jenom pro kodek H264).  <br /><br />Příklad: `"Profile": "High"` |
+| **FourCC**<br />Vyžadováno | Videokodek FourCC kód, který je hlášen pomocí FFmpeg.  <br /><br />Příklad: `"FourCC": "avc1" | "hev1" | "hvc1"`|
+| **Profil** |Profil H264 (platí jenom pro kodek H264)  <br /><br />Příklad: `"Profile": "High"` |
 | **Obsah** |Úroveň H264 (platí pouze pro kodek H264).  <br /><br />Příklad: `"Level": "3.2"`|
 | **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech  <br /><br />Příklad: `"Width": "1280"`|
 | **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech  <br /><br />Příklad: `"Height": "720"`|
@@ -67,7 +67,7 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 
 Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Element **AudioTracks** reprezentuje kolekci všech těchto zvukových stop.  
 
-| Název  | Popis |
+| Název  | Description |
 | --- | --- |
 | **Účet**<br />Vyžadováno  |Index této zvukové stopy založený na nule. **Poznámka:**  To není nutně TrackID, jak se používá v souboru MP4.  <br /><br />Příklad: `"Id": 2`|
 | **Kodek**  |Řetězec kodeku zvukového záznamu  <br /><br />Příklad: `"Codec": "aac"`|

@@ -1,27 +1,27 @@
 ---
-title: Instalace programu Defender pro IoT Micro Agent
+title: Instalace programu Defender pro IoT Micro Agent (Preview)
 titleSuffix: Azure Defender for IoT
 description: Přečtěte si, jak nainstalovat a ověřit agenta Defender Micro.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 3/3/2021
+ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120432"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611662"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>Instalace programu Defender pro IoT Micro Agent 
+# <a name="install-defender-for-iot-micro-agent-preview"></a>Instalace programu Defender pro IoT Micro Agent (Preview)
 
 Tento článek poskytuje vysvětlení, jak nainstalovat a ověřit agenta Defender Micro.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před instalací modulu Defender for IoT je nutné vytvořit identitu modulu v IoT Hub. Další informace o tom, jak vytvořit identitu modulu, najdete v tématu [Vytvoření modulu programu IoT Micro agent agent s dvojitou ](quickstart-create-micro-agent-module-twin.md)platností.
+Před instalací modulu Defender for IoT je nutné vytvořit identitu modulu v IoT Hub. Další informace o tom, jak vytvořit identitu modulu, najdete v tématu [Vytvoření aplikace Defender IoT Micro agent Module (Preview)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
@@ -49,13 +49,37 @@ sudo apt-get install defender-iot-micro-agent
 
 K ověření programu Defender pro IoT Micro agent jsou k disdobu tyto dvě možnosti: 
 
-- Připojovací řetězec 
+- Připojovací řetězec identity modulu 
 
 - Certifikát.
 
-### <a name="authenticate-using-a-connection-string"></a>Ověřování pomocí připojovacího řetězce
+### <a name="authenticate-using-a-module-identity-connection-string"></a>Ověřování pomocí připojovacího řetězce identity modulu
 
-Ověření pomocí připojovacího řetězce:
+Zajistěte splnění [požadavků](#prerequisites) pro tento článek a vytvoření identity modulu před zahájením tohoto postupu. 
+
+#### <a name="get-the-module-identity-connection-string"></a>Získání připojovacího řetězce identity modulu
+
+Získání připojovacího řetězce identity modulu z IoT Hub: 
+
+1. Přejděte do IoT Hub a vyberte své centrum.
+
+1. V nabídce na levé straně v části **průzkumníky** vyberte **zařízení IoT**.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="V nabídce na levé straně vyberte zařízení IoT.":::
+
+1. Vyberte zařízení ze seznamu ID zařízení a zobrazte tak stránku s **podrobnostmi o zařízení** .
+
+1. Vyberte kartu **identity modulu**   a potom v ****   seznamu identit modulu přidružených k zařízení vyberte modul DefenderIotMicroAgent.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="Vyberte kartu identity modulu.":::
+
+1. Na stránce **Podrobnosti o identitě modulu** zkopírujte primární klíč tak, že vyberete tlačítko **Kopírovat** .
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="Kliknutím na tlačítko Kopírovat zkopírujte primární klíč.":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>Konfigurace ověřování pomocí připojovacího řetězce identity modulu
+
+Konfigurace agenta pro ověřování pomocí připojovacího řetězce identity modulu:
 
 1. `connection_string.txt`Zadáním následujícího příkazu umístěte soubor s názvem, který obsahuje připojovací řetězec kódovaný v kódování UTF-8, do cesty adresáře agenta programu Defender `/var/defender_iot_micro_agent` :
 
@@ -63,7 +87,7 @@ Ověření pomocí připojovacího řetězce:
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    `connection_string.txt`Měl by se teď nacházet v následujícím umístění cesty `/var/defender_iot_micro_agent/connection_string.txt` .
+    `connection_string.txt`By měl být umístěn v následujícím umístění cesty `/var/defender_iot_micro_agent/connection_string.txt` .
 
 1. Restartujte službu pomocí tohoto příkazu:  
 

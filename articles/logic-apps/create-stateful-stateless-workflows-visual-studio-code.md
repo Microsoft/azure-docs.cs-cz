@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/08/2021
+ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449726"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557008"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -33,6 +33,8 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Visua
 * Přidejte Trigger a akci.
 
 * Místní spuštění, testování, ladění a kontrola historie spuštění.
+
+* Vyhledá podrobnosti o názvu domény pro přístup přes bránu firewall.
 
 * Nasazení do Azure, které zahrnuje volitelně povolení Application Insights.
 
@@ -462,9 +464,9 @@ Pracovní postup v tomto příkladu používá tuto aktivační událost a tyto 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Do** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
-   | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
-   | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
+   | **Do** | Yes | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Předmět** | Yes | `An email from your example workflow` | Předmět e-mailu |
+   | **Text** | Yes | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
 
    > [!NOTE]
@@ -576,7 +578,7 @@ Chcete-li přidat zarážku, použijte následující postup:
 
 1. Chcete-li zkontrolovat dostupné informace v případě výskytu zarážky v zobrazení spuštění, prozkoumejte podokno **proměnné** .
 
-1. Chcete-li pokračovat v provádění pracovního postupu, na panelu nástrojů ladění vyberte možnost **pokračovat** (tlačítko Přehrát). 
+1. Chcete-li pokračovat v provádění pracovního postupu, na panelu nástrojů ladění vyberte možnost **pokračovat** (tlačítko Přehrát).
 
 Zarážky můžete kdykoli přidat nebo odebrat během spuštění pracovního postupu. Pokud ale aktualizujete **workflow.jsv** souboru po spuštění spuštění, zarážky se automaticky neaktualizují. Chcete-li aktualizovat zarážky, restartujte aplikaci logiky.
 
@@ -650,7 +652,7 @@ Chcete-li otestovat aplikaci logiky, spusťte pomocí těchto kroků ladicí rel
 
    ![Snímek obrazovky zobrazující stránku s přehledem pracovního postupu s stavem a historií spuštění](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Stav spuštění | Popis |
+   | Stav spuštění | Description |
    |------------|-------------|
    | **Bylo přerušeno** | Spuštění bylo zastaveno nebo nebylo dokončeno z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
    | **Stornován** | Běh se aktivoval a začal, ale přijal žádost o zrušení. |
@@ -674,7 +676,7 @@ Chcete-li otestovat aplikaci logiky, spusťte pomocí těchto kroků ladicí rel
 
    Tady jsou možné stavy, které může každý krok pracovního postupu mít:
 
-   | Stav akce | Ikona | Popis |
+   | Stav akce | Ikona | Description |
    |---------------|------|-------------|
    | **Bylo přerušeno** | ![Ikona pro stav akce přerušeno][aborted-icon] | Akce se zastavila nebo nedokončila z důvodu externích problémů, například výpadek systému nebo uplynulé předplatné Azure. |
    | **Stornován** | ![Ikona pro stav akce zrušeno][cancelled-icon] | Akce byla spuštěna, ale přijala požadavek na zrušení. |
@@ -758,6 +760,55 @@ Po provedení aktualizací aplikace logiky můžete spustit další test tak, ž
    ![Snímek obrazovky, který zobrazuje stav každého kroku v aktualizovaném pracovním postupu plus vstupy a výstupy v rozšířené akci "Response".](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
 
 1. Chcete-li zastavit relaci ladění, v nabídce **Spustit** vyberte možnost **Zastavit ladění** (Shift + F5).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>Vyhledat názvy domén pro přístup k bráně firewall
+
+Před nasazením a spuštěním pracovního postupu aplikace logiky ve službě Azure Portal, pokud má vaše prostředí striktní požadavky na síť nebo brány firewall, které omezují provoz, musíte nastavit oprávnění pro všechna připojení triggeru nebo akce, která existují ve vašem pracovním postupu.
+
+Plně kvalifikované názvy domén (FQDN) pro tato připojení zjistíte pomocí těchto kroků:
+
+1. V projektu aplikace logiky otevřete **connections.jsv** souboru, který se vytvoří po přidání prvního triggeru nebo akce založeného na připojení do pracovního postupu a vyhledání `managedApiConnections` objektu.
+
+1. U každého připojení, které jste vytvořili, najděte, zkopírujte a uložte `connectionRuntimeUrl` hodnotu vlastnosti někam bezpečně, abyste mohli bránu firewall nastavit s těmito informacemi.
+
+   Tento příklad **connections.js** souboru obsahuje dvě připojení, připojení AS2 a připojení k Office 365 s těmito `connectionRuntimeUrl` hodnotami:
+
+   * AS2 `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+
+   * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
+
+   ```json
+   {
+      "managedApiConnections": {
+         "as2": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/as2"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         },
+         "office365": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/office365"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         }
+      }
+   }
+   ```
 
 <a name="deploy-azure"></a>
 

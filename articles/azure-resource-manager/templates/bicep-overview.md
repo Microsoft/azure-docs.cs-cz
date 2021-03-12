@@ -2,19 +2,19 @@
 title: Bicep jazyk pro šablony Azure Resource Manager
 description: Popisuje jazyk bicep pro nasazení infrastruktury do Azure prostřednictvím šablon Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036380"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232966"
 ---
 # <a name="what-is-bicep-preview"></a>Co je bicep (Preview)?
 
-Bicep je jazyk pro deklarativní nasazení prostředků Azure. Zjednodušuje prostředí pro vytváření obsahu tím, že poskytuje stručnou syntaxi a lepší podporu pro opětovné použití kódu. Bicep je jazyk specifický pro doménu (DSL), což znamená, že je navržený pro konkrétní scénář nebo doménu. Bicep není určený jako obecný programovací jazyk pro psaní aplikací.
+Bicep je jazyk pro deklarativní nasazení prostředků Azure. K vývoji šablon Azure Resource Manager (šablon ARM) můžete použít bicep místo JSON. Bicep zjednodušuje prostředí pro vytváření, protože poskytuje stručnou syntaxi, lepší podporu pro opětovné použití kódu a lepší bezpečnost typů. Bicep je jazyk specifický pro doménu (DSL), což znamená, že je navržený pro konkrétní scénář nebo doménu. Není určený jako obecný programovací jazyk pro psaní aplikací.
 
-V minulosti jste vyvinuli Azure Resource Manager šablon (šablony ARM) pomocí formátu JSON. Syntaxe JSON pro vytvoření šablony může být podrobná a vyžaduje složitý výraz. Bicep vylepšuje toto prostředí bez ztráty funkcí šablony JSON. Jedná se o transparentní abstrakci přes JSON pro šablony ARM. Každý soubor bicep se zkompiluje na standardní šablonu ARM. Typy prostředků, verze rozhraní API a vlastnosti, které jsou platné v šabloně ARM, jsou platné v souboru bicep.
+Syntaxe JSON pro vytvoření šablony může být podrobná a vyžaduje složitý výraz. Bicep vylepšuje toto prostředí bez ztráty funkcí šablony JSON. Jedná se o transparentní abstrakci přes JSON pro šablony ARM. Každý soubor bicep se zkompiluje na standardní šablonu ARM. Typy prostředků, verze rozhraní API a vlastnosti, které jsou platné v šabloně ARM, jsou platné v souboru bicep. Aktuální verze obsahuje několik [známých omezení](#known-limitations) .
 
 ## <a name="get-started"></a>Začínáme
 
@@ -55,7 +55,15 @@ Pomocí bicep můžete přerušit projekt do více modulů.
 
 Struktura souboru bicep je flexibilnější než šablona JSON. Můžete deklarovat parametry, proměnné a výstupy kdekoli v souboru. Ve formátu JSON musíte deklarovat všechny parametry, proměnné a výstupy v odpovídajících částech šablony.
 
-Rozšíření VS Code pro bicep nabízí bohatší ověřování a IntelliSense. Například rozšíření má IntelliSense pro získání vlastností prostředku.
+Rozšíření VS Code pro bicep nabízí bohatou validaci a technologii IntelliSense. Například můžete použít technologii IntelliSense rozšíření pro získání vlastností prostředku.
+
+## <a name="known-limitations"></a>Známá omezení
+
+V současné době existují následující omezení:
+
+* Nejde nastavit režim nebo velikost dávky u smyček kopírování.
+* Nejde kombinovat smyčky a podmínky.
+* Jednořádkové objekty a pole, jako `['a', 'b', 'c']` , nejsou podporovány.
 
 ## <a name="faq"></a>Časté otázky
 

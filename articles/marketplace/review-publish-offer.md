@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/27/2020
-ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/10/2021
+ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247161"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630890"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
@@ -74,6 +74,13 @@ Prvním krokem procesu publikování je sada automatizovaných ověření. Každ
 - **Ověření a registrace řízení vedoucího** (<15 min)
 
     Potvrzujeme, že váš systém pro správu potenciálních zákazníků může obdržet zájemce na základě podrobných údajů, které jste zadali na stránce pro **nastavení nabídek** . Tento krok platí jenom pro nabídky se zapnutou správou potenciálních zákazníků.
+
+- **Ověření nabídky** (<30 min)
+
+    Pro SaaS nabízíme rychlé ověření obsahu a technických konfigurací. Vytváření náhledu nebude zablokováno při jakýchkoli potížích s ověřením zjištěných v tomto kroku. Zjistíte-li všechny problémy, které mohou selhat s certifikací, zobrazí se na stránce **Přehled nabídky** odkaz na **sestavu ověření zobrazení** . Sestava bude obsahovat popisy všech porušení zásad.
+
+    > [!IMPORTANT]
+    > Před výběrem tlačítka **Přejít na Live** nezapomeňte zkontrolovat a vyřešit všechna upozornění z kroku ověření nabídky. V opačném případě dojde k selhání certifikace, která by zpozdila vaši nabídku před živým zprovozněním.
 
 ## <a name="certification-phase"></a>Fáze certifikace
 
@@ -143,16 +150,19 @@ Pokud chcete nabídku publikovat později, budete muset spustit proces publikov�
 
 Když je nabídka připravená na kontrolu a její odhlášení, pošleme vám e-mail s žádostí o kontrolu a schválení vaší nabídky Preview. Stránku s **přehledem nabídky** můžete také aktualizovat v prohlížeči, abyste viděli, jestli vaše nabídka dosáhla fáze pro odhlášení vydavatele. Pokud má, budou k dispozici tlačítka **Přejít živě** a náhled.
 
-Na následujícím snímku obrazovky vidíte stránku s **přehledem nabídky** pro SaaS nabídku. Postup ověření, který se zobrazí na této stránce, se liší v závislosti na typu nabídky a výběrech, které jste provedli při vytváření této nabídky.
+Následující snímek obrazovky ukazuje stránku s **přehledem nabídky** v programu pro komerční tržišti v partnerském centru. Postup ověření, který se zobrazí na této stránce, se liší v závislosti na typu nabídky a výběrech, které jste provedli při vytváření této nabídky. Všimněte si, že certifikační fáze se může nacházet během odesílání do verze Preview nebo v reálném čase v závislosti na typu nabídky.
 
 ![Popisuje stránku s přehledem nabídky pro nabídku v partnerském centru. Zobrazí se odkazy na tlačítko Přejít živě a náhled.](./media/publish-status-publisher-signoff.png)
 
 ### <a name="previewing-and-approving-your-offer"></a>Zobrazení náhledu a schválení nabídky
 
 > [!IMPORTANT]
-> Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky. Pokud vaše nabídka obsahuje seznam kontaktů, otestujte, jestli je potenciální zájemce vytvořen podle očekávání, zadáním podrobností o kontaktech ve verzi Preview.
+> Pokud chcete ověřit kompletní tok nákupu a nastavování, kupte si nabídku, i když je ve verzi Preview. Nejdřív od Microsoftu upozorněte [lístek podpory](https://aka.ms/marketplacesupport) , abyste se ujistili, že Nezpracováváme poplatky. Pokud vaše nabídka obsahuje seznam _kontaktů_ , otestujte, jestli je potenciální zájemce vytvořen podle očekávání, zadáním podrobností o kontaktech ve verzi Preview.
 
 Na stránce **Přehled nabídky** se zobrazí odkazy ve verzi Preview pod tlačítkem **Přejít na Live** . V závislosti na možnostech, které jste zvolili při vytváření vaší nabídky, se bude jednat o odkaz buď na AppSource Preview Azure Marketplace, ve verzi Preview, nebo v obou. Pokud jste se rozhodli prodat nabídku prostřednictvím Microsoftu, může kdokoli, kdo byl přidán do cílové skupiny Preview, otestovat pořízení a nasazení vaší nabídky, aby se zajistilo, že splní vaše požadavky v této fázi.
+
+> [!IMPORTANT]
+> Před výběrem tlačítka **Přejít na Live** nezapomeňte zkontrolovat a vyřešit všechna upozornění z kroku _ověření nabídky_ . V opačném případě dojde k selhání certifikace, která by zpozdila vaši nabídku před živým zprovozněním.
 
 Po schválení verze Preview vyberte možnost **Přejít na Live** a publikujte nabídku živě na komerčním webu Marketplace. 
 
@@ -195,7 +205,7 @@ Zobrazení historie vaší nabídky:
 3.    Vyberte svoji nabídku.
 4.    V navigační nabídce vlevo vyberte kartu **Historie** . Stránka poskytuje podrobné informace o následujících událostech, které se vztahují na vaši nabídku:
 
-|Událost    |Popis    |
+|Událost    |Description    |
 |---------|---------------|
 |Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště** typ nabídky, ID nabídky a alias nabídky  >  .    |
 |Vytvořený plán: *název plánu*    |Uživatel vytvořil nový plán zadáním ID plánu a názvu plánu na kartě **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
@@ -225,8 +235,8 @@ Pomocí filtrů můžete zúžit celou historii nabídky na konkrétní událost
 Existují čtyři filtry:
 * Události
 * Uživatelé
-* Datum
-* Pages (Stránky)
+* Date (Datum)
+* Stránky
 
 Když vyberete filtr **stránky** , můžete vybrat libovolné stránky partnerského centra, které se vztahují k vašemu typu nabídky. Když se použije, filtr **stránky** zobrazí všechny **odeslané nabídky pro náhled událostí ve verzi Preview** se změnami vybrané stránky.
 

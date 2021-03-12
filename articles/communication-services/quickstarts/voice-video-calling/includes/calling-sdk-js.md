@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e013765579fd560952172166b24f898b354c1d17
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750364"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021409"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - A `User Access Token` povolí klienta volání. Další informace o [tom, jak získat `User Access Token` ](../../access-tokens.md)
 - Volitelné: dokončete rychlé [zprovoznění, abyste mohli začít s přidáváním volání do aplikace](../getting-started-with-calling.md) .
@@ -38,7 +38,7 @@ npm install @azure/communication-calling --save
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                             | Popis                                                                                                                                 |
+| Název                             | Description                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |
@@ -63,14 +63,14 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Umístit odchozí volání
 
-Chcete-li vytvořit a spustit volání, potřebujete použít jedno z rozhraní API na CallAgent a zadat uživatele, kterého jste vytvořili prostřednictvím klientské knihovny pro správu komunikačních služeb.
+Chcete-li vytvořit a spustit volání, je nutné použít jedno z rozhraní API na CallAgent a zadat uživatele, kterého jste vytvořili prostřednictvím klientské knihovny služby Communications identity.
 
 Vytvoření a spuštění volání je synchronní. Instance volání umožňuje přihlásit se k odběru událostí volání.
 
 ## <a name="place-a-call"></a>Umístit volání
 
 ### <a name="place-a-11-call-to-a-user-or-pstn"></a>Nakonání volání 1:1 uživateli nebo veřejné telefonní síti
-Chcete-li zavolat jinému uživateli komunikačních služeb, volejte `startCall` metodu na `callAgent` a předejte CommunicationUserIdentifier volaný, který jste [vytvořili pomocí knihovny pro správu služby Communication Services](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+Chcete-li umístit volání jinému uživateli komunikačních služeb, volejte `startCall` metodu na `callAgent` a předejte CommunicationUserIdentifier volaný, který jste [vytvořili pomocí knihovny identity Communications Services](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
@@ -254,10 +254,10 @@ Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete po
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -401,7 +401,7 @@ Pokud chcete zobrazit seznam streamů a sdílení obrazovky pro vzdálené úča
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
+
 Aby bylo možné vykreslit `RemoteVideoStream` , je nutné se přihlásit k odběru `isAvailableChanged` události.
 Pokud se `isAvailable` vlastnost změní na `true` , vzdálený účastník posílá datový proud.
 Jakmile k tomu dojde, vytvořte novou instanci `Renderer` a pak vytvořte novou `RendererView` instanci pomocí asynchronní `createView` metody.  Pak se můžete připojit `view.target` k libovolnému prvku uživatelského rozhraní.
@@ -581,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
 ## <a name="call-transfer-management"></a>Správa přenosu hovorů

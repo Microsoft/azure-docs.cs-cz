@@ -1,23 +1,18 @@
 ---
 title: Důležité změny přicházející do Azure Security Center
 description: Nadcházející změny Azure Security Center, na které může být nutné vědět a pro které může být nutné naplánovat
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051612"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633712"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -32,7 +27,6 @@ Pokud hledáte nejnovější poznámky k verzi, najdete je v [Azure Security Cen
 ## <a name="planned-changes"></a>Plánované změny
 
 - [Doporučení od AWS se uvolní pro obecnou dostupnost (GA).](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure.](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému.](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Vylepšení doporučení klasifikace dat SQL](#enhancements-to-sql-data-classification-recommendation)
 - [Vyřazení 11 výstrah v programu Azure Defender jako vyřazení](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ V této změně se dvě sady doporučení AWS přesunou na GA:
 
 Pokud jsou to GA a posouzení se spouští na vašich AWSch prostředcích, výsledky budou mít vliv na vaše kombinované zabezpečené skóre pro všechny vaše hybridní a hybridní cloudové prostředky. 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Dvě starší verze doporučení už nebudou zapisovat data přímo do protokolu aktivit Azure. 
-
-**Odhadované datum změny:** Březen 2021
-
-Security Center předá data pro téměř všechna doporučení zabezpečení, aby je Azure Advisor, která zase zapisuje do [protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md).
-
-V případě dvou doporučení se data zapisují současně přímo do protokolu aktivit Azure. Tato změna Security Center zastaví zápis dat těchto starších doporučení zabezpečení přímo do protokolu aktivit. Místo toho vyexportujeme data, abychom Azure Advisori jako u všech dalších doporučení. 
-
-Existují dvě starší verze doporučení:
-- Na vašich počítačích by se měly vyřešit problémy stavu aplikace Endpoint Protection.
-- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
-
-Pokud jste přistupovali k informacím o těchto dvou doporučeních v kategorii "doporučení typu TaskDiscovery" protokolu aktivit, nebude už k dispozici.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Nepoužívá se dvě doporučení pro řízení zabezpečení použít aktualizace systému. 
 

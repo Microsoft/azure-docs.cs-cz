@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: Monitorování a správa relací
       href: session-monitoring.md
+    - name: 'Metriky, monitorování a výstrahy'
+      href: howto-metrics-monitor-alert.md
     - name: Řešení potíží
       href: troubleshoot.md
 - name: Referenční informace

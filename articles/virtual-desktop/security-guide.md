@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581388"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014889"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -117,7 +117,6 @@ Otestování této nové funkce:
 >[!NOTE]
 >Během období Preview podporují tuto funkci pouze kompletní připojení klientů z koncových bodů Windows 10.
 
-
 ### <a name="enable-endpoint-protection"></a>Povolit službu Endpoint Protection
 
 Pro ochranu vašeho nasazení před známým škodlivým softwarem doporučujeme povolit službu Endpoint Protection na všech hostitelích relací. Můžete použít antivirovou ochranu v programu Windows Defender nebo program třetí strany. Další informace najdete v tématu [Průvodce nasazením antivirové ochrany v programu Windows Defender v prostředí VDI](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
@@ -169,6 +168,52 @@ Omezením možností operačního systému můžete posílit zabezpečení hosti
 - Udělte uživatelům omezená oprávnění, když přistupují k místním a vzdáleným systémům souborů. Můžete omezit oprávnění tím, že zajistěte, aby místní a vzdálené souborové systémy používaly seznamy řízení přístupu s nejnižšími oprávněními. Uživatelé tak budou mít přístup jenom k tomu, co potřebují, a nemůžou měnit ani odstraňovat důležité prostředky.
 
 - Zabraňte spuštění nežádoucího softwaru na hostitelích relací. Můžete povolit blokování aplikací pro další zabezpečení hostitelů relací, což zajistí, že se na hostiteli můžou spouštět jenom aplikace, které povolíte.
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Podpora virtuálních počítačů s Windows pro důvěryhodné spuštění
+
+Díky důvěryhodnému spuštění se Gen2 virtuální počítače Azure s rozšířenými funkcemi zabezpečení, které se mají chránit před "na konci zásobníku", a to prostřednictvím vektorů útoku, jako jsou rootkity, spouštěcí sady a malware na úrovni jádra. Níže jsou uvedené rozšířené funkce zabezpečení pro důvěryhodné spuštění, které jsou podporované ve virtuálním počítači s Windows. Další informace o důvěryhodném spuštění najdete na webu [důvěryhodné spuštění pro virtuální počítače Azure (Preview)](../virtual-machines/trusted-launch.md).
+
+### <a name="secure-boot"></a>Zabezpečené spouštění
+
+Zabezpečené spouštění je režim, který podporuje firmware platformy, který chrání firmware před malwaremi a spouštěcími sadami založenými na malwaru. Tento režim povoluje spuštění počítače pouze pomocí podepsaných operačních systémech a ovladačů. 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>Monitorování integrity spouštění pomocí vzdáleného ověřování identity
+
+Vzdálené ověření identity je skvělým způsobem, jak kontrolovat stav virtuálních počítačů. Vzdálené ověření identity ověřuje, zda jsou k dispozici měřené spouštěcí záznamy, originální a pochází z modulu Virtual Trusted Platform Module (vTPM). Při kontrole stavu poskytuje kryptografickou jistotu, že se platforma správně spustila. 
+
+### <a name="vtpm"></a>vTPM
+
+VTPM je virtualizovaná verze hardwaru Trusted Platform Module (TPM) s virtuální instancí čipu TPM na virtuální počítač. vTPM umožňuje vzdálené ověření identity pomocí měření integrity celého spouštěcího řetězu virtuálního počítače (UEFI, OS, System a Drivers). 
+
+Doporučujeme povolit, aby vTPM na vašich virtuálních počítačích používali vzdálené ověřování identity. S povoleným vTPM můžete taky povolit funkce BitLockeru, která poskytuje úplné šifrování pro ochranu neaktivních dat. Všechny funkce využívající vTPM budou mít za následek vázání tajných kódů na konkrétní virtuální počítač. Když se uživatelé připojí ke službě Windows Virtual Desktop ve scénáři ve fondu, můžou se uživatelé přesměrovat na libovolný virtuální počítač ve fondu hostitelů. V závislosti na tom, jak je tato funkce navržena, může mít dopad.
+
+>[!NOTE]
+>BitLocker by se neměl používat k zašifrování konkrétního disku, na který ukládáte data profilu FSLogix.
+
+### <a name="virtualization-based-security"></a>Zabezpečení založené na virtualizaci
+
+Zabezpečení založené na virtualizaci (VBS) používá hypervisor k vytvoření a izolaci zabezpečené oblasti paměti, která je pro operační systém nepřístupná. HYPERVISOREM HVCI (integrity kódu Hypervisor-Protected) a ochrana přihlašovacích údajů v programu Windows Defender: k zajištění zvýšené ochrany před ohroženími zabezpečení použijte VBS. 
+
+#### <a name="hypervisor-protected-code-integrity"></a>Hypervisor-Protected integrita kódu
+
+HYPERVISOREM HVCI je výkonné omezení pro systém, které používá nástroj VBS k ochraně procesů režimu jádra systému Windows proti injektáže a spouštění škodlivého nebo neověřeného kódu.
+
+#### <a name="windows-defender-credential-guard"></a>Ochrana Credential Guard v programu Windows Defender
+
+Ochrana Credential Guard v programu Windows Defender používá k izolaci a ochraně tajných kódů možnost VBS, aby k nim měli přístup jenom software privilegovaného systému. To brání neoprávněnému přístupu k těmto tajným klíčům a útokům na krádeži přihlašovacích údajů, jako jsou útoky typu Pass-The-
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Nasazení důvěryhodného spuštění v prostředí virtuálních počítačů s Windows
+
+Virtuální počítač s Windows v současné době nepodporuje automatickou konfiguraci důvěryhodného spuštění během procesu nastavení fondu hostitelů. Pokud chcete použít důvěryhodné spuštění v prostředí virtuálních počítačů s Windows, budete muset důvěryhodné spuštění nasadit normálně a pak ručně přidat virtuální počítač do požadovaného fondu hostitelů.
+
+## <a name="nested-virtualization"></a>Vnořená virtualizace
+
+Následující operační systémy podporují spuštění vnořené virtualizace na virtuálním počítači s Windows:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise s více relacemi.
 
 ## <a name="next-steps"></a>Další kroky
 

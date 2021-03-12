@@ -103,6 +103,12 @@
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
           href: ./samples/nist-sp-800-171-r2.md
+    - name: Směrné plány konfigurace hostů
+      items:
+        - name: Základní plán pro Linux pro Azure Security test
+          href: ./samples/guest-configuration-baseline-linux.md
+        - name: Směrný plán Windows pro Azure Security test
+          href: ./samples/guest-configuration-baseline-windows.md
 - name: Koncepty
   items:
     - name: Struktura definic

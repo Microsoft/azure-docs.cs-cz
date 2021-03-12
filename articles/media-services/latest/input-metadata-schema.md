@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360050"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634681"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
 
@@ -39,11 +39,9 @@ Příklad schématu JSON najdete na konci tohoto článku.
 Obsahuje kolekci elementů AssetFile pro úlohu kódování.  
 
 > [!NOTE]
-> Následující čtyři podřízené elementy se musí objevit v sekvenci.  
-> 
-> 
+> Následující čtyři podřízené elementy se musí objevit v sekvenci.
 
-| Název  | Popis |
+| Název  | Description |
 | --- | --- | 
 | **VideoTracks**|Každý soubor fyzického majetku může obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [VideoTracks](#videotracks). |
 | **AudioTracks**|Každý fyzický soubor prostředků může obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [AudioTracks](#audiotracks) . |
@@ -65,14 +63,14 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="videotracks"></a>VideoTracks
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
-| **FourCC**<br />Vyžadováno |Videokodek FourCC kód, který je hlášen pomocí FFmpeg.<br /><br />Příklad: `"FourCC": "avc1"` |
+| **FourCC**<br />Vyžadováno |Videokodek FourCC kód, který je hlášen pomocí FFmpeg.<br /><br />Příklad: `"FourCC": "avc1" | "hev1" | "hvc1"` |
 | **Profil** |Profil stopy videa. <br /><br />Příklad: `"Profile": "Main"`|
 | **Obsah** |Úroveň stopy videa <br /><br />Příklad: `"Level": "3.2"`|
 | **PixelFormat** |Formát pixelu stopy videa <br /><br />Příklad: `"PixelFormat": "yuv420p"`|
 | **Width (Šířka)**<br />Vyžadováno |Zakódovaná Šířka videa v pixelech <br /><br />Příklad: `"Width": "1280"`|
-| **Výška**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
+| **Height (Výška)**<br />Vyžadováno |Výška kódovaného videa v pixelech<br /><br />Příklad: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Vyžadováno |Čítač zobrazení poměru stran videa<br /><br />Příklad: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Vyžadováno |Jmenovatel poměru stran zobrazení videa <br /><br />Příklad: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Ukázka poměru stran videa – čitatel. <br /><br />Příklad: `"SampleAspectRatioNumerator": 1.0`|
@@ -82,9 +80,9 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | **HasBFrames** |Video sleduje počet snímků B. <br /><br />Příklad: `"HasBFrames": 2`|
 | **Metadata** |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. <br />Viz kompletní příklad na konci článku. |
 | **Účet**<br />Vyžadováno |Index s nulovým základem tohoto zvukového zvuku nebo stopy videa<br /><br /> Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 2`|
-| **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "h264"`|
+| **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "h264 | hev1"`|
 | **CodecLongName** |Dlouhý název kodeku zvuk nebo video stop <br /><br />Příklad: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "h264"`|
+| **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "h264 | hev1"`|
 | **Porno**<br />Vyžadováno |Časová základna<br /><br />Příklad: `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |Počet snímků (přítomných pro stopy videa). <br /><br />Příklad: `"NumberOfFrames": 2107`|
 | **Spuštění** |Čas zahájení sledování<br /><br />Příklad: `"StartTime": "PT0.033S"` |
@@ -92,7 +90,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| Název  | Popis |
+| Název  | Description |
 | --- | --- | 
 | **SampleFormat** |Vzorový formát <br /><br />Příklad: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Rozložení kanálu. <br /><br />Příklad: `"ChannelLayout": "stereo"`|
@@ -110,7 +108,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 
 ## <a name="metadata"></a>Metadata
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **zkrat**<br />Vyžadováno |Klíč v páru klíč/hodnota. |
 | **value**<br /> Vyžadováno |Hodnota v páru klíč/hodnota. |

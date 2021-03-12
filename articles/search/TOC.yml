@@ -312,6 +312,8 @@
           href: search-query-create.md
         - name: Vytvořit sémantický dotaz
           href: semantic-how-to-query-request.md
+        - name: Vrátí sémantickou odpověď.
+          href: semantic-answers.md
         - name: Přidat kontrolu pravopisu do dotazů
           href: speller-how-to-add.md
         - name: Sestavení a typy dotazů
@@ -330,6 +332,8 @@
               href: index-add-suggesters.md
             - name: Přidání návrhů a automatického dokončování
               href: search-autocomplete-tutorial.md
+        - name: Stránkování a počty
+          href: search-pagination-page-layout.md
         - name: Reference k syntaxi
           items:
             - name: Jednoduchá syntaxe dotazů
@@ -352,16 +356,14 @@
           href: search-query-understand-collection-filters.md
         - name: Filtrování podle jazyka
           href: search-filters-language.md
-    - name: Výsledky
+    - name: Relevance
       items:
-        - name: Práce s výsledky
-          href: search-pagination-page-layout.md
-        - name: Strukturování sémantické odpovědi
-          href: semantic-how-to-query-response.md
+        - name: Řazení podobnosti
+          href: index-ranking-similarity.md
+        - name: Sémantické hodnocení
+          href: semantic-ranking.md
         - name: Profily skórování
           href: index-add-scoring-profiles.md
-        - name: Algoritmus podobnosti
-          href: index-ranking-similarity.md
     - name: Zabezpečení
       items:
         - name: Šifrování dat

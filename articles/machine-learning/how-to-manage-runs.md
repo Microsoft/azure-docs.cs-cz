@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520332"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634759"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
+# <a name="start-monitor-and-track-runs"></a>Spustit, monitorovat a sledovat spuštění 
 
 [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)a [Azure Machine Learning Studio](https://ml.azure.com) nabízí různé metody pro monitorování, organizování a správu vašich běhů pro školení a experimentování.
 
 Tento článek ukazuje příklady následujících úloh:
 
 * Monitorujte výkon spouštění.
+* Sledujte stav spuštění e-mailovým oznámením.
+* Označení a hledání spuštění.
+* Přidejte popis spuštění. 
+* Spusťte hledání. 
 * Zrušení nebo selhání spuštění.
 * Vytvoření podřízených spuštění.
-* Označení a hledání spuštění.
+ 
 
 > [!TIP]
 > Pokud hledáte informace o monitorování služby Azure Machine Learning a přidružených služeb Azure, přečtěte si téma [jak monitorovat Azure Machine Learning](monitor-azure-machine-learning.md).
@@ -50,7 +54,8 @@ Budete potřebovat následující položky:
     print(azureml.core.VERSION)
     ```
 
-* Rozšíření [Azure CLI](/cli/azure/) a rozhraní příkazového [řádku pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Rozšíření [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) a rozhraní příkazového [řádku pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
+
 
 ## <a name="monitor-run-performance"></a>Monitorování výkonu spuštění
 
@@ -96,7 +101,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vytvoří `.azureml` podadresář, který obsahuje příklady souborů prostředí RunConfig a conda. Obsahuje taky `config.json` soubor, který se používá ke komunikaci s vaším pracovním prostorem Azure Machine Learning.
     
-        Další informace najdete v tématu [AZ ml složka připojit](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach).
+        Další informace najdete v tématu [AZ ml složka připojit](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
     2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud hledáte v systému souborů) s parametrem-c.
     
@@ -111,7 +116,7 @@ Budete potřebovat následující položky:
         >
         > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
-        Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script).
+        Další informace najdete v tématu [AZ ml Run odeslání-Script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vrátí dokument JSON se seznamem informací o běhu pro tento experiment.
     
-        Další informace najdete v tématu [AZ ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list).
+        Další informace najdete v tématu [AZ ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
     
     * Chcete-li zobrazit informace o konkrétním spuštění, použijte následující příkaz. Nahraďte `runid` ID běhu:
     
@@ -172,7 +177,7 @@ Budete potřebovat následující položky:
     
         Tento příkaz vrátí dokument JSON se seznamem informací o běhu.
     
-        Další informace najdete v tématu [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show).
+        Další informace najdete v tématu [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -192,6 +197,29 @@ Budete potřebovat následující položky:
     1. Chcete-li zobrazit protokoly spuštění, vyberte konkrétní spuštění a na kartě **výstupy + protokoly** můžete najít diagnostické a chybové protokoly pro svůj běh.
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>Monitorování stavu spuštění e-mailovým oznámením
+
+1. V [Azure Portal](https://ms.portal.azure.com/)v levém navigačním panelu vyberte kartu **monitorování** . 
+
+1. Vyberte **nastavení diagnostiky** a pak vyberte **+ Přidat nastavení diagnostiky**.
+
+    ![Snímek obrazovky s nastavením diagnostiky pro e-mailové oznámení](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. V nastavení diagnostiky 
+    1. v části **Podrobnosti o kategorii** vyberte **AmlRunStatusChangedEvent**. 
+    1. V části **Podrobnosti o cíli** vyberte **pracovní prostor odeslat do Log Analytics**  a zadejte **předplatné** a **Log Analytics pracovní prostor**. 
+
+    > [!NOTE]
+    > **Pracovní prostor azure Log Analytics** je jiný typ prostředku Azure, než je **pracovní prostor služby Azure Machine Learning**. Pokud v tomto seznamu nejsou žádné možnosti, můžete [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    
+    ![Místo uložení e-mailových oznámení](./media/how-to-manage-runs/log-location.png)
+
+1. Na kartě **protokoly** přidejte **nové pravidlo výstrahy**. 
+
+    ![Nové pravidlo výstrahy](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. Přečtěte si téma [jak vytvořit a spravovat výstrahy protokolu pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
 
 ## <a name="run-description"></a>Popis běhu 
 
@@ -253,7 +281,7 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update).
+    Další informace najdete v tématu [AZ ml Run Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Další informace o dotazování na výsledky rozhraní příkazového řádku Azure najdete v tématu [dotazování výstupu příkazu Azure CLI](/cli/azure/query-azure-cli).
+    Další informace o dotazování na výsledky rozhraní příkazového řádku Azure najdete v tématu [dotazování výstupu příkazu Azure CLI](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    1. Přejděte do seznamu  **všechny běhy** .
+    Pokud chcete vyhledat konkrétní spuštění, přejděte do seznamu  **všechny běhy** . Máte dvě možnosti:
     
-    1. Pomocí panelu hledání můžete filtrovat metadata spuštění, jako jsou značky, popisy, názvy experimentů a jméno odesílatele. Filtr značek lze také použít k filtrování značek. 
+    1. Použijte tlačítko **Přidat filtr** a vyberte filtrovat podle značek, chcete-li filtrovat spuštění podle značky, která byla přiřazena ke spuštění (y). <br><br>
+    NEBO
     
-    ---
-
-
+    1. Pomocí panelu hledání můžete rychle najít spuštění tak, že vyhledáte metadata spuštění, jako je stav spuštění, popisy, názvy experimentů a jméno odesílatele. 
+    
 ## <a name="cancel-or-fail-runs"></a>Zrušení nebo selhání spuštění
 
 Pokud si všimnete omylem nebo pokud dokončení běhu trvá příliš dlouho, můžete spustit operaci.
@@ -331,7 +359,7 @@ Chcete-li zrušit běh pomocí rozhraní příkazového řádku, použijte násl
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Další informace najdete v tématu [AZ ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel).
+Další informace najdete v tématu [AZ ml Run Cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -375,7 +403,7 @@ Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`cre
 
 ### <a name="submit-child-runs"></a>Odeslat podřízená spuštění
 
-Podřízené běhy lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. Nemůžete vytvořit podřízené spuštění bez nadřazeného prvku: i když nadřazený běh neprovede žádné akce, ale spustí podřízené spuštění, je stále nutné vytvořit hierarchii. Stav všech spuštění je nezávisle: nadřazený objekt může být v `"Completed"` úspěšném stavu, i když byl jeden nebo více podřízených spuštění zrušeno nebo selhalo.  
+Podřízené běhy lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. Nemůžete vytvořit podřízené spuštění bez nadřazeného prvku: i když nadřazený běh neprovede žádné akce, ale spustí podřízené spuštění, je stále nutné vytvořit hierarchii. Stavy všech spuštění jsou nezávislé: nadřazený stav může být v `"Completed"` úspěšném stavu i v případě, že jeden nebo více podřízených spuštění bylo zrušeno nebo selhalo.  
 
 Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Pro přizpůsobení podřízeného spuštění vytvořte `ScriptRunConfig` objekt pro podřízený běh. Níže uvedený kód provede následující:
 

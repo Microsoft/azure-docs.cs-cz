@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436494"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010758"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -36,20 +36,21 @@ Můžete také přispívat na ukázky na GitHubu. Další informace najdete v t�
 
 Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou technologií Microsoft Identity Platform. Tyto ukázky používají jeden z typů MSAL.js.
 
-| Platforma | Popis | Odkaz |
+| Platforma | Description | Odkaz |
 | -------- | --------------------- | -------- |
 | ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Microsoft Graph volání SPA |[JavaScript – graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) . | Zabezpečené ověřování hesla – volání Microsoft Graph pomocí toku kódu ověřování s/PKCE |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | B2C, volání hesla |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) . | SPA volá B2C pomocí toku kódu ověřování s/PKCE. |[B2C-JavaScript – Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) . | SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-tutorial-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Tento obrázek znázorňuje úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSALý úhlové)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Microsoft Graph volání SPA  | [Active-Directory-JavaScript-singlepageapp-úhlová](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 | ![Na tomto obrázku je znázorněno úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL, úhlové 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Zabezpečené ověřování hesla – volání Microsoft Graph pomocí toku kódu ověřování s/PKCE | [MS-identity-JavaScript-úhlové Spa](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa) |
 | ![Na tomto obrázku je znázorněno úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL, úhlové 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| SPA volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Tento obrázek znázorňuje úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSALý úhlové)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | B2C, volání hesla |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
-| ![Tento obrázek ukazuje reakci na reakce loga ](media/sample-v2-code/logo_react.png) [(MSAL reaguje)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) .| Zabezpečené ověřování hesla – volání Microsoft Graph pomocí toku kódu ověřování s/PKCE | [MS-identity-JavaScript – reakce – Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
-| ![Tento obrázek ukazuje reakci na reakci loga ](media/sample-v2-code/logo_react.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) .| SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) . | SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-tutorial-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Na tomto obrázku je znázorněno úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL, úhlové 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | SPA volá vlastní webové rozhraní API s aplikačními rolemi a skupinami zabezpečení. |[MS-identity-JavaScript-úhlová-Spa-dotnetcore-WebApi-role-skupiny](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![Tento obrázek ukazuje reakci na reakce loga ](media/sample-v2-code/logo_react.png) [(MSAL reaguje)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) .| Zabezpečené ověřování hesla – volání Microsoft Graph pomocí toku kódu ověřování s/PKCE | [MS-identity-JavaScript – reakce – Spa](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) |
+| ![Tento obrázek ukazuje reakci na reakce loga ](media/sample-v2-code/logo_react.png) [(MSAL reaguje)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react) .| SPA volá vlastní webové rozhraní API. | [MS-identity – JavaScript – reakce – kurz](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/1-call-api) |
+| ![Tento obrázek ukazuje reakci na reakci loga ](media/sample-v2-code/logo_react.png) [(MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) .| SPA volá vlastní webové rozhraní API, které zase volá Microsoft Graph  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Tento obrázek ukazuje Blazor logo ](media/sample-v2-code/logo-blazor.png) [Blazor WebAssembly (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | Kurz Blazor WebAssembly pro přihlašování uživatelů a volání rozhraní API pomocí Azure Active Directory |[MS-identity – blazor-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Webové aplikace
@@ -129,7 +130,7 @@ Následující ukázka ukazuje aplikaci veřejného klienta běžící na zaří
 
 Následující ukázky ukazují, jak nakonfigurovat aplikaci tak, aby přijímala přihlášení z libovolného tenanta Azure Active Directory (Azure AD). Konfigurace vaší aplikace pro *více tenantů* znamená, že můžete nabídnout aplikaci SaaS ( **software jako služba** ) pro mnoho organizací, aby se jejich uživatelé mohli po poskytnutí souhlasu přihlašovat k vaší aplikaci.
 
-| Platforma | Popis | Odkaz |
+| Platforma | Description | Odkaz |
 | -------- | --------------------- | -------- |
 | ![Na tomto obrázku je znázorněno úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL, úhlové 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Volání SPA s více klienty Graph API |[MS-identity-JavaScript-úhlů-Spa-ASPNET-WebApi-víceklientské tenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Na tomto obrázku je znázorněno úhlové logo ](media/sample-v2-code/logo_angular.png) [(MSAL, úhlové 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Víceklientské ověřování SPA volá vlastní webové rozhraní API pro více tenantů. |[MS-identity-JavaScript-úhlů-Spa-ASPNET-WebApi-víceklientské tenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

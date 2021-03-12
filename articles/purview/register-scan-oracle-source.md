@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696141"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010430"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Registrace a kontrola zdrojového kódu Oracle (Preview)
 
 Tento článek popisuje, jak zaregistrovat databázi Oracle v dosah a nastavit kontrolu.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Zdroj Oracle podporuje **úplnou kontrolu** pro extrakci metadat z databáze Oracle a načítá mezi datovými assety **čáru** .
 
@@ -31,7 +31,7 @@ Zdroj Oracle podporuje **úplnou kontrolu** pro extrakci metadat z databáze Ora
 
 3.  Ujistěte \" \" se, že je na počítači prostředí Integration runtime v místním prostředí nainstalovaná Visual C++ Redistributable 2012 Update 4. Pokud \' ho ještě nemáte nainstalovanou, Stáhněte si ho odsud. [](https://www.microsoft.com/download/details.aspx?id=30679)
 
-4.  \'Na virtuálním počítači, na kterém běží místní prostředí Integration runtime, budete muset ručně stáhnout ovladač Oracle JDBC s názvem Oracle. JDBC. Driver. OracleDriver.
+4.  Z [tohoto místa](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) budete muset ručně stáhnout ovladač Oracle JDBC z virtuálního počítače, ve kterém běží místní prostředí Integration runtime.
 
     > [!Note] 
     > Ovladač by měl být přístupný pro všechny účty na virtuálním počítači. Neinstalujte ji do uživatelského účtu.

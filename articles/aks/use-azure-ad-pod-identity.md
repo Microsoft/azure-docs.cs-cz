@@ -3,13 +3,13 @@ title: Použití identit spravovaných pod Azure Active Directory ve službě Az
 description: Naučte se, jak používat spravované identity pod AAD pod správou Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 12/01/2020
-ms.openlocfilehash: e7c8a96ad012afdcd724a4a242c27018563f3a10
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/12/2021
+ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176310"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233492"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Použití identit spravovaných pod Azure Active Directory ve službě Azure Kubernetes (Preview)
 
@@ -24,13 +24,13 @@ Azure Active Directory identity pod správou používají primitivy Kubernetes k
 
 Musíte mít nainstalované následující prostředky:
 
-* Rozhraní příkazového řádku Azure, verze 2.8.0 nebo novější
-* `azure-preview`Verze rozšíření 0.4.68 nebo novější
+* Rozhraní příkazového řádku Azure, verze 2.20.0 nebo novější
+* `azure-preview`Verze rozšíření 0.5.5 nebo novější
 
 ### <a name="limitations"></a>Omezení
 
-* Pro cluster je povoleno maximálně 50. identit.
-* V clusteru je povoleno maximálně 50 pod výjimkami identity.
+* Pro cluster je povoleno maximálně 200. identit.
+* V clusteru je povoleno maximálně 200 pod výjimkami identity.
 * Identity pod správou jsou dostupné jenom pro fondy uzlů Linux.
 
 ### <a name="register-the-enablepodidentitypreview"></a>Zaregistrujte `EnablePodIdentityPreview`
@@ -66,6 +66,21 @@ Přihlaste se ke svému clusteru AKS pomocí [AZ AKS Get-Credentials][az-aks-get
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Vytvoření clusteru AKS s modulem plug-in Kubenet Network
+
+Vytvořte cluster AKS s povoleným modulem plug-in Kubenet Network a s povolenou identitou pod správou.
+
+```azurecli-interactive
+az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
+```
+
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Aktualizace existujícího clusteru AKS pomocí modulu plug-in Kubenet Network
+
+Aktualizujte stávající cluster AKS s modulem plug-in Kubnet sítě tak, aby zahrnoval identitu pod správou.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
 ## <a name="create-an-identity"></a>Vytvoření identity

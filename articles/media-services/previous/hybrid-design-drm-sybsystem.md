@@ -3,7 +3,7 @@ title: Hybridní návrh subsystémů DRM pomocí Azure Media Services | Microsof
 description: Toto téma popisuje hybridní návrh subsystémů DRM pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266897"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016266"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM
 
@@ -95,7 +95,7 @@ Prostřednictvím konfigurace zásad doručení assetů můžete řídit násled
 
 ## <a name="scenarios-and-samples"></a>Scénáře a ukázky
 
-Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné **Content key** - kombinace konfigurace**zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
+Na základě vysvětlení v předchozí části používají následující pět hybridních scénářů příslušné  - kombinace konfigurace **zásad doručení assetů** obsahu (ukázky uvedené v posledním sloupci následují v tabulce):
 
 |**Hostování obsahu & původu**|**Šifrování DRM**|**Doručování licencí DRM**|**Konfigurovat klíč obsahu**|**Konfigurace zásad doručení assetu**|**Ukázka**|
 |---|---|---|---|---|---|
@@ -133,7 +133,7 @@ V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamován�
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V souhrnu Azure Media Services komponenty DRM flexibilní, můžete je použít v hybridním scénáři tím, že správně nakonfigurujete klíč obsahu a zásady doručování prostředků, jak je popsáno v tomto tématu.
 

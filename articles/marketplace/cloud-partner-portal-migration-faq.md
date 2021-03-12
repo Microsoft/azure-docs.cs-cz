@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880334"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613608"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -22,7 +22,7 @@ Portál partnerů cloudu přešla do partnerského centra. Partnerské centrum n
 
 Můžete pokračovat v podnikání v partnerském centru:
 
-| Plošný<img src="" width=200px> | Změny |
+| Plošný | Změny |
 | --- | --- |
 | Účet | Není potřeba vytvořit nový účet partnerského centra. pomocí svých stávajících přihlašovacích údajů portál partnerů cloudu můžete přihlašovat se k partnerskému centru, kde teď budete spravovat svůj účet, uživatele, oprávnění a fakturaci. Informace o smlouvě o publikování a profilu společnosti se migrují na nový účet partnerského centra spolu s případnými informacemi o profilu výběr, uživatelskými účty a oprávněními a aktivními nabídkami. Další informace najdete v [centru pro správu účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md). |
 | Nabídka prostředí pro publikování a poskytování nabídek | Přesunuli jsme vaše data nabídky z portál partnerů cloudu do partnerského centra. Teď budete mít přístup k Vašim nabídkám v partnerském centru, které nabízí vylepšené uživatelské prostředí a intuitivní rozhraní. Přečtěte si, jak [aktualizovat existující nabídku na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md). |
@@ -41,7 +41,7 @@ Ne, váš účet se zachová. To znamená, že pokud jste stávající partner, 
 
 Následují odkazy partnerského centra na stránky běžně používané v portál partnerů cloudu. Pokud jste uložili odkazy portál partnerů cloudu jako záložky, budete je chtít aktualizovat.
 
-| Stránka portál partnerů cloudu <img src="" width=100px>| Odkaz na portál partnerů cloudu stránku | Odkaz na stránku partnerského centra |
+| Stránka portál partnerů cloudu | Odkaz na portál partnerů cloudu stránku | Odkaz na stránku partnerského centra |
 | --- | --- | --- |
 | Stránka Všechny nabídky | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
 | Stránka Všichni vydavatelé | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
@@ -75,7 +75,7 @@ Všechny typy nabídek, které byly dříve podporovány v portál partnerů clo
 
 Pro typy nabídek podporované v partnerském centru se všechny nabídky přesunuly bez ohledu na jejich stav. přesunuli jsme také nabídky konceptů, zrušení v seznamu a verze Preview.
 
-| Typ nabídky <img src="" width=150px>| Přesunuli jste se do partnerského centra? <img src="" width=100px>| Další kroky |
+| Typ nabídky | Přesunuli jste se do partnerského centra? | Další kroky |
 | --- | --- | --- |
 | SaaS | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [části plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md). |
 | Virtuální počítač | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [plánu nabídky virtuálních počítačů](marketplace-virtual-machines.md). |
@@ -181,7 +181,7 @@ Můžete požádat o [zastavení prodeje nabídky](partner-center-portal/update-
 
 Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i nadále. Přechod do partnerského centra přináší malé změny. Zkontrolujte následující tabulku a ujistěte se, že váš kód bude i nadále fungovat v partnerském centru.
 
-| Rozhraní API <img src="" width=100px>| Popis změny | Dopad |
+| Rozhraní API | Popis změny | Dopad |
 | --- | --- | --- |
 | Publikovat, GoLive, zrušit | V případě migrovaných nabídek bude hlavička odpovědi v jiném formátu, ale bude i nadále fungovat stejným způsobem, aby se zaznamenala relativní cesta pro načtení stavu operace. | Při odesílání kterékoli z odpovídajících požadavků POST pro nabídku bude mít hlavička umístění jeden ze dvou formátů v závislosti na stavu migrace této nabídky: <ul><li>Nemigrované nabídky: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrované nabídky: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | Operace GET | U nabídek, které dříve podporovaly pole "Notification-e-mail" v odpovědi, bude toto pole zastaralé a již nebude vráceno pro migrované nabídky. | U migrovaných nabídek už nebudeme odesílat oznámení na seznam e-mailů zadaných v požadavcích. Místo toho bude služba API v partnerském centru pro posílání e-mailů zarovnávat s e-mailovým procesem oznámení. Konkrétně oznámení o průběhu operace budou odeslána na e-mailovou adresu nastavenou v části kontaktní údaje prodejce v nastavení vašeho účtu v partnerském centru.<br><br>Zajistěte, aby byla e-mailová adresa uvedená v části kontaktní informace prodejce v [Nastavení účtu](https://partner.microsoft.com/dashboard/account/management) v partnerském centru správná pro příjem oznámení. |

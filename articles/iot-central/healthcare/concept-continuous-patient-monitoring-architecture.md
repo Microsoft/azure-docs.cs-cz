@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6f7359b2b2fb0a1ea6ce92ec52bba15fc74fc75a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727494"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017150"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architektura průběžného monitorování pacientů
 
@@ -37,7 +37,7 @@ Primární funkcí aplikace Mobilní telefon je shromažďování dat z lékařs
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Export do Azure API pro FHIR&reg;
 
-Azure IoT Central je kompatibilní s HIPAA a HITRUST &reg; Certifikovaný. Data o stavu pacientům můžete také posílat ostatním službám pomocí [rozhraní Azure API pro FHIR](../../healthcare-apis/overview.md). Rozhraní Azure API pro FHIR je standardizované rozhraní API pro klinická data o zdravotním stavu. [Azure IoT Connector pro FHIR](../../healthcare-apis/iot-fhir-portal-quickstart.md) umožňuje používat Azure API pro FHIR jako průběžné exportování dat z IoT Central.
+Azure IoT Central je kompatibilní s HIPAA a HITRUST &reg; Certifikovaný. Data o stavu pacientům můžete také posílat ostatním službám pomocí [rozhraní Azure API pro FHIR](../../healthcare-apis/fhir/overview.md). Rozhraní Azure API pro FHIR je standardizované rozhraní API pro klinická data o zdravotním stavu. [Azure IoT Connector pro FHIR](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md) umožňuje používat Azure API pro FHIR jako průběžné exportování dat z IoT Central.
 
 ### <a name="machine-learning"></a>Strojové učení
 

@@ -136,9 +136,13 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-    - name: Průvodce protokolem AMQP 1.0
-      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
-      maintainContext: true
+    - name: AMQP
+      items:
+        - name: Průvodce protokolem AMQP 1.0
+          href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+          maintainContext: true
+        - name: Chyby AMQP
+          href: event-hubs-amqp-troubleshoot.md
 - name: Návody
   items:
     - name: Vytvoření registru schémat

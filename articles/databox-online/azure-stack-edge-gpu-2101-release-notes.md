@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443790"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630363"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Zpráva k vydání verze Azure Stack Edge 2101
 
@@ -29,7 +29,7 @@ Tento článek se týká verze **Azure Stack Edge 2101** , která se mapuje na �
 
 Ve verzi Azure Stack Edge 2101 jsou k dispozici následující nové funkce. 
 
-- **Všeobecná dostupnost zařízení Azure Stack Edge pro R a Azure Stack Edge Mini r** – od této verze se budou k dispozici Azure Stack Edge pro r a Azure Stack Edge Mini r. Další informace najdete v tématu [co je Azure Stack Edge pro R](azure-stack-edge-j-series-overview.md) a [co je Azure Stack Edge Mini R](azure-stack-edge-k-series-overview.md).  
+- **Všeobecná dostupnost zařízení Azure Stack Edge pro R a Azure Stack Edge Mini r** – od této verze se budou k dispozici Azure Stack Edge pro r a Azure Stack Edge Mini r. Další informace najdete v tématu [co je Azure Stack Edge pro R](azure-stack-edge-pro-r-overview.md) a [co je Azure Stack Edge Mini R](azure-stack-edge-mini-r-overview.md).  
 - **Správa cloudu Virtual Machines** – zahájení této verze, můžete vytvořit a spravovat virtuální počítače na svém zařízení prostřednictvím Azure Portal. Další informace najdete v tématu [nasazení virtuálních počítačů prostřednictvím Azure Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md).
 - **Integrace s Azure monitor** – k monitorování kontejnerů z výpočetních aplikací, které běží na vašem zařízení, teď můžete použít Azure monitor. Úložiště metrik Azure Monitor se v této verzi nepodporuje. Další informace najdete v tématu [povolení Azure monitor v zařízení](azure-stack-edge-gpu-enable-azure-monitor.md).
 - **Registr kontejneru Edge** – v této verzi je k dispozici registr hraničního kontejneru, který poskytuje úložiště na hraničním zařízení. Tento registr můžete použít k ukládání a správě imagí kontejneru. Další informace najdete v tématu [Povolení registru kontejneru Edge](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). 

@@ -4,12 +4,12 @@ description: Naučte se Azure Functions koncepty a techniky, které potřebujete
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386896"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614815"
 ---
 # <a name="azure-functions-developer-guide"></a>Příručka pro vývojáře v Azure Functions
 V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
@@ -116,10 +116,11 @@ Některá připojení v Azure Functions jsou nakonfigurovaná tak, aby místo ta
 
 Připojení založená na identitách jsou podporovaná následujícími triggery a rozšířeními vazby:
 
-| Název rozšíření | Verze rozšíření                                                                                     | Podporuje připojení založená na identitách v plánu spotřeby. |
+| Název rozšíření | Verze rozšíření                                                                                     | Podporováno v plánu spotřeby |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure Blob     | [Verze 5.0.0-Beta1 nebo novější](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | No                                    |
 | Azure Queue Storage    | [Verze 5.0.0-Beta1 nebo novější](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | No                                    |
+| Azure Event Hubs    | [Verze 5.0.0-Beta1 nebo novější](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | No                                    |
 
 > [!NOTE]
 > Podpora pro připojení na základě identity ještě není k dispozici pro připojení úložiště používaná modulem runtime Functions pro základní chování. To znamená, že toto `AzureWebJobsStorage` nastavení musí být připojovací řetězec.
@@ -128,9 +129,10 @@ Připojení založená na identitách jsou podporovaná následujícími trigger
 
 Připojení na základě identity pro službu Azure přijímá následující vlastnosti:
 
-| Vlastnost    | Proměnná prostředí | Je povinné | Description |
+| Vlastnost    | Vyžadováno pro rozšíření | Proměnná prostředí | Description |
 |---|---|---|---|
-| Identifikátor URI služby | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Identifikátor URI datové roviny služby, ke které se připojujete. |
+| Identifikátor URI služby | Azure Blob, fronta Azure | `<CONNECTION_NAME_PREFIX>__serviceUri` |  Identifikátor URI datové roviny služby, ke které se připojujete. |
+| Plně kvalifikovaný obor názvů | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Plně kvalifikovaný obor názvů centra událostí. |
 
 Pro daný typ připojení můžou být podporované další možnosti. Informace o komponentě, která vytváří připojení, najdete v dokumentaci.
 
@@ -152,14 +154,26 @@ V některých případech můžete chtít zadat použití jiné identity. Může
 > [!NOTE]
 > Následující možnosti konfigurace nejsou podporované, pokud jsou hostované ve službě Azure Functions.
 
-Pokud se chcete připojit pomocí Azure Active Directory instančního objektu s ID klienta a tajným kódem, definujte připojení s následujícími vlastnostmi:
+Pokud se chcete připojit pomocí Azure Active Directory instančního objektu s ID klienta a tajným kódem, definujte kromě [vlastností připojení](#connection-properties) nahoře i připojení s následujícími požadovanými vlastnostmi:
 
-| Vlastnost    | Proměnná prostředí | Je povinné | Description |
-|---|---|---|---|
-| Identifikátor URI služby | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Identifikátor URI datové roviny služby, ke které se připojujete. |
-| ID tenanta | `<CONNECTION_NAME_PREFIX>__tenantId` | Yes | ID tenanta Azure Active Directory (Directory). |
-| ID klienta | `<CONNECTION_NAME_PREFIX>__clientId` | Yes |  ID klienta (aplikace) registrace aplikace v tenantovi. |
-| Tajný klíč klienta | `<CONNECTION_NAME_PREFIX>__clientSecret` | Yes | Tajný kód klienta, který se vygeneroval pro registraci aplikace. |
+| Vlastnost    | Proměnná prostředí | Description |
+|---|---|---|
+| ID tenanta | `<CONNECTION_NAME_PREFIX>__tenantId` | ID tenanta Azure Active Directory (Directory). |
+| ID klienta | `<CONNECTION_NAME_PREFIX>__clientId` |  ID klienta (aplikace) registrace aplikace v tenantovi. |
+| Tajný klíč klienta | `<CONNECTION_NAME_PREFIX>__clientSecret` | Tajný kód klienta, který se vygeneroval pro registraci aplikace. |
+
+Příklad `local.settings.json` vlastností vyžadovaných pro připojení na základě identity s objektem blob Azure: 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>Udělení oprávnění identitě
 

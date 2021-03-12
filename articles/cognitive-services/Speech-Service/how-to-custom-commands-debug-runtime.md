@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021792"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196914"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Ladění chyb při spuštění vlastní aplikace příkazů
 
@@ -28,7 +28,7 @@ Pokud vaše aplikace spouštět vlastní příkazy z [klientské aplikace (se sa
 | Kód chyby | Podrobnosti |
 | ------- | -------- |
 | [401](#error-401) | AuthenticationFailure: upgrade WebSocket se nezdařil s chybou ověřování. |
-| [1002](#error-1002)] | Server vrátil stavový kód "404", když byl očekáván stavový kód "101". |
+| [1002](#error-1002) | Server vrátil stavový kód "404", když byl očekáván stavový kód "101". |
 
 ### <a name="error-401"></a>Chyba 401
 - Oblast zadaná v klientské aplikaci se neshoduje s oblastí vlastní aplikace příkazu.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2a1c0c0685ab5a908a89f4a43073f9f773cd58c3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897913"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631995"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologie a koncepty
 
@@ -27,22 +27,18 @@ Toto téma poskytuje stručný přehled Azure Media Services terminologie a konc
 
 Základní koncepty popsané v těchto tématech by měly být před zahájením vývoje přezkoumány.
 
-> [!NOTE]
-> V současné době můžete pomocí [Azure Portal](https://portal.azure.com/) : spravovat Media Services V3 [živé události](live-events-outputs-concept.md), zobrazit (ne spravovat) v3 [assets](assets-concept.md)a [získat informace o přístupu k rozhraním API](./access-api-howto.md).
-> Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
-
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Terminologie Media Services V3
 
-|Období|Popis|
+|Období|Description|
 |---|---|
 |Živá událost|**Živá událost** představuje kanál pro ingestování, překódování (volitelně) a balení živých streamů pro video, zvuk a metadata v reálném čase.<br/><br/>Pro zákazníky, kteří migrují z rozhraní API Media Services V2, nahradí **živá událost** entitu **kanálu** ve verzi v2. Další informace najdete v tématu [migrace z verze V2 na V3](migrate-v-2-v-3-migration-introduction.md).|
 |Koncový bod streamování/balení/počátek|**Koncový bod streamování** představuje dynamický (just-in-time) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů mediálního streamování (HLS nebo POMLČKy). **Koncový bod streamování** navíc poskytuje dynamické šifrování (za běhu) k špičkovým systémům pro správu digitálních práv (několikanásobnou) v oboru.<br/><br/>V odvětví streamování médií se tato služba obvykle označuje jako **balírna** nebo **původ**.  Mezi další běžné výrazy v odvětví této funkce patří JITP (just-in-time-Package) nebo JITE (za běhu).
 
 ## <a name="media-services-v3-concepts"></a>Koncepty Media Services V3
 
-|Koncepty|Popis|Odkazy|
+|Koncepty|Description|Odkazy|
 |---|---|---|
 |Prostředky a nahrávání obsahu|Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát své digitální soubory do **assetů**.|[Nahrávání do cloudu a úložiště](storage-account-concept.md)<br/><br/>[Koncept prostředků](assets-concept.md)|
 |Kódování obsahu|Po nahrání vysoce kvalitních digitálních mediálních souborů do assetů je můžete kódovat do formátů, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. <br/><br/>Pro kódování pomocí Media Services V3 potřebujete vytvořit **transformace** a **úlohy**.|[Transformace a úlohy](transforms-jobs-concept.md)<br/><br/>[Kódování pomocí Media Services](encoding-concept.md)|
