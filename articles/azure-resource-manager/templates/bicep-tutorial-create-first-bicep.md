@@ -2,16 +2,16 @@
 title: Kurz – vytvoření & nasazení Azure Resource Manager souborů bicep
 description: Vytvořte svůj první soubor bicep pro nasazení prostředků Azure. V tomto kurzu se dozvíte o syntaxi souborů bicep a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 03/03/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036294"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632573"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Kurz: vytvoření a nasazení prvního souboru Azure Resource Manager bicep
 
@@ -76,7 +76,7 @@ V pořádku jste připraveni začít s bicep.
     Deklarace prostředků má čtyři komponenty:
 
     - **Resource**: klíčové slovo.
-    - **symbolický název** (STG): symbolický název je identifikátor pro odkazování na prostředek v celém souboru bicep. Nejedná se o to, který název prostředku bude při nasazení. Název prostředku je definován vlastností **Name** .  Podívejte se na čtvrtou komponentu v tomto seznamu. Aby bylo možné kurzy snadno sledovat, použije se jako symbolický název prostředku účtu úložiště v této sérii kurzů **STG** .
+    - **symbolický název** (STG): symbolický název je identifikátor pro odkazování na prostředek v celém souboru bicep. Nejedná se o to, který název prostředku bude při nasazení. Název prostředku je definován vlastností **Name** .  Podívejte se na čtvrtou komponentu v tomto seznamu. Aby bylo možné kurzy snadno sledovat, použije se jako symbolický název prostředku účtu úložiště v této sérii kurzů **STG** . Chcete-li zjistit, jak použít symbolický název k získání úplného seznamu vlastností objektu, přečtěte si téma [Přidání výstupů](./bicep-tutorial-add-outputs.md).
     - **typ prostředku** ( Microsoft.Storage/storageAccounts@2019-06-01 ): skládá se z poskytovatele prostředků (Microsoft. Storage), typu prostředku (StorageAccounts) a apiVersion (2019-06-01). Každý poskytovatel prostředků publikuje své vlastní verze rozhraní API, takže tato hodnota je specifická pro daný typ. Další typy a apiVersions pro různé prostředky Azure můžete najít na základě [odkazu na šablonu ARM](/azure/templates/).
     - **vlastnosti** (vše uvnitř = {...}): Jedná se o konkrétní vlastnosti, které chcete určit pro daný typ prostředku. Jsou to přesně stejné vlastnosti, které jsou pro vás k dispozici v šabloně ARM. Každý prostředek má `name` vlastnost. Většina prostředků má také `location` vlastnost, která nastaví oblast, kde je prostředek nasazen. Ostatní vlastnosti se liší podle typu prostředku a verze rozhraní API. Je důležité pochopit připojení mezi verzí rozhraní API a dostupnými vlastnostmi, takže se můžete pustit do více podrobností.
 

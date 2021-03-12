@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547349"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149660"
 ---
 # <a name="troubleshooting-message-routing"></a>Řešení potíží s směrováním zpráv
 
@@ -37,11 +37,11 @@ Pokud chcete tento problém vyřešit, analyzujte následující.
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>Metriky směrování pro tento koncový bod
 
-Všechny [metriky IoT Hub související se směrováním](monitor-iot-hub-reference.md#routing-metrics) jsou s předponou *Směrování* . Můžete zkombinovat informace z několika metrik a identifikovat tak hlavní příčinu problémů. Například použijte **doručení směrování** metriky k určení počtu zpráv, které byly doručeny do koncového bodu nebo vyřazeny, když neodpovídaly dotazům na některé z tras a záložní trase byly zakázány. Zkontrolujte metriku **latence směrování** a sledujte, jestli je latence pro doručování zpráv stabilní nebo roste. Rostoucí latence může indikovat problém s konkrétním koncovým bodem a doporučujeme zkontrolovat [stav koncového bodu](#the-health-of-the-endpoint). Tyto metriky směrování mají také [dimenze](monitor-iot-hub-reference.md#metric-dimensions) , které poskytují podrobnosti o metrikě, jako je typ koncového bodu, konkrétní název koncového bodu a důvod, proč nebyla zpráva doručena.
+Všechny [metriky IoT Hub související se směrováním](monitor-iot-hub-reference.md#routing-metrics) jsou s předponou *Směrování*. Můžete zkombinovat informace z několika metrik a identifikovat tak hlavní příčinu problémů. Například použijte **doručení směrování** metriky k určení počtu zpráv, které byly doručeny do koncového bodu nebo vyřazeny, když neodpovídaly dotazům na některé z tras a záložní trase byly zakázány. Zkontrolujte metriku **latence směrování** a sledujte, jestli je latence pro doručování zpráv stabilní nebo roste. Rostoucí latence může indikovat problém s konkrétním koncovým bodem a doporučujeme zkontrolovat [stav koncového bodu](#the-health-of-the-endpoint). Tyto metriky směrování mají také [dimenze](monitor-iot-hub-reference.md#metric-dimensions) , které poskytují podrobnosti o metrikě, jako je typ koncového bodu, konkrétní název koncového bodu a důvod, proč nebyla zpráva doručena.
 
 #### <a name="the-resource-logs-for-any-operational-issues"></a>Protokoly prostředků pro jakékoli provozní problémy
 
-Pokud chcete získat další informace o [operacích](#operation-names) směrování a koncových bodů nebo určit chyby a relevantní [kód chyby](#common-error-codes) , abyste mohli problém lépe pochopit, Prohlédněte si [protokoly prostředků **Směrování**](monitor-iot-hub-reference.md#routes) . Například název operace **RouteEvaluationError** v protokolu indikuje, že trasu nebylo možné vyhodnotit kvůli problému s formátem zprávy. Pomocí tipů pro konkrétní [názvy operací](#operation-names) můžete problém zmírnit. V případě, že událost je protokolována jako chyba, protokol také poskytne další informace o tom, proč selhalo vyhodnocení. Například pokud je název operace **EndpointUnhealthy** , [kód chyby](#common-error-codes) 403004 znamená, že koncový bod nemá dostatek místa.
+Pokud chcete získat další informace o [operacích](#operation-names) směrování a koncových bodů nebo určit chyby a relevantní [kód chyby](#common-error-codes) , abyste mohli problém lépe pochopit, Prohlédněte si [protokoly prostředků **Směrování**](monitor-iot-hub-reference.md#routes) . Například název operace **RouteEvaluationError** v protokolu indikuje, že trasu nebylo možné vyhodnotit kvůli problému s formátem zprávy. Pomocí tipů pro konkrétní [názvy operací](#operation-names) můžete problém zmírnit. V případě, že událost je protokolována jako chyba, protokol také poskytne další informace o tom, proč selhalo vyhodnocení. Například pokud je název operace **EndpointUnhealthy**, [kód chyby](#common-error-codes) 403004 znamená, že koncový bod nemá dostatek místa.
 
 #### <a name="the-health-of-the-endpoint"></a>Stav koncového bodu
 
@@ -82,4 +82,4 @@ Níže jsou uvedené názvy operací a kódy chyb zaznamenané v [protokolech pr
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další informace, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu** .
+Pokud potřebujete další informace, můžete se obrátit na odborníky na Azure na [fórech Microsoft Q&a a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826703"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630098"
 ---
 ## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
@@ -38,60 +38,31 @@ Následující proces generalizuje virtuální počítač Linux a znovu ho nasad
     1. V Azure Portal vyberte skupinu prostředků (RG) a zrušte přidělení virtuálního počítače.
     2. Váš virtuální počítač je teď zobecněný a můžete vytvořit nový virtuální počítač pomocí tohoto disku virtuálního počítače.
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>Pořízení snímku disku virtuálního počítače
+### <a name="capture-image"></a>Zachytit bitovou kopii
 
-1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
-2. V levém horním rohu vyberte **vytvořit prostředek**, vyhledejte a vyberte **snímek**.
-3. V okně snímek vyberte  **vytvořit**.
-4. Zadejte **název** snímku.
-5. Vyberte existující skupinu prostředků nebo zadejte název nového.
-6. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
-7. Vyberte **typ účtu** , který chcete použít k uložení snímku. Použijte **HDD úrovně Standard** , pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
-8. Vyberte **Vytvořit**.
+Jakmile je váš virtuální počítač připravený, můžete ho zachytit v galerii sdílených imagí Azure. Zachyťte postup podle následujících kroků:
 
-#### <a name="extract-the-vhd"></a>Extrakce VHD
+1. Na [Azure Portal](https://ms.portal.azure.com/)přejdete na stránku svého virtuálního počítače.
+2. Vyberte **zaznamenat**.
+3. V části **sdílet image do galerie sdílených imagí** vyberte **Ano, sdílejte ji do galerie jako verzi image**.
+4. V části **stav operačního systému** vyberte generalizovaná.
+5. Vyberte cílovou galerii imagí nebo **vytvořte novou**.
+6. Vyberte definici cílové Image nebo **vytvořte novou**.
+7. Zadejte **číslo verze** image.
+8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby.
+9. Po úspěšném ověření vyberte **vytvořit**.
 
-Pomocí následujícího skriptu exportujte snímek do virtuálního pevného disku v účtu úložiště.
+Aby bylo možné publikovat, musí mít účet vydavatele přístup vlastníka ke SIG. Udělení přístupu:
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Přejít do galerie sdílených imagí.
+2. Na levém panelu vyberte **řízení přístupu** (IAM).
+3. Vyberte **Přidat** a pak **Přidat přiřazení role**.
+4. Vyberte **roli** nebo **vlastníka**.
+5. V části **přiřadit přístup k** vybranému **uživateli, skupině nebo objektu služby**.
+6. Vyberte e-mail Azure osoby, která bude publikovat image.
+7. Vyberte **Uložit**.
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Zobrazí okno Přidat přiřazení role.":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>Vysvětlení skriptu
-
-Tento skript používá následující příkazy k vygenerování identifikátoru URI SAS pro snímek a zkopírování základního virtuálního pevného disku do účtu úložiště pomocí identifikátoru URI SAS. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
-
-| Příkaz | Poznámky |
-| --- | --- |
-| az disk grant-access | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.
-| az storage blob copy start | Asynchronně zkopíruje objekt BLOB z jednoho účtu úložiště do druhého. Slouží `az storage blob show` ke kontrole stavu nového objektu BLOB. |
-|
+> [!NOTE]
+> Nemusíte generovat identifikátory URI SAS, protože teď můžete publikovat v partnerském centru image SIG. Pokud však stále potřebujete odkazovat na kroky generování identifikátoru URI SAS, přečtěte si téma [jak vygenerovat identifikátor URI SAS pro image virtuálního počítače](../azure-vm-get-sas-uri.md).

@@ -1,16 +1,16 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure App Service
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure App Service. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: dab562ed8343f8bd282eea43dc500e28ba0998a3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 5c9202ecdf2e5166cc0f3c6c27d03c8e39a6408a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435819"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633562"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>Azure Policy kontroly dodržování předpisů pro Azure App Service
 

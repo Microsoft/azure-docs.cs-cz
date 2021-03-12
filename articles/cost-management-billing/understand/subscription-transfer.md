@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027267"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011098"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Informace o převodu vlastnictví fakturace předplatného Azure
 
@@ -30,16 +30,30 @@ Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou vaši podnikoví sp
 
 Vlastnictví předplatného může převést pouze správce fakturace účtu.
 
-## <a name="determine-account-billing-administrator"></a>Určení správce fakturace účtu
+## <a name="determine-if-you-are-a-billing-administrator"></a>Určení, jestli jste správcem fakturace
 
 <a name="whoisaa"></a>
 
-Správce fakturace je osoba, která má oprávnění ke správě fakturace účtu. Má oprávnění přistupovat k fakturaci na webu [Azure Portal](https://portal.azure.com) a provádět různé fakturační úkoly, jako je vytváření předplatných, zobrazení a platby faktur nebo aktualizace způsobů platby.
+V úsilí o provedení přenosu najděte osobu, která má přístup ke správě fakturace pro účet. Má oprávnění přistupovat k fakturaci na webu [Azure Portal](https://portal.azure.com) a provádět různé fakturační úkoly, jako je vytváření předplatných, zobrazení a platby faktur nebo aktualizace způsobů platby.
 
-Pokud chcete zjistit, pro které účty jste správcem fakturace, přejděte na [stránku Cost Management + Billing na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview). V levém podokně vyberte **Všechny rozsahy fakturace**. Na stránce s předplatnými se zobrazí všechna předplatná, pro která jste správcem fakturace.
+### <a name="check-if-you-have-billing-access"></a>Ověřte, jestli máte přístup k fakturaci.
 
-Pokud si nejste jisti, kdo je správcem účtu předplatného, přejděte na [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Vyberte předplatné, které chcete zkontrolovat, a podívejte se do části **Nastavení**. Vyberte **Vlastnosti** a správce účtu předplatného se zobrazí v poli **Správce účtu**.
+1. Pokud chcete identifikovat účty, ke kterým máte přístup k fakturaci, přejděte na [stránku cost management + fakturace v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 
+2. V nabídce na levé straně vyberte **fakturační účty** .
+
+3. Stránka výpis **oboru fakturace** zobrazuje všechna předplatná, ke kterým máte přístup, k fakturačním údajům.
+
+### <a name="check-by-subscription"></a>Kontrolovat podle předplatného
+
+1. Pokud si nejste jisti, kdo je správcem účtu předplatného, přejděte na [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). 
+
+2. Vyberte předplatné, které chcete kontrolovat.
+
+3. V záhlaví **Nastavení** vyberte **vlastnosti**. V poli **správce účtu** můžete pochopit, kdo je správcem účtu předplatného.
+
+   > [!NOTE]
+   > Ne všechny typy předplatného zobrazují vlastnosti.
 
 ## <a name="supported-subscription-types"></a>Podporované typy předplatného
 

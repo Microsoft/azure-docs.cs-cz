@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 7123c87d8883d9ac309797255152611fb9fb81d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584275"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010826"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Exportujte aplikace s platností tajných kódů a certifikátů.
 
-Tento ukázkový skript PowerShellu exportuje všechny aplikace s vypršenou platností tajných kódů a certifikátů pro zadané aplikace z vašeho adresáře v souboru CSV.
+Tento ukázkový skript PowerShellu exportuje do souboru CSV všechny registrace aplikací s vypršením platnosti tajných klíčů, certifikátů a jejich vlastníků pro zadané aplikace z vašeho adresáře.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,6 +33,7 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powe
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
 Příkaz "Add-Member" zodpovídá za vytváření sloupců v souboru CSV.
+Příkaz New-Object vytvoří objekt, který se použije pro sloupce v exportu souboru CSV.
 Proměnnou "$Path" můžete upravit přímo v PowerShellu s cestou k souboru CSV, pokud chcete, aby export neobsahoval neinteraktivní.
 
 | Příkaz | Poznámky |

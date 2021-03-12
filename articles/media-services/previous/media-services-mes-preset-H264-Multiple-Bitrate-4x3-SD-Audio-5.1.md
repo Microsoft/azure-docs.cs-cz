@@ -1,7 +1,7 @@
 ---
 title: H264 s více přenosovými rychlostmi 4x3 SD 5,1 | Microsoft Docs
 description: V tématu najdete přehled H264 přednastavené úlohy **4X3 SD Audio 5,1 s více přenosovými rychlostmi** .
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 200b90b2983a85ce546bd74bc28056ced5bba780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6b0be965d3393be19727467b75d5eb9b8b35353f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266829"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015161"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd-audio-51"></a>H264 Multiple Bitrate 4x3 SD Audio 5.1
 

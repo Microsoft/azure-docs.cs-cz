@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448640"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631179"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -152,7 +152,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Ano |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
 | **jednolet** | Year (Rok) |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
@@ -170,7 +170,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
 | **ver_but_verify** | Ověřit kód |
-| **alert_no** | Ne |
+| **alert_no** | No |
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
 | **dnu** | Den |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
@@ -356,7 +356,7 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-|intro_msg| Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat.|
+|intro_msg <sup>*</sup>| Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat.|
 |success_send_code_msg | Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání.|
 |failure_send_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu.|
 |success_verify_code_msg | E-mailová adresa byla ověřena. Nyní můžete pokračovat.|
@@ -365,6 +365,12 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 |but_verify_code | Ověřit kód|
 |but_send_new_code | Poslat nový kód|
 |but_change_claims | Změnit e-mail|
+
+Poznámka: `intro_msg` element je skrytý a není zobrazen na stránce s vlastním kontrolním výrazem. Chcete-li jej zobrazit, použijte [Customiztion HTML](customize-ui-with-html.md) s šablony stylů CSS. Například:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>Příklad ovládacího prvku zobrazení ověření
 

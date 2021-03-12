@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046665"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634154"
 ---
 # <a name="enable-vm-insights-overview"></a>Povolit přehled virtuálních počítačů Insights
 
@@ -41,11 +41,11 @@ Přehledy virtuálních počítačů podporují následující počítače:
 ## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
 Služba Azure Insights je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../agents/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../agents/agents-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../agents/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ne | |
+| Agenti systému Windows | Yes | Společně s [agentem Log Analytics pro Windows](../agents/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../agents/agents-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Yes | Společně s [agentem Log Analytics pro Linux](../agents/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | No | |
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -54,6 +54,7 @@ Přehledy virtuálních počítačů podporují libovolný operační systém, k
 > [!IMPORTANT]
 > Funkce stavu hosta virtuálních počítačů Insights má víc omezené podpory operačního systému, zatímco je ve verzi Public Preview. Podrobný seznam najdete v tématu [Povolení stavu hosta služby VM Insights (Preview)](../vm/vminsights-health-enable.md) .
 
+### <a name="linux-considerations"></a>Předpoklady pro Linux
 Podívejte se na následující seznam důležitých informací o podpoře agenta závislostí pro Linux, který podporuje službu VM Insights:
 
 - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
@@ -61,7 +62,22 @@ Podívejte se na následující seznam důležitých informací o podpoře agent
 - Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
 - Pro Debian distribuce jiné než verze 9,4 není funkce map podporována a funkce Performance je k dispozici pouze z nabídky Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 - Jádro CentOSPlus je podporováno.
-- Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
+
+Pro chyby zabezpečení Spectre a Meltdown je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux. Spusťte následující příkaz, který zkontroluje dostupnost, pokud došlo k omezení Spectre/Meltdown:
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+Výstup tohoto příkazu bude vypadat podobně jako v následujícím příkladu a určuje, jestli je počítač ohrožený buď problémem. Pokud tyto soubory chybí, počítač se neopraví.
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
 Virtuální počítač Insights vyžaduje Log Analytics pracovní prostor. Podrobnosti a požadavky tohoto pracovního prostoru najdete v tématu [konfigurace Log Analytics pracovního prostoru pro službu VM Insights](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenti

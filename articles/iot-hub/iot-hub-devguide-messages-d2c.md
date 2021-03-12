@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096092"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012883"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -126,7 +126,7 @@ Záložní cestu můžete povolit nebo zakázat v okně Azure Portal->směrován
 
 ## <a name="non-telemetry-events"></a>Události bez telemetrie
 
-Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat události s náhodnými změnami zařízení, události životního cyklu zařízení a digitální události změny. Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. V rámci [technologie Plug and Play Azure IoT](../iot-pnp/overview-iot-plug-and-play.md)může vývojář vytvořit trasy se zdrojem dat nastavenými na **digitální události změny** , a IoT Hub posílá zprávy vždy, když se nastaví nebo změní [vlastnost](../iot-pnp/iot-plug-and-play-glossary.md) s digitálním nastavením, [digitální zdvojení](../iot-pnp/iot-plug-and-play-glossary.md) se nahradí nebo když se událost změny stane pro podkladové vlákna zařízení.
+Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat události s náhodnými změnami zařízení, události životního cyklu zařízení a digitální události změny. Pokud je například vytvořená trasa se zdrojem dat nastaveným na **události změny zařízení s dvojitou změnou**, IoT Hub odesílá zprávy na koncový bod, který obsahuje změnu v zařízení. Podobně platí, že pokud se vytvoří trasa se zdrojem dat nastaveným na **události životního cyklu zařízení**, IoT Hub odešle zprávu s oznámením, jestli se zařízení odstranilo nebo vytvořilo. V rámci [technologie Plug and Play Azure IoT](../iot-pnp/overview-iot-plug-and-play.md)může vývojář vytvořit trasy se zdrojem dat nastavenými na **digitální události změny** , a IoT Hub posílá zprávy vždy, když se nastaví nebo změní vlastnost s digitálním nastavením, digitální zdvojení se nahradí nebo když se událost změny stane pro podkladové vlákna zařízení.
 
 [IoT Hub se taky integruje s Azure Event Grid](iot-hub-event-grid.md) k publikování událostí zařízení, aby podporovaly integrace v reálném čase a automatizaci pracovních postupů založených na těchto událostech. Podívejte se na klíčové [rozdíly mezi směrováním a Event Gridm zpráv a](iot-hub-event-grid-routing-comparison.md) Naučte se, co nejlépe vyhovuje vašemu scénáři.
 

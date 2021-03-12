@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fe73832ec5eaee62a2dc2d397c12f82334e2efd8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753615"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010694"
 ---
 # <a name="single-page-application-code-configuration"></a>Jednostránkové aplikace: Konfigurace kódu
 
 Naučte se konfigurovat kód pro jednostránkové aplikace (SPA).
 
-## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>Knihovny MSAL pro jednostránkové a podporované toky ověřování
+## <a name="microsoft-libraries-supporting-single-page-apps"></a>Knihovny Microsoftu podporující jednostránkové aplikace 
 
-Platforma Microsoft Identity Platform poskytuje následující knihovnu Microsoft Authentication Library pro JavaScript (MSAL.js), která podporuje implicitní tok toků a autorizačního kódu s PKCE pomocí doporučených postupů zabezpečení v oboru:
+Jednostránkové aplikace podporují následující knihovny Microsoftu:
 
-| Knihovna MSAL | Tok | Popis |
-|--------------|------|-------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | Tok autorizačního kódu (PKCE) | Jednoduchá knihovna JavaScriptu pro použití v jakékoli webové aplikaci na straně klienta, která je sestavena prostřednictvím rozhraní JavaScript nebo SPA, jako je například úhlová, Vue.jsa a React.js. |
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | Implicitní tok | Jednoduchá knihovna JavaScriptu pro použití v jakékoli webové aplikaci na straně klienta, která je sestavena prostřednictvím rozhraní JavaScript nebo SPA, jako je například úhlová, Vue.jsa a React.js. |
-| ![MSALý úhlový](media/sample-v2-code/logo_angular.png) <br/> [MSALý úhlový](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Implicitní tok | Obálka základní knihovny MSAL.js pro zjednodušení použití v jednostránkovéch aplikacích, které jsou sestaveny prostřednictvím úhlové architektury. |
+[!INCLUDE [active-directory-develop-libraries-spa](../../../includes/active-directory-develop-libraries-spa.md)]
 
 ## <a name="application-code-configuration"></a>Konfigurace kódu aplikace
 

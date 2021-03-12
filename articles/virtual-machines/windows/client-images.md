@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d09f27eebba5db2edb56185b658c8ae2b06e42d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552265"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200010"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje a testování
 V Azure můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) pro scénáře vývoje a testování, pokud máte příslušné předplatné sady Visual Studio (dříve MSDN). 
@@ -41,10 +41,10 @@ Následující tabulka popisuje ID nabídek, které mají nárok na nasazení im
 | [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N s aktualizací SP1 (x64) |
 
 ## <a name="check-your-azure-subscription"></a>Kontrolovat předplatné Azure
-Pokud ID vaší nabídky neznáte, můžete ho získat pomocí Azure Portal jedním z těchto dvou způsobů:  
+Pokud ID vaší nabídky neznáte, můžete ho získat pomocí Azure Portal.  
 - V okně *odběry* : ![ Podrobnosti ID nabídky z Azure Portal](./media/client-images/offer-id-azure-portal.png) 
-- Případně klikněte na **fakturace** a potom klikněte na ID vašeho předplatného. ID nabídky se zobrazí v okně *fakturace* .
-ID nabídky si můžete prohlédnout také na [kartě předplatné](https://account.windowsazure.com/Subscriptions) na portálu účtů Azure: ![ Podrobnosti ID nabídky na portálu účtů Azure.](./media/client-images/offer-id-azure-account-portal.png) 
+- Případně klikněte na **fakturace** a potom klikněte na ID vašeho předplatného. ID nabídky se zobrazí v okně *fakturace* . 
+- ID nabídky si můžete prohlédnout také na [kartě předplatné](https://account.windowsazure.com/Subscriptions) na portálu účtů Azure: ![ Podrobnosti ID nabídky na portálu účtů Azure.](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Další kroky
 Virtuální počítače teď můžete nasadit pomocí [PowerShellu](quick-create-powershell.md), [Správce prostředků šablon](ps-template.md)nebo sady [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

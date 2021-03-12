@@ -2,16 +2,16 @@
 title: Kurz – Přidání značek k prostředkům v souboru Azure Resource Manager bicep
 description: Přidejte značky do prostředků, které nasadíte do souborů bicep. Značky umožňují logicky organizovat prostředky.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748031"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632594"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>Kurz: Přidání značek do souborů Azure Resource Manager bicep
 
@@ -37,7 +37,7 @@ Po nasazení těchto prostředků možná budete potřebovat sledovat náklady a
 
 Prostředky označíte, abyste přidali hodnoty, které vám pomůžou identifikovat jejich použití. Můžete například přidat značky, které uvádějí prostředí a projekt. Můžete přidat značky, které identifikují nákladové středisko nebo tým, který je vlastníkem daného prostředku. Přidat můžete libovolné hodnoty, které pro vaši organizaci dávají smysl.
 
-Následující příklad zvýrazní změny v souboru bicep. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
+Následující příklad ukazuje změny v souboru bicep. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 

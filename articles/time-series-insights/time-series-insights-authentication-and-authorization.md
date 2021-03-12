@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041208"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009262"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
-V závislosti na vašich obchodních potřebách může vaše řešení zahrnovat jednu nebo víc klientských aplikací, které používáte k interakci s [rozhraními api](/rest/api/time-series-insights/reference-data-access-overview)Azure Time Series Insightsho prostředí. Azure Time Series Insights provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Pokud chcete ověřit klienty, budete muset získat token nosiče se správnými oprávněními a předat ho spolu s vaším voláním rozhraní API. Tento dokument popisuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a ověření.
-
-
-  Postup registrace aplikace v Azure Active Directory pomocí nového okna Azure Active Directory Aplikace zaregistrované v Azure Active Directory umožňují uživatelům ověřování a autorizaci používat rozhraní API služby Azure Time Series Insights přidružené k prostředí Azure Time Series Insights.
+V závislosti na vašich obchodních potřebách může vaše řešení zahrnovat jednu nebo víc klientských aplikací, které používáte k interakci s [rozhraními api](/rest/api/time-series-insights/reference-data-access-overview)Azure Time Series Insightsho prostředí. Azure Time Series Insights provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Pokud chcete ověřit klienty, budete muset získat token nosiče se správnými oprávněními a předat ho spolu s vaším voláním rozhraní API. Tento dokument popisuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a k ověření, včetně použití spravované identity a Azure Active Directory registrace aplikací.
 
 ## <a name="managed-identities"></a>Spravované identity
 
@@ -108,10 +105,7 @@ Jakmile se spravovaná identita nebo registrace aplikace zřídí a přiřadí r
 
 Při přístupu z Azure App Service nebo funkcí postupujte podle pokynů v části [získání tokenů pro prostředky Azure](../app-service/overview-managed-identity.md).
 
-> [!TIP]
-> Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím [klientské knihovny Azure identity](/dotnet/api/overview/azure/identity-readme) pro .NET. 
-
-Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím balíčku Microsoft. Azure. Services. AppAuthentication. Tento balíček je oblíbený z důvodu zjednodušení a zabezpečení. Vývojáři mohou napsat kód jednou a povolit klientské knihovně, aby určili, jak ověřit na základě prostředí aplikace – ať už na pracovní stanici pro vývojáře pomocí účtu vývojáře nebo nasazeného v Azure pomocí identity spravované služby. Pokyny k migraci z předchůdce knihovny AppAuthentication najdete v článku [pokyny pro migraci AppAuthentication na Azure. identity](/dotnet/api/overview/azure/app-auth-migration).
+Pro aplikace a funkce .NET je nejjednodušší způsob práce se spravovanou identitou prostřednictvím [klientské knihovny Azure identity](/dotnet/api/overview/azure/identity-readme) pro .NET. Tato Klientská knihovna je oblíbená z důvodu zjednodušení a výhod zabezpečení. Vývojáři mohou napsat kód jednou a povolit klientské knihovně, aby určili, jak ověřit na základě prostředí aplikace – ať už na pracovní stanici pro vývojáře pomocí účtu vývojáře nebo nasazeného v Azure pomocí identity spravované služby. Pokyny k migraci z předchůdce knihovny AppAuthentication najdete v článku [pokyny pro migraci AppAuthentication na Azure. identity](/dotnet/api/overview/azure/app-auth-migration).
 
 Vyžádání tokenu pro Azure Time Series Insights pomocí jazyka C# a klientské knihovny Azure identity pro .NET:
 
@@ -154,7 +148,7 @@ Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Popis |
+| Požadovaná hlavička žádosti | Description |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Azure Time Series Insights, musí být do [autorizační hlavičky](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)předána platný nosný token OAuth 2,0. |
 
@@ -163,7 +157,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Popis |
+| Nepovinná hlavička požadavku | Description |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -172,7 +166,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Popis |
+| Hlavička odpovědi | Description |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |

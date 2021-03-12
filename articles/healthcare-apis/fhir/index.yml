@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Dokumentace k Azure API for FHIR
+summary: Azure API for FHIR je spravované rozhraní API pro klinická zdravotnická data, které je založené na standardech a umožňuje vytvářet řešení pro analýzy s možností reakce a strojové učení.
+metadata:
+  title: Dokumentace k Azure API for FHIR – kurzy, praktičtí průvodci
+  description: Azure API for FHIR je spravované rozhraní API pro klinická zdravotnická data, které je založené na standardech a umožňuje vytvářet řešení pro analýzy s možností reakce a strojové učení.
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "103017431"
+landingContent:
+- title: Začínáme s Azure API for FHIR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure API for FHIR?
+      url: overview.md
+    - text: Co je konektor Azure IoT pro FHIR (Preview)?
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: Nasazení serveru API pro FHIR
+      url: fhir-paas-portal-quickstart.md
+    - text: Nasazení konektoru Azure IoT pro FHIR (Preview)
+      url: iot-fhir-portal-quickstart.md
+- title: Kurzy pro nastavení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení javascriptové aplikace pro čtení dat ze služby FHIR
+      url: tutorial-web-app-fhir-server.md
+    - text: Přístup k rozhraní API pro FHIR pomocí Postmana
+      url: access-fhir-postman-tutorial.md
+    - text: Integrace SMART pro lékařské záznamy a aplikace třetích stran
+      url: use-smart-on-fhir-proxy.md
+    - text: Příjem dat ze zařízení prostřednictvím Azure IoT Hubu
+      url: device-data-through-iot-hub.md
+- title: Registrace aplikací pro ověřování AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registrace aplikace prostředků
+      url: register-resource-azure-ad-client-app.md
+    - text: Registrace důvěrné klientské aplikace
+      url: register-confidential-azure-ad-client-app.md
+    - text: Registrace veřejné klientské aplikace
+      url: register-public-azure-ad-client-app.md
+    - text: Registrace servisní klientské aplikace
+      url: register-service-azure-ad-client-app.md

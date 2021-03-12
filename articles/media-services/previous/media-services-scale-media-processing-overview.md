@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0692996c27f969ffc90078db2ddcc849ee15ab1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020891"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012713"
 ---
 # <a name="media-reserved-units"></a>Rezervované jednotky médií
 
@@ -30,7 +30,7 @@ Azure Media Services vám umožní škálovat zpracování médií správou reze
 
 Následující tabulka vám pomůže při rozhodování o tom, jak určit různé rychlosti kódování.  Zobrazuje dobu trvání kódování po dobu 7 minut, 1080p v závislosti na použitém použitém seznamu.
 
-|Typ RU|Scénář|Příklady výsledků pro video o 7 min. |
+|Typ RU|Scenario|Příklady výsledků pro video o 7 min. |
 |---|---|---|
 | **S1**|Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo pod rozlišením, nezávislá na čase, nízké náklady.|Kódování souboru MP4 s jednou přenosovou rychlostí SD pomocí "H264 s jednou přenosovou rychlostí" 16x9 "trvá přibližně 7 minut.|
 | **S2**|Jedna přenosová rychlost a s více přenosovými rychlostmi.<br/>Normální použití pro kódování SD i HD.|Kódování s přednastavenou H264 Single přenosovou rychlostí 720p trvá přibližně 6 minut.<br/><br/>Kódování s přednastaveným H264 Multiple přenosovou rychlostí 720p trvá přibližně 12 minut.|

@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008056"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616090"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
 
@@ -51,9 +51,16 @@ Vytvořte cloudovou skupinu prostředků pro správu všech prostředků, které
 
 Ujistěte se, že vaše zařízení IoT Edge splňuje následující požadavky:
 
-* POČÍTAČ nebo server s Windows verze 1809 nebo novější
-* Minimálně 4 GB paměti, doporučená velikost paměti 8 GB
-* 10 GB volného místa na disku
+* Edice
+  * Windows 10 verze 1809 nebo novější; Build 17763 nebo novější
+    * Professional, Enterprise, IoT Enterprise
+  * Windows Server 2019 Build 17763 nebo novější
+
+  
+* Požadavky na hardware
+  * Minimální volná paměť: 2 GB
+  * Minimální volné místo na disku: 10 GB
+
 
 >[!NOTE]
 >V tomto rychlém startu se pomocí centra pro správu Windows vytvoří nasazení IoT Edge pro Linux ve Windows. Můžete také použít PowerShell. Pokud chcete k vytvoření nasazení použít PowerShell, postupujte podle pokynů v příručce k [instalaci a zřízení Azure IoT Edge pro Linux na zařízení s Windows](how-to-install-iot-edge-on-windows.md).
@@ -108,7 +115,7 @@ Nainstalujte do svého zařízení IoT Edge pro Linux ve Windows a nakonfigurujt
 
 ![Diagram, který ukazuje krok spuštění modulu runtime IoT Edge.](./media/quickstart/start-runtime.png)
 
-1. [Stáhněte si centrum pro správu systému Windows](https://aka.ms/WACDownloadEFLOW).
+1. [Stáhněte si centrum pro správu systému Windows](https://aka.ms/wacdownload).
 
 1. Podle pokynů v Průvodci instalací nastavte centrum pro správu Windows na svém zařízení.
 

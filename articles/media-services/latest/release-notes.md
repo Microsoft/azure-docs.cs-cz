@@ -11,18 +11,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: fc48c9b8a0a7510dd8792c959c1f63a0340f89ce
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609389"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011200"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
 V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
@@ -32,12 +30,6 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Zastaralé funkce
 
 ## <a name="known-issues"></a>Známé problémy
-
-> [!NOTE]
-> [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
->
-> Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="february-2021"></a>Únor 2021
 
@@ -54,20 +46,22 @@ Kromě vlastního kódování jsou nyní k dispozici následující nově Vestav
 - H265SingleBitrate1080p
 - H265SingleBitrate4K
 
-
 Zákazníci, kteří dříve používali HEVC v kodéru Premium v rozhraní API v2, by měli migrovat na používání nové podpory kódování HEVC ve standardním kodéru.
 
 ### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Oznámení o zastaralosti rozhraní API pro Azure Media Services V2 a sady SDK
 
 #### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Aktualizace Azure Media Services REST API a sad SDK na V3 od 29. února 2024
 
-Vzhledem k tomu, že verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java nabízí více funkcí než verze 2, vyvyřazujeme verze 2 Azure Media Services REST API a klientské sady SDK pro .NET a Java. Doporučujeme, abyste tento přepínač provedli dřív, abyste získali bohatší výhody verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java. Verze 3 poskytuje: 
+Vzhledem k tomu, že verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java nabízí více funkcí než verze 2, vyvyřazujeme verze 2 Azure Media Services REST API a klientské sady SDK pro .NET a Java.
+
+Doporučujeme, abyste tento přepínač provedli dřív, abyste získali bohatší výhody verze 3 Azure Media Services REST API a klientské sady SDK pro .NET a Java.
+Verze 3 poskytuje:
  
 - nepřetržitá podpora živé události
 - Rozhraní REST API pro platformu ARM, klientské sady SDK pro .NET Core, Node.js, Python, Java, přejít a Ruby.
-- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
-#### <a name="action-required"></a>Požaduje se akce:
+#### <a name="action-required"></a>Požadována akce
 
 Chcete-li minimalizovat přerušení vašich úloh, přečtěte si [Průvodce migrací](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a převeďte svůj kód z rozhraní API verze 2 a sady SDK na verzi 3 API a SDK před 29. února 2024.
 **Po 29. února 2024** přestane Azure Media Services nadále přijímat provoz ve verzi 2 REST API, rozhraní API pro správu účtů ARM verze 2015-10-01 nebo z SDK klienta .NET verze 2. To zahrnuje všechny klientské sady SDK Open Source třetích stran, které mohou volat rozhraní API verze 2.  
@@ -76,9 +70,9 @@ Podívejte se na oficiální [oznámení o aktualizacích Azure](https://azure.m
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>Podpora kodéru úrovně Standard pro v2 API
 
-Kromě nově přidané podpory pro kódování HEVC (H. 265) jsou nyní k dispozici následující funkce ve verzi 2020-05-01 rozhraní API pro kódování. 
+Kromě nově přidané podpory pro kódování HEVC (H. 265) jsou nyní k dispozici následující funkce ve verzi 2020-05-01 rozhraní API pro kódování.
 
-- V nové podpoře **JobInputClip** se teď podporuje víc sešitů vstupních souborů. 
+- V nové podpoře **JobInputClip** se teď podporuje víc sešitů vstupních souborů.
     - K dispozici je příklad pro .NET, který ukazuje, jak [spojí dva prostředky dohromady](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
 - Výběr zvukové stopy umožňuje zákazníkům vybrat a namapovat příchozí zvukové stopy a směrovat je do výstupu pro kódování.
     - Podrobnosti o **AudioTrackDescriptor** a sledování výběru najdete v [REST API openapi](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) .
@@ -96,6 +90,15 @@ Aktualizujte prosím na nejnovější klientské sady SDK v základu kódu pomoc
 - [Node.js 8.1.0 verze TypeScript](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Python Azure – Správa – Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
 - [Java SDK 1.0.0-beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>Nové funkce zabezpečení dostupné ve verzi 2020-05-01 rozhraní API pro Azure Media Services
+
+- **[Spravované klíče zákazníka](concept-use-customer-managed-keys-byok.md)**: klíče obsahu a jiná data uložená v účtech vytvořených s rozhraním API verze 2020-05-01 jsou šifrovaná pomocí klíče účtu. Zákazníci můžou zadat klíč k šifrování klíče účtu.
+
+- **[Důvěryhodné úložiště](concept-trusted-storage.md)**: Media Services lze nakonfigurovat pro přístup Azure Storage pomocí spravované identity přidružené k účtu Media Services. Při přístupu k účtům úložiště pomocí spravované identity můžou zákazníci nakonfigurovat více omezujících seznamů ACL sítě v účtu úložiště bez blokování Media Servicesch scénářů.
+
+- **[Spravované identity](concept-managed-identities.md)**: zákazníci můžou povolit spravovanou identitu přiřazenou systémem pro účet Media Services, aby mohli poskytovat přístup k trezorům klíčů (pro spravované klíče zákazníka) a účtům úložiště (pro důvěryhodné úložiště).
+
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Aktualizované ukázky Node.js TypeScript pomocí sady isomorphic SDK pro JavaScript
 
@@ -143,7 +146,8 @@ Live Encoding teď přidává schopnost zasílat fragmenty intervalu pevného sn
 ## <a name="august-2020"></a>Srpen 2020
 
 ### <a name="dynamic-encryption"></a>Dynamické šifrování
-V dynamickém balíčku je teď k dispozici podpora starší verze formátu souboru s podporou technologie PlayReady Protected (PIFF 1,1). To poskytuje podporu pro starší sady inteligentních televizních pořadů od společnosti Samsung a LG, které implementovaly počáteční koncepty služby Common Encryption Standard (CENC) publikované Microsoftem.  Formát PIFF 1,1 se označuje také jako formát šifrování, který byl dříve podporován knihovnou klienta Silverlight. V současné době je jediným scénářem použití tohoto formátu šifrování zaměření na starší verzi inteligentního televizního vysílání, kde v některých oblastech zůstane netriviální počet inteligentních televizorů, které podporují jenom Smooth Streaming šifrování PIFF 1,1. 
+
+V dynamickém balíčku je teď k dispozici podpora starší verze formátu souboru s podporou technologie PlayReady Protected (PIFF 1,1). To poskytuje podporu pro starší sady inteligentních televizních pořadů od společnosti Samsung a LG, které implementovaly počáteční koncepty služby Common Encryption Standard (CENC) publikované Microsoftem.  Formát PIFF 1,1 se označuje také jako formát šifrování, který byl dříve podporován knihovnou klienta Silverlight. V současné době je jediným scénářem použití tohoto formátu šifrování zaměření na starší verzi inteligentního televizního vysílání, kde v některých oblastech zůstane netriviální počet inteligentních televizorů, které podporují jenom Smooth Streaming šifrování PIFF 1,1.
 
 Pokud chcete použít novou podporu šifrování PIFF 1,1, změňte hodnotu šifrování na PIFF v cestě URL lokátoru streamování. Další podrobnosti najdete v [přehledu Content Protection.](content-protection-overview.md)
 Například: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|

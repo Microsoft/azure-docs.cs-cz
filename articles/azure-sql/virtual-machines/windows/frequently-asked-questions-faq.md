@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 91f93faded7c18a1bc24f17053231f9011080c57
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036233"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224669"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -244,6 +244,10 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 1. **Podporují se na virtuálních počítačích s SQL Server distribuované transakce s MSDTC?**
    
     Ano. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
+    
+1. **Přesouvá se virtuální počítač Azure SQL mimo oblast a ukládá nebo ukládá data zákazníků?**
+
+   No. Virtuální počítač Azure SQL a rozšíření agenta SQL IaaS ve skutečnosti neukládají žádná zákaznická data.
 
 ## <a name="sql-server-iaas-agent-extension"></a>Rozšíření agenta SQL Server IaaS
 
