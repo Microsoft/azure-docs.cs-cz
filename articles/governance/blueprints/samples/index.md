@@ -1,14 +1,14 @@
 ---
 title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
-ms.date: 02/08/2020
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370950"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200994"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -22,7 +22,8 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 | [Srovnávací test zabezpečení Azure](./azure-security-benchmark.md) | Poskytuje ochranné mantinely pro dodržování předpisů [Azure Security Benchmarku](../../../security/benchmarks/overview.md). |
 | [Azure Security benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Nasadí a nakonfiguruje Azure Security benchmark Foundation. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM). |
-| [Srovnávací test CIS Microsoft Azure Foundations](./cis-azure-1-1-0.md)| Poskytuje sadu zásad, které pomáhají dodržovat doporučení srovnávacího testu CIS Microsoft Azure Foundations. |
+| [CI Microsoft Azure Foundation – srovnávací testy v 1.3.0](./cis-azure-1-3-0.md)| Poskytuje sadu zásad, které vám pomůžou dodržovat pravidla modelu CI Microsoft Azure Foundation v 1.3.0 Foundation v tématu doporučení. |
+| [Srovnávací test CIS Microsoft Azure Foundations v1.1.0](./cis-azure-1-1-0.md)| Poskytuje sadu zásad, které vám pomůžou dodržovat pravidla modelu CI Microsoft Azure Foundation v 1.1.0 Foundation v tématu doporučení. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard DoD Impact Level 4. |
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard DoD Impact Level 5. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Poskytuje sadu zásad, které pomáhají dodržovat standard FedRAMP Moderate. |

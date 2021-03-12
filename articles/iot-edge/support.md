@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: edca5a278414288ceb3c3d13f5d49e723e0ee5c2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045985"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615920"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -23,7 +23,7 @@ Tento článek poskytuje podrobné informace o tom, které systémy a součásti
 
 Pokud při používání služby Azure IoT Edge nastanou problémy, existuje několik způsobů, jak hledat podporu. Pro podporu zkuste použít jeden z následujících kanálů:
 
-**Hlášení chyb** – většina vývoje, která se do Azure IoT Edgeho produktu stane, se nachází v projektu IoT Edge open source. Chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v projektu. Opravy se rychle dostanou z projektu na aktualizace produktů.
+**Hlášení chyb** – většina vývoje, která se do Azure IoT Edgeho produktu stane, se nachází v projektu IoT Edge open source. Chyby mohou být hlášeny na [stránce problémy](https://github.com/azure/iotedge/issues) v projektu. Chyby související s Azure IoT Edge pro Linux ve Windows se dají ohlásit na [stránce problémů iotedge-eFlow](https://github.com/azure/iotedge-eflow/issues). Opravy se rychle dostanou z projektů do aktualizací produktů.
 
 **Tým zákaznické podpory Microsoftu** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) , můžou tým podpory zákazníků společnosti Microsoft zahájit vytvořením lístku podpory přímo z [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

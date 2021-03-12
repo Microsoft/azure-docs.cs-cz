@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439625"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636670"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -36,6 +36,7 @@ Aktualizace v březnu zahrnují:
 - [Azure Monitor sešitů integrovaných do Security Center a tří dodaných šablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Řídicí panel dodržování předpisů teď zahrnuje sestavy služby Azure audit (Preview).](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
 - [Aktualizace zásad pro nasazení automatizace pracovního postupu](#updates-to-the-policies-for-deploying-workflow-automation)
+- [Dvě starší verze doporučení už Nezapisovat data přímo do protokolu aktivit Azure](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Správa Azure Firewall integrovaná do Security Center
@@ -113,6 +114,19 @@ K funkcím těchto zásad jsou k dispozici dvě aktualizace:
 Začínáme se [šablonami automatizace pracovních postupů](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
 Přečtěte si další informace o tom, jak [automatizovat odpovědi na triggery Security Center](workflow-automation.md).
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>Dvě starší verze doporučení už Nezapisovat data přímo do protokolu aktivit Azure 
+
+Security Center předá data pro téměř všechna doporučení zabezpečení, aby je Azure Advisor, která zase zapisuje do [protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md).
+
+V případě dvou doporučení se data zapisují současně přímo do protokolu aktivit Azure. Tato změna Security Center zastaví zápis dat těchto starších doporučení zabezpečení přímo do protokolu aktivit. Místo toho data exportujeme, abychom Azure Advisori jako u všech dalších doporučení.
+
+Existují dvě starší verze doporučení:
+- Na vašich počítačích by se měly vyřešit problémy stavu aplikace Endpoint Protection.
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+
+Pokud jste přistupovali k informacím o těchto dvou doporučeních v kategorii "doporučení typu TaskDiscovery" protokolu aktivit, nebude už k dispozici.
 
 
 

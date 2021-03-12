@@ -3,7 +3,7 @@ title: Vkládání reklam na straně klienta | Microsoft Docs
 description: Tento článek ukazuje, jak vložit reklamy do média na straně klienta.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263565"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014951"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
 
@@ -164,7 +164,7 @@ V elementu jsou také určeny nelineární reklamy `<Creative>` . Následující
     </Creative>
 ```
 
-Element <**NonLinearAds**> může obsahovat jeden nebo více <**nelineárních**> prvků, z nichž každá může popsat nelineární službu AD. Nelineární **NonLinear**> prvek <Určuje prostředek pro nelineární službu AD. Prostředkem může být <**StaticResource**>, <**IFrameResource**> nebo <**HTMLResource**>. \<**StaticResource**> Popisuje prostředek, který není HTML, a definuje atribut creativeType, který určuje, jak se prostředek zobrazuje:
+Element <**NonLinearAds**> může obsahovat jeden nebo více <**nelineárních**> prvků, z nichž každá může popsat nelineární službu AD. Nelineární > prvek <Určuje prostředek pro nelineární službu AD. Prostředkem může být <**StaticResource**>, <**IFrameResource**> nebo <**HTMLResource**>. \<**StaticResource**> Popisuje prostředek, který není HTML, a definuje atribut creativeType, který určuje, jak se prostředek zobrazuje:
 
 Image/gif, obrázek/JPEG, obrázek/png – prostředek se zobrazí ve značce HTML <**img**>.
 

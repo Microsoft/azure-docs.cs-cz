@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504929"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149337"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Nastavení cílových výpočetních prostředků pro školení a nasazení modelu
 
@@ -64,11 +64,7 @@ Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovan
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače
 
-Azure Machine Learning také podporuje uvedení vlastního výpočetního prostředku a jeho připojení k pracovnímu prostoru. Jedním z těchto typů prostředků je libovolný vzdálený virtuální počítač, pokud je dostupný z Azure Machine Learning. Prostředkem může být virtuální počítač Azure, vzdálený server ve vaší organizaci nebo místní. Konkrétně pro vzdálené spuštění s ohledem na IP adresu a přihlašovací údaje (uživatelské jméno a heslo nebo klíč SSH) můžete použít libovolný dostupný virtuální počítač.
-
-Můžete použít [systémem sestavené prostředí conda](how-to-use-environments.md), již existující [prostředí Pythonu](how-to-configure-environment.md#local)nebo [kontejner Docker](https://docs.docker.com/engine/install/ubuntu/). Aby bylo možné provést v kontejneru Docker, je nutné mít na virtuálním počítači spuštěný modul Docker. Tato funkce je užitečná hlavně v případě, že chcete pružně flexibilní prostředí pro vývoj a experimentování v cloudu než na vašem místním počítači.
-
-Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako virtuální počítač Azure s možností výběru. Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](./how-to-configure-environment.md#dsvm).
+Azure Machine Learning podporuje také připojení virtuálního počítače Azure. Virtuální počítač musí být Azure Data Science Virtual Machine (DSVM). Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](./how-to-configure-environment.md#dsvm).
 
 1. **Vytvořit**: Vytvořte DSVM ještě před tím, než ho použijete ke školení svého modelu. Pokud chcete tento prostředek vytvořit, přečtěte si téma [zřízení Data Science Virtual Machine pro Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 

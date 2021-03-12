@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Řídicí panel hodnocení a recenzí
       href: partner-center-portal/ratings-reviews.md
+    - name: Programový přístup k analýzám
+      items:
+        - name: Začínáme
+          href: analytics-get-started.md
+        - name: Požadavky na programový přístup
+          href: analytics-prerequisites.md
+        - name: Programové přístupové paradigma
+          href: analytics-programmatic-access.md
+        - name: Udělejte své první volání rozhraní API
+          href: analytics-make-your-first-api-call.md
+        - name: Seznam systémových dotazů
+          href: analytics-system-queries.md
+        - name: Ukázkové dotazy
+          href: analytics-sample-queries.md
+        - name: Ukázková aplikace
+          href: analytics-sample-application.md
+        - name: Specifikace vlastního dotazu
+          href: analytics-custom-query-specification.md
+        - name: Nejčastější dotazy k program Analytics
+          href: analytics-programmatic-faq.md
+        - name: Reference k rozhraní API pro analýzu
+          items:
+            - name: Seznam rozhraní API
+              href: analytics-available-apis.md
+            - name: Získat všechny datové sady
+              href: analytics-api-get-all-datasets.md
+            - name: Získat rozhraní API pro dotazy sestav
+              href: analytics-api-get-report-queries.md
+            - name: Odstranit rozhraní API pro dotazy sestav
+              href: analytics-api-delete-report-queries.md
+            - name: Vyzkoušet rozhraní API dotazů sestav
+              href: analytics-api-try-report-queries.md
+            - name: Získat rozhraní API pro sestavy
+              href: analytics-api-get-report.md
+            - name: Rozhraní API pro aktualizaci sestav
+              href: analytics-api-update-report.md
+            - name: Odstranit rozhraní API sestav
+              href: analytics-api-delete-report.md
+            - name: Pozastavit rozhraní API pro spouštění sestav
+              href: analytics-api-pause-report-executions.md
+            - name: Obnovit rozhraní API pro spouštění sestav
+              href: analytics-api-resume-report-executions.md
     - name: Správa anomálií s měřením fakturace
       href: anomaly-detection.md
     - name: Časté dotazy k analýzám

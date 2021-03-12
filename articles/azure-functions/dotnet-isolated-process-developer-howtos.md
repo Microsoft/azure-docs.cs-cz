@@ -4,14 +4,14 @@ description: Naučte se vytvářet a ladit funkce C# pomocí .NET 5,0 a pak nasa
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 70eacc5ec7f6adb65ba6e01c55acc6c6e3075ca9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583894"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201371"
 ---
-# <a name="develop-and-publish-net-5-function-using-azure-functions"></a>Vývoj a publikování funkce .NET 5 pomocí Azure Functions 
+# <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Vývoj a publikování funkcí rozhraní .NET 5 pomocí Azure Functions 
 
 V tomto článku se dozvíte, jak pracovat s funkcemi jazyka C# pomocí rozhraní .NET 5,0, které se spouští mimo proces z modulu runtime Azure Functions. Naučíte se, jak vytvářet, ladit místně a publikovat tyto funkce izolovaného procesu .NET do Azure. V Azure se tyto funkce spouštějí v izolovaném procesu, který podporuje .NET 5,0. Další informace najdete v tématu [Průvodce pro spouštění funkcí v .net 5,0 v Azure](dotnet-isolated-process-guide.md).
 
@@ -152,7 +152,7 @@ V tomto okamžiku můžete spustit `func start` příkaz z kořenové složky pr
  
 1. Ve výstupu Azure Functions modulu runtime si poznamenejte ID procesu hostitelského procesu, ke kterému budete připojovat ladicí program. Také si poznamenejte adresu URL místní funkce.
 
-1. V nabídce **ladění** v aplikaci Visual Studio vyberte možnost **připojit k procesu...**, vyhledejte proces dotnet.exe, který odpovídá ID procesu, a vyberte **připojit**. 
+1. V nabídce **ladění** v aplikaci Visual Studio vyberte možnost **připojit k procesu...**, vyhledejte proces, který odpovídá ID procesu, a vyberte **připojit**. 
     
     :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="Připojit ladicí program k procesu hostitele Functions":::    
 

@@ -180,7 +180,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: Požadavky na zákaznická data
       href: time-series-insights-customer-data-requests.md
     - name: Materiály pro vývojáře

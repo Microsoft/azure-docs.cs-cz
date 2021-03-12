@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453072"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200211"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge pro
 
@@ -103,7 +103,7 @@ Kromě výchozího režimu s plným připojením může být zařízení také s
 
 - **Plně připojeno** – jedná se o normální výchozí režim, ve kterém zařízení funguje. V tomto režimu je povolené nahrávání do cloudu i stahování dat. Ke správě zařízení můžete použít Azure Portal nebo místní webové uživatelské rozhraní.
 
-- **Částečně odpojeno** – v tomto režimu nemůže zařízení nahrávat ani stahovat žádná sdílená data, ale dá se spravovat prostřednictvím Azure Portal.
+- **Částečně připojeno** – v tomto režimu nemůže zařízení nahrávat ani stahovat žádná sdílená data, ale dá se spravovat prostřednictvím Azure Portal.
 
     Tento režim se obvykle používá, pokud je v měřené satelitní síti a cílem je minimalizovat spotřebu šířky pásma sítě. Minimální spotřeba sítě může stále nastat pro operace monitorování zařízení.
 

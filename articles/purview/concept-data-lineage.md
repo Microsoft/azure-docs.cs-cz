@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: ceb30cee194994e5b31db312f191194932c937b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552771"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200733"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Data Catalog klient služby Azure dosah na datovém řádku
 
@@ -59,7 +59,7 @@ Identifikujte atributy zdrojové entity, která se používá k vytvoření nebo
 
 Pro podporu analýz základních příčin a scénářů kvality dat zaznamenáváme stav provádění úloh v systémech zpracování dat. Tento požadavek nemá žádný účinek na to, abyste mohli nahradit možnosti monitorování jiných systémů zpracování dat, ani to, že je nenahrazuje. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Je kritická funkce dosah Data Catalog pro podporu scénářů kvality, vztahu důvěryhodnosti a auditu. Cílem katalogu Data Catalog je vytvořit robustní rozhraní, ve kterém se všechny datové systémy v rámci vašeho prostředí mohou přirozeně připojit a vykazovat. Jakmile jsou metadata k dispozici, může Katalog dat začlenit metadata poskytovaná datovými systémy k případům použití zásad správného řízení dat.
 

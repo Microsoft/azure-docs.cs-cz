@@ -1,14 +1,14 @@
 ---
 title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 01/14/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624754"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633797"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -28,11 +28,13 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure
 
 |Tabulka grafu prostředků |Může se jednat o `join` jiné tabulky? |Description |
 |---|---|---|
-|Zdroje a prostředky |Yes |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
+|Zdroje informací |Yes |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
 |ResourceContainers |Yes |Zahrnuje předplatné (ve verzi Preview- `Microsoft.Resources/subscriptions` ) a `Microsoft.Resources/subscriptions/resourcegroups` typy prostředků a data skupiny prostředků (). |
 |AdvisorResources |Ano (Preview) |Zahrnuje prostředky _související_ s `Microsoft.Advisor` . |
 |AlertsManagementResources |Ano (Preview) |Zahrnuje prostředky _související_ s `Microsoft.AlertsManagement` . |
+|ExtendedLocationResources |No |Zahrnuje prostředky _související_ s `Microsoft.ExtendedLocation` . |
 |GuestConfigurationResources |No |Zahrnuje prostředky _související_ s `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |No |Zahrnuje prostředky _související_ s `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Částečně, připojte _se pouze k_ . (Preview) |Zahrnuje prostředky _související_ s `Microsoft.Maintenance` . |
 |PatchAssessmentResources|No |Zahrnuje prostředky _týkající_ se hodnocení oprav pro Azure Virtual Machines. |
 |PatchInstallationResources|No |Zahrnuje prostředky _týkající_ se instalace služby Azure Virtual Machines patch. |
@@ -40,6 +42,7 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure
 |RecoveryServicesResources |Částečně, připojte _se pouze k_ . (Preview) |Zahrnuje prostředky _související_ s `Microsoft.DataProtection` a `Microsoft.RecoveryServices` . |
 |SecurityResources |Částečně, připojte _se pouze k_ . (Preview) |Zahrnuje prostředky _související_ s `Microsoft.Security` . |
 |ServiceHealthResources |No |Zahrnuje prostředky _související_ s `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |No |Zahrnuje prostředky _související_ s `Microsoft.WorkloadMonitor` . |
 
 Úplný seznam včetně typů prostředků najdete v tématu [referenční informace: podporované tabulky a typy prostředků](../reference/supported-tables-resources.md).
 
@@ -126,7 +129,7 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 
 |KQL |Ukázkový dotaz grafu prostředků |Poznámky |
 |---|---|---|
-|[výpočtu](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
 |[znak](/azure/kusto/query/distinctoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 |[zvětšení](/azure/kusto/query/extendoperator) |[Počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os) | |
 |[zúčastnit](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Podporované charaktery spojení: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [LeftOuter](/azure/kusto/query/joinoperator#left-outer-join). Limit 3 `join` v jednom dotazu, z něhož může být Křížová tabulka `join` . Pokud je veškeré použití mezi tabulkami `join` mezi _prostředky_ a _ResourceContainers_, je povolená 3 mezitabulka `join` . Vlastní strategie spojení, jako je připojení všesměrového vysílání, nejsou povolené. Které tabulky mohou používat `join` , naleznete v tématu [tabulky grafů prostředků](#resource-graph-tables). |
@@ -141,7 +144,7 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[nezbytná](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `limit` . Nefunguje s [přeskočením](./work-with-data.md#skipping-records). |
 |[vrchol](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
 |[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[,](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
+|[kde:](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 
 `join` `mv-expand` V dotazu sady SDK jednoho prostředku pro vytváření grafů je výchozí limit 3 a 3 operátorů. Můžete požádat o zvýšení těchto limitů pro vašeho tenanta prostřednictvím **pomoci a podpory**.
 

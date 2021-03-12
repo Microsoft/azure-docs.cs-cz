@@ -8,20 +8,22 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048028"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200311"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasazení Azure IoT Edgech modulů z Azure Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do svých zařízení, aby fungovaly na hraničních zařízeních. Pokud máte více modulů, které spolupracují při shromažďování a zpracování dat, můžete je nasadit najednou a deklarovat pravidla směrování, která je spojují.
 
 Tento článek ukazuje, jak Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu věnovaném [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-at-scale.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
 * Zařízení IoT Edge.
@@ -32,7 +34,7 @@ Tento článek ukazuje, jak Azure Portal vás provede vytvořením manifestu nas
 
 Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nasadit, způsob, jakým jsou toky dat mezi moduly a požadované vlastnosti v modulu vlákna. Další informace o tom, jak manifesty nasazení fungují a jak je vytvořit, najdete v tématu [Vysvětlení způsobu použití, konfigurace a](module-composition.md)opětovného použití modulů IoT Edge.
 
-Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON. Má tři kroky: **přidat moduly**, **zadat trasy**a **zkontrolovat nasazení**.
+Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON. Má tři kroky: **přidat moduly**, **zadat trasy** a **zkontrolovat nasazení**.
 
 >[!NOTE]
 >Kroky v tomto článku odrážejí nejnovější verzi schématu IoT Edge agenta a centra. Verze schématu 1,1 byla vydána společně s IoT Edge verze 1.0.10 a umožňuje funkce pořadí spouštění a stanovení priorit směrování.
@@ -92,7 +94,7 @@ IoT Edge modul můžete nasadit z Azure Marketplace a z IoT Hub.
 
 Seznámení s IoT Edge moduly na webu Marketplace a když najdete tu, kterou chcete nasadit, můžete ji nasadit tak, že vyberete **vytvořit** nebo **získat nyní**. Pokračujte postupem Průvodce nasazením, který se může lišit v závislosti na vybraném modulu IoT Edge:
 
-1. Kliknutím na **pokračovat**potvrďte podmínkami použití a zásady ochrany osobních údajů poskytovatele. Je možné, že nejprve budete muset zadat kontaktní údaje.
+1. Kliknutím na **pokračovat** potvrďte podmínkami použití a zásady ochrany osobních údajů poskytovatele. Je možné, že nejprve budete muset zadat kontaktní údaje.
 1. Vyberte své předplatné a IoT Hub, ke kterému je cílové zařízení připojené.
 1. Vyberte **nasadit do zařízení**.
 1. Zadejte název zařízení nebo vyberte **Najít zařízení** , která chcete procházet mezi zařízeními zaregistrovanými v centru.
@@ -105,10 +107,10 @@ Ověřte, že je modul nasazený ve vašem IoT Hub v Azure Portal. Vyberte zař�
 Modul můžete rychle nasadit z Azure Marketplace do svého zařízení v IoT Hub v Azure Portal.
 
 1. V Azure Portal přejděte na IoT Hub.
-1. V levém podokně v části **Automatická správa zařízení**vyberte **IoT Edge**.
+1. V levém podokně v části **Automatická správa zařízení** vyberte **IoT Edge**.
 1. Vyberte IoT Edge zařízení, které má přijmout nasazení.
 1. Na horním panelu vyberte možnost **nastavit moduly**.
-1. V části **IoT Edge moduly** klikněte na **Přidat**a v rozevírací nabídce vyberte **modul Marketplace** .
+1. V části **IoT Edge moduly** klikněte na **Přidat** a v rozevírací nabídce vyberte **modul Marketplace** .
 
 ![Přidat modul v IoT Hub](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 

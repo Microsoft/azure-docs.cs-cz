@@ -3,7 +3,7 @@ title: Začněte s doručováním obsahu na vyžádání pomocí REST | Microsof
 description: Tento kurz vás provede jednotlivými kroky implementace aplikace pro doručování obsahu na vyžádání pomocí Azure Media Services pomocí REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696240"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008871"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 
@@ -346,7 +346,7 @@ Date: Mon, 19 Jan 2015 03:01:29 GMT
 Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do kontejneru úložiště objektů BLOB v Azure pomocí rozhraní REST API Azure Storage. Soubory je třeba nahrát jako objekty blob bloku. Azure Media Services nepodporuje objekty blob stránky.  
 
 > [!NOTE]
-> Je nutné přidat název souboru, který chcete odeslat do hodnoty **cesty** lokátoru přijaté v předchozí části. Například `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Je nutné přidat název souboru, který chcete odeslat do hodnoty **cesty** lokátoru přijaté v předchozí části. Například, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 

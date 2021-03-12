@@ -3,12 +3,12 @@ title: Dotaz na znalostní bázi Knowledge Base – QnA Maker
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c723d1446c90290929bc8cad066b4744e284f3f4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820377"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008667"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -84,10 +84,9 @@ Uživatelský dotaz je otázka, kterou koncový uživatel požaduje ve znalostn�
     "userId": "sd53lsY="
 }
 ```
+Odpověď řídíte nastavením vlastností, jako jsou [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)a [strictFilters](../how-to/query-knowledge-base-with-metadata.md).
 
-Odpověď řídíte nastavením vlastností, jako jsou [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags).
-
-Použijte [kontext konverzace](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) s [funkcemi vícenásobného zapínání](../how-to/multiturn-conversation.md) , aby konverzace mohla Upřesnit otázky a odpovědi a najít správnou a konečnou odpověď.
+Použijte [kontext konverzace](../how-to/query-knowledge-base-with-metadata.md) s [funkcemi vícenásobného zapínání](../how-to/multiturn-conversation.md) , aby konverzace mohla Upřesnit otázky a odpovědi a najít správnou a konečnou odpověď.
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Odpověď ze volání pro vygenerování odpovědi
 

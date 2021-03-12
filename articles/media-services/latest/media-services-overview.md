@@ -2,7 +2,7 @@
 title: Azure Media Services V3 přehled: Azure Media Services popis: podrobný přehled Azure Media Services V3 s odkazy na rychlé starty, kurzy a ukázky kódu.
 služby: Media-Services documentationcenter: na Author: IngridAtMicrosoft Manager: femila Editor: ' ' Tags: ' ' klíčová slova: Azure Media Services, Stream, Broadcast, Live, offline
 
-MS. Service: Media-Services MS. devlang: více MS. téma: Přehled ms.tgt_pltfrm: více MS. úlohy: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: MVC
+MS. Service: Media-Services MS. devlang: více MS. téma: Přehled ms.tgt_pltfrm: více MS. úlohy: Media MS. Date: 3/10/2021 MS. Author: inhenkel MS. Custom: MVC
 #<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Záměr zákazníka: jako vývojář nebo poskytovatel obsahu chci kódovat, streamovat (na vyžádání nebo živě), analyzovat multimediální obsah tak, aby moji zákazníci mohli: zobrazit obsah v nejrůznějších prohlížečích a zařízeních, získat cenné poznatky z zaznamenaného obsahu.
 ---
 
@@ -13,9 +13,6 @@ MS. Service: Media-Services MS. devlang: více MS. téma: Přehled ms.tgt_pltfrm
 Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to. Bez ohledu na to, jestli jste vývojář aplikace, centrum volání, státní úřad nebo zábava, Media Services vám pomůže vytvářet aplikace, které dodávají mediální prostředí vynikající kvality pro velké cílové skupiny na nejoblíbenějších mobilních zařízeních a prohlížečích.
 
 Sady SDK Media Services V3 jsou založené na [Media Services V3 openapi Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
-
-> [!NOTE]
-> V současné době můžete použít [Azure Portal](https://portal.azure.com/) k: správa prostředků Media Services V3 [Live Events](live-events-outputs-concept.md), View (ne Manage) v3 [assets](assets-concept.md), [získat informace o přístupu k rozhraním API](./access-api-howto.md). Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](/rest/api/media/), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

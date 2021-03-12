@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: f8a780afba1f5703fbe457e113ed1b455f1e9b64
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744749"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614322"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Požadavky na výkon systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
@@ -35,7 +35,7 @@ Následující graf ukazuje, jak se šířka pásma zvyšuje při přidávání 
 Následující graf ukazuje stejný efekt při použití na účet, který používá úroveň výkonu Premium.
 
 > [!div class="mx-imgBorder"]
-> ![Standardní výkon](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
+> ![Výkon úrovně Premium](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Použití úrovně Premium Performance pro aplikace v malém měřítku
 

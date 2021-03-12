@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services schéma metadat pro výstup | Microsoft Docs
 description: Tento článek obsahuje přehled schématu Azure Media Services výstupní metadata.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 519aa158d60eae97eb4c1b792bcecfc8a6c066e0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261304"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008271"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
 
@@ -40,7 +40,7 @@ Tento článek popisuje prvky a typy schématu XML, na kterém je výstup metada
 Kolekce záznamů AssetFile pro úlohu kódování.  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |Element AssetFile, který je součástí kolekce AssetFiles. |
 
@@ -55,9 +55,9 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 | **Doba trvání**<br/><br/> Vyžadováno |**xs: Duration** |Doba přehrávání obsahu |
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
-| **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile. Další informace naleznete v tématu Source element. |
+| **zdroje** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile. Další informace naleznete v tématu Source element. |
 | **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace naleznete v tématu VideoTracks element. |
 | **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Toto je kolekce všech těchto zvukových stop. Další informace naleznete v tématu AudioTracks element. |
 
@@ -67,7 +67,7 @@ Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **Zdroj**<br/><br/> minOccurs = "1" maxOccurs = "Unbounded" |Vstupní a zdrojový soubor, který se používá při generování tohoto prostředku. Další informace naleznete v tématu Source element. |
 
@@ -87,7 +87,7 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, kter�
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "Unbounded" |Konkrétní stopa videa v nadřazené AssetFile Další informace naleznete v tématu VideoTrack element. |
 
@@ -103,8 +103,8 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 | **FourCC**<br/><br/> Vyžadováno |**xs: String** |FourCCový kodek pro video. |
 | **Profil** |**xs: String** |Profil H264 (platí jenom pro kodek H264). |
 | **Obsah** |**xs: String** |Úroveň H264 (platí pouze pro kodek H264). |
-| **Délk**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
-| **Výška**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
+| **Width (Šířka)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
+| **Height (Výška)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Double** |Čítač zobrazení poměru stran videa |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Double** |Jmenovatel poměru stran zobrazení videa |
 | **Framerate**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Decimal** |Měřená snímková frekvence videa ve formátu. 3F. |
@@ -119,7 +119,7 @@ Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových st
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs = "1" maxOccurs = "Unbounded" |Konkrétní záznam zvuku v nadřazené AssetFile. Další informace naleznete v tématu AudioTrack element. |
 
@@ -140,7 +140,7 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 | **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Bity na vzorek pro typ formátu wFormatTag |
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Parametry výsledku měření nahlasu. Další informace naleznete v tématu LoudnessMeteringResultParameters element. |
 

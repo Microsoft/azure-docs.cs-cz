@@ -1,20 +1,20 @@
 ---
 title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593141"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199060"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
 Jako poskytovatel služeb možná budete chtít vědět, že předplatná zákazníků nebo skupiny prostředků jsou delegovaná na vašeho tenanta prostřednictvím [Azure Lighthouse](../overview.md)nebo když se odebraly dřív delegované prostředky.
 
-V rámci správy tenanta sleduje [Protokol aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) aktivitu delegování na úrovni tenanta. Tato zaznamenaná aktivita zahrnuje všechny přidané nebo odebrané delegace ze všech zákaznických klientů.
+V rámci správy tenanta sleduje [Protokol aktivit Azure](../../azure-monitor/essentials/platform-logs-overview.md) aktivitu delegování na úrovni tenanta. Tato zaznamenaná aktivita zahrnuje všechna přidání nebo odebrání delegování z klientů zákazníků.
 
 Toto téma vysvětluje oprávnění potřebná ke sledování aktivity delegování pro vašeho tenanta (mezi všemi vašimi zákazníky). Obsahuje také ukázkový skript, který ukazuje jednu metodu pro dotazování a vytváření sestav s těmito daty.
 

@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/11/2021
+ms.openlocfilehash: 4f03236176acea14bed2dfaac53b1a1e6cf7a1e2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716516"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197868"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 
@@ -204,7 +204,7 @@ Pokud má vaše továrna pro vývoj přidružené úložiště Git, můžete př
 * Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení Správce prostředků, ale vlastnosti nejsou ve výchozím nastavení parametrizované.
 * Vaše továrna je tak velká, že výchozí šablona Správce prostředků je neplatná, protože má více než maximální povolený počet parametrů (256).
 
-    Pokud chcete zpracovat vlastní parametr 256, je k dispozici 3 možnosti:    
+    Pro zpracování vlastního limitu parametrů 256 existují tři možnosti:    
   
     * Použijte vlastní soubor parametrů a odeberte vlastnosti, které nepotřebují Parametrizace, tj. vlastnosti, které mohou zachovat výchozí hodnotu, a proto snižte počet parametrů.
     * Refaktorujte logiku toku dat, aby se snížily parametry, například parametry kanálu mají stejnou hodnotu, můžete místo toho použít pouze globální parametry.
@@ -333,6 +333,10 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 #### <a name="datasets"></a>Datové sady
 
 * I když je pro datové sady k dispozici přizpůsobení specifické pro typ, můžete zadat konfiguraci bez explicitní \* Konfigurace na úrovni. V předchozím příkladu jsou parametrizované všechny vlastnosti datové sady v části `typeProperties` .
+
+> [!NOTE]
+> **Výstrahy a matice Azure,**  Pokud jsou nakonfigurované pro kanál, se v současné době nepodporují jako parametry pro nasazení ARM. Pokud chcete znovu použít výstrahy a matrice v novém prostředí, Sledujte [Data Factory monitorování, výstrahy a matrice.](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)
+> 
 
 ### <a name="default-parameterization-template"></a>Výchozí šablona Parametrizace
 
@@ -678,6 +682,8 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
 -   Nemůžete publikovat z privátních větví.
 
 -   V současné době nemůžete hostovat projekty v Bitbucket.
+
+-   V tuto chvíli nemůžete exportovat a importovat výstrahy a matrice jako parametry. 
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Ukázka skriptu předběžného a po nasazení
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a31c9c4747ccc72f0552ebe2f8daf85ef5fba8a3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743164"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015297"
 ---
 # <a name="sizes-for-cloud-services-classic"></a>Velikosti pro Cloud Services (klasické)
 
@@ -63,7 +63,7 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [Trojrozměrné](#d-series) |160 |
-| [D V2](#dv2-series) |160 – 190 * |
+| [D V2](#dv2-series) |210 - 250* |
 | [D V3](#dv3-series) |160 – 190 * |
 | [E V3](#ev3-series) |160 – 190 * |
 | [Věcn](#g-series) |180 - 240* |

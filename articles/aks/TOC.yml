@@ -136,8 +136,10 @@
       items:
         - name: Škálování clusteru AKS
           href: scale-cluster.md
-        - name: Zastavení clusteru AKS (Preview)
+        - name: Zastavení clusteru AKS
           href: start-stop-cluster.md
+        - name: Použití plánované údržby (Preview)
+          href: planned-maintenance.md
         - name: Upgrade clusteru AKS
           href: upgrade-cluster.md
         - name: Použití smlouvy SLA pro dobu provozu

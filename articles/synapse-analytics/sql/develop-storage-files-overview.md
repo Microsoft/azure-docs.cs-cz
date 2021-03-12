@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695664"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199987"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL ve službě Azure synapse Analytics
 
-Tento dokument popisuje, jak můžou uživatelé číst data ze souborů uložených na Azure Storage ve fondu SQL bez serveru. Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
+Tento článek popisuje, jak můžou uživatelé číst data ze souborů uložených na Azure Storage ve fondu SQL bez serveru. Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
 - Funkce [OpenRowset](develop-openrowset.md) , která umožňuje provádět dotazy ad-hoc přes soubory v Azure Storage.
 - [Externí tabulka](develop-tables-external-tables.md) , která je předdefinovanou datovou strukturou založenou na sadě externích souborů.

@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard schéma | Microsoft Docs
 description: Tento článek popisuje některé prvky a typy schématu XML, na kterém jsou založené Media Encoder Standard předvolby.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: f82e0c3f76dba05c3404b11e07c7130119ce0b9d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261508"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015654"
 ---
 # <a name="media-encoder-standard-schema"></a>Schéma Media Encoderu Standard
 
@@ -64,7 +64,7 @@ Obsahuje sekvenci následujících prvků:
 | **TwoPass**<br/><br/> minOccurs = "0" |**xs: Boolean** |V současné době je podporováno pouze kódování s jedním průchodem. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **Výchozí = "00:00:02"** |**xs: Time** |Určuje pevné mezery mezi IDR snímky v jednotkách sekund. Také se označuje jako skupinu GOP doba trvání. Informace o tom, jestli se kodér může odchylovat od této hodnoty, najdete v tématu **SceneChangeDetection** . |
 | **SceneChangeDetection**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = false |**xs: Boolean** |Pokud je nastavená hodnota true, kodér se pokusí zjistit změnu scény ve videu a vloží IDR snímek. |
-| **Hesla**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "vyváženo" |**xs: String** |Řídí kompromis mezi rychlostí kódování a kvalitou videa. Může to být jedna z následujících hodnot: **rychlost**, **rovnováha**nebo **kvalita** .<br/><br/> Výchozí: **vyvážené** |
+| **Hesla**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "vyváženo" |**xs: String** |Řídí kompromis mezi rychlostí kódování a kvalitou videa. Může to být jedna z následujících hodnot: **rychlost**, **rovnováha** nebo **kvalita** .<br/><br/> Výchozí: **vyvážené** |
 | **SyncMode**<br/><br/> minOccurs = "0" | |Funkce bude vystavena v budoucí verzi. |
 | **H264Layers**<br/><br/> minOccurs = "0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Kolekce výstupních vrstev videa |
 
@@ -99,8 +99,8 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 | **Rychlostí**<br/><br/> minOccurs = "0" |**xs: int** |Přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |Maximální přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> Výchozí = "00:00:05" |**xs: Time** |Délka vyrovnávací paměti videa |
-| **Délk**<br/><br/> minOccurs = "0" |**xs: int** |Šířka výstupního snímku videa (v pixelech)<br/><br/> V současné době je nutné zadat šířku i výšku. Šířka a výška musí být sudými čísly. |
-| **Výška**<br/><br/> minOccurs = "0" |**xs: int** |Výška výstupního snímku videa v pixelech<br/><br/> V současné době je nutné zadat šířku i výšku. Šířka a výška musí být sudými čísly.|
+| **Width (Šířka)**<br/><br/> minOccurs = "0" |**xs: int** |Šířka výstupního snímku videa (v pixelech)<br/><br/> V současné době je nutné zadat šířku i výšku. Šířka a výška musí být sudými čísly. |
+| **Height (Výška)**<br/><br/> minOccurs = "0" |**xs: int** |Výška výstupního snímku videa v pixelech<br/><br/> V současné době je nutné zadat šířku i výšku. Šířka a výška musí být sudými čísly.|
 | **BFrames**<br/><br/> minOccurs = "0" |**xs: int** |Počet snímků B mezi referenčními snímky |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "3" |**xs: int** |Počet referenčních rámců v skupinu GOP. |
 | **EntropyMode**<br/><br/> minOccurs = "0"<br/><br/> default = "CABAC" |**xs: String** |Může to být jedna z následujících hodnot: **CABAC** a **Cavlc**. |
@@ -117,7 +117,7 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: String** |Může to být jedna z následujících hodnot: **AACLC**, **HEAACV1**nebo **HEAACV2**. |
+| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: String** |Může to být jedna z následujících hodnot: **AACLC**, **HEAACV1** nebo **HEAACV2**. |
 
 ### <a name="attributes"></a>Atributy
 
@@ -127,7 +127,7 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 ### <a name="groups"></a>Skupiny
 
-| Odkaz | Description |
+| Reference | Description |
 | --- | --- |
 | [Zvuk](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs = "0" |Podívejte se na popis skupiny [zvuků](media-services-mes-schema.md#AudioGroup) a zjistěte odpovídající počet kanálů, vzorkovací frekvenci a přenosovou rychlost, kterou je možné nastavit pro jednotlivé profily. |
 
@@ -217,8 +217,8 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Délk**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Výška**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Width (Šířka)**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Height (Výška)**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Atributy
 
@@ -231,8 +231,8 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Délk**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Výška**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Width (Šířka)**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Height (Výška)**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Atributy
 
@@ -245,8 +245,8 @@ Alternativně můžete použít příznak **PreserveResolutionAfterRotation** a 
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Délk**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Výška**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Width (Šířka)**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Height (Výška)**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Kvalita**<br/><br/> minOccurs = "0" |**xs: int** |Platné hodnoty: 1 (nejhorší)-100 (nejlepší) |
 
 ### <a name="attributes"></a>Atributy

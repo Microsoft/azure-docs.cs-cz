@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387848"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200820"
 ---
 # <a name="understanding-resource-sets"></a>Principy sad prostředků
 
@@ -21,7 +21,7 @@ Tento článek vám pomůže pochopit, jak Azure dosah používá sady prostřed
 
 Systémy zpracování dat ve velkém měřítku obvykle ukládají jednu tabulku na disk jako více souborů. Tento koncept je reprezentován v Azure dosah pomocí sad prostředků. Sada prostředků je jeden objekt v katalogu, který představuje velký počet prostředků v úložišti.
 
-Předpokládejme například, že váš cluster Spark trval datový rámec s datovým zdrojem Azure Data Lake Storage (ADLS) Gen2. I když v Sparku tabulka vypadá jako jeden logický prostředek, na disku jsou pravděpodobně tisíce souborů Parquet, z nichž každý představuje oddíl celkového obsahu datového rámce. Data protokolu IoT a data webového protokolu mají stejnou výzvu. Představte si, že máte senzor, který vypíše soubory protokolu několikrát za sekundu. Netrvá tak dlouho, dokud nebudete mít stovky tisíc souborů protokolu od tohoto jednoho snímače.
+Předpokládejme například, že váš cluster Spark trval datový rámec na Azure Data Lake Storage (ADLS) Gen2 zdroj dat. I když v Sparku tabulka vypadá jako jeden logický prostředek, na disku jsou pravděpodobně tisíce souborů Parquet, z nichž každý představuje oddíl celkového obsahu datového rámce. Data protokolu IoT a data webového protokolu mají stejnou výzvu. Představte si, že máte senzor, který vypíše soubory protokolu několikrát za sekundu. Netrvá tak dlouho, dokud nebudete mít stovky tisíc souborů protokolu od tohoto jednoho snímače.
 
 K vyřešení výzvy k mapování velkého počtu datových assetů na jeden logický prostředek používá Azure dosah sady prostředků.
 

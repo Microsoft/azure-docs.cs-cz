@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030779"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199769"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Použití funkcí v Azure Monitorch dotazech protokolu
 
@@ -27,7 +27,7 @@ Vytvořte funkci s Log Analytics v Azure Portal kliknutím na **Uložit** a zad�
 | Alias funkce | Krátký název, který bude používat funkci v jiných dotazech. Nesmí obsahovat mezery a musí být jedinečný. |
 | Kategorie       | Kategorie pro uspořádání uložených dotazů a funkcí v **Průzkumníku dotazů**. |
 
-
+Funkce můžete vytvářet také pomocí [REST API](/rest/api/loganalytics/savedsearches/createorupdate) nebo [PowerShellu](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch).
 
 
 ## <a name="use-a-function"></a>Použití funkce

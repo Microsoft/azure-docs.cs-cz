@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 03/10/2021
+ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561853"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636331"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
 
@@ -59,7 +59,7 @@ Následující tabulka stručně shrnuje rozdíly ve způsobu, jakým pracovní 
 | Azure Logic Apps (více tenantů) | Pracovní postupy *od zákazníků napříč více klienty* sdílejí stejné zpracování (výpočetní prostředky), úložiště, síť a tak dále. |
 | Azure Logic Apps (Preview, jeden tenant) | Pracovní postupy *ve stejné aplikaci logiky a jednom tenantovi* sdílejí stejné zpracování (výpočetní prostředky), úložiště, síť a tak dále. |
 | Prostředí integrační služby (není k dispozici ve verzi Preview) | Pracovní postupy ve *stejném prostředí* sdílejí stejné zpracování (COMPUTE), úložiště, síť a tak dále. |
-||||
+|||
 
 Stále můžete v Azure Portal a v Visual Studio Code vytvořit typ aplikace logiky pro více tenantů pomocí rozšíření Azure Logic Apps pro více tenantů. I když se vývojové prostředí liší od typů aplikací logiky víceklientské architektury a jednoho tenanta, může vaše předplatné Azure zahrnovat oba typy. Můžete zobrazit a přistupovat ke všem nasazeným Logic Apps v předplatném Azure, ale aplikace se uspořádají do vlastních kategorií a oddílů.
 
@@ -122,7 +122,10 @@ Azure Logic Apps Preview zahrnuje mnoho současných a dalších funkcí, např�
 
 * Vytvářejte aplikace logiky a jejich pracovní postupy ze [400 + konektorů](/connectors/connector-reference/connector-reference-logicapps-connectors) pro aplikace typu software jako služba (SaaS) a PaaS (Platform-as-a-Service) a konektory pro místní systémy.
 
-  * Některé spravované konektory, například Azure Service Bus, Azure Event Hubs, SQL Server a MQ, se spouštějí podobně jako integrované triggery a akce, které jsou nativní pro modul runtime Azure Logic Apps Preview, například Trigger žádosti a akce HTTP.
+  * Některé spravované konektory jsou nyní k dispozici jako integrované verze, které se spouštějí podobně jako integrované triggery a akce, jako je například Trigger žádosti a akce HTTP, které jsou spouštěny nativně v modulu runtime aplikace Azure Logic Apps Preview. Mezi tyto nové vestavěné konektory patří například Azure Service Bus, Azure Event Hubs, SQL Server a MQ.
+
+    > [!NOTE]
+    > Pro integrovaný konektor SQL Server se může přímo připojit k virtuálním sítím Azure, aniž by to vyžadovalo [místní bránu dat](logic-apps-gateway-connection.md), ale i akci **Spustit dotaz** .
 
   * Vytvořte si vlastní integrované konektory pro libovolnou službu, kterou potřebujete, pomocí [rozhraní pro rozšiřitelnost verze Preview](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). Podobně jako u integrovaných konektorů, jako jsou Azure Service Bus a SQL Server, ale na rozdíl od [vlastních konektorů](../connectors/apis-list.md#custom-apis-and-connectors) , které se v současné době nepodporují pro verzi Preview, poskytují tyto konektory vyšší propustnost, nízkou latenci, místní připojení a nativně spouštějí v rámci stejného procesu jako modul runtime verze Preview.
 

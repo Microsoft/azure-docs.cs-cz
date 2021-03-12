@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728208"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224703"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -24,7 +24,7 @@ Tento článek vám pomůže pochopit proces vytváření privátních koncovýc
 - Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti, včetně těch, které používá Azure Backup pro úložiště. Toto číslo může být pro určité oblasti Azure vyšší (až 25). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
 - I když je Recovery Services trezor používá (obojí) Azure Backup a Azure Site Recovery, Tento článek popisuje použití privátních koncových bodů jenom pro Azure Backup.
 - Azure Active Directory v současné době nepodporuje privátní koncové body. Takže IP adresy a plně kvalifikované názvy domény, které Azure Active Directory pro práci v oblasti, musí mít povolený odchozí přístup ze zabezpečené sítě při provádění zálohování databází ve virtuálních počítačích Azure a při zálohování pomocí agenta MARS. Můžete také použít značky NSG a značky Azure Firewall pro povolení přístupu ke službě Azure AD (podle potřeby).
-- U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset zakázat zásady sítě.
+- U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset [zakázat zásady sítě](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) .
 - Pokud jste ho zaregistrovali před 1 2020, je nutné znovu zaregistrovat poskytovatele prostředků Recovery Services k předplatnému. Pokud chcete poskytovatele znovu zaregistrovat, přejděte do svého předplatného v Azure Portal, v levém navigačním panelu přejděte na **poskytovatel prostředků** , vyberte **Microsoft. RecoveryServices** a vyberte **znovu registrovat**.
 - [Obnovení mezi oblastmi](backup-create-rs-vault.md#set-cross-region-restore) pro SQL a SAP HANA zálohy databáze není podporované, pokud má Trezor povolené privátní koncové body.
 - Když přesunete Recovery Services trezor již s použitím privátních koncových bodů na nového tenanta, budete muset aktualizovat trezor Recovery Services a znovu vytvořit a znovu nakonfigurovat spravovanou identitu trezoru a vytvořit nové privátní koncové body podle potřeby (které by měly být v novém tenantovi). Pokud to neuděláte, operace zálohování a obnovení začnou selhat. Všechna oprávnění řízení přístupu na základě role (RBAC) nastavená v rámci předplatného se taky musí překonfigurovat.
@@ -297,6 +297,10 @@ Při použití agenta MARS k zálohování místních prostředků se ujistěte,
 
 Pokud ale po registraci agenta MARS pro trezor odeberete privátní koncové body, budete muset kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
 
+## <a name="deleting-private-endpoints"></a>Odstraňování privátních koncových bodů
+
+V [této části](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete) se dozvíte, jak odstranit privátní koncové body.
+
 ## <a name="additional-topics"></a>Další témata
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>Vytvoření trezoru Recovery Services pomocí klienta Azure Resource Manager
@@ -554,4 +558,4 @@ A. Po provedení postupu popsaného v tomto článku není nutné provádět dal
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o všech [funkcích zabezpečení v Azure Backup](security-overview.md)
+- Přečtěte si o všech [funkcích zabezpečení v Azure Backup](security-overview.md).

@@ -2,18 +2,19 @@
 title: Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s využitím Azure AD (předchozí verze)
 description: Tento článek popisuje předpoklady pro použití Microsoft Azureho šifrování disku pro virtuální počítače se systémem Linux.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3862a07eea2dcec3e67c0145fcdcff8140d19ec3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20cb94dd8bfca6adeba151d2169b1896cc7ff5a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746775"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557875"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s Azure AD (předchozí verze) pro virtuální počítače se systémem Linux
 
@@ -61,7 +62,7 @@ Trezor klíčů můžete vytvořit s Azure PowerShell pomocí rutiny [New-AzKeyV
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Poznamenejte si **název trezoru** , **název skupiny prostředků** , **ID prostředku** , **identifikátor URI trezoru** a **ID objektu** , které se vrátí pro pozdější použití při šifrování disků. 
+4. Poznamenejte si **název trezoru**, **název skupiny prostředků**, **ID prostředku**, **identifikátor URI trezoru** a **ID objektu** , které se vrátí pro pozdější použití při šifrování disků. 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Vytvoření trezoru klíčů pomocí Azure CLI
@@ -80,14 +81,14 @@ Trezor klíčů můžete spravovat pomocí Azure CLI pomocí příkazů AZ klí�
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. Poznamenejte si **název trezoru** (název), **název skupiny prostředků** , **ID prostředku** (ID), **identifikátor URI trezoru** a **ID objektu** , které se vrátí pro pozdější použití. 
+4. Poznamenejte si **název trezoru** (název), **název skupiny prostředků**, **ID prostředku** (ID), **identifikátor URI trezoru** a **ID objektu** , které se vrátí pro pozdější použití. 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> Vytvoření trezoru klíčů s Správce prostředků šablonou
 
 Trezor klíčů můžete vytvořit pomocí [šablony Správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure** .
-2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, Key Vault název, ID objektu, právních podmínek a smlouvy, a pak klikněte na **koupit** . 
+1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure**.
+2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, Key Vault název, ID objektu, právních podmínek a smlouvy, a pak klikněte na **koupit**. 
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> Nastavení aplikace a instančního objektu služby Azure AD 
@@ -161,7 +162,7 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> Nastavení zásad přístupu trezoru klíčů pro aplikaci Azure AD pomocí portálu
 
 1. Otevřete skupinu prostředků ve vašem trezoru klíčů.
-2. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu** a pak klikněte na **Přidat nový** .
+2. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu** a pak klikněte na **Přidat nový**.
 3. V části **Vybrat objekt zabezpečení** vyhledejte aplikaci Azure AD, kterou jste vytvořili, a vyberte ji. 
 4. U **klíčových oprávnění** zaškrtněte v části **kryptografické operace** **klíč pro zabalení** .
 5. V případě **oprávnění tajného klíče** zaškrtněte v části **operace správy tajných klíčů** **nastaveno** .
@@ -217,10 +218,10 @@ K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Upda
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> Nastavení zásad rozšířeného přístupu trezoru klíčů pomocí Azure Portal
 
-1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu** a **kliknutím zobrazte zásady pokročilého přístupu** .
-2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku** .
-3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony** . 
-4. Klikněte na **Uložit** .
+1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu** a **kliknutím zobrazte zásady pokročilého přístupu**.
+2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku**.
+3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony**. 
+4. Klikněte na **Uložit**.
 
 ![Zásady rozšířeného přístupu ke službě Azure Key trezor](./media/disk-encryption/keyvault-portal-fig4.png)
 

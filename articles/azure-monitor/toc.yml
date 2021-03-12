@@ -475,8 +475,6 @@
           items:
             - name: Správa upozornění metrik
               href: alerts/alerts-metric.md
-            - name: Dostupnost
-              href: app/monitor-web-app-availability.md
             - name: Použití dynamických prahových hodnot
               href: alerts/alerts-dynamic-thresholds.md
             - name: Jedno upozornění pro mnoho časových řad

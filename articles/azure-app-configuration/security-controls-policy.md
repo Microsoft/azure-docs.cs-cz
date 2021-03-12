@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro konfiguraci aplikací Azure
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro konfiguraci aplikací Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.topic: sample
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b150d388ed870d278d7c6536f56ab9ae53011cd0
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 54166e5a830298cedb6153d56c6819f762e3b033
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092467"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635093"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-configuration"></a>Azure Policy kontroly dodržování předpisů pro konfiguraci aplikací Azure
 

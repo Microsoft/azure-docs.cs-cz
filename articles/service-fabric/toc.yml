@@ -106,8 +106,6 @@
           href: service-fabric-tutorial-standalone-clean-up.md
 - name: Osvědčené postupy
   items:
-    - name: Přehled osvědčených postupů pro Service Fabric
-      href: service-fabric-best-practices-overview.md
     - name: Zabezpečení
       href: service-fabric-best-practices-security.md
     - name: Sítě

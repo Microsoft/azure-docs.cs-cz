@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433263"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149699"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -127,13 +127,15 @@ Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");
 }
 ```
 
-Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
-* ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
-* `$etag`, standardní pole HTTP přiřazené webovým serverem.
-* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
-    - DTMI modelu digitálního vlákna.
-    - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
-    - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
+Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří následující hodnoty:
+* `$dtId`: ID digitálního vlákna v této instanci digitálních vláken Azure
+* `$etag`: Standardní pole HTTP přiřazené webovým serverem. Tato hodnota je aktualizována na novou hodnotu pokaždé, když dojde k jejímu aktualizaci, což může být užitečné k určení, zda byla data vlákna na serveru aktualizována od předchozí kontroly. Dá se použít taky v hlavičkách HTTP tímto způsobem:
+  - s operacemi čtení, aby nedošlo k načtení obsahu, který se nezměnil
+  - s operacemi zápisu pro podporu optimistické souběžnosti
+* `$metadata`: Sada dalších vlastností, včetně:
+  - DTMI modelu digitálního vlákna.
+  - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
+  - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
 
 Můžete si přečíst další informace o pomocných třídách serializace, jako `BasicDigitalTwin` v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 

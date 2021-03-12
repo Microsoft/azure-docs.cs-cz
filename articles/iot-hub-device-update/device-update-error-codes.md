@@ -1,17 +1,17 @@
 ---
 title: Kódy chyb klienta pro aktualizaci zařízení pro Azure IoT Hub | Microsoft Docs
 description: Tento dokument poskytuje tabulku kódů chyb klienta pro různé součásti aktualizace zařízení.
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662668"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200342"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>Aktualizace zařízení pro kódy chyb IoT Hub
 
@@ -38,7 +38,7 @@ V rozhraní PnP se pravděpodobně zobrazí `ExtendedResultCode` jako celé čí
 
 **Kódy zařízení**
 
-| Kód zařízení     | Popis  |
+| Kód zařízení     | Description  |
 |-------------------|--------------|
 | D                 | Chyba vyvolaná ze sady SDK do sady|
 | E                 | Kód chyby je errno |
@@ -59,26 +59,19 @@ Například:
 ## <a name="delivery-optimization-agent"></a>Agent Optimalizace doručení
 V následující tabulce jsou uvedeny kódy chyb, které se týkají součásti Optimalizace doručení (DO) klienta aktualizace zařízení. Komponenta do je zodpovědná za stažení obsahu aktualizace do zařízení IoT.
 
-Kód chyby lze získat prozkoumáním výjimek vyvolaných v reakci na volání rozhraní API.
+Kód chyby lze získat prozkoumáním výjimek vyvolaných v reakci na volání rozhraní API. Kódy všech chyb lze identifikovat pomocí předpony 0x80D0.
 
-| Kód chyby  | Chyba řetězce                       | Typ                 | Popis |
+| Kód chyby  | Chyba řetězce                       | Typ                 | Description |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | Není k dispozici                  | Služba optimalizace doručení nemohla poskytnout službu. |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Stažení úlohy         | Stažení souboru v rámci definovaného období neprobíhalo. |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | Stažení úlohy         | Úloha nebyla nalezena. |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | Stažení úlohy         | Aktuálně neexistují žádné soubory ke stažení. |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | Stažení úlohy         | Úloha se nedokončila nebo se zrušila předtím, než se dokončí prahová hodnota pro maximální stáří. |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | Stažení úlohy         | SetProperty () nebo GetProperty () se volala s neznámým ID vlastnosti. |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | Stažení úlohy         | Nelze volat metodu SetProperty () pro vlastnost, která je jen pro čtení. |
 | 0x80D02013L | DO_E_INVALID_STATE                 | Stažení úlohy         | Požadovaná akce není v aktuálním stavu úlohy povolena. Úloha se možná zrušila nebo dokončila její přenos. Nyní je ve stavu jen pro čtení. |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | Stažení úlohy         | Stažení se nedá spustit, protože se nezadala žádná jímka pro stažení (buď lokální soubor, nebo rozhraní streamování). |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | Rozhraní IDODownload| Stahování bylo zahájeno bez zadání identifikátoru URI. |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | Přechodné podmínky | Stahování pozastaveno z důvodu ztráty připojení k síti |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | Server HTTP vrátil odpověď s velikostí dat, která se neshoduje s požadovaným požadavkem. |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | Ověření certifikátu serveru HTTP se nezdařilo. |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | Zadaný rozsah bajtů je neplatný. |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | Server nepodporuje potřebný protokol HTTP. Optimalizace doručení (DO) vyžaduje, aby server podporoval hlavičku protokolu rozsahu. |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | Seznam rozsahů bajtů obsahuje některé překrývající se rozsahy, které se nepodporují. |
+
 ## <a name="device-update-content-service"></a>Služba obsahu aktualizace zařízení
 V následující tabulce jsou uvedeny kódy chyb, které se týkají komponenty služby obsahu služby aktualizace zařízení. Komponenta Content Service zodpovídá za zpracování importu obsahu aktualizace.
 
