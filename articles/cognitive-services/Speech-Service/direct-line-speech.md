@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6eb689c2e93b5a9cac932e428245410ba35e77d6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601124"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611789"
 ---
 # <a name="what-is-direct-line-speech"></a>Co je Direct Line Speech?
 
@@ -35,7 +35,7 @@ Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí fun
 
 Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
-| Rychlý start | Platforma | API – referenční informace |
+| Rychlé zprovoznění | Platforma | API – referenční informace |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Procházet](/dotnet/api/microsoft.cognitiveservices.speech) |
 | Java | Windows, macOS, Linux | [Procházet](/java/api/com.microsoft.cognitiveservices.speech) |
@@ -60,11 +60,11 @@ Funkce Direct line Speech a její přidružená funkce pro hlasové asistenty js
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](./speech-sdk.md)
-* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot Service](/azure/bot-service/)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)
-* [Vytvoření a nasazení základního robota](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Vytvoření a nasazení základního robota](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 * [Získat řešení a šablonu společnosti Virtual Assistant](https://github.com/Microsoft/AI)

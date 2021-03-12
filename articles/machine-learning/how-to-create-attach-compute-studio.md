@@ -11,20 +11,20 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031024"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149354"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Vytváření výpočetních cílů pro školení a nasazení modelů v Azure Machine Learning Studiu
 
 V tomto článku se dozvíte, jak vytvářet a spravovat výpočetní cíle v Azure Machine studia.  Můžete také vytvořit a spravovat výpočetní cíle pomocí:
 
 * Azure Machine Learning Learning SDK nebo rozšíření CLI pro Azure Machine Learning
-  * [Instance služby Compute](how-to-create-manage-compute-instance.md)
-  * [Výpočtový cluster](how-to-create-attach-compute-cluster.md)
+  * [Instance COMPUTE](how-to-create-manage-compute-instance.md)
+  * [Výpočetní cluster](how-to-create-attach-compute-cluster.md)
   * [Cluster služby Azure Kubernetes](how-to-create-attach-kubernetes.md)
   * [Další výpočetní prostředky](how-to-attach-compute-targets.md)
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
@@ -68,7 +68,7 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Vyplňte formulář pro výpočetní typ:
 
-  * [Instance služby Compute](#compute-instance)
+  * [Instance COMPUTE](#compute-instance)
   * [Výpočetní clustery](#amlcompute)
   * [Odvození clusterů](#inference-clusters)
   * [Připojené výpočetní prostředky](#attached-compute)
@@ -87,20 +87,20 @@ Pomocí [výše uvedených kroků](#portal-create) vytvořte výpočetní instan
 :::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Vytvořit novou výpočetní instanci":::
 
 
-|Pole  |Popis  |
+|Pole  |Description  |
 |---------|---------|
 |Název výpočetních prostředků     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Povolit/zakázat přístup přes SSH     |   Přístup SSH je ve výchozím nastavení zakázán.  Přístup SSH nemůže být. Po vytvoření se změnila. Pokud chcete interaktivně ladit pomocí [vs Code vzdálených](how-to-set-up-vs-code-remote.md) , Nezapomeňte povolit přístup.   |
-|Pokročilá nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.  |
+|Rozšířená nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Výpočetní clustery
 
 Vytvořte jeden nebo více uzlů Compute Cluster pro školení, dávkové Inferencing nebo posílení studijních úloh. Pomocí [výše uvedeného postupu](#portal-create) vytvořte výpočetní cluster.  Pak vyplňte formulář následujícím způsobem:
 
 
-|Pole  |Popis  |
+|Pole  |Description  |
 |---------|---------|
 |Název výpočetních prostředků     |  <li>Název je povinný a musí mít délku 3 až 24 znaků.</li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Typ virtuálního počítače |  Vyberte možnost procesor nebo GPU. Tento typ nelze po vytvoření změnit.     |
@@ -108,7 +108,7 @@ Vytvořte jeden nebo více uzlů Compute Cluster pro školení, dávkové Infere
 |Velikost virtuálního počítače     |  Podporované velikosti virtuálních počítačů můžou být ve vaší oblasti omezené. Kontrolovat [seznam dostupnosti](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Minimální počet uzlů | Minimální počet uzlů, které chcete zřídit. Pokud chcete vyhrazený počet uzlů, nastavte tento počet. Ušetříte peníze nastavením minimální na 0, takže nebudete platit za žádné uzly, pokud je cluster nečinný. |
 |Maximální počet uzlů | Maximální počet uzlů, které chcete zřídit. Výpočet bude při odeslání úlohy automatické škálování na maximum tohoto počtu uzlů. |
-|Pokročilá nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.   Připojte taky [spravované identity](#managed-identity) pro udělení přístupu k prostředkům.     |
+|Rozšířená nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť** a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](./how-to-secure-training-vnet.md) pro virtuální síť.   Připojte taky [spravované identity](#managed-identity) pro udělení přístupu k prostředkům.     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Nastavení spravované identity
 
@@ -128,7 +128,7 @@ Při vytváření clusteru nebo při úpravách podrobností výpočetního clus
 Vytvořte nebo připojte cluster Azure Kubernetes Service (AKS) pro velké měřítko Inferencing. Pomocí [výše uvedeného postupu](#portal-create) vytvořte cluster AKS.  Pak vyplňte formulář následujícím způsobem:
 
 
-|Pole  |Popis  |
+|Pole  |Description  |
 |---------|---------|
 |Název výpočetních prostředků     |  <li>Název je povinný. Název musí mít 2 až 16 znaků. </li><li>Platné znaky jsou velká písmena a malá písmena, číslice a  **-** znak.</li><li>Název musí začínat písmenem.</li><li>Název musí být jedinečný v rámci všech stávajících výpočtů v oblasti Azure. Pokud zvolený název není jedinečný, zobrazí se upozornění.</li><li>Pokud **-**  se používá znak, musí následovat aspoň jedno písmeno později v názvu.</li>     |
 |Kubernetes Service | Vyberte **vytvořit novou** a vyplňte zbytek formuláře.  Nebo vyberte **použít existující** a pak z předplatného vyberte existující cluster AKS.
@@ -147,7 +147,7 @@ K připojení výpočetních prostředků použijte [výše uvedené kroky](#por
 
 1. Zadejte název pro cíl služby Compute. 
 1. Vyberte typ výpočetních prostředků, které se mají připojit. Z Azure Machine Learning studia se nedají připojit všechny výpočetní typy. Typy výpočetních prostředků, které se dají v současnosti připojit ke školením, zahrnují:
-    * Vzdálený virtuální počítač
+    * Virtuální počítač Azure (pro připojení Data Science Virtual Machine)
     * Azure Databricks (pro použití v kanálech strojového učení)
     * Azure Data Lake Analytics (pro použití v kanálech strojového učení)
     * Azure HDInsight

@@ -3,15 +3,15 @@ title: Nejčastější dotazy k virtuálním plochám Windows – Azure
 description: Nejčastější dotazy a osvědčené postupy pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720269"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613965"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -140,3 +140,22 @@ Nakonec, pokud jste povolili poskytovatele prostředků z účtu vlastníka CSP,
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Jak často mám svoje virtuální počítače zapnout, aby se zabránilo problémům s registrací?
 
 Po registraci virtuálního počítače do fondu hostitelů v rámci služby Virtual Desktop systému Windows Agent pravidelně aktualizuje token virtuálního počítače vždy, když je virtuální počítač aktivní. Certifikát pro registrační token je platný po dobu 90 dnů. Z důvodu tohoto limitu 90 doporučujeme spustit virtuální počítače každých 90 dnů. Zapnutím virtuálního počítače v rámci tohoto časového limitu zabráníte jeho registračnímu tokenu v vypršení platnosti nebo se stane neplatným. Pokud jste virtuální počítač spustili po 90 dnech a dochází k problémům s registrací, postupujte podle pokynů v [Průvodci odstraňováním potíží s agentem virtuálního počítače s Windows](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) a odeberte virtuální počítač z fondu hostitelů, přeinstalujte agenta a znovu ho zaregistrujte do fondu.
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Můžu nastavit možnosti dostupnosti při vytváření fondů hostitelů?
+
+Ano. Fondy hostitelů virtuálních počítačů s Windows mají možnost vybrat buď skupinu dostupnosti, nebo zóny dostupnosti při vytváření virtuálního počítače. Tyto možnosti dostupnosti jsou stejné jako ty, které Azure COMPUTE používá. Pokud vyberete zónu pro virtuální počítač, který vytvoříte v hostitelském fondu, nastavení se automaticky použije na všechny virtuální počítače, které v této zóně vytvoříte. Pokud byste chtěli rozšířit virtuální počítače fondu hostitelů do několika zón, budete muset postupovat podle pokynů v části [Přidání virtuálních počítačů s Azure Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) k ručnímu výběru nové zóny pro každý nový virtuální počítač, který vytvoříte.
+
+## <a name="which-availability-option-is-best-for-me"></a>Jakou možnost dostupnosti mám pro mě nejlepší?
+
+Možnost dostupnosti, kterou byste měli použít pro vaše virtuální počítače, závisí na umístění vaší image a na spravovaných diskových polích. Následující tabulka vysvětluje vztah jednotlivých nastavení s těmito proměnnými, které vám pomůžou zjistit, která možnost je pro vaše nasazení nejvhodnější. 
+
+| Možnost dostupnosti | Umístění obrázku | Přepínač použití spravovaného disku (přepínač) |
+|---|---|---|
+| Žádné | Galerie | Zakázáno s "Ano" jako výchozí |
+| Žádné | Blob Storage | Povoleno s hodnotou ne jako výchozí |
+| Zóna dostupnosti | Galerie (možnost úložiště objektů BLOB zakázána) | Zakázáno s "Ano" jako výchozí |
+| Skupina dostupnosti se spravovanými SKU (spravovaný disk) | Galerie | Zakázáno s "Ano" jako výchozí |
+| Skupina dostupnosti se spravovanými SKU (spravovaný disk) | Blob Storage | Povoleno s hodnotou ne jako výchozí |
+| Skupina dostupnosti se spravovanými SKU (spravovaný disk) | BLOB Storage (možnost galerie je zakázaná) | Zakázáno s hodnotou No jako výchozí |
+| Skupina dostupnosti (nově vytvořená uživatelem) | Galerie | Zakázáno s "Ano" jako výchozí |
+| Skupina dostupnosti (nově vytvořená uživatelem) | Blob Storage | Povoleno s hodnotou ne jako výchozí |

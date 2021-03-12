@@ -1131,6 +1131,8 @@
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Detekce anomálií s využitím Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+        - name: Sestavování aplikací strojového učení pomocí Microsoft Machine Learning pro Apache Spark (Preview)
+          href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
 - name: Data Catalog a zásady správného řízení
   items:
     - name: Rychlé starty

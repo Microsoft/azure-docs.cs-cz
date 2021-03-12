@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424559"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634970"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -120,6 +120,8 @@ Tím se otevře správce balíčků NuGet. Vyberte kartu *aktualizace* a pokud e
 Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , vyhledejte projekt _**SampleFunctionsApp**_ v podokně *Průzkumník řešení* .
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+Aby aplikace Function App mohla získat přístup k digitálním funkcím Azure, bude potřebovat identitu spravovanou systémem s oprávněními pro přístup k instanci digitálních vláken Azure. Nastavíte tuto hodnotu jako další.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 

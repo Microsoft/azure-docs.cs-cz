@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611959"
 ---
-# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Osvědčené postupy pro sestavování aplikace pomocí Azure Database for MySQL 
+# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Osvědčené postupy pro vytváření aplikací s využitím služby Azure Database for MySQL 
 
 Tady jsou některé osvědčené postupy, které vám pomůžou vytvořit aplikaci připravenou pro cloud pomocí Azure Database for MySQL. Tyto osvědčené postupy mohou zkrátit dobu vývoje aplikace. 
 
@@ -76,7 +76,7 @@ Všimnete si prodlevy mezi zdrojem a replikou, protože replikace je asynchronn�
 ## <a name="database-deployment"></a>Nasazení databáze 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>Konfigurace úlohy Azure Database for MySQL v kanálu nasazení CI/CD
-V některých případech je nutné nasadit změny do vaší databáze. V takových případech můžete použít průběžnou integraci (CI) a průběžné doručování (CD) prostřednictvím [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) a pomocí úlohy pro [Server MySQL](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) aktualizovat databázi spuštěním vlastního skriptu.
+V některých případech je nutné nasadit změny do vaší databáze. V takových případech můžete použít průběžnou integraci (CI) a průběžné doručování (CD) prostřednictvím [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) a pomocí úlohy pro [Server MySQL](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment) aktualizovat databázi spuštěním vlastního skriptu.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>Použití efektivního procesu ručního nasazení databáze 
 Při ručním nasazování databáze můžete pomocí těchto kroků minimalizovat prostoje nebo snížit riziko neúspěšného nasazení: 

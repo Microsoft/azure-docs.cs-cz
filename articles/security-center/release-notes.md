@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636670"
+ms.locfileid: "103149629"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -35,6 +35,7 @@ Aktualizace v březnu zahrnují:
 - [Posouzení ohrožení zabezpečení SQL teď zahrnuje možnosti "zakázat pravidlo" (Preview).](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [Azure Monitor sešitů integrovaných do Security Center a tří dodaných šablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Řídicí panel dodržování předpisů teď zahrnuje sestavy služby Azure audit (Preview).](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [Data doporučení se dají zobrazit v Azure Resource graphu s "prozkoumat v ARG".](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Aktualizace zásad pro nasazení automatizace pracovního postupu](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Dvě starší verze doporučení už Nezapisovat data přímo do protokolu aktivit Azure](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
@@ -91,6 +92,17 @@ Přečtěte si další informace o [správě standardů na řídicím panelu dod
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Filtrování seznamu dostupných sestav služby Azure audit":::
 
+
+
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Data doporučení se dají zobrazit v Azure Resource graphu s "prozkoumat v ARG".
+
+Stránky s podrobnostmi o doporučení nyní obsahují tlačítko prozkoumat v ARG. Pomocí tohoto tlačítka můžete otevřít dotaz grafu prostředků Azure a prozkoumat, exportovat a sdílet data doporučení.
+
+Azure Resource Graph (ARG) poskytuje okamžitý přístup k informacím o prostředcích napříč vašimi cloudovým prostředím pomocí robustních funkcí filtrování, seskupování a řazení. Jedná se o rychlý a efektivní způsob dotazování informací v rámci předplatných Azure prostřednictvím Azure Portal.
+
+Přečtěte si další informace o [Azure Resource graphu (ARG)](../governance/resource-graph/index.yml).
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Prozkoumejte data doporučení v Azure Resource graphu.":::
 
 
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>Aktualizace zásad pro nasazení automatizace pracovního postupu

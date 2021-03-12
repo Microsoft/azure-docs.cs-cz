@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Dokumentace ke QnA Makeru
   description: QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve vaší znalostní bázi.
-  ms.openlocfilehash: 00e2f029d467e4bf4acfbc9ee55727328c23ba72
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: d993dfcc4d486190e2501940465598b53808b965
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102502208"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102613880"
 landingContent:
 - title: Informace o službě QnA Maker
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
     - text: 'Power Apps: Vytvoření robota s podporou QnA Makeru'
       url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - text: 'Bot Framework: Odbavení mezi aplikacemi QnA Makeru a LUIS'
-      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0
+      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs
     - text: Další ukázky robotů
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Referenční informace

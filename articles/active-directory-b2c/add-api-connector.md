@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611606"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008429"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
 
@@ -61,9 +61,9 @@ Azure App Service a Azure Functions najdete v tématu [Konfigurace vzájemného 
 Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte konektor API v části **konektory rozhraní API (Preview)** a klikněte na **nahrát nový certifikát**. Poslední nahraný certifikát, jehož platnost vypršela, a který je po datu zahájení, bude automaticky použit Azure AD B2C.
 
 ### <a name="api-key"></a>Klíč rozhraní API
-Některé služby používají mechanismus "klíč rozhraní API", což usnadňuje přístup k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Některé služby používají mechanismus "klíč rozhraní API" k zakódování přístupu k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Nejedná se o mechanismus, který by se měl použít samostatně v produkčním prostředí. Konfigurace pro základní ověřování nebo ověřování certifikátů je proto vždy nutná. Pokud chcete pro účely vývoje implementovat jakoukoli metodu ověřování (nedoporučuje se), můžete zvolit základní ověřování a použít dočasné hodnoty pro `username` a `password` to, že vaše rozhraní API může při implementaci autorizace ve vašem rozhraní API ignorovat.
+Nejedná se o mechanismus, který by se měl použít samostatně v produkčním prostředí. Konfigurace pro základní ověřování nebo ověřování certifikátů je proto vždy nutná. Pokud pro vývojové účely nechcete implementovat žádnou metodu ověřování (nedoporučuje se), můžete zvolit základní ověřování a použít dočasné hodnoty pro `username` a `password` to, že vaše rozhraní API může při implementaci autorizace ve vašem rozhraní API ignorovat.
 
 ## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
 Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](/graph/api/resources/user#properties) vlastností uživatele. 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010826"
+ms.locfileid: "103149694"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Exportujte aplikace s platností tajných kódů a certifikátů.
 
@@ -31,6 +31,8 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powe
 [!code-azurepowershell[main](~/powershell_scripts/application-management/export-apps-with-expiring-secrets.ps1 "Exports all apps with expiring secrets and certificates for the specified apps in your directory.")]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
+
+Skript lze použít přímo bez jakýchkoli úprav. Správce bude požádán o datum vypršení platnosti a to, jestli chcete, aby viděli již prošlé tajné klíče nebo certifikáty.
 
 Příkaz "Add-Member" zodpovídá za vytváření sloupců v souboru CSV.
 Příkaz New-Object vytvoří objekt, který se použije pro sloupce v exportu souboru CSV.

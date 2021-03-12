@@ -3,7 +3,7 @@ title: Nakonfigurujte zásady autorizace klíče obsahu pomocí Azure Portal | M
 description: Tento článek ukazuje, jak nakonfigurovat zásady autorizace pro klíč obsahu.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ee82a3fa-c34b-48f2-a108-8ba321f1691e
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 68bd4bd2472e80a663294745368fb505767a230a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260896"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008310"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurace zásad autorizace klíče obsahu
 
@@ -36,7 +36,7 @@ Tento článek ukazuje, jak použít Azure Portal ke konfiguraci zásad autoriza
 
 Když hráč požádá o datový proud, který je nastaven na dynamický šifrování, Media Services používá nakonfigurovaný klíč k dynamickému šifrování vašeho obsahu pomocí šifrování AES nebo DRM. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Aby bylo možné zjistit, zda je uživatel autorizován pro získání klíče, služba vyhodnotí zásady autorizace, které jste zadali pro klíč.
 
-Pokud máte v plánu používat více klíčů obsahu nebo chcete zadat jinou adresu URL služby pro doručování licencí, než je služba doručování klíčů Media Services, použijte rozhraní Media Services .NET SDK nebo rozhraní REST API. Další informace naleznete v tématech:
+Pokud máte v plánu používat více klíčů obsahu nebo chcete zadat jinou adresu URL služby pro doručování licencí, než je služba doručování klíčů Media Services, použijte rozhraní Media Services .NET SDK nebo rozhraní REST API. Další informace naleznete v tématu:
 
 * [Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services .NET SDK](media-services-dotnet-configure-content-key-auth-policy.md)
 * [Konfigurace zásad autorizace klíče obsahu pomocí Media Services REST API](media-services-rest-configure-content-key-auth-policy.md)

@@ -1,20 +1,20 @@
 ---
 title: Vytvoření a Správa virtuálního počítače Azure pomocí Java
 description: Pomocí jazyků Java a Azure Resource Manager nasaďte virtuální počítač a všechny jeho podpůrné prostředky.
-services: virtual-machines-windows
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 568760dcaebbad0e14405e14c5a5bf8f6cd18395
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea9d5d92d45db50470276929b6e7b4200bb427d6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197451"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557518"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
@@ -107,7 +107,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
     </dependency>
     ```
 
-3. Uložte soubor.
+3. Soubor uložte.
 
 ## <a name="create-credentials"></a>Vytvořit pověření
 
@@ -130,7 +130,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
     Nahraďte **&lt; ID &gt;** předplatného identifikátorem vašeho předplatného, **&lt; ID &gt; aplikace** s identifikátorem aplikace služby Active **&lt; &gt;** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a **&lt; ID &gt; tenanta** s identifikátorem tenanta.
 
-2. Uložte soubor.
+2. Soubor uložte.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
 ### <a name="create-the-management-client"></a>Vytvořit klienta pro správu

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215727"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555121"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Využití v analýzách komerčního marketplace
 
@@ -62,7 +62,7 @@ K dispozici jsou dvě reprezentace hodin používání: normalizované využití
 
 V této části najdete celkovou dobu využití a trend pro vaše nabídky založené na používání v Azure Marketplace. Tabulka normalizovaného využití pomocí nabídky je popsána níže.
 
-- **Normalizované využití pomocí** skládaného sloupcového grafu zobrazuje rozpis normalizovaných hodin využití na prvních 5 nabídek v závislosti na vybraném období výpočtu. V grafu se zobrazí pět nejlepších nabídek, zatímco zbytek je seskupený do kategorie **zbývající vše** .
+- **Normalizované využití pomocí** skládaného sloupcového grafu zobrazuje rozpis normalizovaných hodin použití pro pět nejlepších nabídek podle vybraného období výpočtu. V grafu se zobrazí pět nejlepších nabídek, zatímco zbytek je seskupený do kategorie **zbývající vše** .
 - Skládaný sloupcový graf znázorňuje trend růstu od měsíců po měsících pro vybraný rozsah dat. Sloupce měsíc představují hodiny využití z nabídek s nejvyšším hodinou využití pro příslušný měsíc. Spojnicový graf znázorňuje trend procenta nárůstu vykreslený na sekundární ose Y.
 - V legendě můžete vybrat konkrétní nabídky, aby se zobrazily pouze nabídky v grafu.
 
@@ -117,46 +117,45 @@ Tabulka s **podrobnostmi o využití** zobrazuje číslovaný seznam prvních 1 
 
 _**Tabulka 1: slovník datových podmínek**_
 
-| Název sloupce | Název atributu | Definice |
-| ------------ | ------------- | ------------- |
-| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. IDENTIFIKÁTORem byl dřív identifikátor GUID předplatného Azure. |
-| MonthStartDate | Počáteční datum měsíce | Počáteční datum měsíce představuje měsíc nákupu. |
-| Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. |
-| Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ui><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> |
-| Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Možné hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> |
-| SKU | SKU | Plán přidružený k této nabídce |
-| Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. |
-| Je verze Preview SKU | Je verze Preview SKU | Hodnota se zobrazí, pokud jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". |
-| Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Placené</li></ul> |
-| Velmi interní | Zastaralé | Zastaralé |
-| Velikost virtuálního počítače | Velikost virtuálního počítače | U typů nabídek založených na virtuálních počítačích označuje tato entita velikost virtuálního počítače přidruženého k SKU nabídky. |
-| Název cloudové instance | Název cloudové instance | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače. |
-| ServicePlanName | Zastaralé | Zastaralé (stejná definice jako SKU) |
-| Název nabídky | Název nabídky | Název nabídky komerčního tržiště. |
-| DeploymentMethod | Zastaralé | Zastaralé (stejná definice jako typ nabídky)
- |
-| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než název v předplatném Azure zákazníka. |
-| Datum využití | Datum využití | Datum generování události využití pro prostředky založené na využití. |
-| IsMultisolution | Je více řešení | Označuje, zda je nabídka typu nabídky s více řešeními. |
-| Je nový zákazník | Zastaralé | Zastaralé |
-| Základní velikost | Základní velikost | Počet jader přidružených k nabídce založené na virtuálním počítači. |
-| Typ využití | Typ využití | Označuje, zda je událost využití přidružená k této nabídce jedním z následujících:<ul><li>Normalizované využití</li><li>Nezpracované využití</li><li>Měření využití</li></ul> |
-| Datum ukončení zkušební verze | Datum ukončení zkušební verze | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí. |
-| Zákaznická měna (CC) | Měna zákazníka | Měna, kterou zákazník používá pro transakci komerčního tržiště. |
-| Cena (CC) | Cena | Jednotková cena skladové jednotky zobrazená v měně zákazníka |
-| Měna výběr (PC) | Měna výběr | Vydavatel se hradí za události využití přidružené k assetu v měně nakonfigurované vydavatelem. |
-| Odhadovaná cena (PC) | Odhadovaná cena | Jednotková cena skladové položky v měně konfigurované vydavatelem |
-| Odkaz na použití | Odkaz na použití | Zřetězený identifikátor GUID, který se používá k připojení sestavy o využití (na komerčním webu Marketplace) se sestavou transakce výběr. Odkaz na použití je propojen s poli ČísloObjednávky a LineItemId v sestavě transakce výběr. |
-| Jednotka využití | Jednotka využití | Jednotka spotřeby přidružená k SKU |
-| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. |
-| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. |
-| Množství využití | Množství využití | Celkové jednotky využití spotřebované Assetem, který je nasazený zákazníkem.<br>To je založené na položce typu použití. Například pokud je typ použití normalizované využití, pak je množství využití pro normalizované využití. |
-| NormalizedUsage | Normalizované využití | Celkový počet normalizovaných jednotek využití spotřebovaných Assetem, který je nasazen zákazníkem.<br>Normalizované hodiny používání jsou definovány jako hodiny využití normalizované na účet pro počet jader virtuálních počítačů ([počet jader virtuálních počítačů] × [hodiny nezpracovaného využití]). Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů]. |
-| MeteredUsage | Měření využití | Celkové jednotky využití spotřebované měřiči, které jsou nakonfigurovány s nabídkou, která je nasazena zákazníkem. |
-| RawUsage | Nezpracované využití | Celkový počet nezpracovaných jednotek využití spotřebovaných Assetem, který je nasazený zákazníkem.<br>Nezpracované hodiny využití se definují jako doba, po kterou jsou virtuální počítače spuštěné z hlediska jednotek využití. |
-| Odhadované rozšířené poplatky (CC) | Odhadované rozšířené náklady v měně zákazníka | Označuje poplatky spojené s využitím. Sloupec je produktem ceny (CC) a nezpracované využití. |
-| Odhadované rozšířené poplatky (PC) | Odhadované rozšířené poplatky v měně pro výběr | Označuje poplatky spojené s využitím. Sloupec je součinem odhadovaného cenového (POČÍTAČového) a nezpracovaného využití. |
-|
+| Název sloupce v<br>uživatelské rozhraní | Název atributu | Definice | Název sloupce v programovém programu<br>přístup k sestavám |
+| ------------ | ------------- | ------------- | ------------- |
+| ID předplatného Marketplace | ID předplatného Marketplace | Jedinečný identifikátor přidružený k předplatnému Azure, který zákazník použil k nákupu vaší nabídky na komerčním webu Marketplace. IDENTIFIKÁTORem byl dřív identifikátor GUID předplatného Azure. | MarketplaceSubscriptionId |
+| MonthStartDate | Počáteční datum měsíce | Počáteční datum měsíce představuje měsíc nákupu. | MonthStartDate |
+| Typ nabídky | Typ nabídky | Typ nabídky komerčního tržiště. | OfferType |
+| Typ licence Azure | Typ licence Azure | Typ licenční smlouvy používané zákazníky k nákupu Azure. Označuje se také jako kanál. Možné hodnoty jsou:<ui><li>Program Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise prostřednictvím prodejce</li><li>Průběžné platby</li></ul> | AzureLicenseType |
+| Typ licence Marketplace | Typ licence Marketplace | Způsob fakturace nabídky komerčního obchodu na webu Marketplace. Možné hodnoty jsou:<ul><li>Účtuje se prostřednictvím Azure.</li><li>Přineste si vlastní licenci</li><li>Free</li><li>Microsoft jako prodejce</li></ul> | MarketplaceLicenseType |
+| SKU | SKU | Plán přidružený k této nabídce | SKU |
+| Země zákazníka | Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka. | CustomerCountry |
+| Je verze Preview SKU | Je verze Preview SKU | Hodnota se zobrazí, pokud jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne". | IsPreviewSKU |
+| Typ fakturace SKU | Typ fakturace SKU | Typ fakturace přidružený k jednotlivým položkám SKU v nabídce Možné hodnoty jsou:<ul><li>Free</li><li>Placené</li></ul> | SKUBillingType |
+| Velmi interní | Zastaralé | Zastaralé | Zastaralé |
+| Velikost virtuálního počítače | Velikost virtuálního počítače | U typů nabídek založených na virtuálních počítačích označuje tato entita velikost virtuálního počítače přidruženého k SKU nabídky. | VMSize |
+| Název cloudové instance | Název cloudové instance | Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače. | CloudInstanceName |
+| ServicePlanName | Zastaralé | Zastaralé (stejná definice jako SKU) | ServicePlanName |
+| Název nabídky | Název nabídky | Název nabídky komerčního tržiště. | OfferName |
+| DeploymentMethod | Zastaralé | Zastaralé (stejná definice jako typ nabídky) | DeploymentMethod |
+| Název společnosti zákazníka | Název společnosti zákazníka | Název společnosti poskytnutý zákazníkem Název může být jiný než název v předplatném Azure zákazníka. | CustomerCompanyName |
+| Datum využití | Datum využití | Datum generování události využití pro prostředky založené na využití. | UsageDate |
+| IsMultisolution | Je více řešení | Označuje, zda je nabídka typu nabídky s více řešeními. | IsMultisolution |
+| Je nový zákazník | Zastaralé | Zastaralé | IsNewCustomer |
+| Základní velikost | Základní velikost | Počet jader přidružených k nabídce založené na virtuálním počítači. | Kovelikost |
+| Typ využití | Typ využití | Označuje, zda je událost využití přidružená k této nabídce jedním z následujících:<ul><li>Normalizované využití</li><li>Nezpracované využití</li><li>Měření využití</li></ul> | Položku UsageType |
+| Datum ukončení zkušební verze | Datum ukončení zkušební verze | Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí. | TrialEndDate |
+| Zákaznická měna (CC) | Měna zákazníka | Měna, kterou zákazník používá pro transakci komerčního tržiště. | CustomerCurrencyCC |
+| Cena (CC) | Cena | Jednotková cena skladové jednotky zobrazená v měně zákazníka | PriceCC |
+| Měna výběr (PC) | Měna výběr | Vydavatel se hradí za události využití přidružené k assetu v měně nakonfigurované vydavatelem. | PayoutCurrencyPC |
+| Odhadovaná cena (PC) | Odhadovaná cena | Jednotková cena skladové položky v měně konfigurované vydavatelem | EstimatedPricePC |
+| Odkaz na použití | Odkaz na použití | Zřetězený identifikátor GUID, který se používá k připojení sestavy o využití (na komerčním webu Marketplace) se sestavou transakce výběr. Odkaz na použití je propojen s poli ČísloObjednávky a LineItemId v sestavě transakce výběr. | UsageReference |
+| Jednotka využití | Jednotka využití | Jednotka spotřeby přidružená k SKU | UsageUnit |
+| ID zákazníka | ID zákazníka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných. | CustomerId |
+| ID fakturačního účtu | ID fakturačního účtu | Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití. | BillingAccountId |
+| Množství využití | Množství využití | Celkové jednotky využití spotřebované Assetem, který je nasazený zákazníkem.<br>To je založené na položce typu použití. Například pokud je typ použití normalizované využití, pak je množství využití pro normalizované využití. | UsageQuantity |
+| NormalizedUsage | Normalizované využití | Celkový počet normalizovaných jednotek využití spotřebovaných Assetem, který je nasazený zákazníkem.<br>Normalizované hodiny používání jsou definovány jako hodiny využití normalizované na účet pro počet jader virtuálních počítačů ([počet jader virtuálních počítačů] × [hodiny nezpracovaného využití]). Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů]. | NormalizedUsage |
+| MeteredUsage | Měření využití | Celkové jednotky využití spotřebované měřiči, které jsou nakonfigurovány s nabídkou, která je nasazena zákazníkem. | MeteredUsage |
+| RawUsage | Nezpracované využití | Celkový počet nezpracovaných jednotek využití spotřebovaných Assetem, který je nasazený zákazníkem.<br>Nezpracované hodiny využití se definují jako doba, po kterou jsou virtuální počítače spuštěné z hlediska jednotek využití. | RawUsage |
+| Odhadované rozšířené poplatky (CC) | Odhadované rozšířené náklady v měně zákazníka | Označuje poplatky spojené s využitím. Sloupec je produktem ceny (CC) a množství využití. | EstimatedExtendedChargeCC |
+| Odhadované rozšířené poplatky (PC) | Odhadované rozšířené poplatky v měně pro výběr | Označuje poplatky spojené s využitím. Sloupec je součinem odhadovaného cenového (POČÍTAČového) a množství využití. | EstimatedExtended ChargePC |
+|||||
 
 ### <a name="usage-page-filters"></a>Filtry stránek využití
 

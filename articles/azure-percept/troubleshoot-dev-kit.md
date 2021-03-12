@@ -1,18 +1,18 @@
 ---
 title: Řešení obecných problémů s Azure Percept DK a IoT Edge
-description: Získejte tipy pro řešení problémů s některými častými problémy zjištěnými během připojování.
+description: Získejte tipy pro řešení problémů s některými častými problémy s Azure Percept DK.
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 93812cf2b0db7fc3557e31c8d9e8053831c7b90f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521522"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010996"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Řešení potíží s Azure Percept DK (dev Kit)
 
@@ -28,7 +28,7 @@ Chcete-li spustit tyto příkazy,
 K přesměrování libovolného výstupu do souboru. txt k další analýze použijte následující syntaxi:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelského počítače přes bod připojení služby (SCP):
@@ -47,13 +47,13 @@ Další informace o příkazech Azure IoT Edge naleznete v dokumentaci k [řeše
 |Operační systém                |```cat /etc/os-subrelease```      |zkontroluje verzi odvozené image. |
 |Operační systém                |```cat /etc/adu-version```        |ověřit verzi ADU |
 |Teplota       |```cat /sys/class/thermal/thermal_zone0/temp``` |kontrolovat teplotu DevKit |
-|Wi-Fi             |```journalctl -u hostapd.service``` |kontrolovat protokoly SoftAP|
-|Wi-Fi             |```journalctl -u wpa_supplicant.service``` |kontrolovat protokoly služby Wi-Fi Services |
-|Wi-Fi             |```journalctl -u ztpd.service```  |kontrolovat Wi-Fi nenulové protokoly služby Touch Provisioning |
-|Wi-Fi             |```journalctl -u systemd-networkd``` |ověřit protokoly síťového zásobníku Mariner |
-|Wi-Fi             |```/data/misc/wifi/hostapd_virtual.conf``` |Ověřte podrobnosti konfigurace přístupového bodu sítě Wi-Fi. |
-|OBSAH              |```journalctl -u oobe -b```       |kontrolovat protokoly OOBE |
-|Telemetrie         |```azure-device-health-id```      |najít jedinečnou HW_ID telemetrie |
+|Wi-Fi             |```sudo journalctl -u hostapd.service``` |kontrolovat protokoly SoftAP|
+|Wi-Fi             |```sudo journalctl -u wpa_supplicant.service``` |kontrolovat protokoly služby Wi-Fi Services |
+|Wi-Fi             |```sudo journalctl -u ztpd.service```  |kontrolovat Wi-Fi nenulové protokoly služby Touch Provisioning |
+|Wi-Fi             |```sudo journalctl -u systemd-networkd``` |ověřit protokoly síťového zásobníku Mariner |
+|Wi-Fi             |```sudo cat /etc/hostapd/hostapd-wlan1.conf``` |Ověřte podrobnosti konfigurace přístupového bodu sítě Wi-Fi. |
+|OBSAH              |```sudo journalctl -u oobe -b```       |kontrolovat protokoly OOBE |
+|Telemetrie         |```sudo azure-device-health-id```      |najít jedinečnou HW_ID telemetrie |
 |Azure IoT Edge          |```sudo iotedge check```          |Spouštění kontrol konfigurace a připojení pro běžné problémy |
 |Azure IoT Edge          |```sudo iotedge logs [container name]``` |kontrolovat protokoly kontejnerů, jako jsou řeč a moduly Vision |
 |Azure IoT Edge          |```sudo iotedge support-bundle --since 1h``` |shromažďovat protokoly modulů, Azure IoT Edge protokoly správce zabezpečení, protokoly kontejnerů, ```iotedge check``` výstup JSON a další užitečné ladicí informace za poslední hodinu |
@@ -61,26 +61,26 @@ Další informace o příkazech Azure IoT Edge naleznete v dokumentaci k [řeše
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |Restartujte proces démona zabezpečení Azure IoT Edge. |
 |Azure IoT Edge          |```sudo iotedge list```           |Vypsat nasazené Azure IoT Edge moduly |
 |Jiné             |```df [option] [file]```          |Zobrazit informace o dostupném/celkovém prostoru v zadaném systému souborů |
-|Jiné             |```ip route get 1.1.1.1```        |Zobrazit informace o IP a rozhraních zařízení |
-|Jiné             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |Zobrazit jenom IP adresu zařízení |
+|Jiné             |`ip route get 1.1.1.1`        |Zobrazit informace o IP a rozhraních zařízení |
+|Jiné             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |Zobrazit jenom IP adresu zařízení |
 
 
 ```journalctl```Příkazy Wi-Fi lze kombinovat do následujícího jednoho příkazu:
 
 ```console
-journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
+sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
 ```
 
 ## <a name="docker-troubleshooting-commands"></a>Příkazy pro řešení potíží Docker
 
 |Systému                        |Slouží                  |
 |--------------------------------|---------------------------|
-|```docker ps``` |[zobrazuje spuštěné kontejnery.](https://docs.docker.com/engine/reference/commandline/ps/) |
-|```docker images``` |[zobrazuje, které image jsou na zařízení.](https://docs.docker.com/engine/reference/commandline/images/)|
-|```docker rmi [image id] -f``` |[odstraní obrázek ze zařízení.](https://docs.docker.com/engine/reference/commandline/rmi/) |
-|```docker logs -f edgeAgent``` <br> ```docker logs -f [module_name]``` |[převezme protokoly kontejneru zadaného modulu.](https://docs.docker.com/engine/reference/commandline/logs/) |
-|```docker image prune``` |[Odebere všechny image dangling.](https://docs.docker.com/engine/reference/commandline/image_prune/) |
-|```watch docker ps``` <br> ```watch ifconfig [interface]``` |Podívejte se na stav stahování kontejneru Docker. |
+|```sudo docker ps``` |[zobrazuje spuštěné kontejnery.](https://docs.docker.com/engine/reference/commandline/ps/) |
+|```sudo docker images``` |[zobrazuje, které image jsou na zařízení.](https://docs.docker.com/engine/reference/commandline/images/)|
+|```sudo docker rmi [image id] -f``` |[odstraní obrázek ze zařízení.](https://docs.docker.com/engine/reference/commandline/rmi/) |
+|```sudo docker logs -f edgeAgent``` <br> ```sudo docker logs -f [module_name]``` |[převezme protokoly kontejneru zadaného modulu.](https://docs.docker.com/engine/reference/commandline/logs/) |
+|```sudo docker image prune``` |[Odebere všechny image dangling.](https://docs.docker.com/engine/reference/commandline/image_prune/) |
+|```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Podívejte se na stav stahování kontejneru Docker. |
 
 ## <a name="usb-updating"></a>Aktualizace USB
 

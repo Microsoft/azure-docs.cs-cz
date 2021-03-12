@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038709"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010401"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
 
@@ -37,6 +37,9 @@ Migrace pomáhá získat následující výsledky:
 * Monitorování dat:
    * **Data v Log Analytics**: před migrací zůstanou data v pracovním prostoru, ve kterém je npm nakonfigurovaný v tabulce NetworkMonitoring. Po migraci přejde data do tabulky NetworkMonitoring, tabulky NWConnectionMonitorTestResult a tabulky NWConnectionMonitorPathResult ve stejném pracovním prostoru. Po zakázání testů v NPM budou data uložena pouze v tabulce NWConnectionMonitorTestResult a tabulce NWConnectionMonitorPathResult.
    * **Výstrahy založené na protokolech, řídicí panely a integrace**: dotazy musíte ručně upravit v závislosti na nové tabulce NWConnectionMonitorTestResult a tabulce NWConnectionMonitorPathResult. Postup opětovného vytvoření výstrah v metrikách najdete v tématu [monitorování připojení k síti pomocí monitorování připojení](./connection-monitor-overview.md#metrics-in-azure-monitor).
+* Pro monitorování ExpressRoute:
+    * **Koncová ztráta a latence**: monitorování připojení bude toto nastavení zasílané a jednodušší než NPM, aby uživatelé nemuseli konfigurovat, které okruhy a partnerské vztahy monitorují. V této cestě budou automaticky zjištěny okruhy, data budou k dispozici v metrikách (rychlejší než LA, kde NPM výsledky uloženy). Topologie bude fungovat stejně jako.
+    * **Měření šířky pásma**: při spuštění metrik souvisejících s šířkou pásma se přístup založený na službě npm Log Analytics neúčinný při monitorování šířky pásma pro zákazníky ExpressRoute. Tato funkce není nyní k dispozici v monitorování připojení.
     
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,7 +63,7 @@ Po zahájení migrace proběhne následující změny:
    * Vytvoří se jedno monitorování připojení na oblast a předplatné. Pro testy s místními agenty je název monitoru nového připojení formátovaný jako `<workspaceName>_"workspace_region_name"` . Pro testy s agenty Azure je název nového monitorování připojení formátovaný jako `<workspaceName>_<Azure_region_name>` .
    * Data monitorování se teď ukládají do stejného Log Analytics pracovního prostoru, ve kterém je povolený NPM, v nových tabulkách s názvem tabulka NWConnectionMonitorTestResult a tabulce NWConnectionMonitorPathResult. 
    * Název testu se přenese jako název testovací skupiny. Popis testu není migrován.
-   * Zdrojové a cílové koncové body jsou vytvořeny a použity v nové testovací skupině. Pro místní agenty jsou koncové body formátovány jako `<workspaceName>_<FQDN of on-premises machine>` .
+   * Zdrojové a cílové koncové body jsou vytvořeny a použity v nové testovací skupině. Pro místní agenty jsou koncové body formátovány jako `<workspaceName>_<FQDN of on-premises machine>` . Popis agenta není migrován.
    * Cílový port a interval zjišťování jsou přesunuty do konfigurace testu s názvem `TC_<protocol>_<port>` a `TC_<protocol>_<port>_AppThresholds` . Protokol je nastaven na základě hodnot portů. Pro protokol ICMP jsou konfigurace testu pojmenovány jako `TC_<protocol>` a `TC_<protocol>_AppThresholds` . Prahové hodnoty úspěšnosti a další volitelné vlastnosti, pokud jsou operace migrovány, jinak jsou ponechány prázdné.
    * Pokud migrace testů obsahuje agenty, kteří nepoužívají, je nutné povolit agenty a znovu provést migraci.
 * NPM není zakázané, takže migrované testy můžou dál posílat data do tabulky NetworkMonitoring, tabulky NWConnectionMonitorTestResult a NWConnectionMonitorPathResult. Tento přístup zajišťuje, že existující výstrahy a integrace založené na protokolu nebudou mít vliv na.
