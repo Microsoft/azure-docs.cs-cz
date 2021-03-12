@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103987"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199581"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
 
@@ -239,7 +239,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 MSAL používá adresy URL pro vyvolání zprostředkovatele a pak se vrátí do vaší aplikace. K dokončení této operace odezvy Zaregistrujte **identifikátor URI pro přesměrování** vaší aplikace pomocí [Azure Portal](https://portal.azure.com).
 
-Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Příklad:
+Formát identifikátoru URI přesměrování vaší aplikace závisí na certifikátu použitém k podepsání APK. Například:
 
 ```
 msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
@@ -326,6 +326,8 @@ Hodnota lomítko ( `/` ) před podpisem v `android:path` hodnotě je **povinná*
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+Další informace o konfiguraci aplikace pro prohlížeč systému a podporu pro Android 11 najdete v článku o [aktualizaci manifestu Android pro podporu prohlížeče systému](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support).
+
 Alternativně můžete nakonfigurovat MSAL tak, aby se vrátil do vloženého prohlížeče, který nespoléhá na identifikátor URI přesměrování:
 
 ```csharp
@@ -344,22 +346,22 @@ Tady je několik tipů pro předcházení problémům při implementaci zprostř
 
     Příklad: Pokud poprvé nainstalujete Microsoft Authenticator a pak nainstalujete Portál společnosti Intune, provede se zprostředkované ověřování *jenom* na Microsoft Authenticator.
 - **Protokoly** – Pokud narazíte na problém s zprostředkovaný ověřováním, může vám zobrazení protokolů zprostředkovatele pomáhat s diagnostikou příčiny.
-  - Zobrazit protokoly Microsoft Authenticator:
+  - Získat protokoly Microsoft Authenticator:
 
     1. Vyberte tlačítko nabídky v pravém horním rohu aplikace.
-    1. Vyberte **help**  >  **Odeslat** protokoly  >  **Zobrazit protokoly**.
-    1. Výběrem **Kopírovat vše** zkopírujte protokoly zprostředkovatele do schránky zařízení.
+    1. Vyberte **Odeslat zpětnou vazbu**  >  **s problémy?**.
+    1. V části **co se pokoušíte provést?** vyberte možnost a přidejte popis.
+    1. Pokud chcete protokoly odeslat, vyberte šipku v pravém horním rohu aplikace.
 
-    Nejlepším způsobem, jak tento protokol ladit, je poslat ho e-mailem sami sobě a zobrazit je na vývojovém počítači. Možná bude snazší analyzovat protokoly v počítači místo na samotném zařízení. Pomocí editoru testů v Androidu můžete také ukládat protokoly jako textový soubor a potom použít kabel USB ke zkopírování souboru do počítače.
+    Po odeslání protokolů se v dialogovém okně zobrazí ID incidentu. Poznamenejte si ID incidentu a zahrňte ho po podání žádosti o pomoc.
 
-  - Zobrazit protokoly Portál společnosti Intune:
+  - Získat protokoly Portál společnosti Intune:
 
-    1. Vyberte tlačítko nabídky v levém horním rohu aplikace.
-    1. Vybrat **Nastavení**  >  **diagnostická data**
-    1. Vyberte **Kopírovat protokoly** a zkopírujte protokoly zprostředkovatele na kartu SD zařízení.
-    1. Připojte zařízení k počítači pomocí kabelu USB pro zobrazení protokolů ve vývojovém počítači.
+    1. V levém horním rohu aplikace vyberte tlačítko nabídky.
+    1. Vyberte   >  **podporu e-mailu** pro pomoc.
+    1. Pokud chcete protokoly odeslat, vyberte **jenom nahrávat protokoly**.
 
-    Jakmile budete mít protokoly, můžete je pomocí ID korelace vyhledat ve svých pokusůch o ověření. ID korelace je připojeno ke každé žádosti o ověření. Pokud chcete najít chyby vrácené koncovým bodem ověřování platformy Microsoft Identity Platform, vyhledejte `AADSTS` .
+    Po odeslání protokolů se v dialogovém okně zobrazí ID incidentu. Poznamenejte si ID incidentu a zahrňte ho po podání žádosti o pomoc.
 
 ## <a name="next-steps"></a>Další kroky
 

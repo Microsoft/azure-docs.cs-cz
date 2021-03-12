@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360097"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615597"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Doporučení pro ceny SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -97,10 +97,7 @@ Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Přineste si vlastní licenci (BYOL)
 
-**Uvedení vlastní licence SQL Server prostřednictvím License mobility**, která se také označuje jako **BYOL**, znamená použití stávající SQL Server multilicenčního programu se Software Assurance ve virtuálním počítači Azure. Virtuální počítač s SQL Server pomocí BYOL se účtuje jenom za náklady na provozování virtuálního počítače, ne pro SQL Server licencování, protože jste už získali licence a Software Assurance prostřednictvím multilicenčního programu.
-
-> [!IMPORTANT]
-> Image BYOL vyžadují smlouva Enterprise se Software Assurance. V tuto chvíli nejsou k dispozici jako součást partnera Azure Cloud Solution partner (CSP). Zákazníci CSP můžou využít vlastní licenci nasazením image s průběžnými platbami a následným povolením [zvýhodněné hybridní využití Azure](licensing-model-azure-hybrid-benefit-ahb-change.md).
+**Uvedení vlastní licence SQL Server prostřednictvím License mobility**, která se také označuje jako **BYOL**, znamená použití stávající SQL Server multilicenčního programu se Software Assurance ve virtuálním počítači Azure. SQL Server virtuální počítač používající BYOL se účtuje jenom za náklady na provozování virtuálního počítače, ne pro SQL Server licencování, s ohledem na to, že jste už získali licence a Software Assurance prostřednictvím multilicenčního programu nebo prostřednictvím partnera Cloud Solution partner (CSP).
 
 > [!NOTE]
 > Image BYOL jsou teď dostupné jenom pro virtuální počítače s Windows. SQL Server ale můžete nainstalovat ručně jenom na virtuální počítač jenom se systémem Linux. Pokyny najdete v tématu [SQL Server na virtuálním počítači Linux – Nejčastější dotazy](../linux/frequently-asked-questions-faq.md).
@@ -113,7 +110,7 @@ Pro poskytování vlastních SQL Server licencování prostřednictvím License 
 
 Pokud chcete používat BYOL s virtuálním počítačem s SQL Server, musíte mít licenci na SQL Server Standard nebo Enterprise a [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je povinná možnost prostřednictvím některých multilicenčních programů a volitelného nákupu s ostatními. Úroveň cen poskytovaná prostřednictvím multilicenčních programů se liší v závislosti na typu smlouvy a množství nebo závazku SQL Server. Ale jako pravidlo, které přináší vlastní licenci pro nepřetržité provozní úlohy, má následující výhody:
 
-| Zvýhodnění BYOL | Popis |
+| Zvýhodnění BYOL | Description |
 |-----|-----|
 | **Úspora nákladů** | [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) nabízí úspory až 55%. Další informace najdete v tématu [Přepnutí modelu licencování](licensing-model-azure-hybrid-benefit-ahb-change.md) . |
 | **Bezplatná pasivní sekundární replika** | Další výhodou uvedení vlastní licence je [bezplatné licence pro jednu pasivní sekundární repliku](https://azure.microsoft.com/pricing/licensing-faq/) na SQL Server pro účely vysoké dostupnosti. To snižuje náklady na licence na vysoce dostupné SQL Server nasazení (například pomocí skupin dostupnosti Always On). Práva na spuštění pasivního sekundárního serveru jsou k dispozici prostřednictvím výhod Fail-Overch serverů programu Software Assurance. |

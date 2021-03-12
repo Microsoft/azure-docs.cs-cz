@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bbf0530c1a7f1a747d456d87efc106418f23b7ba
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 06db7bcb5698f152dd5062762fdb3d59ae326e22
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052886"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603311"
 ---
 Vícekanálový protokol SMB pro sdílené složky Azure má v současné době tato omezení:
 - Dá se použít jenom u místně redundantních účtů úložiště.
@@ -22,5 +22,5 @@ Vícekanálový protokol SMB pro sdílené složky Azure má v současné době 
 - Funkce SMB Direct není podporována.
 - Soukromé koncové body účtů úložiště se nepodporují.
 - U účtů úložiště s místními Active Directory Domain Services (služba AD DS) nebo Azure služba AD DS [ověřování založené na identitě](../articles/storage/files/storage-files-active-directory-overview.md) povolených pro soubory Azure by klienti SMB nemohli pomocí Průzkumníka souborů Windows nakonfigurovat oprávnění NTFS pro adresáře a soubory.
-    - Pro konfiguraci oprávnění použijte nástroj Windows [Icacls](/windows-server/administration/windows-commands/icacls) nebo příkaz [set-ACL](/powershell/module/microsoft.powershell.security/set-acl?view=powershell-7) .
+    - Pro konfiguraci oprávnění použijte nástroj Windows [Icacls](/windows-server/administration/windows-commands/icacls) nebo příkaz [set-ACL](/powershell/module/microsoft.powershell.security/set-acl) .
 

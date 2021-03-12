@@ -1,5 +1,5 @@
 ---
-title: Skripty Windows pro Azure IoT Edge | Microsoft Docs
+title: Skripty pro Azure IoT Edge s kontejnery Windows | Microsoft Docs
 description: Referenční informace o IoT Edge skriptů PowerShellu pro instalaci, odinstalaci nebo aktualizaci na zařízeních s Windows
 author: kgremban
 manager: philmea
@@ -8,14 +8,14 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b7614f7ccd24d0237a043a9b5bf0ad988146d89c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630612"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615903"
 ---
-# <a name="powershell-scripts-for-iot-edge-on-windows"></a>Skripty PowerShellu pro IoT Edge ve Windows
+# <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>PowerShellové skripty pro IoT Edge s kontejnery Windows
 
 Pochopení skriptů PowerShellu, které instalují, aktualizují nebo odinstalují IoT Edge na zařízeních s Windows.
 

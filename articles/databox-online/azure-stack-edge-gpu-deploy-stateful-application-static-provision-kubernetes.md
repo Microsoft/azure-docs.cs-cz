@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520706"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610480"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s PersistentVolume na zařízení Azure Stack Edge pro
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520706"
 
 V tomto článku se dozvíte, jak nasadit stavovou aplikaci s jednou instancí v Kubernetes pomocí PersistentVolume (PV) a nasazení. Nasazení používá `kubectl` příkazy v existujícím clusteru Kubernetes a nasadí aplikaci MySQL. 
 
-Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes úložiště na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/).
+Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes úložiště na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-storage.md) a jsou obeznámeni s koncepty [úložiště Kubernetes](https://kubernetes.io/docs/concepts/storage/). 
 
 Azure Stack Edge pro podporuje taky spouštění kontejnerů Azure SQL Edge a ty se dají nasadit podobným způsobem, jak je popsáno zde pro MySQL. Další informace najdete v tématu [Azure SQL Edge](../azure-sql-edge/overview.md).
 
@@ -62,7 +62,8 @@ Jste připraveni nasadit stavovou aplikaci na zařízení Azure Stack Edge pro.
 Pokud chcete staticky zřídit souč_hod, musíte na svém zařízení vytvořit sdílenou složku. Pomocí těchto kroků zřídíte souč_hod pro sdílenou složku SMB. 
 
 > [!NOTE]
-> Konkrétní příklad použitý v tomto článku s návody nepracuje se sdílenými složkami NFS. Obecně platí, že sdílené složky NFS je možné zřídit na vašem zařízení Azure Stack Edge s nedatabázovými aplikacemi.
+> - Konkrétní příklad použitý v tomto článku s návody nepracuje se sdílenými složkami NFS. Obecně platí, že sdílené složky NFS je možné zřídit na vašem zařízení Azure Stack Edge s nedatabázovými aplikacemi.
+> - K nasazení stavových aplikací, které používají svazky úložiště k zajištění trvalého úložiště, doporučujeme použít `StatefulSet` . Tento příklad používá `Deployment` pouze jednu repliku a je vhodný pro vývoj a testování. 
 
 1. Vyberte, zda chcete vytvořit hraniční sdílenou složku nebo místní sdílenou složku Edge. Pokud chcete vytvořit sdílenou složku, postupujte podle pokynů v části [přidání sdílené složky](azure-stack-edge-manage-shares.md#add-a-share) . Nezapomeňte zaškrtnout políčko pro **použití sdílené složky s hraničními výpočty**.
 

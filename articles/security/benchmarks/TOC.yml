@@ -191,6 +191,8 @@
       href: ../../iot-hub/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Key Vault
       href: ../../key-vault/general/security-baseline.md
+    - name: Základní hodnoty zabezpečení pro Linux COMPUTE
+      href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: Standardní hodnoty zabezpečení pro Logic Apps
       href: ../../logic-apps/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Microsoft Cloud App Security
@@ -229,6 +231,8 @@
       href: ../../virtual-wan/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro VPN Gateway
       href: ../../vpn-gateway/security-baseline.md
+    - name: Standardní hodnoty zabezpečení Windows Compute
+      href: ../../governance/policy/samples/guest-configuration-baseline-windows.md?toc=/azure/security/benchmarks/toc.json
     - name: Základní hodnota zabezpečení pro virtuální počítač s Windows
       href: ../../virtual-desktop/security-baseline.md
 - name: Zdroje informací

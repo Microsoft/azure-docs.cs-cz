@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/12/2021
+ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487136"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232731"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
 
 > [!IMPORTANT]
-> Sémantický typ dotazu je ve verzi Public Preview, který je k dispozici ve verzi Preview REST API a Azure Portal. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Během úvodního spuštění Preview se neúčtují žádné poplatky za sémantické vyhledávání. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Sémantický typ dotazu je ve verzi Public Preview, který je k dispozici ve verzi Preview REST API a Azure Portal. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
-V tomto článku se dozvíte, jak formulovat požadavek hledání, který používá sémantické hodnocení, a vytváří sémantické titulky a odpovědi.
+V tomto článku se dozvíte, jak formulovat požadavek hledání, který používá sémantické hodnocení. Požadavek vrátí sémantické titulky a volitelně [sémantické odpovědi](semantic-answers.md)a zvýrazní nejdůležitější výrazy a fráze.
 
-Sémantické dotazy obvykle fungují nejlépe na indexech vyhledávání, které jsou vybudovány s velkým obsahem textu, jako jsou soubory PDF nebo dokumenty s velkými bloky textu.
+Titulky a odpovědi jsou extrahovány pomocí textu v dokumentu hledání. Sémantický podsystém určuje, který obsah má vlastnosti titulku nebo odpovědi, ale nevytváří nové věty ani fráze. Z tohoto důvodu může obsah, který obsahuje vysvětlení nebo definice, fungovat nejlépe pro sémantické vyhledávání.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,13 +36,13 @@ Sémantické dotazy obvykle fungují nejlépe na indexech vyhledávání, které
 
   Vyhledávací klient musí v žádosti o dotaz podporovat rozhraní REST API pro náhled. Můžete použít [post](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)nebo kód, který jste změnili, aby se v rozhraní API verze Preview zavolala volání REST. Můžete také použít [Průzkumníka vyhledávání](search-explorer.md) v Azure Portal k odeslání sémantického dotazu.
 
-+ [Dokument hledání](/rest/api/searchservice/preview-api/search-documents) vyžádá se sémantickou možností a dalšími parametry popsanými v tomto článku.
++ [Požadavek na dotaz](/rest/api/searchservice/preview-api/search-documents) musí obsahovat sémantickou možnost a další parametry popsané v tomto článku.
 
 ## <a name="whats-a-semantic-query"></a>Co je sémantický dotaz?
 
 V Kognitivní hledání dotaz je parametrizovaná žádost, která určuje zpracování dotazů a tvar odpovědi. *Sémantický dotaz* přidává parametry, které vyvolávají model pro sémantické přeřazení, který může vyhodnotit kontext a význam odpovídajících výsledků, zvýšit relevantnější shody na začátek a vracet sémantické odpovědi a popisky.
 
-Následující žádost je zástupcem základního sémantického dotazu (bez odpovědí).
+Následující žádost je zástupce minimálního sémantického dotazu (bez odpovědí).
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -54,15 +54,25 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
 }
 ```
 
-Stejně jako u všech dotazů v Kognitivní hledání se požadavek zaměřuje na kolekci dokumentů jediného indexu. Sémantický dotaz dále projde stejnou sekvencí analýzy, analýzy a skenování jako nesémantický dotaz. Rozdíl spočívá v tom, jak je vypočítána relevance. Jak je definováno v této verzi Preview, sémantický dotaz je ten, jehož *výsledky* se znovu zpracovávají pomocí pokročilých algoritmů, a to tak, aby se shodovaly s tím, jak se považuje za nejrelevantnější, a ne pro skóre přiřazené výchozím algoritmem řazení podle podobnosti. 
+Stejně jako u všech dotazů v Kognitivní hledání se požadavek zaměřuje na kolekci dokumentů jediného indexu. Sémantický dotaz dále projde stejnou sekvencí analýzy, analýzy, kontroly a bodování jako nesémantický dotaz. 
 
-Pouze prvních 50 shod od počátečních výsledků lze sémanticky seřadit a všechny popisky zahrnutí v odpovědi. Volitelně můžete zadat **`answer`** parametr pro požadavek na extrakci potenciální odpovědi. Tento model formuluje až pět potenciálních odpovědí na dotaz, které můžete vybrat pro vykreslení na stránce hledání nahoře.
+Rozdíl leží v relevanci a bodování. Jak je definováno v této verzi Preview, sémantický dotaz je, jehož *výsledky* jsou přeřazeny pomocí sémantického jazykového modelu, a to tak, aby bylo zajištěno, že se shodám, které považují za důležité pro sémantický rozsah, místo skóre přiřazených pomocí výchozího algoritmu řazení podobnosti.
 
-## <a name="query-using-rest-apis"></a>Dotaz pomocí rozhraní REST API
+Pouze prvních 50 shod od počátečních výsledků lze sémanticky seřadit a všechny popisky zahrnutí v odpovědi. Volitelně můžete zadat **`answer`** parametr pro požadavek na extrakci potenciální odpovědi. Další informace najdete v tématu [sémantické odpovědi](semantic-answers.md).
 
-Úplnou specifikaci REST API najdete v [dokumentu hledání (REST Preview)](/rest/api/searchservice/preview-api/search-documents).
+## <a name="query-with-search-explorer"></a>Dotaz s využitím Průzkumníka služby Hledání
 
-Sémantické dotazy poskytují popisky a zvýrazňování automaticky. Pokud chcete, aby odpověď zahrnovala odpovědi, můžete do žádosti přidat volitelný **`answer`** parametr. Tento parametr plus konstrukce samotného řetězce dotazu vytvoří odpověď v odpovědi.
+[Průzkumník služby Search](search-explorer.md) byl aktualizován tak, aby obsahoval možnosti pro sémantické dotazy. Tyto možnosti se zobrazí na portálu po získání přístupu k verzi Preview. Možnosti dotazu mohou umožňovat sémantické dotazy, searchFields a opravy pravopisu.
+
+Do řetězce dotazu můžete také vložit požadované parametry dotazu.
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Možnosti dotazů v Průzkumníkovi vyhledávání" border="true":::
+
+## <a name="query-using-rest"></a>Dotaz pomocí REST
+
+Pomocí [vyhledávacích dokumentů (REST Preview)](/rest/api/searchservice/preview-api/search-documents) formulujte požadavek programově.
+
+Odpověď obsahuje popisky a zvýrazňování automaticky. Pokud chcete, aby odpověď zahrnovala opravy pravopisu nebo odpovědi, přidejte **`speller`** **`answers`** do žádosti volitelný parametr nebo.
 
 V následujícím příkladu se k vytvoření žádosti sémantického dotazu se sémantickými odpověďmi a popisky používá pohostines-Sample-index:
 
@@ -81,6 +91,16 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
     "count": true
 }
 ```
+
+Následující tabulka shrnuje parametry dotazu používané v sémantickém dotazu, abyste je mohli zobrazit komplexní. Seznam všech parametrů najdete v tématu [hledání dokumentů (REST Preview)](/rest/api/searchservice/preview-api/search-documents) .
+
+| Parametr | Typ | Description |
+|-----------|-------|-------------|
+| queryType | Řetězec | Mezi platné hodnoty patří jednoduchá, plná a sémantická. Pro sémantické dotazy je požadována hodnota sémantika. |
+| queryLanguage | Řetězec | Vyžaduje se pro sémantické dotazy. V současné době je implementována pouze "en-US". |
+| searchFields | Řetězec | Seznam prohledávatelných polí oddělených čárkami. Volitelné, ale doporučené. Určuje pole, přes která probíhá sémantické hodnocení. </br></br>Na rozdíl od jednoduchých a úplných typů dotazů je pořadí, ve kterém jsou pole uvedena, určena přednostně. Další pokyny k používání najdete v části [Krok 2: set searchFields](#searchfields). |
+| kontrolu pravopisu | Řetězec | Volitelný parametr, který není specifický pro sémantické dotazy, který opravuje nesprávně napsané výrazy předtím, než dosáhnou vyhledávacího modulu. Další informace najdete v tématu [Přidání opravy pravopisu do dotazů](speller-how-to-add.md). |
+| zodpovídá |Řetězec | Volitelné parametry, které určují, zda jsou ve výsledku zahrnuty sémantické odpovědi. V současné době je implementována pouze "extrakce". Odpovědi lze nakonfigurovat tak, aby vracely maximálně pět. Výchozí hodnota je jedna. V tomto příkladu se zobrazuje počet tří odpovědí: "extrahovatelné \| count3". Další informace najdete v tématu o [vrácení sémantických odpovědí](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>Formulování žádosti
 
@@ -109,7 +129,7 @@ Tento parametr je nepovinný v tom, že není k dispozici žádná chyba, pokud 
 
 Parametr searchFields slouží k identifikaci pasáží pro vyhodnocení "sémantické podobnosti" dotazem. V rámci verze Preview nedoporučujeme ponechání searchFields prázdné, protože model vyžaduje doporučení, která pole jsou pro zpracování nejdůležitější.
 
-Pořadí searchFields je kritické. Pokud už používáte searchFields v existujících jednoduchých nebo úplných dotazech na Lucene, nezapomeňte při přechodu na sémantický typ dotazu přejít na tento parametr znovu.
+Pořadí searchFields je kritické. Pokud už používáte searchFields v existujících jednoduchých nebo úplných dotazech na Lucene, nezapomeňte tento parametr znovu navštívit a při přechodu na sémantický typ dotazu zkontrolovat pořadí polí.
 
 Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při zadání dvou nebo více searchFields:
 
@@ -117,11 +137,11 @@ Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při za
 
 + První pole by mělo být vždy stručné (například název nebo název), a to v ideálním 25 slovem.
 
-+ Pokud má index pole Adresa URL, která je text (lidské čtení, jako je například `www.domain.com/name-of-the-document-and-other-details` a ne počítač zaměřený na například `www.domain.com/?id=23463&param=eis` ), umístěte ho do tohoto seznamu (nebo nejdřív, pokud neexistuje pole stručného názvu).
++ Pokud má index pole adresy URL, které je text (lidské čitelnost, jako je například `www.domain.com/name-of-the-document-and-other-details` , a ne počítač zaměřený na například `www.domain.com/?id=23463&param=eis` ), umístěte ho do tohoto seznamu (nebo jako první, pokud neexistuje pole stručného názvu).
 
 + Použijte tato pole podle popisných polí, kde můžete najít odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu.
 
-Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah.
+Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah. Aby se zajistilo včasné zpracování, jenom první 20 000 tokenů společného obsahu searchFields se doručí na sémantické vyhodnocení a hodnocení.
 
 #### <a name="step-3-remove-orderby-clauses"></a>Krok 3: odebrání klauzulí orderBy
 
@@ -129,15 +149,7 @@ Odeberte jakékoli klauzule orderBy, pokud existují v existující žádosti. S
 
 #### <a name="step-4-add-answers"></a>Krok 4: Přidání odpovědí
 
-Volitelně můžete přidat odpovědi, pokud chcete zahrnout další zpracování, které poskytuje odpověď. Odpovědi (a titulky) jsou formulované z pasáží nalezených v polích uvedených v searchFields. Nezapomeňte do searchFields zahrnout pole s bohatým obsahem, abyste získali nejlepší odpovědi a popisy v odpovědi.
-
-K dispozici jsou explicitní a implicitní podmínky, které vytváří odpovědi. 
-
-+ Mezi explicitní podmínky patří přidání "odpovědi = extrakce". Kromě toho můžete zadat počet odpovědí vrácených v celkové odpovědi a přidat "počet" následovaný číslem: `"answers=extractive|count=3"` .  Výchozí hodnota je jedna. Maximum je pět.
-
-+ Mezi implicitní podmínky patří konstrukce řetězce dotazu, který sám o sobě zavolá odpověď. Dotaz tvořený "jaký Hotel má zelenou místnost", je pravděpodobnější, že se jedná o "zodpovězení", než dotaz složený z příkazu, jako je hotel s ozdobným vnitřním obsahem. Jak můžete očekávat, dotaz nemůže být nezadaný nebo mít hodnotu null.
-
-Důležité je Ukázat, že pokud dotaz nevypadá jako otázka, zpracování odpovědi se přeskočí, i když je nastaven parametr odpovědi.
+Volitelně můžete přidat odpovědi, pokud chcete zahrnout další zpracování, které poskytuje odpověď. Odpovědi (a titulky) jsou extrahovány z pasáží nalezených v polích uvedených v searchFields. Nezapomeňte do searchFields zahrnout pole s bohatým obsahem, abyste získali nejlepší odpovědi v reakci. Další informace najdete v tématu [jak vracet sémantické odpovědi](semantic-answers.md).
 
 #### <a name="step-5-add-other-parameters"></a>Krok 5: Přidání dalších parametrů
 
@@ -145,129 +157,33 @@ Nastavte všechny další parametry, které chcete v žádosti. Parametry, jako 
 
 Volitelně můžete přizpůsobit styl zvýraznění aplikovaný na titulky. Popisky použijí formátování zvýraznění u klíčových pasáží v dokumentu, které shrnují odpověď. Výchozí formát je `<em>`. Pokud chcete určit typ formátování (například žluté pozadí), můžete nastavit highlightPreTag a highlightPostTag.
 
-### <a name="review-the-response"></a>Zkontrolovat odpověď
+## <a name="evaluate-the-response"></a>Vyhodnocení odpovědi
 
-Reakce na výše uvedený dotaz vrátí následující shodu jako horního výběru. Titulky se vrátí automaticky, s prostým textem a zvýrazněnými verzemi. Další informace o sémantických odpovědích najdete v tématu [sémantické hodnocení a odpovědi](semantic-how-to-query-response.md).
+Stejně jako u všech dotazů se odpověď skládá ze všech polí označených jako načístelné nebo pouze těch polí uvedených v parametru SELECT. Zahrnuje původní skóre významnosti a může také zahrnovat počet nebo dávkování výsledků v závislosti na tom, jak jste vyžádali požadavek.
+
+V sémantickém dotazu má odpověď další prvky: nové sémanticky seřazené skóre relevance, popisky v prostém textu a s nejzajímavější a volitelně také odpověď.
+
+V klientské aplikaci můžete vytvořit strukturu vyhledávací stránky tak, aby obsahovala popisek jako popis shody, nikoli celý obsah konkrétního pole. To je užitečné, když jsou jednotlivá pole moc zhuštěná na stránce s výsledky hledání.
+
+Odpověď pro příklad dotazu výše vrací následující shodu jako horního výběru. Titulky se vrátí automaticky, s prostým textem a zvýrazněnými verzemi. Odpovědi jsou vynechány v příkladu, protože u tohoto konkrétního dotazu a corpus nelze určit jeden.
 
 ```json
-"@odata.count": 29,
+"@odata.count": 35,
+"@search.answers": [],
 "value": [
     {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
         "@search.captions": [
             {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
             }
         ],
-        "HotelId": "18",
         "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
     },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>Parametry používané v sémantickém dotazu
-
-Následující tabulka shrnuje parametry dotazu používané v sémantickém dotazu, abyste je mohli zobrazit komplexní. Seznam všech parametrů najdete v tématu [hledání dokumentů (REST Preview)](/rest/api/searchservice/preview-api/search-documents) .
-
-| Parametr | Typ | Popis |
-|-----------|-------|-------------|
-| queryType | Řetězec | Mezi platné hodnoty patří jednoduchá, plná a sémantická. Pro sémantické dotazy je požadována hodnota sémantika. |
-| queryLanguage | Řetězec | Vyžaduje se pro sémantické dotazy. V současné době je implementována pouze "en-US". |
-| searchFields | Řetězec | Seznam prohledávatelných polí oddělených čárkami. Volitelné, ale doporučené. Určuje pole, přes která probíhá sémantické hodnocení. </br></br>Na rozdíl od jednoduchých a úplných typů dotazů je pořadí, ve kterém jsou pole uvedena, určena přednostně.|
-| zodpovídá |Řetězec | Volitelné pole, které určuje, zda jsou ve výsledku zahrnuty sémantické odpovědi. V současné době je implementována pouze "extrakce". Odpovědi lze nakonfigurovat tak, aby vracely maximálně pět. Výchozí hodnota je jedna. V tomto příkladu se zobrazuje počet tří odpovědí: "extrahovatelné \| count3". |
-
-## <a name="query-with-search-explorer"></a>Dotaz s využitím Průzkumníka služby Hledání
-
-Následující dotaz cílí na integrovaný ukázkový index hotelů, pomocí rozhraní API verze 2020-06-30-Preview a běží v Průzkumníkovi vyhledávání. `$select`Klauzule omezí výsledky jenom na několik polí, což usnadňuje kontrolu v podrobném formátu JSON v Průzkumníkovi vyhledávání.
-
-### <a name="with-querytypesemantic"></a>With queryType = sémantická
-
-```json
-search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
-```
-
-Následuje několik prvních výsledků.
-
-```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>S hodnotou queryType (výchozí)
-
-Pro porovnání spusťte stejný dotaz, jak je uvedeno výše, a odeberte `&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` . Všimněte si, že `"@search.rerankerScore"` v těchto výsledcích nejsou žádné, a v horních třech pozicích se zobrazí různé hotely.
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
 ```
 
 ## <a name="next-steps"></a>Další kroky

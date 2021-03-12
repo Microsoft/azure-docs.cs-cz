@@ -6,22 +6,22 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492807"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010350"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
-Azure Database for MySQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for MySQL automaticky vytváří zálohy serveru a ukládá je v uživatelem nakonfigurovaném místně nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou základní součástí jakékoli strategie kontinuity podnikových procesů, protože chrání data před náhodným poškozením nebo odstraněním.
 
 ## <a name="backups"></a>Zálohování
 
 Azure Database for MySQL přebírá zálohy datových souborů a transakčního protokolu. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
-Tyto záložní soubory nejsou vystavené uživateli a nelze je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MySQL. Pomocí [mysqldump](concepts-migrate-dump-restore.md) můžete zkopírovat databázi.
+Tyto záložní soubory nejsou přístupné uživatelům a není možné je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MySQL. Pomocí [mysqldump](concepts-migrate-dump-restore.md) můžete zkopírovat databázi.
 
 Typ a četnost zálohování závisí na úložišti back-endu serverů.
 
@@ -86,7 +86,17 @@ K dispozici jsou dva typy obnovení:
 - Obnovení k určitému **bodu v čase** je dostupné s možností redundance zálohy a vytvoří nový server ve stejné oblasti jako původní server, který využívá kombinaci úplných záloh a zálohování protokolu transakcí.
 - **Geografické obnovení** je k dispozici pouze v případě, že jste server nakonfigurovali pro geograficky redundantní úložiště, a umožňuje obnovit váš server do jiné oblasti s využitím nejaktuálnějšího zálohování.
 
-Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
+Odhadovaná doba pro obnovení serveru závisí na několika faktorech:
+* Velikost databází
+* Počet zahrnutých protokolů transakcí
+* Množství aktivity, které je třeba znovu přehrát pro obnovení do bodu obnovení
+* Šířka pásma sítě, pokud se obnovení provádí v jiné oblasti
+* Počet souběžných požadavků na obnovení zpracovávaných v cílové oblasti
+* Přítomnost primárního klíče v tabulkách v databázi. Pro rychlejší obnovení zvažte přidání primárního klíče pro všechny tabulky v databázi. Pokud chcete zjistit, jestli jsou v tabulkách primární klíč, můžete použít následující dotaz:
+```sql
+select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
+```
+Pro velkou nebo velmi aktivní databázi může obnovení trvat několik hodin. Pokud v oblasti dojde k dlouhodobému výpadku, je možné, že se iniciuje velký počet požadavků na geografickou obnovu pro zotavení po havárii. Pokud existuje mnoho požadavků, může se zvýšit doba obnovení pro jednotlivé databáze. Většina obnovení databáze se dokončí za méně než 12 hodin.
 
 > [!IMPORTANT]
 > Odstraněné servery je možné obnovit pouze do **pěti dnů** od odstranění, po jejichž uplynutí budou zálohy odstraněny. Záloha databáze je k dispozici a obnovena pouze z předplatného Azure, které je hostitelem serveru. Postup obnovení vyřazeného serveru najdete v části [popsané kroky](howto-restore-dropped-server.md). Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804866"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617178"
 ---
 # <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 > [!IMPORTANT]
-> V současné době se ve všech oblastech Azure podrží ve službě Virtual Network možnost je ve verzi Preview. Můžete nás poslat e-mailem <azurevnettap@microsoft.com> s vaším ID předplatného a budeme vás informovat o budoucí aktualizace verze Preview. V provizorním případě můžete použít řešení založená na agentech nebo síťové virtuální zařízení, která poskytují funkce viditelnosti sítě a sítě prostřednictvím našich [řešení partnerů pro zprostředkovatele paketů](#virtual-network-tap-partner-solutions) dostupných v [Azure Marketplace nabídky](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners).
+> V současné době se ve všech oblastech Azure podrží ve službě Virtual Network možnost je ve verzi Preview. Můžete nás poslat e-mailem <azurevnettap@microsoft.com> s vaším ID předplatného a budeme vás informovat o budoucí aktualizace verze Preview. V provizorním případě můžete použít řešení založená na agentech nebo síťové virtuální zařízení, která poskytují funkce viditelnosti sítě a sítě prostřednictvím našich [řešení partnerů pro zprostředkovatele paketů](#virtual-network-tap-partner-solutions) dostupných v [Azure Marketplace nabídky](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners).
 
 KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuje nepřetržitě streamovat síťový provoz virtuálního počítače do nástroje pro shromažďování síťových paketů nebo pro analýzu. Sběrač nebo nástroj pro analýzu poskytuje síťový partner pro [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) . Seznam partnerských řešení, která jsou ověřená pro práci s virtuální sítí, najdete v tématu [Partnerská řešení](#virtual-network-tap-partner-solutions).
 Následující obrázek ukazuje, jak funguje virtuální síť. Můžete přidat konfiguraci klepnutím na [síťové rozhraní](virtual-network-network-interface.md) , které je připojené k virtuálnímu počítači nasazenému ve vaší virtuální síti. Cíl je IP adresa virtuální sítě ve stejné virtuální síti jako monitorované síťové rozhraní nebo navázání [partnerské virtuální](virtual-network-peering-overview.md) sítě. Řešení kolektoru pro klepnutí na virtuální síť můžete nasadit za využití interního nástroje pro vyrovnávání zatížení Azure pro zajištění vysoké dostupnosti.
@@ -64,6 +64,7 @@ Předtím, než vytvoříte virtuální síť, musíte přijmout potvrzovací e-
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [Zabezpečení NoName](https://nonamesecurity.com/)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [® Platforma RSA NetWitness](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

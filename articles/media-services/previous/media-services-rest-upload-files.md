@@ -3,7 +3,7 @@ title: Nahrání souborů do účtu Azure Media Services pomocí REST | Microsof
 description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků pomocí REST.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 9f27a427df07302840ce719d35c7876f9dc17dbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042980"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012934"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST
 
@@ -68,7 +68,7 @@ Postup pro nastavení post pro tento kurz najdete v tématu [Configure a post](m
 
 1. Přidejte hodnoty připojení do svého prostředí. 
 
-    Některé proměnné, které jsou součástí prostředí **MediaServices** [environment](postman-environment.md) , je třeba nastavit ručně, aby bylo možné zahájit provádění operací definovaných v [kolekci](postman-collection.md).
+    Některé proměnné, které jsou součástí prostředí **MediaServices** [](postman-environment.md) , je třeba nastavit ručně, aby bylo možné zahájit provádění operací definovaných v [kolekci](postman-collection.md).
 
     Pokud chcete získat hodnoty pro prvních pět proměnných, přečtěte si téma [přístup k rozhraní Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -90,13 +90,13 @@ Postup pro nastavení post pro tento kurz najdete v tématu [Configure a post](m
         ]
     }
     ```
-4. Vlevo od okna **po** klikněte na **1. Získejte** token služby AAD pro ověření tokenu  ->  **služby Azure AD pro instanční objekt** .
+4. Vlevo od okna **po** klikněte na **1. Získejte** token služby AAD pro ověření tokenu  ->  **služby Azure AD pro instanční objekt**.
 
     Část adresy URL je vyplněna proměnnou prostředí **AzureADSTSEndpoint** (dříve v tomto kurzu jste nastavili hodnoty proměnných prostředí, které podporují kolekci).
 
     ![Snímek obrazovky zobrazující "1. Získání ověřovacího tokenu D – získáte token Azure A D pro instanční objekt vybraný v okně "post" a vybrané tlačítko Odeslat.](./media/media-services-rest-upload-files/postment-get-token.png)
 
-5. Stiskněte **Odeslat** .
+5. Stiskněte **Odeslat**.
 
     Můžete zobrazit odpověď obsahující "access_token". Skript "test" převezme tuto hodnotu a nastaví proměnnou prostředí **AccessToken** (jak je popsáno výše). Pokud prohlížíte proměnné prostředí, uvidíte, že tato proměnná nyní obsahuje hodnotu přístupového tokenu (token nosiče), která se používá ve zbývající části operací. 
 
@@ -113,8 +113,8 @@ Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte pr�
 
 ### <a name="create-an-access-policy"></a>Vytvoření zásady přístupu
 
-1. Vyberte **AccessPolicy**  ->  **vytvořit AccessPolicy pro nahrání** .
-2. Stiskněte **Odeslat** .
+1. Vyberte **AccessPolicy**  ->  **vytvořit AccessPolicy pro nahrání**.
+2. Stiskněte **Odeslat**.
 
     ![Snímek obrazovky, který zobrazuje "AccessPolicy-Create AccessPolicy for upload" Selected z nabídky vlevo a vybrané tlačítko Odeslat.](./media/media-services-rest-upload-files/postman-access-policy.png)
 
@@ -126,7 +126,7 @@ Před nahráním jakýchkoli souborů do úložiště objektů BLOB nastavte pr�
 
 [Asset](/rest/api/media/operations/asset) je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
 
-Jedna z vlastností, které lze přidat při vytváření assetu, je **možností** . Můžete určit jednu z následujících možností šifrování: **žádné** (výchozí, bez šifrování se nepoužívá), **StorageEncrypted** (pro obsah, který byl předem šifrovaný pomocí šifrování úložiště na straně klienta), **CommonEncryptionProtected** nebo **EnvelopeEncryptionProtected** . Pokud máte zašifrovaný prostředek, musíte nakonfigurovat zásady doručování. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
+Jedna z vlastností, které lze přidat při vytváření assetu, je **možností**. Můžete určit jednu z následujících možností šifrování: **žádné** (výchozí, bez šifrování se nepoužívá), **StorageEncrypted** (pro obsah, který byl předem šifrovaný pomocí šifrování úložiště na straně klienta), **CommonEncryptionProtected** nebo **EnvelopeEncryptionProtected**. Pokud máte zašifrovaný prostředek, musíte nakonfigurovat zásady doručování. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
 Pokud je váš Asset zašifrovaný, musíte vytvořit **ContentKey** a propojit ho s vaším Assetem, jak je popsáno v následujícím článku: [jak vytvořit ContentKey](media-services-rest-create-contentkey.md). Po nahrání souborů do assetu je potřeba aktualizovat vlastnosti šifrování v entitě **AssetFile** s hodnotami, které jste získali během šifrování **assetu** . K tomu použijte požadavek HTTP **Merge** . 
 
@@ -134,8 +134,8 @@ V tomto příkladu vytváříme nešifrovaný prostředek.
 
 ### <a name="create-an-asset"></a>Vytvoření prostředku
 
-1. Vyberte **prostředky**  ->  **vytvořit Asset** .
-2. Stiskněte **Odeslat** .
+1. Vyberte **prostředky**  ->  **vytvořit Asset**.
+2. Stiskněte **Odeslat**.
 
     ![Snímek obrazovky, který zobrazuje "Asset – vytvořit Asset" vybraný v nabídce kolekce a vybrané tlačítko Odeslat.](./media/media-services-rest-upload-files/postman-create-asset.png)
 
@@ -165,8 +165,8 @@ Musí být splněny určité předpoklady:
 
 ### <a name="create-a-sas-locator"></a>Vytvoření lokátoru SAS
 
-1. Vyberte **Lokátor**  ->  **vytvořit Lokátor SAS** .
-2. Stiskněte **Odeslat** .
+1. Vyberte **Lokátor**  ->  **vytvořit Lokátor SAS**.
+2. Stiskněte **Odeslat**.
 
     Skript "test" vytvoří adresu URL pro odeslání na základě zadaného názvu mediálního souboru a informací lokátoru SAS a nastaví příslušnou proměnnou prostředí.
 
@@ -191,11 +191,11 @@ Požadavek na nahrání není součástí kolekce **AzureMedia** .
 Vytvořit a nastavit novou žádost:
 1. Stisknutím klávesy **+** vytvořte novou kartu žádosti.
 2. Vyberte operaci **Put** a v adrese URL vložte **{{UploadURL}}** .
-2. Kartu **autorizace** nechte beze změny (nenastavte ji na **token nosiče** ).
-3. Na kartě **hlavičky** zadejte: **klíč** : "x-MS-BLOB-Type" a **Value** : "BlockBlob".
-2. Na kartě **tělo** klikněte na **binární** .
+2. Kartu **autorizace** nechte beze změny (nenastavte ji na **token nosiče**).
+3. Na kartě **hlavičky** zadejte: **klíč**: "x-MS-BLOB-Type" a **Value**: "BlockBlob".
+2. Na kartě **tělo** klikněte na **binární**.
 4. Vyberte soubor s názvem, který jste zadali v proměnné prostředí **MediaFileName** .
-5. Stiskněte **Odeslat** .
+5. Stiskněte **Odeslat**.
 
     ![Snímek obrazovky, který zobrazuje kartu "(nahrané R L)".](./media/media-services-rest-upload-files/postman-upload-file.png)
 
@@ -203,8 +203,8 @@ Vytvořit a nastavit novou žádost:
 
 Po nahrání souboru budete muset v assetu vytvořit metadata pro mediální soubor, který jste nahráli do úložiště objektů BLOB přidružených k vašemu prostředku.
 
-1. Vyberte **AssetFiles**  ->  **CreateFileInfos** .
-2. Stiskněte **Odeslat** .
+1. Vyberte **AssetFiles**  ->  **CreateFileInfos**.
+2. Stiskněte **Odeslat**.
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postman-create-file-info.png)
 

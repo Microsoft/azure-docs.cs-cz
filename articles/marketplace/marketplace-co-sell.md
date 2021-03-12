@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/08/2021
-ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 3/12/2021
+ms.openlocfilehash: 47f8f4ec3b5c5dd2d4545fc67561487d4f5a465c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563774"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225301"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Přehled společného prodeje s prodejními týmy a partnery Microsoftu
 
@@ -33,7 +33,7 @@ Předprodejní příležitost je libovolný typ spolupráce s prodejními týmy 
 - **Společný prodej s prodejními týmy Microsoftu** – Pracujte s jedním nebo více prodejními týmy Microsoftu, aby aktivně splňovaly potřeby zákazníků. To může zahrnovat prodej nabídek, nabídek Microsoftu nebo obojího. Vy a prodejní týmy Microsoftu můžete identifikovat a sdílet příležitosti pro zákazníky, u kterých vaše řešení můžou být vhodná.
 - **Partner pro partnery (P2P)** – spolupracuje s jiným partnerem Microsoftu, aby aktivně vyřešil problémy zákazníka.
 - **Soukromá koupě** – sdílejte, na čem nezávisle pracujete s Microsoftem, aby se projevily v systému Microsoft Reporting pro účely analýzy a předpovědi.
-- **Posuzování řešení (SA)** – Pracujte s partnery, kteří se prověřené obchodním týmem řešení Assessments, aby mohli získat přístup k potřebám technologie pro zákazníky, kteří používají nebo plánují používání technologií Microsoftu.
+- **Posuzování řešení (SA)** – Pracujte s partnery, kteří se prověřené obchodním týmem řešení Assessments pro vyhodnocení potřeb technologie pro zákazníky, kteří používají nebo plánují používání technologií Microsoftu.
 
 ## <a name="co-sell-statuses"></a>Stavy společného prodeje
 
@@ -46,8 +46,8 @@ Stavy společného prodeje pro Azure:
 - Azure IP – společný prodej motivovaní
 
 Stavy společného prodeje pro obchodní aplikace
-- Aplikace pro výrobce ISV Connect Standard
-- Aplikace pro výrobce ISV Connect Premium  
+- Aplikace pro výrobce softwaru \ Connect Standard nebo Premium motivační Standard
+- Aplikace pro výrobce ISV Connect Standard nebo Premium – Premium  
 
 Podrobnosti o požadavcích na dosažení těchto stavů společného prodeje najdete v tématu požadavky na [společný prodej](co-sell-requirements.md).
 
@@ -74,12 +74,12 @@ Pro tyto typy nabídek se dá použít stav aplikace pro prodejce ISV Connect St
 - Dynamics 365 pro Customer Engagement & PowerApps
 - Dynamics 365 pro operace
 
-Nabídky, které dosahují motivovaní nebo _aplikace_ pro _vlastní prodej v rámci Azure IP_ , získají pro vás tyto výhody obchodního tržiště:
+Nabídky, které dosahují _společného prodeje Azure IP motivovaní_ , získají tyto výhody pro komerční tržiště:
 
 - Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na řešení vaší infrastruktury jako služby (IaaS) nebo softwaru jako služby (SaaS) prodávaného prostřednictvím komerčního tržiště. Další informace najdete v tématu [poplatky za služby komerčního tržiště](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vašeho řešení IaaS nebo nabídky SaaS. Další informace o programu CSP najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md).
 - Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Způsobilí zákazníci uvidí nabídku označenou jako **zvýhodněné zvýhodnění Azure s nárokem** v Azure Portal. Další informace najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md).
-- Nabídky, které přinášejí motivovaní nebo _aplikace_ pro _vlastní prodej v Azure IP_ , obdrží na stránce seznam nabídek v online obchodech **upřednostňovaná řešení Microsoftu** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení.
+- Nabídky, které přinášejí _Azure IP v motivovaní_ nebo _aplikace_ pro vlastní prodej. stav obdrží na stránce seznam nabídek v online obchodech **upřednostňovaná řešení Microsoftu** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení.
 
 Další informace o tom, jak dosáhnout společného prodejního stavu motivovaní, najdete v tématu věnovaném předprodejní [požadavkům a spoluprodeji motivovaní požadavků](co-sell-requirements.md).
 

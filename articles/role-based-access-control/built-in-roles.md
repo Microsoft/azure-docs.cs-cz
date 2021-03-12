@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724502"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011625"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -426,7 +426,7 @@ Umožňuje spravovat přístup uživatelů k prostředkům Azure. [Další infor
 }
 ```
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Přispěvatel klasických virtuálních počítačů
@@ -6702,7 +6702,7 @@ Umožňuje číst odběry událostí EventGrid. [Další informace](../event-gri
 
 ### <a name="fhir-data-contributor"></a>Přispěvatel dat FHIR
 
-Role umožňuje uživateli nebo hlavnímu základnímu přístupu k datům FHIR [získat další informace](../healthcare-apis/configure-azure-rbac.md) .
+Role umožňuje uživateli nebo hlavnímu základnímu přístupu k datům FHIR [získat další informace](../healthcare-apis/fhir/configure-azure-rbac.md) .
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6741,7 +6741,7 @@ Role umožňuje uživateli nebo hlavnímu základnímu přístupu k datům FHIR 
 
 ### <a name="fhir-data-exporter"></a>FHIR data Exportér
 
-Role umožňuje uživateli nebo objektu zabezpečení číst a exportovat FHIR data. další [informace](../healthcare-apis/configure-azure-rbac.md)
+Role umožňuje uživateli nebo objektu zabezpečení číst a exportovat FHIR data. další [informace](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6782,7 +6782,7 @@ Role umožňuje uživateli nebo objektu zabezpečení číst a exportovat FHIR d
 
 ### <a name="fhir-data-reader"></a>Čtecí modul dat FHIR
 
-Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR. další [informace](../healthcare-apis/configure-azure-rbac.md)
+Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR. další [informace](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -6821,7 +6821,7 @@ Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR. další 
 
 ### <a name="fhir-data-writer"></a>Zapisovač dat FHIR
 
-Role umožňuje uživateli nebo objektu zabezpečení číst a zapisovat FHIR data. další [informace](../healthcare-apis/configure-azure-rbac.md)
+Role umožňuje uživateli nebo objektu zabezpečení číst a zapisovat FHIR data. další [informace](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |

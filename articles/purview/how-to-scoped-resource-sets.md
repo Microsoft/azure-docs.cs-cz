@@ -1,5 +1,5 @@
 ---
-title: 'Postupy: Vytvoření konfigurace s rozsahem sady prostředků'
+title: Postup vytvoření konfigurace s rozsahem sady prostředků
 description: Přečtěte si, jak vytvořit pravidlo konfigurace s vymezeným oborem nastavení a přepsat tak, jak se prostředky seskupí do sad prostředků.
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668431"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607998"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Vytvořit pravidla konfigurace sady prostředků s vymezeným oborem
 
@@ -24,20 +24,29 @@ Při kontrole účtu úložiště používá Azure dosah sadu definovaných vzor
 
 Pomocí následujících kroků vytvořte novou konfiguraci sady prostředků s vymezeným oborem:
 
-1. Přejít do centra pro správu. V nabídce vyberte **množiny prostředků s vymezeným oborem** . Kliknutím na **+ Nový** vytvořte novou sadu pravidel konfigurace.
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Vytvořit nové pravidlo sady prostředků s vymezeným oborem" border="true":::
+1. Přejít do centra pro správu. V nabídce vyberte **množiny prostředků s vymezeným oborem** . Vyberte **+ Nová** a vytvořte novou sadu pravidel konfigurace.
 
-1. Zadejte obor konfigurace sady prostředků s vymezeným oborem. Vyberte typ účtu úložiště a název účtu úložiště, na kterém chcete vytvořit pravidlo. Každá sada pravidel se aplikuje relativně k oboru cesty ke složce určenému v poli **cesta ke složce** . 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Vytvořit nové pravidlo sady prostředků s vymezeným oborem" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Vytvořit nové pravidlo sady prostředků s vymezeným oborem" border="true":::
+
+1. Zadejte obor konfigurace sady prostředků s vymezeným oborem. Vyberte typ účtu úložiště a název účtu úložiště, na kterém chcete vytvořit pravidlo. Každá sada pravidel se aplikuje relativně k oboru cesty ke složce určenému v poli **cesta ke složce** .
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Vytvořit konfigurace sady prostředků s vymezeným oborem" border="true":::
 
 1. Pokud chcete zadat pravidlo pro obor konfigurace, vyberte **+ nové pravidlo**.
+
 1. Chcete-li vytvořit pravidlo, zadejte do následujících polí:
-    1. **Název pravidla:** Název pravidla konfigurace. Toto pole nemá žádný vliv na prostředky, na které se pravidlo vztahuje.
-    1. **Kvalifikovaný název:** Kvalifikovaná cesta, která používá kombinaci textu, dynamického přetvoření a statických záprvků pro porovnávání prostředků s pravidlem konfigurace. Tato cesta je relativní vzhledem k oboru pravidla konfigurace. Podrobné pokyny k určení kvalifikovaných názvů najdete v části [syntaxe](#syntax) níže. 
-    1. **Zobrazovaný název:** Zobrazovaný název assetu. Toto pole je volitelné. Pomocí prostého textu a statických odzpůsobování můžete přizpůsobit způsob zobrazení prostředku v katalogu. Podrobnější pokyny najdete níže v části [syntaxe](#syntax) .
-    1. **Neseskupovat jako sadu prostředků:** Pokud je povoleno, odpovídající prostředek se nebude seskupovat do sady prostředků. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Vytvořit nové pravidlo sady prostředků s vymezeným oborem" border="true"::: 
-1. Uložte pravidlo kliknutím na **Přidat**. 
+
+   1. **Název pravidla:** Název pravidla konfigurace. Toto pole nemá žádný vliv na prostředky, na které se pravidlo vztahuje.
+
+   1. **Kvalifikovaný název:** Kvalifikovaná cesta, která používá kombinaci textu, dynamického přetvoření a statických záprvků pro porovnávání prostředků s pravidlem konfigurace. Tato cesta je relativní vzhledem k oboru pravidla konfigurace. Podrobné pokyny k určení kvalifikovaných názvů najdete v části [syntaxe](#syntax) níže.
+
+   1. **Zobrazovaný název:** Zobrazovaný název assetu. Toto pole je volitelné. Pomocí prostého textu a statických odzpůsobování můžete přizpůsobit způsob zobrazení prostředku v katalogu. Podrobnější pokyny najdete níže v části [syntaxe](#syntax) .
+
+   1. **Neseskupovat jako sadu prostředků:** Pokud je povoleno, odpovídající prostředek se nebude seskupovat do sady prostředků.
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Vytvořit nové pravidlo konfigurace." border="true":::
+
+1. Uložte pravidlo kliknutím na **Přidat**.
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> Syntaxe sady prostředků s vymezeným oborem
 
@@ -69,21 +78,23 @@ Níže jsou uvedeny dostupné typy, které lze použít ve statických a dynamic
 | ---- | --------- |
 | řetězec | Řada 1 nebo více znaků Unicode včetně oddělovačů, jako jsou mezery. |
 | int | Řada 1 nebo více 0-9 znaků ASCII, může být 0 (např. 0001). |
-| guid | Řada 32 nebo 8-4-4-4-12 řetězcové reprezentace identifikátoru UUID jako defineddefa v https://tools.ietf.org/html/rfc4122 |
-| date | Řada 6 nebo 8 0-9 znaků ASCII s volitelnou oddělovači: RRRRMMDD, rrrr-mm-dd, rrmmdd, RR-mm-dd, zadaný v https://tools.ietf.org/html/rfc3339 |
-| time | Řada 4 nebo 6 0-9 znaků ASCII s volitelnou oddělovači: HHmm, HH: mm, HHmmss, HH: mm: SS zadané v https://tools.ietf.org/html/rfc3339 |
-| časové razítko | Řada 12 nebo 14 0-9 znaků ASCII s volitelnou oddělovači: RRRR-MM-ddTHH: mm, yyyyMMddhhmm, rrrr-MM-ddTHH: mm: SS, rrrrmmddhhmmss zadaná v https://tools.ietf.org/html/rfc3339 |
+| guid | Řada 32 nebo 8-4-4-4-12 řetězcové reprezentace identifikátoru UUID jako defineddefa v [RFC 4122](https://tools.ietf.org/html/rfc4122). |
+| date | Řada 6 nebo 8 0-9 znaků ASCII s volitelnou oddělovači: RRRRMMDD, rrrr-mm-dd, rrmmdd, RR-mm-dd, zadaný v [dokumentu RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| time | Řada 4 nebo 6 0-9 znaků ASCII s volitelnou oddělovači: HHmm, HH: mm, HHmmss, HH: mm: SS zadané v [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| časové razítko | Řada 12 nebo 14 0-9 znaků ASCII s volitelnou oddělovači: RRRR-MM-ddTHH: mm, yyyyMMddhhmm, rrrr-MM-ddTHH: mm: SS, rrrrmmddhhmmss zadaná v [RFC 3339](https://tools.ietf.org/html/rfc3339). |
 | boolean | Může obsahovat hodnotu true nebo false, nerozlišuje velká a malá písmena. |
-| číslo | Řada 0 nebo více 0-9 ASCII znaků, může být 0 s předponou (např. 0001) následovaných volitelně tečkou. a řada 1 nebo více 0-9 znaků ASCII, může být 0 přípona (např. 100) | 
+| číslo | Řada 0 nebo více 0-9 ASCII znaků, může být 0 s předponou (např. 0001) následovaný volitelně tečkou "." a řadou 1 nebo více 0-9 znaků ASCII, může být 0 přípona (např. 100) |
 | soustavy | Řada 1 nebo více znaků ASCII ze sady 0-1 a a-F, hodnota může být 0 s předponou |
-| locale | Řetězec, který odpovídá syntaxi zadané v https://tools.ietf.org/html/rfc5646 |
+| locale | Řetězec, který odpovídá syntaxi zadané v [dokumentu RFC 5646](https://tools.ietf.org/html/rfc5646). |
 
 ## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Pořadí použití pravidel sady prostředků s vymezeným oborem
 
 Níže je uvedené pořadí operací při aplikování pravidel sady prostředků s vymezeným oborem:
 
-1. Pokud se prostředek shoduje se dvěma pravidly, bude mít priorita přesnější rozsah. Pravidla v oboru `container/folder` se například použijí před pravidly v oboru `container` . 
+1. Pokud se prostředek shoduje se dvěma pravidly, bude mít priorita přesnější rozsah. Pravidla v oboru `container/folder` se například použijí před pravidly v oboru `container` .
+
 1. Pořadí pravidel v rámci určitého oboru. To se dá upravit v uživatelském prostředí.
+
 1. Pokud Asset nevyhovuje žádnému zadanému pravidlu, použijí se výchozí nastavení heuristiky sady prostředků.
 
 ## <a name="examples"></a>Příklady
@@ -95,16 +106,16 @@ Extrakce dat SAP do úplných a rozdílových zátěží
 #### <a name="inputs"></a>Vstupy
 
 Spis
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem
 
-**Rozsah:**https://myazureblob.blob.core.windows.net/bar/
+**Rozsah:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Zobrazovaný název:** Externí zákazník
 
@@ -112,7 +123,7 @@ Spis
 
 **Sada prostředků:** true
 
-#### <a name="output"></a>Výstup 
+#### <a name="output"></a>Výstup
 
 Jeden prostředek sady prostředků
 
@@ -124,17 +135,18 @@ Jeden prostředek sady prostředků
 
 Data IoT ve formátu Avro
 
-#### <a name="inputs"></a>Vstupy 
+#### <a name="inputs"></a>Vstupy
 
 Spis
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>Pravidla sady prostředků s vymezeným oborem 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Rozsah:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>Pravidla sady prostředků s vymezeným oborem
+
+**Rozsah:**`https://myazureblob.blob.core.windows.net/bar/`
 
 Pravidlo 1
 
@@ -150,11 +162,11 @@ Pravidlo 2
 
 **Kvalifikovaný název:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Sada prostředků: true* 
+#### <a name="resource-set-true"></a>*Sada prostředků: true*
 
-#### <a name="outputs"></a>Výstupy 
+#### <a name="outputs"></a>Výstupy
 
-2 sady prostředků 
+2 sady prostředků
 
 Sada prostředků 1
 
@@ -172,17 +184,18 @@ Sada prostředků 2
 
 Data IoT ve formátu Avro
 
-#### <a name="inputs"></a>Vstupy 
+#### <a name="inputs"></a>Vstupy
 
 Spis
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Rozsah:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem
+
+**Rozsah:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Zobrazovaný název:** ' Machine-{{MachineID}} '
 
@@ -190,7 +203,7 @@ Spis
 
 **Sada prostředků:** true
 
-#### <a name="outputs"></a>Výstupy 
+#### <a name="outputs"></a>Výstupy
 
 Sada prostředků 1
 
@@ -208,25 +221,26 @@ Sada prostředků 2
 
 Neseskupovat do sad prostředků
 
-#### <a name="inputs"></a>Vstupy 
+#### <a name="inputs"></a>Vstupy
 
 Spis
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Rozsah:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Pravidlo sady prostředků s vymezeným oborem
 
-**Zobrazovaný název:** ' Machine-{{MachineID}} '
+**Rozsah:**`https://myazureblob.blob.core.windows.net/bar/`
+
+**Zobrazovaný název:**`Machine-{{machineid}}`
 
 **Kvalifikovaný název:**`raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **Sada prostředků:** false
 
-#### <a name="outputs"></a>Výstupy 
+#### <a name="outputs"></a>Výstupy
 
 4 jednotlivé prostředky
 

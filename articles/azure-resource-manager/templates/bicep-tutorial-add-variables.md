@@ -2,16 +2,16 @@
 title: Kurz – přidání proměnné do souboru Azure Resource Manager bicep
 description: K zjednodušení syntaxe přidejte do souboru bicep proměnné.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748032"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632471"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>Kurz: Přidání proměnných do souboru Azure Resource Manager bicep
 
@@ -35,7 +35,7 @@ Parametr názvu účtu úložiště je nevratný, protože je nutné zadat jedin
 
 ## <a name="use-variable"></a>Použít proměnnou
 
-Následující příklad zvýrazní změny a přidá proměnnou do souboru bicep, který vytvoří jedinečný název účtu úložiště. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
+Následující příklad ukazuje změny pro přidání proměnné do souboru bicep, který vytvoří jedinečný název účtu úložiště. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.bicep" range="1-31" highlight="1-3,19,22":::
 

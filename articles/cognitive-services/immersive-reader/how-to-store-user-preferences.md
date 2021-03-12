@@ -6,21 +6,21 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: 31c1ef8d75b4c12e4dd6a360852feb27857ac412
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 16ecd2166604d29fbc2242229f625b30ffd684e5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636540"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617688"
 ---
 # <a name="how-to-store-user-preferences"></a>Jak ukládat předvolby uživatele
 
-Tento článek ukazuje, jak uložit nastavení uživatelského rozhraní uživatele, označované jako **předvolby uživatele** , prostřednictvím možností sady [OnPreferencesChanged](./reference.md#options) [pro moderní čtečku a sady](./reference.md#options) SDK.
+Tento článek ukazuje, jak uložit nastavení uživatelského rozhraní uživatele, označované jako **předvolby uživatele**, prostřednictvím možností sady [OnPreferencesChanged](./reference.md#options) [pro moderní čtečku a sady](./reference.md#options) SDK.
 
-Pokud je možnost [CookiePolicy](./reference.md#cookiepolicy-options) SDK nastavená na *povolenou* , aplikace pro moderní čtečku ukládá do souborů cookie **předvolby uživatele** (velikost textu, barva motivu, písmo atd.), které jsou místní pro konkrétní prohlížeč a zařízení. Pokaždé, když uživatel spustí moderní čtečku na stejném prohlížeči a v zařízení, otevře se s preferencemi uživatele z poslední relace v tomto zařízení. Pokud však uživatel otevře moderní čtečku na jiném prohlížeči nebo zařízení, nastavení se zpočátku nakonfiguruje s výchozím nastavením moderního čtečky a uživatel bude muset nastavit předvolby znovu a tak dále pro každé zařízení, které používají. `-preferences`Možnosti a `-onPreferencesChanged` moderní čtecí sada SDK poskytují způsob, jakým aplikace přenáší předvolby uživatele v různých prohlížečích a zařízeních, aby měl uživatel konzistentní prostředí bez ohledu na to, kde používají aplikaci.
+Pokud je možnost [CookiePolicy](./reference.md#cookiepolicy-options) SDK nastavená na *povolenou*, aplikace pro moderní čtečku ukládá do souborů cookie **předvolby uživatele** (velikost textu, barva motivu, písmo atd.), které jsou místní pro konkrétní prohlížeč a zařízení. Pokaždé, když uživatel spustí moderní čtečku na stejném prohlížeči a v zařízení, otevře se s preferencemi uživatele z poslední relace v tomto zařízení. Pokud však uživatel otevře moderní čtečku na jiném prohlížeči nebo zařízení, nastavení se zpočátku nakonfiguruje s výchozím nastavením moderního čtečky a uživatel bude muset nastavit předvolby znovu a tak dále pro každé zařízení, které používají. `-preferences`Možnosti a `-onPreferencesChanged` moderní čtecí sada SDK poskytují způsob, jakým aplikace přenáší předvolby uživatele v různých prohlížečích a zařízeních, aby měl uživatel konzistentní prostředí bez ohledu na to, kde používají aplikaci.
 
 Napřed poskytnutím `-onPreferencesChanged` možnosti zpětného volání sady SDK při spuštění aplikace s moderní čtečkou pak moderní čtečka pošle `-preferences` řetězec zpátky do hostitelské aplikace pokaždé, když uživatel změní předvolby během relace ponořeného čtenáře. Hostitelská aplikace pak zodpovídá za ukládání uživatelských předvoleb ve vlastním systému. Poté, když tento stejný uživatel spustí moderní čtečku znovu, může hostitelská aplikace načíst předvolby tohoto uživatele z úložiště a zadat je jako `-preferences` možnost sady String SDK při spuštění aplikace s moderní čtečkou, aby byly obnoveny předvolby uživatele.
 

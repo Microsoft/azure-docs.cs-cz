@@ -1,6 +1,6 @@
 ---
 title: 'Podepsat požadavek HTTP pomocí jazyka C #'
-description: Toto je verze jazyka C# podepisování požadavku HTTP s podpisem HMAC pro komunikační služby.
+description: V tomto kurzu se vysvětluje verze jazyka C# podepisování požadavku HTTP s podpisem HMAC pro komunikační služby Azure.
 author: alexandra142
 manager: soricos
 services: azure-communication-services
@@ -8,49 +8,50 @@ ms.author: apistrak
 ms.date: 01/15/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3c1b56f81e5164bbdfa94fdaeca5f5f1f55b3b51
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: c8cf2eb091aa7ab70fa6dba1a8b1f56bea1a00bf
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551634"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631336"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
-- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
-- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../quickstarts/create-communication-resource.md). Pro tento kurz budete muset zaznamenat své **resourceEndpoint** a  **resourceAccessKey** .
 
-
+- Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Nainstalujte [Visual Studio](https://visualstudio.microsoft.com/downloads/).
+- Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku služby Azure Communication Services](../../quickstarts/create-communication-resource.md). Pro tento kurz budete muset zaznamenat své **resourceEndpoint** a **resourceAccessKey** .
 
 ## <a name="sign-an-http-request-with-c"></a>Podepsat požadavek HTTP pomocí jazyka C #
-Přístup k ověřování pomocí klíče používá sdílený tajný klíč k vygenerování podpisu HMAC pro každý požadavek HTTP. Tento podpis se vygeneruje pomocí SHA256 algoritmu, který se pošle v `Authorization` hlavičce pomocí `HMAC-SHA256` schématu. Příklad:
+
+Přístup k ověřování pomocí klíče používá sdílený tajný klíč k vygenerování podpisu HMAC pro každý požadavek HTTP. Tento podpis se vygeneruje pomocí SHA256 algoritmu, který se pošle v `Authorization` hlavičce pomocí `HMAC-SHA256` schématu. Například:
 
 ```
 Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
 ```
 
-`hmac-sha256-signature`Skládá se z těchto: 
+`hmac-sha256-signature`Skládá se z těchto:
 
-- Příkaz HTTP (např. `GET` nebo `PUT` )
+- Příkaz HTTP (například `GET` nebo `PUT` )
 - Cesta požadavku HTTP
 - Date (Datum)
 - Hostitel
 - x-MS-Content-SHA256
 
-## <a name="setting-up"></a>Nastavení
-Následující postup popisuje, jak vytvořit autorizační hlavičku:
+## <a name="setup"></a>Nastavení
+
+Následující postup popisuje, jak vytvořit autorizační hlavičku.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `SignHmacTutorial` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
+V okně konzoly, jako je například cmd, PowerShell nebo bash, `dotnet new` vytvořte pomocí příkazu novou konzolovou aplikaci s názvem `SignHmacTutorial` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial
 ```
 
-Změňte adresář na nově vytvořenou složku aplikace a použijte `dotnet build` příkaz pro zkompilování aplikace.
+Změňte adresář na nově vytvořenou složku aplikace. `dotnet build`K zkompilování aplikace použijte příkaz.
 
 ```console
 cd SignHmacTutorial
@@ -59,13 +60,13 @@ dotnet build
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
-Nainstalujte balíček `Newtonsoft.Json` , který se používá pro serializaci těla:
+Nainstalujte balíček `Newtonsoft.Json` , který se používá pro serializaci těla.
 
 ```console
 dotnet add package Newtonsoft.Json
 ```
 
-Aktualizujte `Main` deklaraci metody pro podporu asynchronního kódu. Pro začátek použijte následující kód:
+Aktualizujte `Main` deklaraci metody pro podporu asynchronního kódu. Začněte tím, že použijete následující kód.
 
 ```csharp
 using System;
@@ -82,21 +83,22 @@ namespace SignHmacTutorial
         static async Task Main(string[] args)
         {
             Console.WriteLine("Azure Communication Services - Sign an HTTP request Tutorial");
-            // Tutorial code goes here
+            // Tutorial code goes here.
         }
     }
 }
 
 ```
+
 ## <a name="create-a-request-message"></a>Vytvořit zprávu požadavku
 
-V tomto příkladu pošleme žádost o vytvoření nové identity pomocí rozhraní API pro ověřování komunikačních služeb (verze `2021-03-07` ).
+V tomto příkladu pošleme požadavek na vytvoření nové identity pomocí rozhraní API pro ověřování komunikačních služeb (verze `2021-03-07` ).
 
-Do metody přidejte následující kód `Main` :
+Do metody `Main` přidejte následující kód.
 
 ```csharp
 string resourceEndpoint = "resourceEndpoint";
-//Create an uri you are going to call
+//Create a uri you are going to call.
 var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2021-03-07");
 //Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
 var body = new[] { "chat" }; 
@@ -109,7 +111,7 @@ var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)
 
 Nahraďte `resourceEndpoint` hodnotou reálného koncového bodu prostředku.
 
-## <a name="create-content-hash"></a>Vytvořit hodnotu hash obsahu
+## <a name="create-a-content-hash"></a>Vytvořit hodnotu hash obsahu
 
 Hodnota hash obsahu je součástí podpisu HMAC. Použijte následující kód k výpočtu hodnoty hash obsahu. Tuto metodu můžete přidat do `Progam.cs` `Main` metody.
 
@@ -125,6 +127,7 @@ static string ComputeContentHash(string content)
 ```
 
 ## <a name="compute-a-signature"></a>Vypočítat podpis
+
 Pomocí následujícího kódu vytvořte metodu pro výpočet vašeho podpisu HMAC.
 
 ```csharp
@@ -140,47 +143,48 @@ Pomocí následujícího kódu vytvořte metodu pro výpočet vašeho podpisu HM
 }
 ```
 
-Nahraďte `resourceAccessKey` přístupovým klíčem skutečného prostředku služby Azure Communication Services.
+Nahraďte `resourceAccessKey` přístupovým klíčem ke skutečnému prostředku komunikační služby.
 
 ## <a name="create-an-authorization-header-string"></a>Vytvoří řetězec autorizační hlavičky.
 
-Nyní vytvoříme řetězec, který přidáme do hlavičky autorizace:
+Nyní vytvoříme řetězec, který přidáme do hlavičky autorizace.
 
-1. Vypočítat hodnotu hash obsahu
-2. Zadejte časové razítko koordinovaného univerzálního času (UTC).
-3. Příprava řetězce k podepsání
-4. Vypočítat signaturu
-5. Zřetězí řetězec, který se použije v autorizační hlavičce.
+1. Vypočítá hodnotu hash obsahu.
+1. Zadejte časové razítko koordinovaného univerzálního času (UTC).
+1. Připravte řetězec, který se má podepsat.
+1. Vypočítá signaturu.
+1. Zřetězí řetězec, který se použije v autorizační hlavičce.
  
-Do metody přidejte následující kód `Main` :
+Do metody `Main` přidejte následující kód.
 
 ```csharp
-// Compute a content hash
+// Compute a content hash.
 var contentHash = ComputeContentHash(serializedBody);
-//Specify the Coordinated Universal Time (UTC) timestamp
+//Specify the Coordinated Universal Time (UTC) timestamp.
 var date = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);
-//Prepare a string to sign
+//Prepare a string to sign.
 var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{requestUri.Authority};{contentHash}";
-//Compute the signature
+//Compute the signature.
 var signature = ComputeSignature(stringToSign);
-//Concatenate the string, which will be used in authorization header
+//Concatenate the string, which will be used in the authorization header.
 var authorizationHeader = $"HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature={signature}";
 ```
 
 ## <a name="add-headers-to-requestmessage"></a>Přidat záhlaví do requestMessage
 
-Použijte následující kód k přidání požadovaných hlaviček do `requestMessage` :
+Použijte následující kód k přidání požadovaných hlaviček do `requestMessage` .
 
 ```csharp
-//Add content hash header
+//Add a content hash header.
 requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
-//add date header
+//Add a date header.
 requestMessage.Headers.Add("Date", date);
-//add Authorization header
+//Add an authorization header.
 requestMessage.Headers.Add("Authorization", authorizationHeader);
 ```
 
 ## <a name="test-the-client"></a>Test klienta
+
 Zavolejte koncový bod pomocí `HttpClient` a ověřte odpověď.
 
 ```csharp

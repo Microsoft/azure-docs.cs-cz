@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2ead9bd72691dc120afb60c025ce563684716038
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185378"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s tvarem
 
@@ -74,35 +74,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na **stránce pro integraci aplikace,** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
-
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-1. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
-
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.onshape.com`
-
-    > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [tým podpory klienta](mailto:support@onshape.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
-
-1. Klikněte na **Uložit**.
-
-1. Natvarování aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+1. Pokud se zobrazí výzva k uložení nastavení jednotného přihlašování, vyberte **Ano**. 
+1. Aplikace natvarování očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/default-attributes.png)
 
-1. Kromě toho očekává aplikace natvarování dalších atributů zpět v odpovědi SAML, které jsou uvedeny níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+1. Kromě výše jsou v rámci aplikace natvarování v odpovědi SAML předány méně další atributy, které jsou uvedeny níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | --------------- | --------- |
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |
     | Společnosti | <COMPANY_NAME> |
 
     > [!NOTE]
-    > Upravte hodnotu deklarace "companyName" pomocí předpony "doména". Například pokud zákazník přistupuje k aplikaci s názvem pomocí adresy URL, jako je https://acme.onshape.com , pak je předpona jejich domény "Acme". Hodnota atributu musí být jenom předpona, ne celý název DNS.
+    > Je _nutné_ změnit hodnotu atributu **CompanyName** na *předponu domény ve vaší společnosti nasměrující* jako svůj tvar. Pokud například přistupujete k aplikaci pro napodobování pomocí adresy URL `https://acme.onshape.com` , jako je, vaše předpona domény je *ACME*. Hodnota atributu musí být jenom předpona, ne celý název DNS.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -137,7 +123,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-onshape-sso"></a>Konfigurace nastavování jednotného přihlašování
 
-Chcete-li konfigurovat jednotné přihlašování **na straně** postran, je třeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory](mailto:support@onshape.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Informace o tom, jak nakonfigurovat jednotné přihlašování **na straně, najdete v tématu** [integrace s Microsoft Azure AD](https://cad.onshape.com/help/Content/MS_AzureAD.htm).
 
 ### <a name="create-onshape-test-user"></a>Vytvořit obrazec testovacího uživatele
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526683"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609103"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -114,7 +114,7 @@ Nestavová migrace aplikace je nejjednodušším případem. Použijte definice 
 Pečlivě naplánujte migraci stavových aplikací, abyste se vyhnuli ztrátě dat nebo neočekávanému výpadku.
 
 Pokud používáte soubory Azure, můžete sdílenou složku připojit jako svazek do nového clusteru:
-* [Připojit statické soubory Azure jako svazek](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Připojit statické soubory Azure jako svazek](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případě, že je nepřipojen k žádnému virtuálnímu počítači:
 * [Připojit statický disk Azure jako svazek](./azure-disk-volume.md#mount-disk-as-volume)

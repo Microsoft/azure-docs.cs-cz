@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054850"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607607"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Řešení potíží s odchozím připojením SMTP v Azure
 
@@ -76,6 +76,10 @@ Pro odběry následujících typů, které byly vytvořeny po 15. listopadu 2017
 Pokud chcete mít možnost odesílat e-maily z virtuálních počítačů Azure přímo externím poskytovatelům e-mailu (bez použití ověřeného přenosu SMTP), můžete vytvořit žádost otevřením případu podpory pomocí následujícího typu problému: **technické**  >  **Virtual Network**  >  **připojení**  >  **nemůže odesílat e-maily (SMTP/port 25)**. Nezapomeňte přidat podrobnosti o tom, proč musí vaše nasazení odeslat e-mailem přímo poskytovatelům pošty místo použití ověřeného přenosu. Žádosti budou přezkoumány a schváleny na uvážení společnosti Microsoft. Žádosti budou uděleny až po dokončení dalších kontrol podvodu. 
 
 Po vyloučení předplatného a po zastavení a restartu virtuálních počítačů v Azure Portal dojde k vyloučení všech virtuálních počítačů v tomto předplatném. Výjimka platí jenom pro vyžádané předplatné a jenom pro přenosy virtuálních počítačů, které jsou směrované přímo na Internet.
+
+## <a name="changing-subscription-type"></a>Mění se typ předplatného.
+
+Pokud změníte typ předplatného nebo předplatné Cloud Solution Provider nebo s průběžnými platbami, musíte zastavit, zrušit přidělení a pak restartovat virtuální počítač, aby se nové zásady projevily. Podobně platí, že pokud máte typ předplatného, který je ve výchozím nastavení povolený, a pak změníte typ předplatného, který není povolený, port 25 se pak může zablokovat kvůli změnám nasazení.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 

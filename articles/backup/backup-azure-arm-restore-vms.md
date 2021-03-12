@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722683"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016521"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -181,7 +181,7 @@ V současné době je bod [RPO](azure-backup-glossary.md#rpo-recovery-point-obje
 
 [Připojené virtuální počítače zóny Azure](../virtual-machines/windows/create-portal-availability-zone.md) je možné obnovit v jakýchkoli [zónách dostupnosti](../availability-zones/az-overview.md) stejné oblasti.
 
-V procesu obnovení se zobrazí **zóna dostupnosti možnosti.** Jako první se zobrazí výchozí zóna. Chcete-li zvolit jinou zónu, zvolte číslo zvolené zóny. Pokud není připnuté zóna k dispozici, nebudete schopni obnovit data do jiné zóny, protože zálohovaná data nejsou zonally replikovaná.
+V procesu obnovení se zobrazí **zóna dostupnosti možnosti.** Jako první se zobrazí výchozí zóna. Chcete-li zvolit jinou zónu, zvolte číslo zvolené zóny. Pokud není připnuté zóna k dispozici, nebudete schopni obnovit data do jiné zóny, protože zálohovaná data nejsou zonally replikovaná. Obnovení v zónách dostupnosti je možné pouze z bodů obnovení na úrovni trezoru.
 
 ![Zvolit zónu dostupnosti](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

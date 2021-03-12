@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618769"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198960"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení problémů s uzamknutím účtu pomocí spravované domény Azure Active Directory Domain Services
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**Poznámka**
+
+Můžete najít podrobnosti o události 4776 a 4740 v části "zdrojová pracovní stanice:", která je prázdná. Důvodem je to, že při přihlášení k síti přes některá jiná zařízení došlo k chybnému heslu.
+Příklad: Pokud máte server RADIUS, který může přeposlání ověřování do služby AAD DS. Pokud chcete potvrdit, že se má povolit back-end protokolu RDP na řadiči domény nakonfigurovat protokoly Netlogon
+
+03/04 19:07:29 [přihlášení] [10752] contoso: SamLogon: bylo zadáno přenosné přihlášení ze sítě contoso\Nagappan.Veerappan z (Via LOB11-RADIUS). 
+
+03/04 19:07:29 [přihlášení] [10752] contoso: SamLogon: přihlášení přesná síť contoso\Nagappan.Veerappan z (přes LOB11-RADIUS) vrátí 0xC000006A.
+
+03/04 19:07:35 [přihlášení] [10753] contoso: SamLogon: bylo zadáno přenosné přihlášení ze sítě contoso\Nagappan.Veerappan z (Via LOB11-RADIUS). 
+
+03/04 19:07:35 [přihlášení] [10753] contoso: SamLogon: přihlášení přesná síť contoso\Nagappan.Veerappan z (přes LOB11-RADIUS) vrátí 0xC000006A.
+
+Povolte protokol RDP pro vaše řadiče domény v NSG do back-endu pro konfiguraci zachycení diagnostiky (tj. Netlogon) https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules Pokud jste už změnili výchozí NSG, sledujte prosím PSlet způsob, jak povolit. https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+Povolení protokolu Netlogon na jakémkoli serveru https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
 
 ## <a name="next-steps"></a>Další kroky
 
