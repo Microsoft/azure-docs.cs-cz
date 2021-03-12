@@ -8,14 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539429"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200666"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních s využitím služby Azure Blob Storage ve službě IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure Blob Storage v IoT Edge poskytuje [objekt blob bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) a [připojovat řešení BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage na hranici. Modul BLOB Storage v zařízení IoT Edge se chová jako služba Azure Blob Service, s výjimkou toho, že se objekty blob ukládají místně na vaše IoT Edge zařízení. K objektům blob můžete přistupovat pomocí stejných metod sady SDK služby Azure Storage nebo volání rozhraní API objektů blob, které jste už použili pro. V tomto článku se dozvíte o konceptech souvisejících s Azure Blob Storage v kontejneru IoT Edge, na kterém běží služba blob na zařízení IoT Edge.
 
@@ -110,7 +112,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Příklad:
+Například:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +138,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Příklad:
+Například:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -291,7 +293,7 @@ Neplatné
 
 Tento Blob Storage Azure v modulu IoT Edge nyní poskytuje integraci s Event Grid IoT Edge. Podrobné informace o této integraci najdete v [kurzu nasazení modulů, publikování událostí a ověření doručení událostí](../event-grid/edge/react-blob-storage-events-locally.md).
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 Tady jsou [poznámky k verzi v Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) pro tento modul. Může být možné najít další informace týkající se oprav chyb a náprav v poznámkách k verzi konkrétní verze.
 

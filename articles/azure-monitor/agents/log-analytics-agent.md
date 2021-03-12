@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050660"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199907"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 
 Agent Azure Log Analytics shromažďuje telemetrie z virtuálních počítačů s Windows a Linux v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/) a odesílá je do vašeho pracovního prostoru Log Analytics v Azure monitor. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou třeba [přehledy virtuálních počítačů](../vm/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md). Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a metody nasazení.
 
 > [!NOTE]
-> Můžete se také podívat na Log Analytics agenta označovaného jako Microsoft Monitoring Agent (MMA) nebo agent OMS Linux.
+> Můžete se také podívat na Log Analytics agenta, který se označuje jako Microsoft Monitoring Agent (MMA).
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Porovnání s rozšířením Azure Diagnostics
 [Rozšíření Azure Diagnostics](./diagnostics-extension-overview.md) v Azure monitor můžete použít také ke shromažďování dat monitorování z hostovaného operačního systému virtuálních počítačů Azure. V závislosti na vašich požadavcích se můžete rozhodnout použít buď nebo. Podrobné porovnání agentů Azure Monitor najdete v tématu [přehled Azure Monitorch agentů](../agents/agents-overview.md) . 
@@ -40,7 +40,7 @@ Pro agenta Log Analytics se neúčtují žádné náklady, ale za ingestování 
 
 Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Analytics pracovní prostor pro shromažďování ze všech připojených agentů. Podívejte se na téma [co je monitorované pomocí Azure monitor?](../monitor-reference.md) v seznamu přehledů, řešení a dalších řešení, která používají agenta Log Analytics ke shromažďování dalších typů dat.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | [Protokoly událostí systému Windows](../agents/data-sources-windows-events.md) | Informace odesílané systému protokolování událostí systému Windows. |
 | [Syslog](../agents/data-sources-syslog.md)                     | Informace odesílané systému protokolování událostí pro Linux. |
@@ -116,10 +116,10 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Ano |
-|*.azure-automation.net |Port 443 |Odchozí|Ano |
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Yes |
+|*.azure-automation.net |Port 443 |Odchozí|Yes |
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

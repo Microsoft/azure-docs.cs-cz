@@ -3,18 +3,18 @@ title: Vytvoření snímku virtuálního pevného disku pomocí portálu nebo Po
 description: Naučte se, jak vytvořit kopii virtuálního počítače Azure, který se použije jako záložní nebo pro řešení potíží pomocí portálu nebo PowerShellu.
 author: roygara
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
-ms.subservice: disks
-ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9070b69ac4c6b85791ff3dd4662273e75a3cd22c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879659"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556056"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Vytvoření snímku pomocí portálu nebo PowerShellu
 

@@ -1,0 +1,148 @@
+- name: Azure API for FHIR
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o rozhraní Azure API for FHIR
+      href: overview.md
+    - name: Informace o konektoru Azure IoT pro FHIR (Preview)
+      href: overview.md#azure-iot-connector-for-fhir-preview
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Nasazení Azure API for FHIR
+      expanded: false
+      items:
+        - name: Pomocí portálu
+          href: fhir-paas-portal-quickstart.md
+        - name: Použití PowerShellu
+          href: fhir-paas-powershell-quickstart.md
+        - name: Pomocí rozhraní příkazového řádku
+          href: fhir-paas-cli-quickstart.md
+        - name: Použití šablony Resource Manageru
+          displayName: Resource Manager
+          href: fhir-paas-arm-template-quickstart.md
+    - name: Nasazení konektoru Azure IoT pro FHIR (Preview)
+      expanded: false
+      items:
+        - name: Pomocí portálu
+          href: iot-fhir-portal-quickstart.md
+        - name: Použití šablony Resource Manageru
+          href: iot-fhir-arm-template-quickstart.md
+- name: Kurzy
+  expanded: false
+  items:
+    - name: Nasazení aplikace JavaScriptu
+      expanded: false
+      items:
+        - name: 1. Počáteční nastavení a nasazení FHIR
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. Registrace veřejné klientské aplikace
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. Nastavení testu s využitím Postmana
+          href: tutorial-web-app-test-postman.md
+        - name: 4. Napsání webové aplikace
+          href: tutorial-web-app-write-web-app.md
+    - name: Přístup k rozhraní API pro FHIR pomocí Postmana
+      href: access-fhir-postman-tutorial.md
+    - name: Použití proxy SMART on FHIR
+      href: use-smart-on-fhir-proxy.md
+    - name: Příjem dat ze zařízení IoT
+      expanded: false
+      items:
+        - name: Příjem dat ze zařízení prostřednictvím Azure IoT Hubu
+          href: device-data-through-iot-hub.md
+- name: Návody
+  expanded: false
+  items:
+    - name: Registrace aplikací
+      expanded: false
+      items:
+        - name: Přehled registrace aplikací pro Azure API for FHIR
+          href: fhir-app-registration.md
+        - name: Aplikace prostředků
+          href: register-resource-azure-ad-client-app.md
+        - name: Důvěrná klientská aplikace
+          href: register-confidential-azure-ad-client-app.md
+        - name: Veřejná klientská aplikace
+          href: register-public-azure-ad-client-app.md
+        - name: Servisní klientská aplikace
+          href: register-service-azure-ad-client-app.md
+    - name: Konfigurace nastavení
+      expanded: false
+      items:
+        - name: Konfigurace dalších nastavení Azure API for FHIR
+          href: azure-api-for-fhir-additional-settings.md
+        - name: Konfigurace Azure RBAC
+          href: configure-azure-rbac.md
+        - name: Konfigurace RBAC v místním prostředí
+          href: configure-local-rbac.md
+        - name: Konfigurace nastavení databáze
+          href: configure-database.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          href: customer-managed-key.md
+        - name: Konfigurace CORS
+          href: configure-cross-origin-resource-sharing.md
+        - name: Konfigurace exportu
+          href: configure-export-data.md
+        - name: Konfigurace Private Linku
+          href: configure-private-link.md
+    - name: Exportovat data
+      expanded: false
+      items:
+        - name: Exportovat data
+          href: export-data.md
+        - name: Deidentifikovaný export
+          href: de-identified-export.md
+    - name: Převod dat
+      expanded: false
+      items:
+        - name: Šablony rozšíření $convert – data a převaděč FHIR
+          href: convert-data.md
+    - name: Vyhledání ID objektů identit
+      href: find-identity-object-ids.md
+    - name: Metriky a protokolování diagnostiky
+      expanded: false
+      items:
+        - name: Povolení protokolování diagnostiky v Azure API for FHIR
+          href: enable-diagnostic-logging.md
+        - name: Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview)
+          href: iot-metrics-display.md
+    - name: Získání tokenu pro rozhraní API služby Azure pro FHIR – rozhraní příkazového řádku
+      href: get-healthcare-apis-access-token-cli.md
+    - name: Řešení chyb v konektoru Azure IoT pro FHIR (Preview)
+      href: iot-troubleshoot-guide.md
+- name: Koncepty
+  expanded: false
+  items:
+    - name: Přehled Azure API for FHIR a Azure AD
+      href: azure-ad-hcapi.md
+    - name: Ověření přístupového tokenu
+      href: azure-ad-hcapi-token-validation.md
+    - name: Použití vlastních hlaviček HTTP pro přidání dat do protokolů auditu
+      href: use-custom-headers.md
+    - name: Činnosti konektoru Azure IoT pro FHIR (Preview)
+      expanded: false
+      items:
+        - name: Tok dat konektoru Azure IoT pro FHIR (Preview)
+          href: iot-data-flow.md
+        - name: Šablony mapování konektoru Azure IoT pro FHIR (Preview)
+          href: iot-mapping-templates.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          href: ./security-controls-policy.md
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: fhir-faq.md
+    - name: Podporované funkce
+      href: fhir-features-supported.md
+    - name: Partnerský ekosystém
+      href: partner-ecosystem.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

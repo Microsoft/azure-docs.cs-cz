@@ -7,14 +7,18 @@ ms.author: mikben
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 00721a5c7763663a17b1e67cf0ac3ae59fd9448a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 1d5bd8179d07477d8ae0cf60d4de291ed0e00201
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204560"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201076"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Rychlý Start: Přidání videa 1:1 pro volání do vaší aplikace (JavaScript)
+
+## <a name="download-code"></a>Stáhnout kód
+
+Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) .
 
 ## <a name="prerequisites"></a>Požadavky
 - Získejte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -122,7 +126,7 @@ let rendererRemote;
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název      | Popis | 
+| Název      | Description | 
 | :---        |    :----   |
 | CallClient  | CallClient je hlavní vstupní bod pro volání klientské knihovny.      |
 | CallAgent  | CallAgent se používá ke spouštění a správě volání.        |
@@ -323,7 +327,7 @@ Otevřete prohlížeč a přejděte na http://localhost:8080/ . Měli byste vid�
 Můžete vytvořit volání 1:1 odchozího videa zadáním ID uživatele v textovém poli a kliknutím na tlačítko spustit volání. 
 
 ## <a name="sample-code"></a>Příklad kódu
-Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/Add%201%20on%201%20video%20calling).
+Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete vyčistit a odebrat předplatné služby Communications Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené. Přečtěte si další informace o [vyčištění prostředků](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).

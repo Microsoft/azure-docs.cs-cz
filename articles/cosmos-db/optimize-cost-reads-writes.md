@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 36ecef007e10f9a090dbabc8b5a91fd473930141
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097495"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633848"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na žádosti v Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -105,7 +105,7 @@ Náklady na zápis položky na základě RU závisí na:
 - Velikost položky
 - Počet vlastností, které jsou pokryté [zásadami indexování](index-policy.md) , a je nutné indexovat.
 
-Vložení položky s 1 KB s méně než 5 vlastnostmi k indexování nákladů na 5 ru. Náhrada za položku pokaždé, když se poplatek vyžaduje pro vložení stejné položky.
+Vkládání položky o 1 KB bez indexování nákladů kolem ~ 5,5 ru. Náhrada za položku pokaždé, když se poplatek vyžaduje pro vložení stejné položky.
 
 ### <a name="optimizing-writes"></a>Optimalizace zápisů
 

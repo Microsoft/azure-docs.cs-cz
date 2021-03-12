@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 2139080367cdce9a5f018afab0970a7bd0e7504c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 66edd4cad5b2f38696ef1df2030687bf4c7d9956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466605"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634171"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-pro-r-device-via-azure-powershell"></a>Konfigurace sítě VPN na zařízení Azure Stack Edge pro R prostřednictvím Azure PowerShell
 
@@ -165,7 +165,7 @@ Dále nakonfigurujete síť VPN v místním webovém uživatelském rozhraní va
 
 ## <a name="validate-data-transfer-through-vpn"></a>Ověření přenosu dat prostřednictvím sítě VPN
 
-Pokud chcete ověřit, že síť VPN funguje, zkopírujte data do sdílené složky SMB. Postupujte podle kroků v části [přidání sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-share) na zařízení Azure Stack Edge pro R. 
+Pokud chcete ověřit, že síť VPN funguje, zkopírujte data do sdílené složky SMB. Postupujte podle kroků v části [přidání sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-share) na zařízení Azure Stack Edge pro R. 
 
 1. Zkopírujte soubor, například \data\pictures\waterfall.jpg do sdílené složky protokolu SMB, kterou jste připojili v klientském systému. 
 2. Ověřte, že se tento soubor zobrazuje v účtu úložiště v cloudu.

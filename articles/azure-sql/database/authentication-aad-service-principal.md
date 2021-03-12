@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181750"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201249"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory instančního objektu se službou Azure SQL
 
@@ -52,7 +52,7 @@ Podpora této funkce je užitečná v procesech automatizace aplikací Azure AD,
 
 Pokud chcete povolit vytvoření objektu Azure AD v SQL Database a Azure synapse jménem aplikace služby Azure AD, vyžadují se následující nastavení:
 
-1. Přiřaďte identitu serveru. Přiřazená identita serveru představuje identitu spravovaného systému (MSI). Identita serveru pro Azure SQL v současné době nepodporuje identitu spravované uživatelem (UMI).
+1. Přiřaďte identitu serveru. Přiřazená identita serveru představuje Identita spravované služby (MSI). Identita serveru pro Azure SQL v současné době nepodporuje identitu spravované uživatelem (UMI).
     - Pro nový logický Server Azure SQL spusťte následující příkaz PowerShellu:
     
     ```powershell

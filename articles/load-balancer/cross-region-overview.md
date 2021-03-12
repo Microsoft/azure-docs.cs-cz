@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199369"
+ms.locfileid: "103225621"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -94,7 +94,7 @@ Back-end fond nástroje pro vyrovnávání zatížení mezi oblastmi obsahuje je
 
 Přidejte stávající nasazení nástroje pro vyrovnávání zatížení do nástroje pro vyrovnávání zatížení mezi oblastmi pro vysoce dostupné nasazení v různých oblastech.
 
-**Domovská oblast** je místo, kde je nasazený nástroj pro vyrovnávání zatížení mezi oblastmi. Tato oblast nemá vliv na to, jak se bude směrovat provoz. Pokud dojde k výpadku domovské oblasti, tok provozu nebude nijak ovlivněn.
+**Domovská oblast** je místo nasazení nástroje pro vyrovnávání zatížení mezi oblastmi nebo veřejné IP adresy globální úrovně. Tato oblast nemá vliv na to, jak se bude směrovat provoz. Pokud dojde k výpadku domovské oblasti, tok provozu nebude nijak ovlivněn.
 
 ### <a name="home-regions"></a>Domovské oblasti
 * USA – východ 2
@@ -106,7 +106,7 @@ Přidejte stávající nasazení nástroje pro vyrovnávání zatížení do ná
 * Východní Asie
 
 > [!NOTE]
-> Službu pro vyrovnávání zatížení mezi oblastmi můžete nasadit jenom v jedné z výše uvedených 7 oblastí.
+> V jedné z výše uvedených 7 oblastí můžete nasadit nástroj pro vyrovnávání zatížení mezi oblastmi nebo veřejnou IP adresu na globální úrovni.
 
 **Zúčastněnou oblastí** je místo, kde je k dispozici globální veřejná IP adresa nástroje pro vyrovnávání zatížení. 
 

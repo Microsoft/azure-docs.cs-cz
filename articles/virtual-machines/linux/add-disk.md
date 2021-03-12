@@ -2,17 +2,18 @@
 title: Přidání datového disku do virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Naučte se přidat trvalý datový disk k VIRTUÁLNÍmu počítači se systémem Linux pomocí Azure CLI.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a4e0cee7a46e3f61f95e87f7cba1fb3595ace3c5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730617"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556804"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 

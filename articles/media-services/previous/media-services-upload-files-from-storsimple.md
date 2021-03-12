@@ -3,7 +3,7 @@ title: Odesílání souborů do účtu Azure Media Services z Azure StorSimple |
 description: Tento článek poskytuje stručný přehled Azure StorSimple Data Manageru. Článek taky obsahuje odkazy na kurzy, které ukazují, jak extrahovat data ze StorSimple a jako prostředky je odeslat do účtu Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 1dd09328-262b-43ef-8099-73241b49a925
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: d1d43f11c1a90456b24f02a5ec43982d5fdc3de7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0521904f0ed46b4c5309e5f9df980b1cd7d7d858
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694516"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009016"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Odesílání souborů do účtu Azure Media Services z Azure StorSimple | Dokumentace Microsoftu 
 

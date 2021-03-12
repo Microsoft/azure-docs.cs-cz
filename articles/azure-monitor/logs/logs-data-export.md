@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449488"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615580"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -117,7 +117,7 @@ Pokud jste nakonfigurovali účet úložiště tak, aby povoloval přístup z vy
 ### <a name="create-or-update-data-export-rule"></a>Vytvořit nebo aktualizovat pravidlo exportu dat
 Pravidlo exportu dat definuje tabulky, pro které se exportují data a cíl. Pro každý cíl můžete aktuálně vytvořit jedno pravidlo.
 
-Pokud v workapce potřebujete seznam tabulek pro konfiguraci pravidel exportu, spusťte tento dotaz ve svém pracovním prostoru.
+Pravidlo exportu by mělo zahrnovat tabulky, které máte v pracovním prostoru. Spusťte tento dotaz pro seznam dostupných tabulek v pracovním prostoru.
 
 ```kusto
 find where TimeGenerated > ago(24h) | distinct Type

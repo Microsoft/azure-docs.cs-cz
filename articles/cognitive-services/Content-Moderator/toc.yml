@@ -5,33 +5,31 @@
   items:
     - name: Co je Content Moderator?
       href: overview.md
+    - name: Podpora jazyků
+      href: language-support.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
       expanded: true
     - name: Co je nového
       href: whats-new.md
 - name: Rychlé starty
   items:
-    - name: Vyzkoušejte si Content Moderator na webu
-      href: quick-start.md
     - name: S využitím klientské knihovny nebo REST API
       href: client-libraries.md
-- name: Kurzy
+    - name: Používání webového uživatelského rozhraní
+      href: quick-start.md
+- name: ukázky
   items:
-    - name: Moderování obrázků elektronického obchodování
-      href: ecommerce-retail-catalog-moderation.md
-    - name: Moderování obsahu pro Facebook
-      href: facebook-post-moderation.md
-- name: Koncepty
-  items:
-    - name: Moderování obrázků
-      href: image-moderation-api.md
-    - name: Moderování textu
-      href: text-moderation-api.md
-    - name: Moderování videa
-      href: video-moderation-human-review.md
-    - name: Nástroj pro revize
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: 'Revize, pracovní postupy a úlohy'
-      href: review-api.md
+    - name: Prohlížeč ukázek
+      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+    - name: Ukázky .NET SDK
+      href: samples-dotnet.md
+    - name: Ukázky Python SDK
+      href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+    - name: Ukázky Node.js SDK
+      href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+    - name: Ukázky REST API v C#
+      href: samples-rest.md
 - name: Návody
   items:
     - name: Moderování obsahu
@@ -80,47 +78,53 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: Export nebo odstranění dat účtu
       href: ./export-delete-data.md
-- name: Referenční informace
+    - name: Přizpůsobení Content Moderator
+      items:
+        - name: 'Revize, pracovní postupy a úlohy'
+          href: review-api.md
+- name: Koncepty
   items:
-    - name: Rozhraní API Content Moderatoru
+    - name: Moderování obrázků
+      href: image-moderation-api.md
+    - name: Moderování textu
+      href: text-moderation-api.md
+    - name: Moderování videa
+      href: video-moderation-human-review.md
+    - name: Nástroj pro revize
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+- name: Kurzy
+  items:
+    - name: Moderování obrázků elektronického obchodování
+      href: ecommerce-retail-catalog-moderation.md
+    - name: Moderování obsahu pro Facebook
+      href: facebook-post-moderation.md
+- name: Reference
+  items:
+    - name: Content Moderator REST API
       href: api-reference.md
-    - name: Sady SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-contentmoderator/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/contentmoderator
-        - name: Přejít
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
-- name: Zdroje a prostředky
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-contentmoderator/
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/contentmoderator
+    - name: Přejít
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
+- name: Zdroje informací
   items:
-    - name: Možnosti pomoci a podpory
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: ukázky
-      items:
-        - name: Ukázky .NET SDK
-          href: samples-dotnet.md
-        - name: Ukázky Python SDK
-          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
-        - name: Ukázky Node.js SDK
-          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: Ukázky REST API v C#
-          href: samples-rest.md
-        - name: Další ukázky Azure
-          href: /samples/browse/?products=azure&term=content-moderator
     - name: Seriál webinářů k Azure
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Ceny a omezení
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: Podpora jazyků
-      href: language-support.md
-    - name: Regionální dostupnost
+    - name: Podpora oblastí
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Plány Azure do budoucna
+    - name: Moduly Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure Government a globální Azure
+      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+    - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

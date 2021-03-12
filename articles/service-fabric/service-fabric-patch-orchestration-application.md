@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390636"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614407"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
-> [!IMPORTANT]
-> Od 30. dubna 2019 již není podporována aplikace orchestrace verze 1,2. *. Ujistěte se, že upgradujete na nejnovější verzi. Upgrady virtuálních počítačů, kde web Windows Update používá opravy operačního systému bez nahrazení disku s operačním systémem, se nepodporují. 
+## <a name="automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému
 
-> [!NOTE]
-> Získání [automatických upgradů bitových kopií operačního systému na základě sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) je osvědčeným postupem, jak zachovat aktualizace operačního systému v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost. U typů uzlů s nepodporovanou odolností to není podporováno. v tomto případě použijte prosím aplikaci Orchestration.
+Získání [automatických upgradů bitových kopií operačního systému na Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) je osvědčeným postupem, jak udržovat operační systém v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost.
+
+Požadavky na automatické upgrady bitových kopií operačního systému pomocí Virtual Machine Scale Sets
+-   [Úroveň odolnosti](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Service Fabric je stříbrná nebo zlatá a není bronzová.
+-   Rozšíření Service Fabric v definici modelu sady škálování musí mít TypeHandlerVersion 1,1 nebo vyšší.
+-   Úroveň odolnosti by měla být stejná jako u Service Fabric clusteru a rozšíření Service Fabric v definici modelu sady škálování.
+- Další sondu stavu nebo použití rozšíření pro stav aplikace pro Virtual Machine Scale Sets není vyžadováno.
+
+Zajistěte, aby se nastavení odolnosti neshodovalo s Service Fabric clusterem a rozšířením Service Fabric, protože v důsledku neshody dojde k chybám upgradu. Úrovně trvanlivosti se dají upravovat podle pokynů popsaných na [této stránce](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels).
+
+V případě bronzové odolnosti není k dispozici automatický upgrade pro image operačního systému. I když se [aplikace Orchestration](#patch-orchestration-application ) (určená jenom pro clustery, které nejsou hostované na Azure) *nedoporučují* pro stříbrné nebo vyšší úrovně odolnosti, jedná se o jedinou možnost pro automatizaci aktualizací Windows s ohledem na Service Fabric upgradovacích domén.
+
+> [!IMPORTANT]
+> Upgrady v rámci virtuálních počítačů, kde web Windows Update používá opravy operačního systému bez nahrazení disku s operačním systémem, se v Azure Service Fabric nepodporují.
+
+K povolení funkce zakázané web Windows Update v operačním systému je potřeba provést dva kroky.
+
+1. Povoluje se automatické aktualizace bitové kopie operačního systému, což zakazuje Windows Updates ARM. 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. Aktualizovat model sady škálování po této změně konfigurace je potřeba znovu vytvořit bitovou kopii všech počítačů, aby se aktualizoval model sady škálování, aby se změna projevila.
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+Další pokyny najdete v tématu [automatické upgrady bitových kopií operačního systému pomocí Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) .
+
+## <a name="patch-orchestration-application"></a>Aplikace orchestrace oprav
+
+> [!IMPORTANT]
+> Od 30. dubna 2019 již není podporována aplikace orchestrace verze 1,2. *. Ujistěte se, že upgradujete na nejnovější verzi.
 
 Aplikace orchestrace opravy (POA) je obálkou v rámci služby Azure Service Fabric Repair Manager, která umožňuje plánování oprav operačního systému na základě konfigurace pro clustery hostované mimo Azure. Pro clustery, které nejsou hostované na Azure, se nepožaduje POA, ale k opravě Service Fabric hostitelů clusteru bez výpadků je potřeba naplánovat instalaci opravy pomocí aktualizační domény.
 

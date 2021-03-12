@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b5c75f62f730c1bbc09a66e81f70f0e71a246fde
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 8f82b59a9702ee249c2e8f330b4aec1ba512d2f3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613353"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636075"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
 
@@ -30,6 +30,7 @@ Funkce služby Azure Communication Services jsou koncepčně rozdělené do šes
 | Azure Resource Manager | REST | Otevřít            | Azure. ResourceManager. Communication | Zřizování a Správa prostředků komunikačních služeb             |
 | Společné                 | REST | Otevřít               | Azure. Communication. Common          | Poskytuje základní typy pro jiné klientské knihovny. |
 | Identita         | REST | Otevřít               | Azure. Communication. identity  | Správa uživatelů, přístupové tokeny |
+| Telefonní čísla         | REST | Otevřít               | Azure. Communication. PhoneNumbers  | Správa telefonních čísel |
 | Chat                   | REST s proprietárními signály | Otevřít pomocí zavřeného balíčku zdrojového signálu    | Azure. Communication. chat            | Přidání textu založeného na textu v reálném čase do vašich aplikací  |
 | SMS                    | REST | Otevřít              | Azure. Communication. SMS             | Odesílání a příjem zpráv SMS |
 | Videohovory                | Proprietární přenos | Uzavřeno |Azure. Communication. Calling         | Využití hlasu, videa, sdílení obrazovky a dalších možností komunikace dat v reálném čase          |
@@ -45,6 +46,7 @@ Umístění pro publikování pro jednotlivé balíčky klientských knihoven js
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Přejít přes GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Společné         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | –      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | Identita | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [PyPi](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
+| Telefonní čísla | [npm](https://www.npmjs.com/package/@azure/communication-phone-numbers)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.PhoneNumbers)    | [PyPi](https://pypi.org/project/azure-communication-phonenumbers/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-phonenumbers)   | -              | -              | -                            |
 | Chat           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | Videohovory        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |

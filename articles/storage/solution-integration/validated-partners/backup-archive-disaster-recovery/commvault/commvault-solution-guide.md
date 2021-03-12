@@ -9,12 +9,12 @@ ms.date: 11/11/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f340a06f3b6b7c8fc0d78051fb0496dcab11fb5d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bc5bcca394fa66cea9cbf6bc20ac7d164c671cf7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122744"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632947"
 ---
 # <a name="back-up-to-azure-with-commvault"></a>Zálohování do Azure pomocí CommVault
 
@@ -84,7 +84,7 @@ Při použití Azure jako cíle zálohování využívají zákazníci [azure BL
 |Efektivní počet kopií     | 3         | 3         | 6         | 6 |
 |počet Zóny dostupnosti     | 1         | 3         | 2         | 4 |
 |počet oblastí     | 1         | 1         | 2         | 2 |
-|Ruční převzetí služeb při selhání do sekundární oblasti     | Není k dispozici         | Není k dispozici         | Ano         | Ano |
+|Ruční převzetí služeb při selhání do sekundární oblasti     | Není k dispozici         | Není k dispozici         | Ano         | Yes |
 
 **Blob Storage úrovně Azure:**
 
@@ -161,11 +161,11 @@ V této části najdete stručný průvodce přidáním Azure Storage k místní
 
 9. Pak přejděte do části "úložiště"--> "Cloud" na CommVault Command Center. Vyberte Přidat. Zadejte popisný název účtu úložiště a potom v seznamu Typ vyberte "Microsoft Azure Storage". Vyberte server agenta médií, který se použije k přenosu záloh do Azure Storage. Přidejte kontejner, který jste vytvořili, zvolte vrstvu úložiště, kterou chcete využít v rámci účtu Azure Storage a vyberte pověření vytvořená v kroku #8. Nakonec vyberte, jestli chcete přenášet zálohy s odstraněním duplicit, nebo ne, a umístění databáze odstranění duplicitních dat.
     
-     ![CommVault přidat úložiště](../media/commvault-add-storage.png)
+     ![Snímek obrazovky s uživatelským rozhraním pro přidání cloudu V rozevírací nabídce archivace je vybrána možnost * * archiv * *.](../media/commvault-add-storage.png)
 
 10. Nakonec přidejte nový prostředek Azure Storage do existujícího nebo nového plánu v CommVault příkazového centra pomocí příkazu "spravovat"-> "plány" jako "cíl zálohování".
 
-    ![CommVault přidat úložiště](../media/commvault-plan.png)
+    ![Snímek obrazovky s uživatelským rozhraním centra příkazů COMMVAULT V levém navigačním panelu je vybrána možnost * * spravovat * *, * * plány * *.](../media/commvault-plan.png)
 
 11. ***(Volitelné)*** Pokud máte v úmyslu využít Azure jako lokalitu pro obnovení nebo CommVault k migraci serverů a aplikací do Azure, je osvědčeným postupem nasazení podřízeného proxy serveru v Azure. Podrobné pokyny najdete [tady](https://documentation.commvault.com/commvault/v11/article?p=106208.htm).  
 

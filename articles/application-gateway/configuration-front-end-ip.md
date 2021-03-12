@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: eff63510f70dd7b4cdd522cc5a2a68096cda7166
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058646"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548712"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway konfigurace front-endové IP adresy
 
@@ -30,7 +30,7 @@ Další informace najdete v článku [Nejčastější dotazy k Application Gatew
 
 Veřejná IP adresa není nutná pro interní koncový bod, který není vystavený pro Internet. To se říká jako koncový bod *interního nástroje pro vyrovnávání zatížení* (interního nástroje) nebo privátní IP adresa front-endu. Služba Application Gateway interního nástroje je užitečná pro interní obchodní aplikace, které nejsou přístupné pro Internet. Je to také užitečné pro služby a vrstvy v rámci hranice zabezpečení, které nejsou přístupné z Internetu, ale vyžadují distribuci zatížení kruhového dotazování, vytrvalost relace nebo ukončení protokolu TLS.
 
-Podporovaná je jenom jedna veřejná IP adresa nebo jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
+Podporovaná je jenom jedna veřejná IP adresa a jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
 
 - U veřejné IP adresy můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako Aplikační brána. Další informace najdete v tématu [statická a dynamická veřejná IP adresa](./application-gateway-components.md#static-versus-dynamic-public-ip-address).
 

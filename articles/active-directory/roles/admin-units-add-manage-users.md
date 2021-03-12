@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7a9d80344a31023d174935e7f785e36102e99eba
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740512"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011522"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
@@ -70,9 +70,9 @@ Uživatele můžete přiřadit k jednotkám pro správu individuálně nebo jako
 V prostředí PowerShell pomocí `Add-AzureADAdministrativeUnitMember` rutiny v následujícím příkladu přidejte uživatele do jednotky pro správu. ID objektu jednotky pro správu, do které chcete přidat uživatele, a ID objektu uživatele, který chcete přidat, se považují za argumenty. Změňte zvýrazněný oddíl podle potřeby pro konkrétní prostředí.
 
 ```powershell
-$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$userObj = Get-AzureADUser -Filter "UserPrincipalName eq 'bill@example.onmicrosoft.com'"
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.ObjectId -RefObjectId $userObj.ObjectId
 ```
 
 
@@ -80,20 +80,25 @@ Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefOb
 
 Zástupný text nahraďte testovacími informacemi a spusťte následující příkaz:
 
+Žádost
+
 ```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
-Request body
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Text
+
+```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{user-id}"
 }
 ```
 
-Příklad:
+Příklad
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/john@example.com"
 }
 ```
 
@@ -118,6 +123,7 @@ Spusťte následující příkaz:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+
 > [!NOTE]
 > Ve výchozím nastavení `Get-AzureADAdministrativeUnitMember` vrátí pouze 100 členů jednotky pro správu. Chcete-li načíst více členů, můžete přidat `"-All $true"` .
 
@@ -126,7 +132,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 Zástupný text nahraďte testovacími informacemi a spusťte následující příkaz:
 
 ```http
-https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Odebrání jednoho uživatele z jednotky pro správu
@@ -152,14 +158,16 @@ Uživatele můžete odebrat z jednotky pro správu jedním ze dvou způsobů:
 Spusťte následující příkaz:
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
 
 Zástupné symboly nahraďte testovacími informacemi a spusťte následující příkaz:
 
-`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
+```http
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{user-id}/$ref
+```
 
 ## <a name="remove-multiple-users-as-a-bulk-operation"></a>Odebrat více uživatelů jako hromadnou operaci
 

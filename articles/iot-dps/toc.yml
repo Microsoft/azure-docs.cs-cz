@@ -175,7 +175,9 @@
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

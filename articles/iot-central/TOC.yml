@@ -211,8 +211,6 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Připojení dalších cloudů IoT
           href: core/howto-build-iotc-device-bridge.md
-        - name: správu zařízení
-          href: core/how-to-move-device-to-iot.md
     - name: Sestavení integrovaných řešení
       items:
         - name: Přidání dlaždic na řídicí panel
@@ -245,6 +243,8 @@
           href: core/howto-manage-devices.md
         - name: Spuštění úlohy
           href: core/howto-run-a-job.md
+        - name: Přesunout zařízení z IoT Hub
+          href: core/how-to-move-device-to-iot.md
     - name: Správa řešení
       items:
         - name: Změna nastavení aplikace
@@ -303,6 +303,8 @@
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Možnosti pomoci a podpory
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

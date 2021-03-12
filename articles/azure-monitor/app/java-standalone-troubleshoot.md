@@ -4,12 +4,12 @@ description: Informace o řešení potíží s agentem Java pro Azure Monitor Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f971466f25c2b7a4bd28e5b7eec6268f1b2e8b3d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199607"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225570"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Průvodce odstraňováním potíží: Azure Monitor Application Insights pro Java
 
@@ -41,7 +41,9 @@ Mezi tyto změny patří:
 
 ## <a name="some-logging-is-not-auto-collected"></a>Některé protokolování není automaticky shromážděno
 
-Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou hodnotu nakonfigurovanou rozhraní protokolování a druhá také splňuje Application Insights nakonfigurovanou prahovou hodnotu.
+Protokolování je zachyceno pouze v případě, že nejprve splňuje úroveň nakonfigurovanou pro protokolovací rozhraní a druhá také splňuje úroveň nakonfigurovanou pro Application Insights.
+
+Pokud je například vaše protokolovací rozhraní nakonfigurované na protokolovat `WARN` (a vyšší) z balíčku `com.example` a Application Insights je nakonfigurované na zachycení `INFO` (a vyšší), Application Insights bude zachytit `WARN` (a výše) z balíčku `com.example` .
 
 Nejlepším způsobem, jak zjistit, jestli konkrétní příkaz protokolování splňuje prahovou hodnotu nakonfigurovaných protokolovacích rozhraní, je potvrzení, že se zobrazuje v normálním aplikačním protokolu (např. soubor nebo konzola).
 

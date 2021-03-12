@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518160"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200534"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -44,7 +44,7 @@ Pro konfiguraci partnerského vztahu virtuálních sítí pro virtuální sítě
 >
 > * Virtuální počítače za základní SKU interního nástroje pro vyrovnávání zatížení (interního nástroje)
 > * Redis Cache (používá interního nástroje SKU úrovně Basic)
-> * Application Gateway (používá základní interního nástroje SKU)
+> * Application Gateway V1 (používá základní interního nástroje SKU)
 > * Virtual Machine Scale Sets (používá základní interního nástroje SKU)
 > * Clustery Azure Service Fabric (používá základní SKU interního nástroje)
 > * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)

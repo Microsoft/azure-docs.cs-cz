@@ -3,7 +3,7 @@ title: Šifrování obsahu pomocí šifrování úložiště s využitím AMS RE
 description: Naučte se Šifrovat obsah pomocí šifrování úložiště s použitím rozhraní AMS REST API.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4ae1d19ee3da59c43722ca1ea720eb441f6dd484
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 885390d9246937247107128114e9242aa5e2dc01
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696206"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015467"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště
 
@@ -47,7 +47,7 @@ Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a 
 
 ### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
 
-|Možnost šifrování|Popis|Media Services v2|Media Services v3|
+|Možnost šifrování|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, Správa klíčů pomocí Media Services|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč, který spravuje Azure nebo zákazník|Podporováno|Podporováno|
@@ -114,7 +114,7 @@ Níže jsou uvedené obecné kroky pro generování klíčů obsahu, které při
 
     Pro šifrování úložiště by měly být v textu požadavku zahrnuty následující vlastnosti.
 
-    Vlastnost textu žádosti    | Popis
+    Vlastnost textu žádosti    | Description
     ---|---
     Id | ID ContentKey se generuje pomocí následujícího formátu: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Typ klíče obsahu je celé číslo, které definuje klíč. Pro formát šifrování úložiště je tato hodnota 1.

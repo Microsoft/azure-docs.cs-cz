@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348292"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197477"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověřování
 
@@ -46,8 +46,8 @@ Metody bezpečnostních údajů se používají pro ověřování dvou faktorů 
 
 V závislosti na nastaveních vaší organizace možná budete moct použít ověřovací aplikaci jako jednu z vašich metod bezpečnostních údajů. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavování můžete zvolit jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
 
->[!Important]
-> Pokud jste nastavili Microsoft Authenticator aplikace na 5 různých zařízeních nebo 5 hardwarových tokenech, nebudete schopni nastavit šest a může se zobrazit následující chybová zpráva.
+> [!IMPORTANT]
+> Pokud jste nastavili Microsoft Authenticator aplikaci na pět různých zařízení nebo pokud jste použili pět hardwarových tokenů, nebudete moct nastavit šestou a může se zobrazit tato chybová zpráva:
 > 
 > **Nemůžete nastavit Microsoft Authenticator, protože už máte pět ověřovacích aplikací nebo hardwarových tokenů. Pokud chcete odstranit jednu z vašich ověřovacích aplikací nebo hardwarových tokenů, kontaktujte prosím správce.**
 
@@ -57,7 +57,7 @@ V závislosti na nastaveních vaší organizace možná budete moct použít ov�
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
+2. V nabídce vlevo vyberte **informace o zabezpečení** nebo použijte odkaz v podokně **bezpečnostní údaje** . Pokud jste už zaregistrovali, budete vyzváni k ověření dvou faktorů. Pak v podokně **bezpečnostní údaje** vyberte **Přidat metodu** .
 
     ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 

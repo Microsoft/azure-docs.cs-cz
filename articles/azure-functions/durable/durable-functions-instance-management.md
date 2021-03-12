@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430560"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199773"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -202,6 +202,9 @@ Metoda vrátí objekt s následujícími vlastnostmi:
   * **Selhalo**: instance se nezdařila s chybou.
   * **Ukončeno**: instance byla náhle zastavena.
 * **History**: historie spouštění orchestrace. Toto pole je vyplněno pouze v případě `showHistory` , že je nastavena na hodnotu `true` .
+
+> [!NOTE]
+> Nástroj Orchestrator není označen jako `Completed` do dokončení všech naplánovaných úloh _a_ byl vrácen produkt Orchestrator. Jinými slovy, není dostačující, aby nástroj Orchestrator mohl získat přístup k příkazu, který `return` má být označen jako `Completed` . To je obzvláště důležité pro případy `WhenAny` , kdy se používá; tyto orchestrace často `return` ještě před provedením všech naplánovaných úloh.
 
 Tato metoda vrátí `null` (.NET), `undefined` (JavaScript) nebo `None` (Python), pokud instance neexistuje.
 

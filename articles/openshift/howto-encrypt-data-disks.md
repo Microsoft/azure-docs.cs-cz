@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: šifrování, BYOK, ARO, CMK, OpenShift, Red Hat
-ms.openlocfilehash: ca69594952c9fa547390e9a73b48ec8165145378
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: fa84096dcc44e668a6cf7ebd0369c6d3631c28d2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505218"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555614"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Šifrování trvalých deklarací identity pomocí klíče spravovaného zákazníkem (CMK) v Azure Red Hat OpenShift (ARO) (Preview)
 
@@ -29,7 +29,7 @@ V tomto článku se předpokládá, že:
 
 * Máte již existující cluster ARO na verzi OpenShift 4,4 (nebo vyšší).
 
-* Máte k dispozici nástroj pro příkazový řádek **oC** OpenShift, Base64 (součást základních nástrojů) a je nainstalovaný příkaz **AZ** Azure CLI.
+* Máte k dispozici nástroj pro příkazový řádek **oC** OpenShift, Base64 (součást coreutils) a nainstalovanou **AZ** Azure CLI.
 
 * K vašemu clusteru ARO jste přihlášení pomocí **oC** jako globální uživatel správce clusteru (kubeadmin).
 
@@ -43,8 +43,8 @@ V tomto článku se předpokládá, že:
 ## <a name="declare-cluster--encryption-variables"></a>Deklarovat & proměnných šifrování clusteru
 Níže uvedené proměnné byste měli nakonfigurovat tak, aby mohly být vhodné pro vás cluster ARO, ve kterém chcete povolit šifrovací klíče spravované zákazníkem:
 ```
-aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from *az aro list -o table*
-buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from *az aro list -o table*
+aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from **az aro list -o table**
+buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from **az aro list -o table**
 desName="aro-des"                  # Your Azure Disk Encryption Set name. This must be unique in your subscription.
 vaultName="aro-keyvault-1"         # Your Azure Key Vault name. This must be unique in your subscription.
 vaultKeyName="myCustomAROKey"      # The name of the key to be used within your Azure Key Vault. This is the name of the key, not the actual value of the key that you will rotate.
@@ -58,18 +58,19 @@ subId="$(az account list -o tsv | grep True | awk '{print $3}')"
 ```
 
 ## <a name="create-an-azure-key-vault-instance"></a>Vytvoření instance Azure Key Vault
-K uložení klíčů se musí použít instance Azure Key Vault. Vytvoří novou Key Vault s povolenou ochranou vyprázdnění a obnovitelného odstranění. Pak vytvořte nový klíč v rámci trezoru a uložte si vlastní klíč:
+K uložení klíčů se musí použít instance Azure Key Vault. Vytvoří novou Key Vault s povolenou ochranou vyprázdnění. Pak vytvořte nový klíč v rámci trezoru a uložte si vlastní klíč:
 
 ```azurecli-interactive
 # Create an Azure Key Vault resource in a supported Azure region
 az keyvault create -n $vaultName -g $buildRG --enable-purge-protection true -o table
+
 # Create the actual key within the Azure Key Vault
 az keyvault key create --vault-name $vaultName --name $vaultKeyName --protection software -o jsonc
 ```
 
 ## <a name="create-an-azure-disk-encryption-set"></a>Vytvoření sady Azure Disk Encryption
 
-Sada Azure Disk Encryption se používá jako referenční bod pro disky v ARO společnosti. Je připojený k Azure Key Vault, kterou jsme vytvořili v předchozím kroku, a vyžádá si z tohoto místa klíče spravované zákazníky.
+Azure Disk Encryption sada se používá jako referenční bod pro disky v ARO společnosti. Je připojený k Azure Key Vault, kterou jsme vytvořili v předchozím kroku, a vyžádá si z tohoto místa klíče spravované zákazníky.
 
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -86,20 +87,21 @@ az disk-encryption-set create -n $desName -g $buildRG --source-vault $keyVaultId
 Použijte sadu šifrování disků, kterou jsme vytvořili v předchozích krocích, a udělte přístup k sadě Disk Encryption Azure Key Vault:
 
 ```azurecli-interactive
-# First, find the disk encryption set's AppId value.
+# First, find the disk encryption set's Azure Application ID value.
 desIdentity="$(az disk-encryption-set show -n $desName -g $buildRG --query [identity.principalId] -o tsv)"
 
 # Next, update the Key Vault security policy settings to allow access to the disk encryption set.
 az keyvault set-policy -n $vaultName -g $buildRG --object-id $desIdentity --key-permissions wrapkey unwrapkey get -o table
 
-# Now, ensure the disk encryption set can read the contents of the Azure Key Vault.
+# Now, ensure the Disk Encryption Set can read the contents of the Azure Key Vault.
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId -o jsonc
 ```
 
 ### <a name="obtain-other-ids-required-for-role-assignments"></a>Získat další ID požadovaná pro přiřazení rolí
 Je potřeba, aby měl cluster ARO k šifrování trvalých deklarací identity (PVC) v clusteru ARO použitou sadu Disk Encryption. K tomu vytvoříme novou Identita spravované služby (MSI). Také nastavíme další oprávnění pro MSI pro ARO a pro sadu Disk Encryption.
-```
-# First, get the application ID of the service principal used in the ARO cluster.
+
+```azurecli-interactive
+# First, get the Azure Application ID of the service principal used in the ARO cluster.
 aroSPAppId="$(oc get secret azure-credentials -n kube-system -o jsonpath='{.data.azure_client_id}' | base64 --decode)"
 
 # Next, get the object ID of the service principal used in the ARO cluster.
@@ -111,7 +113,7 @@ msiName="$aroCluster-msi"
 # Create the Managed Service Identity (MSI) required for disk encryption.
 az identity create -g $buildRG -n $msiName -o jsonc
 
-# Get the ARO Managed Service Identity application ID.
+# Get the ARO Managed Service Identity Azure Application ID.
 aroMSIAppId="$(az identity show -n $msiName -g $buildRG -o tsv --query [clientId])"
 
 # Get the resource ID for the disk encryption set and the Key Vault resource group.
@@ -132,9 +134,10 @@ az role assignment create --assignee $aroMSIAppId --role Reader --scope $buildRG
 az role assignment create --assignee $aroSPObjId --role Contributor --scope $buildRGResourceId -o jsonc
 ```
 
-## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks-optional"></a>Vytvoření třídy úložiště k8s pro šifrované disky Premium & Ultra (volitelné)
+## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks"></a>Vytvoření třídy úložiště k8s pro šifrované disky Premium & Ultra
 Generovat třídy úložiště, které se mají použít pro CMK pro Premium_LRS a UltraSSD_LRS disky:
-```
+
+```azurecli-interactive
 # Premium Disks
 cat > managed-premium-encrypted-cmk.yaml<< EOF
 kind: StorageClass
@@ -174,13 +177,15 @@ EOF
 ```
 
 V dalším kroku spusťte toto nasazení v clusteru ARO a použijte konfiguraci třídy úložiště:
-```
+
+```azurecli-interactive
 # Update cluster with the new storage classes
 oc apply -f managed-premium-encrypted-cmk.yaml
 oc apply -f managed-ultra-encrypted-cmk.yaml
 ```
-## <a name="test-encryption-with-customer-managed-keys"></a>Testování šifrování pomocí klíčů spravovaných zákazníkem
-Pokud chcete zjistit, jestli váš cluster používá pro šifrování PVC klíč spravovaný zákazníkem, vytvoříme pomocí příslušné třídy úložiště deklaraci trvalého svazku. Následující fragment kódu vytvoří a připojí trvalou deklaraci identity pomocí standardních disků.
+
+## <a name="test-encryption-with-customer-managed-keys-optional"></a>Testování šifrování pomocí klíčů spravovaných zákazníkem (volitelné)
+Pokud chcete zjistit, jestli váš cluster používá pro šifrování PVC klíč spravovaný zákazníkem, vytvoříme pomocí nové třídy úložiště deklaraci trvalého svazku. Následující fragment kódu vytvoří a připojí trvalou deklaraci identity pomocí prémiových disků.
 ```
 # Create a pod which uses a persistent volume claim referencing the new storage class
 cat > test-pvc.yaml<< EOF
@@ -220,9 +225,9 @@ spec:
         claimName: mypod-with-cmk-encryption-pvc
 EOF
 ```
-### <a name="apply-the-test-pod-configuration-file"></a>Použít konfigurační soubor test pod
+### <a name="apply-the-test-pod-configuration-file-optional"></a>Použít konfigurační soubor test pod (volitelné)
 Spuštěním následujících příkazů použijte konfiguraci test pod a vraťte UID nové deklarace identity trvalého svazku. UID se použije k ověření šifrování disku pomocí CMK.
-```
+```azurecli-interactive
 # Apply the test pod configuration file and set the PVC UID as a variable to query in Azure later.
 pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 
@@ -230,8 +235,9 @@ pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 pvName="$(oc get pv pvc-$pvcUid -o jsonpath='{.spec.azureDisk.diskName}')"
 ```
 > [!NOTE]
-> V některých případech dojde k mírnému zpoždění při použití přiřazení rolí v rámci Azure Active Directory. V závislosti na rychlosti spuštění těchto příkazů se nemusí zdařit příkaz "zjistit úplný název disku Azure". Pokud k tomu dojde, podívejte se na výstup **oC mypod-with-CMK-Encryption-PVC** a ujistěte se, že se disk úspěšně zřídil. Pokud se rozšíření přiřazení role nedokončilo, bude nutné *Odstranit* a *použít* & trvalého připojení k YAML.
-### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey"></a>Ověřte, že je na disku PVC nakonfigurovaná možnost EncryptionAtRestWithCustomerKey. 
+> V některých případech může při použití přiřazení rolí v rámci Azure Active Directory dojít k mírné prodlevě. V závislosti na rychlosti spuštění těchto instrukcí se nemusí zdařit příkaz "určení úplného názvu disku Azure". Pokud k tomu dojde, zkontrolujte výstup **oC mypod-with-CMK-Encryption-PVC** a ujistěte se, že se disk úspěšně zřídil. Pokud se rozšíření přiřazení role nedokončilo, může být nutné *Odstranit* a znovu *použít* & PVC YAML.
+
+### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey-optional"></a>Ověřte, že je na disku PVC nakonfigurovaná možnost EncryptionAtRestWithCustomerKey (volitelné).
 Pod ním by měla být vytvořena deklarace identity trvalého svazku, která odkazuje na třídu úložiště CMK. Spuštěním následujícího příkazu ověříte, že je trvalý virtuální okruh nasazený podle očekávání:
 ```azurecli-interactive
 # Describe the OpenShift cluster-wide persistent volume claims

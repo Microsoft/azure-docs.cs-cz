@@ -3,12 +3,12 @@ title: Změnit nastavení clusteru Azure Service Fabric
 description: Tento článek popisuje nastavení prostředků infrastruktury a zásady upgradu prostředků infrastruktury, které můžete přizpůsobit.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183399"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232047"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení nastavení clusteru Service Fabric
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery přizpůsobíte nastavení tím, že aktualizujete *ClusterConfig.jsna* soubor a provádíte upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -349,6 +349,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |DisableContainers|logická hodnota, výchozí hodnota je FALSE.|Static|Konfigurace pro zákaz použití kontejnerů místo DisableContainerServiceStartOnContainerActivatorOpen, což je nepoužívané konfigurace |
 |DisableDockerRequestRetry|logická hodnota, výchozí hodnota je FALSE. |Dynamická| Ve výchozím nastavení SF komunikuje pomocí příkazu DD (Docker Dameon) s časovým limitem "DockerRequestTimeout" pro každý odeslaný požadavek HTTP. Pokud DD nereaguje v rámci tohoto časového období; SF znovu odešle požadavek, pokud stále zbývá operace na nejvyšší úrovni.  S kontejnerem HyperV; DD někdy vybere mnohem více času, aby kontejner mohl vyvolat nebo deaktivovat. V takových případech DD žádosti vyprší od SF perspektivy a SF opakuje operaci. Někdy se zdá, že přidá větší tlak na DD. Tato konfigurace umožňuje zakázat tento pokus o opakování a počkat na odpověď DD. |
 |DnsServerListTwoIps | Logická hodnota, výchozí hodnota je FALSE. | Static | Tyto příznaky přidávají místní server DNS dvakrát, aby bylo možné zmírnit občasné řešení problémů. |
+| DockerTerminateOnLastHandleClosed | logická hodnota, výchozí hodnota je FALSE. | Static | Ve výchozím nastavení, pokud hostitele fabrichost vrátilo spravuje dockerd (na základě: SkipDockerProcessManagement = = false), toto nastavení nakonfiguruje, co se stane, když dojde k chybě hostitele fabrichost vrátilo nebo dockerd. Pokud je `true` Tato možnost nastavena na hodnotu v případě, že dojde k vynucenému ukončení všech spuštěných kontejnerů, bude klientovi HCS nuceně ukončen. Pokud je sada nastavena na kontejnery, budou dál fungovat `false` . Poznámka: předchozí až 8,0 Toto chování bylo neúmyslně ekvivalentem `false` . Výchozím nastavením `true` tady je to, co se ve výchozím nastavení stane, že se při restartování těchto procesů projeví pro naši logiku vyčištění. |
 | DoNotInjectLocalDnsServer | logická hodnota, výchozí hodnota je FALSE. | Static | Zabraňuje modulu runtime vložit místní IP adresu jako server DNS pro kontejnery. |
 |EnableActivateNoWindow| logická hodnota, výchozí hodnota je FALSE.|Dynamická| Aktivovaný proces se vytvoří na pozadí bez konzoly. |
 |EnableContainerServiceDebugMode|logická hodnota, výchozí hodnota je TRUE.|Static|Povolí nebo zakáže protokolování kontejnerů Docker.  Pouze Windows.|

@@ -9,12 +9,12 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428435"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224590"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
@@ -112,7 +112,7 @@ Následující funkce Azure Storage nejsou podporované, když ve svém účtu p
   
 ## <a name="nfs-30-features-not-yet-supported"></a>Funkce NFS 3,0, které ještě nejsou podporované
 
-U Azure Data Lake Storage Gen2 se zatím nepodporují tyto funkce NFS 3,0.
+Následující funkce NFS 3,0 ještě nejsou podporované.
 
 - NFS 3,0 přes protokol UDP. Podporuje se jenom NFS 3,0 přes TCP.
 
@@ -127,6 +127,12 @@ U Azure Data Lake Storage Gen2 se zatím nepodporují tyto funkce NFS 3,0.
 - Pevné propojení
 
 - Export kontejneru jako jen pro čtení
+
+## <a name="nfs-30-clients-not-yet-supported"></a>Klienti NFS 3,0 ještě nejsou podporované
+
+Následující klienti NFS 3,0 nejsou ještě podporováni.
+
+- Klient Windows pro systém souborů NFS
 
 ## <a name="pricing"></a>Ceny
 

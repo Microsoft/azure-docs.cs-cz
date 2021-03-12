@@ -63,6 +63,8 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Příprava webové aplikace pro komunikační služby (Node.js)
       href: tutorials/building-app-start.md
+    - name: Podepisování a vytváření požadavků na rozhraní API služby ACS SMS pomocí post
+      href: tutorials/postman-tutorial.md
 - name: Koncepty
   expanded: false
   items:
@@ -145,9 +147,9 @@
     - name: Knihovny pro volání
       items:
         - name: Volání (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Volání (Android/Java)
-          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+          href: /java/api/com.azure.communication.calling
         - name: Volání (iOS)
           href: /objectivec/communication-services/calling/
     - name: Knihovny pro chat
