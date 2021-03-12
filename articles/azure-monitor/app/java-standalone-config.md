@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201749"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201260"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -61,7 +61,7 @@ Připojovací řetězec je povinný. Připojovací řetězec najdete v prostřed
 }
 ```
 
-Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` (ta pak bude mít přednost, pokud je připojovací řetězec zadán také v konfiguraci JSON).
 
 Při nastavení připojovacího řetězce se agent Java zakáže.
 
@@ -81,7 +81,7 @@ Pokud chcete nastavit název cloudové role:
 
 Pokud není název cloudové role nastaven, použije se k označení součásti na mapě aplikace název Application Insights prostředku.
 
-Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` .
+Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` (ta pak bude mít přednost, pokud je název cloudové role taky zadaný v konfiguraci JSON).
 
 ## <a name="cloud-role-instance"></a>Instance cloudové role
 
@@ -98,7 +98,7 @@ Pokud chcete nastavit instanci cloudové role na jinou hodnotu než název poč�
 }
 ```
 
-Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
+Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` (ta pak bude mít přednost, pokud je instance cloudové role zadaná taky v konfiguraci JSON).
 
 ## <a name="sampling"></a>Vzorkování
 
@@ -117,7 +117,7 @@ Tady je příklad, jak nastavit vzorkování pro zachycení přibližně **1/3 v
 }
 ```
 
-Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (ta pak bude mít přednost, pokud je procento vzorkování zadáno také v konfiguraci JSON).
 
 > [!NOTE]
 > Pro procento vzorkování vyberte procento, které je blízko 100/N, kde N je celé číslo. V současné době vzorkování nepodporují jiné hodnoty.
@@ -150,9 +150,6 @@ Pokud chcete shromáždit některé další JMX metriky:
 `attribute` je název atributu uvnitř JMX MBean, který chcete shromáždit.
 
 Hodnoty metriky numeric a Boolean JMX jsou podporované. Logické JMX metriky jsou namapovány na `0` hodnotu false a `1` na hodnotu true.
-
-[//]: # "Poznámka: tady se nedokumentuje APPLICATIONINSIGHTS_JMX_METRICS"
-[//]: # "var Embedded ve formátu ENV je v podkladu a měl by se zdokumentovat jenom pro scénář připojení bez kódu."
 
 ## <a name="custom-dimensions"></a>Vlastní rozměry
 
@@ -201,7 +198,7 @@ Výchozí prahová hodnota Application Insights je `INFO` . Pokud chcete změnit
 }
 ```
 
-Prahovou hodnotu můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
+Úroveň můžete nastavit také pomocí proměnné prostředí `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (která pak bude mít přednost, pokud je úroveň zadána také v konfiguraci JSON).
 
 Jedná se o platné `level` hodnoty, které můžete zadat v `applicationinsights.json` souboru, a způsob, jakým odpovídají úrovně protokolování v různých protokolovacích rozhraních:
 
@@ -284,7 +281,7 @@ Ve výchozím nastavení Application Insights Java 3,0 pošle metriku prezenčn�
 ```
 
 > [!NOTE]
-> Frekvence prezenčního signálu se nedá snížit, protože data prezenčního signálu se také používají ke sledování využití Application Insights.
+> Interval nelze prodloužit na více než 15 minut, protože data prezenčního signálu slouží také ke sledování využití Application Insights.
 
 ## <a name="http-proxy"></a>Proxy server HTTP
 
@@ -300,6 +297,30 @@ Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Ap
 ```
 
 Application Insights Java 3,0 také respektuje globální `-Dhttps.proxyHost` a `-Dhttps.proxyPort` Pokud jsou nastavené.
+
+## <a name="metric-interval"></a>Interval metriky
+
+Tato funkce je ve verzi Preview.
+
+Ve výchozím nastavení jsou metriky zachyceny každých 60 sekund.
+
+Od verze 3.0.3-BETA můžete změnit tento interval:
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+Nastavení platí pro všechny tyto metriky:
+
+* Výchozí čítače výkonu, např. procesor a paměť
+* Výchozí vlastní metriky, např. časování shromažďování paměti
+* Nakonfigurované metriky JMX ([viz výše](#jmx-metrics))
+* Metriky mikroměřiče ([viz výše](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "Poznámka: podpora OpenTelemetry je v privátní verzi Preview, dokud rozhraní OpenTelemetry API nedosáhne 1,0."
 
@@ -349,7 +370,7 @@ Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `I
 
 `maxHistory` je počet převedených souborů protokolu, které jsou zachovány (kromě aktuálního souboru protokolu).
 
-Počínaje verzí 3.0.2 můžete také nastavit samoobslužnou diagnostiku `level` pomocí proměnné prostředí `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
+Počínaje verzí 3.0.2 můžete také nastavit samoobslužnou diagnostiku `level` pomocí proměnné prostředí `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (která pak bude mít přednost, pokud `level` je v konfiguraci JSON také zadaná možnost samoobslužná Diagnostika).
 
 ## <a name="an-example"></a>Příklad
 

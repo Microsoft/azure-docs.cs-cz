@@ -149,6 +149,10 @@
               href: alert-service-principal.md
             - name: Upozornění protokolu Secure LDAP
               href: alert-ldaps.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.addomainservices/
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy

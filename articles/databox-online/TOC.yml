@@ -55,7 +55,7 @@
     - name: Přehled
       items:
         - name: Co je Azure Stack Edge Pro R?
-          href: azure-stack-edge-j-series-overview.md
+          href: azure-stack-edge-pro-r-overview.md
     - name: Koncepty
       items:
         - name: Připravené zabezpečení
@@ -171,7 +171,7 @@
         - name: Nasazení ukázek IoT Edge
           items:
             - name: Modul z galerie Nvidia
-              href: azure-stack-edge-j-series-configure-gpu-modules.md
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
             - name: Modul GPU z úložiště Git
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Modul GPU přes marketplace
@@ -189,7 +189,7 @@
                 - name: Zrychlení výpočetních prostředků
                   href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Bezstavová aplikace
-                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                  href: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
                 - name: Stavová aplikace zřízená staticky
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Stavová aplikace zřízená dynamicky
@@ -199,7 +199,7 @@
                 - name: Bezstavová aplikace
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
                 - name: Vývoj modulu jazyka C#
-                  href: azure-stack-edge-j-series-create-iot-edge-module.md
+                  href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Přes Azure Arc (Preview)
               items:
                 - name: Povolení služby Arc v clusteru Kubernetes
@@ -211,11 +211,11 @@
         - name: Konfigurace Azure Resource Manageru (Preview)
           items:
             - name: Připojení přes Azure PowerShell
-              href: azure-stack-edge-j-series-connect-resource-manager.md
+              href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Nastavení hesla Azure Resource Manageru
-              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: Konfigurace klientských nastavení TLS
-              href: azure-stack-edge-j-series-configure-tls-settings.md
+              href: azure-stack-edge-gpu-configure-tls-settings.md
         - name: Nasazování virtuálních počítačů (Preview)
           items:
             - name: Nasazování virtuálních počítačů – Azure Portal
@@ -229,7 +229,7 @@
             - name: Nasazování virtuálních počítačů – skript Azure PowerShellu
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: Nasazování virtuálních počítačů – Azure CLI/Python
-              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
             - name: Nasazování rozšíření vlastních skriptů na virtuálních počítačích
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Vytvoření image virtuálního počítače
@@ -247,23 +247,23 @@
             - name: Řešení chyb certifikátů
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Správy výpočetních funkcí Edge
-          href: azure-stack-edge-j-series-manage-compute.md
+          href: azure-stack-edge-gpu-manage-compute.md
         - name: Správa registru kontejnerů Edge
           href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Správa brány úložiště
           items:
             - name: 'Přidání, připojení ke sdílené složce'
-              href: azure-stack-edge-j-series-deploy-add-shares.md
+              href: azure-stack-edge-gpu-deploy-add-shares.md
             - name: 'Přidání, připojení k účtům úložiště'
-              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
+              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
             - name: Sdílené složky
-              href: azure-stack-edge-j-series-manage-shares.md
+              href: azure-stack-edge-gpu-manage-shares.md
             - name: Uživatelé
-              href: azure-stack-edge-j-series-manage-users.md
+              href: azure-stack-edge-gpu-manage-users.md
             - name: Účty úložiště
-              href: azure-stack-edge-j-series-manage-storage-accounts.md
+              href: azure-stack-edge-gpu-manage-storage-accounts.md
             - name: Plány služby Bandwidth
-              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: Správa zařízení
           items:
             - name: 'Výkon, přístup, možnosti připojení'
@@ -318,6 +318,9 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
 - name: Azure Stack Edge Pro – FPGA
   items:
     - name: Přehled
@@ -403,23 +406,10 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: Všeobecná dostupnost (GA)
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-    - name: Referenční informace
-      items:
-        - name: Azure PowerShell
-          href: /powershell/module/az.stackedge/#stack_edge
-        - name: REST API
-          href: /rest/api/databoxedgegateway
-        - name: .NET SDK
-          href: /dotnet/api/overview/azure/databoxedge/databoxgateway
 - name: Zabezpečení
   items:
     - name: Standardní hodnoty zabezpečení
       href: security-baseline.md
-- name: Reference
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Ukázky modulů Azure Stack Edge Pro v C# (.NET)

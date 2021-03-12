@@ -56,8 +56,6 @@
       href: create-update-group.md
     - name: Nasazení aktualizace zařízení
       href: deploy-update.md
-    - name: Nasazení aktualizace zařízení
-      href: deploy-update.md
     - name: Mezipaměť propojená Microsoftem na jedné úrovni
       href: connected-cache-single-level.md
     - name: Vnořená mezipaměť Microsoft propojená na úrovni
@@ -75,7 +73,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

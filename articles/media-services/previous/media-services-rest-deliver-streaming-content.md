@@ -1,7 +1,7 @@
 ---
 title: Publikování obsahu Azure Media Services pomocí REST
 description: Naučte se, jak vytvořit lokátor, který se používá k vytvoření adresy URL streamování. Kód používá REST API.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 438a816ca28b9414557e64591d9ece2dbb173370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b8733d499b2396160a73906f16a69291cf0b9d71
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256867"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015416"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikování obsahu Azure Media Services pomocí REST
 
@@ -152,20 +152,20 @@ Použijte hodnotu **cesty** vrácenou po vytvoření lokátoru a vytvořte tak v
 
 Smooth Streaming: **cesta** + název souboru manifestu + "/manifest"
 
-Příklad:
+příklad:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
 
 HLS: **cesta** + název souboru manifestu + "/manifest (Format = M3U8-AAPL)"
 
-Příklad:
+příklad:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
 
 
 POMLČKa: **cesta** + název souboru manifestu + "/manifest (Format = MPD-Time-CSF)"
 
-Příklad:
+příklad:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
@@ -175,7 +175,7 @@ Pro sestavení adresy URL postupného stahování použijte hodnotu **cesty** vr
 
 Adresa URL: **cesta** + název souboru MP4 prostředku
 
-Příklad:
+příklad:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488201"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561989"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Přehled migrace: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -64,6 +64,8 @@ Můžete zvolit výpočetní prostředky a prostředky úložiště během nasaz
 
 > [!IMPORTANT]
 > Jakékoli nesrovnalosti v [požadavcích virtuální sítě spravované instance](../../managed-instance/connectivity-architecture-overview.md#network-requirements) vám můžou zabránit v vytváření nových instancí nebo používání stávajících instancí. Přečtěte si další informace o [vytváření nových](../../managed-instance/virtual-network-subnet-create-arm-template.md)   a [konfigurování stávajících](../../managed-instance/vnet-existing-add-subnet.md)   sítí. 
+
+Další klíčovým aspektem výběru cílové úrovně služby ve spravované instanci Azure SQL (Pro obecné účely vs Pro důležité obchodní informace) je dostupnost určitých funkcí, jako je In-Memory OLTP, která je dostupná jenom na Pro důležité obchodní informace úrovni. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternativní virtuální počítač SQL Server
 
@@ -192,6 +194,26 @@ Při migraci databází chráněných nástrojem  [transparentní šifrování
 
 Obnovení systémových databází se nepodporuje. Chcete-li migrovat objekty na úrovni instance (uložené v databázích Master nebo msdb), skriptujte je pomocí jazyka Transact-SQL (T-SQL) a pak je znovu vytvořte na cílové spravované instanci. 
 
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (paměťově optimalizované tabulky)
+
+SQL Server poskytuje In-Memory OLTP schopnost, která umožňuje využití paměťově optimalizovaných tabulek, paměťově optimalizovaných typů tabulek a nativně kompilovaných modulů SQL ke spouštění úloh, které mají požadavky na zpracování s vysokou propustností a nízkou latencí. 
+
+> [!IMPORTANT]
+> In-Memory OLTP se podporuje jenom v Pro důležité obchodní informace úrovni ve spravované instanci Azure SQL (a není podporovaná na úrovni Pro obecné účely).
+
+Pokud máte v místních SQL Serverch paměťově optimalizované tabulky nebo paměťově optimalizované typy tabulek a chcete migrovat na spravovanou instanci Azure SQL, měli byste buď:
+
+- Vyberte úroveň Pro důležité obchodní informace pro vaši cílovou spravovanou instanci SQL Azure, která podporuje In-Memory OLTP, nebo
+- Pokud chcete migrovat na Pro obecné účely úroveň ve spravované instanci Azure SQL, odeberte paměťově optimalizované tabulky, paměťově optimalizované typy tabulek a nativně zkompilované moduly SQL, které komunikují s paměťově optimalizovanými objekty před migrací databází. K identifikaci všech objektů, které je třeba před migrací do Pro obecné účely úrovně, použít následující dotaz T-SQL:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+Další informace o technologiích v paměti najdete v tématu [optimalizace výkonu pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
+
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 
 
 Nezapomeňte využít výhod pokročilých cloudových funkcí nabízených službou SQL Managed instance. Například už se nemusíte starat o správu záloh, protože služba to udělá za vás. Můžete obnovit k jakémukoli [bodu v čase v rámci doby uchování](../../database/recovery-using-backups.md#point-in-time-restore). Kromě toho se nemusíte starat o nastavení vysoké dostupnosti, protože [je integrovaná vysoká dostupnost](../../database/high-availability-sla.md). 
@@ -206,7 +228,7 @@ Některé funkce jsou dostupné až po změně [úrovně kompatibility databáze
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Popis  |
+|Prostředek  |Description  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy na základě cílové platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server BulkLoad Native Client, které funguje na všech verzích SQL Server, včetně Azure SQL MI.|

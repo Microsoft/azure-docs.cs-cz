@@ -3,14 +3,14 @@ title: Template deployment citlivosti
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591620"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547930"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Operace what-if (citlivostní analýza) při nasazení šablony ARM
 
@@ -391,8 +391,6 @@ Můžete použít operaci citlivostní zpracování prostřednictvím sad Azure 
 
 ## <a name="next-steps"></a>Další kroky
 
+- Pokud chcete použít operaci citlivostní operace v kanálu, přečtěte si téma [test šablon ARM pomocí What-If v kanálu](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
 - Pokud si všimnete nesprávných výsledků operace citlivostní zpracování, nahlaste prosím problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Microsoft Learn modul, který se zabývá používáním možnosti co když, najdete v tématu [Náhled změn a ověření prostředků Azure pomocí nástrojů co-if a šablony ARM test Toolkit](/learn/modules/arm-template-test/).
-- Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
-- Pokud chcete nasadit šablony pomocí Azure CLI, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Azure CLI](deploy-cli.md).
-- Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Správce prostředků REST API](deploy-rest.md).

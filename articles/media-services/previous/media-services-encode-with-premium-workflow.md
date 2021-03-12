@@ -3,7 +3,7 @@ title: Rozšířené kódování pomocí Media Encoder Premium Workflow | Micros
 description: Naučte se kódovat pomocí Media Encoder Premium Workflow. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017229"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013495"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Pokročilé kódování pomocí Media Encoderu Premium Workflow
 
@@ -35,7 +35,7 @@ Microsoft Azure Media Services zavádí procesor **Media Encoder Premium Workflo
 
 Následující témata popisují podrobnosti související s **Media Encoder Premium Workflow**:
 
-* [Formáty podporované Media Encoder Premium Workflow](./media-services-encode-asset.md) – popisuje formáty souborů a kodeky, které **Media Encoder Premium Workflow**podporuje.
+* [Formáty podporované Media Encoder Premium Workflow](./media-services-encode-asset.md) – popisuje formáty souborů a kodeky, které **Media Encoder Premium Workflow** podporuje.
 * [Přehled a porovnání kodérů médií na vyžádání v Azure](media-services-encode-asset.md) porovnává funkce kódování **Media Encoder Premium Workflow** a **Media Encoder Standard**.
 
 Tento článek ukazuje, jak se zakódovat pomocí **Media Encoder Premium Workflow** pomocí rozhraní .NET.

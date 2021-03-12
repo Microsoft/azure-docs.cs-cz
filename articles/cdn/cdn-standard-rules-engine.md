@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: allensu
-ms.openlocfilehash: 1c596bf10d8afbce504b5abf04eacb877989521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887533"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564896"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Nastavení modulu Standard rules pro Azure CDN
 
@@ -44,9 +44,9 @@ K přizpůsobení způsobu zpracování požadavků HTTP můžete použít modul
 1. Vyberte **Přidat pravidlo** a zadejte název pravidla. Názvy pravidel musí začínat písmenem a můžou obsahovat jenom číslice a písmena.
 
 1. Chcete-li určit typ požadavků, na které se pravidlo vztahuje, vytvořte podmínku shody:
-    1. Vyberte **Přidat podmínku**a pak vyberte podmínku shody **protokolu požadavků** .
+    1. Vyberte **Přidat podmínku** a pak vyberte podmínku shody **protokolu požadavků** .
     1. Jako **Operátor** vyberte **Rovná se**.
-    1. Jako **hodnotu**vyberte **http**.
+    1. Jako **hodnotu** vyberte **http**.
    
    [![Podmínka shody pravidla Azure CDN](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
    
@@ -54,9 +54,9 @@ K přizpůsobení způsobu zpracování požadavků HTTP můžete použít modul
    > V rozevíracím seznamu **Přidat podmínku** můžete vybrat z několika podmínek shody. Podrobný seznam podmínek shody najdete v tématu [podmínky shody v modulu Standard Rules](cdn-standard-rules-engine-match-conditions.md).
    
 1. Vyberte akci, která se má použít u požadavků splňujících podmínky shody:
-   1. Vyberte **přidat akci**a pak vyberte **přesměrování adresy URL**.
-   1. Jako **typ**vyberte **Nalezeno (302)**.
-   1. V případě **protokolu**vyberte **https**.
+   1. Vyberte **přidat akci** a pak vyberte **přesměrování adresy URL**.
+   1. Jako **typ** vyberte **Nalezeno (302)**.
+   1. V případě **protokolu** vyberte **https**.
    1. Pokud chcete použít příchozí hodnoty, ponechte všechna ostatní pole prázdná.
    
    [![Akce pravidla Azure CDN](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)

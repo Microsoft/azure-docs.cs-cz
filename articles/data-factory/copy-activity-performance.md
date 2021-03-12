@@ -1,18 +1,23 @@
 ---
 title: Průvodce výkonem a škálovatelností aktivity kopírování
 description: Přečtěte si o klíčových faktorech, které ovlivňují výkon přesunu dat v Azure Data Factory při použití aktivity kopírování.
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387661"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616073"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce výkonem a škálovatelností aktivity kopírování
 
@@ -48,8 +53,8 @@ ADF nabízí architekturu bez serveru, která umožňuje paralelismus na různý
 
 Tato architektura umožňuje vyvíjet kanály, které maximalizují propustnost přesunu dat pro vaše prostředí. Tyto kanály plně využívají tyto prostředky:
 
-* Šířka pásma sítě
-* Vstupně-výstupní operace úložiště za sekundu (IOPS) a šířka pásma
+* Šířka pásma sítě mezi zdrojovým a cílovým úložištěm dat
+* Zdrojové nebo cílové vstupně-výstupní operace úložiště dat za sekundu (IOPS) a šířka pásma
 
 Toto úplné využití znamená, že můžete odhadnout celkovou propustnost pomocí měření minimální dostupné propustnosti s následujícími prostředky:
 
@@ -57,7 +62,7 @@ Toto úplné využití znamená, že můžete odhadnout celkovou propustnost pom
 * Cílové úložiště dat
 * Šířka pásma sítě mezi zdrojovým a cílovým úložištěm dat
 
-Doba kopírování je vypočítána v následující tabulce. Doba trvání vychází z velikosti dat a limitu šířky pásma pro vaše prostředí.
+Doba kopírování je vypočítána v následující tabulce. Doba trvání vychází z velikosti dat a omezení šířky pásma sítě/úložiště dat pro vaše prostředí.
 
 &nbsp;
 
@@ -161,11 +166,11 @@ Další informace naleznete v tématu:
 
 ### <a name="parallel-copy"></a>Paralelní kopírování
 
-Vlastnost můžete nastavit `parallelCopies` tak, aby označovala paralelismus, které má aktivita kopírování použít. Tuto vlastnost si můžete představit jako maximální počet vláken v rámci aktivity kopírování. Vlákna pracují paralelně. Vlákna buď čtou ze zdroje, nebo zapisují do úložišť dat jímky. [Přečtěte si další informace](copy-activity-performance-features.md#parallel-copy).
+Vlastnost můžete nastavit `parallelCopies` tak, aby označovala paralelismus, které má aktivita kopírování použít. Tuto vlastnost si můžete představit jako maximální počet vláken v rámci aktivity kopírování. Vlákna pracují paralelně. Vlákna buď čtou ze zdroje, nebo zapisují do úložišť dat jímky. [Další informace](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Připravené kopírování
 
-Operace kopírování dat může odesílat data _přímo_ do úložiště dat jímky. Alternativně můžete zvolit, že chcete jako _dočasné pracovní_ úložiště používat úložiště objektů BLOB. [Přečtěte si další informace](copy-activity-performance-features.md#staged-copy).
+Operace kopírování dat může odesílat data _přímo_ do úložiště dat jímky. Alternativně můžete zvolit, že chcete jako _dočasné pracovní_ úložiště používat úložiště objektů BLOB. [Další informace](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7e8d1b13dfd802df820bea4015e411dbb85540ba
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011421"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232201"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>Získání odpovědi pomocí rozhraní GenerateAnswer API
 
@@ -174,9 +174,13 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
-## <a name="return-precise-answers"></a>Vrátit přesné odpovědi
+## <a name="get-precise-answers-with-generateanswer-api"></a>Získat přesné odpovědi pomocí rozhraní GenerateAnswer API
 
-### <a name="generate-answer-api"></a>Vygenerovat rozhraní API pro odpověď 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
+Nabízíme přesnou funkci odpovědi jenom s QnA Maker spravované verze.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
 Uživatel může povolit [přesné odpovědi](../reference-precise-answering.md) při použití spravovaného prostředku QnA maker. Parametr answerSpanRequest se musí aktualizovat na stejný.
 
@@ -211,6 +215,8 @@ Pokud chcete pro službu robota nakonfigurovat přesné nastavení odpovědí, p
 |Pouze přesné odpovědi|true|true|
 |Pouze dlouhé odpovědi|false (nepravda)|false (nepravda)|
 |Dlouhá i přesná odpověď|true|false (nepravda)|
+
+---
 
 ## <a name="common-http-errors"></a>Běžné chyby protokolu HTTP
 

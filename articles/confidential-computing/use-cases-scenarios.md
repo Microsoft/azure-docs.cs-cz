@@ -4,15 +4,16 @@ description: Pochopte, jak ve svém scénáři používat důvěrný výpočetn�
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
-ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 47938f3a44c3a47f8b444b59d7e2f0867a274f33
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000936"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566613"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Běžné scénáře pro důvěrný výpočetní výkon Azure
 
@@ -33,7 +34,7 @@ Více zdrojů může nahrávat svá data do jednoho enklávy ve virtuálním po�
 V zabezpečeném výpočetním prostředí s více stranami přenáší zašifrovaná data do enklávy, enklávy dešifruje data pomocí klíče, provede analýzu, získá výsledek a vrátí šifrovaný výsledek, který může strana dešifrovat pomocí určeného klíče. 
 
 **Chránit použitá data**: 
-- Použijte virtuální počítač DCsv2-Series v Azure s povolenou podporou Intel SGX. Tyto virtuální počítače jsou povolené pomocí prostředí pro důvěryhodné spuštění (TEEs), které zabezpečují a izolují části dat a kódu vaší aplikace.
+- Použijte DCsv2-Series virtuální počítač v Azure s povolenou podporou Intel SGX. Tyto virtuální počítače jsou povolené pomocí prostředí pro důvěryhodné spuštění (TEEs), které zabezpečují a izolují části dat a kódu vaší aplikace.
 - Pomocí sady SDK s podporou enklávy můžete vytvořit enklávy uvnitř virtuálního počítače. V rámci enklávy nebudou data vystavena žádnému, ani poskytovateli virtuálního počítače. Data v enklávy budou šifrována hardwarovou podporou.
     - Můžete například použít [sadu OE SDK](https://github.com/openenclave/openenclave) pro zpracování na straně serveru. 
 
@@ -67,9 +68,9 @@ Blockchain technologie postavené na důvěrných computingech můžou používa
 
 ![Síť uzlů](./media/use-cases-scenarios/ccf.png)
 
-V CCF je decentralizovaná účetní kniha tvořena zaznamenanými změnami úložiště hodnot klíčů, které jsou replikovány napříč všemi síťovými uzly. Každý z těchto uzlů spouští transakční modul, který mohou aktivovat uživatelé blockchain přes TLS. Po aktivaci koncového bodu jste provedete uložení klíč-hodnota. Předtím, než se zašifrovaná změna zaznamená do decentralizované hlavní knihy, je nutné, aby se na základě konsensu dosáhlo určitého počtu uzlů. 
+V CCF se decentralizovaná účetní kniha skládá z zaznamenaných změn v úložišti Key-Value, který se replikuje na všech síťových uzlech. Každý z těchto uzlů spouští transakční modul, který mohou aktivovat uživatelé blockchain přes TLS. Po aktivaci koncového bodu se použije Key-Value Store. Předtím, než se zašifrovaná změna zaznamená do decentralizované hlavní knihy, je nutné, aby se na základě konsensu dosáhlo určitého počtu uzlů. 
 
 ## <a name="next-steps"></a>Další kroky
-[Nasaďte](quick-create-marketplace.md) virtuální počítač s DCsv2-Series.
+[Nasazení](quick-create-marketplace.md) virtuálního počítače s DCsv2-Series
 
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650557"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149524"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rychlý Start: vytvoření prvního statického webu v Azure Portal
 
@@ -116,8 +116,8 @@ Pokud nebudete tuto aplikaci nadále používat, můžete instanci statického W
 1. Otevřete [Azure Portal](https://portal.azure.com).
 1. Hledání **My-First-web-static-App** z horního panelu hledání
 1. Vyberte název aplikace.
-1. Vybrat na tlačítku **Odstranit**
-1. Kliknutím na **Ano** potvrďte akci odstranit.
+1. Vyberte tlačítko **Odstranit** .
+1. Výběrem možnosti **Ano** potvrďte akci odstranit (dokončení této akce může chvíli trvat).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,16 +3,17 @@ title: Řízení údržby pro virtuální počítače Azure pomocí Azure Portal
 description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby a Azure Portal.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397279"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563009"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Řízení aktualizací s využitím řízení údržby a Azure Portal
 
@@ -70,7 +71,7 @@ Na stránce vlastností můžete také ověřit konfiguraci pro konkrétní virt
 
 ## <a name="check-for-pending-updates"></a>Vyhledat nedokončené aktualizace
 
-Existují také dva způsoby, jak ověřit, zda čekají aktualizace na konfiguraci údržby. V části **Konfigurace údržby**na stránce Podrobnosti o konfiguraci klikněte na **přiřazení** a zaškrtněte políčko **stav údržby**.
+Existují také dva způsoby, jak ověřit, zda čekají aktualizace na konfiguraci údržby. V části **Konfigurace údržby** na stránce Podrobnosti o konfiguraci klikněte na **přiřazení** a zaškrtněte políčko **stav údržby**.
 
 ![Snímek obrazovky ukazující, jak kontrolovat probíhající aktualizace](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending.png)
 
