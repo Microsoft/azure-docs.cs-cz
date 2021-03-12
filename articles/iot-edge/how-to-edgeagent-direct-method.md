@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972539"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201110"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí integrovaných přímých metod
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Monitorování a Správa nasazení IoT Edge pomocí přímých metod, které jsou součástí modulu IoT Edge agent. Přímé metody jsou implementovány v zařízení a je možné je vyvolávat z cloudu. Agent IoT Edge obsahuje přímé metody, které vám pomůžou vzdáleně monitorovat a spravovat vaše IoT Edge zařízení.
 

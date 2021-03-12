@@ -3,15 +3,16 @@ title: Omezené velikosti vCPU
 description: Seznam velikostí virtuálních počítačů, které jsou schopné mít omezený počet vCPU.
 author: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7faeec8494a908b9aab00be9b63904354b5e0994
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426149"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557076"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené velikosti virtuálních počítačů s možností omezení vCPU
 
@@ -24,7 +25,7 @@ Aktuální velikost virtuálního počítače Standard_GS5 například přináš
 Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový počet vCPU a další produkty by se měly účtovat na základě nového počtu vCPU. Výsledkem je 50% až 75% zvýšení poměru specifikací virtuálních počítačů na aktivní (fakturovatelný) vCPU. Tyto nové velikosti virtuálních počítačů umožňují zákaznickým úlohám při optimalizaci nákladů na software využívat stejnou paměť, úložiště a I/O šířku pásma. V tomto okamžiku zůstává náklady na výpočetní výkon, včetně licencování operačního systému, stejné jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro cenově výhodné databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name (Název)                | Virtuální procesory | Specifikace           |
+| Name                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2 MS     | 2    | Stejné jako M8ms    |
 | Standard_M8 – 4ms     | 4    | Stejné jako M8ms    |

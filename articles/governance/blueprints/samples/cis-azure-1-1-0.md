@@ -1,26 +1,26 @@
 ---
-title: Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
-description: Přehled ukázky podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 01/27/2021
+title: Ukázka modelu Microsoft Azure CI 1.1.0 Foundation v testu výkonnosti
+description: Přehled ukázky služby CI Microsoft Azure Foundation srovnávací v 1.1.0 details Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918412"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197806"
 ---
-# <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
+# <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>Ukázka modelu Microsoft Azure CI 1.1.0 Foundation v testu výkonnosti
 
-Ukázka podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations poskytuje ochranné mantinely zásad správného řízení s využitím služby [Azure Policy](../../policy/overview.md), které pomáhají vyhodnotit specifická doporučení srovnávacího testu CIS Microsoft Azure Foundations. Tento podrobný plán pomáhá zákazníkům nasadit základní sadu zásad pro libovolnou architekturu nasazenou v Azure, která musí implementovat doporučení srovnávacího testu CIS Microsoft Azure Foundations.
+Ukázka 1.1.0 podrobného plánu pro SNS v Microsoft Azure modelu CI poskytuje ochranné zábradlí pomocí [Azure Policy](../../policy/overview.md) , které vám pomůžou vyhodnotit konkrétní srovnávací doporučení pro CI Microsoft Azure Foundation. Tento podrobný plán pomůže zákazníkům nasadit základní sadu zásad pro jakoukoli architekturu nasazenou v Azure, která musí implementovat doporučení CIS v 1.1.0 s Microsoft Azure Foundation.
 
 ## <a name="recommendation-mapping"></a>Mapování doporučení
 
-[Mapování doporučení Azure Policy](../../policy/samples/cis-azure-1-1-0.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a způsobu mapování těchto definic zásad na domény a **ovládací prvky** **dodržování předpisů** v CIS Microsoft Azure Foundation test v 1.1.0. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
+[Mapování doporučení Azure Policy](../../policy/samples/cis-azure-1-1-0.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a způsobu, jakým jsou tyto definice zásad mapovány k **doporučením** v CIS Microsoft Azure Foundation test v 1.1.0. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
-Pokud chcete nasadit ukázkovou srovnávací plán pro Azure modrotisky Microsoft Azure Foundation, je potřeba provést tyto kroky:
+Pokud chcete nasadit ukázkovou 1.1.0 podrobného plánu v Azure Microsoft Azure modrotisky, je potřeba provést tyto kroky:
 
 > [!div class="checklist"]
 > - Vytvořte nový podrobný plán z ukázky.
@@ -50,7 +50,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 ### <a name="publish-the-sample-copy"></a>Publikování kopie ukázky
 
-V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná**. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání pomocí referenčních doporučení pro CIS Microsoft Azurech základů.
+V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná**. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání pomocí CIS Microsoft Azure Foundation srovnávacího testu v 1.1.0.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -101,8 +101,8 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
-|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
-|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásady|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
+|Auditovat 1.1.0 doporučení pro službu Microsoft Azure CIS v Foundation a nasazovat specifická podpůrná rozšíření virtuálních počítačů|Přiřazení zásady|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
+|Auditovat 1.1.0 doporučení pro službu Microsoft Azure CIS v Foundation a nasazovat specifická podpůrná rozšíření virtuálních počítačů|Přiřazení zásady|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Další kroky
 

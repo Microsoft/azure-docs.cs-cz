@@ -13,6 +13,8 @@
       href: partner-center-portal/company-work-accounts.md
     - name: Migrace účtu z CPP do partnerského centra
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: Informování Microsoftu
+      href: submit-legal-notice.md
 - name: Koncepty
   items:
     - name: Možnosti zápisu
@@ -41,7 +43,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Nastavení předplatného Azure pro hostované testovací verze
           href: test-drive-azure-subscription-setup.md
-    - name: Přisuzování využití ze strany zákazníků partnerům Azure
+    - name: Přidělení zákaznického využití Azure
       href: azure-partner-customer-usage-attribution.md
     - name: Možnosti pro uvedení na trh
       items:

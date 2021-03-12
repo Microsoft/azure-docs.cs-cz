@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719011"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200700"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Načtěte protokoly z nasazení IoT Edge bez potřeby fyzického přístupu nebo přístupu SSH k zařízení pomocí přímých metod, které jsou součástí modulu IoT Edge agent. Přímé metody jsou implementovány v zařízení a je možné je vyvolávat z cloudu. Agent IoT Edge obsahuje přímé metody, které vám pomůžou vzdáleně monitorovat a spravovat vaše IoT Edge zařízení. Přímé metody popsané v tomto článku jsou všeobecně dostupné ve verzi 1.0.10.
 
@@ -74,7 +76,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | položek | Pole JSON | Pole s `id` a `filter` řazenými kolekcemi členů. |
@@ -183,7 +185,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem pro zápis do kontejneru Azure Blob Storage](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -197,7 +199,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs** a přidán
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
@@ -300,7 +302,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem k zápisu do služby Azure Blob Storage Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -321,7 +323,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
@@ -379,7 +381,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
     }
 ```
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 |-|-|-|
 | status | řetězec | Jedna z `NotStarted` , `Running` , `Completed` , `Failed` , nebo `Unknown` . |
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |

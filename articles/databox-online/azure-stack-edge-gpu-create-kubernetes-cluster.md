@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5289f9b558a200bf3dbefdf584eab59d1792439b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ddbf3c99845f4c38f511260f4dec274903a9d586
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437736"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631948"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Připojení a Správa clusteru Kubernetes přes kubectl na zařízení GPU Azure Stack Edge pro
 
@@ -105,7 +105,7 @@ V tomto postupu vytvoříte obor názvů a uživatele. Pak přidružíte uživat
 
 4. Konfigurační soubor by měl být živý ve `.kube` složce vašeho uživatelského profilu na místním počítači. Zkopírujte soubor do této složky v profilu uživatele.
 
-    ![Umístění konfiguračního souboru na klientovi](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![Umístění konfiguračního souboru na klientovi](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 
 5. Přidružte obor názvů k uživateli, který jste vytvořili. Zadejte:
 
@@ -169,9 +169,9 @@ Nyní můžete své aplikace nasadit v oboru názvů a pak je zobrazit v těchto
 
 Chcete-li odebrat cluster Kubernetes, bude nutné odebrat konfiguraci IoT Edge.
 
-Podrobné pokyny najdete v tématu [odebrání IoT Edge konfigurace](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Podrobné pokyny najdete v tématu [Správa konfigurace IoT Edge](azure-stack-edge-gpu-manage-compute.md#manage-iot-edge-configuration).
    
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasaďte bezstavovou aplikaci na Azure Stack Edge pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Nasaďte bezstavovou aplikaci na Azure Stack Edge pro](azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

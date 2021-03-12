@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8ec1ac5d804721e9af50a70a29cdcaf40d3375be
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ce6d2c34c48a26f99f78c364db5f06f9931c9dd7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623565"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021156"
 ---
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, nezapomeňte:
@@ -68,10 +68,10 @@ V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu to
 
 Zkopírujte následující fragmenty kódu a vložte je do zdrojového souboru: **program.cs**
 ```csharp
-using Azure.Communication.Identity;
-using Azure.Communication.Chat;
 using Azure;
 using Azure.Communication;
+using Azure.Communication.Chat;
+using System;
 
 namespace ChatQuickstart
 {
@@ -98,12 +98,12 @@ Pomocí `createChatThread` metody v chatClient vytvořte vlákno chatu.
 Objekt Response z `createChatThread` metody obsahuje `chatThread` Podrobnosti. Pro interakci s operacemi vlákna chatu, jako je přidání účastníků, odeslání zprávy, odstranění zprávy atd. `chatThreadClient` instance klienta musí být vytvořena pomocí `GetChatThreadClient` metody v `ChatClient` klientovi.
 
 ```csharp
-var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
+var chatParticipant = new ChatParticipant(identifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
 CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -112,7 +112,7 @@ string threadId = chatThreadClient.Id;
 
 ```csharp
 string threadId = "<THREAD_ID>";
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Odeslání zprávy do konverzačního vlákna
@@ -134,7 +134,7 @@ Slouží `GetMessage` k načtení zprávy ze služby.
 `ChatMessage` je odpověď vrácená z získání zprávy, obsahuje ID, což je jedinečný identifikátor zprávy, mimo jiné pole. Přečtěte si prosím Azure. Communication. chat. ChatMessage.
 
 ```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Příjem zpráv chatu z konverzačního vlákna
@@ -174,7 +174,7 @@ Můžete aktualizovat zprávu, která již byla odeslána voláním metody `Upda
 ```csharp
 string id = "id-of-message-to-edit";
 string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(id, content);
+await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
 ```
 
 ## <a name="deleting-a-message"></a>Odstranění zprávy
@@ -183,7 +183,7 @@ Zprávu můžete odstranit vyvoláním `DeleteMessage` na `ChatThreadClient` .
 
 ```csharp
 string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(id);
+await chatThreadClient.DeleteMessageAsync(messageId: id);
 ```
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Přidat uživatele jako účastníka do konverzačního vlákna
@@ -207,7 +207,7 @@ var participants = new[]
     new ChatParticipant(amy) { DisplayName = "Amy" }
 };
 
-await chatThreadClient.AddParticipantsAsync(participants);
+await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Odebrání uživatele z konverzačního vlákna
 
@@ -215,7 +215,7 @@ Podobně jako při přidávání uživatele do vlákna můžete odebrat uživate
 
 ```csharp
 var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(gloria);
+await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
 ```
 
 ## <a name="get-thread-participants"></a>Získat účastníky vlákna
@@ -243,7 +243,7 @@ await chatThreadClient.SendTypingNotificationAsync();
 Slouží `SendReadReceipt` k oznámení ostatním účastníkům, že uživatel přečte zprávu.
 
 ```csharp
-await chatThreadClient.SendReadReceiptAsync(messageId);
+await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
 ## <a name="get-read-receipts"></a>Získat účtenky pro čtení

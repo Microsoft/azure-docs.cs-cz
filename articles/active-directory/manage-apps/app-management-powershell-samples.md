@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 46297f7f0f648c8bebc887a9093e25dfea99f695
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561496"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636180"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>Příklady Azure Active Directory PowerShellu pro správu aplikací
 
@@ -31,5 +31,5 @@ Další informace o rutinách použitých v těchto ukázkách najdete v tématu
 |**Skripty správy aplikací**||
 | [Export tajných klíčů a certifikátů (registrace aplikací)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Exportujte tajné klíče a certifikáty pro registrace aplikací v tenantovi Azure Active Directory. |
 | [Export tajných klíčů a certifikátů (podnikové aplikace)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Exportujte tajná klíčová a certifikát pro podnikové aplikace v tenantovi Azure Active Directory. |
-| [Export tajných kódů a certifikátů](scripts/powershell-export-apps-with-expriring-secrets.md) | Exportujte aplikace s platností tajných kódů a certifikátů v Azure Active Directory tenant. |
-| [Export tajných klíčů a certifikátů po uplynutí požadovaného data](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Exportujte aplikace s tajnými klíči a certifikáty, jejichž platnost překračuje požadované datum v Azure Active Directory tenant. |
+| [Export tajných kódů a certifikátů](scripts/powershell-export-apps-with-expriring-secrets.md) | Exportujte registrace aplikací s platností tajných klíčů a certifikátů a jejich vlastníků v Azure Active Directory tenant. |
+| [Export tajných klíčů a certifikátů po uplynutí požadovaného data](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Exportujte registrace aplikací pomocí tajných klíčů a certifikátů, jejichž platnost překračuje požadované datum v Azure Active Directory tenant. Tento postup používá neinteraktivní Client_Credentials tok OAuth. |

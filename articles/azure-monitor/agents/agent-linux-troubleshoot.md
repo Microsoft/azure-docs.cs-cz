@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 202182d6485bc340a7f9bb34622e483dcc9ff891
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f8558644fc24f3190247e57b4de7228af161a2a8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041871"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631162"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -82,7 +82,7 @@ Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i vět�
 
  >[!NOTE]
  >Pokud je kolekce nakonfigurovaná z [nabídky data Log Analytics Upřesnit nastavení](../agents/agent-data-sources.md#configuring-data-sources) v Azure Portal pro váš pracovní prostor, upraví se konfigurační soubory pro čítače výkonu a syslog se přepíše. Chcete-li zakázat konfiguraci pro všechny agenty, zakažte shromažďování z Log Analytics **Upřesnit nastavení** nebo pro jednoho agenta spusťte následující příkaz:  
-> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>Kódy chyb instalace
 

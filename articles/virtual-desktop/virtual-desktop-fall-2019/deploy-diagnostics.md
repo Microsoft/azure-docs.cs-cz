@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c73f6884a0bf9dc1e12e97439166c8aeabe6e35a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9bdba36e2ff4721bd024369788c7dc04f066e9a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504554"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565576"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
 
@@ -39,7 +39,7 @@ Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj
 Tyto dva moduly PowerShellu je potřeba nainstalovat i před zahájením práce:
 
 - [Modul Azure PowerShellu](/powershell/azure/install-az-ps)
-- [Modul Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&preserve-view=true)
+- [Modul Azure AD](/powershell/azure/active-directory/install-adv2)
 
 Ujistěte se, že máte ID předplatného připravené pro přihlášení.
 

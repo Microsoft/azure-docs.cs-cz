@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024666"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200587"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Konfigurace modulu API proxy pro scénář hierarchie brány (Preview)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Modul proxy serveru API umožňuje IoT Edge zařízením odesílat požadavky HTTP prostřednictvím bran namísto přímého připojení ke cloudovým službám. Tento článek vás provede možnostmi konfigurace, abyste mohli upravit modul tak, aby podporoval požadavky na hierarchii vaší brány.
 
@@ -50,7 +52,7 @@ Modul proxy serveru rozhraní API se dodává s výchozí konfigurací, která p
 
 V současné době výchozí proměnné prostředí zahrnují:
 
-| Proměnná prostředí | Popis |
+| Proměnná prostředí | Description |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Zobrazí seznam všech proměnných, které chcete aktualizovat v seznamu odděleném čárkami. Tento krok zabrání nechtěné změně špatného nastavení konfigurace.
 | `NGINX_DEFAULT_PORT` | Změní port, na který Nginx proxy naslouchá. Pokud tuto proměnnou prostředí aktualizujete, ujistěte se, že port, který jste vybrali, je také zveřejněn v modulu souboru Dockerfile a deklarovaný jako vazba portu v manifestu nasazení.<br><br>Výchozí hodnota je 443.<br><br>Při nasazení z Azure Marketplace se výchozí port aktualizuje na 8000, aby nedocházelo ke konfliktům s modulem edgeHub. Další informace najdete v tématu [minimalizace otevřených portů](#minimize-open-ports). |
@@ -121,7 +123,7 @@ V **horní vrstvě** nakonfigurujte následující moduly:
 * Modul proxy serveru rozhraní API
   * Nakonfigurujte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `DOCKER_REQUEST_ROUTE_ADDRESS` | Název modulu registru a otevřený port. Například, `registry:5000`. |
     | `NGINX_DEFAULT_PORT` | Port, na kterém proxy server Nginx naslouchá žádostem ze zařízení pro příjem dat. Například, `8000`. |
@@ -147,7 +149,7 @@ Nakonfigurujte následující modul na všech **nižších vrstvách** pro tento
 * Modul proxy serveru rozhraní API
   * Nakonfigurujte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `NGINX_DEFAULT_PORT` | Port, na kterém proxy server Nginx naslouchá žádostem ze zařízení pro příjem dat. Například, `8000`. |
 
@@ -179,7 +181,7 @@ V **horní vrstvě** nakonfigurujte následující moduly:
 * Modul proxy serveru rozhraní API
   * Nakonfigurujte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `BLOB_UPLOAD_ROUTE_ADDRESS` | Název modulu BLOB Storage a otevřený port. Například, `azureblobstorageoniotedge:1102`. |
     | `NGINX_DEFAULT_PORT` | Port, na kterém proxy server Nginx naslouchá žádostem ze zařízení pro příjem dat. Například, `8000`. |
@@ -205,7 +207,7 @@ Nakonfigurujte následující modul na všech **nižších vrstvách** pro tento
 * Modul proxy serveru rozhraní API
   * Nakonfigurujte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `NGINX_DEFAULT_PORT` | Port, na kterém proxy server Nginx naslouchá žádostem ze zařízení pro příjem dat. Například, `8000`. |
 

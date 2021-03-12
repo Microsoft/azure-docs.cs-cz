@@ -3,14 +3,14 @@ title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591036"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614900"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -507,20 +507,20 @@ Následující tabulka uvádí aktuální podporované verze Node.js pro každou
 
 | Verze funkcí | Verze uzlu (Windows) | Verze uzlu (Linux) |
 |---|---| --- |
+| 3. x (doporučeno) | `~14` doporučil<br/>`~12`<br/>`~10` | `node|14` doporučil<br/>`node|12`<br/>`node|10` |
+| 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | verze | 6.11.2 (uzamčeno modulem runtime) | Není k dispozici |
-| 2.x  | `~8`<br/>`~10` doporučil<br/>`~12` | `node|8`<br/>`node|10` doporučil  |
-| 3.x | `~10`<br/>`~12` doporučil<br/>`~14` Tisk  | `node|10`<br/>`node|12` doporučil<br/>`node|14` Tisk |
 
 Aktuální verzi, kterou modul runtime používá, můžete zobrazit protokolováním `process.version` z libovolné funkce.
 
 ### <a name="setting-the-node-version"></a>Nastavení verze uzlu
 
-V případě aplikací funkcí Windows cílíte na verzi v Azure nastavením `WEBSITE_NODE_DEFAULT_VERSION` [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) na podporovanou verzi LTS, například `~12` .
+V případě aplikací funkcí Windows cílíte na verzi v Azure nastavením `WEBSITE_NODE_DEFAULT_VERSION` [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) na podporovanou verzi LTS, například `~14` .
 
 Pro aplikace se systémem Linux spusťte následující příkaz rozhraní příkazového řádku Azure, který aktualizuje verzi uzlu.
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>Správa závislostí
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>Moduly ECMAScript (Preview)
+
+> [!NOTE]
+> Vzhledem k tomu, že jsou moduly ECMAScript v současnosti označené jako *experimentální* v Node.js 14, jsou k dispozici jako funkce ve verzi preview v Node.js 14 Azure Functions. Dokud nebude podpora Node.js 14 pro moduly ECMAScript *stabilní*, očekávat možné změny jeho rozhraní API nebo chování.
+
+[Moduly ECMAScript](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules) (moduly ES) představují nový oficiální systém standardního modulu pro Node.js. Ukázky kódu v tomto článku jsou zatím používány pomocí syntaxe CommonJS. Při spuštění Azure Functions v Node.js 14 se můžete rozhodnout napsat své funkce pomocí syntaxe modulů ES.
+
+Chcete-li ve funkci použít moduly ES, změňte název souboru tak, aby používal `.mjs` rozšíření. Následující příklad souboru *index. mjs* je funkce AKTIVovaná protokolem HTTP, která používá SYNTAXI modulů ES pro import `uuid` knihovny a vrácení hodnoty.
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 

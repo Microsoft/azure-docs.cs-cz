@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434198"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232417"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka digitálních vláken Azure
 
@@ -93,13 +93,16 @@ Otevřete okno konzoly do umístění složky **Azure_Digital_Twins__ADT__explor
 
 1. Zadejte adresu URL instance digitálních vláken Azure, kterou jste shromáždili dříve v části [Nastavení instance digitálních vláken Azure](#set-up-an-azure-digital-twins-instance) , ve formátu *https://{instance hosta}*.
 
->[!NOTE]
-> Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné otevření **přihlašovacího** pole. Zachová se hodnoty, které jste předali.
-
 > [!TIP]
 > Pokud `SignalRService.subscribe` se při připojení zobrazí chybová zpráva, ujistěte se, že adresa URL digitálních vláken Azure začíná na *https://*.
 
+> [!TIP]
+> Pokud se zobrazí chyba ověřování, možná budete chtít zkontrolovat proměnné prostředí, abyste měli jistotu, že jsou všechny přihlašovací údaje platné pro digitální vlákna Azure. DefaultAzureCredential se pokusí ověřit proti [typům přihlašovacích údajů](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) v určitém pořadí a proměnné prostředí se vyhodnotí jako první.
+
 Pokud se zobrazí **oprávnění požadované** automaticky otevírané okno od společnosti Microsoft, poskytněte pro tuto aplikaci souhlas a potvrďte pokračování.
+
+>[!NOTE]
+> Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné otevření **přihlašovacího** pole. Zachová se hodnoty, které jste předali.
 
 ## <a name="add-the-sample-data"></a>Přidat ukázková data
 

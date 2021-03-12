@@ -116,6 +116,16 @@
           href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
       href: faq.yml
+    - name: Videa
+      items:
+        - name: Postupně
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: Integrace se službou Azure
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: Integrace s Azure Application Gateway
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: Plánování migrace a kapacity
+          href: 'https://youtu.be/NoNG-hkksrA'
 - name: Referenční informace
   items:
     - name: Azure CLI

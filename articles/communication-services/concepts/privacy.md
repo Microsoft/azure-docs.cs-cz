@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 4e9ea1ec85067a59c5ee6bcd27993e294559f410
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561343"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232082"
 ---
 # <a name="region-availability-and-data-residency"></a>Rezidence dat a dostupnost oblastí
 
@@ -51,12 +51,14 @@ Pomocí Azure Portal nebo Azure Resource Manager rozhraní API s komunikačními
 
 ### <a name="telephone-number-management"></a>Správa telefonního čísla
 
-Komunikační služby Azure uchovávají adresář telefonních čísel přidružených k prostředku komunikačních služeb. Pomocí těchto rozhraní API načtěte telefonní čísla a odstraňte je:
+Komunikační služby Azure uchovávají adresář telefonních čísel přidružených k prostředku komunikačních služeb. Pomocí [rozhraní API pro správu telefonního čísla](/rest/api/communication/phonenumberadministration) načtěte telefonní čísla a odstraňte je:
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>Chat
 
-Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 30 dnech se automaticky odstraní plně nečinné vlákno. K získání, vypsání, aktualizaci a odstranění zpráv použijte [rozhraní API chatu](/rest/api/communication/chat/deletechatmessage/deletechatmessage) .
+Vlákna a zprávy chatu se uchovávají, dokud je explicitně neodstraníte. Po 30 dnech se automaticky odstraní plně nečinné vlákno. K získání, vypsání, aktualizaci a odstranění zpráv použijte [rozhraní API chatu](/rest/api/communication/chat/chatthread) .
 
 - `Get Thread`
 - `Get Message`

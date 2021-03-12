@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095232"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632063"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
-Azure App Service poskytuje integrovanou podporu ověřování a autorizace, takže se můžete přihlašovat uživatelům a přistupovat k datům tak, že ve své webové aplikaci, rozhraní RESTful API a mobilním back-endu napíšete minimální nebo žádný kód a také [Azure Functions](../azure-functions/functions-overview.md). Tento článek popisuje, jak App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci.
+Azure App Service poskytuje integrovanou podporu ověřování a autorizace (někdy označovaná jako "snadné ověření"), takže se můžete přihlašovat uživatele a přistupovat k datům tak, že ve své webové aplikaci, rozhraní RESTful API a mobilním back-endu napíšete minimální nebo žádný kód a také [Azure Functions](../azure-functions/functions-overview.md). Tento článek popisuje, jak App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci.
 
 Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabezpečení, včetně federace, šifrování, správy [webových tokenů JSON (Jwt)](https://wikipedia.org/wiki/JSON_Web_Token) , [typů udělení](https://oauth.net/2/grant-types/)a tak dále. App Service poskytuje tyto nástroje, díky kterým můžete věnovat více času a energii na poskytování obchodních hodnot vašemu zákazníkovi.
 
@@ -24,9 +24,6 @@ Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabe
 >
 > ASP.NET Core 2,1 a novější verze hostované pomocí App Service jsou již pro tuto zásadní změnu opraveny a odpovídajícím způsobem zpracovávat Chrome 80 a starší prohlížeče. Kromě toho byla na App Service instance v průběhu ledna 2020 stejná oprava pro ASP.NET Framework 4.7.2. Další informace najdete v tématu [Azure App Service aktualizace souboru cookie SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
-
-> [!NOTE]
-> Funkce ověřování/autorizace se také někdy označuje jako "snadné ověření".
 
 > [!NOTE]
 > Povolení této funkce způsobí, že **všechny** nezabezpečené požadavky HTTP na vaši aplikaci budou automaticky přesměrovány na https bez ohledu na nastavení konfigurace App Service pro [vymáhání protokolu HTTPS](configure-ssl-bindings.md#enforce-https). V případě potřeby ho můžete zakázat prostřednictvím `requireHttps` nastavení v [konfiguračním souboru nastavení ověřování](app-service-authentication-how-to.md#configuration-file-reference), ale je potřeba se ujistit, že se žádné tokeny zabezpečení nikdy nepřenášejí přes nezabezpečená připojení HTTP.

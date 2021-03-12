@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d2fa464214f6a4201b1ecd62ee1a5dacdd7ec158
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832449"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636619"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Požadavky na systém pro Azure Stack Edge pro s grafickým procesorem 
 
@@ -38,7 +38,7 @@ Mezi požadavky na systém Azure Stack Edge pro:
 
 ## <a name="supported-edge-storage-accounts"></a>Podporované hraniční účty úložiště
 
-Rozhraní REST podporuje následující účty úložiště Edge. Na zařízení se vytvoří hraniční účty úložiště. Další informace najdete v tématu [účty úložiště Edge](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
+Rozhraní REST podporuje následující účty úložiště Edge. Na zařízení se vytvoří hraniční účty úložiště. Další informace najdete v tématu [účty úložiště Edge](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |Typ  |Účet úložiště  |Komentáře  |
 |---------|---------|---------|
@@ -81,7 +81,7 @@ Použijte následující tabulku pro konfiguraci portů pro servery hostující 
 
 | Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](../iot-edge/troubleshoot.md).
 

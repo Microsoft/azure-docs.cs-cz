@@ -5,62 +5,33 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8fe8c07866b23e5d990b71bfc9cd556c338634d3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203364"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225604"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
 Chcete-li omezit veřejný přístup k prostředkům QnA Maker, postupujte podle následujících kroků. Ochrana prostředku Cognitive Services před veřejným přístupem [konfigurací virtuální sítě](../../cognitive-services-virtual-networks.md?tabs=portal).
 
-## <a name="restrict-access-to-cognitive-search-resource"></a>Omezení přístupu k prostředku Kognitivní hledání
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
-
-Konfigurace Kognitivní hledání privátního koncového bodu v rámci virtuální sítě. Když se vytvoří instance hledání během vytváření prostředku QnA Maker, můžete vynutit Kognitivní hledání pro podporu konfigurace privátního koncového bodu, která se zcela vytvořila v rámci virtuální sítě zákazníka.
-
-Pro použití privátního koncového bodu musí být všechny prostředky vytvořeny ve stejné oblasti.
-
-* Prostředek QnA Maker
-* nový prostředek Kognitivní hledání
-* nový prostředek Virtual Network
-
-V [Azure Portal](https://portal.azure.com)proveďte následující kroky:
-
-1. Vytvořte [prostředek QnA maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker).
-2. Vytvořte nový prostředek Kognitivní hledání s možností připojení koncových bodů (data) nastavenou na _Private_. Vytvořte prostředek ve stejné oblasti, jako je QnA Maker prostředek vytvořený v kroku 1. Přečtěte si další informace o [vytvoření prostředku kognitivní hledání](../../../search/search-create-service-portal.md)a pak použijte tento odkaz k přechodu přímo na [stránku vytváření prostředku](https://ms.portal.azure.com/#create/Microsoft.Search).
-3. Vytvořte nový [prostředek Virtual Network](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM).
-4. Nakonfigurujte virtuální síť u prostředku služby App Service vytvořeného v kroku 1 tohoto postupu. Vytvořte novou položku DNS ve virtuální síti pro nový prostředek Kognitivní hledání vytvořený v kroku 2. do Kognitivní hledání IP adresa.
-5. [Přidružte službu App Service k novému kognitivní hledání prostředku](../how-to/set-up-qnamaker-service-azure.md) vytvořenému v kroku 2. Pak můžete odstranit původní prostředek Kognitivní hledání vytvořený v kroku 1.
-    
-Na [portálu QnA maker](https://www.qnamaker.ai/)vytvořte svou první znalostní bázi.
-
-#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
-
-[Vytvořte privátní koncové body](../reference-private-endpoint.md) pro prostředek Azure Search.
-
----
-
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>Omezení přístupu k App Service (běhový modul QnA)
 
-Do App Service povolených můžete přidat IP adresy, abyste omezili přístup nebo nakonfigurovali App Service Environemnt na hostování QnA Maker App Service.
+Můžete přidat IP adresy do seznamu povolených služeb App Service, abyste omezili přístup nebo nakonfigurovali App Service Environment k hostování QnA Maker App Service.
 
-#### <a name="add-ips-to-app-service-allowlist"></a>Přidání IP adres do App Service povolených
+#### <a name="add-ips-to-app-service-allow-list"></a>Přidání IP adres do seznamu povolených App Service
 
-1. Povoluje provoz jenom z Cognitive Servicesch IP adres. Tyto jsou již zahrnuty do tagu služby `CognitiveServicesManagement` . To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search. Podívejte se na [Další informace o značkách služby.](../../../virtual-network/service-tags-overview.md)
+1. 
+provoz jenom z Cognitive Servicesch IP adres. Tyto jsou již zahrnuty do tagu služby `CognitiveServicesManagement` . To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search. Podívejte se na [Další informace o značkách služby.](../../../virtual-network/service-tags-overview.md)
 2. Ujistěte se, že také povolíte další vstupní body, jako je Azure Bot Service, portál QnA Maker atd. pro předpověď "GenerateAnswer" přístup k rozhraní API.
-3. Pokud chcete přidat rozsahy IP adres do povolenýchu, postupujte prosím podle těchto kroků:
+3. Pokud chcete přidat rozsahy IP adres do seznamu povolených adres, postupujte prosím podle těchto kroků:
 
    1. Stáhněte si [rozsahy IP adres pro všechny značky služeb](https://www.microsoft.com/download/details.aspx?id=56519).
    2. Vyberte IP adresy "CognitiveServicesManagement".
-   3. Přejděte do části sítě v prostředku App Service a kliknutím na možnost konfigurovat omezení přístupu přidejte IP adresy do povolených.
+   3. Přejděte do části sítě v prostředku App Service a kliknutím na možnost konfigurovat omezení přístupu přidejte IP adresy do seznamu povolených.
 
-    ![výjimky portů pro příchozí spojení](../media/inbound-ports.png)
-
-K dispozici je také automatizovaný skript, který bude pro váš App Service stejný. [Skript PowerShellu můžete nakonfigurovat tak, aby povolených](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) na GitHubu. Je potřeba zadat ID předplatného, skupinu prostředků a skutečný název App Service jako parametry skriptu. Po spuštění skriptu se tyto IP adresy automaticky přidají App Service povolených.
+K dispozici je také automatizovaný skript, který bude pro váš App Service stejný. Pomocí [skriptu PowerShellu můžete nakonfigurovat seznam povolených](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) v GitHubu. Je potřeba zadat ID předplatného, skupinu prostředků a skutečný název App Service jako parametry skriptu. Po spuštění skriptu se IP adresy automaticky přidají do seznamu povolených App Service.
 
 #### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Konfigurace App Service Environment pro hostování QnA Maker App Service
     
@@ -75,6 +46,25 @@ K hostování služby QnA Maker App Service se dá použít App Service Environm
 3.  Aktualizace skupiny zabezpečení sítě přidružené k App Service Environment
     1. Aktualizujte předem vytvořená příchozí pravidla zabezpečení podle vašich požadavků.
     2. Přidejte nové příchozí pravidlo zabezpečení se zdrojem jako značkou služby a označením zdrojové služby jako "CognitiveServicesManagement".
+       
+    ![výjimky portů pro příchozí spojení](../media/inbound-ports.png)
+
 4.  Vytvořte instanci služby QnA Maker rozpoznávání (Microsoft. Cognitiveservices Account/Accounts) pomocí Azure Resource Manager, kde QnA Maker koncový bod by měl být nastaven na App Service koncový bod, který jste vytvořili výše (https://mywebsite.myase.p.azurewebsite.net).
     
+---
+
+## <a name="restrict-access-to-cognitive-search-resource"></a>Omezení přístupu k prostředku Kognitivní hledání
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
+Kognitivní hledání instance se dá po vytvoření QnA Maker prostředků izolovat prostřednictvím privátního koncového bodu. Připojení privátního koncového bodu vyžadují virtuální síť, ke které je možné přistupovat instanci Search Service. 
+
+Pokud je App Service QnA Maker omezený pomocí App Service Environment, použijte stejnou virtuální síť k vytvoření připojení privátního koncového bodu k instanci Kognitivní hledání. Vytvořte novou položku DNS ve virtuální síti pro mapování Kognitivní hledáního koncového bodu na IP adresu privátního koncového bodu Kognitivní hledání. 
+
+Pokud se App Service Environment pro App Service Qnamakerem nepoužívá, nejprve vytvořte nový prostředek virtuální sítě a pak vytvořte připojení privátního koncového bodu k instanci Kognitivní hledání. V takovém případě musí být App Service QnA Maker [integrována s virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítí, aby se mohla připojit k instanci kognitivní hledání. 
+
+#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+[Vytvořte privátní koncové body](../reference-private-endpoint.md) pro prostředek Azure Search.
+
 ---

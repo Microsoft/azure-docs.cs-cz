@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233776"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612690"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -389,7 +389,7 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatnou službu pr
 <details>
 <summary><b>Potřebuji použít rozhraní bot Framework, aby bylo možné použít QnA Maker?</b></summary>
 
-**Odpověď**: Ne, nemusíte používat [rozhraní Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0). Robot Service umožňuje rychlý vývoj v rámci inteligentních robotů přes Microsoft bot Framework a běží v prostředí bez serveru.
+**Odpověď**: Ne, nemusíte používat [rozhraní Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](/azure/bot-service/). Robot Service umožňuje rychlý vývoj v rámci inteligentních robotů přes Microsoft bot Framework a běží v prostředí bez serveru.
 
 </details>
 
@@ -438,7 +438,7 @@ Klíč koncového bodu znalostní báze je označený `QnAAuthkey` ve službě A
 <details>
 <summary><b>Potřebuji použít rozhraní bot Framework, aby bylo možné použít QnA Maker?</b></summary>
 
-**Odpověď**: Ne, nemusíte používat [rozhraní Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0). Robot Service umožňuje rychlý vývoj v rámci inteligentních robotů přes Microsoft bot Framework a běží v prostředí bez serveru.
+**Odpověď**: Ne, nemusíte používat [rozhraní Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](/azure/bot-service/). Robot Service umožňuje rychlý vývoj v rámci inteligentních robotů přes Microsoft bot Framework a běží v prostředí bez serveru.
 
 </details>
 
