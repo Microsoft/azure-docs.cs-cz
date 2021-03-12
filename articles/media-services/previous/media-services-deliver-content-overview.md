@@ -2,20 +2,20 @@
 title: Doručování obsahu zákazníkům
 description: Toto téma poskytuje přehled toho, co je součástí doručování obsahu pomocí Azure Media Services.
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014381"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016606"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 
@@ -154,7 +154,7 @@ Koncový bod streamování představuje službu streamování, která může dor
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
-Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Příklad:
+Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Před vydáním služby z července 2016 – když byly assety vytvořené pomoc
 </SmoothStreamingMedia>
 ```
 
-Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Příklad:
+Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

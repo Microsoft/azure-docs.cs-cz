@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 02/19/2021
-ms.openlocfilehash: 870482ca7894c5e260a78270fb036d6a6b22ee41
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 01/10/2021
+ms.openlocfilehash: ad101bbaf9ae312e1a55fbb84098850378ca06fd
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630057"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200418"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Jak vygenerovat identifikátor URI SAS pro image virtuálního počítače
 

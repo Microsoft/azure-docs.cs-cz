@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ecb1c3dc0e72523b19e3183e17306774b3ce164
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7b12b6c1cdc85eaba531f34b23aa74bee6b38f7b
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370372"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201129"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a sledování IoT Edgech modulů ve velkém měřítku pomocí rozhraní příkazového řádku Azure
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Pomocí rozhraní příkazového řádku Azure můžete vytvořit **IoT Edge automatické nasazení** , abyste mohli spravovat průběžná nasazení v mnoha zařízeních najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](../iot-hub/iot-hub-automatic-device-management.md) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
 
@@ -155,7 +157,7 @@ Tady je základní navrstvený manifest nasazení s jedním modulem jako příkl
 }
 ```
 
-Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Příklad:
+Předchozí příklad ukázal nastavení vrstveného nasazení `properties.desired` pro modul. Pokud toto navrstvené nasazení cílí na zařízení, kde už byl stejný modul použit, přepíše všechny existující požadované vlastnosti. Chcete-li aktualizovat místo přepsání, požadované vlastnosti, můžete definovat nový pododdíl. Například:
 
 ```json
 "SimulatedTEmperatureSensor": {

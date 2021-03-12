@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629958"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201090"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile v zařízení nakonfigurujete modul runtime IoT Edge, můžete do něj z cloudu začít nasazovat obchodní logiku.
 
@@ -26,7 +28,10 @@ Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti j
 V tomto článku jsou uvedené kroky pro nasazení virtuálního počítače s Ubuntu 18,04 LTS s nainstalovaným modulem runtime Azure IoT Edge a nakonfigurovaným pomocí předem dodaného připojovacího řetězce zařízení. Nasazení se provádí pomocí [šablony Azure Resource Manager](../azure-resource-manager/templates/overview.md) založené na [cloudu](../virtual-machines/linux/using-cloud-init.md
 ) , která je udržovaná v úložišti projektu [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) .
 
-Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [nejnovější verzi modulu Azure IoT Edge runtime přes Cloud-init](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Také nastaví dodaný připojovací řetězec před spuštěním modulu runtime, který umožňuje snadnou konfiguraci a připojení zařízení IoT Edge, aniž by bylo nutné spouštět relaci SSH nebo vzdálené plochy. 
+Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [nejnovější verzi modulu Azure IoT Edge runtime přes Cloud-init](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Také nastaví dodaný připojovací řetězec před spuštěním modulu runtime, který umožňuje snadnou konfiguraci a připojení zařízení IoT Edge, aniž by bylo nutné spouštět relaci SSH nebo vzdálené plochy.
+
+>[!NOTE]
+>Šablona použitá pro tento článek nainstaluje IoT Edge verze 1,1.
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>Nasazení pomocí tlačítka nasadit do Azure
 

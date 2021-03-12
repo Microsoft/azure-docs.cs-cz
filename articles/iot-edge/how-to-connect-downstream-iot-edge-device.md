@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046087"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199146"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Připojení zařízení IoT Edge pro příjem dat k bráně Azure IoT Edge (Preview)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Tento článek poskytuje pokyny pro vytvoření důvěryhodného připojení mezi IoT Edge bránou a zařízením IoT Edge pro příjem dat.
 
@@ -207,7 +209,7 @@ I když je tato funkce ve verzi Public Preview, musíte zařízení IoT Edge nak
 
 1. Pro modul edgeHub nakonfigurujte následující proměnné prostředí:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |

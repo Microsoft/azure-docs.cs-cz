@@ -3,7 +3,7 @@ title: Začínáme s doručováním videa na vyžádání pomocí webu Azure Por
 description: Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0cc3e26895f6bd11ba4f2e5f0b04e4dd36a4fcab
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fc908f909cdb64e968db78b2c98b8f0edf1c61dd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695285"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009687"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services schéma metadat vstupu | Microsoft Docs
 description: Tento článek obsahuje přehled Azure Media Services schématu vstupních metadat.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: eebe1c77c9af6791be94c16f0f792a9e7deb9a6e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267832"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017405"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
 
@@ -40,7 +40,7 @@ Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#Ass
 
 Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs = "1" maxOccurs = "Unbounded" |Jeden podřízený element. Další informace naleznete v tématu [AssetFile element](media-services-input-metadata-schema.md#AssetFile). |
 
@@ -72,7 +72,7 @@ Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-s
 | **Programy**<br /><br /> minOccurs = "0" | |Kolekce prvků všechny [programy](media-services-input-metadata-schema.md#Programs) , pokud je soubor prostředků ve formátu MPEG-TS. |
 | **VideoTracks**<br /><br /> minOccurs = "0" | |Každý soubor fyzického majetku může obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Tento prvek obsahuje kolekci všech [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) , které jsou součástí souboru prostředků. |
 | **AudioTracks**<br /><br /> minOccurs = "0" | |Každý fyzický soubor prostředků může obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Tento prvek obsahuje kolekci všech [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) , které jsou součástí souboru prostředků. |
-| **Mezipaměť**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Metadata souboru prostředků reprezentovaná jako key\value řetězce. Například:<br /><br /> **&lt;Klíč metadat = "jazyk" value = "ENG"/&gt;** |
+| **Metadata**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Metadata souboru prostředků reprezentovaná jako key\value řetězce. Například:<br /><br /> **&lt;Klíč metadat = "jazyk" value = "ENG"/&gt;** |
 
 ## <a name="tracktype"></a><a name="TrackType"></a> TrackType
 Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-services-input-metadata-schema.md#xml).  
@@ -97,7 +97,7 @@ Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-s
 | Název | Typ | Description |
 | --- | --- | --- |
 | **Akcí**<br /><br /> minOccurs = "0" maxOccurs = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Obsahuje informace o prezentaci (například o tom, zda je konkrétní zvuková stopa určena pro vizuálně postižené diváky). |
-| **Mezipaměť**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. Například Key = "jazyk", a value = "ENG". |
+| **Metadata**<br /><br /> minOccurs = "0" maxOccurs = "Unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. Například Key = "jazyk", a value = "ENG". |
 
 ## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a> AudioTrackType (dědí z TrackType)
  **AudioTrackType** je globální komplexní typ, který dědí z [TrackType](media-services-input-metadata-schema.md#TrackType).  
@@ -130,8 +130,8 @@ Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-s
 | **Profil** |**xs: String** |Profil stopy videa. |
 | **Obsah** |**xs: String** |Úroveň stopy videa |
 | **PixelFormat** |**xs: String** |Formát pixelu stopy videa |
-| **Délk**<br /><br /> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
-| **Výška**<br /><br /> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
+| **Width (Šířka)**<br /><br /> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
+| **Height (Výška)**<br /><br /> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
 | **DisplayAspectRatioNumerator**<br /><br /> Vyžadováno |**xs: Double** |Čítač zobrazení poměru stran videa |
 | **DisplayAspectRatioDenominator**<br /><br /> Vyžadováno |**xs: Double** |Jmenovatel poměru stran zobrazení videa |
 | **DisplayAspectRatioDenominator**<br /><br /> Vyžadováno |**xs: Double** |Ukázka poměru stran videa – čitatel. |
@@ -176,7 +176,7 @@ Podívejte se na příklad XML na konci tohoto článku: [příklad XML](media-s
 | --- | --- | --- |
 | **Výchozí**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o výchozí prezentaci. |
 | **Dub**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o dubbed prezentaci. |
-| **Původně**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o původní prezentaci. |
+| **Původní**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že se jedná o původní prezentaci. |
 | **Komentář**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že stopa obsahuje komentář. |
 | **Texty**<br /><br /> Vyžadováno |**xs: int** |Nastavením tohoto atributu na hodnotu 1 označíte, že stopa obsahuje texty. |
 | **Karaoke**<br /><br /> Vyžadováno |**xs: int** |Nastavte tento atribut na hodnotu 1, chcete-li indikovat, že představuje stopu karaoke (hudba na pozadí, ne vocals). |

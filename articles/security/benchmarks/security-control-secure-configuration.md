@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 44604f910b3ee6e6ce1b21c736c6ad1f0443e996
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b13cc6f8bb50a3c9ec3cae519db387f9f32c950d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500032"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615274"
 ---
 # <a name="security-control-secure-configuration"></a>Řízení zabezpečení: zabezpečená konfigurace
 
@@ -100,7 +100,7 @@ Všimněte si také, že Azure Marketplace image virtuálních počítačů publ
 
 Využijte Azure DevOps k bezpečnému ukládání a správě kódu, jako jsou vlastní zásady Azure, Azure Resource Manager šablony a požadované konfigurační skripty stavu. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 

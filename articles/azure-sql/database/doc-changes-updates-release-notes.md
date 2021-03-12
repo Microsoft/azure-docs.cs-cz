@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042500"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634834"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,13 +50,10 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 | Funkce | Podrobnosti |
 | ---| --- |
-| Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
-| Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a Azure synapse Analytics data discovery & klasifikací](data-discovery-and-classification-overview.md).|
 | Úlohy elastické databáze (Preview) | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
 | Elastické dotazy | Informace najdete v tématu [Přehled elastického dotazu](elastic-query-overview.md). |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](elastic-transactions-overview.md) |
 | Editor dotazů v Azure Portal |Informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](connect-query-portal.md).|
-| Služba R Services/strojové učení s izolovanými databázemi a elastickými fondy |Informace najdete v tématu [Machine Learning Services v Azure SQL Database](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).|
 | &nbsp; |
 
@@ -66,7 +63,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Distribuované transakce</a> | Distribuované transakce napříč spravovanými instancemi. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlašovací údaje na úrovni instance pomocí příkazu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlašovací údaje na úrovni instance pomocí příkazu <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">vytvořit přihlášení z externího poskytovatele</a> . |
 | [Transakční replikace](../managed-instance/replication-transactional-overview.md) | Proveďte replikaci změn z tabulek do jiných databází ve spravované instanci SQL, SQL Database nebo SQL Server. Nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných instancích spravované instance SQL nebo SQL Server. Informace najdete v tématu [Konfigurace replikace ve spravované instanci Azure SQL](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Detekce hrozeb |Informace najdete v tématu [konfigurace detekce hrozeb ve spravované instanci Azure SQL](../managed-instance/threat-detection-configure.md).|
 | Dlouhodobé uchovávání záloh | Informace najdete v tématu [Konfigurace dlouhodobého uchovávání záloh ve spravované instanci Azure SQL](../managed-instance/long-term-backup-retention-configure.md), která je aktuálně ve verzi Public Preview s omezením. | 
@@ -101,7 +98,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |[Procedura sp_send_dbmail může dojít k přechodnému selhání při @query použití parametru](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Leden 2021|Má alternativní řešení||
 |[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Říjen 2020|Má alternativní řešení||
 |[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Říjen 2020|Má alternativní řešení||
-|[Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci nejde použít k ověření ve službě Azure Storage službu Azure AD Manage identity.|SEP 2020|Má alternativní řešení||
+|[Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci nejde použít k ověření ve službě Azure Storage službu Azure AD Manage identity.|SEP 2020|Má alternativní řešení||
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
 |[Agent přestane reagovat při úpravách, zakázání nebo povolování stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Vyřešeno|Červen 2020|
@@ -174,7 +171,7 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Alternativní řešení**: k [ověření úložiště použijte sdílený přístupový podpis](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+**Alternativní řešení**: k [ověření úložiště použijte sdílený přístupový podpis](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Instanční objekt nemá přístup k Azure AD a integrace
 

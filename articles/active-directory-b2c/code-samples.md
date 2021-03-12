@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654489"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008480"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -47,9 +47,10 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 
 | Ukázka | Popis |
 |--------| ----------- |
+| [MS-identity – JavaScript – reakce – kurz](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Jediná stránková aplikace (SPA), která volá webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí reakce MSAL. Tato ukázka používá tok autorizačního kódu s PKCE. |
 | [MS-identity – B2C-JavaScript – Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Jediná stránková aplikace (SPA), která volá webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE. |
-| [JavaScript – NodeJS – Správa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Jediná stránková aplikace (SPA) volá Microsoft Graph pro správu uživatelů v adresáři B2C. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE.|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Jediná stránková aplikace (SPA), která volá webové rozhraní API. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá implicitní tok.|
+| [JavaScript – NodeJS – Správa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Jediná stránková aplikace (SPA) volá Microsoft Graph pro správu uživatelů v adresáři B2C. Ověřování se provádí s Azure AD B2C pomocí MSAL.js. Tato ukázka používá tok autorizačního kódu s PKCE.|
 
 ## <a name="consoledaemon-apps"></a>Aplikace pro konzolu nebo démona
 

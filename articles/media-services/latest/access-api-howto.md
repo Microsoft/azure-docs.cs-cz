@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f55d1dcc3364f119faab0c728f6e3b7f5ecbb06
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265877"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614934"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Získání přihlašovacích údajů pro přístup k rozhraní Media Services API
 
@@ -37,7 +37,7 @@ Tento článek popisuje kroky pro získání přihlašovacích údajů pro pří
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
+- Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/).
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](create-account-howto.md).
 
 ## <a name="portal"></a>[Azure Portal](#tab/portal/)
@@ -47,8 +47,8 @@ Tento článek popisuje kroky pro získání přihlašovacích údajů pro pří
 Stránka **přístup přes rozhraní API** umožňuje vybrat metodu ověřování, kterou chcete použít pro připojení k rozhraní API. Stránka také poskytuje hodnoty, které potřebujete pro připojení k rozhraní API.
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet Media Services.
-2. V levém navigačním panelu vyberte okno **přístup k rozhraní API (nové)** .
-3. V části **připojit k Media Services rozhraní API**vyberte verzi rozhraní API Media Services, ke které se chcete připojit (verze v3 je nejnovější verze služby).
+2. V levém navigačním panelu vyberte okno **přístup přes rozhraní API** .
+3. V části **připojit k Media Services rozhraní API** vyberte verzi rozhraní API Media Services, ke které se chcete připojit (verze v3 je nejnovější verze služby).
 
 ### <a name="service-principal-authentication--recommended"></a>Ověřování instančního objektu (doporučeno)
 

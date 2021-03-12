@@ -115,8 +115,6 @@
       href: support.md
     - name: Kontrolní seznam pro produkční nasazení
       href: production-checklist.md
-    - name: Glosář IoT Edge
-      href: iot-edge-glossary.md
 - name: Návody
   items:
     - name: Vytvoříte zařízení IoT Edge.
@@ -259,6 +257,8 @@
   items:
     - name: Možnosti pomoci a podpory
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

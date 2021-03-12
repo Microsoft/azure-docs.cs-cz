@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: e5b1950935e6279995b44c2e07931519e82359d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040630"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200241"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -90,7 +90,7 @@ Vzhledem k tomu, že jsou výrobní a provozní procesy oddělené, zvažte nás
 
 ## <a name="devtest-implications"></a>Důsledky pro vývoj a testování
 
-Pro usnadnění vývojových a testovacích scénářů poskytuje společnost Microsoft sadu [praktických skriptů](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování neprodukčních certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady fungování skriptů najdete v tématu [Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md).
+Pro usnadnění vývojových a testovacích scénářů poskytuje společnost Microsoft sadu [praktických skriptů](https://github.com/Azure/iotedge/tree/master/tools/CACertificates) pro generování neprodukčních certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady fungování skriptů najdete v tématu [Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md).
 
 >[!Tip]
 > Pokud chcete připojit zařízení IoT "list" a aplikace, které používají naši sadu SDK pro zařízení IoT prostřednictvím IoT Edge, musíte na konec připojovacího řetězce zařízení přidat volitelný parametr GatewayHostName. Když se vygeneruje certifikát serveru Edge hub, vychází z konfiguračního souboru z použita verze hostitele, proto aby se názvy shodovaly a ověření certifikátu TLS bylo úspěšné, měli byste zadat parametr GatewayHostName v malých případech.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 60eed96e20ffcebc3ddefccffa2761017e28e0d2
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: cf5b24bb55f278d9d33916d2d54d3ee5a169c3e8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103613"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224397"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -109,15 +109,19 @@ Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 > [!div renderon="docs"]
 >
 > Kde:
-> - *\<Enter_the_Application_Id_Here>* je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
-> - *\<Enter_the_Cloud_Instance_Id_Here>* je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure stačí zadat *https://login.microsoftonline.com* . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).
-> - *\<Enter_the_Tenant_info_here>* je nastavená na jednu z následujících možností:
->    - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například *contoso.Microsoft.com*).
->    - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**.
->    - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**.
+> - `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
 >
-> > [!TIP]
-> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+>    Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s **přehledem** aplikace se v Azure Portal.
+> - `Enter_the_Cloud_Instance_Id_Here` je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure stačí zadat `https://login.microsoftonline.com` . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](./authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` je nastavená na jednu z následujících možností:
+>    - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například `contoso.microsoft.com` ).
+>
+>    Pokud chcete zjistit hodnotu **ID adresáře (tenanta)**, na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
+>    - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
+>    - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
+>
+>    Pokud chcete najít hodnotu **podporovaných typů účtů**, v Azure Portal na stránce **Přehled** registrace aplikace.
+>
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
@@ -267,7 +271,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Existují situace, kdy přinutíte uživatele k interakci s platformou Microsoft identity. Příklad:
+Existují situace, kdy přinutíte uživatele k interakci s platformou Microsoft identity. Například:
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.

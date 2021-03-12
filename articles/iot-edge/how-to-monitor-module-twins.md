@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633174"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201604"
 ---
 # <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Moduly se v Azure neplní, IoT Hub umožňují monitorování dostupnosti a stavu nasazení IoT Edge. Moduly s dvojitou platností ukládají užitečné informace ve službě IoT Hub o výkonu spuštěných modulů. [Agenti IoT Edge](iot-edge-runtime.md#iot-edge-agent) a moduly runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) v nich udržují své moduly v chodu `$edgeAgent` a v `$edgeHub` uvedeném pořadí:
 

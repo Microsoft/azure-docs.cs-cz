@@ -10,14 +10,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 22cea6a641a03d60565e62e64ccdeef72437d476
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046138"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200057"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge zařízení odesílají požadavky HTTPS ke komunikaci s IoT Hub. Pokud je zařízení připojené k síti, která používá proxy server, je nutné nakonfigurovat modul runtime IoT Edge, aby komunikoval prostřednictvím serveru. Proxy servery mohou také ovlivnit jednotlivé moduly IoT Edge, pokud provádějí požadavky HTTP nebo HTTPS, které nejsou směrovány prostřednictvím centra IoT Edge.
 

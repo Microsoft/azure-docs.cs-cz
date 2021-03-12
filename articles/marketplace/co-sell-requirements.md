@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/12/2021
+ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120126"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225060"
 ---
 # <a name="co-sell-requirements"></a>Požadavky na společný prodej
 
@@ -24,7 +24,7 @@ V této tabulce jsou uvedené všechny možné stavy spoluprodeji:
 | ------------ | ------------- |
 | Není připravený společný prodej | Nebyly splněny minimální [požadavky na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) . |
 | Připravený společný prodej | Splnění všech [požadavků na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) bylo dosaženo. |
-| Azure IP – společný prodej motivovaní | Kromě [těchto dalších požadavků](#requirements-for-ip-co-sell-incentivized-status)se splnily požadavky na společný prodej. |
+| Azure IP – společný prodej motivovaní | Kromě [těchto dalších požadavků](#requirements-for-azure-ip-co-sell-incentivized-status)se splnily požadavky na společný prodej. |
 | Aplikace pro výrobce ISV Connect Premium  | Tento stav platí pro nabídky Dynamics 365 a Power Apps a označuje, že byly splněny všechny [požadavky pro tento stav](#requirements-for-biz-apps-isv-connect-premium-incentive-status) . |
 |||
 
@@ -35,7 +35,7 @@ Aby bylo možné dosáhnout stavu připraveného pro společný prodej, je nutn�
 **Všichni partneři**:
 
 - Mít [v partnerském centru ID MPN a aktivní účet komerčního tržiště](./partner-center-portal/create-account.md).
-- Ujistěte se, že máte v partnerském centru kompletní [obchodní profil](/partner-center/create-a-marketing-profile.md) . Jako kvalifikovaný partner Microsoftu vám váš obchodní profil pomůže prezentovat vaši firmu zákazníkům, kteří hledají vaše jedinečná řešení a odbornosti, aby vyhledali své obchodní potřeby. výsledkem jsou [referenčníky](/partner-center/referrals.md).
+- Ujistěte se, že máte v partnerském centru kompletní [obchodní profil](/partner-center/create-a-marketing-profile) . Jako kvalifikovaný partner Microsoftu vám váš obchodní profil pomůže prezentovat vaši firmu zákazníkům, kteří hledají vaše jedinečná řešení a odbornosti, aby vyhledali své obchodní potřeby. výsledkem jsou [referenčníky](/partner-center/referrals).
 - Dokončete **společný prodej pomocí karty Microsoft** a publikujte nabídku na komerčním webu Marketplace.
 - Zadejte prodejní kontakt pro každý společný prodej s nárokem na geografickou oblast a požadované náklady na vyúčtování.
 
@@ -60,7 +60,7 @@ Poskytujeme šablony, které vám pomůžou tyto dokumenty vytvořit. Další in
 
 Aby bylo možné získat nárok na stav připraveného pro společný prodej, musí být vaše nabídka nebo řešení publikována živě na nejméně jednom z online obchodů pro komerční tržiště: Azure Marketplace nebo Microsoft AppSource. Informace o publikování nabídek na komerčním webu Marketplace najdete v tématu [Průvodce publikováním podle typu nabídky](publisher-guide-by-offer-type.md). Pokud jste nabídku ještě nepublikovali na komerčním webu Marketplace, ujistěte se, že máte [účet komerčního tržiště](./partner-center-portal/create-account.md).
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>Požadavky na společný prodej motivovaní stav
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Požadavky na motivovaní stav společného prodeje Azure IP
 
 Motivovaní stav společného prodeje Azure IP se vztahuje na následující typy nabídek:
 

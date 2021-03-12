@@ -295,6 +295,8 @@
               href: storage-blob-copy.md
             - name: Použití značek indexu objektů blob
               href: storage-blob-index-how-to.md
+            - name: Vypočítat počet objektů BLOB a celkovou velikost
+              href: calculate-blob-count-size.md
         - name: Autorizace přístupu k datům objektu blob
           items:
             - name: Možnosti autorizace pro uživatele

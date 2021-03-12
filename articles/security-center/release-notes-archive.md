@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182572"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634698"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -759,7 +759,7 @@ Pokud máte předplatné na cenové úrovni Free, jejich zabezpečená skóre bu
 
 Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identityandaccess).
 
-Přečtěte si další informace o [identitě a přístupu k monitorování](security-center-identity-access.md).
+Přečtěte si další informace o tom, jak [Spravovat vynucování vícefaktorového ověřování (MFA) na vašich předplatných](security-center-identity-access.md).
 
 
 

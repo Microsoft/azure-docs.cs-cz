@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562873"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200503"
 ---
 # <a name="access-built-in-metrics"></a>Přístup k integrovaným metrikám
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Komponenty IoT Edge runtime, centra IoT Edge a Agent IoT Edge poskytují integrované metriky ve [formátu Prometheus Exposition](https://prometheus.io/docs/instrumenting/exposition_formats/). Přístup k těmto metrikám můžete vzdáleně sledovat a pochopit stav zařízení IoT Edge.
 

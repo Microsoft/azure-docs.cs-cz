@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092186"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224975"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování
 
@@ -48,6 +48,15 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. V části **Spravovat** vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**.  Ponechte Popis prázdné a výchozí doba platnosti a pak vyberte **Přidat**.
 > 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
+> Aby ukázka kódu pro tento rychlý Start fungovala, je nutné vytvořit tajný klíč klienta a přidat adresu URL odpovědi jako **http://localhost:3000/redirect** .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Udělat změnu za mě]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Už nakonfigurované](media/quickstart-v2-windows-desktop/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
@@ -91,16 +100,17 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > Upravte hodnoty v `config` části, jak je popsáno zde:
 >
 > - `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
+>
+>    Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s přehledem registrace aplikace se podívejte na stránku Azure Portal s **přehledem** registrace aplikace.
 > - `Enter_the_Client_Secret_Here` je **hodnota** **tajného klíče klienta** pro zaregistrovanou aplikaci.
+>
+>    Pokud chcete načíst nebo vygenerovat nový **tajný klíč klienta**, vyberte v části **spravovat** možnost **certifikáty & tajných** kódů.
 >
 > Výchozí `authority` hodnota představuje hlavní (globální) cloud Azure:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > Pokud chcete zjistit hodnotu **ID aplikace (klienta)**, na stránce s přehledem registrace aplikace se podívejte na stránku Azure Portal s **přehledem** registrace aplikace. Pokud chcete načíst nebo vygenerovat nový **tajný klíč klienta**, vyhledejte v části **certifikáty & tajných klíčů** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.

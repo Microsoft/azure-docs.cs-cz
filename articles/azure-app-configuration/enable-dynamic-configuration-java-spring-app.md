@@ -3,26 +3,47 @@ title: Použití dynamické konfigurace v aplikaci pružinového spuštění
 titleSuffix: Azure App Configuration
 description: Naučte se dynamicky aktualizovat konfigurační data pro aplikace pro spouštění pružiny.
 services: azure-app-configuration
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+ms.date: 12/09/2020
 ms.custom: devx-track-java
-ms.author: alkemper
-ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.author: mametcal
+ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929153"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636534"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Kurz: použití dynamické konfigurace v aplikaci Java pružiny
 
-Klientská knihovna konfigurace aplikace pro spouštění nástroje podporuje aktualizaci sady nastavení konfigurace na vyžádání, aniž by způsobila restartování aplikace. Klientská knihovna ukládá do mezipaměti každé nastavení, aby nedocházelo k příliš velkému počtu volání do úložiště konfigurace. Operace aktualizace neaktualizuje hodnotu, dokud nevyprší platnost hodnoty uložené v mezipaměti, a to i v případě, že se hodnota v úložišti konfigurací změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund. V případě potřeby ho můžete přepsat.
+Konfigurace aplikace má dvě knihovny pro jarní. `spring-cloud-azure-appconfiguration-config` vyžaduje pružinové spouštění a má závislost na `spring-cloud-context` . `spring-cloud-azure-appconfiguration-config-web` vyžaduje jarní Web spolu s jarním spouštěním. Obě knihovny podporují ruční aktivaci pro kontrolu aktualizovaných hodnot konfigurace. `spring-cloud-azure-appconfiguration-config-web` také přidává podporu pro automatickou kontrolu konfigurace aktualizace.
 
-Můžete vyhledat aktualizované nastavení na vyžádání voláním `AppConfigurationRefresh` `refreshConfigurations()` metody.
+Aktualizace umožňuje aktualizovat hodnoty konfigurace bez nutnosti restartovat aplikaci, i když dojde k opětovnému vytvoření všech fazolí `@RefreshScope` . Klientská knihovna ukládá do mezipaměti ID algoritmu hash aktuálně načtených konfigurací, aby nedocházelo k příliš velkému počtu volání do úložiště konfigurace. Operace aktualizace neaktualizuje hodnotu, dokud nevyprší platnost hodnoty uložené v mezipaměti, a to i v případě, že se hodnota v úložišti konfigurací změnila. Výchozí doba vypršení platnosti každé žádosti je 30 sekund. V případě potřeby ho můžete přepsat.
 
-Alternativně můžete použít `spring-cloud-azure-appconfiguration-config-web` balíček, který využívá závislost na `spring-web` zpracování automatizované aktualizace.
+`spring-cloud-azure-appconfiguration-config-web`Automatizovaná aktualizace se spouští na základě aktivity, specificky jarního webu `ServletRequestHandledEvent` . Pokud `ServletRequestHandledEvent` se neaktivuje, `spring-cloud-azure-appconfiguration-config-web` automatizovaná aktualizace se neaktivuje, i když vypršela doba vypršení platnosti mezipaměti.
+
+## <a name="use-manual-refresh"></a>Použít ruční aktualizaci
+
+Vystavování konfigurace aplikace `AppConfigurationRefresh` , které se dá použít ke kontrole, jestli vypršela platnost mezipaměti a jestli vypršela její platnost, se spustí aktualizace.
+
+```java
+import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+
+...
+
+@Autowired
+private AppConfigurationRefresh appConfigurationRefresh;
+
+...
+
+public void myConfigurationRefreshCheck() {
+    Future<Boolean> triggeredRefresh = appConfigurationRefresh.refreshConfigurations();
+}
+```
+
+`AppConfigurationRefresh``refreshConfigurations()`vrátí hodnotu `Future` , která je true, pokud byla aktivována aktualizace a false, pokud ne. Hodnota false znamená, že doba vypršení platnosti mezipaměti nevypršela, nedošlo k žádné změně nebo jiné vlákno aktuálně kontroluje aktualizaci.
 
 ## <a name="use-automated-refresh"></a>Použít automatizovanou aktualizaci
 
@@ -59,7 +80,7 @@ Pak otevřete soubor *pom.xml* v textovém editoru a přidejte `<dependency>` pr
     mvn spring-boot:run
     ```
 
-1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080` .  Zobrazí se zpráva přidružená k vašemu klíči. 
+1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080` .  Zobrazí se zpráva přidružená k vašemu klíči.
 
     Můžete také použít *oblé* k otestování aplikace, například: 
     

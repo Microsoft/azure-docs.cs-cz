@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951311"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200790"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -73,20 +73,11 @@ Odkazy níže poskytují pokyny týkající se konfigurace NSG pro nasazení vir
 Přidělování IP adres může představovat několik výzev, které je možné snadno překonat, pokud víte o problému a možných alternativních řešeních. Zbývající části poskytují doporučení pro zpracování problémů souvisejících s IP adresami v seznamu ACL.
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Omezení přístupu k Azure Kognitivní hledání
-Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby a rozsahu IP adres `AzureCognitiveSearch` [service tag](../virtual-network/service-tags-overview.md#available-service-tags) v seznamu ACL místo toho, aby byly virtuální počítače SQL Azure otevřené pro všechny požadavky na připojení.
+Důrazně doporučujeme, abyste omezili přístup k IP adrese vaší vyhledávací služby a rozsahu IP adres `AzureCognitiveSearch` [](../virtual-network/service-tags-overview.md#available-service-tags) v seznamu ACL místo toho, aby byly virtuální počítače SQL Azure otevřené pro všechny požadavky na připojení.
 
-IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net` ) pro vaši vyhledávací službu.
+IP adresu můžete zjistit tak, že otestujete plně kvalifikovaný název domény (například `<your-search-service-name>.search.windows.net` ) pro vaši vyhledávací službu. I když je možné změnit IP adresu vyhledávací služby, je pravděpodobné, že se změní. IP adresa je v rámci životnosti služby obvykle statická.
 
 Rozsah IP adres `AzureCognitiveSearch` [značky služby](../virtual-network/service-tags-overview.md#available-service-tags) můžete zjistit buď pomocí [souborů JSON ke stažení](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) , nebo přes [rozhraní API pro zjišťování značek služby](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview). Rozsah IP adres se aktualizuje týdně.
-
-#### <a name="managing-ip-address-fluctuations"></a>Správa výkyvů IP adres
-Pokud vaše vyhledávací služba obsahuje jenom jednu jednotku vyhledávání (tj. jednu repliku a jeden oddíl), IP adresa se během rutiny běžného spuštění služby změní a naruší se platnost stávajícího seznamu ACL s IP adresou vaší vyhledávací služby.
-
-Jedním ze způsobů, jak se vyhnout následné chybě připojení, je použít více než jednu repliku a jeden oddíl v Azure Kognitivní hledání. Tím se zvýší náklady, ale také se vyřeší problém s IP adresou. V Azure Kognitivní hledání se IP adresy nemění, pokud máte více než jednu jednotku vyhledávání.
-
-Druhý postup je, aby bylo možné připojení selhat a pak znovu nakonfigurovat seznamy řízení přístupu (ACL) v NSG. V průměru můžete očekávat, že se IP adresy mění každých několik týdnů. Pro zákazníky, kteří provedli průběžné indexování, může být tento přístup životaschopný.
-
-Třetí schopný (ale ne obzvláště zabezpečený) přístup je zadání rozsahu IP adres oblasti Azure, ve které se vaše vyhledávací služba zřídí. Seznam rozsahů IP adres, ze kterých se k prostředkům Azure přiděluje veřejné IP adresy, se zveřejňuje v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Zahrnutí IP adres portálu Azure Kognitivní hledání
 Pokud k vytvoření indexeru použijete Azure Portal, logika portálu Azure Kognitivní hledání také potřebuje přístup k vašemu VIRTUÁLNÍmu počítači s SQL Azure během vytváření. IP adresy portálu Azure Kognitivní hledání můžete najít pomocí nástroje Testing `stamp2.search.ext.azure.com` .

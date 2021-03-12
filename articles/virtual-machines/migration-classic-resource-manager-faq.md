@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 4e211389809644dc1c573b3d717ff0e478494b89
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 034f09a8b616450e472dcc11427191f187cf489f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670349"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615155"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
@@ -125,19 +125,7 @@ Tato zpráva se zobrazí v případě, že virtuální počítač nemá odchozí
 
 ## <a name="next-steps"></a>Další kroky
 
-V Linuxu:
-
 * [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](./migration-classic-resource-manager-overview.md)
-* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)
-* [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md)
-* [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md)
-* [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku](migration-classic-resource-manager-cli.md)
-* [Komunitní nástroje pro pomoc s migrací prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-community-tools.md)
-* [Běžné chyby při migraci](migration-classic-resource-manager-errors.md)
-
-Ve Windows:
-
-* [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md)
 * [Použití PowerShellu k migraci prostředků IaaS z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-ps.md)

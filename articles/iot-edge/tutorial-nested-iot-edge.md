@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f1b1a94dc1d96e625947eef5730c24f080fc155a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3f997b577fb473e30fbafec08c4e68547a641fa3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721408"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200107"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
 
@@ -471,7 +471,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -484,7 +484,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -526,7 +526,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
            "$edgeAgent": {
                "properties.desired": {
                    "modules": {
-                       "dockerContainerRegistry": {
+                       "registry": {
                            "settings": {
                                "image": "registry:latest",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
@@ -647,7 +647,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -766,7 +766,7 @@ sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azur
 
 `azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 

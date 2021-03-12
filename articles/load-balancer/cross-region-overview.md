@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176718"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199369"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -106,7 +106,7 @@ Přidejte stávající nasazení nástroje pro vyrovnávání zatížení do ná
 * Východní Asie
 
 > [!NOTE]
-> Službu pro vyrovnávání zatížení mezi oblastmi můžete nasadit jenom v jedné z osmi výše uvedených oblastí.
+> Službu pro vyrovnávání zatížení mezi oblastmi můžete nasadit jenom v jedné z výše uvedených 7 oblastí.
 
 **Zúčastněnou oblastí** je místo, kde je k dispozici globální veřejná IP adresa nástroje pro vyrovnávání zatížení. 
 

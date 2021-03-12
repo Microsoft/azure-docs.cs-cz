@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661149"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010163"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů na Azure AD B2C
+# <a name="migrate-users-to-azure-ad-b2c"></a>Migrace uživatelů do Azure AD B2C
 
 Migrace od jiného zprostředkovatele identity na Azure Active Directory B2C (Azure AD B2C) může také vyžadovat migraci stávajících uživatelských účtů. Tady jsou popsané dvě metody migrace, *před migrací* a *bezproblémové migrace*. V obou případech je potřeba napsat aplikaci nebo skript, které používají [rozhraní Microsoft Graph API](microsoft-graph-operations.md) k vytváření uživatelských účtů v Azure AD B2C.
 
@@ -50,7 +50,7 @@ Plynulý tok migrace má tedy dvě fáze: *Předběžná migrace* a *Nastavení 
 ### <a name="phase-1-pre-migration"></a>Fáze 1: předběžná migrace
 
 1. Vaše aplikace pro migraci přečte uživatelské účty od starého zprostředkovatele identity.
-1. Aplikace pro migraci vytváří v adresáři Azure AD B2C příslušné uživatelské účty, ale *nenastavuje hesla*.
+1. Aplikace pro migraci vytvoří v adresáři Azure AD B2C odpovídající uživatelské účty, ale *Nastaví náhodná hesla* , která vygenerujete.
 
 ### <a name="phase-2-set-credentials"></a>Fáze 2: Nastavení přihlašovacích údajů
 
