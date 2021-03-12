@@ -2,15 +2,15 @@
 title: Kurz – přidání parametrů do souboru Azure Resource Manager bicep
 description: Přidejte do souboru bicep parametry, abyste ho mohli znovu použít.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748095"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632777"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Kurz: Přidání parametrů do souboru Azure Resource Manager bicep
 
@@ -34,7 +34,7 @@ Možná jste si všimli, že došlo k potížím s tímto souborem bicep. Název
 
 ## <a name="make-bicep-file-reusable"></a>Nastavit soubor bicep jako opakovaně použitelný
 
-Aby bylo možné soubor bicep opakovaně použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný bicep v následujícím příkladu ukazuje, co se změnilo v souboru. `storageName`Parametr je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
+Aby bylo možné soubor bicep opakovaně použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Následující soubor bicep ukazuje, co se změnilo v souboru. `storageName`Parametr je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
 
 Zkopírujte celý soubor a nahraďte ho následujícím obsahem.
 

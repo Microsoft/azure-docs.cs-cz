@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705162"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632386"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -22,6 +22,7 @@ Geograficky replikovaný registr nabízí tyto výhody:
 * Zvýšení výkonu a spolehlivosti regionálních nasazení s přístupem k registru pro ukončení sítě
 * Snížení nákladů na přenos dat pomocí vrstev imagí z místního, replikovaného registru ve stejné nebo blízké oblasti jako hostitele kontejneru
 * Jedna správa registru mezi různými oblastmi
+* Odolnost registru, pokud dojde k oblastnímu výpadku
 
 > [!NOTE]
 > Pokud potřebujete zachovat kopie imagí kontejneru ve více než jednom registru kontejneru Azure, Azure Container Registry také podporuje [Import obrázků](container-registry-import-images.md). Například v pracovním postupu DevOps můžete importovat image z registru pro vývoj do produkčního registru, aniž byste museli používat příkazy Docker.
@@ -59,6 +60,7 @@ Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody
 * Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
 * Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. ACR replikuje jenom jedinečné vrstvy, což snižuje přenos dat napříč oblastmi. 
 * Nakonfigurujte místní [Webhooky](container-registry-webhook.md) , aby vás upozornily na události v konkrétních replikách.
+* Poskytněte vysoce dostupný registr, který je odolný vůči výpadkům v oblasti regionu.
 
 Azure Container Registry taky podporuje [zóny dostupnosti](zone-redundancy.md) pro vytvoření odolného a vysoce dostupného registru kontejnerů Azure v oblasti Azure. Kombinace zón dostupnosti pro redundanci v rámci jedné oblasti a geografická replikace napříč několika oblastmi zvyšuje spolehlivost a výkon registru.
 

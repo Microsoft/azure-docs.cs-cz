@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433535"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630253"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
@@ -63,7 +63,7 @@ Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout ná
 * [System .NET. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1.cs_ , kde máte vzorový kód a přidejte následující `using` příkazy pro tyto balíčky do funkce. 
+Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1.cs_ , kde máte vzorový kód a přidejte následující `using` příkazy pro tyto balíčky do funkce.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -96,6 +96,20 @@ Teď, když je vaše aplikace vytvořená, můžete ji publikovat do Azure pomoc
 ## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace funkcí do Azure
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+### <a name="verify-function-publish"></a>Ověřit publikování funkce
+
+1. Přihlaste se pomocí svých přihlašovacích údajů v [Azure Portal](https://portal.azure.com/).
+2. Na panelu hledání v horní části okna vyhledejte **název aplikace Function App**.
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="V Azure Portal vyhledejte svou aplikaci Function App s názvem." lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. Na stránce *Function App* , která se otevře, vyberte v možnostech nabídky vlevo možnost *funkce* . Pokud je vaše funkce úspěšně publikovaná, zobrazí se v seznamu název vaší funkce.
+Všimněte si, že možná budete muset několik minut počkat nebo aktualizovat stránku několikrát, než uvidíte svoji funkci uvedenou v seznamu publikovaných funkcí.
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Zobrazení publikovaných funkcí v Azure Portal." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+Aby aplikace Function App mohla získat přístup k digitálním funkcím Azure, bude potřebovat identitu spravovanou systémem s oprávněními pro přístup k instanci digitálních vláken Azure. Nastavíte tuto hodnotu jako další.
 
 ## <a name="set-up-security-access-for-the-function-app"></a>Nastavení přístupu zabezpečení pro aplikaci Function App
 

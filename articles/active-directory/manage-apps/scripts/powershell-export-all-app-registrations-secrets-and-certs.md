@@ -1,6 +1,6 @@
 ---
-title: Ukázka prostředí PowerShell – export registrací, tajných klíčů a certifikátů aplikace v tenantovi Azure Active Directory.
-description: Příklad PowerShellu, který exportuje všechny registrace a tajné klíče a certifikáty aplikací pro zadané aplikace ve vašem tenantovi Azure Active Directory.
+title: Ukázka prostředí PowerShell – Export tajných kódů a certifikátů pro registraci aplikací v klientovi Azure Active Directory.
+description: Příklad PowerShellu pro export všech tajných klíčů a certifikátů pro zadané registrace aplikací ve vašem tenantovi Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
-ms.date: 02/18/2021
+ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 768f2f3241144085acb7a218b60034cdfa9e45b9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185365"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556549"
 ---
-# <a name="export-app-registrations-secrets-and-certificates"></a>Export registrací, tajných klíčů a certifikátů aplikací
+# <a name="export-secrets-and-certificates-for-app-registrations"></a>Export tajných klíčů a certifikátů pro registrace aplikací
 
-Tento ukázkový skript PowerShellu exportuje všechny registrace aplikací, tajné klíče a certifikáty pro zadané aplikace ve vašem adresáři.
+Tento ukázkový skript PowerShellu exportuje všechny tajné klíče a certifikáty pro zadané registrace aplikací z vašeho adresáře do souboru CSV.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,13 +28,17 @@ Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](/powe
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all app registrations, secrets, and certificates for the specified apps in your directory.")]
+[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all secrets and certificates for the specified app registrations in your directory.")]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
+Příkaz "Add-Member" zodpovídá za vytváření sloupců v souboru CSV.
+Proměnnou "$Path" můžete upravit přímo v PowerShellu s cestou k souboru CSV, pokud chcete, aby export neobsahoval neinteraktivní.
+
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Vyexportuje všechny registrace aplikací, tajné klíče a certifikáty pro zadané aplikace ve vašem adresáři. |
+| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Načte aplikaci z adresáře. |
+| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner) | Načte vlastníky aplikace z vašeho adresáře. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,17 +2,17 @@
 title: Virtuální počítače v šabloně Azure Resource Manager | Microsoft Azure
 description: Přečtěte si další informace o tom, jak je prostředek virtuálního počítače definovaný v Azure Resource Manager šabloně.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202092"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555988"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Resource Manageru
 

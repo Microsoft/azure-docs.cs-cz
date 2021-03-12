@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705502"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611976"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfigurace automatického upgradu operačního systému virtuálního počítače Azure 
-Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
+Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](service-fabric-patch-orchestration-application.md) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
 
 ```json
 "upgradePolicy": {

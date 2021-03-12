@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006864"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611891"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurace čtení kontejnerů Docker pro rozpoznávání OCR
 
@@ -39,6 +39,8 @@ Kontejner také obsahuje následující nastavení konfigurace specifické pro k
 |No|Fronta: Azure: QueueVisibilityTimeoutInMilliseconds | pouze kontejnery v3. x. Čas, kdy bude zpráva viditelná, když ji jiný pracovník zpracovává. |
 |No|Storage::D ocumentStore:: MongoDB|pouze kontejnery v 2.0. Povoluje MongoDB pro trvalé úložiště výsledků. |
 |No|Storage: ObjectStore: Azureblobu: ConnectionString| pouze kontejnery v3. x. Připojovací řetězec služby Azure Blob Storage. |
+|No|Úložiště: TimeToLiveInDays| pouze kontejnery v3. x. Doba vypršení platnosti výsledku ve dnech Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Výchozí hodnota je 2 dny (48 hodin), což znamená, že všechny výsledky v reálném čase po delší dobu nebudou zaručeny k úspěšnému načtení. |
+|No|Úkol: MaxRunningTimeSpanInMinutes| pouze kontejnery v3. x. Maximální doba běhu pro jeden požadavek. Výchozí hodnota je 60 minut. |
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 

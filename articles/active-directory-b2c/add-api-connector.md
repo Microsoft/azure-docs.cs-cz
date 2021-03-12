@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805508"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611606"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
 
@@ -34,12 +34,36 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 
 5. Zadejte zobrazovaný název pro volání. Například **Ověřte informace o uživateli**.
 6. Zadejte **adresu URL koncového bodu** pro volání rozhraní API.
-7. Zadejte ověřovací informace pro rozhraní API.
+7. Vyberte **typ ověřování** a nakonfigurujte ověřovací informace pro volání rozhraní API. Možnosti zabezpečení rozhraní API najdete níže v části.
 
-   - V tuto chvíli se podporuje jenom základní ověřování. Pokud chcete použít rozhraní API bez základního ověřování pro vývojové účely, stačí zadat **uživatelské jméno** a **heslo** fiktivního uživatele, které může vaše rozhraní API ignorovat. Pro použití s funkcí Azure s klíčem rozhraní API můžete kód zahrnout jako parametr dotazu v **adrese URL koncového bodu** (například `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
+    ![Konfigurace konektoru API](./media/add-api-connector/api-connector-config.png)
 
-   ![Konfigurace nového konektoru API](./media/add-api-connector/api-connector-config.png)
 8. Vyberte **Uložit**.
+
+## <a name="securing-the-api-endpoint"></a>Zabezpečení koncového bodu rozhraní API
+Koncový bod rozhraní API můžete chránit buď pomocí základního ověřování HTTP, nebo pomocí ověřování klientského certifikátu HTTPS (Preview). V obou případech poskytnete přihlašovací údaje, které Azure AD B2C použijí při volání koncového bodu rozhraní API. Váš koncový bod rozhraní API pak zkontroluje přihlašovací údaje a provede rozhodnutí o autorizaci.
+
+### <a name="http-basic-authentication"></a>Základní ověřování HTTP
+Základní ověřování HTTP je definované v [dokumentu RFC 2617](https://tools.ietf.org/html/rfc2617). Azure AD B2C odešle požadavek HTTP s přihlašovacími údaji klienta ( `username` a `password` ) v `Authorization` hlavičce. Pověření jsou formátována jako řetězec kódovaný v kódování Base64 `username:password` . Rozhraní API pak tyto hodnoty zkontroluje, aby bylo možné určit, zda má být volání rozhraní API odmítnuto.
+
+### <a name="https-client-certificate-authentication-preview"></a>Ověřování klientským certifikátem HTTPS (Preview)
+
+> [!IMPORTANT]
+> Tato funkce je ve verzi Preview a je k dispozici bez smlouvy o úrovni služeb. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ověřování klientským certifikátem je vzájemné ověřování založené na certifikátech, kde klient poskytuje klientský certifikát pro ověření jeho identity na serveru. V takovém případě bude Azure AD B2C používat certifikát, který nahrajete jako součást konfigurace konektoru rozhraní API. K tomu dochází jako součást metody handshake protokolu SSL. K vaší službě REST API mají přístup pouze služby, které mají správné certifikáty. Certifikát klienta je digitální certifikát X. 509. V produkčním prostředí by měl být podepsaný certifikační autoritou. 
+
+
+Certifikát můžete vytvořit pomocí [Azure Key Vault](../key-vault/certificates/create-certificate.md), který obsahuje možnosti pro certifikáty podepsané svým držitelem a integrace s poskytovateli vystavitelů certifikátů pro podepsané certifikáty. Pak můžete [certifikát exportovat](../key-vault/certificates/how-to-export-certificate.md) a nahrát ho pro použití v konfiguraci konektorů rozhraní API. Všimněte si, že heslo je vyžadováno jenom pro soubory certifikátů chráněné heslem. K vygenerování certifikátu podepsaného svým držitelem můžete použít také [rutinu New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) prostředí PowerShell.
+
+Azure App Service a Azure Functions najdete v tématu [Konfigurace vzájemného ověřování TLS](../app-service/app-service-web-configure-tls-mutual-auth.md) , kde se dozvíte, jak povolit a ověřit certifikát z koncového bodu rozhraní API.
+
+Doporučuje se nastavit upozornění na připomenutí, kdy vyprší platnost certifikátu. Pokud chcete nahrát nový certifikát do existujícího konektoru API, vyberte konektor API v části **konektory rozhraní API (Preview)** a klikněte na **nahrát nový certifikát**. Poslední nahraný certifikát, jehož platnost vypršela, a který je po datu zahájení, bude automaticky použit Azure AD B2C.
+
+### <a name="api-key"></a>Klíč rozhraní API
+Některé služby používají mechanismus "klíč rozhraní API", což usnadňuje přístup k koncovým bodům HTTP během vývoje. V případě [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)to můžete udělat tak, že `code` do **adresy URL koncového bodu** zadáte jako parametr dotazu. Například `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+
+Nejedná se o mechanismus, který by se měl použít samostatně v produkčním prostředí. Konfigurace pro základní ověřování nebo ověřování certifikátů je proto vždy nutná. Pokud chcete pro účely vývoje implementovat jakoukoli metodu ověřování (nedoporučuje se), můžete zvolit základní ověřování a použít dočasné hodnoty pro `username` a `password` to, že vaše rozhraní API může při implementaci autorizace ve vašem rozhraní API ignorovat.
 
 ## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
 Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](/graph/api/resources/user#properties) vlastností uživatele. 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 V požadavku jsou k dispozici pouze vlastnosti uživatele a vlastní atributy uvedené v části **Azure AD B2C**  >  možnosti **atributů uživatele** .
 
-Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _CustomAttribute**  v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech naleznete [v tématu Definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md).
+Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _CustomAttribute**  v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech naleznete [v tématu Definování vlastních atributů v Azure AD B2C](user-flow-custom-attributes.md).
 
 Ve výchozím nastavení se ve všech požadavcích standardně odesílají deklarace identity **Locals (ui_locales) uživatelského rozhraní** . Poskytuje národní prostředí uživatele nastavené na zařízení, které může rozhraní API použít k vrácení mezinárodních odpovědí.
 
@@ -155,13 +179,6 @@ Podívejte se na příklad [blokující odezvy](#example-of-a-blocking-response)
 
 Konektor rozhraní API v tomto kroku v procesu registrace je vyvolán po stránce kolekce atributů, pokud je jeden zahrnutý. Tento krok je vždy vyvolán před vytvořením uživatelského účtu.
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Příklad žádosti odeslané na rozhraní API v tomto kroku
 
 ```http
@@ -239,7 +256,6 @@ Content-type: application/json
 
 | Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
 | akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.  |
@@ -270,8 +286,6 @@ Content-type: application/json
 
 ### <a name="example-of-a-validation-error-response"></a>Příklad ověřování – odpověď na chybu
 
-
-
 ```http
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -286,7 +300,7 @@ Content-type: application/json
 
 | Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
+| verze     | Řetězec  | Yes      | Verze vašeho rozhraní API.                                                    |
 | akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
 | status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
 | userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
@@ -311,7 +325,7 @@ Zajistěte, aby:
 * Rozhraní API explicitně kontroluje hodnoty null přijatých deklarací.
 * Vaše rozhraní API bude co nejrychleji reagovat, aby se zajistilo prostředí pro tekutiny uživatelů.
     * Pokud používáte funkci bez serveru nebo škálovatelnou webovou službu, použijte plán hostování, který uchovává rozhraní API "Start" nebo "teplou". v produkčním prostředí. Pro Azure Functions se doporučuje použít [Plán Premium](../azure-functions/functions-scale.md) .
-
+ 
 
 ### <a name="use-logging"></a>Použití protokolování
 Obecně je užitečné použít protokolovací nástroje povolené vaší službou webového rozhraní API, jako je [Application Insights](../azure-functions/functions-monitoring.md), pro monitorování rozhraní API pro neočekávané kódy chyb, výjimky a špatný výkon.
@@ -321,5 +335,4 @@ Obecně je užitečné použít protokolovací nástroje povolené vaší služb
 * Sledujte své rozhraní API dlouhou dobu odezvy.
 
 ## <a name="next-steps"></a>Další kroky
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Začněte s našimi [ukázkami](code-samples.md#api-connectors).

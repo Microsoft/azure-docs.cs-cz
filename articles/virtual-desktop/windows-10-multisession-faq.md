@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565559"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631876"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -63,7 +63,7 @@ Windows 10 Enterprise multi-session, verze 1809 a novější se podporují a jso
 
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Které řešení pro správu profilů mám použít pro více relací Windows 10 Enterprise?
 
-Pokud konfigurujete Windows 10 Enterprise v netrvalých prostředích nebo v jiných scénářích, které potřebují centrálně uložený profil, doporučujeme používat kontejnery profilů FSLogix. FSLogix zajišťuje, aby byl profil uživatele k dispozici a byl aktuální pro každou relaci uživatele. Doporučujeme vám také použít váš kontejner profilu FSLogix k uložení profilu uživatele v jakékoli sdílené složce protokolu SMB s příslušnými oprávněními, ale v případě potřeby můžete profily uživatelů ukládat v úložišti objektů blob stránky Azure. Uživatelé virtuálních klientů Windows můžou FSLogix používat bez dalších poplatků.
+Pokud konfigurujete Windows 10 Enterprise v netrvalých prostředích nebo v jiných scénářích, které potřebují centrálně uložený profil, doporučujeme používat kontejnery profilů FSLogix. FSLogix zajišťuje, aby byl profil uživatele k dispozici a byl aktuální pro každou relaci uživatele. Doporučujeme vám také použít váš kontejner profilu FSLogix k uložení profilu uživatele v jakékoli sdílené složce protokolu SMB s příslušnými oprávněními, ale v případě potřeby můžete profily uživatelů ukládat v úložišti objektů blob stránky Azure. Uživatelé virtuálních klientů Windows můžou FSLogix používat bez dalších poplatků.  FSLogix je součástí všech imagí Windows 10 Enterprise s více relacemi, ale správce IT pořád zodpovídá za konfiguraci kontejneru profilu FSLogix.
 
 Další informace o tom, jak nakonfigurovat kontejner profilu FSLogix, najdete v tématu [Konfigurace kontejneru profilu FSLogix](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
 

@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 01/06/2021
-ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.date: 02/18/2021
+ms.openlocfilehash: 7ed3f707ad69c60111bcc97e139c0825fd503d8e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976856"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630097"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Postup vytvoření virtuálního počítače pomocí schválené základní třídy
 
-Tento článek popisuje, jak pomocí Azure vytvořit virtuální počítač s předem nakonfigurovaným schváleným operačním systémem. Pokud to není kompatibilní s vaším řešením, je možné [vytvořit a nakonfigurovat místní virtuální počítač](azure-vm-create-using-own-image.md) pomocí schváleného operačního systému a potom ho nakonfigurovat a připravit na nahrání, jak je popsáno v tématu [Příprava virtuálního pevného disku (VHD) Windows pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
+Tento článek popisuje, jak pomocí Azure vytvořit virtuální počítač s předem nakonfigurovaným schváleným operačním systémem. Pokud to není kompatibilní s vaším řešením, je možné [vytvořit a nakonfigurovat místní virtuální počítač](azure-vm-create-using-own-image.md) pomocí schváleného operačního systému.
 
 > [!NOTE]
 > Před zahájením tohoto postupu si přečtěte [technické požadavky](marketplace-virtual-machines.md#technical-requirements) pro nabídky virtuálních počítačů Azure, včetně požadavků na virtuální pevný disk (VHD).
@@ -36,7 +36,7 @@ Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete 
 
 ## <a name="create-vm-on-the-azure-portal"></a>Vytvoření virtuálního počítače na Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
 2. Vyberte **Virtuální počítače**.
 3. Výběrem **+ Přidat** otevřete obrazovku **vytvořit virtuální počítač** .
 4. Vyberte obrázek v rozevíracím seznamu nebo vyberte **Procházet všechny veřejné a soukromé image** , aby bylo možné vyhledávat nebo procházet všechny dostupné image virtuálních počítačů.
@@ -78,5 +78,5 @@ Pokud se chcete připojit k virtuálnímu počítači s [Windows](../virtual-mac
 ## <a name="next-steps"></a>Další kroky
 
 - Doporučený další krok: [otestujte image virtuálního počítače](azure-vm-image-test.md) a ujistěte se, že splňuje požadavky na publikování Azure Marketplace. Tato položka je nepovinná.
-- Pokud image virtuálního počítače netestujete, pokračujte v [generování identifikátoru URI SAS](azure-vm-get-sas-uri.md).
+- Pokud nechcete testovat image virtuálního počítače, přihlaste se k [partnerskému centru](https://partner.microsoft.com/) pro publikování vaší image.
 - Pokud jste narazili na potíže s vytvářením nového virtuálního pevného disku s Azure, přečtěte si téma [Nejčastější dotazy Azure Marketplace k virtuálním](azure-vm-create-faq.md)počítačům s

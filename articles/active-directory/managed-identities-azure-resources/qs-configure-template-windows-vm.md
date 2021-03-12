@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 960e1fc19567b03024000e84217b3846f89f94f3
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4948e17d1e0e782a8fa18c3eb5a2185e816a459a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588552"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631400"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon
 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se pomocí šablony nasazení Azure Resource Manager dozvíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s používáním šablony nasazení Azure Resource Manager, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -69,7 +69,7 @@ Aby se na virtuálním počítači povolila spravovaná identita přiřazená sy
 3. Až budete hotovi, v části šablony by se měly přidat následující oddíly, které `resource` by měly vypadat takto:
 
    ```JSON
-   "resources": [
+    "resources": [
         {
             //other resource provider properties...
             "apiVersion": "2018-06-01",
@@ -78,27 +78,7 @@ Aby se na virtuálním počítači povolila spravovaná identita přiřazená sy
             "location": "[resourceGroup().location]",
             "identity": {
                 "type": "SystemAssigned",
-                },
-            },
-
-            //The following appears only if you provisioned the optional VM extension (to be deprecated)
-            {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-            "apiVersion": "2018-06-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.ManagedIdentity",
-                "type": "ManagedIdentityExtensionForWindows",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "port": 50342
-                }
-            }
+                }                        
         }
     ]
    ```
@@ -235,7 +215,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    **Microsoft. COMPUTE/virtualMachines API verze 2018-06-01**    
 
    ```JSON
-   "resources": [
+     "resources": [
         {
             //other resource provider properties...
             "apiVersion": "2018-06-01",
@@ -248,27 +228,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
                    "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
                 }
             }
-        },
-        //The following appears only if you provisioned the optional VM extension (to be deprecated)                  
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-            "apiVersion": "2018-06-01-preview",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.ManagedIdentity",
-                "type": "ManagedIdentityExtensionForWindows",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "port": 50342
-                }
-            }
         }
-    ]   
+    ] 
    ```
    **Microsoft. COMPUTE/virtualMachines API verze 2017-12-01**
 
@@ -286,28 +247,8 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
                    "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
                 ]
             }
-        },
-
-        //The following appears only if you provisioned the optional VM extension (to be deprecated)                   
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-            "apiVersion": "2015-05-01-preview",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.ManagedIdentity",
-                "type": "ManagedIdentityExtensionForWindows",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "port": 50342
-                }
-            }
-       }
-    ]
+        }
+   ]
    ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání spravované identity přiřazené uživatelem z virtuálního počítače Azure

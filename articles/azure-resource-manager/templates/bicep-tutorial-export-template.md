@@ -2,15 +2,15 @@
 title: Kurz – Export šablony JSON z Azure Portal pro vývoj bicep
 description: Naučte se používat exportovanou šablonu JSON k dokončení vývoje bicep.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748029"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632504"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Kurz: použití exportované šablony JSON z Azure Portal
 
@@ -79,7 +79,7 @@ V současné době Azure Portal podporuje pouze export šablon JSON. Existují n
 
 Decomplied vyexportovaná šablona poskytuje většinu bicep, které potřebujete, ale je nutné ji přizpůsobit pro váš soubor bicep. Věnujte zvláštní pozornost rozdílům v parametrech a proměnných mezi souborem bicep a exportovaným souborem bicep. V jasném případě proces exportu neví parametry a proměnné, které jste již definovali v souboru bicep.
 
-Následující příklad zvýrazní přidání do souboru bicep. Obsahuje exportovaný kód a některé změny. Nejprve změní název parametru tak, aby odpovídal vaší konvenci pojmenování. Za druhé používá parametr Location pro umístění plánu služby App Service. Třetí, odebere některé vlastnosti, kde je výchozí hodnota přesně.
+Následující příklad ukazuje přidání do souboru bicep. Obsahuje exportovaný kód a některé změny. Nejprve změní název parametru tak, aby odpovídal vaší konvenci pojmenování. Za druhé používá parametr Location pro umístění plánu služby App Service. Třetí, odebere některé vlastnosti, kde je výchozí hodnota přesně.
 
 Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
 

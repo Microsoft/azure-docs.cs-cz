@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d12ce74cb961148776d81b3d7cabc281bbc59fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665377"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633032"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Přehled aktualizace zařízení pro IoT Hub (Preview)
 
@@ -23,10 +23,10 @@ Aby bylo možné využít všechny výhody digitální transformace s podporou I
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Podpora široké škály zařízení IoT
 
-Aktualizace zařízení pro IoT Hub je navržená tak, aby nabízela optimalizované nasazení aktualizací a zjednodušila operace prostřednictvím integrace s [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Tato integrace usnadňuje přijetí aktualizace zařízení v jakémkoli existujícím řešení. Poskytuje řešení hostované v cloudu pro připojení prakticky jakéhokoli zařízení. Aktualizace zařízení podporuje širokou škálu operačních systémů IoT, včetně Linux a [Azure RTO](https://azure.microsoft.com/en-us/services/rtos/) (operační systém v reálném čase) – a je rozšiřitelná prostřednictvím open source. 
+Aktualizace zařízení pro IoT Hub je navržená tak, aby nabízela optimalizované nasazení aktualizací a zjednodušila operace prostřednictvím integrace s [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/). Tato integrace usnadňuje přijetí aktualizace zařízení v jakémkoli existujícím řešení. Poskytuje řešení hostované v cloudu pro připojení prakticky jakéhokoli zařízení. Aktualizace zařízení podporuje širokou škálu operačních systémů IoT, včetně Linux a [Azure RTO](https://azure.microsoft.com/en-us/services/rtos/) (operační systém v reálném čase) – a je rozšiřitelná prostřednictvím open source. Spoluvyvíjíme aktualizace zařízení pro IoT Hub nabídky s našimi partnery, jako jsou STMicroelectronics, NXP, Reneseas a mikročip. Seznamte se s [ukázkami](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) karet pro vyhodnocení klíčů, které obsahují příručky Začínáme, a Naučte se, jak konfigurovat, sestavovat a nasazovat Ota aktualizace na zařízení MCU třídy.
 
 K dispozici jsou i binární soubory simulátoru agenta aktualizace zařízení a dokumentace k malinu PI reference Yocto.
-Aktualizace zařízení pro IoT Hub podporuje také aktualizaci Azure IoT Edgech zařízení. Agent aktualizace zařízení je k dispozici pro platformu Ubuntu Server 18,04 amd64. Aktualizace zařízení pro IoT Hub také poskytuje open-source kód, pokud nepoužíváte některou z výše uvedených platforem. To umožňuje portování agenta na distribuci, kterou používáte.
+Aktualizace zařízení pro IoT Hub podporuje také aktualizaci Azure IoT Edgech zařízení. Agent aktualizace zařízení je k dispozici pro platformu Ubuntu Server 18,04 amd64. Aktualizace zařízení pro IoT Hub také poskytuje open-source kód, pokud nepoužíváte některou z výše uvedených platforem. Agenta můžete přenést na distribuci, kterou používáte.
 
 Aktualizace zařízení funguje se službou IoT technologie Plug and Play (PnP) a může spravovat všechna zařízení, která podporují požadovaná rozhraní PnP. Další informace najdete v tématu [aktualizace zařízení pro IoT Hub a IoT technologie Plug and Play](device-update-plug-and-play.md).
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466903"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630958"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Nakonfigurujte síť VPN na Azure Stack hraničních zařízeních v R pomocí Azure PowerShell
 
@@ -238,7 +238,7 @@ V tomto kroku stáhnete profil sítě VPN pro vaše zařízení.
 
     ![Povolit P2S konfiguraci 3](media/azure-stack-edge-mini-r-configure-vpn-powershell/extract-exe.png)
 
-3. Vytvořte dočasnou cestu. Příklad:
+3. Vytvořte dočasnou cestu. Například:
 
     `C:\NewTemp\vnet\tmp`
 
@@ -303,7 +303,7 @@ Postupujte podle těchto kroků v místním uživatelském rozhraní Azure Stack
 
 ## <a name="validate-data-transfer-through-vpn"></a>Ověření přenosu dat prostřednictvím sítě VPN
 
-Pokud chcete ověřit, že síť VPN funguje, zkopírujte data do sdílené složky SMB. Postupujte podle kroků v části [přidání sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-share) na zařízení Azure Stack Edge. 
+Pokud chcete ověřit, že síť VPN funguje, zkopírujte data do sdílené složky SMB. Postupujte podle kroků v části [přidání sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-share) na zařízení Azure Stack Edge. 
 
 1. Zkopírujte soubor, například \data\pictures\waterfall.jpg do sdílené složky protokolu SMB, kterou jste připojili v klientském systému. 
 2. Ověření, že data procházejí přes síť VPN, zatímco se kopírují data:

@@ -153,18 +153,18 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ochrana dat
           items:
+            - name: Obnovitelné odstranění pro kontejnery
+              href: soft-delete-container-overview.md
             - name: Správa verzí
               href: versioning-overview.md
             - name: Obnovitelné odstranění pro objekty blob
               href: soft-delete-blob-overview.md
-            - name: Obnovitelné odstranění pro kontejnery
-              href: soft-delete-container-overview.md
+            - name: Obnovení k určitému bodu v čase
+              href: point-in-time-restore-overview.md
             - name: Snímky
               href: snapshots-overview.md
             - name: Změna kanálu
               href: storage-blob-change-feed.md
-            - name: Obnovení k určitému bodu v čase
-              href: point-in-time-restore-overview.md
             - name: Neměnné objekty blob
               href: storage-blob-immutable-storage.md
         - name: Redundance a zotavení po havárii
@@ -401,18 +401,20 @@
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ochrana dat objektů BLOB
           items:
+            - name: Uzamknutí účtu úložiště
+              href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Povolení obnovitelného odstranění pro kontejnery
+              href: soft-delete-container-enable.md
             - name: Povolení správy verzí objektů blob
               href: versioning-enable.md
             - name: Povolení obnovitelného odstranění pro objekty blob
               href: soft-delete-blob-enable.md
-            - name: Povolení obnovitelného odstranění pro kontejnery
-              href: soft-delete-container-enable.md
+            - name: Povolení obnovení k určitému bodu v čase
+              href: point-in-time-restore-manage.md
             - name: Vytváření snímků (.NET)
               href: snapshots-manage-dotnet.md
             - name: Zpracování protokolů kanálu změn
               href: storage-blob-change-feed-how-to.md
-            - name: Povolení obnovení k určitému bodu v čase
-              href: point-in-time-restore-manage.md
             - name: Nastavení a správa zásad neměnnosti
               href: storage-blob-immutability-policies-manage.md
         - name: Správa redundance a převzetí služeb při selhání

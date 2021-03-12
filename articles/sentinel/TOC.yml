@@ -23,6 +23,8 @@
       href: tutorial-investigate-cases.md
     - name: Reakce na hrozby
       href: tutorial-respond-threats-playbook.md
+    - name: Vytváření dotazů KQL (informace o modulu)
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Koncepty
   items:
     - name: Klasifikace dat pomocí entit
@@ -311,6 +313,8 @@
           href: /azure/data-explorer/kusto/query/
         - name: Rychlý přehled jazyka dotazů Kusto
           href: /azure/data-explorer/kql-quick-reference
+        - name: Azure Monitor optimalizace dotazů protokolu
+          href: /azure/azure-monitor/logs/query-optimization
     - name: Rozšiřování UEBA
       href: ueba-enrichments.md
 - name: Zdroje a prostředky

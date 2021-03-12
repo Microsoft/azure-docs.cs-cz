@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787532"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612792"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -286,7 +286,7 @@ Pokud používáte Azure Bot Service a problém je, že se **test ve webovém ch
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Vyřešte problém při ladění na místním počítači s rozhraním bot Framework.
 
-Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Další informace o místním ladění robota najdete v tématu věnovaném [ladění robota](/azure/bot-service/bot-service-debug-bot).
 
 ## <a name="integrating-luis"></a>Integrace LUIS
 

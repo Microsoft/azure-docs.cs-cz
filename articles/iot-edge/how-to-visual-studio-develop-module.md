@@ -8,14 +8,16 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437163"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196941"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Obchodní logiku můžete převést do modulů pro Azure IoT Edge. V tomto článku se dozvíte, jak používat Visual Studio 2019 jako hlavní nástroj pro vývoj a ladění modulů.
 
@@ -222,7 +224,7 @@ Až dokončíte vývoj jednoho modulu, můžete chtít spustit a ladit celé ře
 
 V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT Edge, jste nasadili modul pomocí webu Azure Portal. Moduly můžete nasadit také pomocí Průzkumníka cloudu pro Visual Studio. Už máte připravený manifest nasazení pro váš scénář, `deployment.json` soubor a vše, co je potřeba udělat, je vybrat zařízení pro příjem nasazení.
 
-1. Kliknutím na **Zobrazit** Průzkumníka cloudu otevřete **Průzkumníka cloudu**  >  **Cloud Explorer**. Ujistěte se, že jste přihlášeni k aplikaci Visual Studio 2019.
+1. Kliknutím na **Zobrazit** Průzkumníka cloudu otevřete **Průzkumníka cloudu**  >  . Ujistěte se, že jste přihlášeni k aplikaci Visual Studio 2019.
 
 1. V **Průzkumníku cloudu** rozbalte své předplatné, najděte IoT Hub Azure a Azure IoT Edge zařízení, které chcete nasadit.
 

@@ -2,13 +2,13 @@
 title: Koncepty – Network vzájemné propojení
 description: Přečtěte si o klíčových aspektech a případech použití sítě a vzájemné propojení v řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: ddf8f5b6aa06154a6edde7b4a78902d8f13eab78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/11/2021
+ms.openlocfilehash: 9531e08ea4e50ae30058b0630cd12c2383d90fde
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364898"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197180"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Sítě řešení Azure VMware a koncepty vzájemné propojení
 
@@ -56,6 +56,9 @@ V následujícím diagramu vidíte místní vzájemné propojení privátního c
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Připojení k virtuální síti a místnímu úplnému privátnímu cloudu" border="false":::
 
 V případě úplného vzájemné propojení do privátního cloudu povolte ExpressRoute Global Reach a pak si vyžádejte autorizační klíč a ID privátního partnerského vztahu pro Global Reach v Azure Portal. Autorizační klíč a ID partnerského vztahu se používají k navázání Global Reach mezi okruhem ExpressRoute v rámci vašeho předplatného a okruhem ExpressRoute pro nový privátní cloud. Po propojení dva okruhy ExpressRoute směrují síťový provoz mezi místními prostředími do privátního cloudu.  Další informace o postupech vyžádání a používání autorizačního klíče a ID partnerského vztahu najdete v [kurzu Vytvoření ExpressRoute Global REACH partnerských vztahů k privátnímu cloudu](tutorial-expressroute-global-reach-private-cloud.md).
+
+## <a name="limitations"></a>Omezení
+[!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]
 
 ## <a name="next-steps"></a>Další kroky 
 

@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556651"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630618"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
@@ -40,7 +40,7 @@ Pro zjednodušenou verzi tohoto článku a pro testování, hodnocení nebo uče
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: zrušení zřízení virtuálního počítače
-Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
+Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md). Tento proces nelze vrátit zpět.
 
 1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:

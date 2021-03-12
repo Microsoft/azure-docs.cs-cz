@@ -2,18 +2,19 @@
 title: Postup mapování disků Azure na disky hosta virtuálního počítače se systémem Linux
 description: Jak určit disky Azure, které Underlay hostované disky virtuálního počítače se systémem Linux.
 author: timbasham
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 4f0e48bf1c14728c54d4e89f30700017b0420d7d
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.collection: linux
+ms.openlocfilehash: bc6c6273ab3d1a4403763e4ed0a8c491995fb2df
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523493"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556719"
 ---
 # <a name="how-to-map-azure-disks-to-linux-vm-guest-disks"></a>Postup mapování disků Azure na disky hosta virtuálního počítače se systémem Linux
 
@@ -23,7 +24,7 @@ Možná budete muset určit disky Azure, které zálohují disky hosta virtuáln
 
 Logická jednotka (LUN) je číslo, které se používá k identifikaci konkrétního úložného zařízení. Každému úložnému zařízení je přiřazen jedinečný číselný identifikátor, který začíná nulou. Úplná cesta k zařízení je reprezentovaná číslem sběrnice, číslem ID cíle a logickou jednotkou (LUN). 
 
-Příklad: ***Sběrnice číslo 0, cílové ID 0, LUN 3** _
+Příklad: ***Sběrnice číslo 0, cílové ID 0, LUN 3***
 
 Pro naše cvičení stačí použít logickou jednotku (LUN).
 
@@ -36,7 +37,7 @@ Níže uvádíme dvě metody, jak najít logickou jednotku disku v systému Linu
 1. Připojení k virtuálnímu počítači
 1. `sudo lsscsi`
 
-První uvedený sloupec bude obsahovat logickou jednotku (LUN), formát je [Host: Channel: target: _ * LUN * *].
+První uvedený sloupec bude obsahovat logickou jednotku (LUN), formát je [Host: Channel: target:**lun**].
 
 ### <a name="listing-block-devices"></a>Výpis blokovaných zařízení
 
