@@ -3,14 +3,14 @@ title: Spuštění Azure Automation runbooků na Hybrid Runbook Worker
 description: Tento článek popisuje, jak na počítačích v místním datovém centru nebo v jiném poskytovateli cloudu spouštět Runbooky pomocí Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633304"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149371"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků ve funkci Hybrid Runbook Worker
 
@@ -56,10 +56,10 @@ Hybridní pracovní procesy Runbooku na virtuálních počítačích Azure můž
 Postupujte podle dalších kroků a použijte spravovanou identitu pro prostředky Azure na Hybrid Runbook Worker:
 
 1. Vytvořte virtuální počítač Azure.
-2. Nakonfigurujte spravované identity pro prostředky Azure na virtuálním počítači. Další informace najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
-3. Udělte virtuálnímu počítači přístup ke skupině prostředků v Správce prostředků. Informace o [použití spravované identity přiřazené systémem Windows VM pro přístup k Správce prostředků](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
-4. Nainstalujte na virtuální počítač Hybrid Runbook Worker. Viz [nasazení Hybrid Runbook Worker Windows](automation-windows-hrw-install.md) nebo [nasazení Hybrid Runbook Worker pro Linux](automation-linux-hrw-install.md).
-5. Aktualizujte sadu Runbook tak, aby k ověřování prostředků Azure použila rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) s `Identity` parametrem. Tato konfigurace omezuje nutnost použít účet Spustit jako a provede přidruženou správu účtů.
+1. Nakonfigurujte spravované identity pro prostředky Azure na virtuálním počítači. Další informace najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
+1. Udělte virtuálnímu počítači přístup ke skupině prostředků v Správce prostředků. Informace o [použití spravované identity přiřazené systémem Windows VM pro přístup k Správce prostředků](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
+1. Nainstalujte na virtuální počítač Hybrid Runbook Worker. Viz [nasazení Hybrid Runbook Worker Windows](automation-windows-hrw-install.md) nebo [nasazení Hybrid Runbook Worker pro Linux](automation-linux-hrw-install.md).
+1. Aktualizujte sadu Runbook tak, aby k ověřování prostředků Azure použila rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) s `Identity` parametrem. Tato konfigurace omezuje nutnost použít účet Spustit jako a provede přidruženou správu účtů.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -76,20 +76,24 @@ Postupujte podle dalších kroků a použijte spravovanou identitu pro prostřed
 
 Místo toho, aby sada Runbook poskytovala vlastní ověřování pro místní prostředky, můžete zadat účet Spustit jako pro skupinu Hybrid Runbook Worker. Chcete-li zadat účet Spustit jako, je nutné definovat [Asset přihlašovacích údajů](./shared-resources/credentials.md) , který má přístup k místním prostředkům. Tyto prostředky zahrnují úložiště certifikátů a všechny sady Runbook běží pod těmito přihlašovacími údaji na Hybrid Runbook Worker ve skupině.
 
-Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
+- Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
 
-* jméno
-* username@domain
-* uživatelské jméno (pro účty místní k místnímu počítači)
+   * jméno
+   * username@domain
+   * uživatelské jméno (pro účty místní k místnímu počítači)
+
+- Pokud chcete použít PowerShell PowerShell **Export-RunAsCertificateToHybridWorker**, musíte na místním počítači nainstalovat AZ modules for Azure Automation.
+
+#### <a name="use-a-credential-asset-to-specify-a-run-as-account"></a>Použití assetu přihlašovacích údajů k určení účtu Spustit jako
 
 K určení účtu Spustit jako pro skupinu Hybrid Runbook Worker použijte následující postup:
 
 1. Vytvořte [Asset přihlašovacích údajů](./shared-resources/credentials.md) s přístupem k místním prostředkům.
-2. Otevřete účet Automation v Azure Portal.
-3. Vyberte **Hybrid Worker skupiny** a pak vyberte konkrétní skupinu.
-4. Vyberte **všechna nastavení** a potom **Nastavení skupiny hybridních pracovních procesů**.
-5. Změňte hodnotu **Spustit jako** z **výchozí** na Custom ( **vlastní**).
-6. Vyberte přihlašovací údaje a klikněte na **Uložit**.
+1. Otevřete účet Automation v Azure Portal.
+1. Vyberte **Hybrid Worker skupiny** a pak vyberte konkrétní skupinu.
+1. Vyberte **všechna nastavení** a potom **Nastavení skupiny hybridních pracovních procesů**.
+1. Změňte hodnotu **Spustit jako** z **výchozí** na Custom ( **vlastní**).
+1. Vyberte přihlašovací údaje a klikněte na **Uložit**.
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Nainstalovat certifikát účtu Spustit jako
 
@@ -178,11 +182,11 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 Dokončení přípravy účtu Spustit jako:
 
 1. Uložte Runbook **Export-RunAsCertificateToHybridWorker** do počítače s příponou **. ps1** .
-2. Importujte ho do svého účtu Automation.
-3. Upravte sadu Runbook a změňte hodnotu `Password` proměnné na vlastní heslo.
-4. Publikujte Runbook.
-5. Spusťte sadu Runbook, která cílí na Hybrid Runbook Worker skupinu, která spouští a ověřuje Runbooky pomocí účtu Spustit jako. 
-6. Prohlédněte si datový proud úlohy a podívejte se, že se pokusí importovat certifikát do úložiště místního počítače a za ním následuje více řádků. Toto chování závisí na tom, kolik účtů služby Automation ve vašem předplatném definujete, a na stupni úspěšnosti ověřování.
+1. Importujte ho do svého účtu Automation.
+1. Upravte sadu Runbook a změňte hodnotu `Password` proměnné na vlastní heslo.
+1. Publikujte Runbook.
+1. Spusťte sadu Runbook, která cílí na Hybrid Runbook Worker skupinu, která spouští a ověřuje Runbooky pomocí účtu Spustit jako. 
+1. Prohlédněte si datový proud úlohy a podívejte se, že se pokusí importovat certifikát do úložiště místního počítače a za ním následuje více řádků. Toto chování závisí na tom, kolik účtů služby Automation ve vašem předplatném definujete, a na stupni úspěšnosti ověřování.
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Práce s podepsanými Runbooky ve Windows Hybrid Runbook Worker
 
@@ -267,13 +271,13 @@ Pokud chcete vytvořit GPG a souboru KeyPair, použijte [účet Hybrid Runbook W
     sudo su – nxautomation
     ```
 
-2. Po použití **nxautomation** vygenerujte GPG souboru KeyPair. GPG vás provede jednotlivými kroky. Musíte zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo. Potom počkejte, než bude na počítači dostatek entropie, aby se klíč vygeneroval.
+1. Po použití **nxautomation** vygenerujte GPG souboru KeyPair. GPG vás provede jednotlivými kroky. Musíte zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo. Potom počkejte, než bude na počítači dostatek entropie, aby se klíč vygeneroval.
 
     ```bash
     sudo gpg --generate-key
     ```
 
-3. Vzhledem k tomu, že se adresář GPG vygeneroval pomocí sudo, musíte změnit jeho vlastníka na **nxautomation** pomocí následujícího příkazu.
+1. Vzhledem k tomu, že se adresář GPG vygeneroval pomocí sudo, musíte změnit jeho vlastníka na **nxautomation** pomocí následujícího příkazu.
 
     ```bash
     sudo chown -R nxautomation ~/.gnupg

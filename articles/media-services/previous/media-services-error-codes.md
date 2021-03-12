@@ -1,7 +1,7 @@
 ---
 title: Kódy chyb Azure Media Services | Microsoft Docs
 description: V závislosti na problémech, jako je vypršení platnosti ověřovacích tokenů k akcím, které nejsou podporované v Media Services, můžete od služby zobrazit chybové kódy HTTP. Tento článek obsahuje přehled kódů chyb rozhraní API pro Azure Media Services V2.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 10ade5c8f34d806ca5706ccaaf4b7ff2e05ba657
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263667"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013410"
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb služby Azure Media Services
 
@@ -54,7 +54,7 @@ Požadavek nebylo možné ověřit (před tím, než může být autorizován) z
   * Platnost tokenu vypršela. 
   * Token obsahuje neplatný podpis.
 
-## <a name="403-forbidden"></a>403 zakázané
+## <a name="403-forbidden"></a>403 – Zakázáno
 Požadavek není povolen z některého z následujících důvodů:
 
 * Účet Media Services nebyl nalezen nebo byl odstraněn.

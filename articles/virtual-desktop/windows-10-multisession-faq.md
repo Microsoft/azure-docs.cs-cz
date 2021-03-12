@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025006"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565559"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -81,7 +81,7 @@ Většina virtualizovaných prostředí se ve výchozím nastavení konfiguruje,
 
 - [Publikování integrovaných aplikací ve virtuálním počítači s Windows](publish-apps.md)
 - [Možnosti příkazového řádku obsluhy balíčku aplikace DISM](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Návody zajistěte, aby si uživatelé nestáhli a neinstalovali aplikace z Microsoft Store?
 
@@ -94,7 +94,7 @@ Zakázání aplikace pro Store:
 3. Vyberte **Store**.
 4. Vyberte **aplikace pro Store**.
 5. Vyberte **disabled (zakázáno**) a pak vyberte **OK**.
-6. Vyberte **Apply** (Použít).
+6. Vyberte **Použít**.
 
 ## <a name="next-steps"></a>Další kroky
 

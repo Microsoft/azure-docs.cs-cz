@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 1/5/2021
-ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 02/19/2021
+ms.openlocfilehash: 870482ca7894c5e260a78270fb036d6a6b22ee41
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914157"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630057"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Jak vygenerovat identifikátor URI SAS pro image virtuálního počítače
 
-Během procesu publikování musíte pro každý virtuální pevný disk, který je přidružený k vašim plánům (dříve označovaným jako SKU), zadat identifikátor URI SAS (Shared Access Signature). Společnost Microsoft potřebuje během procesu certifikace přístup k těmto virtuálním pevným diskům. Tento identifikátor URI zadáte na kartě **plány** v partnerském centru.
+> [!NOTE]
+> K publikování virtuálního počítače nepotřebujete identifikátor URI SAS. Obrázek můžete jednoduše sdílet v části centrum. Informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) nebo [Vytvoření virtuálního počítače s využitím vlastních pokynů k imagi](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) .
 
 Generování identifikátorů URI SAS pro vaše virtuální pevné disky má tyto požadavky:
 
@@ -24,6 +25,71 @@ Generování identifikátorů URI SAS pro vaše virtuální pevné disky má tyt
 - Vyžadují se jenom oprávnění list a čtení. Nezadávejte přístup pro zápis ani odstranění.
 - Doba trvání přístupu (datum vypršení platnosti) by měla být minimálně tři týdny od okamžiku, kdy se identifikátor URI SAS vytvoří.
 - Pro ochranu proti změnám času UTC nastavte počáteční datum na jeden den před aktuálním datem. Pokud je aktuální datum například 16. června 2020, vyberte 6/15/2020.
+
+## <a name="extract-vhd-from-a-vm"></a>Extrakce virtuálního pevného disku z virtuálního počítače
+
+> [!NOTE]
+> Tento krok můžete přeskočit, pokud už máte nahraný VHD v účtu úložiště.
+
+K extrakci virtuálního pevného disku z virtuálního počítače je potřeba pořídit snímek disku virtuálního počítače a extrahovat z něj virtuální pevný disk.
+
+Začněte pořizováním snímku disku virtuálního počítače:
+
+1. Přihlaste se k portálu Azure.
+2. V levém horním rohu vyberte vytvořit prostředek, vyhledejte a vyberte snímek.
+3. V okně snímek vyberte vytvořit.
+4. Zadejte název snímku.
+5. Vyberte existující skupinu prostředků nebo zadejte název nového.
+6. Pro zdrojový disk vyberte spravovaný disk, který se má snímek.
+7. Vyberte typ účtu, který chcete použít k uložení snímku. Použijte HDD úrovně Standard, pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
+8. Vyberte Vytvořit.
+
+### <a name="extract-the-vhd"></a>Extrakce VHD
+
+Pomocí následujícího skriptu exportujte snímek do virtuálního pevného disku v účtu úložiště.
+
+```azurecli
+#Provide the subscription Id where the snapshot is created
+$subscriptionId=yourSubscriptionId
+
+#Provide the name of your resource group where the snapshot is created
+$resourceGroupName=myResourceGroupName
+
+#Provide the snapshot name
+$snapshotName=mySnapshot
+
+#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
+#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+$sasExpiryDuration=3600
+
+#Provide storage account name where you want to copy the underlying VHD file. 
+$storageAccountName=mystorageaccountname
+
+#Name of the storage container where the downloaded VHD will be stored.
+$storageContainerName=mystoragecontainername
+
+#Provide the key of the storage account where you want to copy the VHD 
+$storageAccountKey=mystorageaccountkey
+
+#Give a name to the destination VHD file to which the VHD will be copied.
+$destinationVHDFileName=myvhdfilename.vhd
+
+az account set --subscription $subscriptionId
+
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+
+az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+```
+
+### <a name="script-explanation"></a>Vysvětlení skriptu
+Tento skript používá následující příkazy k vygenerování identifikátoru URI SAS pro snímek a zkopírování základního virtuálního pevného disku do účtu úložiště pomocí identifikátoru URI SAS. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+
+
+|Příkaz  |Poznámky  |
+|---------|---------|
+| az disk grant-access    |     Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.    |
+|  az storage blob copy start   |    Asynchronně zkopíruje objekt BLOB z jednoho účtu úložiště do druhého. Použijte AZ Storage BLOB show a ověřte stav nového objektu BLOB.     |
+|
 
 ## <a name="generate-the-sas-address"></a>Vygenerovat adresu SAS
 

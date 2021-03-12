@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832228"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014362"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
@@ -228,8 +228,8 @@ Pro účely tohoto kurzu použijete pro sestavení aplikace následující sadu 
 
 Provedením kroků v následujících dvou článcích spojíte skutečnou Rigado bránu a snímače RuuviTag. Až budete hotovi, vraťte se k tomuto kurzu. Vzhledem k tomu, že už jste v tomto kurzu vytvořili šablony zařízení, nemusíte je vytvářet znovu v následující sadě pokynů.
 
-- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
+- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../core/howto-connect-rigado-cascade-500.md).
+- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../core/howto-connect-ruuvi.md). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
 
 ## <a name="add-rules-and-actions"></a>Přidat pravidla a akce
 V rámci používání senzorů ve vaší aplikaci Azure IoT Central k monitorování podmínek můžete vytvořit pravidla ke spouštění akcí, když jsou splněné určité podmínky. Pravidlo je spojeno se šablonou zařízení a jedním nebo více zařízeními a obsahuje podmínky, které musí být splněny na základě telemetrie a událostí zařízení. Pravidlo má také jednu nebo více přidružených akcí. Akce můžou zahrnovat posílání e-mailových oznámení nebo aktivaci akce Webhooku pro posílání dat do jiných služeb. Šablona aplikace v rámci služby **Store Analytics – rezervace** obsahuje některá předdefinovaná pravidla pro zařízení v aplikaci.

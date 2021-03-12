@@ -8,20 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/16/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572899"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611823"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
-Tento článek popisuje kroky pro shromažďování protokolů z Active Directory B2C (Azure AD B2C), abyste mohli diagnostikovat problémy s vlastními zásadami. Application Insights poskytuje způsob, jak diagnostikovat výjimky a vizualizovat problémy s výkonem aplikací. Azure AD B2C obsahuje funkci pro posílání dat Application Insights.
+Tento článek popisuje kroky pro shromažďování protokolů z Active Directory B2C (Azure AD B2C), abyste mohli diagnostikovat problémy s vlastními zásadami. Application Insights nabízí způsob, jak diagnostikovat výjimky a vizualizovat problémy s výkonem aplikací. Azure AD B2C obsahuje funkci umožňující odesílat data do Application Insights.
 
 Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** během vývoje vlastních zásad.
 
@@ -51,7 +51,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` do uzlu podřízený uzel `<RelyingParty>` . Musí se nacházet hned po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` do uzlu podřízený uzel `<RelyingParty>` . Musí být umístěn po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
 1. Přidejte následující uzel jako podřízený `<UserJourneyBehaviors>` prvek elementu. Nezapomeňte nahradit `{Your Application Insights Key}` **klíč instrumentace** Application Insights, který jste si poznamenali dříve.
 
     ```xml
@@ -62,7 +62,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     * `ClientEnabled="true"` pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné** a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
-    Příklad:
+    Například:
 
     ```xml
     <TrustFrameworkPolicy
@@ -130,7 +130,7 @@ Pro zlepšení výkonu produkčního prostředí a lepší zkušenosti uživatel
 
 ## <a name="next-steps"></a>Další kroky
 
-Komunita vyvinula uživatele prohlížeče cest, aby usnadnila vývojářům identity. Čte z vaší instance Application Insights a poskytuje dobře strukturovaný pohled na události cest uživatelů. Získáte zdrojový kód a nasadíte ho ve svém vlastním řešení.
+Komunita za účelem pomoci vývojářům identit vyvinula prohlížeč cest uživatelů. Ten čte z vaší instance Application Insights a poskytuje dobře strukturované zobrazení událostí cest uživatelů. Můžete získat zdrojový kód a nasadit ho ve vlastním řešení.
 
 Microsoft nepodporuje přehrávač pro cestu uživatelů a je k dispozici výhradně tak, jak je.
 

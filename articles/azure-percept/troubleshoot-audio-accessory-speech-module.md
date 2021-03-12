@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží se zvukovými moduly a moduly pro rozpoznávání řeči v Azure Percept
-description: Získejte tipy pro řešení problémů s některými častými problémy zjištěnými během připojování.
+title: Řešení potíží se službou Azure Percept audio a modulem Speech
+description: Získejte tipy pro řešení potíží pro Azure Percept audio a azureearspeechclientmodule
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097971"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635565"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Řešení potíží se zvukem a modulem Speech pro Azure Percept
 
@@ -23,13 +23,13 @@ Pomocí níže uvedených pokynů můžete řešit problémy s aplikacemi hlasov
 Pokud chcete spustit tyto příkazy, [Připojte se ke službě Azure PERCEPT DK Wi-Fi přístupový bod a připojte se k vývojové sadě přes SSH](./how-to-ssh-into-percept-dk.md) a zadejte příkazy v terminálu SSH.
 
 ```console
- iotedge logs azureearspeechclientmodule
+sudo iotedge logs azureearspeechclientmodule
 ```
 
 K přesměrování libovolného výstupu do souboru. txt k další analýze použijte následující syntaxi:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelského počítače přes bod připojení služby (SCP):
@@ -52,18 +52,18 @@ Pokud běhový stav **azureearspeechclientmodule** není uveden jako **spuštěn
 
 Pomocí indikátorů LED můžete pochopit, ve kterém stavu je zařízení. Aby se modul plně inicializoval po *Zapnutí*, obvykle trvá přibližně 2 minuty. Jak prochází kroky inicializace, které se zobrazí:
 
-1. INDIKÁTORy bílé na střed – zařízení je zapnuté. 
-2. 1 blikání INDIKÁTORu na pozadí – probíhá ověřování. 
+1. INDIKÁTORy bílé na střed – zařízení je zapnuté.
+2. 1 blikání INDIKÁTORu na pozadí – probíhá ověřování.
 3. Až se zařízení ověří a bude připravené k použití, všechny tři diody LED se změní na modrou.
 
-|POD|   Stav LED|  Stav ušního SoM|
-|---|------------|----------------| 
-|L02|   na1x bílé, statické na |Zapnout |
-|L02|   na1x bílá, 0,5 Hz – bliknutí|  Probíhá ověřování. |
-|L01 & L02 & L03|   3x Blue, static on|     Čekání na klíčové slovo|
-|L01 & L02 & L03|   Blikání pole LED, 20fps | Naslouchat nebo mluvit|
-|L01 & L02 & L03|   Pole LED, 20fps|    Uvažujete|
-|L01 & L02 & L03|   3x Red, static on | Vypnutí|
+|POD|Stav LED|Stav ušního SoM|
+|---|---------|--------------|
+|L02|na1x bílé, statické na|Zapnout |
+|L02|na1x bílá, 0,5 Hz – bliknutí|Probíhá ověřování. |
+|L01 & L02 & L03|3x Blue, static on|Čekání na klíčové slovo|
+|L01 & L02 & L03|Blikání pole LED, 20fps |Naslouchat nebo mluvit|
+|L01 & L02 & L03|Pole LED, 20fps|Uvažujete|
+|L01 & L02 & L03|3x Red, static on |Vypnutí|
 
 ## <a name="next-steps"></a>Další kroky
 

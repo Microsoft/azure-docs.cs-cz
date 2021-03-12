@@ -4,12 +4,12 @@ description: Řízení přístupu na základě role Azure slouží ke správě p
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553404"
+ms.locfileid: "102613438"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě role Azure ke správě Azure Backup bodů obnovení
 
@@ -39,7 +39,7 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 | | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |  Alternativně můžete místo předdefinované role vzít v úvahu vlastní roli, která má následující oprávnění: Microsoft. COMPUTE/virtualMachines/Write. |
 | Zálohování virtuálního počítače na vyžádání | Operátor záloh | Trezor služby Recovery Services |   |
 | Obnovení virtuálního počítače | Operátor záloh | Trezor služby Recovery Services |   |
-| | Přispěvatel | Skupina prostředků, do které se virtuální počítač nasadí |   Alternativně můžete místo předdefinované role zvážit vlastní roli, která má následující oprávnění: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/doméns/Write, Microsoft. COMPUTE/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/subnets/JOIN/Action. | 
+| | Přispěvatel | Skupina prostředků, do které se virtuální počítač nasadí |   Alternativně můžete místo předdefinované role zvážit vlastní roli, která má následující oprávnění: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/doméns/Write, Microsoft. COMPUTE/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/subnets/JOIN/Action. |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval |   Alternativně můžete místo předdefinované role vzít v úvahu vlastní roli, která má následující oprávnění: Microsoft. COMPUTE/virtualMachines/Write. |
 | Obnovení zálohy virtuálního počítače nespravovaných disků | Operátor záloh | Trezor služby Recovery Services |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval | Alternativně můžete místo předdefinované role vzít v úvahu vlastní roli, která má následující oprávnění: Microsoft. COMPUTE/virtualMachines/Write. |
@@ -50,6 +50,7 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající mi
 | | Přispěvatel | Skupina prostředků, do které budou obnoveny spravované disky | Alternativně můžete místo předdefinované role vzít v úvahu vlastní roli, která má následující oprávnění: Microsoft. Resources/Subscriptions/resourceGroups/Write.|
 | Obnovení jednotlivých souborů ze zálohy virtuálního počítače | Operátor záloh | Trezor služby Recovery Services |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač, který se zálohoval | Alternativně můžete místo předdefinované role vzít v úvahu vlastní roli, která má následující oprávnění: Microsoft. COMPUTE/virtualMachines/Write. |
+| Obnovení mezi oblastmi | Operátor záloh | Předplatné trezoru Recovery Services | To je navíc k výše uvedeným oprávněním pro obnovení. Konkrétně pro CRR, a ne jako předdefinovanou roli, můžete zvážit vlastní roli, která má následující oprávnění: "Microsoft. RecoveryServices/Locations/backupAadProperties/Read" "Microsoft. RecoveryServices/Locations/backupCrrJobs/Action" "Microsoft. RecoveryServices/Locations/backupCrrJob/Action" "Microsoft. RecoveryServices/Locations/backupCrossRegionRestore/Action" "Microsoft. RecoveryServices/Locations/backupCrrOperationResults/Read" "Microsoft. RecoveryServices/Locations/backupCrrOperationsStatus/Read" |
 | Vytvoření zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
 | Úprava zásad zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |
 | Odstranit zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Trezor služby Recovery Services |

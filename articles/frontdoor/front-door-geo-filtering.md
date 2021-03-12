@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 33ad17e3024011368c909a89e9164ca06d044bad
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369420"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612078"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geografické filtrování v doméně pro přední dveře Azure
 
@@ -214,4 +214,4 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
-- Projděte si Hot a [nastavte geograficky FILTROVACÍ WAF zásadu](front-door-tutorial-geo-filtering.md).
+- Naučte se [nastavit zásady WAF geografického filtrování](front-door-tutorial-geo-filtering.md).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 812bfcc8d82c08600bd7391cdf70661585ceaf2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123186"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015178"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -43,18 +43,11 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
   * Minimální velikost paměti RAM: 4 GB (doporučeno 8 GB)
   * Minimální úložiště: 10 GB
 
-* Přístup k centru pro správu Windows Insider Build s rozšířením Azure IoT Edge nainstalovaného centra pro správu Windows:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. Navštivte web [Windows Insider Preview](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver).
+* Přístup k centru pro správu systému Windows s nainstalovaným rozšířením Azure IoT Edge pro centrum pro správu systému Windows:
 
-   1. V rozevíracím seznamu náhledy vyberte možnost **Centrum pro správu Windows verze Preview-Build 2012** a zvolte **Potvrdit**.
+   1. Stáhněte si [instalační program centra pro správu systému Windows](https://aka.ms/wacdownload).
 
-      ![V rozevírací nabídce dostupných verzí Preview vyberte Centrum pro správu Windows Preview-build 2012.](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
-
-   1. V rozevíracím seznamu **vybrat jazyk** zvolte možnost **Angličtina** a zvolte možnost **Potvrdit**.
-
-   1. Pro stažení *WindowsAdminCenterPreview2012.msi* klikněte na **Stáhnout hned** .
-
-   1. Spusťte *WindowsAdminCenterPreview2012.msi* a při instalaci centra pro správu systému Windows postupujte podle pokynů Průvodce instalací. Po instalaci otevřete centrum pro správu systému Windows.
+   1. Spusťte stažený instalační program a postupujte podle pokynů Průvodce instalací pro instalaci centra pro správu systému Windows. Po instalaci otevřete centrum pro správu systému Windows.
 
    1. Při prvním použití centra pro správu Windows se zobrazí výzva k výběru certifikátu, který se má použít. Jako certifikát vyberte **klienta centra pro správu systému Windows** .
 
@@ -143,7 +136,7 @@ Pokud jste to ještě neučinili, nainstalujte do svého cílového zařízení 
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. Nainstalujte IoT Edge pro Linux do Windows na svém zařízení.

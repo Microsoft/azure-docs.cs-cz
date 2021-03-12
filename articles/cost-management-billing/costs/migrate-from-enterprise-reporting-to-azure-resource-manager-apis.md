@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355812"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635786"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Migrace z rozhraní API služby Enterprise Reporting na rozhraní API Azure Resource Manageru
 
@@ -51,28 +51,7 @@ Když vytvoříte instanční objekt pro programové volání rozhraní API Azur
 
 ### <a name="azure-billing-hierarchy-access"></a>Hierarchický přístup k fakturaci Azure
 
-Pro přiřazení oprávnění instančního objektu k rozsahu podnikového fakturačního účtu, oddělení nebo registračního účtu využijte rozhraní API pro [fakturační oprávnění](/rest/api/billing/2019-10-01-preview/billingpermissions), [definice fakturačních rolí](/rest/api/billing/2019-10-01-preview/billingroledefinitions) a [přiřazení fakturačních rolí](/rest/api/billing/2019-10-01-preview/billingroleassignments).
-
-- Pomocí rozhraní API pro fakturační oprávnění identifikujte oprávnění, která už instanční objekt v daném oboru má (například fakturační účet nebo oddělení).
-- Rozhraní API pro definice fakturačních rolí použijte k zobrazení výčtu dostupných rolí, které je možné přiřadit vašemu instančnímu objektu.
-  - V této chvíli se instančním objektům dají přiřadit role správce smlouvy Enterprise jen pro čtení a správce oddělení jen pro čtení.
-- K přiřazení role instančnímu objektu použijte rozhraní API pro přiřazení fakturačních rolí.
-
-Následující příklad ukazuje, jak volat rozhraní API pro přiřazení rolí a udělit instančnímu objektu přístup k vašemu fakturačnímu účtu. K provedení těchto jednorázových konfigurací oprávnění doporučujeme použít [PostMan](https://postman.com).
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>Text požadavku
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+Pokud chcete přiřadit oprávnění instančního objektu k fakturačnímu účtu, oddělením nebo oborům účtů pro registraci vaší organizace, přečtěte si téma [přiřazení rolí k hlavním názvům služeb Azure smlouva Enterprise](../manage/assign-roles-azure-service-principals.md).
 
 ### <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 

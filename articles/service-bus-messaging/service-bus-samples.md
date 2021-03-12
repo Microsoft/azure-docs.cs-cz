@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: spelluru
-ms.openlocfilehash: f8729d0a947ebf2fd918a478fb3354e6d84fe1e3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 177c0eff7d0e7df254df4cc6c77c0a0cf674147d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95803103"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201544"
 ---
 # <a name="service-bus-messaging-samples"></a>Ukázky Service Bus zasílání zpráv
 Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v [Service Bus zasílání zpráv](https://azure.microsoft.com/services/service-bus/). V současné době můžete najít ukázky v následujících umístěních:
@@ -25,7 +25,7 @@ Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v [Service Bus
 ## <a name="java-samples"></a>Ukázky Java
 | Balíček | Umístění ukázek | 
 | ------- | ---------------- | 
-| Azure-zasílání zpráv – ServiceBus (nejnovější) | https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/ |
+| azure-messaging-servicebus (nejnovější) | https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/ |
 | Azure – ServiceBus (starší verze) | https://github.com/Azure/azure-service-bus/tree/master/samples/Java |
 
 ## <a name="python-samples"></a>Ukázky Pythonu
@@ -33,10 +33,15 @@ Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v [Service Bus
 | -------------------- | ----------------------- |
 | Azure. ServiceBus | https://docs.microsoft.com/samples/azure/azure-sdk-for-python/servicebus-samples/ |
 
+## <a name="typescript-samples"></a>Ukázky TypeScriptu
+| Balíček | Umístění ukázek | 
+| ------- | ---------------- | 
+| @azure/service-bus | https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/ | 
+
 ## <a name="javascript-samples"></a>Ukázky JavaScriptu
 | Balíček | Umístění ukázek | 
 | ------- | ---------------- | 
-| Azure/služba – sběrnice | https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/ | 
+| @azure/service-bus | https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/ | 
 
 ## <a name="go-samples"></a>Ukázky pro přejít
 | Balíček | Umístění ukázek | 

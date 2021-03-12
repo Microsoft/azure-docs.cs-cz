@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004608"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149473"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
 
@@ -53,13 +53,13 @@ Můžete vytvořit nový plán pro Runbooky v Azure Portal nebo pomocí PowerShe
     >Plány automatizace v současné době nepodporují používání speciálních znaků v názvu plánu.
     >
 
-4. Vyberte, jestli se plán spouští jednou nebo v plánu **opakování**, a to tak, že vyberete **jednou** nebo znovu. Pokud vyberete jednu z **nich, zadejte**čas spuštění a pak vyberte **vytvořit**. Pokud vyberete možnost **opakovaná**, zadejte čas spuštění. U **každého opakování**vyberte, jak často se má sada Runbook opakovat. Vyberte podle hodin, dnů, týdnů nebo měsíců.
+4. Vyberte, jestli se plán spouští jednou nebo v plánu **opakování**, a to tak, že vyberete **jednou** nebo znovu. Pokud vyberete jednu z **nich, zadejte** čas spuštění a pak vyberte **vytvořit**. Pokud vyberete možnost **opakovaná**, zadejte čas spuštění. U **každého opakování** vyberte, jak často se má sada Runbook opakovat. Vyberte podle hodin, dnů, týdnů nebo měsíců.
 
     * Pokud vyberete možnost **týden**, zobrazí se dny v týdnu, ze kterých si můžete vybrat. Vyberte tolik dní, kolik chcete. První spuštění vašeho plánu nastane první den, který se vybere po počátečním čase. Chcete-li například vybrat víkendový plán, vyberte možnost sobota a neděle.
 
     ![Nastavování opakovaného plánu na víkend](../media/schedules/week-end-weekly-recurrence.png)
 
-    * Pokud vyberete možnost **month (měsíc**), budete mít k disdílně různé možnosti. Pro možnost **měsíčních výskytů** vyberte buď **dny v měsíci** nebo **dny v týdnu**. Pokud vyberete **dny v měsíci**, zobrazí se kalendář, abyste si mohli vybrat tolik dní, kolik chcete. Pokud zvolíte datum, například 31, ke kterému nedochází v aktuálním měsíci, plán se nespustí. Pokud chcete, aby plán běžel za poslední den, vyberte v části **Spustit poslední den v měsíci**možnost **Ano** . Pokud vyberete **dny v týdnu**, zobrazí se **všechny možnosti opakování** . Vyberte **první**, **druhý**, **třetí**, **čtvrtý**nebo **Poslední**. Nakonec vyberte den, kdy se má opakovat.
+    * Pokud vyberete možnost **month (měsíc**), budete mít k disdílně různé možnosti. Pro možnost **měsíčních výskytů** vyberte buď **dny v měsíci** nebo **dny v týdnu**. Pokud vyberete **dny v měsíci**, zobrazí se kalendář, abyste si mohli vybrat tolik dní, kolik chcete. Pokud zvolíte datum, například 31, ke kterému nedochází v aktuálním měsíci, plán se nespustí. Pokud chcete, aby plán běžel za poslední den, vyberte v části **Spustit poslední den v měsíci** možnost **Ano** . Pokud vyberete **dny v týdnu**, zobrazí se **všechny možnosti opakování** . Vyberte **první**, **druhý**, **třetí**, **čtvrtý** nebo **Poslední**. Nakonec vyberte den, kdy se má opakovat.
 
     ![Měsíční plán na prvních, patnáct a poslední den v měsíci](../media/schedules/monthly-first-fifteenth-last.png)
 
@@ -121,13 +121,54 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>Vytvoření plánu pomocí šablony Správce prostředků
+
+V tomto příkladu používáme šablonu automatizace Správce prostředků (ARM), která vytvoří nový plán úlohy. Obecné informace o této šabloně pro správu plánů úloh služby Automation najdete v tématu Referenční dokumentace k [šablonám Microsoft. Automation automationAccounts/jobSchedules](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+
+Zkopírujte tento soubor šablony do textového editoru:
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+Upravte následující hodnoty parametrů a uložte šablonu jako soubor JSON:
+
+* Název objektu plánu úlohy: jako název objektu plánu úlohy se používá identifikátor GUID (globálně jedinečný identifikátor).
+
+   >[!IMPORTANT]
+   > Pro každý plán úlohy nasazený pomocí šablony ARM musí být identifikátor GUID jedinečný. I v případě, že přeplánujete stávající plán, budete muset změnit identifikátor GUID. To platí i v případě, že jste dříve odstranili existující plán úlohy, který byl vytvořen se stejnou šablonou. Výsledkem opětovného použití stejného identifikátoru GUID je nasazení, které selhalo.</br></br>
+   > K dispozici jsou služby online, které mohou vygenerovat nový identifikátor GUID, například tento [bezplatný generátor GUID online](https://guidgenerator.com/).
+
+* Název plánu: představuje název plánu úlohy služby Automation, který bude propojený s určenou sadou Runbook.
+* Název Runbooku: představuje název Runbooku služby Automation, ke kterému se má plán úlohy přidružit.
+
+Po uložení souboru můžete plán úlohy Runbooku vytvořit pomocí následujícího příkazu PowerShellu. Příkaz používá `TemplateFile` parametr k zadání cesty a názvu souboru šablony.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
+```
+
 ## <a name="link-a-schedule-to-a-runbook"></a>Propojení plánu k sadě Runbook
 
 Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků. Pokud sada Runbook obsahuje parametry, můžete pro ně zadat jejich hodnoty. Je nutné zadat hodnoty pro všechny povinné parametry a také můžete zadat hodnoty pro všechny volitelné parametry. Tyto hodnoty se používají při každém spuštění sady Runbook tímto plánem. Stejný Runbook můžete připojit k jinému plánu a zadat jiné hodnoty parametrů.
 
 ### <a name="link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Připojení plánu k sadě Runbook pomocí Azure Portal
 
-1. V Azure Portal na svém účtu Automation v části **Automatizace procesu**vyberte **Runbooky** .
+1. V Azure Portal na svém účtu Automation v části **Automatizace procesu** vyberte **Runbooky** .
 1. Vyberte název Runbooku, který chcete naplánovat.
 1. Pokud sada Runbook není aktuálně propojená s plánem, nabídne se vám možnost vytvořit nový plán nebo propojit s existujícím plánem.
 1. Pokud má Runbook parametry, můžete vybrat možnost **Upravit nastavení spouštění (výchozí: Azure)** a zobrazí se podokno **parametry** . Sem můžete zadat informace o parametrech.

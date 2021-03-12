@@ -1,7 +1,7 @@
 ---
 title: Správa entit Media Services pomocí REST | Microsoft Docs
 description: Tento článek ukazuje, jak spravovat Media Services entit pomocí REST API.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 95124f101b1f14a70dabedd7d44077c5c1b6e99c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2821c4c2b13edaf5dfb34664c4b9f78ab56d98a7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264228"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015552"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST
 
@@ -38,7 +38,7 @@ V tomto tématu se dozvíte, jak spravovat Azure Media Services entit pomocí RE
 >[!NOTE]
 > Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016. Pokud potřebujete archivovat informace o úloze nebo úloze, můžete použít kód popsaný v tomto tématu.
 
-## <a name="considerations"></a>Důležité informace  
+## <a name="considerations"></a>Požadavky  
 
 Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
@@ -130,7 +130,7 @@ Host: media.windows.net
 ```
 
 > [!NOTE]
-> Operace $expand není podporována v Media Services a také nepodporované metody LINQ popsané v tématu požadavky LINQ (WCF Data Services).
+> Operace $expand není podporována v Media Services a také nepodporované metody LINQ popsané v tématu požadavky LINQ (Datové služby WCF).
 > 
 > 
 

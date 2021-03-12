@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Začínáme s Visual Studio Code'
+title: 'Rychlý Start: Začínáme s Azure Kognitivní hledání pomocí Visual Studio Code'
 titleSuffix: Azure Cognitive Search
 description: Přečtěte si, jak nainstalovat a používat rozšíření Visual Studio Code pro Azure Kognitivní hledání.
 author: dereklegenzoff
@@ -7,21 +7,19 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122703"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015841"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Začínáme s Visual Studio Code a Azure Kognitivní hledání
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>Začínáme s Azure Kognitivní hledání s využitím Visual Studio Code
 
-Tento článek vysvětluje, jak pomocí [rozhraní REST API služby Azure kognitivní hledání](/rest/api/searchservice) a klienta API pro posílání a přijímání požadavků formulovat požadavky na REST API. Pomocí klienta rozhraní API a těchto pokynů můžete odesílat žádosti a zobrazovat odpovědi před zápisem kódu.
+Tento článek vysvětluje, jak interaktivně formulovat požadavky na REST API pomocí [rozhraní REST API Azure kognitivní hledání](/rest/api/searchservice) a [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch). S [rozšířením Visual Studio Code pro Azure kognitivní hledání (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) a těmito pokyny můžete odesílat žádosti a zobrazovat odpovědi před zápisem kódu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-Tento článek používá pro rozhraní REST API služby Azure Kognitivní hledání rozšíření pro Visual Studio Code (Preview).
 
 > [!IMPORTANT] 
 > Tato funkce je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
@@ -35,18 +33,6 @@ V tomto rychlém startu jsou vyžadovány následující služby a nástroje.
 + [Azure Kognitivní hledání pro Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
-
-## <a name="copy-a-key-and-url"></a>Zkopírování klíče a adresy URL
-
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
-
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
-
-1. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
-
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-rest/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
-
-Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 

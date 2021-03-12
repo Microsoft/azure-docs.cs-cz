@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 04ba7dc79deef2dbad12c3f65a324201d3e9f598
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025289"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612758"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
@@ -193,7 +193,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 * [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)
-* [Robot Azure bot](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Robot Azure bot](/azure/bot-service/)
 
 
 ## <a name="next-steps"></a>Další kroky

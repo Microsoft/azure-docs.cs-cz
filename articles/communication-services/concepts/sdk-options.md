@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 83d3a21de22be4c491207d3ee3605dd31b1c3da8
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: b5c75f62f730c1bbc09a66e81f70f0e71a246fde
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487572"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613353"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
 
@@ -40,7 +40,7 @@ Všimněte si, že klientské knihovny Azure Resource Manager, identity a server
 
 Umístění pro publikování pro jednotlivé balíčky klientských knihoven jsou podrobně popsány níže.
 
-| Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Ostatní                          |
+| Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Jiné                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Přejít přes GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Společné         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | –      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
@@ -48,7 +48,7 @@ Umístění pro publikování pro jednotlivé balíčky klientských knihoven js
 | Chat           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | Videohovory        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| Referenční dokumentace     | [doc](https://azure.github.io/azure-sdk-for-js/communication.html)         | [doc](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [doc](http://azure.github.io/azure-sdk-for-java/communication.html)     | [doc](/objectivec/communication-services/calling/)      | [doc](/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
+| Referenční dokumentace     | [doc](https://azure.github.io/azure-sdk-for-js/communication.html)         | [doc](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [doc](http://azure.github.io/azure-sdk-for-java/communication.html)     | [doc](/objectivec/communication-services/calling/)      | [doc](/java/api/com.azure.communication.calling)            | -                              |
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
