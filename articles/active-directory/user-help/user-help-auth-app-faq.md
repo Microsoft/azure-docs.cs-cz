@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547855"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418075"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -260,7 +260,7 @@ Odpověď **: aplikace** ověřovatele již poskytuje vysokou úroveň zabezpeč
 
 **Otázka**: budou se zaměstnanci nebo studenti při použití automatické vyplňování hesel v ověřovací aplikaci používat?
 
-Odpověď **: Ano**, automatické vyplňování teď funguje pro většinu uživatelů v podniku i v případě, že se do ověřovací aplikace přidá pracovní nebo školní účet. Můžete vyplnit formulář a nakonfigurovat (povolit nebo odepřít) automatické vyplňování vaší organizace a [Odeslat ho do týmu ověřovatele](https://aka.ms/ConfigureAutofillInAuthenticator).
+Odpověď **: Ano**, automatické vyplňování [osobních účtů Microsoft](https://go.microsoft.com/fwlink/?linkid=2144423) teď funguje pro většinu uživatelů v podniku i v případě, že se do ověřovací aplikace přidá pracovní nebo školní účet. Můžete vyplnit formulář a povolit nebo odepřít automatické vyplňování vaší organizace a [Odeslat ho ověřovacímu týmu](https://aka.ms/ConfigureAutofillInAuthenticator). Automatické vyplňování není aktuálně k dispozici pro pracovní nebo školní účty.
 
 **Otázka**: budou automaticky synchronizována hesla "pracovní nebo školní účet uživatele"?
 

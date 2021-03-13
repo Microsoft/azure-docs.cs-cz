@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216984"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419010"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
 
@@ -192,8 +192,6 @@ Jedné konfiguraci sekundární IP adresy síťového rozhraní můžete přiřa
 
 > [!NOTE]
 > I když můžete vytvořit síťové rozhraní s adresou IPv6 pomocí portálu, nemůžete přidat existující síťové rozhraní k novému nebo existujícímu virtuálnímu počítači pomocí portálu. Pomocí PowerShellu nebo rozhraní příkazového řádku Azure vytvořte síťové rozhraní s privátní adresou IPv6 a pak připojte síťové rozhraní při vytváření virtuálního počítače. Nemůžete připojit síťové rozhraní s přiřazenou privátní adresou IPv6 k existujícímu virtuálnímu počítači. Privátní adresu IPv6 nelze přidat k konfiguraci protokolu IP pro jakékoli síťové rozhraní připojené k virtuálnímu počítači pomocí nástrojů (portálu, rozhraní příkazového řádku nebo PowerShellu).
-
-K primární nebo sekundární konfiguraci IP adres nemůžete přiřadit veřejnou adresu IPv6.
 
 ## <a name="skus"></a>Skladové položky
 

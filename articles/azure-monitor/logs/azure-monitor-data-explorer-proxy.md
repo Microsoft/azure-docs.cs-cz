@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031119"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419418"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Dotazování mezi prostředky Azure Průzkumník dat pomocí Azure Monitor
 Azure Monitor podporuje dotazy mezi službami mezi Azure Průzkumník dat, [Application Insights](../app/app-insights-overview.md)a [Log Analytics](../logs/data-platform-logs.md). Pak můžete dotazovat cluster Azure Průzkumník dat pomocí nástrojů pro Log Analytics nebo Application Insights a odkazovat na něj v dotazu mezi službami. V tomto článku se dozvíte, jak vytvořit dotaz na více služeb.
@@ -37,6 +37,7 @@ adx('https://help.kusto.windows.net/Samples').StormEvents
 > [!NOTE]
 >* V názvech databází se rozlišují velká a malá písmena.
 >* Dotaz mezi prostředky jako výstraha není podporován.
+>* Identifikace sloupce časového razítka v clusteru není podporována, Log Analytics rozhraní API pro dotazy nebude předávat společně s filtrem času.
 
 ## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Kombinování tabulek clusteru Azure Průzkumník dat s pracovním prostorem Log Analytics
 

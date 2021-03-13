@@ -3,12 +3,12 @@ title: Filtrování událostí pro Azure Event Grid
 description: Popisuje, jak filtrovat události při vytváření předplatného Azure Event Grid.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197771"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419843"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
 
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+V části [omezení](#limitations) pro aktuální omezení tohoto operátoru.
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 Operátor **StringBeginsWith** se vyhodnotí jako true, pokud hodnota **klíče** **začíná** kteroukoli z určených hodnot **filtru** . V následujícím příkladu kontroluje, zda hodnota `key1` atributu v `data` oddílu začíná `event` nebo `grid` . Například začíná na `event hubs` `event` .  
@@ -634,6 +635,7 @@ Rozšířené filtrování má následující omezení:
 * 5 rozšířených filtrů a 25 hodnot filtru napříč všemi filtry na odběr Event gridu
 * 512 znaků na hodnotu řetězce
 * Pět hodnot pro operátor **in** a **Not in**
+* `StringNotContains`Operátor není aktuálně k dispozici na portálu.
 * Klávesy se znakem **`.` (tečka)** . Například: `http://schemas.microsoft.com/claims/authnclassreference` nebo `john.doe@contoso.com` . V současné době není v klíčích podporován řídicí znaky. 
 
 Stejný klíč lze použít ve více než jednom filtru.

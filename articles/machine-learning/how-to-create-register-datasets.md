@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522185"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417633"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 Chcete-li znovu použít a sdílet datové sady mezi experimenty v pracovním prostoru, [Zaregistrujte datovou sadu](#register-datasets).
 
+## <a name="wrangle-data"></a>Wrangle data
+Jakmile vytvoříte a [zaregistrujete](#register-datasets) datovou sadu, můžete ji načíst do svého poznámkového bloku pro tahání a [průzkum](#explore-data) dat před školením modelu. 
+
+Pokud nepotřebujete dělat žádné tahání nebo průzkumy dat, přečtěte si téma Postup využívání datových sad ve školicích skriptech pro odesílání experimentů ML v [vlakech s datovými sadami](how-to-train-with-datasets.md).
+
+### <a name="filter-datasets-preview"></a>Filtrovat datové sady (Preview)
+Možnosti filtrování závisí na typu datové sady, kterou máte. 
+> [!IMPORTANT]
+> Filtrování datových sad s metodou Public Preview [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) je funkce [experimentální](/python/api/overview/azure/ml/#stable-vs-experimental) verze Preview a může se kdykoli změnit. 
+> 
+**Pro TabularDatasets** můžete sloupce zachovat nebo odebrat pomocí metod [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) a [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) .
+
+Chcete-li vyfiltrovat řádky podle konkrétní hodnoty sloupce ve TabularDataset, použijte metodu [Filter ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) (Náhled). 
+
+Následující příklady vrátí neregistrovanou datovou sadu založenou na zadaných výrazech.
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+**V objektech DataSet** každý řádek odpovídá cestě k souboru, takže filtrování podle hodnoty sloupce není užitečné. Můžete ale [filtrovat ()](/python/api/azureml-core/azureml.data.filedataset#filter-expression-) řádky podle metadat, například, CreationTime, Size atd.
+
+Následující příklady vrátí neregistrovanou datovou sadu založenou na zadaných výrazech.
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+**Označené datové sady** , které jsou vytvořené z [projektů označování dat](how-to-create-labeling-projects.md) , jsou zvláštním případem. Tyto datové sady jsou typem TabularDataset tvořeného soubory imagí. Pro tyto typy datových sad můžete [filtrovat ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) image podle metadat a podle hodnot sloupců, jako jsou `label` a `image_details` .
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>Zkoumání dat
 
-Jakmile vytvoříte a [zaregistrujete](#register-datasets) datovou sadu, můžete ji načíst do svého poznámkového bloku pro zkoumání dat před školením modelu. Pokud nepotřebujete provádět žádné zkoumání dat, přečtěte si téma Postup využívání datových sad ve školicích skriptech pro odesílání experimentů ML v [vlakech s datovými sadami](how-to-train-with-datasets.md).
+Po dokončení tahání dat můžete datovou sadu [zaregistrovat](#register-datasets) a pak ji načíst do svého poznámkového bloku pro zkoumání dat před školením modelu.
 
 V případě datových sad můžete buď **připojit** nebo **Stáhnout** datovou sadu, a použít knihovny Pythonu, které běžně používáte pro zkoumání dat. [Přečtěte si další informace o připojení a stažení](how-to-train-with-datasets.md#mount-vs-download).
 
@@ -261,7 +307,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Vytvoření datových sad pomocí Azure Resource Manager
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/)K vytvoření datových sad se dá použít několik šablon.
+Existuje mnoho šablon [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) , které lze použít k vytvoření datových sad.
 
 Informace o použití těchto šablon naleznete v tématu [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 

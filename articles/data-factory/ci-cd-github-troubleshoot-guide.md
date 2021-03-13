@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/12/2021
+ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175868"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418092"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
 
@@ -178,19 +178,21 @@ Azure Resource Manager omezuje velikost šablony na 4 MB. Omezte velikost šablo
 
 U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Dodržujte prosím osvědčené postupy na [používání propojených a vnořených šablon](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
-### <a name="cannot-connect-to-git-enterprise"></a>Nejde se připojit k GIT Enterprise 
+### <a name="cannot-connect-to-git-enterprise-cloud"></a>Nejde se připojit k GIT Enterprise Cloud 
 
 ##### <a name="issue"></a>Problém
 
-Nemůžete se připojit k GIT Enterprise kvůli problémům s oprávněními. Zobrazí se chyba, jako je například **422 – nedokončená entita.**
+Nemůžete se připojit k systému GIT Enterprise Cloud z důvodu problémů s oprávněními. Zobrazí se chyba, jako je například **422 – nedokončená entita.**
 
 #### <a name="cause"></a>Příčina
 
-Nenakonfigurovali jste OAuth pro ADF. Vaše adresa URL je chybně nakonfigurovaná.
+* Používáte Git Enterprise na serveru Prem. 
+* Nenakonfigurovali jste OAuth pro ADF. 
+* Vaše adresa URL je chybně nakonfigurovaná.
 
 ##### <a name="resolution"></a>Řešení
 
-Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků. Například ADF se nejprve pokusí *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* a selže. Pak se to pokusí *https://hostname/api/v3/orgs/ <org> / <repo> ...* a úspěch. 
+Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků. Například ADF se pokusí *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* při prvním selhání a selhání. Pak se to pokusí *https://hostname/api/v3/orgs/ <org> / <repo> ...* a úspěch. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Obnovení z odstraněné datové továrny
 

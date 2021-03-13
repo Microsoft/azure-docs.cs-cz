@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: a008551ac6f149617feedd01e256b637f83e975d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103234989"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418840"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Sémantické hodnocení v Azure Kognitivní hledání
 
@@ -30,9 +30,9 @@ Pro sémantické hodnocení používá model porozumění strojovým účelům �
 
 1. U každého dokumentu sémantická klasifikace vyhodnocuje pole v parametru searchFields v daném pořadí a konsoliduje obsah do jednoho velkého řetězce.
 
-1. Řetězec se pak ořízne tak, aby celková délka nepřesahoval 20 000 tokeny. Pokud máte velmi velké dokumenty, s polem obsahu nebo merged_content poli, které má mnoho stránek obsahu, budou použity pouze první tokeny 20 000.
+1. Řetězec se pak ořízne tak, aby celková délka nepřesahoval 8 000 tokeny. Pokud máte velmi velké dokumenty, s polem obsahu nebo merged_content poli, které má mnoho stránek obsahu, vše po omezení tokenu se ignoruje.
 
-1. Každý z dokumentů 50 je nyní reprezentován jedním dlouhým řetězcem, který je až 20 000 tokenů. Tento řetězec je odeslán do modelu sumarizace. Model sumarizace vytváří popisy (a odpovědi) pomocí porozumění strojovým pochopením k identifikaci pasáží, které se zobrazí pro shrnutí obsahu, nebo k zodpovězení otázky. Výstupem modelu sumarizace je další redukovaný řetězec, který má maximálně 128 tokenů.
+1. Každý z dokumentů 50 je nyní reprezentován jedním dlouhým řetězcem. Tento řetězec je odeslán do modelu sumarizace. Model sumarizace vytváří popisy (a odpovědi) pomocí porozumění strojovým pochopením k identifikaci pasáží, které se zobrazí pro shrnutí obsahu, nebo k zodpovězení otázky. Výstupem modelu sumarizace je další redukovaný řetězec, který má maximálně 128 tokenů.
 
 1. Menší řetězec se zobrazí v titulku dokumentu a představuje nejrelevantnější pasáže nalezené ve větším řetězci. Sada titulů 50 (nebo méně) je pak seřazená podle relevance pořadí. 
 

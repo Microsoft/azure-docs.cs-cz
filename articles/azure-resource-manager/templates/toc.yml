@@ -328,7 +328,9 @@
       items:
         - name: Nainstalovat bicep
           href: bicep-install.md
-        - name: Porovnávání formátu JSON s bicep
+        - name: Převod mezi JSON a bicep
+          href: bicep-decompile.md
+        - name: Porovnat JSON a bicep
           href: compare-template-syntax.md
     - name: Typy dat
       href: data-types.md

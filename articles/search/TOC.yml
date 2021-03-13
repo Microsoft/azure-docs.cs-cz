@@ -286,6 +286,8 @@
           items:
             - name: Integrace vlastních dovedností
               href: cognitive-search-custom-skill-interface.md
+            - name: Horizontální navýšení kapacity – vlastní dovednosti
+              href: cognitive-search-custom-skill-scale.md
             - name: Příklad – Azure Functions (Python)
               href: cognitive-search-custom-skill-python.md
             - name: Příklad – Azure Functions

@@ -2,13 +2,13 @@
 title: Porovnávání syntaxe pro šablony Azure Resource Manager ve formátu JSON a bicep
 description: Porovnává Azure Resource Manager šablon vyvinutých pomocí JSON a bicep a ukazuje, jak převádět mezi jazyky.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/12/2021
+ms.openlocfilehash: 85f85e66e69eede68bab847e4bc68514e65115eb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036210"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418041"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>Porovnávání JSON a bicep pro šablony
 
@@ -40,42 +40,7 @@ Pokud jste obeznámeni s používáním formátu JSON pro vývoj šablon ARM, po
 * Pro identifikátory používejte konzistentní velká a malá písmena. Pokud si nejste jistí, jaký typ malých a velkých písmen chcete použít, zkuste ve stylu CamelCase velká a malá písmena. Například, `param myCamelCasedParameter string`.
 * Přidejte popis do parametru pouze v případě, že popis poskytuje základní informace uživatelům. `//`Pro některé informace můžete použít komentáře.
 
-## <a name="decompile-json-to-bicep"></a>Dekompilovat JSON do bicep
-
-Bicep CLI poskytuje příkaz pro rekompilaci jakékoli existující šablony ARM do souboru bicep. Chcete-li dekompilovat soubor JSON, použijte: `bicep decompile "path/to/file.json"`
-
-Tento příkaz poskytuje výchozí bod pro vytváření bicep, ale příkaz nefunguje pro všechny šablony. Příkaz může selhat nebo může být nutné opravit problémy po dekompilaci. V současné době lze vnořené šablony dekompilovat pouze v případě, že používají obor vyhodnocení výrazu Inner.
-
-Můžete exportovat šablonu pro skupinu prostředků a pak ji předávat přímo do příkazu bicep dekompilovat. Následující příklad ukazuje, jak dekompilovat exportovanou šablonu.
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az group export --name "your_resource_group_name" > main.json
-bicep decompile main.json
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```azurepowershell
-Export-AzResourceGroup -ResourceGroupName "your_resource_group_name" -Path ./main.json
-bicep decompile main.json
-```
-
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-
-[Exportujte šablonu](export-template-portal.md) prostřednictvím portálu. Použijte `bicep decompile <filename>` ve staženém souboru.
-
----
-
-## <a name="build-json-from-bicep"></a>Sestavit JSON z bicep
-
-Rozhraní příkazového řádku bicep také poskytuje příkaz pro převod bicep na formát JSON. Chcete-li vytvořit soubor JSON, použijte: `bicep build "path/to/file.json"`
-
-## <a name="side-by-side-view"></a>Zobrazení vedle sebe
-
-[Bicep Playground](https://aka.ms/bicepdemo) umožňuje zobrazit ekvivalentní soubory JSON a bicep vedle sebe. Můžete vybrat vzorovou šablonu pro zobrazení obou verzí. Případně můžete vybrat možnost `Decompile` nahrát vlastní šablonu JSON a zobrazit ekvivalentní soubor bicep.
-
 ## <a name="next-steps"></a>Další kroky
 
-Informace o bicep najdete v [kurzu bicep](./bicep-tutorial-create-first-bicep.md).
+* Informace o bicep najdete v [kurzu bicep](./bicep-tutorial-create-first-bicep.md).
+* Další informace o převodu šablon mezi jazyky najdete v tématu [Převod šablon ARM mezi JSON a bicep](bicep-decompile.md).

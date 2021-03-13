@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232731"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418874"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Vytvoření sémantického dotazu v Kognitivní hledání
 
@@ -141,7 +141,7 @@ Postupujte podle těchto pokynů, abyste zajistili optimální výsledky při za
 
 + Použijte tato pole podle popisných polí, kde můžete najít odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu.
 
-Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah. Aby se zajistilo včasné zpracování, jenom první 20 000 tokenů společného obsahu searchFields se doručí na sémantické vyhodnocení a hodnocení.
+Pokud je zadáno pouze jedno pole, použijte popisné pole, kde lze nalézt odpověď na sémantické dotazy, jako je například hlavní obsah dokumentu. Vyberte pole, které poskytuje dostatečný obsah. Aby bylo zajištěno včasné zpracování, pouze o tokenech 8 000 o společném obsahu searchFields podstupuje sémantické vyhodnocení a hodnocení.
 
 #### <a name="step-3-remove-orderby-clauses"></a>Krok 3: odebrání klauzulí orderBy
 

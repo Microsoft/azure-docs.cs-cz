@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538251"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419095"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Co je protokol IPv6 pro Azure Virtual Network?
 
@@ -77,8 +77,7 @@ Aktuální protokol IPv6 pro vydanou verzi služby Azure Virtual Network má ná
 - Protokol IPv6 pro Azure Virtual Network je k dispozici ve všech globálních oblastech Azure Commercial a USA, které používají všechny metody nasazení.  
 - Brány ExpressRoute se dají používat pro přenosy jenom s protokolem IPv4 ve virtuální síti s povoleným protokolem IPv6.  Podpora pro přenosy protokolu IPv6 je k disdobu v naší mapě.   
 - Brány VPN se nedají používat ve virtuální síti s povoleným protokolem IPv6, a to buď přímo, nebo s partnerským vztahem "UseRemoteGateway".
-- Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery.  
-- Protokol IPv6 se dá vyrovnávat z vyrovnávání zatížení jenom na primární síťové rozhraní (NIC) na virtuálních počítačích Azure. Zatížení protokolu IPv6 pro vyrovnávání zatížení pro sekundární síťové karty se nepodporuje.    
+- Platforma Azure (AKS atd.) nepodporuje komunikaci IPv6 pro kontejnery. 
 - Jenom IPv6 Virtual Machines nebo sady škálování Virtual Machines se nepodporují, každé síťové rozhraní musí zahrnovat aspoň jednu konfiguraci IP adresy IPv4. 
 - Při přidávání protokolu IPv6 do existujících nasazení IPv4 se rozsahy IPv6 nedají přidat do virtuální sítě s existujícími navigačními odkazy prostředků.  
 - Dopředné DNS pro protokol IPv6 se podporuje pro veřejné DNS Azure ještě dnes, ale reverzní DNS se zatím nepodporuje.   

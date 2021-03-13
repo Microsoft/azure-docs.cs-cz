@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453423"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419945"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Funkce verze Preview Azure Firewall Premium
 
@@ -100,12 +101,50 @@ nebo
 
 Vítá vás žádost o odeslání žádosti [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
  
+## <a name="supported-regions"></a>Podporované oblasti
+
+Verze Preview Azure Firewall Premium je podporována v následujících oblastech:
+
+- Západní Evropa (Public/Evropa)
+- Východní USA (Public/USA)
+- Austrálie – východ (veřejná/Austrálie)
+- Jihovýchodní Asie (veřejné/Asie a Tichomoří)
+- Velká Británie – jih (veřejné/Spojené království)
+- Severní Evropa (Public/Evropa)
+- Východní USA 2 (Public/USA)
+- Střed USA – jih (Public/USA)
+- Západní USA 2 (Public/USA)
+- Západní USA (Public/USA)
+- Střed USA (Public/USA)
+- Střed USA – sever (Public/USA)
+- Japonsko – východ (veřejný/Japonsko)
+- Východní Asie (Public/Asie a Tichomoří)
+- Kanada – střed (veřejná/Kanada)
+- Francie – střed (veřejná/Francie)
+- Jihoafrická republika sever (veřejná nebo Jižní Afrika)
+- Spojené arabské emiráty sever (Public/Spojené arabské emiráty)
+- Švýcarsko – sever (veřejný/Švýcarsko)
+- Brazílie – jih (veřejná/Brazílie)
+- Norsko – východ (veřejná/Norsko)
+- Austrálie – střed (veřejná/Austrálie)
+- Austrálie – střed 2 (veřejná/Austrálie)
+- Austrálie – jihovýchod (veřejná/Austrálie)
+- Kanada – východ (veřejná/Kanada)
+- Střed USA EUAP (veřejná/Kanárské (US))
+- Francie – jih (veřejná/Francie)
+- Japonsko – západ (veřejný/Japonsko)
+- Korea – jih (veřejná/Korea)
+- Spojené arabské emiráty – střed (Public/Spojené arabské emiráty)
+- Velká Británie – západ (veřejné/Spojené království)
+- Středozápadní USA (Public/USA)
+- Západní Indie (Public/Indie)
+
 
 ## <a name="known-issues"></a>Známé problémy
 
 Azure Firewall Premium Preview má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Description  |Omezení rizik  |
 |---------|---------|---------|
 |Kontrola TLS se podporuje jenom na portu Standard HTTPS.|Kontrola TLS podporuje jenom HTTPS/443. |Žádné Ostatní porty budou podporovány v GA.|
 |Podpora ESNI pro rozlišení plně kvalifikovaného názvu domény v HTTPS|Šifrované SNI se v handshake HTTPS nepodporují.|Dnes pouze Firefox podporuje ESNI prostřednictvím vlastní konfigurace. Doporučeným řešením je tuto funkci vypnout.|

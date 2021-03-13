@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 6c96c5b03a3561ae57807ad2788064f2a568f84c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106270"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418704"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: spouštění skriptů Pythonu pomocí Azure Data Factory pomocí Azure Batch
 
@@ -30,11 +30,11 @@ Následující příklad spustí skript Pythonu, který přijímá vstup sdílen
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro místní testování.
 * Balíček [Azure-Storage-BLOB](https://pypi.org/project/azure-storage-blob/) `pip` .
-* [Datová sadairis.csv](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* [Datová sadairis.csv](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv)
 * Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty Batch s účty úložiště, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
 * Účet Azure Data Factory. Další informace o tom, jak vytvořit datovou továrnu pomocí Azure Portal, najdete v tématu [Vytvoření datové továrny](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -67,7 +67,7 @@ Tady vytvoříte kontejnery objektů blob, které budou ukládat vstupní a výs
 1. Přihlaste se k Průzkumník služby Storage pomocí svých přihlašovacích údajů Azure.
 1. Pomocí účtu úložiště propojeného s účtem Batch vytvořte dva kontejnery objektů BLOB (jeden pro vstupní soubory, jeden pro výstupní soubory) podle kroků v části [vytvoření kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
     * V tomto příkladu budeme volat náš vstupní kontejner `input` a náš výstupní kontejner `output` .
-1. Nahrajte [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) do vstupního kontejneru `input` pomocí Průzkumník služby Storage podle kroků v části [Správa objektů BLOB v kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) .
+1. Nahrajte [`iris.csv`](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv) do vstupního kontejneru `input` pomocí Průzkumník služby Storage podle kroků v části [Správa objektů BLOB v kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) .
 
 ## <a name="develop-a-script-in-python"></a>Vývoj skriptu v Pythonu
 
@@ -75,32 +75,28 @@ Následující skript Pythonu načte `iris.csv` datovou sadu z vašeho `input` k
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobClient
 import pandas as pd
 
 # Define parameters
-storageAccountURL = "<storage-account-url>"
-storageKey         = "<storage-account-key>"
-containerName      = "output"
+connectionString = "<storage-account-connection-string>"
+containerName = "output"
+outputBlobName  = "iris_setosa.csv"
 
 # Establish connection with the blob storage account
-blob_service_client = BlockBlobService(account_url=storageAccountURL,
-                               credential=storageKey
-                               )
+blob = BlobClient.from_connection_string(conn_str=connectionString, container_name=containerName, blob_name=outputBlobName)
 
 # Load iris dataset from the task node
 df = pd.read_csv("iris.csv")
 
-# Subset records
+# Take a subset of the records
 df = df[df['Species'] == "setosa"]
 
 # Save the subset of the iris dataframe locally in task node
-df.to_csv("iris_setosa.csv", index = False)
+df.to_csv(outputBlobName, index = False)
 
-# Upload iris dataset
-container_client = blob_service_client.get_container_client(containerName)
-with open("iris_setosa.csv", "rb") as data:
-    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
+with open(outputBlobName, "rb") as data:
+    blob.upload_blob(data)
 ```
 
 Uložte skript jako `main.py` a nahrajte ho do kontejneru **Azure Storage** `input` . Před nahráním do kontejneru objektů BLOB Nezapomeňte otestovat a ověřit jeho funkčnost místně:
@@ -119,19 +115,17 @@ V této části vytvoříte a ověříte kanál pomocí skriptu Pythonu.
 
     ![Na kartě Obecné nastavte název kanálu jako "Run Python".](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. V poli **aktivity** rozbalte položku **Služba Batch**. Přetáhněte vlastní aktivitu z panelu nástrojů **aktivity** na plochu návrháře kanálu.
-1. Na kartě **Obecné** zadejte **testPipeline** pro název.
-
-    ![Na kartě Obecné zadejte testPipeline pro název.](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. Na kartě **Azure Batch** přidejte **účet Batch** , který byl vytvořen v předchozích krocích, a **otestujte připojení** , aby bylo zajištěno, že je úspěšné.
-
+1. V poli **aktivity** rozbalte položku **Služba Batch**. Přetáhněte vlastní aktivitu z panelu nástrojů **aktivity** na plochu návrháře kanálu. Pro vlastní aktivitu vyplňte následující karty:
+    1. Na kartě **Obecné** zadejte **testPipeline** pro název ![ na kartě Obecné zadejte testPipeline pro název.](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    1. Na kartě **Azure Batch** přidejte **účet Batch** , který byl vytvořen v předchozích krocích, a **otestujte připojení** , aby bylo zajištěno, že je úspěšné.
     ![Na kartě Azure Batch přidejte účet Batch, který jste vytvořili v předchozích krocích, a pak otestujte připojení.](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    1. Na kartě **Nastavení** :
+        1. Nastavte **příkaz** jako `python main.py` .
+        1. Pro **propojenou službu prostředku** přidejte účet úložiště, který jste vytvořili v předchozích krocích. Otestujte připojení, abyste zajistili jeho úspěšnost.
+        1. V **cestě ke složce** vyberte název kontejneru **Azure Blob Storage** , který obsahuje skript Pythonu a související vstupy. Tím se stáhnou vybrané soubory z kontejneru do instancí uzlů fondu před spuštěním skriptu Pythonu.
 
-1. Na kartě **Nastavení** zadejte příkaz `python main.py` .
-1. Pro **propojenou službu prostředku** přidejte účet úložiště, který jste vytvořili v předchozích krocích. Otestujte připojení, abyste zajistili jeho úspěšnost.
-1. V **cestě ke složce** vyberte název kontejneru **Azure Blob Storage** , který obsahuje skript Pythonu a související vstupy. Tím se stáhnou vybrané soubory z kontejneru do instancí uzlů fondu před spuštěním skriptu Pythonu.
+        ![V cestě ke složce vyberte název kontejneru Azure Blob Storage.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 
-    ![V cestě ke složce vyberte název kontejneru Azure Blob Storage.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete zavřít výstup ověřování, vyberte tlačítko &gt;&gt; (šipky doprava).
 1. Kliknutím na **ladit** otestujete kanál a ujistěte se, že funguje správně.
 1. Kliknutím na **publikovat** publikujte kanál.

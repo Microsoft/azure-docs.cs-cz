@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Konektor
       href: /connectors/aci
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

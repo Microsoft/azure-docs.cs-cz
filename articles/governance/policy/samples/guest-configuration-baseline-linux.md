@@ -1,19 +1,19 @@
 ---
 title: Referenční směrný plán konfigurace hosta Azure Policy pro Linux
 description: Podrobnosti o směrném plánu Linux v Azure implementovaném pomocí Azure Policy konfiguraci hostů.
-ms.date: 02/26/2021
+ms.date: 03/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 20f589b02f2a43bb3feb954dc4eac2dd6a9c3925
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103234982"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419860"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Azure Policy směrného plánu konfigurace hosta pro Linux
 
-Následující článek podrobně popisuje, co **\[ \] by počítače se systémem Linux ve verzi Preview měly splňovat požadavky pro** audity zásad konfigurace hosta Azure Security Baseline. Další informace najdete v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md) a [Přehled srovnávacích testů zabezpečení Azure (v2)](../../../security/benchmarks/overview.md).
+Následující článek podrobně popisuje, co **\[ \] by počítače se systémem Linux ve verzi Preview měly splňovat požadavky pro** audity definic zásad konfigurace hostů pro základní nastavení zabezpečení Azure. Další informace najdete v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md) a [Přehled srovnávacích testů zabezpečení Azure (v2)](../../../security/benchmarks/overview.md).
 
 ## <a name="general-security-controls"></a>Obecné ovládací prvky zabezpečení
 

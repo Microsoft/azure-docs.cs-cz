@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/20/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 67341fcc7be21e4fa62c6e52a921fe397c8ffeb6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487980"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417616"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
@@ -37,23 +37,9 @@ Při použití Azure Machine Learningho pracovního prostoru s privátním konco
 
 - Volitelně můžete rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="fqdns-in-use"></a>Používané plně kvalifikované názvy domény
-### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Tyto plně kvalifikované názvy domén jsou používány v následujících oblastech: eastus, southcentralus a westus2.
-Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) používané vaším pracovním prostorem:
+## <a name="public-regions"></a>Veřejné oblasti
 
-* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
-* `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
-* `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
-* Pokud vytvoříte výpočetní instanci, musíte také přidat položku pro `<instance-name>.<region>.instances.azureml.ms` s privátní IP adresou privátního koncového bodu v pracovním prostoru.
-
-    > [!NOTE]
-    > Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
-    
-### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>Tyto plně kvalifikované názvy domén se používají ve všech ostatních veřejných oblastech.
-Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) používané vaším pracovním prostorem:
+Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) používané vaším pracovním prostorem, pokud se nachází ve veřejné oblasti::
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -63,7 +49,7 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
     > [!NOTE]
     > Instance služby COMPUTE jsou dostupné jenom v rámci virtuální sítě.
 
-### <a name="azure-china-21vianet-regions"></a>Oblasti Azure Čína 21Vianet
+## <a name="azure-china-21vianet-regions"></a>Oblasti Azure Čína 21Vianet
 
 Následující plně kvalifikované názvy domén jsou pro oblasti Azure Čína 21Vianet:
 

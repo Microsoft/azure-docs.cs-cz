@@ -6,15 +6,14 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 702efa3431ff3c9cf91aae38ac76219d900f7e85
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656606"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103439095"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro JavaScript.
-Tento dokument odkazuje na typy ve verzi 1.0.0-beta. 5 volání knihovny.
 
 > [!NOTE]
 > Tento dokument používá verzi 1.0.0-beta. 6 volání klientské knihovny.
@@ -77,7 +76,7 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                             | Popis                                                                                                                                 |
+| Název                             | Description                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient je hlavní vstupní bod pro volání klientské knihovny.                                                                       |
 | CallAgent                        | CallAgent se používá ke spouštění a správě volání.                                                                                            |

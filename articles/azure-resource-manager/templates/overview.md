@@ -2,13 +2,13 @@
 title: Přehled šablon
 description: V této části najdete popis výhod používání Azure Resource Manager šablon (šablon ARM) pro nasazení prostředků.
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455731"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419979"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -19,6 +19,10 @@ Aby bylo možné tyto výzvy splnit, můžete automatizovat nasazení a použív
 K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (šablony ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
 Představili jsme nový jazyk pro vývoj šablon ARM. Jazyk má název bicep a je nyní ve verzi Preview. Šablony bicep a JSON nabízejí stejné možnosti. Můžete převádět šablonu mezi oběma jazyky. Bicep poskytuje syntaxi, kterou je snazší použít pro vytváření šablon. Další informace najdete v tématu [co je bicep (Preview)?](bicep-overview.md).
+
+Další informace o tom, jak můžete začít s šablonami ARM, najdete v následujícím videu.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>Proč zvolit šablony ARM?
 

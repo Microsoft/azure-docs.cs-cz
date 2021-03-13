@@ -5,14 +5,14 @@ author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/12/2021
 ms.author: jlian
-ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 62292a2ee51f8e1838e9cf3376367a02964cad47
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656359"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418738"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -85,6 +85,10 @@ Jakýkoli pokus o připojení z IP adresy, která explicitně není povolená, o
 Pravidla filtru IP adres *povolují* pravidla a používají se bez řazení. K IoT Hub se smějí připojovat pouze IP adresy, které přidáváte. 
 
 Například pokud chcete přijmout adresy v rozsahu `192.168.100.0/22` a odmítnout všechno ostatní, stačí do mřížky přidat jenom jedno pravidlo s rozsahem adres `192.168.100.0/22` .
+
+### <a name="azure-portal"></a>portál Azure 
+
+Pravidla filtru IP se používají taky při použití IoT Hub prostřednictvím Azure Portal. Důvodem je to, že volání rozhraní API služby IoT Hub se přímo využívají v prohlížeči s vašimi přihlašovacími údaji, které jsou konzistentní s jinými službami Azure. Pokud chcete získat přístup k IoT Hub pomocí Azure Portal, když je povolený filtr IP adres, přidejte IP adresu počítače do seznamu povolených adres. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načtení a aktualizace filtrů IP adres pomocí Azure CLI
 

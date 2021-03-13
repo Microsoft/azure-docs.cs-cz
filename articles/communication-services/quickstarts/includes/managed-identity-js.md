@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0d45e04bbafc7b2480abdcb2ab21bdb219a09b9e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 3626ca4cc3e7377f1c6778bc77e5e48ef0dcad0c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103021044"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439228"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Přidání spravované identity do řešení komunikačních služeb (JS)
 
@@ -23,7 +23,7 @@ Přidejte následující `import` direktivy do kódu, abyste mohli použít klie
 
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
-import { CommunicationIdentityClient } from "@azure/communication-identity";
+import { CommunicationIdentityClient, CommunicationUserToken } from "@azure/communication-identity";
 import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 ```
 
@@ -39,7 +39,7 @@ Následující příklad kódu ukazuje, jak vytvořit objekt klienta služby se 
 export async function createIdentityAndIssueToken(resourceEndpoint: string): Promise<CommunicationUserToken> {
      let credential = new DefaultAzureCredential();
      const client = new CommunicationIdentityClient(resourceEndpoint, credential);
-     return await client.createUserWithToken(["chat"]);
+     return await client.createUserAndToken(["chat"]);
 }
 ```
 

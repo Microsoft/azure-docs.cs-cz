@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401538"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419928"
 ---
 # <a name="what-is-azure-purview"></a>Co je Azure Purview?
 
@@ -69,6 +69,9 @@ Po registraci zdroje dat můžete rozšířit jeho metadata. Tato metadata přid
 Primárním účelem registrace zdrojů dat je zjišťování a porozumění zdrojům, a jejich používání. Podnikoví uživatelé mohou potřebovat data pro business intelligence, vývoj aplikací, datové vědy nebo jiný úkol, ve kterém jsou vyžadována správná data. Využívají možnosti zjišťování katalogu Data Catalog k rychlému vyhledání dat, která odpovídají jejich potřebám, pochopení dat k vyhodnocení jeho vhodnosti pro účel a využití dat otevřením zdroje dat v nástroji podle vlastního výběru.
 
 Současně mohou uživatelé přispívat do katalogu označováním, dokumentováním a zadáváním poznámek ke zdrojům dat, které jsou již zaregistrovány. Mohou také registrovat nové zdroje dat, které jsou následně zjišťovány, chápány a spotřebovány komunitou uživatelů katalogu.
+
+## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+Azure dosah nepřesouvá ani neukládá zákaznická data mimo oblast, ve které je nasazená.
 
 ## <a name="next-steps"></a>Další kroky
 

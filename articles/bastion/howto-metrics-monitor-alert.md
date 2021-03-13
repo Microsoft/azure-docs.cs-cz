@@ -6,14 +6,14 @@ services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: dc16b9007c381f1bb0dce9332243842d8d4af9cd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103202524"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417939"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Jak nakonfigurovat monitorování a metriky pro Azure bastionu pomocí Azure Monitor
 
@@ -72,7 +72,7 @@ Využití paměti můžete zobrazit napříč každou instancí bastionu a rozd�
 
 #### <a name="session-count"></a>Počet relací
 
-Můžete zobrazit počet aktivních relací na instanci bastionu agregované napříč jednotlivými typy relací (RDP a SSH). Každý bastionu Azure může podporovat rozsah aktivních relací RDP a SSH. Monitorování této metriky vám pomůže pochopit, jestli potřebujete upravit počet instancí, na kterých běží služba bastionu. Další informace o počtu relací, které Azure bastionu může podporovat, najdete v tématu [Nejčastější dotazy k Azure bastionu](bastion-faq.md). Další informace o tom, které bastionu SKU podporují škálování instance, najdete v tématu [About bastionu SKU](bastion-connect-vm-scale-set.md).
+Můžete zobrazit počet aktivních relací na instanci bastionu agregované napříč jednotlivými typy relací (RDP a SSH). Každý bastionu Azure může podporovat rozsah aktivních relací RDP a SSH. Monitorování této metriky vám pomůže pochopit, jestli potřebujete upravit počet instancí, na kterých běží služba bastionu. Další informace o počtu relací, které Azure bastionu může podporovat, najdete v tématu [Nejčastější dotazy k Azure bastionu](bastion-faq.md).
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="Snímek obrazovky znázorňující počet relací":::
 

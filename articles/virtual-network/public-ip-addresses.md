@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806951"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418058"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -54,7 +54,7 @@ Veřejné IP adresy standardní SKU:
 - Musí mít nastavitelný časový limit nečinnosti příchozího výstupního toku 4-30 minut, výchozí hodnota je 4 minuty a pevný časový limit odchozího pocházejícího toku je 4 minuty.
 - Zabezpečení je ve výchozím nastavení a uzavřeno pro příchozí provoz. Povoluje výpis příchozích přenosů se [skupinou zabezpečení sítě](./network-security-groups-overview.md#network-security-groups).
 - Přiřazeno k síťovým rozhraním, standardním veřejným nástrojům pro vyrovnávání zatížení nebo aplikačním branám. Další informace o službě Load Balancer úrovně Standard najdete v tématu [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Může být redundantní v zóně (v inzerci ze všech 3 zón), oblastí (zaručená v konkrétní předem vybrané zóně dostupnosti) nebo v žádné zóně (nesouvisí s konkrétní předem vybranou zónou dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Redundantní IP adresy zóny se dají vytvářet jenom v [oblastech, kde jsou živé zóny dostupnosti tři](../availability-zones/az-region.md) .** IP adresy vytvořené před živými zónami nebudou zóny redundantní.
+- Může být redundantní v zóně (inzerované ze všech 3 zón), oblastí (zaručená v konkrétní předem vybrané zóně dostupnosti) nebo v žádné zóně (nesouvisí s konkrétní předem vybranou zónou dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Redundantní IP adresy zóny se dají vytvářet jenom v [oblastech, kde jsou živé zóny dostupnosti tři](../availability-zones/az-region.md) .** IP adresy vytvořené před živými zónami nebudou zóny redundantní.
 - Dá se použít jako IP adresy front-endu pro služby [Vyrovnávání zatížení mezi oblastmi](../load-balancer/cross-region-overview.md) (funkce Preview).
  
 > [!NOTE]
@@ -162,14 +162,17 @@ Další informace o skladových položkách nástroje pro vyrovnávání zatíž
 * Virtuální sítě Azure
 * Místní sítě (y). 
 
-K VPN Gateway je přiřazena veřejná IP adresa, která umožňuje komunikaci se vzdálenou sítí. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
+K VPN Gateway je přiřazena veřejná IP adresa, která umožňuje komunikaci se vzdálenou sítí. 
+
+* Přiřaďte **dynamickou** veřejnou IP adresu v rámci konfigurace front-endu VPNGW 1-5 SKU.
+* Přiřaďte **statickou** standardní veřejnou IP adresu ke konfiguraci front-endu VPNGWAZ 1-5 SKU.
 
 ## <a name="application-gateways"></a>brány Application Gateway.
 
 Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. 
 
 * Přiřaďte konfiguraci front-endu služby Application Gateway v1 **dynamické** základní veřejné IP adresy. 
-* Přiřaďte **statickou** adresu Standard SKU pro konfiguraci front-endu v2.
+* Přiřaďte **statickou** standardní veřejnou IP adresu konfiguraci front-endu v2.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

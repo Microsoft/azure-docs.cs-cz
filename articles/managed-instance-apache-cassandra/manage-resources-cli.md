@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 3cd5fdbf6cdc504a1290c8fbd80cf89cf85ce714
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68b1ca625b5c8bd7ec195b89de63485c542e6691
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744888"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419061"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Správa spravované instance Azure pro prostředky Apache Cassandra pomocí Azure CLI (Preview)
 
@@ -24,9 +24,9 @@ Tento článek popisuje běžné příkazy pro automatizaci správy spravované 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Tento článek vyžaduje Azure CLI verze 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
-
 > [!IMPORTANT]
+> Tento článek vyžaduje Azure CLI verze 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
+>
 > Správa spravované instance Azure pro prostředky Apache Cassandra se nedá přejmenovat, protože tato funkce je v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.
 
 ## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Spravovaná instance Azure pro clustery Apache Cassandra

@@ -9,6 +9,7 @@
     - name: Vytvoření clusteru – portál
       href: create-cluster-portal.md
     - name: Vytvoření clusteru – rozhraní příkazového řádku
+      displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
     - name: Konfigurace hybridního clusteru
       href: configure-hybrid-cluster.md
@@ -17,12 +18,14 @@
 - name: Koncepty
   items:
     - name: Nejčastější dotazy
+      displayName: 'cost, region, monitor, backup'
       href: faq.md
     - name: Spravovaná instance vs Azure Cosmos DB rozhraní API Cassandra
       href: compare-cosmosdb-managed-instance.md
 - name: Návody
   items:
     - name: Správa pomocí Azure CLI
+      displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
     - name: Vizualizace metrik v Prometheus pomocí Grafana
       href: visualize-prometheus-grafana.md

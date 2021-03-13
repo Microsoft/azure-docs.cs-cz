@@ -1,14 +1,14 @@
 ---
 title: Správa hybridní infrastruktury ve velkém měřítku pomocí ARC Azure
 description: Naučte se efektivně spravovat počítače zákazníků a Kubernetes clustery mimo Azure.
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336611"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419316"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Správa hybridní infrastruktury ve velkém měřítku pomocí ARC Azure
 
@@ -18,9 +18,9 @@ Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k di
 
 U [serverů s podporou ARC Azure](../../azure-arc/servers/overview.md)mohou zákazníci spravovat všechny počítače se systémem Windows a Linux hostované mimo Azure ve své podnikové síti stejným způsobem jako při správě nativních virtuálních počítačů Azure. Propojením hybridního počítače s Azure se počítač stane připojeným a bude se v Azure považovat za prostředek. Poskytovatelé služeb pak můžou spravovat tyto počítače mimo Azure spolu s prostředky Azure svých zákazníků.
 
-[Azure ARC s povoleným Kubernetes (Preview)](../../azure-arc/kubernetes/overview.md) umožňuje zákazníkům připojit a nakonfigurovat Kubernetes clustery v rámci nebo mimo Azure. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal s ID Azure Resource Manager a spravovanou identitou. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure.
+[Kubernetes s povoleným obloukem Azure](../../azure-arc/kubernetes/overview.md) umožňuje zákazníkům připojit a nakonfigurovat clustery Kubernetes v rámci nebo mimo Azure. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal s ID Azure Resource Manager a spravovanou identitou. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure.
 
-Toto téma poskytuje přehled o tom, jak můžou poskytovatelé služeb používat servery s podporou ARC Azure a Kubernetes (Preview), a to škálovatelným způsobem, jak spravovat hybridní prostředí svých zákazníků s viditelností ve všech spravovaných klientech zákazníků.
+Toto téma poskytuje přehled o tom, jak můžou poskytovatelé služeb používat servery s podporou ARC Azure a Kubernetes s povoleným rozšířením Azure ARC škálovatelným způsobem pro správu hybridního prostředí svých zákazníků, s viditelností ve všech spravovaných klientech zákazníků.
 
 > [!TIP]
 > I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
@@ -33,10 +33,7 @@ Při zobrazení prostředků delegovaného předplatného v Azure Portal uvidít
 
 Můžete například [zajistit, aby se stejná sada zásad používala v hybridních počítačích zákazníků](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Pomocí Azure Security Center můžete také monitorovat dodržování předpisů napříč hybridními prostředími vašich zákazníků nebo [pomocí Azure monitor shromažďovat data přímo z hybridních počítačů](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) do log Analyticsho pracovního prostoru. [Rozšíření virtuálních počítačů](../../azure-arc/servers/manage-vm-extensions.md) je možné nasadit na virtuální počítače, které nejsou v Azure s Windows a Linux, což zjednodušuje správu hybridních počítačů zákazníka.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Správa hybridních clusterů Kubernetes se škálováním s povoleným Kubernetes ARC Azure (Preview)
-
-> [!NOTE]
-> Služba Azure ARC s povoleným Kubernetes je aktuálně ve verzi Preview. V tuto chvíli to nedoporučujeme pro produkční úlohy.
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Správa hybridních clusterů Kubernetes ve velkém měřítku s povoleným Kubernetes ARC Azure
 
 Můžete spravovat clustery Kubernetes [připojené k předplatnému zákazníka pomocí ARC Azure](../../azure-arc/kubernetes/connect-cluster.md), stejně jako kdyby běžely v Azure.
 
@@ -48,9 +45,8 @@ Připojené clustery můžete také monitorovat pomocí Azure Monitor a [pomocí
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte Jumpstarts a ukázky v [úložišti GitHub Azure ARC](https://github.com/microsoft/azure_arc). 
+- Prozkoumejte Jumpstarts a ukázky v [úložišti GitHub Azure ARC](https://github.com/microsoft/azure_arc).
 - Přečtěte si o [podporovaných scénářích pro servery s podporou ARC Azure](../../azure-arc/servers/overview.md#supported-scenarios).
 - Přečtěte si o [Kubernetes distribucích podporovaných Azure ARC](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).
 - Naučte se, jak [nasadit zásadu ve velkém měřítku](policy-at-scale.md).
 - Naučte se [používat protokoly Azure monitor ve velkém měřítku](monitor-at-scale.md).
-

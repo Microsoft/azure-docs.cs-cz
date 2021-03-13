@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034523"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418177"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Řízení účtů služby Azure AD
 
@@ -32,7 +32,7 @@ V Azure Active Directory (Azure AD) Existují tři typy účtů služeb: [spravo
 
 Před vytvořením účtu služby nebo registrací aplikace, zdokumentujte informace o klíčích účtu služby. S dokumentovanými informacemi je snazší efektivně monitorovat a řídit účet. Doporučujeme shromažďovat následující data a sledovat je v centralizované databázi správy konfigurace (CMDB).
 
-| Data| Popis| Podrobnosti |
+| Data| Description| Podrobnosti |
 | - | - | - |
 | Vlastník| Uživatel nebo skupina, které jsou pro správu a monitorování účtu služby účtovány.| Zřiďte vlastníka s potřebnými oprávněními ke sledování účtu a implementaci způsobu, jak zmírnit problémy. Zmírnění problémů může provést vlastník nebo prostřednictvím žádosti. |
 | Účel| Jak bude účet použit.| Namapujte účet služby na konkrétní službu, aplikaci nebo skript. Vyhněte se vytváření účtů služeb s vícenásobným použitím. |
@@ -41,7 +41,7 @@ Před vytvořením účtu služby nebo registrací aplikace, zdokumentujte infor
 | Posouzení rizik| Rizika a dopad na firmu v případě ohrožení zabezpečení účtu.| Tyto informace slouží k zúžení rozsahu oprávnění a určení toho, kdo má mít přístup k informacím o účtu. |
 | Období pro kontrolu| Plán, ve kterém má být účet služby přezkoumán vlastníkem.| Toto použijte k naplánování kontroly komunikace a recenzí. Dokument, co se má stát v případě, že kontrola není provedena určitou dobu po plánovaném období kontroly. |
 | Doba platnosti| Předpokládaná maximální doba života účtu.| Tuto akci použijte k naplánování komunikace s vlastníkem a k jejich konečnému zakázání pak odstraňte účty. Pokud je to možné, nastavte datum vypršení platnosti přihlašovacích údajů, kde se přihlašovací údaje nedají automaticky navrátit. |
-| Název| Standardizovaný název účtu| Vytvořte schéma pojmenování pro všechny účty služeb, abyste mohli snadno vyhledávat, třídit a filtrovat účty služeb. |
+| Name| Standardizovaný název účtu| Vytvořte schéma pojmenování pro všechny účty služeb, abyste mohli snadno vyhledávat, třídit a filtrovat účty služeb. |
 
 
 ## <a name="use-the-principle-of-least-privileges"></a>Použijte princip nejnižších oprávnění.
@@ -172,7 +172,7 @@ Zřízení procesu revize za účelem zajištění pravidelného přezkoumání 
 
 **Procesy zrušení zřízení by měly zahrnovat následující úkoly.**
 
-1. Po zrušení zřízení přidružené aplikace nebo skriptu [monitorujte přihlášení](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) a přístup k prostředkům pomocí účtu služby.
+1. Po zrušení zřízení přidružené aplikace nebo skriptu [monitorujte přihlášení](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) a přístup k prostředkům pomocí účtu služby.
 
    * Pokud je účet stále aktivní, před provedením následujících kroků určete, jak se používá.
  

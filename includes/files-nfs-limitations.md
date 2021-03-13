@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620935"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439069"
 ---
 Ve verzi Preview má systém souborů NFS tato omezení:
 
@@ -25,6 +25,7 @@ Ve verzi Preview má systém souborů NFS tato omezení:
 - Dostupné jenom pro úroveň Premium.
 - Sdílené složky NFS akceptují jenom číselné UID/GID. Chcete-li klientům zabránit, aby odesílali alfanumerické UID/GID, měli byste zakázat mapování ID.
 - Sdílené složky se můžou při použití privátních odkazů připojit jenom z jednoho účtu úložiště na samostatném virtuálním počítači. Pokus o připojení sdílených složek z jiných účtů úložiště se nezdaří.
+- Doporučuje se spoléhat na oprávnění přiřazená k primární skupině. V některých případech může mít oprávnění přidělená neprimární skupině uživatele kvůli známé chybě přístup odepřít.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Azure Storage funkce ještě nejsou podporované.
 
@@ -35,4 +36,4 @@ Pro sdílené složky NFS nejsou k dispozici také následující funkce služby
 - Snímky
 - Obnovitelné odstranění
 - Úplná podpora šifrování při přenosu (podrobnosti najdete v tématu [zabezpečení NFS](../articles/storage/files/storage-files-compare-protocols.md#security))
-- Azure File Sync (k dispozici pouze pro klienty se systémem Windows, který systém souborů NFS 4,1 nepodporuje)
+- Synchronizace souborů Azure (k dispozici pouze pro klienty se systémem Windows, který systém souborů NFS 4,1 nepodporuje)

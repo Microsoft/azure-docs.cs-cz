@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020214"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419587"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
 
@@ -88,7 +88,7 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normali
 ]
 ```
 
-## <a name="image-related-skills"></a>Dovednosti související s obrázky
+## <a name="image-related-skills"></a>Dovednosti související s obrázkem
 
 K dispozici jsou dva integrované příhlasné dovednosti, které přijímají obrázky jako vstup: analýza [OCR](cognitive-search-skill-ocr.md) a [obrázku](cognitive-search-skill-image-analysis.md). 
 
@@ -213,6 +213,77 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Předávání imagí vlastním dovednostím
+
+Pro scénáře, kdy potřebujete vlastní dovednost pro práci na obrázcích, můžete předat obrázky vlastní dovednosti a nechat ji vracet text nebo obrázky. Pracovní postup, který zpracovává ukázkovou bitovou kopii [Pythonu](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) . Následující dovednosti je z ukázky.
+
+Následující dovednosti přebírá normalizovanou bitovou kopii (získanou během odhalující dokumentu) a produkuje výstupy řezů obrázku.
+
+#### <a name="sample-skillset"></a>Ukázka dovednosti
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Vlastní dovednost
+
+Vlastní dovednosti jsou pro dovednosti vnější. V tomto případě se jedná o kód Pythonu, který první smyčka důkladně prochází dávkou záznamů žádostí ve formátu vlastní dovednosti a pak převede řetězec kódovaný ve formátu base64 na obrázek.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+Podobně jako vrácení obrázku vrátí řetězec kódovaný v kódování Base64 v rámci objektu JSON s `$type` vlastností `file` .
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Viz také
 + [Vytvořit indexer (REST)](/rest/api/searchservice/create-indexer)
@@ -221,3 +292,4 @@ Pokud potřebujete transformovat normalizované souřadnice na původní souřad
 + [Dovednost sloučení textu](cognitive-search-skill-textmerger.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)
++ [Postup předávání imagí vlastním dovednostím](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

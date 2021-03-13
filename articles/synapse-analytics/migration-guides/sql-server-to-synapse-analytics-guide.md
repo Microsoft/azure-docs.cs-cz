@@ -2,26 +2,24 @@
 title: 'SQL Server ke službě Azure synapse Analytics: Průvodce migrací'
 description: Podle tohoto průvodce migrujte své databáze SQL do fondu SQL Azure synapse Analytics.
 ms.service: synapse-analytics
-ms.subservice: ''
-ms.custom: ''
-ms.devlang: ''
+ms.subservice: sql
 ms.topic: conceptual
 author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 09914b409c7d8412f6ba30d4412e28e264bd50f6
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 9a7888d3ccf7e033f15f184227c65c746780aa12
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225738"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418024"
 ---
 # <a name="migration-guide-sql-server-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Průvodce migrací: SQL Server do vyhrazeného fondu SQL ve službě Azure synapse Analytics 
 Následující části poskytují přehled o tom, co je součástí migrace stávajícího řešení SQL Server datového skladu do fondu SQL Azure synapse Analytics.
 
 ## <a name="overview"></a>Přehled
-Před migrací byste měli ověřit, že je Azure synapse Analytics nejlepší řešení pro vaše úlohy. Azure synapse Analytics je distribuovaný systém navržený tak, aby prováděl analýzy velkých objemů dat. Migrace na Azure synapse Analytics vyžaduje některé změny v návrhu, které se nedají obtížně pochopit, ale její implementace může nějakou dobu trvat. Pokud vaše firma vyžaduje datový sklad na podnikové úrovni, přináší to úsilí. Pokud ale výkon služby Azure synapse Analytics nepotřebujete, je cenově výhodnější používat [SQL Server](https://docs.microsoft.com/sql/sql-server/) nebo [Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/).
+Před migrací byste měli ověřit, že je Azure synapse Analytics nejlepší řešení pro vaše úlohy. Azure synapse Analytics je distribuovaný systém navržený tak, aby prováděl analýzy velkých objemů dat. Migrace na Azure synapse Analytics vyžaduje některé změny návrhu, které není obtížné porozumět, ale to může nějakou dobu trvat. Pokud vaše firma vyžaduje datový sklad na podnikové úrovni, přináší to úsilí. Pokud ale výkon služby Azure synapse Analytics nepotřebujete, je cenově výhodnější použít [SQL Server](/sql/sql-server/) nebo [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview).
 
 Při používání Azure synapse Analytics zvažte následující:
 - Mít jeden nebo více terabajtů dat.
@@ -44,10 +42,10 @@ Pokud chcete migrovat SQL Server do služby Azure synapse Analytics, ujistěte s
 - [Vyhrazený fond SQL](../get-started-create-workspace.md) ve službě Azure synapse Workspace. 
 
 ## <a name="pre-migration"></a>Před migrací
-Až se rozhodnete migrovat existující řešení do Azure synapse Analytics, je důležité migraci naplánovat před zahájením práce. Hlavním cílem plánování je zajistit, aby vaše data, schémata tabulek a kód byly kompatibilní se službou Azure synapse Analytics. Existují některé rozdíly v kompatibilitě mezi vaším aktuálním systémem a SQL Data Warehouse, které budete potřebovat k obejít. Navíc migrace velkých objemů dat do Azure trvá déle. Pečlivé plánování urychlí proces získávání vašich dat do Azure. Dalším důležitým cílem plánování je upravit návrh, abyste měli jistotu, že vaše řešení plně využívá vysoký výkon dotazů, který je navržený tak, aby Azure synapse Analytics poskytoval. Návrh datových skladů pro škálování přináší jedinečné vzory návrhu, takže tradiční přístupy nejsou vždycky nejlepší. I když je možné provést některé úpravy návrhu po migraci, změny v předchozí části procesu vám ušetří čas později.
+Až se rozhodnete migrovat existující řešení do služby Azure synapse Analytics, je důležité migraci naplánovat před zahájením práce. Hlavním cílem plánování je zajistit, aby vaše data, schémata tabulek a kód byly kompatibilní se službou Azure synapse Analytics. Existují některé rozdíly v kompatibilitě mezi vaším aktuálním systémem a SQL Data Warehouse, které budete potřebovat k obejít. Migrace velkého objemu dat do Azure také trvá déle. Pečlivé plánování urychlí proces získávání vašich dat do Azure. Dalším důležitým cílem plánování je upravit návrh, abyste měli jistotu, že vaše řešení plně využívá vysoký výkon dotazů, který je navržený tak, aby Azure synapse Analytics poskytoval. Návrh datových skladů pro škálování přináší jedinečné vzory návrhu, takže tradiční přístupy nejsou vždycky nejlepší. I když je možné provést některé úpravy návrhu po migraci, změny v předchozí části procesu vám ušetří čas později.
 
 ## <a name="azure-synapse-pathway"></a>Synapse cest k Azure
-Jedním z uživatelů s kritickými blokujícími, kteří čelí, je překlad kódu SQL při migraci z jednoho systému do jiného. [Azure synapse cest](https://docs.microsoft.com/sql/tools/synapse-pathway/azure-synapse-pathway-overview) vám pomůže upgradovat na moderní platformu datového skladu automatizací překladu kódu stávajícího datového skladu. Je to bezplatný, intuitivní a snadno použitelný nástroj, který automatizuje překlad kódu a umožňuje rychlejší migraci na Azure synapse Analytics.
+Jedním z uživatelů s kritickými blokujícími, kteří čelí, je překlad kódu SQL při migraci z jednoho systému do jiného. [Azure synapse cest](/sql/tools/synapse-pathway/azure-synapse-pathway-overview) vám pomůže upgradovat na moderní platformu datového skladu automatizací překladu kódu stávajícího datového skladu. Je to bezplatný, intuitivní a snadno použitelný nástroj, který automatizuje překlad kódu a umožňuje rychlejší migraci na Azure synapse Analytics.
 
 ## <a name="migrate"></a>Migrate
 Úspěšná migrace vyžaduje, abyste provedli migraci schémat, kódu a dat tabulek. Podrobnější pokyny k těmto tématům najdete v následujících tématech:

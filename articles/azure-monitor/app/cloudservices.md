@@ -4,12 +4,12 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573873"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419231"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../agents/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -52,9 +52,8 @@ Telemetrie z vaší aplikace se ukládají, analyzují a zobrazují v prostředk
 Každý prostředek patří do skupiny prostředků. Skupiny prostředků se používají ke správě nákladů, k udělení přístupu členům týmu a k nasazení aktualizací v jedné koordinované transakci. Můžete například [napsat skript, který nasadí](../../azure-resource-manager/templates/deploy-powershell.md) cloudovou službu Azure a její Application Insights monitorování prostředků v jedné operaci.
 
 ### <a name="resources-for-components"></a>Prostředky pro komponenty
-Pro každou komponentu aplikace doporučujeme vytvořit samostatný prostředek. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](./overview-dashboard.md) , který spojuje klíčové grafy ze všech komponent, abyste je mohli porovnat a monitorovat společně v jednom zobrazení. 
 
-Alternativním přístupem je odeslat telemetrii z více než jedné role ke stejnému prostředku, ale do každé položky telemetrie, která identifikuje její zdrojovou roli, [přidejte vlastnost Dimension](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) . V tomto přístupu grafy metrik, jako jsou například výjimky, obvykle zobrazují agregaci počtů z různých rolí, ale v případě potřeby můžete graf rozdělit podle identifikátoru role. Můžete také filtrovat hledání podle stejné dimenze. Tato alternativa usnadňuje zobrazení všeho ve stejnou chvíli, ale může také vést k nejasnostem mezi rolemi.
+Doporučujeme [Přidat vlastnost dimenze do každé položky telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , která identifikuje její zdrojovou roli. V tomto přístupu grafy metrik, jako jsou například výjimky, obvykle zobrazují agregaci počtů z různých rolí, ale v případě potřeby můžete graf rozdělit podle identifikátoru role. Můžete také filtrovat hledání podle stejné dimenze. Tato alternativa usnadňuje zobrazení všeho ve stejnou chvíli, ale může také vést k nejasnostem mezi rolemi.
 
 Telemetrická data prohlížeče jsou obvykle součástí stejného prostředku jako u příslušné serverové webové role.
 

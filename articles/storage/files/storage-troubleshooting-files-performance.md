@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737626"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417667"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Řešení potíží s výkonem Azure File shares
 
@@ -39,7 +39,8 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete na po
     U standardních sdílených složek se při omezení požadavku zaprotokolují následující typy odpovědí:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     U sdílených složek úrovně Premium se v případě omezení požadavku zaprotokolují následující typy odpovědí:
 
@@ -244,7 +245,8 @@ K potvrzení můžete použít metriky Azure na portálu –
     Pro standardní sdílené složky vyberte následující typy odpovědí:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Pro sdílené složky Premium vyberte následující typy odpovědí:
 

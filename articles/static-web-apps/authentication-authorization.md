@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826539"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419282"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro službu Azure Static Web Apps ve verzi Preview
 
@@ -62,7 +62,7 @@ Pozvánky jsou specifické pro jednotlivé zprostředkovatele autorizace, takže
 | Twitter                | username          |
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na prostředek statického Web Apps.
-1. V části _Nastavení_klikněte na **Správa rolí**.
+1. V části _Nastavení_ klikněte na **Správa rolí**.
 1. Klikněte na tlačítko **pozvat** .
 1. V seznamu možností vyberte _poskytovatele autorizace_ .
 1. Do pole s _podrobnostmi pozvánky_ přidejte buď uživatelské jméno nebo e-mailovou adresu příjemce.
@@ -84,7 +84,7 @@ Když uživatel klikne na odkaz v rámci pozvánky, zobrazí se výzva, abyste s
 ### <a name="update-role-assignments"></a>Aktualizovat přiřazení rolí
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na prostředek statického Web Apps.
-1. V části _Nastavení_klikněte na **Správa rolí**.
+1. V části _Nastavení_ klikněte na **Správa rolí**.
 1. V seznamu klikněte na uživatele.
 1. V poli _role_ upravte seznam rolí.
 1. Klikněte na tlačítko **aktualizovat** .
@@ -92,7 +92,7 @@ Když uživatel klikne na odkaz v rámci pozvánky, zobrazí se výzva, abyste s
 ### <a name="remove-user"></a>Odebrání uživatele
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na prostředek statického Web Apps.
-1. V části _Nastavení_klikněte na **Správa rolí**.
+1. V části _Nastavení_ klikněte na **Správa rolí**.
 1. Vyhledejte uživatele v seznamu.
 1. Zaškrtněte políčko na řádku uživatele.
 1. Klikněte na tlačítko **Odstranit**.
@@ -145,19 +145,18 @@ Například pro přihlášení pomocí GitHubu můžete zahrnout přihlašovací
 
 Pokud se rozhodnete podporovat více než jednoho poskytovatele, musíte pro každý z nich vystavit odkaz na konkrétního poskytovatele.
 
-[Pravidlo směrování](routes.md) můžete použít k mapování výchozího poskytovatele na přívětivou trasu, jako je _/Login_.
+[Pravidlo směrování](./configuration.md#routes) můžete použít k mapování výchozího poskytovatele na přívětivou trasu, jako je _/Login_.
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>Přesměrování po přihlášení
 
 Pokud chcete, aby se uživatel po přihlášení vrátil na konkrétní stránku, zadejte adresu URL v `post_login_redirect_uri` parametru řetězce dotazu.
-
 
 ## <a name="logout"></a>Odhlásit
 
@@ -167,12 +166,12 @@ Pokud chcete, aby se uživatel po přihlášení vrátil na konkrétní stránku
 <a href="/.auth/logout">Log out</a>
 ```
 
-[Pravidlo směrování](routes.md) můžete použít k mapování popisné trasy, jako je _/logout_.
+[Pravidlo směrování](./configuration.md#routes) můžete použít k mapování popisné trasy, jako je _/logout_.
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

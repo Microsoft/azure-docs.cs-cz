@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 1bccfa4d36ad39aec79a50c8a6b6c50260370223
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235023"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418891"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Vrácení sémantické odpovědi v Azure Kognitivní hledání
 
@@ -63,7 +63,7 @@ Parametr "searchFields" je velmi důležitý pro vrácení vysoce kvalitní odpo
 
 + Řetězec dotazu nesmí mít hodnotu null a měl by být formulován jako otázka. V této verzi Preview musí být "queryType" a "queryLanguage" nastavené přesně tak, jak je znázorněno v příkladu.
 
-+ Parametr "searchFields" Určuje, která pole poskytují tokeny modelu extrakce. Během příjmu tokenu se používá maximálně 20 000 tokenů, takže můžete spustit seznam polí s stručnými poli a potom průběh na pole s textem s textem. Podrobné pokyny k nastavení tohoto pole naleznete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields).
++ Parametr "searchFields" Určuje, která pole poskytují tokeny modelu extrakce. Nezapomeňte nastavit tento parametr. Musíte mít alespoň jedno pole řetězce, ale zahrňte jakékoli pole řetězce, které považujete za užitečné při poskytování odpovědi. Do modelu se předává jenom přibližně 8 000 tokenů na dokument. Zahajte seznam polí s stručnými poli a pak průběh do polí s textem v textu. Podrobné pokyny k nastavení tohoto pole naleznete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields).
 
 + Pro "odpovědi" je základní konstrukce parametrů `"answers": "extractive"` , kde je výchozí počet vrácených odpovědí jedna. Počet odpovědí můžete zvýšit přidáním počtu, maximálně po pěti.  Bez ohledu na to, jestli potřebujete víc než jednu odpověď, závisí na uživatelském prostředí vaší aplikace a na tom, jak se mají vykreslovat výsledky.
 

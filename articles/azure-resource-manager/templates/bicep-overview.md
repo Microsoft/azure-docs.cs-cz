@@ -3,12 +3,12 @@ title: Bicep jazyk pro šablony Azure Resource Manager
 description: Popisuje jazyk bicep pro nasazení infrastruktury do Azure prostřednictvím šablon Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 599cb378da51c5d13e7db3cf45cacf750c5843cc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232966"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419826"
 ---
 # <a name="what-is-bicep-preview"></a>Co je bicep (Preview)?
 
@@ -24,7 +24,7 @@ Po instalaci nástrojů Vyzkoušejte [kurz bicep](./bicep-tutorial-create-first-
 
 Chcete-li zobrazit ekvivalentní soubory JSON a bicep vedle sebe, přečtěte si téma [bicep Playground](https://aka.ms/bicepdemo).
 
-Pokud máte existující šablonu ARM, kterou byste chtěli převést na bicep, přečtěte si téma [dekompilace JSON do bicep](compare-template-syntax.md#decompile-json-to-bicep).
+Pokud máte existující šablonu ARM, kterou byste chtěli převést na bicep, přečtěte si téma [Převod šablon ARM mezi JSON a bicep](bicep-decompile.md).
 
 ## <a name="bicep-improvements"></a>Vylepšení bicep
 
@@ -89,7 +89,7 @@ Bicep je DSL zaměřená na nasazení kompletních řešení do Azure. Splnění
 
 Stále fungují přesně tak, jak mají. Nemusíte dělat žádné změny. Budeme dál podporovat základní jazyk JSON šablony ARM. Soubory bicep se zkompiluje do formátu JSON a tento JSON se pošle do Azure pro nasazení.
 
-Až budete připraveni, můžete [soubory JSON převést na bicep](compare-template-syntax.md#decompile-json-to-bicep).
+Až budete připraveni, můžete [soubory JSON převést na bicep](bicep-decompile.md).
 
 ## <a name="next-steps"></a>Další kroky
 

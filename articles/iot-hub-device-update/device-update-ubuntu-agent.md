@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 245998fb7229c483fb7f664ea000b62abf07eda9
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149779"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418636"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí agenta balíčku na serveru Ubuntu 18,04 x64
 
@@ -128,9 +128,11 @@ Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalac
 
 ## <a name="import-update"></a>Importovat aktualizaci
 
-1. Stáhněte si následující [soubor manifestu apt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-apt-manifest.json) a [importujte soubor manifestu](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.1-importManifest.json). Tento manifest apt nainstaluje nejnovější dostupnou verzi nástroje `libcurl4-doc package` do vašeho zařízení.
+1. Přejděte na vydaná [vydání aktualizací zařízení](https://github.com/Azure/iot-hub-device-update/releases) na GitHubu a klikněte na rozevírací seznam "prostředky".
 
-   Alternativně můžete stáhnout tento [soubor manifestu apt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-7.58-apt-manifest.json) a [importovat soubor manifestu](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-2-2.0.1-importManifest.json). Tím se do zařízení nainstaluje konkrétní verze v 7.58.0 `libcurl4-doc package` .
+3. `apt-update-import-samples.zip`Kliknutím na něj si stáhněte.
+
+5. Extrahujte obsah složky, abyste zjistili různé ukázky aktualizací a jejich odpovídající manifesty importu. 
 
 2. V Azure Portal na levém navigačním panelu v IoT Hub vyberte možnost aktualizace zařízení v části Automatická správa zařízení.
 
@@ -138,7 +140,10 @@ Přečtěte si licenčních podmínek před použitím balíčku. Vaše instalac
 
 4. Vyberte + Importovat novou aktualizaci.
 
-5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte importovaný manifest, který jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte soubor aktualizace manifestu apt, který jste předtím stáhli.
+5. V části vyberte soubor manifestu pro import vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-package-update-1.0.1-importManifest.json` importovat manifest ze složky, kterou jste si dříve stáhli. Potom v části vyberte jeden nebo více souborů aktualizace vyberte ikonu složky nebo textové pole. Zobrazí se dialogové okno pro výběr souboru. Vyberte `sample-1.0.1-libcurl4-doc-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste si dříve stáhli.
+Tato aktualizace nainstaluje nejnovější dostupnou verzi nástroje `libcurl4-doc package` do zařízení.
+
+   Alternativně můžete vybrat soubor `sample-package-update-2-2.0.1-importManifest.json` importu manifestu a `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste předtím stáhli. Tím se do zařízení nainstaluje konkrétní verze v 7.58.0 `libcurl4-doc package` .
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Snímek obrazovky znázorňující výběr aktualizačního souboru" lightbox="media/import-update/select-update-files.png":::
 
@@ -213,9 +218,9 @@ Nyní jste dokončili úspěšnou kompletní aktualizaci balíčku pomocí aktua
 
 ## <a name="bonus-steps"></a>Bonusové kroky
 
-1. Stáhněte si následující [soubor manifestu apt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-remove-apt-manifest.json) a [importujte soubor manifestu](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.2-importManifest.json). Tento manifest apt odebere instalaci `libcurl4-doc package` z vašeho zařízení.
-
 1. Opakujte oddíly import aktualizace a nasadit aktualizaci.
+
+3. Během kroku import aktualizace vyberte `sample-package-update-1.0.2-importManifest.json` importovat soubor manifestu a `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` soubor aktualizace manifestu apt ze složky, kterou jste si dříve stáhli. Tato aktualizace odebere `libcurl4-doc package` z vašeho zařízení instalaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

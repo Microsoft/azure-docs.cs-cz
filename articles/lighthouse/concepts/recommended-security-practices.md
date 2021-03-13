@@ -1,14 +1,14 @@
 ---
 title: Doporučené postupy zabezpečení
 description: Při používání Azure Lighthouse je důležité vzít v úvahu zabezpečení a řízení přístupu.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843719"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419299"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení
 
@@ -17,7 +17,7 @@ Při používání [Azure Lighthouse](../overview.md)je důležité vzít v úva
 > [!TIP]
 > Tato doporučení se vztahují také na podniky, které [spravují víc tenantů](enterprise.md) pomocí Azure Lighthouse.
 
-## <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication služby Azure AD
+## <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadování vícefaktorového ověřování Azure AD
 
 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (označované také jako dvoustupňové ověřování) pomáhají zabránit útočníkům v získání přístupu k účtu tím, že vyžadují více kroků ověřování. Měli byste vyžadovat Multi-Factor Authentication pro všechny uživatele ve vašem spravovaném tenantovi, včetně uživatelů, kteří budou mít přístup k delegovaným zákaznickým prostředkům.
 
@@ -47,5 +47,6 @@ Mějte na paměti, že když zakoupíte [zákazníky prostřednictvím veřejné
 
 ## <a name="next-steps"></a>Další kroky
 
+- Projděte si [základní informace o zabezpečení](../security-baseline.md) , abyste zjistili, jak se na Azure Lighthouse vztahují doprovodné materiály k Azure Security test.
 - [Nasazení služby Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 - Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).

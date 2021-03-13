@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0531305364b3e6f914a6de00614a3f9af4be3531
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688565"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418772"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -74,6 +74,18 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblast
 | Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 Kubernetes s povoleným ARC Azure aktuálně [podporuje identitu přiřazenou systémem](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Certifikát identity spravované služby používá všechny agenti Kubernetes s podporou ARC Azure pro komunikaci s Azure.
+
+### <a name="azure-arc-enabled-servers"></a>Servery s podporou služby Azure Arc
+
+| Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Přiřazená systémem | ![K dispozici][check] | ![K dispozici][check] | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+
+Všechny servery s podporou ARC Azure mají identitu přiřazenou systémem. Identitu přiřazenou systémem nelze zakázat ani změnit na serveru s podporou ARC Azure. Další informace o tom, jak využívat spravované identity na serverech s podporou ARC Azure, najdete v následujících zdrojích informací:
+
+- [Ověřování u prostředků Azure pomocí serverů s povoleným ARC](../../azure-arc/servers/managed-identity-authentication.md)
+- [Použití spravované identity se servery s podporou ARC](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure Automanage
 

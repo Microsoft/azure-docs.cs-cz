@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609205"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417803"
 ---
 # <a name="ncast4_v3-series"></a>Řada NCasT4_v3 
 
@@ -46,6 +46,8 @@ NVIDIA NVLink Interconnect: podporováno<br>
 Aby bylo možné využít možnosti GPU pro virtuální počítače Azure NCasT4_v3-Series se systémem Windows nebo Linux, je nutné nainstalovat ovladače GPU NVIDIA.
 
 Ruční instalace ovladačů NVIDIA GPU najdete v tématu [instalace ovladače GPU řady N-Series pro Windows](./windows/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+
+Rozšíření ovladačů NVIDIA GPU pro Azure nasadí ovladače CUDA na virtuálních počítačích řady NCasT4_v3-Series. Pro úlohy grafiky a vizualizace ručně nainstalujte ovladače mřížky podporované Azure.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
