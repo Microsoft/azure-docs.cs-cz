@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391537"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613238"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Vyberte, jak autorizovat přístup k datům objektu BLOB v Azure Portal
 
@@ -66,9 +66,9 @@ Vlastní role mohou podporovat různé kombinace stejných oprávnění poskytov
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>Navigace do objektů BLOB v Azure Portal
 
-Pokud chcete zobrazit data objektů blob na portálu, přejděte k **přehledu** svého účtu úložiště a klikněte na odkazy pro **objekty blob**. Případně můžete přejít do části **BLOB Service** v nabídce.
+Pokud chcete zobrazit data objektů blob na portálu, přejděte k **přehledu** svého účtu úložiště a klikněte na odkazy pro **objekty blob**. Alternativně můžete přejít do části **Containers (kontejnery** ) v nabídce.
 
-:::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
+:::image type="content" source="media/authorize-data-operations-portal/blob-access-portal.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 ## <a name="determine-the-current-authentication-method"></a>Určení aktuální metody ověřování
 

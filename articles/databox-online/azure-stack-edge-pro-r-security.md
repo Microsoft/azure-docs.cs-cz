@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548637"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632029"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Zabezpečení a ochrana dat pro Azure Stack Edge pro R a Azure Stack Edge Mini R
 
@@ -133,7 +133,7 @@ Když se zařízení obnoví na pevný stav, na zařízení se provede zabezpeč
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
 
-- Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](azure-stack-edge-j-series-manage-storage-accounts.md) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
+- Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](azure-stack-edge-gpu-manage-storage-accounts.md) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
 
 ## <a name="manage-personal-information"></a>Správa osobních údajů
 
@@ -141,7 +141,7 @@ Služba Azure Stack Edge shromažďuje osobní údaje v následujících scéná
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-manage-personal-data.md)]
 
-Chcete-li zobrazit seznam uživatelů, kteří mají přístup nebo odstranit sdílenou složku, postupujte podle kroků v části [Správa sdílených složek na Azure Stack hraničních](azure-stack-edge-j-series-manage-shares.md)zařízeních.
+Chcete-li zobrazit seznam uživatelů, kteří mají přístup nebo odstranit sdílenou složku, postupujte podle kroků v části [Správa sdílených složek na Azure Stack hraničních](azure-stack-edge-gpu-manage-shares.md)zařízeních.
 
 Další informace najdete v zásadách ochrany osobních údajů Microsoftu na webu [Trust Center](https://www.microsoft.com/trustcenter).
 

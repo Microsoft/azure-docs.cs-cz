@@ -3,7 +3,7 @@ title: Použití castLabs k doručování licencí Widevine Azure Media Services
 description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou.
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: Juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan
-ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264483"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017048"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí castLabs
 
@@ -40,7 +40,7 @@ Pokud chcete přehrávat obsah streamování chráněný pomocí CENC (PlayReady
 
 Následující diagram znázorňuje architekturu integrace na nejvyšší úrovni Azure Media Services a castLabs.
 
-![spolupráci](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![integrace](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Typické nastavení systému
 
@@ -71,7 +71,7 @@ Následující tabulka popisuje token JWT v AMS.
 
 Následující tabulka popisuje token JWT v castLabs. 
 
-| Název | Popis |
+| Název | Description |
 | --- | --- |
 | optData |Řetězec JSON obsahující informace o vás. |
 | promítací |Řetězec JSON obsahující informace o assetu, licenční informace a práva k přehrávání. |

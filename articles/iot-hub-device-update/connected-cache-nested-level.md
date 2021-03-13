@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664562"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615376"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Ukázka scénáře nasazení ve verzi Preview služby Microsoft Connected cache: Azure IoT Edge brána se dvěma úrovněmi a odchozím neověřeným proxy serverem
 
@@ -31,7 +31,7 @@ Diagram níže popisuje situaci, kdy jedna Azure IoT Edge brána jako přímý p
 
     **Proměnné prostředí**
 
-    | Název                 | Hodnota                                       |
+    | Name                 | Hodnota                                       |
     | ----------------------------- | --------------------------------------------| 
     | CACHE_NODE_ID                 | Viz popis proměnné prostředí výše. |
     | CUSTOMER_ID                   | Viz popis proměnné prostředí výše. |
@@ -70,7 +70,7 @@ Diagram níže popisuje situaci, kdy jedna Azure IoT Edge brána jako přímý p
 ## <a name="child-gateway-configuration"></a>Konfigurace podřízené brány
 
 >[!Note]
->Pokud jste replikované kontejnery používali v konfiguraci ve vlastním privátním registru, bude nutné provést úpravy nastavení config. toml a modulu runtime v nasazení modulu. Další informace najdete v tématu [kurz – vytvoření hierarchie IoT Edge zařízení – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true) další podrobnosti.
+>Pokud jste replikované kontejnery používali v konfiguraci ve vlastním privátním registru, bude nutné provést úpravy nastavení config. toml a modulu runtime v nasazení modulu. Další informace najdete v tématu [kurz – vytvoření hierarchie IoT Edge zařízení – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) další podrobnosti.
 
 1. Upravte cestu k bitové kopii pro agenta Edge, jak je znázorněno v následujícím příkladu:
 

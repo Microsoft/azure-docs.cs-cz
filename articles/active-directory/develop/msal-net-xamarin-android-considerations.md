@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 11642480ac817b50d102e396b8ab5e200948a615
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063429"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199568"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Požadavky na konfiguraci a tipy pro řešení potíží pro Xamarin Android s MSAL.NET
 
@@ -74,26 +74,26 @@ protected override void OnActivityResult(int requestCode,
 }
 ```
 
-## <a name="update-the-android-manifest"></a>Aktualizace manifestu pro Android
+## <a name="update-the-android-manifest-for-system-webview-support"></a>Aktualizace manifestu Androidu pro podporu systému WebView 
 
-Soubor *AndroidManifest.xml* by měl obsahovat následující hodnoty:
+Aby bylo možné podporovat systémové rozhraní WebView, *AndroidManifest.xml* soubor by měl obsahovat následující hodnoty:
 
-```XML
-  <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
-  <activity
-        android:name="microsoft.identity.client.BrowserTabActivity">
-     <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="msauth"
-                android:host="Enter_the_Package_Name"
-                android:path="/Enter_the_Signature_Hash" />
-     </intent-filter>
-  </activity>
+```xml
+<activity android:name="microsoft.identity.client.BrowserTabActivity" android:configChanges="orientation|screenSize">
+  <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="msal{Client Id}" android:host="auth" />
+  </intent-filter>
+</activity>
 ```
 
-Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` . Nahraďte hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal pro `android:path=` hodnotu. Hodnota hash *podpisu by neměla být kódovaná* v adrese URL. Zajistěte, aby `/` se na začátku hodnoty hash podpisu zobrazovalo lomítko ().
+`android:scheme`Hodnota se vytvoří z identifikátoru URI přesměrování, který je nakonfigurovaný na portálu aplikací. Například pokud je identifikátor URI `msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842://auth` pro přesměrování, `android:scheme` položka v manifestu by vypadala jako v tomto příkladu:
+
+```xml
+<data android:scheme="msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842" android:host="auth" />
+```
 
 Případně můžete místo ruční úpravy *AndroidManifest.xml* [vytvořit aktivitu v kódu](/xamarin/android/platform/android-manifest#the-basics) . Chcete-li vytvořit aktivitu v kódu, nejprve vytvořte třídu, která obsahuje `Activity` atribut a `IntentFilter` atribut.
 
@@ -110,9 +110,107 @@ Zde je příklad třídy, která představuje hodnoty souboru XML:
   }
 ```
 
+### <a name="use-system-webview-in-brokered-authentication"></a>Použití systémového WebView v zprostředkovaných ověřováních
+
+Pokud chcete použít systémové WebView jako zálohu pro interaktivní ověřování, když jste aplikaci nakonfigurovali tak, aby používala zprostředkované ověřování a zařízení nemá nainstalovaného zprostředkovatele, povolte MSAL k zachycení odpovědi ověřování pomocí identifikátoru URI přesměrování zprostředkovatele. MSAL se pokusí ověřit pomocí výchozího systémového webzobrazení v zařízení, když zjistí, že zprostředkovatel není k dispozici. Použijete-li tuto výchozí hodnotu, nezdaří se, protože identifikátor URI přesměrování je nakonfigurován pro použití zprostředkovatele a systémové ovládacímu zobrazení není známo, jak jej použít pro návrat do MSAL. Chcete-li tento problém vyřešit, vytvořte _Filtr záměrů_ pomocí identifikátoru URI přesměrování zprostředkovatele, který jste nakonfigurovali dříve. Přidejte filtr záměr úpravou manifestu aplikace jako v tomto příkladu:
+
+```xml
+<!--Intent filter to capture System WebView or Authenticator calling back to our app after sign-in-->
+<activity
+      android:name="microsoft.identity.client.BrowserTabActivity">
+    <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash" />
+    </intent-filter>
+</activity>
+```
+
+Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` . Nahraďte hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal pro `android:path=` hodnotu. Hodnota hash *podpisu by neměla být kódovaná* v adrese URL. Zajistěte, aby `/` se na začátku hodnoty hash podpisu zobrazovalo lomítko ().
+
 ### <a name="xamarinforms-43x-manifest"></a>Manifest Xamarin. Forms 4.3. x
 
 Xamarin. Forms 4.3. x vygeneruje kód, který nastaví `package` atribut na `com.companyname.{appName}` v *AndroidManifest.xml*. Pokud používáte `DataScheme` jako `msal{client_id}` , pak můžete chtít změnit hodnotu tak, aby odpovídala hodnotě `MainActivity.cs` oboru názvů.
+
+## <a name="android-11-support"></a>Podpora pro Android 11
+
+Chcete-li používat systémový prohlížeč a zprostředkované ověřování v Androidu 11, je nutné nejprve deklarovat tyto balíčky, aby byly viditelné pro aplikaci. Aplikace, které cílí na Android 10 (rozhraní API 29) a starší, se můžou dotazovat na operační systém a získat seznam balíčků, které jsou v zařízení dostupné v daném okamžiku. Pro podporu ochrany osobních údajů a zabezpečení systém Android 11 omezuje viditelnost balíčku na výchozí seznam balíčků OS a balíčků, které jsou uvedené v souboru *AndroidManifest.xml* aplikace. 
+
+Pokud chcete aplikaci povolit ověřování pomocí prohlížeče systému i zprostředkovatele, přidejte do *AndroidManifest.xml* následující část:
+
+```xml
+<!-- Required for API Level 30 to make sure the app can detect browsers and other apps where communication is needed.-->
+<!--https://developer.android.com/training/basics/intents/package-visibility-use-cases-->
+<queries>
+  <package android:name="com.azure.authenticator" />
+  <package android:name="{Package Name}" />
+  <package android:name="com.microsoft.windowsintune.companyportal" />
+  <!-- Required for API Level 30 to make sure the app detect browsers
+      (that don't support custom tabs) -->
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="https" />
+  </intent>
+  <!-- Required for API Level 30 to make sure the app can detect browsers that support custom tabs -->
+  <!-- https://developers.google.com/web/updates/2020/07/custom-tabs-android-11#detecting_browsers_that_support_custom_tabs -->
+  <intent>
+    <action android:name="android.support.customtabs.action.CustomTabsService" />
+  </intent>
+</queries>
+``` 
+
+Nahraďte `{Package Name}` názvem balíčku aplikace. 
+
+Aktualizovaný manifest, který teď obsahuje podporu pro systémový prohlížeč a zprostředkované ověřování, by měl vypadat podobně jako v tomto příkladu:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.XamarinDev">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name="microsoft.identity.client.BrowserTabActivity" android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842" android:host="auth" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msauth" android:host="com.companyname.XamarinDev" android:path="/Fc4l/5I4mMvLnF+l+XopDuQ2gEM=" />
+            </intent-filter>
+        </activity>
+    </application>
+    <!-- Required for API Level 30 to make sure we can detect browsers and other apps we want to
+     be able to talk to.-->
+    <!--https://developer.android.com/training/basics/intents/package-visibility-use-cases-->
+    <queries>
+        <package android:name="com.azure.authenticator" />
+        <package android:name="com.companyname.xamarindev" />
+        <package android:name="com.microsoft.windowsintune.companyportal" />
+        <!-- Required for API Level 30 to make sure we can detect browsers
+        (that don't support custom tabs) -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- Required for API Level 30 to make sure we can detect browsers that support custom tabs -->
+        <!-- https://developers.google.com/web/updates/2020/07/custom-tabs-android-11#detecting_browsers_that_support_custom_tabs -->
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+</manifest>
+```
 
 ## <a name="use-the-embedded-web-view-optional"></a>Použít vložené webové zobrazení (volitelné)
 

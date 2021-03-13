@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
-author: barclayn
+author: ajburnle
 ms.service: active-directory
 ms.topic: include
 ms.date: 12/07/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9c91eb6cfa18c5302a83347f671e4552befcf3e2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193650"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623544"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
 
@@ -38,6 +38,7 @@ ms.locfileid: "102193650"
     > [!NOTE]
     > - Role, které tady vyberete, zahrnují [trvalé i oprávněné role](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
     > - Když vyberete víc než jednu roli, vytvoří se víc kontrol přístupu. Když například vyberete pět rolí, vytvoří se pět samostatných revizí přístupu.
+    > - Pro role, které mají přiřazené skupiny, se přístup ke každé skupině propojené s rolí v rámci revize bude kontrolovat jako součást kontroly přístupu.
 
     Pokud vytváříte kontrolu přístupu pro **role Azure AD**, následující příklad uvádí seznam kontrol členství.
 
@@ -52,8 +53,8 @@ ms.locfileid: "102193650"
     ![Seznam revidujících vybraných uživatelů nebo členů (osoba)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Vybraní uživatelé** – tuto možnost použijte, Pokud nevíte, kdo potřebuje přístup. Pomocí této možnosti můžete k dokončení této revize přiřadit vlastníka prostředku nebo správce skupin.
-    - **Členové (vlastní)** – tuto možnost použijte, pokud chcete, aby uživatelé zkontrolovali vlastní přiřazení rolí.
-    - **Správce** – tuto možnost použijte, pokud chcete, aby nadřízený uživatel zkontroloval přiřazení role. Po výběru manažera budete mít také možnost zadat záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce.
+    - **Členové (vlastní)** – tuto možnost použijte, pokud chcete, aby uživatelé zkontrolovali vlastní přiřazení rolí. Skupiny přiřazené k roli nebudou součástí kontroly, pokud je tato možnost vybraná.
+    - **Správce** – tuto možnost použijte, pokud chcete, aby nadřízený uživatel zkontroloval přiřazení role. Po výběru manažera budete mít také možnost zadat záložního kontrolora. Záložní revidující budou požádáni, aby zkontrolovali uživatele, když v adresáři není zadaný žádný správce. Skupiny přiřazené k roli budou přezkoumány záložním kontrolorem, pokud je vybraný. 
 
 ### <a name="upon-completion-settings"></a>Nastavení po dokončení
 

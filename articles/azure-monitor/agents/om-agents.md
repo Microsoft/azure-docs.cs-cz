@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031374"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612996"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -71,15 +71,15 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
 |**Agenta**|||  
-|\*.ods.opinsights.azure.com| 443 |Ano|  
-|\*.oms.opinsights.azure.com| 443|Ano|  
-|\*.blob.core.windows.net| 443|Ano|  
-|\*.azure-automation.net| 443|Ano|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Server pro správu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Ano|  
-|\*.ods.opinsights.azure.com| 443| Ano|  
-|*.azure-automation.net | 443| Ano|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Operations Manager konzolu pro Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -99,6 +99,10 @@ Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně dop
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Připojení Operations Manager k Azure Monitor
 
 Provedením následujícího postupu nakonfigurujete skupinu pro správu nástroje Operations Manager na připojení k jednomu z vašich pracovních prostorů Log Analytics.
+
+> [!NOTE]
+> Pokud si všimnete, že Log Analytics data dostanou z konkrétního agenta nebo management server, můžete zkusit resetovat katalog Winsock (použít `netsh winsock reset` ) a pak restartovat server. Obnovení katalogu Winsock umožňuje znovu vytvořit síťová připojení, která byla přerušena.
+
 
 Při počáteční registraci skupiny pro správu Operations Manager pomocí pracovního prostoru Log Analytics není v konzoli Operations Console k dispozici možnost zadat konfiguraci proxy serveru pro skupinu pro správu.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Chcete-li se tomuto problému vyhnout, je třeba aktualizovat konfiguraci proxy systému pomocí příkazu Netsh v systému, z něhož spouštíte konzolu Operations Console, a všechny servery pro správu ve skupině pro správu.  
 

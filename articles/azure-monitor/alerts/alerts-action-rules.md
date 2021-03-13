@@ -3,12 +3,12 @@ title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 07d179f557671a515a7933b64a25e6d41f75219b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045611"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015994"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -61,19 +61,25 @@ Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový p
 
 ### <a name="filter-criteria"></a>Kritéria filtru
 
-Můžete také definovat filtry pro jejich zúžení do určité podmnožiny výstrah.
+Volitelně můžete definovat filtry, takže pravidlo bude platit pro konkrétní podmnožinu výstrah nebo konkrétní události pro každou výstrahu (například pouze "Trigger" nebo pouze "vyřešené").
 
 Jsou k dispozici tyto filtry:
 
-* **Závažnost**: možnost výběru jedné nebo více závažných Závažnost výstrahy. **Závažnost = Sev1** znamená, že pravidlo akce platí pro všechny výstrahy nastavené na Sev1.
-* **Služba monitorování**: filtr založený na službě pro monitorování původu. Tento filtr je také vícenásobný výběr. Například **monitor služba = "Application Insights"** znamená, že pravidlo akce platí pro všechny výstrahy založené na Application Insights.
-* **Typ prostředku**: filtr založený na konkrétním typu prostředku. Tento filtr je také vícenásobný výběr. Například **typ prostředku = "Virtual Machines"** znamená, že pravidlo akce se vztahuje na všechny virtuální počítače.
-* **ID pravidla výstrahy**: možnost filtrovat konkrétní pravidla výstrahy pomocí Správce prostředků ID pravidla výstrahy.
-* **Podmínka monitorování**: filtr pro instance výstrah, který se **vyvolal** nebo **vyřešil** jako podmínka monitorování.
-* **Popis**: regulární výraz (regulární výraz) se shoduje s tím, že definuje řetězec shodný s popisem definovaným jako součást pravidla výstrahy. Například **Popis obsahuje ' prod '** bude odpovídat všem výstrahám, které obsahují řetězec "prod" v jejich popiscích.
-* **Kontext výstrahy (datová část)**: porovnání regulárního výrazu definujícího shodu řetězce s poli kontextu výstrahy v datové části výstrahy. Například **kontext výstrahy (datová část) obsahuje řetězec ' Computer-01 '** bude odpovídat všem výstrahám, jejichž datové části obsahují řetězec "Computer-01".
+* **Závažnost**: Toto pravidlo bude platit jenom pro výstrahy s vybranými závažnostmi.  
+Například **závažnost = Sev1** znamená, že pravidlo bude platit jenom pro výstrahy se závažností Sev1.
+* **Monitorování služby**: Toto pravidlo bude platit jenom pro výstrahy přicházející z vybraných monitorovacích služeb.  
+Například **monitor služba = "Azure Backup"** znamená, že pravidlo bude platit jenom pro výstrahy zálohování (pocházející z Azure Backup).
+* **Typ prostředku**: Toto pravidlo bude platit jenom pro výstrahy pro vybrané typy prostředků.  
+Například **typ prostředku = "Virtual Machines"** znamená, že pravidlo bude platit pouze pro výstrahy na virtuálních počítačích.
+* **ID pravidla výstrahy**: Toto pravidlo se použije jenom na výstrahy přicházející z konkrétního pravidla výstrahy. Hodnota by měla být Správce prostředků ID pravidla výstrahy.  
+Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/MyAPI-highLatency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky "MyAPI-highLatency".
+* **Podmínka monitorování**: Toto pravidlo bude platit jenom pro události výstrah se zadanou podmínkou monitorování – buď se **vyvolaly** , nebo **vyřešily**.
+* **Popis**: Toto pravidlo bude platit jenom pro výstrahy, které v poli Popis výstrahy obsahují konkrétní řetězec. Toto pole obsahuje popis pravidla výstrahy.  
+Například **Popis obsahuje ' prod '** znamená, že pravidlo bude odpovídat pouze výstrahám, které obsahují řetězec "prod" v jeho popisu.
+* **Kontext výstrahy (datová část)**: Toto pravidlo bude platit jenom pro výstrahy, které obsahují jednu nebo více konkrétních hodnot v polích kontextu výstrahy.  
+Například **kontext výstrahy (datová část) obsahuje řetězec ' Computer-01 '** znamená, že pravidlo bude platit pouze pro výstrahy, jejichž datová část obsahuje řetězec "Computer-01".
 
-Tyto filtry jsou společně s navzájem aplikovány. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pak jste vyfiltroval všechny výstrahy **Sev0** jenom na vašich virtuálních počítačích.
+Pokud v pravidle nastavíte více filtrů, uplatní se všechny. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pravidlo se použije jenom pro upozornění Sev0 na virtuálních počítačích.
 
 ![Filtry pravidla akcí](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -102,9 +108,9 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Název
+* Name
 * Skupina prostředků, ve které je uložená
-* Popis
+* Description
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

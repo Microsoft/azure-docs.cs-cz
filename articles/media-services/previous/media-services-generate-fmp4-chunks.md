@@ -3,7 +3,7 @@ title: Vytvoření úlohy kódování Azure Media Services, která generuje blok
 description: V tomto tématu se dozvíte, jak vytvořit úlohu kódování, která generuje fMP4 bloky dat. Pokud se tato úloha používá v kodéru Media Encoder Standard nebo Media Encoder Premium Workflow, bude výstupní prostředek obsahovat bloky fMP4 místo souborů ISO MP4.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a247ef24104d9ecb9c827896d2bbfda8c50b9958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6311aa6d0bfca133925f27b5ea4849769d9e0ec4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269399"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013359"
 ---
 # <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvoření úlohy kódování, která generuje fMP4 bloky dat
 

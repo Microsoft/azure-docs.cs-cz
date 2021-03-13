@@ -10,6 +10,8 @@
       href: iot-services-and-technologies.md
     - name: Možnosti pomoci a podpory
       href: iot-support-help.md
+    - name: Glosář IoT
+      href: iot-glossary.md
 - name: Zabezpečení
   items:
     - name: Doporučení

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309533"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615733"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Přesunout data z databáze SQL Server do SQL Database pomocí Azure Data Factory
 
@@ -47,7 +47,7 @@ Nastavili jsme kanál ADF, který bude vytvářet dvě aktivity migrace dat. Spo
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -87,7 +87,7 @@ Podrobný postup pro vytváření propojených služeb je k dispozici v části 
 Pomocí následujících postupů založených na skriptech vytvořte tabulky, které určují strukturu, umístění a dostupnost datových sad. Soubory JSON se používají k definování tabulek. Další informace o struktuře těchto souborů naleznete v tématu [datové sady](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> `Add-AzureAccount`Před spuštěním rutiny [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Před spuštěním rutiny [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount).
 >
 >
 
@@ -138,7 +138,7 @@ Definice tabulky pro SQL Server je určena v následujícím souboru JSON:
 
 Tady nejsou uvedené názvy sloupců. Na názvy sloupců můžete vybrat jejich výběr tak, že je sem zahrnete (podrobnosti najdete v tématu [dokumentace k ADF](../../data-factory/copy-activity-overview.md) .
 
-Zkopírujte definici JSON tabulky do souboru s názvem *onpremtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\onpremtabledef.jszapnutá* ). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *onpremtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\onpremtabledef.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ Definice tabulky pro výstupní umístění objektu BLOB je následující (mapu
 }
 ```
 
-Zkopírujte definici JSON tabulky do souboru s názvem *bloboutputtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\bloboutputtabledef.jszapnutá* ). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *bloboutputtabledef.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\bloboutputtabledef.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ Definice tabulky pro výstup SQL Azure je následující (Toto schéma mapuje da
 }
 ```
 
-Zkopírujte definici JSON tabulky do souboru s názvem *AzureSqlTable.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\AzureSqlTable.jszapnutá* ). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru s názvem *AzureSqlTable.jsv* souboru a uložte je do známého umístění (tady se předpokládá, že *C:\temp\AzureSqlTable.jszapnutá*). Vytvořte tabulku v ADF pomocí následující rutiny Azure PowerShell:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -294,7 +294,7 @@ Pomocí výše uvedených definic tabulek je definice kanálu pro ADF uvedená n
 }
 ```
 
-Zkopírujte tuto definici JSON kanálu do souboru s názvem *pipelinedef.jsv* souboru a uložte ho do známého umístění (tady se předpokládá *C:\temp\pipelinedef.jszapnuto* ). Vytvořte kanál v ADF pomocí následující rutiny Azure PowerShell:
+Zkopírujte tuto definici JSON kanálu do souboru s názvem *pipelinedef.jsv* souboru a uložte ho do známého umístění (tady se předpokládá *C:\temp\pipelinedef.jszapnuto*). Vytvořte kanál v ADF pomocí následující rutiny Azure PowerShell:
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

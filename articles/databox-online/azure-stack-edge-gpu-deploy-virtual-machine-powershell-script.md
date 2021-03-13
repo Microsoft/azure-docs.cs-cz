@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 82019031eab4c17465115c4a24598f43d4620148
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 36c7078a79cf8b0b7414c5031acb79b9a2c2453c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436444"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630482"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí skriptu Azure PowerShell
 
@@ -41,7 +41,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     1. Spusťte **Poznámkový blok** jako správce (k uložení souboru se vyžaduje oprávnění správce) a pak otevřete soubor **hosts** v umístění `C:\Windows\System32\Drivers\etc` .
     
-        ![Soubor hostitelů Průzkumníka Windows](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Soubor hostitelů Průzkumníka Windows](media/azure-stack-edge-gpu-connect-resource-manager/hosts-file.png)
     
     2. Do souboru **hostitelů** přidejte následující položky, které nahradíte odpovídajícími hodnotami pro vaše zařízení:
     
@@ -54,7 +54,7 @@ Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure
 
     3. Pro referenci použijte následující obrázek. Uložte soubor **hostitelů** .
 
-        ![soubor hostitelů v programu Poznámkový blok](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![soubor hostitelů v programu Poznámkový blok](media/azure-stack-edge-gpu-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. [Stáhněte si skript prostředí PowerShell](https://aka.ms/ase-vm-powershell) použitý v tomto postupu.
 

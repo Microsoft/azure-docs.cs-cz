@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1651ef1b49ecedb8070f32c56e9d23a0f8fd0da
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944137"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201591"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -100,6 +100,9 @@ Další informace o tokenech SAS a o tom, jak je získat, najdete v tématu [pou
 ## <a name="transfer-data"></a>Přenos dat
 
 Po ověření identity nebo získání tokenu SAS můžete začít přenášet data.
+
+> [!NOTE]
+> Nastavení [vyžadováno zabezpečeným přenosem](storage-require-secure-transfer.md) účtu úložiště Určuje, jestli je připojení k účtu úložiště zabezpečené pomocí protokolu TLS (Transport Layer Security). Standardně je toto nastavení povolené.   
 
 Ukázkové příkazy najdete v některém z těchto článků.
 

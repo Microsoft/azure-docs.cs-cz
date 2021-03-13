@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382816"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630737"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrace úloh z Azure Stack Edge pro FPGA do GPU pro Azure Stack Edge pro
 
@@ -157,10 +157,10 @@ Teď budete kopírovat data ze zdrojového zařízení do sdílených složek na
 
 Pomocí těchto kroků synchronizujte data na hraničních sdílených cloudech na cílovém zařízení:
 
-1. [Přidejte sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-share) odpovídající názvům sdílených složek vytvořeným na zdrojovém zařízení. Ujistěte se, že při vytváření sdílených složek je **Výběr kontejneru objektů BLOB** nastavený na **použití existující** možnosti a pak vyberte kontejner, který jste použili s předchozím zařízením.
-1. [Přidejte uživatele](azure-stack-edge-j-series-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
-1. [Aktualizujte sdílená](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data z Azure. Tím se vyžádá všechna cloudová data z existujícího kontejneru do sdílených složek.
-1. Vytvořte znovu plány šířky pásma, které se mají přidružit ke sdíleným složkám. Podrobné pokyny najdete v tématu [Přidání plánu šířky pásma](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) .
+1. [Přidejte sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-share) odpovídající názvům sdílených složek vytvořeným na zdrojovém zařízení. Ujistěte se, že při vytváření sdílených složek je **Výběr kontejneru objektů BLOB** nastavený na **použití existující** možnosti a pak vyberte kontejner, který jste použili s předchozím zařízením.
+1. [Přidejte uživatele](azure-stack-edge-gpu-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
+1. [Aktualizujte sdílená](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data z Azure. Tím se vyžádá všechna cloudová data z existujícího kontejneru do sdílených složek.
+1. Vytvořte znovu plány šířky pásma, které se mají přidružit ke sdíleným složkám. Podrobné pokyny najdete v tématu [Přidání plánu šířky pásma](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) .
 
 
 ### <a name="2-from-edge-local-shares"></a>2. z hraničních místních sdílení
@@ -172,7 +172,7 @@ Po úplné konfiguraci náhradního zařízení povolte zařízení pro místní
 Pomocí těchto kroků obnovte data z místních sdílených složek:
 
 1. [Proveďte konfiguraci výpočtů na zařízení](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. Přidejte do cílového zařízení všechny místní sdílené složky. Přečtěte si podrobný postup v tématu [Přidání místní sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-local-share).
+1. Přidejte do cílového zařízení všechny místní sdílené složky. Přečtěte si podrobný postup v tématu [Přidání místní sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Přístup ke sdíleným složkám SMB na zdrojovém zařízení bude používat IP adresy, zatímco na cílovém zařízení použijete název zařízení. Viz [připojení ke sdílené složce SMB na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Pokud se chcete připojit ke sdíleným složkám systému souborů NFS na cílovém zařízení, budete muset použít nové IP adresy přidružené k zařízení. Viz [připojení ke sdílené složce NFS na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
     Pokud jste data sdílených složek zkopírovali do zprostředkujícího serveru přes protokol SMB/NFS, můžete tato data zkopírovat do sdílených složek na cílovém zařízení. Data můžete také zkopírovat přímo ze zdrojového zařízení, pokud je zdrojové i cílové zařízení *online*.

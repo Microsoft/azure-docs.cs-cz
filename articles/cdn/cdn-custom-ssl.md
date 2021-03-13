@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367499"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616396"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -356,6 +356,11 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 7. *Jak fungují obnovení certifikátů pomocí funkce Přineste si vlastní certifikát?*
 
     Pokud chcete zajistit, aby byl novější certifikát nasazený v infrastruktuře PoP, nahrajte nový certifikát do služby Azure webrecovery. V nastavení TLS na Azure CDN zvolte nejnovější verzi certifikátu a vyberte Uložit. Azure CDN pak rozšíří nový aktualizovaný certifikát. 
+
+8. *Potřebuji po restartování koncového bodu znovu povolit protokol HTTPS?*
+
+    Ano. Pokud používáte **Azure CDN z Akamai**, pokud se koncový bod zastaví a restartuje, musíte nastavení https znovu povolit, pokud je toto nastavení aktivní dřív.
+
 
 ## <a name="next-steps"></a>Další kroky
 
