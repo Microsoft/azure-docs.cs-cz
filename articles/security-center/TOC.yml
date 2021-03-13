@@ -108,7 +108,10 @@
         - name: Automatizace odpovědí na doporučení
           displayName: workflow
           href: workflow-automation.md
-        - name: Vyloučení prostředku z doporučení
+        - name: Zakázat doporučení
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 'Vyloučení doporučení na prostředek, předplatné nebo skupinu pro správu'
+          displayName: disable
           href: exempt-resource.md
         - name: Vytváření vlastních iniciativ a zásad zabezpečení
           href: custom-security-policies.md
@@ -233,7 +236,8 @@
       href: security-center-partner-integration.md
     - name: Ochrana síťových prostředků
       href: security-center-network-recommendations.md
-    - name: Ochrana identit a přístupu
+    - name: Vynutilit a spravovat vícefaktorové ověřování
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: Použití dalších ochrany před hrozbami Security Center
       href: other-threat-protections.md

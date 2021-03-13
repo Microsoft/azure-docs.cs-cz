@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751933"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224318"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
@@ -66,6 +66,28 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
     > Pokud máte sloupec ID, který má ID každého řádku, nebo textový sloupec, který obsahuje příliš mnoho jedinečných hodnot, může dojít k chybě **modelu výuky** , například "počet jedinečných hodnot ve sloupci:" {column_name} "je větší než povolený.
     >
     > Důvodem je to, že sloupec dosáhl prahové hodnoty jedinečných hodnot a příčinou může být nedostatek paměti. Pomocí možnosti [Upravit metadata](edit-metadata.md) můžete tento sloupec označit jako **nejasná funkce** a nebude se používat při výuce, nebo [extrahovat N-gram funkcí z modulu textu](extract-n-gram-features-from-text.md) do předběžného zpracování textového sloupce. Další podrobnosti o chybě najdete v [kódu chyby návrháře](././designer-error-codes.md) .
+
+## <a name="model-interpretability"></a>Interpretace modelu
+
+Interpretace modelu nabízí možnost pochopit model ML a prezentovat základní základnu pro rozhodování způsobem srozumitelným pro lidi.
+
+Modul **vlakového modelu** v současné době podporuje [použití balíčku pro vyhodnocení pro vysvětlení modelů ml](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Podporují se tyto integrované algoritmy:
+
+- Lineární regrese
+- Regrese neurální sítě
+- Logistická regrese se dvěma třídami
+- Support Vector Machine (SVM) se dvěma třídami
+- Rozhodovací doménová struktura s více třídami
+
+Chcete-li vygenerovat vysvětlení modelu, můžete vybrat **hodnotu true** v rozevíracím seznamu **vysvětlení modelu** v modulu výuka modelu. Ve výchozím nastavení je v modulu **vlakového modelu** nastaveno na hodnotu false. Všimněte si, že generování vysvětlení vyžaduje dodatečné výpočetní náklady.
+
+![Snímek obrazovky znázorňující zaškrtávací políčko pro vysvětlení modelu](./media/module/train-model-explanation-checkbox.png)
+
+Po dokončení kanálu můžete navštívit kartu **vysvětlení** v pravém podokně modulu **výuka modelu** a prozkoumat výkon modelu, datovou sadu a důležitost funkcí.
+
+![Snímek obrazovky znázorňující grafy vysvětlující model](./media/module/train-model-explanations-tab.gif)
+
+Další informace o použití vysvětlení modelů v Azure Machine Learning najdete v článku o [interpretaci modelů ml](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Výsledky
 

@@ -3,18 +3,18 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
+ms.openlocfilehash: 86f7bbbb52b1596e20fb1f3a67e42b2dd27c501a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882445"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012595"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -68,11 +68,9 @@ Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 
 ### <a name="understand-forecast"></a>Vysvětlení prognózy
 
-Prognóza nákladů ukazuje projekci odhadovaných nákladů za vybrané časové období. Tento model je založený na modelu regrese časových řad. K přesné předpovědi nákladů vyžaduje aktuální data o využití a nákladech nejméně za 10 dnů. Pro konkrétní časové období model prognózy vyžaduje stejný objem školicích dat. To znamená, že například projekce na tři měsíce vyžaduje data o využití a nákladech nejméně za tři měsíce.
+Na základě vašeho nedávného využití prognózy nákladů ukazují odhadované náklady pro vybrané časové období. Pokud je v analýze nákladů nastavený rozpočet, můžete zobrazit, kdy předpovědi výdajů pravděpodobně překročí prahovou hodnotu rozpočtu. Model prognózy může předpovědět budoucí náklady až do roku. Vyberte filtry pro zobrazení podrobných předpokládaných nákladů pro vybranou dimenzi.
 
-K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování**. Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD.
-
-Vzhledem k tomu, že se model spoléhá na prudké nárůsty nebo poklesy dat, velké nákupy jako například rezervované instance způsobí, že se vaše prognóza uměle nafoukne. Časové období prognózy a velikost nákupů potom ovlivňují dobu, po kterou je prognóza ovlivněná. Při stabilizaci útraty se prognóza vrátí k normálu.
+Model prognózy je založen na regresním modelu časové řady. K přesné předpovědi nákladů vyžaduje aktuální data o využití a nákladech nejméně za 10 dnů. Pro konkrétní časové období model prognózy vyžaduje stejný objem školicích dat. To znamená, že například projekce na tři měsíce vyžaduje data o využití a nákladech nejméně za tři měsíce.
 
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 

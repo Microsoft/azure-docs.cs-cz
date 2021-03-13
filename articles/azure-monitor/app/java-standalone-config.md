@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201260"
+ms.locfileid: "103224652"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Možnosti konfigurace – Azure Monitor Application Insights pro Java
 
@@ -184,9 +184,11 @@ Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalo
 
 Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí.
 
-Protokolování je zachyceno pouze v případě, že nejprve splňuje prahovou hodnotu nakonfigurovanou rozhraní protokolování a druhá také splňuje Application Insights nakonfigurovanou prahovou hodnotu.
+Protokolování je zachyceno pouze v případě, že nejprve splňuje úroveň nakonfigurovanou pro protokolovací rozhraní a druhá také splňuje úroveň nakonfigurovanou pro Application Insights.
 
-Výchozí prahová hodnota Application Insights je `INFO` . Pokud chcete změnit tuto úroveň:
+Pokud je například vaše protokolovací rozhraní nakonfigurované na protokolovat `WARN` (a vyšší) z balíčku `com.example` a Application Insights je nakonfigurované na zachycení `INFO` (a vyšší), Application Insights bude zachytit `WARN` (a výše) z balíčku `com.example` .
+
+Výchozí úroveň konfigurovaná pro Application Insights je `INFO` . Pokud chcete změnit tuto úroveň:
 
 ```json
 {

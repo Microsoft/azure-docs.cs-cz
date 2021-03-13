@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 7eb4647ae5ba40688cbf39cbfe8449f59275e7e6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348487"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014311"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Jak získat instanci procesoru multimédií
 
@@ -51,7 +51,7 @@ Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přís
 
 ## <a name="get-a-media-processor"></a>Získat procesor médií
 
-Následující volání REST ukazuje, jak získat instance procesoru médií podle názvu (v tomto případě **Media Encoder Standard** ). 
+Následující volání REST ukazuje, jak získat instance procesoru médií podle názvu (v tomto případě **Media Encoder Standard**). 
 
 Požadavek:
 

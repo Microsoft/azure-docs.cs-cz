@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694593"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233544"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -21,15 +21,15 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 ## <a name="march-2021"></a>Březen 2021
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
 |------------------------------|---------------|---------------|
-| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které zlepšují relevanci výsledků hledání s velmi malým úsilím. V případě malých změn v žádosti o vyhledávání můžete tyto funkce vyzkoušet u stávajících indexů.</br></br>[Sémantický dotaz](semantic-how-to-query-request.md) je nový typ dotazu, který využívá výhody při zpracování v přirozeném jazyce ke zlepšení hodnocení, a pochopení záměru dotazování na poskytování odpovědí, titulků a sémantických světel.</br></br>[Sémantické hodnocení a reakce (odpovědi, popisy a světla)](semantic-how-to-query-response.md) odkazují na model, který vyhodnocuje výsledky a schopnost modelu přidat strukturu do odpovědi. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
+| [Sémantické vyhledávání](semantic-search-overview.md) | Kolekce funkcí souvisejících s dotazy, které výrazně zlepšují relevanci výsledků hledání s velmi malým úsilím. </br></br>[Sémantické hodnocení](semantic-ranking.md) vypočítá relevanci skóre pomocí sémantického významu slov a obsahu. </br></br>[Sémantické titulky](semantic-how-to-query-request.md) jsou relevantní pasáže z dokumentu, který nejlépe shrnuje nejdůležitější výrazy nebo fráze. </br></br>[Sémantické odpovědi](semantic-answers.md) jsou klíčové pasáže, které se extrahují z hledaného dokumentu, které se formulují jako přímá odpověď na dotaz, který vypadá jako otázka. | Verze Public Preview ([podle žádosti](https://aka.ms/SemanticSearchPreviewSignup)) </br></br>V Azure Portal použijte soubory API pro [hledání (REST)](/rest/api/searchservice/preview-api/search-documents) – verze = 2020-06 -30-Preview a [Search Explorer](search-explorer.md) . </br></br>Platí omezení oblasti a úrovně. |
 | [Výrazy pro dotaz na kontrolu pravopisu](speller-how-to-add.md) | Předtím, než se na vyhledávacím panelu dostanou výrazy pro dotaz, můžete nechat zkontrolovat chyby pravopisu. `speller`Možnost funguje s libovolným typem dotazu (jednoduchý, úplný nebo sémantický). |  Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview|
 | [Indexer SharePointu Online](search-howto-index-sharepoint-online.md) | Tento indexer vás připojí k webu SharePointu Online, abyste mohli indexovat obsah z knihovny dokumentů. | Verze Public Preview, jenom REST, API-Version = 2020-06 -30-Preview |
 
 ## <a name="february-2021"></a>Únor 2021
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
 |------------------------------|---------------|---------------|
 | [Resetovat dokumenty (Preview)](search-howto-run-reset-indexers.md) |  Znovu zpracuje jednotlivě vybrané dokumenty hledání v úlohách indexeru. | [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) |
 | [Zóny dostupnosti](search-performance-optimization.md#availability-zones)| Vyhledávací služby se dvěma nebo více replikami v určitých oblastech, jak je uvedeno v [rozsahu pro výkon](search-performance-optimization.md#availability-zones), získáte odolnost při používání replik ve dvou nebo více různých fyzických umístěních.  | Oblast a datum vytvoření služby vyhledávání, která určuje dostupnost. Podrobnosti najdete v článku věnovaném škálování na výkon. |
@@ -37,7 +37,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 ## <a name="january-2021"></a>Leden 2021
 
-|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Popis | Dostupnost  |
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Dostupnost  |
 |------------------------------|-------------|---------------|
 | [Akcelerátor řešení pro Azure Kognitivní hledání a QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Vyžádá si otázky a odpovědi z dokumentu a navrhne relevantní odpovědi. Živou ukázkovou aplikaci najdete na adrese [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Open source projekt (bez smlouvy SLA) |
 

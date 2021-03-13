@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: c41dc65b920c80d25a81a09f4550e76a8fd1095a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204542"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225179"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Kurz: vytvoření Azure Load Balancer pro různé oblasti pomocí rozhraní příkazového řádku Azure
 
@@ -81,23 +81,6 @@ Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi pomocí [AZ N
     --backend-pool-name myBackEndPool-CR     
 ```
 
-### <a name="create-the-health-probe"></a>Vytvoření sondy stavu
-
-Vytvoření sondy stavu nástroje pro vyrovnávání zatížení mezi oblastmi pomocí funkce [AZ Network mezi oblastmi s vyrovnáváním zatížení sítě vytvořit](/cli/azure/network/cross-region-lb/probe#az_network_cross_region_lb_probe_create):
-
-* S názvem **myHealthProbe-CR**.
-* Protokol **TCP**.
-* Port **80**.
-
-```azurecli-interactive
-  az network cross-region lb probe create \
-    --lb-name myLoadBalancer-CR \
-    --name myHealthProbe-CR \
-    --port 80 \
-    --protocol Tcp \
-    --resource-group myResourceGroupLB-CR
-```
-
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
 Pravidlo nástroje pro vyrovnávání zatížení definuje:
@@ -122,8 +105,7 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [AZ Network 
     --protocol tcp \
     --resource-group myResourceGroupLB-CR \
     --backend-pool-name myBackEndPool-CR \
-    --frontend-ip-name myFrontEnd-CR \
-    --probe-name myHealthProbe-CR
+    --frontend-ip-name myFrontEnd-CR
 ```
 
 ## <a name="create-backend-pool"></a>Vytvoření back-endového fondu
@@ -204,7 +186,6 @@ Pokud už je nepotřebujete, odeberte skupinu prostředků, nástroj pro vyrovn�
 V tomto kurzu jste:
 
 * Vytvořil se nástroj pro vyrovnávání zatížení mezi oblastmi.
-* Vytvořila se sonda stavu.
 * Bylo vytvořeno pravidlo vyrovnávání zatížení.
 * Přidání místních nástrojů pro vyrovnávání zatížení do back-endu pro nástroj pro vyrovnávání zatížení mezi oblastmi.
 * Otestování nástroje pro vyrovnávání zatížení.

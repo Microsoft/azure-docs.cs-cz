@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199685"
+ms.locfileid: "103232915"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimalizujte tok provozu pomocí Proxy aplikací služby Azure Active Directory
 
@@ -41,6 +41,9 @@ Pokud je například zemí nebo oblastí tenanta Azure AD Spojené království,
 Pokud máte nainstalované konektory v oblastech odlišných od vaší výchozí oblasti, může být výhodné změnit oblast, pro kterou je vaše skupina konektorů optimalizovaná, aby se zlepšil výkon při přístupu k těmto aplikacím. Jakmile je pro skupinu konektorů zadaná oblast, připojí se ke cloudovým službám proxy aplikací v určené oblasti.
 
 Aby bylo možné optimalizovat tok přenosů a snížit latenci pro skupinu konektorů, přiřaďte skupinu konektorů k nejbližší oblasti. Přiřazení oblasti:
+
+> [!IMPORTANT]
+> Pro použití této funkce konektory musí používat minimálně 1.5.1975.0 verze.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce aplikace adresáře, který používá proxy aplikace. Pokud je například doména tenanta contoso.com, správce by měl být admin@contoso.com v této doméně nebo jiný alias správce.
 1. V pravém horním rohu vyberte své uživatelské jméno. Ověřte, že jste přihlášeni k adresáři, který používá proxy aplikace. Pokud potřebujete změnit adresáře, vyberte **Přepnout adresář** a zvolte adresář, který používá proxy aplikace.

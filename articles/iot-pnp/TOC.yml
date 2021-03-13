@@ -51,8 +51,6 @@
       href: concepts-model-discovery.md
     - name: Analyzátor modelů
       href: concepts-model-parser.md
-    - name: Glosář
-      href: iot-plug-and-play-glossary.md
 - name: Návody
   items:
     - name: Instalace a použití průzkumníka IoT
@@ -83,6 +81,8 @@
   items:
     - name: Možnosti pomoci a podpory
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Služby Azure IoT
       items:
         - name: IoT Hub

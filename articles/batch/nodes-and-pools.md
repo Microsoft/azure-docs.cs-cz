@@ -2,13 +2,13 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/11/2021
+ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183654"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200230"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -65,7 +65,7 @@ Při vytváření fondu služby Batch zadáte konfiguraci virtuálního počíta
 Ve Batch jsou k dispozici dva typy konfigurací fondů.
 
 > [!IMPORTANT]
-> Fondy by měly být nakonfigurované s použitím konfigurace virtuálního počítače a nikoli Cloud Services konfigurace. Všechny funkce Batch jsou podporované fondy konfigurace virtuálních počítačů a přidávají se nové funkce. Fondy Cloud Services konfigurace nepodporují všechny funkce a neplánují se žádné nové funkce.
+> I když nyní můžete vytvořit fondy pomocí konfigurace, je potřeba nakonfigurovat nové fondy pomocí konfigurace virtuálního počítače a neCloud Services konfigurace. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' CloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů.
 
 ### <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
 
@@ -76,13 +76,13 @@ Ve Batch jsou k dispozici dva typy konfigurací fondů.
 ### <a name="cloud-services-configuration"></a>Konfigurace Cloud Services
 
 > [!WARNING]
-> Fondy konfigurace cloudové služby jsou zastaralé. Místo toho prosím použijte fondy konfigurací virtuálních počítačů.
+> Fondy konfigurací Cloud Services jsou [zastaralé](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Místo toho prosím použijte fondy konfigurací virtuálních počítačů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 **Konfigurace Cloud Services** určuje, že se fond skládá z uzlů Azure Cloud Services. Cloud Services poskytuje jenom výpočetní uzly Windows.
 
 Dostupné operační systémy pro fondy konfigurací Cloud Services jsou uvedené v části [verze hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md)a dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Při vytváření fondu, který obsahuje uzly Cloud Services, zadáváte velikost uzlu a jeho *rodinu operačních systémů* (což určuje, které verze rozhraní .NET jsou nainstalovány s operačním systémem). Cloud Services se do Azure nasadí rychleji než virtuální počítače s Windows. Pokud chcete fondy výpočetních uzlů Windows, můžete zjistit, že služba Cloud Services představuje výhodu z hlediska času nasazení.
 
-Podobně jako u rolí pracovního procesu v rámci služby Cloud Services můžete zadat *verzi operačního systému* (další informace o rolích pracovního procesu najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md)). Doporučujeme, abyste `Latest (*)` pro *verzi operačního systému* určili, že se uzly automaticky upgradují a že se pro nové vydané verze nevyžadovala žádná práce. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření bude možné aktualizovat *verzi operačního systému* pro fond a nainstalovat novou bitovou kopii operačního systému. Všechny spuštěné úlohy budou přerušeny a znovu zařazeny do fronty.
+Stejně jako u rolí pracovního procesu v rámci Cloud Services můžete zadat *verzi operačního systému*. Doporučujeme, abyste `Latest (*)` pro *verzi operačního systému* určili, že se uzly automaticky upgradují a že se pro nové vydané verze nevyžadovala žádná práce. Hlavním případem použití s výběrem konkrétní verze operačního systému scénář zajištění kompatibility aplikací, který umožní testovat zpětnou kompatibilitu, než se povolí aktualizace verze. Po ověření bude možné aktualizovat *verzi operačního systému* pro fond a nainstalovat novou bitovou kopii operačního systému. Všechny spuštěné úlohy budou přerušeny a znovu zařazeny do fronty.
 
 ### <a name="node-agent-skus"></a>SKU agenta uzlu
 

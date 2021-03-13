@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694797"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232354"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Přidat kontrolu pravopisu do dotazů v Kognitivní hledání
 
@@ -96,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 Parametr queryLanguage vyžadovaný pro kontrolu pravopisu musí být konzistentní s případnými [analyzátory jazyka](index-add-language-analyzers.md) přiřazenými k definicím polí ve schématu indexu. 
 
-+ queryLanguage určuje, které lexikony se používají pro kontrolu pravopisu, a používá se také jako vstup do [algoritmu sémantického hodnocení](semantic-how-to-query-response.md) , pokud používáte "queryType = sémantické".
++ queryLanguage určuje, které lexikony se používají pro kontrolu pravopisu, a používá se také jako vstup do [algoritmu sémantického hodnocení](semantic-answers.md) , pokud používáte "queryType = sémantické".
 
 + Analyzátory jazyka se používají během indexování a provádění dotazů k nalezení vyhovujících dokumentů v indexu vyhledávání. Příkladem definice pole, která používá analyzátor jazyka, je `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` .
 

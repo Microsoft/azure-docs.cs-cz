@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 828f0ff81048ca0b6f07b7fdee9ed29c87991db4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032632"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015451"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -178,7 +178,7 @@ Tento přístup je užitečný při experimentování s IoT Central nebo testov�
 
 ## <a name="associate-a-device-with-a-device-template"></a>Přidružení zařízení k šabloně zařízení
 
-IoT Central automaticky přidružuje zařízení k šabloně zařízení, když se zařízení připojí. Zařízení pošle [ID modelu](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) při připojení. IoT Central používá ID modelu k identifikaci šablony zařízení pro konkrétní model zařízení. Proces zjišťování funguje takto:
+IoT Central automaticky přidružuje zařízení k šabloně zařízení, když se zařízení připojí. Zařízení pošle [ID modelu](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) při připojení. IoT Central používá ID modelu k identifikaci šablony zařízení pro konkrétní model zařízení. Proces zjišťování funguje takto:
 
 1. Pokud je šablona zařízení již publikována v aplikaci IoT Central, je zařízení přidruženo k šabloně zařízení.
 1. Pokud už šablona zařízení není v aplikaci IoT Central publikovaná, IoT Central v [úložišti veřejného modelu](https://github.com/Azure/iot-plugandplay-models)vyhledá model zařízení. Pokud IoT Central najde model, použije ho k vygenerování základní šablony zařízení.

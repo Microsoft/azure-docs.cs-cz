@@ -9,14 +9,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048419"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200317"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Azure Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Vytvořte **IoT Edge automatické nasazení** v Azure Portal, abyste mohli spravovat průběžná nasazení pro mnoho zařízení najednou. Automatická nasazení pro IoT Edge jsou součástí funkce [automatické správy zařízení](../iot-hub/iot-hub-automatic-device-management.md) v IoT Hub. Nasazení jsou dynamické procesy, které umožňují nasadit více modulů na více zařízení, sledovat stav a stav modulů a v případě potřeby provádět změny.
 
@@ -61,7 +63,7 @@ Existuje pět kroků k vytvoření nasazení. V následujících částech si pr
 ### <a name="step-1-name-and-label"></a>Krok 1: název a popisek
 
 1. Dejte vašemu nasazení jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /` .
-1. Můžete přidat popisky jako páry klíč-hodnota, které vám pomůžou sledovat vaše nasazení. Například **HostPlatform** , **Linux**nebo **Version** a **3.0.1**.
+1. Můžete přidat popisky jako páry klíč-hodnota, které vám pomůžou sledovat vaše nasazení. Například **HostPlatform** , **Linux** nebo **Version** a **3.0.1**.
 1. Vyberte **Další: moduly** , které se mají přesunout na krok 2.
 
 ### <a name="step-2-modules"></a>Krok 2: moduly
@@ -112,7 +114,7 @@ Metriky poskytují souhrnné počty různých stavů, které může zařízení 
 
 1. Zadejte dotaz na **kritéria metriky**. Dotaz vychází z IoT Edge [nahlášených vlastností](module-edgeagent-edgehub.md#edgehub-reported-properties)modulu centra rozbočovače. Metrika představuje počet řádků vrácených dotazem.
 
-   Příklad:
+   Například:
 
    ```sql
    SELECT deviceId FROM devices
@@ -131,8 +133,8 @@ Pokud je pro stejné zařízení cíleno více nasazení, použije se pouze ta, 
 
 Všechna vrstvená nasazení, která cílí na zařízení, musí mít vyšší prioritu než základní nasazení, aby se daly použít.
 
-1. Zadejte kladné celé číslo pro **prioritu**nasazení.
-1. Zadejte **cílovou podmínku** pro určení, která zařízení budou cílem tohoto nasazení.Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu.Příkladem je `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
+1. Zadejte kladné celé číslo pro **prioritu** nasazení.
+1. Zadejte **cílovou podmínku** pro určení, která zařízení budou cílem tohoto nasazení. Podmínka je založena na nevyhovujících značkách zařízení nebo na dohlášených vlastnostech zařízení, které se musí shodovat s formátem výrazu. Příkladem je `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`.
 
 Vyberte **Další: zkontrolovat + vytvořit** a přejděte k poslednímu kroku.
 
@@ -182,7 +184,7 @@ Při odstranění nasazení převezmou všechna nasazená zařízení nasazení 
 
 1. Pomocí zaškrtávacího políčka vyberte nasazení, které chcete odstranit.
 1. Vyberte **Odstranit**.
-1. Výzva vás upozorní, že tato akce odstraní toto nasazení a vrátí se k předchozímu stavu pro všechna zařízení.Bude použito nasazení s nižší prioritou.Pokud není zacíleno žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořte nasazení s nulovými moduly a nasaďte je do stejného zařízení.Vyberte **Ano**, abyste mohli pokračovat.
+1. Výzva vás upozorní, že tato akce odstraní toto nasazení a vrátí se k předchozímu stavu pro všechna zařízení. Bude použito nasazení s nižší prioritou. Pokud není zacíleno žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořte nasazení s nulovými moduly a nasaďte je do stejného zařízení. Vyberte **Ano**, abyste mohli pokračovat.
 
 ## <a name="next-steps"></a>Další kroky
 

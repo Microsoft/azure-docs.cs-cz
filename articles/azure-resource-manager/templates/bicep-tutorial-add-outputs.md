@@ -2,16 +2,16 @@
 title: Kurz – přidání výstupů do souboru Azure Resource Manager bicep
 description: K zjednodušení syntaxe přidejte výstupy do souboru bicep.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748094"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636238"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Kurz: Přidání výstupů do souboru Azure Resource Manager bicep
 
@@ -37,7 +37,7 @@ Nasadí účet úložiště, ale nevrátí žádné informace o účtu úložiš
 
 Výstupy můžete použít k vrácení hodnot z nasazení. Může být například užitečné získat koncové body pro váš nový účet úložiště.
 
-Následující příklad zvýrazní změnu v souboru bicep pro přidání výstupní hodnoty. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
+Následující příklad ukazuje změnu v souboru bicep pro přidání výstupní hodnoty. Zkopírujte celý soubor a nahraďte soubor bicep jeho obsahem.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ V některých důležitých položkách si všimněte o výstupní hodnotě, kte
 
 Typ vrácené hodnoty je nastaven na `object` , což znamená, že vrátí objekt šablony.
 
-K získání `primaryEndpoints` vlastnosti z účtu úložiště použijete symbolické jméno účtu úložiště.
+K získání `primaryEndpoints` vlastnosti z účtu úložiště použijete symbolické jméno účtu úložiště. Funkce automatického dokončování Visual Studio Code zobrazí úplný seznam vlastností:
+
+   ![Vlastnosti objektu symbolického názvu Visual Studio Code bicep](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Nasadit soubor bicep
 

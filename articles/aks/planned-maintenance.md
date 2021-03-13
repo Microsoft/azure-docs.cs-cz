@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: f5c85f371dbe0fe3488c1ca6ff806f114153d3a7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102638145"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201563"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Pomocí plánované údržby můžete naplánovat časová období údržby pro cluster Azure Kubernetes Service (AKS) (Preview).
 
@@ -28,8 +28,8 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 Při použití plánované údržby platí následující omezení:
 
-- AKS si vyhrazuje právo Tato okna přerušit pro opravy a opravy, které jsou naléhavé nebo kritické.
-- Provádění operací údržby se považuje *jenom za nejlepší úsilí* a nezaručuje se to v zadaném okně.
+- AKS si vyhrazuje právo Tato okna přerušit pro neplánované/reaktivní operace údržby, které jsou naléhavé nebo kritické.
+- V současné době se operace údržby považují za *nejlepší* a v rámci zadaného okna se nezaručují.
 - Aktualizace nelze blokovat po dobu delší než 7 dní.
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
