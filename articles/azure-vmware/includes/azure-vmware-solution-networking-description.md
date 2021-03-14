@@ -2,18 +2,21 @@
 title: Sítě a konektivita řešení Azure VMware
 description: Popis připojení a sítě řešení Azure VMware.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 47b5fab8430f4e462f1e4a0e8cb6ddb69ec38c02
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 03/13/2021
+ms.openlocfilehash: 96dd93f1db5dc3ddcbb883313e19c6aed8a256da
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925015"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462574"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
-Řešení Azure VMware nabízí prostředí privátního cloudu, které je přístupné z místních prostředí a prostředí založeného na Azure nebo prostředků. Připojení poskytují služby, jako je Azure ExpressRoute a VPN. Tyto služby vyžadují pro povolení služeb konkrétní rozsahy síťových adres a porty brány firewall.
+Řešení Azure VMware nabízí prostředí privátního cloudu přístupné z místních a prostředků založených na Azure. Služby, jako je Azure ExpressRoute, připojení VPN nebo Azure Virtual WAN, dodávají připojení. Tyto služby vyžadují pro povolení služeb konkrétní rozsahy síťových adres a porty brány firewall.
 
-Při nasazení privátního cloudu se vytvoří privátní sítě pro správu, zřizování a vMotion. Tyto privátní sítě použijte pro přístup k vCenter a NSX Manageru a vMotion nebo nasazení virtuálních počítačů.  ExpressRoute Global Reach slouží k propojení privátních cloudů s místními prostředími. Připojení vyžaduje virtuální síť s okruhem ExpressRoute v rámci vašeho předplatného.
+Při nasazení privátního cloudu se vytvoří privátní sítě pro správu, zřizování a vMotion. Tyto privátní sítě použijte pro přístup k vCenter a NSX Manageru a vMotion nebo nasazení virtuálních počítačů.  
 
-Prostředky, jako jsou webové servery a virtuální počítače, jsou přístupné z Internetu prostřednictvím funkce veřejné IP adresy Azure Virtual WAN.  Ve výchozím nastavení je přístup k Internetu zakázán pro nové privátní cloudy. Další informace najdete v tématu [Jak používat funkci veřejné IP adresy v řešení Azure VMware](../public-ip-usage.md).
+ExpressRoute Global Reach slouží k propojení privátních cloudů s místními prostředími. Připojení vyžaduje virtuální síť s okruhem ExpressRoute v místním prostředí v rámci vašeho předplatného.
+
+Virtuální počítače nasazené v privátním cloudu jsou přístupné pro Internet prostřednictvím funkce veřejné IP adresy virtuální sítě WAN Azure.  Ve výchozím nastavení je přístup k Internetu zakázán pro nové privátní cloudy. Další informace najdete v tématu [Jak používat funkci veřejné IP adresy v řešení Azure VMware](../public-ip-usage.md).
+

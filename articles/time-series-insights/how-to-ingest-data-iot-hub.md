@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695556"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464016"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Přidání zdroje událostí služby IoT Hub do prostředí Azure Time Series Insight
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vytvořte [Azure Time Series Insights prostředí](./tutorials-set-up-tsi-environment.md).
+* Vytvořte [Azure Time Series Insights prostředí](./tutorial-set-up-environment.md).
 * Vytvořte [Centrum IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
 * Služba IoT Hub musí mít v nástroji odesílány události aktivní zprávy.
 * Vytvořte vyhrazenou skupinu uživatelů ve službě IoT Hub pro prostředí Azure Time Series Insight, které se má využít. Každý zdroj událostí Insight v Azure Time Series musí mít svou vlastní vyhrazenou skupinu uživatelů, která není sdílená s žádným jiným příjemcem. Pokud více čtenářů spotřebovává události ze stejné skupiny příjemců, můžou se všechny čtenáři projevit při selhání. Podrobnosti najdete v příručce pro [vývojáře pro Azure IoT Hub](../iot-hub/iot-hub-devguide.md).

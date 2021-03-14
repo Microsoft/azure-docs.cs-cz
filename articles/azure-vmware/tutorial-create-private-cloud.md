@@ -1,18 +1,18 @@
 ---
-title: Kurz – vytvoření a nasazení privátního cloudu řešení Azure VMware
+title: Kurz – nasazení privátního cloudu řešení Azure VMware
 description: Naučte se vytvářet a nasazovat privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725394"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462163"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Kurz: Vytvoření privátního cloudu řešení Azure VMware
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Kurz: nasazení privátního cloudu řešení Azure VMware
 
-V tomto kurzu se dozvíte, jak vytvořit a nasadit privátní cloud řešení Azure VMware. Minimální počáteční nasazení hostitelů je tři. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster. 
+Řešení Azure VMware nabízí možnost nasadit cluster vSphere v Azure. Minimální počáteční nasazení je tři hostitele. Další hostitele je možné přidat najednou, maximálně 16 hostitelů na jeden cluster.
 
 Vzhledem k tomu, že řešení Azure VMware neumožňuje spravovat váš privátní cloud s vaším místním systémem vCenter při spuštění, je potřeba provést další konfiguraci. Tyto postupy a související požadavky jsou pokryté v tomto kurzu.
 
@@ -48,7 +48,7 @@ Vyberte **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete 
 
 #### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pomocí příkazu `[az group create](/cli/azure/group)` vytvořte skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 

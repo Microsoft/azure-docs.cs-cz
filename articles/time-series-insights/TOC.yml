@@ -14,7 +14,7 @@
 - name: Kurzy
   items:
     - name: Nastavení prostředí služby Time Series Insights Gen2
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Synchronizace modelů mezi Azure Digital Twins a Time Series Insights Gen2
       href: tutorials-model-sync.md
 - name: Koncepty
@@ -95,9 +95,13 @@
           items:
             - name: Plánování prostředí
               href: how-to-plan-your-environment.md
-        - name: Správa prostředí
+        - name: Správa
           items:
-            - name: Postup při zřízení a správě
+            - name: Postup vytvoření prostředí pomocí Azure CLI
+              href: how-to-create-environment-using-cli.md
+            - name: Postup vytvoření prostředí pomocí Azure Portal
+              href: how-to-create-environment-using-portal.md
+            - name: Jak spravovat prostředí
               href: how-to-provision-manage.md
             - name: Postup při výběru TSID
               href: how-to-select-tsid.md

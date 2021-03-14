@@ -10,16 +10,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 402b61bb0845532d601e9f5dcaaf55eacce685d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959369"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462724"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>Kurz: vývoj a nasazení modulu Python IoT Edge s využitím kontejnerů Linux
 
-Pomocí Visual Studio Code můžete vyvíjet kód v Pythonu a nasazovat ho do zařízení se systémem Linux s Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Pomocí Visual Studio Code můžete vyvíjet kód v Pythonu a nasazovat ho do zařízení se systémem Azure IoT Edge.
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede vytvořením a nasazením modulu IoT Edge, který filtruje data ze senzorů na zařízení IoT Edge, které jste nastavili v rychlém startu. V tomto kurzu se naučíte:
 
@@ -36,19 +38,21 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v **Pythonu** pomocí **Visual Studio Code** a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Pythonu pro zařízení s Windows.
+Tento kurz ukazuje, jak vytvořit modul v **Pythonu** pomocí **Visual Studio Code** a jak ho nasadit do IoT Edgeho zařízení.
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů Pythonu pro Linux:
+IoT Edge nepodporuje moduly Pythonu s využitím kontejnerů Windows.
+
+Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazování modulů Pythonu pomocí kontejnerů Linux:
 
 | Python | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Použití VS Code pro moduly Pythonu v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Pythonu na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.

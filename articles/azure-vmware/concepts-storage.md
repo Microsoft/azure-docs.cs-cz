@@ -2,13 +2,13 @@
 title: Koncepty – úložiště
 description: Seznamte se s možnostmi úložiště klíčů v privátních cloudech řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: a4c34f8767b20de3ca0647e09c5dc9edad3d45fb
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.date: 03/13/2021
+ms.openlocfilehash: 2551b11ada8b6118fb7524d9fe36f8b4b568aca1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200540"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462469"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Koncepty úložiště řešení Azure VMware
 
@@ -19,6 +19,7 @@ Privátní cloudy řešení Azure VMware poskytují nativní prostředí pro úl
 Místní úložiště v každém hostiteli clusteru se používá jako součást úložiště dat síti vSAN. Všechny diskgroups používají vrstvu mezipaměti NVMe 1,6 TB s nezpracovanými, na hostiteli a kapacitou založenou na SSD na 15,4 TB. Velikost nezpracované úrovně kapacity clusteru je vytížení na kapacitu hostitele, kolikrát je počet hostitelů. Například čtyři clustery hostitelů poskytnou hrubou kapacitu 61,6 až TB v úrovni kapacity síti vSAN.
 
 Místní úložiště v hostitelích clusteru se používá v síti vSAN úložiště dat v úrovni clusteru. Všechna úložiště dat jsou vytvořena jako součást nasazení privátního cloudu a jsou k dispozici pro okamžité použití. Cloudadmin uživatel a všichni uživatelé ve skupině CloudAdmin mohou spravovat úložiště dat pomocí těchto oprávnění síti vSAN:
+
 - Úložiště dat. AllocateSpace
 - Datastore.Browse
 - Datastore.Config
@@ -28,15 +29,15 @@ Místní úložiště v hostitelích clusteru se používá v síti vSAN úloži
 
 ## <a name="data-at-rest-encryption"></a>Šifrování při neaktivním umístění dat
 
-úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíče jsou uloženy zašifrované, zabalené Azure Key Vault hlavní klíč. Pokud z jakéhokoli důvodu dojde k odebrání hostitele z clusteru, data v SSD se okamžitě zruší.
+úložiště dat síti vSAN ve výchozím nastavení používají šifrování neaktivních dat. Řešení šifrování je založené na službě správy klíčů a podporuje operace vCenter pro správu klíčů. Klíče jsou uloženy zašifrované, zabalené Azure Key Vault hlavní klíč. Když se hostitel odebere z clusteru, data v SSD se okamžitě zruší.
 
 ## <a name="scaling"></a>Škálování
 
-Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele AVS36, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým přidaným hostitelem. Přidání hostitelů do clusteru trvá přibližně 10 minut. Pokyny k škálování clusterů najdete v [kurzu škálování privátního cloudu][tutorial-scale-private-cloud].
+Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele AVS36, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým přidaným hostitelem. Přidání hostitelů do clusteru trvá přibližně 10 minut.  Pokyny k škálování clusterů najdete v [kurzu škálování privátního cloudu][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Integrace úložiště Azure
 
-Služby Azure Storage můžete používat na úlohách běžících ve vašem privátním cloudu. Služba Azure Storage zahrnuje účty úložiště, Table Storage a Blob Storage. Připojení úloh ke službám Azure Storage neprojde internetem. Toto připojení poskytuje vyšší úroveň zabezpečení a umožňuje ve svých úlohách privátního cloudu používat služby Azure Storage založené na smlouvě SLA.
+Služby Azure Storage můžete používat v úlohách běžících ve vašem privátním cloudu. Služba Azure Storage zahrnuje účty úložiště, Table Storage a Blob Storage. Připojení úloh ke službám Azure Storage neprojde internetem. Toto připojení poskytuje vyšší úroveň zabezpečení a umožňuje ve svých úlohách privátního cloudu používat služby Azure Storage založené na smlouvě SLA.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -45,6 +46,7 @@ Teď, když jste se seznámili s koncepty úložiště řešení Azure VMware, s
 - [Koncepce identity privátního cloudu](concepts-identity.md).
 - [vSphere řízení přístupu na základě role pro řešení Azure VMware](concepts-role-based-access-control.md).
 - [Jak povolit prostředek řešení Azure VMware](enable-azure-vmware-solution.md).
+- [Azure NetApp Files s využitím řešení Azure VMware](netapp-files-with-azure-vmware-solution.md)
 
 <!-- LINKS - external-->
 

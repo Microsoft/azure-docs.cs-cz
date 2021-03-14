@@ -8,14 +8,16 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932366"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463142"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení. Nejdřív nastavte vývojový počítač pro všechny nástroje, které potřebujete. Pak vytvořte potřebné cloudové prostředky v Azure.
 
@@ -26,7 +28,7 @@ V této části kurzu se dozvíte, jak:
 > * Nastavte virtuální počítač pro vývoj.
 > * Nastavte IoT Hub a cloudové úložiště pro použití ve vývojovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -80,7 +82,7 @@ Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
     .\Create-AzureDevVm.ps1
     ```
 
-    Po zobrazení výzvy zadejte následující informace:
+    Po zobrazení výzvy zadejte tyto informace:
 
     * **ID předplatného Azure**: ID vašeho předplatného, které najdete v [předplatných Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na portálu.
     * **Název skupiny prostředků**: název nové nebo existující skupiny prostředků v Azure.

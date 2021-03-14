@@ -3,12 +3,12 @@ title: Připojení ExpressRoute k bráně virtuální sítě
 description: Postup připojení ExpressRoute k bráně virtuální sítě.
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 5f9a565a7662041dbd85e61388129496fa376962
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cea07f9a75e91b2b8ff444c9dda4a59d421ca37c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861509"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462314"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -31,6 +31,8 @@ ms.locfileid: "96861509"
    | **Autorizační klíč**  | Zkopírujte autorizační klíč a vložte ho z karty ExpressRoute pro vaši skupinu prostředků. |
    | **Identifikátor URI rovnocenného okruhu**  | Zkopírujte a vložte ID ExpressRoute z karty ExpressRoute pro vaši skupinu prostředků.  |
 
-   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="Na stránce Přidat připojení zadejte hodnoty pro pole a vyberte OK." border="true" lightbox="../media/expressroute-global-reach/open-cloud-shell.png":::
+   :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="Snímek obrazovky se stránkou přidat připojení pro připojení ExpressRoute k bráně virtuální sítě":::
 
 Vytvoří se připojení mezi okruhem ExpressRoute a vaším Virtual Network.
+
+:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="Snímek obrazovky s připojením brány virtuální sítě":::

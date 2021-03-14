@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023254"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463557"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Odeslání událostí do prostředí Azure Time Series Insights Gen1 pomocí centra událostí
 
 > [!CAUTION]
 > Toto je Gen1 článek.
 
-Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./tutorials-set-up-tsi-environment.md).
+Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./tutorial-set-up-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 
 1. Pokud se chcete dozvědět, jak vytvořit centrum událostí, přečtěte si [dokumentaci Event Hubs](../event-hubs/index.yml).
 1. Do vyhledávacího pole vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
 1. Vyberte centrum událostí.
-1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity** centrum událostí.  
+1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity** centrum událostí.
 
     [![Seznam Center událostí](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ V Azure Time Series Insights Gen2 můžete přidat kontextová data do příchoz
 
 1. Přejděte na <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. Adresa URL vytvoří a spustí simulovaná zařízení Windmill.
 1. Do pole **připojovací řetězec centra událostí** na webové stránce vložte připojovací řetězec, který jste zkopírovali do [vstupního pole Windmill](#push-events-to-windmills-sample).
-  
+
     [![Vložte připojovací řetězec primárního klíče do pole Připojovací řetězec centra událostí.](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. Vyberte **kliknutím spustit**.

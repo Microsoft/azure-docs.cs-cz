@@ -1,27 +1,26 @@
 ---
-title: Podpora a možnosti pomoci pro vývojáře aplikací Azure AD
-description: Informace o tom, jak získat nápovědu a podporu pro otázky a problémy související s vývojem při vytváření aplikace, která se integruje s identitami Microsoft (Azure Active Directory a účet Microsoft)
+title: Podpora a možnosti pomoci pro vývojáře Microsoft Identity Platform Azure
+description: Naučte se, jak získat nápovědu a najít odpovědi na své otázky při vytváření řešení pro správu identit a přístupu (IAM), která se integrují s Azure Active Directory (Azure AD) a dalšími komponentami platformy Microsoft identity.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517925"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462758"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
-Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API, nebo když implementujete novou funkci aplikace, nastane čas, kdy potřebujete získat pomoc od komunity nebo porozumět možnostem podpory, které máte jako vývojář. Tady jsou návrhy, kde můžete získat nápovědu k vývoji řešení Microsoft Identity Platform.
+Pokud potřebujete odpověď na otázku nebo pomůžete vyřešit problém, který není popsaný v naší dokumentaci, může být čas na to, abyste se mohli obrátit na odborníky. Tady je několik návrhů na odpovědi na vaše otázky při vývoji aplikací, které se integrují s platformou Microsoft identity.
 
 ## <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -33,9 +32,10 @@ Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azur
 
 - Pokud již máte plán podpory Azure, [otevřete žádost o podporu zde](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-- Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.serviceshub.microsoft.com/supportforbusiness)otevřít žádost o podporu od Microsoftu.
+- Pokud nejste zákazníkem Azure, můžete otevřít žádost o podporu s [Podpora Microsoftu pro firmy](https://support.serviceshub.microsoft.com/supportforbusiness).
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
+
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
 </div>             

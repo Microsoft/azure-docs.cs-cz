@@ -9,14 +9,16 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047943"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461109"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Nasaďte modul SQL Server pro ukládání dat do zařízení se systémem Linux se systémem Azure IoT Edge.
 
@@ -35,12 +37,12 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* Zařízení AMD64 [Linux se systémem Azure IoT Edge](quickstart-linux.md).
+* Zařízení AMD64 se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
   * Zařízení ARM, jako je například Malina Pis, nelze spustit SQL Server. Pokud chcete použít SQL na zařízení ARM, můžete se zaregistrovat a vyzkoušet [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) ve verzi Preview.
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -89,7 +91,7 @@ Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru konte
 
 Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge** nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**.
 

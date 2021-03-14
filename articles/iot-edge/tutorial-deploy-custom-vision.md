@@ -9,14 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8da5c24265a43eaaf1ecfe80649b6f4fea588b3f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736487"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464054"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge může zvýšit efektivitu vašeho řešení IoT tím, že přesune úlohy z cloudu na hraniční zařízení. Tato funkce je vhodná pro služby, které zpracovávají velké množství dat, jako jsou modely počítačového zpracování obrazu. [Služba Custom Vision](../cognitive-services/custom-vision-service/overview.md) umožňuje vytvářet vlastní klasifikátory obrázků a nasazovat je do zařízení jako kontejnery. Kombinace těchto dvou služeb umožňuje získávat informace z obrázků a video streamů bez nutnosti nejprve přenášet všechna tato data do jiného umístění. Služba Custom Vision poskytuje klasifikátor, který generuje přehledy porovnáváním obrázků s natrénovaným modelem.
 
@@ -42,10 +44,10 @@ V tomto kurzu se naučíte:
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
@@ -75,7 +77,7 @@ Jakmile bude klasifikátor obrázků vytvořený a natrénovaný, můžete ho ex
    | Pole | Hodnota |
    | ----- | ----- |
    | Název | Zadejte název projektu, například **EdgeTreeClassifier**. |
-   | Popis | Volitelný popis projektu. |
+   | Description | Volitelný popis projektu. |
    | Prostředek | Vyberte jednu ze skupin prostředků Azure, která zahrnuje prostředek Custom Vision Service, nebo **vytvořte novou** , pokud jste ho ještě nepřidali. |
    | Typy projektů | **Klasifikace** |
    | Typy klasifikace | **Více tříd (jedna značka na obrázek)** |

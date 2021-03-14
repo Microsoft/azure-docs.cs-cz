@@ -4,21 +4,23 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit zařízení IoT 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920804"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463447"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
-Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kódu na virtuální Linux IoT Edge zařízení. IoT Edge vám umožní vzdáleně spravovat kód na svých zařízeních, abyste mohli do hraničních zařízení odesílat další úlohy. Pro tento rychlý Start doporučujeme použít pro zařízení IoT Edge virtuální počítač Azure, který vám umožní rychle vytvořit testovací počítač s nainstalovanou službou IoT Edge a pak ho po dokončení odstranit.
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kódu na virtuální Linux IoT Edge zařízení. IoT Edge vám umožní vzdáleně spravovat kód na svých zařízeních, abyste mohli do hraničních zařízení odesílat další úlohy. Pro tento rychlý Start doporučujeme použít pro zařízení IoT Edge virtuální počítač Azure, který vám umožní rychle vytvořit testovací počítač a po dokončení ho odstranit.
 
 V tomto rychlém startu se naučíte:
 
@@ -33,7 +35,7 @@ Tento rychlý Start vás provede vytvořením virtuálního počítače se syst�
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
@@ -41,7 +43,7 @@ Připravte prostředí pro rozhraní příkazového řádku Azure CLI.
 
 Cloudové prostředky:
 
-- Skupina prostředků pro správu všech prostředků, které v tomto rychlém startu použijete. V tomto rychlém startu používáme příklad názvu skupiny prostředků **IoTEdgeResources** a následujících kurzech.
+* Skupina prostředků pro správu všech prostředků, které v tomto rychlém startu použijete. V tomto rychlém startu používáme příklad názvu skupiny prostředků **IoTEdgeResources** a následujících kurzech.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -103,6 +105,9 @@ Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. T
 
 Tato část používá šablonu Azure Resource Manager k vytvoření nového virtuálního počítače a instalaci IoT Edge modulu runtime. Pokud místo toho chcete použít vlastní zařízení se systémem Linux, můžete postupovat podle pokynů k instalaci [Azure IoT Edge modul runtime](how-to-install-iot-edge.md)a pak se vrátit k tomuto rychlému startu.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Pomocí následujícího příkazu rozhraní příkazového řádku vytvořte zařízení IoT Edge na základě předem sestavené šablony [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) .
 
 * Pro uživatele bash nebo Cloud Shell zkopírujte následující příkaz do textového editoru, nahraďte zástupný text vašimi informacemi a pak zkopírujte do svého bash a Cloud Shell okna:
@@ -113,8 +118,7 @@ Pomocí následujícího příkazu rozhraní příkazového řádku vytvořte za
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
-   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -131,6 +135,42 @@ Pomocí následujícího příkazu rozhraní příkazového řádku vytvořte za
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Pomocí následujícího příkazu rozhraní příkazového řádku vytvořte zařízení IoT Edge na základě předem sestavené šablony [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) .
+
+* Pro uživatele bash nebo Cloud Shell zkopírujte následující příkaz do textového editoru, nahraďte zástupný text vašimi informacemi a pak zkopírujte do svého bash a Cloud Shell okna:
+
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+* V případě uživatelů PowerShellu zkopírujte do okna PowerShellu následující příkaz a potom zástupný text nahraďte vlastními informacemi:
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+:::moniker-end
+<!-- end 1.2 -->
 
 Tato šablona používá následující parametry:
 
@@ -158,6 +198,9 @@ Zbývající příkazy v tomto rychlém startu se uskuteční na svém IoT Edge 
 
 Po připojení k virtuálnímu počítači ověřte, že modul runtime byl úspěšně nainstalován a nakonfigurován na vašem zařízení IoT Edge.
 
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Zkontrolujte, zda je démon zabezpečení IoT Edge spuštěn jako systémová služba.
 
    ```bash
@@ -182,6 +225,35 @@ Po připojení k virtuálnímu počítači ověřte, že modul runtime byl úsp�
    ```
 
    ![Zobrazení jednoho modulu na zařízení](./media/quickstart-linux/iotedge-list-1.png)
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Zkontrolujte, jestli je IoT Edge spuštěná. Následující příkaz by měl vrátit stav **OK** , pokud je IoT Edge spuštěný, nebo může poskytovat chyby služby.
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+   >[!TIP]
+   >Ke spouštění příkazů `iotedge` potřebujete zvýšená oprávnění. Vaše oprávnění se automaticky aktualizují, jakmile se po instalaci modulu runtime IoT Edge odhlásíte z počítače a poprvé se k němu opět přihlásíte. Do té doby použijte `sudo` před příkazy.
+
+2. Pokud potřebujete řešit potíže se službou, načtěte protokoly služby.
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Ve výchozím nastavení se spustí modul edgeAgent a pomůže vám nainstalovat a spustit všechny další moduly, které nasadíte do svého zařízení.
+
+   ```bash
+   sudo iotedge list
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Teď je zařízení IoT Edge nakonfigurované. Je připravené na spouštění modulů nasazených v cloudu.
 
@@ -192,6 +264,31 @@ Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit mod
 ![Diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Vzhledem k tomu, že IoT Edge verze 1,2 je ve verzi Public Preview, je k dispozici další krok, který by měl provést aktualizaci běhových modulů i na jejich verze Public Preview.
+
+1. Na stránce Podrobnosti o zařízení vyberte znovu **nastavit moduly** .
+
+1. Vyberte **nastavení modulu runtime**.
+
+1. Aktualizujte pole **Image** pro moduly IoT Edge hub a IoT Edge agentů tak, aby používaly značku Version 1.2.0-RC4. Například:
+
+   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
+   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
+
+1. Modul pro simulaci teplotního senzoru by měl být nadále uveden v části moduly. V tomto modulu není nutné dělat žádné změny pro verzi Public Preview.
+
+1. Vyberte **Zkontrolovat a vytvořit**.
+
+1. Vyberte **Vytvořit**.
+
+1. Na stránce s podrobnostmi o zařízení můžete vybrat buď **$edgeAgent** , nebo **$edgeHub** podrobnosti o modulu, které odpovídají verzi Public Preview obrázku.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="view-generated-data"></a>Zobrazit vygenerovaná data
 
@@ -205,7 +302,15 @@ V zařízení IoT Edge znovu otevřete příkazový řádek nebo použijte přip
    sudo iotedge list
    ```
 
-   ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2.png)
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+   ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2-version-201806.png)
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+   ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2-version-202011.png)
+:::moniker-end
 
 Zobrazit zprávy odesílané z modulu snímače teploty:
 
@@ -232,7 +337,7 @@ Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině pros
 Odeberte skupinu **IoTEdgeResources**. Odstranění skupiny prostředků může trvat několik minut.
 
 ```azurecli-interactive
-az group delete --name IoTEdgeResources
+az group delete --name IoTEdgeResources --yes
 ```
 
 Skupinu prostředků můžete potvrdit tak, že si zobrazíte seznam skupin prostředků.

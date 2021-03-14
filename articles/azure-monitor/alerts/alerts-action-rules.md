@@ -3,12 +3,12 @@ title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103015994"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463064"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -65,18 +65,25 @@ Volitelně můžete definovat filtry, takže pravidlo bude platit pro konkrétn�
 
 Jsou k dispozici tyto filtry:
 
-* **Závažnost**: Toto pravidlo bude platit jenom pro výstrahy s vybranými závažnostmi.  
+* **Závažnost**  
+Toto pravidlo bude platit jenom pro výstrahy s vybranými závažnostmi.  
 Například **závažnost = Sev1** znamená, že pravidlo bude platit jenom pro výstrahy se závažností Sev1.
-* **Monitorování služby**: Toto pravidlo bude platit jenom pro výstrahy přicházející z vybraných monitorovacích služeb.  
+* **Monitorování služby**  
+Toto pravidlo bude platit pouze pro výstrahy přicházející z vybraných monitorovacích služeb.  
 Například **monitor služba = "Azure Backup"** znamená, že pravidlo bude platit jenom pro výstrahy zálohování (pocházející z Azure Backup).
-* **Typ prostředku**: Toto pravidlo bude platit jenom pro výstrahy pro vybrané typy prostředků.  
+* **Typ prostředku**  
+Toto pravidlo bude platit jenom pro výstrahy pro vybrané typy prostředků.  
 Například **typ prostředku = "Virtual Machines"** znamená, že pravidlo bude platit pouze pro výstrahy na virtuálních počítačích.
-* **ID pravidla výstrahy**: Toto pravidlo se použije jenom na výstrahy přicházející z konkrétního pravidla výstrahy. Hodnota by měla být Správce prostředků ID pravidla výstrahy.  
-Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/MyAPI-highLatency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky "MyAPI-highLatency".
-* **Podmínka monitorování**: Toto pravidlo bude platit jenom pro události výstrah se zadanou podmínkou monitorování – buď se **vyvolaly** , nebo **vyřešily**.
-* **Popis**: Toto pravidlo bude platit jenom pro výstrahy, které v poli Popis výstrahy obsahují konkrétní řetězec. Toto pole obsahuje popis pravidla výstrahy.  
+* **ID pravidla výstrahy**  
+Toto pravidlo bude platit jenom pro výstrahy přicházející z konkrétního pravidla výstrahy. Hodnota by měla být Správce prostředků ID pravidla výstrahy.  
+Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.
+* **Podmínka monitorování**  
+Toto pravidlo bude platit pouze pro události výstrah se zadanou podmínkou monitorování – buď **aktivováno** , nebo **Vyřešeno**.
+* **Popis**  
+Toto pravidlo bude platit pouze pro výstrahy, které v poli Popis výstrahy obsahují konkrétní řetězec. Toto pole obsahuje popis pravidla výstrahy.  
 Například **Popis obsahuje ' prod '** znamená, že pravidlo bude odpovídat pouze výstrahám, které obsahují řetězec "prod" v jeho popisu.
-* **Kontext výstrahy (datová část)**: Toto pravidlo bude platit jenom pro výstrahy, které obsahují jednu nebo více konkrétních hodnot v polích kontextu výstrahy.  
+* **Kontext výstrahy (datová část)**  
+Toto pravidlo bude platit pouze pro výstrahy, které obsahují jednu nebo více konkrétních hodnot v polích kontextu výstrahy.  
 Například **kontext výstrahy (datová část) obsahuje řetězec ' Computer-01 '** znamená, že pravidlo bude platit pouze pro výstrahy, jejichž datová část obsahuje řetězec "Computer-01".
 
 Pokud v pravidle nastavíte více filtrů, uplatní se všechny. Pokud například nastavíte **typ prostředku = Virtual Machines** a **závažnost = Sev0**, pravidlo se použije jenom pro upozornění Sev0 na virtuálních počítačích.

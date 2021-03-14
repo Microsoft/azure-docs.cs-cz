@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433212"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462673"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -36,8 +36,10 @@ Získat digitální vlákna podle **vlastností** (včetně ID a metadat):
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> Na ID digitálního dvojčete se dotazuje pomocí pole metadat `$dtId`.
+Jak je znázorněno v dotazu výše, ID digitálního vlákna je dotazováno pomocí pole metadata `$dtId` .
+
+>[!TIP]
+> Pokud používáte Cloud Shell pro spuštění dotazu s poli metadat, která začínají `$` na, měli byste řídicí znak s zpětným lomítkem nechat Cloud Shell, že se nejedná `$` o proměnnou a měl by být spotřebovaný jako literál v textu dotazu.
 
 Můžete také získat vlákna na základě **toho, zda je definována určitá vlastnost**. Tady je dotaz, který vrací vlákna, která mají definovanou vlastnost *Location* :
 

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510706"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464958"
 ---
 Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů. Můžete ji použít ke správě a konfiguraci virtuálních počítačů.
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dostupných dat najdete v části [Souhrn kategorií koncových bodů](#endpoint-categories).
@@ -1140,174 +1140,168 @@ Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Meta
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Zobrazuje se chyba `400 Bad Request, Required metadata header not specified` . Co to znamená?**
+- Zobrazuje se chyba `400 Bad Request, Required metadata header not specified` . Co to znamená?
+  - IMDS vyžaduje, aby se hlavička `Metadata: true` předala v žádosti. Předání této hlavičky v volání REST umožňuje přístup k IMDS.
 
-IMDS vyžaduje, aby se hlavička `Metadata: true` předala v žádosti. Předání této hlavičky v volání REST umožňuje přístup k IMDS.
+- Proč mi nezískávám výpočetní informace pro svůj virtuální počítač?
+  - V současné době IMDS podporuje pouze instance vytvořené pomocí Azure Resource Manager.
 
-**Proč mi nezískávám výpočetní informace pro svůj virtuální počítač?**
+- V tuto chvíli jsem virtuální počítač vytvořil před Azure Resource Manager. Proč se mi nezobrazuje informace o metadatech COMPUTE?
+  - Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.
 
-V současné době IMDS podporuje pouze instance vytvořené pomocí Azure Resource Manager.
+- Proč se mi nezobrazují všechna data naplněná z nové verze?
+  - Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.
 
-**V tuto chvíli jsem virtuální počítač vytvořil před Azure Resource Manager. Proč se mi nezobrazuje informace o metadatech COMPUTE?**
+- Proč se mi zobrazuje chyba `500 Internal Server Error` `410 Resource Gone` ?
+  - Opakujte požadavek. Další informace najdete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults). Pokud potíže potrvají, vytvořte v Azure Portal pro virtuální počítač problém podpory.
 
-Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.
+- Budou to fungovat pro instance sady škálování virtuálních počítačů?
+  - Ano, IMDS je k dispozici pro instance sady škálování virtuálních počítačů.
 
-**Proč se mi nezobrazují všechna data naplněná z nové verze?**
+- Aktualizoval (a) jsem moje značky ve službě Virtual Machine Scale Sets, ale nezobrazují se v instancích (na rozdíl od virtuálních počítačů s jednou instancí). Nedaří se mi něco?
+  - V současné době se pro sady škálování virtuálních počítačů zobrazují pouze virtuální počítače na restartování, obnovení bitové kopie nebo změna disku na instanci.
 
-Pokud jste virtuální počítač vytvořili po září 2016, přidejte [značku](../articles/azure-resource-manager/management/tag-resources.md) , která začne zobrazovat výpočetní metadata. Pokud jste virtuální počítač vytvořili před září 2016, přidejte nebo odeberte rozšíření nebo datové disky do instance virtuálního počítače, aby se metadata aktualizovala.
+- Proč se mi v podrobnostech nezobrazuje informace o SKU pro svůj virtuální počítač `instance/compute` ?
+  - Pro vlastní image vytvořené z Azure Marketplace platforma Azure neuchovává informace o SKU pro vlastní image a podrobnosti pro všechny virtuální počítače vytvořené z vlastní image. Jedná se o návrh, a proto se v podrobnostech o virtuálním počítači nezobrazuje `instance/compute` .
 
-**Proč se mi zobrazuje chyba `500 Internal Server Error` `410 Resource Gone` ?**
+- Proč vypršel časový limit žádosti o mé volání služby?
+  - Volání metadat je nutné provést z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. Pokud jste změnili své trasy, musí existovat trasa pro adresu 169.254.169.254/32 v místní směrovací tabulce vašeho virtuálního počítače.
 
-Opakujte požadavek. Další informace najdete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults). Pokud potíže potrvají, vytvořte v Azure Portal pro virtuální počítač problém podpory.
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-**Budou to fungovat pro instance sady škálování virtuálních počítačů?**
+    1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Například:
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (například `172.16.69.7` ).
+    1. Vypíše konfiguraci rozhraní a nalezne rozhraní, které odpovídá odkazované tabulce směrování, a označuje tak adresu MAC (fyzickou).
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-Ano, IMDS je k dispozici pro instance sady škálování virtuálních počítačů.
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Všimněte si privátních IP adres (a adresy MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. Pokud se neshodují, aktualizujte tabulku směrování tak, aby byla cílem primární síťová karta a IP adresa.
 
-**Aktualizoval (a) jsem moje značky ve službě Virtual Machine Scale Sets, ale nezobrazují se v instancích (na rozdíl od virtuálních počítačů s jednou instancí). Nedaří se mi něco?**
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-V současné době se pro sady škálování virtuálních počítačů zobrazují pouze virtuální počítače na restartování, obnovení bitové kopie nebo změna disku na instanci.
+    1. Vypíšete místní směrovací tabulku pomocí příkazu, například `netstat -r` a vyhledejte položku IMDS (např.):
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (např. `eth0` ).
+    1. Vypíše konfiguraci rozhraní pro odpovídající rozhraní ve směrovací tabulce (Všimněte si, že se může změnit přesný název konfiguračního souboru)
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. Pokud používáte dynamickou IP adresu, poznamenejte si adresu MAC. Pokud používáte statickou IP adresu, můžete si uvedené IP adresy nebo adresu MAC poznamenat.
+    1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Všimněte si privátních IP adres (a adresy MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. Pokud se neshodují, aktualizujte směrovací tabulku tak, aby byla primární síťová karta/IP cílem.
 
-**Proč vypršel časový limit žádosti o mé volání služby?**
+    ---
 
-Volání metadat je nutné provést z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. Pokud jste změnili své trasy, musí existovat trasa pro adresu 169.254.169.254/32 v místní směrovací tabulce vašeho virtuálního počítače.
+- Clustering s podporou převzetí služeb při selhání ve Windows serveru
+  - Při dotazování na IMDS s clusteringem s podporou převzetí služeb při selhání je někdy potřeba přidat trasu do směrovací tabulky. Jak na to:
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. Otevřete příkazový řádek s oprávněními správce.
 
-1. Vypsat místní směrovací tabulku a vyhledat položku IMDS Například:
-    ```console
-    > route print
+    1. Spusťte následující příkaz a poznamenejte si adresu rozhraní pro cílovou síť ( `0.0.0.0` ) v tabulce směrování IPv4.
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > Následující příklad výstupu je z virtuálního počítače s Windows serverem s povoleným clusterem s podporou převzetí služeb při selhání. Pro zjednodušení výstup obsahuje jenom tabulku směrování IPv4.
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (například `172.16.69.7` ).
-1. Vypíše konfiguraci rozhraní a nalezne rozhraní, které odpovídá odkazované tabulce směrování, a označuje tak adresu MAC (fyzickou).
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    Spusťte následující příkaz a použijte adresu rozhraní pro cílové umístění sítě ( `0.0.0.0` ), což je ( `10.0.1.10` ) v tomto příkladu.
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Všimněte si privátních IP adres (a adresy MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. Pokud se neshodují, aktualizujte tabulku směrování tak, aby byla cílem primární síťová karta a IP adresa.
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. Vypíšete místní směrovací tabulku pomocí příkazu, například `netstat -r` a vyhledejte položku IMDS (např.):
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. Ověřte, zda trasa existuje pro `169.254.169.254` , a poznamenejte si odpovídající síťové rozhraní (např. `eth0` ).
-1. Vypíše konfiguraci rozhraní pro odpovídající rozhraní ve směrovací tabulce (Všimněte si, že se může změnit přesný název konfiguračního souboru)
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. Pokud používáte dynamickou IP adresu, poznamenejte si adresu MAC. Pokud používáte statickou IP adresu, můžete si uvedené IP adresy nebo adresu MAC poznamenat.
-1. Potvrďte, že rozhraní odpovídá primární síťové kartě virtuálního počítače a primární IP adrese. Primární síťovou kartu a IP adresu najdete tak, že si prohlížíte síťovou konfiguraci v Azure Portal, nebo ji vyhledáte pomocí Azure CLI. Všimněte si privátních IP adres (a adresy MAC, pokud používáte rozhraní příkazového řádku). Tady je příklad rozhraní příkazového řádku PowerShellu:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. Pokud se neshodují, aktualizujte směrovací tabulku tak, aby byla primární síťová karta/IP cílem.
-
----
-
-**Clustering s podporou převzetí služeb při selhání ve Windows serveru**
-
-Při dotazování na IMDS s clusteringem s podporou převzetí služeb při selhání je někdy potřeba přidat trasu do směrovací tabulky. Jak na to:
-
-1. Otevřete příkazový řádek s oprávněními správce.
-
-1. Spusťte následující příkaz a poznamenejte si adresu rozhraní pro cílovou síť ( `0.0.0.0` ) v tabulce směrování IPv4.
-
-```bat
-route print
-```
-
-> [!NOTE]
-> Následující příklad výstupu je z virtuálního počítače s Windows serverem s povoleným clusterem s podporou převzetí služeb při selhání. Pro zjednodušení výstup obsahuje jenom tabulku směrování IPv4.
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-Spusťte následující příkaz a použijte adresu rozhraní pro cílové umístění sítě ( `0.0.0.0` ), což je ( `10.0.1.10` ) v tomto příkladu.
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>Podpora
 
@@ -1315,12 +1309,12 @@ Pokud nemůžete získat odpověď na metadata po několika pokusech, můžete v
 
 ## <a name="product-feedback"></a>Zpětná vazba k produktu
 
-Svůj názor na produkt a nápady můžete poskytnout kanálu zpětné vazby uživatelů v části Virtual Machines > Instance Metadata Service tady: https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
+Svůj názor na produkt a nápady můžete poskytnout kanálu pro zpětnou vazbu uživatelů v části Virtual Machines > Instance Metadata Service [tady](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627) .
 
 ## <a name="next-steps"></a>Další kroky
 
-[Získání přístupového tokenu pro virtuální počítač](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [Získání přístupového tokenu pro virtuální počítač](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Naplánované události pro Linux](../articles/virtual-machines/linux/scheduled-events.md)
+- [Naplánované události pro Linux](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Naplánované události pro Windows](../articles/virtual-machines/windows/scheduled-events.md)
+- [Naplánované události pro Windows](../articles/virtual-machines/windows/scheduled-events.md)

@@ -2,13 +2,13 @@
 title: Kurz – kontrolní seznam pro plánování sítě
 description: Seznamte se s požadavky na síť pro síťové připojení a síťové porty v řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918581"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462061"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Kontrolní seznam pro plánování sítě pro řešení Azure VMware 
 
@@ -67,7 +67,7 @@ Podsítě:
 
 ## <a name="required-network-ports"></a>Požadované síťové porty
 
-| Zdroj | Cíl | Protokol | Port | Popis  | 
+| Zdroj | Cíl | Protokol | Port | Description  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Server DNS privátního cloudu | Místní server DNS | UDP | 53 | Klient DNS – požadavky na přeposílání z PC vCenter pro všechny místní dotazy DNS (podívejte se na část DNS níže) |  
 | Místní server DNS   | Server DNS privátního cloudu | UDP | 53 | Klient DNS – požadavky na přeposílání z místních služeb na servery DNS privátního cloudu (podívejte se na část DNS níže) |  
@@ -89,13 +89,12 @@ Aplikace a úlohy, které běží v prostředí privátního cloudu, vyžadují 
 
 Použijte službu DHCP integrovanou do NSX nebo použijte místní server DHCP v privátním cloudu namísto směrování provozu DHCP přes síť WAN zpátky do místního prostředí.
 
+Další podrobnosti najdete v článku [poskytování služeb DHCP do NSX-T segment sítě](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment) .
+
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s důležitými informacemi a požadavky pro nasazení privátního cloudu řešení Azure VMware. 
-
-
-Jakmile budete mít správné sítě, přejděte k dalšímu kurzu, kde můžete vytvořit privátní cloud pro řešení Azure VMware.
+V tomto kurzu jste se seznámili s důležitými informacemi a požadavky pro nasazení privátního cloudu řešení Azure VMware. Jakmile budete mít správné sítě, přejděte k dalšímu kurzu, kde můžete vytvořit privátní cloud pro řešení Azure VMware.
 
 > [!div class="nextstepaction"]
 > [Vytvoření privátního cloudu řešení Azure VMware](tutorial-create-private-cloud.md)

@@ -8,16 +8,21 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932179"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463234"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Aplikace IoT často chtějí využívat inteligentní Cloud a inteligentní hraniční zařízení. V tomto kurzu Vás provedeme školením modelu strojového učení s daty shromážděnými ze zařízení IoT v cloudu, nasazením tohoto modelu IoT Edge a pravidelným udržováním a úpravami modelu.
+
+>[!NOTE]
+>Koncepty v této sadě kurzů se vztahují na všechny verze IoT Edge, ale ukázkové zařízení, které vytvoříte k vyzkoušení scénářů, se spouští IoT Edge verze 1,1.
 
 Hlavním cílem tohoto kurzu je zavést zpracování dat IoT pomocí strojového učení, konkrétně na hraničních zařízeních. I když jsme se dotkli mnoha aspektů obecného pracovního postupu strojového učení, tento kurz není určený jako podrobný Úvod do strojového učení. V takovém případě se nepokoušíme vytvořit vysoce optimalizovaný model pro případ použití – stačí, abyste ilustraci procesu vytváření a používání životaschopného modelu pro zpracování dat IoT.
 
@@ -32,7 +37,7 @@ V této části kurzu se zabývá:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete přístup k předplatnému Azure, ve kterém máte práva k vytváření prostředků. Některé ze služeb používaných v tomto kurzu se účtují za Azure. Pokud ještě nemáte předplatné Azure, možná budete moct začít s [bezplatným účtem Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
@@ -69,9 +74,9 @@ Data použitá v tomto kurzu jsou pořízena ze [sady dat simulace degradace mod
 
 Ze souboru Readme:
 
-***Experimentální scénář** _
+***Experimentální scénář***
 
-_Data sady se skládají z několika lineární časových řad. Každá sada dat je dále rozdělena na školicí a testovací podmnožiny. Každá časová řada pochází z jiného modulu, tj. je možné, že se data považují za z loďstva motorů stejného typu. Každý stroj začíná různými stupni počátečního opotřebení a výrobní variací, které uživatel nezná. Tento opotřebení a variace se považují za normální, tj. není považována za stav selhání. Existují tři provozní nastavení, která mají podstatný vliv na výkon motoru. Tato nastavení jsou také obsažena v datech. Data jsou kontaminována pomocí snímače hluku. *
+*Sady dat se skládají z několika lineární časových řad. Každá sada dat je dále rozdělena na školicí a testovací podmnožiny. Každá časová řada pochází z jiného modulu, tj. je možné, že se data považují za z loďstva motorů stejného typu. Každý stroj začíná různými stupni počátečního opotřebení a výrobní variací, které uživatel nezná. Tento opotřebení a variace se považují za normální, tj. není považována za stav selhání. Existují tři provozní nastavení, která mají podstatný vliv na výkon motoru. Tato nastavení jsou také obsažena v datech. Data jsou kontaminována pomocí snímače hluku.*
 
 *Modul pracuje normálně na začátku každé časové řady a v určitém okamžiku během řady vyvíjí chybu. V sadě školení se chyba zvětšuje až do selhání systému. V sadě testů časová řada ukončí určitou dobu před selháním systému. Cílem konkurence je předpovědět počet zbývajících provozních cyklů před selháním v sadě testů, tj. počet provozních cyklů po posledním cyklu, kdy bude modul fungovat i nadále. K dispozici je také vektor hodnot true zbylé životnosti (RUL) pro testovací data.*
 

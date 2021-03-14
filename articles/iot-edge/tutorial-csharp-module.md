@@ -9,18 +9,20 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 71bfc84eb50521aef72f78b482bddda112c00c6c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964350"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461735"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení se systémem Linux
+# <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Kurz: vývoj modulu IoT Edge C# pomocí kontejnerů Linux
 
-Použijte Visual Studio Code pro vývoj kódu v jazyce C# a jeho nasazení na zařízení se systémem Linux s Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
+Pomocí Visual Studio Code můžete vyvíjet kód v jazyce C# a nasadit ho do zařízení se systémem Azure IoT Edge.
+
+Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -35,9 +37,9 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v **jazyce C#** pomocí **Visual Studio Code** a nasadit ho do **zařízení se systémem Linux**. Pokud vyvíjíte moduly pro zařízení s Windows, použijte místo toho [vývoj modulu C# IoT Edge pro zařízení s Windows](tutorial-csharp-module-windows.md) .
+Tento kurz ukazuje, jak vytvořit modul v **jazyce C#** pomocí **Visual Studio Code** a nasadit ho do IoT Edgeho zařízení. Pokud vyvíjíte moduly pomocí kontejnerů Windows, použijte místo toho [vývoj modulu C# IoT Edge pomocí kontejnerů Windows](tutorial-csharp-module-windows.md) .
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů C# do systému Linux:
+Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů C# pomocí kontejnerů Linux:
 
 | C# | Visual Studio Code | Visual Studio |
 | -- | ------------------ | ------------- |
@@ -47,10 +49,10 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 >[!NOTE]
 >Podpora pro zařízení se systémem Linux ARM64 je k dispozici ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Další informace najdete v tématu [vývoj a ladění ARM64 IoT Edgech modulů v Visual Studio Code (Preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-Před zahájením tohoto kurzu byste měli projít předchozí kurz pro nastavení vývojového prostředí a [vytvořit modul IoT Edge pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí a vývoj [modulu IoT Edge pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu už byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se systémem Azure IoT Edge](quickstart-linux.md).
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.

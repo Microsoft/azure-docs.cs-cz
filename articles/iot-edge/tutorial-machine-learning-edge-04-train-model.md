@@ -8,14 +8,16 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5129cc71dd3edae14350225e9c9dd944b05a6b4a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 16d5fe90be71f39d448e4c1ce10c0373f6bfc86c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740167"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463098"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku provedeme následující úlohy:
 
@@ -161,7 +163,7 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, zda byly vytvořeny následující soubory.
 
-    | Soubor | Popis |
+    | Soubor | Description |
     | --- | --- |
     | ./aml_config/.AzureML/config.jsna | Konfigurační soubor, který se používá k vytvoření pracovního prostoru Machine Learning. |
     | ./aml_config/model_config.jsna | Konfigurační soubor, který budeme potřebovat k nasazení modelu v pracovním prostoru **turbofanDemo** Machine Learning v Azure. |
@@ -169,7 +171,7 @@ Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte
 
 1. Ověřte, že byly vytvořeny následující prostředky Azure. Některé názvy prostředků se připojují s náhodnými znaky.
 
-    | Prostředek Azure | Název |
+    | Prostředek Azure | Name |
     | --- | --- |
     | Pracovní prostor služby Azure Machine Learning | turborfanDemo |
     | Azure Container Registry | turbofandemoxxxxxxxx |

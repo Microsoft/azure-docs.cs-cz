@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932315"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461092"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku se znovu používá vývojový virtuální počítač jako simulované zařízení. Místo odesílání dat přímo do IoT Hub ale zařízení odesílá data do IoT Edgeho zařízení nakonfigurovaného jako transparentní bránu.
 
@@ -32,7 +34,7 @@ V této části kurzu se dozvíte, jak:
 > * Ověřte, že se vygenerovaná data ukládají do úložiště objektů BLOB v Azure.
 > * Ověřte, jestli model strojového učení klasifikuje data zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 

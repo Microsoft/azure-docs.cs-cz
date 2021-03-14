@@ -1,16 +1,16 @@
 ---
 title: Postup při plánování nasazení serverů s povoleným rozšířením Azure ARC na úrovni
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032224"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461296"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Plánování nasazení serverů s povoleným rozšířením Azure ARC na úrovni
+# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Plánování a nasazení serverů s podporou ARC v měřítku
 
 Nasazení služby IT infrastruktury nebo obchodní aplikace je výzvou k jakékoli společnosti. Aby se zajistilo, že bude dobře fungovat a nemusíte mít žádné nedokončené překvapením a neplánované náklady, budete ho muset důkladně naplánovat, abyste měli jistotu, že jste připravení. Chcete-li naplánovat nasazení serverů s podporou ARC Azure na škálování, měla by pokrývat kritéria návrhu a nasazení, která je potřeba splnit, aby bylo možné úspěšně dokončit úlohy pro podporu nasazení v rámci škálování.
 
@@ -67,7 +67,7 @@ V této fázi mohou systémové technici nebo správci povolit základní funkce
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>Fáze 2: nasazení serverů s podporou ARC
 
-V dalším kroku přidáme do základu ve fázi 1, když připravujete nasazení a provedete instalaci agenta.
+V dalším kroku přidáme do základu ve fázi 1, když připravujete a nasadíte servery s podporou ARC připojeného agenta počítače.
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
@@ -77,7 +77,7 @@ V dalším kroku přidáme do základu ve fázi 1, když připravujete nasazení
 
 ## <a name="phase-3-manage-and-operate"></a>Fáze 3: Správa a provoz
 
-Fáze 3 se dohlíží na správce nebo systémové techniky, které umožňují automatizaci ručních úloh při správě a provozování agenta připojeného počítače a počítače během jejich životního cyklu.
+Fáze 3 vidí správcům nebo systémovým technikům automatizaci ručních úloh pro správu a provoz agenta připojeného počítače a počítače během jejich životního cyklu.
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|

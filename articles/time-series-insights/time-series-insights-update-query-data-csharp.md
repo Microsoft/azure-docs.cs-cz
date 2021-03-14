@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: aecd18fd0d568904f9704b749525204ced05f3ef
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020023"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463421"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Dotazování dat z prostředí Azure Time Series Insights Gen2 pomocí jazyka C Sharp
 
@@ -48,7 +48,7 @@ Vzorový kód níže znázorňuje následující funkce:
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřídí prostředí Gen2 Azure Time Series Insights](./how-to-provision-manage.md#create-the-environment) .
+1. [Zřídí prostředí Gen2 Azure Time Series Insights](./how-to-create-environment-using-portal.md) .
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 1. Spusťte [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) , jak je uvedeno v [Readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) a vygenerujte závislosti klienta Azure Time Series Insights Gen2.
 1. Otevřete `TSIPreviewDataPlaneclient.sln` řešení a nastavte `DataPlaneClientSampleApp` jako výchozí projekt v sadě Visual Studio.
@@ -63,7 +63,7 @@ Doporučuje se použít nejnovější verzi sady Visual Studio:
 
 Vzorový kód má několik požadovaných závislostí, které lze zobrazit v souboru [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/packages.config) .
 
-Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build** že vyberete  >  možnost **řešení** sestavení sestavení.
+Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, že vyberete  >  možnost **řešení** sestavení sestavení.
 
 Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/). Například:
 

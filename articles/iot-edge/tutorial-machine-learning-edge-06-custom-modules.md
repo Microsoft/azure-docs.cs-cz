@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932332"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462792"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku vytvoříme tři IoT Edge moduly, které přijímají zprávy ze zařízení IoT typu list, spouštíte data prostřednictvím modelu služby Machine Learning a pak dodáte přehledy k IoT Hub.
 
@@ -61,7 +63,7 @@ V této části kurzu se dozvíte, jak:
 > * Překonfigurujte IoT Hub směrování, aby podporovalo vaše vlastní moduly.
 > * Sestavujte, publikujte a nasaďte vlastní moduly.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 

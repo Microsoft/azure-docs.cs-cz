@@ -214,14 +214,18 @@
           href: content-key-policy-concept.md
     - name: Monitorování
       items:
-        - name: Události s využitím Event Gridu
-          href: reacting-to-media-services-events.md
-        - name: Schémata Event Gridu
-          href: media-services-event-schemas.md
-        - name: Metriky a diagnostické protokoly
-          href: media-services-metrics-diagnostic-logs.md
-        - name: Schémata diagnostických protokolů
-          href: media-services-diagnostic-logs-schema.md
+        - name: Monitorování pomocí služby Azure Monitor
+          items:
+            - name: Media Services monitorování
+              href: monitoring/monitor-media-services.md
+            - name: Referenční informace o Media Services dat monitorování
+              href: monitoring/monitor-media-services-data-reference.md
+        - name: Monitorování pomocí Event Grid
+          items:
+            - name: Události s využitím Event Gridu
+              href: reacting-to-media-services-events.md
+            - name: Schémata Event Gridu
+              href: media-services-event-schemas.md
     - name: Kompatibilní přehrávače
       items:
         - name: Přehrávače médií pro Media Services

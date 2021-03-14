@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621242"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464101"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
 
-Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provede vytvořením a nasazením funkce Azure, která filtruje data senzorů na simulovaném IoT Edgem zařízení. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provede vytvořením a nasazením funkce Azure, která filtruje data senzorů na simulovaném IoT Edgem zařízení. Použijete simulované IoT Edge zařízení, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -36,12 +38,12 @@ Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygener
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.

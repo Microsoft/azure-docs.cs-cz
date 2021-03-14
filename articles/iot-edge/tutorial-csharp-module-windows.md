@@ -9,18 +9,23 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: edbe2b8370b943aa93a1cef425c64e9f11feb735
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705587"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464053"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>Kurz: vývoj modulů C# IoT Edge pro zařízení s Windows
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj modulů C# IoT Edge pomocí kontejnerů Windows
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku se dozvíte, jak pomocí sady Visual Studio vyvíjet kód v jazyce C# a nasadit ho do zařízení s Windows, které běží Azure IoT Edge.
 
-Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje vaši obchodní logiku přímo v zařízeních IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. 
+>[!NOTE]
+>IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
+
+Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje vaši obchodní logiku přímo v zařízeních IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru.
 
 V tomto kurzu se naučíte:
 
@@ -37,19 +42,19 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v jazyce C# pomocí sady Visual Studio 2019 a jak ho nasadit na zařízení s Windows. Pokud vyvíjíte moduly pro zařízení se systémem Linux, místo toho použijte [vývoj C# IoT Edge moduly pro zařízení se systémem Linux](tutorial-csharp-module.md) .
+Tento kurz ukazuje, jak vytvořit modul v jazyce C# pomocí sady Visual Studio 2019 a jak ho nasadit na zařízení s Windows. Pokud vyvíjíte moduly pomocí kontejnerů pro Linux, použijte místo toho [modul pro vývoj C# IoT Edge pomocí kontejnerů Linux](tutorial-csharp-module.md) .
 
-Chcete-li pochopit možnosti vývoje a nasazení modulů C# na zařízení s Windows, přečtěte si následující tabulku:
+Chcete-li pochopit možnosti vývoje a nasazení modulů C# pomocí kontejnerů systému Windows, přečtěte si následující tabulku:
 
 | C# | Visual &nbsp; Studio &nbsp; Code | Visual Studio 2017 &nbsp; a &nbsp; 2019 |
 | -- | :------------------: | :------------------: |
 | Vývoj pro Windows AMD64 | ![Vývoj modulů C# pro WinAMD64 v Visual Studio Code](./media/tutorial-c-module/green-check.png) | ![Vývoj modulů C# pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 | Ladění systému Windows AMD64 |   | ![Ladění modulů C# pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-Před zahájením tohoto kurzu nastavte vývojové prostředí podle pokynů v kurzu [vývoj IoT Edge modulů pro zařízení s Windows](tutorial-develop-for-windows.md) . Po dokončení bude vaše prostředí obsahovat následující požadavky:
+Než začnete s tímto kurzem, nastavte vývojové prostředí podle pokynů uvedených v kurzu [vývoj IoT Edgech modulů pomocí kontejnerů Windows](tutorial-develop-for-windows.md) . Po dokončení bude vaše prostředí obsahovat následující požadavky:
 
 * [Centrum IoT](../iot-hub/iot-hub-create-through-portal.md) na bezplatné nebo standardní úrovni v Azure.
-* [Zařízení s Windows, na kterém běží Azure IoT Edge](quickstart.md).
+* [Zařízení s Windows, na kterém běží Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md).
 * Registr kontejnerů, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio 2019](/visualstudio/install/install-visual-studio)nakonfigurovaný s rozšířením [nástrojů Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) .
 * [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)nakonfigurovaný pro spouštění kontejnerů Windows.

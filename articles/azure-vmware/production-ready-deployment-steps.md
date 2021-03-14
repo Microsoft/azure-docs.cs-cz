@@ -2,19 +2,19 @@
 title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733652"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462418"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
-Tento článek vám poskytne proces plánování, pomocí kterého můžete identifikovat a shromažďovat data používaná během nasazení. Při plánování nasazení nezapomeňte zdokumentovat informace, které shromažďujete pro snadné reference během nasazování.
+Tento článek popisuje proces plánování, který identifikuje a shromažďuje informace, které budete používat během nasazování. Při plánování nasazení nezapomeňte zdokumentovat informace, které shromažďujete pro snadné reference během nasazování.
 
-Procesy tohoto rychlého startu mají za následek vytváření virtuálních počítačů a migrace v prostředí připraveném pro produkční prostředí. 
+Kroky popsané v tomto rychlém startu poskytují prostředí připravené pro vytváření virtuálních počítačů (VM) a migrace v produkčním prostředí. 
 
 >[!IMPORTANT]
 >Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup. 
@@ -46,21 +46,30 @@ Zadejte název prostředku, který budete používat během nasazování.  Náze
 
 Identifikujte hostitele velikostí, které chcete použít při nasazení řešení Azure VMware.  Úplný seznam najdete v dokumentaci k [privátním cloudům a clusterům řešení Azure VMware](concepts-private-clouds-clusters.md#hosts) .
 
-## <a name="number-of-hosts"></a>Počet hostitelů
+## <a name="number-of-clusters-and-hosts"></a>Počet clusterů a hostitelů
 
-Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet hostitelů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
+V řešení Azure VMware nasadíte privátní cloud a vytvoříte víc clusterů. Pro vaše nasazení budete muset definovat počet clusterů a hostitele f, které chcete nasadit v každém clusteru. Minimální počet hostitelů na cluster je tři a maximum je 16. Maximální počet clusterů na jeden privátní cloud je čtyři. Maximální počet uzlů na jeden privátní cloud je 64.
 
-Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
+Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
 
-## <a name="ip-address-segment"></a>Segment IP adres
+>[!TIP]
+>Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
 
-Prvním krokem při plánování nasazení je naplánování segmentace IP.  Řešení Azure VMware ingestuje síť a/22, kterou zadáte. Pak je Carves do menších segmentů a pak tyto segmenty využije pro vCenter, VMware HCX, NSX-T a vMotion.
+## <a name="vcenter-admin-password"></a>heslo správce vCenter
+Zadejte heslo správce vCenter. Během nasazení vytvoříte heslo správce vCenter. Heslo je přiřazeno k cloudadmin@vsphere.local účtu správce během sestavení vCenter. Pomocí těchto přihlašovacích údajů se přihlásíte k vCenter.
 
-Řešení Azure VMware se připojuje k vašemu Microsoft Azure Virtual Network prostřednictvím interního okruhu ExpressRoute. Ve většině případů se k datovému centru připojí ExpressRoute Global Reach. 
+## <a name="nsx-t-admin-password"></a>Heslo správce NSX-T
+Zadejte heslo správce NSX-T. Během nasazení vytvoříte heslo správce NSX-T. Heslo je přiřazeno k uživateli s oprávněními správce v účtu NSX během sestavení NSX. Pomocí těchto přihlašovacích údajů se přihlásíte ke Správci NSX-T.
 
-Řešení Azure VMware, vaše stávající prostředí Azure a vaše místní prostředí, všechny trasy Exchange (obvykle). V takovém případě blok síťových adres CIDR/22, který v tomto kroku definujete, by neměl překrývat cokoli, co už máte v místním prostředí nebo Azure.
+## <a name="ip-address-segment-for-private-cloud-management"></a>Segment IP adres pro správu privátního cloudu
+
+Prvním krokem při plánování nasazení je naplánování segmentace IP. Řešení Azure VMware vyžaduje síť typu CIDR/22. Tento adresní prostor Carves do menších segmentů sítě (podsítí) a používá se pro funkce vCenter, VMware HCX, NSX-T a vMotion.
+
+Tento blok síťových adres CIDR/22 se nesmí překrývat s jakýmkoli existujícím segmentem sítě, který už máte v místním prostředí nebo v Azure.
 
 **Příklad:** 10.0.0.0/22
+
+Řešení Azure VMware se připojuje k vašemu Microsoft Azure Virtual Network prostřednictvím interního okruhu Global Reach ExpressRoute (D-MSEE in a vizualizace). Tato funkce je součástí služby řešení Azure VMware a nebude se vám účtovat.
 
 Další informace najdete v tématu [Kontrolní seznam pro plánování sítě](tutorial-network-checklist.md#routing-and-subnet-considerations).
 
@@ -68,12 +77,12 @@ Další informace najdete v tématu [Kontrolní seznam pro plánování sítě](
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>Segment IP adres pro úlohy virtuálních počítačů
 
-Identifikujte segment IP adres pro vytvoření první sítě (segment NSX) ve vašem privátním cloudu.  Jinými slovy, chcete vytvořit segment sítě v řešení Azure VMware, abyste mohli nasadit virtuální počítače do řešení Azure VMware.   
+Identifikujte segment IP adres pro vytvoření první sítě pro úlohy (segment NSX) ve vašem privátním cloudu. Jinými slovy, budete muset vytvořit segment sítě v řešení Azure VMware, abyste mohli nasadit virtuální počítače v řešení Azure VMware.
 
-I v případě, že plánujete rozšířit jenom sítě L2, vytvořte segment sítě, který bude toto prostředí ověřovat.
+I v případě, že plánujete rozšiřování sítí z místního prostředí do řešení Azure VMware (L2), je stále nutné vytvořit segment sítě, který ověřuje prostředí.
 
-Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné napříč vašimi Azure a místními nároky.  
-
+Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné napříč vašimi Azure a místními nároky.
+  
 **Příklad:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifikace – segment IP adres pro úlohy virtuálních počítačů" border="false":::     
@@ -87,7 +96,7 @@ Pamatujte na to, že:
 - Pokud hodláte rozšiřovat sítě z místního prostředí, musí se tyto sítě připojit k [vSphere distribuovanému přepínači (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) v místním prostředí VMware.  
 - Pokud sítě, které chcete rozšířit na [vSphere standardním přepínači](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), se nedají rozšířit.
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Připojení virtuální sítě k řešení VMware Azure
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Připojení Azure Virtual Network k řešení VMware Azure
 
 V tomto kroku identifikujete bránu virtuální sítě ExpressRoute a podporu Virtual Network Azure, která se používá k připojení okruhu ExpressRoute Azure VMware Solution.  Okruh ExpressRoute usnadňuje připojení k privátnímu cloudu řešení Azure VMware a z něj do dalších služeb Azure, prostředků Azure a místních prostředí.
 

@@ -10,14 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616090"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463540"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rychlý Start: nasazení prvního modulu IoT Edge do zařízení s Windows (Preview)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Vyzkoušejte si Azure IoT Edge v tomto rychlém startu nasazením kontejneru kódu na Linux v zařízení se systémem Windows IoT Edge. IoT Edge vám umožní vzdáleně spravovat kód na svých zařízeních, abyste mohli do hraničních zařízení odesílat další úlohy. V tomto rychlém startu doporučujeme používat vlastní zařízení, abyste zjistili, jak snadné je použít Azure IoT Edge pro Linux ve Windows.
 

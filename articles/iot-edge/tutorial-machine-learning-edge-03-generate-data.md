@@ -8,14 +8,16 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d5fdd762834d351119116c5e4854dd4233671c29
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932400"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463125"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 V tomto článku používáme školicí data Machine Learning k simulaci zařízení odesílajícího telemetrii do Azure IoT Hub. Jak je uvedeno v úvodu, tento kurz používá [sadu dat simulace degradace modulu Turbofan](https://c3.nasa.gov/dashlink/resources/139/) , která simuluje data ze sady modulů v letadlech pro účely školení a testování.
 
@@ -51,7 +53,7 @@ V této části kurzu se dozvíte, jak:
 > * Pomocí ukázkového projektu DeviceHarness vygenerujte Simulovaná data zařízení IoT.
 > * Zobrazení vygenerovaných dat ve vašem IoT Hub.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -92,7 +94,7 @@ Tento článek je součástí série, kde najdete kurz použití Azure Machine L
 
 Teď, když máme sestavení projektu, připojte se k centru IoT, abyste měli přístup k připojovacímu řetězci a mohli monitorovat průběh generování dat.
 
-### <a name="sign-in-to-azure-in-visual-studio-code"></a>Přihlaste se k Azure v Visual Studio Code
+### <a name="sign-in-to-azure-in-visual-studio-code"></a>Přihlášení k Azure ve Visual Studio Code
 
 1. Přihlaste se k předplatnému Azure v Visual Studio Code tak, že otevřete paletu příkazů `Ctrl + Shift + P` nebo **zobrazíte**  >  **paletu příkazů**.
 

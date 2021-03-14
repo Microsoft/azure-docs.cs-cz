@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721425"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463081"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Kurz: konfigurace zařízení Azure IoT Edge
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 V tomto článku nakonfigurujeme virtuální počítač Azure se systémem Linux, aby se jednalo o Azure IoT Edge zařízení, které funguje jako transparentní brána. Transparentní konfigurace brány umožňuje zařízením připojit se k Azure IoT Hub prostřednictvím brány bez vědomí, že brána existuje. Zároveň uživatel, který pracuje se zařízeními v IoT Hub, neví o zařízení zprostředkující brány. Nakonec přidáme do našeho systému Edge Analytics tak, že do transparentní brány přidáte IoT Edge moduly.
+
+>[!NOTE]
+>Koncepty v tomto kurzu se vztahují na všechny verze IoT Edge, ale ukázkové zařízení, které vytvoříte k vyzkoušení scénáře, se spouští IoT Edge verze 1,1.
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 

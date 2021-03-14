@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736848"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464084"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
@@ -25,7 +25,7 @@ Tento článek popisuje různé funkce a možnosti, které jsou k dispozici v r�
 
 Chcete-li začít s Azure Time Series Insights Explorer, musíte:
 
-* Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) .
+* Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./tutorial-set-up-environment.md) .
 * [Poskytněte přístup k datům](./concepts-access-policies.md) prostředí Azure Time Series Insights Gen2, které jste pro účet vytvořili. Můžete poskytovat přístup i ostatním uživatelům.
 * Přidejte zdroj události do prostředí Azure Time Series Insights Gen2, abyste vložili data do prostředí:
   * Informace [o tom, jak se připojit k centru událostí](./how-to-ingest-data-event-hub.md)
@@ -92,7 +92,7 @@ Dobře zobrazuje pole instance a další metadata přidružená k vybraným inst
 
 Konkrétní datové prvky můžete ze svých aktuálních dat odebrat tak, že vyberete ovládací prvek červené **odstranění** (odpadkový koš) na levé straně elementu. Také vám umožňuje řídit, jak se jednotlivé prvky zobrazí v grafu. Můžete zvolit, že chcete přidat minimální/maximální stíny, datové body, posunout element v čase a vizualizovat instanci, která je tímto způsobem.
 
-Kromě toho vám ovládací prvek průzkumy umožňuje snadno vytvářet časová posunutí a bodový graf.  
+Kromě toho vám ovládací prvek průzkumy umožňuje snadno vytvářet časová posunutí a bodový graf.
 
   [![Možnosti vhodného rozložení](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 

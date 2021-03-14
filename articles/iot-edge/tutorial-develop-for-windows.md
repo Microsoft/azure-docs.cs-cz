@@ -9,18 +9,23 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920774"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463353"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: vývoj modulů IoT Edge pro zařízení s Windows
+# <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj IoT Edgech modulů pomocí kontejnerů Windows
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Pomocí sady Visual Studio můžete vyvíjet a nasazovat kód do zařízení s Windows, na kterých běží IoT Edge.
 
-V rychlém startu jste vytvořili zařízení IoT Edge pomocí virtuálního počítače s Windows a nasadili jste předem sestavený modul z Azure Marketplace. Tento kurz vás provede vývojem a nasazením vlastního kódu do zařízení IoT Edge. Tento kurz je vhodný pro ostatní kurzy, které vám pojdou podrobněji o konkrétních programovacích jazycích nebo službách Azure.
+>[!NOTE]
+>IoT Edge 1,1 LTS je poslední kanál verze, který bude podporovat kontejnery Windows. Od verze 1,2 nejsou kontejnery Windows podporované. Při spouštění IoT Edge na zařízeních s Windows zvažte použití nebo přesunutí [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md) .
+
+Tento kurz vás provede vývojem a nasazením vlastního kódu do zařízení IoT Edge. Tento kurz je vhodný pro ostatní kurzy, které vám pojdou podrobněji o konkrétních programovacích jazycích nebo službách Azure.
 
 V tomto kurzu se používá příklad nasazení **modulu C# do zařízení se systémem Windows**. Tento příklad jste zvolili, protože se jedná o nejběžnější scénář vývoje. Pokud vás zajímá vývoj v jiném jazyce nebo Naplánování nasazení služeb Azure jako modulů, bude tento kurz stále užitečný získat informace o vývojářských nástrojích. Jakmile porozumíte konceptům vývoje, můžete zvolit preferovaný jazyk nebo službu Azure, která bude podrobně do podrobností.
 
@@ -33,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Sestavte projekt jako kontejner a uložte ho do služby Azure Container Registry.
 > * Nasaďte kód do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vývojový počítač:
 
@@ -44,8 +49,8 @@ Vývojový počítač:
 
 Zařízení Azure IoT Edge ve Windows:
 
-* Doporučujeme, abyste ve vývojovém počítači nespouštěli IoT Edge, ale místo toho použijte samostatné zařízení. Toto rozlišení mezi vývojovým počítačem a IoT Edgeým zařízením přesněji odráží skutečný scénář nasazení a pomáhá udržet různé koncepty rovnou.
-* Pokud nemáte k dispozici druhé zařízení, pomocí článku rychlý Start vytvořte zařízení IoT Edge v Azure pomocí [virtuálního počítače s Windows](quickstart.md).
+* [Instalace a správa Azure IoT Edge s kontejnery Windows](how-to-install-iot-edge-windows-on-windows.md)
+* Doporučujeme, abyste ve vývojovém počítači nespouštěli IoT Edge, ale pokud to bude možné, použijte místo toho samostatné zařízení. Toto rozlišení mezi vývojovým počítačem a IoT Edgeým zařízením přesněji odráží skutečný scénář nasazení a pomáhá udržet různé koncepty rovnou.
 
 Cloudové prostředky:
 
@@ -157,7 +162,7 @@ Modul runtime IoT Edge potřebuje přihlašovací údaje registru pro vyžádán
 
 1. Otevřete **deployment.template.js** souboru ve vašem řešení modulu.
 
-1. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad:
+1. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například:
 
    ```json
    "registryCredentials": {

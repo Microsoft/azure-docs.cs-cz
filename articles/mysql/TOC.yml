@@ -9,7 +9,7 @@
       href: select-right-deployment-type.md
     - name: Podporované verze
       href: concepts-supported-versions.md
-    - name: Zásady správy verzí
+    - name: Zásady podpory verze
       href: concepts-version-policy.md
       displayName: version policy
 - name: Jeden server

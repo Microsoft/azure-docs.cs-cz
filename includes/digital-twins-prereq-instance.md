@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
-ms.openlocfilehash: 8ea371e25f149c52412153aa0b9c3b7475dc77fd
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2be13256ff0fcc93aa40db3bcb2f38aa0cf58cbc
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96303594"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463744"
 ---
 Pokud chcete pracovat s digitálními úkoly Azure v tomto článku, musíte nejdřív **nastavit instanci digitálních vláken Azure** a požadovaná oprávnění k jejímu použití. Pokud už máte instanci digitálních vláken Azure nastavenou na předchozí práci, můžete tuto instanci použít.
 
-Jinak postupujte podle pokynů v části [Nastavení instance a ověřování](../articles/digital-twins/how-to-set-up-instance-portal.md). Pokyny také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
+Jinak postupujte podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](../articles/digital-twins/how-to-set-up-instance-portal.md). Pokyny také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
 
 Po nastavení instance digitálního vlákna Azure si poznamenejte následující hodnoty, které budete muset později připojit k instanci:
 * **_název hostitele_** instance. Tuto hodnotu najdete v Azure Portal ([pokyny](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).

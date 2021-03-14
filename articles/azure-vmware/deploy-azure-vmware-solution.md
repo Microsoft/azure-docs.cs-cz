@@ -4,12 +4,12 @@ description: Naučte se používat informace shromážděné ve fázi plánován
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703850"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462452"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -35,7 +35,7 @@ Po nasazení řešení Azure VMware vytvoříte pole pro skok virtuální sítě
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-Chcete-li vytvořit virtuální počítač ve virtuální síti, který jste [identifikovali nebo vytvořili v rámci procesu nasazení](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution), postupujte podle těchto pokynů: 
+Chcete-li vytvořit virtuální počítač ve virtuální síti, který jste [identifikovali nebo vytvořili v rámci procesu nasazení](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution), postupujte podle těchto pokynů: 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ Pokud jste nedefinovali virtuální síť v kroku nasazení a vaším záměrem 
 
 Pole s odkazem se nachází ve virtuální síti, ve které se řešení Azure VMware připojuje přes svůj okruh ExpressRoute.  V Azure přejděte do síťového rozhraní pro skok a [Podívejte se na efektivní trasy](../virtual-network/manage-route-table.md#view-effective-routes).
 
-V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Zobrazí se několik sítí, které byly odvozeny ze [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment) při [vytváření privátního cloudu](#create-an-azure-vmware-solution-private-cloud).  
+V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Zobrazí se několik sítí, které byly odvozeny ze [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management) při [vytváření privátního cloudu](#create-an-azure-vmware-solution-private-cloud).  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Ověřte síťové trasy inzerované z řešení Azure VMware do Azure Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

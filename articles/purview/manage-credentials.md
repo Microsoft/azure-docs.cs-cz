@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673523"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461704"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Přihlašovací údaje pro ověřování zdroje v Azure dosah
 
@@ -41,7 +41,7 @@ Pokud k nastavení kontrol používáte spravovanou identitu dosah, nebudete mus
 
 Než budete moct vytvořit přihlašovací údaje, nejdřív přidružte jednu nebo více stávajících instancí Azure Key Vault k vašemu účtu Azure dosah.
 
-1. Z [Azure Portal](https://portal.azure.com)vyberte svůj účet Azure dosah. Přejděte do **centra pro správu** a potom přejděte na **přihlašovací údaje**.
+1. Z [Azure Portal](https://portal.azure.com)vyberte svůj účet Azure dosah a otevřete Azure dosah Studio. Přejděte do **centra pro správu** v Azure dosah Studio a pak přejděte na **přihlašovací údaje**.
 
 2. Na stránce **pověření** vyberte **Spravovat Key Vault připojení**.
 

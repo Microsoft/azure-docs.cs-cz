@@ -9,18 +9,20 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8a6d09819aaa65645da3d4d697866609c226723
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959403"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461130"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pro zařízení se systémem Linux
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-using-linux-containers"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pomocí kontejnerů Linux
 
-Visual Studio Code můžete použít k vývoji kódu Node.js a jeho nasazení na zařízení se systémem Linux se spuštěným Azure IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
+Pomocí Visual Studio Code můžete vyvíjet kód Node.js a nasadit ho do zařízení se systémem Azure IoT Edge.
+
+Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Použijete IoT Edge zařízení, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -35,7 +37,9 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code** a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Node.js pro zařízení s Windows.
+Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code** a jak ho nasadit na IoT Edge zařízení.
+
+IoT Edge nepodporuje moduly Node.js pomocí kontejnerů Windows.
 
 Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazování Node.jsch modulů:
 
@@ -44,10 +48,10 @@ Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazován�
 | **Linux AMD64** | ![Použití VS Code pro Node.js moduly v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro Node.js moduly na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky:
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
-* [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
+* Zařízení se systémem Azure IoT Edge. Pomocí rychlých startů můžete nastavit zařízení se systémem [Linux](quickstart-linux.md) nebo [zařízení s Windows](quickstart.md).
 * Registr kontejneru, například [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.

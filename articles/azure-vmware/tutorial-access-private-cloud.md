@@ -2,25 +2,25 @@
 title: Kurz – přístup k privátnímu cloudu
 description: Přečtěte si, jak získat přístup k privátnímu cloudu řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044999"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462237"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Kurz: přístup k privátnímu cloudu řešení Azure VMware
 
-Řešení Azure VMware vám neumožňuje spravovat váš privátní cloud pomocí místního serveru vCenter. Pomocí pole pro přesun budete muset provést další nastavení a připojení k místní instanci vCenter. 
+Řešení Azure VMware vám neumožňuje spravovat váš privátní cloud pomocí místního serveru vCenter. Pomocí pole pro přechod se budete muset připojit k instanci vCenter řešení Azure VMware. 
 
-V tomto kurzu vytvoříte pole s odkazem ve skupině prostředků, kterou jste vytvořili v [předchozím kurzu](tutorial-configure-networking.md) , a přihlásíte se k vCenter. Pole s odkazem je virtuální počítač s Windows (VM) ve stejné virtuální síti, kterou jste vytvořili.  Poskytuje přístup k vCenter a NSX Manageru. 
+V tomto kurzu vytvoříte v rámci skupiny prostředků, kterou jste vytvořili v [předchozím kurzu](tutorial-configure-networking.md) , pole s odkazem a přihlásíte se k Azure VMware Solution vCenter. Tento skokový rámeček je virtuální počítač s Windows ve stejné virtuální síti, kterou jste vytvořili.  Poskytuje přístup k vCenter i NSX Manageru. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit virtuální počítač s Windows, který se má použít pro připojení k serveru vCenter
-> * Přihlaste se k vCenter z virtuálního počítače.
+> * Vytvoření virtuálního počítače s Windows pro přístup k Azure VMware Solution vCenter
+> * Přihlaste se k vCenter z tohoto virtuálního počítače.
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Vytvoření nového virtuálního počítače s Windows
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Připojení k místnímu vCenter vašeho privátního cloudu
 
-1. V poli pro skok se přihlaste k klientovi vSphere pomocí jednotného přihlašování VMware vCenter pomocí uživatelského jména správce cloudu a Verity, že se uživatelské rozhraní úspěšně zobrazuje.
+1. V poli pro skok se přihlaste k vSphere klientovi pomocí služby VMware vCenter SSO pomocí uživatelského jména správce cloudu a ověřte, že se uživatelské rozhraní úspěšně zobrazuje.
 
 1. V Azure Portal vyberte svůj privátní cloud a pak **spravujte**  >  **identitu**. 
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
    >[!TIP]
    >Pokud chcete vygenerovat nová hesla vCenter a NSX-T, vyberte **vytvořit nové heslo** .
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
 
 1. Přejděte na virtuální počítač, který jste vytvořili v předchozím kroku, a připojte se k virtuálnímu počítači. 
 

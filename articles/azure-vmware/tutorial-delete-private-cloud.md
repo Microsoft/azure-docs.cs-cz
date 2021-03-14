@@ -2,17 +2,17 @@
 title: Kurz – odstranění privátního cloudu řešení Azure VMware
 description: Naučte se, jak odstranit privátní cloud řešení Azure VMware, který už nepotřebujete.
 ms.topic: tutorial
-ms.date: 02/09/2021
-ms.openlocfilehash: b11b8f902691db4bd71fd3f52aaa67d46efea643
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.date: 03/13/2021
+ms.openlocfilehash: 453e7a3316c342cd724a951eafea0ae9fa045506
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101685"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462095"
 ---
 # <a name="tutorial-delete-an-azure-vmware-solution-private-cloud"></a>Kurz: odstranění privátního cloudu řešení Azure VMware
 
-Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Privátní cloud zahrnuje izolovanou síťovou doménu, jeden nebo více zřízených clusterů vSphere na vyhrazených hostitelích serverů a několik virtuálních počítačů (VM). Při odstranění privátního cloudu dojde k odstranění všech virtuálních počítačů, jejich dat a clusterů. Vyhrazení hostitelé se bezpečně vymažou a vrátí do bezplatného fondu. Odstraní se taky Síťová doména zřízená pro zákazníka.  
+Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, můžete ho odstranit. Privátní cloud zahrnuje izolovanou síťovou doménu, jeden nebo více zřízených clusterů vSphere na vyhrazených hostitelích serverů a několik virtuálních počítačů (VM). Při odstranění privátního cloudu dojde k odstranění všech virtuálních počítačů, jejich dat a clusterů. Vyhrazení hostitelé řešení Azure VMware se bezpečně vymažou a vrátí do bezplatného fondu. Odstraněné síťové adresní místo je také odstraněno.  
 
 > [!CAUTION]
 > Odstranění privátního cloudu je nevratná operace. Po odstranění privátního cloudu se data nedají obnovit, protože ukončí všechny spuštěné úlohy a komponenty a zničí všechna data privátního cloudu a nastavení konfigurace, včetně veřejných IP adres.

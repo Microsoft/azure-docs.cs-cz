@@ -13,8 +13,12 @@
   items:
     - name: Kódování klientské aplikace
       href: tutorial-code.md
-    - name: Seznámení se základy prostřednictvím ukázkové klientské aplikace
-      href: tutorial-command-line-app.md
+    - name: Vytvoření grafu
+      items:
+        - name: Použití ukázkové klientské aplikace
+          href: tutorial-command-line-app.md
+        - name: Použití příkazů rozhraní příkazového řádku Azure
+          href: tutorial-command-line-cli.md
     - name: Připojení kompletního řešení
       href: tutorial-end-to-end.md
 - name: Koncepty

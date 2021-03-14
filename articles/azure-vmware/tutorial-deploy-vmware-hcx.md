@@ -2,13 +2,13 @@
 title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488292"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462285"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -157,7 +157,7 @@ Po nasazení vajíček konektoru VMware HCX do místního prostředí a spuště
    > [!NOTE]
    > Obvykle je stejný jako plně kvalifikovaný název domény nebo IP adresa serveru vCenter.
 
-1. Ověřte, zda jsou zadané informace správné, a vyberte možnost **restartovat**.
+1. Ověřte správnost zadaných informací a vyberte **restartovat**.
     
    > [!NOTE]
    > Po restartu se budete muset setkat po restartování, než se zobrazí výzva k dalšímu kroku.
@@ -183,7 +183,7 @@ Správce cloudu VMware HCX můžete v řešení Azure VMware připojit nebo spá
 
 1. V části **infrastruktura** vyberte **párování lokalit** a potom vyberte možnost **připojit ke vzdálené lokalitě** (uprostřed obrazovky). 
 
-1. Zadejte adresu URL nebo IP adresu cloudového správce Azure VMware Solution HCX, kterou jste si poznamenali dříve `https://x.x.x.9` , uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit**.
+1. Zadejte adresu URL nebo IP adresu cloudového správce Azure VMware Solution HCX, kterou jste si poznamenali dříve `https://x.x.x.9` , řešení Azure VMware cloudadmin \@ vSphere. Local username a heslo. Potom vyberte **Připojit**.
 
    > [!NOTE]
    > Chcete-li úspěšně vytvořit pár lokalit:

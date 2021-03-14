@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215149"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463030"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -87,7 +87,7 @@ Další informace najdete v tématu [koncové body služby virtuální sítě](.
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť 
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu. Tato funkce aktuálně funguje pro všechny SKU podporované virtuální sítí, které zahrnují Standard a Premium, s výjimkou na pružných razítkách, kde jsou virtuální sítě dostupné jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu. Tato funkce aktuálně funguje pro všechny skladové položky podporované ve virtuální síti Windows, které zahrnují Standard a Premium, s výjimkou v případě pružných razítek, kde jsou virtuální sítě dostupné jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
 
 1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
 1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.

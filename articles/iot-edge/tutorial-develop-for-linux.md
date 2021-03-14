@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920845"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461415"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Kurz: vývoj modulů IoT Edge s využitím kontejnerů pro Linux
 
-Pomocí Visual Studio Code můžete vyvíjet a nasazovat kód pro zařízení se systémem Linux s IoT Edge.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-V rychlém startu jste vytvořili IoT Edge zařízení pomocí virtuálního počítače se systémem Linux a nasadili jste modul z Azure Marketplace. Tento kurz vás provede vývojem a nasazením vlastního kódu do zařízení IoT Edge. Tento článek je vhodným předpokladem pro ostatní kurzy, které vám pojdou podrobněji o konkrétních programovacích jazycích nebo službách Azure.
+Pomocí Visual Studio Code můžete vyvíjet a nasazovat kód do zařízení s IoT Edge.
+
+V rychlém startu jste vytvořili zařízení IoT Edge a nasadili modul z Azure Marketplace. Tento kurz vás provede vývojem a nasazením vlastního kódu do zařízení IoT Edge. Tento článek je vhodným předpokladem pro ostatní kurzy, které vám pojdou podrobněji o konkrétních programovacích jazycích nebo službách Azure.
 
 V tomto kurzu se používá příklad nasazení **modulu C# na zařízení se systémem Linux**. Tento příklad jste zvolili, protože se jedná o nejběžnější scénář pro vývojáře pro IoT Edge řešení. I v případě, že plánujete použití jiného jazyka nebo nasazení služby Azure, tento kurz je stále užitečný pro další informace o vývojářských nástrojích a konceptech. Dokončete tento Úvod do procesu vývoje a pak zvolte preferovaný jazyk nebo službu Azure, které chcete podrobně do podrobností.
 
@@ -33,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Sestavte projekt jako kontejner a uložte ho do služby Azure Container Registry.
 > * Nasaďte kód do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vývojový počítač:
 
@@ -44,7 +46,7 @@ Vývojový počítač:
 * [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
-Azure IoT Edge zařízení v systému Linux:
+Zařízení Azure IoT Edge:
 
 * Doporučujeme, abyste ve vývojovém počítači nespouštěli IoT Edge, ale místo toho použijte samostatné zařízení. Toto rozlišení mezi vývojovým počítačem a IoT Edgeým zařízením přesněji odráží skutečný scénář nasazení a pomáhá udržet různé koncepty rovnou.
 * Pokud nemáte k dispozici druhé zařízení, pomocí článku rychlý Start vytvořte zařízení IoT Edge v Azure pomocí [virtuálního počítače se systémem Linux](quickstart-linux.md).
@@ -61,7 +63,10 @@ Tento kurz vás provede vývojem modulu IoT Edge. *IoT Edge modul*, nebo někdy 
 
 Při vývoji IoT Edgech modulů je důležité pochopit rozdíl mezi vývojovým počítačem a cílovým IoT Edge zařízením, kde se modul bude nakonec nasazovat. Kontejner, který sestavíte pro uložení kódu vašeho modulu, se musí shodovat s operačním systémem *cílového zařízení*. Nejběžnější scénář je například někdo, který vyvíjí modul na počítači s Windows, který necílí na zařízení se systémem Linux se spuštěným IoT Edge. V takovém případě by byl operační systém kontejneru Linux. Při procházení tohoto kurzu mějte na paměti rozdíl mezi *vývojovým operačním systémem* a *operačním systémem kontejneru*.
 
-Tento kurz cílí na zařízení s Linux běžící IoT Edge. Můžete použít preferovaný operační systém, pokud váš vývojový počítač používá kontejnery Linux. Pro vývoj zařízení se systémem Linux doporučujeme použít Visual Studio Code, takže tento kurz bude používat. Můžete také použít Visual Studio, i když existují rozdíly v podpoře mezi dvěma nástroji.
+>[!TIP]
+>Pokud používáte [IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md), pak je *cílové zařízení* ve vašem scénáři virtuálním počítačem Linux, ne s hostitelem systému Windows.
+
+V tomto kurzu se cílí na zařízení s IoT Edge s kontejnery Linux. Můžete použít preferovaný operační systém, pokud váš vývojový počítač používá kontejnery Linux. Pro vývoj s kontejnery pro Linux doporučujeme použít Visual Studio Code, takže tento kurz bude používat. Můžete také použít Visual Studio, i když existují rozdíly v podpoře mezi dvěma nástroji.
 
 V následující tabulce jsou uvedeny podporované vývojové scénáře pro **kontejnery platformy Linux** v Visual Studio Code a v aplikaci Visual Studio.
 
@@ -101,7 +106,7 @@ K vývoji IoT Edgech modulů použijte rozšíření IoT pro Visual Studio Code.
 
 3. Vyhledejte **nástroje Azure IoT Tools**, což je ve skutečnosti kolekce rozšíření, která vám pomůžou pracovat s IoT Hub a zařízeními IoT, a také vyvíjet IoT Edge moduly.
 
-4. Vyberte **Install** (Nainstalovat). Každé zahrnuté rozšíření se nainstaluje jednotlivě.
+4. Vyberte **Nainstalovat**. Každé zahrnuté rozšíření se nainstaluje jednotlivě.
 
 5. Po dokončení instalace rozšíření otevřete paletu příkazů výběrem možnosti **Zobrazit**  >  **paletu příkazů**.
 
@@ -109,7 +114,7 @@ K vývoji IoT Edgech modulů použijte rozšíření IoT pro Visual Studio Code.
 
 7. V paletě příkazů znovu vyhledejte a vyberte **Azure IoT Hub: vyberte IoT Hub**. Podle pokynů vyberte předplatné Azure a centrum IoT.
 
-8. Kliknutím na ikonu na panelu nástrojů na levé straně nebo výběrem **Zobrazit** Průzkumníka otevřete část Visual Studio Code Explorer  >  **Explorer**.
+8. Kliknutím na ikonu na panelu nástrojů na levé straně nebo výběrem **Zobrazit** Průzkumníka otevřete část Visual Studio Code Explorer  >  .
 
 9. V dolní části okna Průzkumníka rozbalte nabídku sbalená **IoT Hub/zařízení Azure** . Měli byste vidět zařízení a zařízení IoT Edge přidružená ke službě IoT Hub, kterou jste vybrali prostřednictvím palety příkazů.
 

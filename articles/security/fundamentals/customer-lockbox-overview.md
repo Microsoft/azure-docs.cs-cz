@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 02/19/2021
-ms.openlocfilehash: b39b1d33885de46607cd55acee9919473fab7733
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051425"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461670"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox pro Microsoft Azure
 
@@ -24,7 +24,7 @@ Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, ve kte
 
 Tento článek popisuje, jak povolit Customer Lockbox a jak se spouští, sledují a ukládají požadavky na bezpečnostní moduly pro pozdější revize a audity.
 
-<a name='supported-services-and-scenarios-in-general-availability'><a name='supported-services-and-scenarios-in-preview'>
+<a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
 ## <a name="supported-services-and-scenarios-general-availability"></a>Podporované služby a scénáře (všeobecně dostupné)
 
 Pro Customer Lockbox jsou teď všeobecně dostupné tyto služby:

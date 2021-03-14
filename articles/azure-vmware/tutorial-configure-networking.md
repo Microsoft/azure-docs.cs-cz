@@ -2,13 +2,13 @@
 title: Kurz – konfigurace sítě pro privátní cloud VMware v Azure
 description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení privátního cloudu v Azure.
 ms.topic: tutorial
-ms.date: 02/23/2021
-ms.openlocfilehash: 8871e678ba43aa69eb49c02e386bfb47c6871de7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: 0fc934cfec17d8d3bb69c21d324f06bee3f9515c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044969"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462316"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMware v Azure
 
@@ -94,7 +94,7 @@ K přihlášení do vCenter a NSX Manager budete potřebovat adresy URL webovéh
 
 Přejděte do privátního cloudu řešení Azure VMware. v části **Spravovat** vyberte **Identita**, tady najdete potřebné informace.
 
-:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Snímek obrazovky s přihlašovacími údaji a adresami URL webového klienta pro vCenter a NSX-T" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+:::image type="content" source="./media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Snímek obrazovky s přihlašovacími údaji a adresami URL webového klienta pro vCenter a NSX-T" border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
 
 ## <a name="next-steps"></a>Další kroky
 
