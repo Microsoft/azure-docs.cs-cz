@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712194"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465493"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -75,24 +75,24 @@ Přečtěte si další informace o [serverech s podporou ARC Azure](../azure-arc
 
     Odsud v závislosti na typu počítačů, které se chystáte zaregistrování, vyberte příslušný postup:
 
-    - [Připojení virtuálních počítačů s Azure Stack](#onboard-your-azure-stack-vms)
+    - [Připojení virtuálních počítačů centra Azure Stack](#onboard-your-azure-stack-hub-vms)
     - [Připojení počítačů se systémem Linux](#onboard-your-linux-machines)
     - [Zprovoznění počítačů s Windows](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>Připojení virtuálních počítačů s Azure Stack
+### <a name="onboard-your-azure-stack-hub-vms"></a>Připojení virtuálních počítačů centra Azure Stack
 
-Chcete-li přidat Azure Stack virtuálních počítačů, potřebujete informace na stránce **Správa agentů** a na virtuálních počítačích, které jsou spuštěny v Azure Stack, nakonfigurujte rozšíření **Azure monitor, aktualizace a Správa konfigurace** .
+Pokud chcete přidat Azure Stackch virtuálních počítačů centra, budete potřebovat informace na stránce **Správa agentů** a na virtuálních počítačích, na kterých běží vaše instance centra Azure Stack, nakonfigurovat rozšíření **Azure monitor, Update a Configuration Management** .
 
 1. Na stránce **Správa agentů** zkopírujte **ID pracovního prostoru** a **primární klíč** do poznámkového bloku.
-1. Přihlaste se k portálu **Azure Stack** a otevřete stránku **virtuální počítače** .
+1. Přihlaste se k portálu **centra Azure Stack** a otevřete stránku **virtuálních počítačů** .
 1. Vyberte virtuální počítač, který chcete chránit pomocí Security Center.
     >[!TIP]
-    > Informace o tom, jak vytvořit virtuální počítač na Azure Stack, najdete v [tomto rychlém startu pro virtuální počítače s Windows](/azure-stack/user/azure-stack-quick-windows-portal) nebo v [tomto rychlém startu pro virtuální počítače](/azure-stack/user/azure-stack-quick-linux-portal)se systémem Linux.
+    > Informace o tom, jak vytvořit virtuální počítač v centru Azure Stack, najdete v [tomto rychlém startu pro virtuální počítače s Windows](/azure-stack/user/azure-stack-quick-windows-portal) nebo v [tomto rychlém startu pro virtuální počítače](/azure-stack/user/azure-stack-quick-linux-portal)se systémem Linux.
 1. Vyberte **Rozšíření**. Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
 1. Vyberte kartu **Přidat** . V nabídce **nový prostředek** se zobrazí seznam dostupných rozšíření virtuálních počítačů.
 1. Vyberte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** a vyberte **vytvořit**. Otevře se stránka **instalace konfigurace rozšíření** .
     >[!NOTE]
-    > Pokud nevidíte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** uvedená na webu Marketplace, obraťte se na svého operátora Azure Stack a zpřístupněte ho.
+    > Pokud nevidíte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** uvedená na webu Marketplace, obraťte se na svého operátora centra Azure Stack, aby ho bylo možné zpřístupnit.
 1. Na stránce **instalace konfigurace rozšíření** vložte **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** , který jste zkopírovali do poznámkového bloku v předchozím kroku.
 1. Po dokončení konfigurace vyberte **OK**. Stav rozšíření se zobrazí jako **úspěšné zřizování**. Může trvat až jednu hodinu, než se virtuální počítač objeví v Security Center.
 

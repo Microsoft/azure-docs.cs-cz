@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100572"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465459"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Povolit Azure Defender pro SQL servery na počítačích 
 
@@ -33,7 +33,7 @@ Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, pote
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|**Azure Defender pro servery SQL na počítačích** se účtuje, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .|
 |Chráněné verze SQL:|Azure SQL Server (všechny verze, na které se vztahuje podpora Microsoftu)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Nastavení Azure Defenderu pro servery SQL na počítačích
@@ -47,7 +47,7 @@ Postup povolení tohoto plánu:
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Krok 1. Zřízení agenta Log Analytics na hostiteli SQL serveru:
 
-- **SQL Server na virtuálním počítači Azure** – Pokud je váš počítač SQL hostovaný na virtuálním počítači Azure, můžete [Povolit automatické zřizování <a name="auto-provision-mma"></a> agenta Log Analytics](security-center-enable-data-collection.md#auto-provision-mma). Alternativně můžete postupovat podle ručního postupu připojení [Azure Stackch virtuálních počítačů](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
+- **SQL Server na virtuálním počítači Azure** – Pokud je váš počítač SQL hostovaný na virtuálním počítači Azure, můžete [Povolit automatické zřizování <a name="auto-provision-mma"></a> agenta Log Analytics](security-center-enable-data-collection.md#auto-provision-mma). Alternativně můžete postupovat podle ručního postupu připojení [virtuálních počítačů Azure Stack hub](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms).
 - **SQL Server v Azure ARC** – Pokud je váš SQL Server spravovaný servery s podporou [ARC Azure](../azure-arc/index.yml) , můžete agenta Log Analytics nasadit pomocí Security Center doporučení Log Analytics agenta, který se má nainstalovat na počítače se systémem Windows Azure ARC (Preview). Případně můžete postupovat podle metod instalace popsaných v [dokumentaci k Azure ARC](../azure-arc/servers/manage-vm-extensions.md).
 
 - **SQL Server Prem** – Pokud je váš SQL Server hostovaný na místním počítači s Windows bez ARC Azure, máte dvě možnosti, jak ho připojit k Azure:
