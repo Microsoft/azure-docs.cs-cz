@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629168"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470757"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
@@ -91,20 +91,7 @@ Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [N
 
 Jakmile je sdílená složka připojená k klíči účtu úložiště, musíte nakonfigurovat seznamy řízení přístupu (ACL) systému Windows (označované také jako oprávnění systému souborů NTFS). Seznamy ACL pro Windows můžete nakonfigurovat buď pomocí Průzkumníka souborů Windows, nebo Icacls.
 
-Pokud máte adresáře nebo soubory na místních souborových serverech s Windows DACL nakonfigurovanými na služba AD DS identity, můžete je zkopírovat do souborů Azure, které uchovávají seznamy ACL pomocí tradičních nástrojů pro kopírování souborů, jako je Robocopy nebo [Azure AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases). Pokud jsou vaše adresáře a soubory vrstveny ve službě soubory Azure prostřednictvím Azure File Sync, seznamy ACL se přenesou a ukládají v jejich nativním formátu.
-
-### <a name="configure-windows-acls-with-windows-file-explorer"></a>Konfigurace seznamů řízení přístupu (ACL) Windows pomocí Průzkumníka souborů Windows
-
-Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře.
-
-1. Otevřete Průzkumníka souborů Windows, klikněte pravým tlačítkem na soubor nebo adresář a vyberte **vlastnosti**.
-1. Vyberte kartu **zabezpečení** .
-1. Vyberte **Upravit...** ke změně oprávnění.
-1. Můžete změnit oprávnění stávajících uživatelů nebo vybrat **Přidat...** a udělit jim oprávnění novým uživatelům.
-1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
-1.    Vyberte **OK**.
-1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Apply** (Použít).
+Pokud máte adresáře nebo soubory na místních souborových serverech s Windows DACL nakonfigurovanými na služba AD DS identity, můžete je zkopírovat do souborů Azure, které uchovávají seznamy ACL pomocí tradičních nástrojů pro kopírování souborů, jako je Robocopy nebo [Azure AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases). Pokud jsou vaše adresáře a soubory vrstveny ve službě soubory Azure prostřednictvím Synchronizace souborů Azure, seznamy ACL se přenesou a ukládají v jejich nativním formátu.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 
@@ -115,6 +102,20 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
 Další informace o tom, jak používat icacls k nastavení seznamů řízení přístupu (ACL) systému Windows a různých typů podporovaných oprávnění, najdete v tématu [Reference k příkazovému řádku pro icacls](/windows-server/administration/windows-commands/icacls).
+
+### <a name="configure-windows-acls-with-windows-file-explorer"></a>Konfigurace seznamů řízení přístupu (ACL) Windows pomocí Průzkumníka souborů Windows
+
+Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře. Pokud nemůžete správně načíst informace o doméně služby AD v Průzkumníkovi souborů systému Windows, je to pravděpodobně způsobeno konfigurací důvěryhodnosti v prostředí služby AD Prem. Klientský počítač se nemohl připojit k řadiči domény služby AD zaregistrovanému pro ověřování souborů Azure. V takovém případě použijte icacls pro seznamy ACL pro configurating Windows.
+
+1. Otevřete Průzkumníka souborů Windows, klikněte pravým tlačítkem na soubor nebo adresář a vyberte **vlastnosti**.
+1. Vyberte kartu **zabezpečení** .
+1. Vyberte **Upravit...** ke změně oprávnění.
+1. Můžete změnit oprávnění stávajících uživatelů nebo vybrat **Přidat...** a udělit jim oprávnění novým uživatelům.
+1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
+1.    Vyberte **OK**.
+1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
+1.    Vyberte **Použít**.
+
 
 ## <a name="next-steps"></a>Další kroky
 

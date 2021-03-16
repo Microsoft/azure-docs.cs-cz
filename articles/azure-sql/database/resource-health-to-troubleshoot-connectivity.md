@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497958"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472000"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením pro Azure SQL Database a spravovanou instanci SQL Azure pomocí Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,7 +61,7 @@ V části Historie stavu Resource Health můžete přistupovat až ke 14 dnům h
 
 ### <a name="downtime-reasons"></a>Důvody výpadku
 
-Když dojde k výpadku databáze, provede se analýza a určí se důvod. V případě, že je k dispozici, je důvod výpadku uveden v části Historie stavu Resource Health. Důvody výpadků se obvykle publikují 30 minut po události.
+Když dojde k výpadku databáze, provede se analýza a určí se důvod. V případě, že je k dispozici, je důvod výpadku uveden v části Historie stavu Resource Health. Důvody výpadku jsou obvykle publikovány během 45 minut po události.
 
 #### <a name="planned-maintenance"></a>Plánovaná údržba
 

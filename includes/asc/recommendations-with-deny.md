@@ -2,18 +2,18 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/16/2021
+ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fce7ba090d5aa86c85452ca41ce606d2fa52a6ee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c142f6a00275b4b21b6bbc64e51a5c4d7d957258
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645308"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467987"
 ---
-- Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený.
-- Proměnné účtu Automation by se měly šifrovat.
+- Přístup k účtům úložiště s bránou firewall a konfigurací virtuální sítě by měl být omezený, protože účty úložiště by měly omezovat přístup k síti.
+- Proměnné účtu Automation by měly být zašifrované proměnné účtu Automation.
 - Mezipaměť Azure pro Redis by se měla nacházet v rámci virtuální sítě.
 - Azure Cosmos DB účty by měly používat klíče spravované zákazníkem k šifrování neaktivních dat
 - Azure Machine Learning pracovní prostory by měly být zašifrované pomocí klíče spravovaného zákazníkem (CMK)
@@ -31,21 +31,21 @@ ms.locfileid: "100645308"
 - Trezory klíčů by měly mít povolenou ochranu vyprázdnění
 - Trezory klíčů by měly mít povolené obnovitelné odstranění.
 - Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.
-- Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
+- Pro Redis by měla být povolená jenom zabezpečená připojení k vaší Redis Cache službě Azure cache pro.
 - Přepsání nebo zakázání profilu kontejnerů AppArmor by mělo být omezené.
 - Měly by se vyhnout privilegovanému kontejneru
 - Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.
-- Měl by se povolit zabezpečený přenos do účtů úložiště
-- Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
-- Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.
+- Zabezpečený přenos do účtů úložiště by měl být povolený zabezpečený přenos do účtů úložiště.
+- Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na Service Fabric EncryptAndSign clustery, které by měly mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
+- Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů Service Fabric clustery by se měly používat jenom Azure Active Directory pro ověřování klientů.
 - Služby by měly naslouchat jenom povoleným portům.
 - Veřejný přístup k účtu úložiště by neměl být povolený.
-- Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
+- Účty úložiště by se měly migrovat do nových prostředků úložiště Azure Resource Manager prostředky úložiště by se měly migrovat na nové prostředky Azure Resource Manager
 - Účty úložiště by měly omezovat přístup k síti pomocí pravidel virtuální sítě.
 - Používání hostitelských sítí a portů by se mělo omezit.
 - Použití HostPath svazků připojení by se mělo omezit na známý seznam, aby se omezil přístup k uzlu z ohrožených kontejnerů.
 - Doba platnosti certifikátů uložených v Azure Key Vault nesmí překročit 12 měsíců.
-- Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
+- Virtuální počítače by měly být migrovány do nových prostředků Azure Resource Managerch virtuálních počítačů, které by měly být migrovány do nových prostředků Azure Resource Manager
 - Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway
 - Služba WAF (firewall webových aplikací) by měla být povolená pro službu Azure front-dveří
 

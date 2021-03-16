@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: V tomto rychlém startu se dozvíte, jak vytvořit vlastní komponentu kompatibilní s architekturou uživatelského rozhraní.
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 88de5ca56738e13446be30fb14df6bcdac360827
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 093fcfd95d291d959ed49cc39a227a99f14a0383
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539818"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488240"
 ---
 # <a name="quickstart-create-your-own-ui-framework-component"></a>Rychlý Start: Vytvoření vlastní komponenty architektury uživatelského rozhraní
 
@@ -73,7 +73,7 @@ npm run start
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny uživatelského rozhraní služby Azure Communication Services:
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | Poskytovatel| Poskytovatel uživatelského rozhraní Fluent, který umožňuje vývojářům upravovat základní součásti uživatelského rozhraní Fluent|
 | CallingProvider| Volání poskytovatele pro vytvoření instance volání. Požadováno pro přidání základních součástí|

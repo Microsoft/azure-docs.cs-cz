@@ -1,17 +1,17 @@
 ---
 title: Přístup k protokolům pomalým dotazům-Azure Portal-Azure Database for MySQL
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k pomalým protokolům v Azure Database for MySQL z Azure Portal.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/13/2020
-ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 3/15/2021
+ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541619"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496214"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
 
@@ -34,11 +34,13 @@ Nakonfigurujte přístup k protokolu pomalého dotazu MySQL.
 
 5. Zapněte **slow_query_log** na **zapnuto**.
 
-6. Vyberte, kde se mají protokoly výstupovat, aby se používaly **log_output**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**. 
+6. Vyberte, kde se mají protokoly výstupovat, aby se používaly **log_output**. Pokud chcete odesílat protokoly do místního úložiště i Azure Monitor diagnostické protokoly, vyberte **soubor**.
 
-7. Změňte všechny potřebné parametry. 
+7. Zvažte nastavení "long_query_time", která představuje mezní hodnotu doby dotazu pro dotazy, které budou shromážděny v souboru protokolu pomalého dotazu, minimální a výchozí hodnoty long_query_time jsou 0 a 10 v uvedeném pořadí.
 
-8. Vyberte **Uložit**. 
+8. Upravte jiné parametry, například log_slow_admin_statements k protokolování příkazů pro správu. Ve výchozím nastavení nejsou příkazy správy protokolovány, ani dotazy, které nepoužívají indexy pro vyhledávání. 
+
+9. Vyberte **Uložit**. 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Snímek obrazovky s pomalými parametry protokolu dotazů a uložení.":::
 
@@ -70,17 +72,17 @@ Po zahájení protokolování můžete zobrazit seznam dostupných protokolů po
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi nastavení diagnostiky":::
 
-1. Zadejte název nastavení diagnostiky.
+2. Zadejte název nastavení diagnostiky.
 
-1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
+3. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
 
-1. Jako typ protokolu vyberte **MySqlSlowLogs** .
+4. Jako typ protokolu vyberte **MySqlSlowLogs** .
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi konfigurace nastavení diagnostiky":::
 
-1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
+5. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Snímek obrazovky s možnostmi konfigurace nastavení diagnostiky s zvýrazněným možností Uložit":::
 
-1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
+6. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o tom, jak programově stahovat protokoly pomalých dotazů, najdete [v tématu přístup k protokolům pomalým dotazů](howto-configure-server-logs-in-cli.md)

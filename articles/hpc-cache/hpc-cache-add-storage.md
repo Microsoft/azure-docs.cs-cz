@@ -4,20 +4,20 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054361"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471941"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
 *Cíle úložiště* jsou back-endové úložiště pro soubory, které jsou dostupné prostřednictvím mezipaměti HPC Azure. Můžete přidat úložiště NFS (jako je místní hardwarový systém) nebo ukládat data do objektu blob Azure.
 
-Pro jednu mezipaměť můžete definovat až deset různých cílů úložiště. Mezipaměť prezentuje všechny cíle úložiště v jednom agregovaném oboru názvů.
+Pro jednu mezipaměť můžete definovat až 20 různých cílů úložiště. Mezipaměť prezentuje všechny cíle úložiště v jednom agregovaném oboru názvů.
 
 Cesty oboru názvů se konfigurují samostatně po přidání cílů úložiště. Obecně platí, že cíl úložiště systému souborů NFS může mít až deset cest oboru názvů nebo více pro některé velké konfigurace. Podrobnosti najdete v [názvech oborů názvů systému souborů NFS](add-namespace-paths.md#nfs-namespace-paths) .
 
@@ -29,7 +29,7 @@ Přidejte cíle úložiště po vytvoření mezipaměti. Použijte tento postup:
 1. Definování cíle úložiště (informace v tomto článku)
 1. [Vytvoření cest směřujících klientovi](add-namespace-paths.md) (pro [agregovaný obor názvů](hpc-cache-namespace.md))
 
-Postup přidání cíle úložiště se mírně liší v závislosti na tom, jestli přidáváte Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
+Postup přidání cíle úložiště se mírně liší v závislosti na typu úložiště, které používá. Podrobnosti jsou uvedené níže.
 
 Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) pro vytvoření mezipaměti a Přidání cíle úložiště z Azure Portal.
 
@@ -40,6 +40,9 @@ Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.micr
 Nový cíl úložiště objektů BLOB potřebuje prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu cloudového systému souborů mezipaměti HPC Azure HPC. Přečtěte si další informace o předběžném načítání kontejneru objektů BLOB v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
 
 Stránka Azure Portal **Přidat cíl úložiště** obsahuje možnost vytvořit nový kontejner objektů BLOB těsně před tím, než ho přidáte.
+
+> [!NOTE]
+> Pro úložiště objektů BLOB připojené k systému souborů NFS použijte typ [cíle úložiště adls-NFS](#) .
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -161,38 +164,48 @@ Cíl úložiště NFS má různá nastavení z cíle úložiště objektů BLOB.
 > Před vytvořením cíle úložiště NFS se ujistěte, že je váš systém úložiště přístupný z mezipaměti HPC Azure a splňuje požadavky na oprávnění. Vytvoření cíle úložiště se nezdaří, pokud mezipaměť nemá přístup k systému úložiště. Podrobnosti najdete v tématu [požadavky na úložiště NFS](hpc-cache-prerequisites.md#nfs-storage-requirements) a [řešení potíží s cíli konfigurace serveru NAS a úložiště NFS](troubleshoot-nas.md) .
 
 ### <a name="choose-a-usage-model"></a>Výběr modelu použití
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
+<!-- referenced from GUI - update aka.ms link to point at new article when published -->
 
-Při vytváření cíle úložiště, který odkazuje na systém úložiště NFS, je nutné zvolit model využití pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
+Při vytváření cíle úložiště, který používá systém souborů NFS k dosažení systému úložiště, je nutné zvolit model využití pro tento cíl. Tento model určuje, jak jsou data ukládána do mezipaměti.
 
-Integrované modely použití vám umožňují zvolit způsob vyrovnávání rychlé odezvy s rizikem při získávání zastaralých dat. Pokud chcete optimalizovat rychlost čtení souborů, nesmíte se starat o to, jestli jsou soubory v mezipaměti kontrolované proti back-endové soubory. Na druhé straně, pokud chcete mít jistotu, že jsou soubory vždycky aktuální se vzdáleným úložištěm, vyberte model, který se často kontroluje.
+Další podrobnosti o všech těchto nastaveních najdete v tématu [pochopení modelů používání](cache-usage-models.md) .
 
-Existují tři možnosti:
+Integrované modely použití vám umožňují zvolit způsob vyrovnávání rychlé odezvy s rizikem při získávání zastaralých dat. Chcete-li optimalizovat rychlost čtení souborů, nesmíte se starat o to, zda jsou soubory v mezipaměti zkontrolovány proti back-endové soubory. Na druhé straně, pokud chcete mít jistotu, že jsou soubory vždycky aktuální se vzdáleným úložištěm, vyberte model, který se často kontroluje.
 
-* **Čtení těžkých, zřídka používaných zápisů** – tuto možnost použijte, pokud chcete zrychlit přístup pro čtení souborů, které jsou statické nebo zřídka změněné.
+Tyto tři možnosti se týkají většiny situací:
 
-  Tato možnost ukládá do mezipaměti soubory, které klienti čtou, ale předává zápis do úložiště back-endu okamžitě. Soubory uložené v mezipaměti nejsou automaticky porovnány se soubory na svazku úložiště NFS. (Další informace najdete v poznámce k ověření back-endu.)
+* **Čtení těžkých, málo častých zápisů** – zrychluje přístup pro čtení souborů, které jsou statické nebo zřídka změněné.
+
+  Tato možnost ukládá soubory z klientského čtení do mezipaměti, ale dokončí zápisy klientů do úložiště back-endu okamžitě. Soubory uložené v mezipaměti nejsou automaticky porovnány se soubory na svazku úložiště NFS.
 
   Tuto možnost nepoužívejte, pokud existuje riziko, že soubor může být upraven přímo v systému úložiště, aniž byste ho nejdřív napsali do mezipaměti. Pokud k tomu dojde, verze souboru v mezipaměti nebude synchronizována s back-end souborem.
 
-* Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu. Při použití této možnosti musí mít všichni klienti přístup k souborům přes mezipaměť prostředí Azure HPC místo přímého připojení k úložišti back-endu. Soubory v mezipaměti budou mít poslední změny, které nejsou uložené na back-endu.
+* Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu.
 
-  V tomto modelu použití jsou soubory v mezipaměti kontrolovány pouze proti souborům v úložišti back-endu každých 8 hodin. Předpokládá se, že verze souboru v mezipaměti je aktuálnější. Upravený soubor v mezipaměti se zapisuje do back-endového systému úložiště, po kterém byl v mezipaměti, a to za hodinu bez dalších změn.
+  Čtení klienta a zápisy klientů jsou ukládány do mezipaměti. Předpokládá se, že soubory v mezipaměti budou novější než soubory v back-endovém systému úložiště. Soubory v mezipaměti jsou automaticky kontrolovány proti souborům v úložišti back-endu každých 8 hodin. Změněné soubory v mezipaměti se zapisují do back-endového systému úložiště po dobu 20 minut v mezipaměti bez dalších změn.
 
-* **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti, nebo pokud chcete optimalizovat konzistenci dat. Soubory, které klienti požadují, jsou ukládány do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány zpět do back-endového systému úložiště.
+  Tuto možnost nepoužívejte, pokud některý z klientů přímo připojí svazek úložiště back-endu, protože existuje riziko, že budou mít zastaralé soubory.
 
-  V tomto modelu použití jsou soubory v mezipaměti často kontrolovány proti verzím back-endu pro aktualizace. Toto ověření umožňuje změnu souborů mimo mezipaměť při zachování konzistence dat.
+* **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti, nebo pokud chcete optimalizovat konzistenci dat.
 
-Tato tabulka shrnuje rozdíly v modelu použití:
+  Soubory, které klienti požadují, jsou ukládány do mezipaměti, ale všechny změny těchto souborů z klienta jsou okamžitě předány do back-endového systému úložiště. Soubory v mezipaměti jsou často kontrolovány proti verzím back-endu pro aktualizace. Toto ověření udržuje konzistenci dat při změně souborů přímo v systému úložiště namísto mezipaměti.
 
-| Model využití                   | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádné                     |
-| Více než 15% zápisů       | Čtení/zápis   | 8 hodin               | 1 hodina                   |
-| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádné                     |
+Podrobnosti o dalších možnostech najdete v článku [porozumění modelům používání](cache-usage-models.md).
+
+Tato tabulka shrnuje rozdíly mezi všemi modely využití:
+
+| Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
+|--|--|--|--|
+| Čtení těžkých, nečastých zápisů | Číst | Nikdy | Žádné |
+| Více než 15% zápisů | Čtení/zápis | 8 hodin | 20 minut |
+| Klienti obcházejí mezipaměť | Číst | 30 sekund | Žádné |
+| Více než 15% zápisů, časté kontroly back-endu (30 sekund) | Čtení/zápis | 30 sekund | 20 minut |
+| Více než 15% zápisů, časté kontroly back-endu (60 sekund) | Čtení/zápis | 60 sekund | 20 minut |
+| Více než 15% zápisů, časté zpětný zápis | Čtení/zápis | 30 sekund | 30 sekund |
+| Těžké čtení, kontrola záložního serveru každé 3 hodiny | Číst | 3 hodiny | Žádné |
 
 > [!NOTE]
-> Hodnota **ověření back-endu** ukazuje, kdy mezipaměť automaticky porovnává své soubory se zdrojovými soubory ve vzdáleném úložišti. Mezipaměť prostředí Azure HPC však můžete vynutit k porovnání souborů pomocí operace adresáře, která obsahuje požadavek READDIRPLUS. READDIRPLUS je standardní rozhraní API pro systém souborů NFS (označované také jako rozšířené čtení), které vrací metadata adresáře, což způsobí, že mezipaměť porovná a aktualizuje soubory.
+> Hodnota **ověření back-endu** ukazuje, kdy mezipaměť automaticky porovnává své soubory se zdrojovými soubory ve vzdáleném úložišti. Porovnání můžete ale aktivovat odesláním žádosti klienta, která zahrnuje operaci READDIRPLUS v systému back-end úložiště. READDIRPLUS je standardní rozhraní API pro systém souborů NFS (označované také jako rozšířené čtení), které vrací metadata adresáře, což způsobí, že mezipaměť porovná a aktualizuje soubory.
 
 ### <a name="create-an-nfs-storage-target"></a>Vytvoření cíle úložiště NFS
 
@@ -291,6 +304,43 @@ Výstup:
 ```
 
 ---
+
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Přidání nového cíle úložiště ADLS-NFS (PREVIEW)
+
+Cíle úložiště ADLS-NFS používají kontejnery objektů BLOB v Azure, které podporují protokol NFS (Network File System) 3,0.
+
+> [!NOTE]
+> Podpora protokolu NFS 3,0 pro Azure Blob Storage je ve verzi Public Preview. Dostupnost je omezená a funkce se můžou v současnosti měnit a když je funkce všeobecně dostupná. V produkčních systémech Nepoužívejte technologii verze Preview.
+>
+> Nejnovější informace najdete v článku [Podpora protokolu NFS 3,0](../storage/blobs/network-file-system-protocol-support.md) .
+
+Cíle úložiště ADLS-NFS mají určité podobnosti s cíli úložiště objektů BLOB a s cíli úložiště NFS. Například:
+
+* Podobně jako u služby Blob Storage je potřeba poskytnout oprávnění mezipaměti HPC Azure pro [přístup k vašemu účtu úložiště](#add-the-access-control-roles-to-your-account).
+* Podobně jako cíl úložiště NFS musíte nastavit [model využití](#choose-a-usage-model)mezipaměti.
+* Vzhledem k tomu, že kontejnery objektů BLOB s povoleným systémem souborů NFS mají hierarchickou strukturu kompatibilní se systémem souborů NFS, nemusíte tuto mezipaměť používat k ingestování dat a kontejnery jsou čitelné jinými systémy souborů NFS. Data můžete předem načíst do kontejneru ADLS-NFS a pak je přidat do mezipaměti HPC jako cíl úložiště a pak získat přístup k datům později z vnějšku mezipaměti HPC. Když použijete standardní kontejner objektů BLOB jako cíl úložiště mezipaměti HPC, data se napíší ve speciálním formátu a dají se k nim dostat jenom z jiných produktů kompatibilních s Azure HPC cache.
+
+Než budete moct vytvořit cíl úložiště ADLS-NFS, musíte vytvořit účet úložiště s povoleným systémem souborů NFS. Postupujte podle tipů v tématu [požadavky pro mezipaměť Azure HPC](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) a pokyny v části [připojení úložiště objektů BLOB pomocí systému souborů NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). Po nastavení účtu úložiště můžete při vytváření cíle úložiště vytvořit nový kontejner.
+
+Pokud chcete vytvořit cíl úložiště ADLS-NFS, otevřete stránku **Přidat cíl úložiště** v Azure Portal. (Další metody jsou ve vývoji.)
+
+![Snímek obrazovky se stránkou cíle pro přidání úložiště s definovaným cílem ADLS-NFS](media/add-adls-target.png)
+
+Zadejte tyto informace.
+
+* **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
+* **Cílový typ** – vyberte **adls-NFS**.
+* **Účet úložiště** – vyberte účet, který chcete použít. Pokud se v seznamu nezobrazí účet úložiště s povoleným systémem souborů NFS, ověřte, zda vyhovuje požadavkům a zda k němu má mezipaměť přístup.
+
+  Pro přístup k účtu úložiště bude nutné autorizovat instanci mezipaměti, jak je popsáno v tématu [Přidání rolí přístupu](#add-the-access-control-roles-to-your-account).
+
+* **Kontejner úložiště** – vyberte kontejner objektů BLOB s povoleným systémem souborů NFS pro tento cíl nebo klikněte na **vytvořit novou**.
+
+* **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v části [Výběr modelu použití](#choose-a-usage-model) výše.
+
+Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
+
+<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Zobrazit cíle úložiště
 

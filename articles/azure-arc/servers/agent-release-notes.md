@@ -2,13 +2,13 @@
 title: Co je nového u agenta serverů s podporou ARC Azure
 description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Mnohé z mnoha souhrnných problémů jsou odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/15/2021
+ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722517"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470502"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
@@ -18,13 +18,27 @@ Server s podporou ARC Azure, který je připojený agentem počítače, obdrží
 - Známé problémy
 - Opravy chyb
 
+## <a name="march-2021"></a>Březen 2021
+
+Verze 1,4
+
+## <a name="new-feature"></a>Nová funkce
+
+- Byla přidána podpora privátních koncových bodů.
+- Rozbalený seznam ukončovacích kódů pro azcmagent.
+- Parametry konfigurace agenta se teď dají číst ze souboru s parametrem--config.
+
+## <a name="fixed"></a>Pevný
+
+Kontroly síťových koncových bodů jsou teď rychlejší.
+
 ## <a name="december-2020"></a>Prosinec 2020
 
 Verze: 1,3
 
 ### <a name="new-feature"></a>Nová funkce
 
-Přidání podpory pro Windows Server 2008 R2
+Byla přidána podpora pro systém Windows Server 2008 R2.
 
 ### <a name="fixed"></a>Pevný
 
@@ -47,7 +61,7 @@ Version: 1.1
 - Pevný skript proxy, který zpracovává alternativní umístění souboru jednotek démona GC.
 - Změny spolehlivosti agenta GuestConfig.
 - Podpora agenta GuestConfig pro oblast US Gov – Virginie.
-- Rozšíření agenta GuestConfig hlásí zprávy, aby byly pro případ selhání podrobnější.
+- Pokud dojde k selhání, GuestConfig se zprávy o rozšíření agenta v podrobnostech.
 
 ## <a name="september-2020"></a>Září 2020
 

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 03/15/2021
 ms.author: rogarana
-ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547494"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472140"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
@@ -66,7 +66,7 @@ Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte 
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování pomocí služby soubory Azure s služba AD DS je dostupné ve [všech oblastech veřejné a gov Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+Ověřování souborů Azure pomocí služba AD DS je k dispozici ve [všech oblastech Azure Public, Čína a gov](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview"></a>Přehled
 

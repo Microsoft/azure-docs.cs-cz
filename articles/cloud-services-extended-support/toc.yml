@@ -65,6 +65,8 @@
       href: configure-scaling.md
     - name: Certifikáty
       href: certificates-and-key-vault.md
+    - name: Vygenerovat šablonu ARM pomocí portálu
+      href: generate-template-portal.md
 - name: ukázky
   items:
     - name: Ukázkové šablony

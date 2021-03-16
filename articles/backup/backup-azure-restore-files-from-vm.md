@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725505"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493522"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -60,18 +60,18 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>Krok 2: Ujistěte se, že počítač splňuje požadavky před spuštěním skriptu.
 
-Po úspěšném stažení skriptu se ujistěte, že máte správný počítač pro spuštění tohoto skriptu. Virtuální počítač, u kterého plánujete skript spustit, by neměl mít žádnou z následujících nepodporovaných konfigurací. Pokud k tomu dojde, zvolte alternativní počítač nejlépe ze stejné oblasti, která splňuje požadavky.  
+Po úspěšném stažení skriptu se ujistěte, že máte správný počítač pro spuštění tohoto skriptu. Virtuální počítač, u kterého plánujete skript spustit, by neměl mít žádnou z následujících nepodporovaných konfigurací. **Pokud k tomu dojde, zvolte alternativní počítač nejlépe ze stejné oblasti, která splňuje požadavky**.  
 
 ### <a name="dynamic-disks"></a>Dynamické disky
 
-Na virtuálním počítači nemůžete spustit spustitelný skript s žádnou z následujících vlastností:
+Na virtuálním počítači nemůžete spustit spustitelný skript s žádnou z následujících vlastností: vyberte jiný počítač.
 
 - Svazky, které jsou rozloženy na více discích (rozložené a prokládané svazky).
 - Svazky odolné proti chybám (zrcadlené svazky a svazky RAID-5) na dynamických discích.
 
 ### <a name="windows-storage-spaces"></a>Prostory úložiště ve Windows
 
-Stažený spustitelný soubor nemůžete spustit na virtuálním počítači, který je nakonfigurovaný pro prostory úložiště Windows.
+Stažený spustitelný soubor nemůžete spustit na stejném zálohovaném virtuálním počítači, pokud má zálohovaný virtuální počítač prostory úložiště Windows. Vyberte jiný počítač.
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>Zálohy virtuálních počítačů s velkými disky
 

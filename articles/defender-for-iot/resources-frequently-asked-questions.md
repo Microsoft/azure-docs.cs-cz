@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 03/02/2021
 ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 89da9ed378118875f0c09d3c23799349a4d093b0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247461"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467693"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k Azure Defenderu pro IoT
 
@@ -51,29 +51,23 @@ Ano, můžete to! Místní řešení Azure Defender pro IoT Platform je nasazen�
 
 Služba Azure Defender pro IoT snímač se připojí k portu SPAN nebo k síti KLEPNE a hned začne shromažďovat síťový provoz ICS prostřednictvím pasivního monitorování (bez agentů). Nemá žádný vliv na sítě, protože není umístěný v cestě k datům a aktivně nekontroluje zařízení.
 
-Příklad:
+Například:
 - Jedno zařízení (Virtual of fyzický) může být v DMZ vrstvě dílenského řízení a všechny přenosy dat z dílenského řízení jsou směrovány do této vrstvy.
 - Alternativně můžete najít malé senzory v každé aplikaci dílny pomocí cloudu nebo místní správy, která se nachází v DMZ vrstvě dílenského řízení. Jiné zařízení (virtuální nebo fyzické) může monitorovat provoz v dílenském DMZ vrstvě (pro SCADA, historian nebo instatusování).
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Jak program Defender pro IoT porovnává soutěž s konkurencí?
 
-Zatímco jiná řešení poskytují sadu funkcí, které zákazníkům umožňují vytvářet vlastní řešení, Defender pro IoT poskytuje jedinečné komplexní řešení zabezpečení IoT, které poskytuje nejrůznější přehled o zabezpečení všech souvisejících prostředků Azure. Azure umožňuje rychlé nasazení a úplnou integraci s IoT Hubmi moduly, které umožňují snadnou integraci s existujícími nástroji pro správu zařízení.
+Azure Defender pro IoT nabízí komplexní zabezpečení napříč všemi zařízeními IoT/OT. V případě **organizací pro koncové uživatele** Azure Defender pro IoT nabízí bez agenta zabezpečení síťové vrstvy, které se rychle nasazuje, pracuje s různými proprietárními zařízeními a staršími systémy Windows a spolupracuje s Azure Sentinel a dalšími SOC nástroji. Dá se nasadit místně nebo v prostředích připojených k Azure. V případě **tvůrců zařízení IoT** nabízí Azure Defender pro IoT nezjednodušené agenty pro vkládání zabezpečení na úrovni zařízení do nových iniciativ IoT/ot.
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Musím být zákazníkem Azure?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Musím být zákazníkem Azure IoT?
+Ne, nemusíte mít u agenta Azure Defender pro službu IoT verzi bez agentů zákazníky Azure. Pokud ale chcete odesílat výstrahy do Azure Sentinel; zřizování senzorů sítě a monitorování jejich stavu z cloudu; a Díky automatickým aktualizacím softwaru a hrozeb je budete muset připojit ke službě Azure pomocí IoT Hub Azure.
 
-Yes. V případě nasazení připojených k cloudu Azure Defender pro IoT spoléhá na konektivitu a infrastrukturu Azure IoT.
+Pro verzi Azure Defenderu pro službu IoT založenou na agentech musíte být zákazníkem Azure.
+
 ## <a name="can-i-create-my-own-alerts"></a>Můžu vytvořit vlastní výstrahy?
 
-Yes. Přizpůsobenou výstrahu můžete nastavit na předem stanovenou sadu chování, jako je například IP adresa a otevřené porty. Další informace o vlastních výstrahách a o tom, jak je udělat, najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md) .
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Kde můžu zobrazit protokoly? Můžu přizpůsobovat protokoly?
-
-- Pomocí vašeho připojeného pracovního prostoru Log Analytics zobrazovat výstrahy a doporučení. Nakonfigurujte velikost úložiště a dobu trvání v pracovním prostoru.
-
-- Nezpracovaná data z vašeho agenta zabezpečení taky můžete ukládat do svého účtu Log Analytics. Před změnou konfigurace této možnosti zvažte možnost změnit velikost, dobu trvání, požadavky na úložiště a související náklady.
-
-
+Ano, můžete vytvořit vlastní výstrahy na základě více parametrů, včetně adres IP/MAC, typu protokolu, třídy, služby, funkce, příkazu atd. a také hodnot vlastních značek obsažených v datových vytíženích.  Další informace o vlastních výstrahách a jejich vytváření najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md) .
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Co se stane, když připojení k Internetu přestane fungovat?
 

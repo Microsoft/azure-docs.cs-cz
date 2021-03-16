@@ -2,13 +2,13 @@
 title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/15/2021
+ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463064"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466724"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -68,7 +68,7 @@ Jsou k dispozici tyto filtry:
 * **Závažnost**  
 Toto pravidlo bude platit jenom pro výstrahy s vybranými závažnostmi.  
 Například **závažnost = Sev1** znamená, že pravidlo bude platit jenom pro výstrahy se závažností Sev1.
-* **Monitorování služby**  
+* **Monitorovat službu**  
 Toto pravidlo bude platit pouze pro výstrahy přicházející z vybraných monitorovacích služeb.  
 Například **monitor služba = "Azure Backup"** znamená, že pravidlo bude platit jenom pro výstrahy zálohování (pocházející z Azure Backup).
 * **Typ prostředku**  
@@ -76,7 +76,8 @@ Toto pravidlo bude platit jenom pro výstrahy pro vybrané typy prostředků.
 Například **typ prostředku = "Virtual Machines"** znamená, že pravidlo bude platit pouze pro výstrahy na virtuálních počítačích.
 * **ID pravidla výstrahy**  
 Toto pravidlo bude platit jenom pro výstrahy přicházející z konkrétního pravidla výstrahy. Hodnota by měla být Správce prostředků ID pravidla výstrahy.  
-Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.
+Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.
+Můžete získat správné ID pravidla upozornění uvedením pravidel upozornění z rozhraní příkazového řádku nebo otevřením konkrétního pravidla výstrahy na portálu, kliknutím na tlačítko Vlastnosti a zkopírováním hodnoty ID prostředku.
 * **Podmínka monitorování**  
 Toto pravidlo bude platit pouze pro události výstrah se zadanou podmínkou monitorování – buď **aktivováno** , nebo **Vyřešeno**.
 * **Popis**  
@@ -115,9 +116,9 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Name
+* Název
 * Skupina prostředků, ve které je uložená
-* Description
+* Popis
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -273,7 +274,7 @@ Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte v�
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>I když konfigurujem pravidlo akce, chci zobrazit všechna možná překrývající se pravidla akcí, aby se zamezilo duplicitním oznámením. Je to možné?
 

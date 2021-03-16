@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d2d501206dcb1fc6b9bb545f9dcf4d5c61af994e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777873"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472238"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Načtení dat z CSV do Azure SQL Database nebo spravované instance SQL (ploché soubory)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ K importu dat ze souboru CSV do Azure SQL Database nebo spravované instance Azu
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku potřebujete:
 
@@ -33,7 +33,7 @@ K dokončení kroků v tomto článku potřebujete:
 * Nainstalovaný nástroj příkazového řádku bcp
 * Nainstalovaný nástroj příkazového řádku sqlcmd
 
-Nástroje bcp a sqlcmd si můžete stáhnout z webu [Stažení softwaru společnosti Microsoft][Microsoft Download Center].
+Nástroje BCP a Sqlcmd si můžete stáhnout z [dokumentace Microsoft Sqlcmd] [ https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data ve formátu ASCII nebo UTF-16
 

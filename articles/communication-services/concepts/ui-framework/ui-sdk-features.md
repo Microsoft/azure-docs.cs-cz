@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services conceptual document
 description: Další informace o možnostech rozhraní UI Framework
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 51caf1e73cdeda5862e033a05878f35ddb6ff8dc
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539827"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492213"
 ---
 # <a name="ui-framework-capabilities"></a>Možnosti architektury uživatelského rozhraní
 
@@ -22,7 +22,7 @@ Architektura uživatelského rozhraní služby Azure Communication Services umo�
 
 ## <a name="ui-framework-composite-components"></a>Složené součásti architektury uživatelského rozhraní
 
-| Složený               | Description                                               | Web   | Android | iOS   |
+| Složený               | Popis                                               | Web   | Android | iOS   |
 |-------------------------|-----------------------------------------------------------|-------|---------|-------|
 | Skupina, která volá složený | Špičkové odchozí volání hlasu a videa pro komunikační služby Azure, které volají používání prostředků návrhu uživatelského rozhraní Fluent. Podporuje volání skupin pomocí ID skupiny služby Azure Communication Services. Složený prvek umožňuje použití volání 1:1 odkazem na identitu komunikačních služeb Azure nebo na telefonní číslo pro veřejnou telefonní síť pomocí telefonního čísla získaného prostřednictvím Azure.                                    | React |  |  |
 | Neseparovaný skupinový chat    | Špičkové možnosti chatu pro komunikační služby Azure pomocí prostředků návrhu Fluent UI. Toto prostředí se zaměřuje na doručení jednoduchého konverzačního klienta, který se může připojit k vláknům služby Azure Communication Services. Umožňuje uživatelům odesílat zprávy a zobrazovat přijaté zprávy pomocí indikátorů psaní a čtení. Škáluje se od 1:1 do seskupení scénářů chatu. Podporuje jedno vlákno chatu.                         | React |  |  |

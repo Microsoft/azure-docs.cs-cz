@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593326"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491941"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Zprávy a připojení ve službě Azure Signal Service
 
@@ -48,9 +48,16 @@ Pokud máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu
 
 K dispozici jsou připojení serveru a klientská připojení ke službě Azure Signal Service. Ve výchozím nastavení každý aplikační server začíná pět počátečních připojení na jeden rozbočovač a každý klient má jedno připojení klienta.
 
-Počet připojení zobrazený v Azure Portal zahrnuje připojení serveru i připojení klientů.
-
 Předpokládejme například, že máte dva aplikační servery a definujete pět rozbočovačů v kódu. Počet připojení k serveru bude 50:2 aplikační servery * 5 rozbočovačů * 5 připojení na centrum.
+
+Počet připojení zobrazený v Azure Portal zahrnuje připojení serveru, připojení klientů, diagnostická připojení a připojení živého trasování. Typy připojení jsou definované v následujícím seznamu:
+
+- **Připojení k serveru**: propojuje službu signalizace Azure a aplikační server.
+- **Připojení klienta**: propojuje službu a klientskou aplikaci Azure Signal.
+- **Diagnostické připojení**: speciální typ připojení klienta, které může vytvořit podrobnější protokol, což může mít vliv na výkon. Tento druh klienta je určený k řešení potíží.
+- **Připojení Live Trace**: připojuje se ke koncovému bodu Live Trace a přijímá živá trasování služby Azure Signal. 
+ 
+Všimněte si, že připojení živého trasování se nepočítá jako připojení klienta nebo jako připojení k serveru. 
 
 ASP.NET Signal vypočítává připojení serveru jiným způsobem. Zahrnuje jedno výchozí centrum navíc k rozbočovačům, které definujete. Ve výchozím nastavení každý aplikační server potřebuje pět dalších počátečních připojení k serveru. Počáteční počet připojení pro výchozí centrum zůstane v souladu s ostatními centry.
 

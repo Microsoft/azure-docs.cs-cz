@@ -1,14 +1,14 @@
 ---
 title: Vykreslování aplikací
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635332"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496639"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Předinstalované aplikace na imagí virtuálních počítačů dávkového vykreslování
 
@@ -17,6 +17,9 @@ Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Mar
 V případě potřeby jsou pro předinstalované aplikace pro vykreslování k dispozici licence k platbám za použití. Když se vytvoří fond Batch, můžou se zadat požadované aplikace a účtují se náklady na virtuální počítače i aplikace za minutu. Ceny za aplikace jsou uvedené na [stránce s cenami Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 Některé aplikace podporují jenom Windows, ale většina je podporovaná v systémech Windows i Linux.
+
+> [!IMPORTANT]
+> Vykreslování imagí virtuálních počítačů a licencování s platbami za použití se už [nepoužívá a vyřadí se od 29. února 2024](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Chcete-li použít dávku pro vykreslování, je [třeba použít vlastní image virtuálního počítače a licencování standardní aplikace.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Aplikace na nejnovější obrázek vykreslování CentOS 7
 

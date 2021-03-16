@@ -4,14 +4,14 @@ description: Postup vytvoření cest k back-endu pro klientské úložiště pom
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760525"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470454"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Nastavení agregovaného oboru názvů
 
@@ -132,6 +132,30 @@ Pokud chcete aktualizovat cestu oboru názvů cíle nebo přidat další cesty, 
 Možnosti použité pro příkaz Update jsou podobné příkazu "vytvořit", s tím rozdílem, že nepředáte informace o systému úložiště (IP adresa nebo název hostitele) a model použití je nepovinný. Další podrobnosti o syntaxi této možnosti najdete v tématu [Přidání nového cíle úložiště NFS](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) ``--junction`` .
 
 ---
+
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS – cesty oboru názvů systému souborů NFS (PREVIEW)
+
+Podobně jako u běžného cíle služby Blob Storage má cíl úložiště ADLS-NFS jenom jeden export, takže může mít jenom jednu cestu k oboru názvů.
+
+Podle následujících pokynů nastavte nebo změňte cestu pomocí Azure Portal.
+
+Načtěte stránku nastavení **oboru názvů** .
+
+* **Přidat novou cestu:** Klikněte na tlačítko **+ Přidat** v horní části a vyplňte informace na panelu úprav.
+
+  ![Snímek obrazovky s vybranou oblastí pro úpravy oboru názvů s vybraným cílem úložiště ADLS-NFS Cesty pro export a podadresář jsou nastavené na/a nelze je upravovat.](media/namespace-add-adls.png)
+
+  * Zadejte cestu, kterou klienti použijí pro přístup k tomuto cíli úložiště.
+
+  * Vyberte, které zásady přístupu se mají použít pro tuto cestu. Přečtěte si další informace o přizpůsobení přístupu klienta v portálu [použití zásad přístupu klienta](access-policies.md).
+
+  * V rozevíracím seznamu vyberte cíl úložiště. Pokud cíl úložiště ADLS se systémem souborů NFS už má cestu oboru názvů, nedá se vybrat.
+
+  * V případě cíle úložiště ADLS-NFS jsou cesty export a podadresář automaticky nastavené na ``/`` .
+
+* **Změnit existující cestu:** Klikněte na cestu k oboru názvů. Otevře se panel úprav. Můžete upravit cestu a zásady přístupu, ale nemůžete změnit na jiný cíl úložiště.
+
+* **Odstranit cestu k oboru názvů:** Zaškrtněte políčko vlevo od cesty a klikněte na tlačítko **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

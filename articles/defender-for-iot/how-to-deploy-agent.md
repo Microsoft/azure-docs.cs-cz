@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e35e3dd0bacc0b1e3a44d9338f612a70ca4b52bf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447261"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496520"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
 
@@ -51,7 +51,7 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 | **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Ano | Ano |
 | **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Ano | Ano |
 | **Agregace událostí** | Ano | Ano |
-| **Vzdálená konfigurace prostřednictvím [modulu zabezpečení je dvojitá](concept-security-module.md) .** | Ano | Ano |
+| **Vzdálená konfigurace prostřednictvím programu [Defender – IoT-Micro-Agent je dvojitá](concept-security-module.md) .** | Ano | Ano |
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 

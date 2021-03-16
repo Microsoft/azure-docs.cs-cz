@@ -187,8 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: Nasazení z místního Gitu
               href: deploy-local-git.md
-            - name: Akce GitHubu pro kontejnery
-              href: deploy-container-github-action.md
             - name: Nasazení pomocí šablony
               href: deploy-complex-application-predictably.md
         - name: Nastavení přihlašovacích údajů nasazení

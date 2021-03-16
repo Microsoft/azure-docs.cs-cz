@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 5374ce59d3a599e243684c168a8d84a6434059ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198434"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492009"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Element **RelyingParty** Určuje cestu uživatele k vykonání aktuální žádosti o Azure Active Directory B2C (Azure AD B2C). Určuje také seznam deklarací, které aplikace předávající strany (RP) potřebuje jako součást vydaného tokenu. Aplikace RP, jako je například webová, mobilní nebo desktopová aplikace, zavolá soubor zásad RP. Soubor zásad RP spustí konkrétní úlohu, jako je například přihlašování, resetování hesla nebo úprava profilu. Víc aplikací může používat stejné zásady RP a jedna aplikace může používat víc zásad. Všechny aplikace pro RP získají stejný token s deklaracemi a uživatel projde stejnou cestou uživatele.
+Element **RelyingParty** určuje cestu uživatele, která se má vynutit pro aktuální požadavek na Azure Active Directory B2C (Azure AD B2C). Určuje také seznam deklarací identity, které aplikace přijímající strany vyžaduje v rámci vystaveného tokenu. Aplikace RP, jako je například webová, mobilní nebo desktopová aplikace, zavolá soubor zásad RP. Soubor zásad RP spustí konkrétní úlohu, jako je například přihlašování, resetování hesla nebo úprava profilu. Víc aplikací může používat stejné zásady RP a jedna aplikace může používat víc zásad. Všechny aplikace pro RP získají stejný token s deklaracemi a uživatel projde stejnou cestou uživatele.
 
 Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_1A_signup_signin* :
 
@@ -145,10 +145,11 @@ Element **UserJourneyBehaviors** obsahuje následující prvky:
 | JourneyInsights | 0:1 | Klíč instrumentace Azure Application Insights, který se má použít. |
 | ContentDefinitionParameters | 0:1 | Seznam párů klíč-hodnota, které se mají připojit k identifikátoru URI načtení definice obsahu. |
 |ScriptExecution| 0:1| Podporované režimy spuštění [JavaScriptu](javascript-and-page-layout.md) . Možné hodnoty: `Allow` nebo `Disallow` (výchozí).
+| JourneyFraming | 0:1| Umožňuje načtení uživatelského rozhraní této zásady do prvku IFRAME. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-Element **SingleSignon** obsahuje následující atribut:
+Element **SingleSignon** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
@@ -165,7 +166,7 @@ Element **JourneyInsights** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights` . |
 | InstrumentationKey | Ano | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
-| DeveloperMode | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. Podrobné protokoly aktivit jsou navržené jenom k podpoře vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Pokud se v produkčním prostředí používá, vývojář předpokládá zodpovědnost za PII (soukromě identifikovatelné informace) shromážděné v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
+| DeveloperMode | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` Application Insights zrychlí telemetrii prostřednictvím kanálu zpracování. Toto nastavení je vhodné pro vývoj, ale je omezené na vysoké objemy. Podrobné protokoly aktivit jsou navržené jenom k podpoře vývoje vlastních zásad. Nepoužívejte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace, které během vývoje odesílají a od nich od poskytovatelů identity. Při použití v produkčním prostředí předpokládá vývojář zodpovědnost za osobní údaje shromažďované v protokolu App Insights, který vlastní. Tyto podrobné protokoly jsou shromažďovány, pouze pokud je tato hodnota nastavena na `true` .|
 | ClientEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle Application Insights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. |
 | ServerEnabled | Ano | Možné hodnoty: `true` nebo `false` . Pokud `true` aplikace odešle existující USERJOURNEYRECORDER JSON jako vlastní událost pro Application Insights. |
 | TelemetryVersion | Ano | Hodnota musí být `1.0.0` . |
@@ -193,6 +194,15 @@ Element **ContentDefinitionParameter** obsahuje následující atribut:
 | Název | Ano | Název páru klíč-hodnota. |
 
 Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) .
+
+### <a name="journeyframing"></a>JourneyFraming
+
+Element **JourneyFraming** obsahuje následující atributy:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| Povoleno | Ano | Povolí načtení této zásady v rámci prvku IFRAME. Možné hodnoty: `false` (výchozí), nebo `true` . |
+| zdroje | Ano | Obsahuje domény, které budou načítat hosta elementu IFRAME. Další informace najdete v tématu [načítání Azure B2C v prvku IFRAME](embedded-login.md). |
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

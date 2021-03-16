@@ -1,6 +1,6 @@
 ---
-title: Modul zabezpečení pro integrovanou & přizpůsobitelné výstrahy a doporučení pro Azure RTO
-description: Přečtěte si o výstrahách zabezpečení a doporučené nápravě pomocí modulu Azure IoT Security Module-RTO.
+title: Defender – IoT-Micro-Agent pro Azure RTO integrovaná & přizpůsobitelné výstrahy a doporučení
+description: Přečtěte si o výstrahách zabezpečení a doporučené nápravě pomocí Azure IoT Defenderu IoT-Micro-agent-RTO.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6dfeb01e174d71c926e9fcf7f5f1ee078524cf9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936285"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494270"
 ---
-# <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Modul zabezpečení pro výstrahy a doporučení zabezpečení Azure RTO (Preview)
+# <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Defender – IoT-Micro-Agent pro Azure RTO – výstrahy a doporučení zabezpečení (Preview)
 
-Modul zabezpečení pro Azure RTO průběžně analyzuje vaše řešení IoT pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciální škodlivou aktivitu a podezřelé změny systému. Můžete také vytvořit vlastní výstrahy na základě znalostí očekávaného chování zařízení a směrných plánů.
+Defender – IoT-Micro-Agent pro Azure RTO průběžně analyzuje vaše řešení IoT pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciální škodlivou aktivitu a podezřelé změny systému. Můžete také vytvořit vlastní výstrahy na základě znalostí očekávaného chování zařízení a směrných plánů.
 
-Modul zabezpečení pro Azure RTO Alert funguje jako ukazatel potenciálního ohrožení a měl by se prozkoumat a opravit. Doporučení modul zabezpečení pro Azure RTO identifikuje slabě stav zabezpečení, která se má opravit a aktualizovat. 
+Defender-IoT-Micro-Agent pro Azure RTO Alert funguje jako ukazatel potenciálního ohrožení a měl by se prozkoumat a opravit. V programu Defender-IoT-Micro-Agent pro Azure RTO se dá opravit slabá stav zabezpečení, která se má opravit a aktualizovat. 
 
 V tomto článku najdete seznam integrovaných výstrah a doporučení, která se spouštějí na základě výchozích rozsahů, a přizpůsobit se vlastními hodnotami na základě očekávaného nebo základního chování. 
 
-Další informace o tom, jak přizpůsobení výstrah funguje ve službě Defender pro službu IoT, najdete v tématu [přizpůsobitelná upozornění](concept-customizable-security-alerts.md). Konkrétní výstrahy a doporučení, která jsou k dispozici pro přizpůsobení při použití modulu zabezpečení pro Azure RTO, jsou podrobně popsány v následujících tabulkách. 
+Další informace o tom, jak přizpůsobení výstrah funguje ve službě Defender pro službu IoT, najdete v tématu [přizpůsobitelná upozornění](concept-customizable-security-alerts.md). Konkrétní výstrahy a doporučení, která jsou k dispozici pro přizpůsobení při používání programu Defender-IoT-Micro-Agent pro Azure RTO, jsou podrobně popsány v následujících tabulkách. 
 
-## <a name="security-module-for-azure-rtos-supported-security-alerts"></a>Modul zabezpečení pro podporované výstrahy zabezpečení Azure RTO
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-security-alerts"></a>Defender – IoT-Micro-Agent pro Azure RTO – podporované výstrahy zabezpečení
 
 ### <a name="device-related-security-alerts"></a>Výstrahy zabezpečení související se zařízením
 
@@ -53,7 +53,7 @@ Další informace o tom, jak přizpůsobení výstrah funguje ve službě Defend
 |Odstraněný certifikát    | Bylo zjištěno odstranění certifikátu z IoT Hub.        |
 |Nový certifikát     |  Bylo zjištěno přidání nového certifikátu do IoT Hub.       |
 
-## <a name="security-module-for-azure-rtos-supported-customizable-alerts"></a>Modul zabezpečení pro Azure RTO podporuje přizpůsobitelná upozornění
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-customizable-alerts"></a>Defender – IoT-Micro-Agent pro Azure RTO podporuje přizpůsobitelná upozornění
 
 ### <a name="device-related-customizable-alerts"></a>Přizpůsobitelné výstrahy související se zařízením
 
@@ -75,7 +75,7 @@ Další informace o tom, jak přizpůsobení výstrah funguje ve službě Defend
 |Aktualizace dvojitých modulů     |  Počet aktualizací pro dvojitou moduly mimo povolený rozsah       |
 |Neautorizované operace    |  Počet neautorizovaných operací mimo povolený rozsah       |
 
-## <a name="security-module-for-azure-rtos-supported-recommendations"></a>Modul zabezpečení pro podporovaná doporučení pro Azure RTO
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-recommendations"></a>Defender – IoT-Micro-Agent pro Azure RTO – podporovaná doporučení
 
 ### <a name="device-related-recommendations"></a>Doporučení týkající se zařízení
 
@@ -97,6 +97,6 @@ Další informace o tom, jak přizpůsobení výstrah funguje ve službě Defend
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start: modul zabezpečení pro Azure RTO](quickstart-azure-rtos-security-module.md)
-- [Konfigurace a přizpůsobení modulu zabezpečení pro Azure RTO](how-to-azure-rtos-security-module.md)
-- Přečtěte si [modul zabezpečení pro Azure RTO API](azure-rtos-security-module-api.md) .
+- [Rychlý Start: Defender-IoT-Micro Agent pro Azure RTO](quickstart-azure-rtos-security-module.md)
+- [Konfigurace a přizpůsobení programu Defender – IoT-Micro-Agent pro Azure RTO](how-to-azure-rtos-security-module.md)
+- Informace najdete v tématu [Defender-IoT-Micro-Agent pro Azure RTO API](azure-rtos-security-module-api.md) .

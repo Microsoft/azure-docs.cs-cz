@@ -4,15 +4,15 @@ description: Vytvářejte a spravujte uživatele senzorů a místní konzoly pro
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522338"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466265"
 ---
 # <a name="about-defender-for-iot-console-users"></a>O programu Defender pro uživatele konzoly IoT
 
@@ -162,7 +162,7 @@ Podporují se dva typy ověřování pomocí protokolu LDAP:
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>Active Directory a Defender pro oprávnění IoT
 
-Můžete přidružit skupiny služby Active Directory, které jsou tady definované, s určitými úrovněmi oprávnění. Můžete například nakonfigurovat konkrétní skupinu služby Active Directory a přiřadit oprávnění typu RO všem uživatelům ve skupině. Podrobnosti najdete v tématu [Vytvoření a Správa uživatelů](how-to-create-and-manage-users.md) .
+Můžete přidružit skupiny služby Active Directory, které jsou tady definované, s určitými úrovněmi oprávnění. Můžete například nakonfigurovat konkrétní skupinu služby Active Directory a přiřadit oprávnění jen pro čtení všem uživatelům ve skupině.
 
 Konfigurace služby Active Directory:
 
@@ -170,11 +170,11 @@ Konfigurace služby Active Directory:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Zobrazení nastavení systému služby Active Directory.":::
 
-1. V podokně **nastavení systému** vyberte **Active Directory**.
+2. V podokně **nastavení systému** vyberte **Active Directory**.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Upravte konfigurace služby Active Directory.":::
 
-1. V dialogovém okně **Upravit konfiguraci služby Active Directory** vyberte možnost **Povolit integraci služby Active Directory**–  >  **Uložit**. Dialogové okno **Upravit konfiguraci služby Active Directory** se rozbalí a teď můžete zadat parametry pro konfiguraci služby Active Directory.
+3. V dialogovém okně **Upravit konfiguraci služby Active Directory** vyberte možnost **Povolit integraci služby Active Directory**–  >  **Uložit**. Dialogové okno **Upravit konfiguraci služby Active Directory** se rozbalí a teď můžete zadat parametry pro konfiguraci služby Active Directory.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Zadejte parametry pro konfiguraci služby Active Directory.":::
 
@@ -183,7 +183,7 @@ Konfigurace služby Active Directory:
     > - Pro všechny parametry služby Active Directory používejte pouze malá a velká písmena. Používejte malá písmena, i když konfigurace ve službě Active Directory používají velká písmena.
     > - Pro stejnou doménu nemůžete nakonfigurovat protokoly LDAP i LDAP. Můžete však použít obojí pro různé domény současně.
 
-1. Nastavte parametry serveru služby Active Directory následujícím způsobem:
+4. Nastavte parametry serveru služby Active Directory následujícím způsobem:
 
    | Parametr serveru | Popis |
    |--|--|
@@ -193,11 +193,15 @@ Konfigurace služby Active Directory:
    | Skupiny služby Active Directory | Zadejte názvy skupin, které jsou definované v konfiguraci služby Active Directory na serveru LDAP. |
    | Důvěryhodné domény | Chcete-li přidat důvěryhodnou doménu, přidejte název domény a typ připojení důvěryhodné domény. <br />Důvěryhodné domény můžete nakonfigurovat jenom pro uživatele, kteří byli definováni v části Uživatelé. |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>Skupiny služby Active Directory pro místní konzolu pro správu
+
+Pokud vytváříte skupiny služby Active Directory pro místní uživatele konzoly pro správu, je nutné vytvořit pravidlo skupiny přístupu pro každou skupinu služby Active Directory. Místní Konzola pro správu: přihlašovací údaje služby Active Directory nebudou fungovat, pokud pro skupinu uživatelů Active Directory neexistuje pravidlo pro přístup skupiny uživatelů. Viz téma [definování globálního řízení přístupu](how-to-define-global-user-access-control.md).
+
 1. Vyberte **Uložit**.
 
-1. Chcete-li přidat důvěryhodný server, vyberte možnost **Přidat server** a nakonfigurujte jiný server.
+2. Chcete-li přidat důvěryhodný server, vyberte možnost **Přidat server** a nakonfigurujte jiný server.
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Resetování hesla uživatele pro senzor nebo místní konzolu pro správu
+## <a name="resetting-passwords"></a>Resetování hesel
 
 ### <a name="cyberx-or-support-user"></a>CyberX nebo podpora uživatele
 
@@ -265,7 +269,7 @@ Resetování hesla uživatele v místní konzole pro správu:
 
 1. Vyberte **Aktualizovat**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Aktivace a nastavení senzoru](how-to-activate-and-set-up-your-sensor.md) 
  [Aktivace a nastavení místní konzoly](how-to-activate-and-set-up-your-on-premises-management-console.md) 

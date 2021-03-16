@@ -8,14 +8,17 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7614f7ccd24d0237a043a9b5bf0ad988146d89c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: a919238e4a62ae8954e101cb21a2fd4943191f6a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615903"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489520"
 ---
 # <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>PowerShellové skripty pro IoT Edge s kontejnery Windows
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Pochopení skriptů PowerShellu, které instalují, aktualizují nebo odinstalují IoT Edge na zařízeních s Windows.
 

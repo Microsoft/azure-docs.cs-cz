@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197840"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492757"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globální parametry v Azure Data Factory
 
@@ -49,7 +49,10 @@ Existují dva způsoby, jak integrovat globální parametry do řešení pro kon
 Pro většinu případů použití se doporučuje zahrnout globální parametry do šablony ARM. Tato akce bude nativně integrována s řešením popsaným v [dokumentu CI/CD](continuous-integration-deployment.md). Globální parametry budou ve výchozím nastavení přidány jako parametr šablony ARM, protože se často mění z prostředí na prostředí. V šabloně ARM můžete povolit zahrnutí globálních parametrů z centra pro **správu** .
 
 > [!NOTE]
-> **Zahrnutí v konfiguraci šablony ARM** je k dispozici pouze v režimu Git. V současné době je tato možnost zakázaná v režimu "živý režim" nebo "Data Factory".
+> **Zahrnutí v konfiguraci šablony ARM** je k dispozici pouze v režimu Git. V současné době je tato možnost zakázaná v režimu "živý režim" nebo "Data Factory". 
+
+> [!WARNING]
+>V názvu parametru nelze použít znak-. Zobrazí se kód chyby "{": "důvodu chybného požadavku", "Message": "ErrorCode = InvalidTemplate, ErrorMessage = Expression > ' Pipeline (). globalParameters. myParam-dbtest-URL ' není platný:.....}". V názvu parametru ale můžete použít znak "_".
 
 ![Zahrnout do šablony ARM](media/author-global-parameters/include-arm-template.png)
 

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2fa8c2ea990644fa82ae79114322fa087259378b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 0f09b4557f9bbf2f074948bd7c8dbd349cd397bc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448182"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488665"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu QQ pomocí Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem QQ v Azure Active D
 1. Přejít na [https://connect.qq.com/index.html](https://connect.qq.com/index.html) .
 1. Vyberte **应用管理** (Správa aplikací).
 1. Vyberte **创建应用** (vytvořit aplikaci) a zadejte požadované informace.
-1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` v **授权回调域** (adresa URL zpětného volání). Pokud máte například `tenant_name` Contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. Pro **授权回调域** (URL zpětného volání) zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou.
 1. Vyberte **创建应用** (vytvořit aplikaci).
 1. Na stránce potvrzení vyberte **应用管理** (Správa aplikací) a vraťte se na stránku správy aplikací.
 1. U aplikace, kterou jste vytvořili, vyberte **查看** (Zobrazit).

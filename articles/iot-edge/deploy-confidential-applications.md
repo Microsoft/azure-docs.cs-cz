@@ -7,14 +7,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kgremban
-ms.openlocfilehash: e63397176cae87178cfc5cc343aeed6f76099be2
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f9dff1b4c6b2489edd3cd685e3546618961d9757
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956480"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487713"
 ---
 # <a name="confidential-computing-at-the-edge"></a>Důvěrné výpočetní prostředí na hraničních zařízeních
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge podporuje důvěrné aplikace, které běží v zabezpečeném enclaves na zařízení. Šifrování poskytuje zabezpečení pro data během přenosu nebo v klidovém režimu, ale enclaves poskytuje zabezpečení pro data a zatížení, které se používají. IoT Edge podporuje Open enklávy jako standard pro vývoj důvěrných aplikací.
 

@@ -124,6 +124,8 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Řešení potíží
       items:
+        - name: Vyhledání nákupu rezervací z protokolů Azure
+          href: find-reservation-purchaser-from-logs.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Řešení potíží s přenosy mezi klienty
           href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Žádné opravňující předplatné

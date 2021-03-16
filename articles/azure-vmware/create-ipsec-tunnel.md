@@ -3,12 +3,12 @@ title: Vytvoření tunelu IPSec do řešení Azure VMware
 description: Naučte se, jak vytvořit virtuální rozbočovač WAN pro vytvoření tunelu IPSec do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 9f869f04bf165f4791f13c626b63257ea98a7ca9
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 21df674862b65ef6573a8a3fcfd7538b1053f04e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506443"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491830"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>Vytvoření tunelu IPSec do řešení Azure VMware
 
@@ -36,12 +36,11 @@ Pokud chcete vytvořit tunel VPN typu Site-to-site, budete muset vytvořit veře
    | **Skupina prostředků** | Virtuální síť WAN je globální prostředek a není omezená na konkrétní oblast.  |
    | **Umístění skupiny prostředků** | Chcete-li vytvořit virtuální centrum sítě WAN, je třeba nastavit umístění pro skupinu prostředků.  |
    | **Název** |   |
-   | **Typ** | Vyberte **Standard** , který umožní více než jenom přenosy brány VPN Gateway.  |
+   | **Typ** | Vyberte **Standard**, který umožní více než jenom přenosy brány VPN Gateway.  |
 
+   :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Snímek obrazovky se stránkou pro vytvoření sítě WAN v Azure Portal.":::
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Snímek obrazovky se stránkou pro vytvoření sítě WAN v Azure Portal.":::
-
-3. V Azure Portal vyberte virtuální síť WAN, kterou jste vytvořili v předchozím kroku, vyberte **vytvořit virtuální rozbočovač** , zadejte požadovaná pole a potom vyberte **Další: lokalita v lokalitě**. 
+3. V Azure Portal vyberte virtuální síť WAN, kterou jste vytvořili v předchozím kroku, vyberte **vytvořit virtuální rozbočovač**, zadejte požadovaná pole a potom vyberte **Další: lokalita v lokalitě**. 
 
    | Pole | Hodnota |
    | --- | --- |
@@ -49,7 +48,7 @@ Pokud chcete vytvořit tunel VPN typu Site-to-site, budete muset vytvořit veře
    | **Název** |    |
    | **Privátní adresní prostor centra** | Zadejte podsíť s použitím `/24` (minimálně).  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit virtuální rozbočovač":::
+   :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit virtuální rozbočovač":::
 
 4. Na kartě **site-to-site** definujte bránu site-to-site nastavením agregované propustnosti z rozevíracího seznamu **jednotky škálování brány** . 
 
@@ -69,8 +68,7 @@ Pokud chcete vytvořit tunel VPN typu Site-to-site, budete muset vytvořit veře
 
 2. V **přehledu** virtuálního centra vyberte možnost **připojení**  >  **VPN (site-to-site)** a pak vyberte **vytvořit novou lokalitu VPN**.
 
-
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="Snímek obrazovky se stránkou s přehledem pro virtuální rozbočovač s VPN (site-to-site) a vybraným novým webem sítě VPN.":::  
+   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="Snímek obrazovky se stránkou s přehledem pro virtuální rozbočovač s VPN (site-to-site) a vybraným novým webem sítě VPN.":::  
  
 3. Na kartě **základy** zadejte požadovaná pole a potom vyberte **Další: odkazy**. 
 
@@ -89,48 +87,54 @@ Pokud chcete vytvořit tunel VPN typu Site-to-site, budete muset vytvořit veře
 
 Tato část se týká jenom sítí VPN založených na zásadách. Nastavení sítě VPN na základě zásad (nebo statických, směrování) se ve většině případů řídí funkcemi pro zařízení VPN. Vyžadují, aby byly zadány místní sítě a řešení Azure VMware. Pro řešení Azure VMware se službou Azure Virtual WAN hub nemůžete vybrat *žádnou* síť. Místo toho je nutné zadat všechny relevantní místní rozsahy služby WAN hub pro řešení Azure VMware. Tyto rozsahy rozbočovačů slouží k zadání šifrovací domény pro místní koncový bod tunelového připojení VPN základní zásady. Na straně řešení Azure VMware se vyžaduje, aby byl povolený jenom indikátor výběru provozu na základě zásad. 
 
-1. V Azure Portal přejdete na svůj virtuální web WAN hub. v části **připojení** vyberte **VPN (site-to-site)**.
+1. V Azure Portal přejdete na svůj virtuální web WAN hub. V části **připojení** vyberte **VPN (site-to-site)**.
 
-2. Vyberte název sítě VPN a tři tečky (...) úplně vpravo. pak vyberte **Upravit připojení VPN k tomuto centru**.
+2. Vyberte název sítě VPN, tři tečky (...) úplně vpravo a potom **upravte připojení VPN k tomuto centru**.
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Snímek obrazovky stránky v Azure pro virtuální lokalitu WAN, na které se zobrazují tři tečky vybrané pro přístup k úpravám připojení VPN k tomuto centru." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Snímek obrazovky stránky v Azure pro virtuální lokalitu WAN, na které se zobrazují tři tečky vybrané pro přístup k úpravám připojení VPN k tomuto centru." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
 3. Upravte připojení mezi lokalitou sítě VPN a centrem a pak vyberte **Uložit**.
    - Internet Protocol zabezpečení (IPSec) vyberte možnost **vlastní**.
    - Použijte selektor provozu na základě zásad, vyberte **Povolit** .
    - Zadejte podrobnosti **protokolu IKE fáze 1** a **IKE fáze 2 (IPSec)**. 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="Snímek obrazovky se stránkou pro úpravu připojení VPN"::: 
+   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="Snímek obrazovky se stránkou pro úpravu připojení VPN"::: 
  
-    Selektory přenosu nebo podsítí, které jsou součástí domény šifrování založené na zásadách, by měly být:
+   Selektory přenosu nebo podsítí, které jsou součástí domény šifrování založené na zásadách, by měly být:
     
-    - Virtuální síť WAN hub/24
-    - Privátní cloud řešení Azure VMware/22
-    - Připojená virtuální síť Azure (Pokud je k dispozici)
+   - Virtuální síť WAN hub/24
+   - Privátní cloud řešení Azure VMware/22
+   - Připojená virtuální síť Azure (Pokud je k dispozici)
 
 ## <a name="connect-your-vpn-site-to-the-hub"></a>Připojení sítě VPN k centru
 
-1. Zaškrtněte políčko vedle názvu sítě VPN (viz předchozí **lokalita sítě VPN a** snímek obrazovky) a pak vyberte **připojit weby sítě VPN**. V poli **předsdílený klíč** zadejte klíč dříve definovaný pro místní koncový bod. Pokud nemáte dříve definovaný klíč, můžete toto pole nechat prázdné a automaticky se vygeneruje klíč. 
+1. Vyberte název sítě VPN a pak vyberte **připojit weby sítě VPN**. 
+1. V poli **předsdílený klíč** zadejte klíč dříve definovaný pro místní koncový bod. 
+
+   >[!TIP]
+   >Pokud nemáte dříve definovaný klíč, můžete toto pole nechat prázdné. Klíč se vygeneruje automaticky. 
  
-    Pokud nasazujete bránu firewall v centru a jedná se o další segment směrování připojení přes toto tunelové propojení, povolte pouze **výchozí trasu šíření** .
+   >[!IMPORTANT]
+   >Pokud nasazujete bránu firewall v centru a jedná se o další segment směrování připojení přes toto tunelové propojení, povolte pouze **výchozí trasu šíření** .
 
-    Vyberte **Connect** (Připojit). Obrazovka stavu připojení zobrazí stav vytvoření tunelu.
+1. Vyberte **Connect** (Připojit). Obrazovka stavu připojení zobrazuje stav vytvoření tunelu.
 
-2. Přejít na přehled virtuální sítě WAN. Otevřete stránku sítě VPN a Stáhněte si konfigurační soubor sítě VPN, abyste ho mohli použít na místní koncový bod.  
+2. V přehledu virtuální sítě WAN otevřete stránku VPN a Stáhněte si konfigurační soubor VPN pro místní koncový bod.  
 
-3. Nyní povedeme opravu řešení Azure VMware ExpressRoute do virtuálního centra sítě WAN. (Tento krok vyžaduje nejprve vytvoření privátního cloudu.)
+3. Opravte ExpressRoute řešení Azure VMware ve virtuálním centru WAN. Tento krok vyžaduje nejprve vytvoření privátního cloudu.
 
-    Přejít do části **připojení** v privátním cloudu řešení Azure VMware. Na kartě **ExpressRoute** vyberte **+ požádat o autorizační klíč**. Pojmenujte ho a vyberte **vytvořit**. (Vytvoření klíče může trvat přibližně 30 sekund.) Zkopírujte ID ExpressRoute a autorizační klíč. 
+   [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Snímek obrazovky se stránkou připojení pro privátní cloud s požadavkem na autorizační klíč vybraný na kartě ExpressRoute":::
+4. Propojte řešení Azure VMware a bránu VPN společně ve virtuálním centru WAN. 
+   1. V Azure Portal otevřete virtuální síť WAN, kterou jste vytvořili dříve. 
+   1. Vyberte vytvořené virtuální centrum sítě WAN a v levém podokně vyberte **ExpressRoute** . 
+   1. Vyberte **+ uplatnit autorizační klíč**.
 
-    > [!NOTE]
-    > Autorizační klíč zmizí po nějaké době, takže ho zkopírujte hned po jeho zobrazení.
+      :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Snímek obrazovky stránky ExpressRoute pro privátní cloud s vybraným klíčem autorizace uplatnění":::
 
-4. Dále propojíme řešení Azure VMware a VPN Gateway ve virtuálním centru WAN. V Azure Portal otevřete virtuální síť WAN, kterou jste vytvořili dříve. Vyberte vytvořené virtuální centrum sítě WAN a v levém podokně vyberte **ExpressRoute** . Vyberte **+ uplatnit autorizační klíč**.
+   1. Vložte autorizační klíč do pole autorizační klíč.
+   1. Za ID ExpressRoute do pole **identifikátoru URI rovnocenného okruhu** . 
+   1. Vyberte **automaticky přidružit tento okruh ExpressRoute k centru.** 
+   1. Vyberte **Přidat** a vytvořte odkaz. 
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Snímek obrazovky stránky ExpressRoute pro privátní cloud s vybraným klíčem autorizace uplatnění":::
-
-    Vložte autorizační klíč do pole autorizační klíč a ID ExpressRoute do pole **identifikátor URI partnerského okruhu** . Nezapomeňte vybrat **automaticky přidružit tento okruh ExpressRoute k centru.** Vyberte **Přidat** a vytvořte odkaz. 
-
-5. K otestování připojení [vytvořte segment NSX-T](./tutorial-nsx-t-network-segment.md) a ZŘÍDÍTE virtuální počítač v síti. Otestujte pomocí příkazů pro místní i koncové body řešení Azure VMware.
+5. Otestujte připojení tak, že [vytvoříte segment NSX-T](./tutorial-nsx-t-network-segment.md) a ZŘÍDÍTE virtuální počítač v síti. Otestujete místní i koncové body řešení Azure VMware.
