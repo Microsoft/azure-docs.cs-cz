@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092447"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562191"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -68,11 +68,11 @@ Při upgradu ze sad SDK starších než (2,4) je nutné zajistit, aby byly v a p
     </TelemetryModules>
     ```
 
-*Nepovedlo *_se upgradovat správně, může to vést k neočekávaným výjimkám nebo telemetrie neshromažďujících._* _
+***Nepovedlo se upgradovat správně, může to vést k neočekávaným výjimkám nebo telemetrie neshromažďujících.***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>V aplikaci Visual Studio není možnost Přidat Application Insights.
-_When v Průzkumník řešení kliknu pravým tlačítkem na existující projekt, nezobrazí se žádné možnosti Application Insights. *
+*Když kliknu pravým tlačítkem na existující projekt v Průzkumník řešení, nevidím žádné možnosti Application Insights.*
 
 * V nástrojích nejsou podporovány všechny typy projektů .NET. Webové a WCF projekty jsou podporovány. Pro jiné typy projektů, jako jsou například aplikace pro stolní nebo služby, můžete [Přidat sadu Application Insights SDK do projektu ručně](./windows-desktop.md).
 * Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](/visualstudio/releasenotes/vs2013-update3-rtm-vs). Je součástí předinstalovaného nástroje pro vývojáře, které poskytují sadu Application Insights SDK.
@@ -224,7 +224,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>

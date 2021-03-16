@@ -1,5 +1,5 @@
 ---
-title: Vytvoření modulu Defender IoT Micro Agent
+title: Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
 titleSuffix: Azure Defender for IoT
 description: Naučte se, jak pro nová zařízení vytvořit jednotlivé vlákna DefenderIotMicroAgent modulu.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122999"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489875"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Vytvoření modulu Defender IoT Micro Agent 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Vytvoření vlákna programu IoT Micro agent v programu Defender (Preview)
 
 Pro nová zařízení můžete vytvořit vlastní vlákna **DefenderIotMicroAgent** modulu. Pro všechna zařízení v IoT Hub můžete také dávkově vytvořit vlákna. 
 
@@ -27,9 +27,9 @@ Defender pro IoT nabízí úplnou integraci s vaší stávající platformou spr
 
 Přečtěte si další informace o pojmu [nevláken zařízení](../iot-hub/iot-hub-devguide-device-twins.md)   v Azure IoT Hub. 
 
-## <a name="security-module-twins"></a>Modul zabezpečení je nevlákenný. 
+## <a name="defender-iot-micro-agent-twins"></a>Defender – IoT-mikro-agenti vlákna 
 
-Defender pro IoT používá pro každé zařízení dvojitou bezpečnostní modul. Modul zabezpečení obsahuje všechny informace, které jsou důležité pro zabezpečení zařízení, a to pro každé konkrétní zařízení ve vašem řešení. Vlastnosti zabezpečení zařízení jsou nakonfigurovány prostřednictvím vyhrazeného modulu zabezpečení pro bezpečnější komunikaci, k povolení aktualizací a údržbě, která vyžaduje méně prostředků. 
+Defender pro IoT používá pro každé zařízení dvojitou hodnotu typu "Defender-IoT-Micro-agent". V programu Defender-IoT-Micro-Agent se zobrazí všechny informace, které jsou důležité pro zabezpečení zařízení, pro každé konkrétní zařízení ve vašem řešení. Vlastnosti zabezpečení zařízení se konfigurují prostřednictvím vyhrazeného programu Defender-IoT-Micro-Agent pro bezpečnější komunikaci, povolení aktualizací a údržbě, která vyžaduje méně prostředků. 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>Principy vláken modulu DefenderIotMicroAgent 
 
@@ -39,9 +39,9 @@ Defender pro IoT nabízí možnost plně integrovat stávající platformu pro s
 
 Další informace o obecném konceptu nevláken modulů v Azure IoT Hub najdete v tématu [vlákna IoT Hub modulu](../iot-hub/iot-hub-devguide-module-twins.md).
 
-Defender pro IoT používá modul s dvojitou zátěží a udržuje v modulu zabezpečení `DefenderIotMicroAgent` pro každé vaše zařízení dvojitou hodnotu. 
+Defender pro IoT používá modul s dvojitou zátěží a udržuje v programu Defender-IoT-mikro-agent s názvem `DefenderIotMicroAgent` pro každé vaše zařízení. 
 
-Abyste mohli plně využít všech výhod programu Defender for IoT, musíte pro každé zařízení ve službě vytvořit, nakonfigurovat a použít modul zabezpečení. 
+Abyste mohli plně využít všech výhod programu Defender for IoT, musíte pro každé zařízení v této službě vytvořit, nakonfigurovat a používat funkce Defender-IoT-mikro-agent. 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>Vytvořit dvojitou DefenderIotMicroAgent modul 
 
@@ -49,7 +49,7 @@ Vlákna modulu **DefenderIotMicroAgent** se dají vytvořit ruční úpravou ka�
 
 Ruční vytvoření nového vlákna modulu **DefenderIotMicroAgent** pro zařízení: 
 
-1. V IoT Hub vyhledejte a vyberte zařízení, na kterém chcete vytvořit modul zabezpečení. 
+1. V IoT Hub vyhledejte a vyberte zařízení, na kterém chcete vytvořit program Defender-IoT-Micro-agent. 
 
 1. Vyberte **Přidat identitu modulu**. 
 
@@ -59,7 +59,7 @@ Ruční vytvoření nového vlákna modulu **DefenderIotMicroAgent** pro zař�
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>Ověření vytvoření vlákna modulu 
 
-Ověření, jestli pro konkrétní zařízení existuje nějaký modul zabezpečení: 
+Ověření, zda pro konkrétní zařízení existuje program Defender-IoT-Micro-agent. 
 
 1. V IoT Hub Azure vyberte v ****   nabídce **průzkumníky** možnost zařízení IoT   . 
 

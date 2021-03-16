@@ -3,12 +3,12 @@ title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200230"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563891"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -208,3 +208,4 @@ Pokud přidáváte certifikát do existujícího fondu, musíte restartovat jeho
 ## <a name="next-steps"></a>Další kroky
 
 - Seznamte [se s úlohami a](jobs-and-tasks.md)úlohami.
+- Naučte se [detekovat a vyhnout se chybám při operacích na pozadí fondu a uzlů ](batch-pool-node-error-checking.md).

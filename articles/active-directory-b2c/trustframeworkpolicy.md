@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178836"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470729"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -29,9 +29,9 @@ Vlastní zásady jsou reprezentovány jako jeden nebo více souborů ve formátu
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="yourtenant.onmicrosoft.com"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
   ...
 ```
 
@@ -40,13 +40,13 @@ Element **TrustFrameworkPolicy** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Yes | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
-| TenantObjectId | No | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
-| TenantId | Yes | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
-| PolicyId | Yes | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
-| PublicPolicyUri | Yes | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
-| DeploymentMode | No | Možné hodnoty: `Production` , nebo `Development` . `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | No | Koncový bod, který se používá k protokolování. Hodnota musí být nastavena na hodnotu, `urn:journeyrecorder:applicationinsights` Pokud atribut existuje. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Ano | Verze schématu, která se má použít ke spuštění zásad. Hodnota musí být `0.3.0.0` |
+| TenantObjectId | Ne | Jedinečný identifikátor objektu klienta Azure Active Directory B2C (Azure AD B2C). |
+| TenantId | Ano | Jedinečný identifikátor tenanta, ke kterému patří tato zásada |
+| PolicyId | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* |
+| PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
+| DeploymentMode | Ne | Možné hodnoty: `Production` , nebo `Development` . `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá k protokolování. Hodnota musí být nastavena na hodnotu, `urn:journeyrecorder:applicationinsights` Pokud atribut existuje. Další informace najdete v tématu [shromažďování protokolů](troubleshoot-with-application-insights.md). |
 
 
 Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
@@ -57,14 +57,14 @@ Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkBase"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
 Element **TrustFrameworkPolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Identifikátor základní zásady. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | Stavební bloky vašich zásad. |
@@ -76,7 +76,7 @@ Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element 
 
 Element **BasePolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
 | PolicyId | 1:1 | Identifikátor nadřazené zásady |
@@ -90,9 +90,9 @@ Následující příklad ukazuje, jak zadat základní zásady. Tato zásada **B
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkExtensions"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>
