@@ -966,8 +966,6 @@
           items:
             - name: Náhledy pomocí klávesy F5
               href: app/visual-studio.md
-            - name: Trendy
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: Jiné platformy
@@ -1038,6 +1036,8 @@
           href: vm/vminsights-workbooks.md
         - name: Zákaz monitorování
           href: vm/vminsights-optout.md
+        - name: Řešení potíží
+          href: vm/vminsights-troubleshoot.md
     - name: Přehledy kontejnerů
       items:
         - name: Přehled

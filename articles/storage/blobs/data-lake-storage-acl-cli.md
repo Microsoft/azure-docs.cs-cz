@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654098"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563160"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití rozhraní příkazového řádku Azure ke správě seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 - Účet úložiště s povoleným hierarchickým oborem názvů. Pokud ho chcete vytvořit, postupujte podle [těchto](create-data-lake-storage-account.md) pokynů.
 
-- Verze Azure CLI `2.6.0` nebo vyšší
+- Verze Azure CLI `2.14.0` nebo vyšší
 
 - Jedno z následujících oprávnění zabezpečení:
 
@@ -137,6 +137,9 @@ Tento příklad nastavuje seznam řízení přístupu pro soubor pro vlastnící
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> Chcete-li nastavit seznam ACL konkrétní skupiny nebo uživatele, použijte odpovídající ID objektu. Příkladem je `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` nebo `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+
 Následující obrázek ukazuje výstup po nastavení seznamu ACL souboru.
 
 ![Získat výstup ACL 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -184,6 +187,9 @@ Tento příklad aktualizuje seznam řízení přístupu k **souboru**.
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
+
+> [!NOTE]
+> Chcete-li aktualizovat seznam řízení přístupu konkrétní skupiny nebo uživatele, použijte jejich odpovídající ID objektu. Příkladem je `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` nebo `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 Vlastnícího uživatele a skupinu adresáře nebo souboru můžete také aktualizovat nastavením `--owner` `group` parametrů nebo na ID entity nebo hlavní název uživatele (UPN) uživatele.
 

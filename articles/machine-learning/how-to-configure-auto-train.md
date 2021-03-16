@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498859"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563483"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -257,7 +257,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Description |
+|Konfigurace Featurization | Popis |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
@@ -396,9 +396,29 @@ Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány d
 > Algoritmy automatizované ML mají podstatu, která může způsobit mírnou variaci v konečném skóre Doporučené metriky modelu, jako je přesnost. Automatizované ML také provádí operace s daty, jako je rozdělení výukového testu, rozdělení vlaku-ověření nebo křížové ověřování v případě potřeby. Takže pokud spustíte experiment se stejným nastavením konfigurace a primární metrikou víckrát, pravděpodobně se vám v každém experimentu v důsledku těchto faktorů zobrazí variace konečný výsledek metriky. 
 
 ## <a name="register-and-deploy-models"></a>Registrace a nasazení modelů
+Model můžete zaregistrovat, takže se k němu můžete vrátit pro pozdější použití. 
 
-Podrobnosti o tom, jak stáhnout nebo zaregistrovat model pro nasazení do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md).
+K registraci modelu z automatizovaného běhu ML použijte [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) metodu. 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+Podrobnosti o tom, jak vytvořit konfiguraci nasazení a nasadit registrovaný model do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration).
+
+> [!TIP]
+> U registrovaných modelů je nasazení jedním kliknutím dostupné prostřednictvím [Azure Machine Learning studia](https://ml.azure.com). Viz [Jak nasadit registrované modely z studia](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>Interpretovatelnost modelů

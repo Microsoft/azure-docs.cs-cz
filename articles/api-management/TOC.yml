@@ -245,6 +245,8 @@
           href: api-management-transformation-policies.md
         - name: Zásady integrace Dapr (Distributed Application Runtime)
           href: api-management-dapr-policies.md
+        - name: Zásady ověřování
+          href: validation-policies.md
     - name: Správa v produkčním prostředí
       items:
         - name: Export rozhraní API do prostředí Power Platform

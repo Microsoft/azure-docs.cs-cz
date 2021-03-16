@@ -4,15 +4,15 @@ description: Popisuje řešení Azure HPC cache, což je přístupové akcelerá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb0ca345dc76f566dd55956911703e2c9bf0183
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519332"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471812"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
@@ -55,15 +55,6 @@ Nasazení mezipaměti HPC Azure vám může pomoci zrychlit kvantitativní výpo
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
 Navštivte stránku [globální infrastruktura Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) a zjistěte, kde je mezipaměť HPC Azure k dispozici.
-
-[Funkce klíčů spravovaných zákazníkem](customer-keys.md) je podporovaná jenom v těchto oblastech Azure:
-
-* East US
-* Středojižní USA
-* Západní USA 2
-* Západní Evropa
-* USA (Gov) – Arizona
-* USA (Gov) – Virginia
 
 Mezipaměť prostředí Azure HPC se nachází v jedné oblasti. Má přístup k datům uloženým v jiných oblastech, pokud je připojíte k kontejnerům objektů blob, které tam jsou umístěné. Mezipaměť neukládá trvale data zákazníků.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624755"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561953"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Průběžná integrace a doručování pro Azure synapse Workspace
 
@@ -125,6 +125,140 @@ Pomocí rozšíření [nasazení pracovního prostoru synapse](https://marketpla
 Po uložení všech změn můžete vybrat **vytvořit vydání** a ručně vytvořit vydání. Informace o automatizaci vytváření vydání najdete v tématu [triggery vydané verze Azure DevOps](/azure/devops/pipelines/release/triggers) .
 
    ![Vyberte vytvořit vydání.](media/release-creation-manually.png)
+
+## <a name="use-custom-parameters-of-the-workspace-template"></a>Použití vlastních parametrů šablony pracovního prostoru 
+
+Používáte automatizované CI/CD a chcete změnit některé vlastnosti během nasazení, ale vlastnosti nejsou ve výchozím nastavení parametrizované. V takovém případě můžete přepsat výchozí šablonu parametru.
+
+Chcete-li přepsat výchozí šablonu parametru, je nutné vytvořit vlastní šablonu parametrů, soubor s názvem **template-parameters-definition.js** v kořenové složce větve spolupráce Git. Je nutné použít tento přesný název souboru. Při publikování z větve pro spolupráci bude v pracovním prostoru synapse tento soubor číst a použít jeho konfiguraci k vygenerování parametrů. Pokud se nenajde žádný soubor, použije se výchozí šablona parametru.
+
+### <a name="custom-parameter-syntax"></a>Vlastní syntaxe parametru
+
+Níže jsou uvedeny pokyny pro vytvoření souboru vlastních parametrů:
+
+* Zadejte cestu k vlastnosti pod odpovídajícím typem entity.
+* Nastavením názvu vlastnosti `*` určíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). V této konfiguraci můžete také zadat výjimky.
+* Nastavení hodnoty vlastnosti jako řetězce označuje, že chcete vlastnost parametrizovat. Použijte formát `<action>:<name>:<stype>`.
+   *  `<action>` může to být jeden z těchto znaků:
+      * `=` znamená, že aktuální hodnota je nastavená jako výchozí hodnota pro parametr.
+      * `-` znamená, že neuchovává výchozí hodnotu parametru.
+      * `|` je speciální případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
+   * `<name>` je název parametru. Pokud je prázdný, převezme název vlastnosti. Pokud hodnota začíná `-` znakem, název se zkrátí. Například `AzureStorage1_properties_typeProperties_connectionString` by byl zkrácen na `AzureStorage1_connectionString` .
+   * `<stype>` je typ parametru. Pokud `<stype>` je prázdné, výchozí typ je `string` . Podporované hodnoty: `string` , `securestring` , `int` , `bool` , `object` a `secureobject` `array` .
+* Zadání pole v souboru indikuje, že vlastnost Matching v šabloně je pole. Synapse projde všemi objekty v poli pomocí zadané definice. Druhý objekt, řetězec, se zobrazí jako název vlastnosti, která se používá jako název parametru pro každou iteraci.
+* Definice nemůže být specifická pro instanci prostředku. Každá definice se vztahuje na všechny prostředky daného typu.
+* Ve výchozím nastavení jsou všechny zabezpečené řetězce, jako jsou Key Vault tajné klíče a zabezpečené řetězce, jako jsou připojovací řetězce, klíče a tokeny, parametrizované.
+
+### <a name="parameter-template-definition-samples"></a>Ukázky definice šablon parametrů 
+
+Tady je příklad toho, co vypadá definice šablony parametru jako:
+
+```json
+{
+"Microsoft.Synapse/workspaces/notebooks": {
+        "properties":{
+            "bigDataPool":{
+                "referenceName": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/sqlscripts": {
+     "properties": {
+         "content":{
+             "currentConnection":{
+                    "*":"-"
+                 }
+            } 
+        }
+    },
+    "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                 "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.Synapse/workspaces/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/triggers": {
+        "properties": {
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:int",
+                    "frequency": "=:-freq"
+                },
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                     "*": "="
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
+                }
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
+Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle typu prostředku.
+
+#### <a name="notebooks"></a>Notebooks 
+
+* Vlastnost v cestě `properties/bigDataPool/referenceName` je parametrizovaná s výchozí hodnotou. Pro každý soubor poznámkového bloku můžete parametrizovat připojený fond Spark. 
+
+#### <a name="sql-scripts"></a>Skripty SQL 
+
+* Vlastnosti (Pool a databaseName) v cestě `properties/content/currentConnection` jsou parametrizované jako řetězce bez výchozích hodnot v šabloně. 
+
+#### <a name="pipelines"></a>Pipelines
+
+* Vlastnost v cestě `activities/typeProperties/waitTimeInSeconds` je parametrizovaná. Všechny aktivity v kanálu, které mají vlastnost na úrovni kódu s názvem `waitTimeInSeconds` (například `Wait` aktivita), jsou parametrizované jako číslo s výchozím názvem. V šabloně Správce prostředků ale nebude mít výchozí hodnotu. Během nasazení Správce prostředků se bude jednat o povinný vstup.
+* Podobně je vlastnost s názvem `headers` (například v `Web` aktivitě) Parametrizovaná s typem `object` (Object). Má výchozí hodnotu, která je stejná jako hodnota zdrojové továrny.
+
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
+
+* Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties` . Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
+
+#### <a name="triggers"></a>Aktivační události
+
+* V rámci `typeProperties` jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency` , který má mít výchozí hodnotu a je typu `string` . Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency` .
+* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `int` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* Propojené služby jsou jedinečné. Vzhledem k tomu, že propojené služby a datové sady mají široké rozsahy typů, můžete zadat vlastní nastavení pro konkrétní typ. V tomto příkladu se použije konkrétní šablona pro všechny propojené služby typu `AzureDataLakeStore` . Pro všechny ostatní (přes `*` ) se použije jiná šablona.
+* `connectionString`Vlastnost bude parametrizovaná jako `securestring` hodnota. Nebude mít výchozí hodnotu. Bude mít zkrácený název parametru, který je s příponou `connectionString` .
+* Tato vlastnost se `secretAccessKey` stane `AzureKeyVaultSecret` (například v propojené službě Amazon S3). Je automaticky Parametrizovaná jako Azure Key Vault tajný klíč a načítá se z nakonfigurovaného trezoru klíčů. Můžete také parametrizovat samotný Trezor klíčů.
+
+#### <a name="datasets"></a>Datové sady
+
+* I když je pro datové sady k dispozici přizpůsobení specifické pro typ, můžete zadat konfiguraci bez explicitní \* Konfigurace na úrovni. V předchozím příkladu jsou parametrizované všechny vlastnosti datové sady v části `typeProperties` .
+
 
 ## <a name="best-practices-for-cicd"></a>Osvědčené postupy pro CI/CD
 

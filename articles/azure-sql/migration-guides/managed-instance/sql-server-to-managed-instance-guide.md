@@ -1,6 +1,6 @@
 ---
 title: 'SQL Server do spravované instance SQL: Průvodce migrací'
-description: Podle tohoto průvodce migrujte vaše databáze SQL Server do spravované instance Azure SQL.
+description: V této příručce se naučíte migrovat databáze SQL Server do spravované instance Azure SQL.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488949"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564486"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Průvodce migrací: SQL Server do spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -197,10 +197,6 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
 1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
 1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
-
-   > [!NOTE]
-   > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
-
 
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 

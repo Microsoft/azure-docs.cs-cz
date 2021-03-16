@@ -1,6 +1,6 @@
 ---
-title: Nasazení DB2 do SQL Server na virtuálních počítačích Azure (Průvodce migrací)
-description: Podle tohoto průvodce migrujte server DB2 a SQL Server na virtuální počítače Azure.
+title: 'Nasazení DB2 do SQL Server na virtuálních počítačích Azure: Průvodce migrací'
+description: Tato příručka vás seznámí s migrací databáze DB2 do SQL Server na virtuálních počítačích Azure pomocí Pomocník s migrací SQL Serveru pro DB2.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797473"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562225"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Průvodce migrací: DB2 pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,8 +144,6 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
 1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
 
-   > [!NOTE]
-   > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 ## <a name="migration-assets"></a>Prostředky migrace 
 
@@ -169,5 +167,4 @@ Matrici služeb a nástrojů společnosti Microsoft, které jsou k dispozici, ab
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 
 Obsah videa najdete v těchto tématech:
-- [Postup použití Průvodce migrací databáze](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [Přehled cesty migrace](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

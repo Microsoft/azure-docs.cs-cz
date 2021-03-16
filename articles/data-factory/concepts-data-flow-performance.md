@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 03/15/2021
+ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222929"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561681"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -181,7 +181,7 @@ Pokud používáte stejný tok dat v sadě souborů, doporučujeme číst ze slo
 
 Pokud je to možné, vyhněte se použití aktivity For-Each ke spouštění toků dat v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
 
-## <a name="optimizing-sinks"></a>Optimalizace jímky
+## <a name="optimizing-sinks"></a>Optimalizace jímek
 
 Při zapisování toků dat do jímky dojde k jakémukoli vlastnímu dělení hned před zápisem. Podobně jako u zdroje se ve většině případů doporučuje používat jako možnost vybraný oddíl **aktuální dělení na oddíly** . Dělená data budou zapisovat významně rychlejší než nedělená data, i když vaše cíle není rozdělené do oddílů. Níže jsou uvedeny jednotlivé předpoklady pro různé typy jímky. 
 
@@ -259,6 +259,8 @@ Při psaní do CosmosDB může změna propustnosti a velikosti dávek během pro
 V spojeních, vyhledávání a existují transformace, pokud je jeden nebo oba datové proudy dostatečně malé, aby se vešly do paměti pracovních uzlů, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Všesměrové vysílání je při odesílání malých datových snímků všem uzlům v clusteru. To umožňuje, aby modul Spark prováděl spojení bez nutnosti přesměrovat data ve velkém datovém proudu. Ve výchozím nastavení se modul Spark automaticky rozhodne, jestli se má vysílat jedna strana spojení. Pokud znáte vaše příchozí data a víte, že jeden datový proud bude výrazně menší než druhý, můžete vybrat **pevné** vysílání. Pevné vysílání vynutí, aby Spark vysílaly vybraný datový proud. 
 
 Pokud je velikost všesměrového data pro uzel Spark příliš velká, může dojít k chybě z důvodu nedostatku paměti. Aby nedošlo k chybám, používejte **paměťově optimalizované** clustery. Pokud při provádění toku dat dojde k vypršení časového limitu všesměrového vysílání, můžete vypnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat.
+
+Při práci se zdroji dat, které mohou trvat delší dobu dotazování, jako jsou velké databázové dotazy, se doporučuje vypnout všesměrové vysílání pro spojení. Zdroj s dlouhými časy dotazů může při pokusu clusteru o všesměrové vysílání do výpočetních uzlů způsobit vypršení časových limitů Sparku. Další dobrou volbou pro vypnutí všesměrového vysílání je, že pokud máte datový proud ve vašem toku dat, který je agregací hodnot pro použití v transformaci vyhledávání později. Tento model může Zaměňujte Optimalizátor Spark a způsobit vypršení časových limitů.
 
 ![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 

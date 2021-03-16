@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520625"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562718"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -37,7 +37,7 @@ V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azu
 
 ## <a name="get-started"></a>Začínáme
 
-1. Přihlaste se k Azure Machine Learning na https://ml.azure.com . 
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com). 
 
 1. Vyberte své předplatné a pracovní prostor. 
 
@@ -72,7 +72,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
-        Pole| Description
+        Pole| Popis
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
@@ -99,7 +99,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
-    Pole|Description
+    Pole|Popis
     ---|---
     Název výpočetních prostředků| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Priorita virtuálního počítače| Virtuální počítače s nízkou prioritou jsou levnější, ale nezaručují výpočetní uzly. 
@@ -132,7 +132,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
-    Další konfigurace|Description
+    Další konfigurace|Popis
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#primary-metric).
     Vysvětlete nejlepší model | Tuto možnost vyberte, pokud chcete povolit nebo zakázat, aby se zobrazila vysvětlení doporučeného nejlepšího modelu. <br> Tato funkce není aktuálně k dispozici pro [určité algoritmy prognózy](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -199,6 +199,11 @@ Chcete-li získat vysvětlení pro určitý model,
 
 Jakmile budete mít nejlepší model, je čas ho nasadit jako webovou službu, která bude vytvářet předpovědi na základě nových dat.
 
+>[!TIP]
+> Pokud chcete nasadit model, který byl vygenerován prostřednictvím `automl` balíčku pomocí sady Python SDK, je nutné [model zaregistrovat](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1) do pracovního prostoru. 
+>
+> Po zaregistrování modelu ho vyhledejte v studiu výběrem **modelů** v levém podokně. Po otevření modelu můžete vybrat tlačítko **nasadit** v horní části obrazovky a potom postupovat podle pokynů v **kroku 2** oddílu **nasazení modelu** .
+
 Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
 
 1. Máte několik možností nasazení. 
@@ -217,7 +222,7 @@ Automatizované strojové učení pomáhá s nasazením modelu bez psaní kódu:
     Pole| Hodnota
     ----|----
     Název| Zadejte jedinečný název pro vaše nasazení.
-    Description| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočetních prostředků| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
     Název výpočetních prostředků| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.

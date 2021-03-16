@@ -3,14 +3,14 @@ title: Vyhledat chyby fondu a uzlů
 description: Tento článek se zabývá operacemi na pozadí, ke kterým může dojít, a s chybami pro kontrolu a jejich zamezení při vytváření fondů a uzlů.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/03/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576308"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564401"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -62,6 +62,13 @@ Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. 
 
 Batch nastaví [stav fondu](/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, zda odstranění fondu trvá příliš dlouho pomocí vlastností **State** a **stateTransitionTime** .
 
+Pokud fond trvá déle, než se čekalo, bude se dávka pravidelně opakovat, dokud nebude možné fond úspěšně odstranit. V některých případech je zpoždění způsobeno výpadkem služby Azure nebo dalšími dočasnými problémy. Další faktory, které můžou zabránit úspěšnému odstranění fondu, můžou vyžadovat, abyste provedli akce k vyřešení tohoto problému. Mezi tyto faktory patří následující:
+
+- Zámky prostředků byly umístěny do prostředků vytvořených v dávce nebo na síťové prostředky používané službou Batch.
+- Prostředky, které jste vytvořili, mají závislost na prostředku vytvořeném dávkou. Pokud například [ve virtuální síti vytvoříte fond](batch-virtual-network.md), vytvoří služba Batch skupinu zabezpečení sítě (NSG), veřejnou IP adresu a nástroj pro vyrovnávání zatížení. Pokud použijete tyto prostředky mimo fond, nelze fond odstranit, dokud nebude tato závislost odebrána.
+- Z předplatného, který obsahuje váš fond, byl odregistrovaný poskytovatel prostředků Microsoft.Batch.
+- "Microsoft Azure Batch" už nemá [roli přispěvatel nebo Owner](batch-account-create-portal.md#allow-azure-batch-to-access-the-subscription-one-time-operation) k předplatnému, které obsahuje váš fond (pro účty Batch v režimu předplatného uživatele).
+
 ## <a name="node-errors"></a>Chyby uzlu
 
 I když Batch úspěšně přiděluje uzly ve fondu, můžou různé problémy způsobit, že některé uzly nejsou v pořádku a nemůžou spouštět úlohy. Těmto uzlům se pořád účtují poplatky, takže je důležité detekovat problémy, abyste se vyhnuli placení uzlů, které se nedají použít. Kromě běžných chyb uzlů je důležité vědět, že aktuální [stav úlohy](/rest/api/batchservice/job/get#jobstate) je užitečný při řešení potíží.
@@ -105,15 +112,10 @@ Pokud Batch může určit příčinu, vlastnost [chyb](/rest/api/batchservice/co
 Mezi další příklady příčin **nepoužitelných** uzlů patří:
 
 - Vlastní image virtuálního počítače je neplatná. Například obrázek, který není správně připraven.
-
 - Virtuální počítač se přesune kvůli selhání infrastruktury nebo upgradu na nižší úrovni. Batch obnoví uzel.
-
 - Image virtuálního počítače se nasadila na hardware, který ho nepodporuje. Například při pokusu o spuštění image CentOS HPC na [Standard_D1_v2m](../virtual-machines/dv2-dsv2-series.md) virtuálním počítači.
-
 - Virtuální počítače jsou ve [virtuální síti Azure](batch-virtual-network.md)a provoz se zablokoval na porty klíčů.
-
 - Virtuální počítače jsou ve virtuální síti, ale odchozí provoz do služby Azure Storage je blokovaný.
-
 - Virtuální počítače jsou ve virtuální síti s konfigurací DNS zákazníka a server DNS nemůže přeložit službu Azure Storage.
 
 ### <a name="node-agent-log-files"></a>Soubory protokolu agenta uzlu

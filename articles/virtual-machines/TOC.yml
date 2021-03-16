@@ -1053,6 +1053,8 @@
                     - name: portál Azure
                       displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Scénáře šifrování disků pro Linux
+                  href: ./linux/disk-encryption-linux.md
                 - name: Trezor klíčů pro Azure Disk Encryption
                   displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                   href: ./linux/disk-encryption-key-vault.md
@@ -1081,8 +1083,8 @@
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: Scénáře šifrování disků pro Windows
-                  href: ./windows/disk-encryption-windows.md
+                - name: Přehled
+                  href: ./windows/disk-encryption-overview.md
                 - name: Rychlé starty
                   items:
                     - name: Azure CLI
@@ -1091,6 +1093,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: portál Azure
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Scénáře šifrování disků pro Windows
+                  href: ./windows/disk-encryption-windows.md
                 - name: Trezor klíčů pro Azure Disk Encryption
                   href: ./windows/disk-encryption-key-vault.md
                 - name: Ukázkové skripty pro šifrování disků

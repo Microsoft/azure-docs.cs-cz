@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: cfef510646489e65f5cbc5d0d3e14c468301f48e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199956"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561817"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
@@ -122,7 +122,7 @@ Rozhraní .NET izolované předá `FunctionContext` objekt vašim metodám funkc
 
 Vazby jsou definovány pomocí atributů v metodách, parametrech a návratových typech. Metoda Function je metoda s `Function` atributem a triggerem použitým pro vstupní parametr, jak je znázorněno v následujícím příkladu:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. Předchozí ukázková funkce je aktivována zprávou fronty a zpráva fronty je předána metodě v `myQueueItem` parametru.
 
@@ -140,7 +140,7 @@ Funkce může mít nula nebo více vstupních vazeb, které mohou předat data f
 
 Chcete-li zapisovat do výstupní vazby, je nutné použít výstupní vazbu atributu na metodu funkce, která definuje, jak zapisovat do vázané služby. Hodnota vrácená metodou je zapsána do výstupní vazby. Například následující příklad zapíše řetězcovou hodnotu do fronty zpráv s názvem `functiontesting2` pomocí výstupní vazby:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Více výstupních vazeb
 
@@ -156,7 +156,7 @@ Podobně funkce vrátí `HttpReponseData` objekt, který poskytuje data použit�
 
 Následující kód je Trigger HTTP. 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>protokolování
 
@@ -164,7 +164,7 @@ V izolovaném rozhraní .NET můžete zapisovat do protokolů pomocí [`ILogger`
 
 Následující příklad ukazuje, jak získat `ILogger` protokoly a zapsat je uvnitř funkce:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 Použijte různé metody `ILogger` pro zápis různých úrovní protokolu, například `LogWarning` nebo `LogError` . Další informace o úrovních protokolu naleznete v [článku monitorování](functions-monitoring.md#log-levels-and-categories).
 

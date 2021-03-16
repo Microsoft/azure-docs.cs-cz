@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5e52fab081a94ad58e91c629f4092ae889d38e7a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102560918"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562744"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
@@ -30,12 +30,12 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
 1. V části **služby** vyberte **virtuální počítače**.
-1. Na stránce **virtuální počítače** vyberte **Přidat**. 
+1. Na stránce **virtuální počítače** vyberte **Přidat** a pak **virtuální počítač**. 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . 
 
     ![Snímek obrazovky s oddílem Project Details s informacemi o tom, kde jste vybrali předplatné Azure a skupinu prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
-1. V **části Podrobnosti o instanci** zadejte *MyVM* pro **název virtuálního počítače** a zvolte *východní USA* pro vaši **oblast** a pak zvolte *Windows Server 2019 Datacenter* pro **bitovou kopii**. Zbytek ponechte ve výchozím nastavení.
+1. V části **Podrobnosti o instancích** jako **Název virtuálního počítače** zadejte *myVM* a u možnosti **Oblast** zvolte *USA – východ*. Pro **bitovou kopii** vyberte *Windows Server 2019 Datacenter* a *Standard_DS1_v2* **Velikost**. Zbytek ponechte ve výchozím nastavení.
 
     ![Snímek obrazovky s oddílem podrobností instance, kde můžete zadat název virtuálního počítače a vybrat jeho oblast, obrázek a velikost](./media/quick-create-portal/instance-details.png)
 
@@ -51,16 +51,21 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     ![Snímek obrazovky zobrazující tlačítko pro kontrolu a vytvoření v dolní části stránky](./media/quick-create-portal/review-create.png)
 
+1. Po spuštění ověření vyberte tlačítko **vytvořit** v dolní části stránky.
+
+1. Po dokončení nasazení vyberte **Přejít k prostředku**.
+
+    ![Snímek obrazovky, který ukazuje další krok přechodu na prostředek](./media/quick-create-portal/next-steps.png)
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
 Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyny popisují připojení k virtuálnímu počítači z počítače z Windows. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) na Mac App Storu.
 
-1. Klikněte na tlačítko **připojit** na stránce Přehled pro váš virtuální počítač. 
+1. Na stránce Přehled pro váš virtuální počítač vyberte tlačítko **připojit** a pak vyberte **RDP**. 
 
     ![Snímek obrazovky se stránkou s přehledem virtuálního počítače zobrazující umístění tlačítka připojit](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. Na stránce **připojit k virtuálnímu počítači** ponechte výchozí možnosti připojit pomocí IP adresy, přes port 3389 a klikněte na **Stáhnout soubor RDP**.
+2. Na stránce **připojit se pomocí protokolu RDP** ponechte výchozí možnosti připojit pomocí IP adresy, přes port 3389 a klikněte na **Stáhnout soubor RDP**.
 
 2. Otevřete stažený soubor RDP a po zobrazení výzvy klikněte na **Připojit**. 
 
@@ -81,7 +86,7 @@ Jakmile budete hotovi, ukončete připojení RDP k virtuálnímu počítači.
 
 ## <a name="view-the-iis-welcome-page"></a>Zobrazení úvodní stránky služby IIS
 
-Na portálu vyberte virtuální počítač a v přehledu virtuálního počítače pomocí tlačítka pro **kopírování na** pravé straně IP adresy ho zkopírujte a vložte na kartu prohlížeče. Otevře se výchozí uvítací stránka služby IIS, která by měla vypadat takto:
+Na portálu vyberte virtuální počítač a v přehledu virtuálního počítače najeďte myší na IP adresu, aby se zobrazila **možnost Kopírovat do schránky**. Zkopírujte IP adresu a vložte ji na kartu prohlížeče. Otevře se výchozí uvítací stránka služby IIS, která by měla vypadat takto:
 
 ![Snímek obrazovky s výchozím webem služby IIS v prohlížeči](./media/quick-create-powershell/default-iis-website.png)
 
@@ -89,7 +94,7 @@ Na portálu vyberte virtuální počítač a v přehledu virtuálního počíta�
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. 
 
-Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
+Přejít do skupiny prostředků pro virtuální počítač a pak vyberte **Odstranit skupinu prostředků**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

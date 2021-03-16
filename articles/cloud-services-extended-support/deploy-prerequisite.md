@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6e5994f05187cd25996bcc007d27a7e10eb76427
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 79d6fecddf060909a74664ff29e08301f45d7042
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232524"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472304"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Předpoklady pro nasazení služby Azure Cloud Services (Rozšířená podpora)
 
@@ -78,6 +78,11 @@ Odeberte stará nastavení vzdálené plochy ze souboru konfigurace služby (. c
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
 ```
+Odeberte stará nastavení diagnostiky pro každou roli v souboru konfigurace služby (. cscfg).
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+```
 
 ## <a name="required-service-definition-file-csdef-updates"></a>Požadované aktualizace definičního souboru služby (. csdef)
 
@@ -116,6 +121,11 @@ Nasazení, která využila staré funkce plug-in vzdálené plochy, musí mít o
 <Import moduleName="RemoteAccess" /> 
 <Import moduleName="RemoteForwarder" /> 
 </Imports> 
+```
+Nasazení, která využila staré moduly plug-in, potřebují odebrat nastavení pro každou roli ze souboru definice služby (. csdef).
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
 ## <a name="key-vault-creation"></a>Vytváření Key Vault 

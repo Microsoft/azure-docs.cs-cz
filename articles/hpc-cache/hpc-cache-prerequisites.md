@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 5ac0f0677be6b641d496a941c5a8e1343fd017bc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471795"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562554"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -61,7 +61,7 @@ Mezipaměť potřebuje DNS pro přístup k prostředkům mimo svou virtuální s
 * Pro přístup k koncovým bodům služby Azure Blob Storage a dalším interním prostředkům budete potřebovat server DNS založený na Azure.
 * Pokud chcete získat přístup k místnímu úložišti, musíte nakonfigurovat vlastní server DNS, který dokáže přeložit názvy hostitelů úložiště. Tuto možnost je nutné provést **před** vytvořením mezipaměti.
 
-Pokud potřebujete jenom přístup k úložišti objektů blob, můžete pro svou mezipaměť použít výchozí server DNS určený pro Azure. Pokud ale potřebujete přístup k jiným prostředkům, měli byste vytvořit vlastní server DNS a nakonfigurovat ho tak, aby přenesl všechny požadavky na rozlišení specifické pro Azure na Azure DNS Server.
+Pokud používáte jenom úložiště objektů blob, můžete pro svou mezipaměť použít výchozí server DNS určený pro Azure. Pokud ale potřebujete přístup k úložišti nebo jiným prostředkům mimo Azure, měli byste vytvořit vlastní server DNS a nakonfigurovat ho tak, aby přenesl všechny požadavky na rozlišení specifické pro Azure na Azure DNS Server.
 
 Chcete-li použít vlastní server DNS, musíte provést tyto kroky instalace před vytvořením mezipaměti:
 
@@ -185,13 +185,13 @@ Mezipaměť HPC Azure taky může použít kontejner objektů BLOB připojený k
 
 Požadavky na účet úložiště se liší pro cíl úložiště objektů BLOB ADLS-NFS a pro standardní cíl úložiště BLOB. Pokud chcete vytvořit a nakonfigurovat účet úložiště s povoleným systémem souborů NFS, postupujte podle pokynů v části [připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0](../storage/blobs/network-file-system-protocol-support-how-to.md) .
 
-Toto je obecný přehled kroků:
+Toto je obecný přehled kroků. Tyto kroky se můžou změnit, takže vždycky si přečtěte informace o aktuálních podrobnostech [adls-NFS](../storage/blobs/network-file-system-protocol-support-how-to.md) .
 
 1. Ujistěte se, že funkce, které potřebujete, jsou k dispozici v oblastech, kde plánujete pracovat.
 
 1. Povolte funkci protokolu NFS pro vaše předplatné. Provedete to *ještě před* vytvořením účtu úložiště.
 
-1. Vytvořte zabezpečenou virtuální síť (VNet) pro účet úložiště. Pro účet úložiště s povoleným systémem souborů NFS a pro mezipaměť HPC Azure byste měli použít stejnou virtuální síť.
+1. Vytvořte zabezpečenou virtuální síť (VNet) pro účet úložiště. Pro účet úložiště s povoleným systémem souborů NFS a pro mezipaměť HPC Azure byste měli použít stejnou virtuální síť. (Nepoužívejte stejnou podsíť jako mezipaměť.)
 
 1. Vytvořte účet úložiště.
 

@@ -4,14 +4,14 @@ description: Popisuje různé modely využití mezipaměti a jejich výběr mezi
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 856f2c15d2bd0b39212e8962a92b1df50cada29e
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: b23afb17b9b7152e82049ca4f6127e2811913296
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472831"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563449"
 ---
 # <a name="understand-cache-usage-models"></a>Vysvětlení modelů využití mezipaměti
 
@@ -29,7 +29,7 @@ Ukládání souborů do mezipaměti je způsob, jakým Azure HPC mezipaměť zry
 
   Pokud je ukládání do mezipaměti pro zápis zakázané, mezipaměť neuloží změněný soubor a hned ho zapíše do back-endového systému úložiště.
 
-* **Zpoždění zpětného zápisu** – u mezipaměti s povoleným ukládáním do mezipaměti pro zápis je zpoždění proti zápisu za dobu, po kterou mezipaměť čeká na další změny souborů před přesunutím souboru do back-endového systému úložiště.
+* **Zpoždění zpětného zápisu** – u mezipaměti s povoleným ukládáním do mezipaměti pro zápis je zpoždění proti zápisu za dobu, po kterou mezipaměť čeká na další změny souborů před kopírováním souboru do back-endového systému úložiště.
 
 * **Ověření back-endu** – nastavení ověřování back-endu určuje, jak často mezipaměť porovnává svou místní kopii souboru se vzdálenou verzí v systému back-end úložiště. Pokud je back-end kopie novější než kopie uložená v mezipaměti, mezipaměť načte vzdálenou kopii a uloží ji pro budoucí požadavky.
 
@@ -43,7 +43,7 @@ Pro každý cíl úložiště připojeného k systému souborů NFS, který pou�
 
 Modely využití mezipaměti HPC vám umožní zvolit způsob vyrovnávání rychlé odezvy s rizikem při získávání zastaralých dat. Chcete-li optimalizovat rychlost čtení souborů, nesmíte se starat o to, zda jsou soubory v mezipaměti zkontrolovány proti back-endové soubory. Na druhé straně, pokud chcete mít jistotu, že jsou soubory vždycky aktuální se vzdáleným úložištěm, vyberte model, který se často kontroluje.
 
-K dispozici je několik možností:
+Toto jsou možnosti modelu použití:
 
 * **Čtení těžkých, zřídka používaných zápisů** – tuto možnost použijte, pokud chcete zrychlit přístup pro čtení souborů, které jsou statické nebo zřídka změněné.
 
@@ -53,13 +53,16 @@ K dispozici je několik možností:
 
   Tuto možnost nepoužívejte, pokud existuje riziko, že soubor může být upraven přímo v systému úložiště, aniž byste ho nejdřív napsali do mezipaměti. Pokud k tomu dojde, verze souboru v mezipaměti nebude synchronizována s back-end souborem.
 
-* Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu. Při použití této možnosti musí mít všichni klienti přístup k souborům přes mezipaměť prostředí Azure HPC místo přímého připojení k úložišti back-endu. Soubory v mezipaměti budou mít poslední změny, které nejsou uložené na back-endu.
+* Více **než 15% zápisů** – Tato možnost zrychluje výkon čtení i zápisu. Při použití této možnosti musí mít všichni klienti přístup k souborům přes mezipaměť prostředí Azure HPC místo přímého připojení k úložišti back-endu. Soubory v mezipaměti budou mít poslední změny, které ještě nebyly zkopírovány do back-endu.
 
   V tomto modelu použití jsou soubory v mezipaměti kontrolovány pouze proti souborům v úložišti back-endu každých 8 hodin. Předpokládá se, že verze souboru v mezipaměti je aktuálnější. Upravený soubor v mezipaměti se zapisuje do back-endového systému úložiště po dobu 20 minut v mezipaměti.<!-- an hour --> bez dalších změn.
 
 * **Klienti zapisují do cíle NFS, vynechá mezipaměť** – tuto možnost vyberte, pokud klienti v pracovním postupu zapisují data přímo do systému úložiště, aniž by museli nejdřív zapisovat do mezipaměti, nebo pokud chcete optimalizovat konzistenci dat. Soubory, které jsou požadavky klientů ukládány do mezipaměti (čtení), ale všechny změny těchto souborů z klienta (zápisy) nejsou ukládány do mezipaměti. Jsou předávány přímo do back-endového systému úložiště.
 
-  V tomto modelu použití jsou soubory v mezipaměti často kontrolovány proti verzím back-endu pro aktualizace. Toto ověření umožňuje změnu souborů mimo mezipaměť při zachování konzistence dat.
+  V tomto modelu použití jsou soubory v mezipaměti často kontrolovány proti verzím back-endu pro aktualizace – každých 30 sekund. Toto ověření umožňuje změnu souborů mimo mezipaměť při zachování konzistence dat.
+
+  > [!TIP]
+  > Tyto první tři základní modely použití lze použít ke zpracování většiny pracovních postupů Azure HPC cache. Další možnosti jsou pro méně běžné scénáře.
 
 * Více **než 15% zápisů, kontrola záložního serveru na změny každých 30 sekund** a více **než 15% zápisů, kontrola, zda je server pro změny každých 60 sekund** . tyto možnosti jsou navrženy pro pracovní postupy, ve kterých chcete urychlit čtení i zápisy, ale existuje možnost, že jiný uživatel bude zapisovat přímo do back-endového systému úložiště. Pokud například více sad klientů pracuje na stejných souborech z různých umístění, mohou tyto modely využití vyvážit rovnováhu mezi nutností rychlého přístupu k souborům s nízkou tolerancí pro zastaralý obsah ze zdroje.
 
@@ -71,16 +74,18 @@ K dispozici je několik možností:
 
 Tato tabulka shrnuje rozdíly v modelu použití:
 
-| Model využití                   | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádné                     |
-| Více než 15% zápisů       | Čtení/zápis   | 8 hodin               | 20 minut               |
-| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádné                     |
-| Více než 15% zápisů, časté kontroly back-endu (30 sekund) | Čtení/zápis | 30 sekund | 20 minut |
-| Více než 15% zápisů, časté kontroly back-endu (60 sekund) | Čtení/zápis | 60 sekund | 20 minut |
-| Více než 15% zápisů, časté zpětný zápis | Čtení/zápis | 30 sekund | 30 sekund |
-| Těžké čtení, kontrola záložního serveru každé 3 hodiny | Číst | 3 hodiny | Žádné |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
+<!-- | Usage model                   | Caching mode | Back-end verification | Maximum write-back delay |
+|-------------------------------|--------------|-----------------------|--------------------------|
+| Read heavy, infrequent writes | Read         | Never                 | None                     |
+| Greater than 15% writes       | Read/write   | 8 hours               | 20 minutes               |
+| Clients bypass the cache      | Read         | 30 seconds            | None                     |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None |
+-->
 Pokud máte dotazy týkající se modelu nejlepšího využití pro pracovní postup Azure HPC cache, kontaktujte svého zástupce Azure nebo otevřete žádost o podporu pro pomoc.
 
 ## <a name="next-steps"></a>Další kroky

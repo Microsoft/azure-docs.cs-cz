@@ -2,14 +2,14 @@
 title: Přehled webu Azure Portal
 description: Azure Portal je grafické uživatelské rozhraní, které můžete použít ke správě služeb Azure. Naučte se procházet a hledat prostředky v Azure Portal.
 keywords: portál
-ms.date: 12/20/2019
+ms.date: 03/12/2021
 ms.topic: overview
-ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745923"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563990"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
@@ -75,7 +75,7 @@ Obrázek níže popisuje základní prvky Azure Portal, z nichž každá je pops
 
 ## <a name="get-started-with-services"></a>Začínáme se službami
 
-Pokud jste novým předplatitelem, budete muset vytvořit prostředek ještě předtím, než budete moct něco spravovat. Výběrem **+ vytvořit prostředek** zobrazíte služby, které jsou k dispozici v Azure Marketplace. Zde najdete aplikace a služby ze stovek poskytovatelů, které jsou certifikované pro spuštění v Azure.
+Pokud jste novým předplatitelem, budete muset vytvořit prostředek ještě předtím, než budete moct něco spravovat. Výběrem **+ vytvořit prostředek** zobrazíte služby, které jsou k dispozici v Azure Marketplace. Na tomto místě najdete stovky aplikací a služeb od mnoha poskytovatelů, které jsou certifikované pro běh v Azure.
 
 Do bočního panelu jsme předem naplnili vaše oblíbené položky s odkazy na běžně používané služby.  Pokud chcete zobrazit všechny dostupné služby, vyberte **všechny služby** z tohoto bočního panelu.
 

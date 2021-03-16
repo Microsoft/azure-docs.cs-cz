@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2adbefff2a0154268157c7d1735d83e70aa92ee8
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786635"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563585"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box Gateway?
 
@@ -87,7 +87,7 @@ Virtuální zařízení Data Box Gateway má následující specifikace:
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Data Box Gateway fyzické zařízení, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
+Data Box Gateway zařízení, prostředku Azure a cílového účtu úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
 - **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Data box Gateway k dispozici, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](../azure-government/documentation-government-welcome.md).
 

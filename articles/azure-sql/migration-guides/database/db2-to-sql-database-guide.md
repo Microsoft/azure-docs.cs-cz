@@ -1,6 +1,6 @@
 ---
 title: 'DB2 do SQL Database: Průvodce migrací'
-description: Podle tohoto průvodce migrujte databáze DB2 do Azure SQL Database.
+description: Tato příručka vás seznámí s migrací databází DB2 do Azure SQL Database pomocí Pomocník s migrací SQL Serveru pro DB2 (SSMA for DB2).
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 917390b43a772cbb9374c560fc3a65cfa7278839
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356340"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563935"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Průvodce migrací: DB2 do SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ Tato příručka vás seznámí s migrací databází DB2 do Azure SQL Database 
 
 Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K migraci databáze DB2 na SQL Database potřebujete:
 
@@ -102,7 +102,7 @@ K převedení schématu použijte následující postup:
 1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** . 
 
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Po dokončení vyhodnocení databází a vyřešení případných rozporů je dalším krokem spuštění procesu migrace.
 
@@ -142,9 +142,6 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 1. **Nastavení testovacího prostředí**: testovací prostředí by mělo obsahovat kopii zdrojové databáze a cílovou databázi. Nezapomeňte izolovat testovací prostředí.
 1. **Spustit ověřovací testy**: Spusťte ověřovací testy proti zdroji a cíli a pak Analyzujte výsledky.
 1. **Spustit testy výkonu**: spustit test výkonnosti proti zdroji a cíli a pak analyzovat a porovnat výsledky.
-
-   > [!NOTE]
-   > Pro pomoc s vývojem a prováděním ověřovacích testů po migraci zvažte řešení kvality dat dostupné od partnera [QuerySurge](https://www.querysurge.com/company/partners/microsoft). 
 
 
 ## <a name="leverage-advanced-features"></a>Využití pokročilých funkcí 

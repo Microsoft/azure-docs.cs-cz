@@ -4,12 +4,12 @@ description: Analýza výkonu a diagnostika webové aplikace během ladění a v
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532898"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563534"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](./app-insights-overview.md).
@@ -65,17 +65,6 @@ V řádku Code Lens nad jednotlivými metodami obslužné rutiny vidíte počet 
 >
 
 [Další informace o Application Insights v Code Lens](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Trendy
-Trendy představují nástroj pro vizualizaci chování aplikace v čase. 
-
-Vybírejte z **Trendů zkoumání telemetrie** z tlačítka panelu nástrojů Application Insights nebo okna hledání Application Insights. Zvolte jeden z pěti běžných dotazů, abyste mohli začít. Na základě typů telemetrie, časových rozsahů a dalších vlastností můžete analyzovat různé datové sady. 
-
-Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií v rozevíracím seznamu „Typ zobrazení“. Možnosti filtrování v dolní části okna usnadňují zdokonalování v konkrétních podmnožinách vaší telemetrie.
-
-![Trendy](./media/visual-studio/51.png)
-
-[Další informace o trendech](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Místní monitorování
 (Ze sady Visual Studio 2015 Update 2) Pokud jste nenakonfigurovali sadu SDK tak, aby odesílala telemetrii na portál Application Insights (takže v ApplicationInsights.config neexistuje žádný klíč instrumentace), zobrazí se v okně diagnostiky telemetrie z poslední ladicí relace. 

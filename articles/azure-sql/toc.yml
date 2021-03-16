@@ -345,8 +345,16 @@
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
     - name: Průvodci migrací
       items:
+        - name: Z Accessu
+          href: migration-guides/database/access-to-sql-database-guide.md
         - name: Z DB2
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Od Oracle
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: Z MySQL
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: Z SAP pomocného mechanismu
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: Ze SQL Serveru
           items:
             - name: Přehled
@@ -753,6 +761,8 @@
       items:
         - name: Z DB2
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Od Oracle
+          href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
         - name: Ze SQL Serveru
           items:
             - name: Přehled
@@ -1252,10 +1262,12 @@
       items:
         - name: Přehled
           href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: Ze SQL Serveru
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
         - name: Z DB2
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: Od Oracle
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
+        - name: Ze SQL Serveru
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
 - name: Referenční informace
   items:
     - name: Referenční informace k jazyku T-SQL

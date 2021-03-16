@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307768"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491992"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -98,7 +98,7 @@ Klíčové aplikace, které jsou součástí klientské aplikace Office 365:
 
 Aplikace pro správu Microsoft Azure zahrnuje několik základních služeb. 
 
-   - Azure Portal
+   - portál Azure
    - Poskytovatel Azure Resource Manager
    - Rozhraní API modelu nasazení Classic
    - Azure PowerShell
@@ -125,8 +125,14 @@ Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného p�
 
 ## <a name="user-actions"></a>Akce uživatele
 
-Akce uživatele jsou úkoly, které může provést uživatel. Jediná aktuálně podporovaná akce je **Registrace informací o zabezpečení** , která umožňuje vyhovět zásadám podmíněného přístupu, když se uživatelům, kteří mají povolený pokus o registraci v rámci kombinované registrace, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
+Akce uživatele jsou úkoly, které může provést uživatel. V současné době podmíněný přístup podporuje dvě akce uživatele: 
 
+- **Registrovat informace o zabezpečení**: Tato akce uživatele umožňuje vyhovět zásadám podmíněného přístupu, pokud se uživatelům, kteří mají povolený pokus o registraci v kombinaci, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
+
+- **Registrace nebo připojení zařízení (Preview)**: Tato akce uživatele umožňuje správcům vyhovět zásadám podmíněného přístupu, když uživatelé [registrují](../devices/concept-azure-ad-register.md) nebo [připojí](../devices/concept-azure-ad-join.md) zařízení k Azure AD. Existují dvě klíčová doporučení pro tuto akci uživatele: 
+   - `Require multi-factor authentication` je jediným řízením přístupu dostupným pro tuto akci uživatele a všechny ostatní jsou zakázané. Toto omezení zabrání konfliktům s ovládacími prvky přístupu, které jsou buď závislé na registraci zařízení Azure AD, nebo neplatí pro registraci zařízení Azure AD. 
+   - Pokud je u této akce uživatele povolená zásada podmíněného přístupu, musíte nastavit **Azure Active Directory**  >    >  **nastavení zařízení**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` na **ne**. V opačném případě není zásada podmíněného přístupu s touto akcí uživatele správně vynutila. Další informace týkající se tohoto nastavení zařízení najdete v v [konfiguraci nastavení zařízení](../device-management-azure-portal.md##configure-device-settings). Tato akce uživatele poskytuje flexibilitu, která vyžaduje vícefaktorové ověřování pro registraci nebo připojení zařízení pro konkrétní uživatele a skupiny nebo podmínky, a ne zásady pro tenanta v nastavení zařízení. 
+   
 ## <a name="next-steps"></a>Další kroky
 
 - [Podmíněný přístup: podmínky](concept-conditional-access-conditions.md)

@@ -4,14 +4,14 @@ description: Přečtěte si o běžných příkazech pro automatizaci správy sp
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 68b1ca625b5c8bd7ec195b89de63485c542e6691
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419061"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564503"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Správa spravované instance Azure pro prostředky Apache Cassandra pomocí Azure CLI (Preview)
 
@@ -25,7 +25,7 @@ Tento článek popisuje běžné příkazy pro automatizaci správy spravované 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Tento článek vyžaduje Azure CLI verze 2.12.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
+> Tento článek vyžaduje Azure CLI verze 2.17.1 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 >
 > Správa spravované instance Azure pro prostředky Apache Cassandra se nedá přejmenovat, protože tato funkce je v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.
 
@@ -42,7 +42,7 @@ Následující části demonstrují, jak spravovat spravovanou instanci Azure pr
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Vytvoření clusteru spravované instance
 
-Vytvořte spravovanou instanci Azure pro cluster Apache Cassandra:
+Vytvořte spravovanou instanci Azure pro cluster Apache Cassandra pomocí příkazu [AZ Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Odstranění clusteru spravované instance
 
-Odstranění clusteru:
+Odstraňte cluster pomocí příkazu [AZ Managed-Cassandra cluster Delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>Získat podrobnosti o clusteru
 
-Získat podrobnosti o clusteru:
+Podrobnosti o clusteru získáte pomocí příkazu [AZ Managed-Cassandra cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>Získat stav uzlu clusteru
 
-Získat podrobnosti o clusteru:
+Podrobnosti o clusteru získáte pomocí příkazu [AZ Managed-Cassandra cluster-stavový](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) příkaz:
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>Výpis clusterů podle skupiny prostředků
 
-Vypíše clustery podle skupiny prostředků:
+Seznam clusterů podle skupiny prostředků pomocí příkazu [AZ Managed-Cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) :
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Vypsat clustery podle ID předplatného
 
-Zobrazit seznam clusterů podle ID předplatného:
+Seznam clusterů podle ID předplatného pomocí příkazu [AZ Managed-Cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) :
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ Následující části demonstrují, jak spravovat spravovanou instanci Azure pr
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Vytvoření datového centra
 
-Vytvoření datového centra:
+Pomocí příkazu [AZ Managed-Cassandra datadatacenter](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) Create vytvořte datacentrum:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>Odstranění datového centra
 
-Odstranění datového centra:
+Pomocí příkazu [AZ Managed-Cassandra datacentra](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) odstraňte datový datacentrum:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Získat podrobnosti o datovém centru
 
-Získat podrobnosti o datovém centru:
+Podrobnosti o datovém centru získáte pomocí příkazu [AZ Managed-Cassandra Datacenter show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Aktualizace nebo škálování datového centra
 
-Aktualizace nebo škálování datacentra (pro škálování změny nodeCount):
+Aktualizujte nebo Škálujte datové centrum (Pokud chcete škálovat změnu hodnoty nodeCount) pomocí příkazu [AZ Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Získat datacentra v clusteru
 
-Získat datacentra v clusteru:
+Získejte datacentra v clusteru pomocí příkazu [AZ Managed-Cassandra Datacenter list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) :
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

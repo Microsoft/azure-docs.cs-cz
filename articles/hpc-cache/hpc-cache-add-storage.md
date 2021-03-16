@@ -4,14 +4,14 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: bba6745a4cc0be30648e23501f9a9e2f0cc6c8db
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471941"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563232"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -194,15 +194,17 @@ Podrobnosti o dalších možnostech najdete v článku [porozumění modelům po
 
 Tato tabulka shrnuje rozdíly mezi všemi modely využití:
 
-| Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
+
+<!-- | Usage model | Caching mode | Back-end verification | Maximum write-back delay |
 |--|--|--|--|
-| Čtení těžkých, nečastých zápisů | Číst | Nikdy | Žádné |
-| Více než 15% zápisů | Čtení/zápis | 8 hodin | 20 minut |
-| Klienti obcházejí mezipaměť | Číst | 30 sekund | Žádné |
-| Více než 15% zápisů, časté kontroly back-endu (30 sekund) | Čtení/zápis | 30 sekund | 20 minut |
-| Více než 15% zápisů, časté kontroly back-endu (60 sekund) | Čtení/zápis | 60 sekund | 20 minut |
-| Více než 15% zápisů, časté zpětný zápis | Čtení/zápis | 30 sekund | 30 sekund |
-| Těžké čtení, kontrola záložního serveru každé 3 hodiny | Číst | 3 hodiny | Žádné |
+| Read heavy, infrequent writes | Read | Never | None |
+| Greater than 15% writes | Read/write | 8 hours | 20 minutes |
+| Clients bypass the cache | Read | 30 seconds | None |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None | -->
 
 > [!NOTE]
 > Hodnota **ověření back-endu** ukazuje, kdy mezipaměť automaticky porovnává své soubory se zdrojovými soubory ve vzdáleném úložišti. Porovnání můžete ale aktivovat odesláním žádosti klienta, která zahrnuje operaci READDIRPLUS v systému back-end úložiště. READDIRPLUS je standardní rozhraní API pro systém souborů NFS (označované také jako rozšířené čtení), které vrací metadata adresáře, což způsobí, že mezipaměť porovná a aktualizuje soubory.

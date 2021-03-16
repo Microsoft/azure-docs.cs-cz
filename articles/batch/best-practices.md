@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496282"
+ms.locfileid: "103561834"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -238,6 +238,6 @@ Automatizované vyčištění pro pracovní adresář se zablokuje, pokud spust�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvořte účet Azure Batch pomocí Azure Portal](batch-account-create-portal.md).
 - Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Přečtěte si o [výchozích Azure Batch kvótách, omezeních a omezeních a o tom, jak se zvýší kvóta](batch-quota-limit.md).
+- Naučte se [detekovat a vyhnout se chybám při operacích na pozadí fondu a uzlů ](batch-pool-node-error-checking.md).

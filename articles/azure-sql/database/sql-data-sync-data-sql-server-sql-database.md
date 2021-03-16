@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922306"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562055"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -58,7 +58,7 @@ Synchronizace dat je užitečná v případech, kdy je potřeba udržovat data v
 
 Synchronizace dat není preferovaným řešením pro následující scénáře:
 
-| Scénář | Některá doporučená řešení |
+| Scenario | Některá doporučená řešení |
 |----------|----------------------------|
 | Zotavení po havárii | [Geograficky redundantní zálohy Azure](automated-backups-overview.md) |
 | Čtení stupnice | [Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení (Preview)](read-scale-out.md) |
@@ -100,6 +100,9 @@ Nová funkce privátního odkazu (ve verzi Preview) umožňuje vybrat privátní
 
 - [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databázemi v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+
+### <a name="set-up-data-sync-with-rest-api"></a>Nastavení synchronizace dat pomocí REST API
+- [Použití REST API k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
 
 ### <a name="review-the-best-practices-for-data-sync"></a>Projděte si osvědčené postupy pro synchronizaci dat
 
@@ -158,14 +161,14 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Omezení pro služby a dimenze databáze
 
-| **Dimenze**                                                  | **Omezení**              | **Alternativní řešení**              |
+| **Dimenze**                                                  | **Počtu**              | **Alternativní řešení**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximální počet skupin synchronizace, ke kterým může patřit žádná databáze.       | 5                      |                             |
 | Maximální počet koncových bodů v jedné skupině synchronizace              | 30                     |                             |

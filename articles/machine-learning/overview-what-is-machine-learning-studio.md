@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374231"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563180"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -76,31 +76,26 @@ I v případě, že jste zkušený vývojář, může Studio zjednodušit správ
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (Classic) vs Azure Machine Learning Studio
 
-Vydaná v 2015. první, **ml Studio (Classic)** , byla prvním přetahováním tvůrce machine learningu. Jedná se o samostatnou službu, která nabízí jenom vizuální prostředí. Studio (Classic) spolupracuje s Azure Machine Learning.
+Vydaná v 2015. první, **ml Studio (Classic)** , byla prvním přetahováním tvůrce machine learningu. 
+
+**Ml Studio (Classic)** je samostatná služba, která nabízí jenom vizuální prostředí. Studio (Classic) spolupracuje s Azure Machine Learning.
 
 **Azure Machine Learning** je samostatná a moderní služba, která poskytuje kompletní datovou platformu pro datové vědy. Podporuje i prostředí s nízkým kódem.
 
 **Azure Machine Learning Studio** je webový portál *v* Azure Machine Learning, který obsahuje možnosti s nízkým kódem a bez kódu pro vytváření projektů a správu prostředků. 
 
-Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro poslední rozsah nástrojů pro datové vědy zvolili možnost **Azure Machine Learning** místo ml Studio (Classic).
+Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro poslední rozsah nástrojů pro datové vědy zvolili možnost **Azure Machine Learning** místo ml Studio (Classic). Pokud jste stávající uživatel ML Studio (klasický), zvažte možnost [migrace na Azure Machine Learning](classic/migrate-overview.md).
+
+Zde jsou některé výhody přepínání na Azure Machine Learning:
+
+- Škálovatelné výpočetní clustery pro velké školení.
+- Podnikové zabezpečení a zásady správného řízení.
+- Vzájemná spolupráce s oblíbenými open source nástroji.
+- Koncová MLOps.
 
 ### <a name="feature-comparison"></a>Porovnání funkcí
 
-Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
-
-| Funkce | ML Studio (klasický) | Azure Machine Learning |
-|---| --- | --- |
-| Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
-| Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](/python/api/overview/azure/ml/) a [R](https://github.com/Azure/azureml-sdk-for-r) SDK |
-| Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
-| Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
-| Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |
-| Kanál ML | Nepodporováno | Vytváření flexibilních modulárních [kanálů](concept-ml-pipelines.md) pro automatizaci pracovních postupů |
-| MLOps | Základní Správa modelů a nasazení; Nasazení pouze procesoru | Správa verzí entit (model, data, pracovní postupy), automatizace pracovních postupů, integrace s nástroji pro CICD, nasazení procesoru a GPU [a další](concept-model-management-and-deployment.md) |
-| Formát modelu | Speciální formát, jenom Studio (Classic) | Více podporovaných formátů v závislosti na typu úlohy školení |
-| Automatizované školení modelů a ladění parametrů |  Nepodporováno | [Podporuje](concept-automated-ml.md)se. Možnosti Code-First a No-Code. | 
-| Detekce posunu dat | Nepodporováno | [Podporováno](how-to-monitor-datasets.md) |
-| Projekty označování dat | Nepodporováno | [Podporováno](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

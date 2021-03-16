@@ -1,6 +1,6 @@
 ---
-title: SQL Server SQL Server na virtuálních počítačích Azure (Průvodce migrací)
-description: Pomocí tohoto průvodce můžete migrovat jednotlivé databáze SQL Server a SQL Server na Azure Virtual Machines (virtuálních počítačů).
+title: 'SQL Server SQL Server na virtuálních počítačích Azure: Průvodce migrací'
+description: V této příručce se naučíte migrovat jednotlivé databáze SQL Server a SQL Server na virtuální počítače Azure.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488222"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563211"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Průvodce migrací: SQL Server SQL Server na virtuálních počítačích Azure 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -195,7 +195,7 @@ Testovací přístup pro migraci databáze se skládá z následujících aktivi
 
 > [!TIP]
 > Použití [Pomocník pro experimentování s databázemi (DEA)](/sql/dea/database-experimentation-assistant-overview) pro pomoc s vyhodnocením cílového SQL Serverho výkonu.
->
+
 
 ### <a name="optimize"></a>Optimalizace
 

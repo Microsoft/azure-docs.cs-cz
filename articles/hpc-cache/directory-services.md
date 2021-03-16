@@ -4,14 +4,14 @@ description: Jak nakonfigurovat adresářové služby pro klientský přístup k
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472066"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563364"
 ---
 # <a name="configure-directory-services"></a>Konfigurace adresářových služeb
 
@@ -81,7 +81,7 @@ V části **zabezpečený přístup** můžete povolit šifrování a ověření
 
 * **Automaticky stahovat certifikát** – Pokud chcete zkusit stáhnout certifikát hned po odeslání těchto nastavení, klikněte na **Ano** .
 
-Pokud chcete použít statické přihlašovací údaje pro zabezpečení LDAP, vyplňte část **přihlašovací údaje** .
+Pokud chcete použít statické přihlašovací údaje pro zabezpečení LDAP, vyplňte část **přihlašovací údaje** . Tyto informace jsou při uložení zašifrované a nelze na ně dotazovat.
 
 * **Rozlišující název vazby** – zadejte rozlišující název vazby, který se použije k ověření na serveru LDAP. (Použijte formát DN.)
 * **Heslo vazby** – zadejte heslo pro rozlišující název vazby.

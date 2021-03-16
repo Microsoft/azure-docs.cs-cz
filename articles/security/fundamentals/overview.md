@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 1159736d59e15fa36c0feb7e5d5b5553953fb6b9
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101184"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564507"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 
@@ -202,6 +202,14 @@ Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu
 
 - [Vzájemná propojení virtuálních sítí Azure](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
+### <a name="azure-private-link"></a>Azure Private Link
+
+[Privátní odkaz Azure](https://azure.microsoft.com/services/private-link/) vám umožňuje přistupovat ke službám Azure PaaS (například Azure Storage a SQL Database) a soukromým zákaznickým/partnerským službám Azure ve vaší virtuální síti v rámci [privátního koncového bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Nastavení a spotřeba pomocí privátního propojení Azure jsou konzistentní v rámci služeb Azure PaaS, Customer a Shared partnered. Provoz z vaší virtuální sítě do služby Azure vždycky zůstane v síti Microsoft Azure páteřní sítě.
+
+[Soukromé koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) umožňují zabezpečit vaše důležité prostředky služeb Azure jenom na vaše virtuální sítě. Privátní koncový bod Azure používá privátní IP adresu z vaší virtuální sítě pro připojení soukromě a bezpečně ke službě využívající privátní propojení Azure, která službu efektivně přinášejí do vaší virtuální sítě. Vystavení virtuální sítě pro veřejný Internet již není nutné pro využívání služeb v Azure. 
+
+Ve virtuální síti můžete také vytvořit vlastní službu privátního propojení. [Služba privátního propojení Azure](https://docs.microsoft.com/azure/private-link/private-link-service-overview) je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za Azure Standard Load Balancer, se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuálních sítí. Vaši zákazníci můžou vytvořit privátní koncový bod uvnitř své virtuální sítě a namapovat ho k této službě. Vystavení vaší služby pro veřejný Internet již není nutné pro vykreslování služeb v Azure. 
+
 ### <a name="vpn-gateway"></a>VPN Gateway
 
 Pokud chcete odesílat síťový provoz mezi Virtual Network Azure a vaší místní lokalitou, musíte pro Azure Virtual Network vytvořit bránu VPN. [Brána sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) je typem brány virtuální sítě, která odesílá šifrovaný provoz přes veřejné připojení. Brány VPN můžete použít také k posílání provozu mezi virtuálními sítěmi Azure přes síťové prostředky infrastruktury Azure.
@@ -284,7 +292,7 @@ Můžete povolit následující kategorie diagnostického protokolu pro skupin z
 
 [Azure Security Center](../../security-center/security-center-introduction.md) průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/security-center-recommendations.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 V této části najdete další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
 
 ### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus

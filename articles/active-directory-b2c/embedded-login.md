@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 526d8bfa0124fba75eb33518acd83169ff020698
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555240"
+ms.locfileid: "103561511"
 ---
 # <a name="embedded-sign-in-experience"></a>Vložené prostředí pro přihlašování
 
@@ -31,7 +31,7 @@ Element vloženého rámce `<iframe>` se používá k vložení dokumentu na web
 Při použití prvku IFRAME zvažte následující:
 
 - Vložené přihlášení podporuje pouze místní účty. Většina poskytovatelů sociálních identit (například Google a Facebook) blokuje jejich přihlašovací stránky při jejich vykreslování ve vložených rámečcích.
-- Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Například aplikace hostovaná na https://app.contoso.com má stejný původ jako Azure AD B2C běžící na https://login.contoso.com .
+- Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Pokud chcete použít stejný původ, povolte pro klienta Azure AD B2C [vlastní domény](custom-domain.md) a pak nakonfigurujte svou webovou aplikaci se stejným zdrojem. Například aplikace hostovaná na https://app.contoso.com má stejný původ jako Azure AD B2C běžící na https://login.contoso.com .
  
 ## <a name="configure-your-policy"></a>Konfigurace zásad
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449845"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564418"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -27,6 +27,7 @@ Přejít k [kvótám a omezením pro převod textu na řeč](#text-to-speech-quo
 V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny cenové úrovně nastavitelované.
 
 #### <a name="online-transcription"></a>Online přepis
+Pro použití s [funkcí Speech SDK](speech-sdk.md) a/nebo [Speech-to text REST API pro krátký zvuk](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio).
 
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
@@ -74,7 +75,7 @@ V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny ce
 | **Kvóty specifické pro protokol WebSocket** |  |  |
 |Maximální délka zvuku vytvořená pro zapnutí | 10 min | 10 min |
 |Maximální velikost zprávy SSML na hodnotu Turn |64 kB |64 kB |
-| **Omezení REST API** | 20 požadavků za minutu | 25 požadavků za 5 sekund |
+| **Omezení REST API** | 20 požadavků za minutu | 300 požadavků za minutu |
 
 
 <sup>3</sup> **zdarma (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>

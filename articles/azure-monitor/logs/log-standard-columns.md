@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030762"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562242"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standardní sloupce v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../logs/data-platform-logs.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu sloupců. Mnoho datových typů bude mít standardní sloupce, které jsou společné pro různé typy. Tento článek popisuje tyto sloupce a poskytuje příklady, jak je můžete použít v dotazech.
@@ -132,7 +132,7 @@ Tyto dotazy můžete použít `union withsource = tt *` zřídka, protože kontr
 
 Je vždycky efektivnější použít \_ sloupec SubscriptionId, než ho extrahujete analýzou \_ sloupce ResourceID.
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 Sloupec **\_ SUBSCRIPTIONID** obsahuje ID předplatného prostředku, ke kterému je daný záznam přidružen. Získáte tak standardní sloupec, který se použije k určení oboru dotazu jenom na záznamy z konkrétního předplatného nebo pro porovnání různých předplatných.
 
 U prostředků Azure je hodnotou **__SubscriptionId** předplatným část [adresy URL prostředku Azure ID](../../azure-resource-manager/templates/template-functions-resource.md). Sloupec je omezený na prostředky Azure, včetně prostředků [ARC Azure](../../azure-arc/overview.md) , nebo vlastních protokolů, které během příjmu uvedli ID prostředku.

@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548065"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563602"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,11 +30,11 @@ Tento kurz zahrnuje:
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -84,7 +84,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 
@@ -112,7 +112,7 @@ Pojďme začít přepsáním výchozí `Main` metody a definováním globálníc
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -150,14 +150,11 @@ Dále vytvořte pomocnou funkci uvnitř `Program` třídy. Tato pomocná funkce 
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Přečtěte si položky a serializovat je do instancí streamu pomocí `System.Text.Json` třídy. Z důvodu povahy automaticky generovaných dat provádíte serializaci dat jako proudů. Instanci položky můžete také použít přímo, ale jejich převodem na datové proudy můžete využít výkon rozhraní API streamu v CosmosClient. Obvykle můžete data použít přímo, pokud znáte klíč oddílu. 
-
-
-Chcete-li převést data na instance služby Stream v rámci `Main` metody, přidejte po vytvoření kontejneru hned následující kód:
+Pomocí pomocné funkce můžete inicializovat seznam dokumentů, se kterými chcete pracovat:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Dále pomocí datových proudů vytvořte souběžné úlohy a naplňte seznam úkolů pro vložení položek do kontejneru. Chcete-li provést tuto operaci, přidejte do třídy následující kód `Program` :
+Dále pomocí seznamu dokumentů vytvořte souběžné úkoly a naplňte seznam úkolů, který položky vloží do kontejneru. Chcete-li provést tuto operaci, přidejte do třídy následující kód `Program` :
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 

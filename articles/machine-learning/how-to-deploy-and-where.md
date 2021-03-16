@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522049"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561936"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
 
@@ -145,6 +145,7 @@ Další informace o nástroji `az ml model register` najdete v [referenční dok
 
     Další informace najdete v dokumentaci k [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) .
 
+    Pokud chcete nasadit registrovaný model z, doporučujeme to udělat `AutoMLRun` přes [tlačítko nasazení jedním kliknutím v Azure Machine Learning Studiu](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 ### <a name="register-a-model-from-a-local-file"></a>Registrace modelu z místního souboru
 
 Model můžete zaregistrovat zadáním místní cesty k modelu. Můžete zadat cestu buď složky, nebo jednoho souboru. Tuto metodu můžete použít k registraci modelů vyškolených pomocí Azure Machine Learning a potom ke stažení. Tuto metodu můžete použít také k registraci modelů, které jsou vyškolené mimo Azure Machine Learning.
@@ -315,13 +316,13 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Description | Konečný stav?
+| Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | No |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
-| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 > [!TIP]
 > Při nasazování jsou image Docker pro cíle výpočtů sestavené a načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a nasazování imagí do vašich výpočetních cílů. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).
@@ -368,6 +369,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](/python/api/
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
 * [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
+* [Nasazení na automatizované ML v Azure Machine Learning Studiu jediným kliknutím](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
 * [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
