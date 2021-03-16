@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132439"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573451"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -88,7 +88,6 @@ Azure Firewall Manager má následující známé problémy:
 |Přidání hromadné IP adresy se nezdařilo.|Brána firewall zabezpečeného centra přejde do stavu selhání, pokud přidáte více veřejných IP adres.|Přidejte menší zvýšení veřejných IP adres. Přidejte například 10 po dobu.|
 |DDoS Protection Standard není podporován u zabezpečených virtuálních rozbočovačů.|DDoS Protection Standard není integrovaný do vWANs.|Prověřování|
 |Protokoly aktivit nejsou plně podporované.|Zásady brány firewall v současné době nepodporují protokoly aktivit.|Prověřování|
-|Konfigurace rozsahů privátních IP adres SNAT|[Nastavení rozsahu privátních IP adres](../firewall/snat-private-range.md) se ignoruje, pokud je nakonfigurovaná zásada Azure firewall. Použije se výchozí chování Azure Firewall, kde se nejedná o Síťová pravidla, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Prověřování|
 |Některá nastavení brány firewall se při migraci brány firewall na používání zásad brány firewall nemigrují.|Při migraci na zásady Azure Firewall se nemigrují privátní adresy Zóny dostupnosti a SNAT.|Prověřování| 
 
 ## <a name="next-steps"></a>Další kroky

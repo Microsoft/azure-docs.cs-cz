@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013936"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574250"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak efektivně škálovat Azure Stream Analytics úlohy
 
 Funkce Machine Learning Studio (Classic) v Stream Analytics může být použita jako regulární volání funkce v dotazovacím jazyce Stream Analytics. Na pozadí jsou však tato volání funkcí skutečně dotazy webové služby Studio (Classic).
 
-Pomocí dávkového zpracování více řádků ve stejném volání rozhraní API webové služby můžete vylepšit propustnost požadavků webové služby studia (Classic). Toto seskupení se nazývá mini-Batch. Další informace najdete v tématu [webové služby Azure Machine Learning Studio (Classic)](../machine-learning/classic/consume-web-services.md). Podpora pro Studio (Classic) ve Stream Analytics je ve verzi Preview.
+Pomocí dávkového zpracování více řádků ve stejném volání rozhraní API webové služby můžete vylepšit propustnost požadavků webové služby studia (Classic). Toto seskupení se nazývá mini-Batch. Další informace najdete v tématu [webové služby Azure Machine Learning Studio (Classic)](../machine-learning/classic/consume-web-services.md). Podpora pro Studio (Classic) v Stream Analytics.
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Konfigurace úlohy Stream Analytics s funkcemi studia (Classic)
 
@@ -51,7 +51,7 @@ Aby bylo možné zpracovat události 200 000 za sekundu, Stream Analytics úlohy
 
 ![Stream Analytics škály s funkcemi studia (klasické) – příklad dvou úloh](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Stream Analytics škály s funkcemi studia (klasické) – příklad dvou úloh")
 
-Obecně platí, že **_B_* _ pro velikost dávky, _*_L_*_ pro latenci webové služby ve velikosti dávky B v milisekundách, propustnost Stream Analytics úlohy s _*_N_*_ službami SUs:
+Obecně platí, že ***B** _ pro velikost dávky, _*_L_*_ pro latenci webové služby ve velikosti dávky B v milisekundách, propustnost Stream Analytics úlohy s _ *_N_** službou SUs je:
 
 ![Škálování Stream Analytics se vzorcem funkcí studia (Classic)](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Škálování Stream Analytics se vzorcem funkcí studia (Classic)")
 
@@ -62,7 +62,7 @@ Další informace o tomto nastavení najdete v článku o [škálování pro web
 ## <a name="example--sentiment-analysis"></a>Příklad – Analýza mínění
 Následující příklad obsahuje úlohu Stream Analytics pomocí funkce mínění Analysis Studio (Classic), jak je popsáno v [kurzu integrace Stream Analytics Machine Learning Studio (Classic)](stream-analytics-machine-learning-integration-tutorial.md).
 
-Dotaz je jednoduchý plně rozdělený dotaz následovaný funkcí _ *mínění**, jak je znázorněno v následujícím příkladu:
+Dotaz je jednoduchý plně rozdělený dotaz následovaný funkcí **mínění** , jak je znázorněno v následujícím příkladu:
 
 ```SQL
     WITH subquery AS (

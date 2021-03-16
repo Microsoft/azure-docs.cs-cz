@@ -254,6 +254,8 @@
           href: how-to-connect-health-adfs.md
         - name: Sestava rizikových IP adres pro Azure AD Connect Health se službou AD FS
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: AD FS Sign-Ins ve službě Azure AD s Connect Health
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Použití služby Azure AD Connect Health k synchronizaci
           href: how-to-connect-health-sync.md
         - name: Použití služby Azure AD Connect Health se službou AD DS

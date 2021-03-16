@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/05/2021
-ms.openlocfilehash: 393c15761c16dbf04d2af48fe13c0bc41b2e15b1
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/16/2021
+ms.openlocfilehash: 241c4c713890af0db8fce74b0817b5bdcf9a1403
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509543"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573791"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Šablony Azure Resource Manager pro přední dveře Azure
 
@@ -34,4 +34,8 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro p�
 |**Storage**| **Popis** |
 | [Statický web úložiště](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-storage-static-website) | Vytvoří účet Azure Storage a statický web s veřejným koncovým bodem a profilem front-dveří.  |
 | [Objekty blob úložiště s privátním propojením](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-storage-blobs-private-link) | Vytvoří účet Azure Storage a kontejner objektů BLOB s privátním koncovým bodem a profilem front-dveří.  |
+|**Application Gateway**| **Popis** |
+| [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-application-gateway-public) | Vytvoří Application Gateway a profil front-dveří. |
+|**Virtuální počítač**| **Popis** |
+| [Virtuální počítač se službou privátního propojení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-vm-private-link) | Vytvoří virtuální počítač a službu privátního propojení a profil front-dveří. |
 | | |

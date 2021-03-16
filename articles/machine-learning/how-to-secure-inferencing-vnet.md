@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 5d029f4328f955d64c5ce479e553769f8a107e45
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518564"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573434"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -278,3 +278,5 @@ Tento článek je čtvrtou částí řady virtuálních sítí s pěti částmi.
 * [Část 2: zabezpečení prostředků pracovního prostoru](how-to-secure-workspace-vnet.md)
 * [Část 3: zabezpečení školicího prostředí](how-to-secure-training-vnet.md)
 * [Část 5: povolení funkcí studia](how-to-enable-studio-virtual-network.md)
+
+Přečtěte si také článek o používání [vlastního DNS](how-to-custom-dns.md) pro překlad IP adres.

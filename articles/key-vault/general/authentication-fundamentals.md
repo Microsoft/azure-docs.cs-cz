@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535191"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103572804"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
 Azure Key Vault umožňuje bezpečně ukládat a spravovat přihlašovací údaje aplikací, jako jsou tajné klíče, klíče a certifikáty, v centrálním a zabezpečeném cloudovém úložišti. Key Vault eliminují nutnost ukládat přihlašovací údaje v aplikacích. Vaše aplikace se můžou ověřit, aby se v době spuštění načetly přihlašovací údaje, aby se Key Vault.
 
-Jako správce můžete přesně určit, kteří uživatelé a aplikace budou mít přístup k trezoru klíčů, a můžete omezit a provést audit operací, které provádějí. Tento dokument vysvětluje základní koncepty přístupového modelu trezoru klíčů. Poskytne vám tak úvodní úroveň znalostí a ukáže vám, jak můžete ověřit uživatele nebo aplikaci pro Trezor klíčů od začátku do konce.
+Jako správce můžete přesně určit, kteří uživatelé a aplikace budou mít přístup k trezoru klíčů, a můžete omezit a provést audit operací, které provádějí. Tento dokument vysvětluje základní koncepty přístupového modelu trezoru klíčů. Poskytne vám úvodní úroveň znalostí a ukáže vám, jak můžete ověřit uživatele nebo aplikaci k trezoru klíčů od začátku do konce.
 
 ## <a name="required-knowledge"></a>Požadované znalosti
 

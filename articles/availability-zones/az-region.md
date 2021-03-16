@@ -4,16 +4,16 @@ description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aff8320186ada53772fc4ff2232e8cf55585a77
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701446"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573026"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Služby Azure, které podporují zóny dostupnosti
 
@@ -50,12 +50,13 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | Amerika           | Evropa               | Afrika              | Asie a Tichomoří   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Střední Kanada     | Francie – střed       | Jihoafrická Jižní Afrika – sever * | Japonsko – východ     |
-| USA – střed         | Německo – středozápad |                     | Southeast Asia |
-| East US            | Severní Evropa         |                     | Austrálie – východ |
-| USA – východ 2          | Spojené království – jih             |                     |                |
-| Střed USA – jih | West Europe          |                     |                |
-| USA (Gov) – Virginia    |                      |                     |                |
+| Brazílie – jih       | Francie – střed       | Jihoafrická Jižní Afrika – sever * | Japonsko – východ     |
+| Střední Kanada     | Německo – středozápad |                     | Southeast Asia |
+| USA – střed         | Severní Evropa         |                     | Austrálie – východ |
+| East US            | Spojené království – jih             |                     |                |
+| USA – východ 2          | West Europe          |                     |                |
+| Střed USA – jih |                      |                     |                |
+| USA (Gov) – Virginia     |                      |                     |                |
 | Západní USA 2        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 | Azure Database for MySQL – flexibilní Server      |      : large_blue_diamond:  |
 | Azure Database for PostgreSQL – flexibilní Server |      : large_blue_diamond:  |
 | Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Disk Encryption                           |      : large_blue_diamond:  |
 | Azure Firewall                                  |      : large_blue_diamond:  |
 | Azure Firewall Manager                          |      : large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
@@ -169,6 +171,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 |     Azure Advisor                             |     : globe_with_meridians:             |
 |     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Front Door                          |     : globe_with_meridians:             |
 |     Azure Defender pro IoT                  |     : globe_with_meridians:             |
 |     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |

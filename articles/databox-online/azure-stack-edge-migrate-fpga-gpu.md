@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630737"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573268"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrace úloh z Azure Stack Edge pro FPGA do GPU pro Azure Stack Edge pro
 
-Tento článek popisuje, jak migrovat úlohy a data ze zařízení Azure Stack Edge pro FPGA do zařízení GPU Azure Stack Edge pro. Postup migrace zahrnuje Přehled migrace, včetně porovnání mezi těmito dvěma zařízeními, požadavky na migraci, podrobný postup a ověřování následovaný čištěním.
+Tento článek popisuje, jak migrovat úlohy a data ze zařízení Azure Stack Edge pro FPGA do zařízení GPU Azure Stack Edge pro. Proces migrace začíná porovnáním těchto dvou zařízení, plánu migrace a přezkoumáním informací o migraci. Postup migrace obsahuje podrobný postup, který končí ověřováním a čištěním zařízení.
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>Informace o migraci
 
 Migrace je proces přesunutí úloh a dat aplikací z jednoho umístění úložiště do jiného. To zahrnuje vytvoření přesné kopie aktuálních dat organizace z jednoho úložného zařízení do jiného úložného zařízení – to je vhodné, pokud chcete rušit nebo zakázat aktivní aplikace a pak přesměrovat všechny aktivity vstupu a výstupu (v/v) na nové zařízení. 
 
-Tato příručka k migraci poskytuje podrobný návod k postupům, které jsou potřeba k migraci dat ze zařízení Azure Stack Edge pro FPGA do zařízení GPU Azure Stack Edge pro. Tento dokument je určený pro odborníky v oblasti informačních technologií (IT) a pro pracovníky v oblasti znalostí, kteří zodpovídají za provoz, nasazení a správu Azure Stack hraničních zařízení v datacentru. 
+Tato příručka k migraci poskytuje podrobný návod k postupům, které jsou potřeba k migraci dat ze zařízení Azure Stack Edge pro FPGA do zařízení GPU Azure Stack Edge pro. Tento dokument je určený pro odborníky v oblasti informačních technologií (IT) a pro pracovníky v oblasti znalostí, kteří zodpovídají za provoz, nasazení a správu Azure Stack hraničních zařízení v datacentru.
 
 V tomto článku se na zařízení Azure Stack Edge pro FPGA říká *zdrojové* zařízení a zařízení GPU Azure Stack Edge pro je *cílové* zařízení. 
 
 ## <a name="comparison-summary"></a>Souhrn porovnání
 
-Tato část poskytuje srovnávací Souhrn funkcí mezi grafickým procesorem Azure Stack Edge pro a zařízeními Azure Stack Edge pro FPGA. Hardware ve zdrojovém i cílovém zařízení je v podstatě identický a liší se jenom s ohledem na kartu hardwarovou akceleraci a kapacitu úložiště. 
+Tato část poskytuje srovnávací Souhrn funkcí mezi grafickým procesorem Azure Stack Edge pro a zařízeními Azure Stack Edge pro FPGA. Hardware ve zdrojovém i cílovém zařízení je z velké části identický. může se lišit jenom karta hardwarová akcelerace a kapacita úložiště.<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    Schopnost  | Grafický procesor Azure Stack Edge pro (cílové zařízení)  | Azure Stack Edge pro FPGA (zdrojové zařízení)|
 |----------------|-----------------------|------------------------|
-| Hardware       | Hardwarová akcelerace: 1 nebo 2 grafické procesory NVIDIA T4 <br> Výpočetní výkon, paměť, síťové rozhraní, jednotka napájení, specifikace napájecího kabelu jsou stejné jako u zařízení s FPGA.  | Hardwarová akcelerace: Intel Arria 10 FPGA <br> Výpočetní výkon, paměť, síťové rozhraní, jednotka napájení, specifikace napájecího kabelu jsou stejné jako zařízení s grafickým procesorem.          |
+| Hardware       | Hardwarová akcelerace: 1 nebo 2 grafické procesory NVIDIA T4 <br> Výpočetní výkon, paměť, síťové rozhraní, jednotka napájení a specifikace napájecího kabelu se shodují se zařízením s FPGA.  | Hardwarová akcelerace: Intel Arria 10 FPGA <br> Výpočetní výkon, paměť, síťové rozhraní, jednotka zdroje napájení a specifikace napájecího kabelu se shodují se zařízením s grafickým procesorem.          |
 | Použitelné úložiště | 4,19 TB <br> Po rezervování prostoru pro odolnost proti chybám a interní použití | 12,5 TB <br> Po rezervování prostoru pro interní použití |
 | Zabezpečení       | Certifikáty |                                                     |
 | Úlohy      | IoT Edge úlohy <br> Úlohy virtuálních počítačů <br> Úlohy Kubernetes| IoT Edge úlohy |
@@ -55,11 +55,11 @@ Při vytváření plánu migrace Vezměte v úvahu následující informace:
 
 Než budete pokračovat v migraci, vezměte v úvahu následující informace: 
 
-- Zařízení GPU Azure Stack Edge pro se nedá aktivovat proti prostředku Azure Stack Edge pro FPGA. Pro zařízení GPU Azure Stack Edge pro se musí vytvořit nový prostředek, jak je popsáno v tématu [Vytvoření pořadí GPU pro Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource).
+- Zařízení GPU Azure Stack Edge pro se nedá aktivovat proti prostředku Azure Stack Edge pro FPGA. Měli byste vytvořit nový prostředek pro zařízení Azure Stack Edge pro s GRAFICKÝm rozhraním, jak je popsáno v tématu [vytvoření objednávky gpu Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource).
 - Machine Learning modely nasazené na zdrojovém zařízení, které používaly FPGA, bude nutné změnit pro cílové zařízení pomocí GPU. Chcete-li získat nápovědu k modelům, můžete kontaktovat podpora Microsoftu. Vlastní modely nasazené na zdrojovém zařízení, které nepoužívaly FPGA (jenom použité CPU), by měly fungovat tak, jak jsou na cílovém zařízení (pomocí procesoru).
-- Moduly IoT Edge nasazené na zdrojovém zařízení mohou vyžadovat změny, aby je bylo možné úspěšně nasadit na cílovém zařízení. 
+- Moduly IoT Edge nasazené na zdrojovém zařízení mohou vyžadovat změny před tím, než bude možné moduly na cílovém zařízení úspěšně nasadit. 
 - Zdrojové zařízení podporuje protokoly NFS 3,0 a 4,1. Cílové zařízení podporuje jenom protokol NFS 3,0.
-- Zdrojové zařízení podporuje protokoly SMB a NFS. Cílové zařízení podporuje kromě protokolů SMB a NFS pro sdílené složky úložiště prostřednictvím protokolu REST pomocí účtů úložiště.
+- Zdrojové zařízení podporuje protokoly SMB a NFS. Cílové zařízení podporuje kromě protokolů SMB a NFS pro sdílené složky i úložiště prostřednictvím protokolu REST pomocí účtů úložiště.
 - Přístup ke sdíleným složkám na zdrojovém zařízení je prostřednictvím IP adresy, zatímco přístup ke sdílení na cílovém zařízení je přes název zařízení.
 
 ## <a name="migration-steps-at-a-glance"></a>Postup migrace na první pohled
@@ -99,15 +99,15 @@ Hraniční Cloud sdílí data vrstev z vašeho zařízení do Azure. Tyto kroky 
 
 - Vytvořte seznam všech sdílených složek Edge a uživatelů, které máte na zdrojovém zařízení.
 - Vytvořte seznam všech plánů šířky pásma, které máte. Na cílovém zařízení znovu vytvoříte tyto plány šířky pásma.
-- V závislosti na dostupné šířce pásma sítě nakonfigurujte na svém zařízení plány šířky pásma, aby bylo možné maximalizovat data vrstvená do cloudu. Tím se minimalizují místní data na zařízení.
-- Ujistěte se, že jsou sdílené složky plně vrstveny v cloudu. To můžete potvrdit kontrolou stavu sdílení v Azure Portal.  
+- V závislosti na dostupné šířce pásma sítě nakonfigurujte na svém zařízení plány šířky pásma, abyste maximalizovali data vrstvená do cloudu. Který minimalizuje místní data na zařízení.
+- Ujistěte se, že jsou sdílené složky plně vrstveny v cloudu. Vrstvení se dá potvrdit tak, že zkontrolujete stav sdílení v Azure Portal.  
 
 #### <a name="data-in-edge-local-shares"></a>Data v místních sdílených složkách Edge
 
 Data v hraničních místních sdílených složkách zůstanou v zařízení. Tyto kroky proveďte na *zdrojovém* zařízení prostřednictvím Azure Portal. 
 
-- Vytvořte seznam místních sdílených složek Edge, které máte na zařízení.
-- Vzhledem k tomu, že je to jednorázová migrace dat, vytvořte kopii místní sdílené složky Edge na jiný místní server. Ke zkopírování dat můžete použít nástroje pro kopírování, jako je například `robocopy` (SMB) nebo `rsync` (NFS). Volitelně možná už máte nasazené řešení ochrany dat od třetí strany, abyste mohli zálohovat data v místních sdílených složkách. Pro použití se zařízeními Azure Stack Edge pro FPGA se podporují Tato řešení třetích stran:
+- Vytvořte na zařízení seznam místních sdílených složek Edge.
+- Vzhledem k tomu, že budete provádět jednorázovou migraci dat, vytvořte kopii dat místní sdílené složky Edge na další místní server. Ke zkopírování dat můžete použít nástroje pro kopírování, jako je například `robocopy` (SMB) nebo `rsync` (NFS). Volitelně možná už máte nasazené řešení ochrany dat od třetí strany, abyste mohli zálohovat data v místních sdílených složkách. Pro použití se zařízeními Azure Stack Edge pro FPGA se podporují Tato řešení třetích stran:
 
     | Software jiných výrobců           | Odkaz na řešení                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,10 +157,10 @@ Teď budete kopírovat data ze zdrojového zařízení do sdílených složek na
 
 Pomocí těchto kroků synchronizujte data na hraničních sdílených cloudech na cílovém zařízení:
 
-1. [Přidejte sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-share) odpovídající názvům sdílených složek vytvořeným na zdrojovém zařízení. Ujistěte se, že při vytváření sdílených složek je **Výběr kontejneru objektů BLOB** nastavený na **použití existující** možnosti a pak vyberte kontejner, který jste použili s předchozím zařízením.
-1. [Přidejte uživatele](azure-stack-edge-gpu-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
-1. [Aktualizujte sdílená](azure-stack-edge-gpu-manage-shares.md#refresh-shares) data z Azure. Tím se vyžádá všechna cloudová data z existujícího kontejneru do sdílených složek.
-1. Vytvořte znovu plány šířky pásma, které se mají přidružit ke sdíleným složkám. Podrobné pokyny najdete v tématu [Přidání plánu šířky pásma](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) .
+1. [Přidejte sdílené složky](azure-stack-edge-j-series-manage-shares.md#add-a-share) odpovídající názvům sdílených složek vytvořeným na zdrojovém zařízení. Když vytvoříte sdílené složky, ujistěte se, že je **možnost vybrat kontejner objektů BLOB** nastavená na **použít stávající**, a pak vyberte kontejner, který se použil pro předchozí zařízení.
+1. [Přidejte uživatele](azure-stack-edge-j-series-manage-users.md#add-a-user) , kteří mají přístup k předchozímu zařízení.
+1. [Aktualizujte sdílená](azure-stack-edge-j-series-manage-shares.md#refresh-shares) data z Azure. Aktualizace sdílené složky načte všechna cloudová data z existujícího kontejneru do sdílených složek.
+1. Vytvořte znovu plány šířky pásma, které se mají přidružit ke sdíleným složkám. Podrobné pokyny najdete v tématu [Přidání plánu šířky pásma](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) .
 
 
 ### <a name="2-from-edge-local-shares"></a>2. z hraničních místních sdílení
@@ -175,9 +175,9 @@ Pomocí těchto kroků obnovte data z místních sdílených složek:
 1. Přidejte do cílového zařízení všechny místní sdílené složky. Přečtěte si podrobný postup v tématu [Přidání místní sdílené složky](azure-stack-edge-gpu-manage-shares.md#add-a-local-share).
 1. Přístup ke sdíleným složkám SMB na zdrojovém zařízení bude používat IP adresy, zatímco na cílovém zařízení použijete název zařízení. Viz [připojení ke sdílené složce SMB na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share). Pokud se chcete připojit ke sdíleným složkám systému souborů NFS na cílovém zařízení, budete muset použít nové IP adresy přidružené k zařízení. Viz [připojení ke sdílené složce NFS na grafickém procesoru Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share). 
 
-    Pokud jste data sdílených složek zkopírovali do zprostředkujícího serveru přes protokol SMB/NFS, můžete tato data zkopírovat do sdílených složek na cílovém zařízení. Data můžete také zkopírovat přímo ze zdrojového zařízení, pokud je zdrojové i cílové zařízení *online*.
+    Pokud jste zkopírovali sdílená data do zprostředkujícího serveru přes protokol SMB nebo NFS, můžete zkopírovat data ze zprostředkujícího serveru do sdílených složek na cílovém zařízení. Pokud je zdrojové i cílové zařízení *online*, můžete data zkopírovat také přímo ze zdrojového zařízení.
 
-    Pokud jste použili software jiného výrobce k zálohování dat v místních sdílených složkách, budete muset spustit postup obnovení poskytovaný řešením ochrany dat podle vlastního výběru. Viz odkazy v následující tabulce.
+    Pokud jste použili software třetí strany k zálohování dat v místních sdílených složkách, budete muset spustit postup obnovení, který je k dispozici pro řešení ochrany dat podle vlastního výběru. Viz odkazy v následující tabulce.
 
     | Software jiných výrobců           | Odkaz na řešení                               |
     |--------------------------------|---------------------------------------------------------|

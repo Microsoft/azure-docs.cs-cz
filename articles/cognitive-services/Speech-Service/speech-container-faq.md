@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86c8943531171094600bc7d93b8694bdd1c6e051
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225747"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573740"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
@@ -344,20 +344,6 @@ Jenom pro objasnění interaktivních, konverzací a diktování; Toto je pokro�
 - Pro MIC se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v přibližně 1 jádru pro jedno rozpoznávání.
 
 To se dá ověřit z protokolů Docker. Ve skutečnosti vypíšeme řádek s údaji o relaci a frázi/utterance, který obsahuje čísla ve formátu RTF.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Je běžné rozdělit zvukové soubory do Chucks pro použití kontejneru řeči?</b>
-</summary>
-
-V mém aktuálním plánu si můžete vzít existující zvukový soubor a rozdělit ho do 10 sekund bloků dat a odeslat je prostřednictvím kontejneru. Je to přijatelný scénář?  Existuje lepší způsob, jak zpracovat větší zvukové soubory pomocí kontejneru?
-
-**Odpověď:** Stačí použít sadu Speech SDK a dát jí soubor, který bude mít správnou věc. Proč potřebujete soubor zablokovat?
-
 
 <br>
 </details>

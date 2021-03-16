@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b4422c664071087ccae73a5b6f642b53dcca74bf
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503605"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574641"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co jsou cílové výpočetní objekty ve službě Azure Machine Learning?
 
@@ -98,30 +98,30 @@ Pro výběr velikosti virtuálního počítače je k dispozici několik výjimek
 
 Další informace o podporovaných řadách a omezeních najdete v následující tabulce.
 
-| **Podporovaná řada virtuálních počítačů**  | **Omezení** |
-|------------|------------|
-| D | Žádné |
-| DDSv4 | Žádné |
-| Dv2 | Žádné |  
-| Dv3 | Žádné|
-| DSv2 | Žádné | 
-| DSv3 | Žádné|
-| EAv4 | Žádné |
-| Ev3 | Žádné |
-| FSv2 | Žádné | 
-| H | Žádné |
-| HB | Vyžaduje schválení. |
-| HBv2 | Vyžaduje schválení. |  
-| KLIENTOVI HCS | Vyžaduje schválení. |  
-| M | Vyžaduje schválení. |
-| NC | Žádné |  
-| Propagační akce síťového adaptéru | Žádné |
-| NCsv2 | Vyžaduje schválení. |
-| NCsv3 | Vyžaduje schválení. |  
-| NDs | Vyžaduje schválení. |
-| NDv2 | Vyžaduje schválení. |
-| NV | Žádné |
-| NVv3 | Vyžaduje schválení. | 
+| **Podporovaná řada virtuálních počítačů**  | **Omezení** | **Kategorie** | **Podporováno nástrojem** |
+|------------|------------|------------|------------|
+| D | Žádné | Obecné účely | Výpočetní clustery a instance |
+| DDSv4 | Žádné | Obecné účely | Výpočetní clustery a instance |
+| Dv2 | Žádné | Obecné účely | Výpočetní clustery a instance |
+| Dv3 | Žádné| Obecné účely | Výpočetní clustery a instance |
+| DSv2 | Žádné | Obecné účely | Výpočetní clustery a instance |
+| DSv3 | Žádné| Obecné účely | Výpočetní clustery a instance |
+| EAv4 | Žádné | Optimalizované pro paměť. | Výpočetní clustery a instance |
+| Ev3 | Žádné | Optimalizované pro paměť. | Výpočetní clustery a instance |
+| FSv2 | Žádné | Optimalizované pro výpočty. | Výpočetní clustery a instance |
+| H | Žádné | Vysokovýkonné výpočetní prostředí | Výpočetní clustery a instance |
+| HB | Vyžaduje schválení. | Vysokovýkonné výpočetní prostředí | Výpočetní clustery a instance |
+| HBv2 | Vyžaduje schválení. |  Vysokovýkonné výpočetní prostředí | Výpočetní clustery a instance |
+| KLIENTOVI HCS | Vyžaduje schválení. |  Vysokovýkonné výpočetní prostředí | Výpočetní clustery a instance |
+| M | Vyžaduje schválení. | Optimalizované pro paměť. | Výpočetní clustery a instance |
+| NC | Žádné |  GPU | Výpočetní clustery a instance |
+| Propagační akce síťového adaptéru | Žádné | GPU | Výpočetní clustery a instance |
+| NCsv2 | Vyžaduje schválení. | GPU | Výpočetní clustery a instance |
+| NCsv3 | Vyžaduje schválení. | GPU | Výpočetní clustery a instance |  
+| NDs | Vyžaduje schválení. | GPU | Výpočetní clustery a instance | 
+| NDv2 | Vyžaduje schválení. | GPU | Výpočetní clustery a instance | 
+| NV | Žádné | GPU | Výpočetní clustery a instance | 
+| NVv3 | Vyžaduje schválení. | GPU | Výpočetní clustery a instance | 
 
 
 I když Azure Machine Learning podporuje tyto řady virtuálních počítačů, nemusí být k dispozici ve všech oblastech Azure. Pokud chcete zjistit, jestli jsou dostupné řady virtuálních počítačů, přečtěte si téma [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).

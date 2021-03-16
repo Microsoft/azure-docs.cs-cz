@@ -4,12 +4,12 @@ description: Naučte se, jak používat spravované identity pod AAD pod správo
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233492"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574369"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Použití identit spravovaných pod Azure Active Directory ve službě Azure Kubernetes (Preview)
 
@@ -53,13 +53,16 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami
+## <a name="create-an-aks-cluster-with-azure-cni"></a>Vytvoření clusteru AKS s využitím Azure CNI
 
-Vytvořte cluster AKS se zapnutou spravovanou identitou a s povolenou identitou pod správou identity. Následující příkazy pomocí příkazu [AZ Group Create][az-group-create] vytvoří skupinu prostředků s názvem *myResourceGroup* a pomocí příkazu [AZ AKS Create][az-aks-create] vytvoříte cluster AKS s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* .
+> [!NOTE]
+> Toto je výchozí doporučená konfigurace.
+
+Vytvořte cluster AKS s povolenou identitou Azure CNI a pod správou. Následující příkazy pomocí příkazu [AZ Group Create][az-group-create] vytvoří skupinu prostředků s názvem *myResourceGroup* a pomocí příkazu [AZ AKS Create][az-aks-create] vytvoříte cluster AKS s názvem *myAKSCluster* ve skupině prostředků *myResourceGroup* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
+az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
 Přihlaste se ke svému clusteru AKS pomocí [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz také stáhne a nakonfiguruje `kubectl` klientský certifikát na vašem vývojovém počítači.
@@ -67,6 +70,44 @@ Přihlaste se ke svému clusteru AKS pomocí [AZ AKS Get-Credentials][az-aks-get
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Aktualizace existujícího clusteru AKS pomocí Azure CNI
+
+Aktualizujte stávající cluster AKS pomocí Azure CNI tak, aby zahrnoval identitu pod spravovanou.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+```
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Použití modulu plug-in Kubenet sítě s identitami spravovanými pod Azure Active Directory 
+
+> [!IMPORTANT]
+> Spuštění služby AAD-pod-identity v clusteru s Kubenet není doporučená konfigurace z důvodu denásobení zabezpečení. Postupujte prosím podle kroků pro zmírnění rizik a nakonfigurujte zásady předtím, než povolíte možnost AAD-pod-identity v clusteru s Kubenet.
+
+## <a name="mitigation"></a>Omezení rizik
+
+Pro zmírnění ohrožení zabezpečení na úrovni clusteru můžete použít řadič OpenPolicyAgent Admission společně s gatekeeper ověřující Webhook. Pokud máte na svém clusteru nainstalovaný server gatekeeper, přidejte ConstraintTemplate typu K8sPSPCapabilities:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
+```
+Přidejte šablonu pro omezení vytváření lusků s možností NET_RAW:
+
+```
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPCapabilities
+metadata:
+  name: prevent-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "kube-system"
+  parameters:
+    requiredDropCapabilities: ["NET_RAW"]
+```
+
 ## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Vytvoření clusteru AKS s modulem plug-in Kubenet Network
 
 Vytvořte cluster AKS s povoleným modulem plug-in Kubenet Network a s povolenou identitou pod správou.

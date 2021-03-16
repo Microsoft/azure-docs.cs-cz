@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 03/16/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761705"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573931"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Kurz: Příprava na nasazení Azure Stack Edge pro  
 
-Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stack Edge pro. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku.
+Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úplnému nasazení Azure Stack Edge pro. V tomto kurzu se dozvíte, jak připravit Azure Portal k nasazení Azure Stack hraničního prostředku. 
 
-K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
+K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.  
 
 V tomto kurzu se naučíte:
 
@@ -84,71 +84,67 @@ Než začnete, ujistěte se, že:
 
 * Pro normální provozní podmínky vaší Azure Stack Edge pro máte následující:
 
-  * Minimální šířka pásma ke stažení, která zajistí, že se zařízení bude aktualizovat, musí mít minimálně 10 MB/s.
-  * Minimálně 20 MB/s vyhrazeným nahráváním a šířkou pásma pro přenos souborů.
+  * Minimálně 10 MB/s, aby bylo zajištěno, že zařízení zůstane aktualizované.
+  * Minimálně 20 MB/s vyhrazené nahrání a šířky pásma pro přenos souborů.
 
-## <a name="create-a-new-resource"></a>Vytvoření nového prostředku
+## <a name="create-new-resource-for-existing-device"></a>Vytvořit nový prostředek pro existující zařízení
 
-Pokud máte existující Azure Stack hraniční prostředek pro správu fyzického zařízení, přeskočte tento krok a přejděte na [získat aktivační klíč](#get-the-activation-key).
+Pokud jste stávajícím zákazníkem Azure Stack Edge pro, použijte následující postup k vytvoření nového prostředku, pokud potřebujete nahradit nebo resetovat stávající zařízení.
 
-Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal následující kroky.
+Pokud jste nový zákazník, doporučujeme, abyste se seznámili s používáním zařízení Azure Stack Edge pro-GPU pro vaše úlohy. Další informace najdete na webu [co je Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-gpu-overview.md). Informace o řazení Azure Stack Edge pro s grafickým procesorem získáte, když přejdete na [vytvořit nový prostředek pro procesor Azure Stack Edge pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-1. Použití přihlašovacích údajů pro Microsoft Azure pro přihlášení k 
+Pokud chcete vytvořit nový prostředek Azure Stack Edge pro pro existující zařízení, proveďte v Azure Portal následující kroky.
+
+1. Přihlaste se pomocí přihlašovacích údajů pro Microsoft Azure:
 
     - Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com) .
     - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us) . Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
-2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Vytvořit**.
-3. Vyberte předplatné, které chcete použít pro zařízení Azure Stack Edge pro. Vyberte oblast, ve které chcete nasadit prostředek Azure Stack Edge. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+1. Vyberte **+ Vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge**. Potom vyberte **Vytvořit**.
 
-    Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V oblasti jsou uložena pouze metadata pro správu zařízení. Skutečná data můžou být uložená v jakémkoli účtu úložiště.
+1. Vyberte předplatné pro zařízení Azure Stack Edge pro a zemi, do které se má zařízení expedovat v části **dodávat**.
+
+   ![Vyberte předplatné a zemi příjemce pro vaše zařízení.](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
+
+
+1. V seznamu zobrazených typů zařízení vyberte **Azure Stack Edge pro-FPGA**. Pak zvolte **Vybrat**. 
+
+   Typ zařízení **Azure Stack Edge pro-FPGA** se zobrazí pouze v případě, že máte stávající zařízení. Pokud potřebujete objednat nové zařízení, použijte k [Vytvoření nového prostředku Azure Stack Edge pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
+
+   ![Hledat Azure Stack hraniční služby](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-02.png)
+
+1. Vyberte kartu **Základy**:
+
+   1. Zadejte nebo vyberte následující **Podrobnosti o projektu**.
     
-    V možnosti **Azure Stack Edge pro** vyberte **vytvořit**.
+       |Nastavení  |Hodnota  |
+       |---------|---------|
+       |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
+       |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
 
-    ![Hledat Azure Stack hraniční služby](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
+   1. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
 
-3. Na kartě **základy** zadejte nebo vyberte následující **Podrobnosti o projektu**.
-    
-    |Nastavení  |Hodnota  |
-    |---------|---------|
-    |Předplatné    |Tato hodnota se vyplní automaticky na základě dřívějšího výběru. Předplatné je propojené s vaším fakturačním účtem. |
-    |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).     |
+       |Nastavení  |Hodnota  |
+       |---------|---------|
+       |Název   | Popisný název pro identifikaci prostředku.<br>Název má 2 až 50 znaků, včetně písmen, číslic a spojovníků.<br> Název musí začínat a končit na písmeno nebo číslici.        |
+       |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
-4. Zadejte nebo vyberte následující **Podrobnosti o instanci**.
+   1. Vyberte **Zkontrolovat a vytvořit**.
 
-    |Nastavení  |Hodnota  |
-    |---------|---------|
-    |Název   | Popisný název pro identifikaci prostředku.<br>Název má 2 až 50 znaků, včetně písmen, číslic a spojovníků.<br> Název musí začínat a končit na písmeno nebo číslici.        |
-    |Region (Oblast)     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    ![Podrobnosti o projektu a instanci](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-03.png)
 
-    ![Podrobnosti o projektu a instanci](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
+1. Na kartě **Revize + vytvořit** si přečtěte **podmínky použití**, **Podrobnosti o cenách** a podrobnosti o vašem prostředku. Potom vyberte **Vytvořit**.
 
-5. Vyberte **Další: adresa příjemce**.
+    ![Kontrola informací o Azure Stackch a zásadách ochrany osobních údajů z pohledu na Edge](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-04.png)
 
-    - Pokud už máte nějaké zařízení, vyberte pole se seznamem, kde **mám Azure Stack hraniční zařízení**.
-    - Pokud se jedná o nové zařízení, které objednáváte, zadejte jméno kontaktu, společnost, adresu pro odeslání zařízení a kontaktní údaje.
+1. Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte **Přejít k prostředku**.
 
-    ![Dodací adresa pro nové zařízení](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
+   ![Přejít na prostředek Azure Stack Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource-01.png)
 
-6. Vyberte **Další: Zkontrolovat a vytvořit**.
+Po uvedení objednávky Microsoft zkontroluje pořadí a kontaktuje vás prostřednictvím e-mailu s podrobnostmi o expedici.
 
-7. Na kartě **Revize + vytvořit** si přečtěte **Podrobnosti o cenách**, **podmínky použití** a podrobnosti k vašemu prostředku. Zaškrtněte pole se seznamem pro **uživatele, kteří si prošli podmínka ochrany osobních údajů**.
+![Oznámení na revizi objednávky Azure Stack Edge pro](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
-    ![Kontrola informací o Azure Stackch a zásadách ochrany osobních údajů z pohledu na Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
-
-8. Vyberte **Vytvořit**.
-
-   Vytvoření prostředku trvá několik minut. Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte **Přejít k prostředku**.
-
-   ![Přejít na prostředek Azure Stack Edge](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
-
-Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
-
-![Oznámení na revizi objednávky Azure Stack Edge pro](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
-
-
-> [!NOTE]
-> Pokud chcete vytvořit více objednávek najednou nebo naklonovat stávající objednávku, můžete použít [skripty v ukázkách Azure](https://github.com/Azure-Samples/azure-stack-edge-order). Další informace najdete v souboru READme.
 
 ## <a name="get-the-activation-key"></a>Získání aktivačního klíče
 
@@ -156,7 +152,7 @@ Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivačn�
 
 1. Přejít na prostředek, který jste vytvořili, a vyberte **Přehled**. Zobrazí se oznámení o tom, jak se vaše objednávka zpracovává.
 
-    ![Vybrat přehled](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Vybrat přehled](media/azure-stack-edge-deploy-prep/data-box-edge-select-device-setup.png)
 
 2. Po zpracování objednávky a na zařízení se bude **Přehled** aktualizovat. Přijměte výchozí **název Azure Key Vault** nebo zadejte nový. Vyberte možnost **Generovat aktivační klíč**. Vyberte ikonu kopírování a zkopírujte klíč a uložte ho pro pozdější použití.
 

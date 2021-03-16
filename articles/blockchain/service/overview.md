@@ -1,15 +1,15 @@
 ---
 title: Přehled služby Azure blockchain
 description: Přehled služby Azure blockchain
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963874"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573621"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Služba Azure Blockchain je plně spravovaná služba v hlavní knize, která u�
 * Integrovaná správa konsorcia
 * Vývoj inteligentních smluv pomocí známých vývojářských nástrojů
 
-Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.goquorum.com/) ethereem pomocí mechanismu shody [iBFT (Istanbul Byzantine odolnost proti chybám)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) .
+Služba Azure Blockchain je navržená tak, aby podporovala více protokolů hlavní knihy. V současné době poskytuje podporu pro hlavní knihu [kvora](https://www.goquorum.com/) ethereem pomocí mechanismu shody [iBFT (Istanbul Byzantine odolnost proti chybám)](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) .
 
 Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Místo přidělení času a prostředků ke správě virtuálních počítačů a infrastruktury se můžete soustředit na vývoj aplikací a obchodní logiku. Kromě toho můžete pokračovat v vývoji aplikace pomocí Open source nástrojů a platformy podle vašeho výběru, abyste mohli doručovat vaše řešení, aniž byste se museli učit nové dovednosti.
 

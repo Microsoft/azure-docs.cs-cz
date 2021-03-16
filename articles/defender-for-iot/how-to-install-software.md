@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470683"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574658"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
@@ -697,9 +697,9 @@ Instalace:
 
 1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Zkopírujte uživatelské jméno a heslo na bezpečném místě, protože jsou vyžadovány pro přihlášení a správu.
 
-    - **Podpora**: administrativní uživatel pro správu uživatelů.
+      - **Podpora**: administrativní uživatel pro správu uživatelů.
 
-    - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
+      - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
 
 1. Zařízení se restartuje.
 
@@ -851,9 +851,10 @@ Postup instalace softwaru:
 
 1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
 
-  - **Podpora**: administrativní uživatel pro správu uživatelů.
-
-  - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
+    | Uživatelské jméno | Description |
+    |--|--|
+    | Podpora | Administrativní uživatel pro správu uživatelů. |
+    | CyberX | Ekvivalent kořene pro přístup k zařízení. |
 
 1. Zařízení se restartuje.
 

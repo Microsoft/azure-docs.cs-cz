@@ -11,16 +11,18 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561511"
+ms.locfileid: "103573060"
 ---
 # <a name="embedded-sign-in-experience"></a>Vložené prostředí pro přihlašování
 
 Pro jednodušší prostředí přihlašování se můžete vyhnout přesměrování uživatelů na samostatnou přihlašovací stránku nebo při generování automaticky otevíraného okna. Pomocí vloženého prvku rámce `<iframe>` můžete Azure AD B2C uživatelské rozhraní pro přihlašování do webové aplikace vložit přímo.
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="web-application-embedded-sign-in"></a>Přihlášení vložené webové aplikace
 
@@ -32,7 +34,12 @@ Při použití prvku IFRAME zvažte následující:
 
 - Vložené přihlášení podporuje pouze místní účty. Většina poskytovatelů sociálních identit (například Google a Facebook) blokuje jejich přihlašovací stránky při jejich vykreslování ve vložených rámečcích.
 - Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Pokud chcete použít stejný původ, povolte pro klienta Azure AD B2C [vlastní domény](custom-domain.md) a pak nakonfigurujte svou webovou aplikaci se stejným zdrojem. Například aplikace hostovaná na https://app.contoso.com má stejný původ jako Azure AD B2C běžící na https://login.contoso.com .
- 
+
+## <a name="perquisites"></a>Možnost
+
+* Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
+* [Povolte vlastní domény](custom-domain.md) pro vaše zásady.
+
 ## <a name="configure-your-policy"></a>Konfigurace zásad
 
 Aby bylo možné Azure AD B2C uživatelské rozhraní vkládat do prvku IFRAME, `Content-Security-Policy` `X-Frame-Options` musí být v hlavičkách HTTP odpovědi Azure AD B2C zahrnuty zásady zabezpečení obsahu a možnosti rámce. Tato záhlaví umožňují, aby Azure AD B2C uživatelské rozhraní běželo pod názvem domény aplikace.

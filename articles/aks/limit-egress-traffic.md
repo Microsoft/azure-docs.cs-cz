@@ -4,14 +4,14 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505054"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573825"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -214,6 +214,24 @@ Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující pln�
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Tato adresa se používá pro správnou operaci Azure Policy.  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Tato adresa se používá k vyžádání předdefinovaných zásad z GitHubu, aby bylo zajištěno správné fungování Azure Policy. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy doplněk, který odesílá data telemetrie do koncového bodu Application Insights. |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure Čína 21Vianet vyžaduje plně kvalifikovaný název domény nebo pravidla použití aplikace 
+
+Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití.
+
+| FQDN                                          | Port      | Použití      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA – požadovaná plně kvalifikovaný název domény/pravidla použití
+
+Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující plně kvalifikovaný název domény nebo pravidla použití.
+
+| FQDN                                          | Port      | Použití      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání zásad Kubernetes a k hlášení stavu dodržování předpisů clusteru službě zásad. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Tato adresa se používá k vyžádání artefaktů integrovaných zásad na serveru gatekeeper. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Omezení odchozího provozu pomocí brány Azure firewall
 

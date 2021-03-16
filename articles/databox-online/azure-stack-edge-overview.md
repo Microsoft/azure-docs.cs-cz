@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455736"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574675"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Co je Azure Stack Edge Pro s FPGA?
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-Azure Stack Edge pro s FPGA je hraniční výpočetní zařízení s podporou AI a možnosti přenosu dat v síti. Tento článek poskytuje přehled Azure Stack Edge pro s řešeními FPGA, výhodami, klíčovými možnostmi a scénáři, kde můžete nasadit toto zařízení.
+Azure Stack Edge pro s FPGA je hraniční výpočetní zařízení s podporou AI a možnosti přenosu dat v síti. Tento článek poskytuje přehled Azure Stack Edge pro s řešeními FPGA, výhodami, klíčovými funkcemi a scénáři nasazení.
 
-Azure Stack Edge pro s FPGA je řešení typu hardware jako služba. Microsoft dodá zařízení spravované v cloudu s vestavěným polem programovatelné brány (FPGA), které umožňuje akcelerované AI-Inferencing a má všechny možnosti brány síťového úložiště. 
+Azure Stack Edge pro s FPGA je řešení typu hardware jako služba. Microsoft dodá zařízení spravované v cloudu s vestavěným polem programovatelné brány (FPGA), které umožňuje akcelerované AI-Inferencing a má všechny možnosti brány síťového úložiště.
+
+Azure Data Box Edge se přejmenuje jako Azure Stack Edge.
 
 ## <a name="use-cases"></a>Případy použití
 
@@ -60,13 +62,15 @@ Azure Stack Edge pro nabízí následující možnosti:
 
 Řešení Azure Stack Edge pro se skládá z prostředků Azure Stack Edge, fyzického zařízení Azure Stack Edge pro a místního webového uživatelského rozhraní.
 
-* **Azure Stack Edge pro fyzické zařízení** – 1U server připojený k racku dodávaný Microsoftem, který se dá nakonfigurovat tak, aby odesílal data do Azure.
+* **Fyzické zařízení Azure Stack Edge pro**: server připojený k racku dodávaný Microsoftem, který je možné nakonfigurovat tak, aby odesílal data do Azure.
     
-* **Prostředek Azure Stack Edge** – prostředek v Azure Portal, který umožňuje spravovat Azure Stack Edge pro zařízení z webového rozhraní, ke kterému můžete přistupovat z různých geografických umístění. Pomocí Azure Stackho hraničního prostředku můžete vytvářet a spravovat prostředky, zobrazovat a spravovat zařízení a výstrahy a spravovat sdílené složky.  
+* **Azure Stack hraniční prostředek**: prostředek v Azure Portal, který umožňuje spravovat Azure Stack Edge pro zařízení z webového rozhraní, ke kterému můžete přistupovat z různých zeměpisných míst. Pomocí Azure Stackho hraničního prostředku můžete vytvářet a spravovat prostředky, spravovat sdílené složky a zobrazovat a spravovat zařízení a výstrahy.
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   Jak Azure Stack Edge pro blíží ke konci životního cyklu, vyplňují se žádné objednávky nových zařízení Azure Stack Edge pro. Pokud jste nový zákazník, doporučujeme, abyste se seznámili s používáním zařízení Azure Stack Edge pro-GPU pro vaše úlohy. Další informace najdete na webu [co je Azure Stack Edge pro s grafickým procesorem](azure-stack-edge-gpu-overview.md). Informace o řazení Azure Stack Edge pro s grafickým procesorem získáte, když přejdete na [vytvořit nový prostředek pro procesor Azure Stack Edge pro-GPU](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource).
 
-    Další informace získáte, když přejdete na [vytvořit objednávku pro zařízení Azure Stack Edge pro](azure-stack-edge-deploy-prep.md#create-a-new-resource).
+   Pokud jste stávající zákazník, můžete přesto vytvořit nový prostředek Azure Stack Edge pro, pokud potřebujete nahradit nebo resetovat stávající zařízení Azure Stack Edge pro. Pokyny najdete v tématu [vytvoření objednávky pro zařízení Azure Stack Edge](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device)pro.
 
 * **Azure Stack lokální webové uživatelské rozhraní pro Edge** – pomocí místního webového uživatelského rozhraní můžete spustit diagnostiku, vypnout a znovu spustit Azure Stack Edge pro zařízení, zobrazit kopírování protokolů a kontaktovat podpora Microsoftu k zaznamenání žádosti o službu.
 

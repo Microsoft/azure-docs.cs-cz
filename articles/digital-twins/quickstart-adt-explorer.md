@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232417"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574573"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka digitálních vláken Azure
 
@@ -95,9 +95,8 @@ Otevřete okno konzoly do umístění složky **Azure_Digital_Twins__ADT__explor
 
 > [!TIP]
 > Pokud `SignalRService.subscribe` se při připojení zobrazí chybová zpráva, ujistěte se, že adresa URL digitálních vláken Azure začíná na *https://*.
-
-> [!TIP]
-> Pokud se zobrazí chyba ověřování, možná budete chtít zkontrolovat proměnné prostředí, abyste měli jistotu, že jsou všechny přihlašovací údaje platné pro digitální vlákna Azure. DefaultAzureCredential se pokusí ověřit proti [typům přihlašovacích údajů](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) v určitém pořadí a proměnné prostředí se vyhodnotí jako první.
+>
+> Pokud se zobrazí chyba ověřování, možná budete chtít zkontrolovat **proměnné prostředí** , abyste měli jistotu, že jsou všechny přihlašovací údaje platné pro digitální vlákna Azure. `DefaultAzureCredential`Pokusy o ověření proti typům přihlašovacích údajů v [určitém pořadí](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)a proměnné prostředí jsou vyhodnoceny jako první.
 
 Pokud se zobrazí **oprávnění požadované** automaticky otevírané okno od společnosti Microsoft, poskytněte pro tuto aplikaci souhlas a potvrďte pokračování.
 

@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186188"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573128"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -45,7 +45,7 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 > [!NOTE]
 > Bitové kopie systému Windows založené na Semi-Annualovém kanálu verze 1709 nebo 1803 nejsou podporovány.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 a základní image klienta (Preview)
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 a základní image klienta
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` nebo novější
 * [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` nebo novější
@@ -55,9 +55,12 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 
 Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například  *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
 
+> [!NOTE]
+> ACI nemůže vyžádat obrázky z registrů, které nejsou kompatibilní s rozhraním OCI.
+
 ### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Jaké typy registrů kontejnerů jsou kompatibilní s ACI?
 
-ACI podporuje přebírání imagí z ACR a dalších registrů kontejnerů třetích stran, jako je Dockerhubu. ACI podporuje také přijímání imagí z místních registrů, pokud jsou kompatibilní se standardem OCR a mají koncový bod, který je veřejně vystavený pro Internet.
+ACI podporuje přebírání imagí z ACR a dalších registrů kontejnerů třetích stran, jako je Dockerhubu. ACI podporuje stažení imagí z ACR a jiné Registry kontejneru kompatibilní s rozhraním OCI třetích stran, jako je Dockerhubu, s koncovým bodem, který je veřejně vystavený pro Internet.
 
 ## <a name="availability-and-quotas"></a>Dostupnost a kvóty
 

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518669"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573468"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -36,7 +36,6 @@ V tomto článku se předpokládá, že máte zkušenosti s následujícími té
 + [Azure Private Link](how-to-configure-private-link.md)
 + [Skupiny zabezpečení sítě (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Síťové brány firewall](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>Ukázkový scénář
 
 V této části se dozvíte, jak je nastaven společný scénář sítě pro zabezpečení Azure Machine Learning komunikace s privátními IP adresami.
@@ -62,8 +61,8 @@ V následujících pěti částech se dozvíte, jak zabezpečit scénář sítě
 1. Zabezpečte [**školicí prostředí**](#secure-the-training-environment).
 1. Zabezpečte [**prostředí Inferencing**](#secure-the-inferencing-environment).
 1. Volitelně: [**Povolit funkce studia**](#optional-enable-studio-functionality).
-1. Konfigurace [ **nastavení brány firewall**](#configure-firewall-settings)
-
+1. Nakonfigurujte [**nastavení brány firewall**](#configure-firewall-settings).
+1. Nakonfigurujte [překlad názvů DNS](#custom-dns).
 ## <a name="secure-the-workspace-and-associated-resources"></a>Zabezpečení pracovního prostoru a přidružených prostředků
 
 Pomocí následujícího postupu Zabezpečte svůj pracovní prostor a přidružené prostředky. Tyto kroky umožní vašim službám komunikovat ve virtuální síti.
@@ -186,3 +185,5 @@ Tento článek je součástí jedné z řady virtuálních sítí s pěti část
 * [Část 3: zabezpečení školicího prostředí](how-to-secure-training-vnet.md)
 * [4. část: zabezpečení prostředí Inferencing](how-to-secure-inferencing-vnet.md)
 * [Část 5: povolení funkcí studia](how-to-enable-studio-virtual-network.md)
+
+Přečtěte si také článek o používání [vlastního DNS](how-to-custom-dns.md) pro překlad IP adres.

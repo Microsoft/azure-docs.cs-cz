@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319778"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574556"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
 
@@ -47,7 +47,7 @@ Tento článek poskytuje přehled sestavy aktivit přihlašování s náhledem n
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct začít používat tuto funkci, měli byste znát odpovědi na tyto otázky:
 
@@ -125,7 +125,12 @@ Každá karta v okně přihlášení zobrazuje výchozí sloupce níže. Někter
 
 Přihlášení interaktivního uživatele jsou přihlášení, kde uživatel poskytuje ověřovací faktor pro Azure AD nebo komunikuje přímo se službou Azure AD nebo pomocnou aplikací, jako je například aplikace Microsoft Authenticator. Mezi faktory, které uživatelé poskytují, patří hesla, odpovědi na výzvy MFA, biometrické faktory nebo kódy QR, které uživatel poskytuje pro Azure AD nebo pro pomocnou aplikaci.
 
-Tato sestava zahrnuje taky federované přihlašování od zprostředkovatelů identity, kteří jsou federované pro Azure AD.  
+> [!NOTE]
+> Tato sestava zahrnuje taky federované přihlašování od zprostředkovatelů identity, kteří jsou federované pro Azure AD.  
+
+
+
+Poznámka: sestava interaktivních uživatelů, která se používá k zahrnutí některých neinteraktivních přihlášení od klientů Microsoft Exchange. I když tato přihlášení nejsou interaktivní, byly do sestavy přihlášení interaktivního uživatele zahrnuty pro další viditelnost. Po zadání sestavy neinteraktivních uživatelských přihlášení do verze Public Preview v listopadu 2020 se tyto protokoly událostí neinteraktivního přihlašování přesunuly do sestavy přihlášení neinteraktivního uživatele, aby se zvýšila přesnost. 
 
 
 **Velikost sestavy:** malá <br> 
@@ -205,7 +210,7 @@ Aby se usnadnilo shrnutí dat, jsou seskupeny neinteraktivní přihlašovací ud
 
 - Aplikace
 
-- Uživatel
+- User
 
 - IP adresa
 

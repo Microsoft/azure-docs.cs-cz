@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 5fedb9d09e61540d0ee8a1fe21fbd25f31390f5d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0133d6cc54038a56847556a83242114c78e09321
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742445"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574404"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění peeringu
 
@@ -115,6 +115,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[GlobalConnect]()** | Podporováno |Podporováno | Oslo, Stavanger | 
 | **GTT** |Podporováno |Podporováno |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Podporováno| Podporováno | Čennaj, Bombaj |
+| **[iAdvantage](https://www.scx.sunevision.com/)** | Podporováno | Podporováno | Hongkong Kong2 |
 | **Intelsat** | Podporováno | Podporováno | Washington DC2 |
 | **[InterCloud](https://www.intercloud.com/)** |Podporováno |Podporováno |Amsterdam, Chicago, Washington, Hongkong, Londýn, New York, Paříž, Silicon sedl, Singapur, Washington DC, Curych |
 | **[Internet2](https://internet2.edu/services/cloud-connect/#service-cloud-connect)** |Podporováno |Podporováno |Chicago, Praha, Silicon sedl, Washington DC |
