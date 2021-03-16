@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198468"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470774"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Možnosti registrace aplikace SAML v Azure AD B2C
 
@@ -278,6 +278,19 @@ Příklad:
 ## <a name="session-management"></a>Správa relací
 
 Můžete spravovat relaci mezi Azure AD B2C a aplikací předávající strany SAML pomocí `UseTechnicalProfileForSessionManagement` elementu a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider).
+
+## <a name="force-users-to-re-authenticate"></a>Vynutit opakované ověřování uživatelů 
+
+K vynucení opětovného ověření uživatelů může aplikace zahrnovat `ForceAuthn` atribut v žádosti o ověření SAML. `ForceAuthn`Atribut je logická hodnota. Při nastavení na hodnotu true dojde k zrušení platnosti relace uživatelů při Azure AD B2C a uživatel bude nucen znovu provést ověření. Následující žádost o ověření SAML ukazuje, jak nastavit `ForceAuthn` atribut na hodnotu true. 
+
+
+```xml
+<samlp:AuthnRequest 
+       Destination="https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin/samlp/sso/login"
+       ForceAuthn="true" ...>
+    ...
+</samlp:AuthnRequest>
+```
 
 ## <a name="debug-the-saml-protocol"></a>Ladit protokol SAML
 

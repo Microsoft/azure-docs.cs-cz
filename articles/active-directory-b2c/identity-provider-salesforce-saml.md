@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63288bca124959463dc6ea16cb9d681c68ad00da
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448183"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488716"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí poskytovatele služby Salesforce SAML pomocí protokolu SAML v Azure Active Directory B2C
 
@@ -60,11 +60,24 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů z organizac
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
+      Pokud používáte [vlastní doménu](custom-domain.md), použijte následující formát:
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+
 6. Do pole **Adresa URL služby ACS** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu pro `your-tenant` s názvem vašeho tenanta Azure AD B2C.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
+
+      Pokud používáte [vlastní doménu](custom-domain.md), použijte následující formát:
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+
 7. Posuňte se do dolní části seznamu a klikněte na **Uložit**.
 
 ### <a name="get-the-metadata-url"></a>Získat adresu URL metadat

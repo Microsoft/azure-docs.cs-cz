@@ -7,26 +7,26 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 05/14/2020
+ms.date: 03/10/2021
 tags: connectors
-ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609499"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495228"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
 
-Konektor IBM MQ odesílá a načítá zprávy uložené na serveru IBM MQ místně nebo v Azure. Tento konektor zahrnuje klienta Microsoft MQ, který komunikuje se vzdáleným serverem IBM MQ napříč sítí TCP/IP. Tento článek poskytuje Úvodní příručku k používání konektoru MQ. Můžete začít procházením jedné zprávy ve frontě a následným pokusem o další akce.
+Konektor MQ odesílá a načítá zprávy uložené na serveru MQ místně nebo v Azure. Tento konektor zahrnuje klienta Microsoft MQ, který komunikuje se vzdáleným serverem IBM MQ napříč sítí TCP/IP. Tento článek poskytuje Úvodní příručku k používání konektoru MQ. Můžete začít procházením jedné zprávy ve frontě a následným pokusem o další akce.
 
-Konektor IBM MQ zahrnuje tyto akce, ale neposkytuje žádné triggery:
+Konektor MQ zahrnuje tyto akce, ale neposkytuje žádné triggery:
 
-- Procházejte jednu zprávu bez odstranění zprávy ze serveru IBM MQ.
-- Projděte si dávku zpráv, aniž byste museli odstraňovat zprávy ze serveru IBM MQ.
-- Dostanou jednu zprávu a odstraní zprávu ze serveru IBM MQ.
-- Obdrží dávku zpráv a odstraní zprávy ze serveru IBM MQ.
-- Odešlete jednu zprávu na server IBM MQ.
+- Procházejte jednu zprávu bez odstranění zprávy ze serveru MQ.
+- Projděte si dávku zpráv, aniž byste museli odstraňovat zprávy ze serveru MQ.
+- Obdržení jedné zprávy a odstranění zprávy ze serveru MQ.
+- Obdrží dávku zpráv a odstraní zprávy ze serveru MQ.
+- Odešlete jednu zprávu na server MQ.
 
 Tady jsou oficiálně podporované verze IBM WebSphere MQ:
 
@@ -37,15 +37,20 @@ Tady jsou oficiálně podporované verze IBM WebSphere MQ:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud používáte místní server MQ, [nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na server v rámci vaší sítě. Server, na kterém je nainstalovaná místní brána dat, musí mít nainstalovanou .NET Framework 4,6, aby mohl konektor MQ fungovat.
+* Pokud používáte místní server MQ, musíte [nainstalovat místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na server v rámci vaší sítě.
 
-  Po dokončení instalace brány musíte také vytvořit prostředek v Azure pro místní bránu dat. Další informace najdete v tématu [nastavení připojení pro bránu dat](../logic-apps/logic-apps-gateway-connection.md).
+  > [!NOTE]
+  > Pokud je váš server MQ veřejně dostupný nebo dostupný v rámci Azure, nemusíte používat bránu dat.
 
-  Pokud je váš server MQ veřejně dostupný nebo dostupný v rámci Azure, nemusíte používat bránu dat.
+  * Aby mohl konektor MQ fungovat, musí mít server, na který instalujete místní bránu dat, taky nainstalovanou .NET Framework 4,6.
+  
+  * Po instalaci místní brány dat musíte také [vytvořit prostředek brány Azure pro místní bránu dat](../logic-apps/logic-apps-gateway-connection.md) , kterou konektor MQ používá pro přístup k místnímu serveru MQ.
 
-* Aplikace logiky, do které chcete přidat akci MQ. Tato aplikace logiky musí používat stejné umístění jako místní připojení brány dat a musí mít Trigger, který spouští váš pracovní postup.
+* Aplikace logiky, ve které chcete použít konektor MQ. Konektor MQ nemá žádné triggery, takže musíte nejdřív přidat Trigger do aplikace logiky. Můžete například použít [Trigger opakování](../connectors/connectors-native-recurrence.md). Pokud s Logic Apps začínáte, vyzkoušejte si tento [rychlý Start, abyste vytvořili svoji první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-  Konektor MQ nemá žádné triggery, takže musíte nejdřív přidat Trigger do aplikace logiky. Můžete například použít Trigger opakování. Pokud s Logic Apps začínáte, vyzkoušejte si tento [rychlý Start, abyste vytvořili svoji první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="limitations"></a>Omezení
+
+Konektor MQ nepodporuje nebo nepoužívá pole **formátu** zprávy a neprovádí převody žádné znakové sady. Konektor vloží jenom data, která se zobrazí v poli zpráva, do zprávy JSON a pošle zprávu společně.
 
 <a name="create-connection"></a>
 
@@ -59,15 +64,15 @@ Pokud ještě nemáte připojení MQ, když přidáte akci MQ, budete vyzváni k
 
 1. Zadejte informace o připojení pro váš server MQ.
 
-   * Pro **Server**můžete zadat název serveru MQ nebo zadat IP adresu následovaný dvojtečkou a číslem portu.
+   * Pro **Server** můžete zadat název serveru MQ nebo zadat IP adresu následovaný dvojtečkou a číslem portu.
 
-   * Pokud chcete použít SSL (Secure Sockets Layer) (SSL), vyberte **Povolit SSL?**.
+   * Chcete-li použít protokol TLS (Transport Layer Security) nebo SSL (Secure Sockets Layer) (SSL), vyberte možnost **Povolit SSL?**.
 
      Konektor MQ aktuálně podporuje pouze ověřování serveru, nikoli ověřování klientů. Další informace najdete v tématu [problémy s připojením a ověřováním](#connection-problems).
 
 1. V části **Brána** proveďte tyto kroky:
 
-   1. V seznamu **předplatné** vyberte předplatné Azure přidružené k vašemu prostředku brány Azure.
+   1. V seznamu **předplatné** vyberte předplatné Azure, které je přidružené k vašemu prostředku brány Azure.
 
    1. V seznamu **Brána připojení** vyberte prostředek brány Azure, který chcete použít.
 
@@ -92,7 +97,7 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
   1. Po otevření nástroje Správce certifikace systému Windows přejdete do složky **certifikáty – místní počítač**  >   **Důvěryhodné kořenové certifikační autority** a certifikát nainstalujete.
 
      > [!IMPORTANT]
-     > Ujistěte se, že jste nainstalovali certifikát do **Certificates - Local Computer**  >  úložiště**Důvěryhodné kořenové certifikační autority** počítače místní počítač.
+     > Ujistěte se, že jste nainstalovali certifikát do   >  úložiště **Důvěryhodné kořenové certifikační autority** počítače místní počítač.
 
 * Server MQ vyžaduje, abyste definovali specifikaci šifrování, kterou chcete použít pro připojení TLS/SSL. SslStream v rozhraní .NET ale neumožňuje zadat pořadí pro specifikace šifry. Pokud chcete toto omezení obejít, můžete změnit konfiguraci serveru MQ tak, aby odpovídala první specifikaci šifry v sadě, kterou konektor odesílá při vyjednávání TLS/SSL.
 
@@ -113,7 +118,7 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
    | Vlastnost | Popis |
    |----------|-------------|
    | **Fronta** | Pokud se liší od fronty zadané v rámci připojení, zadejte tuto frontu. |
-   | **MessageID**, **ID korelace**, **identifikátor skupiny**a další vlastnosti | Vyhledat zprávu, která je založena na různých vlastnostech zprávy MQ |
+   | **MessageID**, **ID korelace**, **identifikátor skupiny** a další vlastnosti | Vyhledat zprávu, která je založena na různých vlastnostech zprávy MQ |
    | **IncludeInfo** | Pokud chcete do výstupu zahrnout další informace o zprávě, vyberte **true**. Pokud chcete ve výstupu vynechat další informace o zprávě, vyberte **false (NEPRAVDA**). |
    | **Prodlev** | Zadejte hodnotu, která určuje, jak dlouho se má čekat na doručení zprávy do prázdné fronty. Pokud nezadáte žádnou hodnotu, načte se první zpráva ve frontě a nestrávená doba čekání na zobrazení zprávy. |
    |||
@@ -173,7 +178,7 @@ Akce **přijmout zprávy** má stejné vstupy a výstupy jako akce **Procházet 
 
 1. Pokud jste ještě nevytvořili připojení MQ, budete vyzváni k [vytvoření tohoto připojení](#create-connection). V opačném případě se ve výchozím nastavení použije první dřív nakonfigurované připojení. Chcete-li vytvořit nové připojení, vyberte možnost **změnit připojení**. Případně vyberte jiné připojení.
 
-1. Zadejte informace pro akci. V případě **MessageType**Vyberte platný typ zprávy: **datagram**, **Reply**nebo **Request** .
+1. Zadejte informace pro akci. V případě **MessageType** Vyberte platný typ zprávy: **datagram**, **Reply** nebo **Request** .
 
    ![Vlastnosti pro akci odeslání zprávy](media/connectors-create-api-mq/send-message-properties.png)
 
@@ -185,7 +190,7 @@ Akce **přijmout zprávy** má stejné vstupy a výstupy jako akce **Procházet 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o akcích a omezeních, které jsou popsány v popisu Swagger v konektoru, najdete na [referenční stránce](/connectors/mq/)konektoru.
+Podrobnosti o technických podrobnostech, jako jsou akce a omezení, které jsou popsány v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/mq/).
 
 ## <a name="next-steps"></a>Další kroky
 

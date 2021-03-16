@@ -7,12 +7,12 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.date: 03/11/2021
-ms.openlocfilehash: c5545ead3e4d40c7a0642aee6273c4df241bd394
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 461c998aa85d70d69cb267fdbeabd7eabcfb5854
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464442"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471545"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referenční informace o Media Services dat monitorování
 
@@ -31,7 +31,7 @@ Media Services podporuje monitorování metrik pro následující prostředky:
 
 Můžete monitorovat následující metriky účtu.
 
-|Název metriky|Zobrazované jméno|Description|
+|Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
 |AssetCount|Počet assetů|Prostředky ve vašem účtu.|
 |AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
@@ -49,7 +49,7 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](../limits-quotas-constr
 
 Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
-|Název metriky|Zobrazované jméno|Description|
+|Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
 |Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
@@ -61,7 +61,7 @@ Jsou podporovány následující Media Services metriky [koncových bodů stream
 
 Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
 
-**Zástupný symbol** pro tabulku Dimensions
+<!--**PLACEHOLDER** for dimensions table.-->
 
 ## <a name="resource-logs"></a>Protokoly prostředků
 
@@ -75,7 +75,7 @@ Media Services podporuje následující diagnostické protokoly:
 
 ### <a name="key-delivery"></a>Doručení klíče
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |Požadavek služby doručení klíčů|Protokoly, které zobrazují informace o požadavku služby doručování klíčů Další informace najdete v tématu [schémata](monitor-media-services-data-reference.md).|
 
@@ -87,7 +87,7 @@ Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdet
 
 Tyto vlastnosti jsou specifické pro schéma protokolu doručení klíčů.
 
-|Název|Description|
+|Název|Popis|
 |---|---|
 |keyId|ID požadovaného klíče|
 |keyType|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|

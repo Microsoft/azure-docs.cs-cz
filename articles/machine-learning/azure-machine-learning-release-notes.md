@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608678"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471753"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -26,7 +26,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Sada SDK Azure Machine Learning pro Python v 1.24.0
-+ **Nové funkce**
++ **Opravy chyb a vylepšení**
   + **azureml-automl-core**
     + Odebrání zpětně kompatibilních importů z `azureml.automl.core.shared` . Chyba modulu nenalezena v `azureml.automl.core.shared` oboru názvů může být vyřešena importem z `azureml.automl.runtime.shared` .
   + **AzureML-contrib-automl-DNN-Vision**
@@ -75,7 +75,7 @@ __Informační kanál RSS__: po aktualizaci této stránky se zobrazí upozorně
 ## <a name="2021-02-16"></a>2021-02-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Sada SDK Azure Machine Learning pro Python v 1.23.0
-+ **Nové funkce**
++ **Opravy chyb a vylepšení**
   + **azureml-core**
     + [Experimentální funkce] Přidání podpory pro propojení pracovního prostoru synapse do AML jako propojené služby
     + [Experimentální funkce] Přidání podpory pro připojení fondu synapse Spark do AML jako výpočetní prostředí
@@ -1052,7 +1052,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  |
+| Webový nástroj  |     Popis  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1564,7 +1564,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | 
+| Webový nástroj | Popis | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 

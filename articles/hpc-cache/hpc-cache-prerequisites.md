@@ -4,14 +4,14 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412506"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471795"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -91,14 +91,18 @@ Než začnete vytvářet mezipaměť, ověřte tyto požadavky týkající se op
   Pokud chcete přidat role, postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) .
 
 ## <a name="storage-infrastructure"></a>Infrastruktura úložiště
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-Mezipaměť podporuje exporty do kontejnerů objektů blob Azure nebo pro hardwarové úložiště NFS. Po vytvoření mezipaměti přidejte cíle úložiště.
+Mezipaměť podporuje kontejnery objektů blob Azure, exporty hardwarového úložiště NFS a kontejnery objektů BLOB ADLS připojené k systému souborů NFS (aktuálně ve verzi Preview). Po vytvoření mezipaměti přidejte cíle úložiště.
 
 Každý typ úložiště má specifické požadavky.
 
 ### <a name="blob-storage-requirements"></a>Požadavky na úložiště objektů BLOB
 
 Pokud chcete používat úložiště objektů BLOB v Azure s mezipamětí, potřebujete kompatibilní účet úložiště a prázdný kontejner objektů BLOB nebo kontejner, který je naplněný daty ve formátu mezipaměti HPC Azure, jak je popsáno v tématu [přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md).
+
+> [!NOTE]
+> Jiné požadavky platí pro úložiště objektů BLOB připojené k systému souborů NFS. Podrobnosti najdete v článku [požadavky na úložiště adls-NFS](#nfs-mounted-blob-adls-nfs-storage-requirements-preview) .
 
 Vytvořte účet před tím, než se pokusíte přidat cíl úložiště. Když přidáte cíl, můžete vytvořit nový kontejner.
 
@@ -169,6 +173,37 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
   * Pokud má vaše úložiště nějaké exporty, které jsou podadresáři jiného exportu, ujistěte se, že má mezipaměť kořenový přístup k nejnižšímu segmentu cesty. Podrobnosti najdete v článku věnovaném [přístupu ke kořenu na cestách k adresáři](troubleshoot-nas.md#allow-root-access-on-directory-paths) v tématu řešení potíží s cílovým ÚLOŽIŠTĚm NFS
 
 * Back-end úložiště NFS musí být kompatibilní hardwarová a softwarová platforma. Podrobnosti získáte od týmu Azure HPC cache.
+
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>Požadavky na úložiště namontovaného objektu BLOB (ADLS-NFS) NFS (verze PREVIEW)
+
+Mezipaměť HPC Azure taky může použít kontejner objektů BLOB připojený k protokolu NFS jako cíl úložiště.
+
+> [!NOTE]
+> Podpora protokolu NFS 3,0 pro Azure Blob Storage je ve verzi Public Preview. Dostupnost je omezená a funkce se můžou v současnosti měnit a když je funkce všeobecně dostupná. V produkčních systémech Nepoužívejte technologii verze Preview.
+>
+> Přečtěte si další informace o této funkci ve verzi Preview v tématu [Podpora protokolů NFS 3,0 ve službě Azure Blob Storage](../storage/blobs/network-file-system-protocol-support.md).
+
+Požadavky na účet úložiště se liší pro cíl úložiště objektů BLOB ADLS-NFS a pro standardní cíl úložiště BLOB. Pokud chcete vytvořit a nakonfigurovat účet úložiště s povoleným systémem souborů NFS, postupujte podle pokynů v části [připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0](../storage/blobs/network-file-system-protocol-support-how-to.md) .
+
+Toto je obecný přehled kroků:
+
+1. Ujistěte se, že funkce, které potřebujete, jsou k dispozici v oblastech, kde plánujete pracovat.
+
+1. Povolte funkci protokolu NFS pro vaše předplatné. Provedete to *ještě před* vytvořením účtu úložiště.
+
+1. Vytvořte zabezpečenou virtuální síť (VNet) pro účet úložiště. Pro účet úložiště s povoleným systémem souborů NFS a pro mezipaměť HPC Azure byste měli použít stejnou virtuální síť.
+
+1. Vytvořte účet úložiště.
+
+   * Místo použití nastavení účtu úložiště pro standardní účet úložiště BLOB postupujte podle pokynů v [dokumentu s postupy](../storage/blobs/network-file-system-protocol-support-how-to.md). Typ podporovaného účtu úložiště se může lišit podle oblasti Azure.
+
+   * V části **sítě** vyberte privátní koncový bod v zabezpečené virtuální síti, kterou jste vytvořili (doporučeno), nebo vyberte veřejný koncový bod s omezeným přístupem z zabezpečené virtuální sítě.
+
+   * Nezapomeňte dokončit oddíl **Upřesnit** , kde povolíte přístup k systému souborů NFS.
+
+   * Poskytněte aplikaci cache přístup k vašemu účtu služby Azure Storage, jak je uvedeno v [oprávněních](#permissions)výše. Můžete to udělat při prvním vytvoření cíle úložiště. Postupujte podle pokynů v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) a poskytněte mezipaměti požadované role přístupu.
+
+     Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 
 ## <a name="set-up-azure-cli-access-optional"></a>Nastavení přístupu přes rozhraní příkazového řádku Azure (volitelné)
 

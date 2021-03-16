@@ -14,39 +14,24 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65b91e3dff3ef412dad8bbe57383a9dbf8c7765
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7a0f50a7f84b89d7c048e57eadc85635df10f77
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032241"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467676"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
-Pomocí Azure Active Directory (Azure AD) můžete určit omezené správce ke správě úloh identity v méně privilegovaných rolích. Správcům je možné přiřadit tyto účely, jako je přidání nebo změna uživatelů, přiřazování rolí pro správu, Resetování uživatelských hesel, Správa uživatelských licencí a správa názvů domén. [Výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) se dají změnit jenom v nastavení uživatele v Azure AD.
+Pokud v Azure Active Directory (Azure AD) potřebuje jiný správce nebo správce, než je potřeba spravovat prostředky služby Azure AD, přiřadíte jim roli Azure AD, která poskytuje potřebná oprávnění. Můžete například přiřadit role, abyste mohli přidávat nebo měnit uživatele, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat názvy domén.
+
+V tomto článku jsou uvedené předdefinované role Azure AD, které můžete přiřadit, aby bylo možné spravovat prostředky služby Azure AD. Informace o tom, jak přiřadit role, najdete v tématu [přiřazení rolí Azure AD uživatelům](manage-roles-portal.md).
 
 ## <a name="limit-use-of-global-administrator"></a>Omezení použití globálního správce
 
 Uživatelé, kteří mají přiřazenou roli globálního správce, můžou číst a upravovat všechna nastavení správy ve vaší organizaci Azure AD. Když se uživatel přihlásí ke cloudové službě Microsoftu, vytvoří se ve výchozím nastavení tenant Azure AD a uživatel se stane členem role globální správci. Když přidáte předplatné do existujícího tenanta, nebudete přiřazeni k roli globálního správce. Role správce můžou delegovat jenom globální správci a správci privilegovaných rolí. Pokud chcete snížit riziko pro vaši firmu, doporučujeme přiřadit tuto roli co nejmenším možným lidem ve vaší organizaci.
 
 Jako osvědčený postup doporučujeme přiřadit tuto roli méně než pěti lidem ve vaší organizaci. Pokud máte ve vaší organizaci více než pět správců, kteří mají přiřazenou roli globálního správce, je zde několik způsobů, jak omezit jejich používání.
-
-### <a name="find-the-role-you-need"></a>Najděte roli, kterou potřebujete.
-
-Pokud se frustrující, jak najít roli, kterou potřebujete pro seznam mnoha rolí, může Azure AD zobrazit podmnožiny rolí na základě kategorií rolí. Podívejte se na náš nový filtr **typu** pro [role a správce Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) , abyste viděli jenom role ve vybraném typu.
-
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Role existuje nyní, která neexistuje, když jste přiřadili roli globálního správce.
-
-Je možné, že se do služby Azure AD přidala role nebo role, které poskytují přesnější oprávnění, která se nedají použít při zvýšení úrovně uživatelů na globálního správce. V průběhu času zavádíme další role, které provádějí úlohy, které by mohly provádět jenom role globálního správce. Uvidíte ty, které se projeví v následujících [rolích](#all-roles).
-
-## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání rolí správce
-
-Další informace o přiřazování rolí pro správu uživateli v Azure Active Directory najdete v tématu [zobrazení a přiřazení rolí správce v Azure Active Directory](manage-roles-portal.md).
-
-> [!Note]
-> Pokud máte licenci Azure AD Premium P2 a už jste uživatel Privileged Identity Management (PIM), provedou se všechny úlohy správy rolí v rámci správy identit oprávnění, nikoli v Azure AD.
->
-> ![Role Azure AD spravované v PIM pro uživatele, kteří už používají PIM a mají licenci Premium P2](./media/permissions-reference/pim-manages-roles-for-p2.png)
 
 ## <a name="all-roles"></a>Všechny role
 
@@ -1879,6 +1864,6 @@ Správce uživatelů | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_ch
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [přiřazení uživatele jako správce předplatného Azure](../../role-based-access-control/role-assignments-portal-subscription-admin.md) .
-* Další informace o tom, jak se řídí přístup k prostředkům v Microsoft Azure, najdete v tématu [pochopení různých rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md) .
-* Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD nebo pokyny k přidružení nebo přidání předplatného najdete v tématu [přidružení nebo přidání předplatného Azure do tenanta Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .
+- [Přiřazení rolí Azure AD k skupinám](groups-assign-role.md)
+- [Vysvětlení různých rolí](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Přiřazení role správce předplatného Azure uživateli](../../role-based-access-control/role-assignments-portal-subscription-admin.md)

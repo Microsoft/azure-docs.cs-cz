@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: e025b1681306a3bb837a338655dc561e897226c2
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7f2d6ecd01959e239a1ab048018452b2ae5fc20
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449250"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495211"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -195,10 +195,10 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
 Síť VLAN sítě hostitele | Ano.
 Síť IPv4 hostitele | Ano.
-Síť IPv6 hostitele | No.
-Seskupování síťových adaptérů hosta/serveru | No.
+Síť IPv6 hostitele | Ne.
+Seskupování síťových adaptérů hosta/serveru | Ne.
 Síť IPv4 hosta/serveru | Ano.
-Síť s protokolem IPv6 Host/Server | No.
+Síť s protokolem IPv6 Host/Server | Ne.
 Statická IP adresa sítě hosta/serveru (Windows) | Ano.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Ano.
@@ -250,6 +250,7 @@ Funkce Multipath Host/Server (MPIO) | Ne
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
 Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechny [Azure Marketplace operační systémy UEFI](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) s agentem Site Recovery mobility verze 9,30 a vyšší. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+Disk RAID| Ne
 
 ## <a name="replication-channels"></a>Kanály replikace
 

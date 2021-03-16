@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 2873bd9668bfba887ad9add061e68f36a747d5b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232915"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492315"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Optimalizujte tok provozu pomocí Proxy aplikací služby Azure Active Directory
 
@@ -38,7 +38,7 @@ Když se přihlásíte ke klientovi služby Azure AD, určí se oblast vašeho t
 
 Pokud je například zemí nebo oblastí tenanta Azure AD Spojené království, budou všechny konektory proxy aplikací ve **výchozím nastavení** přiřazeny k používání instancí služby v evropských datových centrech. Když uživatelé přistupují k publikovaným aplikacím, jejich provoz prochází prostřednictvím instancí cloudové služby proxy aplikací v tomto umístění.
 
-Pokud máte nainstalované konektory v oblastech odlišných od vaší výchozí oblasti, může být výhodné změnit oblast, pro kterou je vaše skupina konektorů optimalizovaná, aby se zlepšil výkon při přístupu k těmto aplikacím. Jakmile je pro skupinu konektorů zadaná oblast, připojí se ke cloudovým službám proxy aplikací v určené oblasti.
+Pokud máte nainstalované konektory v oblastech odlišných od vaší výchozí oblasti, může být výhodné změnit oblast, pro kterou je vaše skupina konektorů optimalizovaná, aby se zlepšil výkon při přístupu k těmto aplikacím. Po zadání oblasti pro skupinu konektorů se připojí ke cloudovým službám proxy aplikací v určené oblasti.
 
 Aby bylo možné optimalizovat tok přenosů a snížit latenci pro skupinu konektorů, přiřaďte skupinu konektorů k nejbližší oblasti. Přiřazení oblasti:
 
@@ -181,7 +181,7 @@ Konektor můžete umístit do datacentra Azure. Vzhledem k tomu, že konektor st
 
 **Scénář:** Aplikace je v síti organizace v Evropě, výchozí oblast tenanta je US a většina uživatelů v Evropě.
 
-**Doporučení:** Umístěte konektor poblíž aplikace. Aktualizujte skupinu konektorů tak, aby byla optimalizovaná tak, aby používala instance služby proxy aplikací Evropy. Postup najdete v tématu [optimalizace skupin konektorů pro použití nejbližší cloudové služby aplikačního proxy serveru](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
+**Doporučení:** Umístěte konektor poblíž aplikace. Aktualizujte skupinu konektorů tak, aby byla optimalizovaná tak, aby používala instance služby proxy aplikací Evropy. Postup najdete v tématu [optimalizace skupin konektorů pro použití nejbližší cloudové služby aplikačního proxy serveru](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
 
 Vzhledem k tomu, že uživatelé Evropy mají přístup k instanci proxy aplikace, která se nachází ve stejné oblasti, není směrování 1 nákladné. Segment směrování 3 je optimalizován. Zvažte použití ExpressRoute k optimalizaci směrování 2.
 
@@ -189,7 +189,7 @@ Vzhledem k tomu, že uživatelé Evropy mají přístup k instanci proxy aplikac
 
 **Scénář:** Aplikace je v síti organizace v Evropě, výchozí oblast tenanta je US a většina uživatelů v USA.
 
-**Doporučení:** Umístěte konektor poblíž aplikace. Aktualizujte skupinu konektorů tak, aby byla optimalizovaná tak, aby používala instance služby proxy aplikací Evropy. Postup najdete v tématu [optimalizace skupin konektorů pro použití nejbližší cloudové služby aplikačního proxy serveru](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Směrování 1 může být dražší, protože všichni uživatelé USA musí mít přístup k instanci proxy aplikace v Evropě.
+**Doporučení:** Umístěte konektor poblíž aplikace. Aktualizujte skupinu konektorů tak, aby byla optimalizovaná tak, aby používala instance služby proxy aplikací Evropy. Postup najdete v tématu [optimalizace skupin konektorů pro použití nejbližší cloudové služby aplikačního proxy serveru](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview). Směrování 1 může být dražší, protože všichni uživatelé USA musí mít přístup k instanci proxy aplikace v Evropě.
 
 V této situaci můžete také zvážit použití jedné jiné varianty. Pokud je většina uživatelů v organizaci v USA, je pravděpodobné, že vaše síť rozšiřuje i na nás. Umístěte konektor do USA, pro skupiny konektorů použijte výchozí oblast USA a pro aplikaci v Evropě použijte vyhrazený interní podnikovou síť. Tímto způsobem jsou optimalizovány směrování 2 a 3.
 

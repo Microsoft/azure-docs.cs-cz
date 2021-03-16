@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803761"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472066"
 ---
 # <a name="configure-directory-services"></a>Konfigurace adresářových služeb
 
@@ -75,7 +75,7 @@ Jediným požadovaným nastavením pro práci s protokolem LDAP je server a zák
 
 V části **zabezpečený přístup** můžete povolit šifrování a ověření certifikátu pro připojení LDAP. Po kliknutí na **Ano** můžete zapnout šifrování, máte tyto možnosti:
 
-* **Vyžadovat platný certifikát** – Pokud je tato nastavení nastavená, ověří se certifikát serveru LDAP proti certifikační autoritě v níže uvedeném poli identifikátoru URI.
+* **Ověřit certifikát** – Pokud je tato operace nastavená, ověří se certifikát serveru LDAP proti certifikační autoritě v níže uvedeném poli identifikátoru URI.
 
 * **Identifikátor URI certifikátu certifikační autority** – zadejte cestu k autoritativnímu certifikátu. Může se jednat o odkaz na certifikát ověřený certifikační autoritou nebo na certifikát podepsaný svým držitelem. Toto pole je povinné pro použití nastavení externě ověřených certifikátů.
 

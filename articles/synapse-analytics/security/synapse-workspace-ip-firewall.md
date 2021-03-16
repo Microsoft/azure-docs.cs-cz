@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b937dad6c3c8f5a5773ca7779493b41c905307b1
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 787e600df4185346b250d9a96bdb89927e134075
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226501"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472025"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Pravidla brány firewall protokolu IP pro Azure synapse Analytics
 
@@ -42,10 +42,6 @@ K pracovnímu prostoru synapse se můžete připojit pomocí synapse studia. Mů
 Ujistěte se, že brána firewall v síti a místní počítač umožňují odchozí komunikaci na portech TCP 80, 443 a 1443 pro synapse Studio.
 
 Také je potřeba pro synapse Studio zapnout odchozí komunikaci na portu UDP 53. Pokud se chcete připojit pomocí nástrojů, jako je SSMS a Power BI, musíte na portu TCP 1433 zapnout odchozí komunikaci.
-
-Zásada připojení SQL je nastavená na *výchozí* hodnotu pro pracovní prostor. Můžete si přečíst další informace o IP adresách a portech, které by klienti měli v [tomto](../../azure-sql/database/connectivity-architecture.md#connection-policy)případě umožňovat odchozí komunikaci.
-
-
 
 
 ## <a name="next-steps"></a>Další kroky

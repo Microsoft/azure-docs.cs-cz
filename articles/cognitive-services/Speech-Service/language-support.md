@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044931"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470230"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -194,8 +194,8 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 | Angličtina (Spojené království) | `en-GB` | Female | `en-GB-MiaNeural` | Obecné |
 | Angličtina (Spojené království) | `en-GB` | Male | `en-GB-RyanNeural` | Obecné |
 | Angličtina (Spojené státy) | `en-US` | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` | Obecné |
-| Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné |
+| Angličtina (Spojené státy) | `en-US` | Female | `en-US-JennyNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Angličtina (Spojené státy) | `en-US` | Male | `en-US-GuyNeural` | Obecné, více dostupných stylů hlasu [pomocí SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-NooraNeural` | Obecné |
 | finština (Finsko) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>Nová</sup> | Obecné |
 | finština (Finsko) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>Nová</sup> | Obecné |

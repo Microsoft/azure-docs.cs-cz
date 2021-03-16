@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716563"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493046"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -79,43 +79,9 @@ Pokud chcete vytvořit svůj první projekt, vyberte **Převod řeči na text/vl
 > [!IMPORTANT]
 > Služba [Speech Studio](https://aka.ms/custom-speech) , která se dřív jmenovala jako Custom Speech Portal, se nedávno aktualizovala! Pokud jste vytvořili předchozí data, modely, testy a publikované koncové body na portálu CRIS.ai nebo pomocí rozhraní API, je potřeba vytvořit nový projekt na novém portálu pro připojení k těmto starým entitám.
 
-## <a name="model-lifecycle"></a>Životní cyklus modelu
+## <a name="model-and-endpoint-lifecycle"></a>Životní cyklus modelu a koncového bodu
 
-Custom Speech používá *základní modely* i *vlastní modely*. Každý jazyk má jeden nebo více základních modelů. Obecně platí, že když se do služby normálního rozpoznávání řeči uvolní nový model řeči, naimportuje se také do služby Custom Speech jako nový základní model. Aktualizují se každých 3 až 6 měsíců. Starší modely obvykle jsou méně užitečné v průběhu času, protože nejnovější model obvykle má vyšší přesnost.
-
-Naproti tomu vlastní modely se vytvářejí tak, že se vybraný základní model přizpůsobí konkrétnímu scénáři zákazníka. Můžete používat konkrétní vlastní model po dlouhou dobu, jakmile budete mít ten, který vyhovuje vašim potřebám. Doporučujeme, abyste pravidelně aktualizovali na nejnovější základní model a v průběhu času znovu provedli další data. 
-
-K dalším klíčovým podmínkám souvisejícím s životním cyklem modelu patří:
-
-* **Přizpůsobení**: Vytvoření základního modelu a jeho přizpůsobení do vaší domény/scénáře pomocí textových dat nebo zvukových dat.
-* **Dekódování**: použití modelu a provádění rozpoznávání řeči (dekódování zvuků do textu).
-* **Koncový bod**: uživatelsky specifické nasazení buď základního modelu, nebo vlastního modelu, který je přístupný *jenom* pro daného uživatele.
-
-### <a name="expiration-timeline"></a>Časová osa vypršení platnosti
-
-Nové modely a nové funkce budou k dispozici a starší, ale méně přesné modely jsou vyřazeny, a to v následujících časových osách pro model a vypršení platnosti koncového bodu:
-
-**Základní modely** 
-
-* Přizpůsobení: k dispozici po dobu jednoho roku. Po importu modelu je možné vytvořit vlastní modely v jednom roce. Po jednom roce se musí vytvořit nové vlastní modely z novější verze základního modelu.  
-* Dekódování: k dispozici po dobu dvou let po importu. Takže můžete vytvořit koncový bod a pomocí tohoto modelu Batch přepisovat dva roky. 
-* Koncové body: k dispozici na stejné časové ose jako dekódování.
-
-**Vlastní modely**
-
-* Dekódování: je k dispozici po dobu dvou let po vytvoření modelu. Takže můžete použít vlastní model po dobu dvou let (Batch/reálný/testování) po jeho vytvoření. Po dvou letech *byste si měli svůj model přeškolit* , protože základní model se obvykle už pro přizpůsobení nepoužívá.  
-* Koncové body: k dispozici na stejné časové ose jako dekódování.
-
-Když vyprší platnost základního modelu nebo vlastního modelu, vždycky se vrátí k *nejnovější verzi základního modelu*. Vaše implementace tak nebude nikdy přerušena, ale může být méně přesné pro *vaše konkrétní data* , pokud je dosaženo vypršení vlastních modelů. Vypršení platnosti modelu můžete zobrazit na následujících místech Custom Speech oblasti aplikace Speech Studio:
-
-* Souhrn školení modelů
-* Podrobnosti školení modelů
-* Souhrn nasazení
-* Podrobnosti o nasazení
-
-Můžete také kontrolovat data vypršení platnosti přes [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) rozhraní API vlastního rozpoznávání řeči pod `deprecationDates` vlastností v odpovědi JSON.
-
-Počítejte s tím, že model můžete upgradovat na vlastní koncový bod řeči bez výpadků změnou modelu používaného koncovým bodem v části nasazení v nástroji Speech Studio nebo pomocí vlastního rozhraní API pro rozpoznávání řeči.
+Starší modely obvykle jsou méně užitečné v průběhu času, protože nejnovější model obvykle má vyšší přesnost. Proto platí, že základní modely i vlastní modely a koncové body vytvořené prostřednictvím portálu podléhají vypršení platnosti po 1 roce pro úpravu a 2 roky pro dekódování. Podrobný popis najdete v článku o [životním cyklu modelu a koncového bodu](./how-to-custom-speech-model-and-endpoint-lifecycle.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

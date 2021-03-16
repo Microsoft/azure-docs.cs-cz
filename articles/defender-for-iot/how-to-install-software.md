@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247586"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470683"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
@@ -42,12 +42,12 @@ Snímač programu Defender pro zařízení IoT se připojí k portu SPAN nebo k 
 
 K dispozici jsou následující zařízení montovatelné do racku:
 
-| **Typ nasazení** | **Firemní** | **Enterprise** | **SMB** |  |
+| **Typ nasazení** | **Firemní** | **Enterprise** | **SMB** | **Čára** |
 |--|--|--|--|--|
 | **Modelování** | HPE DL360 | Dell PowerEdge R340 XL | HPE DL20 | HPE DL20 |
 | **Porty monitorování** | až 15 RJ45 nebo 8 OPT | až 9 RJ45 nebo 6 OPT | až 8 RJ45 nebo 6 OPT | 4 RJ45 |
-| **Maximální šířka \* pásma* _ | 3 GB/s | 1 GB/s | 1 GB/s | 100 MB/s |
-| _ *Max. chráněná zařízení** | 30 000 | 10 000 | 15 000 | 1 000 |
+| **Maximální šířka pásma\*** | 3 GB/s | 1 GB/s | 1 GB/s | 100 MB/s |
+| **Maximální počet chráněných zařízení** | 30 000 | 10 000 | 15 000 | 1 000 |
 
 * Maximální kapacita šířky pásma se může lišit v závislosti na distribuci protokolu.
 
@@ -58,8 +58,8 @@ K dispozici jsou následující virtuální spotřebiče:
 | **Typ nasazení** | **Enterprise** | **SMB** | **Čára** |
 |--|--|--|--|
 | **Popis** | Virtuální zařízení pro podniková nasazení | Virtuální zařízení pro nasazení SMB | Virtuální zařízení pro nasazení na lince |
-| **Maximální šířka \* pásma* _ | 150 MB/s | 15 MB/s | 3 MB/s |
-| _ *Max. chráněná zařízení** | 3 000 | 300 | 100 |
+| **Maximální šířka pásma\*** | 150 MB/s | 15 MB/s | 3 MB/s |
+| **Maximální počet chráněných zařízení** | 3 000 | 300 | 100 |
 | **Typ nasazení** | Enterprise | SMB | Čára |
 | **Popis** | Virtuální zařízení pro podniková nasazení | Virtuální zařízení pro nasazení SMB | Virtuální zařízení pro nasazení na lince |
 
@@ -84,7 +84,7 @@ Přístup k souboru:
 
 1. Přihlaste se ke svému účtu Defender pro IoT.
 
-2. Otevřete stránku **snímač sítě** nebo místní **Konzola pro správu** a vyberte verzi, kterou chcete stáhnout.
+1. Otevřete stránku **snímač sítě** nebo místní **Konzola pro správu** a vyberte verzi, kterou chcete stáhnout.
 
 ### <a name="install-from-dvd"></a>Instalace z disku DVD
 
@@ -116,9 +116,9 @@ Příprava disku na klíč:
 
 1. Spusťte Rufus a vyberte **senzor ISO**.
 
-2. Připojte disk k tomuto přednímu panelu na klíč.
+1. Připojte disk k tomuto přednímu panelu na klíč.
 
-3. Nastavte systém BIOS serveru tak, aby se spouštěl z USB.
+1. Nastavte systém BIOS serveru tak, aby se spouštěl z USB.
 
 ## <a name="dell-poweredger340xl-installation"></a>Instalace Dell PowerEdgeR340XL
 
@@ -149,27 +149,27 @@ K instalaci zařízení Dell PowerEdge R340XL potřebujete:
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-front-panel.jpg" alt-text="Přední panel Dell PowerEdge R340":::
 
  1. Levý ovládací panel 
- 2. Optická jednotka (volitelné) 
- 3. Ovládací panel vpravo 
- 4. Informační značka 
- 5. Drives  
+ 1. Optická jednotka (volitelné) 
+ 1. Ovládací panel vpravo 
+ 1. Informační značka 
+ 1. Drives  
 
 ### <a name="dell-poweredge-r340-back-panel"></a>Panel back-R340 Dell PowerEdge
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-back-panel.jpg" alt-text="Panel back-R340 Dell PowerEdge.":::
 
 1. Sériový port 
-2. Port síťové karty (GB 1) 
-3. Port síťové karty (GB 1) 
-4. Poloviční výška – PCIe 
-5. Slot pro rozšiřující karty PCIe na celou výšku 
-6. Zdroj napájení – jednotka 1 
-7. Zdroj napájení 2. jednotka 
-8. Identifikace systému 
-9. Tlačítko portu kabelu indikátoru stavu systému (CMA) 
-10. Port USB 3,0 (2) 
-11. iDRAC9 vyhrazený síťový port 
-12. Port VGA 
+1. Port síťové karty (GB 1) 
+1. Port síťové karty (GB 1) 
+1. Poloviční výška – PCIe 
+1. Slot pro rozšiřující karty PCIe na celou výšku 
+1. Zdroj napájení – jednotka 1 
+1. Zdroj napájení 2. jednotka 
+1. Identifikace systému 
+1. Tlačítko portu kabelu indikátoru stavu systému (CMA) 
+1. Port USB 3,0 (2) 
+1. iDRAC9 vyhrazený síťový port 
+1. Port VGA 
 
 ### <a name="dell-bios-configuration"></a>Konfigurace Dell BIOS
 
@@ -189,28 +189,28 @@ Konfigurace systému Dell BIOS:
 
 1. [Konfigurace IP adresy iDRAC](#configure-idrac-ip-address)
 
-2. [Import konfiguračního souboru systému BIOS](#import-the-bios-configuration-file)
+1. [Import konfiguračního souboru systému BIOS](#import-the-bios-configuration-file)
 
 #### <a name="configure-idrac-ip-address"></a>Konfigurace IP adresy iDRAC
 
 1. Senzor zapněte.
 
-2. Pokud je operační systém již nainstalován, vyberte klávesu F2 a zadejte konfiguraci systému BIOS.
+1. Pokud je operační systém již nainstalován, vyberte klávesu F2 a zadejte konfiguraci systému BIOS.
 
-3. Vyberte **Nastavení iDRAC**.
+1. Vyberte **Nastavení iDRAC**.
 
-4. Vyberte **síť**.
+1. Vyberte **síť**.
 
    > [!NOTE]
    > Během instalace musíte nakonfigurovat výchozí IP adresu a heslo iDRAC uvedené v následujících krocích. Po instalaci tyto definice změníte.
 
-5. Změňte statickou IPv4 adresu na **10.100.100.250**.
+1. Změňte statickou IPv4 adresu na **10.100.100.250**.
 
-6. Změňte masku statické podsítě na **255.255.255.0**.
+1. Změňte masku statické podsítě na **255.255.255.0**.
 
    :::image type="content" source="media/tutorial-install-components/idrac-network-settings-screen-v2.png" alt-text="Snímek obrazovky zobrazující masku statické podsítě":::
 
-7. Vyberte **back**-  >  **Finish (Dokončit**).
+1. Vyberte **back**-  >  **Finish (Dokončit**).
 
 #### <a name="import-the-bios-configuration-file"></a>Import konfiguračního souboru systému BIOS
 
@@ -220,15 +220,15 @@ Tento článek popisuje, jak nakonfigurovat systém BIOS pomocí konfiguračníh
 
    :::image type="content" source="media/tutorial-install-components/idrac-port.png" alt-text="Snímek obrazovky předkonfigurovaného portu IP adres.":::
 
-2. Otevřete prohlížeč a zadejte **10.100.100.250** pro připojení k webovému rozhraní iDRAC.
+1. Otevřete prohlížeč a zadejte **10.100.100.250** pro připojení k webovému rozhraní iDRAC.
 
-3. Přihlaste se pomocí výchozích oprávnění správce Dell:
+1. Přihlaste se pomocí výchozích oprávnění správce Dell:
 
    - Uživatelské jméno: **root**
 
    - Heslo: **Calvin**
 
-4. Přihlašovací údaje zařízení jsou:
+1. Přihlašovací údaje zařízení jsou:
 
    - Uživatelské jméno: **xxx**
 
@@ -241,7 +241,7 @@ Tento článek popisuje, jak nakonfigurovat systém BIOS pomocí konfiguračníh
      > - Jste jediným uživatelem, který je aktuálně připojený k iDRAC.
      > - Systém není v nabídce systému BIOS.
 
-5. Přejít na konfigurační profil **konfiguračního**  >  **serveru**. Nastavte následující parametry:
+1. Přejít na konfigurační profil **konfiguračního**  >  **serveru**. Nastavte následující parametry:
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="Snímek obrazovky zobrazující konfiguraci vašeho profilu serveru.":::
 
@@ -252,9 +252,9 @@ Tento článek popisuje, jak nakonfigurovat systém BIOS pomocí konfiguračníh
    | Importovat součásti | Vyberte možnost **BIOS, síťová karta, RAID**. |
    | Maximum wait time | Vyberte **20 minut**. |
 
-6. Vyberte **Importovat**.
+1. Vyberte **Importovat**.
 
-7. Pokud chcete tento proces monitorovat, klikněte na  >  **fronta úloh** údržby.
+1. Pokud chcete tento proces monitorovat, klikněte na  >  **fronta úloh** údržby.
 
    :::image type="content" source="media/tutorial-install-components/view-the-job-queue.png" alt-text="Snímek obrazovky, který zobrazuje frontu úloh.":::
 
@@ -276,33 +276,33 @@ Postup ruční konfigurace:
 
    - Pokud je zařízení Defenderem pro zařízení IoT, přihlaste se pomocí **xxx** pro uživatelské jméno a **xxx** pro heslo.
 
-2. Po přístupu k systému BIOS přejděte do části **nastavení zařízení**.
+1. Po přístupu k systému BIOS přejděte do části **nastavení zařízení**.
 
-3. Zvolte konfiguraci řízenou pomocí RAID výběrem možnosti **integrovaný řadič RAID 1: Nástroj Dell PERC \<PERC H330 Adapter\> Configuration Utility**.
+1. Zvolte konfiguraci řízenou pomocí RAID výběrem možnosti **integrovaný řadič RAID 1: Nástroj Dell PERC \<PERC H330 Adapter\> Configuration Utility**.
 
-4. Vyberte možnost **Správa konfigurace**.
+1. Vyberte možnost **Správa konfigurace**.
 
-5. Vyberte **vytvořit virtuální disk**.
+1. Vyberte **vytvořit virtuální disk**.
 
-6. V poli **Vybrat úroveň RAID** vyberte možnost **RAID5**. Do pole **název virtuálního disku** zadejte **root** a vyberte **fyzické disky**.
+1. V poli **Vybrat úroveň RAID** vyberte možnost **RAID5**. Do pole **název virtuálního disku** zadejte **root** a vyberte **fyzické disky**.
 
-7. Vyberte možnost **zaškrtnout vše** a pak vyberte **použít změny** .
+1. Vyberte možnost **zaškrtnout vše** a pak vyberte **použít změny** .
 
-8. Vyberte **OK**.
+1. Vyberte **OK**.
 
-9. Posuňte se dolů a vyberte **vytvořit virtuální disk**.
+1. Posuňte se dolů a vyberte **vytvořit virtuální disk**.
 
-10. Zaškrtněte políčko **Potvrdit** a vyberte **Ano**.
+1. Zaškrtněte políčko **Potvrdit** a vyberte **Ano**.
 
-11. Vyberte **OK**.
+1. Vyberte **OK**.
 
-12. Vraťte se na hlavní obrazovku a vyberte **systém BIOS**.
+1. Vraťte se na hlavní obrazovku a vyberte **systém BIOS**.
 
-13. Vyberte **Nastavení spouštění**.
+1. Vyberte **Nastavení spouštění**.
 
-14. V možnosti **spouštěcí režim** vyberte **BIOS**.
+1. V možnosti **spouštěcí režim** vyberte **BIOS**.
 
-15. Vyberte **zpět** a pak výběrem možnosti **Dokončit** ukončete nastavení systému BIOS.
+1. Vyberte **zpět** a pak výběrem možnosti **Dokončit** ukončete nastavení systému BIOS.
 
 ### <a name="software-installation-dell-r340"></a>Instalace softwaru (Dell R340)
 
@@ -316,25 +316,25 @@ Instalace:
 
    - Připojte bitovou kopii ISO pomocí iDRAC. Po přihlášení k iDRAC vyberte virtuální konzolu a pak vyberte **virtuální Médium**.
 
-2. V části **mapový disk CD/DVD** vyberte **zvolit soubor**.
+1. V části **mapový disk CD/DVD** vyberte **zvolit soubor**.
 
-3. V otevřeném dialogovém okně vyberte soubor bitové kopie ISO verze pro tuto verzi.
+1. V otevřeném dialogovém okně vyberte soubor bitové kopie ISO verze pro tuto verzi.
 
-4. Vyberte tlačítko **připojit zařízení** .
+1. Vyberte tlačítko **připojit zařízení** .
 
    :::image type="content" source="media/tutorial-install-components/mapped-device-on-virtual-media-screen-v2.png" alt-text="Snímek obrazovky zobrazující mapované zařízení":::
 
-5. Médium je připojené. Vyberte **Zavřít**.
+1. Médium je připojené. Vyberte **Zavřít**.
 
-6. Spusťte zařízení. Pokud používáte iDRAC, můžete restartovat servery tak, že vyberete **ovládací tlačítko Consul** . Potom v **makrech klávesnice** vyberte tlačítko **použít** , ve kterém se spustí posloupnost kláves CTRL + ALT + DELETE.
+1. Spusťte zařízení. Pokud používáte iDRAC, můžete restartovat servery tak, že vyberete **ovládací tlačítko Consul** . Potom v **makrech klávesnice** vyberte tlačítko **použít** , ve kterém se spustí posloupnost kláves CTRL + ALT + DELETE.
 
-7. Vyberte **angličtinu**.
+1. Vyberte **angličtinu**.
 
-8. Vyberte **senzor – Release- \<version\> Enterprise**.
+1. Vyberte **senzor – Release- \<version\> Enterprise**.
 
    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Snímek obrazovky zobrazující výběr verze":::   
 
-9. Zadejte profil zařízení a vlastnosti sítě:
+1. Zadejte profil zařízení a vlastnosti sítě:
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje profil zařízení.":::   
 
@@ -348,13 +348,13 @@ Instalace:
    | **název hostitele zařízení:** | - |
    | **NÁZV** | - |
    | **IP adresa výchozí brány:** | - |
-   | **Vstupní rozhraní:** |  Systém vygeneruje seznam vstupních rozhraní za vás. Chcete-li zrcadlit vstupní rozhraní, zkopírujte všechny položky, které jsou uvedeny v seznamu, pomocí oddělovače čárky. Všimněte si, že není nutné konfigurovat rozhraní mostu. Tato možnost se používá jenom pro zvláštní případy použití. |
+   | **Vstupní rozhraní:** |  Systém vygeneruje seznam vstupních rozhraní za vás. Chcete-li zrcadlit vstupní rozhraní, zkopírujte všechny položky, které jsou uvedeny v seznamu, pomocí oddělovače čárky. Nemusíte konfigurovat rozhraní mostu. Tato možnost se používá jenom pro zvláštní případy použití. |
 
-10. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .  
+1. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .  
 
-11. Uložte ID zařízení a hesla. Tyto přihlašovací údaje budete potřebovat pro přístup k platformě při jejím prvním použití.
+1. Uložte ID zařízení a hesla. Tyto přihlašovací údaje budete potřebovat pro přístup k platformě při jejím prvním použití.
 
-12. Pokračujte výběrem **ENTER** .
+1. Pokračujte výběrem **ENTER** .
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE instalace DL20
 
@@ -389,7 +389,7 @@ Postup povolení a aktualizace hesla:
 
     :::image type="content" source="media/tutorial-install-components/hpe-proliant-screen-v2.png" alt-text="Snímek obrazovky zobrazující HPE okno":::
 
-2. Přechod do **systémových nástrojů systémové nástroje** konfigurace  >  **systému**  >  Možnosti síť **MOP 5 konfigurační nástroj**  >  **Možnosti sítě**.
+1. Přechod do **systémových nástrojů systémové nástroje** konfigurace  >  **systému**  >  Možnosti síť **MOP 5 konfigurační nástroj**  >  **Možnosti sítě**.
 
     :::image type="content" source="media/tutorial-install-components/system-configuration-window-v2.png" alt-text="Snímek obrazovky zobrazující okno Konfigurace systému":::
 
@@ -399,13 +399,13 @@ Postup povolení a aktualizace hesla:
     
     1.  Zadejte IP adresu, masku podsítě a IP adresu brány.
 
-3. Vyberte **F10: Save (Uložit**).
+1. Vyberte **F10: Save (Uložit**).
 
-4. Výběrem **klávesy ESC** se vraťte k **konfiguračnímu nástroji MOP 5** a pak vyberte **Správa uživatelů**.
+1. Výběrem **klávesy ESC** se vraťte k **konfiguračnímu nástroji MOP 5** a pak vyberte **Správa uživatelů**.
 
-5. Vyberte **Upravit/odebrat uživatele**. Správce je jediným definovaným výchozím uživatelem. 
+1. Vyberte **Upravit/odebrat uživatele**. Správce je jediným definovaným výchozím uživatelem. 
 
-6. Změňte výchozí heslo a vyberte **F10: Uložit**.
+1. Změňte výchozí heslo a vyberte **F10: Uložit**.
 
 ### <a name="configure-the-hpe-bios"></a>Konfigurace systému HPE BIOS
 
@@ -415,41 +415,41 @@ Konfigurace systému HPE BIOS:
 
 1. Vyberte **Systémové nástroje** systémové  >  **Konfigurace systém**  >  **BIOS/konfigurace platformy (RBSU)**.
 
-2. Ve formuláři **Konfigurace systému BIOS/platformy (RBSU)** vyberte možnost **Možnosti spuštění**.
+1. Ve formuláři **Konfigurace systému BIOS/platformy (RBSU)** vyberte možnost **Možnosti spuštění**.
 
-3. Změňte **režim spouštění** na **starší verzi režimu systému BIOS** a pak vyberte **F10: Uložit**.
+1. Změňte **režim spouštění** na **starší verzi režimu systému BIOS** a pak vyberte **F10: Uložit**.
 
-4. Dvojitým kliknutím na tlačítko **ESC** zavřete formulář **Konfigurace systému** .
+1. Dvojitým kliknutím na tlačítko **ESC** zavřete formulář **Konfigurace systému** .
 
 #### <a name="for-the-enterprise-appliance"></a>Pro podniková zařízení
 
 1. Vyberte **integrovaný RAID 1: HPE Smart Array P408i-konfigurace pole SR gen 10**  >    >  **vytvořit pole**.
 
-2. Ve formuláři **vytvořit pole** vyberte všechny možnosti. K dispozici jsou tři možnosti **podnikového** zařízení.
+1. Ve formuláři **vytvořit pole** vyberte všechny možnosti. K dispozici jsou tři možnosti **podnikového** zařízení.
 
 #### <a name="for-the-smb-appliance"></a>Pro zařízení SMB
 
 1. Vyberte **integrovaný RAID 1: HPE Smart Array P208i-konfigurace pole SR gen 10**  >    >  **vytvořit pole**.
 
-2. Vyberte **pokračovat k dalšímu formuláři**.
+1. Vyberte **pokračovat k dalšímu formuláři**.
 
-3. Ve formuláři **nastavit úroveň RAID** nastavte úroveň na **RAID 5** pro podniková nasazení a **RAID 1** pro nasazení SMB.
+1. Ve formuláři **nastavit úroveň RAID** nastavte úroveň na **RAID 5** pro podniková nasazení a **RAID 1** pro nasazení SMB.
 
-4. Vyberte **pokračovat k dalšímu formuláři**.
+1. Vyberte **pokračovat k dalšímu formuláři**.
 
-5. Do formuláře **popisek logické jednotky** zadejte **logickou jednotku 1**.
+1. Do formuláře **popisek logické jednotky** zadejte **logickou jednotku 1**.
 
-6. Vyberte **Odeslat změny**.
+1. Vyberte **Odeslat změny**.
 
-7. Ve formuláři **Odeslat** vyberte **zpět k hlavní nabídce**.
+1. Ve formuláři **Odeslat** vyberte **zpět k hlavní nabídce**.
 
-8. Vyberte **F10: Uložit** a dvakrát stiskněte klávesu **ESC** .
+1. Vyberte **F10: Uložit** a dvakrát stiskněte klávesu **ESC** .
 
-9. V okně **Systémové nástroje** vyberte **jednorázovou spouštěcí nabídku**.
+1. V okně **Systémové nástroje** vyberte **jednorázovou spouštěcí nabídku**.
 
-10. V **nabídce jednorázové spuštění** vyberte **starší systém BIOS One-Time spouštěcí nabídka**.
+1. V **nabídce jednorázové spuštění** vyberte **starší systém BIOS One-Time spouštěcí nabídka**.
 
-11. Zobrazí se **spouštěcí Windows ve starší verzi** a v oknech pro **přepsání spouštění** . Vyberte možnost přepsání při spuštění; například na prostředí CD-ROM, USB, HDD nebo rozhraní UEFI.
+1. Zobrazí se **spouštěcí Windows ve starší verzi** a v oknech pro **přepsání spouštění** . Vyberte možnost přepsání při spuštění; například na prostředí CD-ROM, USB, HDD nebo rozhraní UEFI.
 
     :::image type="content" source="media/tutorial-install-components/boot-override-window-one-v2.png" alt-text="Snímek obrazovky, který zobrazuje první okno přepisu spuštění.":::
 
@@ -462,19 +462,19 @@ Postup instalace softwaru:
 
 1. Připojte obrazovku a klávesnici k zařízení a pak se připojte k rozhraní příkazového řádku.
 
-2. Připojte na klíč externí disk CD nebo disk s bitovou kopií ISO, kterou jste stáhli ze stránky **aktualizace** v Defenderu pro IoT Portal.
+1. Připojte na klíč externí disk CD nebo disk s bitovou kopií ISO, kterou jste stáhli ze stránky **aktualizace** v Defenderu pro IoT Portal.
 
-3. Spusťte zařízení.
+1. Spusťte zařízení.
 
-4. Vyberte **angličtinu**.
+1. Vyberte **angličtinu**.
 
     :::image type="content" source="media/tutorial-install-components/select-english-screen.png" alt-text="Výběr angličtiny v okně rozhraní příkazového řádku":::
 
-5. Vyberte **senzor – Release- <version> Enterprise**.
+1. Vyberte **senzor – Release- <version> Enterprise**.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Obrazovka obrazovky pro výběr verze":::
 
-6. V Průvodci instalací definujte profil zařízení a vlastnosti sítě:
+1. V Průvodci instalací definujte profil zařízení a vlastnosti sítě:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje Průvodce instalací.":::
 
@@ -485,11 +485,11 @@ Postup instalace softwaru:
     | **Výchozí síťové parametry (obvykle jsou parametry poskytovány zákazníkem)** | **IP adresa sítě pro správu:** <br/> <br/>**název hostitele zařízení:** <br/>**NÁZV** <br/>**výchozí IP adresa brány:**|
     | **Vstupní rozhraní:** | Systém vygeneruje seznam vstupních rozhraní za vás.<br/><br/>Chcete-li zrcadlit vstupní rozhraní, zkopírujte všechny položky uvedené v seznamu pomocí oddělovače čárky: **eno5, eno3, eno1, eno6, eno4**<br/><br/>**Pro HPE DL20: do not list eno1, enp1s0f4u4 (rozhraní MOP)**<br/><br/>**Most**: není nutné konfigurovat rozhraní mostu. Tato možnost se používá jenom pro zvláštní případy použití. Pokračujte stisknutím klávesy **Enter**. |
 
-7. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .
+1. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .
 
-8. Uložte si ID a heslo zařízení. K prvnímu přístupu k platformě budete potřebovat přihlašovací údaje.
+1. Uložte si ID a heslo zařízení. K prvnímu přístupu k platformě budete potřebovat přihlašovací údaje.
 
-9. Pokračujte výběrem **ENTER** .
+1. Pokračujte výběrem **ENTER** .
 
 ## <a name="hpe-proliant-dl360-installation"></a>HPE instalace DL360
 
@@ -528,17 +528,17 @@ Instalace:
 
 1. Přihlaste se ke konzole MOP a pak klikněte pravým tlačítkem na obrazovku servery.
 
-2. Vyberte možnost **Konzola HTML5**.
+1. Vyberte možnost **Konzola HTML5**.
 
-3. V konzole nástroje vyberte ikonu CD a zvolte možnost CD/DVD.
+1. V konzole nástroje vyberte ikonu CD a zvolte možnost CD/DVD.
 
-4. Vyberte **místní soubor ISO**.
+1. Vyberte **místní soubor ISO**.
 
-5. V dialogovém okně vyberte příslušný soubor ISO.
+1. V dialogovém okně vyberte příslušný soubor ISO.
 
-6. Přejít na ikonu vlevo, vyberte možnost **napájení** a vyberte možnost **resetovat**.
+1. Přejít na ikonu vlevo, vyberte možnost **napájení** a vyberte možnost **resetovat**.
 
-7. Zařízení se restartuje a spustí se proces instalace senzoru.
+1. Zařízení se restartuje a spustí se proces instalace senzoru.
 
 ### <a name="software-installation-hpe-dl360"></a>Instalace softwaru (HPE DL360)
 
@@ -548,17 +548,17 @@ Instalace:
 
 1. Připojte obrazovku a klávesnici k zařízení a pak se připojte k rozhraní příkazového řádku.
 
-2. Připojte externí disk CD nebo disk k klíči s bitovou kopií ISO, kterou jste stáhli ze stránky **aktualizace** v Defenderu pro IoT Portal.
+1. Připojte externí disk CD nebo disk k klíči s bitovou kopií ISO, kterou jste stáhli ze stránky **aktualizace** v Defenderu pro IoT Portal.
 
-3. Spusťte zařízení.
+1. Spusťte zařízení.
 
-4. Vyberte **angličtinu**.
+1. Vyberte **angličtinu**.
 
-5. Vyberte **senzor – Release- <version> Enterprise**.
+1. Vyberte **senzor – Release- <version> Enterprise**.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Snímek obrazovky znázorňující výběr verze":::
 
-6. V Průvodci instalací definujte profil zařízení a vlastnosti sítě.
+1. V Průvodci instalací definujte profil zařízení a vlastnosti sítě.
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="Snímek obrazovky, který zobrazuje Průvodce instalací.":::
 
@@ -567,13 +567,13 @@ Instalace:
     | **Hardwarový profil** | Vyberte **firemní**. |
     | **Rozhraní pro správu** | **eno2** |
     | **Výchozí síťové parametry (poskytované zákazníkem)** | **IP adresa sítě pro správu:** <br/>**Maska podsítě:** <br/>**název hostitele zařízení:** <br/>**NÁZV** <br/>**výchozí IP adresa brány:**|
-    | **Vstupní rozhraní:**  | Systém vygeneruje seznam vstupních rozhraní za vás.<br/><br/>Chcete-li zrcadlit vstupní rozhraní, zkopírujte všechny položky, které jsou uvedeny v seznamu, pomocí oddělovače čárky.<br/><br/>Všimněte si, že není nutné konfigurovat rozhraní mostu. Tato možnost se používá jenom pro zvláštní případy použití. |
+    | **Vstupní rozhraní:**  | Systém vygeneruje seznam vstupních rozhraní za vás.<br/><br/>Chcete-li zrcadlit vstupní rozhraní, zkopírujte všechny položky, které jsou uvedeny v seznamu, pomocí oddělovače čárky.<br/><br/> Nemusíte konfigurovat rozhraní mostu. Tato možnost se používá jenom pro zvláštní případy použití. |
 
-7. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .
+1. Po asi 10 minutách se zobrazí dvě sady přihlašovacích údajů. Jedna je určena pro uživatele **CyberX** a jedna je pro uživatele **podpory** .
 
-8. Uložte si ID a heslo zařízení. K prvnímu přístupu k platformě budete potřebovat tato pověření.
+1. Uložte si ID a heslo zařízení. K prvnímu přístupu k platformě budete potřebovat tato pověření.
 
-9. Pokračujte výběrem **ENTER** .
+1. Pokračujte výběrem **ENTER** .
 
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>Instalace senzoru pro virtuální zařízení
 
@@ -586,7 +586,7 @@ Můžete nasadit virtuální počítač pro nástroj Defender pro IoT snímač v
 | **Malý podnik** | PROCESOR: 4 <br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 500 GB | Testovací nebo malé produkční prostředí | -  |
 | **Office** | PROCESOR: 4<br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 100 GB | Malá testovací prostředí | -  |
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ujistěte se, že máte následující položky:
 
@@ -602,13 +602,13 @@ Ujistěte se, že je hypervisor spuštěný.
 
 1. Přihlaste se k ESXi, zvolte příslušné **úložiště dat** a pak vyberte **Prohlížeč úložiště dat**.
 
-2. **Nahrajte** obrázek a vyberte **Zavřít**.
+1. **Nahrajte** obrázek a vyberte **Zavřít**.
 
-3. Přejít na **Virtual Machines** a pak vyberte **vytvořit/zaregistrovat virtuální počítač**.
+1. Přejít na **Virtual Machines** a pak vyberte **vytvořit/zaregistrovat virtuální počítač**.
 
-4. Vyberte **vytvořit nový virtuální počítač** a pak vyberte **Další**.
+1. Vyberte **vytvořit nový virtuální počítač** a pak vyberte **Další**.
 
-5. Přidejte název snímače a vyberte:
+1. Přidejte název snímače a vyberte:
 
    - Kompatibilita: **&lt; nejnovější verze &gt; ESXi**
 
@@ -616,15 +616,15 @@ Ujistěte se, že je hypervisor spuštěný.
 
    - Verze operačního systému hosta: **Ubuntu Linux (64 bitů)**
 
-6. Vyberte **Další**.
+1. Vyberte **Další**.
 
-7. Zvolte příslušné úložiště dat a vyberte **Další**.
+1. Zvolte příslušné úložiště dat a vyberte **Další**.
 
-8. Změňte parametry virtuálního hardwaru podle požadované architektury.
+1. Změňte parametry virtuálního hardwaru podle požadované architektury.
 
-9. V případě **jednotky CD/DVD 1** vyberte **soubor ISO úložiště dat** a vyberte soubor ISO, který jste nahráli dříve.
+1. V případě **jednotky CD/DVD 1** vyberte **soubor ISO úložiště dat** a vyberte soubor ISO, který jste nahráli dříve.
 
-10. Vyberte **Další** > **Dokončit**.
+1. Vyberte **Další** > **Dokončit**.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Vytvořit virtuální počítač (Hyper-V)
 
@@ -634,43 +634,43 @@ Vytvoření virtuálního počítače:
 
 1. Vytvořte virtuální disk ve Správci technologie Hyper-V.
 
-2. Vyberte **formát = VHDX**.
+1. Vyberte **formát = VHDX**.
 
-3. Vyberte **typ = dynamické rozbalování**.
+1. Vyberte **typ = dynamické rozbalování**.
 
-4. Zadejte název a umístění virtuálního pevného disku.
+1. Zadejte název a umístění virtuálního pevného disku.
 
-5. Zadejte požadovanou velikost (podle architektury).   
+1. Zadejte požadovanou velikost (podle architektury).   
 
-6. Zkontrolujte souhrn a vyberte **Dokončit**.
+1. Zkontrolujte souhrn a vyberte **Dokončit**.
 
-7. V nabídce **Akce** vytvořte nový virtuální počítač.
+1. V nabídce **Akce** vytvořte nový virtuální počítač.
 
-8. Zadejte název virtuálního počítače.
+1. Zadejte název virtuálního počítače.
 
-9. Vyberte možnost **zadat generaci generace**  >  **1**.
+1. Vyberte možnost **zadat generaci generace**  >  **1**.
 
-10. Zadejte přidělení paměti (podle architektury) a zaškrtněte políčko pro dynamickou paměť.
+1. Zadejte přidělení paměti (podle architektury) a zaškrtněte políčko pro dynamickou paměť.
 
-11. Nakonfigurujte adaptér sítě podle síťové topologie serveru.
+1. Nakonfigurujte adaptér sítě podle síťové topologie serveru.
 
-12. Připojte k virtuálnímu počítači soubor VHDX, který jste předtím vytvořili.
+1. Připojte k virtuálnímu počítači soubor VHDX, který jste předtím vytvořili.
 
-13. Zkontrolujte souhrn a vyberte **Dokončit**.
+1. Zkontrolujte souhrn a vyberte **Dokončit**.
 
-14. Pravým tlačítkem myši klikněte na nový virtuální počítač a vyberte **Nastavení**.
+1. Pravým tlačítkem myši klikněte na nový virtuální počítač a vyberte **Nastavení**.
 
-15. Vyberte **Přidat hardware** a přidejte nový síťový adaptér.
+1. Vyberte **Přidat hardware** a přidejte nový síťový adaptér.
 
-16. Vyberte virtuální přepínač, který se připojí k síti pro správu senzorů.
+1. Vyberte virtuální přepínač, který se připojí k síti pro správu senzorů.
 
-17. Přidělte prostředky procesoru (podle architektury).
+1. Přidělte prostředky procesoru (podle architektury).
 
-18. Připojte bitovou kopii ISO konzoly pro správu k virtuální jednotce DVD.
+1. Připojte bitovou kopii ISO konzoly pro správu k virtuální jednotce DVD.
 
-19. Spusťte virtuální počítač.
+1. Spusťte virtuální počítač.
 
-20. V nabídce **Akce** vyberte **připojit** a pokračujte v instalaci softwaru.
+2. V nabídce **Akce** vyberte **připojit** a pokračujte v instalaci softwaru.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Instalace softwaru (ESXi a Hyper-V)
 
@@ -680,11 +680,11 @@ Instalace:
 
 1. Otevřete konzolu virtuálního počítače.
 
-2. Virtuální počítač se spustí z image ISO a zobrazí se obrazovka pro výběr jazyka. Vyberte **angličtinu**.
+1. Virtuální počítač se spustí z image ISO a zobrazí se obrazovka pro výběr jazyka. Vyberte **angličtinu**.
 
-3. Vyberte požadovanou architekturu.
+1. Vyberte požadovanou architekturu.
 
-4. Zadejte profil zařízení a vlastnosti sítě:
+1. Zadejte profil zařízení a vlastnosti sítě:
 
     | Parametr | Konfigurace |
     | ----------| ------------- |
@@ -693,17 +693,17 @@ Instalace:
     | **Síťové parametry (poskytované zákazníkem)** | **IP adresa sítě pro správu:** <br/>**Maska podsítě:** <br/>**název hostitele zařízení:** <br/>**NÁZV** <br/>**Výchozí brána:** <br/>**Vstupní rozhraní:**|
     | **rozhraní mostu:** | Není nutné konfigurovat rozhraní mostu. Tato možnost je určena pouze pro zvláštní případy použití. |
 
-5. Zadáním **Y** potvrďte nastavení.
+1. Zadáním **Y** potvrďte nastavení.
 
-6. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Zkopírujte uživatelské jméno a heslo na bezpečném místě, protože jsou vyžadovány pro přihlášení a správu.
+1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Zkopírujte uživatelské jméno a heslo na bezpečném místě, protože jsou vyžadovány pro přihlášení a správu.
 
-   - **Podpora**: administrativní uživatel pro správu uživatelů.
+    - **Podpora**: administrativní uživatel pro správu uživatelů.
 
-   - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
+    - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
 
-7. Zařízení se restartuje.
+1. Zařízení se restartuje.
 
-8. Přístup ke konzole pro správu prostřednictvím dříve nakonfigurované IP adresy: `https://ip_address` .
+1. Přístup ke konzole pro správu prostřednictvím dříve nakonfigurované IP adresy: `https://ip_address` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Snímek obrazovky, který zobrazuje přístup ke konzole pro správu.":::
 
@@ -717,7 +717,7 @@ Místní virtuální počítač konzoly pro správu podporuje následující arc
 | Enterprise | PROCESOR: 4 <br/> Paměť: 8G RAM<br/> PEVNÝ DISK: 500 GB | Velká produkční prostředí |
 | Enterprise | PROCESOR: 4 <br/>Paměť: 8G RAM <br/> PEVNÝ DISK: 100 GB | Malá testovací prostředí | 
    
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ověřte následující:
 
@@ -735,15 +735,15 @@ K vytvoření virtuálního počítače (ESXi):
 
 1. Přihlaste se k ESXi, zvolte příslušné **úložiště dat** a pak vyberte **Prohlížeč úložiště dat**.
 
-2. Nahrajte obrázek a vyberte **Zavřít**.
+1. Nahrajte obrázek a vyberte **Zavřít**.
 
-3. Přejít na **Virtual Machines**.
+1. Přejít na **Virtual Machines**.
 
-4. Vyberte **vytvořit/zaregistrovat virtuální počítač**.
+1. Vyberte **vytvořit/zaregistrovat virtuální počítač**.
 
-5. Vyberte **vytvořit nový virtuální počítač** a vyberte **Další**.
+1. Vyberte **vytvořit nový virtuální počítač** a vyberte **Další**.
 
-6. Přidejte název snímače a vyberte:
+1. Přidejte název snímače a vyberte:
 
    - Režim \<latest ESXi version>
 
@@ -751,15 +751,15 @@ K vytvoření virtuálního počítače (ESXi):
 
    - Verze operačního systému hosta: Ubuntu Linux (64 bitů)
 
-7. Vyberte **Další**.
+1. Vyberte **Další**.
 
-8. Zvolte příslušné úložiště dat a vyberte **Další**.
+1. Zvolte příslušné úložiště dat a vyberte **Další**.
 
-9. Změňte parametry virtuálního hardwaru podle požadované architektury.
+1. Změňte parametry virtuálního hardwaru podle požadované architektury.
 
-10. V případě **jednotky CD/DVD 1** vyberte **soubor ISO úložiště dat** a vyberte soubor ISO, který jste nahráli dříve.
+1. V případě **jednotky CD/DVD 1** vyberte **soubor ISO úložiště dat** a vyberte soubor ISO, který jste nahráli dříve.
 
-11. Vyberte **Další** > **Dokončit**.
+1. Vyberte **Další** > **Dokončit**.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>Vytvořit virtuální počítač (Hyper-V)
 
@@ -767,91 +767,103 @@ Vytvoření virtuálního počítače pomocí technologie Hyper-V:
 
 1. Vytvořte virtuální disk ve Správci technologie Hyper-V.
 
-2. Vyberte formát **VHDX**.
+1. Vyberte formát **VHDX**.
 
-3. Vyberte **Další**.
+1. Vyberte **Další**.
 
-4. Vyberte typ **dynamického rozšiřování**.
+1. Vyberte typ **dynamického rozšiřování**.
 
-5. Vyberte **Další**.
+1. Vyberte **Další**.
 
-6. Zadejte název a umístění virtuálního pevného disku.
+1. Zadejte název a umístění virtuálního pevného disku.
 
-7. Vyberte **Další**.
+1. Vyberte **Další**.
 
-8. Zadejte požadovanou velikost (podle architektury).
+1. Zadejte požadovanou velikost (podle architektury).
 
-9. Vyberte **Další**.
+1. Vyberte **Další**.
 
-10. Zkontrolujte souhrn a vyberte **Dokončit**.
+1. Zkontrolujte souhrn a vyberte **Dokončit**.
 
-11. V nabídce **Akce** vytvořte nový virtuální počítač.
+1. V nabídce **Akce** vytvořte nový virtuální počítač.
 
-12. Vyberte **Další**.
+1. Vyberte **Další**.
 
-13. Zadejte název virtuálního počítače.
+1. Zadejte název virtuálního počítače.
 
-14. Vyberte **Další**.
+1. Vyberte **Další**.
 
-15. Vyberte **generaci** a nastavte ji na **1. generaci**.
+1. Vyberte **generaci** a nastavte ji na **1. generaci**.
 
-16. Vyberte **Další**.
+1. Vyberte **Další**.
 
-17. Zadejte přidělení paměti (podle architektury) a zaškrtněte políčko pro dynamickou paměť.
+1. Zadejte přidělení paměti (podle architektury) a zaškrtněte políčko pro dynamickou paměť.
 
-18. Vyberte **Další**.
+1. Vyberte **Další**.
 
-19. Nakonfigurujte adaptér sítě podle síťové topologie serveru.
+1. Nakonfigurujte adaptér sítě podle síťové topologie serveru.
 
-20. Vyberte **Další**.
+1. Vyberte **Další**.
 
-21. Připojte k virtuálnímu počítači soubor VHDX, který jste předtím vytvořili.
+1. Připojte k virtuálnímu počítači soubor VHDX, který jste předtím vytvořili.
 
-22. Vyberte **Další**.
+1. Vyberte **Další**.
 
-23. Zkontrolujte souhrn a vyberte **Dokončit**.
+1. Zkontrolujte souhrn a vyberte **Dokončit**.
 
-24. Pravým tlačítkem myši klikněte na nový virtuální počítač a pak vyberte **Nastavení**.
+1. Pravým tlačítkem myši klikněte na nový virtuální počítač a pak vyberte **Nastavení**.
 
-25. Vyberte **Přidat hardware** a přidejte nový adaptér pro **síťový adaptér**.
+1. Vyberte **Přidat hardware** a přidejte nový adaptér pro **síťový adaptér**.
 
-26. Pro **virtuální přepínač** vyberte přepínač, který se připojí k síti pro správu senzorů.
+1. Pro **virtuální přepínač** vyberte přepínač, který se připojí k síti pro správu senzorů.
 
-27. Přidělte prostředky procesoru (podle architektury).
+1. Přidělte prostředky procesoru (podle architektury).
 
-28. Připojte bitovou kopii ISO konzoly pro správu k virtuální jednotce DVD.
+1. Připojte bitovou kopii ISO konzoly pro správu k virtuální jednotce DVD.
 
-29. Spusťte virtuální počítač.
+1. Spusťte virtuální počítač.
 
-30. V nabídce **Akce** vyberte **připojit** a pokračujte v instalaci softwaru.
+1. V nabídce **Akce** vyberte **připojit** a pokračujte v instalaci softwaru.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Instalace softwaru (ESXi a Hyper-V)
 
-Spuštění virtuálního počítače spustí proces instalace z image ISO.
+Spuštění virtuálního počítače spustí proces instalace z image ISO. Pro zvýšení zabezpečení můžete vytvořit druhé síťové rozhraní v místní konzole pro správu. Jedno síťové rozhraní je vyhrazeno pro vaše uživatele a může podporovat konfiguraci brány pro směrované sítě. Druhé síťové rozhraní je vyhrazeno pro všechny připojené senzory v rámci rozsahu IP adres.
+
+Obě síťová rozhraní mají povolený uživatelský rozhraní (UI) a všechny funkce, které uživatelské rozhraní podporuje, budou k dispozici v sekundárním síťovém rozhraní, pokud není potřeba směrování. Vysoká dostupnost se spustí na sekundárním síťovém rozhraní.
+
+Pokud se rozhodnete nenasadit sekundární síťové rozhraní, budou všechny funkce k dispozici prostřednictvím primárního síťového rozhraní. 
 
 Postup instalace softwaru:
 
 1. Vyberte **angličtinu**.
 
-2. Vyberte požadovanou architekturu pro nasazení.
+1. Vyberte požadovanou architekturu pro nasazení.
 
-3. Definujte síťové rozhraní pro síť pro správu senzorů: rozhraní, IP adresu, podsíť, server DNS a výchozí bránu.
+1. Definujte síťové rozhraní pro síť pro správu senzorů: rozhraní, IP adresu, podsíť, server DNS a výchozí bránu.
 
-4. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
+1. Volitelné Přidejte druhé síťové rozhraní do místní konzoly pro správu.
+
+    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
+    
+    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
+    
+    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
+
+1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
 
   - **Podpora**: administrativní uživatel pro správu uživatelů.
 
   - **CyberX**: ekvivalent kořenového adresáře pro přístup k zařízení.
 
-5. Zařízení se restartuje.
+1. Zařízení se restartuje.
 
-6. Přístup ke konzole pro správu prostřednictvím dříve nakonfigurované IP adresy: `<https://ip_address>` .
+1. Přístup ke konzole pro správu prostřednictvím dříve nakonfigurované IP adresy: `<https://ip_address>` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-management-console-sign-in-screen.png" alt-text="Snímek obrazovky zobrazující přihlašovací obrazovku konzoly pro správu":::
 
 ## <a name="post-installation-validation"></a>Ověření po instalaci
 
-Chcete-li ověřit instalaci fyzického zařízení, je třeba provést několik testů. Stejný proces ověřování platí pro všechny typy zařízení.
+Chcete-li ověřit instalaci fyzického zařízení, je třeba provést mnoho testů. Stejný proces ověřování platí pro všechny typy zařízení.
 
 Proveďte ověření pomocí grafického uživatelského rozhraní nebo rozhraní příkazového řádku. Ověření je k dispozici pro **podporu** uživatelů a uživatele **CyberX**.
 
@@ -899,7 +911,7 @@ Ověření po instalaci musí zahrnovat následující testy:
   - Velikost zálohovací složky
   - Omezení složky pro zálohování
   - Kdy došlo k poslední záloze
-  - Kolik místa je k dispozici pro další záložní soubory
+  - Velikost místa pro nadbytečné záložní soubory
 
 - **ifconfig**: zobrazuje parametry pro fyzická rozhraní zařízení.
 
@@ -911,7 +923,7 @@ Přístup k nástroji:
 
 1. Přihlaste se ke senzoru pomocí přihlašovacích údajů uživatele **podpory** .
 
-2. V okně **nastavení systému** vyberte **Statistika systému** .
+1. V okně **nastavení systému** vyberte **Statistika systému** .
 
     :::image type="icon" source="media/tutorial-install-components/system-statistics-icon.png" border="false":::
 
@@ -923,13 +935,13 @@ Ověřte, že je systém v provozu a je spuštěný:
 
 1. Připojte se k rozhraní příkazového řádku pomocí terminálu pro Linux (například k disukázce) a **podpory** uživatelů.
 
-2. Zadejte `system sanity`.
+1. Zadejte `system sanity`.
 
-3. Ověřte, zda jsou všechny služby zelené (spuštěné).
+1. Ověřte, zda jsou všechny služby zelené (spuštěné).
 
     :::image type="content" source="media/tutorial-install-components/support-screen.png" alt-text="Snímek obrazovky, který zobrazuje spuštěné služby.":::
 
-4. Ověřte, že **je systém zapnutý. (prod)** Zobrazuje se v dolní části.
+1. Ověřte, že **je systém zapnutý. (prod)** Zobrazuje se v dolní části.
 
 **Test 2: Kontrola verze**
 
@@ -937,9 +949,9 @@ Ověřte, že se používá správná verze:
 
 1. Připojte se k rozhraní příkazového řádku pomocí terminálu pro Linux (například k disukázce) a **podpory** uživatelů.
 
-2. Zadejte `system version`.
+1. Zadejte `system version`.
 
-3. Ověřte, zda se zobrazí správná verze.
+1. Ověřte, zda se zobrazí správná verze.
 
 **Test 3: ověření sítě**
 
@@ -947,9 +959,9 @@ Ověřte, že jsou spuštěná všechna vstupní rozhraní nakonfigurovaná běh
 
 1. Připojte se k rozhraní příkazového řádku pomocí terminálu pro Linux (například k disukázce) a **podpory** uživatelů.
 
-2. Zadejte `network list` (ekvivalent příkazu pro Linux `ifconfig` ).
+1. Zadejte `network list` (ekvivalent příkazu pro Linux `ifconfig` ).
 
-3. Ověřte, zda se zobrazí požadovaná vstupní rozhraní. Například pokud jsou nainstalovány dva čtyřjádrové síťové adaptéry Copper, v seznamu musí být 10 rozhraní.
+1. Ověřte, zda se zobrazí požadovaná vstupní rozhraní. Například pokud jsou nainstalovány dva čtyřjádrové síťové adaptéry Copper, v seznamu musí být 10 rozhraní.
 
     :::image type="content" source="media/tutorial-install-components/interface-list-screen.png" alt-text="Snímek obrazovky, který zobrazuje seznam rozhraní.":::
 
@@ -959,17 +971,17 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
 1. Připojte přenosný počítač k portu pro správu (**GB1**) pomocí kabelu Ethernet.
 
-2. Zadejte adresu síťové karty přenosného počítače, která bude ve stejném rozsahu jako zařízení.
+1. Zadejte adresu síťové karty přenosného počítače, která bude ve stejném rozsahu jako zařízení.
 
     :::image type="content" source="media/tutorial-install-components/access-to-ui.png" alt-text="Snímek obrazovky, který zobrazuje přístup pro správu k uživatelskému rozhraní.":::
 
-3. Pomocí příkazů otestujte IP adresu zařízení z přenosného počítače, aby se ověřilo připojení (výchozí: 10.100.10.1).
+1. Pomocí příkazů otestujte IP adresu zařízení z přenosného počítače, aby se ověřilo připojení (výchozí: 10.100.10.1).
 
-4. Otevřete prohlížeč Chrome na přenosném počítači a zadejte IP adresu zařízení.
+1. Otevřete prohlížeč Chrome na přenosném počítači a zadejte IP adresu zařízení.
 
-5. V okně **připojení není soukromé** , vyberte **Upřesnit** a pokračujte.
+1. V okně **připojení není soukromé** , vyberte **Upřesnit** a pokračujte.
 
-6. Test je úspěšný, když se zobrazí obrazovka přihlášení k programu Defender for IoT.
+1. Test je úspěšný, když se zobrazí obrazovka přihlášení k programu Defender for IoT.
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Snímek obrazovky zobrazující přístup ke konzole pro správu":::
 
@@ -979,9 +991,9 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
 1. Ověřte, že se počítač, ke kterému se pokoušíte připojit, nachází ve stejné síti jako zařízení.
 
-2. Ověřte, zda je síť grafického uživatelského rozhraní připojena k portu pro správu.
+1. Ověřte, zda je síť grafického uživatelského rozhraní připojena k portu pro správu.
 
-3. Otestujte IP adresu zařízení. Pokud není k dispozici nástroj test:
+1. Otestujte IP adresu zařízení. Pokud není k dispozici nástroj test:
 
    1. Připojte monitor a klávesnici k zařízení.
 
@@ -991,7 +1003,7 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
       :::image type="content" source="media/tutorial-install-components/network-list.png" alt-text="Snímek obrazovky, který zobrazuje seznam sítí.":::
 
-4. Pokud jsou parametry sítě nesprávně nakonfigurované, změňte je pomocí následujícího postupu:
+1. Pokud jsou parametry sítě nesprávně nakonfigurované, změňte je pomocí následujícího postupu:
 
    1. Použijte příkaz `network edit-settings` .
 
@@ -1007,17 +1019,17 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
    1. Chcete-li použít nastavení, vyberte **Y**.
 
-5. Po restartování se připojte pomocí přihlašovacích údajů uživatele podpory a pomocí `network list` příkazu ověřte, že se parametry změnily.
+1. Po restartování se připojte pomocí přihlašovacích údajů uživatele podpory a pomocí `network list` příkazu ověřte, že se parametry změnily.
 
-6. Zkuste znovu provést test a znovu se připojte z grafického uživatelského rozhraní.
+1. Zkuste znovu provést test a znovu se připojte z grafického uživatelského rozhraní.
 
 ### <a name="the-appliance-isnt-responding"></a>Zařízení nereaguje.
 
 1. Připojte monitor a klávesnici k zařízení nebo použijte výstup pro vzdálené připojení k rozhraní příkazového řádku.
 
-2. Přihlaste se pomocí přihlašovacích údajů uživatele **podpory** .
+1. Přihlaste se pomocí přihlašovacích údajů uživatele **podpory** .
 
-3. Použijte `system sanity` příkaz a ověřte, zda jsou spuštěné všechny procesy.
+1. Použijte `system sanity` příkaz a ověřte, zda jsou spuštěné všechny procesy.
 
     :::image type="content" source="media/tutorial-install-components/system-sanity-screen.png" alt-text="Snímek obrazovky zobrazující příkaz System správnosti":::
 
@@ -1027,33 +1039,33 @@ V případě jakýchkoli dalších problémů kontaktujte [Podpora Microsoftu](h
 
 ### <a name="configure-a-span-port-on-an-existing-vswitch"></a>Konfigurace portu SPAN na existujícím virtuálním přepínači
 
-Virtuální přepínač nemá možnosti zrcadlení, ale k implementaci portu SPAN můžete použít jednoduché alternativní řešení.
+Virtuální přepínač nemá možnosti zrcadlení, k implementaci portu SPAN ale můžete použít alternativní řešení.
 
 Konfigurace portu SPAN:
 
 1. Otevřete vlastnosti virtuálního přepínače.
 
-2. Vyberte **Přidat**.
+1. Vyberte **Přidat**.
 
-3. Vyberte **virtuální počítač**  >  **Další**.
+1. Vyberte **virtuální počítač**  >  **Další**.
 
-4. Vložte **síť** s popiskem sítě, vyberte položku **ID sítě VLAN**  >  **vše** a potom vyberte možnost **Další**.
+1. Vložte **síť** s popiskem sítě, vyberte položku **ID sítě VLAN**  >  **vše** a potom vyberte možnost **Další**.
 
-5. Vyberte **Dokončit**.
+1. Vyberte **Dokončit**.
 
-6. Vyberte **rozsah sítě** > **Upravit*.
+1. Vyberte **rozsah sítě** > **Upravit*.
 
-7. Vyberte **zabezpečení** a ověřte, že zásada **promiskuitního režimu** je nastavená na režim **přijetí** .
+1. Vyberte **zabezpečení** a ověřte, že zásada **promiskuitního režimu** je nastavená na režim **přijetí** .
 
-8. Vyberte **OK** a pak vyberte **Zavřít** a zavřete vlastnosti virtuálního přepínače.
+1. Vyberte **OK** a pak vyberte **Zavřít** a zavřete vlastnosti virtuálního přepínače.
 
-9. Otevřete vlastnosti **virtuálního počítače XSense** .
+1. Otevřete vlastnosti **virtuálního počítače XSense** .
 
-10. V případě **síťového adaptéru 2** vyberte síť **rozsahu** .
+1. V případě **síťového adaptéru 2** vyberte síť **rozsahu** .
 
-11. Vyberte **OK**.
+1. Vyberte **OK**.
 
-12. Připojte se ke senzoru a ověřte, že zrcadlení funguje.
+1. Připojte se ke senzoru a ověřte, že zrcadlení funguje.
 
 ## <a name="appendix-b-access-sensors-from-the-on-premises-management-console"></a>Příloha B: snímače přístupu z místní konzoly pro správu
 
@@ -1065,11 +1077,11 @@ Postup povolení tunelového propojení:
 
 1. Přihlaste se k rozhraní příkazového řádku místní konzoly pro správu pomocí **CyberX** nebo **podpory** přihlašovacích údajů uživatele.
 
-2. Zadejte `sudo cyberx-management-tunnel-enable`.
+1. Zadejte `sudo cyberx-management-tunnel-enable`.
 
-3. Stiskněte klávesu **Enter**.
+1. Stiskněte klávesu **Enter**.
 
-4. Zadejte `--port 10000`.
+1. Zadejte `--port 10000`.
 
 ### <a name="next-steps"></a>Další kroky
 

@@ -3,15 +3,15 @@ title: Konfigurace průběžného nasazování
 description: Naučte se, jak povolit CI/CD pro Azure App Service z GitHubu, BitBucket, Azure Repos nebo jiných úložišť. Vyberte kanál sestavení, který vyhovuje vašim potřebám.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564951"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470264"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do Azure App Service
 
@@ -116,6 +116,8 @@ Poskytovatele sestavení akcí GitHubu můžete přizpůsobit následujícími z
 - Místo profilu publikování nasaďte pomocí [instančního objektu ve službě](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) Azure Active Directory.
 
 #### <a name="authenticate-with-a-service-principal"></a>Ověřování pomocí instančního objektu
+
+Tato volitelná konfigurace nahrazuje výchozí ověřování pomocí profilů publikování ve vygenerovaném souboru pracovního postupu.
 
 1. Vygenerujte instanční objekt pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). V následujícím příkladu nahraďte *\<subscription-id>* , *\<group-name>* a *\<app-name>* vlastními hodnotami:
 

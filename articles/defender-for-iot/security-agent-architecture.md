@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: de8c52372b2ef92dcf2abe357a40ef8947439a8a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449233"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493952"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Rychlý Start: Referenční architektura agenta zabezpečení
 
@@ -57,7 +57,7 @@ Defender for IoT nabízí různé agenty instalačního programu pro 32 bitovýc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku získáte základní přehled o programu Defender pro architekturu modulu zabezpečení IoT a dostupné instalační programy.
+V tomto článku máte přehled o programu Defender pro IoT Defender – IoT-Micro-agent a k dostupným instalačním programům.
 
 Pokud chcete pokračovat v seznámení s Defenderem pro nasazení IoT, postupujte podle následujících článků:
 

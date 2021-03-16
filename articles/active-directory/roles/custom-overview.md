@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742042"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466758"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Přehled řízení přístupu na základě role v Azure Active Directory
 
@@ -60,7 +60,7 @@ Přiřazení role je prostředek služby Azure AD, který připojuje *definici r
 - Definice role
 - Obor prostředku
 
-[Přiřazení rolí můžete vytvořit](custom-create.md) pomocí Azure Portal, Azure AD PowerShellu nebo Graph API. Můžete také [Zobrazit přiřazení vlastní role](custom-view-assignments.md#view-the-assignments-of-a-role).
+[Přiřazení rolí můžete vytvořit](custom-create.md) pomocí Azure Portal, Azure AD PowerShellu nebo Graph API. Můžete také [Zobrazit seznam přiřazení rolí](view-assignments.md).
 
 Následující diagram znázorňuje příklad přiřazení role. V tomto příkladu byla uživateli Novák přiřazena vlastní role správce registrace aplikace v oboru registrace aplikace Contoso widget Builder. Přiřazení uděluje pracovníkovi oprávnění role správce registrace aplikace jenom pro tuto konkrétní registraci aplikace.
 
@@ -89,4 +89,4 @@ Používání předdefinovaných rolí ve službě Azure AD je bezplatné, zatí
 
 - [Seznámení s rolemi Azure AD](concept-understand-roles.md)
 - Vytváření přiřazení vlastních rolí pomocí [Azure Portal, Azure AD PowerShellu a Graph API](custom-create.md)
-- [Zobrazení přiřazení pro vlastní roli](custom-view-assignments.md)
+- [Zobrazení seznamu přiřazení rolí](view-assignments.md)

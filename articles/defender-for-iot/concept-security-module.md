@@ -1,6 +1,6 @@
 ---
-title: Modul zabezpečení a vlákna zařízení
-description: Přečtěte si o konceptu nevláken modulu zabezpečení a o tom, jak se používají v programu Defender pro IoT.
+title: Defender – IoT-Micro-agent a vlákna zařízení
+description: Přečtěte si o konceptu programu Defender – IoT-Micro – vlákna a o tom, jak se používají v programu Defender pro IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 552da329b90b102a13ef53158ec81be87684c1fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522916"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493182"
 ---
-# <a name="security-module"></a>Modul zabezpečení
+# <a name="defender-iot-micro-agent"></a>Defender – IoT-Micro Agent
 
 Tento článek vysvětluje, jak Defender for IoT používá vlákna a moduly zařízení.
 
@@ -32,15 +32,15 @@ Defender for IoT nabízí úplnou integraci s vaší stávající platformou spr
 
 Přečtěte si další informace o pojmu [nevláken zařízení](../iot-hub/iot-hub-devguide-device-twins.md) v Azure IoT Hub.
 
-## <a name="security-module-twins"></a>Modul zabezpečení je nevlákenný.
+## <a name="defender-iot-micro-agent-twins"></a>Defender – IoT-mikro-agenti vlákna
 
-Defender for IoT udržuje pro každé zařízení v této službě dvojitou bezpečnostní modul.
-Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé konkrétní zařízení ve vašem řešení.
-Vlastnosti zabezpečení zařízení se udržují ve vyhrazeném modulu zabezpečení, který je v bezpečí pro bezpečnější komunikaci a povolování aktualizací a údržby, které vyžadují méně prostředků.
+Defender for IoT udržuje pro každé zařízení v této službě vlákna v programu IoT-IoT-Micro.
+Program Defender-IoT-mikro-agent obsahuje všechny informace týkající se zabezpečení zařízení pro každé konkrétní zařízení ve vašem řešení.
+Vlastnosti zabezpečení zařízení se udržují ve vyhrazeném programu Defender – IoT-mikro-Agent pro bezpečnější komunikaci a pro povolení aktualizací a údržby, které vyžadují méně prostředků.
 
-Informace o tom, jak vytvořit, přizpůsobit a nakonfigurovat vlákna, najdete v tématu [vytvoření vlákna zabezpečení](quickstart-create-security-twin.md) a [Konfigurace agentů zabezpečení](how-to-agent-configuration.md) . Další informace o pojmu nevláken modulu v IoT Hub najdete v tématu [Principy vláken modulů](../iot-hub/iot-hub-devguide-module-twins.md) .
+Další informace o tom, jak vytvořit, přizpůsobit a nakonfigurovat [](how-to-agent-configuration.md) vlastníci, najdete v tématu [vytvoření programu Defender-IoT-Micro-The-IoT-agent s dvojitou](quickstart-create-security-twin.md) posloupností Další informace o pojmu nevláken modulu v IoT Hub najdete v tématu [Principy vláken modulů](../iot-hub/iot-hub-devguide-module-twins.md) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 - [Přehled programu Defender for IoT](overview.md)
 - [Nasazení agentů zabezpečení](how-to-deploy-agent.md)

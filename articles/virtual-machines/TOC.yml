@@ -241,6 +241,8 @@
               href: hb-series.md
             - name: Řada HBv2
               href: hbv2-series.md
+            - name: HBv3-Series
+              href: hbv3-series.md
             - name: Řada HC
               href: hc-series.md
         - name: Kvóty virtuálních procesorů

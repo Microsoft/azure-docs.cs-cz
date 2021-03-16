@@ -3,12 +3,12 @@ title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466724"
+ms.locfileid: "103471673"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -76,8 +76,8 @@ Toto pravidlo bude platit jenom pro výstrahy pro vybrané typy prostředků.
 Například **typ prostředku = "Virtual Machines"** znamená, že pravidlo bude platit pouze pro výstrahy na virtuálních počítačích.
 * **ID pravidla výstrahy**  
 Toto pravidlo bude platit jenom pro výstrahy přicházející z konkrétního pravidla výstrahy. Hodnota by měla být Správce prostředků ID pravidla výstrahy.  
-Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.
-Můžete získat správné ID pravidla upozornění uvedením pravidel upozornění z rozhraní příkazového řádku nebo otevřením konkrétního pravidla výstrahy na portálu, kliknutím na tlačítko Vlastnosti a zkopírováním hodnoty ID prostředku.
+Například **pravidlo upozornění ID = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-Latency"** znamená, že toto pravidlo bude platit pouze pro výstrahy přicházející z pravidla upozornění metriky rozhraní API-latence.  
+_Poznámka: můžete získat správné ID pravidla upozornění uvedením pravidel upozornění z rozhraní příkazového řádku nebo otevřením konkrétního pravidla výstrahy na portálu, kliknutím na vlastnosti a zkopírováním hodnoty ID prostředku._
 * **Podmínka monitorování**  
 Toto pravidlo bude platit pouze pro události výstrah se zadanou podmínkou monitorování – buď **aktivováno** , nebo **Vyřešeno**.
 * **Popis**  

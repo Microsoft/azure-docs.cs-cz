@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a1651ef1b49ecedb8070f32c56e9d23a0f8fd0da
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201591"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494491"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -110,7 +110,8 @@ Ukázkové příkazy najdete v některém z těchto článků.
 |--------|-----------|
 |Azure Blob Storage |[Nahrání souborů do Azure Blob Storage](storage-use-azcopy-blobs-upload.md)<br><br>[Stažení objektů BLOB z Azure Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Kopírování objektů BLOB mezi účty úložiště Azure](storage-use-azcopy-blobs-copy.md)<br><br>[Synchronizace s Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)|
-|Amazon S3|[Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)|
+|Amazon S3|[Kopírovat data z Amazon S3 do Azure Storage](storage-use-azcopy-s3.md)|
+|Cloudové úložiště Googlu|[Kopírování dat z Google Cloud Storage do Azure Storage (Preview)](storage-use-azcopy-google-cloud.md)|
 |Azure Stack úložiště|[Přenos dat pomocí úložiště AzCopy a Azure Stack](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Použití ve skriptu

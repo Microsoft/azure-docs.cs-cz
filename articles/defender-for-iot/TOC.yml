@@ -35,7 +35,7 @@
         - name: Sestavení programu Defender pro IoT Micro Agent ze zdrojového kódu (Preview)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
-        - name: Konfigurace modulu zabezpečení pro Azure RTO
+        - name: Konfigurace programu Defender – IoT-Micro-Agent pro Azure RTO
           href: quickstart-azure-rtos-security-module.md
         - name: Přidání prostředků Azure do řešení IoT
           displayName: 'resources, monitored, resource'
@@ -79,10 +79,10 @@
           href: concept-recommendations.md
         - name: Klasický
           items:
-            - name: Modul zabezpečení
-              displayName: 'device twins, security module twin'
+            - name: Defender – IoT-Micro Agent
+              displayName: 'device twins, Defender-IoT-micro-agent twin'
               href: concept-security-module.md
-            - name: Modul zabezpečení hraničních zařízení
+            - name: Edge Defender – IoT-Micro Agent
               href: security-edge-architecture.md
             - name: Agenti zabezpečení
               href: overview-security-agents.md
@@ -95,7 +95,7 @@
             - name: Základní plán zabezpečení Azure pro Azure Defender pro IoT
               displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: Klasická agregace událostí modulu zabezpečení
+            - name: Defender – agregace událostí v programu IoT-Micro-Agent
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
             - name: Výstrahy zabezpečení založené na agentech
@@ -253,14 +253,14 @@
         - name: Vytváření vlastních výstrah
           displayName: security group
           href: quickstart-create-custom-alerts.md
-        - name: Modul zabezpečení pro Azure RTOS
+        - name: Defender – IoT-Micro-Agent pro Azure RTO
           href: iot-security-azure-rtos.md
           items:
-            - name: Práce s modulem zabezpečení pro Azure RTOS
+            - name: Práce s Defenderem – IoT-Micro-Agent pro Azure RTO
               href: how-to-azure-rtos-security-module.md
-            - name: Principy modulu zabezpečení pro Azure RTOS
+            - name: Vysvětlení programu Defender-IoT-Micro-Agent pro Azure RTO
               href: concept-rtos-security-module.md
-            - name: Upozornění a doporučení modulu zabezpečení pro Azure RTOS
+            - name: Defender – IoT-Micro-Agent pro Azure RTO – výstrahy a doporučení
               href: concept-rtos-security-alerts-recommendations.md
         - name: Klasický
           items:
@@ -282,7 +282,7 @@
                   href: azure-iot-security-local-configuration-c.md
                 - name: Místní konfigurace C#
                   href: azure-iot-security-local-configuration-csharp.md
-            - name: Nasazení modulu zabezpečení hraničních zařízení
+            - name: Nasazení Edge Defenderu – IoT-Micro-Agent
               href: how-to-deploy-edge.md
             - name: Konfigurace agentů zabezpečení
               displayName: property
@@ -319,7 +319,7 @@
           href: resources-frequently-asked-questions.md
     - name: Řešení založená na agentech pro tvůrce zařízení
       items:
-        - name: Rozhraní API modulu zabezpečení pro Azure RTOS
+        - name: Defender – IoT-Micro-Agent pro Azure RTO API
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Nejčastější dotazy – agent
@@ -344,7 +344,7 @@
           href: ../security-center/
         - name: Dokumentace k zabezpečení Azure
           href: ../security/index.yml
-        - name: Modul zabezpečení Azure RTOS na Stack Overflow
+        - name: Azure RTO Defender – IoT-Micro-Agent na Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Blog věnovaný zabezpečení, ochraně osobních údajů a dodržování předpisů v Azure IoT'
           href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

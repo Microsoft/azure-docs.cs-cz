@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082762"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471721"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Řešení potíží s cílovým úložištěm a konfigurací serveru NFS
 
@@ -64,7 +64,7 @@ Různé systémy úložiště umožňují přístup k tomuto přístupu pomocí 
 Pokud používáte pravidla exportu, pamatujte, že mezipaměť může použít několik různých IP adres z podsítě mezipaměti. Povolí přístup z celé řady možných IP adres podsítě.
 
 > [!NOTE]
-> Ve výchozím nastavení mezipaměť prostředí Azure HPC squashes root Access. Podrobnosti najdete v tématu [Konfigurace dalších nastavení mezipaměti](configuration.md#configure-root-squash) .
+> I když mezipaměť vyžaduje kořenový přístup k back-endovému úložnému systému, můžete omezit přístup pro klienty, kteří se připojují přes mezipaměť. Podrobnosti najdete v tématu [řízení přístupu klienta](access-policies.md#root-squash) .
 
 Spolupracujte se svým dodavatelem úložiště NAS, abyste povolili správnou úroveň přístupu pro mezipaměť.
 

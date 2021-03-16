@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325770"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466367"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -23,7 +23,7 @@ Podporují se všechny veřejné regiony a oblasti svrchovaného centra, s výji
 
 - Při přesunu trezoru mezi skupinami prostředků jsou zdrojové i cílové skupiny prostředků zamčené, aby se zabránilo operacím zápisu a odstranění. Další informace najdete v tomto [článku](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Pouze předplatné správce má oprávnění k přesunu trezoru.
-- V případě přesunu trezorů mezi předplatnými musí být cílové předplatné umístěno ve stejném tenantovi jako zdrojové předplatné a jeho stav by měl být povolen.
+- Pro přesun trezorů mezi předplatnými se musí cílové předplatné nacházet ve stejném tenantovi jako zdrojové předplatné a jeho stav musí být povolený. Pokud chcete přesunout trezor do jiného adresáře služby Azure AD, přečtěte si článek [přenos předplatného do jiného adresáře](../role-based-access-control/transfer-subscription.md) a [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md#recovery-services-vault).
 - Musíte mít oprávnění k provádění operací zápisu v cílové skupině prostředků.
 - Přesun trezoru mění jenom skupinu prostředků. Trezor Recovery Services se bude nacházet ve stejném umístění a nedá se změnit.
 - V jednom okamžiku můžete přesunout jenom jeden Recovery Services trezor pro oblast.
@@ -48,7 +48,7 @@ Podporují se všechny veřejné regiony a oblasti svrchovaného centra, s výji
 
 Přesunutí trezoru Recovery Services a přidružených prostředků do jiné skupiny prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam **trezorů Recovery Services** a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
    ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ Přesunutí trezoru Recovery Services a přidružených prostředků do jiné sk
 
 Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do jiného předplatného.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam trezorů Recovery Services a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
     ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

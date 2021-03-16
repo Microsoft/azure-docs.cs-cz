@@ -1,19 +1,19 @@
 ---
 title: Pracovní prostory Azure synapse Analytics pro data exfiltrace Protection
 description: Tento článek Vysvětlete data exfiltrace Protection ve službě Azure synapse Analytics.
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71210cdcc2b3758a59a1b41816e6468556e94808
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e4067d5acf55f94cd46e629792312af1547c5901
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518256"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489369"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Pracovní prostory Azure synapse Analytics pro data exfiltrace Protection
 Tento článek Vysvětlete data exfiltrace Protection ve službě Azure synapse Analytics.
@@ -25,7 +25,7 @@ Pracovní prostory Azure synapse Analytics podporují povolení ochrany dat exfi
 >Po vytvoření pracovního prostoru nemůžete změnit konfiguraci pracovního prostoru pro spravovanou virtuální síť a ochranu dat exfiltrace.
 
 ## <a name="managing-synapse-workspace-data-egress-to-approved-targets"></a>Správa odchozího přenosu dat v pracovním prostoru synapse do schválených cílů
-Po vytvoření pracovního prostoru s povoleným datovým exfiltrace můžou vlastníci prostředku pracovního prostoru spravovat seznam schválených tenantů Azure AD pro daný pracovní prostor. Uživatelé s [oprávněním](./synapse-workspace-access-control-overview.md) k pracovnímu prostoru můžou pomocí nástroje synapse Studio vytvořit spravované požadavky na připojení privátního koncového bodu k prostředkům v autorizovaných klientech Azure AD v pracovním prostoru. Vytvoření spravovaného privátního koncového bodu se zablokuje, pokud se uživatel pokusí vytvořit připojení privátního koncového bodu k prostředku v neschváleném tenantovi.
+Po vytvoření pracovního prostoru s povolenou službou data exfiltrace Protection můžou vlastníci prostředku pracovního prostoru spravovat seznam schválených tenantů Azure AD pro daný pracovní prostor. Uživatelé s [oprávněním](./synapse-workspace-access-control-overview.md) k pracovnímu prostoru můžou pomocí nástroje synapse Studio vytvořit spravované požadavky na připojení privátního koncového bodu k prostředkům v autorizovaných klientech Azure AD v pracovním prostoru. Vytvoření spravovaného privátního koncového bodu se zablokuje, pokud se uživatel pokusí vytvořit připojení privátního koncového bodu k prostředku v neschváleném tenantovi.
 
 ## <a name="sample-workspace-with-data-exfiltration-protection-enabled"></a>Ukázkový pracovní prostor s povolenou službou data exfiltrace Protection
 Využijte příklad k ilustraci ochrany exfiltrace dat pro pracovní prostory synapse. Společnost Contoso má prostředky Azure v Tenantovi a a klientovi B a je potřeba, aby se tyto prostředky připojovaly bezpečně. V Tenantovi se vytvořil pracovní prostor synapse A s klientem B se přidal jako schválený tenant služby Azure AD. Diagram zobrazuje připojení privátních koncových bodů k Azure Storage účtům v Tenantovi a a Tenantovi B, které schválili vlastníci účtu úložiště. Diagram také ukazuje vytvoření blokovaného privátního koncového bodu. Vytvoření tohoto privátního koncového bodu bylo zablokováno, protože cílí na účet Azure Storage v tenantovi Azure AD společnosti Fabrikam, což není schválený tenant služby Azure AD pro pracovní prostor společnosti Contoso. 

@@ -8,14 +8,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366598"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489909"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Každé zařízení IoT Edge spouští alespoň dva moduly: $edgeAgent a $edgeHub, které jsou součástí modulu runtime IoT Edge. Zařízení IoT Edge může spustit více dalších modulů pro libovolný počet procesů. Pomocí manifestu nasazení sdělte vašemu zařízení, které moduly se mají nainstalovat, a jak je nakonfigurovat tak, aby společně spolupracovaly.
 
@@ -126,7 +128,7 @@ Seznam požadované vlastnosti agenta IoT Edge je tam, kde definujete, které mo
 
 Úplný seznam požadovaných vlastností, které mohou nebo musí být zahrnuty, najdete v tématu [vlastnosti IoT Edgeho agenta a centra IoT Edge](module-edgeagent-edgehub.md).
 
-Příklad:
+Například:
 
 ```json
 {
@@ -256,7 +258,7 @@ Jímka definuje, kam se zprávy odesílají. Zprávy mohou přijímat pouze modu
 
 Vlastnost jímky může být libovolná z následujících hodnot:
 
-| Jímka | Description |
+| Jímka | Popis |
 | ---- | ----------- |
 | `$upstream` | Odeslat zprávu do IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Odeslání zprávy do konkrétního vstupu konkrétního modulu |

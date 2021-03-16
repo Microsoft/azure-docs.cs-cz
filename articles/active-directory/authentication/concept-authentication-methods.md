@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652075"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471697"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -43,7 +43,7 @@ Následující tabulka popisuje požadavky na zabezpečení pro dostupné metody
 | Windows Hello pro firmy     | Vysoká     | Vysoká      | Vysoká         |
 | Aplikace Microsoft Authenticator    | Vysoká     | Vysoká      | Vysoká         |
 | FIDO2 klíč zabezpečení             | Vysoká     | Vysoká      | Vysoká         |
-| Hardwarové tokeny OATH           | Střední   | Střední    | Vysoká         |
+| Hardwarové tokeny OATH (Preview) | Střední   | Střední    | Vysoká         |
 | Tokeny softwaru OATH           | Střední   | Střední    | Vysoká         |
 | SMS                            | Střední   | Vysoká      | Střední       |
 | Hlas                          | Střední   | Střední    | Střední       |
@@ -68,7 +68,7 @@ Následující tabulka popisuje, kdy lze použít metodu ověřování během ud
 | Windows Hello pro firmy     | Ano                    | MFA                       |
 | Aplikace Microsoft Authenticator    | Ano                    | MFA a SSPR              |
 | FIDO2 klíč zabezpečení             | Ano                    | MFA                       |
-| Hardwarové tokeny OATH           | Ne                     | MFA                       |
+| Hardwarové tokeny OATH (Preview) | Ne                     | MFA                       |
 | Tokeny softwaru OATH           | Ne                     | MFA                       |
 | SMS                            | Ano                    | MFA a SSPR              |
 | Hlasový hovor                     | Ne                     | MFA a SSPR              |
@@ -81,7 +81,7 @@ Další informace o tom, jak každá metoda ověřování funguje, najdete v ná
 * [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Aplikace Microsoft Authenticator](concept-authentication-authenticator-app.md)
 * [FIDO2 klíč zabezpečení](concept-authentication-passwordless.md#fido2-security-keys)
-* [Hardwarové tokeny OATH](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [Hardwarové tokeny OATH (Preview)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Tokeny softwaru OATH](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [Přihlášení](howto-authentication-sms-signin.md) a [ověření](concept-authentication-phone-options.md#mobile-phone-verification) SMS
 * [Ověřování hlasových hovorů](concept-authentication-phone-options.md)

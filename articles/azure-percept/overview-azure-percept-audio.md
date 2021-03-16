@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8f57c63868d6f70094cf040a92c0124b46477758
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426344"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490190"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Seznámení se službou Azure Percept audio
 
 Azure Percept audio je příslušenství zařízení, které přidává funkce řeči AI do Azure Percept DK. Obsahuje předem konfigurovaný zvukový procesor a lineární pole se čtyřmi mikrofony, které vám umožní použít hlasové příkazy, klíčové slovo hledání a mnohem velká pole pro místní zařízení, která se budou monitorovat pomocí Azure Cognitive Services. Azure Percept audio umožňuje výrobcům zařízení rozhodovat Azure Percept DK nad rámec špičkových možností na nové inteligentní zařízení aktivované hlasem. Je integrovaný předem s Azure Percept DK, Azure Percept Studio a dalšími službami Azure Edge Management. K nákupu můžete použít [online obchod Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+
+> [!div class="nextstepaction"]
+> [Koupit hned](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Zvukové zařízení Azure Percept.":::
 
@@ -67,4 +70,5 @@ Pomocí šablon hlasového asistenta Azure Percept pro pohostinství, zdravotní
 
 ## <a name="next-steps"></a>Další kroky
 
-Seřazení zvukového zařízení Azure Percept na [online obchodě Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+> [!div class="nextstepaction"]
+> [Koupit si zvukové zařízení Azure Percept z Microsoft Online Storu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

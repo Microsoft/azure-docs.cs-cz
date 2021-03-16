@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 71291458eec0aec13542d3e0dfaf04a96f391a23
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089220"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466112"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Pochopení rolí v Azure Active Directory
 
@@ -68,4 +68,4 @@ Role specifické pro službu | Správce Azure DevOps<br>Správce Azure Informati
 
 - [Přehled řízení přístupu na základě role Azure AD](custom-overview.md)
 - Vytvoření přiřazení rolí pomocí [Azure Portal, Azure AD PowerShellu a Graph API](custom-create.md)
-- [Zobrazení přiřazení pro roli](custom-view-assignments.md)
+- [Zobrazení seznamu přiřazení rolí](view-assignments.md)

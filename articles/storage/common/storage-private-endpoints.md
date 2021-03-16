@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 16d3d50d5ade298e2ca22f271466c70e74724381
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 67480786e963235d4d3c010bea72e551a8be7bbc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613557"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493794"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -146,6 +146,12 @@ Toto omezení je výsledkem změn DNS provedených při vytváření privátníh
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupin zabezpečení sítě pro podsítě s privátními koncovými body
 
 V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se neaplikují na soukromý koncový bod. Používají se jenom pro jiné koncové body (například: řadiče síťového rozhraní). Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+
+### <a name="copying-blobs-between-storage-accounts"></a>Kopírování objektů BLOB mezi účty úložiště
+
+Objekty blob mezi účty úložiště můžete kopírovat pomocí privátních koncových bodů jenom v případě, že používáte Azure REST API nebo nástroje, které používají REST API. Mezi tyto nástroje patří AzCopy, Průzkumník služby Storage, Azure PowerShell, Azure CLI a sady SDK pro Azure Blob Storage. 
+
+Podporují se jenom privátní koncové body, které cílí na prostředek úložiště objektů BLOB. Privátní koncové body, které cílí na Data Lake Storage Gen2 nebo prostředek souboru, se zatím nepodporují. Také kopírování mezi účty úložiště pomocí protokolu NFS (Network File System) ještě není podporováno. 
 
 ## <a name="next-steps"></a>Další kroky
 

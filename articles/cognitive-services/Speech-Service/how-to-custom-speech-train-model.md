@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373364"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491108"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trénování a nasazení modelu Custom Speech
 
@@ -61,7 +61,7 @@ V tabulce **školení** se zobrazí nová položka, která odpovídá novému mo
 Podívejte se na [postupy](how-to-custom-speech-evaluate-data.md) při vyhodnocování a zlepšování Custom Speech přesnosti modelu. Pokud se rozhodnete přesnost testování, je důležité vybrat akustickou datovou sadu, která je odlišná od modelu, který jste použili s modelem, a získat tak realistickou představu o výkonu modelu.
 
 > [!NOTE]
-> Základní modely i vlastní modely lze použít pouze do určitého data (viz [životní cyklus modelu](custom-speech-overview.md#model-lifecycle)). Speech Studio zobrazuje toto datum ve sloupci **vypršení platnosti** pro každý model a koncový bod. Po uplynutí této žádosti do koncového bodu nebo ke dávkovému přepisu může dojít k selhání nebo návratu do základního modelu.
+> Základní modely i vlastní modely lze použít pouze do určitého data (viz [model a životní cyklus koncového bodu](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Speech Studio zobrazuje toto datum ve sloupci **vypršení platnosti** pro každý model a koncový bod. Po uplynutí této žádosti do koncového bodu nebo ke dávkovému přepisu může dojít k selhání nebo návratu do základního modelu.
 >
 > Přeškolujte svůj model pomocí nejstaršího základního modelu, který vám umožní využít vylepšení přesnosti a vyhnout se tomu, že váš model vyprší.
 

@@ -8,7 +8,7 @@
     - name: Co je nového
       href: whats-new.md
 - name: Začínáme s Rozpoznáváním formulářů
-  expaned: true
+  expanded: true
   items:
     - name: S využitím klientské knihovny nebo REST API
       href: quickstarts/client-library.md
@@ -26,18 +26,27 @@
       href: tutorial-bulk-processing.md
 - name: Koncepty
   items:
-    - name: Extrakce rozložení
-      href: concept-layout.md
+    - name: Rozhraní API pro rozložení
+      expanded: true
+      items:
+        - name: Extrakce dat formuláře
+          href: concept-layout.md
+    - name: Vlastní modely
+      href: concept-custom.md
     - name: Účtenky
       href: concept-receipts.md
     - name: Vizitky
       href: concept-business-cards.md
     - name: Faktury
       href: concept-invoices.md
+    - name: Identifikační karty
+      href: concept-identification-cards.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat
       href: build-training-data-set.md
+    - name: Použití značek tabulky k učení vlastního modelu
+      href: supervised-table-tags.md
     - name: Nasazení ukázkového nástroje pro popisování
       href: deploy-label-tool.md
     - name: Použití kontejnerů
@@ -57,8 +66,8 @@
       href: disaster-recovery.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API služby Rozpoznávání formulářů v2.1 Preview
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
+    - name: Rozhraní API pro rozpoznávání formulářů v 2.1 Preview. 3
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'
     - name: Rozhraní API služby Rozpoznávání formulářů v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: Sady SDK

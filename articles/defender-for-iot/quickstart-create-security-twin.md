@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: cfd5192a78c34caf5acbe4576f5a00ab314acb61
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449692"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489892"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
 
@@ -39,9 +39,9 @@ Další informace o obecném konceptu vláken v modulech Azure IoT Hub najdete v
 
 Defender pro IoT používá modul s dvojitou zátěží a udržuje v modulu zabezpečení pro každé vaše zařízení s dvojitou _azureiotsecurityi_ .
 
-Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé vaše zařízení.
+Program Defender-IoT-mikro-agent obsahuje všechny informace týkající se zabezpečení zařízení pro každé vaše zařízení.
 
-Aby bylo možné plně využívat Defender pro funkce IoT, budete muset vytvořit, nakonfigurovat a použít tento modul zabezpečení pro každé zařízení ve službě.
+Aby bylo možné plně využívat Defender pro funkce IoT, budete muset vytvořit, nakonfigurovat a používat tento program v programu Defender – IoT-Micro pro všechna zařízení v této službě.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Vytvořit dvojitou azureiotsecurity modul
 

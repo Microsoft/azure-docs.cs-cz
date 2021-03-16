@@ -5,23 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674679"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470400"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
 Tento článek popisuje nejběžnější problémy a řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
 
-## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Urychlené síťové služby na neHBv2ch, HC, NDv2 a
+## <a name="known-issues-on-hbv3"></a>Známé problémy v HBv3
+- InfiniBand se momentálně podporuje jenom u virtuálního počítače 120 Core (Standard_HB120rs_v3). Podpora na jiné velikosti virtuálních počítačů bude brzy povolená.
+- Ve všech oblastech HBv3-Series nepodporuje Azure akcelerované sítě. Tato funkce bude brzy povolená.
 
-[Akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jsou teď dostupné [na velikostech](../../hb-series.md)virtuálních počítačů s podporou RDMA a [InfiniBand a SR](../../hbv2-series.md) -IOV, která [je](../../hc-series.md)v [paměti.](../../ndv2-series.md) Tato možnost teď umožňuje vylepšenou dobu (až 30 GB/s) a latence v síti Ethernet Azure. I když se jedná o možnosti RDMA přes síť InfiniBand, můžou některé změny platformy pro tuto funkci ovlivnit chování určitých MPI implementací v případě, že úlohy spuštěním v InfiniBand. Konkrétně rozhraní InfiniBand na některých virtuálních počítačích může mít trochu odlišný název (mlx5_1 na rozdíl od dřívější mlx5_0) a to může vyžadovat seování příkazových řádků MPI zvláště při použití rozhraní UCX (obvykle se jedná o OpenMP a HPC-X).
+## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Urychlené síťové služby na neHBv2ch, HC, a NDv2
+
+[Akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jsou teď dostupné na velikostech virtuálních počítačů s podporou RDMA a INFINIBAND a SR [-IOV, která](../../hb-series.md) [je v](../../hc-series.md)paměti [.](../../ndv2-series.md) [](../../hbv2-series.md) Tato možnost teď umožňuje vylepšenou dobu (až 30 GB/s) a latence v síti Ethernet Azure. I když se jedná o možnosti RDMA přes síť InfiniBand, můžou některé změny platformy pro tuto funkci ovlivnit chování určitých MPI implementací při spouštění úloh přes InfiniBand. Konkrétně rozhraní InfiniBand na některých virtuálních počítačích může mít trochu odlišný název (mlx5_1 na rozdíl od dřívější mlx5_0) a to může vyžadovat seování příkazových řádků MPI zvláště při použití rozhraní UCX (obvykle se jedná o OpenMP a HPC-X).
 Další podrobnosti najdete v tomto [článku na blogu](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) s pokyny, jak vyřešit všechny zjištěné problémy.
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>Instalace ovladače InfiniBand na virtuálních počítačích řady N-Series
@@ -54,11 +58,7 @@ Tento "duplicitní počítač MAC s cloudem-init na Ubuntu" je známý problém.
 
 ## <a name="dram-on-hb-series"></a>DRAM v řadě 7000
 
-Virtuální počítače s více procesory můžou v současnosti vystavovat 228 GB paměti RAM pro virtuální počítače hosta. Důvodem je známé omezení hypervisoru Azure, které zabraňuje tomu, aby se stránky přiřazují do místní adresy DRAM pro virtuální počítače AMD CCX (domény NUMA) rezervované pro virtuální počítač hosta.
-
-## <a name="accelerated-networking"></a>Akcelerované síťové služby
-
-V tuto chvíli není povolená podpora Azure akcelerovaného síťového prostředí HPC a virtuálních počítačů GPU s podporou IB. Pokud je tato funkce podporovaná, budeme na to informovat zákazníci.
+Virtuální počítače s více procesory můžou v současnosti vystavovat 228 GB paměti RAM pro virtuální počítače hosta. Podobně 458 GB na HBv2 a 448 GB na virtuálních počítačích s HBv3. Důvodem je známé omezení hypervisoru Azure, které zabraňuje tomu, aby se stránky přiřazují do místní adresy DRAM pro virtuální počítače AMD CCX (domény NUMA) rezervované pro virtuální počítač hosta.
 
 ## <a name="qp0-access-restriction"></a>Omezení přístupu qp0
 
@@ -114,5 +114,5 @@ Při spuštění virtuálního počítače s rozhraním "7000-Series" v systému
 ## <a name="next-steps"></a>Další kroky
 
 - Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Podrobné zobrazení architektury prostředí HPC, které běží na vyšší úrovni, najdete v tématu věnovaném technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

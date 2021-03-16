@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4b5db049e6d1cfe76bdd0d5cd6d7360e0b98bad0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523205"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489807"
 ---
 # <a name="system-prerequisites"></a>Systémové požadavky
 V tomto článku jsou uvedené požadavky na systém pro spuštění programu Azure Defender pro IoT.
@@ -23,7 +23,7 @@ V tomto článku jsou uvedené požadavky na systém pro spuštění programu Az
 - Hardwarová zařízení pro senzory NTA.
 - Role přispěvatele předplatného Azure. Vyžaduje se jenom během připojování k definování potvrzených zařízení a připojení k Sentinel Azure.
 - Role **přispěvatele** v Azure IoT Hub (úroveň Free nebo Standard) pro správu připojenou k cloudu. Ujistěte se, že je povolená funkce **Azure Defender for IoT** .
-- V případě podpory modulu zabezpečení na úrovni zařízení podporuje Defender pro agenty IoT rostoucí seznam zařízení a platforem. Podívejte se na [seznam podporovaných platforem](how-to-deploy-agent.md).
+- V případě programu Defender na úrovni zařízení – IoT-Micro-Agent podporuje Defender pro agenty IoT rostoucí seznam zařízení a platforem. Podívejte se na [seznam podporovaných platforem](how-to-deploy-agent.md).
 
 ## <a name="supported-service-regions"></a>Podporované oblasti služby
 
@@ -31,7 +31,7 @@ Defender pro IoT směruje veškerý provoz ze všech evropských oblastí do Zá
 
 Další informace najdete v tématu [IoT Hub podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
-[Identifikace požadovaných zařízení](how-to-identify-required-appliances.md) 
- [O programu Azure Defender pro síť IoT](how-to-set-up-your-network.md)
+- [Identifikace požadovaných zařízení](how-to-identify-required-appliances.md)
+- [O programu Azure Defender pro síť IoT](how-to-set-up-your-network.md)

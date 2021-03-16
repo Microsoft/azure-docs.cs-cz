@@ -10,12 +10,12 @@ keywords: služby pro rozpoznávání, rozpoznávání, rozpoznávání, rozpozn
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050065"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472105"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)
 
@@ -99,16 +99,6 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
-
-| Služba            | Druh                  |
-|--------------------|-----------------------|
-| Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
-| Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
-| Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Vyhledávání Bingu        | `Bing.Search.v7`      |
-| Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>Řeč
 
 | Služba            | Druh                 |
@@ -181,7 +171,7 @@ Pomocí příkazu [AZ cognitiveservices Account Account Keys list](/cli/azure/co
 Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z počtu transakcí, které odešlete pomocí ověřovacích informací. Každá cenová úroveň určuje:
 * maximální počet povolených transakcí za sekundu (TPS).
 * funkce služby povolené v rámci cenové úrovně.
-* Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
+* Náklady na předdefinovaný počet transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Získat aktuální využití kvóty pro váš prostředek
 
