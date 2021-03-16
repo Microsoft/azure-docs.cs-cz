@@ -1,0 +1,52 @@
+- name: Dokumentace k zákaznickým smlouvám Microsoftu
+  href: index.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Přehled
+  expanded: true
+  items:
+    - name: Přehled smlouvy o zákaznících Microsoftu
+      href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Koncepty
+  items:
+    - name: Pochopení využití a fakturačního cyklu
+      href: ../understand/mca-understand-your-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Údaje o využití a poplatkůch souborů
+      href: ../understand/mca-understand-your-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Kurzy
+  items:
+    - name: Kontrola faktury
+      href: ../understand/review-customer-agreement-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Vytváření a správa rozpočtů
+      href: ../costs/tutorial-acm-create-budgets.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+- name: Návody
+  expanded: true
+  items:
+    - name: Nastavení fakturace
+      href: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Začínáme s fakturačním účtem
+      href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Uspořádání vaší faktury
+      href: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Zobrazení fakturačních účtů
+      href: ../manage/view-all-accounts.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Fakturační role
+      href: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Správa přístupu k fakturaci
+      href: ../manage/manage-billing-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Nastavení správce pro správu uživatelů předplatného
+      href: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Vytváření nových předplatných
+      href: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Úhrada předplatných pomocí faktury
+      href: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Úhrada faktury
+      href: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Získat vlastnictví fakturace
+      href: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Migrace EA na rozhraní API zákaznické smlouvy od Microsoftu
+      href: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Zobrazení a stažení využití a poplatků
+      href: ../understand/download-azure-daily-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Zobrazení a stažení cen Azure
+      href: ../manage/ea-pricing.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Úkoly EA v zákaznických smlouvách Microsoftu
+      href: ../manage/mca-enterprise-operations.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
