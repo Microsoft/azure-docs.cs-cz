@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/11/2020
-ms.openlocfilehash: f8a852a8c4197169061a9c7633f4f363ad057337
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505796"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467727"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -165,36 +165,6 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Příčina**: Neurčeno.
 - **Doporučení**: Ověřte přiřazení hodnoty parametru v kanálu. Výraz parametru může obsahovat neplatné znaky.
 
-### <a name="error-code-df-excel-invalidconfiguration"></a>Kód chyby: DF-Excel-InvalidConfiguration
-- **Zpráva**: vyžaduje se název nebo index excelového listu.
-- **Příčina**: Neurčeno.
-- **Doporučení**: ověřte hodnotu parametru. Zadejte název nebo index listu pro čtení dat aplikace Excel.
-
-- **Zpráva**: název a index listu aplikace Excel nemohou existovat současně.
-- **Příčina**: Neurčeno.
-- **Doporučení**: ověřte hodnotu parametru. Zadejte název nebo index listu pro čtení dat aplikace Excel.
-
-- **Zpráva**: je zadaný neplatný rozsah.
-- **Příčina**: Neurčeno.
-- **Doporučení**: ověřte hodnotu parametru. Zadejte platný rozsah podle odkazu. Další informace najdete v tématu [vlastnosti Excelu](./format-excel.md#dataset-properties).
-
-- **Zpráva**: je zadaný neplatný excelový soubor, ale podporují se jenom soubory. xlsx a. xls.
-- **Příčina**: Neurčeno.
-- **Doporučení**: Ujistěte se, že je přípona souboru aplikace Excel buď. xlsx nebo. xls.
-
-
- ### <a name="error-code-df-excel-invaliddata"></a>Kód chyby: DF-Excel-InvalidData
-- **Zpráva**: excelový list neexistuje.
-- **Příčina**: Neurčeno.
-- **Doporučení**: ověřte hodnotu parametru. Zadejte platný název nebo index listu pro čtení dat aplikace Excel.
-
-- **Zpráva**: čtení excelových souborů s jiným schématem není nyní podporováno.
-- **Příčina**: Neurčeno.
-- **Doporučení**: použijte podporovaný excelový soubor.
-
-- **Zpráva**: datový typ není podporován.
-- **Příčina**: Neurčeno.
-- **Doporučení**: použijte podporované datové typy excelového souboru.
 
 ### <a name="error-code-4502"></a>Kód chyby: 4502
 - **Zpráva**: existují značná souběžná spuštění MappingDataflow, která způsobují selhání kvůli omezení v Integration runtime.
@@ -211,6 +181,206 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Zpráva**: aktivita běžela na Azure Integration runtime a nedokázala dešifrovat přihlašovací údaje úložiště dat nebo výpočetní prostředky připojené prostřednictvím Integration runtime v místním prostředí. Zkontrolujte prosím konfiguraci propojených služeb přidružených k této aktivitě a ujistěte se, že používáte správný typ prostředí Integration runtime.
 - **Příčina**: tok dat nepodporuje propojené služby v místních prostředích Integration runtime.
 - **Doporučení**: Nakonfigurujte tok dat pro spuštění ve spravovaném prostředí integration Virtual Network.
+
+### <a name="error-code-df-xml-invalidvalidationmode"></a>Kód chyby: DF-XML-InvalidValidationMode
+- **Zpráva**: byl zadán neplatný režim ověřování XML.
+- **Doporučení**: ověřte hodnotu parametru a zadejte správný režim ověřování.
+
+### <a name="error-code-df-xml-invaliddatafield"></a>Kód chyby: DF-XML-InvalidDataField
+- **Zpráva**: pole pro poškozené záznamy musí být typu řetězec a může mít hodnotu null.
+- **Doporučení**: Ujistěte se, že sloupec `\"_corrupt_record\"` ve zdrojovém projektu má datový typ String.
+
+### <a name="error-code-df-xml-malformedfile"></a>Kód chyby: DF-XML-MalformedFile
+- **Zpráva**: nesprávně vytvořený kód XML v ' FailFastMode '.
+- **Doporučení**: aktualizujte obsah souboru XML do správného formátu.
+
+### <a name="error-code-df-xml-invaliddatatype"></a>Kód chyby: DF-XML-InvalidDataType
+- **Message**: element XML má dílčí elementy nebo atributy a nemůže být převeden.
+
+### <a name="error-code-df-xml-invalidreferenceresource"></a>Kód chyby: DF-XML-InvalidReferenceResource
+- **Zpráva**: prostředek reference v datovém souboru XML nelze přeložit.
+- **Doporučení**: měli byste ověřit referenční prostředek v datovém souboru XML.
+
+### <a name="error-code-df-xml-invalidschema"></a>Kód chyby: DF-XML-InvalidSchema
+- **Zpráva**: ověření schématu se nezdařilo.
+
+### <a name="error-code-df-xml-unsupportedexternalreferenceresource"></a>Kód chyby: DF-XML-UnsupportedExternalReferenceResource
+- **Zpráva**: prostředek externího odkazu v datovém souboru XML není podporován.
+- **Doporučení**: aktualizujte obsah souboru XML, pokud není prostředek externích referencí teď podporovaný.
+
+### <a name="error-code-df-gen2-invalidaccountconfiguration"></a>Kód chyby: DF-GEN2-InvalidAccountConfiguration
+- **Zpráva**: měla by se zadat buď klíč účtu, nebo tenant/SpnId/SpnCredential/spnCredentialType, nebo MiServiceUri/miServiceToken.
+- **Doporučení**: Nakonfigurujte správný účet v související propojené službě Gen2.
+
+### <a name="error-code-df-gen2-invalidauthconfiguration"></a>Kód chyby: DF-GEN2-InvalidAuthConfiguration
+- **Zpráva**: je možné zadat jenom jednu ze tří metod ověřování (klíč, SERVICEPRINCIPAL a mi). 
+- **Doporučení**: v související propojené službě Gen2 vyberte správný typ ověřování.
+
+### <a name="error-code-df-gen2-invalidserviceprincipalcredentialtype"></a>Kód chyby: DF-GEN2-InvalidServicePrincipalCredentialType
+- **Zpráva**: ServicePrincipalCredentialType je neplatná.
+
+### <a name="error-code-df-gen2-invaliddatatype"></a>Kód chyby: DF-GEN2-InvalidDataType
+- **Zpráva**: typ cloudu je neplatný.
+
+### <a name="error-code-df-blob-invalidaccountconfiguration"></a>Kód chyby: DF-BLOB-InvalidAccountConfiguration
+- **Zpráva**: měla by být zadána jedna z klíčů účtu nebo sas_token.
+
+### <a name="error-code-df-blob-invalidauthconfiguration"></a>Kód chyby: DF-BLOB-InvalidAuthConfiguration
+- **Zpráva**: je možné zadat jenom jednu ze dvou metod ověřování (klíč, SAS).
+
+### <a name="error-code-df-blob-invaliddatatype"></a>Kód chyby: DF-BLOB-InvalidDataType
+- **Zpráva**: typ cloudu je neplatný.
+
+### <a name="error-code-df-cosmos-partitionkeymissed"></a>Kód chyby: DF-Cosmos-PartitionKeyMissed
+- **Zpráva**: cesta ke klíči oddílu by měla být zadána pro operace aktualizace a odstranění.
+- **Doporučení**: v nastavení jímky Cosmos použijte zadání klíče oddílu.
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Kód chyby: DF-Cosmos-InvalidPartitionKey
+- **Zpráva**: cesta ke klíči oddílu nemůže být pro operace aktualizace a odstranění prázdná.
+- **Doporučení**: v nastavení jímky Cosmos použijte zadání klíče oddílu.
+
+### <a name="error-code-df-cosmos-idpropertymissed"></a>Kód chyby: DF-Cosmos-IdPropertyMissed
+- **Message**: vlastnost ID by měla být namapována pro operace odstranění a aktualizace.
+- **Doporučení**: Ujistěte se, že vstupní data obsahují `id` sloupec v nastavení jímky Cosmos. Pokud ne, použijte **transformaci SELECT nebo odvoditelné** pro vygenerování tohoto sloupce před jímky.
+
+### <a name="error-code-df-cosmos-invalidpartitionkeycontent"></a>Kód chyby: DF-Cosmos-InvalidPartitionKeyContent
+- **Zpráva**: klíč oddílu by měl začínat na/.
+- **Doporučení**: Zajistěte, aby klíč oddílu začínal `/` v nastavení jímky Cosmos, například: `/movieId` .
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Kód chyby: DF-Cosmos-InvalidPartitionKey
+- **Zpráva**: partitionKey není mapován v jímky pro operace odstranění a aktualizace.
+- **Doporučení**: v nastavení jímky Cosmos použijte klíč oddílu, který je stejný jako klíč oddílu vašeho kontejneru.
+
+### <a name="error-code-df-cosmos-invalidconnectionmode"></a>Kód chyby: DF-Cosmos-InvalidConnectionMode
+- **Zpráva**: neplatný connectionMode.
+- **Doporučení**: potvrďte, že podporovaný režim je **Gateway** a **DirectHttps** v nastavení Cosmos.
+
+### <a name="error-code-df-cosmos-invalidaccountconfiguration"></a>Kód chyby: DF-Cosmos-InvalidAccountConfiguration
+- **Zpráva**: je třeba zadat buď parametr Account nebo accountEndpoint.
+
+### <a name="error-code-df-github-writenotsupported"></a>Kód chyby: DF-GitHub-WriteNotSupported
+- **Zpráva**: úložiště GitHub nepovoluje zápisy.
+
+### <a name="error-code-df-pgsql-invalidcredential"></a>Kód chyby: DF-PGSQL-InvalidCredential
+- **Zpráva**: je třeba zadat uživatele nebo heslo.
+- **Doporučení**: Ujistěte se, že máte v související propojené službě PostgreSQL k dispozici správná nastavení přihlašovacích údajů.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Kód chyby: DF-Snowflake-InvalidStageConfiguration
+- **Zpráva**: jako fázi v Snowflake operace čtení/zápisu se dá použít jenom typ úložiště BLOB.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Kód chyby: DF-Snowflake-InvalidStageConfiguration
+- **Zpráva**: vlastnosti fáze Snowflake by měly být zadány pomocí Azure Blob + ověřování SAS.
+
+### <a name="error-code-df-snowflake-invaliddatatype"></a>Kód chyby: DF-Snowflake-InvalidDataType
+- **Zpráva**: typ Spark není v Snowflake podporován.
+- **Doporučení**: použijte **transformaci odvozenou** pro změnu sloupce vstupu vstupních dat na typ řetězce před Snowflake jímka. 
+
+### <a name="error-code-df-hive-invalidblobstagingconfiguration"></a>Kód chyby: DF-podregistr-InvalidBlobStagingConfiguration
+- **Zpráva**: je třeba zadat vlastnosti pracovního objektu BLOB Storage.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Kód chyby: DF-podregistr-InvalidGen2StagingConfiguration
+- **Zpráva**: adls Gen2 úložiště podporuje pouze pověření klíčového objektu služby.
+- **Doporučení**: Ověřte, že jste v propojené službě adls Gen2 použili přihlašovací údaje klíčového objektu, který se používá jako pracovní.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Kód chyby: DF-podregistr-InvalidGen2StagingConfiguration
+- **Zpráva**: je třeba zadat vlastnosti přípravy adls Gen2 úložiště. Je vyžadován buď jeden klíč, nebo tenant/spnId/spnKey nebo miServiceUri/miServiceToken.
+- **Doporučení**: použijte správné přihlašovací údaje, které se používají jako pracovní v podregistru v související adls Gen2 propojené službě. 
+
+### <a name="error-code-df-hive-invaliddatatype"></a>Kód chyby: DF-podregistr-InvalidDataType
+- **Zpráva**: nepodporované sloupce.
+- **Doporučení**: aktualizujte sloupec vstupních dat tak, aby odpovídal datovému typu podporovanému podregistru.
+
+### <a name="error-code-df-hive-invalidstoragetype"></a>Kód chyby: DF-podregistr-InvalidStorageType
+- **Zpráva**: typ úložiště může být buď blob, nebo Gen2.
+
+### <a name="error-code-df-delimited-invalidconfiguration"></a>Kód chyby: DF-relimited – InvalidConfiguration
+- **Zpráva**: měla by být zadána buď jedna z prázdných řádků, nebo vlastní záhlaví.
+- **Doporučení**: v nastavení sdíleného svazku clusteru zadejte prázdné řádky nebo vlastní záhlaví.
+
+### <a name="error-code-df-delimited-columndelimitermissed"></a>Kód chyby: DF-relimited – ColumnDelimiterMissed
+- **Zpráva**: pro analýzu je vyžadován Oddělovač sloupců.
+- **Doporučení**: potvrďte, že máte ve svém nastavení sdíleného svazku clusteru Oddělovač sloupců.
+
+### <a name="error-code-df-mssql-invalidcredential"></a>Kód chyby: DF-MSSQL-InvalidCredential
+- **Zpráva**: měla by být zadána buď jedna z uživatelů/PWD, nebo tenant/SpnId/SpnKey nebo MiServiceUri/miServiceToken.
+- **Doporučení**: použijte správné přihlašovací údaje v související propojené službě MSSQL.
+
+### <a name="error-code-df-mssql-invaliddatatype"></a>Kód chyby: DF-MSSQL-InvalidDataType
+- **Zpráva**: Nepodporovaná pole (polí).
+- **Doporučení**: Upravte sloupec vstupní data tak, aby odpovídal datovému typu podporovanému serverem MSSQL.
+
+### <a name="error-code-df-mssql-invalidauthconfiguration"></a>Kód chyby: DF-MSSQL-InvalidAuthConfiguration
+- **Zpráva**: je možné zadat jenom jednu ze tří metod ověřování (klíč, SERVICEPRINCIPAL a mi).
+- **Doporučení**: v související propojené službě MSSQL můžete zadat jenom jednu ze tří metod ověřování (Key, SERVICEPRINCIPAL a mi).
+
+### <a name="error-code-df-mssql-invalidcloudtype"></a>Kód chyby: DF-MSSQL-InvalidCloudType
+- **Zpráva**: typ cloudu je neplatný.
+- **Doporučení**: Ověřte typ cloudu v související propojené službě MSSQL.
+
+### <a name="error-code-df-sqldw-invalidblobstagingconfiguration"></a>Kód chyby: DF-SQLDW-InvalidBlobStagingConfiguration
+- **Zpráva**: je třeba zadat vlastnosti pracovního objektu BLOB Storage.
+
+### <a name="error-code-df-sqldw-invalidstoragetype"></a>Kód chyby: DF-SQLDW-InvalidStorageType
+- **Zpráva**: typ úložiště může být buď blob, nebo Gen2.
+
+### <a name="error-code-df-sqldw-invalidgen2stagingconfiguration"></a>Kód chyby: DF-SQLDW-InvalidGen2StagingConfiguration
+- **Zpráva**: adls Gen2 úložiště podporuje pouze pověření klíčového objektu služby.
+
+### <a name="error-code-df-sqldw-invalidconfiguration"></a>Kód chyby: DF-SQLDW-InvalidConfiguration
+- **Zpráva**: je třeba zadat vlastnosti přípravy adls Gen2 úložiště. Je požadován buď klíč, nebo tenant/spnId/spnCredential/spnCredentialType nebo miServiceUri/miServiceToken.
+
+### <a name="error-code-df-delta-invalidconfiguration"></a>Kód chyby: DF-DELTA-InvalidConfiguration
+- **Zpráva**: časová razítka a verze se nedají nastavit ve stejnou dobu.
+
+### <a name="error-code-df-delta-keycolumnmissed"></a>Kód chyby: DF-DELTA-KeyColumnMissed
+- **Zpráva**: pro operace, které nelze vkládat, by měly být zadány klíčové sloupce.
+
+### <a name="error-code-df-delta-invalidtableoperationsettings"></a>Kód chyby: DF-DELTA-InvalidTableOperationSettings
+- **Zpráva**: možnosti opětovného vytvoření a zkrácení nelze zadat současně.
+
+### <a name="error-code-df-excel-worksheetconfigmissed"></a>Kód chyby: DF-Excel-WorksheetConfigMissed
+- **Zpráva**: vyžaduje se název nebo index excelového listu.
+- **Doporučení**: ověřte hodnotu parametru a zadáním názvu nebo indexu listu načtěte data z Excelu.
+
+### <a name="error-code-df-excel-invalidworksheetconfiguration"></a>Kód chyby: DF-Excel-InvalidWorksheetConfiguration
+- **Zpráva**: název a index listu aplikace Excel nemohou existovat současně.
+- **Doporučení**: ověřte hodnotu parametru a zadáním názvu nebo indexu listu načtěte data z Excelu.
+
+### <a name="error-code-df-excel-invalidrange"></a>Kód chyby: DF-Excel-InvalidRange
+- **Zpráva**: je zadaný neplatný rozsah.
+- **Doporučení**: ověřte hodnotu parametru a zadejte platný rozsah podle následujícího odkazu: [excelový formát v Azure Data Factory-Dataset Properties](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+
+### <a name="error-code-df-excel-worksheetnotexist"></a>Kód chyby: DF-Excel-WorksheetNotExist
+- **Zpráva**: excelový list neexistuje.
+- **Doporučení**: ověřte hodnotu parametru a zadáním platného názvu nebo indexu listu načtěte data z Excelu.
+
+### <a name="error-code-df-excel-differentschemanotsupport"></a>Kód chyby: DF-Excel-DifferentSchemaNotSupport
+- **Zpráva**: čtení souborů aplikace Excel s jiným schématem není nyní podporováno.
+
+### <a name="error-code-df-excel-invaliddatatype"></a>Kód chyby: DF-Excel-InvalidDataType
+- **Zpráva**: datový typ není podporován.
+
+### <a name="error-code-df-excel-invalidfile"></a>Kód chyby: DF-Excel-InvalidFile
+- **Zpráva**: je zadaný neplatný excelový soubor, ale podporují se jenom soubory. xlsx a. xls.
+
+### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Kód chyby: DF-AdobeIntegration-InvalidMapToFilter
+- **Zpráva**: pro vlastní prostředek může být k filtru mapován pouze jeden klíč nebo ID.
+
+### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Kód chyby: DF-AdobeIntegration-InvalidPartitionConfiguration
+- **Zpráva**: podporuje se jenom jeden oddíl. Schéma oddílu může být RoundRobin nebo hash.
+- **Doporučení**: v nastavení AdobeIntegration ověřte, že máte jenom jeden oddíl. Schéma oddílu může být RoundRobin nebo hash.
+
+### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Kód chyby: DF-AdobeIntegration-KeyColumnMissed
+- **Zpráva**: klíč musí být určen pro operace, které nelze vkládat.
+- **Doporučení**: Určete sloupce klíčů v nastavení AdobeIntegration pro operace, které nelze vkládat.
+
+### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Kód chyby: DF-AdobeIntegration-InvalidPartitionType
+- **Zpráva**: typ oddílu musí být roundRobin.
+- **Doporučení**: Ověřte, že typ oddílu je roundRobin v nastavení AdobeIntegration.
+
+### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Kód chyby: DF-AdobeIntegration-InvalidPrivacyRegulation
+- **Zpráva**: aktuálně je gdpr jenom v současnosti podporovaná ochrana osobních údajů.
+- **Doporučení**: potvrďte, že je v nastavení AdobeIntegration nastavená **možnost GDPR**(ochrana osobních údajů).
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Různé tipy pro řešení potíží
 - **Problém**: došlo k neočekávané výjimce a spuštění selhalo.

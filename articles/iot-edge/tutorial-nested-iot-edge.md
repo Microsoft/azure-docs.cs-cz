@@ -473,7 +473,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -486,7 +486,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -649,7 +649,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -768,7 +768,7 @@ sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azur
 
 `azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 

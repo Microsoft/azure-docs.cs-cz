@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763033"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563607"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
@@ -121,6 +121,8 @@ K určité webové aplikaci můžete připojit až 100 privátních koncových b
 Sloty nemůžou používat privátní koncový bod.
 
 Funkce vzdáleného ladění nejsou k dispozici, pokud je pro webovou aplikaci povolen soukromý koncový bod. Doporučení je nasazení kódu do slotu a jeho vzdálené ladění.
+
+Přístup k FTP se poskytuje prostřednictvím příchozí veřejné IP adresy. Privátní koncový bod nepodporuje přístup FTP k webové aplikaci.
 
 Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod. Další informace o omezeních najdete v [tomto článku][pllimitations] .
 

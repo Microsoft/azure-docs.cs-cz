@@ -61,6 +61,8 @@
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Vytváření přepisů pořízených lidmi
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: Životní cyklus modelu a koncového bodu
+          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Referenční informace
       items:
         - name: C++
@@ -529,6 +531,8 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
+        - name: Nejčastější dotazy ke kontejnerům
+          href: speech-container-faq.md
         - name: Dokumentace ke kontejnerům Cognitive Services
           href: ../containers/index.yml
 - name: Zařízení

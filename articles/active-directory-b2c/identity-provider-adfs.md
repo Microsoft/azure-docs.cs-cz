@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448587"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489164"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -156,9 +156,16 @@ Pokud chcete použít AD FS jako poskytovatele identity v Azure AD B2C, musíte 
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+Pokud používáte [vlastní doménu](custom-domain.md), použijte následující formát:
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 Nahraďte následující hodnoty:
 
-- **váš tenant** s názvem vašeho tenanta, například Your-tenant.onmicrosoft.com.
+- název **vašeho** tenanta, jako je třeba Your-tenant.onmicrosoft.com.
+- **název vaší domény** pomocí vlastního názvu domény, například Login.contoso.com.
 - **vaše zásady** s názvem zásady. Například B2C_1A_signup_signin_adfs.
 - **váš** technický profil s názvem vašeho technického profilu zprostředkovatele identity SAML. Například contoso-typu Saml2.
 

@@ -49,6 +49,8 @@
           href: ./linux/tutorial-load-balancer.md
         - name: 8. Správa sítě
           href: ./linux/tutorial-virtual-network.md
+        - name: 9. Správa prostředků
+          href: ./linux/tutorial-govern-resources.md
     - name: Windows
       items:
         - name: 1. Vytvoření a správa virtuálního počítače
@@ -67,6 +69,8 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8. Správa sítě
           href: ./windows/tutorial-virtual-network.md
+        - name: 9. Správa prostředků
+          href: ./windows/tutorial-govern-resources.md
 - name: Úlohy
   items:
     - name: Red Hat
@@ -313,99 +317,100 @@
           displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: Použití licence programu Zvýhodněné hybridní využití Azure
-              displayName: 'Azure Hybrid Benefit, AHB'
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: Použití práv hostování více klientů pro Windows 10
-              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: Rezervované instance
       items:
+        - name: Co jsou rezervace Azure?
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Předplacení pro virtuální počítače
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: Předplacení pro služby Dedicated Host
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: Co jsou rezervace Azure?
-          displayName: 'Reserved Instances, RI, prepay, flexibility'
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Flexibilita velikosti instance virtuálního počítače
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: Vytvoření virtuálních počítačů se systémem Linux
+    - name: Vytvoření virtuálních počítačů
       items:
-        - name: Schválené distribuce
-          href: ./linux/endorsed-distros.md
-        - name: Použití rozhraní příkazového řádku
-          href: ./linux/create-cli-complete.md
-        - name: Použití šablony ARM
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: Použití rozhraní REST API
-          href: ./linux/create-vm-rest-api.md
-        - name: Kopírování virtuálního počítače pomocí rozhraní příkazového řádku
-          href: ./linux/copy-vm.md
-        - name: Sestavení pomocí Jenkinse
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: Integrace Jenkinse s Azure DevOps
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: Konfigurace strategie postupné implementace
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: Konfigurovat strategii pro Kanárské nasazení
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: Konfigurace strategie nasazení Blue-Green
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: CI/CD s Azure Pipelines (YAML)
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: Vytvořit sadu svítilen
-          href: ./linux/tutorial-lamp-stack.md
-        - name: Zabezpečení webového serveru pomocí TLS\SSL
+        - name: Linux
           items:
-            - name: Linux
+            - name: Schválené distribuce
+              href: ./linux/endorsed-distros.md
+            - name: Rozhraní příkazového řádku
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: Šablona ARM
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: Sada LAMP
+              href: ./linux/tutorial-lamp-stack.md
+            - name: Průběžné doručování
+              items:
+                - name: Konfigurace strategie postupné implementace
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: Konfigurovat strategii pro Kanárské nasazení
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: Konfigurace strategie nasazení Blue-Green
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: CI/CD s Azure Pipelines (YAML)
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: Zabezpečení webového serveru pomocí TLS\SSL
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: Připojení k virtuálním počítačům s Linuxem
-      items:
-        - name: SSH pro virtuální počítače se systémem Linux
+        - name: Windows
           items:
-            - name: V systému Linux nebo macOS
-              href: ./linux/mac-create-ssh-keys.md
-            - name: V systému Windows
-              href: ./linux/ssh-from-windows.md
-            - name: Na portálu
-              href: ssh-keys-portal.md
-            - name: Podrobné kroky
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: Vzdálená plocha pro Linux
-          href: ./linux/use-remote-desktop.md
-    - name: Vytvoření virtuálních počítačů s Windows
-      items:
-        - name: Použití jazyka C#
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: Použití specializovaného disku
-          items:
-            - name: Portál
+            - name: Specializovaný disk – portál
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: Specializovaný disk – PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: Vytvoření virtuálního počítače pomocí Chefu
-          href: /azure/developer/chef/windows-vm-configure
-        - name: Použití Javy
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Použití šablony ARM
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: Připojení k virtuálním počítačům s Windows
-      href: ./windows/connect-logon.md
+            - name: Šablona ARM
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: Zabezpečení webového serveru pomocí TLS\SSL
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Připojení k Virtual Machines
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: Místní vytváření a Správa klíčů SSH
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: Vytváření a Správa klíčů SSH na portálu
+              href: ssh-keys-portal.md
+            - name: SSH v systému Linux nebo macOS
+              href: ./linux/mac-create-ssh-keys.md
+            - name: SSH ve Windows
+              href: ./linux/ssh-from-windows.md
+            - name: Vzdálená plocha pro Linux
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: Vzdálená plocha pro Windows
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: Časová synchronizace
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: Spuštění příkazu
+      items:
+        - name: Linux
+          displayName: Run command
+          href: ./linux/run-command.md
+        - name: Windows
+          displayName: Run command
+          href: ./windows/run-command.md
     - name: Rozšíření
       items:
         - name: Přehled
@@ -554,6 +559,8 @@
           href: ./extensions/troubleshoot.md
         - name: Problémy se systémy Linux s podporou Pythonu 3
           href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Vnořená virtualizace
+      href: ./windows/nested-virtualization.md
     - name: Migrace na Azure Resource Manager
       items:
         - name: Vyřazování od 1. března 2023
@@ -583,54 +590,6 @@
         - name: Nejčastější dotazy
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.md
-    - name: Základy správy
-      items:
-        - name: Správa prostředků
-          items:
-            - name: Linux
-              href: ./linux/tutorial-govern-resources.md
-            - name: Windows
-              href: ./windows/tutorial-govern-resources.md
-        - name: Časová synchronizace
-          items:
-            - name: Linux
-              href: ./linux/time-sync.md
-            - name: Windows
-              href: ./windows/time-sync.md
-        - name: Spouštění skriptů na virtuálním počítači
-          items:
-            - name: Rozšíření vlastních skriptů
-              items:
-                - name: Linux
-                  href: ./extensions/custom-script-linux.md
-                - name: Windows
-                  href: ./extensions/custom-script-windows.md
-            - name: Spuštění příkazu
-              items:
-                - name: Linux
-                  href: ./linux/run-command.md
-                - name: Windows
-                  href: ./windows/run-command.md
-            - name: Hybrid Runbook Worker
-              href: ../automation/automation-hybrid-runbook-worker.md
-            - name: Konzola sériového portu
-              items:
-                - name: Linux
-                  href: ./troubleshooting/serial-console-linux.md
-                - name: Windows
-                  href: ./troubleshooting/serial-console-windows.md
-        - name: Povolení vnořené virtualizace
-          href: ./windows/nested-virtualization.md
-        - name: File Storage
-          items:
-            - name: Připojení Linux pomocí protokolu SMB
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
-            - name: Kopírování souborů do virtuálního počítače s Linuxem
-              href: ./linux/copy-files-to-linux-vm-using-scp.md
-        - name: Aktualizace a opravy
-          items:
-            - name: Infrastruktura aktualizací Red Hatu
-              href: ./workloads/redhat/redhat-rhui.md
 - name: Obrázky
   items:
     - name: Najít Azure Marketplace imagí
@@ -644,6 +603,9 @@
         - name: Bitové kopie klientů Windows
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
+        - name: Práva hostování s více klienty pro Windows 10
+          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Vlastní image pro Linux
       items:
         - name: Přehled
@@ -1205,6 +1167,8 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
+        - name: Kopírování virtuálního počítače pomocí rozhraní příkazového řádku
+          href: ./linux/copy-vm.md
     - name: Přidat datový disk
       items:
         - name: Linux
@@ -1274,6 +1238,12 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: Mapování spravovaného disku na disk hosta – Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: File Storage
+          items:
+            - name: Připojení Linux pomocí protokolu SMB
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Kopírování souborů do virtuálního počítače s Linuxem
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: Vyhledání nepřipojených disků
           items:
             - name: Rozhraní příkazového řádku

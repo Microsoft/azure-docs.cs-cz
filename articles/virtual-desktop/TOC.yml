@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Připojení s klientem Microsoft Storu
           href: connect-microsoft-store.md
-        - name: Připojení se zařízeními s Linuxem
+        - name: Připojení pomocí tenkých klientů
           href: linux-overview.md
     - name: Konfigurace přesměrování zařízení
       href: configure-device-redirections.md

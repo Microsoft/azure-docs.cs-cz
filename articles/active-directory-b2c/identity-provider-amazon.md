@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448570"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489147"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448570"
 
 Pokud chcete povolit přihlášení uživatelům s účtem Amazon v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v [Amazon Developer Services a technologiích](https://developer.amazon.com). Další informace najdete v tématu [Registrace pro přihlášení pomocí Amazon](https://developer.amazon.com/docs/login-with-amazon/register-web.html). Pokud ještě nemáte účet Amazon, můžete se zaregistrovat v [https://www.amazon.com/](https://www.amazon.com/) .
 
-> [!NOTE]  
-> V **kroku 8** níže použijte následující adresy URL, které nahradíte `your-tenant-name` názvem svého tenanta. Při zadávání názvu tenanta používejte malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
-> - U **povolených zdrojů** zadejte `https://your-tenant-name.b2clogin.com` 
-> - Pro **povolené návratové adresy URL** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. Přihlaste se ke [konzole pro vývojáře Amazon](https://developer.amazon.com/dashboard) pomocí svých přihlašovacích údajů k účtu Amazon.
+1. Pokud jste to ještě neudělali, vyberte **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a pak tyto zásady přijměte.
+1. Z řídicího panelu vyberte **Přihlásit se pomocí Amazon**.
+1. Vyberte **vytvořit nový profil zabezpečení**.
+1. Zadejte **název profilu zabezpečení**, **Popis profilu zabezpečení** a **adresu URL oznámení o ochraně osobních údajů**, například `https://www.contoso.com/privacy` Adresa URL pro oznámení o ochraně osobních údajů je stránka, kterou spravujete, která poskytuje uživatelům informace o ochraně osobních údajů. Potom klikněte na **Uložit**.
+1. V části **přihlášení s konfiguracemi Amazon** vyberte **název profilu zabezpečení** , který jste vytvořili, vyberte ikonu **Spravovat** a pak vyberte **Nastavení webu**.
+1. V části **Nastavení webu** ZKOPÍRUJTE hodnoty **ID klienta**. Vyberte **Zobrazit tajný** kód pro získání tajného klíče klienta a potom ho zkopírujte. Ke konfiguraci účtu Amazon jako poskytovatele identity ve vašem tenantovi potřebujete obě hodnoty. **Tajný kód klienta** je důležité bezpečnostní pověření.
+1. V části **Nastavení webu** vyberte **Upravit**. 
+    1. V **povolených zdrojích** zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta. Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name` .
+    1.  **Povolené návratové adresy URL** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou.
+1. Vyberte **Uložit**.
 
 ::: zone pivot="b2c-user-flow"
 

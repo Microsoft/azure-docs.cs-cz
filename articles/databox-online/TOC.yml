@@ -162,6 +162,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Úlohy Kubernetes
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Co je sdílení GPU?
+          href: azure-stack-edge-gpu-sharing.md
         - name: Zobrazení integrace Key Vaultu
           href: azure-stack-edge-gpu-activation-key-vault.md
         - name: Povolení aktivního protokolování
@@ -194,10 +196,14 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Stavová aplikace zřízená dynamicky
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+                - name: Sdílené úlohy GPU
+                  href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: Přes IoT Edge
               items:
                 - name: Bezstavová aplikace
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: Sdílené úlohy GPU
+                  href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: Vývoj modulu jazyka C#
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Přes Azure Arc (Preview)

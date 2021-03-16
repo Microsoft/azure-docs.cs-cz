@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 24377cf02b30a550043ee63267229039d680cd1c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518105"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489130"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Nastavení registrace a přihlášení pomocí Apple ID pomocí Azure Active Directory B2C (Preview)
 
@@ -57,8 +57,8 @@ Pokud chcete povolit přihlášení pro uživatele s Apple ID v Azure Active Dir
 1. Z **identifikátorů** vyberte identifikátor, který jste vytvořili.
 1. Vyberte možnost **Přihlásit se pomocí Apple** a pak vyberte **Konfigurovat**.
     1. Vyberte **ID primární aplikace** , pro kterou chcete nakonfigurovat přihlášení pomocí Apple s.
-    1. V oblasti **domény a subdomény** zadejte `your-tenant-name.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta.
-    1. Do **návratových adres URL** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte název-tenanta názvem vašeho tenanta.
+    1. V oblasti **domény a subdomény** zadejte `your-tenant-name.b2clogin.com` . Nahraďte název-tenanta názvem vašeho tenanta. Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name` .
+    1. Do **návratových adres URL** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou.
     1. Vyberte možnost **Další** a potom vyberte **Hotovo**.
     1. Po zavření automaticky otevíraného okna vyberte **pokračovat** a pak vyberte **Uložit**.
 

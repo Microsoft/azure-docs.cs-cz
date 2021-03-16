@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680599"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563772"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Nasazení clusteru Azure Service Fabric s nestavovým uzlem bez stavu (Preview)
 Typy uzlů Service Fabric přicházejí s podstatou předpokladem, že v některých časových okamžikech mohou být stavové služby umístěny na uzlech. Bezstavové typy uzlů rozšiřují tento předpoklad pro typ uzlu, což umožňuje, aby typ uzlu používal jiné funkce, jako je rychlejší operace škálování, podpora automatických upgradů operačního systému při bronzové odolnosti a škálování na více než 100 uzlů v jedné sadě škálování virtuálního počítače.
@@ -72,9 +72,13 @@ Chcete-li nastavit jeden nebo více typů uzlů jako stav bez stavu v prostředk
 Pokud chcete povolit bezstavové typy uzlů, měli byste nakonfigurovat základní prostředek sady škálování virtuálního počítače následujícím způsobem:
 
 * Vlastnost Value  **singlePlacementGroup** , která by měla být nastavena na **hodnotu false** , pokud požadujete škálování na více než 100 virtuálních počítačů.
-* **UpgradePolicy** nastaví, který **režim** má být nastaven na **vracení**.
+* **Režim** **upgradePolicy** sady škálování by měl být nastaven na **vracení**.
 * Režim postupného upgradu vyžaduje konfiguraci rozšíření stavu aplikace nebo sondy stavu. Nakonfigurujte sondu stavu s výchozí konfigurací pro bezstavové uzly, jak je navrženo níže. Jakmile se aplikace nasadí do typu uzlu, můžete změnit porty sondy stavu nebo rozšíření stavu tak, aby se sledovaly stav aplikace.
 
+>[!NOTE]
+> Je nutné, aby počet domén selhání platformy byl aktualizován na hodnotu 5, pokud typ bezstavového uzlu je zálohovaný sadou škálování virtuálního počítače, který pokrývá více zón. Další podrobnosti najdete v této [šabloně](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
+> 
+> **platformFaultDomainCount: 5**
 ```json
 {
     "apiVersion": "2018-10-01",

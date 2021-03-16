@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 12/15/2020
+ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2cff960e2dfe6a85b7e16395a167b77f66690c56
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cd785af1bbe374bd1d1c0c353a4162b61e47d870
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510708"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467193"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -53,7 +53,7 @@ curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 ---
@@ -61,12 +61,12 @@ curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Cont
 Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu řetězce následuje `analyzeResults/` ID operace.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-layout-results"></a>Získat výsledky rozložení
 
-Po volání funkce **[analyzovat rozložení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)** rozhraní API zavoláte rozhraní API **[výsledků získat analýzu rozložení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeLayoutResult)** , abyste získali stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
+Po volání funkce **[analyzovat rozložení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeLayoutAsync)** rozhraní API zavoláte rozhraní API **[výsledků získat analýzu rozložení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeLayoutResult)** , abyste získali stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -82,7 +82,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ---
@@ -339,25 +339,25 @@ Chcete-li zahájit analýzu faktury, použijte následující příkaz: kudrlink
 1. Místo `{subscription key}` použijte váš klíč předplatného.
 
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
 ```
 
 Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-invoice-results"></a>Získat výsledky faktury
 
-Poté, co jste volali rozhraní API pro **[analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** , zavoláte rozhraní API **[výsledků získat analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** , které získá stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
+Poté, co jste volali rozhraní API pro **[analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)** , zavoláte rozhraní API **[výsledků získat analýzu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9acb78c40a2533aee83)** , které získá stav operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `{resultId}` ID operace z předchozího kroku.
 1. Místo `{subscription key}` použijte váš klíč předplatného.
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
@@ -546,7 +546,7 @@ Abyste mohli vytvořit vlastní model, budete potřebovat sadu školicích dat v
 
 ### <a name="train-a-model-without-labels"></a>Výuka modelu bez popisků
 
-Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní modely](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** , a to spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **[vlastní modely](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)** , a to spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -563,7 +563,7 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models"
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
 ---
@@ -572,7 +572,7 @@ Dostanete `201 (Success)` odpověď s hlavičkou **umístění** . Hodnota tohot
 
 ### <a name="train-a-model-with-labels"></a>Výuka modelu s popisky
 
-Pro výuku pomocí popisků musíte mít `\<filename\>.pdf.labels.json` v kontejneru úložiště objektů BLOB společně s školicími dokumenty speciální soubory s informacemi o popisku (). [Nástroj pro rozpoznávání popisů vzorků pro rozpoznávání formulářů](../../quickstarts/label-tool.md) poskytuje uživatelské rozhraní, které vám pomůžou vytvořit tyto soubory popisků. Jakmile je máte, můžete volat rozhraní API **[vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** s `"useLabelFile"` parametrem nastaveným na `true` text v těle JSON.
+Pro výuku pomocí popisků musíte mít `\<filename\>.pdf.labels.json` v kontejneru úložiště objektů BLOB společně s školicími dokumenty speciální soubory s informacemi o popisku (). [Nástroj pro rozpoznávání popisů vzorků pro rozpoznávání formulářů](../../quickstarts/label-tool.md) poskytuje uživatelské rozhraní, které vám pomůžou vytvořit tyto soubory popisků. Jakmile je máte, můžete volat rozhraní API **[vlastního modelu vlaku](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)** s `"useLabelFile"` parametrem nastaveným na `true` text v těle JSON.
 
 Před spuštěním příkazu proveďte tyto změny:
 
@@ -591,7 +591,11 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models"
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -600,7 +604,7 @@ Dostanete `201 (Success)` odpověď s hlavičkou **umístění** . Hodnota tohot
 
 ### <a name="get-training-results"></a>Získat výsledky školení
 
-Po spuštění operace vlaku použijete novou operaci, **[získáte vlastní model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** a zkontrolujete stav školení. Předejte ID modelu do tohoto volání rozhraní API, abyste zkontrolovali stav školení:
+Po spuštění operace vlaku použijete novou operaci, **[získáte vlastní model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModel)** a zkontrolujete stav školení. Předejte ID modelu do tohoto volání rozhraní API, abyste zkontrolovali stav školení:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného.
@@ -615,7 +619,11 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{mod
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -692,7 +700,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Analýza formulářů pomocí vlastního modelu
 
-V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Zavolejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
+V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Zavolejte rozhraní API pro **[analýzu formuláře](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `{model ID}` ID modelu, které jste obdrželi v předchozí části.
@@ -708,7 +716,11 @@ curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model I
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+=======
 curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+>>>>>>> upstream/master
 ```
 
 ---
@@ -717,7 +729,7 @@ Dostanete `202 (Success)` odpověď s hlavičkou **umístění operace** . Hodno
 
 ### <a name="get-the-analyze-results"></a>Získat výsledky analýzy
 
-Pro dotaz na výsledky operace analyzovat volejte rozhraní API pro výsledek příkazu Get **[analyze Form](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeFormResult)** .
+Pro dotaz na výsledky operace analyzovat volejte rozhraní API pro výsledek příkazu Get **[analyze Form](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult)** .
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `{result ID}` ID, které jste obdrželi v předchozí části.
@@ -1025,7 +1037,7 @@ Tento ukázkový výstup JSON byl zkrácen pro zjednodušení. Podívejte se na 
 
 ## <a name="analyze-receipts"></a>Analyzovat účtenky
 
-V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md). Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
+V této části se dozvíte, jak pomocí předem připraveného příjmového modelu analyzovat a extrahovat běžná pole z příjmů spojených s námi. Další informace o analýze příjmů najdete v [koncepční příručce pro příjem](../../concept-receipts.md). Chcete-li zahájit analýzu účtenky, zavolejte rozhraní API **[analýzy pro příjem](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)** pomocí příkazu složeného níže. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{your receipt URL}` adresou URL obrázku účtenky.
@@ -1040,7 +1052,11 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/recei
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1048,12 +1064,12 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze
 Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu řetězce následuje `operations/` ID operace.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-the-receipt-results"></a>Získání výsledků pro příjem
 
-Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
+Po volání funkce **analyzovat příjem** rozhraní API zavoláte rozhraní API pro **[získání výsledku analýzy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult)** pro získání stavu operace a extrahovaná data. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `{operationId}` ID operace z předchozího kroku.
@@ -1068,7 +1084,11 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1414,32 +1434,36 @@ Tento výstup se zkrátil kvůli čitelnosti. Podívejte se na [úplný ukázkov
 
 ### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)  
 
-Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
+Tato část ukazuje, jak pomocí předem připraveného modelu analyzovat a extrahovat běžná pole z anglických vizitek. Další informace o analýze vizitky najdete v tématu [koncepční příručka pro obchodní karty](../../concept-business-cards.md). Pokud chcete začít s analýzou vizitky, zavoláte rozhraní API pro **[analýzu vizitky](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)** pomocí příkazu kudrlinkou níže. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{your business card URL}` adresou URL obrázku účtenky.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
+>>>>>>> upstream/master
 ```
 
 Dostanete `202 (Success)` odpověď, která zahrnuje hlavičku **Operations – Location Location** . Hodnota této hlavičky obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-business-card-results"></a>Získání výsledků na vizitce
 
-Po vyvolání rozhraní API pro **analýzu vizitky** zavoláte rozhraní API pro **[získání výsledku analýzy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult)** pro získání stavu operace a extrahovaných dat. Před spuštěním příkazu proveďte tyto změny:
+Po vyvolání rozhraní API pro **analýzu vizitky** zavoláte rozhraní API pro **[získání výsledku analýzy](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult)** pro získání stavu operace a extrahovaných dat. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `{resultId}` ID operace z předchozího kroku.
 1. Místo `{subscription key}` použijte váš klíč předplatného.
 
 ```bash
-curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/{resultId}"
+curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/{resultId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
@@ -1578,7 +1602,7 @@ Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat 
 
 ### <a name="get-a-list-of-custom-models"></a>Získat seznam vlastních modelů
 
-Pomocí seznamu rozhraní API pro **[vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModels)** v následujícím příkazu vraťte seznam všech vlastních modelů, které patří do vašeho předplatného.
+Pomocí seznamu rozhraní API pro **[vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModels)** v následujícím příkazu vraťte seznam všech vlastních modelů, které patří do vašeho předplatného.
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -1593,7 +1617,11 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?o
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models?op=full"
+=======
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
+>>>>>>> upstream/master
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
@@ -1622,7 +1650,7 @@ Dostanete `200` odpověď na úspěch s daty JSON, jako je následující. `"mod
 
 ### <a name="get-a-specific-model"></a>Získat konkrétní model
 
-Chcete-li získat podrobné informace o konkrétním vlastním modelu, použijte rozhraní API **[získat vlastní model](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModel)** v následujícím příkazu.
+Chcete-li získat podrobné informace o konkrétním vlastním modelu, použijte rozhraní API **[získat vlastní model](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModel)** v následujícím příkazu.
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -1637,7 +1665,11 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1684,7 +1716,7 @@ Dostanete `200` odpověď na úspěch s daty JSON, jako je následující.
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Odstranění modelu z účtu zdroje
 
-Z vašeho účtu můžete také odstranit model odkazem na jeho ID. Tento příkaz volá rozhraní API pro **[odstranění vlastního modelu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/DeleteCustomModel)** a odstraní model použitý v předchozí části.
+Z vašeho účtu můžete také odstranit model odkazem na jeho ID. Tento příkaz volá rozhraní API pro **[odstranění vlastního modelu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/DeleteCustomModel)** a odstraní model použitý v předchozí části.
 
 1. Nahraďte `{Endpoint}` koncovým bodem, který jste získali v rámci předplatného pro rozpoznávání formulářů.
 1. Nahraďte `{subscription key}` klíčem předplatného, který jste zkopírovali z předchozího kroku.
@@ -1699,7 +1731,11 @@ curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/model
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1711,6 +1747,6 @@ Dostanete `204` odpověď na úspěch, která indikuje, že váš model je ozna�
 V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API k vytváření výukových modelů a k analýze formulářů různými způsoby. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+> [Referenční dokumentace REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 
 * [Co je služba Rozpoznávání formulářů?](../../overview.md)

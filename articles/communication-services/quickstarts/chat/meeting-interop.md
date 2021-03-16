@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: V tomto rychlém startu se dozvíte, jak se připojit k týmům na schůzce s klientskou knihovnou služby Azure Communications chat.
 author: askaur
 ms.author: askaur
-ms.date: 12/08/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8c4753b2041c2ab15fd586a8b1add6c4dd1a167b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124019"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496166"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Rychlý Start: připojení aplikace chat k týmu schůzky
 

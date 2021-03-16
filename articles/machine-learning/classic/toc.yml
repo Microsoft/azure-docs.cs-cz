@@ -140,6 +140,20 @@
         - name: Data galerie
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: Migrace do Azure Machine Learningu
+      items:
+        - name: Přehled migrace
+          href: migrate-overview.md
+        - name: Migrace datových sad
+          href: migrate-register-dataset.md
+        - name: Znovu sestavit experimenty
+          href: migrate-rebuild-experiment.md
+        - name: Znovu sestavit webové služby
+          href: migrate-rebuild-web-service.md
+        - name: Migrace klientských aplikací
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: Znovu sestavit moduly pro spouštění skriptu jazyka R
+          href: migrate-execute-r-script.md
 - name: Referenční informace
   items:
     - name: Referenční informace k modulům a algoritmům

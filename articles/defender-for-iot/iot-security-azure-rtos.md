@@ -1,6 +1,6 @@
 ---
-title: Modul zabezpečení pro Azure RTO – přehled
-description: Přečtěte si další informace o modulu zabezpečení pro podporu a implementaci Azure RTO jako součást služby Azure Defender pro IoT.
+title: Defender-IoT-Micro-Agent pro Azure RTO – přehled
+description: Přečtěte si další informace o programu Defender-IoT-Micro-Agent pro Azure RTO support a implementace v rámci Azure Defenderu pro IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2021
 ms.author: shhazam
-ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ae1ae941dcb1af73286a4865089b1be227c484fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809078"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496044"
 ---
-# <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Přehled: Defender pro modul zabezpečení IoT pro Azure RTO (Preview)
+# <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos-preview"></a>Přehled: Defender for IoT Defender – IoT-Micro-Agent pro Azure RTO (Preview)
 
-Modul Azure Defender for IoT Micro poskytuje komplexní řešení zabezpečení pro zařízení, která používají Azure RTO. Poskytuje pokrytí pro běžné hrozby a potenciální škodlivé aktivity na zařízeních s operačním systémem v reálném čase (RTO). Azure RTO se teď dodává s předdefinovaným modulem zabezpečení Azure IoT.
+Modul Azure Defender for IoT Micro poskytuje komplexní řešení zabezpečení pro zařízení, která používají Azure RTO. Poskytuje pokrytí pro běžné hrozby a potenciální škodlivé aktivity na zařízeních s operačním systémem v reálném čase (RTO). Azure RTO se teď dodává s předdefinovaným Azure IoT Defenderem IoT-Micro-agent.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Vizualizace Defenderu pro IoT Azure RTO":::
 
@@ -47,11 +47,11 @@ Pomocí Doporučené infrastruktury Defenderu pro IoT poskytujete znalosti a př
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Začínáme s ochranou zařízení Azure RTO
 
-Modul zabezpečení pro Azure RTO je k dispozici jako bezplatné stahování vašich zařízení. Cloudová služba Defender for IoT je dostupná s 30denní zkušební verzí na předplatné Azure. Začněte tím, že si stáhnete [modul zabezpečení pro Azure RTO](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
+Defender – IoT-Micro-Agent pro Azure RTO je k dispozici jako bezplatné stahování vašich zařízení. Cloudová služba Defender for IoT je dostupná s 30denní zkušební verzí na předplatné Azure. Začněte tím, že si stáhnete program [Defender-IoT-Micro-Agent pro Azure RTO](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o modulu zabezpečení pro Azure RTO. Další informace o modulu zabezpečení a o tom, jak začít, najdete v následujících článcích:
+V tomto článku jste se dozvěděli o programu Defender-IoT-Micro-Agent pro Azure RTO. Další informace o programu Defender-IoT-Micro-agent a o tom, jak začít, najdete v následujících článcích:
 
-- [Koncepce modulu zabezpečení Azure RTO IoT](concept-rtos-security-module.md)
-- [Rychlý Start: modul zabezpečení Azure RTO IoT](quickstart-azure-rtos-security-module.md)
+- [Azure RTO IoT Defender – koncepty IoT-Micro-Agent](concept-rtos-security-module.md)
+- [Rychlý Start: Azure RTO IoT Defender – IoT-Micro-Agent](quickstart-azure-rtos-security-module.md)

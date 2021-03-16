@@ -8,21 +8,22 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742122"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562820"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
 
 > [!IMPORTANT]
-> Scénář migrace "Oracle to Azure Database for PostgreSQL" (aktuálně ve verzi Preview) už nebude k dispozici po 1.2021. května. Budeme dál poskytovat podporu prostřednictvím alternativních nástrojů (například Ora2pg) a poskytněte nejlepší možnosti migrace pro Oracle pro PostgreSQL migrace. Osvědčené postupy pro migraci najdete v tématu Průvodce migrací pro Oracle do Azure Database for PostgreSQL] ( https://aka.ms/OracletoPGguide) . 
+> Scénář migrace **Oracle to Azure Database for PostgreSQL** (aktuálně ve verzi Preview) už nebude k dispozici po 1.2021. května. Budeme dál poskytovat podporu prostřednictvím alternativních nástrojů (například Ora2pg) a poskytněte nejlepší možnosti migrace pro Oracle pro PostgreSQL migrace. Osvědčené postupy pro migraci najdete v tématu [Průvodce migrací Oracle to Azure Database for PostgreSQL](https://aka.ms/OracletoPGguide). 
 
 Pomocí Azure Database Migration Service můžete migrovat databáze z databází Oracle hostovaných místně nebo na virtuálních počítačích a [Azure Database for PostgreSQL](../postgresql/index.yml) s minimálními výpadky. Jinými slovy, můžete dokončit migraci s minimálními prostoji do aplikace. V tomto kurzu migrujete ukázkovou databázi **HR** z místní nebo instance virtuálního počítače Oracle 11g na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 

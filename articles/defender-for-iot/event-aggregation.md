@@ -1,5 +1,5 @@
 ---
-title: Klasická agregace událostí modulu zabezpečení
+title: Defender – agregace událostí v programu IoT-Micro-Agent
 description: Přečtěte si o programu Defender pro agregaci událostí IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 01333da3041cc93154c46fb45a39bb209fd30f91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809214"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493065"
 ---
-# <a name="security-module-classic-event-aggregation"></a>Klasická agregace událostí modulu zabezpečení
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Defender – agregace událostí v programu IoT-Micro-Agent
 
 Defender pro agenty zabezpečení IoT shromažďuje data a systémové události z místního zařízení a odesílá tato data do cloudu Azure pro zpracování a analýzu. Agent zabezpečení shromažďuje mnoho typů událostí zařízení, včetně nového procesu a událostí nového připojení. Události nového procesu a nového připojení se můžou na zařízení v druhé době často vyskytnout a i když jsou důležité pro robustní a komplexní zabezpečení, může se stát, že počet agentů zabezpečení zprávy bude nuceně zasílat nebo překročit vaši kvótu IoT Hub a omezení nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení.
 

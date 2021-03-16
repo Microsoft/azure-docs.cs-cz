@@ -6,16 +6,26 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: a8bb28892fe42215876b5cc8771ae73c7d2aab7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745040"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563704"
 ---
-# <a name="troubleshooting-datadog-on-azure"></a>Řešení potíží s služby Datadog v Azure
+# <a name="troubleshooting-datadog-on-azure"></a>Řešení potíží se službou Datadog v Azure
 
 Tento dokument obsahuje informace o řešení potíží s řešeními, která používají služby Datadog.
+
+## <a name="purchase-errors"></a>Chyby nákupu
+
+* Nákup se nezdařil, protože platná platební karta není připojená k předplatnému Azure nebo platební metoda není přidružená k předplatnému.
+
+  Použijte jiné předplatné Azure. Případně můžete přidat nebo aktualizovat platební kartu nebo způsob platby pro předplatné. Další informace najdete v tématu [aktualizace způsobu kreditu a platby](../../cost-management-billing/manage/change-credit-card.md).
+
+* Předplatné EA nepovoluje nákupy na webu Marketplace.
+
+  Použijte jiné předplatné. Případně můžete zjistit, jestli je u předplatného na webu Marketplace povolené předplatné EA. Další informace najdete v tématu [Povolení nákupu na webu Marketplace](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Pokud tyto možnosti problém nevyřeší, obraťte se na [podporu služby Datadog](https://www.datadoghq.com/support).
 
 ## <a name="unable-to-create-datadog-resource"></a>Nepovedlo se vytvořit prostředek služby Datadog.
 

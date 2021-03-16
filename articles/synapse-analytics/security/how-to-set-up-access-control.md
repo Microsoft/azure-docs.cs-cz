@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368995"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472258"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
 
@@ -43,7 +43,7 @@ Pokud chcete zabezpečit pracovní prostor synapse, postupujte podle vzoru pro k
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je názvy dle vašeho výběru.
 
-|Nastavení | Standardní název | Description |
+|Nastavení | Standardní název | Popis |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | `workspace1` |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | `storage1` | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -124,7 +124,7 @@ Aby bylo možné spouštět kanály a provádět systémové úlohy, synapse vy�
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>Krok 5: udělení synapse správcům roli Přispěvatel Azure v pracovním prostoru 
 
-Aby uživatelé mohli vytvářet fondy SQL, Apache Spark fondy a prostředí Integration runtime, musí mít k pracovnímu prostoru aspoň přístup k Azure přispěvateli. Role přispěvatele také umožňuje těmto uživatelům spravovat prostředky, včetně pozastavení a škálování.
+Aby uživatelé mohli vytvářet fondy SQL, Apache Spark fondy a prostředí Integration runtime, musí mít v pracovním prostoru aspoň roli přispěvatele Azure. Role přispěvatele také umožňuje těmto uživatelům spravovat prostředky, včetně pozastavení a škálování. Pokud používáte Azure Portal nebo synapse Studio k vytváření fondů SQL, Apache Spark fondů a prostředí Integration runtime, pak potřebujete roli přispěvatele Azure na úrovni skupiny prostředků. 
 
 - Otevřete Azure Portal.
 - Vyhledejte pracovní prostor. `workspace1`

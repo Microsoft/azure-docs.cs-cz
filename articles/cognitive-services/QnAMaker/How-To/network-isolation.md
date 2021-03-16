@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225604"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467540"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
 
@@ -22,8 +22,7 @@ Můžete přidat IP adresy do seznamu povolených služeb App Service, abyste om
 
 #### <a name="add-ips-to-app-service-allow-list"></a>Přidání IP adres do seznamu povolených App Service
 
-1. 
-provoz jenom z Cognitive Servicesch IP adres. Tyto jsou již zahrnuty do tagu služby `CognitiveServicesManagement` . To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search. Podívejte se na [Další informace o značkách služby.](../../../virtual-network/service-tags-overview.md)
+1. Povoluje provoz jenom z Cognitive Servicesch IP adres. Tyto jsou již zahrnuty do tagu služby `CognitiveServicesManagement` . To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search. Podívejte se na [Další informace o značkách služby.](../../../virtual-network/service-tags-overview.md)
 2. Ujistěte se, že také povolíte další vstupní body, jako je Azure Bot Service, portál QnA Maker atd. pro předpověď "GenerateAnswer" přístup k rozhraní API.
 3. Pokud chcete přidat rozsahy IP adres do seznamu povolených adres, postupujte prosím podle těchto kroků:
 

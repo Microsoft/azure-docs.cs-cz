@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919446"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562480"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady služby API Management
 
@@ -865,7 +865,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 
 ### <a name="attributes"></a>Atributy
 
-| Atribut | Popis                                                              | Povinné |
+| Atribut | Popis                                                              | Vyžadováno |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Název proměnné.                                                | Ano      |
 | hodnota     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Ano      |
@@ -918,7 +918,7 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 `trace`Zásada přidá vlastní trasování do výstupu kontroly rozhraní API, Application Insights telemetrií a/nebo protokoly prostředků.
 
 -   Zásada přidá vlastní trasování do výstupu [inspektoru rozhraní API](./api-management-howto-api-inspector.md) , když se aktivuje trasování, tj. `Ocp-Apim-Trace` je přítomná hlavička Request, která má nastavenou hodnotu true a `Ocp-Apim-Subscription-Key` je k dispozici Hlavička požadavku a obsahuje platný klíč, který umožňuje trasování.
--   Zásada vytvoří telemetrii [trasování](../azure-monitor/app/data-model-trace-telemetry.md) v Application Insights, pokud je povolená [integrace Application Insights](./api-management-howto-app-insights.md) a `severity` úroveň zadaná v zásadách je vyšší nebo rovna `verbosity` úrovni určené v nastavení diagnostiky.
+-   Zásada vytvoří telemetrii [trasování](../azure-monitor/app/data-model-trace-telemetry.md) v Application Insights, pokud je povolená [Application Insights integrace](./api-management-howto-app-insights.md) a `severity` zadaná hodnota v zásadách je větší nebo rovna hodnotě `verbosity` uvedené v nastavení diagnostiky.
 -   Zásada přidá do položky protokolu vlastnost, pokud je povolená možnost [protokoly prostředků](./api-management-howto-use-azure-monitor.md#activity-logs) a úroveň závažnosti zadaná v zásadách je na nebo vyšší než úroveň podrobností uvedená v nastavení diagnostiky.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách

@@ -3,12 +3,12 @@ title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034930"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563109"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -80,7 +80,6 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* Labs/virtualMachines – ve výchozím nastavení omezen na 800 instancí. 
 * časových
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph

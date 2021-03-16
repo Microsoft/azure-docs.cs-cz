@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 397fff3fafad52b3b989049096fb2d3e1fa2cba1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448145"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488512"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
@@ -45,8 +45,12 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Twitteru v Azure AD
 1. V části **nastavení ověřování** vyberte **Upravit** .
     1. Zaškrtněte políčko **Povolit 3 – legged OAuth** .
     1. Zaškrtněte políčko pro **zadání e-mailové adresy uživatele** .
-    1. Jako **adresu URL zpětného volání** zadejte `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Nahraďte `your-tenant` názvem vašeho tenanta a `your-user-flow-Id` identifikátorem toku uživatele. Například, `b2c_1a_signup_signin_twitter`. Při zadávání názvu tenanta a ID toku uživatele používejte všechna malá písmena, i když jsou v Azure AD B2C definovaná velkými písmeny.
-    1. Jako **adresu URL webu** zadejte `https://your-tenant.b2clogin.com` . Nahraďte `your-tenant` názvem vašeho tenanta. Například, `https://contosob2c.b2clogin.com`.
+    1. Jako **adresu URL zpětného volání** zadejte `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` .  Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Při zadávání názvu tenanta a ID toku uživatele používejte všechna malá písmena, i když jsou v Azure AD B2C definovaná velkými písmeny. Nahraďte:
+        - `your-tenant-name` název vašeho tenanta.
+        - `your-domain-name` s vlastní doménou.
+        - `your-user-flow-Id` s identifikátorem toku uživatele. Například, `b2c_1a_signup_signin_twitter`. 
+    
+    1. Jako **adresu URL webu** zadejte `https://your-tenant.b2clogin.com` . Nahraďte `your-tenant` názvem vašeho tenanta. Například, `https://contosob2c.b2clogin.com`. Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name` .
     1. Zadejte adresu URL pro **účely podmínek služby**, například `http://www.contoso.com/tos` . Adresa URL zásad je stránka, kterou udržujete pro poskytování podmínek a ujednání pro vaši aplikaci.
     1. Zadejte adresu URL pro **Zásady ochrany osobních údajů**, například `http://www.contoso.com/privacy` . Adresa URL zásad je stránka, kterou udržujete pro poskytování informací o ochraně osobních údajů pro vaši aplikaci.
     1. Vyberte **Uložit**.

@@ -4,18 +4,21 @@ description: Tento článek vysvětluje běžné způsoby importu a exportu data
 author: savjani
 ms.author: pariks
 ms.service: mysql
+ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 391a38cd3d1e2ffb790587b6c60ed54992d14d2d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019888"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561987"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Tento článek vysvětluje dva běžné přístupy k importu a exportu dat na server Azure Database for MySQL pomocí MySQL Workbench.
+
+Podrobný a komplexní průvodce migrací najdete v tématu [Průvodce migrací databáze MySQL do Azure](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). 
 
 Podrobné informace a případy použití migrace databází do Azure Database for MySQL najdete také v [Průvodci migrací databáze](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) . Tato příručka poskytuje pokyny, které povedou k úspěšnému plánování a provádění migrace MySQL do Azure.
 
@@ -40,7 +43,7 @@ Přidejte informace o připojení do aplikace MySQL Workbench.
 > [!TIP]
 > U scénářů, ve kterých chcete vypsat a obnovit celou databázi, byste měli použít místo toho přístup k [výpisu a obnovení](concepts-migrate-dump-restore.md) .
 
-Pomocí nástrojů MySQL můžete importovat a exportovat databáze do Azure MySQL Database v následujících scénářích.
+Pomocí nástrojů MySQL můžete importovat a exportovat databáze do Azure MySQL Database v následujících scénářích. Další nástroje najdete na stránce 22 [Příručky k migraci databáze MySQL do Azure](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf). 
 
 - Pokud potřebujete selektivně zvolit několik tabulek, které se mají importovat z existující databáze MySQL do databáze MySQL Azure, je nejlepší použít techniku importu a exportu.  Díky tomu můžete z migrace vynechat všechny nepotřebné tabulky a ušetřit tak čas a prostředky. Například použijte `--include-tables` přepínač nebo s parametrem `--exclude-tables` [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) a `--tables` přepínač s [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Pokud přesouváte databázové objekty jiné než tabulky, je třeba tyto objekty explicitně vytvořit. Zahrňte omezení (primární klíč, cizí klíč, indexy), zobrazení, funkce, procedury, aktivační události a všechny další databázové objekty, které chcete migrovat.

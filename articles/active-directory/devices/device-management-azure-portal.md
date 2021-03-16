@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688905"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561647"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -169,6 +169,10 @@ Chcete-li zobrazit nebo spravovat nastavení zařízení v Azure Portal, je nutn
 
 > [!NOTE]
 > Zařízení, která mají **být připojená k Azure AD nebo jsou registrovaná služba Azure AD, vyžadují Multi-Factor Authentication** nastavení platí pro zařízení, která jsou připojená buď ke službě Azure AD (s některými výjimkami), nebo s registrovanou službou Toto nastavení se nevztahuje na hybridní zařízení připojená k Azure AD, [připojené virtuální počítače Azure AD na](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) zařízeních s Azure a připojená k Azure AD pomocí [režimu automatického nasazení Windows autopilotu](/mem/autopilot/self-deploying).
+
+> [!IMPORTANT]
+> - K vynucení služby Multi-Factor Authentication pro připojení nebo registraci zařízení doporučujeme použít [akci uživatele registrovat nebo připojit zařízení](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) v podmíněném přístupu. 
+> - Pokud používáte zásady podmíněného přístupu, které vyžadují Multi-Factor authencation, musíte toto nastavení nastavit na **ne** . 
 
 - **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**.
 

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107585"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562344"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 V této části najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](api-management-howto-policies.md).
@@ -81,6 +81,12 @@ V této části najdete referenční informace pro následující zásady API Ma
     - [Odeslat požadavek na službu](api-management-dapr-policies.md#invoke) – používá modul runtime Dapr k vyhledání a spolehlivé komunikaci s mikroslužbou Dapr.
     -  [Odeslat zprávu do tématu Pub/sub](api-management-dapr-policies.md#pubsub) – pomocí modulu runtime Dapr publikuje zprávu do tématu publikovat/odběr.
     -  [Aktivace výstupní vazby](api-management-dapr-policies.md#bind) – používá modul runtime Dapr k vyvolání externího systému prostřednictvím výstupní vazby.
+- [Zásady ověřování](validation-policies.md)
+    - [Validate Content](validation-policies.md#validate-content) – ověřuje velikost nebo schéma JSON pro požadavek nebo tělo odpovědi na schéma rozhraní API.
+. 
+    - [Parametry ověření](validation-policies.md#validate-parameters) – ověří parametry záhlaví požadavku, dotazu nebo cesty proti schématu rozhraní API.
+    - [Validate Headers](validation-policies.md#validate-headers) – ověřuje hlavičky odpovědí proti schématu rozhraní API.
+    - [Ověřit stavový kód](validation-policies.md#validate-status-code) – ověří stavové kódy HTTP v odpovědích proti schématu rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o práci se zásadami najdete v těchto tématech:

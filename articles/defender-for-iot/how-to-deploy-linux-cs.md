@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: ec26cd0b66b6d08d8bd686d8f3e5ad8011df10b1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: f2251ef79f568677d6ef09d918cb61ffeba07888
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449760"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494542"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Nasazení programu Defender pro IoT C# Based Security Agent pro Linux
 
@@ -38,7 +38,7 @@ Další typy platforem a agentů najdete v tématu [Volba správného agenta zab
 
 1. Chcete-li nasadit agenta zabezpečení, jsou na počítači, na kterém chcete nainstalovat, požadovány oprávnění místního správce.
 
-1. [Vytvořte modul zabezpečení](quickstart-create-security-twin.md) pro zařízení.
+1. [Vytvořte pro zařízení Defender-IoT-Micro-agent](quickstart-create-security-twin.md) .
 
 ## <a name="installation"></a>Instalace
 

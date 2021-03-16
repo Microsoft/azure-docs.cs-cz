@@ -3,12 +3,12 @@ title: Kurz – přístup k privátnímu cloudu
 description: Přečtěte si, jak získat přístup k privátnímu cloudu řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462237"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494389"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Kurz: přístup k privátnímu cloudu řešení Azure VMware
 
@@ -34,10 +34,7 @@ V tomto kurzu se naučíte:
 
    Adresy URL a přihlašovací údaje uživatele pro zobrazení privátního cloudu vCenter a správce NSX-T.
 
-   >[!TIP]
-   >Pokud chcete vygenerovat nová hesla vCenter a NSX-T, vyberte **vytvořit nové heslo** .
-
-   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Zobrazí adresy URL a přihlašovací údaje privátního cloudu vCenter a NSX Manageru." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. Přejděte na virtuální počítač, který jste vytvořili v předchozím kroku, a připojte se k virtuálnímu počítači. 
 

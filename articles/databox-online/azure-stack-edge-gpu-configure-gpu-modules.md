@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8be0a444dca4cae9b8f7a1e7c04be8a3046e56be
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 348ddff56ed61cd608d6b9f28417e7cd4c4e6b13
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102638101"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563959"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurace a spuštění modulu na GPU na zařízení Azure Stack Edge pro
 
@@ -50,8 +50,8 @@ Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack E
    |--------|---------|
    |Předplatné      | Předplatné používané zdrojem Azure Stack Edge. |
    |Skupina prostředků    | Skupina prostředků, kterou používá prostředek Azure Stack Edge. |
-   |IoT Hub           | Vyberte možnost **vytvořit novou** nebo **použít existující**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-   |Name              | Pokud nechcete použít výchozí název, který je k dispozici pro nový prostředek IoT Hub, zadejte jiný název. |
+   |IoT Hub           | Vyberte možnost **vytvořit novou** nebo **použít existující**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> Prostředek služby IoT Hub v každém případě používá stejné předplatné a stejnou skupinu prostředků jako prostředek Azure Stack Edge.     |
+   |Název              | Pokud nechcete použít výchozí název, který je k dispozici pro nový prostředek IoT Hub, zadejte jiný název. |
 
    Po dokončení nastavení vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení prostředku IoT Hub a vyberte **vytvořit**.
 
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack E
        Další informace o proměnných prostředí, které můžete použít s grafickým procesorem NVIDIA, najdete v části [modul runtime kontejneru NVIDIA](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
 
     > [!NOTE]
-    > GPU je možné namapovat pouze na jeden modul. Modul může ale používat jeden nebo žádné GPU.
+    > Modul může použít jeden, nebo žádné GPU.
 
 12. Zadejte název svého modulu. V tomto okamžiku se můžete rozhodnout, že chcete poskytnout možnost vytvoření kontejneru a upravit nastavení s dvojitým použitím modulu, nebo pokud je dokončený, vyberte **Přidat**. 
 
