@@ -17,12 +17,12 @@ ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881935"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466248"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -44,7 +44,7 @@ Kromě těchto tří účtů, které se používají ke spouštění Azure AD Co
 
 - **Služba AD DS účet správce rozlehlé sítě**: Volitelně můžete použít k vytvoření účtu konektoru služba AD DS výše.
 
-- **Účet globálního správce Azure AD**: používá se k vytvoření účtu konektoru Azure AD a konfiguraci služby Azure AD.  Globální účty správců můžete zobrazit na webu Azure Portal.  Viz [zobrazení rolí](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
+- **Účet globálního správce Azure AD**: používá se k vytvoření účtu konektoru Azure AD a konfiguraci služby Azure AD.  V Azure Portal můžete zobrazit globální účty správců.  Viz [seznam přiřazení rolí Azure AD](../../active-directory/roles/view-assignments.md).
 
 - **Účet SQL SA (volitelné)**: používá se k vytvoření databáze AdSync při použití plné verze SQL Server.  Tento SQL Server může být pro Azure AD Connect instalaci místní nebo vzdálený.  Tento účet může být stejný jako účet správce podnikové sítě.  Zřizování databáze teď může provést vzdálená správa SQL a pak ji nainstalovat správce Azure AD Connect s právy k vlastnictví databáze.  Další informace najdete v tématu [instalace Azure AD Connect s použitím oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md) .
 

@@ -1,14 +1,14 @@
 ---
-title: Přehled agenta připojeného počítače systému Windows
+title: Přehled agenta připojeného počítače
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651089"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470485"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
@@ -90,9 +90,11 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-* Pokud chcete připojit počítače, jste členem role **připojení počítače připojeného k Azure** .
+* Pokud chcete počítače připojit, jste členem role [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) **připojeného počítače Azure** ve skupině prostředků.
 
-* Pokud chcete číst, upravovat a odstraňovat počítač, jste členem role **Správce prostředků počítače připojeného k Azure** . 
+* Pokud chcete číst, upravovat a odstraňovat počítač, jste členem role **Správce prostředků počítače připojeného k Azure** ve skupině prostředků.
+
+* Pokud chcete vybrat skupinu prostředků z rozevíracího seznamu při použití metody **Generated Script** , minimálně jste členem role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) pro tuto skupinu prostředků.
 
 ### <a name="azure-subscription-and-service-limits"></a>Limity předplatného a služeb Azure
 

@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310dd82f9a5f7f98fbca720b48212b7963e25a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f56f8ac42f0db3d2cd27453cd023a2e869b0cde0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551500"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466078"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Role pro služby Microsoft 365 Services v Azure Active Directory
 
-Všechny produkty v Microsoft 365 lze spravovat pomocí rolí správy v Azure Active Directory (Azure AD). Některé produkty také poskytují další role, které jsou specifické pro daný produkt. Informace o rolích podporovaných jednotlivými produkty najdete v následující tabulce. Obecné diskuze o potížích s delegováním najdete v části [plánování delegování rolí v Azure Active Directory](concept-delegation.md).
+Všechny produkty v Microsoft 365 lze spravovat pomocí rolí správy v Azure Active Directory (Azure AD). Některé produkty také poskytují další role, které jsou specifické pro daný produkt. Informace o rolích podporovaných jednotlivými produkty najdete v následující tabulce. Pokyny k plánování zabezpečení rolí najdete v tématu [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](security-planning.md).
 
 ## <a name="where-to-find-content"></a>Kde najít obsah
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d983369db3fbd03c41c248439a5c1aabec14ea55
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: f26cea9442aa3fbbe7f475cc5d16bea792b83fb3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535361"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493981"
 ---
 # <a name="defender-for-iot-glossary"></a>Glosář Defenderu for IoT
 
@@ -61,7 +61,7 @@ V tomto glosáři najdete stručný popis důležitých pojmů a konceptů pro p
 | **Inventář zařízení – senzor** | Inventář zařízení zobrazuje rozsáhlou škálu atributů zařízení zjištěných v programu Defender pro IoT. Možnosti jsou k dispozici pro:<br /><br />-Filtrovat zobrazené informace.<br /><br />– Exportujte tyto informace do souboru CSV.<br /><br />– Importujte podrobnosti registru Windows. | **[Group (Skupina)](#g)** <br /><br />**[Inventář zařízení – místní Konzola pro správu](#d)** |
 | **Inventář zařízení – místní Konzola pro správu** | Informace o zařízení od připojených senzorů můžete zobrazit z místní konzoly pro správu v inventáři zařízení. To uživatelům místní konzole pro správu poskytuje ucelený přehled o všech síťových informacích. | **[Inventář zařízení – senzor](#d) <br /> <br /> [Inventář zařízení – integrátor dat](#d)** |
 | **Inventář zařízení – integrátor dat** | Možnosti integrace dat v místní konzole pro správu umožňují vylepšit data v inventáři zařízení s informacemi z dalších podnikových prostředků. Příkladem prostředků jsou CMDBs, DNS, firewall a webová rozhraní API. | **[Inventář zařízení – místní Konzola pro správu](#d)** |
-| **Vlákna zařízení**`(DB)` | Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení včetně metadat, konfigurací a podmínek. | [Modul je nevlákenný](#m) <br /> <br />[Modul zabezpečení je dvojitě.](#s) |
+| **Vlákna zařízení**`(DB)` | Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení včetně metadat, konfigurací a podmínek. | [Modul je nevlákenný](#m) <br /> <br />[Defender-IoT-Micro-agent nevláken](#s) |
 
 ## <a name="e"></a>E
 
@@ -112,7 +112,7 @@ V tomto glosáři najdete stručný popis důležitých pojmů a konceptů pro p
 | Období | Popis | Další informace |
 |--|--|--|
 | **Micro agent**`(DB)` | Poskytuje hloubkové možnosti zabezpečení pro zařízení IoT, včetně stav zabezpečení a detekce hrozeb. | |
-| **Modul je nevlákenný**`(DB)` | Dvojčata modulů jsou dokumenty JSON, které obsahují informace o stavu modulu, včetně metadat, konfigurací a podmínek. | [Dvojče zařízení](#d) <br /> <br />[Modul zabezpečení je dvojitě.](#s) |
+| **Modul je nevlákenný**`(DB)` | Dvojčata modulů jsou dokumenty JSON, které obsahují informace o stavu modulu, včetně metadat, konfigurací a podmínek. | [Dvojče zařízení](#d) <br /> <br />[Defender-IoT-Micro-agent nevláken](#s) |
 | **Ztlumení události výstrahy** | Dejte programu Defender, aby IoT neustále ignoroval činnost se stejnými zařízeními a srovnatelnými přenosy. | **[Výstraha](#glossary-a) <br /> <br /> [Pravidlo vyloučení](#e) <br /> <br /> [Potvrdit událost výstrahy](#glossary-a) <br /> <br /> [Zobrazit událost výstrahy](#l)** |
 
 ## <a name="n"></a>N
@@ -148,7 +148,7 @@ V tomto glosáři najdete stručný popis důležitých pojmů a konceptů pro p
 | Období | Popis | Další informace |
 |--|--|--|
 | **Výstraha zabezpečení** | Výstrahy, které řeší problémy se zabezpečením, například nadměrné pokusy o přihlášení SMB nebo zjištění malwaru. | **[Výstraha](#glossary-a) <br /> <br /> [Provozní upozornění](#o)** |
-| **Modul zabezpečení je dvojitě** . `(DB)` | Modul zabezpečení obsahuje všechny informace, které jsou důležité pro zabezpečení zařízení, a to pro každé konkrétní zařízení ve vašem řešení. | [Dvojče zařízení](#d) <br /> <br />[Modul je nevlákenný](#m)  |
+| **Defender-IoT-Micro-agent nevláken**`(DB)` | V programu Defender-IoT-Micro-Agent se zobrazí všechny informace, které jsou důležité pro zabezpečení zařízení, pro každé konkrétní zařízení ve vašem řešení. | [Dvojče zařízení](#d) <br /> <br />[Modul je nevlákenný](#m)  |
 | **Selektivní zjišťování** | Defender pro IoT prověří IT a za provozu a detekuje relevantní informace o zařízeních, jejich atributech, jejich chování a dalších. V některých případech nemusí být některé informace v pasivních síťových analýzách viditelné.<br /><br />V takovém případě můžete pomocí bezpečných a podrobných nástrojů pro zjišťování v programu Defender pro IoT zjistit důležité informace o dříve nedosažitelných zařízeních. | - |
 | **Elektrické** | Fyzický nebo virtuální počítač, na kterém je nainstalována platforma Defender for IoT. | **[Místní Konzola pro správu](#o)** |
 | **Web** | Umístění, které továrna nebo jiná entita. Lokalita by měla obsahovat zónu nebo několik zón, ve kterých je nainstalován senzor. | **[Zóna](#z)** |

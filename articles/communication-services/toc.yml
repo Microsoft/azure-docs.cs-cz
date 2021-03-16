@@ -130,8 +130,10 @@
       href: concepts/teams-interop.md
     - name: Známé problémy
       href: concepts/known-issues.md
-- name: Ukázky
+- name: ukázky
   items:
+    - name: Přehled
+      href: samples/overview.md
     - name: Ukázka pro skupinové hovory
       href: samples/calling-hero-sample.md
     - name: Ukázka pro skupinový chat

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1e8a0f1919da125a571429e1efff06589c7e85a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051187"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466707"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak pomocí oprávnění udělených vlastními rolemi 
 - [Přiřazení předdefinované role správce](#assign-built-in-application-admin-roles) , která uděluje přístup ke správě konfigurace ve službě Azure AD pro všechny aplikace. Toto je doporučený způsob, jak udělit odborníkům na IT přístup ke správě rozsáhlých oprávnění konfigurace aplikace bez udělení přístupu ke správě jiných částí služby Azure AD, které nesouvisí s konfigurací aplikace.
 - [Vytvoření vlastní role](#create-and-assign-a-custom-role-preview) definující velmi specifická oprávnění a jejich přiřazení někomu jinému jako omezeného vlastníka nebo v oboru adresáře (všechny aplikace) jako omezeného správce.
 
-Je důležité zvážit udělení přístupu pomocí jedné z výše uvedených metod ze dvou důvodů. Nejprve delegování schopnosti provádět úlohy správy snižuje režii globálního správce. Za druhé, pomocí omezených oprávnění zlepšíte stav zabezpečení a omezíte potenciál na neoprávněný přístup. Problémy s delegováním a obecné pokyny jsou popsány v tématu [Správa delegovaných v Azure Active Directory](concept-delegation.md).
+Je důležité zvážit udělení přístupu pomocí jedné z výše uvedených metod ze dvou důvodů. Nejprve delegování schopnosti provádět úlohy správy snižuje režii globálního správce. Za druhé, pomocí omezených oprávnění zlepšíte stav zabezpečení a omezíte potenciál na neoprávněný přístup. Pokyny k plánování zabezpečení rolí najdete v tématu [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](security-planning.md).
 
 ## <a name="restrict-who-can-create-applications"></a>Omezit, kdo může vytvářet aplikace
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131560"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471762"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
 
@@ -31,7 +31,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
   >[!Important]
   >Tato metoda přihlašování k telefonu funguje jenom u vašich pracovních nebo školních a osobních účtů Microsoft. Vaše účty jiných společností než Microsoft vyžadují, abyste používali standardní proces ověřování dvou faktorů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít aplikaci Microsoft Authenticator, musíte:
 
@@ -51,9 +51,12 @@ Přihlášení telefonem je dostupné jenom v zařízeních s iOS a Androidem, n
 
 Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo školní účet a zapněte přihlašování telefonem.
 
-- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem** , klepněte na něj a zapněte přihlášení k telefonu.
-- **Pokud jste už aplikaci používali pro dvoustupňové ověřování** , můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
+- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
+- **Pokud jste už aplikaci používali pro dvoustupňové ověřování**, můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
 - **Pokud svůj pracovní nebo školní účet nemůžete najít** na obrazovce **účty** aplikace, znamená to, že jste ho ještě nepřidali do aplikace. Přidejte svůj pracovní nebo školní účet podle kroků v [nápovědě k přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
+
+> [!NOTE]
+> Microsoft nepodporuje kombinaci registrace zařízení a ověřování založeného na certifikátech v rámci ověřovatele v iOS. Místo toho musí před přihlášením uživatel zařízení zaregistrovat ručně prostřednictvím nastavení ověřovatele.
 
 Po zapnutí telefonického přihlášení se můžete přihlásit jenom pomocí aplikace Microsoft Authenticator. Jak na to:
 
@@ -67,7 +70,7 @@ Po zapnutí telefonického přihlášení se můžete přihlásit jenom pomocí 
 
     ![Schválení přihlašovacího pole na zařízení](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
-3. Zvolením možnosti **schválit** poznáte pokus o přihlášení. V opačném případě vyberte **Odepřít** .
+3. Zvolením možnosti **schválit** poznáte pokus o přihlášení. V opačném případě vyberte **Odepřít**.
 
 4. K dokončení ověřování použijte PIN nebo klíč biometriky vašeho telefonu.
 
@@ -82,8 +85,8 @@ Pro osobní účet Microsoft můžete zapnout přihlášení telefonem, napřík
 
 Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo školní účet a zapněte přihlašování telefonem.
 
-- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem** , klepněte na něj a zapněte přihlášení k telefonu.
-- **Pokud už aplikaci používáte pro dvoustupňové ověřování** , můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
+- **Po klepnutí na dlaždici účtu** se zobrazí zobrazení celé obrazovky účtu. Pokud se zobrazí **přihlašování telefonem** , znamená to, že jste plně nastavili, abyste se přihlásili bez hesla. Pokud se zobrazí možnost **Povolit přihlašování telefonem**, klepněte na něj a zapněte přihlášení k telefonu.
+- **Pokud už aplikaci používáte pro dvoustupňové ověřování**, můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
 - **Pokud váš účet nemůžete najít** na obrazovce **účty** aplikace, znamená to, že jste ho ještě nepřidali do aplikace. Pomocí postupu v článku [Přidání osobních účtů Microsoft](user-help-auth-app-add-personal-ms-account.md) přidejte své osobní účet Microsoft.
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Přihlaste se ke svému účtu pomocí přihlášení telefonem.

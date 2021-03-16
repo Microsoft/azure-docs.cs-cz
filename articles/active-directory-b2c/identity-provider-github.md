@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448366"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488852"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu GitHubu pomocí Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Pokud chcete povolit přihlášení pomocí účtu GitHubu v Azure Active Direct
 1. Přihlaste se k [vývojáři GitHubu](https://github.com/settings/developers) pomocí svých přihlašovacích údajů GitHubu.
 1. Vyberte **aplikace OAuth** a pak vyberte **Nová aplikace OAuth**.
 1. Zadejte **název aplikace** a **adresu URL domovské stránky**.
-1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **adresu URL zpětného volání autorizace**. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
+1. Jako **adresu URL zpětného volání autorizace** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-domain-name` vlastní doménou a `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
 1. Klikněte na **Registrovat aplikaci**.
 1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. K přidání poskytovatele identity k vašemu tenantovi potřebujete obojí.
 

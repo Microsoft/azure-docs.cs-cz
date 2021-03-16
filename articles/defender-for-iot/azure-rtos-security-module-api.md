@@ -1,6 +1,6 @@
 ---
-title: Rozhraní API modulu zabezpečení pro Azure RTOS
-description: Referenční rozhraní API pro modul zabezpečení pro Azure RTO.
+title: Defender – IoT-Micro-Agent pro Azure RTO API
+description: Referenční rozhraní API pro Defender-IoT-Micro-Agent pro Azure RTO.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cec28f9290808836ec2dfd334b23fe8c76df03fc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120058"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494287"
 ---
-# <a name="security-module-for-azure-rtos-api"></a>Rozhraní API modulu zabezpečení pro Azure RTOS 
+# <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender – IoT-Micro-Agent pro Azure RTO API (Preview)
 
-Toto rozhraní API je určené pro použití s modulem zabezpečení pouze pro Azure RTO. Další zdroje najdete v [modulu zabezpečení prostředku GitHubu Azure RTO](https://github.com/azure-rtos/azure-iot-preview/releases). 
+Toto rozhraní API je určené pro použití s Defenderem-IoT-Micro-Agent pro Azure RTO. Další zdroje najdete v tématu věnovaném programu [Defender-IoT-Micro-Agent pro Azure RTO GitHub](https://github.com/azure-rtos/azure-iot-preview/releases). 
 
-## <a name="enable-security-module-for-azure-rtos"></a>Povolení modulu zabezpečení pro Azure RTO
+## <a name="enable-defender-iot-micro-agent-for-azure-rtos"></a>Povolení programu Defender – IoT-Micro-Agent pro Azure RTO
 
 **nx_azure_iot_security_module_enable**
 
@@ -36,7 +36,7 @@ UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Popis
 
-Tato rutina umožňuje podsystém modulu zabezpečení Azure IoT. Interní Stavový počítač spravuje shromažďování událostí zabezpečení a odesílá je do Azure IoT Hub. Pro správu shromažďování dat je vyžadována pouze jedna instance NX_AZURE_IOT_SECURITY_MODULE.
+Tato rutina umožňuje subsystém Azure IoT Defender – IoT-Micro-agent. Interní Stavový počítač spravuje shromažďování událostí zabezpečení a odesílá je do Azure IoT Hub. Pro správu shromažďování dat je vyžadována pouze jedna instance NX_AZURE_IOT_SECURITY_MODULE.
 
 ### <a name="parameters"></a>Parametry
 
@@ -56,7 +56,7 @@ Tato rutina umožňuje podsystém modulu zabezpečení Azure IoT. Interní Stavo
 
 Vlákna
 
-## <a name="disable-azure-iot-security-module"></a>Zakázat modul zabezpečení Azure IoT
+## <a name="disable-azure-iot-defender-iot-micro-agent"></a>Zakázání Azure IoT Defenderu IoT-Micro-Agent
 
 **nx_azure_iot_security_module_disable**
 
@@ -69,7 +69,7 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Popis
 
-Tato rutina zakáže podsystém modulu zabezpečení Azure IoT.
+Tato rutina zakáže podsystém Azure IoT Defender – IoT-Micro-agent.
 
 ### <a name="parameters"></a>Parametry
 
@@ -92,6 +92,6 @@ Vlákna
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak začít s modulem zabezpečení Azure RTO, najdete v následujících článcích:
+Další informace o tom, jak začít s Azure RTO Defenderem IoT-Micro-agent, najdete v následujících článcích:
 
-- Projděte si [Přehled](iot-security-azure-rtos.md)modulu Security Defender pro IoT RTO.
+- Přečtěte si téma Defender for IoT RTO Defender-IoT-Micro-agent [Overview](iot-security-azure-rtos.md).

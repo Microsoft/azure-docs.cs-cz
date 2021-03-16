@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ba960465ab0ca8d5124d5882e3578e61fee2cf14
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179370"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490139"
 ---
 # <a name="azure-percept-dk-overview"></a>Přehled Azure Percept DK
 
 Azure Percept DK je špičková sada souborů AI a IoT Development Kit navržená pro vývoj konceptů a audio AI. V kombinaci se službou [Azure Percept Studio](./overview-azure-percept-studio.md) a [službou Azure Percept audio](./overview-azure-percept-audio.md)se to znamená, že se ještě nejedná o výkonnou platformu, kterou je možné snadno použít k vytváření řešení AI na Edge pro nejrůznější aplikace v oblasti Vision nebo audio AI. K nákupu můžete použít [online obchod Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+
+> [!div class="nextstepaction"]
+> [Koupit hned](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Zařízení Azure Percept DK.":::
 
@@ -52,4 +55,5 @@ Azure Percept DK je špičková sada souborů AI a IoT Development Kit navržen�
 
 ## <a name="next-steps"></a>Další kroky
 
-Objednat si Azure Percept DK v [online obchodě Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+> [!div class="nextstepaction"]
+> [Kupte si Azure Percept ze Storu z online obchodu Microsoftu](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

@@ -4,14 +4,14 @@ description: Úprava cílů úložiště mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.author: v-erkel
-ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 78010ef2d93b23a12fc7f3e988a536b4993b4dd4
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204027"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471874"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -19,13 +19,16 @@ Můžete odebrat nebo upravit cíle úložiště pomocí Azure Portal nebo pomoc
 
 V závislosti na typu úložiště můžete tyto hodnoty cíle úložiště změnit:
 
-* V případě cílů služby Blob Storage můžete změnit cestu k oboru názvů.
+* V případě cílů služby Blob Storage můžete změnit cestu k oboru názvů a zásady přístupu.
 
 * V případě cílů úložiště NFS můžete tyto hodnoty změnit:
 
   * Cesty oboru názvů
+  * Zásady přístupu
   * Podadresář exportu nebo exportu úložiště přidruženého k cestě oboru názvů
   * Model využití
+
+* V případě cílů úložiště ADLS-NFS můžete změnit cestu k oboru názvů, zásadu přístupu a model využití.
 
 Nemůžete upravit název, typ nebo back-end úložiště cíle úložiště (kontejner objektů BLOB nebo název hostitele nebo IP adresa systému souborů NFS). Pokud potřebujete tyto vlastnosti změnit, odstraňte cíl úložiště a vytvořte náhradu s novou hodnotou.
 
@@ -94,10 +97,13 @@ Pokud chcete změnit obor názvů cíle služby Blob Storage pomocí Azure CLI, 
 
 V případě cílů úložiště NFS můžete měnit nebo přidávat cesty k virtuálnímu oboru názvů, měnit hodnoty exportu nebo podadresáře NFS, na které cesta oboru názvů odkazuje, a změnit model využití.
 
+Cíle úložiště v mezipamětech s některými typy vlastních nastavení DNS mají také ovládací prvek pro obnovení IP adres. (Tento druh konfigurace je zřídka.)
+
 Podrobnosti jsou uvedené níže:
 
-* [Změna agregovaných hodnot oboru názvů](#change-aggregated-namespace-values) (cesta k virtuálnímu oboru názvů, export a export podadresáře)
+* [Změna agregovaných hodnot oboru názvů](#change-aggregated-namespace-values) (cesta k virtuálnímu oboru názvů, zásada přístupu, export a export podadresáře)
 * [Změna modelu použití](#change-the-usage-model)
+* [Aktualizovat DNS](#update-ip-address-custom-dns-configurations-only)
 
 ### <a name="change-aggregated-namespace-values"></a>Změna agregovaných hodnot oboru názvů
 
@@ -112,7 +118,7 @@ Pro aktualizaci hodnot oboru názvů použijte stránku **oboru názvů** pro me
 ![snímek obrazovky se stránkou s oborem názvů portálu se stránkou aktualizace NFS otevřená na pravé straně](media/update-namespace-nfs.png)
 
 1. Klikněte na název cesty, kterou chcete změnit.
-1. Použijte okno Upravit k zadání nové virtuální cesty, exportu nebo hodnot podadresářů.
+1. Pomocí okna Upravit můžete zadat nové virtuální cesty, exportovat nebo podadresáře a vybrat jiné zásady přístupu.
 1. Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK** . Chcete-li změny zahodit, klikněte na tlačítko **Storno** .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -174,6 +180,37 @@ Pokud chcete ověřit názvy modelů použití, použijte příkaz [AZ HPC-cache
 Pokud je mezipaměť zastavená nebo není v dobrém stavu, bude aktualizace platit až po dobrém stavu mezipaměti.
 
 ---
+
+### <a name="update-ip-address-custom-dns-configurations-only"></a>IP adresa aktualizace (jenom vlastní konfigurace DNS)
+
+Pokud vaše mezipaměť používá jinou než výchozí konfiguraci DNS, je možné, že se IP adresa cíle úložiště NFS změní kvůli změnám back-endu DNS. Pokud váš server DNS změní IP adresu systému back-end úložiště, mezipaměť prostředí Azure HPC může ztratit přístup k systému úložiště.
+
+V ideálním případě byste měli pracovat se správcem vlastního systému DNS vaší mezipaměti, aby bylo možné naplánovat jakékoli aktualizace, protože u těchto změn není úložiště k dispozici.
+
+Pokud potřebujete aktualizovat IP adresu poskytnutou službou DNS cíle úložiště, v seznamu cílů úložiště je tlačítko. Kliknutím na **Aktualizovat DNS** se můžete dotazovat na vlastní server DNS pro novou IP adresu.
+
+![Snímek obrazovky s cílovým seznamem úložiště Pro jeden cíl úložiště, "..." nabídka ve sloupci úplně vpravo je otevřená a zobrazí se dvě možnosti: odstranit a aktualizovat DNS.](media/refresh-dns.png)
+
+V případě úspěchu by tato aktualizace měla trvat déle než dvě minuty. Najednou můžete aktualizovat jenom jeden cíl úložiště. před dalším pokusem o dokončení operace počkejte, než se předchozí operace dokončí.
+
+## <a name="update-an-adls-nfs-storage-target-preview"></a>Aktualizace cíle úložiště ADLS-NFS (PREVIEW)
+
+Podobně jako cíle NFS můžete změnit cestu k oboru názvů a model použití pro cíle úložiště ADLS-NFS.
+
+### <a name="change-an-adls-nfs-namespace-path"></a>Změna cesty k oboru názvů ADLS-NFS
+
+Pro aktualizaci hodnot oboru názvů použijte stránku **oboru názvů** pro mezipaměť prostředí Azure HPC. Tato stránka je podrobněji popsána v článku [Nastavení agregovaného oboru názvů](add-namespace-paths.md).
+
+![snímek obrazovky se stránkou s oborem názvů portálu se stránkou aktualizace služby ADS – NFS otevřená na pravé straně](media/update-namespace-adls.png)
+
+1. Klikněte na název cesty, kterou chcete změnit.
+1. Pomocí okna Upravit zadejte novou virtuální cestu nebo aktualizujte zásady přístupu.
+1. Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK** . Chcete-li změny zahodit, klikněte na tlačítko **Storno** .
+
+### <a name="change-adls-nfs-usage-models"></a>Změna modelů využití ADLS-NFS
+
+Konfigurace pro modely využití ADLS-NFS je shodná s volbou modelu použití systému souborů NFS. Přečtěte si pokyny na portálu v části [Změna modelu použití](#change-the-usage-model) v oddílu NFS výše. Další nástroje pro aktualizaci cílů úložiště ADLS-NFS jsou ve vývoji.
+
 
 ## <a name="next-steps"></a>Další kroky
 

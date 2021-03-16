@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 49abd2cc62ff7a2eab3d95265f3db8f5c894ebb6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448417"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488937"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Facebook pomocí Azure Active Directory B2C
 
@@ -55,7 +55,8 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Facebook v Azure Ac
 1. Vyberte **Zobrazit** a zkopírujte hodnotu **tajného kódu aplikace**. Pomocí obou z nich můžete nakonfigurovat Facebook jako poskytovatele identity ve vašem tenantovi. **Tajný klíč aplikace** je důležité bezpečnostní pověření.
 1. V nabídce vyberte symbol **plus** vedle nabídky **produkty**. V části **Přidat produkty do aplikace** vyberte možnost **nastavit** v části **přihlášení do Facebooku**.
 1. V nabídce vyberte **přihlašovací jméno na Facebooku** a pak vyberte **Nastavení**.
-1. Do **platného identifikátorů URI pro přesměrování OAuth** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. V dolní části stránky vyberte **Uložit změny** .
+1. Do **platného identifikátorů URI pro přesměrování OAuth** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou. 
+1. V dolní části stránky vyberte **Uložit změny** .
 1. Chcete-li zpřístupnit aplikaci Facebook Azure AD B2C, vyberte selektor **stavu v pravém** horním rohu stránky a zapněte ji tak, aby byla aplikace veřejná, a pak vyberte **přepínač režim**.  V tomto okamžiku se stav změní z **vývoje** na **Live**.
 
 ::: zone pivot="b2c-user-flow"

@@ -3,12 +3,12 @@ title: Připojení řešení Azure VMware k místnímu prostředí
 description: Přečtěte si, jak propojit řešení Azure VMware s vaším místním prostředím.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 6d1c52784eae2efabe79a9ba5c6cdf9bbfdc1950
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 0b26dc4756cb37544c2b2f8c5a75df0ac1a9d629
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461639"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491788"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Připojení řešení Azure VMware k místnímu prostředí
 
@@ -28,7 +28,7 @@ Pokud chcete vytvořit místní připojení k privátnímu cloudu řešení Azur
 
 Výsledkem tohoto kurzu je připojení, jak je znázorněno v diagramu.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="ExpressRoute Global Reach diagram připojení k místní síti." lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" alt-text="ExpressRoute Global Reach diagram připojení k místní síti." lightbox="media/pre-deployment/azure-vmware-solution-on-premises-diagram.png" border="false":::
 
 ## <a name="verify-on-premises-network-connectivity"></a>Ověření připojení k místní síti
 

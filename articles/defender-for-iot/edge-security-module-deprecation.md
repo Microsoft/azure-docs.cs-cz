@@ -8,22 +8,22 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 2779a73d3a5f77e3a3b144309baf6d2788565443
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: a33e7ff230292d4ceb14610e3cf00935dc1a67a0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809772"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493165"
 ---
 # <a name="feature-support-and-retirement"></a>Podpora funkcí a vyřazení z provozu
 
 Tento článek popisuje Azure Defender pro funkce IoT a podporu různých možností v rámci programu Defender pro IoT.
 
-## <a name="defender-for-iot-c-c-and-edge-security-module-deprecation"></a>Defender pro zastaralost modulu zabezpečení IoT C, C# a Edge
+## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>Defender pro IoT C, C# a Edge Defender – IoT-Micro-agent nepoužívá se
 
-Nový mikroagent nahradí aktuální modul zabezpečení jazyka C, C# a Edge.  
+Nový mikroagent nahradí aktuální jazyk C, C# a Edge Defender – IoT-Micro-agent.  
 
-Nový mikroagent je založený na znalostech a zkušenostech shromážděných z ukončení vývoje modulu zabezpečení, zákazníků a partnerů, kteří se dozvědí o čtyři důležitá vylepšení: 
+Nový mikroagent je založený na znalostech a zkušenostech shromážděných z vývoje Defenderu – IoT-Micro-Agent pro vývoj, zákazníky a partnery se svými názory se čtyřmi důležitými vylepšeními: 
 
 - **Hodnota zabezpečení hloubky**: nový agent bude spuštěn na úrovni hostitele, který bude poskytovat lepší přehled o základních operacích zařízení a umožňuje lepší pokrytí zabezpečení.
 

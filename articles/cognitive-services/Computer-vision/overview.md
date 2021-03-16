@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: počítačové zpracování obrazu, aplikace počítačové vidění, Služba Computer visioning Service
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575936"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488478"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575936"
 Služba Počítačové zpracování obrazu v Azure vám poskytuje přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace na základě vizuálních funkcí, které vás zajímají. Počítačové zpracování obrazu například může určit, jestli obrázek obsahuje obsah pro dospělé, najít konkrétní značky nebo objekty nebo najít lidské obličeje.
 
 Můžete vytvořit Počítačové zpracování obrazu aplikace prostřednictvím [sady Client Library SDK](./quickstarts-sdk/client-library.md) nebo voláním [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+
+Tato dokumentace obsahuje následující typy článků:
+* [Rychlé starty](./quickstarts-sdk/client-library.md) jsou podrobné pokyny, které vám umožní volat službu a získat výsledky v krátké době. 
+* [Příručky](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném způsobu.
+* [Koncepční články](concept-recognizing-text.md) poskytují podrobné vysvětlení funkcí a funkcí služby.
+* [Kurzy](./tutorials/storage-lab-tutorial.md) jsou delší než příručky, které ukazují, jak tuto službu používat jako součást v širších obchodních řešeních.
 
 ## <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 

@@ -209,6 +209,9 @@
           href: customize-ui-with-html.md
         - name: JavaScript a rozložení stránek
           href: javascript-and-page-layout.md
+        - name: Vložené přihlášení pomocí IFRAME
+          displayName: iframe
+          href: embedded-login.md
         - name: Přizpůsobení jazyka
           href: language-customization.md
           displayName: localization
@@ -420,11 +423,13 @@
           href: partner-whoiam.md
         - name: Zscaler
           href: partner-zscaler.md
-    - name: Použití b2clogin.com
+    - name: Název domény
       items:
         - name: Přehled b2clogin.com
           href: b2clogin.md
-        - name: Migrace webového rozhraní API do b2clogin.com
+        - name: Konfigurace vlastní domény
+          href: custom-domain.md
+        - name: Konfigurace domén webového rozhraní API
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Automation

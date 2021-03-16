@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014242"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466393"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Vytvoření kanálu CI/CD pro úlohu Stream Analytics pomocí Azure DevOps
 
@@ -56,6 +56,22 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Zadání konfigurací pro úlohu npm":::
 
+Pokud potřebujete použít agenta hostovaného pro Linux, použijte následující postup:
+1.  Vyberte **specifikaci agenta** .
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="Snímek obrazovky s výběrem specifikace agenta":::
+
+2.  Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Zadejte *příkazový řádek* do pole hledání úlohy a vyberte **příkazový řádek**.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="Snímek obrazovky s vyhledáním úlohy příkazového řádku ":::
+
+3.  Zadejte **Zobrazovaný název** úkolu. do **skriptu** zadejte následující příkaz. Ponechte zbývající výchozí možnosti.
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="Snímek obrazovky se zadáním skriptu pro úlohu cmd":::
+
 ## <a name="add-a-build-task"></a>Přidat úlohu sestavení
 
 1. Na stránce **proměnné** vyberte **+ Přidat** v **proměnných kanálu**. Přidejte následující proměnné. Nastavte následující hodnoty podle vaší předvolby:
@@ -64,7 +80,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
    |-|-|
    |projectRootPath|Názevvašehoprojektu|
    |outputPath|Výstup|
-   |deployPath|Nasazení|
+   |deployPath|Nasadit|
 
 2. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
 

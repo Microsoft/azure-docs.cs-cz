@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9611a854c6dad29842f1652580da5fd1d449cb3f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 3e0ad6aeb6110d04d9c2a8ff5b3e30726d9de03f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485826"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490598"
 ---
 # <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat
 
@@ -51,7 +51,7 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                    | Dostávat oznámení, když zadá jiný člen konverzačního vlákna                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Dostávat oznámení, když jiný člen přečte zprávu (stvrzenka pro čtení) ve vlákně chatu                               | ✔️   | ❌    | ❌    | ❌  |
 | Události             | Použití Event Grid k přihlášení k odběru aktivity uživatelů při konverzaci v vláknech a integraci vlastních služeb oznámení nebo obchodní logiky     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Monitorování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
+| Sledování        | Monitorování využití z doručených zpráv                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Monitorování kvality a stavu požadavků rozhraní API provedených vaší aplikací a konfigurace výstrah prostřednictvím portálu                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Další funkce | Pomocí [rozhraní API služeb Cognitive Services](../../../cognitive-services/index.yml) společně s klientskou knihovnou chatu můžete povolit inteligentní funkce *překladu jazyka & mínění analýzy příchozích zpráv v klientovi, konverzi řeči na text a vytvoření zprávy, když člen mluví atd.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 

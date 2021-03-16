@@ -56,6 +56,8 @@
   items:
     - name: Požádat o kvótu hostitele a povolit řešení Azure VMware
       href: enable-azure-vmware-solution.md
+    - name: Přesunout předplatná EA a CSP
+      href: move-ea-csp-subscriptions.md
     - name: Úspora nákladů s využitím rezervované instance
       href: reserved-instance.md
     - name: Posouzení migrace

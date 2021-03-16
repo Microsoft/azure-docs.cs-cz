@@ -4,16 +4,16 @@ description: Vytvoření a použití zásad vlastního přístupu pro omezení p
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 795b194eb7cd31e633128c22ddffe808b32e07da
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802404"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471777"
 ---
-# <a name="use-client-access-policies"></a>Použití zásad klientského přístupu
+# <a name="control-client-access"></a>Řízení přístupu klienta
 
 Tento článek vysvětluje, jak vytvořit a použít vlastní zásady klientského přístupu pro vaše cíle úložiště.
 
@@ -23,7 +23,7 @@ Zásady přístupu se použijí na cestu oboru názvů, což znamená, že můž
 
 Tato funkce je určená pro pracovní postupy, ve kterých potřebujete určit, jak různé skupiny klientů přistupují k cíli úložiště.
 
-Pokud nepotřebujete pro přístup k cíli úložiště jemně odstupňovanou kontrolu, můžete použít výchozí zásady, nebo můžete přizpůsobit výchozí zásady pomocí dalších pravidel.
+Pokud nepotřebujete pro přístup k cíli úložiště jemně odstupňovanou kontrolu, můžete použít výchozí zásady, nebo můžete přizpůsobit výchozí zásady pomocí dalších pravidel. Pokud třeba chcete povolit kořenové "squash pro všechny klienty, kteří se připojují přes mezipaměť, můžete upravit zásadu s názvem **Default** a přidat tak nastavení root" squash.
 
 ## <a name="create-a-client-access-policy"></a>Vytvoření zásad klientského přístupu
 
@@ -81,15 +81,21 @@ Zaškrtněte toto políčko, pokud chcete, aby zadaní klienti mohli přímo př
 
 Určete, jestli se mají u klientů, kteří splňují toto pravidlo, nastavit "squash rootem.
 
-Tato hodnota umožňuje, abyste na úrovni exportu úložiště povolili kořen "squash. Můžete také [Nastavit kořen "squash na úrovni mezipaměti](configuration.md#configure-root-squash).
+Toto nastavení určuje, jak mezipaměť HPC Azure zpracovává požadavky od kořenového uživatele na klientských počítačích. Pokud je povolená možnost root "squash, budou se uživatelé z klienta při odesílání požadavků přes mezipaměť HPC Azure automaticky mapovat na uživatele bez oprávnění. Zabrání taky klientským žádostem o použití bitů oprávnění set-UID.
 
-Pokud zapnete kořenový "squash, musíte taky nastavit hodnotu uživatel anonymního ID na jednu z těchto možností:
+Pokud je kořenový "squash zakázaný, požadavek od uživatele root Client (UID 0) se předá do systému úložiště NFS back-end jako kořen. Tato konfigurace může umožňovat nevhodný přístup k souborům.
 
-* **-2** (nikdo)
-* **65534** (nikdo)
-* **-1** (bez přístupu)
-* **65535** (bez přístupu)
+Nastavení kořenového "squashu pro požadavky klientů může přispět k náhradě vyžadovaného ``no_root_squash`` nastavení v systémech NAS, které se používají jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prerequisites.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
+
+Pokud zapnete kořenový "squash, musíte taky nastavit hodnotu uživatele anonymní ID. Portál přijímá celočíselné hodnoty mezi 0 a 4294967295. (Staré hodnoty – 2 a-1 jsou podporované z důvodu zpětné kompatibility, ale nedoporučují se pro nové konfigurace.)
+
+Tyto hodnoty jsou namapovány na konkrétní hodnoty uživatele:
+
+* **-2** nebo **65534** (nikdo)
+* **-1** nebo **65535** (bez přístupu)
 * **0** (Neprivilegovaný kořen)
+
+Systém úložiště může mít jiné hodnoty se speciálními významy.
 
 ## <a name="update-access-policies"></a>Aktualizace zásad přístupu
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018321"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490921"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Jak převést data na FHIR (Preview)
 
@@ -30,7 +30,7 @@ $convert – data přebírají v textu požadavku prostředek [parametru](http:/
 
 **Prostředek parametru:**
 
-| Název parametru      | Description | Přípustné hodnoty |
+| Název parametru      | Popis | Přípustné hodnoty |
 | ----------- | ----------- | ----------- |
 | inputData      | Data, která mají být převedena. | Platná hodnota datového typu řetězce JSON|
 | inputDataType   | Datový typ vstupu | ```HL7v2``` |
@@ -125,6 +125,12 @@ Udělte roli AcrPull Azure API pro instanci služby FHIR.
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>Registrace serverů ACR v rozhraní Azure API pro FHIR
 
+Server ACR můžete zaregistrovat pomocí Azure Portal nebo pomocí rozhraní příkazového řádku.
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>Registrace serveru ACR pomocí Azure Portal
+V části _transformace dat_ v Azure API pro instanci FHIR přejděte do okna _artefakty_ . Zobrazí se seznam aktuálně registrovaných serverů ACR. Klikněte na _Přidat_ a z rozevíracího seznamu vyberte svůj server registru. Aby se registrace projevila, budete muset kliknout na _Uložit_ . Použití změny a restartování vaší instance může trvat několik minut.
+
+#### <a name="registering-the-acr-server-using-cli"></a>Registrace serveru ACR pomocí rozhraní příkazového řádku
 V rozhraní API Azure pro FHIR můžete zaregistrovat až dvacet ACR serverů.
 
 V případě potřeby nainstalujte rozhraní příkazového řádku healthcareapis z Azure PowerShell:
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 Zaregistrujte servery ACR do Azure API pro FHIR podle následujících příkladů:
 
-#### <a name="register-a-single-acr-server"></a>Registrace jednoho serveru ACR
+##### <a name="register-a-single-acr-server"></a>Registrace jednoho serveru ACR
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>Registrace více serverů ACR
+##### <a name="register-multiple-acr-servers"></a>Registrace více serverů ACR
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 Proveďte volání rozhraní $convert-data API určujícího odkaz na šablonu v parametru templateCollectionReference.
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>Známé problémy a jejich řešení
-
-- Některé výchozí soubory šablon obsahují kusovník UTF-8. V důsledku toho generované hodnoty ID budou obsahovat znak BOM. To může vytvořit problém se serverem FHIR. Alternativním řešením je vyžádat si šablony Microsoftu pomocí rozšíření VS Code a po odebrání znaků BOM z _ID nebo _procedury. Liquid_, _ID/Pro_ID _kazatelně_ PŘEdávat do _vlastních ACR._
-

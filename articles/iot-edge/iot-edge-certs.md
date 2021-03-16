@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200241"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490989"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge certifikáty používají moduly a zařízení IoT pro příjem dat k ověření identity a legitimity modulu runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) . Tato ověření umožňují zabezpečené připojení TLS (Transport Layer Security) mezi modulem runtime, moduly a zařízeními IoT. Stejně jako IoT Hub sám IoT Edge vyžaduje zabezpečené a šifrované připojení ze zařízení IoT (nebo list) a modulů IoT Edge. Aby bylo možné vytvořit zabezpečené připojení TLS, modul IoT Edge hub prezentuje řetěz certifikátů serveru pro připojení klientů, aby ověřil jeho identitu.
 

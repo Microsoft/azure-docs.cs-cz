@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 16425c1f15b78e2d0aaa7a8a1f55ff47a44d56dd
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464664"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496605"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Kurz: vytvoření grafu digitálních vláken Azure pomocí rozhraní příkazového řádku Azure
 
@@ -64,7 +64,7 @@ Obě tyto hodnoty můžete pro svou instanci získat ve výstupu následujícíh
 az dt show -n <ADT_instance_name>
 ```
 
-:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Cloud Shell okno zobrazující výstup příkazu AZ DT show. Pole názvu hostitele a ID předplatného (část pole ID) se zvýrazní.":::
+:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Snímek obrazovky okna Cloud Shell prohlížeče znázorňující výstup příkazu AZ DT show Pole názvu hostitele a ID předplatného (část pole ID) se zvýrazní.":::
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>Modelování fyzického prostředí pomocí DTDL
 
@@ -87,7 +87,7 @@ Po navržení modelů je budete muset nahrát do instance digitálního vlákna 
 
 1. Chcete-li přidat modely pomocí Cloud Shell, bude nutné nahrát soubory modelu do úložiště Cloud Shell, aby byly soubory k dispozici při spuštění Cloud Shell příkazu, který je používá. Provedete to tak, že vyberete ikonu nahrát/stáhnout soubory a kliknete na Odeslat.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr ikony nahrávání":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Snímek obrazovky okna prohlížeče Cloud Shell znázorňující výběr ikony nahrát":::
     
     Přejděte na *Room.jsna* svém počítači a vyberte otevřít. Pak tento krok opakujte pro *Floor.jsna*.
 
@@ -111,7 +111,7 @@ Po navržení modelů je budete muset nahrát do instance digitálního vlákna 
     
     Ve výsledcích vyhledejte upravený model *místnosti* :
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Výsledky příkazu Seznam modelů zobrazující aktualizovaný model místnosti" lightbox="media/tutorial-command-line/cli/output-get-models.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Snímek obrazovky Cloud Shell znázorňující výsledek příkazu Seznam modelů, který zahrnuje aktualizovaný model místnosti." lightbox="media/tutorial-command-line/cli/output-get-models.png":::
 
 ### <a name="errors"></a>Chyby
 
@@ -159,7 +159,7 @@ K vytvoření digitálního vlákna použijte příkaz [**AZ DT zdvojené vytvo�
     
     Ve výsledcích vyhledejte vlákna *room0*, *Room1*, *floor0* a *floor1* . Tady je výpis, který ukazuje část výsledku tohoto dotazu.
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Částečné výsledky dvojitých dotazů, které zobrazují room0 a Room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Snímek obrazovky Cloud Shell zobrazující částečný výsledek zdvojeného dotazu, včetně room0 a Room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
 ### <a name="modify-a-digital-twin"></a>Úprava digitálního vlákna
 
@@ -181,7 +181,7 @@ Můžete také upravit vlastnosti vlákna, které jste vytvořili.
     
     Výstup z tohoto příkazu zobrazí aktuální informace o zdvojení a ve výsledku by se měla zobrazit nová hodnota `RoomName` .
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Výsledky příkazu Update zobrazujícího místnost PresidentialSuite" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Snímek obrazovky Cloud Shell zobrazující výsledek příkazu Update, který obsahuje místnost z PresidentialSuite." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
 1. Aktualizaci můžete ověřit tak, že spuštěním příkazu [**AZ DT**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) dodaný příkaz zobrazíte informace o *room0*:
 
@@ -236,7 +236,7 @@ Chcete-li přidat relaci, použijte příkaz [**AZ DT s dvojitou relací Create*
 
 Vlákna a vztahy, které jste nastavili v tomto kurzu, tvoří následující koncepční graf:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Graf zobrazující floor0 připojený prostřednictvím relationship0 k room0 a floor1 připojení prostřednictvím relationship1 k Room1" border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Diagram znázorňující koncepční graf floor0 je připojen prostřednictvím relationship0 k room0 a floor1 je připojen prostřednictvím relationship1 k Room1." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Dotaz na dvojitou grafickou odpověď na otázky prostředí
 
@@ -252,7 +252,7 @@ Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé o
 
     To vám umožní pořídit si vaše prostředí na první pohled a zajistit, aby vše představovalo, jak byste chtěli být v rámci digitálních vláken Azure. Výsledek tohoto je výstup obsahující každou digitální dvojitou hodnotu s jeho podrobnostmi. Tady je ukázka:
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Částečné výsledky dvojitých dotazů, které zobrazují room0 a Room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Snímek obrazovky Cloud Shell zobrazující částečný výsledek zdvojeného dotazu, včetně room0 a Room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
     >Můžete si všimnout, že se jedná o stejný příkaz, který jste použili v části [*vytvoření digitálních vláken*](#create-digital-twins) dříve k vyhledání všech digitálních vláken Azure v instanci.
@@ -265,7 +265,7 @@ Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé o
 
     Dotaz můžete omezit na vlákna určitého typu, abyste získali konkrétnější informace o tom, co je znázorněno. Výsledek tohoto zobrazení je *room0* a *Room1*, ale nezobrazuje *floor0* nebo *floor1* (protože **se jedná o** podlahu, ne místnosti).
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Výsledky dotazu modelu zobrazující pouze room0 a Room1" lightbox="media/tutorial-command-line/cli/output-query-model.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Snímek obrazovky Cloud Shell znázorňující výsledek dotazu modelu, který obsahuje jenom room0 a Room1." lightbox="media/tutorial-command-line/cli/output-query-model.png":::
 
 1. **Jaké jsou všechny místnosti v *floor0*?** (dotaz podle relace)
 
@@ -275,7 +275,7 @@ Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé o
 
     Dotaz na základě relací v grafu vám umožní získat informace o tom, jak jsou vlákna propojená, nebo omezit dotaz na určitou oblast. Pouze *room0* je na *floor0*, takže se jedná o jediné místo ve výsledku.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Výsledky dotazu relace, zobrazující room0" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Snímek obrazovky Cloud Shell znázorňující výsledek dotazu relace, který zahrnuje room0." lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
     > Všimněte si, že ID vlákna (například *floor0* v dotazu výše) se dotazuje pomocí pole metadata `$dtId` . 
@@ -290,7 +290,7 @@ Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé o
 
     Dotaz na graf můžete na základě vlastností využít k zodpovězení nejrůznějších otázek, mezi které patří hledání ve vašem prostředí, které může vyžadovat pozornost. Podporovány jsou i další operátory porovnání ( *<* , *>* , *=* , nebo *! =*). *Room1* se zobrazí ve výsledcích, protože má teplotu 80.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Výsledky dotazu na vlastnost zobrazující pouze Room1" lightbox="media/tutorial-command-line/cli/output-query-property.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Snímek obrazovky Cloud Shell zobrazující výsledek dotazu na vlastnost, který obsahuje pouze Room1." lightbox="media/tutorial-command-line/cli/output-query-property.png":::
 
 1. **Jaké jsou všechny místnosti v *floor0* s teplotou vyšší 75?** (složený dotaz)
 
@@ -300,7 +300,7 @@ Spusťte následující dotazy v Cloud Shell, abyste odpověděli na některé o
 
     Můžete také zkombinovat předchozí dotazy jako v SQL, a to pomocí operátorů kombinace, jako je `AND` , `OR` , `NOT` . Tento dotaz používá `AND` k tomu, aby předchozí dotaz o dvojitě specifických teplotách byl konkrétnější. Výsledek teď obsahuje jenom místnosti s teplotami nad 75, které jsou v *floor0*, což v tomto případě není žádné z nich. Sada výsledků dotazu je prázdná.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Výsledky složeného dotazu, který nezobrazuje žádné výsledky" lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Snímek obrazovky Cloud Shell znázorňující výsledek složeného dotazu, který neobsahuje žádné položky." lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

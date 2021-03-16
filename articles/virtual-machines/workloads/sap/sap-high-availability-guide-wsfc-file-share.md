@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675331"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496197"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure
 
@@ -147,10 +147,14 @@ Chcete-li použít sdílenou složku se škálováním na více systémů, musí
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurace instancí SAP ASCS/SCS a sdílené složky se škálováním na více systémů ve dvou clusterech
 
-Instance SAP ASCS/SCS můžete nasadit v jednom clusteru s vlastní \<SID\> rolí clusteru SAP. V takovém případě nakonfigurujete sdílenou složku se škálováním na více instancí v jiném clusteru s jinou rolí clusteru.
+Instance SAP ASCS/SCS musíte nasadit v samostatném clusteru s vlastní \<SID\> rolí clusteru SAP. V takovém případě nakonfigurujete sdílenou složku se škálováním na více instancí v jiném clusteru s jinou rolí clusteru.
+
 
 > [!IMPORTANT]
->V tomto scénáři je instance SAP ASCS/SCS nakonfigurovaná pro přístup k globálnímu hostiteli SAP pomocí cesty UNC, \\ \\ &lt; globální hostitel SAP &gt; \sapmnt \\ &lt; SID &gt; \SYS\.
+> Instalační program musí splňovat následující požadavky: instance SAP ASCS/SCS a sdílená složka SOFS musí být nasazeny v samostatných clusterech.    
+>
+> [!IMPORTANT] 
+> V tomto scénáři je instance SAP ASCS/SCS nakonfigurovaná pro přístup k globálnímu hostiteli SAP pomocí cesty UNC, \\ \\ &lt; globální hostitel SAP &gt; \sapmnt \\ &lt; SID &gt; \SYS\.
 >
 
 ![Obrázek 5: instance SAP ASCS/SCS a sdílená složka se škálováním na více systémů nasazená ve dvou clusterech][sap-ha-guide-figure-8007]

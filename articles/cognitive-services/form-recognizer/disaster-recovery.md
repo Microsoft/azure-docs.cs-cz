@@ -2,19 +2,19 @@
 title: Pokyny pro zotavení po havárii pro nástroj pro rozpoznávání formulářů Azure
 titleSuffix: Azure Cognitive Services
 description: Naučte se používat rozhraní API pro kopírování modelů k zálohování prostředků nástroje pro rozpoznávání formulářů.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427160"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466911"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -39,9 +39,6 @@ Proces kopírování vlastního modelu se skládá z následujících kroků:
 1. Nejprve vydáte požadavek na autorizaci kopírování na cílový prostředek &mdash; , který je, prostředkem, který obdrží zkopírovaný model. Vrátíte adresu URL nově vytvořeného cílového modelu, který získá zkopírovaná data.
 1. Dál odešlete žádost o kopírování zdrojovému prostředku &mdash; prostředku, který obsahuje model, který se má zkopírovat. Vrátíte se zpátky adresu URL, na kterou se můžete dotazovat a sledovat průběh operace.
 1. Pomocí svých přihlašovacích údajů ke zdrojovému zdroji se můžete dotazovat na adresu URL průběhu, dokud nebude operace úspěšná. Můžete také zadat dotaz na nové ID modelu v cílovém prostředku a získat tak stav nového modelu.
-
-> [!CAUTION]
-> Rozhraní API pro kopírování v současné době nepodporuje ID modelů pro [složené vlastní modely](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose). Vytváření modelů je funkce ve verzi Preview v 2.1 verze Preview. 2 Preview. 
 
 ## <a name="generate-copy-authorization-request"></a>Vytvořit kopii žádosti o autorizaci
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Další kroky
 
 V této příručce jste zjistili, jak používat rozhraní API pro kopírování k zálohování vlastních modelů do sekundárního prostředku pro rozpoznávání formulářů. Dále si Prozkoumejte referenční materiály k rozhraní API a podívejte se, co můžete dělat s nástrojem pro rozpoznávání formulářů.
-* [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [Referenční dokumentace REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

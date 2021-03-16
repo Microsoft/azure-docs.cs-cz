@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: konfigurace a povolení modulu zabezpečení pro Azure RTO'
-description: V tomto rychlém startu se naučíte, jak začlenit a povolit modul zabezpečení pro službu Azure RTO ve službě Azure IoT Hub.
+title: 'Rychlý Start: konfigurace a povolení programu Defender-IoT-Micro-Agent pro Azure RTO'
+description: Naučte se, jak připojit a povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve službě Azure IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447295"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489841"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>Rychlý Start: modul zabezpečení pro Azure RTO 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Rychlý Start: Defender-IoT-Micro Agent pro Azure RTO (Preview)
 
-Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje, jak povolit modul zabezpečení pro službu Azure RTO na IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
+Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje, jak povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -32,7 +32,7 @@ Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje,
 - NXP i.MX RT1060 EVK
 - Mikročip SAM E54 Xplained pro EVK
 
-Stáhněte, zkompilujte a spusťte jeden z souborů. zip pro konkrétní panel a nástroj (IAR, vývojové prostředí (IDE) nebo počítač) podle vašeho výběru z [modulu zabezpečení pro prostředek GitHub Azure RTO](https://github.com/azure-rtos/azure-iot-preview/releases).
+Stáhněte, zkompilujte a spusťte jeden z souborů. zip pro konkrétní desku a nástroj (IAR, vývojové prostředí (IDE) nebo počítač) podle vašeho výběru od programu [Defender-IoT-Micro-Agent pro Azure RTO GitHub](https://github.com/azure-rtos/azure-iot-preview/releases).
 
 ### <a name="azure-resources"></a>Prostředky Azure
 
@@ -52,11 +52,11 @@ Aby bylo možné začít, je nutné IoT Hub připojení.
 
 Přihlašovací údaje připojení jsou pořízeny z konfigurace aplikace uživatele **HOST_NAME**, **DEVICE_ID** a **DEVICE_SYMMETRIC_KEY**.
 
-Modul zabezpečení pro Azure RTO používá připojení middlewaru Azure IoT založené na protokolu **MQTT** .
+Defender-IoT-Micro-Agent pro Azure RTO používá připojení middleware Azure IoT založené na protokolu **MQTT** .
 
 ## <a name="next-steps"></a>Další kroky
 
 Přejděte k dalšímu článku a dokončete konfiguraci a přizpůsobení vašeho řešení.
 
 > [!div class="nextstepaction"]
-> [Konfigurace modulu zabezpečení pro Azure RTOS](how-to-azure-rtos-security-module.md)
+> [Konfigurace a přizpůsobení programu Defender-IoT-Micro-Agent pro Azure RTO (Preview)](how-to-azure-rtos-security-module.md)

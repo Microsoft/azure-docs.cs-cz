@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102236"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491074"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender pro službu IoT – směrný plán a vlastní kontroly
 
@@ -42,7 +42,7 @@ Vlastní kontroly směrného plánu vytvoří vlastní seznam kontrol pro každ�
 
 1. Nahrajte do zařízení soubor **vlastních kontrol standardních kontrol** .
 
-1. Přidejte do modulu zabezpečení vlastnosti směrného plánu a klikněte na **Uložit**.
+1. Přidejte do programu Defender-IoT-Micro-agent vlastnosti směrného plánu a klikněte na **Uložit**.
 
 ### <a name="baseline-custom-check-file-example"></a>Příklad souboru vlastní kontrolní kontroly směrného plánu
 
@@ -66,7 +66,7 @@ Konfigurace vlastních kontrol standardních hodnot:
 
 ## <a name="baseline-custom-check-properties"></a>Vlastnosti vlastní kontroly směrného plánu
 
-| Název| Status | Platné hodnoty| Výchozí hodnoty| Description |
+| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Požadováno: true |Platné hodnoty: **logická hodnota** |Výchozí hodnota: **false** |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |baselineCustomChecksFilePath |Požadováno: true|Platné hodnoty: **řetězec**, **hodnota null** |Výchozí hodnota: **null** |Úplná cesta k základní konfiguraci XML|

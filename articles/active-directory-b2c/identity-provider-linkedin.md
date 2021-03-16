@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448264"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488818"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Pokud chcete povolit přihlášení uživatelům s účtem LinkedIn v Azure Acti
 1. Zadejte **název aplikace**, **stránku LinkedIn**, **adresu URL zásad ochrany osobních údajů** a **logo aplikace**.
 1. Odsouhlaste **podmínky použití rozhraní API** LinkedIn a klikněte na **vytvořit aplikaci**.
 1. Vyberte kartu **ověřování** . V části **ověřovací klíče** zkopírujte hodnoty pro **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci LinkedInu jako poskytovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležité bezpečnostní pověření.
-1. Zaškrtněte políčko Upravit tužku vedle **autorizované adresy URL pro přesměrování vaší aplikace** a pak vyberte **Přidat adresu URL pro přesměrování**. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` , nahraďte `your-tenant-name` názvem svého tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C. Vyberte **Aktualizovat**.
-2. Ve výchozím nastavení není vaše aplikace LinkedIn schválená pro obory související s přihlášením. Chcete-li požádat o revizi, vyberte kartu **produkty** a potom vyberte možnost **Přihlásit se pomocí LinkedInu**. Po dokončení kontroly budou do aplikace přidány požadované obory.
+1. Zaškrtněte políčko Upravit tužku vedle **autorizované adresy URL pro přesměrování vaší aplikace** a pak vyberte **Přidat adresu URL pro přesměrování**. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C. Vyberte **Aktualizovat**.
+1. Ve výchozím nastavení není vaše aplikace LinkedIn schválená pro obory související s přihlášením. Chcete-li požádat o revizi, vyberte kartu **produkty** a potom vyberte možnost **Přihlásit se pomocí LinkedInu**. Po dokončení kontroly budou do aplikace přidány požadované obory.
    > [!NOTE]
    > Rozsahy, které jsou aktuálně povolené pro vaši aplikaci, můžete zobrazit na kartě **ověřování** v části **rozsahy OAuth 2,0** .
 

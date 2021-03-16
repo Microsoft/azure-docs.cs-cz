@@ -1,6 +1,6 @@
 ---
-title: Konfigurace a přizpůsobení modulu zabezpečení pro Azure RTO
-description: Přečtěte si, jak nakonfigurovat a přizpůsobit modul zabezpečení pro Azure RTO.
+title: Konfigurace a přizpůsobení programu Defender – IoT-Micro-Agent pro Azure RTO
+description: Přečtěte si, jak nakonfigurovat a přizpůsobit program Defender – IoT-Micro-Agent pro Azure RTO.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 874a783763882a28f2fe7078e3a264d09107808a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449811"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495092"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Konfigurace a přizpůsobení programu Defender-IoT-Micro-Agent pro Azure RTO GA
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>Konfigurace a přizpůsobení programu Defender-IoT-Micro-Agent pro Azure RTO (Preview)
 
 Tento článek popisuje, jak nakonfigurovat program Defender-IoT-Micro-Agent pro zařízení Azure RTO, aby splňoval požadavky na síť, šířku pásma a paměť.
 
@@ -89,5 +89,6 @@ Můžete povolit a nakonfigurovat Log Analytics pro zkoumání událostí a akti
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kontrola a přizpůsobení modulu zabezpečení pro [výstrahy a doporučení zabezpečení](concept-rtos-security-alerts-recommendations.md) Azure RTO
-- V případě potřeby vyhledejte v [modulu zabezpečení rozhraní API služby Azure RTO](azure-rtos-security-module-api.md) .
+
+- Kontrola a přizpůsobení programu Defender – IoT-Micro-Agent pro Azure RTO [výstrahy a doporučení zabezpečení](concept-rtos-security-alerts-recommendations.md)
+- V případě potřeby najdete informace v tématu [Defender-IoT-Micro-Agent pro Azure RTO API](azure-rtos-security-module-api.md) .

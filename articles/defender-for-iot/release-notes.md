@@ -11,33 +11,39 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2021
+ms.date: 03/14/2021
 ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ef72be60b6294ad4e1fca2ce9c0e3c66b64ac687
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820666"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493950"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Co je nového v Azure Defenderu pro IoT?
 
 Tento článek obsahuje seznam nových funkcí a vylepšení funkcí pro program Defender pro IoT.
 
 Vyznačené funkce jsou ve verzi PREVIEW. [Doplňkové podmínky Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zahrnují další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
-## <a name="february-2021"></a>Únor 2021
+## <a name="march-2021"></a>Březen 2021
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>Senzorem rozšířená vlastní pravidla výstrah
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Senzorem rozšířená vlastní pravidla výstrah (verze Public Preview)
 
 Nyní můžete vytvořit vlastní pravidla upozornění na základě dne, skupiny dnů a doby, po kterou byla zjištěna síťová aktivita.  Práce s podmínkami pravidla dne a času je užitečná, například v případech, kdy je Závažnost výstrahy odvozena v době, kdy dojde k události výstrahy. Můžete například vytvořit vlastní pravidlo, které aktivuje výstrahu s vysokou závažností při zjištění síťové aktivity na víkendu nebo večer.
 
-Tato funkce je k dispozici na senzoru s vydáním verze 10,1.
+Tato funkce je k dispozici na senzoru s vydáním verze 10,2.
 
-### <a name="on-premises-management-console---export-alerts"></a>Místní Konzola pro správu – výstrahy exportu
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>Místní Konzola pro správu – výstrahy exportu (Public Preview)
 
 Informace o výstrahách se teď dají exportovat do souboru. CSV z místní konzoly pro správu. Můžete exportovat informace o všech zjištěných výstrahách nebo informace o exportu na základě filtrovaného zobrazení.
 
-Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,1.
+Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,2.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Přidat druhé síťové rozhraní do místní konzoly pro správu (Public Preview)
+
+Zabezpečení nasazení teď můžete rozšířit přidáním druhého síťového rozhraní do místní konzoly pro správu. Tato funkce umožňuje, aby vaše místní správa měla připojené senzory v jedné zabezpečené síti, a zároveň umožňuje uživatelům přístup k místní konzole pro správu prostřednictvím druhého samostatného síťového rozhraní.
+
+Tato funkce je k dispozici v místní konzole pro správu s vydáním verze 10,2.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Tvůrce zařízení – nový Micro Agent (Public Preview)
 
 K dispozici je nový modul pro sestavovatele zařízení. Modul, který je označován jako mikroagent, umožňuje:
@@ -48,7 +54,7 @@ K dispozici je nový modul pro sestavovatele zařízení. Modul, který je ozna�
 - **Stav Security Management** – proaktivně monitoruje stav zabezpečení vašich zařízení IoT.
 - **Průběžné zjišťování hrozeb IoT/ot v reálném čase – detekce** hrozeb, jako je botnety, pokusy o útok hrubou silou, kryptografická dolování hlásí a podezřelá síťová aktivita
 
-Vystaralá dokumentace k modulu zabezpečení bude přesunuta do *řešení založeného na agentech pro sestavovatele zařízení>klasických* složkách.
+Vystaralá dokumentace k programu Defender – IoT-Micro-Agent se přesune do *řešení založeného na agentovi pro sestavovatele zařízení>klasické* složce.
 
 Tato sada funkcí je dostupná ve verzi Public Preview Cloud.
 

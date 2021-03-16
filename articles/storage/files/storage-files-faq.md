@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202633"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470890"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Synchronizace souborů Azure pro rychlý přístup blízko místa, kde se data používají.
@@ -309,6 +309,18 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     Ano, podporujeme rozhraní REST API, která při použití REST API [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (nebo novější) k získání, nastavení nebo kopírování seznamů ACL systému souborů NTFS pro adresáře nebo soubory. Podporujeme také zachování seznamů ACL systému Windows v nástrojích založených na REST: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
 
+* <a id="ad-support-rest-apis"></a>
+**Jak odebrat přihlašovací údaje uložené v mezipaměti pomocí klíče účtu úložiště a odstranit existující připojení SMB před inicializací nového připojení ke službě Azure AD nebo k přihlašovacím údajům AD?**
+
+    Pomocí dvou kroků níže můžete odebrat uložené přihlašovací údaje přidružené k klíči účtu úložiště a odebrat připojení SMB: 
+    1. Spusťte níže uvedenou rutinu ve Windows Cmd.exe pro odebrání přihlašovacích údajů. Pokud ho nemůžete najít, znamená to, že jste jeho přihlašovací údaje netrvali a tento krok můžete přeskočit.
+    
+       cmdkey/Delete: doména: cíl = úložiště-účet-name.file.core.windows.net
+    
+    2. Odstraní existující připojení ke sdílené složce. Cestu pro připojení můžete zadat buď jako písmeno připojené jednotky, nebo jako cestu storage-account-name.file.core.windows.net.
+    
+       NET USE <jednotka-písmeno/sdílená cesta>/DELETE
+
 ## <a name="network-file-system"></a>Systém souborů sítě
 
 * <a id="when-to-use-nfs"></a>
@@ -336,7 +348,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Synchronizace souborů Azure v místním prostředí?**  
 
-    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Synchronizace souborů Azure, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Synchronizace souborů Azure, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -440,7 +452,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Synchronizace souborů Azure?**
     
-    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Synchronizace souborů Azure.
+    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Synchronizace souborů Azure.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -469,7 +481,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  

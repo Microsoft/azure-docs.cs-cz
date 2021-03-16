@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738187"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491244"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -57,7 +57,7 @@ Další výsledky jsou pravděpodobně horší a nemusí mít úplná velká pí
 
 **Otázka: Proč existují odlišné základní modely?**
 
-Odpověď **: můžete** vybrat z více než jednoho základního modelu ve službě Speech. Každý název modelu obsahuje datum, kdy bylo přidáno. Když začnete s školením vlastního modelu, získáte nejlepší přesnost pomocí nejnovějšího modelu. Starší základní modely jsou stále k dispozici po nějakou dobu, kdy je k dispozici nový model. Můžete dál používat model, se kterým jste pracovali, až do jeho vyřazení (viz [životní cyklus modelu](custom-speech-overview.md#model-lifecycle)). Pro lepší přesnost se stále doporučuje přepnout na nejnovější základní model.
+Odpověď **: můžete** vybrat z více než jednoho základního modelu ve službě Speech. Každý název modelu obsahuje datum, kdy bylo přidáno. Když začnete s školením vlastního modelu, získáte nejlepší přesnost pomocí nejnovějšího modelu. Starší základní modely jsou stále k dispozici po nějakou dobu, kdy je k dispozici nový model. Model, se kterým jste pracovali, můžete dál používat až do jeho vyřazení (viz [model a životní cyklus koncového bodu](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Pro lepší přesnost se stále doporučuje přepnout na nejnovější základní model.
 
 **Otázka: mohu aktualizovat existující model (skládání modelů)?**
 
@@ -71,7 +71,7 @@ Odpověď **: nasazení** nebudou automaticky aktualizována.
 
 Pokud jste model přizpůsobené a nasadili, zůstane nasazení tak tak, jak je. Nasazený model můžete vyřadit z provozu, znovu ho upravit pomocí novější verze základního modelu a znovu nasadit pro lepší přesnost.
 
-Základní modely i vlastní modely budou po nějakou dobu vyřazeny (viz [životní cyklus modelu](custom-speech-overview.md#model-lifecycle)).
+Základní modely i vlastní modely budou po nějakou dobu vyřazeny (viz [model a životní cyklus koncového bodu](./how-to-custom-speech-model-and-endpoint-lifecycle.md)).
 
 **Otázka: můžu stáhnout svůj model a spustit ho místně?**
 

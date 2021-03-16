@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2a1c0c0685ab5a908a89f4a43073f9f773cd58c3
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 2d388cf6c776e6d30a487ce9e14ba1601dce1d23
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102631995"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491601"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologie a koncepty
 
@@ -31,14 +31,14 @@ Základní koncepty popsané v těchto tématech by měly být před zahájením
 
 ## <a name="media-services-v3-terminology"></a>Terminologie Media Services V3
 
-|Období|Description|
+|Období|Popis|
 |---|---|
 |Živá událost|**Živá událost** představuje kanál pro ingestování, překódování (volitelně) a balení živých streamů pro video, zvuk a metadata v reálném čase.<br/><br/>Pro zákazníky, kteří migrují z rozhraní API Media Services V2, nahradí **živá událost** entitu **kanálu** ve verzi v2. Další informace najdete v tématu [migrace z verze V2 na V3](migrate-v-2-v-3-migration-introduction.md).|
 |Koncový bod streamování/balení/počátek|**Koncový bod streamování** představuje dynamický (just-in-time) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů mediálního streamování (HLS nebo POMLČKy). **Koncový bod streamování** navíc poskytuje dynamické šifrování (za běhu) k špičkovým systémům pro správu digitálních práv (několikanásobnou) v oboru.<br/><br/>V odvětví streamování médií se tato služba obvykle označuje jako **balírna** nebo **původ**.  Mezi další běžné výrazy v odvětví této funkce patří JITP (just-in-time-Package) nebo JITE (za běhu).
 
 ## <a name="media-services-v3-concepts"></a>Koncepty Media Services V3
 
-|Koncepty|Description|Odkazy|
+|Koncepty|Popis|Odkazy|
 |---|---|---|
 |Prostředky a nahrávání obsahu|Pokud chcete začít spravovat, šifrovat, kódovat, analyzovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services a nahrát své digitální soubory do **assetů**.|[Nahrávání do cloudu a úložiště](storage-account-concept.md)<br/><br/>[Koncept prostředků](assets-concept.md)|
 |Kódování obsahu|Po nahrání vysoce kvalitních digitálních mediálních souborů do assetů je můžete kódovat do formátů, které se dají přehrávat na nejrůznějších prohlížečích a zařízeních. <br/><br/>Pro kódování pomocí Media Services V3 potřebujete vytvořit **transformace** a **úlohy**.|[Transformace a úlohy](transforms-jobs-concept.md)<br/><br/>[Kódování pomocí Media Services](encoding-concept.md)|
@@ -47,7 +47,7 @@ Základní koncepty popsané v těchto tématech by měly být před zahájením
 |Ochrana obsahu|Pomocí Media Services můžete zajistit dynamické šifrování obsahu v reálném čase a na vyžádání pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. <br/><br/>Pokud pro svůj Stream určíte možnosti šifrování, vytvořte **zásady klíčů obsahu** a přidružte je k **lokátoru streamování**. **Zásady klíčů obsahu** umožňují konfigurovat způsob doručení klíče obsahu koncovým klientům.<br/><br/> Zkuste znovu použít zásady, pokud jsou potřeba stejné možnosti.| [Zásady pro klíč obsahu](content-key-policy-concept.md)<br/><br/>[Ochrana obsahu](content-protection-overview.md)|
 |Živé streamování|Media Services vám umožní doručovat živé události zákazníkům v cloudu Azure. **Živé události** zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte **živou událost**, vytvoří se vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Jakmile datový proud přetéká do **živé události**, můžete zahájit streamování událostí vytvořením **assetu**, **živého výstupu** a **lokátoru streamování**. **Live Output** archivuje datový proud do **assetu** a zpřístupní ho uživatelům prostřednictvím **koncového bodu streamování**. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). |[Přehled živého streamování](live-streaming-overview.md)<br/><br/>[Živé události a výstupy](live-events-outputs-concept.md)|
 |Monitorování pomocí Event Grid|Chcete-li zobrazit průběh úlohy, použijte **Event Grid**. Media Services také emituje typy událostí typu Live. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. |[Zpracování událostí služby Event Grid](reacting-to-media-services-events.md)<br/><br/>[Schémata](media-services-event-schemas.md)|
-|Monitorování pomocí Azure Monitor|Sledujte metriky a diagnostické protokoly, které vám pomůžou pochopit, jak aplikace pracují s Azure Monitor.|[Metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md)<br/><br/>[Schémata diagnostických protokolů](media-services-diagnostic-logs-schema.md)|
+|Monitorování pomocí Azure Monitor|Sledujte metriky a diagnostické protokoly, které vám pomůžou pochopit, jak aplikace pracují s Azure Monitor.|[Metriky a diagnostické protokoly](monitoring/monitor-media-services-data-reference.md)<br/><br/>[Schémata diagnostických protokolů](monitoring/monitor-media-services-data-reference.md)|
 |Klienti přehrávače|Azure Media Player můžete použít k přehrání multimediálního obsahu streamování Media Services na nejrůznějších prohlížečích a zařízeních. Azure Media Player využívá oborové standardy, jako je HTML5, Media source Extensions (MSE) a rozšíření EME (Encrypted Media Extensions), a poskytuje tak obohacené možnosti adaptivního streamování. |[Přehled Azure Media Playeru](use-azure-media-player.md)|
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.

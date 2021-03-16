@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services conceptual document
 description: Informace o architektuře uživatelského rozhraní služby Azure Communication Services
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: b6f9987c21ecdcf0e1b5358486312dceb26c8b82
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008549"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493352"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Architektura uživatelského rozhraní služby Azure Communication Services
 

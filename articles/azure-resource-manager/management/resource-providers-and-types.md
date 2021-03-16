@@ -2,14 +2,14 @@
 title: Poskytovatelé prostředků a typy prostředků
 description: Popisuje poskytovatele prostředků, kteří podporují Azure Resource Manager. Popisuje jejich schémata, dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 584f3065d0e696f2ee379a8cf6c048994a1e68d5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745102"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493131"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -32,7 +32,9 @@ Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v té
 
 ## <a name="register-resource-provider"></a>Registrace poskytovatele prostředků
 
-Před použitím poskytovatele prostředků musí být vaše předplatné Azure zaregistrované pro poskytovatele prostředků. Registrace nakonfiguruje vaše předplatné, aby spolupracovalo s poskytovatelem prostředků. Někteří poskytovatelé prostředků jsou registrováni ve výchozím nastavení. Jiní poskytovatelé prostředků jsou registrováni automaticky při provedení určitých akcí. Například při vytváření prostředku prostřednictvím portálu je poskytovatel prostředků obvykle zaregistrován za vás. Pro jiné scénáře možná budete muset ručně zaregistrovat poskytovatele prostředků. Seznam poskytovatelů prostředků registrovaných ve výchozím nastavení najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
+Před použitím poskytovatele prostředků musí být vaše předplatné Azure zaregistrované pro poskytovatele prostředků. Registrace nakonfiguruje vaše předplatné, aby spolupracovalo s poskytovatelem prostředků. Někteří poskytovatelé prostředků jsou registrováni ve výchozím nastavení. Seznam poskytovatelů prostředků registrovaných ve výchozím nastavení najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
+
+Jiní poskytovatelé prostředků jsou registrováni automaticky při provedení určitých akcí. Když nasadíte šablonu Azure Resource Manager, všechny požadované poskytovatele prostředků se automaticky zaregistrují. Při vytváření prostředku prostřednictvím portálu je poskytovatel prostředků obvykle zaregistrován pro vás. Pro jiné scénáře možná budete muset ručně zaregistrovat poskytovatele prostředků. 
 
 V tomto článku se dozvíte, jak ověřit stav registrace poskytovatele prostředků a jak ho podle potřeby zaregistrovat. Musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Oprávnění je obsaženo v rolích přispěvatel a Owner.
 
@@ -43,13 +45,13 @@ Kód vaší aplikace by neměl blokovat vytváření prostředků pro poskytovat
 
 Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 ### <a name="register-resource-provider"></a>Registrace poskytovatele prostředků
 
 Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro vaše předplatné:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce Azure Portal vyhledejte **předplatná**. Vyberte ho z dostupných možností.
 
    :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="Hledat předplatná":::
