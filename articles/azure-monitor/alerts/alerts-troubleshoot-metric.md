@@ -4,13 +4,13 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/21/2021
-ms.openlocfilehash: 2bd82d18d6647e47d9838702af45cff68f2bc6cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037859"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466493"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s upozorněními na metriky služby Azure Monitor 
 
@@ -138,11 +138,9 @@ Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní me
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportujte šablonu Azure Resource Manager pravidla výstrahy metriky prostřednictvím Azure Portal
 
 Export šablony Správce prostředků pravidla výstrahy metriky vám pomůže pochopit jeho syntaxi a vlastnosti a můžete ho použít k automatizaci budoucích nasazení.
-1. Přejděte do části **skupiny prostředků** na portálu a vyberte skupinu prostředků, která pravidlo obsahuje.
-2. V části Přehled zaškrtněte políčko **Zobrazit skryté typy** .
-3. V poli Filtr **typu** vyberte *Microsoft. Insights/metricalerts*.
-4. Vyberte příslušné pravidlo výstrahy, abyste zobrazili jeho podrobnosti.
-5. V části **Nastavení** vyberte **Exportovat šablonu**.
+1. V Azure Portal otevřete pravidlo výstrahy, abyste zobrazili jeho podrobnosti.
+2. Klikněte na **Vlastnosti**.
+3. V části **Automatizace** vyberte **Exportovat šablonu**.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kvóta pravidel upozornění metrik je příliš malá.
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037230"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490281"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -63,6 +63,20 @@ Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. P
 - **Rozdělení** ovládacích prvků určuje, zda graf zobrazuje samostatné řádky pro každou hodnotu dimenze, nebo agreguje hodnoty do jednoho řádku. Například můžete zobrazit jeden řádek pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo zobrazit samostatné řádky pro každý server. Aby se zobrazily samostatné řádky, museli byste použít rozdělení na dimenzi *instance serveru* .
 
 Podívejte [se na příklady grafů](../essentials/metric-chart-samples.md) , které mají použité filtrování a rozdělení. Tento článek popisuje kroky, které byly použity ke konfiguraci grafů.
+
+## <a name="share-your-metric-chart"></a>Sdílení grafu metriky
+V současnosti existují dva způsoby, jak sdílet graf metriky. Níže najdete pokyny, jak sdílet informace z grafů metrik prostřednictvím Excelu a odkazu.
+ 
+### <a name="download-to-excel"></a>Stáhnout do Excelu
+Klikněte na sdílet a vyberte stáhnout do Excelu. Váš soubor ke stažení by se měl spustit hned.
+
+![snímek obrazovky s postupem sdílení grafu metriky přes Excel](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>Sdílet odkaz
+Klikněte na sdílet a vyberte Kopírovat odkaz. Měli byste obdržet oznámení, že se odkaz úspěšně zkopíroval.
+
+![snímek obrazovky s postupem sdílení grafu metriky prostřednictvím odkazu](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>Upřesnit nastavení grafu
 

@@ -4,14 +4,14 @@ description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Po
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590786"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471901"
 ---
 # <a name="manage-your-cache"></a>Správa mezipaměti
 
@@ -254,6 +254,20 @@ Stránka Přehled obsahuje grafy pro některé základní statistiky mezipaměti
 ![snímek obrazovky se třemi spojnicovým grafem ukazující výše uvedenou statistikou pro ukázkovou mezipaměť](media/hpc-cache-overview-stats.png)
 
 Tyto grafy jsou součástí integrovaných nástrojů pro monitorování a analýzu v Azure. Další nástroje a výstrahy jsou k dispozici na stránkách pod hlavičkou **monitorování** na bočním panelu na portálu. Další informace najdete v části portál v [dokumentaci ke službě Azure Monitoring](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+
+## <a name="view-warnings"></a>Zobrazit upozornění
+
+Pokud mezipaměť přechází do stavu není v pořádku, podívejte se na stránku s **upozorněními** . Tato stránka zobrazuje oznámení ze softwaru mezipaměti, který vám může porozumět jeho stavu.
+
+Tato oznámení se nezobrazí v protokolu aktivit, protože nejsou ovládána nástrojem Azure Portal. Jsou často spojené s vlastním nastavením, které jste udělali.
+
+Mezi typy upozornění, která se tady můžete zobrazovat, patří:
+
+* Mezipaměť se nemůže připojit k serveru NTP.
+* Mezipaměti se nepodařilo stáhnout informace o uživatelském jménu rozšířených skupin.
+* Změnila se vlastní nastavení DNS v cíli úložiště.
+
+![snímek obrazovky se stránkou upozornění monitorování > ukazující zprávu, že nelze stáhnout uživatelská jména rozšířených skupin](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Další kroky
 

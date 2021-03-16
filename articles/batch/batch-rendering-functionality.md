@@ -3,14 +3,14 @@ title: Možnosti vykreslování
 description: Pro spouštění úloh vykreslování a aplikací se používají standardní Azure Batch možnosti. Batch zahrnuje konkrétní funkce pro podporu vykreslování úloh.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429798"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496333"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -27,6 +27,9 @@ Stejně jako u jiných úloh a typů aplikace je možné vytvořit vlastní imag
 Většina aplikací pro vykreslování bude vyžadovat licence získané z licenčního serveru. Pokud existuje stávající místní licenční server, musí být fond i licenční server ve stejné [virtuální síti](../virtual-network/virtual-networks-overview.md). Je také možné spustit licenční server na virtuálním počítači Azure s fondem služby Batch a virtuálním počítačem licenčního serveru, který se nachází ve stejné virtuální síti.
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>Fondy dávek využívající vykreslování imagí virtuálních počítačů
+
+> [!IMPORTANT]
+> Vykreslování imagí virtuálních počítačů a licencování s platbami za použití se už [nepoužívá a vyřadí se od 29. února 2024](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Chcete-li použít dávku pro vykreslování, je [třeba použít vlastní image virtuálního počítače a licencování standardní aplikace.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ### <a name="rendering-application-installation"></a>Vykreslování instalace aplikace
 

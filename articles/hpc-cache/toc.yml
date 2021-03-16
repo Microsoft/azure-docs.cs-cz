@@ -8,6 +8,8 @@
   items:
     - name: Plánování agregovaného oboru názvů
       href: hpc-cache-namespace.md
+    - name: Vysvětlení modelů využití mezipaměti
+      href: cache-usage-models.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení

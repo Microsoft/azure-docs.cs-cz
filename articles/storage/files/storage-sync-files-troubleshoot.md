@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453270"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491295"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Synchronizace souborů Azure můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -113,7 +113,7 @@ K této chybě dojde v případě, že sdílenou složku Azure již používá j
 Pokud se zobrazí tato zpráva a sdílená složka Azure aktuálně nepoužívá koncový bod cloudu, proveďte následující kroky, aby se ve sdílené složce Azure vymazala Synchronizace souborů Azureová metadata:
 
 > [!Warning]  
-> Odstranění metadat ve sdílené složce Azure, kterou aktuálně používá koncový bod cloudu, způsobí selhání Synchronizace souborů Azure operací. 
+> Odstranění metadat ve sdílené složce Azure, kterou aktuálně používá koncový bod cloudu, způsobí selhání Synchronizace souborů Azure operací. Pokud tuto sdílenou složku pak použijete ke synchronizaci v jiné skupině synchronizace, ztráta dat pro soubory ve staré skupině synchronizace je skoro určitá.
 
 1. V Azure Portal přejdete do složky Azure File Share.  
 2. Klikněte pravým tlačítkem na sdílenou složku Azure a pak vyberte **Upravit metadata**.

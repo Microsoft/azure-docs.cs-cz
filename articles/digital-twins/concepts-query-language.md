@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034672"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490972"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
@@ -85,7 +85,7 @@ V této části jsou popsána omezení dotazovacího jazyka.
 * V rámci příkazu nejsou podporovány žádné poddotazy `FROM` .
 * `OUTER JOIN` Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
 * Hloubka procházení grafů je omezená na pět `JOIN` úrovní na jeden dotaz.
-* Zdroj `JOIN` operací je omezený: dotaz musí deklarovat vlákna, na kterých je dotaz zahájen.
+* Relace v rámci digitálních vláken Azure se nedají dotazovat jako nezávislé entity. také je nutné zadat informace o zdroji dat, ze kterého vztah pochází. To znamená, že k této operaci existují určitá omezení `JOIN` , která se používají k dotazování vztahů, aby se zajistilo, že dotaz deklaruje vlákna, kde začíná dotaz. Příklady najdete v tématu [*dotazování podle vztahu*](how-to-query-graph.md#query-by-relationship) v článku *Postupy: dotazování na článek s dvojitým grafem* .
 
 ## <a name="next-steps"></a>Další kroky
 

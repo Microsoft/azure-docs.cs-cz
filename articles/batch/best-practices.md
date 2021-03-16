@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0b3dfe6d974f2cc2449faf54c4549589e0baa7cf
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199852"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496282"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -25,8 +25,8 @@ Tento článek popisuje shromažďování osvědčených postupů a užitečnýc
 
 - **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **' virtualMachineConfiguration ' nebo ' virtualMachineConfiguration '.**
-    V současné době můžete vytvářet fondy pomocí konfigurace. nové fondy by měly být nakonfigurované pomocí ' virtualMachineConfiguration ' a ne ' virtualMachineConfiguration '. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' CloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **' virtualMachineConfiguration ' nebo ' cloudServiceConfiguration '.**
+    V současné době můžete vytvářet fondy pomocí konfigurace. nové fondy by měly být nakonfigurované pomocí ' virtualMachineConfiguration ' a ne ' cloudServiceConfiguration '. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' cloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 - **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
     Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.

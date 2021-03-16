@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 54f3004c190c104f2f869b2878b50f5b6c88856b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463751"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493696"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Kurz: vytvoření grafu digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -37,18 +37,17 @@ V tomto kurzu budete...
 
 Teď, když je aplikace a ověřování nastavená, spusťte projekt pomocí tohoto tlačítka na panelu nástrojů:
 
-:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Tlačítko Start pro Visual Studio (projekt SampleClientApp)":::
+:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Snímek obrazovky s tlačítkem Start v aplikaci Visual Studio (projekt SampleClientApp)" lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 Otevře se okno konzoly, provede se ověřování a počká na příkaz. 
 * Ověřování se provádí prostřednictvím prohlížeče: otevře se výchozí webový prohlížeč s výzvou k ověření. Pomocí této výzvy se můžete přihlásit pomocí přihlašovacích údajů Azure. Pak můžete zavřít kartu nebo okno prohlížeče.
 
 Tady je snímek obrazovky, jak vypadá konzola projektu jako:
 
-:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Uvítací zpráva z aplikace příkazového řádku":::
+:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Snímek obrazovky úvodní zprávy z aplikace z příkazového řádku" lightbox="media/tutorial-command-line/app/command-line-app.png":::
 
 > [!TIP]
 > Seznam všech možných příkazů, které můžete použít s tímto projektem, získáte, když zadáte `help` v konzole projektu a stisknete vrátit.
-> :::image type="content" source="media/tutorial-command-line/app/command-line-app-help.png" alt-text="Výstup příkazu help":::
 
 Nechejte konzoli projektu spuštěnou pro zbytek kroků v tomto kurzu.
 
@@ -83,7 +82,7 @@ Po navržení modelů je budete muset nahrát do instance digitálního vlákna 
 
 1. Ověřte vytvoření modelů spuštěním příkazu `GetModels true` . Tím se dotazuje instance digitálního vlákna Azure pro všechny nahrané modely a vytiskne jejich úplné informace. Ve výsledcích vyhledejte upravený model *místnosti* :
 
-    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Výsledky getmodels zobrazující aktualizovaný model místnosti":::
+    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Snímek obrazovky výsledku z getmodels zobrazující aktualizovaný model místnosti" lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
 ### <a name="errors"></a>Chyby
 
@@ -128,7 +127,7 @@ K vytvoření digitálního vlákna použijte `CreateDigitalTwin` příkaz. Mus�
 
     Výstup z těchto příkazů by měl označovat, že se vlákna úspěšně vytvořila. 
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Výňatek z výsledků příkazů CreateDigitalTwin, které zobrazují floor0, floor1, room0 a Room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Snímek obrazovky znázorňující výpis z výsledku příkazů CreateDigitalTwin, který zahrnuje floor0, floor1, room0 a Room1." lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
 1. Spuštěním příkazu si můžete ověřit, že se vlákna vytvořila `Query` . Tento příkaz se dotazuje vaší instance digitálního vlákna Azure pro všechny digitální vlákna, které obsahuje. Ve výsledcích vyhledejte vlákna *room0*, *Room1*, *floor0* a *floor1* .
 
@@ -180,7 +179,7 @@ Chcete-li přidat relaci, použijte `CreateRelationship` příkaz. Určete, zda 
     
     Výstup z těchto příkazů potvrzuje, že relace byly úspěšně vytvořeny:
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Výňatek z výsledků příkazů CreateRelationship zobrazující relationship0 a relationship1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Snímek obrazovky výňatku z výsledku příkazů CreateRelationship, který zahrnuje relationship0 a relationship1." lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
 1. Můžete ověřit vztahy pomocí některého z následujících příkazů, které dotazují relace v instanci digitálních vláken Azure.
     * Zobrazení všech relací odcházejících z jednotlivých podlaží (Zobrazení relací z jedné strany):
@@ -201,7 +200,7 @@ Chcete-li přidat relaci, použijte `CreateRelationship` příkaz. Určete, zda 
 
 Vlákna a vztahy, které jste nastavili v tomto kurzu, tvoří následující koncepční graf:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Graf zobrazující floor0 připojený prostřednictvím relationship0 k room0 a floor1 připojení prostřednictvím relationship1 k Room1" border="false":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Diagram znázorňující koncepční graf floor0 je připojen prostřednictvím relationship0 k room0 a floor1 je připojen prostřednictvím relationship1 k Room1." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Dotaz na dvojitou grafickou odpověď na otázky prostředí
 
@@ -217,7 +216,7 @@ Spusťte následující příkazy v konzole spuštění projektu, abyste odpově
 
     To vám umožní pořídit si vaše prostředí na první pohled a zajistit, aby vše představovalo, jak byste chtěli být v rámci digitálních vláken Azure. Výsledek tohoto je výstup obsahující každou digitální dvojitou hodnotu s jeho podrobnostmi. Tady je ukázka:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Částečné výsledky dvojitých dotazů, které zobrazují room0 a floor1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Snímek obrazovky znázorňující částečný výsledek z neúspěšného dotazu, včetně room0 a floor1.":::
 
     >[!NOTE]
     >V ukázkovém projektu `Query` je příkaz bez dalších argumentů ekvivalentem `Query SELECT * FROM DIGITALTWINS` . K dotazování všech vláken ve vaší instanci pomocí [rozhraní API dotazů](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md)použijte dotaz delší (kompletní).
@@ -230,7 +229,7 @@ Spusťte následující příkazy v konzole spuštění projektu, abyste odpově
 
     Dotaz můžete omezit na vlákna určitého typu, abyste získali konkrétnější informace o tom, co je znázorněno. Výsledek tohoto zobrazení je *room0* a *Room1*, ale nezobrazuje *floor0* nebo *floor1* (protože **se jedná o** podlahu, ne místnosti).
     
-    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Výsledky dotazu modelu zobrazující pouze room0 a Room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Snímek obrazovky s výsledkem z dotazu modelu zobrazující pouze room0 a Room1.":::
 
 1. **Jaké jsou všechny místnosti v *floor0*?** (dotaz podle relace)
 
@@ -240,7 +239,7 @@ Spusťte následující příkazy v konzole spuštění projektu, abyste odpově
 
     Dotaz na základě relací v grafu vám umožní získat informace o tom, jak jsou vlákna propojená, nebo omezit dotaz na určitou oblast. Pouze *room0* je na *floor0*, takže se jedná o jediné místo ve výsledku.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Výsledky dotazu relace, zobrazující room0":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Snímek obrazovky s výsledkem dotazu relace, který zobrazuje room0":::
 
 1. **Jaké jsou všechny vlákna v mém prostředí s teplotou vyšší než 75?** (dotaz podle vlastnosti)
 
@@ -250,7 +249,7 @@ Spusťte následující příkazy v konzole spuštění projektu, abyste odpově
 
     Dotaz na graf můžete na základě vlastností využít k zodpovězení nejrůznějších otázek, mezi které patří hledání ve vašem prostředí, které může vyžadovat pozornost. Podporovány jsou i další operátory porovnání ( *<* , *>* , *=* , nebo *! =*). *Room1* se zobrazí ve výsledcích, protože má teplotu 80.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Výsledky dotazu na vlastnost zobrazující pouze Room1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Snímek obrazovky s výsledkem z dotazu vlastnosti zobrazující pouze Room1.":::
 
 1. **Jaké jsou všechny místnosti v *floor0* s teplotou vyšší 75?** (složený dotaz)
 
@@ -260,7 +259,7 @@ Spusťte následující příkazy v konzole spuštění projektu, abyste odpově
 
     Můžete také zkombinovat předchozí dotazy jako v SQL, a to pomocí operátorů kombinace, jako je `AND` , `OR` , `NOT` . Tento dotaz používá `AND` k tomu, aby předchozí dotaz o dvojitě specifických teplotách byl konkrétnější. Výsledek teď obsahuje jenom místnosti s teplotami nad 75, které jsou v *floor0*, což v tomto případě není žádné z nich. Sada výsledků dotazu je prázdná.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Výsledky složeného dotazu, který nezobrazuje žádné výsledky":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Snímek obrazovky výsledku složeného dotazu, který nezobrazuje žádné výsledky" lightbox="media/tutorial-command-line/app/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

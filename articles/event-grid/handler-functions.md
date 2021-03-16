@@ -2,13 +2,13 @@
 title: Použití funkce v Azure jako obslužné rutiny události pro Azure Event Grid události
 description: Popisuje, jak můžete používat funkce vytvořené v a hostované Azure Functions jako obslužné rutiny událostí pro Event Grid události.
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632508"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496537"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Použití funkce jako obslužné rutiny události pro Event Grid události
 
@@ -79,6 +79,9 @@ Pomocí příkazu [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Pomocí rutiny [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) nebo [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) můžete nakonfigurovat nastavení související s Batch pomocí následujících parametrů: `-MaxEventsPerBatch` nebo `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> Když použijete aktivační událost Event Grid, Služba Event Grid načte tajný klíč klienta pro cílovou funkci Azure a použije ho k doručování událostí do funkce Azure Functions. Pokud službu Azure Functions chráníte pomocí Azure Active Directory aplikace, musíte vzít obecný přístup k webovému zavěšení a použít Trigger HTTP.
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) .

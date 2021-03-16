@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741651"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466789"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Oprávnění podnikových aplikací pro vlastní role v Azure Active Directory
 
@@ -169,4 +169,4 @@ Microsoft. Directory/provisioningLogs/allProperties/Read | Načte všechny vlast
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytváření vlastních rolí pomocí Azure Portal, Azure AD PowerShellu a Graph API](custom-create.md)
-- [Zobrazení přiřazení pro vlastní roli](custom-view-assignments.md)
+- [Zobrazení seznamu přiřazení rolí](view-assignments.md)

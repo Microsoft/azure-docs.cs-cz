@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5fa4cba67e279f66c090c8cb30eadf099f3c998
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673547"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490904"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
 
@@ -214,9 +214,11 @@ Z SAP budete potřebovat následující spustitelné soubory a knihovny DLL:
 * Jádro SAP 7,49 nebo novější
 
 > [!IMPORTANT]
-> Clustering SAP ASCS/SCS Instances pomocí sdílené složky se podporuje pro SAP NetWeaver 7,40 (a novější) pomocí SAP kernel 7,49 (a novější).
+> Clustering SAP ASCS/SCS Instances pomocí sdílené složky se podporuje pro SAP NetWeaver 7,40 (a novější) pomocí SAP kernel 7,49 (a novější).  
+>   
+> [!IMPORTANT]
+> Instalační program musí splňovat následující požadavky: instance SAP ASCS/SCS a sdílená složka SOFS musí být nasazeny v samostatných clusterech.    
 >
-
 
 Nepopisujeme nastavení systému správy databáze (DBMS), protože nastavení se liší v závislosti na použitém systému DBMS. Předpokládá se však, že se v systému DBMS budou řešit problémy s vysokou dostupností s funkcemi, které pro Azure podporují různé dodavatele DBMS. Mezi takové funkce patří zrcadlení AlwaysOn nebo databáze pro SQL Server a Oracle data Guard pro databáze Oracle. Ve scénáři, který používáme v tomto článku, jsme nepřidali do systému DBMS větší ochranu.
 

@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879760"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493029"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
 ## <a name="supported-geographic-locations"></a>Podporovaná geografická umístění
 
 Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce můžou být dokončené ve 17 měnách. V následující tabulce jsou uvedeny jednotlivé podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
+
+CSP může zakoupit nabídku v partnerském centru v měně koncového zákazníka, aby ji mohli fakturovat ve stejné měně. Další informace najdete v [těchto nejčastějších](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf)dotazech.
 
 |   Název země nebo oblasti               |   ISO-2   |   Měna</br>(Všechny typy nabídek)  |    Měna</br>(Jenom konzultační služby    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036448"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471525"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Chyby stavu konektoru na řídicím panelu ITSMC
 
@@ -88,3 +88,11 @@ V následujících částech jsou popsány běžné chyby, které se zobrazí v 
 
 * Při vytvoření nové instance ITSMC spustí synchronizaci informací ze systému ITSM, jako jsou šablony pracovních položek a pracovní položky. [Synchronizuje ITSMC pro vygenerování nového obnovovacího tokenu](./itsmc-resync-servicenow.md).
 * [Zkontrolujte podrobnosti o připojení v ITSMC](./itsmc-connections-servicenow.md#create-a-connection) a zkontrolujte, jestli se ITSMC může úspěšně [synchronizovat](./itsmc-resync-servicenow.md).
+
+
+## <a name="ip-restrictions"></a>Omezení IP adresy
+**Chyba**: nepovedlo se přidat připojení ITSM s názvem xxx z důvodu chybné žádosti. Chyba: Chybný požadavek. Pro připojení byly zadány neplatné parametry. Výjimka protokolu http: kód stavu je zakázán.
+
+**Příčina**: IP adresa aplikace ITSM nepovoluje připojení ITSM od partnerů ITSM Tools.
+
+**Řešení**: Pokud chcete zobrazit seznam IP adres ITSM, aby bylo možné ITSM připojení od partnerů ITSM Tools, doporučujeme, abyste si vyhodnotili celý rozsah veřejných IP adres v oblasti Azure, do které patří pracovní prostor LogAnalytics. [Podrobnosti](https://www.microsoft.com/download/details.aspx?id=56519) Pro oblasti EUS/ZEU/EUS2/WUS2/USA (střed) – jih může zákazník zobrazit pouze značku Network ve službě Action.
