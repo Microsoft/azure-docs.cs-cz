@@ -31,15 +31,6 @@
     - name: Paralelní zpracování souborů – Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Vykreslování scén s využitím Arnoldu
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Vykreslování scén s využitím Batch Exploreru
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Paralelní simulace R
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: OCR se službami Batch a Functions
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md

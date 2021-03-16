@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 39896d88aeab4c592c74ded2d6edddfb46d2d203
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c5df0c4112f07a465d38e789b1401132ed25931
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448281"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488801"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu ID.me pomocí Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem ID.me v Azure Activ
 1. Vyberte **Zobrazit moje aplikace** a vyberte **pokračovat**.
 1. Vyberte, že chcete **vytvořit novou** IP adresu.
     1. Zadejte **název** a **zobrazované jméno**.
-    1. V **identifikátoru URI přesměrování** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. 
+    1. V **identifikátoru URI přesměrování** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou. 
 1. Klikněte na **Pokračovat**.
 1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. K přidání poskytovatele identity k vašemu tenantovi potřebujete obojí.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427681"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493658"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -147,15 +147,15 @@ Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.or
 \* Verze Kubernetes 1,21 pro odesílání nadřazených verzí se může změnit jako nadřazený kalendář, který se ještě dokončuje.
 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Jak často mám očekávat, že upgradují verze Kubernetes, aby zůstaly v podpoře?**
 
-Informování s Kubernetes 1,19, [Open Source komunita rozšiřuje podporu na 1 rok](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS potvrzení, aby se povolily opravy a podpora s minimálním počtem nadřazených závazků. To znamená, že se od AKS clusterů v 1,19 bude možné upgradovat minimálně jednou ročně, aby zůstala v podporované verzi. U verzí v 1,18 nebo níže je okno podpora ponecháno v 9 měsících, který vyžaduje upgrade jednou za 9 měsíců, aby zůstala v podporované verzi. Důrazně doporučujeme pravidelně testovat nové verze a připravit se na upgrade na novější verze, abyste mohli zachytit nejnovější stabilní vylepšení v rámci Kubernetes.
+Od Kubernetes 1,19 [vystavila komunita Open Source rozšířenou podporu na 1 rok](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS potvrzení, aby se povolily opravy a podpora s minimálním počtem nadřazených závazků. To znamená, že se od AKS clusterů v 1,19 bude možné upgradovat minimálně jednou ročně, aby zůstala v podporované verzi. U verzí v 1,18 nebo níže je okno podpora ponecháno v 9 měsících, který vyžaduje upgrade jednou za 9 měsíců, aby zůstala v podporované verzi. Důrazně doporučujeme pravidelně testovat nové verze a připravit se na upgrade na novější verze, abyste mohli zachytit nejnovější stabilní vylepšení v rámci Kubernetes.
 
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 
-Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Příklad:
+Pokud používáte verzi *n-3* nebo starší, znamená to, že nejste mimo rámec podpory, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze n-3 na n-2 se vrátíte do našich zásad podpory. Například:
 
 - Pokud je nejstarší podporovaná verze AKS *1.15.* a a jste na *1.14. b* nebo starší, nejste mimo podporu.
 - Po úspěšném dokončení upgradu z aplikace *1.14. b* na *1.15. a* nebo vyšší se vrátíte do našich zásad podpory.

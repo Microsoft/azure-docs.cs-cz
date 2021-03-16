@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d2e2680f1d679a4bd1e967e32a409b59ad992c01
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7538cf052fcf51d03d1ac854d4da50db02004ea
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448094"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488551"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem WeChat v Azure Acti
 1. Přihlaste se k [https://open.weixin.qq.com/](https://open.weixin.qq.com/) přihlašovacím údajům WeChat.
 1. Vyberte **管理中心** (centrum pro správu).
 1. Použijte postup k registraci nové aplikace.
-1. Zadejte `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **授权回调域** (adresa URL zpětného volání). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. Pro **授权回调域** (URL zpětného volání) zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou.
 1. Zkopírujte **ID aplikace** a **klíč App**. K nakonfigurování zprostředkovatele identity pro vašeho tenanta potřebujete obě tyto služby.
 
 ::: zone pivot="b2c-user-flow"

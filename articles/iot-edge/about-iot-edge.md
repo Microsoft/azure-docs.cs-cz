@@ -10,14 +10,16 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6c8e83838240b989c8c782840d8c771a6f6b7db
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76511208"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487798"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge přesouvá analýzy a vlastní obchodní logiku z cloudu do zařízení, aby se vaše organizace mohla místo správy dat soustředit na obchodní přehledy. Škálujte své řešení IoT tím, že zabalíte svoji obchodní logiku do standardních kontejnerů, potom můžete tyto kontejnery nasadit do libovolného ze svých zařízení a monitorovat všechno z cloudu.
 

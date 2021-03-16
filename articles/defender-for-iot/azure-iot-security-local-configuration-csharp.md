@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14237894a38725ee07deca3b5f46cbe0ecfce4cd
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851229"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493216"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent C#)
 
@@ -37,7 +37,7 @@ Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřován�
 
 ## <a name="configuration-file-location"></a>Umístění konfiguračního souboru
 
-Pro Linux:
+V Linuxu:
 
 - Konfigurační soubory operačního systému jsou umístěny v `/var/ASCIoTAgent` .
 
@@ -84,7 +84,7 @@ Ve Windows:
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
-| moduleName | řetězec | Název identity modulu zabezpečení Tento název musí odpovídat názvu identity modulu v zařízení. |
+| moduleName | řetězec | Název identity v programu Defender-IoT-Micro-agent. Tento název musí odpovídat názvu identity modulu v zařízení. |
 | deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) |
 | schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
 | gatewayHostname | řetězec | Název hostitele služby Azure IoT Hub. Obvykle <>. azure-devices.net |

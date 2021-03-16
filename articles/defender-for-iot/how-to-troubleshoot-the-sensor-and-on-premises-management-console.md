@@ -4,15 +4,15 @@ description: Vyřešte potíže se senzorem a místní konzolou pro správu, aby
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523715"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465772"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Řešení potíží se senzory a místní konzolou pro správu
 
@@ -54,7 +54,7 @@ Postup obnovení hesla:
 1. Pak se zobrazí možnost **Další** a uživatel a heslo generované systémem pro konzolu pro správu.
 
     > [!NOTE]
-    > Když se přihlásíte ke senzoru nebo místní konzole pro správu nástroje poprvé, připojí se k předplatnému, ke kterému jste připojili. Pokud budete potřebovat resetovat heslo pro CyberX nebo uživatele podpory, budete muset toto předplatné vybrat. Další informace o obnovení hesla uživatele CyberX nebo podpory najdete v tématu [resetování hesla uživatele pro senzor nebo místní konzolu pro správu](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console) .
+    > Když se přihlásíte ke senzoru nebo místní konzole pro správu nástroje poprvé, připojí se k předplatnému, ke kterému jste připojili. Pokud budete potřebovat resetovat heslo pro CyberX nebo uživatele podpory, budete muset toto předplatné vybrat. Další informace o obnovení hesla uživatele CyberX nebo podpory najdete v tématu [resetování hesla](how-to-create-and-manage-users.md#resetting-passwords).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Prozkoumat nedostatek provozu
 
@@ -283,7 +283,7 @@ Exportované protokoly se přidají do seznamu **archivovaných protokolů** . O
 
 Seznam archivovaných protokolů může obsahovat až pět položek. Pokud počet položek v seznamu překročí toto číslo, nejstarší položka se odstraní.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 - [Zobrazení upozornění](how-to-view-alerts.md)
 

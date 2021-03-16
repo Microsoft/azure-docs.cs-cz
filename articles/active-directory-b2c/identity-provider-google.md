@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a3b0be062025681af2b03dfd2e57f1af2d99d701
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 433e44e9998376d0bea57264f3daeaff7499a3cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448349"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488835"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C
 
@@ -47,7 +47,9 @@ Pokud chcete povolit přihlášení uživatelům s účtem Google v Azure Active
 Zadejte **název** vaší aplikace. V části **autorizované domény** zadejte *B2clogin.com* a vyberte **Uložit**.
 1. V nabídce vlevo vyberte **přihlašovací údaje** a pak vyberte **vytvořit přihlašovací údaje**  >  **ID klienta OAuth**.
 1. V části **Typ aplikace** vyberte **Webová aplikace**.
-1. Zadejte **název** vaší aplikace, zadejte `https://your-tenant-name.b2clogin.com` v **autorizovaných zdrojích JavaScriptu** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **autorizovaných identifikátorech URI pro přesměrování**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
+    1. Zadejte **název** vaší aplikace.
+    1. U **autorizovaných zdrojů JavaScriptu** zadejte `https://your-tenant-name.b2clogin.com` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name` .
+    1. U **autorizovaných identifikátorů URI pro přesměrování** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-domain-name` vlastní doménou a `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
 1. Klikněte na **Vytvořit**.
 1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci Google jako poskytovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležité bezpečnostní pověření.
 

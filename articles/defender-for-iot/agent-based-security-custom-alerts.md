@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
-ms.openlocfilehash: e885566dd067d70fd4800ca96b8729494464da85
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5d0eeb046d7a4ba474a1ed4a2cfb07a07f1c3888
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642407"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493301"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender pro vlastní výstrahy zabezpečení pro zařízení IoT
 
@@ -31,13 +31,13 @@ Následující seznamy programu Defender pro výstrahy IoT můžete definovat po
 
 ## <a name="agent-based-security-custom-alerts"></a>Vlastní výstrahy zabezpečení založené na agentech
 
-| Závažnost | Název upozornění | Zdroj dat | Description | Navrhovaná náprava |
+| Závažnost | Název upozornění | Zdroj dat | Popis | Navrhovaná náprava |
 |--|--|--|--|--|
-| Nízká | Vlastní výstraha – počet aktivních připojení je mimo povolený rozsah. | Klasický modul zabezpečení, Azure RTO | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení. |
-| Nízká | Vlastní výstraha – odchozí připojení vytvořené na IP adresu není povolené. | Klasický modul zabezpečení, Azure RTO | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres. |
-| Nízká | Vlastní výstraha – počet neúspěšných místních přihlášení je mimo povolený rozsah. | Klasický modul zabezpečení, Azure RTO | Počet neúspěšných místních přihlášení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |
-| Nízká | Vlastní výstraha – přihlášení uživatele, který není v seznamu povolených uživatelů | Klasický modul zabezpečení, Azure RTO | Místní uživatel mimo seznam povolených uživatelů, přihlášený k zařízení. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
-| Nízká | Vlastní výstraha – proces byl spuštěn, což není povoleno. | Klasický modul zabezpečení, Azure RTO | V zařízení se spustil proces, který není povolený. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
+| Nízká | Vlastní výstraha – počet aktivních připojení je mimo povolený rozsah. | Klasický Defender – IoT-Micro-agent, Azure RTO | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení. |
+| Nízká | Vlastní výstraha – odchozí připojení vytvořené na IP adresu není povolené. | Klasický Defender – IoT-Micro-agent, Azure RTO | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres. |
+| Nízká | Vlastní výstraha – počet neúspěšných místních přihlášení je mimo povolený rozsah. | Klasický Defender – IoT-Micro-agent, Azure RTO | Počet neúspěšných místních přihlášení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |
+| Nízká | Vlastní výstraha – přihlášení uživatele, který není v seznamu povolených uživatelů | Klasický Defender – IoT-Micro-agent, Azure RTO | Místní uživatel mimo seznam povolených uživatelů, přihlášený k zařízení. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
+| Nízká | Vlastní výstraha – proces byl spuštěn, což není povoleno. | Klasický Defender – IoT-Micro-agent, Azure RTO | V zařízení se spustil proces, který není povolený. | Pokud ukládáte nezpracovaná data, přejděte k účtu Log Analytics a pomocí dat Prozkoumejte zařízení, identifikujte zdroj a pak pro tato nastavení opravte seznam povolených/blokovaných dat. Pokud v současné době neukládáte nezpracovaná data, přečtěte si zařízení a opravte seznam povolených a blokovaných dat pro tato nastavení. |
 |
 
 ## <a name="next-steps"></a>Další kroky

@@ -314,16 +314,16 @@
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Správa proprietárních protokolů (Horizon)
           href: resources-manage-proprietary-protocols.md
+        - name: Nejčastější dotazy – služba
+          displayName: 'FAQ, regulation, internet, connection, hardware, appliances, ports, logs'
+          href: resources-frequently-asked-questions.md
     - name: Řešení založená na agentech pro tvůrce zařízení
       items:
         - name: Rozhraní API modulu zabezpečení pro Azure RTOS
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
-        - name: Nejčastější dotazy – služba
-          displayName: 'regulation, internet, connection, hardware, appliances, ports, logs'
-          href: resources-frequently-asked-questions.md
         - name: Nejčastější dotazy – agent
-          displayName: 'embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
           href: resources-agent-frequently-asked-questions.md
         - name: Plány Azure do budoucna
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

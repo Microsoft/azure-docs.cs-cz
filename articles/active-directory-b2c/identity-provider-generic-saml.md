@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 9e47171fc20ba07823e73f71713307e3a0e37278
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448400"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488920"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí zprostředkovatele identity SAML pomocí Azure Active Directory B2C
 
@@ -205,9 +205,16 @@ Následující příklad ukazuje adresu URL pro metadata SAML Azure AD B2Cho tec
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
 ```
 
+Pokud používáte [vlastní doménu](custom-domain.md), použijte následující formát:
+
+```
+https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
+```
+
 Nahraďte následující hodnoty:
 
-- **váš tenant** s názvem vašeho tenanta, například Your-tenant.onmicrosoft.com.
+- název **vašeho** tenanta, jako je třeba Your-tenant.onmicrosoft.com.
+- **název vaší domény** pomocí vlastního názvu domény, například Login.contoso.com.
 - **vaše zásady** s názvem zásady. Například B2C_1A_signup_signin_adfs.
 - **váš** technický profil s názvem vašeho technického profilu zprostředkovatele identity SAML. Například contoso-typu Saml2.
 

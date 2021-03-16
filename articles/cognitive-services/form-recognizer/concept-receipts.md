@@ -3,31 +3,29 @@ title: Příjmy – Nástroj pro rozpoznávání formulářů
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si o konceptech souvisejících s analýzou příjmů pomocí rozhraní API pro rozpoznávání formulářů – využití a omezení.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546002"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467353"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
 
-Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních příjmů pomocí předdefinovaného modelu příjmu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s příjmem a porozumění modely hloubkového učení pro extrakci klíčových informací z příjmů v angličtině. Rozhraní API pro příjem dat extrahuje klíčové informace z prodejních příjmů v angličtině, jako je například název obchodníka, datum transakce, součet transakcí, položky řádků a další. 
+Nástroj pro rozpoznávání formulářů Azure může analyzovat a extrahovat informace z prodejních příjmů pomocí předdefinovaného modelu příjmu. Kombinuje naše výkonné funkce [optického rozpoznávání znaků (OCR)](../computer-vision/concept-recognizing-text.md) s modely obsáhlého učení pro extrakci klíčových informací z příjmů napsaných v angličtině.
 
-## <a name="understanding-receipts"></a>Porozumění příjemkám 
+## <a name="understanding-receipts"></a>Porozumění příjemkám
 
-Řada firem a jednotlivců se stále spoléhá na ruční extrakci dat z jejich prodejních příjmů, ať už pro obchodní výdaje, úhrady, audity, daňové účely, rozpočtování, uvádění na trh nebo jiné účely. V těchto scénářích se často pro účely ověření vyžadují image fyzického příjmu.  
+Řada firem a jednotlivců se stále spoléhá na ručně extrahovaná data z prodejních příjmů. Automatické extrakce dat z těchto příjmů může být složité. Příjmy můžou být Crumpled, těžko ke čtení, mají rukou psané části a obsahují málo kvalitní obrázky smartphone. Také je možné, že se šablony a pole účtenky můžou významně lišit podle trhu, oblasti a obchodníka. Tyto výzvy k extrakci dat a detekci polí umožňují obdržení jedinečného problému při zpracování.  
 
-Automatické extrakce dat z těchto příjmů může být složité. Příjmy můžou být Crumpled a těžko čitelnými, tištěnými nebo ručně psanými částmi a smartphone obrázky o příjmech mohou být nízké kvality. Také je možné, že se šablony a pole účtenky můžou významně lišit podle trhu, oblasti a obchodníka. Tyto problémy při extrakci dat i při detekci polí umožňují zpracování jedinečného problému.  
-
-V případě použití optického rozpoznávání znaků (OCR) a našeho předem připraveného modelu příjemek rozhraní API pro příjem umožňuje tyto scénáře zpracování příjmu a extrahovat data z příjmů, např. název obchodníka, tip, součet, položky řádků a další. Pomocí tohoto rozhraní API není nutné naškolovat model, stačí odeslat obrázek účtenky do rozhraní API pro analýzu příjemů a data se extrahují.
+Rozhraní API pro Příjemování používá optické rozpoznávání znaků (OCR) a náš předem sestavený model, který umožňuje rozsáhlé scénáře zpracování příjmu. S rozhraním API pro příjemce není potřeba proškolit model. Odešlete obrázek účtenky do rozhraní API analýzy pro příjem a data se extrahují.
 
 ![Ukázka účtenky](./media/receipts-example.jpg)
 
@@ -73,12 +71,12 @@ Pokud si chcete vyzkoušet příjemovou službu pro rozpoznávání formulářů
 
 ## <a name="input-requirements"></a>Požadavky na vstup
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Podporovaná národní prostředí 
 
 * **Předem sestavená příjem v 2.0** (GA) podporuje prodejní příjeme v národním prostředí en-US.
-* **Předem sestavená příjem v 2.1-Preview. 2** (Public Preview) přidává další podporu následujících národních prostředí pro příjem hodnot EN: 
+* **Předem sestavená příjem v 2.1-Preview. 3** (Public Preview) přidává další podporu pro následující národní prostředí pro příjem: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -87,12 +85,12 @@ Pokud si chcete vyzkoušet příjemovou službu pro rozpoznávání formulářů
   > [!NOTE]
   > Vstup jazyka 
   >
-  > Předem sestavená příjem verze 2.1-Preview. 2 má volitelný parametr požadavku pro určení národního prostředí pro příjem z dalších anglických trhů. Pro prodejní příjeme v angličtině z Austrálie (EN-AU), Kanada (EN-CA), Velká Británie (EN-GB) a Indie (EN-IN), můžete určit národní prostředí a získat tak lepší výsledky. Pokud není zadané žádné národní prostředí v rámci verze 2.1-Preview. 2, model se nastaví jako výchozí pro model EN-US.
+  > Předem sestavená příjem verze 2.1-Preview. 3 má volitelný parametr požadavku pro určení národního prostředí pro příjem z dalších anglických trhů. Pro prodejní příjeme v angličtině z Austrálie (EN-AU), Kanada (EN-CA), Velká Británie (EN-GB) a Indie (EN-IN), můžete určit národní prostředí a získat tak lepší výsledky. Pokud není zadané žádné národní prostředí v rámci verze 2.1-Preview. 3, model se nastaví jako výchozí pro model EN-US.
 
 
 ## <a name="the-analyze-receipt-operation"></a>Operace analyzovat příjem
 
-Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty zájmu a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
+Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) jako vstup obrázek nebo PDF účtenky a získá hodnoty zájmu a text. Volání vrátí pole hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID výsledku, které se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
@@ -100,16 +98,16 @@ Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/do
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Operace získání výsledku analýzy pro příjem
 
-Druhým krokem je volání operace [získat analýzu výsledků příjmu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat příjem. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
+Druhým krokem je volání operace [získat analýzu výsledků příjmu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) . Tato operace přijímá jako vstup ID výsledku, které bylo vytvořeno operací analyzovat příjem. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Použijte interval 3 až 5 sekund, abyste předešli překročení sazby za sekundu (RPS).
 
 |Pole| Typ | Možné hodnoty |
 |:-----|:----:|:----|
-|status | řetězec | notStarted: operace analýzy nebyla spuštěna. |
+|status | řetězec | notStarted: operace nebyla zahájena. |
 | |  | běží: probíhá operace analýzy. |
 | |  | Nepovedlo se: operace analýzy se nezdařila. |
 | |  | úspěch: operace analýzy byla úspěšná. |
 
-Pokud má pole **stav** hodnotu **úspěch** , bude odpověď JSON zahrnovat porozumění příjmu a výsledky rozpoznávání textu. Výsledek porozumění příjmu je uspořádaný jako slovník hodnot pojmenovaných polí, kde každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
+Pokud má pole **stav** hodnotu **úspěch** , bude odpověď JSON zahrnovat porozumění příjmu a výsledky rozpoznávání textu. Výsledek porozumění příjmu je uspořádaný jako slovník hodnot pojmenovaných polí. Každá hodnota obsahuje extrahovaný text, normalizovanou hodnotu, ohraničovací rámeček, spolehlivost a odpovídající prvky slova. Výsledek rozpoznávání textu je uspořádán jako hierarchie řádků a slov s textem, ohraničujícím polem a informacemi o spolehlivosti.
 
 ![Ukázka výsledků pro příjem](./media/contoso-receipt-2-information.png)
 
@@ -447,18 +445,17 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 }
 ```
 
-
 ## <a name="customer-scenarios"></a>Scénáře zákazníků  
 
-Data extrahovaná pomocí rozhraní API pro příjem lze použít k provádění různých úloh. Následuje několik příkladů toho, co naši zákazníci dokončí s rozhraním API pro příjem. 
+Data extrahovaná pomocí rozhraní API pro příjem lze použít k provádění různých úloh. Níže najdete několik příkladů toho, co zákazníci dokončí s rozhraním API pro příjem.
 
 ### <a name="business-expense-reporting"></a>Vykazování obchodních výdajů  
 
 Pracovní výdaje se často dodávají do doby trvání útraty ručním zadáváním dat z imagí příjmů. Pomocí rozhraní API pro příjem můžete použít extrahovaná pole pro částečně automatizaci tohoto procesu a rychle analyzovat vaše účtenky.  
 
-Vzhledem k tomu, že rozhraní API pro příjem má jednoduchý výstup JSON, můžete hodnoty extrahovaných polí použít několika způsoby. Integrujte s interními výdajovými aplikacemi a předem naplnit sestavy výdajů. Další informace o tomto scénáři najdete v článku o tom, jak Acumatica využívá rozhraní API pro příjem, aby [vykazují náklady s méně bolestivý procesy](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
+Rozhraní API pro příjem je jednoduchý výstup JSON, který umožňuje používat extrahované hodnoty polí více způsoby. Integrujte s interními výdajovými aplikacemi a předem naplnit sestavy výdajů. Další informace o tomto scénáři najdete v článku o tom, jak Acumatica využívá rozhraní API pro příjem, aby [vykazují náklady s méně bolestivý procesy](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
 
-### <a name="auditing-and-accounting"></a>Auditování a monitorování účtů 
+### <a name="auditing-and-accounting"></a>Auditování a monitorování účtů
 
 Výstup rozhraní API pro příjem se dá také použít k analýze velkého počtu výdajů v různých fázích vykazování výdajů a procesu refundace. Můžete zpracovávat příjmy pro ruční audit nebo rychlé schvalování.  
 
@@ -472,9 +469,13 @@ Rozhraní API pro příjemce taky zajišťuje [funkci zpracování příjmu v Tv
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přihlaste se k [rychlému startu pro rozpoznávání formulářů](quickstarts/client-library.md) a začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.
+ . Začněte psát aplikaci pro zpracování příjmu pomocí nástroje pro rozpoznávání formulářů ve vývojovém jazyce podle vašeho výběru.
+
+> [!div class="nextstepaction"]
+> [Dokončení rychlého startu pro rozpoznávání formulářů](quickstarts/client-library.md)
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je služba Rozpoznávání formulářů?](./overview.md)
-* [Referenční dokumentace REST API](./index.yml)
+* [Co je služba Rozpoznávání formulářů?](overview.md)
+* [Reference k rozhraní API pro rozpoznávání formulářů](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
+>

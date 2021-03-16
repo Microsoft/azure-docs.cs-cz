@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427730"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466407"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -22,11 +22,11 @@ Azure Backup zálohují data, stav počítače a úlohy spuštěné na místníc
 
 Počítače a data můžete zálohovat pomocí několika metod:
 
-- **Zálohování místních počítačů** :
+- **Zálohování místních počítačů**:
   - Místní počítače s Windows můžete zálohovat přímo do Azure pomocí agenta Azure Backup Microsoft Azure Recovery Services (MARS). Počítače se systémem Linux nejsou podporovány.
   - Místní počítače můžete zálohovat na záložní server – buď System Center Data Protection Manager (DPM) nebo server Microsoft Azure Backup (MABS). Záložní server pak můžete zálohovat do trezoru Recovery Services v Azure.
 
-- **Zálohování virtuálních počítačů Azure** :
+- **Zálohování virtuálních počítačů Azure**:
   - Virtuální počítače Azure můžete zálohovat přímo. Azure Backup nainstaluje záložní rozšíření agenta virtuálního počítače Azure, který běží na virtuálním počítači. Toto rozšíření zálohuje celý virtuální počítač.
   - Konkrétní soubory a složky můžete na virtuálním počítači Azure zálohovat spuštěním agenta MARS.
   - Virtuální počítače Azure můžete zálohovat na MABS, která běží v Azure, a pak můžete MABS zálohovat do trezoru Recovery Services.
@@ -43,9 +43,9 @@ Trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)** : Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geograficky redundantní úložiště (GRS)** : Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zóna – redundantní úložiště (ZRS)** : replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zóna – redundantní úložiště (ZRS)**: replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 Recovery Services trezory mají následující další funkce:
@@ -98,10 +98,10 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohování do trezoru | ![Yes][green] | ![Yes][green] | ![Yes][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
-Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
-Spustit přírůstkové zálohování |![Yes][green] |![Yes][green] |![Yes][green]
+Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
+Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
+Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)
@@ -167,7 +167,7 @@ Nemusíte explicitně povolit připojení k Internetu pro zálohování virtuál
 1. Agent MARS používá službu Stínová kopie svazku k provedení snímků vybraných pro zálohování v čase.
     - Agent MARS používá pouze operaci zápisu systému Windows k zachycení snímku.
     - Vzhledem k tomu, že agent nepoužívá žádné aplikace zapisovače služby VSS, nezachycuje snímky konzistentní vzhledem k aplikacím.
-1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat.
+1. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat. Tyto změny se použijí později ke zjištění změněných bloků pro následné přírůstkové zálohování.
 1. Přírůstkové zálohování se spouští podle plánu, který zadáte, Pokud nespustíte zálohování na vyžádání.
 1. V přírůstkových zálohách se identifikují změněné soubory a vytvoří se nový virtuální pevný disk. Virtuální pevný disk je komprimovaný a zašifrovaný a pak se pošle do trezoru.
 1. Po dokončení přírůstkového zálohování se nový virtuální pevný disk sloučí s virtuálním pevným diskem vytvořeným po počáteční replikaci. Tento sloučený virtuální pevný disk poskytuje nejnovější stav, který se má použít pro porovnání probíhajícího zálohování.

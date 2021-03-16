@@ -52,78 +52,76 @@
     - name: Upgrade z Read 2.x na Read 3.x
       href: upgrade-api-versions.md
     - name: Jak nakonfigurovat ověřování AAD
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: Jak používat spravované klíče zákazníka
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: Nasazení Počítačové zpracování obrazu
-  items:
-    - name: Kontejnery
+    - name: Nasazení Počítačové zpracování obrazu
       items:
-        - name: Dokumentace ke kontejnerům Cognitive Services
-          href: ../containers/index.yml
-        - name: Kontejner s rozhraním API pro čtení
+        - name: Kontejnery
           items:
-            - name: Instalace a spuštění kontejnerů
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: Konfigurace kontejnerů
-              href: computer-vision-resource-container-config.md
-            - name: Migrace na v3 kontejneru Read
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: Použití s Kubernetes a Helmem
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: Použití instancí kontejneru
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: Kontejner prostorové analýzy
-          items:
-            - name: Přehled prostorové analýzy
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: Nastavení hostitelského počítače a spuštění kontejneru
-              href: spatial-analysis-container.md
-            - name: Konfigurace operací
-              href: spatial-analysis-operations.md
-            - name: Nasazení webové aplikace pro počítání lidí
-              href: Spatial-analysis-web-app.md
-            - name: Protokolování a řešení potíží
-              href: spatial-analysis-logging.md
-            - name: Umístění zóny a řádku
-              href: spatial-analysis-zone-line-placement.md
-            - name: Umístění kamery
-              href: spatial-analysis-camera-placement.md
+            - name: Dokumentace ke kontejnerům Cognitive Services
+              href: ../containers/index.yml
+            - name: Kontejner s rozhraním API pro čtení
+              items:
+                - name: Instalace a spuštění kontejnerů
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: Konfigurace kontejnerů
+                  href: computer-vision-resource-container-config.md
+                - name: Migrace na v3 kontejneru Read
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Použití s Kubernetes a Helmem
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: Použití instancí kontejneru
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: Kontejner prostorové analýzy
+              items:
+                - name: Přehled prostorové analýzy
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: Nastavení hostitelského počítače a spuštění kontejneru
+                  href: spatial-analysis-container.md
+                - name: Konfigurace operací
+                  href: spatial-analysis-operations.md
+                - name: Nasazení webové aplikace pro počítání lidí
+                  href: Spatial-analysis-web-app.md
+                - name: Protokolování a řešení potíží
+                  href: spatial-analysis-logging.md
+                - name: Umístění zóny a řádku
+                  href: spatial-analysis-zone-line-placement.md
+                - name: Umístění kamery
+                  href: spatial-analysis-camera-placement.md
 - name: Koncepty
   items:
-    - name: Druzí
-      items:
-        - name: 'optické rozpoznávání znaků (OCR),'
-          href: concept-recognizing-text.md
-        - name: Detekce objektů
-          href: concept-object-detection.md
-        - name: Rozpoznávání značek
-          href: concept-brand-detection.md
-        - name: Značky obsahu
-          href: concept-tagging-images.md
-        - name: Kategorizace obrázků
-          href: concept-categorizing-images.md
-        - name: Taxonomie kategorií
-          href: Category-Taxonomy.md
-        - name: Popisy obrázků
-          href: concept-describing-images.md
-        - name: Rozpoznávání tváře
-          href: concept-detecting-faces.md
-        - name: Zjišťování typu obrázku
-          href: concept-detecting-image-types.md
-        - name: Obsah specifický pro doménu
-          href: concept-detecting-domain-content.md
-        - name: Detekce barevného schématu
-          href: concept-detecting-color-schemes.md
-        - name: Miniatury s inteligentním oříznutím
-          href: concept-generating-thumbnails.md
-        - name: Detekce obsahu pro dospělé
-          href: concept-detecting-adult-content.md
+    - name: 'optické rozpoznávání znaků (OCR),'
+      href: concept-recognizing-text.md
+    - name: Detekce objektů
+      href: concept-object-detection.md
+    - name: Rozpoznávání značek
+      href: concept-brand-detection.md
+    - name: Značky obsahu
+      href: concept-tagging-images.md
+    - name: Kategorizace obrázků
+      href: concept-categorizing-images.md
+    - name: Taxonomie kategorií
+      href: Category-Taxonomy.md
+    - name: Popisy obrázků
+      href: concept-describing-images.md
+    - name: Rozpoznávání tváře
+      href: concept-detecting-faces.md
+    - name: Zjišťování typu obrázku
+      href: concept-detecting-image-types.md
+    - name: Obsah specifický pro doménu
+      href: concept-detecting-domain-content.md
+    - name: Detekce barevného schématu
+      href: concept-detecting-color-schemes.md
+    - name: Miniatury s inteligentním oříznutím
+      href: concept-generating-thumbnails.md
+    - name: Detekce obsahu pro dospělé
+      href: concept-detecting-adult-content.md
 - name: Kurzy
   items:
     - name: Generování metadat pro obrázky

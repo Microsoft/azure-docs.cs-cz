@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f91ff691948f2c55dd469ad121fab10d3a920eae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a01d5f48ca3b10f4c49ee621398ae87392dc34a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102548423"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493454"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -266,7 +266,6 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](../disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](../disk-encryption.md).
-- [Velikosti virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md); konkrétně dv4, Dsv4, Ev4 a Esv4.
 - Šifrování virtuálních počítačů v clusterech s podporou převzetí služeb při selhání
 
 ## <a name="next-steps"></a>Další kroky

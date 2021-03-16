@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b59d9079b6d0fe0ab3fe61eacf43f3a99eb46686
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090841"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495772"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: konfigurace agentů zabezpečení
 
@@ -88,7 +88,7 @@ Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu ko
 
 1. Klikněte na možnost **Nevlákenovaná identita modulu**.
 
-1. Upravte vlastnosti, které chcete změnit v modulu zabezpečení.
+1. Upravte vlastnosti, které chcete změnit v programu Defender-IoT-Micro-agent.
 
    Pokud například chcete konfigurovat události připojení s vysokou prioritou a shromažďovat události s vysokou prioritou každých 7 minut, použijte následující konfiguraci.
 
@@ -117,7 +117,7 @@ Následující tabulka obsahuje ovladatelné vlastnosti programu Defender pro ag
 
 Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
-| Name| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.|
@@ -130,17 +130,17 @@ Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://
 
 |Název události| PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
 |----------|-|---------|----|----|
-|Diagnostická událost|eventPriorityDiagnostic| Vypnout| Nepravda| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.|
-|Chyba konfigurace |eventPriorityConfigurationError |Nízká |Nepravda |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.|
+|Diagnostická událost|eventPriorityDiagnostic| Vypnout| Ne| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.|
+|Chyba konfigurace |eventPriorityConfigurationError |Nízká |Ne |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.|
 |Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízká |Ano|Statistika událostí souvisejících s agenty |
 |Připojený hardware|eventPriorityConnectedHardware |Nízká |Ano |Snímek veškerého hardwaru připojeného k zařízení.|
-|Naslouchající porty|eventPriorityListeningPorts |Vysoké |Ano |Snímek všech otevřených naslouchajících portů na zařízení.|
-|Vytvoření procesu |eventPriorityProcessCreate |Nízká |Nepravda |Audituje vytváření procesů na zařízení.|
-|Ukončení procesu|eventPriorityProcessTerminate |Nízká |Nepravda |Audituje ukončení procesu v zařízení.|
+|Naslouchající porty|eventPriorityListeningPorts |Vysoká |Ano |Snímek všech otevřených naslouchajících portů na zařízení.|
+|Vytvoření procesu |eventPriorityProcessCreate |Nízká |Ne |Audituje vytváření procesů na zařízení.|
+|Ukončení procesu|eventPriorityProcessTerminate |Nízká |Ne |Audituje ukončení procesu v zařízení.|
 |Systémové informace |eventPrioritySystemInformation |Nízká |Ano |Snímek systémových informací (například: operační systém nebo CPU).|
-|Místní uživatelé| eventPriorityLocalUsers |Vysoké |Ano|Snímek registrovaných místních uživatelů v rámci systému. |
-|Přihlásit|  eventPriorityLogin |Vysoké|Nepravda|Auditujte události přihlášení do zařízení (místní a Vzdálená přihlášení).|
-|Vytvoření připojení |eventPriorityConnectionCreate|Nízká|Nepravda|Audituje připojení TCP vytvořená do a ze zařízení. |
+|Místní uživatelé| eventPriorityLocalUsers |Vysoká |Ano|Snímek registrovaných místních uživatelů v rámci systému. |
+|Přihlásit|  eventPriorityLogin |Vysoká|Ne|Auditujte události přihlášení do zařízení (místní a Vzdálená přihlášení).|
+|Vytvoření připojení |eventPriorityConnectionCreate|Nízká|Ne|Audituje připojení TCP vytvořená do a ze zařízení. |
 |Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|Ano|Snímek konfigurace brány firewall zařízení (pravidla brány firewall). |
 |Základní hodnoty operačního systému| eventPriorityOSBaseline| Nízká|Ano|Snímek kontroly standardních hodnot operačního systému zařízení|
 |

@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e65ab1cdf08e51b3e2f9df49e39fdd921499f4a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576310"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493811"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Monitorování diagnostických protokolů Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Podrobný popis této funkce a informace o tom, proč byste chtěli použít Azure Media Services metriky a diagnostické protokoly, najdete v tématu [monitorování metrik Media Services a diagnostických protokolů](monitoring/monitor-media-services.md).
 
 V tomto článku se dozvíte, jak směrovat data do účtu úložiště a pak je zobrazit.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](./create-account-howto.md).
-- Zkontrolujte  [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md).
+- Zkontrolujte  [Media Services monitorování](monitoring/monitor-media-services.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Směrování dat do účtu úložiště pomocí portálu
 
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Příklad:
+Například:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \

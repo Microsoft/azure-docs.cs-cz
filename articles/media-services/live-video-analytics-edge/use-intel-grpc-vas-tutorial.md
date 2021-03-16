@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124410"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465755"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Kurz: Analýza živého videa pomocí rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI 
 
@@ -128,7 +128,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
     *deployment.openvino.grpc.cpu.amd64.js* v souboru manifestu se vytvoří ve složce *Src/Edge/config* .
 
 > [!NOTE]
-Zahrnuli jsme také *deployment.openvino.grpc.gpu.template.jsdo* šablony, která umožňuje podporu GPU pro modul rozšíření AI Intel OpenVINO DL načtení proudu ImageList-Edge. Tyto šablony odkazují na Image centra Docker od společnosti Intel.
+> Zahrnuli jsme také *deployment.openvino.grpc.gpu.template.jsdo* šablony, která umožňuje podporu GPU pro modul rozšíření AI Intel OpenVINO DL načtení proudu ImageList-Edge. Tyto šablony odkazují na Image centra Docker od společnosti Intel.
 
 Výše zmíněné šablony odkazují na obrázek Intel Docker Hub. Pokud místo toho chcete hostovat kopii na vlastní Azure Container Registry, můžete postupovat podle kroků 1 a 2 níže:
 1. Připojte se přes SSH k zařízení s nainstalovanými nástroji Docker CLI (tj. vaše hraniční zařízení) a zasuňte/zastavte/vložte kontejner pomocí těchto kroků:

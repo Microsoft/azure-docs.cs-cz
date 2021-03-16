@@ -4,16 +4,16 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879152"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493760"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -31,6 +31,7 @@ Zkopíruje zdrojová data do cílového umístění. Podporovány jsou následuj
   - Soubory Azure (SAS) – > soubory Azure (SAS)
   - Soubory Azure (SAS) – > Azure Blob (ověřování SAS nebo OAuth)
   - Amazon Web Services (AWS) S3 (přístupový klíč) – > Azure Block BLOB (ověřování SAS nebo OAuth)
+  - Google Cloud Storage (klíč účtu služby) – > Azure Block BLOB (ověřování SAS nebo OAuth) [Preview]
 
 Další informace najdete v části Příklady tohoto článku.
 
@@ -229,6 +230,36 @@ Přenos souborů a adresářů do Azure Storage účtu a nastavení daných zna�
 - Klíče a hodnoty jsou zakódované v adrese URL a páry klíč-hodnota jsou oddělené znakem ampersand (' & ').
     
 - Při nastavování značek u objektů BLOB existují další oprávnění (ne pro značky) v SAS, aniž by služba poskytovala chybu autorizace zpátky.
+
+Zkopírujte jeden objekt, který se Blob Storage z Google Cloud Storage, pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+Zkopírujte celý adresář pro Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+Zkopírování celého kontejneru do Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejdřív nastavte proměnnou prostředí GOOGLE_APPLICATION_CREDENTIALS pro zdroj Google Cloud Storage.
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Zkopírujte všechny množiny do Blob Storage z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS. Nejprve nastavte proměnné prostředí GOOGLE_APPLICATION_CREDENTIALS a GOOGLE_CLOUD_PROJECT =<Project-ID> pro zdroj GC
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Zkopírujte podmnožinu sad pomocí zástupného znaku (*) v názvu kontejneru z Google Cloud Storage pomocí klíče účtu služby a tokenu SAS pro cíl. Nejdřív nastavte proměnné prostředí GOOGLE_APPLICATION_CREDENTIALS a GOOGLE_CLOUD_PROJECT =<Project-ID> pro zdroj Google Cloud Storage.
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>Možnosti
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161bc008076de2bba62cd65c6c9bb106f648aa47
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851250"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493233"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Vysvětlení souboru LocalConfiguration.json – agent v jazyce C
 
@@ -39,7 +39,7 @@ Změny konfiguračního souboru se provádějí při restartování agenta.
 | TriggerdEventsInterval | ISO8601 řetězec | Interval Scheduleru pro kolekci aktivovaných událostí |
 | ConnectionTimeout | ISO8601 řetězec | Doba, po jejímž uplynutí vypršel časový limit připojení k IoThub |
 | Authentication | JsonObject | Konfigurace ověřování. Tento objekt obsahuje všechny informace potřebné pro ověřování proti IoTHub |
-| Identita | "DPS", "SecurityModule", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, SecurityModule Pokud se provádí ověřování prostřednictvím přihlašovacích údajů modulu zabezpečení nebo zařízení, pokud se provede ověřování pomocí přihlašovacích údajů k zařízení |
+| Identita | "DPS", "SecurityModule", "Device" | Ověřování identity – DPS Pokud se ověřování provádí prostřednictvím DPS, SecurityModule Pokud se provádí ověřování prostřednictvím programu Defender-IoT-Micro-agentcredentials nebo zařízení, pokud se provede ověřování pomocí přihlašovacích údajů k zařízení |
 | Parametr | "SasToken", "SelfSignedCertificate" | uživatelský tajný klíč pro ověřování – vyberte SasToken, pokud je klíč use symetrický, vyberte certifikát podepsaný držitelem, pokud se jedná o certifikát podepsaný svým držitelem.  |
 | FilePath | Cesta k souboru (řetězec) | Cesta k souboru, který obsahuje tajný klíč ověřování |
 | Název hostitele | řetězec | Název hostitele služby Azure IoT Hub. obvykle <>. azure-devices.net |

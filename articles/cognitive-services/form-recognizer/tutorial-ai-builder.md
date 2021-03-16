@@ -2,19 +2,19 @@
 title: 'Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI – Nástroj pro rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu použijete tvůrce AI k vytvoření a školení aplikace pro zpracování formuláře.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 11/23/2020
-ms.author: pafarley
-ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.author: lajanuar
+ms.openlocfilehash: 30c44ac60783132344cc018135d2c248f91f46bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95757416"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467115"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 ## <a name="create-a-form-processing-project"></a>Vytvořit projekt zpracování formuláře
 
 1. Přejít na [Power Apps](https://make.powerapps.com/) nebo [Power Automatizujte](https://flow.microsoft.com/signin)a přihlaste se pomocí účtu organizace.
-1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build**.
+1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  .
 1. Vyberte kartu pro **zpracování formuláře** .
 1. Zadejte název pro svůj model.
 1. Vyberte **Vytvořit**.
@@ -120,7 +120,7 @@ Pokud pro určitá pole vyzkoušíte špatné výsledky nebo nízkou spolehlivos
 
 - Přeučení pomocí formulářů s různými hodnotami v každém poli.
 - Přeučení s využitím větší sady školicích dokumentů. Další dokumenty, které označíte, se seznámí s tím, jak lépe rozpoznávat pole.
-- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud **Print**  >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk **Tisk do PDF** .
+- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud   >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk **Tisk do PDF** .
 
 ## <a name="publish-your-model"></a>Publikování modelu
 

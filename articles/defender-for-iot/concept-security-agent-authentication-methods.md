@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449165"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494117"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
 
 V tomto článku se dozvíte o různých metodách ověřování, které můžete použít s agentem AzureIoTSecurity k ověřování pomocí IoT Hub.
 
-Pro každé zařízení, které je připojené k programu Defender pro IoT v IoT Hub, se vyžaduje modul zabezpečení. K ověření zařízení může Defender pro IoT používat jednu ze dvou metod. Vyberte metodu, která funguje nejlépe pro vaše stávající řešení IoT.
+Pro každé zařízení, které je připojené k programu Defender pro IoT v IoT Hub, se vyžaduje Defender-IoT-Micro-agent. K ověření zařízení může Defender pro IoT používat jednu ze dvou metod. Vyberte metodu, která funguje nejlépe pro vaše stávající řešení IoT.
 
 - SecurityModule – možnost
 - Možnost zařízení
@@ -33,12 +33,12 @@ Pro každé zařízení, které je připojené k programu Defender pro IoT v IoT
 
 Dvě metody pro program Defender for IoT AzureIoTSecurity k ověřování:
 
-- Režim ověřování **SecurityModule**<br>
-Agent se ověřuje pomocí identity modulu zabezpečení nezávisle na identitě zařízení.
-Tento typ ověřování použijte v případě, že chcete, aby Agent zabezpečení používal vyhrazenou metodu ověřování prostřednictvím modulu zabezpečení (jenom symetrický klíč).
+- **Defender – režim ověřování IoT-Micro-agent**<br>
+Agent se ověřuje pomocí identity Defender-IoT-mikro-agent nezávisle na identitě zařízení.
+Tento typ ověřování použijte v případě, že chcete, aby Agent zabezpečení používal vyhrazenou metodu ověřování prostřednictvím programu Defender-IoT-Micro-Agent (jenom symetrický klíč).
 
 - Režim ověřování **zařízení**<br>
-V této metodě se Agent zabezpečení nejprve ověřuje pomocí identity zařízení. Po počátečním ověřování provede agent Defender for IoT pro IoT Hub volání **REST** pomocí REST API s ověřovacími daty daného zařízení. Agent Defender pro IoT pak požádá o metodu ověřování a data modulu zabezpečení z IoT Hub. V posledním kroku provede Defender pro agenta IoT ověřování pomocí modulu Defender for IoT.
+V této metodě se Agent zabezpečení nejprve ověřuje pomocí identity zařízení. Po počátečním ověřování provede agent Defender for IoT pro IoT Hub volání **REST** pomocí REST API s ověřovacími daty daného zařízení. Agent Defender pro IoT pak požádá o metodu ověřování Defender-IoT-mikro-agent a data z IoT Hub. V posledním kroku provede Defender pro agenta IoT ověřování pomocí modulu Defender for IoT.
 
 Tento typ ověřování použijte v případě, že chcete, aby Agent zabezpečení znovu použil existující metodu ověřování zařízení (certifikát podepsaný svým držitelem nebo symetrický klíč).
 

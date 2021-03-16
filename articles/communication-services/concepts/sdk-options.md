@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/18/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8f82b59a9702ee249c2e8f330b4aec1ba512d2f3
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 01a5f4a947f0b89b5881eddb3c743b9a9b184b19
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636075"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495636"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
 
@@ -41,7 +41,7 @@ Všimněte si, že klientské knihovny Azure Resource Manager, identity a server
 
 Umístění pro publikování pro jednotlivé balíčky klientských knihoven jsou podrobně popsány níže.
 
-| Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Jiné                          |
+| Plošný           | JavaScript | .NET | Python | Java SE | iOS | Android | Ostatní                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Přejít přes GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Společné         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | –      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |

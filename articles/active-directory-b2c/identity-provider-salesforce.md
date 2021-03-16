@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 578a248de3ee6aacc0db7c5116b66031b404c9ae
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: d445a4e1d0fd39788c18f80b25ce02a7c5d0a243
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448162"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488682"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Salesforce pomocí Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Salesforce v Azure 
     1. **Název rozhraní API** 
     1. **Kontaktní e-mail** – kontaktní E-mail pro Salesforce
 1. V části **rozhraní API (povolit nastavení OAuth)** vyberte **Povolit nastavení OAuth** .
-    1. Do **adresy URL zpětného volání** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+    1. Jako **adresu URL zpětného volání** zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Pokud používáte [vlastní doménu](custom-domain.md), zadejte `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta a `your-domain-name` vlastní doménou. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
     1. Ve **vybraných oborech OAuth** vyberte **přístup k základním informacím (ID, profil, e-mail, adresa, telefon)** a **Umožněte přístup k jedinečnému identifikátoru (OpenID)**.
     1. Vyberte **vyžadovat tajný klíč pro tok webového serveru**.
 1. Vyberte **Konfigurovat token ID** . 

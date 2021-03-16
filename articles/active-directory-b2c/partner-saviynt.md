@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171428"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465670"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V tomto ukázkovém kurzu nastavíte Saviynt tak, aby poskytovalo podrobné ří
 
 - Zabezpečení na úrovni dat k určení, jestli uživatel může provádět určitou operaci na konkrétním uživateli. Například správce helpdesku pro oblast UK může spravovat pouze uživatele ve Velké Británii.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -69,13 +69,13 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 1. Pokud chcete vytvořit účet Saviynt, kontaktujte [Saviynt](https://saviynt.com/contact-us/) .
 
-2. Vytvořte zásady delegované správy a přiřaďte uživatele jako [delegované správce](../active-directory/roles/concept-delegation.md) s různými rolemi.
+2. Vytvořte zásady delegované správy a přiřaďte uživatele jako delegované správce s různými rolemi.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Konfigurace Azure AD B2C pomocí Saviynt
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/#home).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/#home).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 

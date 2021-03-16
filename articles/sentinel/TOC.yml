@@ -47,8 +47,6 @@
       href: microsoft-365-defender-sentinel-integration.md
     - name: Použití externích dat s využitím seznamů ke zhlédnutí
       href: watchlists.md
-    - name: Přiřazení oprávnění s využitím rolí
-      href: roles.md
     - name: Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Normalizace data napříč tabulkami

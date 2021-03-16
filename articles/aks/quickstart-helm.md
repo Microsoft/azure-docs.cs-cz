@@ -4,36 +4,38 @@ description: Použijte Helm s AKS a Azure Container Registry k zabalení a spuš
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4f5232920853908aa5ad714313ead201494caa0d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249920"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493069"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
 
-[Helm][helm] je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je *apt* a *Yumu*, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předkonfigurovaných prostředků Kubernetes.
+[Helm][helm] je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je *apt* a *Yumu*, Helm spravuje Kubernetes grafy, což jsou balíčky předem nakonfigurovaných prostředků Kubernetes.
 
-V tomto článku se dozvíte, jak pomocí Helm zabalit a spustit aplikaci na AKS. Další informace o instalaci existující aplikace pomocí Helm najdete v tématu [instalace existujících aplikací pomocí Helm v AKS][helm-existing].
+V tomto rychlém startu použijete Helm k zabalení a spuštění aplikace v AKS. Další informace o instalaci existující aplikace pomocí Helm naleznete [v Průvodci instalací existujících aplikací pomocí Helm v AKS][helm-existing] .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli)
 * [Nainstalovaná verze Helm V3][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
-Pokud chcete používat Helm ke spuštění aplikace v clusteru AKS, budete potřebovat Azure Container Registry k ukládání imagí kontejneru. Následující příklad používá [AZ ACR Create][az-acr-create] k vytvoření ACR s názvem *MyHelmACR* ve skupině prostředků *MyResourceGroup* se *základní* SKU. Měli byste zadat vlastní jedinečný název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
+Image kontejneru budete muset uložit do Azure Container Registry (ACR), aby se vaše aplikace spouštěla v clusteru AKS pomocí Helm. Zadejte vlastní název registru jedinečný v rámci Azure a obsahující 5-50 alfanumerických znaků. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
+
+Následující příklad používá [AZ ACR Create][az-acr-create] k vytvoření ACR s názvem *MyHelmACR* v *MyResourceGroup* se *základní* SKU.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginServer* pro svůj ACR, protože se použije v pozdějším kroku. V následujícím příkladu je *Myhelmacr.azurecr.IO* *loginServer* pro *myhelmacr*.
+Výstup bude vypadat podobně jako v následujícím příkladu. Poznamenejte si hodnotu *loginServer* pro svůj ACR, protože ji budete používat v pozdějším kroku. V následujícím příkladu je *Myhelmacr.azurecr.IO* *loginServer* pro *myhelmacr*.
 
 ```console
 {
@@ -57,31 +59,32 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginSe
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes Service
+## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Vytvořte cluster AKS. Následující příkaz vytvoří cluster AKS s názvem MyAKS a připojí MyHelmACR.
+Váš nový cluster AKS potřebuje přístup k vašemu ACR, aby mohl načíst image kontejneru a spustit je. Následující příkaz použijte k:
+* Vytvořte cluster AKS s názvem *MyAKS* a připojte *MyHelmACR*.
+* Udělte *MyAKS* clusteru přístup k vašemu *MyHelmACR* ACR.
+
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Váš cluster AKS potřebuje přístup k vašemu ACR, aby mohl načíst image kontejneru a spustit je. Výše uvedený příkaz také udělí *MyAKS* clusteru přístup k vašemu *MyHelmACR* ACR.
-
 ## <a name="connect-to-your-aks-cluster"></a>Připojení ke clusteru AKS
 
-Pokud se chcete připojit ke clusteru Kubernetes z místního počítače, použijte klienta příkazového řádku Kubernetes [kubectl][kubectl].
+Pokud chcete připojit cluster Kubernetes místně, použijte klienta příkazového řádku Kubernetes [kubectl][kubectl]. `kubectl` je již nainstalován, pokud používáte Azure Cloud Shell. 
 
-Pokud používáte Azure Cloud Shell, `kubectl` je už nainstalovaný. Můžete ho také nainstalovat místně, a to pomocí příkazu [az aks install-cli][]:
+1. `kubectl`Místní instalace pomocí `az aks install-cli` příkazu:
 
-```azurecli
-az aks install-cli
-```
+    ```azurecli
+    az aks install-cli
+    ```
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:
+2. Nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí `az aks get-credentials` příkazu. Následující příklad příkazu vrátí pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:  
 
-```azurecli
-az aks get-credentials --resource-group MyResourceGroup --name MyAKS
-```
+    ```azurecli
+    az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+    ```
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
@@ -94,7 +97,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Vytvoření souboru Dockerfile
 
-Vytvořte nový soubor *souboru Dockerfile* pomocí následujících kroků:
+Pomocí následujících příkazů vytvořte nový soubor *souboru Dockerfile* :
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +116,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>Sestavení a vložení ukázkové aplikace do ACR
 
-Pomocí příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte image do registru pomocí předchozího souboru Dockerfile. Na `.` konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
+Pomocí předchozí souboru Dockerfile spuštěním příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte image do registru. Na `.` konci příkazu nastaví umístění souboru Dockerfile (v tomto případě aktuální adresář).
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,12 +132,12 @@ Vygenerujte graf Helm pomocí `helm create` příkazu.
 helm create webfrontend
 ```
 
-Proveďte následující aktualizace *webendu/Values. yaml*. Nahraďte loginServer registru, který jste si poznamenali v předchozím kroku, jako je například *myhelmacr.azurecr.IO*:
-
+Aktualizace *webendu/Values. yaml*:
+* Nahraďte loginServer registru, který jste si poznamenali v předchozím kroku, jako je třeba *myhelmacr.azurecr.IO*.
 * Změnit `image.repository` na `<loginServer>/webfrontend`
 * Změnit `service.type` na `LoadBalancer`
 
-Příklad:
+Například:
 
 ```yml
 # Default values for webfrontend.
@@ -166,13 +169,13 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Spuštění grafu Helm
 
-Použijte `helm install` příkaz k instalaci aplikace pomocí grafu Helm.
+Pomocí příkazu nainstalujte svoji aplikaci pomocí grafu Helm `helm install` .
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, použijte `kubectl get service` příkaz s parametrem *Watch* :
+Vrácení veřejné IP adresy službou může trvat několik minut. Sledujte průběh pomocí `kubectl get service` příkazu s `--watch` argumentem.
 
 ```console
 $ kubectl get service --watch
@@ -183,18 +186,20 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Přejděte do nástroje pro vyrovnávání zatížení vaší aplikace v prohlížeči pomocí nástroje, `<EXTERNAL-IP>` aby se zobrazila ukázková aplikace.
+Přejděte do nástroje pro vyrovnávání zatížení vaší aplikace v prohlížeči pomocí, `<EXTERNAL-IP>` aby se zobrazila ukázková aplikace.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-Pokud už cluster nepotřebujete, odeberte pomocí příkazu [AZ Group Delete][az-group-delete] skupinu prostředků, cluster AKS, registr kontejnerů, uložené image kontejnerů a všechny související prostředky.
+Pomocí příkazu [AZ Group Delete][az-group-delete] odeberte skupinu prostředků, cluster AKS, registr kontejnerů, image kontejnerů uložené ve službě ACR a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete]. Pokud jste použili spravovanou identitu, tato identita je spravovaná platformou a nevyžaduje odebrání.
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
+> 
+> Pokud jste použili spravovanou identitu, tato identita je spravovaná platformou a nevyžaduje odebrání.
 
 ## <a name="next-steps"></a>Další kroky
 

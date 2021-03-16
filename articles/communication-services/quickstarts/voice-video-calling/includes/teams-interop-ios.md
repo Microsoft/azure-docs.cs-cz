@@ -3,15 +3,15 @@ title: Rychlý Start – připojení týmů na schůzku z aplikace pro iOS
 description: V tomto kurzu se naučíte připojit týmy na schůzku pomocí komunikačních služeb Azure, které volají klientské knihovny pro iOS.
 author: chpalm
 ms.author: mikben
-ms.date: 02/18/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f23ceacb33b2f9a8e94ea0d75b61e7a040cac461
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68f1abb5335386634874d9696738a8e552ebbe9c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660069"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487977"
 ---
 V tomto rychlém startu se dozvíte, jak se připojit k týmům pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
 

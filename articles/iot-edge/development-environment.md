@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041374"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487696"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge přesouvá stávající obchodní logiku do zařízení, která pracují na hraničních zařízeních. Chcete-li připravit aplikace a úlohy tak, aby běžely jako [IoT Edge moduly](iot-edge-modules.md), je nutné je vytvořit jako kontejnery. Tento článek poskytuje pokyny k tomu, jak nakonfigurovat vývojové prostředí, abyste mohli úspěšně vytvořit IoT Edge řešení. Po nastavení vývojového prostředí můžete zjistit, jak [vyvíjet vlastní moduly IoT Edge](module-development.md).
 
@@ -49,7 +51,7 @@ Další informace a jejich stažení najdete v tématu [Azure IoT Tools for Visu
 
 Kromě rozšíření IoT Edge může být užitečné nainstalovat další rozšíření pro vývoj. Můžete například použít [podporu Docker pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) ke správě imagí, kontejnerů a registrů. Všechny hlavní podporované jazyky navíc mají rozšíření pro Visual Studio Code, která můžou pomáhat při vývoji modulů.
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 Šablony modulů pro některé jazyky a služby mají požadavky, které jsou nezbytné pro sestavení složek projektu na vývojovém počítači pomocí Visual Studio Code.
 

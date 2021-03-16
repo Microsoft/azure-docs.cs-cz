@@ -6,16 +6,16 @@ author: danieldoolabh
 manager: nimag
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 09/03/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: a24d9531b7b2d2d2f31eec275da7db7e48b9c74a
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 442fff11c2ce95ca5cc665b016631cab9048ab50
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615951"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488292"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications Pythonu SMS k posílání zpráv SMS.
 
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - [Python](https://www.python.org/downloads/) 2,7, 3,5 nebo novější.

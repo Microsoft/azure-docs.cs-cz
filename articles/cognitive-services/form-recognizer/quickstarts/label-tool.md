@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: f07e3b6142ad99ba3b9e64e4733109a7e5ae04f9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 89de0752b3015fb8132bfa50c7dbdce174061bcc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425728"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467257"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -33,7 +33,7 @@ V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s u
 K dokončení tohoto rychlého startu musíte mít:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.
   * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
   * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 * Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip*). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
@@ -124,7 +124,7 @@ Nejprve se ujistěte, že všechny školicí dokumenty mají stejný formát. Po
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi doménami (CORS)
 
-Povolte CORS v účtu úložiště. V Azure Portal vyberte svůj účet úložiště a v levém podokně klikněte na kartu **CORS** . Na dolním řádku vyplňte následující hodnoty. Pak v horní části klikněte na **Uložit** .
+Povolte CORS v účtu úložiště. Vyberte svůj účet úložiště v Azure Portal a pak zvolte kartu **CORS** v levém podokně. Na dolním řádku vyplňte následující hodnoty. V horní části vyberte **Uložit** .
 
 * Povolené zdroje = *
 * Povolené metody = \[ Vybrat vše\]
@@ -137,11 +137,11 @@ Povolte CORS v účtu úložiště. V Azure Portal vyberte svůj účet úloži�
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Připojení k nástroji Sample labeling Tool
 
-Nástroj pro označování ukázek se připojuje ke zdroji (kde jsou původní formuláře) a cíli (kde exportuje vytvořené popisky a výstupní data).
+ Nástroj pro označování popisků se připojuje ke zdroji (původní nahrané formuláře) a cíli (vytvořené popisky a výstupní data).
 
 Připojení je možné nastavit a sdílet mezi projekty. Používají model rozšiřitelného poskytovatele, takže můžete snadno přidat nové poskytovatele prostředků a cílů.
 
-Pokud chcete vytvořit nové připojení, klikněte na ikonu **nová připojení** (plug-in) v levém navigačním panelu.
+Chcete-li vytvořit nové připojení, vyberte v levém navigačním panelu ikonu **nová připojení** (plug-in).
 
 Vyplňte pole následujícími hodnotami:
 
@@ -153,13 +153,12 @@ Vyplňte pole následujícími hodnotami:
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
-
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 V nástroji pro označování ukázkových popisků se v projektech ukládají vaše konfigurace a nastavení. Vytvořte nový projekt a vyplňte pole následujícími hodnotami:
 
 * **Zobrazované jméno** – zobrazovaný název projektu
-* **Token zabezpečení** – některá nastavení projektu můžou obsahovat citlivé hodnoty, jako jsou klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování/dešifrování citlivých nastavení projektu. Tokeny zabezpečení můžete v nastavení aplikace najít kliknutím na ikonu ozubeného kolečka v dolní části levého navigačního panelu.
+* **Token zabezpečení** – některá nastavení projektu můžou obsahovat citlivé hodnoty, jako jsou klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování/dešifrování citlivých nastavení projektu. Tokeny zabezpečení můžete v nastavení aplikace najít tak, že vyberete ikonu ozubeného kolečka v dolní části levého navigačního panelu.
 * **Připojení ke zdroji** – připojení k Azure Blob Storage, které jste vytvořili v předchozím kroku, který chcete použít pro tento projekt.
 * **Cesta ke složce** – volitelné – Pokud se zdrojové formuláře nacházejí ve složce v kontejneru objektů blob, zadejte sem název složky.
 * **Identifikátor URI služby pro rozpoznávání formulářů** – adresa URL koncového bodu rozpoznávání formuláře.
@@ -176,26 +175,28 @@ Při vytváření nebo otevírání projektu se otevře okno Editor hlavních zn
 * Hlavní podokno editoru, které umožňuje použít značky.
 * Podokno editor značek umožňující uživatelům upravovat, zamykat, měnit pořadí a odstraňovat značky.
 
-### <a name="identify-text-elements"></a>Identifikujte textové prvky
+### <a name="identify-text-and-tables"></a>Identifikace textu a tabulek 
 
-Kliknutím na možnost **spustit optické rozpoznávání znaků u všech souborů** v levém podokně získáte informace o rozložení textu pro každý dokument. Nástroj pro popisování vykreslí ohraničující rámečky kolem každého prvku textu.
+Vyberte možnost **spustit optické rozpoznávání znaků ve všech souborech** v levém podokně a získejte informace o rozložení textu a tabulky pro každý dokument. Nástroj pro popisování vykreslí ohraničující rámečky kolem každého prvku textu.
 
-Zobrazí také, které tabulky byly automaticky extrahovány. Extrahovanou tabulku zobrazíte kliknutím na ikonu tabulky nebo mřížky na levé straně dokumentu. V tomto rychlém startu, protože obsah tabulky se automaticky extrahuje, nebudeme označovat obsah tabulky, ale místo toho se spoléháme na automatizovanou extrakci.
+Nástroj pro označování zobrazí také, které tabulky byly automaticky extrahovány. Vyberte ikonu tabulky nebo mřížky na levé straně dokumentu, aby se zobrazila extrahovaná tabulka. V tomto rychlém startu, protože obsah tabulky se automaticky extrahuje, nebudeme označovat obsah tabulky, ale místo toho se spoléháme na automatizovanou extrakci.
 
 :::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Vizualizace tabulky v nástroji ukázka popisků":::
+
+Pokud v nástroji v 2.1 není v školicím dokumentu zadána hodnota, můžete nakreslit pole, kde má být hodnota. Pomocí **oblasti kreslení** v levém horním rohu okna nastavte oblast jako taggable.
 
 ### <a name="apply-labels-to-text"></a>Použít popisky na text
 
 V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky, které chcete modelu analyzovat.
 
-### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
+### <a name="v20"></a>[v2.0](#tab/v2-1)  
 
-1. Nejprve použijte podokno editor značek k vytvoření značek, které chcete identifikovat:
-   * Kliknutím **+** vytvoříte novou značku.
-   * Zadejte název značky.
-   * Stisknutím klávesy ENTER značku uložíte.
-1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků. V rozhraní API _verze 2.1 Preview. 2_ můžete také kliknout na možnost vybrat _značky výběru_ , jako jsou přepínače a zaškrtávací políčka jako páry klíč-hodnota. Nástroj pro rozpoznávání formulářů určí, zda je jako hodnota vybrána možnost "výběr" nebo "Nevybráno".
-1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
+1. Nejprve pomocí podokna editor značek vytvořte značky, které chcete identifikovat.
+   1. Tuto možnost vyberte **+** , pokud chcete vytvořit novou značku.
+   1. Zadejte název značky.
+   1. Stisknutím klávesy ENTER značku uložíte.
+1. V hlavním editoru vyberte slova ze zvýrazněných textových prvků nebo oblast, ve které jste nakreslili.
+1. Vyberte značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
     > [!Tip]
     > Při označování formulářů mějte na paměti následující tipy:
     >
@@ -212,11 +213,11 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 1. Nejprve pomocí podokna editor značek vytvořte značky, které chcete identifikovat.
-   1. Kliknutím **+** vytvoříte novou značku.
+   1. Tuto možnost vyberte **+** , pokud chcete vytvořit novou značku.
    1. Zadejte název značky.
    1. Stisknutím klávesy ENTER značku uložíte.
-1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků.
-1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
+1. V hlavním editoru vyberte slova ze zvýrazněných textových prvků.
+1. Vyberte značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
     > [!Tip]
     > Při označování formulářů mějte na paměti následující tipy:
     >
@@ -231,6 +232,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
 >
 
 ---
+---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Okno hlavního editoru nástroje pro ukázkové označování":::
 
@@ -238,7 +240,7 @@ Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem
 
 ### <a name="specify-tag-value-types"></a>Zadejte typy hodnot značek
 
-Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otevřete kontextovou nabídku napravo od značky a vyberte typ z nabídky. Tato funkce umožňuje, aby algoritmus detekce vytvářely určité předpoklady, které budou zlepšit přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. Informace o typu hodnoty jsou uloženy v *fields.js* souboru ve stejné cestě jako soubory popisků.
+Můžete nastavit očekávaný datový typ pro každou značku. Otevřete kontextovou nabídku napravo od značky a vyberte typ z nabídky. Tato funkce umožňuje, aby algoritmus detekce vytvářely předpoklady, které budou zlepšit přesnost detekce textu. Také zajišťuje, že zjištěné hodnoty budou vráceny ve standardizovaném formátu v konečném výstupu JSON. Informace o typu hodnoty jsou uloženy v **fields.js** souboru ve stejné cestě jako soubory popisků.
 
 > [!div class="mx-imgBorder"]
 > ![Výběr typu hodnoty pomocí nástroje pro vzorkování popisků](../media/whats-new/value-type.png)
@@ -285,12 +287,22 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > * 01Jan2020
 > * 01 1. ledna 2020
 
+### <a name="label-tables-v21-only"></a>Tabulky popisků (jenom v 2.1)
+
+Občas se může stát, že vaše data budou lépe označená jako tabulka, nikoli páry klíč-hodnota. V takovém případě můžete vytvořit značku tabulky kliknutím na tlačítko Přidat novou značku tabulky a zadat, zda bude tabulka obsahovat pevný počet řádků nebo proměnlivý počet řádků v závislosti na dokumentu a definuje schéma.
+
+:::image type="content" source="../media/label-tool/table-tag.png" alt-text="Konfigurace značky tabulky.":::
+
+Po definování značky tabulky označte hodnoty buněk.
+
+:::image type="content" source="../media/table-labeling.png" alt-text="Označení tabulky":::
+
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 
-Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom kliknutím na tlačítko **výuka** začněte s modelem školení. Po dokončení procesu školení se zobrazí následující informace:
+Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Pak vyberte tlačítko **výuka** a začněte s modelem školení. Po dokončení procesu školení se zobrazí následující informace:
 
 * **ID modelu** – ID modelu, který byl vytvořen a vyškolený. Každý školicí hovor vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění; budete ho potřebovat, pokud chcete provést prediktivní volání prostřednictvím [REST API](./client-library.md?pivots=programming-language-rest-api) nebo [klientské knihovny](./client-library.md).
-* **Průměrná přesnost** – Průměrná přesnost modelu Přesnost modelu můžete vylepšit tak, že si znovu označíte další formuláře a školení a vytvoříte nový model. Doporučujeme začít tím, že budete označovat pět forem a podle potřeby přidat další formuláře.
+* **Průměrná přesnost** – Průměrná přesnost modelu Přesnost modelu můžete vylepšit tak, že označíte další formy a rekurzi a vytvoříte nový model. Doporučujeme začít tím, že budete označovat pět forem a podle potřeby přidat další formuláře.
 * Seznam značek a předpokládaná přesnost na značku.
 
 
@@ -305,10 +317,10 @@ Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud 
 
 ### <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1)
 
-S využitím funkce Model Compose můžete vytvořit až 100 modelů s jedním ID modelu. Když zavoláte analýzu s tímto složeným ID modelu, Rozpoznávání formulářů nejprve provede klasifikaci odeslaného formuláře, najde shodu s nejlépe odpovídajícím modelem a pak vrátí výsledky pro tento model. To je užitečné v případě, že příchozí formuláře můžou patřit k jedné z několika šablon.
+S využitím funkce Model Compose můžete vytvořit až 100 modelů s jedním ID modelu. Při volání funkce analyzovat se sestavou `modelID` , nástroj pro rozpoznávání formulářů nejprve klasifikuje formulář, který jste odeslali, vyberte nejlépe odpovídající model a potom pro tento model vraťte výsledky. Tato operace je užitečná, pokud příchozí formuláře mohou patřit do jedné z několika šablon.
 
-Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely.
-Klikněte na tlačítko "vytvořit". V automaticky otevíraném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu.
+Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, vyberte ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely.
+Klikněte na **tlačítko vytvořit**. V automaticky otevíraném okně pojmenujte nový složený model a vyberte **vytvořit**. Po dokončení operace by se měl nově vytvořený model zobrazit v seznamu.
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
 
@@ -320,16 +332,16 @@ Tato funkce je aktuálně dostupná v v 2.1. Tisk.
 
 ## <a name="analyze-a-form"></a>Analýza formuláře
 
-Kliknutím na ikonu prediktivní (žárovky) na levé straně otestujete svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
+Vyberte ikonu prediktivní (žárovky) na levé straně a otestujte svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
 
 > [!TIP]
 > Můžete také spustit rozhraní API pro analýzu pomocí volání REST. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="improve-results"></a>Zlepšení výsledků
 
-V závislosti na zaznamenané přesnosti možná budete chtít provést další školení pro zlepšení modelu. Po dokončení předpovědi si Projděte hodnoty spolehlivosti pro každou použitou značku. Pokud průměrná hodnota školení pro přesnost byla vysoká, ale hodnocení spolehlivosti je nízké (nebo výsledky jsou nepřesné), měli byste přidat soubor, který se použije pro předpověď do sady školení, označit ho a znovu ho naučit.
+V závislosti na zaznamenané přesnosti možná budete chtít provést další školení pro zlepšení modelu. Po dokončení předpovědi si Projděte hodnoty spolehlivosti pro každou použitou značku. Pokud průměrná hodnota školení pro přesnost byla vysoká, ale hodnocení spolehlivosti je nízké (nebo výsledky jsou nepřesné), měli byste přidat soubor předpovědi do sady školení, označit ho a znovu zahájit vlak.
 
-Uvedená Průměrná přesnost, hodnocení spolehlivosti a skutečná přesnost můžou být nekonzistentní, když se analyzované dokumenty liší od těch, které se použily při výuce. Mějte na paměti, že některé dokumenty vypadají při prohlížení lidem podobně, ale mohou se lišit od modelu AI. Můžete například vytvořit typ formuláře, který má dvě varianty, kde se sada školení skládá z 20% variace a a 80% variace B. Při předpovědi je pravděpodobně možné snížit skóre pro dokumenty variace A.
+Uvedená Průměrná přesnost, hodnocení spolehlivosti a skutečná přesnost můžou být nekonzistentní, když se analyzované dokumenty liší od dokumentů používaných při výuce. Mějte na paměti, že některé dokumenty vypadají při prohlížení lidem podobně, ale mohou se lišit od modelu AI. Můžete například vytvořit typ formuláře, který má dvě varianty, kde se sada školení skládá z 20% variace a a 80% variace B. Při předpovědi je pravděpodobně možné snížit skóre pro dokumenty variace A.
 
 ## <a name="save-a-project-and-resume-later"></a>Uložení projektu a pozdější pokračování
 
@@ -341,11 +353,11 @@ Přejít na stránku nastavení projektu (ikona posuvníku) a poznamenejte si n�
 
 ### <a name="restore-project-credentials"></a>Obnovit přihlašovací údaje projektu
 
-Pokud chcete pokračovat v projektu, musíte nejprve vytvořit připojení ke stejnému kontejneru úložiště objektů BLOB. Provedete to tak, že zopakujete výše uvedené kroky. Pak přejděte na stránku nastavení aplikace (ikona ozubeného kolečka) a podívejte se, jestli je k dispozici token zabezpečení vašeho projektu. Pokud ne, přidejte nový token zabezpečení a zkopírujte ho do svého názvu a klíče tokenu z předchozího kroku. Pak klikněte na Uložit nastavení.
+Pokud chcete pokračovat v projektu, musíte nejprve vytvořit připojení ke stejnému kontejneru úložiště objektů BLOB. Uděláte to tak, že zopakujete výše uvedené kroky. Pak přejděte na stránku nastavení aplikace (ikona ozubeného kolečka) a podívejte se, jestli je k dispozici token zabezpečení vašeho projektu. Pokud ne, přidejte nový token zabezpečení a zkopírujte ho do svého názvu a klíče tokenu z předchozího kroku. Vyberte **Save (Uložit** ) a zachovejte nastavení.
 
 ### <a name="resume-a-project"></a>Pokračování projektu
 
-Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít cloudový projekt. Pak vyberte připojení úložiště objektů BLOB a vyberte soubor *. Fott* vašeho projektu. Aplikace načte všechna nastavení projektu, protože má token zabezpečení.
+Nakonec přejít na hlavní stránku (ikona domu) a vyberte **otevřít cloudový projekt**. Pak vyberte připojení úložiště objektů BLOB a vyberte soubor **. Fott** vašeho projektu. Aplikace načte všechna nastavení projektu, protože má token zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky
 

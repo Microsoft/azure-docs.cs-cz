@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102603300"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555828"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -65,11 +65,11 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Ne všechny velikosti virtuálních počítačů jsou k dispozici v každé podporované oblasti s disky Ultra.
 - Jsou k dispozici pouze jako datové disky. 
-- Ve výchozím nastavení podporuje 4k velikost fyzického sektoru. velikost sektoru 512E je dostupná jako všeobecně dostupná nabídka (nevyžaduje se žádné přihlášení), ale teď je dostupná jenom pomocí rozhraní příkazového řádku nebo PowerShellu. Většina aplikací je kompatibilní s velikostmi sektorů 4k, ale některé velikosti sektorů vyžadují 512 bajtů. Příkladem může být Oracle Database, který vyžaduje vydání verze 12,2 nebo novější, aby bylo možné podporovat nativní disky 4k. Pro starší verze Oracle DB je požadována velikost bajtového sektoru 512.
+- Ve výchozím nastavení podporuje 4k velikost fyzického sektoru. velikost sektoru 512E je dostupná jako všeobecně dostupná nabídka (není nutné žádné přihlášení). Většina aplikací je kompatibilní s velikostmi sektorů 4k, ale některé velikosti sektorů vyžadují 512 bajtů. Příkladem může být Oracle Database, který vyžaduje vydání verze 12,2 nebo novější, aby bylo možné podporovat nativní disky 4k. Pro starší verze Oracle DB je požadována velikost bajtového sektoru 512.
 - Dá se vytvořit jenom jako prázdné disky.
 - V současné době nepodporuje snímky disků, image virtuálních počítačů, skupiny dostupnosti, vyhrazené hostitele Azure nebo Azure Disk Encryption.
 - V současné době nepodporuje integraci s Azure Backup ani Azure Site Recovery.
 - Podporuje pouze čtení z mezipaměti a zápisy v mezipaměti.
 - Aktuální maximální limit pro IOPS na virtuálních počítačích GA je 80 000.
 
-Azure Ultra disks nabízí ve výchozím nastavení až 16 TiB na každou oblast a předplatné, ale u Ultra disks podporuje vyšší kapacitu podle požadavků. Pokud chcete požádat o zvýšení kapacity, obraťte se na podporu Azure.
+Azure Ultra disks nabízí ve výchozím nastavení až 32 TiB na jednu oblast a předplatné, ale Ultra disks podporuje vyšší kapacitu podle požadavků. Pokud chcete požádat o zvýšení kapacity, požádejte o zvýšení kvóty nebo se obraťte na podporu Azure.
